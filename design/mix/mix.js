@@ -916,15 +916,30 @@
       document.addEventListener('pointerleave', function () { ta = 0; });
     }
 
-    // The smoky glow's lights. Each item's light stays on its item and fades in or out where it is
-    // (a little quicker out than in, so two never pile up); the three brightest are drawn.
+    // The smoky glow's lights. Each item's light lives on its item and fades in or out there (a
+    // little quicker out than in, so two never pile up); the three brightest are drawn. A light that
+    // starts rising begins part of the way toward the light that is leaving and glides home, so a
+    // hand-over reads as a short slide rather than a cut. Scrolling never moves that offset, so a
+    // settled light stays exactly on its item.
     var LP = new Float32Array(6), LU = new Float32Array(3), LI = new Float32Array(3), LL = new Float32Array(3),
         LR = new Float32Array(3), LA = new Float32Array(9), LB = new Float32Array(9), LC = new Float32Array(9);
     function lightsUp(dt) {
-      var kin = 1 - Math.exp(-dt * 2.2), kout = 1 - Math.exp(-dt * 3.2);
+      var kin = 1 - Math.exp(-dt * 2.2), kout = 1 - Math.exp(-dt * 3.2), kslide = Math.exp(-dt * 1.9);
+      // where the light is right now: the brightness-weighted middle of what is lit
+      var cx = 0, cy = 0, cw = 0;
+      for (var i = 0; i < LIGHTS.length; i++) {
+        var M = LIGHTS[i];
+        if (M.a > 0.05 && M.u) { cx += (M.x + (M.ox || 0)) * M.a; cy += (M.y + (M.oy || 0)) * M.a; cw += M.a; }
+      }
       for (var j = 0; j < LIGHTS.length; j++) {
-        var L = LIGHTS[j], want = L.wt || 0;
-        L.a = (L.a || 0) + (want - (L.a || 0)) * (want > (L.a || 0) ? kin : kout);
+        var L = LIGHTS[j], want = L.wt || 0, was = L.a || 0;
+        if (!L.born && want > 0.02 && was < 0.02 && L.u) {
+          L.born = true;
+          if (cw > 0.05) { L.ox = (cx / cw - L.x) * 0.45; L.oy = (cy / cw - L.y) * 0.45; }
+        }
+        if (was < 0.005 && want < 0.005) { L.born = false; L.ox = L.oy = 0; }
+        L.a = was + (want - was) * (want > was ? kin : kout);
+        L.ox = (L.ox || 0) * kslide; L.oy = (L.oy || 0) * kslide;
       }
       var top = LIGHTS.filter(function (L) { return L.a > 0.003 && L.u; }).sort(function (p, q) { return q.a - p.a; }).slice(0, 3);
       for (var n = 0; n < 3; n++) {
@@ -933,7 +948,7 @@
         var ph = LIGHTS.indexOf(L) * 1.37;   // every light breathes and wanders on its own phase
         var breath = 1 + 0.13 * Math.sin(clock * 0.9 + ph) + 0.06 * Math.sin(clock * 0.37 + 1.7 + ph);
         var dx = L.u * 0.06 * Math.sin(clock * 0.31 + ph), dy = L.u * 0.04 * Math.cos(clock * 0.23 + 0.8 + ph);
-        LP[n * 2] = (L.x + dx) * S; LP[n * 2 + 1] = (vh - L.y - dy) * S;
+        LP[n * 2] = (L.x + L.ox + dx) * S; LP[n * 2 + 1] = (vh - L.y - L.oy - dy) * S;
         LU[n] = L.u * (1 + 0.035 * Math.sin(clock * 0.9 - 0.6 + ph)) * S;
         LI[n] = L.a * breath; LL[n] = L.s.line; LR[n] = L.s.round;
         for (var c = 0; c < 3; c++) { LA[n * 3 + c] = L.c[0][c]; LB[n * 3 + c] = L.c[1][c]; LC[n * 3 + c] = L.c[2][c]; }
