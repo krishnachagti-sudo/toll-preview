@@ -648,12 +648,12 @@
     if (!gl) return;
 
     var VS = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-    // Four looks share one shader: 0 glow (the original), 1 fog, 2 silk, 3 smoke.
+    // The looks share one shader: 0 glow, 1 fog, 2 silk, 3 smoke, 4 blend (the glow carried by the smoke).
     var FS = [
       '#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif',
       'uniform vec2 uCore;uniform vec2 uM;uniform float uMA;uniform float uT;uniform float uU;',
       'uniform vec3 uC1;uniform vec3 uC2;uniform vec3 uC3;uniform float uI;uniform float uLine;uniform float uRound;',
-      'uniform float uMode;uniform float uScroll;',
+      'uniform float uMode;uniform float uScroll;uniform float uPhase;uniform float uStir;uniform float uSwirl;',
       'float h(vec2 p){vec3 p3=fract(vec3(p.xyx)*.1031);p3+=dot(p3,p3.yzx+33.33);return fract((p3.x+p3.y)*p3.z);}',
       'float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);',
       ' return mix(mix(h(i),h(i+vec2(1.,0.)),u.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),u.x),u.y);}',
@@ -663,7 +663,9 @@
       ' vec2 q=(gl_FragCoord.xy-uCore)/uU;',
       ' vec2 m=(uM-uCore)/uU;float ml=length(m);if(ml>1.3)m*=1.3/ml;',
       ' vec2 d=q-m;float f=exp(-dot(d,d)*2.6)*uMA;',
-      ' float t=uT;vec3 col=vec3(0.);',
+      ' float t=uT+uPhase;vec3 col=vec3(0.);',
+      // scrolling leaves the field a beat behind, like something with weight
+      ' q.y+=uStir*.14;',
       // screen-space coordinates for the full-screen looks; deeper layers drift slower with scroll
       ' vec2 p=gl_FragCoord.xy/uU;float sc=uScroll/uU;',
       ' vec2 pc=(gl_FragCoord.xy-uM)/uU;float part=exp(-dot(pc,pc)*3.2)*uMA;',
@@ -701,7 +703,7 @@
       '  col=(uC2*b1*.34+uC1*b2*.3+uC3*b3*.32)*env*(.55+.9*k);',
       '  col+=uC1*env*.035;',
       '  vec2 cq=q*vec2(1.,2.6);col+=uC3*exp(-dot(cq,cq)*2.)*.2*uLine;',
-      ' } else {',
+      ' } else if(uMode<3.5){',
       // smoke: twice domain-warped noise, slow tendrils that curl and thin out at the edges
       '  vec2 s=q*1.15+vec2(0.,sc*.12);s-=m*f*.35;',
       '  vec2 a=vec2(fbm(s+vec2(0.,t*.02)),fbm(s+vec2(5.2,1.3)-t*.015));',
@@ -712,6 +714,26 @@
       '  vec3 tint=mix(uC1,uC2,clamp(length(a)*1.1,0.,1.));tint=mix(tint,uC3,clamp(b.x*b.x*1.4,0.,1.));',
       '  col=tint*tend*env*.5;',
       '  vec2 cq=q*vec2(1.,2.4);col+=uC3*exp(-dot(cq,cq)*1.8)*.18*uLine;',
+      ' } else {',
+      // blend: the smoke's double-warped flow moves the glow's body, so the glow keeps its shape
+      // and colours but curls; the cursor stirs it harder the faster it moves
+      '  float sw=.18+uSwirl*.9;',
+      '  q-=m*f*(.32+uSwirl*.25);q+=vec2(-d.y,d.x)*f*sw;',
+      '  vec2 s=q*1.05+vec2(0.,sc*.1);',
+      '  vec2 a=vec2(fbm(s+vec2(0.,t*.028)),fbm(s+vec2(5.2,1.3)-t*.021));',
+      '  vec2 b=vec2(fbm(s+3.*a+vec2(1.7,9.2)+t*.036),fbm(s+3.*a+vec2(8.3,2.8)-t*.031));',
+      '  float v=fbm(s+3.2*b);',
+      '  vec2 r=q+(b-.5)*.85+(a-.5)*.25;',
+      '  vec2 e=r-vec2(0.,.12*(1.-uRound));float wide=exp(-(e.x*e.x*.8+e.y*e.y*mix(2.4,1.,uRound)));',
+      '  vec2 g=r-vec2(0.,.04*(1.-uRound));float mid=exp(-(g.x*g.x*mix(1.8,1.5,uRound)+g.y*g.y*mix(7.,2.2,uRound)));',
+      '  float core=exp(-(r.x*r.x*4.*(1.+.3*uSwirl)+(r.y-.015)*(r.y-.015)*mix(30.,7.,uRound)));',
+      '  float sm=pow(clamp(v,0.,1.),2.)*2.3;',
+      '  vec3 body=mix(uC2,uC1,clamp(length(a-.5)*1.6,0.,1.));',
+      '  col=uC1*wide*.1*(.3+sm)+body*mid*.42*(.2+1.05*sm)+uC3*core*.5*(.7+.45*sm)*uLine;',
+      // thin bright filaments where tendrils fold
+      '  float fil=smoothstep(.5,.66,v)*(1.-smoothstep(.66,.86,v));',
+      '  col+=mix(uC2,uC3,.55)*fil*(mid*.9+wide*.25)*.22;',
+      '  col+=uC2*f*(.04+uSwirl*.06)*(.5+sm);',
       ' }',
       ' col*=uI;',
       // fine grain keeps soft gradients from banding and gives the fog some tooth
@@ -739,7 +761,7 @@
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     var U = {};
-    ['uCore', 'uM', 'uMA', 'uT', 'uU', 'uC1', 'uC2', 'uC3', 'uI', 'uLine', 'uRound', 'uMode', 'uScroll'].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
+    ['uCore', 'uM', 'uMA', 'uT', 'uU', 'uC1', 'uC2', 'uC3', 'uI', 'uLine', 'uRound', 'uMode', 'uScroll', 'uPhase', 'uStir', 'uSwirl'].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
 
     // The site's own colours, as 0..1 RGB.
     var MAG = [1, .24, .53], EMB = [1, .33, .19], AMB = [1, .72, .45], DATE = [1, .71, .28],
@@ -762,19 +784,19 @@
     var win = document.getElementById('app');
 
     // The look: chosen by ?fog=, remembered per visitor, switchable from the preview chooser.
-    var LOOKS = { glow: { mode: 0, gain: 1, name: 'Glow' }, fog: { mode: 1, gain: 1, name: 'Fog' },
-      silk: { mode: 2, gain: 1, name: 'Silk' }, smoke: { mode: 3, gain: .62, name: 'Smoke' } };
-    var look = 'fog';
-    try { look = localStorage.getItem('mx-fog') || look; } catch (err) { /* storage blocked */ }
+    var LOOKS = { blend: { mode: 4, gain: .82, name: 'Glow + smoke' }, glow: { mode: 0, gain: 1, name: 'Glow' },
+      smoke: { mode: 3, gain: .62, name: 'Smoke' }, fog: { mode: 1, gain: 1, name: 'Fog' }, silk: { mode: 2, gain: 1, name: 'Silk' } };
+    var look = 'blend';
+    try { look = localStorage.getItem('mx-fog2') || look; } catch (err) { /* storage blocked */ }
     var asked = new URLSearchParams(location.search).get('fog');
     if (asked) look = asked;
-    if (!LOOKS[look]) look = 'fog';
+    if (!LOOKS[look]) look = 'blend';
     root.setAttribute('data-fog', look);
     function setLook(k) {
       if (!LOOKS[k]) return;
       look = k;
       root.setAttribute('data-fog', k);
-      try { localStorage.setItem('mx-fog', k); } catch (err) { /* storage blocked */ }
+      try { localStorage.setItem('mx-fog2', k); } catch (err) { /* storage blocked */ }
       var u = new URL(location.href); u.searchParams.set('fog', k); history.replaceState(null, '', u);
       each('.mx-fogs button', function (b) { b.setAttribute('aria-pressed', b.dataset.fog === k ? 'true' : 'false'); });
       wake();
@@ -783,7 +805,7 @@
     bar.className = 'mx-fogs';
     bar.setAttribute('role', 'group');
     bar.setAttribute('aria-label', 'Background style (preview)');
-    bar.innerHTML = '<span>Background</span>' + Object.keys(LOOKS).map(function (k) {
+    bar.innerHTML = '<span>Background</span>' + ['blend', 'glow', 'smoke'].map(function (k) {
       return '<button type="button" data-fog="' + k + '" aria-pressed="' + (k === look) + '">' + LOOKS[k].name + '</button>';
     }).join('');
     bar.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) setLook(b.dataset.fog); });
@@ -825,20 +847,32 @@
     }
     // Current values ease toward the target; the hero's y follows the page exactly so the glow
     // stays glued to the app window while it is on screen.
-    var C = null;
+    // Position and size ride springs (slightly under-damped, so a move between sections lands with
+    // a soft settle instead of a linear slide); y is stiffer so the hero's glow stays near the window
+    // but trails it a little on a fast flick. Colours and brightness crossfade more slowly.
+    var C = null, V = { x: 0, y: 0, u: 0 };
+    function spring(key, k, c, dt) {
+      V[key] += (k * (T[key] - C[key]) - c * V[key]) * dt;
+      C[key] += V[key] * dt;
+    }
     function ease(dt) {
       if (!C) { C = JSON.parse(JSON.stringify(T)); return; }
-      var k = 1 - Math.exp(-dt * 3.2), ky = 1 - Math.exp(-dt * 9);
-      C.x += (T.x - C.x) * k; C.y += (T.y - C.y) * ky; C.u += (T.u - C.u) * k;
-      C.i += (T.i - C.i) * k; C.line += (T.line - C.line) * k; C.round += (T.round - C.round) * k;
+      var k = 1 - Math.exp(-dt * 2.4), n = Math.max(1, Math.ceil(dt / 0.008)), h = dt / n;
+      for (var j = 0; j < n; j++) { spring('x', 16, 6.4, h); spring('y', 170, 24, h); spring('u', 12, 6, h); }
+      C.i += (T.i - C.i) * (T.i < C.i ? 1 - Math.exp(-dt * 6) : k); C.line += (T.line - C.line) * k; C.round += (T.round - C.round) * k;
       for (var c = 0; c < 3; c++) { C.c1[c] += (T.c1[c] - C.c1[c]) * k; C.c2[c] += (T.c2[c] - C.c2[c]) * k; C.c3[c] += (T.c3[c] - C.c3[c]) * k; }
     }
 
     var mx = 0, my = 0, tx = 0, ty = 0, ma = 0, ta = 0;
+    // Dynamics: the cursor's speed winds up a swirl that relaxes when it rests; scrolling speeds the
+    // flow up (it churns while you move and calms when you stop) and leaves the field trailing.
+    var pTravel = 0, swirl = 0, lastSy = sy, svel = 0, stir = 0, phase = 0;
     if (fine) {
       window.addEventListener('pointermove', function (e) {
         if (e.pointerType === 'touch') return;
-        tx = e.clientX * S; ty = (vh - e.clientY) * S; ta = 1;
+        var nx = e.clientX * S, ny = (vh - e.clientY) * S;
+        pTravel += Math.min(Math.sqrt((nx - tx) * (nx - tx) + (ny - ty) * (ny - ty)), 80);
+        tx = nx; ty = ny; ta = 1;
         if (!mx && !my) { mx = tx; my = ty; }
         wake();
       }, { passive: true });
@@ -854,14 +888,21 @@
       target(); ease(dt);
       var kp = 1 - Math.exp(-dt * 2.2), ka = 1 - Math.exp(-dt * 1.6);
       mx += (tx - mx) * kp; my += (ty - my) * kp; ma += (ta - ma) * ka;
+      var pspeed = pTravel / dt; pTravel = 0;
+      swirl += (clamp(pspeed / 500, 0, 1) - swirl) * (1 - Math.exp(-dt * (pspeed > 40 ? 4 : 1.2)));
+      var raw = clamp((sy - lastSy) / dt, -6000, 6000); lastSy = sy;
+      svel += (raw - svel) * (1 - Math.exp(-dt * 5));
+      stir += (clamp(svel / 2200, -1, 1) - stir) * (1 - Math.exp(-dt * 3));
+      phase += Math.min(Math.abs(svel), 4000) / 1000 * dt * 5;
       gl.uniform2f(U.uCore, C.x * S, (vh - C.y) * S);
       gl.uniform2f(U.uM, mx, my);
       gl.uniform1f(U.uMA, ma);
       gl.uniform1f(U.uT, clock);
       gl.uniform1f(U.uU, C.u * S);
       gl.uniform3fv(U.uC1, C.c1); gl.uniform3fv(U.uC2, C.c2); gl.uniform3fv(U.uC3, C.c3);
-      gl.uniform1f(U.uI, C.i * LOOKS[look].gain); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
+      gl.uniform1f(U.uI, C.i * LOOKS[look].gain * (1 - 0.3 * Math.abs(stir))); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
       gl.uniform1f(U.uMode, LOOKS[look].mode); gl.uniform1f(U.uScroll, sy * S);
+      gl.uniform1f(U.uPhase, phase); gl.uniform1f(U.uStir, stir); gl.uniform1f(U.uSwirl, swirl);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       requestAnimationFrame(frame);
     }
