@@ -715,25 +715,23 @@
       '  col=tint*tend*env*.5;',
       '  vec2 cq=q*vec2(1.,2.4);col+=uC3*exp(-dot(cq,cq)*1.8)*.18*uLine;',
       ' } else {',
-      // blend: the smoke's double-warped flow moves the glow's body, so the glow keeps its shape
-      // and colours but curls; the cursor stirs it harder the faster it moves
-      '  float sw=.18+uSwirl*.9;',
-      '  q-=m*f*(.32+uSwirl*.25);q+=vec2(-d.y,d.x)*f*sw;',
-      '  vec2 s=q*1.05+vec2(0.,sc*.1);',
-      '  vec2 a=vec2(fbm(s+vec2(0.,t*.028)),fbm(s+vec2(5.2,1.3)-t*.021));',
-      '  vec2 b=vec2(fbm(s+3.*a+vec2(1.7,9.2)+t*.036),fbm(s+3.*a+vec2(8.3,2.8)-t*.031));',
-      '  float v=fbm(s+3.2*b);',
-      '  vec2 r=q+(b-.5)*.85+(a-.5)*.25;',
-      '  vec2 e=r-vec2(0.,.12*(1.-uRound));float wide=exp(-(e.x*e.x*.8+e.y*e.y*mix(2.4,1.,uRound)));',
-      '  vec2 g=r-vec2(0.,.04*(1.-uRound));float mid=exp(-(g.x*g.x*mix(1.8,1.5,uRound)+g.y*g.y*mix(7.,2.2,uRound)));',
-      '  float core=exp(-(r.x*r.x*4.*(1.+.3*uSwirl)+(r.y-.015)*(r.y-.015)*mix(30.,7.,uRound)));',
-      '  float sm=pow(clamp(v,0.,1.),2.)*2.3;',
-      '  vec3 body=mix(uC2,uC1,clamp(length(a-.5)*1.6,0.,1.));',
-      '  col=uC1*wide*.1*(.3+sm)+body*mid*.42*(.2+1.05*sm)+uC3*core*.5*(.7+.45*sm)*uLine;',
-      // thin bright filaments where tendrils fold
-      '  float fil=smoothstep(.5,.66,v)*(1.-smoothstep(.66,.86,v));',
-      '  col+=mix(uC2,uC3,.55)*fil*(mid*.9+wide*.25)*.22;',
-      '  col+=uC2*f*(.04+uSwirl*.06)*(.5+sm);',
+      // blend: the original glow, made of smoke. Same shape, place and colours; the light is
+      // broken into soft translucent wisps that rise slowly and fray at the edges, like lit smoke.
+      '  q-=m*f*(.38+uSwirl*.2);q+=vec2(-d.y,d.x)*f*(.18+uSwirl*.8);',
+      '  vec2 w=vec2(fbm(q*1.25+vec2(0.,-t*.05)),fbm(q*1.25+vec2(4.7,1.9)+vec2(t*.04,0.)));',
+      '  vec2 r=q+(w-.5)*.95;float k=fbm(r*1.7+vec2(t*.03,-t*.05));',
+      // the smoke: noise carried upward (smoke rises) with a slow sideways sway
+      '  vec2 sp=r*2.1+vec2(sin(t*.07+r.y*1.3)*.25,-t*.09);',
+      '  float s1=fbm(sp+w*1.4);',
+      '  float s2=fbm(sp*1.9+vec2(3.1,-t*.05)+s1*1.2);',
+      '  float wisp=smoothstep(.28,.78,s1*.6+s2*.4);',
+      '  vec2 e=r-vec2(0.,.12*(1.-uRound));float wide=exp(-(e.x*e.x*.9+e.y*e.y*mix(2.8,1.1,uRound)));',
+      '  vec2 g=r-vec2(0.,.04*(1.-uRound));float mid=exp(-(g.x*g.x*mix(2.,1.6,uRound)+g.y*g.y*mix(9.,2.4,uRound)));',
+      '  float core=exp(-(r.x*r.x*4.2+(r.y-.015)*(r.y-.015)*mix(34.,7.,uRound)));',
+      // the edges fray: where the glow thins, the smoke decides what is left
+      '  float midS=smoothstep(0.,1.,mid*(.55+.9*wisp));',
+      '  float wideS=wide*(.35+.95*wisp);',
+      '  col=uC1*wideS*.09*(.4+k)+uC2*midS*.4*(.35+1.15*k)+uC3*core*.5*(.75+.5*k)*uLine*(.8+.3*wisp)+uC2*f*.05*(.5+k);',
       ' }',
       ' col*=uI;',
       // fine grain keeps soft gradients from banding and gives the fog some tooth
@@ -766,25 +764,50 @@
     // The site's own colours, as 0..1 RGB.
     var MAG = [1, .24, .53], EMB = [1, .33, .19], AMB = [1, .72, .45], DATE = [1, .71, .28],
         MONEY = [1, .37, .66], FILE = [.27, .83, 1], AGENT = [.66, .55, 1], WARM = [1, .6, .38];
-    // Stations: x and y as fractions of the viewport (the hero's is pinned to the app window),
-    // colours for the wide haze, the body and the bright core, brightness, core line, roundness.
-    var STATIONS = [
-      { sel: '.hero', x: .5, y: null, c: [MAG, EMB, AMB], i: 1, line: 1, round: 0, u: .46 },
-      { sel: '#moments', x: .84, y: .32, c: [AGENT, MONEY, MONEY], i: .5, line: .25, round: 1, u: .42 },
-      { sel: '#tools', x: .12, y: .5, c: [MONEY, DATE, DATE], i: .46, line: .25, round: 1, u: .42 },
-      { sel: '#how', x: .86, y: .42, c: [MAG, EMB, WARM], i: .5, line: .3, round: 1, u: .44 },
-      { sel: '#pricing', x: .5, y: .12, c: [MONEY, MONEY, AMB], i: .36, line: .2, round: .7, u: .5 },
-      { sel: '#developers', x: .12, y: .5, c: [AGENT, AGENT, FILE], i: .5, line: .25, round: 1, u: .42 },
-      { sel: '#why', x: .86, y: .45, c: [FILE, FILE, AGENT], i: .42, line: .25, round: 1, u: .42 },
-      { sel: '#faq', x: .5, y: .6, c: [AGENT, MONEY, AMB], i: .2, line: .1, round: 1, u: .5 },
-      { sel: '#request', x: .2, y: .5, c: [DATE, EMB, AMB], i: .32, line: .2, round: 1, u: .44 },
-      { sel: '.closing', x: .5, y: 'bottom', c: [MAG, EMB, AMB], i: 1.05, line: .75, round: .35, u: .56 }
-    ].filter(function (s) { return (s.el = document.querySelector(s.sel)); });
-    if (!STATIONS.length) return;
-    var win = document.getElementById('app');
+    // Light sources: the things on the page the glow sits behind. Each frame the field goes to
+    // whatever is nearest the middle of the screen, in that thing's own colour, so the light always
+    // belongs to something you are looking at. The hero and the closing keep the warm brand glow.
+    //   at: 'top' lights from the element's top edge (the app window), 'body' from behind its upper
+    //   part, 'foot' from its bottom edge; i is brightness, u how wide relative to the element.
+    var SOURCES = [
+      { sel: '#app', at: 'top', i: 1, line: 1, round: 0, warm: true },
+      { sel: '.moments .gcard', at: 'body', i: .55, line: .3, round: 1, u: .62 },
+      { sel: '.feat .panel', at: 'body', i: .62, line: .3, round: 1, u: .6 },
+      { sel: '.pay .panel', at: 'body', i: .55, line: .3, round: 1, u: .6, hue: WARM },
+      { sel: '.buys', at: 'body', i: .3, line: .2, round: 1, u: .4, hue: DATE },
+      { sel: '.tbl', at: 'body', i: .45, line: .25, round: 1, u: .55, hue: MONEY },
+      { sel: '.terms', at: 'body', i: .35, line: .2, round: 1, u: .6, hue: DATE },
+      { sel: '.dev .mcp', at: 'body', i: .4, line: .2, round: 1, u: .6, hue: AGENT },
+      { sel: '.code', at: 'body', i: .55, line: .3, round: 1, u: .55, hue: AGENT },
+      { sel: '.compare', at: 'body', i: .45, line: .25, round: 1, u: .55, hue: FILE },
+      { sel: '.sources', at: 'body', i: .3, line: .2, round: 1, u: .6, hue: FILE },
+      { sel: '.faq', at: 'body', i: .2, line: .1, round: 1, u: .5, hue: AGENT },
+      { sel: '.req', at: 'body', i: .4, line: .25, round: 1, u: .55, hue: DATE },
+      { sel: '.closing', at: 'foot', i: 1.05, line: .75, round: .35, warm: true }
+    ];
+    function parseColor(str) {
+      var m = /^#([0-9a-f]{6})$/i.exec(str);
+      if (m) { var n = parseInt(m[1], 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; }
+      m = /rgba?\(\s*([\d.]+)[ ,]+([\d.]+)[ ,]+([\d.]+)/.exec(str);
+      return m ? [m[1] / 255, m[2] / 255, m[3] / 255] : null;
+    }
+    function lighten(c, k) { return [mix(c[0], 1, k), mix(c[1], 1, k), mix(c[2], 1, k)]; }
+    var LIGHTS = [];
+    SOURCES.forEach(function (s) {
+      each(s.sel, function (el) {
+        var hue = s.hue;
+        if (!s.warm) {
+          var own = parseColor(getComputedStyle(el).getPropertyValue('--hue').trim());
+          if (own) hue = own;
+        }
+        var pal = s.warm ? [MAG, EMB, AMB] : [[hue[0] * .85 + EMB[0] * .15, hue[1] * .85 + EMB[1] * .15, hue[2] * .85 + EMB[2] * .15], hue, lighten(hue, .35)];
+        LIGHTS.push({ el: el, s: s, c: pal });
+      });
+    });
+    if (!LIGHTS.length) return;
 
     // The look: chosen by ?fog=, remembered per visitor, switchable from the preview chooser.
-    var LOOKS = { blend: { mode: 4, gain: .82, name: 'Glow + smoke' }, glow: { mode: 0, gain: 1, name: 'Glow' },
+    var LOOKS = { blend: { mode: 4, gain: 1, name: 'Smoky glow' }, glow: { mode: 0, gain: 1, name: 'Glow' },
       smoke: { mode: 3, gain: .62, name: 'Smoke' }, fog: { mode: 1, gain: 1, name: 'Fog' }, silk: { mode: 2, gain: 1, name: 'Silk' } };
     var look = 'blend';
     try { look = localStorage.getItem('mx-fog2') || look; } catch (err) { /* storage blocked */ }
@@ -812,44 +835,47 @@
     document.body.appendChild(bar);
 
     document.body.insertBefore(canvas, document.body.firstChild);
-    var S = 0.5, cw = 0, ch = 0, tops = [], bottoms = [], winTop = 0;
+    var S = 0.5, cw = 0, ch = 0;
     function measure() {
       vw = window.innerWidth; vh = window.innerHeight;
       cw = Math.max(1, Math.round(vw * S)); ch = Math.max(1, Math.round(vh * S));
       canvas.width = cw; canvas.height = ch;
       gl.viewport(0, 0, cw, ch);
-      var y0 = window.pageYOffset;
-      tops = STATIONS.map(function (s) { return s.el.getBoundingClientRect().top + y0; });
-      bottoms = STATIONS.map(function (s) { return s.el.getBoundingClientRect().bottom + y0; });
-      winTop = win ? win.getBoundingClientRect().top + y0 : vh * 0.6;
     }
 
-    // Where the field should be for this scroll position: hold each station for the first half
-    // of its section, then ease into the next.
+    // Where the field should be right now: a blend of the lights on screen, weighted by how close
+    // each is to the middle of the viewport, so it slides from one thing to the next as you scroll.
     var T = { x: 0, y: 0, i: 0, line: 0, round: 0, u: 0, c1: [0, 0, 0], c2: [0, 0, 0], c3: [0, 0, 0] };
-    // y: a fraction of the viewport; null pins it to the app window; 'bottom' to the section's foot.
-    function stationAt(j) {
-      var s = STATIONS[j];
-      return { x: s.x * vw, y: s.y === null ? winTop - sy : s.y === 'bottom' ? bottoms[j] - sy - 40 : s.y * vh, u: clamp(vw * s.u, 300, 720),
-        i: s.i, line: s.line, round: s.round, c: s.c };
-    }
     function target() {
-      var probe = sy + vh * 0.5, k = 0;
-      for (var j = 0; j < tops.length; j++) if (probe >= tops[j]) k = j;
-      var a = stationAt(k), b = STATIONS[k + 1] ? stationAt(k + 1) : a;
-      var span = (tops[k + 1] || tops[k] + vh) - tops[k];
-      var t = smooth(((probe - tops[k]) / Math.max(span, 1) - 0.45) / 0.55);
-      T.x = mix(a.x, b.x, t); T.y = mix(a.y, b.y, t); T.u = mix(a.u, b.u, t);
-      T.i = mix(a.i, b.i, t); T.line = mix(a.line, b.line, t); T.round = mix(a.round, b.round, t);
-      for (var c = 0; c < 3; c++) {
-        T.c1[c] = mix(a.c[0][c], b.c[0][c], t); T.c2[c] = mix(a.c[1][c], b.c[1][c], t); T.c3[c] = mix(a.c[2][c], b.c[2][c], t);
+      var sum = 0, acc = { x: 0, y: 0, u: 0, i: 0, line: 0, round: 0, c1: [0, 0, 0], c2: [0, 0, 0], c3: [0, 0, 0] };
+      for (var j = 0; j < LIGHTS.length; j++) {
+        var L = LIGHTS[j], r = L.el.getBoundingClientRect(), s = L.s;
+        if (r.bottom < -vh * 0.3 || r.top > vh * 1.3 || !r.width) continue;
+        var x = r.left + r.width / 2, y, u, d;
+        if (s.at === 'top') { y = r.top; u = clamp(vw * 0.46, 300, 720); d = (y - vh * 0.55) / vh * 0.55; }
+        else if (s.at === 'foot') { y = r.bottom - 40; u = clamp(vw * 0.56, 300, 760); d = (y - vh * 0.55) / vh * 0.55; }
+        else {
+          y = r.top + Math.min(r.height * 0.32, 170); u = clamp(r.width * s.u * 1.45, 320, 860);
+          // how far the middle of the screen is from the element (zero while it spans the middle)
+          var mid = vh * 0.5;
+          d = (mid < r.top ? r.top - mid : mid > r.bottom ? mid - r.bottom : 0) / vh;
+        }
+        var w = Math.exp(-(d * d) / 0.035) * (s.warm ? 1.4 : 1);
+        if (w < 1e-4) continue;
+        sum += w;
+        acc.x += x * w; acc.y += y * w; acc.u += u * w;
+        acc.i += s.i * (s.warm ? 1 : 1.75) * w; acc.line += s.line * w; acc.round += s.round * w;
+        for (var c = 0; c < 3; c++) { acc.c1[c] += L.c[0][c] * w; acc.c2[c] += L.c[1][c] * w; acc.c3[c] += L.c[2][c] * w; }
       }
+      if (sum < 1e-3) { T.i = 0.12; return; }   // nothing to light: let it fade, keep its place
+      T.x = acc.x / sum; T.y = acc.y / sum; T.u = acc.u / sum;
+      T.i = acc.i / sum; T.line = acc.line / sum; T.round = acc.round / sum;
+      for (var k = 0; k < 3; k++) { T.c1[k] = acc.c1[k] / sum; T.c2[k] = acc.c2[k] / sum; T.c3[k] = acc.c3[k] / sum; }
     }
     // Current values ease toward the target; the hero's y follows the page exactly so the glow
     // stays glued to the app window while it is on screen.
-    // Position and size ride springs (slightly under-damped, so a move between sections lands with
-    // a soft settle instead of a linear slide); y is stiffer so the hero's glow stays near the window
-    // but trails it a little on a fast flick. Colours and brightness crossfade more slowly.
+    // Position and size ride springs (slightly under-damped, so a move lands with a soft settle);
+    // y is stiff so the glow stays with what it lights. Colours crossfade more slowly.
     var C = null, V = { x: 0, y: 0, u: 0 };
     function spring(key, k, c, dt) {
       V[key] += (k * (T[key] - C[key]) - c * V[key]) * dt;
@@ -867,6 +893,7 @@
     // Dynamics: the cursor's speed winds up a swirl that relaxes when it rests; scrolling speeds the
     // flow up (it churns while you move and calms when you stop) and leaves the field trailing.
     var pTravel = 0, swirl = 0, lastSy = sy, svel = 0, stir = 0, phase = 0;
+
     if (fine) {
       window.addEventListener('pointermove', function (e) {
         if (e.pointerType === 'touch') return;
@@ -900,9 +927,9 @@
       gl.uniform1f(U.uT, clock);
       gl.uniform1f(U.uU, C.u * S);
       gl.uniform3fv(U.uC1, C.c1); gl.uniform3fv(U.uC2, C.c2); gl.uniform3fv(U.uC3, C.c3);
-      gl.uniform1f(U.uI, C.i * LOOKS[look].gain * (1 - 0.3 * Math.abs(stir))); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
+      gl.uniform1f(U.uI, C.i * LOOKS[look].gain * (1 - 0.3 * Math.abs(stir)));
+      gl.uniform1f(U.uPhase, phase); gl.uniform1f(U.uStir, stir); gl.uniform1f(U.uSwirl, swirl); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
       gl.uniform1f(U.uMode, LOOKS[look].mode); gl.uniform1f(U.uScroll, sy * S);
-      gl.uniform1f(U.uPhase, phase); gl.uniform1f(U.uStir, stir); gl.uniform1f(U.uSwirl, swirl);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       requestAnimationFrame(frame);
     }
