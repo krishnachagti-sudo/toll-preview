@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toll: exact answers, paid per use</title>
+<meta name="description" content="Small tools that each do one job and give the same answer every time. No AI, no subscription. Pay a fraction of a cent per use from one prepaid balance.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/home.css">
+<script src="/toll-preview/assets/home.js"></script>
+<link rel="stylesheet" href="/toll-preview/design/a/liquid.css">
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="home">
+
+<!-- icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></symbol>
+    <symbol id="i-fx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 5.5h9.5l-2.5-2.5M13 10.5H3.5L6 13"/></symbol>
+    <symbol id="i-img" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><circle cx="6" cy="6" r="1.2"/><path d="M13.5 10.5l-3-3-6.5 6"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="12" height="9" rx="2"/><path d="M11 8.5h.01M2 6.5h12"/></symbol>
+    <symbol id="i-key" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="5.5" cy="10.5" r="2.5"/><path d="M7.3 8.7L13 3M11 5l1.5 1.5"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 11.5a5.5 5.5 0 1111 0"/><path d="M8 11.5l2.5-3"/></symbol>
+    <symbol id="i-list" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5.5 4.5h8M5.5 8h8M5.5 11.5h8M2.5 4.5h.01M2.5 8h.01M2.5 11.5h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3.5A1.5 1.5 0 014.5 2H13v10H4.5A1.5 1.5 0 003 13.5zM3 13.5A1.5 1.5 0 004.5 15H13"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4.5 6.5L8 10l3.5-3.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M8 7.2V11M8 5h.01"/></symbol>
+    <symbol id="i-search" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3v10M3 8h10"/></symbol>
+    <symbol id="i-up" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 11V3M4.5 6.5L8 3l3.5 3.5M3 13h10"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2.5v3h3"/></symbol>
+    <symbol id="i-mark" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M7 8.5h10M12 8.5V17" stroke="#0b0c0e" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/">Tools</a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/tools/">Tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+<!-- ================= HERO ================= -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <a href="#why" class="pill"><span><b>No AI.</b> Same input, same answer.</span><span class="k">Why</span></a>
+    <h1 class="h1" id="hero-h">The exact answer,<br class="br-d"> for a fraction of a cent.</h1>
+    <p class="hero-lede">Small jobs are usually sold as a subscription you forget to cancel, or handed to an AI that guesses. <strong>Toll gives you one exact answer and charges a fraction of a cent for it.</strong></p>
+    <div class="hero-actions">
+      <a href="/toll-preview/fx-on-date/" class="btn btn-light btn-lg">Try a tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="/toll-preview/account" class="btn btn-ghost btn-lg" data-signed-in-text="Your account">Create account</a>
+    </div>
+    <p class="hero-meta">5 free runs a day without an account</p>
+  </div>
+
+  <div class="stage">
+    <div class="glow" aria-hidden="true"><i class="beam"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>
+    <div class="win" id="app" role="group" aria-label="Product shot of the Toll app: exchange rate on 24 October 2026, US dollar to Indian rupee. 1 USD buys 94.945055 INR, from the European Central Bank fixing of Friday 23 October 2026.">
+      <!-- command bar -->
+      <div class="cmd">
+        <svg aria-hidden="true"><use href="#i-search"/></svg>
+        <div class="cmd-q"><span id="qtext">Exchange rate on 24 Oct 2026, USD to INR</span><span class="caret" aria-hidden="true"></span></div>
+        <span class="cmd-r" aria-hidden="true"><span class="lbl">Run</span><span class="kc" id="enter">&#8629;</span></span>
+      </div>
+
+      <div class="win-grid">
+        <!-- sidebar -->
+        <aside class="side" aria-label="App sidebar">
+          <div class="ws"><span class="ws-name"><svg aria-hidden="true"><use href="#i-mark"/></svg><span class="brand">Toll</span><svg aria-hidden="true" style="width:14px;height:14px;color:var(--faint)"><use href="#i-chev"/></svg></span></div>
+          <div class="side-h">Tools</div>
+          <div class="side-cat hue-date"><i></i>Dates and calendars</div>
+          <button type="button" class="s-item hue-date" data-view="bd" aria-current="false"><svg aria-hidden="true"><use href="#i-cal"/></svg><span class="lb" data-tool-name="business-days">Business days</span><span class="p" data-price="business-days">$0.0005</span></button>
+          <div class="side-cat hue-money"><i></i>Money and rates</div>
+          <button type="button" class="s-item hue-money" data-view="fx" aria-current="true"><svg aria-hidden="true"><use href="#i-fx"/></svg><span class="lb" data-tool-name="fx-on-date">Exchange rate on a date</span><span class="p" data-price="fx-on-date">$0.001</span></button>
+          <div class="side-cat hue-file"><i></i>Files and images</div>
+          <button type="button" class="s-item hue-file" data-view="img" aria-current="false"><svg aria-hidden="true"><use href="#i-img"/></svg><span class="lb" data-tool-name="image-to-size">Image to size</span><span class="p" data-price="image-to-size">Free</span></button>
+          <div class="side-h">Account</div>
+          <span class="s-item static"><svg aria-hidden="true"><use href="#i-wallet"/></svg>Balance<span class="p">$20.2495</span></span>
+          <span class="s-item static"><svg aria-hidden="true"><use href="#i-key"/></svg>API keys</span>
+          <span class="s-item static"><svg aria-hidden="true"><use href="#i-gauge"/></svg>Monthly limits</span>
+          <span class="s-item static"><svg aria-hidden="true"><use href="#i-list"/></svg>Activity</span>
+          <span class="s-item static"><svg aria-hidden="true"><use href="#i-book"/></svg>Docs</span>
+          <div class="side-foot"><span class="avatar">Y</span>Your account</div>
+        </aside>
+
+        <!-- main -->
+        <div class="main">
+          <div class="m-tabs" role="group" aria-label="Choose a tool">
+            <button type="button" class="s-item hue-date" data-view="bd" aria-current="false">Business days</button>
+            <button type="button" class="s-item hue-money" data-view="fx" aria-current="true">Exchange rate</button>
+            <button type="button" class="s-item hue-file" data-view="img" aria-current="false">Image size</button>
+          </div>
+
+          <!-- FX view -->
+          <div class="view-wrap hue-money" data-for="fx">
+            <div class="bar"><span class="crumb">Money and rates / <b data-tool-name="fx-on-date">Exchange rate on a date</b></span><span class="tchip"><span class="dot"></span><span data-price="fx-on-date">$0.001</span> per call</span><span class="seg" aria-hidden="true"><span class="on">Web</span><span>API</span><span>MCP</span></span></div>
+            <div class="view">
+              <h3 data-tool-name="fx-on-date">Exchange rate on a date</h3>
+              <p class="desc">Official European Central Bank reference rates since 4 January 1999.</p>
+              <div class="fields">
+                <div class="mfield"><span class="mlabel">From</span><div class="inp"><span class="flag"><i>US</i>USD</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+                <div class="mfield"><span class="mlabel">To</span><div class="inp"><span class="flag"><i>IN</i>INR</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+                <div class="mfield wide"><span class="mlabel">Date</span><div class="inp"><span class="mono">2026-10-24</span><svg aria-hidden="true"><use href="#i-cal"/></svg></div></div>
+                <span class="run">Run <kbd>&#8984;&#8629;</kbd></span>
+              </div>
+              <div class="result">
+                <div class="result-top">
+                  <div class="r-label">European Central Bank reference rate</div>
+                  <div class="r-main">1 USD buys <span class="num">94.945055</span> INR</div>
+                  <div class="r-sub">1 INR buys <span class="mono">0.010532</span> USD</div>
+                </div>
+                <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>Saturday 24 Oct 2026 had no ECB fixing, so this uses the last one before it: Friday 23 Oct 2026.</span></div>
+                <div class="r-foot"><span>Requested 2026-10-24 &middot; Fixing 2026-10-23</span><span class="charged">Charged <span data-price="fx-on-date">$0.001</span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BD view -->
+          <div class="view-wrap hue-date" data-for="bd" hidden>
+            <div class="bar"><span class="crumb">Dates and calendars / <b data-tool-name="business-days">Business days</b></span><span class="tchip"><span class="dot"></span><span data-price="business-days">$0.0005</span> per call</span><span class="seg" aria-hidden="true"><span class="on">Web</span><span>API</span><span>MCP</span></span></div>
+            <div class="view">
+              <h3 data-tool-name="business-days">Business days</h3>
+              <p class="desc">US federal holidays (5 U.S.C. 6103, with OPM observed-day rules) and England and Wales bank holidays.</p>
+              <div class="fields">
+                <div class="mfield wide"><span class="mlabel">Region</span><div class="inp"><span>England and Wales</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+                <div class="mfield"><span class="mlabel">Start</span><div class="inp"><span class="mono">2026-12-23</span><svg aria-hidden="true"><use href="#i-cal"/></svg></div></div>
+                <div class="mfield"><span class="mlabel">End</span><div class="inp"><span class="mono">2026-12-31</span><svg aria-hidden="true"><use href="#i-cal"/></svg></div></div>
+                <span class="run">Run <kbd>&#8984;&#8629;</kbd></span>
+              </div>
+              <div class="result">
+                <div class="result-top">
+                  <div class="r-label">Result</div>
+                  <div class="r-main"><span class="num">4</span> business days</div>
+                  <div class="r-sub">Skipped along the way</div>
+                </div>
+                <ul class="skips">
+                  <li><span class="d">Fri 25 Dec</span><span>Christmas Day</span><span class="t">bank holiday</span></li>
+                  <li><span class="d">Sat 26, Sun 27</span><span>Weekend</span><span class="t">weekend</span></li>
+                  <li><span class="d">Mon 28 Dec</span><span>Boxing Day (substitute day)</span><span class="t">bank holiday</span></li>
+                </ul>
+                <div class="r-foot"><span>Source: England and Wales bank holidays, GOV.UK</span><span class="charged">Charged <span data-price="business-days">$0.0005</span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IMG view -->
+          <div class="view-wrap hue-file" data-for="img" hidden>
+            <div class="bar"><span class="crumb">Files and images / <b data-tool-name="image-to-size">Image to size</b></span><span class="tchip"><span class="dot"></span><span data-price="image-to-size">Free</span></span><span class="seg" aria-hidden="true"><span class="on">Web</span></span></div>
+            <div class="view">
+              <h3 data-tool-name="image-to-size">Image to size</h3>
+              <p class="desc">Pick the size the form allows. It runs in your browser, and it is free.</p>
+              <div class="drop"><svg aria-hidden="true"><use href="#i-up"/></svg><b>Drop an image</b> or choose a file</div>
+              <div class="fields f2">
+                <div class="mfield"><span class="mlabel">Target size</span><div class="inp"><span class="mono">200 KB</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+                <span class="run">Compress</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- balance + activity -->
+        <aside class="act" aria-label="Account activity">
+          <div>
+            <div class="act-h"><span>Balance</span><span class="mono">USD</span></div>
+            <div class="bal">$20.2495</div>
+            <div style="margin-top:14px">
+              <div class="kv"><span>Free allowance</span><span>$0.25 / month</span></div>
+              <div class="kv"><span>Monthly limit</span><span>$5.00</span></div>
+              <div class="kv"><span>Auto top-up</span><span>never</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="act-h"><span>Activity</span><span>Today</span></div>
+            <ul class="feed">
+              <li data-for="fx" class="hue-money hot"><span class="pip"></span><span class="what"><span data-tool-name="fx-on-date">Exchange rate on a date</span><span class="when">USD to INR &middot; just now</span></span><span class="amt">&minus;<span data-price="fx-on-date">$0.001</span></span></li>
+              <li data-for="bd" class="hue-date"><span class="pip"></span><span class="what"><span data-tool-name="business-days">Business days</span><span class="when">England and Wales &middot; 2 min ago</span></span><span class="amt">&minus;<span data-price="business-days">$0.0005</span></span></li>
+              <li data-for="img" class="hue-file"><span class="pip"></span><span class="what"><span data-tool-name="image-to-size">Image to size</span><span class="when">In your browser &middot; 6 min ago</span></span><span class="amt" data-price="image-to-size">Free</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <p class="stage-cap"><span>A replay of a real answer, not a live call. Account figures are a sample.</span><a href="/toll-preview/fx-on-date/">Run it yourself</a>
+      <button class="replay" type="button" id="replay"><svg aria-hidden="true"><use href="#i-replay"/></svg>Replay</button></p>
+  </div>
+</section>
+
+<!-- ================= SOUND FAMILIAR ================= -->
+<section class="sec" id="moments" aria-labelledby="mom-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2 class="h2" id="mom-h">You have one small job.<br class="br-d"> <span class="dim">Here is the exact answer.</span></h2>
+    </div>
+    <div class="moments">
+      <article class="gcard moment wide hue-money rv">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="tag"><i></i>Money and rates</span>
+        <h3>Invoicing a client in euros?</h3>
+        <p>Use the official ECB rate for the invoice date, even on a weekend.</p>
+        <div class="res"><span class="tchip lit">Weekend dates use the last fixing</span><span class="tchip" data-price="fx-on-date">$0.001</span><span class="go">Open tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <a class="cover" href="/toll-preview/fx-on-date/"><span class="visually-hidden">Open Exchange rate on a date</span></a>
+      </article>
+      <article class="gcard moment wide hue-date rv">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="tag"><i></i>Dates and calendars</span>
+        <h3>Promising delivery before Christmas in the UK?</h3>
+        <p>Count the working days, bank holidays included.</p>
+        <div class="res"><span class="tchip lit">23 to 31 Dec 2026 = 4 days</span><span class="tchip" data-price="business-days">$0.0005</span><span class="go">Open tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <a class="cover" href="/toll-preview/business-days/"><span class="visually-hidden">Open Business days</span></a>
+      </article>
+      <article class="gcard moment hue-file rv">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="tag"><i></i>Files and images</span>
+        <h3>A form that only takes files under 200 KB?</h3>
+        <p>Shrink the image to fit, in your browser, free.</p>
+        <div class="res"><span class="tchip lit">Runs in your browser</span><span class="tchip" data-price="image-to-size">Free</span><span class="go">Open <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <a class="cover" href="/toll-preview/image-to-size/"><span class="visually-hidden">Open Image to size</span></a>
+      </article>
+      <article class="gcard moment hue-agent rv">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="tag"><i></i>AI agents</span>
+        <h3>Building an AI agent that keeps getting dates and rates wrong?</h3>
+        <p>Give it exact tools over MCP.</p>
+        <div class="res"><span class="tchip lit"><span class="js-host"></span>/toll-preview/mcp</span><span class="go">Set up <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <a class="cover" href="#developers"><span class="visually-hidden">Go to the developer section</span></a>
+      </article>
+      <article class="gcard moment full hue-date rv">
+        <span class="halo" aria-hidden="true"></span>
+        <span class="tag"><i></i>Dates and calendars</span>
+        <h3>Setting a US deadline in a holiday week?</h3>
+        <p>Count business days around the federal holidays.</p>
+        <div class="res"><span class="tchip lit">1 to 8 Jul 2026 = 4 days</span><span class="tchip" data-price="business-days">$0.0005</span><span class="go">Open <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        <a class="cover" href="/toll-preview/business-days/"><span class="visually-hidden">Open Business days</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE LIVE TOOLS: CLOSE-UPS ================= -->
+<section class="sec" id="tools" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="eyebrow">The live tools</span>
+        <h2 class="h2" id="tools-h">Each tool does one job.<br class="br-d"> <span class="dim">It shows its work.</span></h2>
+      </div>
+      <div class="cats" aria-label="Categories">
+        <span class="cat-chip hue-date"><i></i>Dates and calendars</span>
+        <span class="cat-chip hue-money"><i></i>Money and rates</span>
+        <span class="cat-chip hue-file"><i></i>Files and images</span>
+      </div>
+    </div>
+
+    <div class="feat hue-date" style="margin-top:40px">
+      <div class="feat-copy rv">
+        <span class="tag"><i></i>Dates and calendars</span>
+        <h3>Business days, with every skipped day named</h3>
+        <p>Count the working days between two dates, or add working days to a date. US federal holidays follow 5 U.S.C. 6103 with OPM observed-day rules. England and Wales use the official bank holidays.</p>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="business-days">$0.0005</span> per call</span><span class="tchip" data-price="business-days" data-currency="INR">&#8377;0.04</span><span class="tchip">Web, API, MCP</span></div>
+        <a class="lnk" href="/toll-preview/business-days/">Open <span data-tool-name="business-days">Business days</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="panel-glow rv">
+        <div class="panel">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b data-tool-name="business-days">Business days</b><span class="tchip">US</span></div>
+          <div class="panel-body">
+            <div class="fields f3">
+              <div class="mfield"><span class="mlabel">Region</span><div class="inp"><span>United States</span></div></div>
+              <div class="mfield"><span class="mlabel">Start</span><div class="inp"><span class="mono">2026-07-01</span></div></div>
+              <div class="mfield"><span class="mlabel">End</span><div class="inp"><span class="mono">2026-07-08</span></div></div>
+            </div>
+            <div class="result" style="margin-top:16px">
+              <div class="result-top"><div class="r-label">Result</div><div class="r-main"><span class="num">4</span> business days</div></div>
+              <ul class="skips">
+                <li><span class="d">Fri 3 Jul</span><span>Independence Day (observed)</span><span class="t">federal</span></li>
+              </ul>
+              <div class="r-foot"><span>5 U.S.C. 6103, OPM observed-day rules</span><span class="charged">Charged <span data-price="business-days">$0.0005</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat flip hue-money">
+      <div class="feat-copy rv">
+        <span class="tag"><i></i>Money and rates</span>
+        <h3>Exchange rates that tell you which day they came from</h3>
+        <p>Official European Central Bank reference rates since 4 January 1999. If the ECB did not publish on your date, you get the last fixing before it, and you are told which day. A day with no rate costs nothing.</p>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="fx-on-date">$0.001</span> per call</span><span class="tchip" data-price="fx-on-date" data-currency="INR">&#8377;0.08</span><span class="tchip">Web, API, MCP</span></div>
+        <a class="lnk" href="/toll-preview/fx-on-date/">Open <span data-tool-name="fx-on-date">Exchange rate on a date</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="panel-glow rv">
+        <div class="panel">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-fx"/></svg><b>USD to INR</b><span class="tchip">2026-10-24</span></div>
+          <div class="panel-body">
+            <div class="result">
+              <div class="result-top">
+                <div class="r-label">Requested Sat 24 Oct 2026 &middot; Fixing Fri 23 Oct 2026</div>
+                <div class="r-main"><span class="num">94.945055</span></div>
+                <div class="r-sub">Inverse <span class="mono">0.010532</span></div>
+              </div>
+              <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>No ECB fixing on Saturday 24 Oct 2026. Using Friday 23 Oct 2026.</span></div>
+              <div class="r-foot"><span>European Central Bank</span><span class="charged">Charged <span data-price="fx-on-date">$0.001</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat hue-file">
+      <div class="feat-copy rv">
+        <span class="tag"><i></i>Files and images</span>
+        <h3>An image at the size the form asks for</h3>
+        <p>Set the limit, drop the image, and get a file that fits. It runs in your browser and it is free.</p>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="image-to-size">Free</span></span><span class="tchip">In your browser</span></div>
+        <a class="lnk" href="/toll-preview/image-to-size/">Open <span data-tool-name="image-to-size">Image to size</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="panel-glow rv">
+        <div class="panel">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-img"/></svg><b data-tool-name="image-to-size">Image to size</b><span class="tchip"><span class="dot"></span><span data-price="image-to-size">Free</span></span></div>
+          <div class="panel-body">
+            <div class="drop"><svg aria-hidden="true"><use href="#i-up"/></svg><b>Drop an image</b> or choose a file</div>
+            <div class="fields f2">
+              <div class="mfield"><span class="mlabel">Target size</span><div class="inp"><span class="mono">200 KB</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+              <span class="run">Compress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat flip hue-date">
+      <div class="feat-copy rv">
+        <span class="tag"><i></i>Dates and calendars</span>
+        <h3>The last day to order for Christmas, from your own cutoff</h3>
+        <p>Your cutoff time, shipping days, closures and processing days on your calendar; transit on the carrier's own delivery days. It works out when an order arrives, or the last moment to order, with USPS's 2026 holiday send-by dates and every skipped holiday named.</p>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="delivery-date-calculator">$0.0005</span> per call</span><span class="tchip" data-price="delivery-date-calculator" data-currency="INR">&#8377;0.04</span><span class="tchip">Web, API, MCP</span></div>
+        <a class="lnk" href="/toll-preview/delivery-date-calculator/">Open <span data-tool-name="delivery-date-calculator">Delivery date and holiday order-by calculator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="panel-glow rv">
+        <div class="panel">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Order by, Christmas 2026</b><span class="tchip">USPS</span></div>
+          <div class="panel-body">
+            <div class="fields f3">
+              <div class="mfield"><span class="mlabel">Cutoff</span><div class="inp"><span class="mono">2:00 pm ET</span></div></div>
+              <div class="mfield"><span class="mlabel">Processing</span><div class="inp"><span>1 day</span></div></div>
+              <div class="mfield"><span class="mlabel">Ships</span><div class="inp"><span>Mon to Fri</span></div></div>
+            </div>
+            <div class="result" style="margin-top:16px">
+              <div class="result-top"><div class="r-label">Last order, USPS Ground Advantage</div><div class="r-main"><span class="num">Wed 16 Dec</span> 2:00 pm</div></div>
+              <ul class="skips">
+                <li><span class="d">Thu 17 Dec</span><span>Priority Mail and Express</span><span class="t">2:00 pm</span></li>
+              </ul>
+              <div class="r-foot"><span>USPS 2026 holiday send-by dates</span><span class="charged">Charged <span data-price="delivery-date-calculator">$0.0005</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW PAYING WORKS ================= -->
+<section class="sec" id="how" aria-labelledby="how-h" style="padding-top:88px">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">How paying works</span>
+      <h2 class="h2" id="how-h">Top up once.<br class="br-d"> <span class="dim">Pay only for what you run.</span></h2>
+    </div>
+    <div class="pay">
+      <ol class="steps rv">
+        <li><span class="n">01</span><div><h3>Top up once</h3><p>Add from $20 or &#8377;200. There is no subscription. Nothing renews and nothing tops itself up.</p></div></li>
+        <li><span class="n">02</span><div><h3>Use any tool</h3><p>On the website, through the REST API, or from an AI agent over MCP. One key and one balance for all our tools.</p></div></li>
+        <li><span class="n">03</span><div><h3>Pay per use</h3><p>Each call takes its price from your balance, often a fraction of a cent. Failed calls are refunded automatically.</p></div></li>
+        <li><span class="n">04</span><div><h3>Set a hard limit</h3><p>On the account and on each API key. A call past the limit is refused, not billed.</p></div></li>
+      </ol>
+      <div class="panel-glow rv" style="--hue:var(--warm)">
+        <div class="panel">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-wallet"/></svg><b>Account</b><span class="tchip">Sample account</span></div>
+          <div class="panel-body">
+            <div class="acct-top">
+              <div class="tile"><div class="l">Balance</div><div class="v">$20.2495</div><div class="h">Exact, not rounded</div></div>
+              <div class="tile"><div class="l">Monthly limit</div><div class="v sm">$5.00</div><div class="h">Example. Calls past it are refused</div></div>
+            </div>
+            <div class="mini-h">API keys</div>
+            <div class="keyrow"><span class="mono">tk_live_3fK9&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span><span class="lim">limit $5.00</span><span class="toggle" aria-hidden="true"></span></div>
+            <div class="mini-h">Recent charges</div>
+            <ul class="feed">
+              <li class="hue-money"><span class="pip"></span><span class="what"><span data-tool-name="fx-on-date">Exchange rate on a date</span><span class="when">USD to INR</span></span><span class="amt">&minus;<span data-price="fx-on-date">$0.001</span></span></li>
+              <li class="hue-date"><span class="pip"></span><span class="what"><span data-tool-name="business-days">Business days</span><span class="when">England and Wales</span></span><span class="amt">&minus;<span data-price="business-days">$0.0005</span></span></li>
+              <li class="hue-date"><span class="pip"></span><span class="what"><span data-tool-name="business-days">Business days</span><span class="when">United States</span></span><span class="amt">&minus;<span data-price="business-days">$0.0005</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buys rv"><b>What $20 buys</b><span><span class="mono" data-buys="business-days">40,000</span> business-day calls</span><span>or</span><span><span class="mono" data-buys="fx-on-date">20,000</span> exchange-rate lookups</span></div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="sec" id="pricing" aria-labelledby="price-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="h2" id="price-h">Priced per call.<br class="br-d"> <span class="dim">Shown to the fraction of a cent.</span></h2>
+    </div>
+    <div class="price-grid">
+      <div class="tbl rv">
+        <table>
+          <thead><tr><th scope="col">Tool</th><th scope="col">Use it on</th><th scope="col" class="num">USD per call</th><th scope="col" class="num">INR per call</th></tr></thead>
+          <tbody>
+            <tr><td><div class="tname hue-date"><i></i><span><a href="/toll-preview/business-days/" data-tool-name="business-days">Business days</a><small>Dates and calendars</small></span></div></td><td><span class="via">Web &middot; API &middot; MCP</span></td><td class="num" data-price="business-days">$0.0005</td><td class="num" data-price="business-days" data-currency="INR">&#8377;0.04</td></tr>
+            <tr><td><div class="tname hue-money"><i></i><span><a href="/toll-preview/fx-on-date/" data-tool-name="fx-on-date">Exchange rate on a date</a><small>Money and rates</small></span></div></td><td><span class="via">Web &middot; API &middot; MCP</span></td><td class="num" data-price="fx-on-date">$0.001</td><td class="num" data-price="fx-on-date" data-currency="INR">&#8377;0.08</td></tr>
+            <tr><td><div class="tname hue-file"><i></i><span><a href="/toll-preview/image-to-size/" data-tool-name="image-to-size">Image to size</a><small>Files and images</small></span></div></td><td><span class="via">In your browser</span></td><td class="num" data-price="image-to-size">Free</td><td class="num" data-price="image-to-size" data-currency="INR">Free</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="terms rv">
+        <h3>Wallet terms</h3>
+        <dl>
+          <div class="row"><dt>Top up from</dt><dd>$20 / &#8377;200</dd></div>
+          <div class="row"><dt>Free each month, spent first</dt><dd>$0.25 / &#8377;20</dd></div>
+          <div class="row"><dt>Without an account</dt><dd>5 free runs a day</dd></div>
+          <div class="row"><dt>Hard monthly limit</dt><dd>Account and each key</dd></div>
+          <div class="row"><dt>Call past your limit</dt><dd>Refused, not billed</dd></div>
+          <div class="row"><dt>Call that fails</dt><dd>Refunded automatically</dd></div>
+          <div class="row"><dt>Subscription</dt><dd>None</dd></div>
+        </dl>
+        <a class="btn btn-light btn-lg" href="/toll-preview/account" data-signed-in-text="Your account">Create account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEVELOPERS ================= -->
+<section class="sec" id="developers" aria-labelledby="dev-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">For developers and agents</span>
+      <h2 class="h2" id="dev-h">One exact building block.<br class="br-d"> <span class="dim">No $49-a-month plan.</span></h2>
+    </div>
+    <div class="dev">
+      <div class="rv">
+        <p class="sec-lede" style="margin-top:0">Call any tool over REST with a bearer key and a JSON body. Give your AI agent the same tools over MCP, with the same key and the same prices.</p>
+        <ul class="dev-list">
+          <li><span class="k">REST</span><span><b>POST /toll-preview/api/v1/tools/&lt;tool&gt;</b>Authorization: Bearer tk_live_...</span></li>
+          <li><span class="k">SPEC</span><span><b><a href="/toll-preview/api/v1/openapi.json">OpenAPI at /toll-preview/api/v1/openapi.json</a></b>Every tool and its fields, plus the <a class="ul" href="/toll-preview/api/v1/tools">tool list</a>.</span></li>
+          <li><span class="k">RATE</span><span><b>10 calls a second</b>Set a hard monthly limit on each key, too.</span></li>
+          <li><span class="k">DATES</span><span><b>Regions <code>US</code> and <code>GB-ENG</code></b>Ops <code>between</code> and <code>add</code>.</span></li>
+        </ul>
+        <div class="gcard mcp">
+          <span class="halo" aria-hidden="true"></span>
+          <div class="l"><i></i>MCP server for AI agents, Streamable HTTP</div>
+          <div class="mcp-url"><code id="mcp-url"><span class="js-origin"></span>/toll-preview/mcp</code><button class="copy" type="button" id="mcp-copy">Copy</button></div>
+          <div class="h">Same key, same prices. Agents get dates, holidays and exchange rates wrong. These tools give them the exact answer.</div>
+        </div>
+      </div>
+
+      <div class="code-wrap rv">
+        <div class="code" id="code">
+          <div class="code-bar">
+            <div class="tabs ep" role="tablist" aria-label="Endpoint">
+              <button type="button" class="tab" role="tab" data-ep="bd" aria-selected="true">business-days</button>
+              <button type="button" class="tab" role="tab" data-ep="add" aria-selected="false">business-days &middot; add</button>
+              <button type="button" class="tab" role="tab" data-ep="fx" aria-selected="false">fx-on-date</button>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Language">
+              <button type="button" class="tab" role="tab" data-lang="curl" aria-selected="true">curl</button>
+              <button type="button" class="tab" role="tab" data-lang="js" aria-selected="false">JavaScript</button>
+              <button type="button" class="tab" role="tab" data-lang="py" aria-selected="false">Python</button>
+            </div>
+          </div>
+<pre data-ep="bd" data-lang="curl"><code>curl -X POST <span class="js-origin"></span>/toll-preview/api/v1/tools/business-days \
+  -H "Authorization: Bearer tk_live_..." \
+  -H "Content-Type: application/json" \
+  -d '{"op":"between","region":"US","start":"2026-07-01","end":"2026-07-08"}'</code></pre>
+<pre data-ep="bd" data-lang="js" hidden><code>const res = await fetch("<span class="js-origin"></span>/toll-preview/api/v1/tools/business-days", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer tk_live_...",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ op: "between", region: "US", start: "2026-07-01", end: "2026-07-08" })
+});
+const data = await res.json();</code></pre>
+<pre data-ep="bd" data-lang="py" hidden><code>import requests
+
+r = requests.post(
+    "<span class="js-origin"></span>/toll-preview/api/v1/tools/business-days",
+    headers={"Authorization": "Bearer tk_live_..."},
+    json={"op": "between", "region": "US", "start": "2026-07-01", "end": "2026-07-08"},
+)
+print(r.json())</code></pre>
+<pre data-ep="add" data-lang="curl" hidden><code>curl -X POST <span class="js-origin"></span>/toll-preview/api/v1/tools/business-days \
+  -H "Authorization: Bearer tk_live_..." \
+  -H "Content-Type: application/json" \
+  -d '{"op":"add","region":"GB-ENG","start":"2026-12-24","days":1}'</code></pre>
+<pre data-ep="add" data-lang="js" hidden><code>const res = await fetch("<span class="js-origin"></span>/toll-preview/api/v1/tools/business-days", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer tk_live_...",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ op: "add", region: "GB-ENG", start: "2026-12-24", days: 1 })
+});
+const data = await res.json();</code></pre>
+<pre data-ep="add" data-lang="py" hidden><code>import requests
+
+r = requests.post(
+    "<span class="js-origin"></span>/toll-preview/api/v1/tools/business-days",
+    headers={"Authorization": "Bearer tk_live_..."},
+    json={"op": "add", "region": "GB-ENG", "start": "2026-12-24", "days": 1},
+)
+print(r.json())</code></pre>
+<pre data-ep="fx" data-lang="curl" hidden><code>curl -X POST <span class="js-origin"></span>/toll-preview/api/v1/tools/fx-on-date \
+  -H "Authorization: Bearer tk_live_..." \
+  -H "Content-Type: application/json" \
+  -d '{"base":"USD","quote":"INR","date":"2026-10-24"}'</code></pre>
+<pre data-ep="fx" data-lang="js" hidden><code>const res = await fetch("<span class="js-origin"></span>/toll-preview/api/v1/tools/fx-on-date", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer tk_live_...",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ base: "USD", quote: "INR", date: "2026-10-24" })
+});
+const data = await res.json();</code></pre>
+<pre data-ep="fx" data-lang="py" hidden><code>import requests
+
+r = requests.post(
+    "<span class="js-origin"></span>/toll-preview/api/v1/tools/fx-on-date",
+    headers={"Authorization": "Bearer tk_live_..."},
+    json={"base": "USD", "quote": "INR", "date": "2026-10-24"},
+)
+print(r.json())</code></pre>
+          <div class="resp-h"><span>Response <span class="ok">200 OK</span></span><span class="cost" data-cost="bd">Charged <span data-price="business-days">$0.0005</span></span><span class="cost" data-cost="add" hidden>Charged <span data-price="business-days">$0.0005</span></span><span class="cost" data-cost="fx" hidden>Charged <span data-price="fx-on-date">$0.001</span></span></div>
+          <div class="resp">
+<pre data-resp="bd"><code>{
+  "businessDays": 4,
+  "holidaysSkipped": [
+    { "date": "2026-07-03", "name": "Independence Day (observed)" }
+  ]
+}</code></pre>
+<pre data-resp="add" hidden><code>{
+  "date": "2026-12-29",
+  "holidaysSkipped": [
+    { "date": "2026-12-25", "name": "Christmas Day" },
+    { "date": "2026-12-28", "name": "Boxing Day (substitute day)" }
+  ]
+}</code></pre>
+<pre data-resp="fx" hidden><code>{
+  "base": "USD",
+  "quote": "INR",
+  "requestedDate": "2026-10-24",
+  "fixingDate": "2026-10-23",
+  "rate": 94.945055,
+  "inverse": 0.010532
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXACT, NOT AI ================= -->
+<section class="sec" id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Why exact, not AI</span>
+      <h2 class="h2" id="why-h">Same input, same answer.<br class="br-d"> <span class="dim">Every time.</span></h2>
+    </div>
+    <div class="exact">
+      <div class="rv">
+        <div class="compare" role="table" aria-label="Toll compared with an AI model">
+          <div class="crow hd" role="row"><div role="columnheader"></div><div role="columnheader" class="us">Toll</div><div role="columnheader">An AI model</div></div>
+          <div class="crow" role="row"><div class="lab" role="cell">Same input</div><div role="cell">Same answer</div><div class="them" role="cell">Can differ each time</div></div>
+          <div class="crow" role="row"><div class="lab" role="cell">Where it comes from</div><div role="cell">A named official source</div><div class="them" role="cell">Its training and a guess</div></div>
+          <div class="crow" role="row"><div class="lab" role="cell">Weekend rate</div><div role="cell">Last fixing, and which day</div><div class="them" role="cell">Whatever it recalls</div></div>
+        </div>
+        <p class="sec-lede" style="font-size:15px">There is no AI anywhere in Toll. No ad or analytics trackers either. IP addresses are not stored; visitor counting uses a daily hash that is deleted the next day. <a class="ul" href="/toll-preview/privacy">Read the privacy page</a>.</p>
+      </div>
+      <ul class="sources rv">
+        <li class="hue-money"><span class="what"><i></i>Exchange rates</span><b>European Central Bank reference rates</b><p>Official daily fixings since 4 January 1999.</p></li>
+        <li class="hue-date"><span class="what"><i></i>US business days</span><b>5 U.S.C. 6103, with OPM observed-day rules</b><p>The federal holidays, and the day each one is observed.</p></li>
+        <li class="hue-date"><span class="what"><i></i>UK business days</span><b>GOV.UK bank holidays for England and Wales</b><p>Including substitute days, like Boxing Day 2026.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2" id="faq-h" style="font-size:clamp(30px,3.6vw,42px)">Questions, answered plainly</h2>
+      <p class="sec-lede" style="font-size:15px">More detail is in the <a class="ul" href="/toll-preview/docs">docs</a>.</p>
+    </div>
+    <div class="faq">
+      <details open><summary>Is there a subscription?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. You top up from $20 or &#8377;200 and each call takes its price from that balance. Nothing renews, and nothing tops itself up.</p></details>
+      <details><summary>Can I try it without an account?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. You get 5 free runs a day without an account. With an account you also get $0.25 (&#8377;20) free each month, spent before your own money.</p></details>
+      <details><summary>Can a bug in my code drain my balance?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Set a hard monthly limit on your account and on each API key. A call past the limit is refused, not billed.</p></details>
+      <details><summary>What happens if a call fails?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>It is refunded automatically.</p></details>
+      <details><summary>What if the ECB did not publish a rate on my date?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>You get the last fixing before that date, and the answer tells you which day it came from. For example, USD to INR on Saturday 24 Oct 2026 returns 94.945055 from the Friday 23 Oct 2026 fixing. A day with no rate costs nothing.</p></details>
+      <details><summary>Do you use AI to get the answers?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Every answer comes from a fixed method and a named source, so the same input always gives the same answer.</p></details>
+      <details><summary>Do you track me?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>There are no ad or analytics trackers. IP addresses are not stored. Visitor counting uses a daily hash that is deleted the next day. The <a class="ul" href="/toll-preview/privacy">privacy page</a> lists everything we keep.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REQUEST ================= -->
+<section class="sec" id="request" aria-labelledby="req-h">
+  <div class="wrap">
+    <div class="gcard req rv">
+      <span class="halo" aria-hidden="true"></span>
+      <div>
+        <h2 id="req-h">Need a tool we don't have?</h2>
+        <p>Tell us the job. One sentence is enough. Add an email if you would like to hear back.</p>
+      </div>
+      <form class="form" id="req" novalidate>
+        <label for="need">What do you need?</label>
+        <textarea id="need" name="need" required placeholder="For example: working days between two dates for another country"></textarea>
+        <div class="row2">
+          <div><label for="req-email">Email (optional)</label><input id="req-email" name="email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+          <button class="btn btn-light btn-lg" type="submit" id="req-send">Send</button>
+        </div>
+        <p class="msg" id="req-msg" role="status" aria-live="polite"></p>
+        <noscript><p class="msg">Sending a request needs JavaScript.</p></noscript>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" aria-labelledby="close-h">
+  <div class="cglow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap rv">
+    <h2 id="close-h">Get the exact answer. Pay a fraction of a cent.</h2>
+    <p class="sec-lede">Try any tool five times a day for free. Top up when you want more.</p>
+    <div class="hero-actions">
+      <a href="/toll-preview/business-days/" class="btn btn-light btn-lg">Try a tool <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="/toll-preview/account" class="btn btn-ghost btn-lg" data-signed-in-text="Your account">Create account</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<script src="/toll-preview/design/a/liquid.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

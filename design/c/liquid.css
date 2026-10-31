@@ -1,0 +1,192 @@
+/* Variant c, "Fluid island". Loaded after base.css and home.css.
+
+   1. The island: at the top the header is the full bar. After a short scroll the bar pinches
+      into a floating pill (logo plus one action); hover, focus or tap springs it back open into
+      the full nav. The pill is three stacked layers (shadow, edge, glass) clipped by one shared
+      inset() shape, so the shape morph is a clip-path change and the items only translate.
+   2. Fluid scale: type and spacing flow with the viewport (clamp), replacing the breakpoint jumps.
+   3. Morphing highlights for the code tabs and the hero's tool switcher (view transitions).
+   4. Reveals, card depth and press states.
+   Everything here is either gated on classes liquid.js adds, or is harmless at rest, so the page
+   reads the same with JavaScript off. */
+
+:root {
+  --gutter: clamp(16px, 2.6vw + 6px, 32px);
+  /* Real springs, sampled. ~7% overshoot for the island, ~1.5% for highlights. */
+  --lq-spring: linear(0, 0.0323, 0.1144, 0.2267, 0.3535, 0.4828, 0.6059, 0.7173, 0.8134, 0.8928, 0.9556, 1.0028, 1.0361, 1.0574, 1.069, 1.073, 1.0713, 1.0658, 1.0579, 1.0487, 1.0393, 1.0302, 1.0219, 1.0147, 1.0087, 1.0039, 1.0003, 0.9977, 0.996, 0.9951, 0.9947, 0.9947, 0.9951, 0.9957, 0.9963, 0.997, 1);
+  --lq-soft: linear(0, 0.0332, 0.1142, 0.2208, 0.3374, 0.4531, 0.5611, 0.6575, 0.7405, 0.8097, 0.8659, 0.9103, 0.9442, 0.9695, 0.9876, 0.9999, 1.0079, 1.0125, 1.0147, 1.0152, 1.0145, 1.0132, 1.0116, 1.0098, 1.0081, 1.0065, 1.005, 1.0038, 1);
+  --lq-out: cubic-bezier(.2, .7, .2, 1);
+}
+@supports not (transition-timing-function: linear(0, 1)) {
+  :root { --lq-spring: cubic-bezier(.3, 1.3, .5, 1); --lq-soft: cubic-bezier(.25, 1.12, .5, 1); }
+}
+
+/* ======================= 1. the island ======================= */
+
+/* The header box keeps its 64px slot (no layout shift); its look moves onto the layers. */
+.site-head.lq { background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; }
+.lq .nav-row { z-index: 1; pointer-events: none; }
+/* Only real things catch the pointer; the transparent band around the island stays click-through. */
+.lq .logo, .lq .head-nav, .lq .nav-cta > *, .lq .menu > * { pointer-events: auto; }
+
+.lq-layers {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  /* Full bar by default: no inset, square corners, no rim. */
+  --t: 0px; --r: 0px; --b: 0px; --l: 0px; --rad: 0px; --e: 0px;
+}
+.lq.is-island .lq-layers { --t: var(--i-t); --r: var(--i-r); --b: var(--i-b); --l: var(--i-l); --rad: var(--i-rad); --e: 1px; }
+.lq.is-island.is-open .lq-layers { --t: var(--o-t); --r: var(--o-r); --b: var(--o-b); --l: var(--o-l); --rad: var(--o-rad); }
+
+.lq-edge, .lq-glass, .lq-shadow, .lq-shadow i { position: absolute; inset: 0; }
+.lq-edge {
+  background: var(--line);
+  clip-path: inset(var(--t) var(--r) var(--b) var(--l) round var(--rad));
+}
+.lq-edge::before {
+  content: ""; position: absolute; inset: 0; opacity: 0;
+  background:
+    radial-gradient(240px 60px at 50% 0, rgba(255, 176, 63, .55), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .07));
+}
+.lq-glass {
+  pointer-events: auto;
+  background: rgba(8, 9, 10, .72);
+  -webkit-backdrop-filter: saturate(160%) blur(14px); backdrop-filter: saturate(160%) blur(14px);
+  clip-path: inset(calc(var(--t) + var(--e)) calc(var(--r) + var(--e)) calc(var(--b) + 1px) calc(var(--l) + var(--e)) round calc(var(--rad) - var(--e)));
+}
+/* The island's material: a lifted, slightly lighter glass with a soft top sheen. */
+.lq-glass::before {
+  content: ""; position: absolute; inset: 0; opacity: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .015) 60%), rgba(22, 23, 27, .55);
+}
+.lq-shadow { bottom: -28px; opacity: 0; filter: blur(14px); }
+.lq-shadow i {
+  background: rgba(0, 0, 0, .7);
+  clip-path: inset(calc(var(--t) + 10px) calc(var(--r) + 14px) calc(var(--b) + 28px - 8px) calc(var(--l) + 14px) round var(--rad));
+}
+.lq.is-island .lq-edge::before,
+.lq.is-island .lq-glass::before,
+.lq.is-island .lq-shadow { opacity: 1; }
+
+/* Items: the logo and the one action slide into the pill; the rest melt toward its centre. */
+.lq.is-island:not(.is-open) .lq-logo { transform: translateX(var(--lq-x, 0)) scale(.92); }
+.lq.is-island:not(.is-open) .lq-act { transform: translateX(var(--lq-x, 0)); }
+.lq .lq-logo { transform-origin: 0 50%; }
+.lq.is-island:not(.is-open) .lq-hide {
+  opacity: 0; filter: blur(6px); pointer-events: none;
+  transform: translateX(var(--lq-x, 0)) scale(.9);
+}
+.lq.is-island .menu summary { border-radius: 999px; }
+
+/* Motion only once liquid.js has placed everything (no morph on first paint). */
+.lq.lq-ready .lq-edge, .lq.lq-ready .lq-glass, .lq.lq-ready .lq-shadow i { transition: clip-path .7s var(--lq-spring); }
+.lq.lq-ready .lq-edge::before, .lq.lq-ready .lq-glass::before, .lq.lq-ready .lq-shadow { transition: opacity .45s var(--lq-out); }
+.lq.lq-ready .lq-logo { transition: transform .7s var(--lq-spring); }
+.lq.lq-ready .lq-act { transition: transform .7s var(--lq-spring), background .15s, border-color .15s, color .15s, box-shadow .2s, border-radius .3s; }
+.lq.lq-ready .lq-hide { transition: transform .7s var(--lq-spring), opacity .32s ease .1s, filter .32s ease .1s; }
+.lq.lq-ready.is-island:not(.is-open) .lq-hide { transition: transform .45s var(--lq-out), opacity .16s ease, filter .16s ease; }
+.lq.lq-ready .menu summary { transition: border-radius .3s var(--lq-out), background .15s; }
+/* Collapsing, the logo and the action converge from opposite sides, so a big overshoot would
+   cross them: that direction gets the near-critical spring; opening gets the elastic one. */
+.lq.lq-ready.is-island:not(.is-open) :is(.lq-edge, .lq-glass, .lq-shadow i, .lq-logo) { transition-timing-function: var(--lq-soft); transition-duration: .62s; }
+.lq.lq-ready.is-island:not(.is-open) .lq-act, .motion .lq.lq-ready.is-island:not(.is-open) .lq-act.btn {
+  transition: transform .62s var(--lq-soft), background .15s, border-color .15s, color .15s, box-shadow .2s, border-radius .3s, translate .45s var(--lq-soft), scale .45s var(--lq-soft);
+}
+
+.lq .menu summary:hover { background: rgba(255, 255, 255, .05); }
+
+/* The mobile menu: a floating sheet under the bar or the island. */
+.lq .menu-panel {
+  left: 8px; right: 8px; top: 60px; padding: 6px 18px 18px; border-radius: 18px;
+  background: rgba(16, 17, 20, .94); border: 1px solid var(--line-2);
+  -webkit-backdrop-filter: saturate(160%) blur(18px); backdrop-filter: saturate(160%) blur(18px);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .9);
+  transform-origin: 50% 0;
+}
+.lq .menu-panel a:last-of-type:not(.btn) { border-bottom: 0; }
+.motion .lq .menu[open] .menu-panel { animation: lq-sheet .5s var(--lq-soft) both; }
+@keyframes lq-sheet { from { opacity: 0; transform: translateY(-6px) scale(.97); } to { opacity: 1; transform: none; } }
+
+/* ======================= 2. fluid scale ======================= */
+.hero { padding-top: clamp(56px, 4.2vw + 40px, 112px); }
+.h1 { margin-top: clamp(20px, 1vw + 16px, 30px); }
+.hero-lede { font-size: clamp(16px, .35vw + 14.7px, 18.5px); margin-top: clamp(18px, 1vw + 14px, 26px); }
+.hero-actions { margin-top: clamp(26px, 1.2vw + 20px, 36px); }
+.stage { margin-top: clamp(48px, 3vw + 36px, 80px); padding-inline: clamp(16px, 1.2vw + 10px, 24px); }
+.sec { padding-top: clamp(80px, 5vw + 56px, 128px); }
+.sec-lede { font-size: clamp(15.5px, .3vw + 14.4px, 17px); }
+.moments, .pay, .price-grid, .dev, .exact { margin-top: clamp(36px, 2.5vw + 26px, 60px); }
+.moment { padding: clamp(22px, 1vw + 18px, 30px); }
+.feat { padding-block: clamp(36px, 2vw + 28px, 60px); }
+.feat, .feat.flip { column-gap: clamp(40px, 6vw - 8px, 76px); row-gap: clamp(26px, 2vw + 18px, 36px); }
+.feat-copy h3 { font-size: clamp(23px, .9vw + 17px, 29px); }
+.pay { column-gap: clamp(36px, 4vw, 64px); }
+.dev, .exact, .faq-grid, .req { column-gap: clamp(36px, 3.6vw, 60px); row-gap: clamp(26px, 2vw + 18px, 36px); }
+.req { padding: clamp(26px, 3vw + 14px, 52px) clamp(20px, 3vw + 10px, 52px); }
+.req h2 { font-size: clamp(25px, .8vw + 20px, 31px); }
+.r-main { font-size: clamp(24px, .9vw + 20px, 30px); }
+.view { padding: clamp(22px, .8vw + 18px, 30px) clamp(16px, 3vw + 4px, 40px) clamp(24px, 1vw + 20px, 36px); }
+.faq summary { font-size: clamp(16px, .3vw + 15px, 17.5px); }
+.closing { margin-top: clamp(96px, 4vw + 80px, 144px); padding: clamp(92px, 4vw + 76px, 140px) 0 clamp(108px, 6vw + 84px, 172px); }
+.closing h2 { font-size: clamp(34px, 4.6vw + 16px, 66px); }
+.panel-body { padding: clamp(16px, 1vw + 12px, 24px); }
+
+/* ======================= 3. morphing highlights ======================= */
+/* liquid.js moves one .lq-ind into the selected tab or tool; a view transition morphs it there. */
+.lq-sw .tab, .lq-sw .s-item { position: relative; isolation: isolate; }
+.lq-ind { position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; }
+.lq-sw .tab[aria-selected="true"] { background: none; box-shadow: none; }
+.lq-sw .tabs .lq-ind { background: rgba(255, 255, 255, .08); }
+.lq-sw .tabs.ep .lq-ind { background: rgba(255, 176, 63, .1); box-shadow: inset 0 0 0 1px rgba(255, 176, 63, .3); }
+.lq-sw .s-item[aria-current="true"]:not(.flash) { background: none; box-shadow: none; }
+.lq-sw .s-item .lq-ind { background: rgba(255, 255, 255, .065); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hue) 26%, transparent); }
+.lq-sw .s-item.flash .lq-ind { opacity: 0; }
+.win.s0 .s-item .lq-ind { opacity: 0; }
+
+::view-transition { pointer-events: none; }
+:root { view-transition-name: none; }
+::view-transition-group(*) { animation-duration: .46s; animation-timing-function: var(--lq-soft); }
+::view-transition-old(*), ::view-transition-new(*) { height: 100%; animation-duration: .2s; }
+
+/* The new code sample or tool view settles in (liquid.js adds the class on the newly shown one). */
+.lq-enter { animation: lq-enter .42s var(--lq-out) both; }
+@keyframes lq-enter { from { opacity: 0; transform: translateY(5px); filter: blur(3px); } to { opacity: 1; transform: none; filter: none; } }
+
+/* ======================= 4. reveals, depth, press ======================= */
+.motion .rv {
+  transform: translateY(22px) scale(.985); filter: blur(6px);
+  transition: opacity .8s var(--lq-out) var(--rv-d, 0s), transform 1s var(--lq-soft) var(--rv-d, 0s), filter .7s var(--lq-out) var(--rv-d, 0s),
+    translate .55s var(--lq-soft), box-shadow .3s ease;
+}
+.motion .rv.in { transform: none; filter: none; }
+.motion .moments .rv:nth-child(2n) { --rv-d: .07s; }
+.motion .moments .rv:nth-child(5) { --rv-d: .04s; }
+.motion .feat .rv + .rv, .motion .pay .rv + .rv, .motion .price-grid .rv + .rv,
+.motion .dev .rv + .rv, .motion .exact .rv + .rv { --rv-d: .09s; }
+
+@media (hover: hover) and (pointer: fine) {
+  .motion .gcard.moment:hover { translate: 0 -4px; }
+  .motion .gcard.moment:hover { box-shadow: 0 26px 60px -26px color-mix(in srgb, var(--hue) 50%, transparent), 0 14px 30px -18px rgba(0, 0, 0, .9); }
+  .motion .btn:hover { translate: 0 -1px; }
+}
+.motion .gcard.moment:active { scale: .99; }
+
+.motion .btn, .motion .tab, .motion .s-item, .motion .copy, .motion .replay, .motion .menu summary, .motion .faq summary svg {
+  transition-property: background, border-color, color, box-shadow, translate, scale, transform;
+  transition-duration: .15s, .15s, .15s, .2s, .45s, .45s, .2s;
+  transition-timing-function: ease, ease, ease, ease, var(--lq-soft), var(--lq-soft), ease;
+}
+.motion .lq.lq-ready .lq-act.btn { transition: transform .7s var(--lq-spring), background .15s, border-color .15s, color .15s, box-shadow .2s, translate .45s var(--lq-soft), scale .45s var(--lq-soft); }
+.motion .btn:active, .motion .copy:active, .motion .replay:active, .motion .menu summary:active { scale: .96; transition-duration: .15s, .15s, .15s, .2s, .08s, .08s, .2s; }
+.motion .tab:active, .motion .s-item:not(.static):active { scale: .95; }
+
+/* FAQ answers ease in when opened. */
+.motion .faq details[open] p { animation: lq-enter .45s var(--lq-out) both; }
+
+/* Offscreen hero: hold its glow and caret (liquid.js toggles .lq-idle). */
+.lq-idle .glow i, .lq-idle .caret { animation-play-state: paused !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .motion .rv, .js .rv { opacity: 1; transform: none; filter: none; }
+  .lq-enter { animation: none; }
+}
