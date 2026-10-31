@@ -10,6 +10,7 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 - [Delivery date and holiday order-by calculator](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/): Work out when an order arrives, or the last day to order for delivery by a date such as Christmas, from your cutoff time, time zone, shipping days, closures and processing days, on the carrier's own delivery calendar, with USPS's 2026 holiday send-by dates and every skipped holiday named.
 - [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/): The official ECB euro reference rate for a currency pair on a date, with the fixing date actually used. When the ECB did not publish on that day, it uses the latest fixing in the 7 days before it and says which.
 - [Image to size](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/): Shrink a photo to fit under an exact size in KB, such as 50 KB or 200 KB, for upload forms that set a limit. It runs in your browser, so the photo never leaves your device.
+- [Trucker per diem worksheet](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/): Turn an owner-operator's days on the road into the year's per diem deduction at the IRS transportation-industry rate in force each day ($80 since October 1, 2024; $69 and $66 before), with departure and return days at 3/4, the 80% hours-of-service limit, log checks and a worksheet for the preparer.
 
 ## Guides
 
@@ -23,6 +24,9 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 - [Which exchange rate to use for US taxes and the FBAR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/which-exchange-rate-for-us-taxes/): The rate each US filing asks for, in the agencies' own words: the spot rate for income and expenses, the IRS yearly averages, and the Treasury 31 December rate for the FBAR.
 - [ECB exchange rate API: the official rate for any date over REST and MCP](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-exchange-rate-api/): One POST returns the ECB reference rate for a currency pair on a date, the fixing date actually used and the inverse, for $0.001 a call. The same tool works for AI agents over MCP.
 - [KB or KiB: is a kilobyte 1,000 or 1,024 bytes on an upload form?](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/kb-or-kib/): Why KB can mean 1,000 or 1,024 bytes, with the byte counts for common upload limits under both readings.
+- [Owner-operator per diem deduction: Schedule C line 24b at 80%](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/owner-operator/): How an owner-operator figures and reports the per diem deduction on Schedule C, with the rest requirement and the 80% limit.
+- [Per diem partial days: the 3/4 rule for departure and return days](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/partial-days/): How departure and return days are prorated at 3/4 of the transportation-industry rate, with the amount for every notice period.
+- [Can company truck drivers claim per diem? (and is employer per diem taxable)](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/company-drivers/): Why W-2 truck drivers cannot deduct per diem, and how much employer per diem is tax-free under an accountable plan.
 
 ## Overviews
 

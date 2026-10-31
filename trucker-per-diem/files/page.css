@@ -1,0 +1,112 @@
+/* Trucker per diem: a driver's logbook. Sits inside the brand chrome and reuses its tokens. The
+   day colours carry the page's one idea: green is a full day, amber the 3/4 departure and return
+   days, blue a day priced at the incidental-only rate, grey a day someone else paid for. */
+.pd {
+  --accent: var(--h-money);
+  --accent-ink: #1a0610;
+  --toll-accent: var(--h-money);
+  --toll-accent-ink: #1a0610;
+  --pd-full: #6fdc8c;
+  --pd-full-wash: rgba(111, 220, 140, 0.2);
+  --pd-partial: #ffb547;
+  --pd-partial-wash: rgba(255, 181, 71, 0.2);
+  --pd-inc: #45d3ff;
+  --pd-inc-wash: rgba(69, 211, 255, 0.18);
+  --pd-paid: #9aa0aa;
+  --pd-paid-wash: rgba(154, 160, 170, 0.18);
+  --pd-home: rgba(255, 255, 255, 0.06);
+}
+
+.pd-intro { padding-block: 40px 8px; }
+.pd-intro h1 { margin-bottom: 0.25em; }
+.pd-price { color: var(--ink-soft); max-width: 44rem; margin: 0; font-variant-numeric: tabular-nums; }
+
+.pd-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.pd-desk > * { min-width: 0; }
+@media (min-width: 960px) { .pd-desk { grid-template-columns: 23rem 1fr; gap: 48px; } }
+
+.pd-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.pd-form legend { padding: 0; }
+.pd-form > .btn { width: 100%; }
+.pd-group { border-top: 1px solid var(--rule); padding-top: 14px; }
+.pd-group > legend { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.pd textarea { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 12px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+.pd-counts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+.pd-count label { display: block; font-size: 13px; margin-bottom: 4px; color: var(--text-2); }
+.pd-brushes { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.pd-brush { font: 500 0.8rem/1 var(--font-text); color: var(--text-2); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 9px 10px; min-height: 40px; cursor: pointer; }
+.pd-brush[aria-checked="true"] { border-color: var(--accent); color: var(--text); box-shadow: inset 0 0 0 1px var(--accent); }
+.pd-brush::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--pd-home); vertical-align: 0; }
+.pd-brush.s-full::before { background: var(--pd-full); }
+.pd-brush.s-partial::before { background: var(--pd-partial); }
+.pd-brush.s-incidental::before { background: var(--pd-inc); }
+.pd-brush.s-reimbursed::before { background: var(--pd-paid); }
+.pd-brush.s-clear::before { background: transparent; box-shadow: inset 0 0 0 1px var(--line-2); }
+.pd-get-note { margin: 10px 0 0; }
+
+/* Result */
+.pd-out { min-height: 12rem; }
+.pd-sheet-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
+.pd-answer { font: 500 clamp(2rem, 7vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 10px; font-variant-numeric: lining-nums tabular-nums; }
+.pd-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.pd-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 12px; }
+.pd-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.pd-facts dd { margin: 2px 0 0; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.pd-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 46rem; }
+.pd-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
+.pd-table { width: 100%; font-variant-numeric: tabular-nums; }
+.pd-table td, .pd-table th { white-space: nowrap; }
+.pd-warn, .pd-enter { margin: 0 0 8px; padding-left: 1.2em; max-width: 46rem; }
+.pd-warn li, .pd-enter li { margin: 0 0 6px; }
+.pd-warn li::marker { color: var(--pd-partial); }
+.pd-aside { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 10px; max-width: 44rem; }
+.pd-why { margin: 14px 0 6px; max-width: 46rem; }
+.pd-why summary { cursor: pointer; color: var(--text-2); }
+.pd-why ul { padding-left: 1.2em; color: var(--ink-soft); font-size: 0.92rem; }
+.pd-downloads { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* The year calendar */
+.pd-cal-wrap { margin-top: 48px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.pd-cal { display: grid; gap: 20px 24px; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); margin-top: 14px; }
+.pd-month-name { font: 500 0.8rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; color: var(--text-2); }
+.pd-dow, .pd-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.pd-dow span { font: 500 0.66rem/1.6 var(--font-mono); color: var(--ink-soft); text-align: center; }
+.pd-day { font: 400 0.8rem/1 var(--font-mono); color: var(--text-2); background: var(--pd-home); border: 0; border-radius: 3px; min-height: 2.1rem; padding: 0; cursor: pointer; font-variant-numeric: tabular-nums; }
+.pd-day.pad { background: none; cursor: default; }
+.pd-day:disabled { opacity: 0.3; cursor: not-allowed; }
+.pd-day:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.pd-day.s-full { background: var(--pd-full-wash); box-shadow: inset 0 0 0 1px var(--pd-full); color: var(--text); }
+.pd-day.s-partial { background: var(--pd-partial-wash); box-shadow: inset 0 0 0 1px var(--pd-partial); color: var(--text); }
+.pd-day.s-incidental, .pd-day.s-incidental-partial { background: var(--pd-inc-wash); box-shadow: inset 0 0 0 1px var(--pd-inc); color: var(--text); }
+.pd-day.s-reimbursed { background: var(--pd-paid-wash); box-shadow: inset 0 0 0 1px var(--pd-paid); }
+.pd-day.s-home { background: var(--pd-home); box-shadow: inset 0 0 0 1px var(--line-2); }
+.pd-day.abroad { background-image: repeating-linear-gradient(135deg, transparent 0 4px, rgba(255, 255, 255, 0.14) 4px 5px); }
+.pd-day.marked { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.pd-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.88rem; color: var(--ink-soft); }
+.pd-legend li { display: inline-flex; align-items: center; gap: 7px; }
+.pd-key { width: 18px; height: 14px; border-radius: 3px; flex: none; background: var(--pd-home); }
+.pd-key.s-full { background-color: var(--pd-full-wash); box-shadow: inset 0 0 0 1px var(--pd-full); }
+.pd-key.s-partial { background-color: var(--pd-partial-wash); box-shadow: inset 0 0 0 1px var(--pd-partial); }
+.pd-key.s-incidental { background-color: var(--pd-inc-wash); box-shadow: inset 0 0 0 1px var(--pd-inc); }
+.pd-key.s-reimbursed { background-color: var(--pd-paid-wash); box-shadow: inset 0 0 0 1px var(--pd-paid); }
+.pd-key.s-home { box-shadow: inset 0 0 0 1px var(--line-2); }
+.pd-key.abroad { background-image: repeating-linear-gradient(135deg, transparent 0 3px, rgba(255, 255, 255, 0.2) 3px 4px); }
+
+/* Rules, prices, sources */
+.pd-rules, .pd-legal { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.pd-rule-cols { display: grid; gap: 4px 40px; }
+@media (min-width: 760px) { .pd-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.pd-rule-cols p, .pd-legal li { color: var(--ink-soft); max-width: 40rem; }
+.pd-table-title { margin-top: 28px; }
+.pd-sources a { word-break: break-word; }
+.pd-code { margin-top: 40px; max-width: 52rem; }
+.pd-code pre { max-width: 100%; }
+
+@media (max-width: 420px) {
+  .pd-counts { grid-template-columns: 1fr; }
+}
+@media print {
+  .pd-form, .pd-code, .pd-cal-wrap { display: none; }
+}
