@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REST API for developers: Toll</title>
+<meta name="description" content="Call any Toll tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, idempotency keys, rate limits, quotes and OpenAPI.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/home.css">
+<link rel="stylesheet" href="/toll-preview/assets/brand.css">
+<script src="/toll-preview/assets/home.js"></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/developers/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="REST API for developers: Toll">
+<meta property="og:description" content="Call any Toll tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, idempotency keys, rate limits, quotes and OpenAPI.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/developers/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/","name":"REST API for developers: Toll","description":"Call any Toll tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, idempotency keys, rate limits, quotes and OpenAPI.","dateModified":"2026-10-31","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"}]}]}</script>
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="home brand-page">
+
+<!-- icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></symbol>
+    <symbol id="i-fx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 5.5h9.5l-2.5-2.5M13 10.5H3.5L6 13"/></symbol>
+    <symbol id="i-img" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><circle cx="6" cy="6" r="1.2"/><path d="M13.5 10.5l-3-3-6.5 6"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="12" height="9" rx="2"/><path d="M11 8.5h.01M2 6.5h12"/></symbol>
+    <symbol id="i-key" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="5.5" cy="10.5" r="2.5"/><path d="M7.3 8.7L13 3M11 5l1.5 1.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3v10M3 8h10"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/">Tools</a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/" aria-current="page">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/tools/">Tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/" aria-current="page">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero sub" aria-labelledby="page-h">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="sub-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/toll-preview/">Toll</a></li><li aria-current="page">Developers</li></ol></nav>
+    <span class="eyebrow">Developers</span>
+    <h1 class="h1" id="page-h">One POST.<br class="br-d"> One exact answer.</h1>
+    <p class="hero-lede">Call any tool over REST with a Bearer key and a JSON body. Each call takes its price from your balance and tells you what it cost.</p>
+    <div class="hero-actions"><a href="/toll-preview/account" class="btn btn-light btn-lg">Get an API key <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="/toll-preview/developers/mcp/" class="btn btn-ghost btn-lg">MCP for agents</a></div>
+  </div>
+</section>
+<section class="sec tight" id="quickstart" aria-labelledby="quickstart-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Quickstart</span>
+      <h2 class="h2" id="quickstart-h">Three steps<br class="br-d"> <span class="dim">to your first call.</span></h2>
+      
+    </div>
+    <div class="dev">
+  <div class="rv">
+    <ol class="steps rv"><li><span class="n">01</span><div><h3><a href="/toll-preview/account">Create an account</a></h3><p>Every account gets $0.25 / ₹20 free each month, spent first, so you can try any tool before you pay.</p></div></li><li><span class="n">02</span><div><h3>Create an API key</h3><p>On your account page. Keys start with <code>tk_live_</code> and are shown once.</p></div></li><li><span class="n">03</span><div><h3>Send a POST</h3><p>To <code>/toll-preview/api/v1/tools/&lt;tool&gt;</code>, with the key as a Bearer token and the tool's input as JSON.</p></div></li></ol>
+    <ul class="dev-list">
+      <li><span class="k">SPEC</span><span><b><a href="/toll-preview/api/v1/openapi.json">OpenAPI at /toll-preview/api/v1/openapi.json</a></b>Every tool's endpoint, input and price, plus the <a class="ul" href="/toll-preview/api/v1/tools">tool list</a>.</span></li>
+      <li><span class="k">RATE</span><span><b>10 requests a second per key</b>With short bursts of up to 20.</span></li>
+      <li><span class="k">QUOTE</span><span><b>Know the price first</b>POST the same input to <code>.../quote</code>. Nothing runs.</span></li>
+    </ul>
+  </div>
+  <div class="code-wrap rv">
+<div class="code" id="code">
+  <div class="code-bar">
+    <div class="tabs ep" role="tablist" aria-label="Tool"><button type="button" class="tab" role="tab" data-ep="business-days" aria-selected="true">business-days</button><button type="button" class="tab" role="tab" data-ep="delivery-date-calculator" aria-selected="false">delivery-date-calculator</button><button type="button" class="tab" role="tab" data-ep="fx-on-date" aria-selected="false">fx-on-date</button></div>
+    <div class="tabs" role="tablist" aria-label="Language"><button type="button" class="tab" role="tab" data-lang="curl" aria-selected="true">curl</button><button type="button" class="tab" role="tab" data-lang="js" aria-selected="false">JavaScript</button><button type="button" class="tab" role="tab" data-lang="py" aria-selected="false">Python</button></div>
+  </div>
+<pre data-ep="business-days" data-lang="curl"><code>curl -X POST <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/business-days \
+  -H &quot;Authorization: Bearer tk_live_...&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;}'</code></pre>
+<pre data-ep="business-days" data-lang="js" hidden><code>const res = await fetch(&quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/business-days&quot;, {
+  method: &quot;POST&quot;,
+  headers: {
+    &quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;,
+    &quot;Content-Type&quot;: &quot;application/json&quot;
+  },
+  body: JSON.stringify({ op: &quot;between&quot;, region: &quot;US&quot;, start: &quot;2026-07-01&quot;, end: &quot;2026-07-08&quot; })
+});
+const data = await res.json();</code></pre>
+<pre data-ep="business-days" data-lang="py" hidden><code>import requests
+
+r = requests.post(
+    &quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/business-days&quot;,
+    headers={&quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;},
+    json={&quot;op&quot;: &quot;between&quot;, &quot;region&quot;: &quot;US&quot;, &quot;start&quot;: &quot;2026-07-01&quot;, &quot;end&quot;: &quot;2026-07-08&quot;},
+)
+print(r.json())</code></pre>
+<pre data-ep="delivery-date-calculator" data-lang="curl" hidden><code>curl -X POST <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/delivery-date-calculator \
+  -H &quot;Authorization: Bearer tk_live_...&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;op&quot;:&quot;delivery-date&quot;,&quot;orderAt&quot;:&quot;2026-12-11T15:12&quot;,&quot;timeZone&quot;:&quot;America/New_York&quot;,&quot;cutoff&quot;:&quot;14:00&quot;,&quot;processingDays&quot;:1,&quot;carrier&quot;:&quot;usps&quot;,&quot;service&quot;:&quot;ground-advantage&quot;}'</code></pre>
+<pre data-ep="delivery-date-calculator" data-lang="js" hidden><code>const res = await fetch(&quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/delivery-date-calculator&quot;, {
+  method: &quot;POST&quot;,
+  headers: {
+    &quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;,
+    &quot;Content-Type&quot;: &quot;application/json&quot;
+  },
+  body: JSON.stringify({ op: &quot;delivery-date&quot;, orderAt: &quot;2026-12-11T15:12&quot;, timeZone: &quot;America/New_York&quot;, cutoff: &quot;14:00&quot;, processingDays: 1, carrier: &quot;usps&quot;, service: &quot;ground-advantage&quot; })
+});
+const data = await res.json();</code></pre>
+<pre data-ep="delivery-date-calculator" data-lang="py" hidden><code>import requests
+
+r = requests.post(
+    &quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/delivery-date-calculator&quot;,
+    headers={&quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;},
+    json={&quot;op&quot;: &quot;delivery-date&quot;, &quot;orderAt&quot;: &quot;2026-12-11T15:12&quot;, &quot;timeZone&quot;: &quot;America/New_York&quot;, &quot;cutoff&quot;: &quot;14:00&quot;, &quot;processingDays&quot;: 1, &quot;carrier&quot;: &quot;usps&quot;, &quot;service&quot;: &quot;ground-advantage&quot;},
+)
+print(r.json())</code></pre>
+<pre data-ep="fx-on-date" data-lang="curl" hidden><code>curl -X POST <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/fx-on-date \
+  -H &quot;Authorization: Bearer tk_live_...&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;base&quot;:&quot;USD&quot;,&quot;quote&quot;:&quot;INR&quot;,&quot;date&quot;:&quot;2026-10-24&quot;}'</code></pre>
+<pre data-ep="fx-on-date" data-lang="js" hidden><code>const res = await fetch(&quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/fx-on-date&quot;, {
+  method: &quot;POST&quot;,
+  headers: {
+    &quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;,
+    &quot;Content-Type&quot;: &quot;application/json&quot;
+  },
+  body: JSON.stringify({ base: &quot;USD&quot;, quote: &quot;INR&quot;, date: &quot;2026-10-24&quot; })
+});
+const data = await res.json();</code></pre>
+<pre data-ep="fx-on-date" data-lang="py" hidden><code>import requests
+
+r = requests.post(
+    &quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/fx-on-date&quot;,
+    headers={&quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;},
+    json={&quot;base&quot;: &quot;USD&quot;, &quot;quote&quot;: &quot;INR&quot;, &quot;date&quot;: &quot;2026-10-24&quot;},
+)
+print(r.json())</code></pre>
+  <div class="resp-h"><span>Response <span class="ok">200 OK</span></span><span class="cost" data-cost="business-days">Charged $0.0005</span><span class="cost" data-cost="delivery-date-calculator" hidden>Charged $0.0005</span><span class="cost" data-cost="fx-on-date" hidden>Charged $0.001</span></div>
+  <div class="resp">
+<pre data-resp="business-days"><code>{
+  &quot;ok&quot;: true,
+  &quot;result&quot;: {
+    &quot;businessDays&quot;: 4,
+    &quot;holidaysSkipped&quot;: [
+      {
+        &quot;date&quot;: &quot;2026-07-03&quot;,
+        &quot;name&quot;: &quot;Independence Day (observed)&quot;
+      }
+    ]
+  },
+  &quot;charged&quot;: {
+    &quot;amount&quot;: 500,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;display&quot;: &quot;$0.0005&quot;
+  },
+  &quot;balance&quot;: {
+    &quot;total&quot;: 20249500,
+    &quot;display&quot;: &quot;$20.2495&quot;
+  },
+  &quot;dataVersion&quot;: &quot;holiday-rules-2026.10&quot;
+}</code></pre>
+<pre data-resp="delivery-date-calculator" hidden><code>{
+  &quot;ok&quot;: true,
+  &quot;result&quot;: {
+    &quot;op&quot;: &quot;delivery-date&quot;,
+    &quot;answer&quot;: &quot;An order placed Friday, December 11, 2026 at 3:12 pm EST with a 2:00 pm cutoff and 1 processing day ships Tuesday, December 15, 2026 and, by USPS Ground Advantage, arrives between Thursday, December 17 and Monday, December 21, 2026.&quot;,
+    &quot;orderAt&quot;: &quot;2026-12-11T20:12:00Z&quot;,
+    &quot;orderLocal&quot;: &quot;2026-12-11T15:12&quot;,
+    &quot;timeZone&quot;: &quot;America/New_York&quot;,
+    &quot;cutoff&quot;: &quot;14:00&quot;,
+    &quot;afterCutoff&quot;: true,
+    &quot;received&quot;: &quot;2026-12-14&quot;,
+    &quot;ships&quot;: {
+      &quot;earliest&quot;: &quot;2026-12-15&quot;,
+      &quot;latest&quot;: &quot;2026-12-15&quot;
+    },
+    &quot;arrives&quot;: {
+      &quot;earliest&quot;: &quot;2026-12-17&quot;,
+      &quot;latest&quot;: &quot;2026-12-21&quot;
+    },
+    &quot;carrier&quot;: {
+      &quot;carrier&quot;: &quot;usps&quot;,
+      &quot;service&quot;: &quot;ground-advantage&quot;,
+      &quot;name&quot;: &quot;USPS Ground Advantage&quot;,
+      &quot;transitDays&quot;: {
+        &quot;min&quot;: 2,
+        &quot;max&quot;: 5
+      },
+      &quot;transitFrom&quot;: &quot;usps&quot;,
+      &quot;calendar&quot;: &quot;USPS delivers Monday to Saturday, not on postal holidays&quot;
+    },
+    &quot;storeCalendar&quot;: &quot;the store ships Monday to Friday, not on federal holidays&quot;,
+    &quot;validUntil&quot;: &quot;2026-12-14T19:00:00Z&quot;,
+    &quot;secondsToCutoff&quot;: 254880,
+    &quot;skipped&quot;: [],
+    &quot;steps&quot;: [
+      &quot;Ordered Friday, December 11, 2026 at 3:12 pm EST; that is after the 2:00 pm cutoff, so it is received on the next shipping day, Monday, December 14, 2026.&quot;,
+      &quot;1 processing day on the store's calendar (the store ships Monday to Friday, not on federal holidays) puts the handover on Tuesday, December 15, 2026.&quot;,
+      &quot;USPS Ground Advantage takes 2 to 5 days (USPS's stated delivery time), counted on the carrier's calendar (USPS delivers Monday to Saturday, not on postal holidays): it arrives between Thursday, December 17, 2026 and Monday, December 21, 2026.&quot;,
+      &quot;No holiday or closure fell in the way; only non-working weekdays were skipped.&quot;
+    ]
+  },
+  &quot;charged&quot;: {
+    &quot;amount&quot;: 500,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;display&quot;: &quot;$0.0005&quot;
+  },
+  &quot;balance&quot;: {
+    &quot;total&quot;: 20249500,
+    &quot;display&quot;: &quot;$20.2495&quot;
+  },
+  &quot;dataVersion&quot;: &quot;usps-2026-10-31+holiday-rules-2026.10&quot;
+}</code></pre>
+<pre data-resp="fx-on-date" hidden><code>{
+  &quot;ok&quot;: true,
+  &quot;result&quot;: {
+    &quot;base&quot;: &quot;USD&quot;,
+    &quot;quote&quot;: &quot;INR&quot;,
+    &quot;requestedDate&quot;: &quot;2026-10-24&quot;,
+    &quot;fixingDate&quot;: &quot;2026-10-23&quot;,
+    &quot;rate&quot;: 94.945055,
+    &quot;inverse&quot;: 0.010532,
+    &quot;source&quot;: &quot;European Central Bank euro foreign exchange reference rates&quot;
+  },
+  &quot;charged&quot;: {
+    &quot;amount&quot;: 1000,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;display&quot;: &quot;$0.001&quot;
+  },
+  &quot;balance&quot;: {
+    &quot;total&quot;: 20249000,
+    &quot;display&quot;: &quot;$20.249&quot;
+  },
+  &quot;dataVersion&quot;: &quot;ecb-2026-10-29&quot;
+}</code></pre>
+  </div>
+</div>
+<p class="code-cap">Each request is the tool's own worked example, and each response is the answer it gives. The balance shown is for an account holding $20.25: a $20 top-up and this month's free $0.25.</p>
+</div>
+</div>
+  </div>
+</section>
+<section class="sec tight" id="reference" aria-labelledby="reference-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Reference</span>
+      <h2 class="h2" id="reference-h">Keys, errors and retries,<br class="br-d"> <span class="dim">the same for every tool.</span></h2>
+      
+    </div>
+    <div class="refs">
+<div class="dev ref rv" id="keys"><div><h3 class="ref-h">API keys</h3><p class="ref-p">Keys start with <code>tk_live_</code>. Send yours in the <code>Authorization</code> header. A key is shown once, when you create it, and only a fingerprint is kept, so if you lose a key, revoke it and make a new one.</p>
+<p class="ref-p">Make one key per app or agent, so you can limit or revoke each on its own. Keep keys on your server, never in a web page or a public repository.</p></div><div><div class="code solo">
+  <div class="resp-h"><span>Every request</span></div>
+  <pre><code>Authorization: Bearer tk_live_...
+Content-Type: application/json</code></pre>
+</div></div></div>
+<div class="dev ref rv" id="responses"><div><h3 class="ref-h">What a call returns</h3><p class="ref-p">A successful call answers with <code>result</code>, what it cost in <code>charged</code>, and your balance after the charge. <code>dataVersion</code> names the reference data the answer came from, when a tool uses any.</p>
+<p class="ref-p">Amounts are whole numbers of micro-units: one dollar or one rupee is 1,000,000. The <code>display</code> fields show the same amount as text, exactly. A tool whose price depends on what you ask also says which action was charged, and why.</p></div><div><div class="code solo">
+  <div class="resp-h"><span>Charged and balance</span></div>
+  <pre><code>{
+  &quot;charged&quot;: {
+    &quot;amount&quot;: 500,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;display&quot;: &quot;$0.0005&quot;
+  },
+  &quot;balance&quot;: {
+    &quot;total&quot;: 20249500,
+    &quot;display&quot;: &quot;$20.2495&quot;
+  }
+}</code></pre>
+</div></div></div>
+<div class="dev ref rv" id="quotes"><div><h3 class="ref-h">Quotes</h3><p class="ref-p">To know the price first, send the same body to the tool's <code>/quote</code> address. It answers with the amount, as a number and as text, and the price in words. It runs, charges and reserves nothing.</p>
+<p class="ref-p">Over MCP, the <code>quote_price</code> tool does the same. See <a class="ul" href="/toll-preview/developers/mcp/">MCP for agents</a>.</p></div><div><div class="code solo">
+  <div class="resp-h"><span>POST <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/business-days/quote</span></div>
+  <pre><code>{
+  &quot;ok&quot;: true,
+  &quot;quote&quot;: {
+    &quot;tool&quot;: &quot;business-days&quot;,
+    &quot;action&quot;: null,
+    &quot;amount&quot;: 500,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;display&quot;: &quot;$0.0005&quot;,
+    &quot;detail&quot;: null,
+    &quot;settles&quot;: false,
+    &quot;price&quot;: &quot;$0.0005 per call&quot;
+  }
+}</code></pre>
+</div></div></div>
+<div class="dev ref rv" id="errors"><div><h3 class="ref-h">Errors</h3><p class="ref-p">Every error has the same shape. <code>fields</code> appears when specific input fields were wrong. Nothing is charged for a call that is refused.</p></div><div><div class="code solo">
+  <div class="resp-h"><span>An error</span></div>
+  <pre><code>{
+  &quot;ok&quot;: false,
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;invalid_input&quot;,
+    &quot;message&quot;: &quot;...&quot;,
+    &quot;fields&quot;: {
+      &quot;start&quot;: &quot;...&quot;
+    }
+  }
+}</code></pre>
+</div></div></div>
+<div class="tbl keep rv"><table>
+  <caption class="visually-hidden">Error codes</caption>
+  <thead><tr><th scope="col">Status</th><th scope="col">Code</th><th scope="col">What it means</th></tr></thead>
+  <tbody>
+<tr><td class="mono">400</td><td><code>invalid_input</code></td><td>The body is not valid JSON, is too large, or does not match the tool's input. Not charged.</td></tr>
+<tr><td class="mono">401</td><td><code>unauthorized</code></td><td>The key is missing, wrong or revoked.</td></tr>
+<tr><td class="mono">402</td><td><code>insufficient_balance</code></td><td>Your balance does not cover this call. Add money and try again.</td></tr>
+<tr><td class="mono">402</td><td><code>cap_reached</code></td><td>The call would pass a monthly limit on the key or the account. Not charged.</td></tr>
+<tr><td class="mono">404</td><td><code>unknown_tool</code></td><td>No tool has that name, or it has been retired.</td></tr>
+<tr><td class="mono">409</td><td><code>in_progress</code></td><td>A call with the same Idempotency-Key, or the first paid call for the same job, is still running. Retry in a moment.</td></tr>
+<tr><td class="mono">422</td><td><code>idempotency_mismatch</code></td><td>The Idempotency-Key was already used with different input.</td></tr>
+<tr><td class="mono">422</td><td><code>not_available</code></td><td>The tool cannot answer this exactly (for example, no published data for that date). Not charged.</td></tr>
+<tr><td class="mono">429</td><td><code>rate_limited</code></td><td>Too many requests. Slow down and retry.</td></tr>
+<tr><td class="mono">502</td><td><code>upstream_failed</code></td><td>The tool failed while running. The charge was refunded.</td></tr>
+  </tbody>
+</table></div>
+<div class="dev ref rv" id="idempotency"><div><h3 class="ref-h">Idempotency keys</h3><p class="ref-p">Networks drop answers. To retry safely, send an <code>Idempotency-Key</code> header with a value you choose (1 to 200 characters), unique per logical call.</p>
+<p class="ref-p">If a call with that key was already answered for the same tool, the stored answer comes back, marked <code>Idempotent-Replay: true</code>, and nothing more is charged. Reusing a key with different input returns <code>idempotency_mismatch</code>. If the first call failed and was refunded, the key is free to use again.</p></div><div><div class="code solo">
+  <div class="resp-h"><span>A retry-safe call</span></div>
+  <pre><code>Idempotency-Key: invoice-4471-due-date</code></pre>
+</div></div></div>
+<div class="dev ref rv" id="limits"><div><h3 class="ref-h">Rate limits and spending limits</h3><p class="ref-p">Each key can make 10 requests a second, with short bursts of up to 20. Past that you get <code>rate_limited</code>; wait briefly and retry.</p>
+<p class="ref-p">Every key has a hard monthly spending limit (a new key gets $5 / ₹400 unless you choose another), and you can set one for the whole account. A call that would pass a limit is refused with <code>cap_reached</code> and charges nothing. Limits count from the 1st of each month (UTC).</p></div><div><div class="code solo">
+  <div class="resp-h"><span>Too many requests <span class="ok">429</span></span></div>
+  <pre><code>{
+  &quot;ok&quot;: false,
+  &quot;error&quot;: {
+    &quot;code&quot;: &quot;rate_limited&quot;,
+    &quot;message&quot;: &quot;Too many requests. Wait a moment and try again.&quot;
+  }
+}</code></pre>
+</div></div></div>
+<div class="dev ref rv" id="openapi"><div><h3 class="ref-h">OpenAPI and the tool list</h3><p class="ref-p">The <a class="ul" href="/toll-preview/api/v1/openapi.json">OpenAPI document</a> describes every tool's endpoint, input schema and price. The <a class="ul" href="/toll-preview/api/v1/tools">tool list</a> gives each tool's name, prices in words, input schema and worked examples. Neither needs a key.</p>
+<p class="ref-p">Each tool page also has ready-to-copy examples, and the <a class="ul" href="/toll-preview/docs">docs</a> cover the same ground in one page.</p></div><div><div class="code solo">
+  <div class="resp-h"><span>No key needed</span></div>
+  <pre><code>GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/openapi.json
+GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools</code></pre>
+</div></div></div>
+</div>
+  </div>
+</section>
+<section class="sec tight" id="endpoints" aria-labelledby="endpoints-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Endpoints</span>
+      <h2 class="h2" id="endpoints-h">Every live tool<br class="br-d"> <span class="dim">and its address.</span></h2>
+      
+    </div>
+    <div class="tbl keep rv"><table>
+  <caption class="visually-hidden">Endpoints and prices</caption>
+  <thead><tr><th scope="col">Tool</th><th scope="col">Endpoint</th><th scope="col">Price</th></tr></thead>
+  <tbody>
+<tr>
+  <td><div class="tname hue-date"><i></i><span><a href="/toll-preview/business-days/">Business days</a><small>business-days</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/business-days</code></td>
+  <td class="words"><span class="line">$0.0005 per call</span></td>
+</tr>
+<tr>
+  <td><div class="tname hue-date"><i></i><span><a href="/toll-preview/delivery-date-calculator/">Delivery date and holiday order-by calculator</a><small>delivery-date-calculator</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/delivery-date-calculator</code></td>
+  <td class="words"><span class="line">$0.0005 per call</span></td>
+</tr>
+<tr>
+  <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a><small>fx-on-date</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/fx-on-date</code></td>
+  <td class="words"><span class="line">$0.001 per call</span></td>
+</tr>
+<tr>
+  <td><div class="tname hue-file"><i></i><span><a href="/toll-preview/image-to-size/">Image to size</a><small>image-to-size</small></span></div></td>
+  <td><span class="muted">Runs in your browser. No API.</span></td>
+  <td class="words"><span class="line">Free, in your browser</span></td>
+</tr>
+  </tbody>
+</table></div>
+<p class="code-cap rv">Prices are shown for a dollar account; a rupee account sees its own prices on the <a class="ul" href="/toll-preview/pricing/">pricing page</a>.</p>
+  </div>
+</section>
+<section class="closing" aria-labelledby="close-h">
+  <div class="cglow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap rv">
+    <h2 id="close-h">Get a key. Make the call.</h2>
+    <p class="sec-lede">Every account gets $0.25 / ₹20 free each month, spent first.</p>
+    <div class="hero-actions">
+      <a href="/toll-preview/account" class="btn btn-light btn-lg">Create account <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="/toll-preview/docs" class="btn btn-ghost btn-lg">Read the docs</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

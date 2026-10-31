@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why exact answers, not AI guesses: Toll</title>
+<meta name="description" content="Why Toll gives exact answers instead of AI guesses: the same input always gives the same answer, from a named source, with worked examples from the tools.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/home.css">
+<link rel="stylesheet" href="/toll-preview/assets/brand.css">
+<script src="/toll-preview/assets/home.js"></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/why-exact/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="Why exact answers, not AI guesses: Toll">
+<meta property="og:description" content="Why Toll gives exact answers instead of AI guesses: the same input always gives the same answer, from a named source, with worked examples from the tools.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/why-exact/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/why-exact/","url":"https://krishnachagti-sudo.github.io/toll-preview/why-exact/","name":"Why exact answers, not AI guesses: Toll","description":"Why Toll gives exact answers instead of AI guesses: the same input always gives the same answer, from a named source, with worked examples from the tools.","dateModified":"2026-10-31","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Why exact","item":"https://krishnachagti-sudo.github.io/toll-preview/why-exact/"}]}]}</script>
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="home brand-page">
+
+<!-- icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></symbol>
+    <symbol id="i-fx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 5.5h9.5l-2.5-2.5M13 10.5H3.5L6 13"/></symbol>
+    <symbol id="i-img" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><circle cx="6" cy="6" r="1.2"/><path d="M13.5 10.5l-3-3-6.5 6"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="12" height="9" rx="2"/><path d="M11 8.5h.01M2 6.5h12"/></symbol>
+    <symbol id="i-key" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="5.5" cy="10.5" r="2.5"/><path d="M7.3 8.7L13 3M11 5l1.5 1.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3v10M3 8h10"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/">Tools</a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/tools/">Tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero sub" aria-labelledby="page-h">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="sub-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/toll-preview/">Toll</a></li><li aria-current="page">Why exact</li></ol></nav>
+    <span class="eyebrow">Why exact</span>
+    <h1 class="h1" id="page-h">Same input,<br class="br-d"> same answer.</h1>
+    <p class="hero-lede">A guess can sound right and still be a day or a decimal out. Every Toll answer comes from a fixed method and a named source, so it never changes between runs, and you can check it.</p>
+    
+  </div>
+</section>
+<section class="sec tight" id="compare" aria-labelledby="compare-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Exact, not guessed</span>
+      <h2 class="h2" id="compare-h">What you can rely on.</h2>
+      
+    </div>
+    <div class="exact">
+  <div class="rv">
+    <div class="compare" role="table" aria-label="Toll compared with an AI model">
+      <div class="crow hd" role="row"><div role="columnheader"></div><div role="columnheader" class="us">Toll</div><div role="columnheader">An AI model</div></div>
+      <div class="crow" role="row"><div class="lab" role="cell">Same input</div><div role="cell">Same answer</div><div class="them" role="cell">Can differ each time</div></div>
+      <div class="crow" role="row"><div class="lab" role="cell">Where it comes from</div><div role="cell">A named official source</div><div class="them" role="cell">Its training and a guess</div></div>
+      <div class="crow" role="row"><div class="lab" role="cell">A day with no data</div><div role="cell">The last published day, named</div><div class="them" role="cell">Whatever it recalls</div></div>
+      <div class="crow" role="row"><div class="lab" role="cell">Its working</div><div role="cell">Every skipped day, named</div><div class="them" role="cell">Not always shown</div></div>
+    </div>
+    <p class="sec-lede small-lede">There is no AI anywhere in Toll. The method for each tool is fixed, and the answer says which data it used, so the same question gives the same answer on the web, over the API and over MCP.</p>
+  </div>
+  <ul class="sources rv"><li class="hue-date"><span class="what"><i></i>Business days</span><b>5 U.S.C. 6103, OPM observed-day rules</b></li><li class="hue-date"><span class="what"><i></i>Business days</span><b>GOV.UK bank holidays for England and Wales</b></li><li class="hue-money"><span class="what"><i></i>Exchange rate on a date</span><b>European Central Bank reference rates</b></li><li class="hue-date"><span class="what"><i></i>Delivery date and holiday order-by calculator</span><b>USPS service standards and postal holidays</b></li></ul>
+</div>
+  </div>
+</section>
+<section class="sec tight" id="examples" aria-labelledby="examples-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Worked examples</span>
+      <h2 class="h2" id="examples-h">Where a guess goes wrong,<br class="br-d"> <span class="dim">worked out by the tools.</span></h2>
+      <p class="sec-lede">Each answer below is the tool's own output for the question shown: the same answer you get on its page, over the API or over MCP.</p>
+    </div>
+    <div class="examples"><div class="panel-glow hue-date rv"><div class="panel">
+  <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Business days</b><span class="tchip"><span class="dot"></span>$0.0005</span></div>
+  <div class="panel-body">
+    <h3 class="ex-q">US business days from July 1 to July 8, 2026</h3>
+    <p class="ex-trap">July 4, 2026 is a Saturday, so the federal holiday is observed on Friday, July 3. Skip only the 4th, a weekend day anyway, and you count 5.</p>
+    <div class="result">
+      <div class="result-top">
+        <div class="r-label">The tool's answer</div>
+        <div class="r-main"><span class="num">4</span> business days</div>
+        
+      </div>
+      <ul class="skips"><li><span class="d">Fri, Jul 3</span><span>Independence Day (observed)</span><span class="t">skipped</span></li></ul>
+      <div class="r-foot"><span>5 U.S.C. 6103, OPM observed-day rules</span><a class="ul" href="/toll-preview/business-days/">Run it yourself</a></div>
+    </div>
+  </div>
+</div></div>
+<div class="panel-glow hue-date rv"><div class="panel">
+  <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Business days</b><span class="tchip"><span class="dot"></span>$0.0005</span></div>
+  <div class="panel-body">
+    <h3 class="ex-q">One working day after December 24, 2026, in England and Wales</h3>
+    <p class="ex-trap">Christmas Day is a Friday and Boxing Day falls on a Saturday, so its bank holiday moves to Monday, December 28. One working day on is Tuesday, not Monday.</p>
+    <div class="result">
+      <div class="result-top">
+        <div class="r-label">The tool's answer</div>
+        <div class="r-main"><span class="num">Tuesday, December 29, 2026</span></div>
+        
+      </div>
+      <ul class="skips"><li><span class="d">Fri, Dec 25</span><span>Christmas Day</span><span class="t">skipped</span></li><li><span class="d">Mon, Dec 28</span><span>Boxing Day (substitute day)</span><span class="t">skipped</span></li></ul>
+      <div class="r-foot"><span>GOV.UK bank holidays for England and Wales</span><a class="ul" href="/toll-preview/business-days/">Run it yourself</a></div>
+    </div>
+  </div>
+</div></div>
+<div class="panel-glow hue-money rv"><div class="panel">
+  <div class="panel-bar"><svg aria-hidden="true"><use href="#i-fx"/></svg><b>Exchange rate on a date</b><span class="tchip"><span class="dot"></span>$0.001</span></div>
+  <div class="panel-body">
+    <h3 class="ex-q">US dollar to Indian rupee on Saturday, October 24, 2026</h3>
+    <p class="ex-trap">The ECB publishes no reference rates at weekends. The answer uses the last fixing before the date and names it, rather than giving a rate for a day that has none.</p>
+    <div class="result">
+      <div class="result-top">
+        <div class="r-label">The tool's answer</div>
+        <div class="r-main">1 USD = <span class="num">94.945055</span> INR</div>
+        <div class="r-sub">From the fixing of Friday, October 23, 2026. 1 INR = 0.010532 USD.</div>
+      </div>
+      
+      <div class="r-foot"><span>European Central Bank reference rates</span><a class="ul" href="/toll-preview/fx-on-date/">Run it yourself</a></div>
+    </div>
+  </div>
+</div></div>
+<div class="panel-glow hue-money rv"><div class="panel">
+  <div class="panel-bar"><svg aria-hidden="true"><use href="#i-fx"/></svg><b>Exchange rate on a date</b><span class="tchip"><span class="dot"></span>$0.001</span></div>
+  <div class="panel-body">
+    <h3 class="ex-q">Pound to yen on Christmas Day 2024</h3>
+    <p class="ex-trap">The ECB did not publish on December 25, 2024, and it has no direct pound to yen rate. The tool takes both rates against the euro from the last fixing and works out the cross rate.</p>
+    <div class="result">
+      <div class="result-top">
+        <div class="r-label">The tool's answer</div>
+        <div class="r-main">1 GBP = <span class="num">197.149931</span> JPY</div>
+        <div class="r-sub">From the fixing of Tuesday, December 24, 2024, through the euro.</div>
+      </div>
+      
+      <div class="r-foot"><span>European Central Bank reference rates</span><a class="ul" href="/toll-preview/fx-on-date/">Run it yourself</a></div>
+    </div>
+  </div>
+</div></div>
+<div class="panel-glow hue-date rv"><div class="panel">
+  <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Delivery date and holiday order-by calculator</b><span class="tchip"><span class="dot"></span>$0.0005</span></div>
+  <div class="panel-body">
+    <h3 class="ex-q">An order placed at 4:30 pm Central the day before Thanksgiving 2026, by USPS Priority Mail</h3>
+    <p class="ex-trap">The order misses the noon cutoff, and the next day is Thanksgiving, a federal holiday the store does not ship on. So it is received on Friday, and with a weekend after it, handed over on Monday.</p>
+    <div class="result">
+      <div class="result-top">
+        <div class="r-label">The tool's answer</div>
+        <div class="r-main">Arrives <span class="num">Wed, Dec 2</span> to <span class="num">Thu, Dec 3</span></div>
+        <div class="r-sub">An order placed Wednesday, November 25, 2026 at 4:30 pm CST with a 12:00 pm cutoff and 1 processing day ships Monday, November 30, 2026 and, by Priority Mail, arrives between Wednesday, December 2 and Thursday, December 3, 2026.</div>
+      </div>
+      <ul class="skips"><li><span class="d">Thu, Nov 26</span><span>Thanksgiving Day</span><span class="t">skipped</span></li></ul>
+      <div class="r-foot"><span>USPS service standards and postal holidays</span><a class="ul" href="/toll-preview/delivery-date-calculator/">Run it yourself</a></div>
+    </div>
+  </div>
+</div></div></div>
+  </div>
+</section>
+<section class="closing" aria-labelledby="close-h">
+  <div class="cglow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap rv">
+    <h2 id="close-h">Check the answer yourself.</h2>
+    <p class="sec-lede">Run any example on the tool's own page. You get 5 free runs a day without an account.</p>
+    <div class="hero-actions">
+      <a href="/toll-preview/tools/" class="btn btn-light btn-lg">See the tools <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="/toll-preview/how-it-works/" class="btn btn-ghost btn-lg">How it works</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

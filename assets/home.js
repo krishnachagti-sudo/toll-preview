@@ -130,7 +130,9 @@
   function codePanel() {
     var code = document.getElementById('code');
     if (!code) return;
-    var ep = 'bd';
+    // Start from the tabs the page marked as selected (the home page starts on "bd").
+    var epTab = code.querySelector('.tab[data-ep][aria-selected="true"]');
+    var ep = epTab ? epTab.getAttribute('data-ep') : 'bd';
     var lang = 'curl';
     function render() {
       each('pre[data-lang]', function (p) { p.hidden = !(p.getAttribute('data-ep') === ep && p.getAttribute('data-lang') === lang); }, code);

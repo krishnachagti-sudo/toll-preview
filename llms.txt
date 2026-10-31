@@ -38,5 +38,12 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 
 ## About
 
+- [Tools](https://krishnachagti-sudo.github.io/toll-preview/tools/): Every live tool by category, with what it does and its price per use in words.
+- [Pricing](https://krishnachagti-sudo.github.io/toll-preview/pricing/): The wallet terms, every live tool's price in words, how a charge is quoted, reserved, settled and refunded, and common questions.
+- [How it works](https://krishnachagti-sudo.github.io/toll-preview/how-it-works/): Top up once, use any tool on the web, over REST or over MCP, and pay per use from one balance.
+- [Developers](https://krishnachagti-sudo.github.io/toll-preview/developers/): The REST API: a quickstart with real requests and responses, API keys, errors, idempotency keys, rate limits, quotes and the OpenAPI document.
+- [MCP for AI agents](https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/): Connect an AI agent over MCP: the server address, authentication, the tools it lists, quote\_price and example calls.
+- [Why exact](https://krishnachagti-sudo.github.io/toll-preview/why-exact/): Exact answers versus AI guesses, with worked examples from the tools: observed holidays, substitute days, weekend exchange rates and holiday delivery dates.
+- [About](https://krishnachagti-sudo.github.io/toll-preview/about/): Who makes the tools and how they work: a small Conyso team, exact tools for specific jobs, no AI in the answers.
 - [Docs](https://krishnachagti-sudo.github.io/toll-preview/docs): How to call the tools from code: REST and MCP, authentication, errors, idempotency and limits.
 - [Privacy](https://krishnachagti-sudo.github.io/toll-preview/privacy): What Toll stores about visitors and accounts, in plain words.
