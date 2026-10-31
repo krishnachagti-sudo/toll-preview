@@ -654,6 +654,7 @@
       'uniform vec2 uCore;uniform vec2 uM;uniform float uMA;uniform float uT;uniform float uU;',
       'uniform vec3 uC1;uniform vec3 uC2;uniform vec3 uC3;uniform float uI;uniform float uLine;uniform float uRound;',
       'uniform float uMode;uniform float uScroll;uniform float uPhase;uniform float uStir;uniform float uSwirl;',
+      'uniform float uU0;uniform vec2 uLP[3];uniform float uLU[3];uniform float uLI[3];uniform float uLL[3];uniform float uLR[3];uniform vec3 uLA[3];uniform vec3 uLB[3];uniform vec3 uLC[3];',
       'float h(vec2 p){vec3 p3=fract(vec3(p.xyx)*.1031);p3+=dot(p3,p3.yzx+33.33);return fract((p3.x+p3.y)*p3.z);}',
       'float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);',
       ' return mix(mix(h(i),h(i+vec2(1.,0.)),u.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),u.x),u.y);}',
@@ -715,23 +716,29 @@
       '  col=tint*tend*env*.5;',
       '  vec2 cq=q*vec2(1.,2.4);col+=uC3*exp(-dot(cq,cq)*1.8)*.18*uLine;',
       ' } else {',
-      // blend: the original glow, made of smoke. Same shape, place and colours; the light is
-      // broken into soft translucent wisps that rise slowly and fray at the edges, like lit smoke.
-      '  q-=m*f*(.38+uSwirl*.2);q+=vec2(-d.y,d.x)*f*(.18+uSwirl*.8);',
-      '  vec2 w=vec2(fbm(q*1.25+vec2(0.,-t*.07)),fbm(q*1.25+vec2(4.7,1.9)+vec2(t*.06,0.)));',
-      '  vec2 r=q+(w-.5)*.95;float k=fbm(r*1.7+vec2(t*.045,-t*.07));',
-      // the smoke: noise carried upward (smoke rises) with a slow sideways sway
-      '  vec2 sp=r*2.1+vec2(sin(t*.11+r.y*1.3)*.25,-t*.14);',
-      '  float s1=fbm(sp+w*1.4);',
+      // blend: the original glow, made of smoke, lit from up to three things on the page at once.
+      // The smoke is one shared field in screen space; each light shows its own patch of it, so
+      // when one light fades and another rises they are lighting the same smoke, not swapping it.
+      '  vec2 P=gl_FragCoord.xy/uU0;',
+      '  vec2 W=vec2(fbm(P*1.25+vec2(0.,-t*.07)),fbm(P*1.25+vec2(4.7,1.9)+vec2(t*.06,0.)));',
+      '  vec2 sp=P*2.1+(W-.5)*2.+vec2(sin(t*.11+P.y*1.3)*.25,-t*.14);',
+      '  float s1=fbm(sp+W*1.4);',
       '  float s2=fbm(sp*1.9+vec2(3.1,-t*.08)+s1*1.2);',
       '  float wisp=smoothstep(.28,.78,s1*.6+s2*.4);',
-      '  vec2 e=r-vec2(0.,.12*(1.-uRound));float wide=exp(-(e.x*e.x*.9+e.y*e.y*mix(2.8,1.1,uRound)));',
-      '  vec2 g=r-vec2(0.,.04*(1.-uRound));float mid=exp(-(g.x*g.x*mix(2.,1.6,uRound)+g.y*g.y*mix(9.,2.4,uRound)));',
-      '  float core=exp(-(r.x*r.x*4.2+(r.y-.015)*(r.y-.015)*mix(34.,7.,uRound)));',
-      // the edges fray: where the glow thins, the smoke decides what is left
-      '  float midS=smoothstep(0.,1.,mid*(.55+.9*wisp));',
-      '  float wideS=wide*(.35+.95*wisp);',
-      '  col=uC1*wideS*.1*(.4+k)+uC2*midS*.4*(.35+1.15*k)+uC3*core*.32*(.75+.5*k)*uLine*(.8+.3*wisp)+uC2*f*.05*(.5+k);',
+      '  float k=fbm(P*1.7+(W-.5)*1.6+vec2(t*.045,-t*.07));',
+      '  for(int i=0;i<3;i++){',
+      '   if(uLI[i]<.002)continue;',
+      '   vec2 qi=(gl_FragCoord.xy-uLP[i])/uLU[i];qi.y+=uStir*.14;',
+      '   vec2 mi=(uM-uLP[i])/uLU[i];float ml2=length(mi);if(ml2>1.3)mi*=1.3/ml2;',
+      '   vec2 di=qi-mi;float fi=exp(-dot(di,di)*2.6)*uMA;',
+      '   qi-=mi*fi*(.38+uSwirl*.2);qi+=vec2(-di.y,di.x)*fi*(.18+uSwirl*.8);',
+      '   vec2 r=qi+(W-.5)*.95;float R=uLR[i];',
+      '   vec2 e=r-vec2(0.,.12*(1.-R));float wide=exp(-(e.x*e.x*.9+e.y*e.y*mix(2.8,1.1,R)));',
+      '   vec2 g=r-vec2(0.,.04*(1.-R));float mid=exp(-(g.x*g.x*mix(2.,1.6,R)+g.y*g.y*mix(9.,2.4,R)));',
+      '   float core=exp(-(r.x*r.x*4.2+(r.y-.015)*(r.y-.015)*mix(34.,7.,R)));',
+      '   float midS=smoothstep(0.,1.,mid*(.55+.9*wisp));float wideS=wide*(.35+.95*wisp);',
+      '   col+=(uLA[i]*wideS*.1*(.4+k)+uLB[i]*midS*.4*(.35+1.15*k)+uLC[i]*core*.32*(.75+.5*k)*uLL[i]*(.8+.3*wisp)+uLB[i]*fi*.05*(.5+k))*uLI[i];',
+      '  }',
       ' }',
       ' col*=uI;',
       // fine grain keeps soft gradients from banding and gives the fog some tooth
@@ -759,7 +766,7 @@
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     var U = {};
-    ['uCore', 'uM', 'uMA', 'uT', 'uU', 'uC1', 'uC2', 'uC3', 'uI', 'uLine', 'uRound', 'uMode', 'uScroll', 'uPhase', 'uStir', 'uSwirl'].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
+    ['uCore', 'uM', 'uMA', 'uT', 'uU', 'uC1', 'uC2', 'uC3', 'uI', 'uLine', 'uRound', 'uMode', 'uScroll', 'uPhase', 'uStir', 'uSwirl', 'uU0', 'uLP', 'uLU', 'uLI', 'uLL', 'uLR', 'uLA', 'uLB', 'uLC'].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
 
     // The site's own colours, as 0..1 RGB.
     var MAG = [1, .24, .53], EMB = [1, .33, .19], AMB = [1, .72, .45], DATE = [1, .71, .28],
@@ -850,6 +857,7 @@
       var sum = 0, acc = { x: 0, y: 0, u: 0, i: 0, line: 0, round: 0, c1: [0, 0, 0], c2: [0, 0, 0], c3: [0, 0, 0] };
       for (var j = 0; j < LIGHTS.length; j++) {
         var L = LIGHTS[j], r = L.el.getBoundingClientRect(), s = L.s;
+        L.wt = 0;
         if (r.bottom < -vh * 0.3 || r.top > vh * 1.3 || !r.width) continue;
         var x = r.left + r.width / 2, y, u, d;
         if (s.at === 'top') { y = r.top; u = clamp(vw * 0.46, 300, 720); d = (y - vh * 0.55) / vh * 0.55; }
@@ -861,6 +869,8 @@
           d = (mid < r.top ? r.top - mid : mid > r.bottom ? mid - r.bottom : 0) / vh;
         }
         var w = Math.exp(-(d * d) / 0.035) * (s.warm ? 1.4 : 1);
+        // each light also keeps its own place and how bright it should be, for the smoky glow
+        L.x = x; L.y = y; L.u = u; L.wt = Math.exp(-(d * d) / 0.035) * s.i * (s.warm ? 1 : 1.75);
         if (w < 1e-4) continue;
         sum += w;
         acc.x += x * w; acc.y += y * w; acc.u += u * w;
@@ -906,6 +916,34 @@
       document.addEventListener('pointerleave', function () { ta = 0; });
     }
 
+    // The smoky glow's lights. Each item's light stays on its item and fades in or out where it is
+    // (a little quicker out than in, so two never pile up); the three brightest are drawn.
+    var LP = new Float32Array(6), LU = new Float32Array(3), LI = new Float32Array(3), LL = new Float32Array(3),
+        LR = new Float32Array(3), LA = new Float32Array(9), LB = new Float32Array(9), LC = new Float32Array(9);
+    function lightsUp(dt) {
+      var kin = 1 - Math.exp(-dt * 2.2), kout = 1 - Math.exp(-dt * 3.2);
+      for (var j = 0; j < LIGHTS.length; j++) {
+        var L = LIGHTS[j], want = L.wt || 0;
+        L.a = (L.a || 0) + (want - (L.a || 0)) * (want > (L.a || 0) ? kin : kout);
+      }
+      var top = LIGHTS.filter(function (L) { return L.a > 0.003 && L.u; }).sort(function (p, q) { return q.a - p.a; }).slice(0, 3);
+      for (var n = 0; n < 3; n++) {
+        var L = top[n];
+        if (!L) { LI[n] = 0; continue; }
+        var ph = LIGHTS.indexOf(L) * 1.37;   // every light breathes and wanders on its own phase
+        var breath = 1 + 0.13 * Math.sin(clock * 0.9 + ph) + 0.06 * Math.sin(clock * 0.37 + 1.7 + ph);
+        var dx = L.u * 0.06 * Math.sin(clock * 0.31 + ph), dy = L.u * 0.04 * Math.cos(clock * 0.23 + 0.8 + ph);
+        LP[n * 2] = (L.x + dx) * S; LP[n * 2 + 1] = (vh - L.y - dy) * S;
+        LU[n] = L.u * (1 + 0.035 * Math.sin(clock * 0.9 - 0.6 + ph)) * S;
+        LI[n] = L.a * breath; LL[n] = L.s.line; LR[n] = L.s.round;
+        for (var c = 0; c < 3; c++) { LA[n * 3 + c] = L.c[0][c]; LB[n * 3 + c] = L.c[1][c]; LC[n * 3 + c] = L.c[2][c]; }
+      }
+      gl.uniform2fv(U.uLP, LP); gl.uniform1fv(U.uLU, LU); gl.uniform1fv(U.uLI, LI); gl.uniform1fv(U.uLL, LL);
+      gl.uniform1fv(U.uLR, LR); gl.uniform3fv(U.uLA, LA); gl.uniform3fv(U.uLB, LB); gl.uniform3fv(U.uLC, LC);
+      gl.uniform1f(U.uU0, clamp(vw * 0.36, 300, 560) * S);
+      // the per-light breath replaces the shared one for this look
+      gl.uniform1f(U.uI, LOOKS[look].gain * (1 - 0.3 * Math.abs(stir)));
+    }
     var running = false, last = 0, clock = 0;
     function frame(now) {
       if (!running) return;
@@ -934,6 +972,7 @@
       gl.uniform1f(U.uI, C.i * LOOKS[look].gain * breath * (1 - 0.3 * Math.abs(stir)));
       gl.uniform1f(U.uPhase, phase); gl.uniform1f(U.uStir, stir); gl.uniform1f(U.uSwirl, swirl); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
       gl.uniform1f(U.uMode, LOOKS[look].mode); gl.uniform1f(U.uScroll, sy * S);
+      if (LOOKS[look].mode === 4) lightsUp(dt);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       requestAnimationFrame(frame);
     }
