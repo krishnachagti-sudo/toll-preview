@@ -648,10 +648,12 @@
     if (!gl) return;
 
     var VS = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    // Four looks share one shader: 0 glow (the original), 1 fog, 2 silk, 3 smoke.
     var FS = [
       '#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif',
       'uniform vec2 uCore;uniform vec2 uM;uniform float uMA;uniform float uT;uniform float uU;',
       'uniform vec3 uC1;uniform vec3 uC2;uniform vec3 uC3;uniform float uI;uniform float uLine;uniform float uRound;',
+      'uniform float uMode;uniform float uScroll;',
       'float h(vec2 p){vec3 p3=fract(vec3(p.xyx)*.1031);p3+=dot(p3,p3.yzx+33.33);return fract((p3.x+p3.y)*p3.z);}',
       'float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);',
       ' return mix(mix(h(i),h(i+vec2(1.,0.)),u.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),u.x),u.y);}',
@@ -661,20 +663,60 @@
       ' vec2 q=(gl_FragCoord.xy-uCore)/uU;',
       ' vec2 m=(uM-uCore)/uU;float ml=length(m);if(ml>1.3)m*=1.3/ml;',
       ' vec2 d=q-m;float f=exp(-dot(d,d)*2.6)*uMA;',
-      ' q-=m*f*.38;q+=vec2(-d.y,d.x)*f*.18;',
-      ' float t=uT;',
-      ' vec2 w=vec2(fbm(q*1.25+vec2(0.,-t*.055)),fbm(q*1.25+vec2(4.7,1.9)+vec2(t*.045,0.)));',
-      ' vec2 r=q+(w-.5)*.95;',
-      ' float k=fbm(r*1.7+vec2(t*.03,-t*.05));',
-      ' vec2 e=r-vec2(0.,.12*(1.-uRound));',
-      ' float wide=exp(-(e.x*e.x*.9+e.y*e.y*mix(2.8,1.1,uRound)));',
-      ' vec2 g=r-vec2(0.,.04*(1.-uRound));',
-      ' float mid=exp(-(g.x*g.x*mix(2.,1.6,uRound)+g.y*g.y*mix(9.,2.4,uRound)));',
-      ' float core=exp(-(r.x*r.x*4.2+(r.y-.015)*(r.y-.015)*mix(34.,7.,uRound)));',
-      ' vec3 col=uC1*wide*.09*(.4+1.*k)+uC2*mid*.4*(.35+1.15*k)+uC3*core*.5*(.75+.5*k)*uLine;',
-      ' col+=uC2*f*.05*(.5+k);',
+      ' float t=uT;vec3 col=vec3(0.);',
+      // screen-space coordinates for the full-screen looks; deeper layers drift slower with scroll
+      ' vec2 p=gl_FragCoord.xy/uU;float sc=uScroll/uU;',
+      ' vec2 pc=(gl_FragCoord.xy-uM)/uU;float part=exp(-dot(pc,pc)*3.2)*uMA;',
+      ' if(uMode<.5){',
+      '  q-=m*f*.38;q+=vec2(-d.y,d.x)*f*.18;',
+      '  vec2 w=vec2(fbm(q*1.25+vec2(0.,-t*.055)),fbm(q*1.25+vec2(4.7,1.9)+vec2(t*.045,0.)));',
+      '  vec2 r=q+(w-.5)*.95;float k=fbm(r*1.7+vec2(t*.03,-t*.05));',
+      '  vec2 e=r-vec2(0.,.12*(1.-uRound));float wide=exp(-(e.x*e.x*.9+e.y*e.y*mix(2.8,1.1,uRound)));',
+      '  vec2 g=r-vec2(0.,.04*(1.-uRound));float mid=exp(-(g.x*g.x*mix(2.,1.6,uRound)+g.y*g.y*mix(9.,2.4,uRound)));',
+      '  float core=exp(-(r.x*r.x*4.2+(r.y-.015)*(r.y-.015)*mix(34.,7.,uRound)));',
+      '  col=uC1*wide*.09*(.4+1.*k)+uC2*mid*.4*(.35+1.15*k)+uC3*core*.5*(.75+.5*k)*uLine+uC2*f*.05*(.5+k);',
+      ' } else if(uMode<1.5){',
+      // fog: three layers of mist at different depths, thickest around the section's station,
+      // and the pointer parts it like a hand through mist
+      '  float d1=fbm(p*.9+vec2(t*.018,sc*.18-t*.008));',
+      '  float d2=fbm(p*1.9+vec2(-t*.03,sc*.42)+d1*1.2);',
+      '  float d3=fbm(p*3.6+vec2(t*.045,sc*.75)+d2*.9);',
+      '  float dens=smoothstep(.3,.78,d1*.5+d2*.32+d3*.18);',
+      '  float near=exp(-dot(q*vec2(.7,.9),q*vec2(.7,.9))*.3);',
+      '  dens*=mix(.3,1.,near)*(1.-part*.8);',
+      '  vec3 tint=mix(uC1,uC2,smoothstep(.35,.7,d2));tint=mix(tint,uC3,smoothstep(.55,.85,d3)*.5);',
+      '  col=tint*dens*.62+tint*pow(dens,3.)*.5;',
+      '  vec2 cq=q*vec2(.9,2.2);col+=uC3*exp(-dot(cq,cq)*1.4)*.22*uLine*(.6+d3);',
+      '  col+=uC2*part*.04;',
+      ' } else if(uMode<2.5){',
+      // silk: slow curtains of light that fold through the station, bending around the pointer
+      '  q-=m*f*.3;',
+      '  float w=fbm(q*1.1+vec2(t*.035,-t*.02+sc*.15));',
+      '  float v=q.y*2.4+q.x*.55+w*2.6+sin(q.x*1.3+t*.12)*.35;',
+      '  float b1=pow(.5+.5*sin(v*3.1416),7.);',
+      '  float b2=pow(.5+.5*sin(v*1.83+1.7+t*.05),12.);',
+      '  float b3=pow(.5+.5*sin(v*4.7-.6),18.);',
+      '  float env=exp(-dot(q*vec2(.5,1.05),q*vec2(.5,1.05)));',
+      '  float k=fbm(q*2.4-t*.04);',
+      '  col=(uC2*b1*.34+uC1*b2*.3+uC3*b3*.32)*env*(.55+.9*k);',
+      '  col+=uC1*env*.035;',
+      '  vec2 cq=q*vec2(1.,2.6);col+=uC3*exp(-dot(cq,cq)*2.)*.2*uLine;',
+      ' } else {',
+      // smoke: twice domain-warped noise, slow tendrils that curl and thin out at the edges
+      '  vec2 s=q*1.15+vec2(0.,sc*.12);s-=m*f*.35;',
+      '  vec2 a=vec2(fbm(s+vec2(0.,t*.02)),fbm(s+vec2(5.2,1.3)-t*.015));',
+      '  vec2 b=vec2(fbm(s+3.2*a+vec2(1.7,9.2)+t*.03),fbm(s+3.2*a+vec2(8.3,2.8)-t*.025));',
+      '  float v=fbm(s+3.4*b);',
+      '  float env=exp(-dot(q*vec2(.55,.95),q*vec2(.55,.95))*.9)*(1.-.45*exp(-dot(q*vec2(.9,1.6)-vec2(0.,1.1),q*vec2(.9,1.6)-vec2(0.,1.1))));',
+      '  float tend=pow(clamp(v,0.,1.),2.6)*2.6;',
+      '  vec3 tint=mix(uC1,uC2,clamp(length(a)*1.1,0.,1.));tint=mix(tint,uC3,clamp(b.x*b.x*1.4,0.,1.));',
+      '  col=tint*tend*env*.5;',
+      '  vec2 cq=q*vec2(1.,2.4);col+=uC3*exp(-dot(cq,cq)*1.8)*.18*uLine;',
+      ' }',
       ' col*=uI;',
-      ' col+=(h(gl_FragCoord.xy+fract(t))-.5)/255.;',
+      // fine grain keeps soft gradients from banding and gives the fog some tooth
+      ' float gr=h(gl_FragCoord.xy+fract(t*7.13)*91.);',
+      ' col+=(gr-.5)*mix(1.,3.,step(.5,uMode))/255.;',
       ' col=max(col,0.);',
       ' gl_FragColor=vec4(col,clamp(max(col.r,max(col.g,col.b)),0.,1.));',
       '}'
@@ -697,7 +739,7 @@
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     var U = {};
-    ['uCore', 'uM', 'uMA', 'uT', 'uU', 'uC1', 'uC2', 'uC3', 'uI', 'uLine', 'uRound'].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
+    ['uCore', 'uM', 'uMA', 'uT', 'uU', 'uC1', 'uC2', 'uC3', 'uI', 'uLine', 'uRound', 'uMode', 'uScroll'].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
 
     // The site's own colours, as 0..1 RGB.
     var MAG = [1, .24, .53], EMB = [1, .33, .19], AMB = [1, .72, .45], DATE = [1, .71, .28],
@@ -718,6 +760,34 @@
     ].filter(function (s) { return (s.el = document.querySelector(s.sel)); });
     if (!STATIONS.length) return;
     var win = document.getElementById('app');
+
+    // The look: chosen by ?fog=, remembered per visitor, switchable from the preview chooser.
+    var LOOKS = { glow: { mode: 0, gain: 1, name: 'Glow' }, fog: { mode: 1, gain: 1, name: 'Fog' },
+      silk: { mode: 2, gain: 1, name: 'Silk' }, smoke: { mode: 3, gain: .62, name: 'Smoke' } };
+    var look = 'fog';
+    try { look = localStorage.getItem('mx-fog') || look; } catch (err) { /* storage blocked */ }
+    var asked = new URLSearchParams(location.search).get('fog');
+    if (asked) look = asked;
+    if (!LOOKS[look]) look = 'fog';
+    root.setAttribute('data-fog', look);
+    function setLook(k) {
+      if (!LOOKS[k]) return;
+      look = k;
+      root.setAttribute('data-fog', k);
+      try { localStorage.setItem('mx-fog', k); } catch (err) { /* storage blocked */ }
+      var u = new URL(location.href); u.searchParams.set('fog', k); history.replaceState(null, '', u);
+      each('.mx-fogs button', function (b) { b.setAttribute('aria-pressed', b.dataset.fog === k ? 'true' : 'false'); });
+      wake();
+    }
+    var bar = document.createElement('div');
+    bar.className = 'mx-fogs';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Background style (preview)');
+    bar.innerHTML = '<span>Background</span>' + Object.keys(LOOKS).map(function (k) {
+      return '<button type="button" data-fog="' + k + '" aria-pressed="' + (k === look) + '">' + LOOKS[k].name + '</button>';
+    }).join('');
+    bar.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) setLook(b.dataset.fog); });
+    document.body.appendChild(bar);
 
     document.body.insertBefore(canvas, document.body.firstChild);
     var S = 0.5, cw = 0, ch = 0, tops = [], bottoms = [], winTop = 0;
@@ -790,7 +860,8 @@
       gl.uniform1f(U.uT, clock);
       gl.uniform1f(U.uU, C.u * S);
       gl.uniform3fv(U.uC1, C.c1); gl.uniform3fv(U.uC2, C.c2); gl.uniform3fv(U.uC3, C.c3);
-      gl.uniform1f(U.uI, C.i); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
+      gl.uniform1f(U.uI, C.i * LOOKS[look].gain); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
+      gl.uniform1f(U.uMode, LOOKS[look].mode); gl.uniform1f(U.uScroll, sy * S);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       requestAnimationFrame(frame);
     }

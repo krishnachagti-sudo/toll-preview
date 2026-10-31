@@ -298,3 +298,16 @@ html.mx-vt-local::view-transition-old(*),html.mx-vt-local::view-transition-new(*
   .rv,.split .w,.rv tbody tr,.rv .crow{opacity:1 !important;transform:none !important;filter:none !important}
   .mx-field{display:none}
 }
+
+/* ---------- preview only: the background-style switcher ---------- */
+.mx-fogs{position:fixed;right:16px;bottom:56px;z-index:60;display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;
+  background:linear-gradient(180deg,rgba(30,31,36,.78),rgba(14,15,18,.88));border:1px solid rgba(255,255,255,.12);
+  -webkit-backdrop-filter:blur(16px) saturate(170%);backdrop-filter:blur(16px) saturate(170%);
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.07);font:500 12.5px/1 var(--font-sans,system-ui)}
+.mx-fogs span{color:var(--muted);padding:0 8px 0 10px}
+.mx-fogs button{appearance:none;border:0;background:none;color:#c9ccd2;font:inherit;padding:8px 11px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.mx-fogs button:hover{color:#fff;background:rgba(255,255,255,.06)}
+.mx-fogs button[aria-pressed="true"]{color:#111;background:linear-gradient(180deg,#fff,#e4e5e9)}
+.mx-fogs button:focus-visible{outline:2px solid var(--focus,#ff9a62);outline-offset:1px}
+@media (max-width:720px){.mx-fogs{left:50%;right:auto;transform:translateX(-50%);bottom:84px}.mx-fogs span{display:none}}
+@media (prefers-reduced-motion:reduce){.mx-fogs{display:none}}
