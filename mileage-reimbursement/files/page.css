@@ -1,0 +1,75 @@
+/* Mileage: a ledger desk inside the brand chrome, reusing its tokens. One accent (money green)
+   carries the answer; the rate periods read as ruled ledger lines. */
+.mr {
+  --accent: var(--h-money);
+  --accent-ink: #06170f;
+  --toll-accent: var(--h-money);
+  --toll-accent-ink: #06170f;
+  --mr-owed: #ffb547;
+}
+
+.mr-intro { padding-block: 40px 8px; }
+.mr-intro h1 { margin-bottom: 0.25em; }
+.mr-price { color: var(--ink-soft); max-width: 46rem; margin: 0; font-variant-numeric: tabular-nums; }
+
+.mr-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.mr-desk > * { min-width: 0; }
+@media (min-width: 960px) { .mr-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
+
+.mr-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.mr-form legend { padding: 0; }
+.mr-form .btn[type="submit"] { width: 100%; }
+.mr-form textarea, .mr-file textarea { font-family: var(--font-mono); font-size: 13px; }
+.mr-run-note { margin: 10px 0 0; }
+.mr-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; align-items: end; }
+.mr-pair > .hint { grid-column: 1 / -1; }
+.mr-pair label { display: block; margin-bottom: 6px; }
+.mr input[type="date"] { color-scheme: dark; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 0 0 14px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; }
+
+/* Result */
+.mr-out { min-height: 12rem; }
+.mr-sheet-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
+.mr-answer { font: 500 clamp(2rem, 7vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; font-variant-numeric: tabular-nums lining-nums; }
+.mr-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.mr-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 46rem; }
+.mr-file-answer { color: var(--text); font-size: 1.05rem; }
+.mr-table { font-variant-numeric: tabular-nums; margin-bottom: 10px; }
+.mr-table .num { text-align: right; white-space: nowrap; }
+.mr-table .mr-src { color: var(--ink-soft); font-size: 0.85rem; }
+.mr-table .mr-owed { color: var(--mr-owed); font-weight: 600; }
+.mr-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
+.mr-lines, .mr-flags { list-style: none; margin: 0 0 12px; padding: 0; max-width: 48rem; font-variant-numeric: tabular-nums; }
+.mr-lines li, .mr-flags li { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.mr-lines .when, .mr-flags .when { font: 500 0.82rem/1.5 var(--font-mono); color: var(--ink-soft); min-width: 7.5rem; }
+.mr-tag { font: 500 0.72rem/1.6 var(--font-mono); color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 7px; }
+.mr-why summary { cursor: pointer; color: var(--ink-soft); margin: 6px 0; }
+.mr-aside, .mr-cost { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 10px; max-width: 46rem; }
+.mr-cost { margin-top: 16px; }
+.mr-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 14px; }
+.mr-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.mr-facts dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; font-size: 1.1rem; }
+
+/* The trip file */
+.mr-file { margin-top: 56px; border-top: 3px double var(--rule-strong); padding-top: 24px; }
+.mr-file-lede { color: var(--ink-soft); max-width: 50rem; }
+.mr-file-grid { display: grid; gap: 28px; align-items: start; }
+.mr-file-grid > * { min-width: 0; }
+@media (min-width: 960px) { .mr-file-grid { grid-template-columns: 22rem 1fr; gap: 48px; } }
+.mr-options summary { cursor: pointer; color: var(--ink-soft); margin-bottom: 12px; }
+.mr-buy { border-bottom: 1px solid var(--rule); margin-bottom: 18px; padding-bottom: 6px; }
+.mr-buy .mr-heading { margin-top: 0; }
+.mr-got a { color: var(--accent); }
+.mr-log { margin-top: 32px; border-top: 1px solid var(--rule); padding-top: 16px; }
+.mr-log-grid { display: grid; gap: 0 16px; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); align-items: end; }
+.mr-fleet { grid-column: 1 / -1; }
+
+.mr-rules { margin-top: 56px; }
+.mr-rule-cols { display: grid; gap: 24px; }
+@media (min-width: 900px) { .mr-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.mr-rule-cols h3 { margin-top: 0; }
+.mr-notes { padding-left: 1.1em; max-width: 60rem; }
+.mr-notes li { margin-bottom: 8px; }
+.mr-prices { margin-top: 24px; }
+.mr-code { margin-top: 40px; }

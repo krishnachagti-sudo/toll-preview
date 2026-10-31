@@ -1,0 +1,94 @@
+/* The 1099 threshold tracker: a year-end desk. Sits inside the brand chrome and reuses its tokens.
+   The money hue marks the line; green means a form is due, amber means near the line. */
+.tt {
+  --accent: var(--h-money);
+  --accent-ink: #1a0610;
+  --toll-accent: var(--h-money);
+  --toll-accent-ink: #1a0610;
+  --tt-file: #5fd3a0;
+  --tt-near: #ffb547;
+  --tt-out: var(--muted);
+}
+
+.tt-intro { padding-block: 40px 8px; }
+.tt-intro h1 { margin-bottom: 0.25em; }
+.tt-price { color: var(--ink-soft); max-width: 46rem; margin: 0; font-variant-numeric: tabular-nums; }
+.tt h2 { margin-top: 0; }
+.tt-free { display: inline-block; vertical-align: middle; font: 500 0.7rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--tt-file); border: 1px solid var(--tt-file); padding: 1px 8px; border-radius: 999px; margin-left: 6px; }
+
+.tt-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.tt-desk > *, .tt-scan-grid > * { min-width: 0; }
+@media (min-width: 960px) { .tt-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
+
+.tt-form, .tt-scan-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.tt-form legend { padding: 0; }
+.tt-form .btn[type="submit"], .tt-scan-form .btn[type="submit"] { width: 100%; }
+.tt-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+.tt-pair label, .tt-pair3 label { display: block; margin-bottom: 6px; }
+.tt-pair3 { display: grid; grid-template-columns: 2fr 1fr 1.4fr; gap: 6px 12px; }
+.tt select { width: 100%; }
+.tt-run-note { margin: 10px 0 0; }
+
+/* Results */
+.tt-out { min-height: 12rem; }
+.tt-sheet-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
+.tt-answer { font: 500 clamp(1.9rem, 6vw, 3rem)/1.08 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; font-variant-numeric: lining-nums; }
+.tt-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.tt-answer.yes { color: var(--tt-file); }
+.tt-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 46rem; }
+.tt-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 12px; }
+.tt-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.tt-facts dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; }
+.tt-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 24px 0 8px; }
+.tt-reasons, .tt-notes, .tt-states { margin: 0 0 12px; padding-left: 1.2em; max-width: 48rem; }
+.tt-reasons li, .tt-notes li, .tt-states li { margin: 0 0 6px; }
+.tt-notes { color: var(--text-2); font-size: 0.92rem; }
+.tt-states { font-size: 0.9rem; color: var(--text-2); }
+.tt-aside, .tt-cost { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 10px; max-width: 48rem; }
+.tt-cost { margin-top: 16px; font-variant-numeric: tabular-nums; }
+
+/* The scan */
+.tt-scan { margin-top: 56px; }
+.tt-scan-grid { display: grid; gap: 24px 48px; }
+@media (min-width: 960px) { .tt-scan-grid { grid-template-columns: 1.4fr 1fr; } }
+.tt textarea { font-family: var(--font-mono); font-size: 13px; width: 100%; }
+.tt input[type="file"] { font: inherit; font-size: 14px; color: var(--text-2); max-width: 100%; }
+.tt-map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 0 12px; }
+.tt-map-grid .field { margin-bottom: 10px; }
+.tt-payer { border: 1px solid var(--line-2); border-radius: var(--radius); padding: 10px 14px; margin: 0 0 16px; }
+.tt-payer summary { cursor: pointer; font-size: 14px; color: var(--text-2); }
+.tt-payer[open] summary { margin-bottom: 12px; }
+.tt-preview { color: var(--text-2); font-size: 0.95rem; margin: 0 0 12px; font-variant-numeric: tabular-nums; }
+.tt-preview:empty { display: none; }
+.tt-report { margin-top: 32px; }
+.tt-table th small { display: block; color: var(--muted); font: 400 12px/1.4 var(--font-mono); text-transform: none; letter-spacing: 0; }
+.tt-table tbody th { font-weight: 500; text-transform: none; letter-spacing: 0; font-family: var(--font-text); font-size: 14px; color: var(--text); white-space: normal; }
+.tt-table td { font-size: 13.5px; }
+.tt-badge { display: inline-block; white-space: nowrap; font: 500 0.72rem/1.5 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; padding: 1px 8px; border-radius: 999px; border: 1px solid currentColor; }
+.tt-badge.file { color: var(--tt-file); }
+.tt-badge.near { color: var(--tt-near); }
+.tt-badge.under, .tt-badge.exempt { color: var(--tt-out); }
+.tt-why summary { cursor: pointer; color: var(--accent); font-size: 13px; }
+.tt-why ul { margin: 8px 0 0; padding-left: 1.1em; min-width: 16rem; }
+.tt-files { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Lines and rules */
+.tt-lines, .tt-rules, .tt-fine { margin-top: 56px; }
+.tt-lines-grid tbody th { font-weight: 500; text-transform: none; letter-spacing: 0; font-family: var(--font-text); font-size: 14px; color: var(--text); white-space: normal; }
+.tt-lines-grid tbody th small { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; }
+.tt-projection { margin-top: 24px; max-width: 48rem; }
+.tt-rule-cols { display: grid; gap: 8px 32px; }
+@media (min-width: 760px) { .tt-rule-cols { grid-template-columns: 1fr 1fr; } }
+.tt-rule-cols h3 { margin-bottom: 4px; }
+.tt-rule-cols p { color: var(--text-2); }
+.tt-disclaimers, .tt-sources { color: var(--text-2); font-size: 0.92rem; max-width: 52rem; padding-left: 1.2em; }
+.tt-disclaimers li, .tt-sources li { margin: 0 0 6px; }
+.tt-code { margin-top: 48px; padding-bottom: 48px; }
+
+@media (max-width: 520px) {
+  .tt-pair, .tt-pair3 { grid-template-columns: 1fr; }
+}
+@media print {
+  .tt-intro, .tt-desk, .tt-scan-form, .tt-code, .tt-lines, .tt-rules { display: none; }
+  .tt-why[open] summary, .tt-why summary { display: none; }
+}

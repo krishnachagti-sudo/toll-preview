@@ -1,0 +1,16 @@
+box,name,line_2025,line_2026,reported_for_corporations
+1099-NEC box 1a,Nonemployee compensation,$600,"$2,000",yes
+1099-NEC box 2,"Direct sales of $5,000 or more (checkbox)","$5,000","$5,000",no
+1099-NEC box 3,Excess golden parachute payments,any amount,any amount,no
+1099-MISC box 1,Rents,$600,"$2,000",no
+1099-MISC box 2,Royalties,$10,$10,no
+1099-MISC box 3,"Other income (prizes, awards, damages)",$600,"$2,000",no
+1099-MISC box 5,Fishing boat proceeds,any amount,any amount,no
+1099-MISC box 6,Medical and health care payments,$600,"$2,000",yes
+1099-MISC box 7,"Direct sales of $5,000 or more (checkbox)","$5,000","$5,000",no
+1099-MISC box 8,Substitute payments in lieu of dividends or interest,$10,$10,yes
+1099-MISC box 9,Crop insurance proceeds,$600,"$2,000",no
+1099-MISC box 10,Gross proceeds paid to an attorney,$600,$600,yes
+1099-MISC box 11,Fish purchased for resale (cash),$600,$600,yes
+1099-MISC box 12,Section 409A deferrals,$600,"$2,000",no
+1099-MISC box 15,Nonqualified deferred compensation,$600,"$2,000",no
