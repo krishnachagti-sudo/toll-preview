@@ -718,12 +718,12 @@
       // blend: the original glow, made of smoke. Same shape, place and colours; the light is
       // broken into soft translucent wisps that rise slowly and fray at the edges, like lit smoke.
       '  q-=m*f*(.38+uSwirl*.2);q+=vec2(-d.y,d.x)*f*(.18+uSwirl*.8);',
-      '  vec2 w=vec2(fbm(q*1.25+vec2(0.,-t*.05)),fbm(q*1.25+vec2(4.7,1.9)+vec2(t*.04,0.)));',
-      '  vec2 r=q+(w-.5)*.95;float k=fbm(r*1.7+vec2(t*.03,-t*.05));',
+      '  vec2 w=vec2(fbm(q*1.25+vec2(0.,-t*.07)),fbm(q*1.25+vec2(4.7,1.9)+vec2(t*.06,0.)));',
+      '  vec2 r=q+(w-.5)*.95;float k=fbm(r*1.7+vec2(t*.045,-t*.07));',
       // the smoke: noise carried upward (smoke rises) with a slow sideways sway
-      '  vec2 sp=r*2.1+vec2(sin(t*.07+r.y*1.3)*.25,-t*.09);',
+      '  vec2 sp=r*2.1+vec2(sin(t*.11+r.y*1.3)*.25,-t*.14);',
       '  float s1=fbm(sp+w*1.4);',
-      '  float s2=fbm(sp*1.9+vec2(3.1,-t*.05)+s1*1.2);',
+      '  float s2=fbm(sp*1.9+vec2(3.1,-t*.08)+s1*1.2);',
       '  float wisp=smoothstep(.28,.78,s1*.6+s2*.4);',
       '  vec2 e=r-vec2(0.,.12*(1.-uRound));float wide=exp(-(e.x*e.x*.9+e.y*e.y*mix(2.8,1.1,uRound)));',
       '  vec2 g=r-vec2(0.,.04*(1.-uRound));float mid=exp(-(g.x*g.x*mix(2.,1.6,uRound)+g.y*g.y*mix(9.,2.4,uRound)));',
@@ -731,7 +731,7 @@
       // the edges fray: where the glow thins, the smoke decides what is left
       '  float midS=smoothstep(0.,1.,mid*(.55+.9*wisp));',
       '  float wideS=wide*(.35+.95*wisp);',
-      '  col=uC1*wideS*.09*(.4+k)+uC2*midS*.4*(.35+1.15*k)+uC3*core*.5*(.75+.5*k)*uLine*(.8+.3*wisp)+uC2*f*.05*(.5+k);',
+      '  col=uC1*wideS*.1*(.4+k)+uC2*midS*.4*(.35+1.15*k)+uC3*core*.32*(.75+.5*k)*uLine*(.8+.3*wisp)+uC2*f*.05*(.5+k);',
       ' }',
       ' col*=uI;',
       // fine grain keeps soft gradients from banding and gives the fog some tooth
@@ -807,7 +807,7 @@
     if (!LIGHTS.length) return;
 
     // The look: chosen by ?fog=, remembered per visitor, switchable from the preview chooser.
-    var LOOKS = { blend: { mode: 4, gain: 1, name: 'Smoky glow' }, glow: { mode: 0, gain: 1, name: 'Glow' },
+    var LOOKS = { blend: { mode: 4, gain: .58, name: 'Smoky glow' }, glow: { mode: 0, gain: 1, name: 'Glow' },
       smoke: { mode: 3, gain: .62, name: 'Smoke' }, fog: { mode: 1, gain: 1, name: 'Fog' }, silk: { mode: 2, gain: 1, name: 'Silk' } };
     var look = 'blend';
     try { look = localStorage.getItem('mx-fog2') || look; } catch (err) { /* storage blocked */ }
@@ -921,13 +921,17 @@
       svel += (raw - svel) * (1 - Math.exp(-dt * 5));
       stir += (clamp(svel / 2200, -1, 1) - stir) * (1 - Math.exp(-dt * 3));
       phase += Math.min(Math.abs(svel), 4000) / 1000 * dt * 5;
-      gl.uniform2f(U.uCore, C.x * S, (vh - C.y) * S);
+      // The hum: two slow, unrelated waves, so the breath never repeats exactly; the light also
+      // wanders a little around what it lights, like a flame behind glass.
+      var breath = 1 + 0.13 * Math.sin(clock * 0.9) + 0.06 * Math.sin(clock * 0.37 + 1.7);
+      var dx = C.u * 0.06 * Math.sin(clock * 0.31), dy = C.u * 0.04 * Math.cos(clock * 0.23 + 0.8);
+      gl.uniform2f(U.uCore, (C.x + dx) * S, (vh - C.y - dy) * S);
       gl.uniform2f(U.uM, mx, my);
       gl.uniform1f(U.uMA, ma);
       gl.uniform1f(U.uT, clock);
-      gl.uniform1f(U.uU, C.u * S);
+      gl.uniform1f(U.uU, C.u * (1 + 0.035 * Math.sin(clock * 0.9 - 0.6)) * S);
       gl.uniform3fv(U.uC1, C.c1); gl.uniform3fv(U.uC2, C.c2); gl.uniform3fv(U.uC3, C.c3);
-      gl.uniform1f(U.uI, C.i * LOOKS[look].gain * (1 - 0.3 * Math.abs(stir)));
+      gl.uniform1f(U.uI, C.i * LOOKS[look].gain * breath * (1 - 0.3 * Math.abs(stir)));
       gl.uniform1f(U.uPhase, phase); gl.uniform1f(U.uStir, stir); gl.uniform1f(U.uSwirl, swirl); gl.uniform1f(U.uLine, C.line); gl.uniform1f(U.uRound, C.round);
       gl.uniform1f(U.uMode, LOOKS[look].mode); gl.uniform1f(U.uScroll, sy * S);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
