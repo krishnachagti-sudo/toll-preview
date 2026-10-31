@@ -1,0 +1,11 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2004-01-01,Thursday,2004-01-01,Thursday,
+Birthday of Martin Luther King Jr.,2004-01-19,Monday,2004-01-19,Monday,
+Washington's Birthday,2004-02-16,Monday,2004-02-16,Monday,
+Memorial Day,2004-05-31,Monday,2004-05-31,Monday,
+Independence Day,2004-07-04,Sunday,2004-07-05,Monday,"Falls on a Sunday, so the Monday is the day off"
+Labor Day,2004-09-06,Monday,2004-09-06,Monday,
+Columbus Day,2004-10-11,Monday,2004-10-11,Monday,
+Veterans Day,2004-11-11,Thursday,2004-11-11,Thursday,
+Thanksgiving Day,2004-11-25,Thursday,2004-11-25,Thursday,
+Christmas Day,2004-12-25,Saturday,2004-12-24,Friday,"Falls on a Saturday, so the Friday is the day off"

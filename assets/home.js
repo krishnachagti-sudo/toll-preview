@@ -1,0 +1,238 @@
+/* The home page. Loaded in <head> so the motion classes are set before the first paint; the
+   rest waits for the DOM (and for toll.js, which loads at the end of the body).
+
+   - Fills every price, tool name and "what $20 buys" figure from GET {base}/api/v1/tools.
+     The markup carries the same values as a no-JavaScript fallback:
+       data-price="<slug>" [data-currency="USD"|"INR"]   the per-call price, "from" the lowest action price, or "Free"
+       data-tool-name="<slug>"                            the tool's name
+       data-buys="<slug>"                                 calls a $20 top-up pays for
+   - Fills the site's own address into the code samples and the MCP URL.
+   - The hero replay, the code tabs, the request form and reveal-on-scroll. */
+(function () {
+  'use strict';
+
+  var root = document.documentElement;
+  root.classList.add('js');
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (!reduce) root.classList.add('motion');
+
+  // The smallest top-up is $20 (the pricing terms say so); "what it buys" divides it by the price.
+  var MIN_TOPUP_USD_MICROS = 20000000;
+
+  function each(selector, fn, scope) {
+    [].forEach.call((scope || document).querySelectorAll(selector), fn);
+  }
+
+  // ---------- prices and names from the tools API ----------
+  function fillFromTools(tools) {
+    var bySlug = {};
+    tools.forEach(function (t) { bySlug[t.slug] = t; });
+    each('[data-price]', function (el) {
+      var t = bySlug[el.getAttribute('data-price')];
+      if (!t) return;
+      var currency = el.getAttribute('data-currency') || 'USD';
+      // A tool with several actions has no single price: show its lowest paid price as "from".
+      el.textContent = t.price && t.price.display ? t.price.display[currency]
+        : t.pricing && t.pricing.from ? 'from ' + t.pricing.from.display[currency] : 'Free';
+    });
+    each('[data-tool-name]', function (el) {
+      var t = bySlug[el.getAttribute('data-tool-name')];
+      if (t) el.textContent = t.name;
+    });
+    each('[data-buys]', function (el) {
+      var t = bySlug[el.getAttribute('data-buys')];
+      if (!t || !t.price || !(t.price.USD > 0)) return;
+      el.textContent = Math.floor(MIN_TOPUP_USD_MICROS / t.price.USD).toLocaleString('en-US');
+    });
+  }
+
+  // ---------- the site's own address ----------
+  function fillOrigin(base) {
+    each('.js-origin', function (el) { el.textContent = location.origin; });
+    each('.js-host', function (el) { el.textContent = location.host; });
+    var copyBtn = document.getElementById('mcp-copy');
+    var url = document.getElementById('mcp-url');
+    if (!copyBtn || !url) return;
+    copyBtn.addEventListener('click', function () {
+      var text = location.origin + base + '/mcp';
+      function said(msg) {
+        copyBtn.textContent = msg;
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1600);
+      }
+      function select() {
+        var range = document.createRange();
+        range.selectNodeContents(url);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        said('Selected');
+      }
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(function () { said('Copied'); }, select);
+      else select();
+    });
+  }
+
+  // ---------- hero: the app window and its replay ----------
+  function heroWindow() {
+    var app = document.getElementById('app');
+    if (!app) return;
+    function show(v) {
+      each('.view-wrap', function (w) { w.hidden = w.getAttribute('data-for') !== v; }, app);
+      each('button.s-item', function (b) { b.setAttribute('aria-current', b.getAttribute('data-view') === v ? 'true' : 'false'); }, app);
+      each('.act .feed li', function (li) { li.classList.toggle('hot', li.getAttribute('data-for') === v); }, app);
+    }
+
+    var q = document.getElementById('qtext');
+    var enter = document.getElementById('enter');
+    var btn = document.getElementById('replay');
+    var full = q.textContent;
+    var timers = [];
+    var fxItems = app.querySelectorAll('button.s-item[data-view="fx"]');
+    var fxRow = app.querySelector('.act .feed li[data-for="fx"]');
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+    function state(s) { app.classList.remove('s0', 's1', 's2'); if (s) app.classList.add(s); }
+    function unflash() { [].forEach.call(fxItems, function (b) { b.classList.remove('flash'); }); fxRow.classList.remove('flash'); }
+    function settle() { clear(); state(''); q.textContent = full; enter.classList.remove('press'); unflash(); }
+    function play() {
+      clear();
+      show('fx');
+      if (reduce) { settle(); return; }
+      unflash();
+      state('s0');
+      q.textContent = '';
+      var t = 420;
+      for (var i = 1; i <= full.length; i++) {
+        (function (n) { at(t, function () { q.textContent = full.slice(0, n); }); })(i);
+        t += 36 + (full[i - 1] === ' ' ? 34 : 0);
+      }
+      at(t + 180, function () { enter.classList.add('press'); });
+      at(t + 420, function () { enter.classList.remove('press'); state('s1'); [].forEach.call(fxItems, function (b) { b.classList.add('flash'); }); });
+      at(t + 1050, function () { state('s2'); });
+      at(t + 1800, function () { state(''); fxRow.classList.add('flash'); });
+      at(t + 3400, unflash);
+    }
+    each('button.s-item', function (b) {
+      b.addEventListener('click', function () { settle(); show(b.getAttribute('data-view')); });
+    }, app);
+    btn.addEventListener('click', play);
+    if (!reduce && 'IntersectionObserver' in window) {
+      state('s0');
+      q.textContent = '';
+      var seen = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { seen.disconnect(); play(); }
+      }, { threshold: 0.2 });
+      seen.observe(app);
+    }
+  }
+
+  // ---------- code samples: tabs and a small highlighter ----------
+  function codePanel() {
+    var code = document.getElementById('code');
+    if (!code) return;
+    var ep = 'bd';
+    var lang = 'curl';
+    function render() {
+      each('pre[data-lang]', function (p) { p.hidden = !(p.getAttribute('data-ep') === ep && p.getAttribute('data-lang') === lang); }, code);
+      each('pre[data-resp]', function (p) { p.hidden = p.getAttribute('data-resp') !== ep; }, code);
+      each('[data-cost]', function (s) { s.hidden = s.getAttribute('data-cost') !== ep; }, code);
+      each('.tab[data-ep]', function (t) { t.setAttribute('aria-selected', String(t.getAttribute('data-ep') === ep)); }, code);
+      each('.tab[data-lang]', function (t) { t.setAttribute('aria-selected', String(t.getAttribute('data-lang') === lang)); }, code);
+    }
+    each('.tab', function (t) {
+      t.addEventListener('click', function () {
+        if (t.hasAttribute('data-ep')) ep = t.getAttribute('data-ep');
+        else lang = t.getAttribute('data-lang');
+        render();
+      });
+    }, code);
+
+    // Runs after the origin is filled in, on plain text, so nothing from the page is parsed as HTML.
+    var KW = /^(const|await|import|print|method|headers|body|json|curl)$/;
+    function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    each('pre code', function (el) {
+      var src = el.textContent;
+      var out = '';
+      var i = 0;
+      var m;
+      var re = /("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')(\s*:)?|\b(\d+(?:\.\d+)?)\b|(\s-[A-Za-z]\b)|([A-Za-z_]+)/g;
+      while ((m = re.exec(src))) {
+        out += esc(src.slice(i, m.index));
+        if (m[1]) out += '<span class="' + (m[2] ? 'tk-k' : 'tk-s') + '">' + esc(m[1]) + '</span>' + (m[2] || '');
+        else if (m[3]) out += '<span class="tk-n">' + m[3] + '</span>';
+        else if (m[4]) out += '<span class="tk-f">' + esc(m[4]) + '</span>';
+        else if (m[5]) out += KW.test(m[5]) ? '<span class="tk-w">' + m[5] + '</span>' : m[5];
+        i = re.lastIndex;
+      }
+      el.innerHTML = out + esc(src.slice(i));
+    }, code);
+  }
+
+  // ---------- "Need a tool we don't have?" ----------
+  function requestForm() {
+    var form = document.getElementById('req');
+    if (!form) return;
+    var msg = document.getElementById('req-msg');
+    var send = document.getElementById('req-send');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var need = form.elements.need.value.trim();
+      var email = form.elements.email.value.trim();
+      if (!need) { msg.textContent = 'Tell us what you need first.'; form.elements.need.focus(); return; }
+      var body = { need: need };
+      if (email) body.email = email;
+      msg.textContent = 'Sending...';
+      send.disabled = true;
+      // Toll.api posts JSON with the content type the server's same-origin check requires, and
+      // rejects with the message from the standard error body (a 429 included).
+      window.Toll.api('/api/requests', { body: body }).then(function (json) {
+        if (!json || json.received !== true) throw new Error('That did not go through. Please try again in a moment.');
+        form.reset();
+        msg.textContent = 'Thanks. We read every request.';
+      }).catch(function (err) {
+        msg.textContent = (err && err.message) || 'That did not go through. Please try again in a moment.';
+      }).then(function () { send.disabled = false; });
+    });
+  }
+
+  // ---------- small touches ----------
+  function spotlight() {
+    each('.gcard', function (c) {
+      c.addEventListener('pointermove', function (e) {
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  function reveal() {
+    var els = document.querySelectorAll('.rv');
+    if (reduce || !('IntersectionObserver' in window)) { each('.rv', function (el) { el.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    [].forEach.call(els, function (el) { io.observe(el); });
+  }
+
+  function boot() {
+    var Toll = window.Toll;
+    var base = Toll ? Toll.base : '';
+    fillOrigin(base);
+    heroWindow();
+    codePanel();
+    requestForm();
+    spotlight();
+    reveal();
+    if (!Toll) return;
+    Toll.api('/api/v1/tools').then(function (json) { fillFromTools(json.tools || []); }, function () { /* keep the printed values */ });
+    Toll.me().then(function (account) {
+      if (!account) return;
+      each('[data-signed-in-text]', function (el) { el.textContent = el.getAttribute('data-signed-in-text'); });
+    }, function () {});
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();

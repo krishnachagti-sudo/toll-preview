@@ -1,0 +1,15 @@
+date,weekday,business_day,federal_reserve_banks_open,holiday
+2026-10-31,Saturday,no,no,
+2026-11-01,Sunday,no,no,
+2026-11-02,Monday,yes,yes,
+2026-11-03,Tuesday,yes,yes,
+2026-11-04,Wednesday,yes,yes,
+2026-11-05,Thursday,yes,yes,
+2026-11-06,Friday,yes,yes,
+2026-11-07,Saturday,no,no,
+2026-11-08,Sunday,no,no,
+2026-11-09,Monday,yes,yes,
+2026-11-10,Tuesday,yes,yes,
+2026-11-11,Wednesday,no,no,Veterans Day
+2026-11-12,Thursday,yes,yes,
+2026-11-13,Friday,yes,yes,

@@ -1,0 +1,11 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2010-01-01,Friday,2010-01-01,Friday,
+Birthday of Martin Luther King Jr.,2010-01-18,Monday,2010-01-18,Monday,
+Washington's Birthday,2010-02-15,Monday,2010-02-15,Monday,
+Memorial Day,2010-05-31,Monday,2010-05-31,Monday,
+Independence Day,2010-07-04,Sunday,2010-07-05,Monday,"Falls on a Sunday, so the Monday is the day off"
+Labor Day,2010-09-06,Monday,2010-09-06,Monday,
+Columbus Day,2010-10-11,Monday,2010-10-11,Monday,
+Veterans Day,2010-11-11,Thursday,2010-11-11,Thursday,
+Thanksgiving Day,2010-11-25,Thursday,2010-11-25,Thursday,
+Christmas Day,2010-12-25,Saturday,2010-12-24,Friday,"Falls on a Saturday, so the Friday is the day off"

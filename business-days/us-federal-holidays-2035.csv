@@ -1,0 +1,12 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2035-01-01,Monday,2035-01-01,Monday,
+Birthday of Martin Luther King Jr.,2035-01-15,Monday,2035-01-15,Monday,
+Washington's Birthday,2035-02-19,Monday,2035-02-19,Monday,
+Memorial Day,2035-05-28,Monday,2035-05-28,Monday,
+Juneteenth National Independence Day,2035-06-19,Tuesday,2035-06-19,Tuesday,
+Independence Day,2035-07-04,Wednesday,2035-07-04,Wednesday,
+Labor Day,2035-09-03,Monday,2035-09-03,Monday,
+Columbus Day,2035-10-08,Monday,2035-10-08,Monday,
+Veterans Day,2035-11-11,Sunday,2035-11-12,Monday,"Falls on a Sunday, so the Monday is the day off"
+Thanksgiving Day,2035-11-22,Thursday,2035-11-22,Thursday,
+Christmas Day,2035-12-25,Tuesday,2035-12-25,Tuesday,

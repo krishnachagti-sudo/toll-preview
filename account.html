@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your account: Toll</title>
+
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <p id="loading" class="muted page-head">Loading your account.</p>
+  <p id="load-error" class="form-error" role="alert" hidden></p>
+
+  <!-- Signed out -->
+  <div id="signed-out" hidden>
+    <div class="page-head">
+      <p class="eyebrow">Account</p>
+      <h1>Sign in or create an account</h1>
+      <p class="lede">One account and one balance pay for every tool. Each month you get a small free allowance, and you only add money when you choose to.</p>
+    </div>
+    <div class="signed-out-grid ledger-section">
+      <form id="signup-form" novalidate>
+        <h2>Create an account</h2>
+        <p id="signup-error" class="form-error" role="alert"></p>
+        <div class="field">
+          <label for="signup-email">Email</label>
+          <input id="signup-email" name="email" type="email" autocomplete="email" required>
+          <p class="field-error" data-error-for="email"></p>
+        </div>
+        <div class="field">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="10" maxlength="200" required aria-describedby="signup-password-hint">
+          <p class="hint" id="signup-password-hint">At least 10 characters.</p>
+          <p class="field-error" data-error-for="password"></p>
+        </div>
+        <fieldset class="field">
+          <legend>Currency</legend>
+          <div class="radio-list">
+            <label><input type="radio" name="currency" value="USD" checked> <span>US dollars ($)</span></label>
+            <label><input type="radio" name="currency" value="INR"> <span>Indian rupees (₹), for paying from India</span></label>
+          </div>
+          <p class="hint">Your balance and prices are in this currency. You cannot change it later.</p>
+          <p class="field-error" data-error-for="currency"></p>
+        </fieldset>
+        <button class="btn" type="submit">Create account</button>
+      </form>
+
+      <form id="login-form" novalidate>
+        <h2>Sign in</h2>
+        <p id="login-error" class="form-error" role="alert"></p>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn" type="submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Signed in -->
+  <div id="signed-in" hidden>
+    <div class="page-head who">
+      <div>
+        <p class="eyebrow">Account</p>
+        <p class="muted" id="who-email"></p>
+      </div>
+      <button type="button" class="btn btn-quiet btn-small" id="logout">Sign out</button>
+    </div>
+
+    <section aria-labelledby="balance-title">
+      <h1 id="balance-title" class="visually-hidden">Your balance</h1>
+      <p class="eyebrow">Balance</p>
+      <p class="balance-total money" id="balance-total"></p>
+      <dl class="pots">
+        <div>
+          <dt>Free allowance</dt>
+          <dd class="money" id="balance-grant"></dd>
+          <dd class="note">We spend this first. It renews on the 1st of each month (UTC), and anything left over expires at the end of the month.</dd>
+        </div>
+        <div>
+          <dt>Paid balance</dt>
+          <dd class="money" id="balance-paid"></dd>
+          <dd class="note">Money you added. It never expires.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="ledger-section" id="top-up" aria-labelledby="topup-title">
+      <h2 id="topup-title">Add money</h2>
+      <div class="promise">
+        <p><strong>This is a one-time payment.</strong> There is no subscription and no automatic top-up. Your balance only goes up when you add money here yourself.</p>
+      </div>
+      <form id="topup-form" novalidate>
+        <fieldset>
+          <legend class="visually-hidden">Amount</legend>
+          <div class="choice-row" id="topup-amounts"></div>
+        </fieldset>
+        <p id="topup-error" class="form-error" role="alert"></p>
+        <button class="btn" type="submit">Continue to payment</button>
+      </form>
+    </section>
+
+    <section class="ledger-section" id="limits" aria-labelledby="limits-title">
+      <h2 id="limits-title">Monthly spending limit</h2>
+      <p>Limits are hard. If a call would take this month's spending past a limit, we refuse the call and charge nothing. Spending counts reset on the 1st of each month (UTC). Each API key also has its own limit, set below.</p>
+      <div class="limit-line">
+        <span>Account limit: <strong id="cap-current"></strong></span>
+        <span>Spent this month: <strong id="cap-spent"></strong></span>
+      </div>
+      <form id="cap-form" class="inline-form" novalidate>
+        <div class="field">
+          <label for="cap-amount">New monthly limit</label>
+          <div class="money-input"><span class="cur-symbol" aria-hidden="true"></span><input id="cap-amount" type="text" inputmode="decimal" autocomplete="off" placeholder="25.00"></div>
+        </div>
+        <button class="btn btn-small" type="submit">Save limit</button>
+        <button class="btn btn-quiet btn-small" type="button" id="cap-remove" hidden>Remove limit</button>
+      </form>
+      <p id="cap-error" class="form-error" role="alert"></p>
+      <p id="cap-status" class="status" role="status"></p>
+    </section>
+
+    <section class="ledger-section" id="keys" aria-labelledby="keys-title">
+      <h2 id="keys-title">API keys</h2>
+      <p>Use a key to call tools from your own code or from an AI agent. Make one key per app, so you can limit or revoke each one on its own.</p>
+      <div id="new-key" class="new-key" hidden>
+        <p><strong>Your new key<span id="new-key-name"></span></strong></p>
+        <code id="new-key-value"></code>
+        <p class="small">Copy it now. We keep only a fingerprint of it, so we cannot show it again.</p>
+        <div class="inline-form">
+          <button class="btn btn-small" type="button" id="new-key-copy">Copy key</button>
+          <button class="btn btn-quiet btn-small" type="button" id="new-key-done">I have saved it</button>
+          <span id="new-key-status" class="status" role="status"></span>
+        </div>
+      </div>
+      <form id="key-form" class="inline-form" novalidate>
+        <div class="field">
+          <label for="key-name">Key name</label>
+          <input id="key-name" type="text" maxlength="60" placeholder="My app" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="key-cap">Monthly limit</label>
+          <div class="money-input"><span class="cur-symbol" aria-hidden="true"></span><input id="key-cap" type="text" inputmode="decimal" autocomplete="off" aria-describedby="key-cap-hint"></div>
+        </div>
+        <button class="btn btn-small" type="submit">Create key</button>
+      </form>
+      <p class="hint small muted" id="key-cap-hint"></p>
+      <p id="key-error" class="form-error" role="alert"></p>
+      <div id="key-list"></div>
+    </section>
+
+    <section class="ledger-section" id="history" aria-labelledby="ledger-title">
+      <div class="section-head">
+        <h2 id="ledger-title">Recent activity</h2>
+        <p class="muted small">The last 50 lines of your ledger, newest first.</p>
+      </div>
+      <div id="ledger"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<script src="/toll-preview/assets/account.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

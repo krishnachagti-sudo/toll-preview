@@ -1,0 +1,9 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2020-01-01,Wednesday,2020-01-01,Wednesday,
+Good Friday,2020-04-10,Friday,2020-04-10,Friday,
+Easter Monday,2020-04-13,Monday,2020-04-13,Monday,
+Early May bank holiday,2020-05-08,Friday,2020-05-08,Friday,Moved for the 75th anniversary of VE Day
+Spring bank holiday,2020-05-25,Monday,2020-05-25,Monday,
+Summer bank holiday,2020-08-31,Monday,2020-08-31,Monday,
+Christmas Day,2020-12-25,Friday,2020-12-25,Friday,
+Boxing Day,2020-12-26,Saturday,2020-12-28,Monday,"Falls on a Saturday, so Monday 28 December 2020 is the substitute day"

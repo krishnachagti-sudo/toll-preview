@@ -1,0 +1,11 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2018-01-01,Monday,2018-01-01,Monday,
+Birthday of Martin Luther King Jr.,2018-01-15,Monday,2018-01-15,Monday,
+Washington's Birthday,2018-02-19,Monday,2018-02-19,Monday,
+Memorial Day,2018-05-28,Monday,2018-05-28,Monday,
+Independence Day,2018-07-04,Wednesday,2018-07-04,Wednesday,
+Labor Day,2018-09-03,Monday,2018-09-03,Monday,
+Columbus Day,2018-10-08,Monday,2018-10-08,Monday,
+Veterans Day,2018-11-11,Sunday,2018-11-12,Monday,"Falls on a Sunday, so the Monday is the day off"
+Thanksgiving Day,2018-11-22,Thursday,2018-11-22,Thursday,
+Christmas Day,2018-12-25,Tuesday,2018-12-25,Tuesday,

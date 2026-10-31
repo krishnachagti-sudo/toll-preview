@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business days API: count and add business days over REST or MCP: Toll</title>
+<meta name="description" content="A REST and MCP API that counts business days between two dates or adds business days to a date, skipping US federal or England and Wales holidays and naming each one. $0.0005 a call.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/business-days/api/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/business-days/api.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="Business days API: count and add business days over REST or MCP">
+<meta property="og:description" content="A REST and MCP API that counts business days between two dates or adds business days to a date, skipping US federal or England and Wales holidays and naming each one. $0.0005 a call.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/business-days/api/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/business-days/api/","url":"https://krishnachagti-sudo.github.io/toll-preview/business-days/api/","name":"Business days API: count and add business days over REST or MCP","description":"A REST and MCP API that counts business days between two dates or adds business days to a date, skipping US federal or England and Wales holidays and naming each one. $0.0005 a call.","dateModified":"2026-10-30","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Business days","item":"https://krishnachagti-sudo.github.io/toll-preview/business-days/"},{"@type":"ListItem","position":3,"name":"Business days API","item":"https://krishnachagti-sudo.github.io/toll-preview/business-days/api/"}]},{"@type":"HowTo","name":"Business days API: count and add business days over REST or MCP","description":"A REST and MCP API that counts business days between two dates or adds business days to a date, skipping US federal or England and Wales holidays and naming each one. $0.0005 a call.","step":[{"@type":"HowToStep","position":1,"name":"Create an account","text":"Sign up; every account gets a small free allowance each month, spent before any money you add."},{"@type":"HowToStep","position":2,"name":"Make a key","text":"Create an API key on your account page and keep it on your server."},{"@type":"HowToStep","position":3,"name":"Call the tool","text":"POST a JSON body with op, region and the dates to the business-days endpoint, with the key as a Bearer token."}]}]}</script>
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"business-days"}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Toll</a></li><li><a href="/toll-preview/business-days/">Business days</a></li><li aria-current="page">Business days API</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Developers</p>
+<h1>Business days API</h1>
+<p class="cp-answer">POST <code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days</code> with {&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;} returns 4 business days and names the holiday it skipped, Independence Day (observed) on 2026-07-03. Each call costs $0.0005 (₹0.04 on a rupee account).</p>
+<dl class="cp-facts"><div><dt>Business days</dt><dd class="num">4</dd></div><div><dt>Per call</dt><dd class="num">$0.0005</dd></div></dl>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="request">Request</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Field</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row"><code>op</code></th><td><code>between</code> to count, or <code>add</code> to add days to a date</td></tr>
+<tr><th scope="row"><code>region</code></th><td><code>US</code> (federal holidays) or <code>GB-ENG</code> (England and Wales bank holidays)</td></tr>
+<tr><th scope="row"><code>start</code></th><td>A date written like 2026-07-01, from 1971 to 2100. Never counted itself.</td></tr>
+<tr><th scope="row"><code>end</code></th><td><code>between</code> only: the last date, counted. Before the start, the count is negative.</td></tr>
+<tr><th scope="row"><code>days</code></th><td><code>add</code> only: a whole number from -3650 to 3650; negative goes back</td></tr>
+</tbody></table></div>
+<pre><code class="language-shell">curl -X POST 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days' \
+  -H &quot;Authorization: Bearer $API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;}'</code></pre>
+</section>
+<section>
+<h2 id="response">Response</h2>
+<pre><code class="language-json">{
+  &quot;ok&quot;: true,
+  &quot;result&quot;: {
+    &quot;businessDays&quot;: 4,
+    &quot;holidaysSkipped&quot;: [
+      {
+        &quot;date&quot;: &quot;2026-07-03&quot;,
+        &quot;name&quot;: &quot;Independence Day (observed)&quot;
+      }
+    ]
+  },
+  &quot;charged&quot;: {
+    &quot;amount&quot;: 500,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;display&quot;: &quot;$0.0005&quot;
+  },
+  &quot;dataVersion&quot;: &quot;holiday-rules-2026.10&quot;
+}</code></pre>
+<p>Amounts are whole micro-units (1,000,000 to the dollar or rupee); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>{ date, holidaysSkipped }</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day.</p>
+<p>Invalid input is a 400 <code>invalid_input</code> with the field that was wrong, and is never charged. Retries are safe with an <code>Idempotency-Key</code> header. The <a href="/toll-preview/docs">docs</a> cover errors, limits and idempotency for every tool.</p>
+</section>
+<section>
+<h2 id="mcp">From an AI agent (MCP)</h2>
+<p>Agents that speak the Model Context Protocol call the same tool, named <code>business-days</code>, with the same input and price. Add the server with your key:</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;toll&quot;: {
+      &quot;type&quot;: &quot;http&quot;,
+      &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
+      &quot;headers&quot;: {
+        &quot;Authorization&quot;: &quot;Bearer YOUR_API_KEY&quot;
+      }
+    }
+  }
+}</code></pre>
+</section>
+<section>
+<h2 id="coverage">What it knows</h2>
+<p>US federal holidays as set by <a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103</a> on their observed days, and England and Wales bank holidays with substitute days and one-off royal days, from 1971 to 2100. Weekends are Saturday and Sunday. It does not know state, company or Scottish holidays.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></li><li><a href="https://www.gov.uk/bank-holidays">GOV.UK: UK bank holidays</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Create an account.</strong> Sign up; every account gets a small free allowance each month, spent before any money you add.</li><li><strong>Make a key.</strong> Create an API key on your account page and keep it on your server.</li><li><strong>Call the tool.</strong> POST a JSON body with op, region and the dates to the business-days endpoint, with the key as a Bearer token.</li></ol></section>
+
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/business-days/python/">Business days in Python</a></li><li><a href="/toll-preview/business-days/excel-networkdays/">Count business days in Excel with NETWORKDAYS</a></li><li><a href="/toll-preview/docs">Docs: keys, errors, idempotency and limits</a></li><li><a href="/toll-preview/business-days/">Business days calculator</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/business-days/api.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-10-30">2026-10-30</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

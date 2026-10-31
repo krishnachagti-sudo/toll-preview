@@ -1,0 +1,9 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2033-01-01,Saturday,2033-01-03,Monday,"Falls on a Saturday, so Monday 3 January 2033 is the substitute day"
+Good Friday,2033-04-15,Friday,2033-04-15,Friday,
+Easter Monday,2033-04-18,Monday,2033-04-18,Monday,
+Early May bank holiday,2033-05-02,Monday,2033-05-02,Monday,
+Spring bank holiday,2033-05-30,Monday,2033-05-30,Monday,
+Summer bank holiday,2033-08-29,Monday,2033-08-29,Monday,
+Boxing Day,2033-12-26,Monday,2033-12-26,Monday,
+Christmas Day,2033-12-25,Sunday,2033-12-27,Tuesday,"Falls on a Sunday, so Tuesday 27 December 2033 is the substitute day"

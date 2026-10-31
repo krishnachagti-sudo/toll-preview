@@ -1,0 +1,42 @@
+# Toll
+
+> Toll: exact answers for specific jobs, paid per use from one prepaid balance, on the web, over a REST API or through MCP.
+
+Toll is a Conyso product. Every tool is deterministic: the same input always gives the same answer, with no AI model in the loop. Each content page has a Markdown copy at the same address ending in .md.
+
+## Tools
+
+- [Business days](https://krishnachagti-sudo.github.io/toll-preview/business-days/): Count the business days between two dates, or add business days to a date, for US federal and England and Wales holidays. US holidays are the statutory federal ones only, with no executive-order closures.
+- [Delivery date and holiday order-by calculator](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/): Work out when an order arrives, or the last day to order for delivery by a date such as Christmas, from your cutoff time, time zone, shipping days, closures and processing days, on the carrier's own delivery calendar, with USPS's 2026 holiday send-by dates and every skipped holiday named.
+- [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/): The official ECB euro reference rate for a currency pair on a date, with the fixing date actually used. When the ECB did not publish on that day, it uses the latest fixing in the 7 days before it and says which.
+- [Image to size](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/): Shrink a photo to fit under an exact size in KB, such as 50 KB or 200 KB, for upload forms that set a limit. It runs in your browser, so the photo never leaves your device.
+
+## Guides
+
+- [Count business days between two dates in Excel (NETWORKDAYS, with holidays)](https://krishnachagti-sudo.github.io/toll-preview/business-days/excel-networkdays/): The exact Excel NETWORKDAYS formula for business days between two dates, US federal and England and Wales holiday lists to paste, and why it gives one more than a count that leaves out the start date.
+- [Add business days to a date in Excel (WORKDAY, with holidays)](https://krishnachagti-sudo.github.io/toll-preview/business-days/excel-workday/): The exact Excel WORKDAY formula to add or subtract business days, with US federal and England and Wales holiday lists to paste. WORKDAY and this tool count the same way, so their dates match.
+- [Business days in Google Sheets: NETWORKDAYS and WORKDAY with holidays](https://krishnachagti-sudo.github.io/toll-preview/business-days/google-sheets-networkdays/): The exact Google Sheets formulas to count business days between two dates (NETWORKDAYS) and add business days to a date (WORKDAY), with US federal and England and Wales holiday lists to paste.
+- [Business days API: count and add business days over REST or MCP](https://krishnachagti-sudo.github.io/toll-preview/business-days/api/): A REST and MCP API that counts business days between two dates or adds business days to a date, skipping US federal or England and Wales holidays and naming each one. $0.0005 a call.
+- [Add business days in Python with holidays (NumPy busday\_offset)](https://krishnachagti-sudo.github.io/toll-preview/business-days/python/): Add or count business days in Python with NumPy busday\_offset and busday\_count and a US federal holiday list, written to give the same answers as this tool; or call the API from Python.
+- [Christmas order deadline banner for Shopify and any store, from your own cutoff](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/christmas-order-deadline-banner/): How to add a Christmas order-by banner to any store, with deadlines from the store's own cutoff and USPS's 2026 send-by dates.
+- [Historical exchange rates in Excel by date, from the ECB file](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/historical-exchange-rates-in-excel/): Look up an ECB reference rate for any date in Excel with one XLOOKUP formula, including weekends and pairs without the euro. Worked on the real file: EUR to USD on 31 December 2025 is 1.1750.
+- [Which exchange rate to use for US taxes and the FBAR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/which-exchange-rate-for-us-taxes/): The rate each US filing asks for, in the agencies' own words: the spot rate for income and expenses, the IRS yearly averages, and the Treasury 31 December rate for the FBAR.
+- [ECB exchange rate API: the official rate for any date over REST and MCP](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-exchange-rate-api/): One POST returns the ECB reference rate for a currency pair on a date, the fixing date actually used and the inverse, for $0.001 a call. The same tool works for AI agents over MCP.
+- [KB or KiB: is a kilobyte 1,000 or 1,024 bytes on an upload form?](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/kb-or-kib/): Why KB can mean 1,000 or 1,024 bytes, with the byte counts for common upload limits under both readings.
+
+## Overviews
+
+- [Holiday shipping deadlines 2026: USPS send-by dates and your last order date](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/): USPS 2026 Christmas send-by dates and the last order date for a store's own cutoff and processing days.
+- [ECB euro reference rates: the latest fixing for every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates/): The latest ECB euro reference rate for every currency it publishes, with the change from the fixing before and the weekdays with no fixing.
+- [EUR to USD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/): EUR to USD on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 1999.
+- [USD to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr/): USD to INR on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 2009.
+- [USD to CAD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad/): USD to CAD on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 1999.
+- [GBP to EUR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur/): GBP to EUR on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 1999.
+- [EUR to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr/): EUR to INR on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 2009.
+- [GBP to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr/): GBP to INR on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 2009.
+- [Reduce image size in KB: what each limit from 20 KB to 1 MB does to a photo](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/reduce-image-size-in-kb/): How to reduce a photo to a size in KB, with what limits from 20 KB to 1 MB did to four test photos.
+
+## About
+
+- [Docs](https://krishnachagti-sudo.github.io/toll-preview/docs): How to call the tools from code: REST and MCP, authentication, errors, idempotency and limits.
+- [Privacy](https://krishnachagti-sudo.github.io/toll-preview/privacy): What Toll stores about visitors and accounts, in plain words.

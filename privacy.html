@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy: Toll</title>
+<meta name="description" content="What Toll keeps about you, in plain words: your account, one sign-in cookie, hashed API keys, a daily visitor hash, page views, payments and tool requests. No ad or analytics trackers.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Privacy</p>
+    <h1>What we keep, and why</h1>
+    <p class="lede">This page lists what Toll stores when you use it, in plain words. It describes what the software does today. Toll is run by Conyso.</p>
+  </div>
+
+  <div class="prose">
+    <section aria-labelledby="p-short">
+      <h2 id="p-short">The short version</h2>
+      <ul>
+        <li>There are no ad or analytics trackers, and no third-party scripts, on any page except the Razorpay payment page.</li>
+        <li>Your IP address is never written to our database. We only use it, for the day, to make the visitor hash described below.</li>
+        <li>What you type into a tool is used to work out the answer. It is not stored, with one exception for API retries, explained below.</li>
+        <li>The image tool runs in your browser. Your image never leaves your device.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="p-account">
+      <h2 id="p-account">If you create an account</h2>
+      <p>We store your email address, a hash of your password (never the password itself), the currency you chose, the monthly spending limit you set, and when you signed up.</p>
+      <p>We also keep a ledger of your balance: each top-up, each monthly free allowance, each charge and each refund, with the amount, the tool, the API key that made the call, and the time. The ledger does not hold what you asked the tool.</p>
+    </section>
+
+    <section aria-labelledby="p-cookie">
+      <h2 id="p-cookie">One cookie, for signing in</h2>
+      <p>When you sign up or sign in, we set one cookie so the site knows it is you. Scripts on the page cannot read it, and it is only sent to this site. It lasts 30 days, or until you sign out. We store only a hash of its value, so the cookie cannot be rebuilt from our database.</p>
+      <p>There are no other cookies, and the pages do not use your browser's local storage.</p>
+    </section>
+
+    <section aria-labelledby="p-keys">
+      <h2 id="p-keys">API keys</h2>
+      <p>We show a new key once. After that we keep only a hash of it, plus its first 12 characters so you can tell your keys apart. We also keep the name you gave it, its monthly limit, when it was made, when it was last used, and when it was revoked.</p>
+    </section>
+
+    <section aria-labelledby="p-visitor">
+      <h2 id="p-visitor">Free runs without an account, and sign-up limits</h2>
+      <p>Without an account you get 5 free runs a day, and one visitor can create at most 3 accounts a day. To count these we make a visitor hash from the date, your IP address and a secret only the server knows. We store that hash with a count for the day. The hash changes every day, and rows from earlier days are deleted as soon as the next day's first free run or sign-up is recorded.</p>
+      <p>The same daily hash is used, in memory only, to slow down repeated sign-in attempts and page-view beacons. Those counts are never written to the database.</p>
+    </section>
+
+    <section aria-labelledby="p-views">
+      <h2 id="p-views">Page views and usage counts</h2>
+      <p>Our pages send one page-view event when they load. It records which tool page it was (if any), your account if you are signed in, and the time. It records no inputs, no IP address and no browser details.</p>
+      <p>We also count runs, charges, sign-ups and top-ups the same way: which tool, which account, whether it came from the website, the API or MCP, and when.</p>
+    </section>
+
+    <section aria-labelledby="p-inputs">
+      <h2 id="p-inputs">What you send to a tool</h2>
+      <p>When you run a tool on its page, through the API or over MCP, your input goes to our server, which works out the answer and sends it back. We do not store the input.</p>
+      <p>The one exception: if you send an <code>Idempotency-Key</code> header with an API call, we keep a hash of the input and the answer we gave, so a retry with the same key gets the same answer and is not charged twice.</p>
+    </section>
+
+    <section aria-labelledby="p-pay">
+      <h2 id="p-pay">Payments</h2>
+      <p>Rupee top-ups are paid through Razorpay. The payment page loads Razorpay's checkout script and passes it your email address so you do not have to type it. Your card or bank details go to Razorpay, never to us. From Razorpay we keep the payment's ID, amount and currency, and our own record of the top-up: its amount, reference and status.</p>
+      <p>Dollar top-ups are not open yet.</p>
+    </section>
+
+    <section aria-labelledby="p-requests">
+      <h2 id="p-requests">Tool requests</h2>
+      <p>If you use the form to ask for a tool we do not have, we store what you wrote and, if you gave one, your email address.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

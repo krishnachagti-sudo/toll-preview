@@ -1,0 +1,59 @@
+/* Content pages (routes/content.js): reference tables, guides and overviews inside the brand chrome.
+   The answer comes first and large; the tool sits beside the tables; everything reads without JS. */
+
+.cp { padding-top: 28px; }
+
+.cp-crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; margin: 0 0 28px; padding: 0; font: 400 13px/1.5 var(--font-mono); color: var(--faint); }
+.cp-crumbs li + li::before { content: "/"; margin: 0 10px; color: var(--faint); }
+.cp-crumbs a { color: var(--muted); text-decoration: none; }
+.cp-crumbs a:hover { color: var(--text); }
+.cp-crumbs [aria-current] { color: var(--text-2); }
+
+.cp-head { max-width: 52rem; }
+.cp-head h1 { max-width: 24ch; margin-bottom: 0.4em; }
+.cp-answer { font-size: 19px; line-height: 1.55; color: var(--text); max-width: 46rem; margin: 0 0 28px; }
+
+.cp-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 0 0 40px; max-width: 46rem; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--bg-1); overflow: hidden; }
+.cp-facts > div { padding: 14px 18px; border-top: 1px solid var(--line); }
+.cp-facts > div:nth-child(-n+2) { border-top: 0; }
+.cp-facts > div:nth-child(2n) { border-left: 1px solid var(--line); }
+.cp-facts dt { font: 500 11.5px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--faint); margin-bottom: 4px; }
+.cp-facts dd { margin: 0; font: 600 26px/1.15 var(--font-display); letter-spacing: -0.03em; color: #fff; }
+@media (min-width: 760px) {
+  .cp-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cp-facts > div { border-top: 0; border-left: 1px solid var(--line); }
+  .cp-facts > div:first-child { border-left: 0; }
+}
+
+/* The body reads like the docs: one column, sections ruled off. Tables may run wider. */
+.cp-body.prose section { max-width: 56rem; }
+.cp-body .table-scroll { margin: 0 0 18px; }
+.cp-table th[scope="row"] { font: 500 14px/1.5 var(--font-text); text-transform: none; letter-spacing: 0; color: var(--text); white-space: normal; border-bottom: 1px solid var(--line); padding: 12px 14px 12px 0; }
+/* Cells keep their dates and numbers on one line; a narrow screen scrolls the table, not the page.
+   The holiday name and the last (notes) column wrap. */
+.cp-table th[scope="row"] { min-width: 10rem; vertical-align: top; }
+.cp-table td { color: var(--text-2); white-space: nowrap; }
+.cp-table td:last-child { white-space: normal; min-width: 15rem; }
+table.cp-table .r { padding-right: 24px; }
+.cp-table td.num { font-family: var(--font-mono); font-size: 13.5px; }
+.cp-note { color: var(--muted); font-size: 14px; }
+
+/* The tool, prefilled with this page's inputs. A plain GET form, so it works without JavaScript. */
+.cp-tool {
+  --hue: var(--h-date);
+  position: relative; max-width: 56rem; margin: 0 0 48px; padding: 24px; border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, #111215, #0c0d0f); border: 1px solid var(--line-2);
+}
+.cp-tool::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--hue) 60%, transparent), transparent); }
+.cp-tool h2 { font-size: 20px; border: 0; padding: 0; margin-bottom: 0.3em; }
+.cp-tool > p { max-width: 40rem; }
+.cp-tool-form { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: flex-end; }
+.cp-tool-form .field { margin: 0; flex: 1 1 12rem; max-width: 16rem; }
+.cp-tool-form .btn { min-height: 44px; }
+.cp-tool > p.small { margin: 14px 0 0; }
+
+.cp-steps li { margin-bottom: 8px; }
+.cp-faq h3 { font-size: 17px; margin: 22px 0 6px; }
+.cp-sources, .cp-related ul { padding-left: 1.2em; }
+.cp-formats { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line); max-width: 56rem; }
+.cp-formats a { color: var(--muted); }

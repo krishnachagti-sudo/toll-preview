@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add business days in Python with holidays (NumPy busday_offset): Toll</title>
+<meta name="description" content="Add or count business days in Python with NumPy busday_offset and busday_count and a US federal holiday list, written to give the same answers as this tool; or call the API from Python.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/business-days/python/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/business-days/python.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="Add business days in Python with holidays (NumPy busday_offset)">
+<meta property="og:description" content="Add or count business days in Python with NumPy busday_offset and busday_count and a US federal holiday list, written to give the same answers as this tool; or call the API from Python.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/business-days/python/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/business-days/python/","url":"https://krishnachagti-sudo.github.io/toll-preview/business-days/python/","name":"Add business days in Python with holidays (NumPy busday_offset)","description":"Add or count business days in Python with NumPy busday_offset and busday_count and a US federal holiday list, written to give the same answers as this tool; or call the API from Python.","dateModified":"2026-10-30","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Business days","item":"https://krishnachagti-sudo.github.io/toll-preview/business-days/"},{"@type":"ListItem","position":3,"name":"Business days in Python, with holidays","item":"https://krishnachagti-sudo.github.io/toll-preview/business-days/python/"}]}]}</script>
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"business-days"}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Toll</a></li><li><a href="/toll-preview/business-days/">Business days</a></li><li aria-current="page">Business days in Python, with holidays</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Business days in Python, with holidays</h1>
+<p class="cp-answer"><code>np.busday_offset(&quot;2026-07-01&quot;, 10, roll=&quot;backward&quot;, holidays=US_HOLIDAYS)</code> returns 2026-07-16: 10 business days after Wednesday, July 1, 2026, skipping the US federal holidays, the same date this tool gives.</p>
+<dl class="cp-facts"><div><dt>Result</dt><dd class="num">2026-07-16</dd></div></dl>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="code">The code</h2>
+<pre><code class="language-python">import numpy as np
+
+# US federal holidays, 2026 to 2027: the days off, observed days included.
+US_HOLIDAYS = [
+    &quot;2026-01-01&quot;, &quot;2026-01-19&quot;, &quot;2026-02-16&quot;, &quot;2026-05-25&quot;,
+    &quot;2026-06-19&quot;, &quot;2026-07-03&quot;, &quot;2026-09-07&quot;, &quot;2026-10-12&quot;,
+    &quot;2026-11-11&quot;, &quot;2026-11-26&quot;, &quot;2026-12-25&quot;, &quot;2027-01-01&quot;,
+    &quot;2027-01-18&quot;, &quot;2027-02-15&quot;, &quot;2027-05-31&quot;, &quot;2027-06-18&quot;,
+    &quot;2027-07-05&quot;, &quot;2027-09-06&quot;, &quot;2027-10-11&quot;, &quot;2027-11-11&quot;,
+    &quot;2027-11-25&quot;, &quot;2027-12-24&quot;, &quot;2027-12-31&quot;,
+]
+ONE_DAY = np.timedelta64(1, &quot;D&quot;)
+
+
+def add_business_days(start, n, holidays=US_HOLIDAYS):
+    &quot;&quot;&quot;The date n business days after start (before, if n is negative); start is not counted.&quot;&quot;&quot;
+    if n == 0:
+        return np.datetime64(start)
+    roll = &quot;backward&quot; if n &gt; 0 else &quot;forward&quot;
+    return np.busday_offset(start, n, roll=roll, holidays=holidays)
+
+
+def business_days_between(start, end, holidays=US_HOLIDAYS):
+    &quot;&quot;&quot;Business days after start, up to and including end.&quot;&quot;&quot;
+    return int(np.busday_count(np.datetime64(start) + ONE_DAY, np.datetime64(end) + ONE_DAY, holidays=holidays))
+
+
+print(add_business_days(&quot;2026-07-01&quot;, 10))  # 2026-07-16
+print(business_days_between(&quot;2026-07-01&quot;, &quot;2026-07-08&quot;))  # 4</code></pre>
+<p>It runs on NumPy alone. The holidays are only the ones in the list: for other years, take the dates from the <a href="/toll-preview/business-days/us-federal-holidays-2026/">holiday calendar pages</a> (each has a CSV), and for England and Wales use their bank holidays.</p>
+</section>
+<section>
+<h2 id="details">Two details that change the answer</h2>
+<ul><li><code>busday_count</code> counts the begin date but not the end date. This tool counts the days after the start up to and including the end, so the function above moves both dates on by one day.</li><li><code>busday_offset</code> refuses a start that is not a business day unless you give <code>roll</code>. Rolling backward before adding (and forward before going back) makes day 1 the next business day after any start, weekend or holiday, which is how this tool and Excel's WORKDAY count.</li></ul>
+</section>
+<section>
+<h2 id="api">Or call the API from Python</h2>
+<pre><code class="language-python">import os
+import requests
+
+res = requests.post(
+    &quot;https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days&quot;,
+    headers={&quot;Authorization&quot;: f&quot;Bearer {os.environ['API_KEY']}&quot;},
+    json={&quot;op&quot;: &quot;add&quot;, &quot;region&quot;: &quot;US&quot;, &quot;start&quot;: &quot;2026-07-01&quot;, &quot;days&quot;: 10},
+    timeout=30,
+)
+data = res.json()
+if not data[&quot;ok&quot;]:
+    raise RuntimeError(data[&quot;error&quot;][&quot;message&quot;])
+print(data[&quot;result&quot;][&quot;date&quot;])  # 2026-07-16</code></pre>
+<p>The API keeps the holiday lists for you, from 1971 to 2100, names each holiday it skips and knows England and Wales too. See the <a href="/toll-preview/business-days/api/">API guide</a>.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://numpy.org/doc/stable/reference/generated/numpy.busday_offset.html">NumPy: numpy.busday_offset</a></li><li><a href="https://numpy.org/doc/stable/reference/generated/numpy.busday_count.html">NumPy: numpy.busday_count</a></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></li></ul>
+</section>
+
+
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/business-days/api/">Business days API</a></li><li><a href="/toll-preview/business-days/excel-workday/">Add business days in Excel with WORKDAY</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2026/">US federal holidays 2026</a></li><li><a href="/toll-preview/business-days/">Business days calculator</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/business-days/python.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-10-30">2026-10-30</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

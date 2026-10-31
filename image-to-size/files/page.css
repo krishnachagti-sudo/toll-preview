@@ -1,0 +1,133 @@
+/* Image to size: a weighing scale. Sits inside the brand chrome and reuses its tokens; the
+   gauge colours are this page's own. */
+.its {
+  /* Files and images are lit cyan across the site. */
+  --accent: var(--h-file);
+  --accent-ink: #04161d;
+  --accent-wash: rgba(69, 211, 255, 0.1);
+  --toll-accent: var(--h-file);
+  --toll-accent-ink: #04161d;
+  --its-steel: var(--h-file);
+  --its-steel-wash: rgba(69, 211, 255, 0.1);
+  --its-tick: rgba(255, 255, 255, 0.36);
+}
+
+.its-intro { padding-block: 40px 8px; }
+.its-intro h1 { margin-bottom: 0.25em; }
+.its-promise {
+  max-width: 40rem; margin: 0;
+  border-left: 3px solid var(--its-steel); background: var(--its-steel-wash);
+  padding: 10px 14px;
+}
+
+.its-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.its-desk > * { min-width: 0; }
+@media (min-width: 900px) { .its-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
+
+/* Form: a ruled slip with numbered steps. */
+.its-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.its-form .btn { width: 100%; }
+.its-step { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+
+/* The drop pan. The real file input fills it, invisible, so it is a normal focusable control. */
+.its-drop {
+  position: relative; display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; align-items: center;
+  padding: 14px; min-height: 84px; cursor: pointer;
+  border: 2px dashed var(--ink-soft); border-radius: var(--radius); background: var(--paper);
+}
+.its-drop:hover, .its-drop.is-over { border-color: var(--its-steel); background: var(--its-steel-wash); }
+.its-drop:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+.its-drop input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 0; }
+.its-drop-icon {
+  grid-row: 1 / span 2; width: 56px; height: 56px; border-radius: var(--radius); overflow: hidden;
+  display: grid; place-items: center; background: var(--paper-sunk); border: 1px solid var(--rule);
+}
+.its-drop-icon:not(.has-photo)::before {
+  content: ""; width: 26px; height: 20px; border: 2px solid var(--ink-soft); border-radius: 3px;
+  background: linear-gradient(135deg, transparent 55%, var(--ink-soft) 56%) bottom / 100% 40% no-repeat;
+}
+.its-drop-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.its-drop-text { font-weight: 600; overflow-wrap: anywhere; line-height: 1.3; align-self: end; }
+.its-drop-note { font-size: 0.875rem; color: var(--ink-soft); align-self: start; overflow-wrap: anywhere; }
+
+/* Target chips, styled like weights on the scale. */
+.its-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 8px 14px; }
+.its-chip {
+  font: 500 0.95rem/1 var(--font-mono); color: var(--ink); background: transparent; cursor: pointer;
+  border: 1px solid var(--rule-strong); border-radius: 999px; padding: 0 14px; min-height: 44px;
+  font-variant-numeric: tabular-nums;
+}
+.its-chip:hover { background: var(--paper-sunk); }
+.its-chip[aria-pressed="true"] { background: var(--its-steel); color: var(--paper); border-color: var(--its-steel); }
+.its-chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.its-custom { display: grid; gap: 6px; font-weight: 500; }
+.its-kb-box { position: relative; display: block; max-width: 12rem; }
+.its-kb-box input { padding-right: 3rem; font-variant-numeric: tabular-nums; }
+.its-kb-unit { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); font: 500 0.9rem var(--font-mono); pointer-events: none; }
+
+/* Result */
+.its-out { min-height: 14rem; }
+.its-idle, .its-working { max-width: 36rem; }
+.its-stamp {
+  display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--its-steel); border: 1px solid var(--its-steel); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px;
+}
+.its-big { font: 500 clamp(2.2rem, 7vw, 3.4rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 14px; }
+.its-big small { font: 400 1.1rem/1.3 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.its-sub { color: var(--ink-soft); margin: 10px 0 20px; max-width: 40rem; }
+
+/* The gauge: a ruler with ticks every 10 percent, a filled bar and a needle. */
+.its-gauge { max-width: 36rem; }
+.its-gauge-track {
+  position: relative; height: 34px; border: 1px solid var(--rule-strong); border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+.its-gauge-track::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 10px; pointer-events: none;
+  background: repeating-linear-gradient(90deg, var(--its-tick) 0 1px, transparent 1px 10%);
+}
+.its-gauge-fill { position: absolute; inset: 0 auto 0 0; background: var(--its-steel); opacity: 0.35; border-radius: 3px 0 0 3px; }
+.its-gauge-needle {
+  position: absolute; top: -7px; bottom: -7px; width: 3px; margin-left: -1.5px; background: var(--its-steel); border-radius: 2px;
+}
+.its-gauge-needle::before {
+  content: ""; position: absolute; top: -2px; left: 50%; transform: translateX(-50%);
+  border: 6px solid transparent; border-top-color: var(--its-steel); border-bottom: 0;
+}
+.its-gauge-marks { display: flex; justify-content: space-between; font: 500 0.75rem/1.4 var(--font-mono); color: var(--ink-soft); margin-top: 6px; }
+.its-sweep { left: 0; animation: its-sweep 1.4s ease-in-out infinite alternate; }
+@keyframes its-sweep { to { left: 100%; } }
+@media (prefers-reduced-motion: reduce) { .its-sweep { animation: none; left: 50%; } }
+
+/* Before and after */
+.its-readout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 36rem; border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule); }
+.its-readout-col { padding: 12px 14px 14px 0; min-width: 0; }
+.its-readout-col + .its-readout-col { padding-left: 14px; border-left: 1px solid var(--rule); }
+.its-col-title { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0 0 6px; }
+.its-after .its-col-title { color: var(--its-steel); }
+.its-readout dl { margin: 0; }
+.its-readout dt { font-size: 0.8rem; color: var(--ink-soft); margin-top: 8px; }
+.its-readout dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
+@media (max-width: 420px) { .its-readout { grid-template-columns: 1fr; } .its-readout-col + .its-readout-col { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); } }
+
+.its-bars { display: grid; gap: 8px; max-width: 36rem; margin: 18px 0 22px; }
+.its-bar { display: grid; grid-template-columns: 3.4rem 1fr auto; gap: 10px; align-items: center; font-size: 0.9rem; }
+.its-bar-label { color: var(--ink-soft); }
+.its-bar-track { display: block; height: 12px; background: var(--paper-sunk); border-radius: 2px; overflow: hidden; }
+.its-bar-fill { display: block; height: 100%; border-radius: 2px; }
+.its-bar-fill.is-before { background: var(--ink-soft); }
+.its-bar-fill.is-after { background: var(--its-steel); }
+.its-bar-value { min-width: 4.5rem; text-align: right; font-weight: 500; }
+
+.its-preview-wrap { max-width: 36rem; border: 1px solid var(--rule); border-radius: var(--radius); background: #fff; padding: 8px; display: grid; place-items: center; }
+.its-preview { max-width: 100%; max-height: 22rem; width: auto; height: auto; display: block; }
+.its-actions { margin-top: 16px; }
+.its-download { max-width: 100%; overflow-wrap: anywhere; text-align: center; }
+
+/* Notes */
+.its-notes { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.its-note-cols { display: grid; gap: 8px 40px; }
+@media (min-width: 800px) { .its-note-cols { grid-template-columns: repeat(3, 1fr); } }
+
+.its-idle .its-gauge, .its-working .its-gauge { margin: 8px 0 14px; }

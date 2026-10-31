@@ -1,0 +1,12 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2023-01-01,Sunday,2023-01-02,Monday,"Falls on a Sunday, so the Monday is the day off"
+Birthday of Martin Luther King Jr.,2023-01-16,Monday,2023-01-16,Monday,
+Washington's Birthday,2023-02-20,Monday,2023-02-20,Monday,
+Memorial Day,2023-05-29,Monday,2023-05-29,Monday,
+Juneteenth National Independence Day,2023-06-19,Monday,2023-06-19,Monday,
+Independence Day,2023-07-04,Tuesday,2023-07-04,Tuesday,
+Labor Day,2023-09-04,Monday,2023-09-04,Monday,
+Columbus Day,2023-10-09,Monday,2023-10-09,Monday,
+Veterans Day,2023-11-11,Saturday,2023-11-10,Friday,"Falls on a Saturday, so the Friday is the day off"
+Thanksgiving Day,2023-11-23,Thursday,2023-11-23,Thursday,
+Christmas Day,2023-12-25,Monday,2023-12-25,Monday,

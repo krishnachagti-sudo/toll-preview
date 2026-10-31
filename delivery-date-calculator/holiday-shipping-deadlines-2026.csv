@@ -1,0 +1,17 @@
+service,usps_send_by,processing_days,last_order_date,last_order_time
+USPS Ground Advantage,2026-12-17,0,2026-12-17,2:00 pm EST
+USPS Ground Advantage,2026-12-17,1,2026-12-16,2:00 pm EST
+USPS Ground Advantage,2026-12-17,2,2026-12-15,2:00 pm EST
+USPS Ground Advantage,2026-12-17,3,2026-12-14,2:00 pm EST
+First-Class Mail,2026-12-17,0,2026-12-17,2:00 pm EST
+First-Class Mail,2026-12-17,1,2026-12-16,2:00 pm EST
+First-Class Mail,2026-12-17,2,2026-12-15,2:00 pm EST
+First-Class Mail,2026-12-17,3,2026-12-14,2:00 pm EST
+Priority Mail,2026-12-18,0,2026-12-18,2:00 pm EST
+Priority Mail,2026-12-18,1,2026-12-17,2:00 pm EST
+Priority Mail,2026-12-18,2,2026-12-16,2:00 pm EST
+Priority Mail,2026-12-18,3,2026-12-15,2:00 pm EST
+Priority Mail Express,2026-12-19,0,2026-12-18,2:00 pm EST
+Priority Mail Express,2026-12-19,1,2026-12-17,2:00 pm EST
+Priority Mail Express,2026-12-19,2,2026-12-16,2:00 pm EST
+Priority Mail Express,2026-12-19,3,2026-12-15,2:00 pm EST

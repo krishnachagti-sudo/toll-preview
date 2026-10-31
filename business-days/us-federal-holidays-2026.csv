@@ -1,0 +1,12 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2026-01-01,Thursday,2026-01-01,Thursday,
+Birthday of Martin Luther King Jr.,2026-01-19,Monday,2026-01-19,Monday,
+Washington's Birthday,2026-02-16,Monday,2026-02-16,Monday,
+Memorial Day,2026-05-25,Monday,2026-05-25,Monday,
+Juneteenth National Independence Day,2026-06-19,Friday,2026-06-19,Friday,
+Independence Day,2026-07-04,Saturday,2026-07-03,Friday,"Falls on a Saturday, so the Friday is the day off"
+Labor Day,2026-09-07,Monday,2026-09-07,Monday,
+Columbus Day,2026-10-12,Monday,2026-10-12,Monday,
+Veterans Day,2026-11-11,Wednesday,2026-11-11,Wednesday,
+Thanksgiving Day,2026-11-26,Thursday,2026-11-26,Thursday,
+Christmas Day,2026-12-25,Friday,2026-12-25,Friday,

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delivery date and holiday order-by calculator: Toll</title>
+<meta name="description" content="Work out when an order arrives, or the last day to order for Christmas delivery, from your cutoff time, shipping days, closures and processing days, on USPS's own delivery calendar, with every skipped holiday named.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/delivery-date-calculator/files/page.css">
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"delivery-date-calculator"}</script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="Delivery date and holiday order-by calculator">
+<meta property="og:description" content="Work out when an order arrives, or the last day to order for delivery by a date such as Christmas, from your cutoff time, time zone, shipping days, closures and processing days, on the carrier's own delivery calendar, with USPS's 2026 holiday send-by dates and every skipped holiday named.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/","name":"Delivery date and holiday order-by calculator","description":"Work out when an order arrives, or the last day to order for delivery by a date such as Christmas, from your cutoff time, time zone, shipping days, closures and processing days, on the carrier's own delivery calendar, with USPS's 2026 holiday send-by dates and every skipped holiday named.","dateModified":"2026-10-31","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Delivery date and holiday order-by calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/"}]},{"@type":"WebApplication","name":"Delivery date and holiday order-by calculator","url":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/","description":"Work out when an order arrives, or the last day to order for delivery by a date such as Christmas, from your cutoff time, time zone, shipping days, closures and processing days, on the carrier's own delivery calendar, with USPS's 2026 holiday send-by dates and every skipped holiday named.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","price":"0.0005","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.0005","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"run"}}},{"@type":"Offer","price":"0.04","priceCurrency":"INR","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.04","priceCurrency":"INR","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"run"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="dd">
+  <section class="wrap dd-intro">
+    <p class="eyebrow">Shipping dates, per call</p>
+    <h1>Delivery dates and holiday order-by dates</h1>
+    <p class="lede">Tell it when you stop taking same-day orders, the days you ship, the days you are closed and how long you take to pack. It works out when an order placed now arrives, or the last moment to order for delivery by a date such as Christmas, and names every holiday and closure it skipped.</p>
+    <p class="dd-price" id="dd-price">Each run costs a fraction of a cent. Without an account you get 5 free runs a day.</p>
+  </section>
+
+  <section class="wrap dd-desk" aria-label="Calculator">
+    <form class="dd-form" id="dd-form" novalidate>
+      <fieldset class="field">
+        <legend>What do you want to know?</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="op" value="order-by" checked><span>Last day to order</span></label>
+          <label class="choice"><input type="radio" name="op" value="delivery-date"><span>When it arrives</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field" data-mode="order-by">
+        <label for="dd-by">Must arrive by</label>
+        <input type="date" id="dd-by" min="2020-01-01" max="2035-12-31" value="2026-12-24" aria-describedby="dd-by-hint dd-by-err">
+        <p class="hint" id="dd-by-hint">For Christmas 2026 use December 24: USPS's send-by dates are for delivery before December 25.</p>
+        <p class="field-error" id="dd-by-err"></p>
+      </div>
+
+      <div class="field dd-pair" data-mode="delivery-date" hidden>
+        <div>
+          <label for="dd-order-date">Order date</label>
+          <input type="date" id="dd-order-date" min="2020-01-01" max="2035-12-31" value="2026-12-11" aria-describedby="dd-order-err">
+        </div>
+        <div>
+          <label for="dd-order-time">Time (store clock)</label>
+          <input type="time" id="dd-order-time" value="15:12">
+        </div>
+        <p class="field-error" id="dd-order-err"></p>
+      </div>
+
+      <fieldset class="field dd-group">
+        <legend>Your store</legend>
+        <div class="field">
+          <label for="dd-tz">Time zone</label>
+          <select id="dd-tz">
+            <option value="America/New_York" selected>Eastern (New York)</option>
+            <option value="America/Chicago">Central (Chicago)</option>
+            <option value="America/Denver">Mountain (Denver)</option>
+            <option value="America/Phoenix">Arizona (Phoenix)</option>
+            <option value="America/Los_Angeles">Pacific (Los Angeles)</option>
+            <option value="America/Anchorage">Alaska (Anchorage)</option>
+            <option value="Pacific/Honolulu">Hawaii (Honolulu)</option>
+            <option value="America/Puerto_Rico">Atlantic (Puerto Rico)</option>
+          </select>
+        </div>
+        <div class="field dd-pair">
+          <div>
+            <label for="dd-cutoff">Same-day cutoff</label>
+            <input type="time" id="dd-cutoff" value="14:00" aria-describedby="dd-cutoff-err">
+          </div>
+          <label class="check dd-nocut"><input type="checkbox" id="dd-nocut"><span>No cutoff</span></label>
+          <p class="field-error" id="dd-cutoff-err"></p>
+        </div>
+        <fieldset class="field">
+          <legend>Days you ship</legend>
+          <div class="dd-days" id="dd-ship"></div>
+          <p class="field-error" id="dd-ship-err"></p>
+        </fieldset>
+        <label class="check"><input type="checkbox" id="dd-federal" checked><span>Closed on US federal holidays (as OPM observes them)</span></label>
+        <div class="field">
+          <label for="dd-processing">Processing days</label>
+          <input type="number" id="dd-processing" min="0" max="60" step="1" value="1" inputmode="numeric" aria-describedby="dd-processing-hint dd-processing-err">
+          <p class="hint" id="dd-processing-hint">Shipping days after the order is received before the parcel is handed over. 0 ships the same day.</p>
+          <p class="field-error" id="dd-processing-err"></p>
+        </div>
+        <div class="field">
+          <label for="dd-closures">Closures (optional)</label>
+          <textarea id="dd-closures" rows="2" placeholder="2026-12-22 to 2026-12-23 Stocktake" aria-describedby="dd-closures-hint dd-closures-err"></textarea>
+          <p class="hint" id="dd-closures-hint">One per line: a date, or a date "to" a date, then a name.</p>
+          <p class="field-error" id="dd-closures-err"></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="field dd-group">
+        <legend>Carrier</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="carrier" value="usps" checked><span>USPS</span></label>
+          <label class="choice"><input type="radio" name="carrier" value="other"><span>Another carrier</span></label>
+        </div>
+        <div class="field" data-carrier="usps">
+          <label for="dd-service">Service</label>
+          <select id="dd-service">
+            <option value="" data-mode="order-by">Every USPS service</option>
+            <option value="ground-advantage">USPS Ground Advantage</option>
+            <option value="first-class-mail">First-Class Mail</option>
+            <option value="priority-mail">Priority Mail</option>
+            <option value="priority-mail-express">Priority Mail Express</option>
+          </select>
+        </div>
+        <div class="field" data-carrier="usps" data-mode="order-by">
+          <label for="dd-dest">Sending to</label>
+          <select id="dd-dest"></select>
+        </div>
+        <div class="field" data-carrier="other" hidden>
+          <label for="dd-other-name">Service name (optional)</label>
+          <input type="text" id="dd-other-name" maxlength="60" placeholder="UPS Ground">
+        </div>
+        <fieldset class="field" data-carrier="other" hidden>
+          <legend>Days the carrier delivers</legend>
+          <div class="dd-days" id="dd-deliver"></div>
+          <label class="check"><input type="checkbox" id="dd-carrier-fed" checked><span>No delivery on federal holidays</span></label>
+        </fieldset>
+        <div class="field" data-carrier="other" data-mode="order-by" hidden>
+          <label for="dd-sendby">The carrier's send-by date (optional)</label>
+          <input type="date" id="dd-sendby" min="2020-01-01" max="2035-12-31" aria-describedby="dd-sendby-hint">
+          <p class="hint" id="dd-sendby-hint">Copy it from your carrier's own holiday page. Without it, transit days count back from the arrival date.</p>
+        </div>
+        <div class="field dd-pair">
+          <div>
+            <label for="dd-transit">Transit days</label>
+            <input type="number" id="dd-transit" min="0" max="60" step="1" inputmode="numeric" aria-describedby="dd-transit-hint dd-transit-err">
+          </div>
+          <div>
+            <label for="dd-transit-max">Up to</label>
+            <input type="number" id="dd-transit-max" min="0" max="60" step="1" inputmode="numeric">
+          </div>
+          <p class="hint" id="dd-transit-hint">Carrier delivery days after handover. Leave blank for USPS's stated time.</p>
+          <p class="field-error" id="dd-transit-err"></p>
+        </div>
+      </fieldset>
+
+      <p class="form-error" id="dd-error" role="alert"></p>
+      <button class="btn" type="submit" id="dd-run">Find the last day to order</button>
+      <p class="hint dd-run-note" id="dd-run-note"></p>
+      <p class="visually-hidden" id="dd-status" role="status"></p>
+    </form>
+
+    <div class="dd-out" id="dd-out">
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap dd-rules" aria-labelledby="dd-rules-title">
+    <h2 id="dd-rules-title">Two calendars, not one</h2>
+    <div class="dd-rule-cols">
+      <div>
+        <h3>Your shipping days</h3>
+        <p>Orders count from the day they are received: the order day if it is a shipping day and before your cutoff, otherwise the next shipping day. Processing days are counted on your calendar: the weekdays you ship, your closures and, if you follow them, the federal holidays as OPM observes them. When a holiday falls on a Saturday, OPM gives the Friday off, so Friday, July 3, 2026 is a closed day for you.</p>
+      </div>
+      <div>
+        <h3>The carrier's delivery days</h3>
+        <p>Transit days are counted on the carrier's calendar. USPS delivers Monday to Saturday and closes on postal holidays, which do not follow OPM's Fridays: Post Offices are open with normal delivery on the Friday before a Saturday holiday and closed on the Saturday, and a Sunday holiday closes the Monday. Priority Mail Express delivers every day. For another carrier you say which days it delivers.</p>
+      </div>
+    </div>
+    <p class="muted small">Dates are estimates from your settings and the carriers' published calendars, not delivery guarantees. USPS's holiday dates are its recommended send-by dates for delivery before December 25, read from <a href="https://www.usps.com/holiday/holiday-shipping-dates.htm">usps.com</a> on October 31, 2026. UPS and FedEx publish their own dates on <a href="https://www.ups.com/us/en/support/shipping-support/shipping-services/holiday-shipping-schedule">ups.com</a> and <a href="https://www.fedex.com/content/dam/fedex/us-united-states/services/2026_Peak_Last_Day_to_ship.pdf">fedex.com</a>; pick "Another carrier" and enter the date from their page. Under the FTC's Mail, Internet, or Telephone Order Merchandise Rule you need a reasonable basis for any shipping time you state, so show a ships-by date as well as an arrives-by date. This is not legal advice.</p>
+  </section>
+
+  <section class="wrap dd-banner-doc" id="dd-banner-doc" aria-labelledby="dd-banner-title">
+    <h2 id="dd-banner-title">An order-by banner for any store</h2>
+    <p>Run "Last day to order" with your settings, then press "Make the banner code". You get a few lines of plain HTML and JavaScript to paste into any site: Shopify (a Custom Liquid section), WooCommerce, Squarespace, BigCommerce or a hand-built page.</p>
+    <ul>
+      <li>The deadlines are written into the code as fixed moments, worked out from your store's clock, so the visitor's time zone cannot shift them.</li>
+      <li>It never holds a key and calls no server: the paid run happens once, here or from your code, and the banner costs nothing per page view.</li>
+      <li>It shows the first deadline still open, counts down in its last two days, moves to the next faster service when one passes, and says plainly when every deadline has passed.</li>
+      <li>It reads the visitor's clock only to tell whether a deadline has passed. If you change your cutoff, processing days or closures, run it again and paste the new code.</li>
+    </ul>
+  </section>
+
+<section class="wrap cp-index" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Holiday shipping 2026</h2>
+<h3>Deadlines</h3><ul class="cp-index-list"><li><a href="/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/" title="Holiday shipping deadlines 2026: USPS send-by dates and your last order date">Holiday shipping deadlines 2026</a></li><li><a href="/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/" title="USPS holiday shipping deadlines 2026 (with your last order date)">USPS, every destination</a></li></ul>
+<h3>Order-by dates</h3><ul class="cp-index-list"><li><a href="/toll-preview/delivery-date-calculator/order-by-christmas-2026/" title="Last day to order for Christmas delivery 2026, by processing time">Christmas 2026</a></li><li><a href="/toll-preview/delivery-date-calculator/order-by-hanukkah-2026/" title="Last day to order for Hanukkah 2026 delivery (December 4)">Hanukkah 2026</a></li></ul>
+<h3>USPS services</h3><ul class="cp-index-list"><li><a href="/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/first-class-mail/" title="First-Class Mail Christmas 2026 deadline: send by Thursday, December 17">First-Class Mail</a></li><li><a href="/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/priority-mail/" title="Priority Mail Christmas 2026 deadline: send by Friday, December 18">Priority Mail</a></li><li><a href="/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/priority-mail-express/" title="Priority Mail Express Christmas 2026 deadline: send by Saturday, December 19">Priority Mail Express</a></li><li><a href="/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/ground-advantage/" title="USPS Ground Advantage Christmas 2026 deadline: send by Thursday, December 17">USPS Ground Advantage</a></li></ul>
+<h3>Guides</h3><ul class="cp-index-list"><li><a href="/toll-preview/delivery-date-calculator/christmas-order-deadline-banner/" title="Christmas order deadline banner for Shopify and any store, from your own cutoff">Order deadline banner</a></li></ul>
+</section>
+
+  <section class="wrap dd-code" aria-label="Use this from code">
+    <div id="dd-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This calculator needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<script type="module" src="/toll-preview/delivery-date-calculator/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

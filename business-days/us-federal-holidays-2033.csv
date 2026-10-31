@@ -1,0 +1,12 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2033-01-01,Saturday,2032-12-31,Friday,"Falls on a Saturday, so the Friday is the day off"
+Birthday of Martin Luther King Jr.,2033-01-17,Monday,2033-01-17,Monday,
+Washington's Birthday,2033-02-21,Monday,2033-02-21,Monday,
+Memorial Day,2033-05-30,Monday,2033-05-30,Monday,
+Juneteenth National Independence Day,2033-06-19,Sunday,2033-06-20,Monday,"Falls on a Sunday, so the Monday is the day off"
+Independence Day,2033-07-04,Monday,2033-07-04,Monday,
+Labor Day,2033-09-05,Monday,2033-09-05,Monday,
+Columbus Day,2033-10-10,Monday,2033-10-10,Monday,
+Veterans Day,2033-11-11,Friday,2033-11-11,Friday,
+Thanksgiving Day,2033-11-24,Thursday,2033-11-24,Thursday,
+Christmas Day,2033-12-25,Sunday,2033-12-26,Monday,"Falls on a Sunday, so the Monday is the day off"

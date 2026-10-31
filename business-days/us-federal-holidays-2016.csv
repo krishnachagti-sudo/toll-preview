@@ -1,0 +1,11 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2016-01-01,Friday,2016-01-01,Friday,
+Birthday of Martin Luther King Jr.,2016-01-18,Monday,2016-01-18,Monday,
+Washington's Birthday,2016-02-15,Monday,2016-02-15,Monday,
+Memorial Day,2016-05-30,Monday,2016-05-30,Monday,
+Independence Day,2016-07-04,Monday,2016-07-04,Monday,
+Labor Day,2016-09-05,Monday,2016-09-05,Monday,
+Columbus Day,2016-10-10,Monday,2016-10-10,Monday,
+Veterans Day,2016-11-11,Friday,2016-11-11,Friday,
+Thanksgiving Day,2016-11-24,Thursday,2016-11-24,Thursday,
+Christmas Day,2016-12-25,Sunday,2016-12-26,Monday,"Falls on a Sunday, so the Monday is the day off"

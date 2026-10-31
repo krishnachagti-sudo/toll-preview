@@ -1,0 +1,9 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2027-01-01,Friday,2027-01-01,Friday,
+Good Friday,2027-03-26,Friday,2027-03-26,Friday,
+Easter Monday,2027-03-29,Monday,2027-03-29,Monday,
+Early May bank holiday,2027-05-03,Monday,2027-05-03,Monday,
+Spring bank holiday,2027-05-31,Monday,2027-05-31,Monday,
+Summer bank holiday,2027-08-30,Monday,2027-08-30,Monday,
+Christmas Day,2027-12-25,Saturday,2027-12-27,Monday,"Falls on a Saturday, so Monday 27 December 2027 is the substitute day"
+Boxing Day,2027-12-26,Sunday,2027-12-28,Tuesday,"Falls on a Sunday, so Tuesday 28 December 2027 is the substitute day"

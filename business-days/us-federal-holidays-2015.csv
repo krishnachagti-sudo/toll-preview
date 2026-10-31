@@ -1,0 +1,11 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2015-01-01,Thursday,2015-01-01,Thursday,
+Birthday of Martin Luther King Jr.,2015-01-19,Monday,2015-01-19,Monday,
+Washington's Birthday,2015-02-16,Monday,2015-02-16,Monday,
+Memorial Day,2015-05-25,Monday,2015-05-25,Monday,
+Independence Day,2015-07-04,Saturday,2015-07-03,Friday,"Falls on a Saturday, so the Friday is the day off"
+Labor Day,2015-09-07,Monday,2015-09-07,Monday,
+Columbus Day,2015-10-12,Monday,2015-10-12,Monday,
+Veterans Day,2015-11-11,Wednesday,2015-11-11,Wednesday,
+Thanksgiving Day,2015-11-26,Thursday,2015-11-26,Thursday,
+Christmas Day,2015-12-25,Friday,2015-12-25,Friday,

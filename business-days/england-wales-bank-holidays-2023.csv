@@ -1,0 +1,10 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2023-01-01,Sunday,2023-01-02,Monday,"Falls on a Sunday, so Monday 2 January 2023 is the substitute day"
+Good Friday,2023-04-07,Friday,2023-04-07,Friday,
+Easter Monday,2023-04-10,Monday,2023-04-10,Monday,
+Early May bank holiday,2023-05-01,Monday,2023-05-01,Monday,
+Coronation bank holiday,2023-05-08,Monday,2023-05-08,Monday,One-off bank holiday
+Spring bank holiday,2023-05-29,Monday,2023-05-29,Monday,
+Summer bank holiday,2023-08-28,Monday,2023-08-28,Monday,
+Christmas Day,2023-12-25,Monday,2023-12-25,Monday,
+Boxing Day,2023-12-26,Tuesday,2023-12-26,Tuesday,

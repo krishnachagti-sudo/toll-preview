@@ -1,0 +1,9 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2015-01-01,Thursday,2015-01-01,Thursday,
+Good Friday,2015-04-03,Friday,2015-04-03,Friday,
+Easter Monday,2015-04-06,Monday,2015-04-06,Monday,
+Early May bank holiday,2015-05-04,Monday,2015-05-04,Monday,
+Spring bank holiday,2015-05-25,Monday,2015-05-25,Monday,
+Summer bank holiday,2015-08-31,Monday,2015-08-31,Monday,
+Christmas Day,2015-12-25,Friday,2015-12-25,Friday,
+Boxing Day,2015-12-26,Saturday,2015-12-28,Monday,"Falls on a Saturday, so Monday 28 December 2015 is the substitute day"

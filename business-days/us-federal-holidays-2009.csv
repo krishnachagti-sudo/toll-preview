@@ -1,0 +1,11 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2009-01-01,Thursday,2009-01-01,Thursday,
+Birthday of Martin Luther King Jr.,2009-01-19,Monday,2009-01-19,Monday,
+Washington's Birthday,2009-02-16,Monday,2009-02-16,Monday,
+Memorial Day,2009-05-25,Monday,2009-05-25,Monday,
+Independence Day,2009-07-04,Saturday,2009-07-03,Friday,"Falls on a Saturday, so the Friday is the day off"
+Labor Day,2009-09-07,Monday,2009-09-07,Monday,
+Columbus Day,2009-10-12,Monday,2009-10-12,Monday,
+Veterans Day,2009-11-11,Wednesday,2009-11-11,Wednesday,
+Thanksgiving Day,2009-11-26,Thursday,2009-11-26,Thursday,
+Christmas Day,2009-12-25,Friday,2009-12-25,Friday,

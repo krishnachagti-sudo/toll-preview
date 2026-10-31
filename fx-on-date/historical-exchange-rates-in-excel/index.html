@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Historical exchange rates in Excel by date, from the ECB file: Toll</title>
+<meta name="description" content="Look up an ECB reference rate for any date in Excel with one XLOOKUP formula, including weekends and pairs without the euro. Worked on the real file: EUR to USD on 31 December 2025 is 1.1750.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/historical-exchange-rates-in-excel/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/fx-on-date/historical-exchange-rates-in-excel.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="Historical exchange rates in Excel by date, from the ECB file">
+<meta property="og:description" content="Look up an ECB reference rate for any date in Excel with one XLOOKUP formula, including weekends and pairs without the euro. Worked on the real file: EUR to USD on 31 December 2025 is 1.1750.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/historical-exchange-rates-in-excel/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/historical-exchange-rates-in-excel/","url":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/historical-exchange-rates-in-excel/","name":"Historical exchange rates in Excel by date, from the ECB file","description":"Look up an ECB reference rate for any date in Excel with one XLOOKUP formula, including weekends and pairs without the euro. Worked on the real file: EUR to USD on 31 December 2025 is 1.1750.","dateModified":"2026-10-29","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Exchange rate on a date","item":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/"},{"@type":"ListItem","position":3,"name":"Historical exchange rates in Excel by date","item":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/historical-exchange-rates-in-excel/"}]},{"@type":"HowTo","name":"Historical exchange rates in Excel by date, from the ECB file","description":"Look up an ECB reference rate for any date in Excel with one XLOOKUP formula, including weekends and pairs without the euro. Worked on the real file: EUR to USD on 31 December 2025 is 1.1750.","step":[{"@type":"HowToStep","position":1,"name":"Download the ECB history","text":"Download eurofxref-hist.zip from the ECB and unzip it. It holds one file, eurofxref-hist.csv, with every fixing since 4 January 1999."},{"@type":"HowToStep","position":2,"name":"Open it in Excel","text":"Open eurofxref-hist.csv in Excel (or use Data, From Text/CSV). Column A is the date, newest first, and each other column is one currency in units per euro. A blank or N/A means no rate that day."},{"@type":"HowToStep","position":3,"name":"Look up a date","text":"Use XLOOKUP with match mode -1, which takes the exact date or the next earlier one: =XLOOKUP(DATE(2025,12,31),A:A,B:B,,-1)"},{"@type":"HowToStep","position":4,"name":"Pairs without the euro","text":"Divide one currency's column by the other's on the same date. US dollar to Indian rupee: =XLOOKUP(DATE(2025,12,31),A:A,AH:AH,,-1)/XLOOKUP(DATE(2025,12,31),A:A,B:B,,-1)"}]}]}</script>
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"fx-on-date"}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Toll</a></li><li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li><li aria-current="page">Historical exchange rates in Excel by date</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">Guide</p>
+<h1>Historical exchange rates in Excel by date</h1>
+<p class="cp-answer">In Excel, =XLOOKUP(DATE(2025,12,31),A:A,B:B,,-1) on the ECB's history file returns 1.1750, the EUR to USD reference rate for 31 December 2025; the -1 makes a weekend or holiday date take the last fixing before it.</p>
+
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check a formula against the tool</h2><p class="muted">The tool gives the same ECB rate for any date and names the fixing it used.</p><form method="get" action="/toll-preview/fx-on-date/" class="cp-tool-form"><input type="hidden" name="base" value="EUR"><input type="hidden" name="quote" value="USD"><div class="field"><label for="tf-date">Date</label><input type="date" id="tf-date" name="date" value="2025-12-31"><p class="hint">A weekend or holiday uses the last fixing before it.</p></div><button class="btn" type="submit">Get the rate in the tool</button></form><p class="small"><a href="/toll-preview/fx-on-date/?base=EUR&amp;quote=USD&amp;date=2025-12-31">Open these dates in the full tool</a></p></aside>
+<section>
+<h2 id="results">Worked results from the current file</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Formula</th><th scope="col" class="r num">Returns</th><th scope="col">Fixing used</th></tr></thead><tbody>
+<tr><th scope="row">=XLOOKUP(DATE(2025,12,31),A:A,B:B,,-1)</th><td class="r num">1.1750</td><td>Wednesday 31 Dec 2025</td></tr>
+<tr><th scope="row">=XLOOKUP(DATE(2025,6,29),A:A,B:B,,-1)</th><td class="r num">1.1704</td><td>Friday 27 Jun 2025 (Sunday 29 June 2025 has no fixing)</td></tr>
+<tr><th scope="row">=XLOOKUP(DATE(2025,12,31),A:A,AH:AH,,-1)/XLOOKUP(DATE(2025,12,31),A:A,B:B,,-1)</th><td class="r num">89.869362 (rounded to 6 decimals)</td><td>Wednesday 31 Dec 2025</td></tr>
+</tbody></table></div>
+<p>In the ECB file today the US dollar is column B and the Indian rupee column AH. The ECB has added and dropped currencies over the years, so check the header row before you copy a column letter.</p>
+<p class="cp-note">Excel keeps the full quotient for a cross rate; the tool and the pages here round it to 6 decimal places, half away from zero. VLOOKUP with TRUE needs the dates sorted oldest first; XLOOKUP with match mode -1 does not.</p>
+</section>
+<section>
+<h2 id="tables">Ready-made tables</h2>
+<p>Each pair page has month-end rates, monthly averages and yearly averages, with the month table as CSV: <a href="/toll-preview/fx-on-date/eur-usd/">EUR to USD</a>, <a href="/toll-preview/fx-on-date/usd-inr/">USD to INR</a>, <a href="/toll-preview/fx-on-date/usd-cad/">USD to CAD</a>.</p>
+</section>
+<section>
+<h2 id="method">How these rates are made</h2>
+<p>The European Central Bank publishes how many units of each currency one euro buys, usually at around 16:00 CET on every TARGET working day. A rate between two other currencies is worked out from the same day's fixing: units of the second per euro divided by units of the first per euro, rounded half away from zero to 6 decimal places. The inverse comes from the unrounded rate.</p>
+<p>A weekend or TARGET holiday has no fixing, so a date like that uses the last fixing before it, up to 7 days back, and the tool names the day it used. Averages here are the mean of the daily rates, each as the tool reports it, rounded to 6 decimal places.</p>
+<p class="cp-note">These are ECB reference rates. The ECB publishes them for information only and discourages their use for transactions. They are not the rate a bank, card or money transfer service charges.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">European Central Bank: Euro foreign exchange reference rates</a></li><li><a href="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip">European Central Bank: full history of the reference rates (CSV in a zip file)</a></li><li><a href="https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929">Microsoft Support: XLOOKUP function</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Download the ECB history.</strong> Download eurofxref-hist.zip from the ECB and unzip it. It holds one file, eurofxref-hist.csv, with every fixing since 4 January 1999.</li><li><strong>Open it in Excel.</strong> Open eurofxref-hist.csv in Excel (or use Data, From Text/CSV). Column A is the date, newest first, and each other column is one currency in units per euro. A blank or N/A means no rate that day.</li><li><strong>Look up a date.</strong> Use XLOOKUP with match mode -1, which takes the exact date or the next earlier one: =XLOOKUP(DATE(2025,12,31),A:A,B:B,,-1)</li><li><strong>Pairs without the euro.</strong> Divide one currency's column by the other's on the same date. US dollar to Indian rupee: =XLOOKUP(DATE(2025,12,31),A:A,AH:AH,,-1)/XLOOKUP(DATE(2025,12,31),A:A,B:B,,-1)</li></ol></section>
+
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/fx-on-date/eur-usd/">EUR to USD month-end rates (CSV)</a></li><li><a href="/toll-preview/fx-on-date/usd-inr/">USD to INR month-end rates (CSV)</a></li><li><a href="/toll-preview/fx-on-date/usd-cad/">USD to CAD month-end rates (CSV)</a></li><li><a href="/toll-preview/fx-on-date/ecb-reference-rates/">ECB euro reference rates for every currency</a></li><li><a href="/toll-preview/fx-on-date/ecb-exchange-rate-api/">ECB exchange rate API</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/fx-on-date/historical-exchange-rates-in-excel.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-10-29">2026-10-29</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

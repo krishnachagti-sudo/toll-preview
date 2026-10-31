@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business days calculator: Toll</title>
+<meta name="description" content="Count the business days between two dates, or add business days to a date, with US federal and England and Wales holidays skipped by name.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/business-days/files/page.css">
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"business-days"}</script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/business-days/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="Business days">
+<meta property="og:description" content="Count the business days between two dates, or add business days to a date, for US federal and England and Wales holidays. US holidays are the statutory federal ones only, with no executive-order closures.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/business-days/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/business-days/","url":"https://krishnachagti-sudo.github.io/toll-preview/business-days/","name":"Business days","description":"Count the business days between two dates, or add business days to a date, for US federal and England and Wales holidays. US holidays are the statutory federal ones only, with no executive-order closures.","dateModified":"2026-10-31","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Business days","item":"https://krishnachagti-sudo.github.io/toll-preview/business-days/"}]},{"@type":"WebApplication","name":"Business days","url":"https://krishnachagti-sudo.github.io/toll-preview/business-days/","description":"Count the business days between two dates, or add business days to a date, for US federal and England and Wales holidays. US holidays are the statutory federal ones only, with no executive-order closures.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","price":"0.0005","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.0005","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"run"}}},{"@type":"Offer","price":"0.04","priceCurrency":"INR","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.04","priceCurrency":"INR","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"run"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="bd">
+  <section class="wrap bd-intro">
+    <p class="eyebrow">Reference data, per call</p>
+    <h1>Business days</h1>
+    <p class="lede">Count the working days between two dates, or find the date that is some working days away. Weekends and public holidays are skipped, and every skipped holiday is named.</p>
+    <p class="bd-price" id="bd-price">Each run costs a fraction of a cent. Without an account you get 5 free runs a day.</p>
+  </section>
+
+  <section class="wrap bd-desk" aria-label="Calculator">
+    <form class="bd-form" id="bd-form" novalidate>
+      <fieldset class="field">
+        <legend>What do you want to do?</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="op" value="between" checked><span>Count between</span></label>
+          <label class="choice"><input type="radio" name="op" value="add"><span>Add days</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Whose holidays?</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="region" value="US" checked><span>United States</span></label>
+          <label class="choice"><input type="radio" name="region" value="GB-ENG"><span>England and Wales</span></label>
+        </div>
+        <p class="hint" id="bd-region-hint">US federal holidays.</p>
+      </fieldset>
+
+      <div class="field">
+        <label for="bd-start" id="bd-start-label">Start date</label>
+        <input type="date" id="bd-start" min="1971-01-01" max="2100-12-31" value="2026-07-01" aria-describedby="bd-start-err">
+        <p class="field-error" id="bd-start-err"></p>
+      </div>
+
+      <div class="field" id="bd-end-field">
+        <label for="bd-end">End date</label>
+        <input type="date" id="bd-end" min="1971-01-01" max="2100-12-31" value="2026-07-08" aria-describedby="bd-end-hint bd-end-err">
+        <p class="hint" id="bd-end-hint">Counts the days after the start, up to and including the end. If the end is earlier, it counts the days after the end, up to and including the start, as a negative number.</p>
+        <p class="field-error" id="bd-end-err"></p>
+      </div>
+
+      <div class="field" id="bd-days-field" hidden>
+        <label for="bd-days">Business days to add</label>
+        <input type="number" id="bd-days" step="1" min="-3650" max="3650" inputmode="numeric" value="5" aria-describedby="bd-days-hint bd-days-err">
+        <p class="hint" id="bd-days-hint">Use a negative number to go back. Up to 3,650 either way.</p>
+        <p class="field-error" id="bd-days-err"></p>
+      </div>
+
+      <p class="form-error" id="bd-error" role="alert"></p>
+      <button class="btn" type="submit" id="bd-run">Count business days</button>
+      <p class="hint bd-run-note" id="bd-run-note"></p>
+      <p class="visually-hidden" id="bd-status" role="status"></p>
+    </form>
+
+    <div class="bd-out" id="bd-out">
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap bd-rules" aria-labelledby="bd-rules-title">
+    <h2 id="bd-rules-title">The rules it follows</h2>
+    <div class="bd-rule-cols">
+      <div>
+        <h3>United States, federal</h3>
+        <p>New Year's Day, Birthday of Martin Luther King Jr. (from 1986), Washington's Birthday, Memorial Day, Juneteenth (from 2021), Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving Day and Christmas Day.</p>
+        <p>A fixed-date holiday on a Saturday is observed on the Friday, and on a Sunday on the Monday. This includes New Year's Day: when 1 January is a Saturday, the holiday is Friday 31 December. Veterans Day fell on the fourth Monday of October from 1971 to 1977.</p>
+      </div>
+      <div>
+        <h3>England and Wales</h3>
+        <p>New Year's Day (from 1974), Good Friday, Easter Monday, the Early May bank holiday (from 1978), the Spring bank holiday, the Summer bank holiday, Christmas Day and Boxing Day.</p>
+        <p>A holiday on a weekend moves to the next weekday that is not already a holiday. One-off royal and national days are included, such as the 2022 Platinum Jubilee days, the State Funeral on 19 September 2022 and the Coronation on 8 May 2023.</p>
+      </div>
+    </div>
+    <p class="muted small">Weekends are Saturday and Sunday. Dates run from 1971 to 2100. It does not know about state, local or company holidays, Scotland or Northern Ireland, or one-off US federal office closures ordered by the President.</p>
+  </section>
+
+<section class="wrap cp-index" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Holiday calendars by year</h2>
+<h3>US federal holidays</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/us-federal-holidays-2000/" title="US federal holidays 2000: dates, observed days and business days">2000</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2001/" title="US federal holidays 2001: dates, observed days and business days">2001</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2002/" title="US federal holidays 2002: dates, observed days and business days">2002</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2003/" title="US federal holidays 2003: dates, observed days and business days">2003</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2004/" title="US federal holidays 2004: dates, observed days and business days">2004</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2005/" title="US federal holidays 2005: dates, observed days and business days">2005</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2006/" title="US federal holidays 2006: dates, observed days and business days">2006</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2007/" title="US federal holidays 2007: dates, observed days and business days">2007</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2008/" title="US federal holidays 2008: dates, observed days and business days">2008</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2009/" title="US federal holidays 2009: dates, observed days and business days">2009</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2010/" title="US federal holidays 2010: dates, observed days and business days">2010</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2011/" title="US federal holidays 2011: dates, observed days and business days">2011</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2012/" title="US federal holidays 2012: dates, observed days and business days">2012</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2013/" title="US federal holidays 2013: dates, observed days and business days">2013</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2014/" title="US federal holidays 2014: dates, observed days and business days">2014</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2015/" title="US federal holidays 2015: dates, observed days and business days">2015</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2016/" title="US federal holidays 2016: dates, observed days and business days">2016</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2017/" title="US federal holidays 2017: dates, observed days and business days">2017</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2018/" title="US federal holidays 2018: dates, observed days and business days">2018</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2019/" title="US federal holidays 2019: dates, observed days and business days">2019</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2020/" title="US federal holidays 2020: dates, observed days and business days">2020</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2021/" title="US federal holidays 2021: dates, observed days and business days">2021</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2022/" title="US federal holidays 2022: dates, observed days and business days">2022</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2023/" title="US federal holidays 2023: dates, observed days and business days">2023</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2024/" title="US federal holidays 2024: dates, observed days and business days">2024</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2025/" title="US federal holidays 2025: dates, observed days and business days">2025</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2026/" title="US federal holidays 2026: dates, observed days and business days">2026</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2027/" title="US federal holidays 2027: dates, observed days and business days">2027</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2028/" title="US federal holidays 2028: dates, observed days and business days">2028</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2029/" title="US federal holidays 2029: dates, observed days and business days">2029</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2030/" title="US federal holidays 2030: dates, observed days and business days">2030</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2031/" title="US federal holidays 2031: dates, observed days and business days">2031</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2032/" title="US federal holidays 2032: dates, observed days and business days">2032</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2033/" title="US federal holidays 2033: dates, observed days and business days">2033</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2034/" title="US federal holidays 2034: dates, observed days and business days">2034</a></li><li><a href="/toll-preview/business-days/us-federal-holidays-2035/" title="US federal holidays 2035: dates, observed days and business days">2035</a></li></ul>
+<h3>England and Wales bank holidays</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2000/" title="England and Wales bank holidays 2000: dates, substitute days and working days">2000</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2001/" title="England and Wales bank holidays 2001: dates, substitute days and working days">2001</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2002/" title="England and Wales bank holidays 2002: dates, substitute days and working days">2002</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2003/" title="England and Wales bank holidays 2003: dates, substitute days and working days">2003</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2004/" title="England and Wales bank holidays 2004: dates, substitute days and working days">2004</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2005/" title="England and Wales bank holidays 2005: dates, substitute days and working days">2005</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2006/" title="England and Wales bank holidays 2006: dates, substitute days and working days">2006</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2007/" title="England and Wales bank holidays 2007: dates, substitute days and working days">2007</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2008/" title="England and Wales bank holidays 2008: dates, substitute days and working days">2008</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2009/" title="England and Wales bank holidays 2009: dates, substitute days and working days">2009</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2010/" title="England and Wales bank holidays 2010: dates, substitute days and working days">2010</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2011/" title="England and Wales bank holidays 2011: dates, substitute days and working days">2011</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2012/" title="England and Wales bank holidays 2012: dates, substitute days and working days">2012</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2013/" title="England and Wales bank holidays 2013: dates, substitute days and working days">2013</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2014/" title="England and Wales bank holidays 2014: dates, substitute days and working days">2014</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2015/" title="England and Wales bank holidays 2015: dates, substitute days and working days">2015</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2016/" title="England and Wales bank holidays 2016: dates, substitute days and working days">2016</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2017/" title="England and Wales bank holidays 2017: dates, substitute days and working days">2017</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2018/" title="England and Wales bank holidays 2018: dates, substitute days and working days">2018</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2019/" title="England and Wales bank holidays 2019: dates, substitute days and working days">2019</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2020/" title="England and Wales bank holidays 2020: dates, substitute days and working days">2020</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2021/" title="England and Wales bank holidays 2021: dates, substitute days and working days">2021</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2022/" title="England and Wales bank holidays 2022: dates, substitute days and working days">2022</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2023/" title="England and Wales bank holidays 2023: dates, substitute days and working days">2023</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2024/" title="England and Wales bank holidays 2024: dates, substitute days and working days">2024</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2025/" title="England and Wales bank holidays 2025: dates, substitute days and working days">2025</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2026/" title="England and Wales bank holidays 2026: dates, substitute days and working days">2026</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2027/" title="England and Wales bank holidays 2027: dates, substitute days and working days">2027</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2028/" title="England and Wales bank holidays 2028: dates, substitute days and working days">2028</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2029/" title="England and Wales bank holidays 2029: dates, substitute days and working days">2029</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2030/" title="England and Wales bank holidays 2030: dates, substitute days and working days">2030</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2031/" title="England and Wales bank holidays 2031: dates, substitute days and working days">2031</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2032/" title="England and Wales bank holidays 2032: dates, substitute days and working days">2032</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2033/" title="England and Wales bank holidays 2033: dates, substitute days and working days">2033</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2034/" title="England and Wales bank holidays 2034: dates, substitute days and working days">2034</a></li><li><a href="/toll-preview/business-days/england-wales-bank-holidays-2035/" title="England and Wales bank holidays 2035: dates, substitute days and working days">2035</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Business days by month</h2>
+<h3>United States, 2026</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/us-business-days-january-2026/" title="How many business days are in January 2026? (US)">January</a></li><li><a href="/toll-preview/business-days/us-business-days-february-2026/" title="How many business days are in February 2026? (US)">February</a></li><li><a href="/toll-preview/business-days/us-business-days-march-2026/" title="How many business days are in March 2026? (US)">March</a></li><li><a href="/toll-preview/business-days/us-business-days-april-2026/" title="How many business days are in April 2026? (US)">April</a></li><li><a href="/toll-preview/business-days/us-business-days-may-2026/" title="How many business days are in May 2026? (US)">May</a></li><li><a href="/toll-preview/business-days/us-business-days-june-2026/" title="How many business days are in June 2026? (US)">June</a></li><li><a href="/toll-preview/business-days/us-business-days-july-2026/" title="How many business days are in July 2026? (US)">July</a></li><li><a href="/toll-preview/business-days/us-business-days-august-2026/" title="How many business days are in August 2026? (US)">August</a></li><li><a href="/toll-preview/business-days/us-business-days-september-2026/" title="How many business days are in September 2026? (US)">September</a></li><li><a href="/toll-preview/business-days/us-business-days-october-2026/" title="How many business days are in October 2026? (US)">October</a></li><li><a href="/toll-preview/business-days/us-business-days-november-2026/" title="How many business days are in November 2026? (US)">November</a></li><li><a href="/toll-preview/business-days/us-business-days-december-2026/" title="How many business days are in December 2026? (US)">December</a></li></ul>
+<h3>England and Wales, 2026</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/england-wales-working-days-january-2026/" title="How many working days are in January 2026? (England and Wales)">January</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-february-2026/" title="How many working days are in February 2026? (England and Wales)">February</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-march-2026/" title="How many working days are in March 2026? (England and Wales)">March</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-april-2026/" title="How many working days are in April 2026? (England and Wales)">April</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-may-2026/" title="How many working days are in May 2026? (England and Wales)">May</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-june-2026/" title="How many working days are in June 2026? (England and Wales)">June</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-july-2026/" title="How many working days are in July 2026? (England and Wales)">July</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-august-2026/" title="How many working days are in August 2026? (England and Wales)">August</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-september-2026/" title="How many working days are in September 2026? (England and Wales)">September</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-october-2026/" title="How many working days are in October 2026? (England and Wales)">October</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-november-2026/" title="How many working days are in November 2026? (England and Wales)">November</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-december-2026/" title="How many working days are in December 2026? (England and Wales)">December</a></li></ul>
+<h3>United States, 2027</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/us-business-days-january-2027/" title="How many business days are in January 2027? (US)">January</a></li><li><a href="/toll-preview/business-days/us-business-days-february-2027/" title="How many business days are in February 2027? (US)">February</a></li><li><a href="/toll-preview/business-days/us-business-days-march-2027/" title="How many business days are in March 2027? (US)">March</a></li><li><a href="/toll-preview/business-days/us-business-days-april-2027/" title="How many business days are in April 2027? (US)">April</a></li><li><a href="/toll-preview/business-days/us-business-days-may-2027/" title="How many business days are in May 2027? (US)">May</a></li><li><a href="/toll-preview/business-days/us-business-days-june-2027/" title="How many business days are in June 2027? (US)">June</a></li><li><a href="/toll-preview/business-days/us-business-days-july-2027/" title="How many business days are in July 2027? (US)">July</a></li><li><a href="/toll-preview/business-days/us-business-days-august-2027/" title="How many business days are in August 2027? (US)">August</a></li><li><a href="/toll-preview/business-days/us-business-days-september-2027/" title="How many business days are in September 2027? (US)">September</a></li><li><a href="/toll-preview/business-days/us-business-days-october-2027/" title="How many business days are in October 2027? (US)">October</a></li><li><a href="/toll-preview/business-days/us-business-days-november-2027/" title="How many business days are in November 2027? (US)">November</a></li><li><a href="/toll-preview/business-days/us-business-days-december-2027/" title="How many business days are in December 2027? (US)">December</a></li></ul>
+<h3>England and Wales, 2027</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/england-wales-working-days-january-2027/" title="How many working days are in January 2027? (England and Wales)">January</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-february-2027/" title="How many working days are in February 2027? (England and Wales)">February</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-march-2027/" title="How many working days are in March 2027? (England and Wales)">March</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-april-2027/" title="How many working days are in April 2027? (England and Wales)">April</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-may-2027/" title="How many working days are in May 2027? (England and Wales)">May</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-june-2027/" title="How many working days are in June 2027? (England and Wales)">June</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-july-2027/" title="How many working days are in July 2027? (England and Wales)">July</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-august-2027/" title="How many working days are in August 2027? (England and Wales)">August</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-september-2027/" title="How many working days are in September 2027? (England and Wales)">September</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-october-2027/" title="How many working days are in October 2027? (England and Wales)">October</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-november-2027/" title="How many working days are in November 2027? (England and Wales)">November</a></li><li><a href="/toll-preview/business-days/england-wales-working-days-december-2027/" title="How many working days are in December 2027? (England and Wales)">December</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Worked out for today</h2>
+<h3>Today</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/is-today-a-business-day-us/" title="Is today a business day in the US? Federal holidays and Federal Reserve banks">Is today a business day? (US)</a></li><li><a href="/toll-preview/business-days/is-today-a-working-day-england-wales/" title="Is today a working day or a bank holiday in England and Wales?">Is today a working day? (England and Wales)</a></li><li><a href="/toll-preview/business-days/business-days-left-this-year-us/" title="How many business days are left this year? (US)">Business days left this year (US)</a></li><li><a href="/toll-preview/business-days/working-days-left-this-year-england-wales/" title="How many working days are left this year? (England and Wales)">Working days left this year (England and Wales)</a></li></ul>
+<h3>From today</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/how-long-is-2-business-days/" title="How long is 2 business days? The date 2 business days from today">2 business days from today</a></li><li><a href="/toll-preview/business-days/how-long-is-3-business-days/" title="How long is 3 business days? The date 3 business days from today">3 business days from today</a></li><li><a href="/toll-preview/business-days/how-long-is-5-business-days/" title="How long is 5 business days? The date 5 business days from today">5 business days from today</a></li><li><a href="/toll-preview/business-days/how-long-is-7-business-days/" title="How long is 7 business days? The date 7 business days from today">7 business days from today</a></li><li><a href="/toll-preview/business-days/how-long-is-10-business-days/" title="How long is 10 business days? The date 10 business days from today">10 business days from today</a></li><li><a href="/toll-preview/business-days/how-long-is-30-business-days/" title="How long is 30 business days? The date 30 business days from today">30 business days from today</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Guides</h2>
+<h3>Spreadsheets</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/excel-networkdays/" title="Count business days between two dates in Excel (NETWORKDAYS, with holidays)">Excel: NETWORKDAYS</a></li><li><a href="/toll-preview/business-days/excel-workday/" title="Add business days to a date in Excel (WORKDAY, with holidays)">Excel: WORKDAY</a></li><li><a href="/toll-preview/business-days/google-sheets-networkdays/" title="Business days in Google Sheets: NETWORKDAYS and WORKDAY with holidays">Google Sheets: NETWORKDAYS and WORKDAY</a></li></ul>
+<h3>Code</h3><ul class="cp-index-list"><li><a href="/toll-preview/business-days/api/" title="Business days API: count and add business days over REST or MCP">REST and MCP API</a></li><li><a href="/toll-preview/business-days/python/" title="Add business days in Python with holidays (NumPy busday_offset)">Python (NumPy)</a></li></ul>
+</section>
+
+  <section class="wrap bd-code" aria-label="Use this from code">
+    <div id="bd-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This calculator needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<script type="module" src="/toll-preview/business-days/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

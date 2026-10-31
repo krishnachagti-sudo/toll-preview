@@ -1,0 +1,122 @@
+/* Exchange rate on a date: a fixing ticket. Sits inside the brand chrome and reuses its tokens;
+   the stamp colour is this page's own. */
+.fx {
+  /* Money and rates are lit magenta across the site. */
+  --accent: var(--h-money);
+  --accent-ink: #1d0611;
+  --accent-wash: rgba(255, 95, 168, 0.1);
+  --toll-accent: var(--h-money);
+  --toll-accent-ink: #1d0611;
+  --fx-stamp: var(--h-money);
+  --fx-stamp-wash: rgba(255, 95, 168, 0.1);
+}
+
+.fx-intro { padding-block: 40px 8px; }
+.fx-intro h1 { margin-bottom: 0.25em; }
+.fx-price { color: var(--ink-soft); max-width: 40rem; margin: 0; font-variant-numeric: tabular-nums; }
+
+.fx-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.fx-desk > * { min-width: 0; }
+@media (min-width: 900px) { .fx-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
+
+/* Form: a ruled slip. */
+.fx-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.fx-form .btn { width: 100%; }
+.fx-run-note { margin: 10px 0 0; }
+
+.fx-pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: start; }
+.fx-pair .field { margin-bottom: 16px; }
+.fx-swap {
+  margin-top: 30px; width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer;
+  background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); border-radius: 999px;
+}
+.fx-swap:hover { background: var(--paper-sunk); }
+.fx-swap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (max-width: 420px) {
+  .fx-pair { grid-template-columns: 1fr; gap: 0; }
+  .fx-swap { margin: -6px 0 10px; justify-self: start; }
+  .fx-swap svg { transform: rotate(90deg); }
+}
+
+.fx select, .fx input[type="date"] {
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--ink-soft); border-radius: var(--radius);
+  padding: 10px 12px; min-height: 44px; width: 100%;
+}
+.fx select:focus-visible, .fx input[type="date"]:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+
+.fx-quick { margin-bottom: 18px; }
+.fx-quick-label { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0 0 8px; }
+.fx-quick-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.fx-chip {
+  font: 500 0.85rem/1 var(--font-mono); color: var(--ink); background: transparent; cursor: pointer;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 0 12px; min-height: 36px;
+}
+.fx-chip:hover { border-color: var(--ink-soft); background: var(--paper-sunk); }
+.fx-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.fx-chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* The ticket: a strip, a body with the rate, and a torn-off stub. */
+.fx-ticket {
+  position: relative; background: var(--paper-sunk); border: 1px solid var(--rule-strong);
+  border-radius: var(--radius); overflow: hidden; max-width: 36rem;
+}
+.fx-ticket-head {
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  background: var(--ink); color: var(--paper);
+  font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; padding: 8px 16px;
+}
+.fx-ticket-body { padding: 18px 16px 8px; }
+.fx-pair-name { font: 500 0.85rem/1.4 var(--font-mono); letter-spacing: 0.06em; color: var(--ink-soft); margin: 0 0 4px; }
+.fx-pair-name b { color: var(--ink); font-weight: 500; }
+.fx-rate-line { margin: 0 0 2px; color: var(--ink-soft); }
+.fx-rate {
+  display: block; font: 500 clamp(2.4rem, 11vw, 3.6rem)/1.05 var(--font-display); letter-spacing: -0.02em;
+  color: var(--ink); margin: 0 0 6px; font-variant-numeric: lining-nums tabular-nums; overflow-wrap: anywhere;
+}
+.fx-rate small { font: 400 1.1rem/1.3 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.fx-inverse { margin: 0 0 14px; color: var(--ink-soft); font-variant-numeric: tabular-nums lining-nums; }
+.fx-inverse b { color: var(--ink); font-weight: 500; }
+
+.fx-note {
+  margin: 0 0 14px; padding: 10px 12px; color: var(--ink);
+  background: var(--fx-stamp-wash); border-left: 4px solid var(--fx-stamp); border-radius: 0 var(--radius) var(--radius) 0;
+}
+.fx-note-tag { display: block; font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--fx-stamp); margin-bottom: 2px; }
+
+/* Perforation between the body and the stub. */
+.fx-tear {
+  height: 14px; margin: 0; position: relative;
+}
+.fx-tear::before { content: ""; position: absolute; left: 14px; right: 14px; top: 50%; border-top: 2px dashed var(--rule); }
+.fx-tear::after, .fx-tear i {
+  content: ""; position: absolute; top: 0; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--paper); border: 1px solid var(--rule-strong);
+}
+.fx-tear::after { right: -8px; }
+.fx-tear i { left: -8px; }
+
+.fx-stub { padding: 8px 16px 16px; }
+.fx-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0 0 10px; font-size: 0.95rem; }
+.fx-facts dt { color: var(--ink-soft); }
+.fx-facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+.fx-source { margin: 0 0 4px; font-size: 0.85rem; color: var(--ink-soft); }
+.fx-cost { margin: 0; font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+/* The worked example shown on load: a label, so it never reads as the visitor's own result. */
+.fx-example-tag {
+  display: inline-block; font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--fx-stamp); border: 1px solid var(--fx-stamp); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px;
+}
+
+/* Empty and error states reuse the ticket, with dashes where the rate goes. */
+.fx-ticket.idle .fx-rate, .fx-ticket.none .fx-rate { color: var(--ink-soft); }
+.fx-none-msg { margin: 0 0 14px; max-width: 30rem; }
+.fx-none-msg a { white-space: nowrap; }
+
+.fx-about { margin-top: 56px; }
+.fx-about-cols { display: grid; gap: 24px; margin-bottom: 8px; }
+@media (min-width: 760px) { .fx-about-cols { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+.fx-about h3 { margin-bottom: 0.3em; }
+.fx-about-cols p { color: var(--ink-soft); font-size: 0.95rem; }
+.fx-code { margin-top: 40px; }

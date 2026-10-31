@@ -1,0 +1,11 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2007-01-01,Monday,2007-01-01,Monday,
+Birthday of Martin Luther King Jr.,2007-01-15,Monday,2007-01-15,Monday,
+Washington's Birthday,2007-02-19,Monday,2007-02-19,Monday,
+Memorial Day,2007-05-28,Monday,2007-05-28,Monday,
+Independence Day,2007-07-04,Wednesday,2007-07-04,Wednesday,
+Labor Day,2007-09-03,Monday,2007-09-03,Monday,
+Columbus Day,2007-10-08,Monday,2007-10-08,Monday,
+Veterans Day,2007-11-11,Sunday,2007-11-12,Monday,"Falls on a Sunday, so the Monday is the day off"
+Thanksgiving Day,2007-11-22,Thursday,2007-11-22,Thursday,
+Christmas Day,2007-12-25,Tuesday,2007-12-25,Tuesday,

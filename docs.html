@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs: Toll API, keys, pricing and MCP</title>
+<meta name="description" content="How API keys, per-call pricing, spending limits, errors, idempotency and the MCP endpoint work.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/#tools">Tools</a>
+      <a href="/toll-preview/#pricing">Pricing</a>
+      <a href="/toll-preview/#developers">Developers</a>
+      <a href="/toll-preview/docs">Docs</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="sep" aria-hidden="true"></span>
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <a href="/toll-preview/#tools">Tools</a>
+        <a href="/toll-preview/#pricing">Pricing</a>
+        <a href="/toll-preview/#developers">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="page-head">
+    <p class="eyebrow">Docs</p>
+    <h1>Using the tools from code</h1>
+    <p class="lede">Every tool on Toll that has an API works the same way: one HTTPS call with your key, a JSON answer, and a charge in real money from your balance.</p>
+  </div>
+
+  <div class="docs-grid">
+    <nav class="docs-toc" aria-label="On this page">
+      <ol>
+        <li><a href="#start">Start here</a></li>
+        <li><a href="#keys">API keys</a></li>
+        <li><a href="#pricing">Pricing and balance</a></li>
+        <li><a href="#limits">Spending limits</a></li>
+        <li><a href="#calls">Making a call</a></li>
+        <li><a href="#errors">Errors</a></li>
+        <li><a href="#idempotency">Idempotency</a></li>
+        <li><a href="#rate-limits">Rate limits</a></li>
+        <li><a href="#mcp">MCP for AI agents</a></li>
+        <li><a href="#tools">Tools and endpoints</a></li>
+      </ol>
+    </nav>
+
+    <div class="docs-body">
+      <section id="start" aria-labelledby="start-title">
+        <h2 id="start-title">Start here</h2>
+        <ol>
+          <li><a href="/toll-preview/account">Create an account.</a> You get a small free allowance each month, so you can try any tool before you pay.</li>
+          <li>Add money when you need more. It is a one-time payment: no subscription, and no automatic top-up.</li>
+          <li>Create an API key on your account page and send it with each call.</li>
+        </ol>
+      </section>
+
+      <section id="keys" aria-labelledby="keys-title">
+        <h2 id="keys-title">API keys</h2>
+        <p>Keys start with <code>tk_live_</code>. Send yours in the <code>Authorization</code> header:</p>
+        <pre>Authorization: Bearer tk_live_...</pre>
+        <p>We show a key once, when you create it. We store only a fingerprint, so if you lose a key, revoke it and make a new one. Make one key per app or agent, so you can limit or revoke each on its own. Keep keys on your server, never in a web page or a public repository.</p>
+      </section>
+
+      <section id="pricing" aria-labelledby="pricing-title">
+        <h2 id="pricing-title">Pricing and balance</h2>
+        <p>Most tools have a fixed price per call, in US dollars and in Indian rupees. Some price what you ask for: per row, per document, with free repeats of the same job for a while, cheaper rates past a volume in a month, or a monthly ceiling. Each tool's page and its entry in the tools endpoint say every price in words, and a quote (below) tells you the exact amount before you run anything. Your account has one currency, chosen when you sign up, and every price and charge you see is in that currency. Prices are real money, often fractions of a cent, like <code>$0.0005</code>, not points or tokens.</p>
+        <p>Your balance has two parts:</p>
+        <dl>
+          <dt>Free allowance</dt>
+          <dd>Given to every account on the 1st of each month (UTC). We spend it first. Whatever is left expires at the end of the month.</dd>
+          <dt>Paid balance</dt>
+          <dd>Money you added. It never expires.</dd>
+        </dl>
+        <p>A tool that bills for what it delivers (for example, only definitive answers in a batch) takes the full amount when the call starts and refunds the rest in the same response; <code>charged.reserved</code> and <code>charged.refunded</code> show both. A charge that is refunded unless something happens later (such as a form being signed) says by when in <code>charged.refundedUnlessConfirmedBy</code>.</p>
+        <p>A refund always returns money to the part it came from. Paid money comes back to your paid balance in full, whenever the refund happens. Free allowance from a month that has already ended comes back and expires again straight away, as it would have at the end of that month.</p>
+        <p>We only charge for calls that succeed. A call with invalid input is refused before any charge. If a tool fails while it runs, we refund the charge straight away and the response says so.</p>
+      </section>
+
+      <section id="limits" aria-labelledby="limits-title">
+        <h2 id="limits-title">Spending limits</h2>
+        <p>Every key has a monthly limit, and you can set one for the whole account too. Limits are hard: if a call would take this month's spending past a limit, we refuse it with <code>cap_reached</code> and charge nothing. Limits count from the 1st of each month (UTC). Change them any time on your <a href="/toll-preview/account#limits">account page</a>.</p>
+      </section>
+
+      <section id="calls" aria-labelledby="calls-title">
+        <h2 id="calls-title">Making a call</h2>
+        <p>Send a <code>POST</code> with a JSON body to the tool's endpoint:</p>
+        <pre><span class="js-origin"></span>/toll-preview/api/v1/tools/<em>tool-slug</em></pre>
+        <p>A successful call answers with the result, what it cost, and your balance after the charge:</p>
+<pre>{
+  "ok": true,
+  "result": { ... },
+  "charged": { "amount": 500, "currency": "USD", "display": "$0.0005" },
+  "balance": { "total": 19999500, "display": "$19.9995" },
+  "dataVersion": "holiday-rules-2026.10"
+}</pre>
+        <p>To know the price first, send the same body to <code>/toll-preview/api/v1/tools/<em>tool-slug</em>/quote</code>. It answers with <code>quote.amount</code>, <code>quote.display</code> and the price in words, and runs, charges and reserves nothing. Over MCP, the <code>quote_price</code> tool does the same.</p>
+        <p>Amounts are whole numbers of micro-units: one dollar or one rupee is 1,000,000. The <code>display</code> fields show the same amount as text. <code>dataVersion</code> names the reference data the answer came from, when a tool uses any.</p>
+        <p>Each tool page has ready-to-copy examples in curl, JavaScript, Python and MCP. The full machine-readable description is the <a href="/toll-preview/api/v1/openapi.json">OpenAPI document</a>, and the tool list is at <a href="/toll-preview/api/v1/tools">the tools endpoint</a>.</p>
+      </section>
+
+      <section id="errors" aria-labelledby="errors-title">
+        <h2 id="errors-title">Errors</h2>
+        <p>Every error has the same shape. <code>fields</code> appears when specific input fields were wrong.</p>
+<pre>{
+  "ok": false,
+  "error": { "code": "invalid_input", "message": "...", "fields": { "start": "..." } }
+}</pre>
+        <div class="table-scroll">
+          <table class="rules">
+            <thead><tr><th scope="col">Status</th><th scope="col">Code</th><th scope="col">What it means</th></tr></thead>
+            <tbody>
+              <tr><td class="num">400</td><td><code>invalid_input</code></td><td>The body is not valid JSON, is too large, or does not match the tool's input. Not charged.</td></tr>
+              <tr><td class="num">401</td><td><code>unauthorized</code></td><td>The key is missing, wrong or revoked.</td></tr>
+              <tr><td class="num">402</td><td><code>insufficient_balance</code></td><td>Your balance does not cover this call. Add money and try again.</td></tr>
+              <tr><td class="num">402</td><td><code>cap_reached</code></td><td>The call would pass a monthly limit on the key or the account. Not charged.</td></tr>
+              <tr><td class="num">404</td><td><code>unknown_tool</code></td><td>No tool has that slug, or it has been retired.</td></tr>
+              <tr><td class="num">409</td><td><code>in_progress</code></td><td>A call with the same Idempotency-Key, or the first paid call for the same job, is still running. Retry in a moment.</td></tr>
+              <tr><td class="num">422</td><td><code>idempotency_mismatch</code></td><td>The Idempotency-Key was already used with different input.</td></tr>
+              <tr><td class="num">422</td><td><code>not_available</code></td><td>The tool cannot answer this exactly (for example, no published data for that date), or it only runs in the browser. Not charged.</td></tr>
+              <tr><td class="num">429</td><td><code>rate_limited</code></td><td>Too many requests. Slow down and retry.</td></tr>
+              <tr><td class="num">502</td><td><code>upstream_failed</code></td><td>The tool failed while running. The charge was refunded.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="idempotency" aria-labelledby="idempotency-title">
+        <h2 id="idempotency-title">Idempotency</h2>
+        <p>Networks drop answers. To retry safely, send an <code>Idempotency-Key</code> header with a value you choose (1 to 200 characters), unique per logical call:</p>
+        <pre>Idempotency-Key: invoice-4471-due-date</pre>
+        <p>If we have already answered a call with that key for the same tool, we send the stored answer again, mark it with <code>Idempotent-Replay: true</code>, and charge nothing more. Reusing a key with different input returns <code>idempotency_mismatch</code>. If the first call failed and was refunded, the key is free to use again.</p>
+      </section>
+
+      <section id="rate-limits" aria-labelledby="rate-title">
+        <h2 id="rate-title">Rate limits</h2>
+        <p>Each key can make 10 requests a second, with short bursts of up to 20. Past that you get <code>rate_limited</code>; wait briefly and retry.</p>
+        <p>On the website, people who are not signed in get a few free runs each day. Signed-in runs on the website are charged like API calls.</p>
+      </section>
+
+      <section id="mcp" aria-labelledby="mcp-title">
+        <h2 id="mcp-title">MCP for AI agents</h2>
+        <p>Agents that speak the Model Context Protocol can use every API tool through one endpoint, over Streamable HTTP:</p>
+        <pre><span class="js-origin"></span>/toll-preview/mcp</pre>
+        <p>Add it to your MCP client with your key as a Bearer token:</p>
+<pre id="mcp-config">{
+  "mcpServers": {
+    "tools": {
+      "type": "http",
+      "url": "<span class="js-origin"></span>/toll-preview/mcp",
+      "headers": { "Authorization": "Bearer YOUR_API_KEY" }
+    }
+  }
+}</pre>
+        <p>Listing tools needs no key; calling one does. Each tool's MCP name is its slug, its input schema is the same as the API's, and calls are priced and limited exactly like API calls. When a call is refused (for example, a limit is reached), the agent gets the reason as text it can act on.</p>
+      </section>
+
+      <section id="tools" aria-labelledby="tools-title">
+        <h2 id="tools-title">Tools and endpoints</h2>
+        <p class="muted" id="tools-status">Loading the tools.</p>
+        <div id="tool-table"></div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/#pricing">Pricing</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/docs#mcp">MCP for agents</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<script>
+(function () {
+  var h = Toll.h;
+  [].forEach.call(document.querySelectorAll('.js-origin'), function (el) { el.textContent = location.origin; });
+
+  var status = document.getElementById('tools-status');
+  var box = document.getElementById('tool-table');
+  Toll.api('/api/v1/tools').then(function (json) {
+    var tools = json.tools.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+    if (!tools.length) { status.textContent = 'No tools are live yet.'; return; }
+    status.textContent = 'Every live tool, listed from the API.';
+    var rows = tools.map(function (t) {
+      var api = t.kind === 'api';
+      return h('tr', null, [
+        h('td', null, [h('a', { href: Toll.base + '/' + t.slug + '/' }, t.name), h('br'), h('span', { class: 'muted small' }, t.summary)]),
+        h('td', null, api
+          ? h('code', null, 'POST ' + Toll.base + '/api/v1/tools/' + t.slug)
+          : h('span', { class: 'muted' }, 'Runs in your browser. No API.')),
+        h('td', { class: 'r money' }, api ? [t.price.display.USD, h('br'), t.price.display.INR] : 'Free'),
+      ]);
+    });
+    box.appendChild(h('div', { class: 'table-scroll' }, h('table', { class: 'rules' }, [
+      h('thead', null, h('tr', null, [
+        h('th', { scope: 'col' }, 'Tool'),
+        h('th', { scope: 'col' }, 'Endpoint'),
+        h('th', { scope: 'col', class: 'r' }, 'Per call'),
+      ])),
+      h('tbody', null, rows),
+    ])));
+  }, function () {
+    status.textContent = 'We could not load the tools. Refresh the page to try again.';
+  });
+})();
+</script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

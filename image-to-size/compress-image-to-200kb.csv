@@ -1,0 +1,5 @@
+photo,before_width,before_height,before_bytes,limit_bytes,after_width,after_height,after_bytes,jpeg_quality_percent,pixels_kept_percent
+"Landscape photo, 12 megapixels",4032,3024,2082378,200000,3427,2570,199142,48,72
+"Head-and-shoulders portrait, 12 megapixels",3024,4032,2147760,200000,1857,2476,198221,35,38
+"Busy outdoor scene, 6 megapixels",3008,2000,1919600,200000,1570,1044,199308,35,27
+"Page of typed text, US Letter at 300 dpi",2550,3300,1111718,200000,1331,1723,198435,44,27

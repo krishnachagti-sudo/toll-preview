@@ -1,0 +1,9 @@
+holiday,date,weekday,day_off,day_off_weekday,note
+New Year's Day,2005-01-01,Saturday,2005-01-03,Monday,"Falls on a Saturday, so Monday 3 January 2005 is the substitute day"
+Good Friday,2005-03-25,Friday,2005-03-25,Friday,
+Easter Monday,2005-03-28,Monday,2005-03-28,Monday,
+Early May bank holiday,2005-05-02,Monday,2005-05-02,Monday,
+Spring bank holiday,2005-05-30,Monday,2005-05-30,Monday,
+Summer bank holiday,2005-08-29,Monday,2005-08-29,Monday,
+Boxing Day,2005-12-26,Monday,2005-12-26,Monday,
+Christmas Day,2005-12-25,Sunday,2005-12-27,Tuesday,"Falls on a Sunday, so Tuesday 27 December 2005 is the substitute day"
