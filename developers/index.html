@@ -22,6 +22,7 @@
 <script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
 <script src="/toll-preview/assets/motion.js" defer></script>
 <meta name="robots" content="noindex, nofollow">
 </head>
@@ -43,28 +44,38 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap nav-row">
-    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Toll</span></a>
     <nav class="head-nav" aria-label="Main">
-      <a href="/toll-preview/tools/">Tools</a>
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
       <a href="/toll-preview/pricing/">Pricing</a>
-      <a href="/toll-preview/developers/" aria-current="page">Developers</a>
-      <a href="/toll-preview/docs">Docs</a>
+      <a href="/toll-preview/developers/" aria-current="page" aria-current="page">Developers</a>
     </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
     <div class="nav-cta">
-      <span class="sep" aria-hidden="true"></span>
       <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
       <a class="btn nav-start" href="/toll-preview/account">Get started</a>
     </div>
     <details class="menu">
-      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
       <nav class="menu-panel" aria-label="Menu">
-        <a href="/toll-preview/tools/">Tools</a>
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
         <a href="/toll-preview/pricing/">Pricing</a>
-        <a href="/toll-preview/developers/" aria-current="page">Developers</a>
+        <a href="/toll-preview/developers/" aria-current="page" aria-current="page">Developers</a>
         <a href="/toll-preview/docs">Docs</a>
         <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
       </nav>
     </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
   </div>
 </header>
 
@@ -383,7 +394,7 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
   <thead><tr><th scope="col">Tool</th><th scope="col">Endpoint</th><th scope="col">Price</th></tr></thead>
   <tbody>
 <tr>
-  <td><div class="tname hue-agent"><i></i><span><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a><small>1099-threshold</small></span></div></td>
+  <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a><small>1099-threshold</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/1099-threshold</code></td>
   <td class="words"><span class="line">Year-end scan: $0.10 per payee-year for the first 500 each payment year, then $0.05 per payee-year; a repeat for the same payee-year is free; the IRIS upload file and the verdict CSV are included.</span><span class="line">Single-payee check: free.</span><span class="line">Lines, due dates, penalties, state rules and the 2027 projection: free.</span></td>
 </tr>
@@ -408,17 +419,17 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
   <td class="words"><span class="line">Free, in your browser</span></td>
 </tr>
 <tr>
-  <td><div class="tname hue-agent"><i></i><span><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement and IRS mileage log</a><small>mileage-reimbursement</small></span></div></td>
+  <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement and IRS mileage log</a><small>mileage-reimbursement</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/mileage-reimbursement</code></td>
   <td class="words"><span class="line">Rate lookup or calculation on this page: free.</span><span class="line">Rate lookup or calculation over the API or MCP: $0.002 per call.</span><span class="line">Trip file (per-employee totals, true-up, W-2 split, results CSV): $0.001 per trip row, at least $0.25 per file.</span><span class="line">Vehicle-year log PDF with the completeness check: $4.00 per vehicle-year log; a repeat for the same vehicle and tax year is free for 30 days.</span></td>
 </tr>
 <tr>
-  <td><div class="tname hue-agent"><i></i><span><a href="/toll-preview/tax-set-aside/">Tax set-aside per payment</a><small>tax-set-aside</small></span></div></td>
+  <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/tax-set-aside/">Tax set-aside per payment</a><small>tax-set-aside</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/tax-set-aside</code></td>
   <td class="words"><span class="line">Set-aside for a payment: $0.10 per payment.</span><span class="line">Percentage only: $0.10 per payment; no dollar amount or breakdown, and open to the free runs signed-out visitors get.</span><span class="line">Year ledger replay: $0.10 per 25 payments (rounded up).</span><span class="line">Next due date and safe harbor: free.</span><span class="line">Rates and thresholds with sources: free.</span><span class="line">At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td>
 </tr>
 <tr>
-  <td><div class="tname hue-agent"><i></i><span><a href="/toll-preview/trucker-per-diem/">Trucker per diem worksheet</a><small>trucker-per-diem</small></span></div></td>
+  <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/trucker-per-diem/">Trucker per diem worksheet</a><small>trucker-per-diem</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/trucker-per-diem</code></td>
   <td class="words"><span class="line">Worksheet: $3.00 per driver-year worksheet (PDF and CSV); a repeat for the same driver and tax year costs $0.10 for 15 months.</span><span class="line">Log preview: $0.02 per log check; totals, monthly table and log checks, no files.</span><span class="line">Quick total: $0.02 per calculation.</span><span class="line">Rates lookup: $0.02 per lookup.</span></td>
 </tr>

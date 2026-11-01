@@ -1,10 +1,9 @@
 /* Motion for every page. Loaded deferred from the shared head (routes/pages.js render()), after
    each page's own scripts; motion.css carries the styles it keys on. Two parts:
 
-   1. The bar: clear at the top of the page; after a short scroll it condenses into a floating glass
-      capsule (with refraction in Chromium), lit by the pointer, with a reading-progress line along
-      its lower rim. Two springs drive it; per frame it only writes transforms, a clip-path,
-      opacity and an SVG rim. Nothing is read during the animation; positions are measured up front.
+   1. The bar: a floating glass pill on every page and at every scroll position (with refraction in
+      Chromium), lit by the pointer, with a reading-progress line along its lower rim. The pill's
+      box is the nav row base.css lays out; this fits the glass, rim and refraction map to it.
    2. The page: a smoky glow lit from the page's own content, word-by-word headlines, reveals and
       cascades, magnetic buttons, tilting cards, scroll-linked panels and steps, counting figures,
       sliding tab highlights, and momentum scrolling.
@@ -20,7 +19,6 @@
   if (!head || !row) return;
 
   var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var mqNarrow = window.matchMedia('(max-width: 900px)');
   var mqHover = window.matchMedia('(hover: hover) and (pointer: fine)');
   var reduce = mqReduce.matches;
 
@@ -35,10 +33,9 @@
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   // ---------- capsule geometry (the shape it settles into) ----------
-  var CAP_TOP = 8, CAP_H = 48, CAP_R = 24, SIDE = 10, LOGO_S = 0.9, GAP = 30, PAD_L = 18;
+  var CAP_TOP = 10, CAP_H = 60, CAP_R = 30;
   var W0 = 0, H0 = 0;           // header box
-  var capL = 0, capW = 0;       // capsule, in header coordinates
-  var groups = [];              // { node, dx, scale }
+  var capL = 0, capW = 0;       // the pill, in header coordinates
 
   // ---------- layers ----------
   root.classList.add('lg', 'mx');
@@ -129,43 +126,14 @@
   }
 
   // ---------- measuring (only here, never inside the animation) ----------
-  function visible(n) { return n && n.offsetWidth > 0 && n.offsetHeight > 0; }
+  // The pill is the nav row itself (base.css lays it out); the glass, its rim and the refraction
+  // map are fitted to the row's box inside the header.
   function measure() {
     W0 = head.clientWidth;
     H0 = head.offsetHeight;
-    var logo = row.querySelector('.logo');
-    var cands = [row.querySelector('.head-nav'), row.querySelector('.nav-cta'), row.querySelector('.menu > summary')].filter(visible);
-    if (!visible(logo) || !cands.length) { groups = []; return; }
-    var base = row.offsetLeft;
-    var lL = base + logo.offsetLeft, lW = logo.offsetWidth;
-    var rbL = Infinity, rbR = -Infinity;
-    cands.forEach(function (n) { rbL = Math.min(rbL, base + n.offsetLeft); rbR = Math.max(rbR, base + n.offsetLeft + n.offsetWidth); });
-    var rbW = rbR - rbL;
-    // The right-most control sits concentric in the capsule when it is a pill or a round button.
-    var edge = null;
-    [].forEach.call(row.querySelectorAll('.nav-cta a, .nav-cta button, .menu > summary'), function (n) {
-      if (visible(n) && (!edge || n.getBoundingClientRect().right > edge.getBoundingClientRect().right)) edge = n;
-    });
-    var lastH = edge ? edge.offsetHeight : 0;
-    var padR = lastH >= 28 ? (CAP_H - lastH) / 2 : 16;
-    var tLogo, tRb;
-    var natural = PAD_L + lW * LOGO_S + GAP + rbW + padR;
-    if (mqNarrow.matches || natural > W0 - 2 * SIDE - 24) {
-      capL = SIDE; capW = W0 - 2 * SIDE;
-      tLogo = capL + 14;
-      tRb = capL + capW - padR - rbW;
-    } else {
-      capW = Math.round(natural);
-      capL = Math.round((W0 - capW) / 2);
-      tLogo = capL + PAD_L;
-      tRb = tLogo + lW * LOGO_S + GAP;
-    }
-    groups = [{ node: logo, dx: tLogo - lL, scale: true }];
-    cands.forEach(function (n) { groups.push({ node: n, dx: tRb - rbL, scale: false }); });
-    // Drop transforms left on groups that are no longer shown (after a breakpoint change).
-    [row.querySelector('.head-nav'), row.querySelector('.nav-cta'), row.querySelector('.menu > summary')].forEach(function (n) {
-      if (n && cands.indexOf(n) < 0) n.style.transform = '';
-    });
+    if (!row.offsetWidth) return;
+    capL = row.offsetLeft; capW = row.offsetWidth;
+    CAP_TOP = row.offsetTop; CAP_H = row.offsetHeight; CAP_R = CAP_H / 2;
     if (!lightInit) { lx = tx = capL + capW * 0.32; lightInit = true; }
     buildMap();
   }
@@ -193,10 +161,6 @@
     gL = L; gR = R; gB = B; gr = r; drawProg();
     light.setAttribute('cx', lx.toFixed(1));
     light.setAttribute('cy', ly);
-    for (var i = 0; i < groups.length; i++) {
-      var g = groups[i];
-      g.node.style.transform = 'translate3d(' + (g.dx * x).toFixed(2) + 'px,0,0)' + (g.scale ? ' scale(' + lerp(1, LOGO_S, y).toFixed(4) + ')' : '');
-    }
     if (feDisp) {
       // The map is drawn for the settled shape, so the bending fades in as the capsule arrives.
       var t = clamp((Math.min(x, y) - 0.82) / 0.18, 0, 1);
@@ -229,20 +193,12 @@
   function kick() { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
   function snap() { x = y = target; vx = vy = 0; lx = tx; render(); }
 
-  function setTarget(t) {
-    if (t === target) return;
-    target = t;
-    head.classList.toggle('lg-capsule', t === 1);
-    if (reduce) snap(); else kick();
-  }
   var docH = document.documentElement.scrollHeight;
   if ('ResizeObserver' in window) new ResizeObserver(function () { docH = document.documentElement.scrollHeight; }).observe(document.body);
   function onScroll() {
     var s = window.scrollY || window.pageYOffset;
     var p = clamp(s / Math.max(1, docH - window.innerHeight), 0, 1);
     if (Math.abs(p - prog) > 0.0005) { prog = p; drawProg(); }
-    if (s > 28) setTarget(1);
-    else if (s < 10) setTarget(0);
   }
 
   // ---------- light that follows the pointer ----------
@@ -304,16 +260,18 @@
   }
   function snapOrRender() { if (raf) return; render(); }
 
+  // The bar is a pill from the first paint, at every scroll position.
+  target = 1;
+  head.classList.add('lg-capsule');
   measure();
   onScroll();
   snap();
-  // A page opened mid-scroll starts as the capsule, without animating in.
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); snapOrRender(); });
   if ('ResizeObserver' in window) {
     var ro = new ResizeObserver(function () { measure(); snapOrRender(); });
-    [row.querySelector('.logo'), row.querySelector('.nav-cta')].forEach(function (n) { if (n) ro.observe(n); });
+    ro.observe(row);
   }
   mqReduce.addEventListener && mqReduce.addEventListener('change', function (e) { reduce = e.matches; if (reduce) snap(); });
 

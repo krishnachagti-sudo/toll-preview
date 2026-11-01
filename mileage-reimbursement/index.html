@@ -13,6 +13,7 @@
 <script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"mileage-reimbursement"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
 <script src="/toll-preview/assets/motion.js" defer></script>
 <link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/">
 <meta property="og:type" content="website">
@@ -27,28 +28,38 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap nav-row">
-    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Toll</span></a>
     <nav class="head-nav" aria-label="Main">
-      <a href="/toll-preview/tools/">Tools</a>
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
       <a href="/toll-preview/pricing/">Pricing</a>
       <a href="/toll-preview/developers/">Developers</a>
-      <a href="/toll-preview/docs">Docs</a>
     </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
     <div class="nav-cta">
-      <span class="sep" aria-hidden="true"></span>
       <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
       <a class="btn nav-start" href="/toll-preview/account">Get started</a>
     </div>
     <details class="menu">
-      <summary aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
       <nav class="menu-panel" aria-label="Menu">
-        <a href="/toll-preview/tools/">Tools</a>
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
         <a href="/toll-preview/pricing/">Pricing</a>
         <a href="/toll-preview/developers/">Developers</a>
         <a href="/toll-preview/docs">Docs</a>
         <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
       </nav>
     </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
   </div>
 </header>
 

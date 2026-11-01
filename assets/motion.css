@@ -1,7 +1,7 @@
 /* Motion for every page. Loaded from the shared head after each page's own stylesheet;
    motion.js adds the classes it keys on (html.lg, html.mx, html.mx-field-on and friends).
-   - The bar: clear at the top, a glass capsule with refraction once scrolled, lit by the pointer,
-     with a reading-progress line along its lower rim.
+   - The bar: a floating glass pill with refraction, lit by the pointer, with a reading-progress
+     line along its lower rim.
    - The page: a smoky glow behind it, lit from the content in view; momentum scrolling,
      word-by-word headlines, magnetic buttons; fluid type and spacing; sliding tab highlights;
      scroll-scrubbed product panels, tilting cards, filling step lines, counting figures, staggered
@@ -24,12 +24,9 @@
   }
 }
 
-/* ---------- header: clear at the top, a glass capsule once scrolled ---------- */
-.lg .site-head{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom-color:var(--line);transition:border-color .35s ease}
-.lg .site-head.lg-capsule{border-bottom-color:transparent}
-.lg .nav-row{z-index:1}
-.lg .nav-row .logo,.lg .head-nav,.lg .nav-cta,.lg .menu>summary{will-change:transform}
-.lg .nav-row .logo{transform-origin:0 50%}
+/* ---------- header: a floating glass pill ---------- */
+/* The glass, rim and refraction are drawn over the pill's box, so the row itself goes clear. */
+.lg .nav-row{z-index:1;background:none;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
 
 .lg-glass{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
   background:
@@ -53,7 +50,7 @@
 .lg .lg-capsule .menu summary{border-radius:999px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
 
 /* The mobile menu opens as a glass sheet under the header. */
-.lg .menu-panel{left:10px;right:10px;top:62px;border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:6px 20px 18px;
+.lg .menu-panel{left:0;right:0;top:calc(100% + 8px);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:6px 20px 18px;
   background:linear-gradient(180deg,rgba(30,31,36,.84),rgba(14,15,18,.92));
   -webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);
   box-shadow:0 30px 70px -24px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.08);transform-origin:90% 0}
