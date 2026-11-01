@@ -250,6 +250,14 @@ function renderCalendar(r) {
       h('div', { class: 'pd-days' }, cells),
     ]));
   }
+  // As a sideways strip, open on the latest month with a logged day (else this month), once per year shown.
+  if (cal.scrollWidth > cal.clientWidth && cal.dataset.openedYear !== String(y)) {
+    cal.dataset.openedYear = String(y);
+    const logged = [...rows.keys(), ...Object.keys(marks)].filter((d) => d.startsWith(`${y}-`)).sort().pop();
+    const today = new Date().toISOString().slice(0, 10);
+    const m = Number((logged ?? (today.startsWith(`${y}-`) ? today : `${y}-01`)).slice(5, 7));
+    cal.scrollLeft = cal.children[m - 1].offsetLeft - cal.offsetLeft;
+  }
 }
 
 function legend() {
@@ -336,9 +344,14 @@ async function getWorksheet() {
   if (timer) { clearTimeout(timer); timer = null; update(); }
   clearErrors();
   const read = readForm();
-  if (read.error || !lastResult || read.input.op !== 'preview') { $('pd-error').textContent = read.error ?? 'Fix the log first: the worksheet is built from the days shown.'; return; }
+  if (read.error || !lastResult || read.input.op !== 'preview') { $('pd-error').textContent = read.error ?? 'Fix the log first: the worksheet is built from the days shown.'; $('pd-error').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
   const driverLabel = $('pd-driver').value.trim();
-  if (!driverLabel) { $('pd-driver-err').textContent = 'Put the driver\'s name on the worksheet.'; $('pd-driver').focus(); return; }
+  if (!driverLabel) {
+    $('pd-driver-err').textContent = 'Put the driver\'s name on the worksheet.';
+    $('pd-driver').scrollIntoView({ block: 'center', behavior: 'smooth' });
+    $('pd-driver').focus({ preventScroll: true });
+    return;
+  }
   const input = { ...read.input, op: 'worksheet', driverLabel, ...($('pd-home').value.trim() ? { taxHome: $('pd-home').value.trim() } : {}) };
   const key = JSON.stringify(input);
   const button = $('pd-get');

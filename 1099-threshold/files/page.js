@@ -329,6 +329,8 @@ async function onCheck(ev) {
 
 async function onScan(ev) {
   ev.preventDefault();
+  // Signed out, the button says it signs you in, and does.
+  if (!account) { window.location.href = `${T.base}/account?next=${encodeURIComponent(window.location.pathname)}`; return; }
   $('tt-scan-error').textContent = '';
   const { text, input } = scanInput();
   let body;
@@ -356,7 +358,8 @@ function showPrice() {
   const currency = account?.currency === 'INR' ? 'INR' : 'USD';
   $('tt-price').textContent = `A year-end scan costs ${scan.text[currency]}. Checking one payee is free${account ? '' : ': 5 free checks a day without an account'}.`;
   $('tt-check-note').textContent = account ? 'Free, and not taken from your balance.' : '5 free checks a day, no account needed.';
-  $('tt-scan-note').textContent = account ? 'Charged from your balance, once per payee for the year.' : 'A scan needs an account: sign in or sign up from the top of the page.';
+  $('tt-scan-note').textContent = account ? 'Charged from your balance, once per payee for the year.' : 'A scan needs an account. The free preview above needs none.';
+  $('tt-scan-run').textContent = account ? 'Run the scan' : 'Sign in to run the scan';
 }
 
 // ---------- inputs from the address ----------

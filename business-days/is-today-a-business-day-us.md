@@ -1,6 +1,6 @@
 # Is today a business day in the US?
 
-No: today, Saturday, October 31, 2026 (the date in Washington, DC), is a Saturday, so it is not a business day in the US. The next business day is Monday, November 2, 2026.
+No: today, Sunday, November 1, 2026 (the date in Washington, DC), is a Sunday, so it is not a business day in the US. The next business day is Monday, November 2, 2026.
 
 - Next business day: November 2, 2026
 - Today: Weekend
@@ -9,13 +9,12 @@ No: today, Saturday, October 31, 2026 (the date in Washington, DC), is a Saturda
 
 ## Find the next business day after any date
 
-[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-10-31&days=1)
+[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-01&days=1)
 
 ## Today and the next 13 days
 
 | Date | Day | Business day | Reserve Banks open | Not counted because |
 | --- | --- | --- | --- | --- |
-| October 31, 2026 | Saturday | No | No | Weekend |
 | November 1, 2026 | Sunday | No | No | Weekend |
 | November 2, 2026 | Monday | Yes | Yes |  |
 | November 3, 2026 | Tuesday | Yes | Yes |  |
@@ -29,6 +28,7 @@ No: today, Saturday, October 31, 2026 (the date in Washington, DC), is a Saturda
 | November 11, 2026 | Wednesday | No | No | Veterans Day |
 | November 12, 2026 | Thursday | Yes | Yes |  |
 | November 13, 2026 | Friday | Yes | Yes |  |
+| November 14, 2026 | Saturday | No | No | Weekend |
 
 After today, 41 business days are left in 2026 in the US ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/)).
 
@@ -67,5 +67,5 @@ For most federal employees a Saturday holiday is observed on the Friday before a
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-business-day-us/  
-Worked out for: 2026-10-31  
+Worked out for: 2026-11-01  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-business-day-us.csv

@@ -5,7 +5,7 @@
    - The page: a smoky glow behind it, lit from the content in view; momentum scrolling,
      word-by-word headlines, magnetic buttons; fluid type and spacing; sliding tab highlights;
      scroll-scrubbed product panels, tilting cards, filling step lines, counting figures, staggered
-     rows, eased FAQ answers and page-to-page transitions.
+     rows and eased FAQ answers.
    Everything rests readable without JavaScript and holds still under reduced motion. */
 
 :root{
@@ -274,14 +274,8 @@ html.mx-vt-local::view-transition-old(*),html.mx-vt-local::view-transition-new(*
 .faq summary svg{transition:transform .5s var(--lg-spring),color .2s}
 .motion .faq details[open] p{animation:lq-enter .5s var(--mx-out) both}
 
-/* ---------- moving between pages: a short crossfade-and-rise ---------- */
-@media (prefers-reduced-motion:no-preference){
-  @view-transition{navigation:auto}
-  ::view-transition-old(root){animation:mx-page-out .28s ease both}
-  ::view-transition-new(root){animation:mx-page-in .5s var(--mx-out) both}
-}
-@keyframes mx-page-out{to{opacity:0;transform:translateY(-8px)}}
-@keyframes mx-page-in{from{opacity:0;transform:translateY(14px)}}
+/* No page-to-page view transition: in testing, a cross-document transition left the arriving page
+   rendering no frames after a link click, so moving between pages is a plain load. */
 
 /* ---------- reduced motion: everything at rest, at once ---------- */
 @media (prefers-reduced-motion:reduce){

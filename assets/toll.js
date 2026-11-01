@@ -330,8 +330,16 @@
   }
 
   // ---------- running a tool ----------
+  // Once the day's free runs are gone, every run note on the page says so; until then the page's
+  // own note ("5 free runs a day, no account needed") stands.
+  function noFreeRunsLeft() {
+    [].forEach.call(document.querySelectorAll('[class*="-run-note"]'), function (el) {
+      el.textContent = 'No free runs left today. Sign in to keep going, or come back tomorrow.';
+    });
+  }
   function run(slug, input) {
     return api('/api/run/' + encodeURIComponent(slug || tool), { body: input === undefined ? {} : input }).then(function (json) {
+      if (json && json.freeRunsLeft === 0) noFreeRunsLeft();
       if (json && json.balance && mePromise) {
         mePromise.then(function (account) {
           if (!account) return;
@@ -341,6 +349,9 @@
         }, function () {});
       }
       return json;
+    }, function (e) {
+      if (e.code === 'rate_limited') noFreeRunsLeft(); // the web runner's only limit is the free runs
+      throw e;
     });
   }
 

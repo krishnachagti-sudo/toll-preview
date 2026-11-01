@@ -1,6 +1,6 @@
 # Is today a working day in England and Wales?
 
-No: today, Saturday 31 October 2026 (the date in London), is a Saturday, so it is not a working day in England and Wales. The next working day is Monday 2 November 2026.
+No: today, Sunday 1 November 2026 (the date in London), is a Sunday, so it is not a working day in England and Wales. The next working day is Monday 2 November 2026.
 
 - Next working day: 2 November 2026
 - Today: Weekend
@@ -8,13 +8,12 @@ No: today, Saturday 31 October 2026 (the date in London), is a Saturday, so it i
 
 ## Find the next working day after any date
 
-[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=GB-ENG&start=2026-10-31&days=1)
+[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=GB-ENG&start=2026-11-01&days=1)
 
 ## Today and the next 13 days
 
 | Date | Day | Working day | Not counted because |
 | --- | --- | --- | --- |
-| 31 October 2026 | Saturday | No | Weekend |
 | 1 November 2026 | Sunday | No | Weekend |
 | 2 November 2026 | Monday | Yes |  |
 | 3 November 2026 | Tuesday | Yes |  |
@@ -28,6 +27,7 @@ No: today, Saturday 31 October 2026 (the date in London), is a Saturday, so it i
 | 11 November 2026 | Wednesday | Yes |  |
 | 12 November 2026 | Thursday | Yes |  |
 | 13 November 2026 | Friday | Yes |  |
+| 14 November 2026 | Saturday | No | Weekend |
 
 After today, 42 working days are left in 2026 in England and Wales ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/working-days-left-this-year-england-wales/)).
 
@@ -58,5 +58,5 @@ A substitute bank holiday is given on the next weekday that is not already a hol
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-working-day-england-wales/  
-Worked out for: 2026-10-31  
+Worked out for: 2026-11-01  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-working-day-england-wales.csv

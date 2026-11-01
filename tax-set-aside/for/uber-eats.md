@@ -1,6 +1,6 @@
 # Uber Eats: tax set-aside per payout, 2026
 
-A Uber Eats driver who has earned $20,000 so far should set aside $64 of a $500 payout after deducting 220 miles at the IRS business rate (72.5 cents January to June 2026, 76 cents July to December), single in Texas with $100 of it in tips.
+An Uber Eats driver who has earned $20,000 so far should set aside $64 of a $500 payout after deducting 220 miles at the IRS business rate (72.5 cents January to June 2026, 76 cents July to December), single in Texas with $100 of it in tips.
 
 - Set aside: $64
 - Mileage deduction: $167
@@ -39,7 +39,7 @@ Tips count only if you qualify: they must be in an occupation the IRS lists as c
 
 ## Questions
 
-### How much should a Uber Eats driver set aside for taxes?
+### How much should an Uber Eats driver set aside for taxes?
 
 Less than a flat 25% once mileage comes off. A $500 payout for 220 miles in late 2026 adds $332.80 of profit; with $20,000 earned so far in Texas, single, set aside $64 (12.8% of the payout).
 

@@ -107,6 +107,14 @@
 @media (max-width: 420px) {
   .pd-counts { grid-template-columns: 1fr; }
 }
+/* On a phone the twelve months would stack several screens deep: they become a strip, one month
+   wide, swiped sideways. */
+.pd-cal-swipe { display: none; }
+@media (max-width: 599px) {
+  .pd-cal { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 88%; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding-bottom: 8px; }
+  .pd-month { scroll-snap-align: start; }
+  .pd-cal-swipe { display: block; }
+}
 @media print {
   .pd-form, .pd-code, .pd-cal-wrap { display: none; }
 }

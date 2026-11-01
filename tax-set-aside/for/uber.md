@@ -1,6 +1,6 @@
 # Uber: tax set-aside per payout, 2026
 
-A Uber driver who has earned $20,000 so far should set aside $140 of a $900 payout after deducting 300 miles at the IRS business rate (72.5 cents January to June 2026, 76 cents July to December), single in Texas with $60 of it in tips.
+An Uber driver who has earned $20,000 so far should set aside $140 of a $900 payout after deducting 300 miles at the IRS business rate (72.5 cents January to June 2026, 76 cents July to December), single in Texas with $60 of it in tips.
 
 - Set aside: $140
 - Mileage deduction: $228
@@ -39,7 +39,7 @@ Tips count only if you qualify: they must be in an occupation the IRS lists as c
 
 ## Questions
 
-### How much should a Uber driver set aside for taxes?
+### How much should an Uber driver set aside for taxes?
 
 Less than a flat 25% once mileage comes off. A $900 payout for 300 miles in late 2026 adds $672.00 of profit; with $20,000 earned so far in Texas, single, set aside $140 (15.6% of the payout).
 

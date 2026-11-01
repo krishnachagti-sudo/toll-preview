@@ -9,6 +9,9 @@ const SLUG = 'tax-set-aside';
 const $ = (id) => document.getElementById(id);
 const h = (tag, attrs, children) => T.h(tag, attrs, children);
 const STORE = 'tax-set-aside-ledger-v1';
+// The paid price as a signed-out visitor sees it; a signed-in account's own currency is shown in
+// ts-price. Accounts are held in dollars or rupees, so a UK answer is still paid for in one of them.
+const paidPrice = (c) => `$0.10 (₹8) a payment from ${c === 'UK' ? 'an account held in dollars or rupees' : 'your balance'}, never more than $2.49 (₹199) a month`;
 
 let account = null;
 let last = null; // { input, result } of the last full answer
@@ -98,7 +101,8 @@ function renderPercentage(input, result) {
     h('p', { class: 'ts-kicker', text: 'Your answer (free run)' }),
     h('p', { class: 'ts-big num', text: `${result.percent.toFixed(1)}%` }),
     h('p', { class: 'ts-sub', text: `of this payment goes to your tax pot.` }),
-    h('p', { class: 'muted', text: 'Sign in for the amount in dollars or pounds, the breakdown, the working with every source, the next due date and the year ledger: $0.10 a payment, never more than $2.49 a month.' }),
+    ...(result.flags ?? []).map((x) => h('p', { class: 'ts-flag', text: x })),
+    h('p', { class: 'muted', text: `Sign in for the amount in ${result.country === 'UK' ? 'pounds' : 'dollars'}, the breakdown, the working with every source, the next due date and the year ledger: ${paidPrice(result.country)}.` }),
     h('p', null, [h('a', { class: 'btn btn-small', href: `${T.base}/account?next=${encodeURIComponent(window.location.pathname)}`, text: 'Sign in' })]),
   );
 }

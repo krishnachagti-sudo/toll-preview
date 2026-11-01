@@ -1,6 +1,6 @@
 # Working days left this year, England and Wales
 
-There are 42 working days left in 2026 in England and Wales after today, Saturday 31 October 2026 (the date in London), up to and including Thursday 31 December 2026.
+There are 42 working days left in 2026 in England and Wales after today, Sunday 1 November 2026 (the date in London), up to and including Thursday 31 December 2026.
 
 - Left after today: 42
 - Working days in 2026: 253
@@ -9,7 +9,7 @@ There are 42 working days left in 2026 in England and Wales after today, Saturda
 
 ## Count the working days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=GB-ENG&start=2026-10-31&end=2026-12-31)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=GB-ENG&start=2026-11-01&end=2026-12-31)
 
 ## Month by month, 2026
 
@@ -51,5 +51,5 @@ Today is not counted, so on a working day the figure "counting today" is one mor
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/working-days-left-this-year-england-wales/  
-Worked out for: 2026-10-31  
+Worked out for: 2026-11-01  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/working-days-left-this-year-england-wales.csv

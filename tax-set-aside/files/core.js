@@ -295,8 +295,11 @@ export function usPayment(F, S, input, { now } = {}) {
   const pct = input.amount > 0 ? setAside / input.amount : 0;
   const state = stateInfo(S, input.state);
 
+  // The percentage carries the one flag that changes what it means: a state left out.
+  const stateGap = state && !state.covered ? `${state.name} income tax is not included: this is federal and self-employment tax only, so set aside more for ${state.name}.`
+    : !input.state ? 'No state given: this is federal and self-employment tax only.' : null;
   if (input.detail === 'percentage') {
-    return { country: 'US', taxYear, detail: 'percentage', percent: Math.round(pct * 1000) / 10, note: 'The share of this payment to set aside. Sign in for the dollar amount, the breakdown and the working.' };
+    return { country: 'US', taxYear, detail: 'percentage', percent: Math.round(pct * 1000) / 10, flags: stateGap ? [stateGap] : [], note: 'The share of this payment to set aside. Sign in for the dollar amount, the breakdown and the working.' };
   }
 
   const flags = [];
@@ -463,7 +466,7 @@ export function ukPayment(U, input, { now } = {}) {
   const firstYear = Math.max(0, r2(after.january - before.january));
   const pct = input.amount > 0 ? setAside / input.amount : 0;
   if (input.detail === 'percentage') {
-    return { country: 'UK', taxYear, detail: 'percentage', percent: Math.round(pct * 1000) / 10, note: 'The share of this payment to set aside. Sign in for the pound amount, the breakdown and the working.' };
+    return { country: 'UK', taxYear, detail: 'percentage', percent: Math.round(pct * 1000) / 10, flags: [], note: 'The share of this payment to set aside. Sign in for the pound amount, the breakdown and the working.' };
   }
   const flags = [];
   if (net < 0) flags.push(`Expenses exceed this payment, so it lowers your bill by ${gbp(-change, { pence: true })}; there is nothing to set aside from it.`);
