@@ -323,6 +323,7 @@ async function start() {
   syncCountry();
   const ex = tool.examples[0];
   if (!linked) render(ex.input, ex.output, { kind: 'example' });
+  else if (T.takeRunFlag()) $('ts-form').requestSubmit();
   else $('ts-out').replaceChildren(h('p', { class: 'muted', text: `The form is filled in from the page you came from. Press "${$('ts-run').textContent}" to work it out${account ? '' : ' (signed out you get the percentage, free)'}.` }));
 }
 

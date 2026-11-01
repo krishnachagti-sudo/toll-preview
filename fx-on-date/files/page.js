@@ -264,6 +264,7 @@ function start() {
     setPair(asked.base, asked.quote);
     $('fx-date').value = asked.date;
     idleTicket(`Press "Get the rate" for ${asked.base} to ${asked.quote} on ${longDate(asked.date)}.`);
+    if (T.takeRunFlag()) $('fx-form').requestSubmit();
     T.api(`/api/v1/tools/${SLUG}`).then((json) => {
       T.me().then((account) => showPrice(json.tool, account), () => showPrice(json.tool, null));
     }).catch(() => {});

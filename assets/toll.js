@@ -371,6 +371,18 @@
     });
   }
 
+  // A guide page's calculator button sends ?run=1: the visitor already pressed it, so a tool that
+  // would wait for a second press runs once. The flag is taken off the address so a reload does not
+  // run (and charge) again.
+  function takeRunFlag() {
+    var q = new URLSearchParams(location.search);
+    if (q.get('run') !== '1') return false;
+    q.delete('run');
+    var rest = q.toString();
+    try { history.replaceState(history.state, '', location.pathname + (rest ? '?' + rest : '') + location.hash); } catch (e) { /* the run still happens */ }
+    return true;
+  }
+
   // What started the run: the form submitted or button pressed last (a tool may disable its button
   // while it works, which drops focus to the page).
   var lastAction = null;
@@ -439,6 +451,7 @@
   window.Toll = {
     base: base,
     signInHref: signInHref,
+    takeRunFlag: takeRunFlag,
     brand: brand,
     tool: tool,
     api: api,
