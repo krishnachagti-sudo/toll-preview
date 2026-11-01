@@ -262,14 +262,17 @@
         h('td', null, api
           ? h('code', null, 'POST ' + Toll.base + '/api/v1/tools/' + t.slug)
           : h('span', { class: 'muted' }, 'Runs in your browser. No API.')),
-        h('td', { class: 'r money' }, api ? [t.price.display.USD, h('br'), t.price.display.INR] : 'Free'),
+        // A tool with several actions has no single price: show where it starts.
+        h('td', { class: 'r money' }, !api ? 'Free'
+          : t.price ? [t.price.display.USD, h('br'), t.price.display.INR]
+          : t.pricing && t.pricing.from ? ['from ' + t.pricing.from.display.USD, h('br'), 'from ' + t.pricing.from.display.INR] : 'Free'),
       ]);
     });
     box.appendChild(h('div', { class: 'table-scroll' }, h('table', { class: 'rules' }, [
       h('thead', null, h('tr', null, [
         h('th', { scope: 'col' }, 'Tool'),
         h('th', { scope: 'col' }, 'Endpoint'),
-        h('th', { scope: 'col', class: 'r' }, 'Per call'),
+        h('th', { scope: 'col', class: 'r' }, 'Price'),
       ])),
       h('tbody', null, rows),
     ])));
