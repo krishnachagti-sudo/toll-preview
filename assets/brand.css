@@ -153,3 +153,16 @@
   .ep-tbl.keep td:nth-child(2){display:block;grid-column:1/-1;grid-row:2;margin-top:8px}
   .ep-tbl td code{overflow-wrap:normal;word-break:break-all}
 }
+.fold .calls{margin-top:8px}
+/* MCP tools on a phone: name and price on one line, what the agent reads under them */
+@media (max-width:720px){
+  .mcp-tools thead{display:none}
+  .mcp-tools tr{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .mcp-tools tr:last-child{border-bottom:0}
+  .tbl.mcp-tools td{display:block;padding:0;border:0;min-width:0}
+  .mcp-tools td:nth-child(1){grid-column:1;grid-row:1}
+  .mcp-tools td:nth-child(3){grid-column:2;grid-row:1;text-align:right}
+  .mcp-tools.keep td:nth-child(2){display:block;grid-column:1/-1;grid-row:2;margin-top:8px}
+}
+#calls .fold{margin:40px 0 0}
+#calls .fold + .calls{margin-top:24px}
