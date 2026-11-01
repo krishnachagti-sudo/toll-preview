@@ -102,11 +102,6 @@
     <div class="dev">
   <div class="rv">
     <ol class="steps rv"><li><span class="n">01</span><div><h3><a href="/toll-preview/account">Create an account</a></h3><p>Every account gets $0.25 / ₹20 free each month, spent first, so you can try any tool before you pay.</p></div></li><li><span class="n">02</span><div><h3>Create an API key</h3><p>On your account page. Keys start with <code>tk_live_</code> and are shown once.</p></div></li><li><span class="n">03</span><div><h3>Send a POST</h3><p>To <code>/toll-preview/api/v1/tools/&lt;tool&gt;</code>, with the key as a Bearer token and the tool's input as JSON.</p></div></li></ol>
-    <ul class="dev-list">
-      <li><span class="k">SPEC</span><span><b><a href="/toll-preview/api/v1/openapi.json">OpenAPI at /toll-preview/api/v1/openapi.json</a></b>Every tool's endpoint, input and price, plus the <a class="ul" href="/toll-preview/api/v1/tools">tool list</a>.</span></li>
-      <li><span class="k">RATE</span><span><b>10 requests a second per key</b>With short bursts of up to 20.</span></li>
-      <li><span class="k">QUOTE</span><span><b>Know the price first</b>POST the same input to <code>.../quote</code>. Nothing runs.</span></li>
-    </ul>
   </div>
   <div class="code-wrap rv">
 <div class="code" id="code">
@@ -341,7 +336,8 @@ Content-Type: application/json</code></pre>
   }
 }</code></pre>
 </div></div></div>
-<div class="tbl keep rv"><table>
+<details class="fold rv"><summary>Every error code and what it means</summary>
+<div class="tbl keep"><table>
   <caption class="visually-hidden">Error codes</caption>
   <thead><tr><th scope="col">Status</th><th scope="col">Code</th><th scope="col">What it means</th></tr></thead>
   <tbody>
@@ -357,6 +353,7 @@ Content-Type: application/json</code></pre>
 <tr><td class="mono">502</td><td><code>upstream_failed</code></td><td>The tool failed while running. The charge was refunded.</td></tr>
   </tbody>
 </table></div>
+</details>
 <div class="dev ref rv" id="idempotency"><div><h3 class="ref-h">Idempotency keys</h3><p class="ref-p">Networks drop answers. To retry safely, send an <code>Idempotency-Key</code> header with a value you choose (1 to 200 characters), unique per logical call.</p>
 <p class="ref-p">If a call with that key was already answered for the same tool, the stored answer comes back, marked <code>Idempotent-Replay: true</code>, and nothing more is charged. Reusing a key with different input returns <code>idempotency_mismatch</code>. If the first call failed and was refunded, the key is free to use again.</p></div><div><div class="code solo">
   <div class="resp-h"><span>A retry-safe call</span></div>
@@ -389,53 +386,53 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
       <h2 class="h2" id="endpoints-h">Every live tool<br class="br-d"> <span class="dim">and its address.</span></h2>
       
     </div>
-    <div class="tbl keep rv"><table>
+    <div class="tbl keep ep-tbl rv"><table>
   <caption class="visually-hidden">Endpoints and prices</caption>
   <thead><tr><th scope="col">Tool</th><th scope="col">Endpoint</th><th scope="col">Price</th></tr></thead>
   <tbody>
 <tr>
   <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a><small>1099-threshold</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/1099-threshold</code></td>
-  <td class="words"><span class="line">Year-end scan: $0.10 per payee-year for the first 500 each payment year, then $0.05 per payee-year; a repeat for the same payee-year is free; the IRIS upload file and the verdict CSV are included.</span><span class="line">Single-payee check: free.</span><span class="line">Lines, due dates, penalties, state rules and the 2027 projection: free.</span></td>
+  <td class="words">from $0.10</td>
 </tr>
 <tr>
   <td><div class="tname hue-date"><i></i><span><a href="/toll-preview/business-days/">Business days</a><small>business-days</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/business-days</code></td>
-  <td class="words"><span class="line">$0.0005 per call</span></td>
+  <td class="words">$0.0005</td>
 </tr>
 <tr>
   <td><div class="tname hue-date"><i></i><span><a href="/toll-preview/delivery-date-calculator/">Delivery date and holiday order-by calculator</a><small>delivery-date-calculator</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/delivery-date-calculator</code></td>
-  <td class="words"><span class="line">$0.0005 per call</span></td>
+  <td class="words">$0.0005</td>
 </tr>
 <tr>
   <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a><small>fx-on-date</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/fx-on-date</code></td>
-  <td class="words"><span class="line">$0.001 per call</span></td>
+  <td class="words">$0.001</td>
 </tr>
 <tr>
   <td><div class="tname hue-file"><i></i><span><a href="/toll-preview/image-to-size/">Image to size</a><small>image-to-size</small></span></div></td>
   <td><span class="muted">Runs in your browser. No API.</span></td>
-  <td class="words"><span class="line">Free, in your browser</span></td>
+  <td class="words">Free</td>
 </tr>
 <tr>
   <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement and IRS mileage log</a><small>mileage-reimbursement</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/mileage-reimbursement</code></td>
-  <td class="words"><span class="line">Rate lookup or calculation on this page: free.</span><span class="line">Rate lookup or calculation over the API or MCP: $0.002 per call.</span><span class="line">Trip file (per-employee totals, true-up, W-2 split, results CSV): $0.001 per trip row, at least $0.25 per file.</span><span class="line">Vehicle-year log PDF with the completeness check: $4.00 per vehicle-year log; a repeat for the same vehicle and tax year is free for 30 days.</span></td>
+  <td class="words">from $0.001</td>
 </tr>
 <tr>
   <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/tax-set-aside/">Tax set-aside per payment</a><small>tax-set-aside</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/tax-set-aside</code></td>
-  <td class="words"><span class="line">Set-aside for a payment: $0.10 per payment.</span><span class="line">Percentage only: $0.10 per payment; no dollar amount or breakdown, and open to the free runs signed-out visitors get.</span><span class="line">Year ledger replay: $0.10 per 25 payments (rounded up).</span><span class="line">Next due date and safe harbor: free.</span><span class="line">Rates and thresholds with sources: free.</span><span class="line">At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td>
+  <td class="words">from $0.10</td>
 </tr>
 <tr>
   <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/trucker-per-diem/">Trucker per diem worksheet</a><small>trucker-per-diem</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/trucker-per-diem</code></td>
-  <td class="words"><span class="line">Worksheet: $3.00 per driver-year worksheet (PDF and CSV); a repeat for the same driver and tax year costs $0.10 for 15 months.</span><span class="line">Log preview: $0.02 per log check; totals, monthly table and log checks, no files.</span><span class="line">Quick total: $0.02 per calculation.</span><span class="line">Rates lookup: $0.02 per lookup.</span></td>
+  <td class="words">from $0.02</td>
 </tr>
   </tbody>
 </table></div>
-<p class="code-cap rv">Prices are shown for a dollar account; a rupee account sees its own prices on the <a class="ul" href="/toll-preview/pricing/">pricing page</a>.</p>
+<p class="code-cap rv">Starting prices for a dollar account. Each tool's page has its full prices, and the <a class="ul" href="/toll-preview/pricing/">pricing page</a> shows rupee prices.</p>
   </div>
 </section>
 <section class="closing" aria-labelledby="close-h">

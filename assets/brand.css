@@ -134,3 +134,22 @@
   .pl-tool{grid-template-columns:1fr;padding:18px}
   .pl-switch label{flex:1;justify-content:center}
 }
+/* A folded reference block (the developer error codes) */
+.fold{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0 32px}
+.fold summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;font-weight:550;color:var(--text)}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary::after{content:"+";flex:none;font:400 20px/1 var(--font-mono);color:var(--muted);transition:transform .2s}
+.fold[open] summary::after{transform:rotate(45deg)}
+.fold[open]{padding-bottom:16px}
+/* Endpoints on a phone: name and price on one line, the endpoint under them */
+@media (max-width:720px){
+  .ep-tbl thead{display:none}
+  .ep-tbl tr{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;padding:14px 16px;border-bottom:1px solid var(--line)}
+  .ep-tbl tr:last-child{border-bottom:0}
+  .tbl.ep-tbl td{display:block;padding:0;border:0}
+  .ep-tbl .tname small{display:none}
+  .ep-tbl td:nth-child(1){grid-column:1;grid-row:1}
+  .ep-tbl td:nth-child(3){grid-column:2;grid-row:1;min-width:0;text-align:right}
+  .ep-tbl.keep td:nth-child(2){display:block;grid-column:1/-1;grid-row:2;margin-top:8px}
+  .ep-tbl td code{overflow-wrap:normal;word-break:break-all}
+}
