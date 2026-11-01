@@ -6,7 +6,7 @@
    - The search box (and "/" or Cmd/Ctrl+K anywhere) opens a dialog that finds tools and the guide
      and table pages under them, as you type, from {base}/nav.json.
 
-   - On a tool's page, a bar under the header jumps to its parts (the calculator, the rules,
+   - On a tool's page (and a long brand page), a bar under the header jumps to its parts (the calculator, the rules,
      the prices, the code, the guides) and marks the one you are reading. On a phone a long
      intro folds to a few lines with "Read more", so the calculator is near the top.
 
@@ -199,17 +199,26 @@
     if (/^use this from code$/i.test(label.trim())) return 'From code';
     return label.trim().split(/[,:]\s/)[0];
   }
+  // A tool's page: every section after the intro. A brand page (pricing, developers and the
+  // like): its home-style sections after the opening, named by their eyebrows, without the closing.
   function toolParts() {
     var main = document.getElementById('main');
-    if (!cfg.tool || !main) return;
-    var secs = [].filter.call(main.children, function (n) { return n.tagName === 'SECTION'; });
-    var intro = secs.shift();
+    if (!main) return;
+    var kids = [].filter.call(main.children, function (n) { return n.tagName === 'SECTION'; });
+    var intro, secs, name;
+    if (cfg.tool) {
+      intro = kids.shift(); secs = kids; name = jumpName;
+    } else if (document.querySelector('.brand-page')) {
+      intro = kids.filter(function (n) { return n.classList.contains('hero'); })[0];
+      secs = kids.filter(function (n) { return n.classList.contains('sec') && n.id && n.querySelector('.eyebrow'); });
+      name = function (sec) { return sec.dataset.jump || sec.querySelector('.eyebrow').textContent.trim(); };
+    } else return;
     if (!intro || secs.length < 3) return;
     var bar = h('nav', { class: 'tool-parts', 'aria-label': 'On this page', 'data-lenis-prevent': '' });
     var row = h('div', { class: 'tp-row' });
     var links = secs.map(function (sec, i) {
-      if (!sec.id) sec.id = 'part-' + (i === 0 ? 'calculator' : jumpName(sec, i).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
-      var a = h('a', { href: '#' + sec.id, text: jumpName(sec, i) });
+      if (!sec.id) sec.id = 'part-' + (i === 0 ? 'calculator' : name(sec, i).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+      var a = h('a', { href: '#' + sec.id, text: name(sec, i) });
       row.appendChild(a);
       return a;
     });
@@ -259,7 +268,26 @@
       });
     });
   }
+  // The docs' contents list marks the section being read.
+  function docsSpy() {
+    var links = [].slice.call(document.querySelectorAll('.docs-toc a[href^="#"]'));
+    var secs = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+    if (!links.length || secs.some(function (s) { return !s; })) return;
+    document.documentElement.classList.add('has-parts');
+    var ol = links[0].closest('ol'), cur = -1, ticking = false;
+    function mark() {
+      var at = 0;
+      secs.forEach(function (sec, i) { if (sec.getBoundingClientRect().top < 170) at = i; });
+      if (at === cur) return;
+      cur = at;
+      links.forEach(function (a, i) { if (i === at) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
+      if (ol.scrollWidth > ol.clientWidth) ol.scrollTo({ left: links[at].offsetLeft - 16, behavior: 'smooth' });
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; mark(); }); } }, { passive: true });
+    mark();
+  }
   toolParts();
+  docsSpy();
   foldIntro();
   toolFilter();
 })();

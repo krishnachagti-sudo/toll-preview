@@ -109,3 +109,28 @@
   .tbl.keep th,.tbl.keep td{padding:12px}
   .tbl td.words{min-width:6.5rem;font-size:12.5px}
 }
+
+/* ---------- pricing: every tool's prices, one currency at a time ---------- */
+.plist{border:1px solid var(--line-2);border-radius:var(--radius-lg);background:var(--bg-1);overflow:hidden}
+.pl-switch{display:flex;gap:4px;padding:12px;border-bottom:1px solid var(--line)}
+.pl-switch input{position:absolute;opacity:0;pointer-events:none}
+.pl-switch label{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-size:14px;color:var(--muted);cursor:pointer;transition:color .15s,background .15s}
+.pl-switch label:hover{color:var(--text)}
+.pl-switch input:checked + label{color:#fff;background:rgba(255,255,255,.09)}
+.pl-switch input:focus-visible + label{outline:2px solid var(--text);outline-offset:2px}
+.plist:has(#pl-usd:checked) .pl-inr,.plist:has(#pl-inr:checked) .pl-usd{display:none}
+.pl-tool{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:8px 28px;padding:20px 24px;border-top:1px solid var(--line)}
+.pl-switch + .pl-tool{border-top:0}
+@media (min-width:901px){.price-grid .terms{position:sticky;top:100px}}
+.pl-name a{font-weight:550;font-size:15.5px;color:var(--text);text-decoration:none}
+.pl-name a:hover{text-decoration:underline;text-underline-offset:3px}
+.pl-name small{display:flex;align-items:center;gap:7px;margin-top:6px;font:400 12px/1.4 var(--font-mono);color:var(--faint)}
+.pl-name small i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--hue)}
+.pl-cur{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14px;line-height:1.5}
+.pl-t{color:var(--muted)}
+.pl-p{color:var(--text)}
+.pl-cap{color:var(--muted);font-size:13px;padding-top:8px;border-top:1px dashed var(--line)}
+@media (max-width:720px){
+  .pl-tool{grid-template-columns:1fr;padding:18px}
+  .pl-switch label{flex:1;justify-content:center}
+}

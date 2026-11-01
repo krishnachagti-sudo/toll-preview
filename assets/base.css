@@ -424,6 +424,21 @@ table.rules th button:focus-visible { outline: 2px solid var(--focus); outline-o
 .docs-toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line-2); }
 .docs-toc a { display: block; padding: 6px 0 6px 16px; margin-left: -1px; border-left: 1px solid transparent; color: var(--muted); text-decoration: none; font-size: 14px; }
 .docs-toc a:hover { color: var(--text); border-left-color: var(--warm); }
+.docs-toc a[aria-current] { color: #fff; border-left-color: var(--warm); }
+/* Narrower, the contents list is a bar under the header that scrolls sideways. */
+@media (max-width: 959px) {
+  /* A block, not a grid, so the bar can stick for the whole length of the docs. */
+  .docs-grid { display: block; }
+  .docs-toc { position: sticky; top: 78px; z-index: 40; margin: 0 calc(-1 * var(--gutter)) 28px; }
+  .docs-toc ol {
+    display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; border: 0; padding: 4px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09); border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(14, 15, 18, 0.9); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
+  }
+  .docs-toc ol::-webkit-scrollbar { display: none; }
+  .docs-toc a { flex: none; white-space: nowrap; height: 34px; display: inline-flex; align-items: center; padding: 0 12px; margin: 0; border: 0; border-radius: 999px; font-size: 13.5px; }
+  .docs-toc a[aria-current] { background: rgba(255, 255, 255, 0.1); }
+}
 .docs-body, .prose { font-size: 15.5px; }
 .docs-body section, .prose section { padding-top: 8px; margin-bottom: 44px; max-width: 46rem; }
 .docs-body h2, .prose h2 { border-top: 1px solid var(--line-2); padding-top: 22px; }
@@ -491,3 +506,12 @@ html.has-parts { scroll-padding-top: 146px; }
   .tool-parts .tp-row { border-radius: 0; border-left: 0; border-right: 0; width: 100%; padding: 4px 12px; }
   .tool-parts a { height: 34px; padding: 0 12px; font-size: 13.5px; }
 }
+/* On a phone the docs' three-column tables stack: status and code on one line, the meaning under them. */
+@media (max-width: 599px) {
+  .docs-body table.rules thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .docs-body table.rules tr { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .docs-body table.rules td { padding: 0; border: 0; }
+  .docs-body table.rules td:nth-child(3) { grid-column: 1 / -1; margin-top: 6px; color: var(--text-2); }
+}
+.docs-see { margin: 10px 0 0; font-size: 15px; color: var(--muted); }
+.docs-see a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
