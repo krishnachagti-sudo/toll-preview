@@ -233,9 +233,9 @@ function renderReport(r, { kind, note }) {
   const rows = r.payees.map((p) => h('tr', { class: `v-${p.verdict}` }, [
     h('th', { scope: 'row' }, [p.name, p.tin ? h('small', {}, `TIN ending ${p.tin.last4}`) : h('small', {}, 'No TIN')]),
     h('td', {}, h('span', { class: `tt-badge ${VERDICT[p.verdict].cls}` }, VERDICT[p.verdict].text)),
-    h('td', { class: 'money' }, money(p.counted)),
-    h('td', {}, boxCells(p)),
-    h('td', {}, p.boxes.map((b) => b.crossedOn).filter(Boolean).sort()[0] ? shortDate(p.boxes.map((b) => b.crossedOn).filter(Boolean).sort()[0]) : ''),
+    h('td', { class: 'money', 'data-label': 'Counted' }, money(p.counted)),
+    h('td', { class: 'tt-boxes' }, boxCells(p)),
+    h('td', { 'data-label': 'Crossed on' }, p.boxes.map((b) => b.crossedOn).filter(Boolean).sort()[0] ? shortDate(p.boxes.map((b) => b.crossedOn).filter(Boolean).sort()[0]) : ''),
     h('td', {}, h('details', { class: 'tt-why' }, [h('summary', {}, 'Why'), h('ul', {}, [...p.reasons, ...p.notes].map((x) => h('li', {}, x))), stateList(p.states)])),
   ]));
   out.append(h('div', { class: 'table-scroll' }, h('table', { class: 'rules tt-table' }, [
@@ -249,10 +249,16 @@ function renderReport(r, { kind, note }) {
   if (owed) {
     out.append(h('p', { class: 'tt-heading' }, 'Due dates'), h('p', { class: 'tt-aside' }, `${dueLine(d, ['1099-NEC', '1099-MISC'], false)}. A 1099-MISC that reports only box 8 or 10 goes to the payee by ${longDate(d.miscFurnishBox8or10)}.`));
     if (r.penalty?.published) {
-      out.append(h('p', { class: 'tt-heading' }, `If these ${owed} forms are late (returns due in ${r.penalty.dueYear})`), h('div', { class: 'table-scroll' }, h('table', { class: 'rules tt-pen' }, [
-        h('thead', {}, h('tr', {}, ['Late by', 'Per return', 'Returns and statements'].map((x) => h('th', { scope: 'col' }, x)))),
-        h('tbody', {}, r.penalty.bands.map((b) => h('tr', {}, [h('th', { scope: 'row' }, b.label), h('td', { class: 'money' }, money(b.perReturn, { short: true })), h('td', { class: 'money' }, money(b.total, { short: true }))]))),
-      ])), h('p', { class: 'tt-aside' }, 'A late form is two failures, the return and the payee statement, each with its own penalty. Annual maximums apply; there is none for intentional disregard.'));
+      // The penalty table folds behind its range: the summary says what is at stake.
+      const bands = r.penalty.bands;
+      out.append(h('details', { class: 'tt-fold' }, [
+        h('summary', {}, `If these ${owed} forms are late: ${money(bands[0].total, { short: true })} to ${money(bands[bands.length - 1].total, { short: true })} in penalties (returns due in ${r.penalty.dueYear})`),
+        h('div', { class: 'table-scroll' }, h('table', { class: 'rules tt-pen' }, [
+          h('thead', {}, h('tr', {}, ['Late by', 'Per return', 'Returns and statements'].map((x) => h('th', { scope: 'col' }, x)))),
+          h('tbody', {}, bands.map((b) => h('tr', {}, [h('th', { scope: 'row' }, b.label), h('td', { class: 'money' }, money(b.perReturn, { short: true })), h('td', { class: 'money' }, money(b.total, { short: true }))]))),
+        ])),
+        h('p', { class: 'tt-aside' }, 'A late form is two failures, the return and the payee statement, each with its own penalty. Annual maximums apply; there is none for intentional disregard.'),
+      ]));
     }
   }
   if (r.files?.length) {
@@ -268,25 +274,35 @@ function renderReport(r, { kind, note }) {
 
 // ---------- the line table and the 2027 projection ----------
 
+// The boxes most payers meet show first; the rest fold behind "Show all".
+const COMMON_BOXES = new Set(['nec-1a', 'misc-1', 'misc-2', 'misc-3', 'misc-6', 'misc-10']);
+
 function renderLines() {
   const years = PAYMENT_YEARS.map((y) => engine.thresholds(y));
-  const rows = LINE_BOXES.map((id) => h('tr', {}, [
+  const rows = LINE_BOXES.map((id) => h('tr', { class: COMMON_BOXES.has(id) ? null : 'tt-rare' }, [
     h('th', { scope: 'row' }, [`${BOXES[id].form} box ${BOXES[id].box}`, h('small', {}, BOXES[id].name)]),
     ...years.map((t) => h('td', { class: 'money' }, lineText(t.boxes.find((b) => b.id === id).line))),
     h('td', {}, years[1].boxes.find((b) => b.id === id).corporations ? 'Yes' : 'No'),
   ]));
-  $('tt-lines-table').textContent = '';
-  $('tt-lines-table').append(h('div', { class: 'table-scroll' }, h('table', { class: 'rules tt-lines-grid' }, [
+  const table = h('table', { class: 'rules tt-lines-grid tt-short', id: 'tt-lines-grid' }, [
     h('thead', {}, h('tr', {}, ['Box', '2025', '2026', '2027 (provisional)', 'Also to corporations'].map((x) => h('th', { scope: 'col' }, x)))),
     h('tbody', {}, rows),
-  ])));
+  ]);
+  const more = h('button', { type: 'button', class: 'tt-more', 'aria-expanded': 'false', 'aria-controls': 'tt-lines-grid' }, `Show all ${LINE_BOXES.length} boxes`);
+  more.addEventListener('click', () => {
+    const open = table.classList.toggle('tt-short') === false;
+    more.setAttribute('aria-expanded', String(open));
+    more.textContent = open ? 'Show the common boxes only' : `Show all ${LINE_BOXES.length} boxes`;
+  });
+  $('tt-lines-table').textContent = '';
+  $('tt-lines-table').append(h('div', { class: 'table-scroll' }, table), more);
   const p = engine.projection(2027);
   if (p.status === 'provisional') {
-    $('tt-projection').append(
-      h('h3', {}, 'The 2027 line, worked out'),
+    $('tt-projection').append(h('details', { class: 'tt-fold' }, [
+      h('summary', {}, `How the 2027 line of ${lineText(p.threshold)} is worked out`),
       h('p', {}, `From 2027 the $2,000 line rises with the chained consumer price index (26 USC 6041(h)): the average C-CPI-U for the 12 months to August 2026 over the average for the 12 months to August 2025, applied to $2,000, with the increase rounded to the nearest $100. BLS published ${p.current.count} of those 12 months (October 2025 was not published). The averages are ${p.current.average} and ${p.base.average}: up ${p.percent}%, an increase of ${money(p.increase)}, which rounds to ${money(p.roundedIncrease, { short: true })}. So the provisional 2027 line is ${lineText(p.threshold)}. Filling the missing month from its neighbours gives the same answer, and the rounding would only change below +${p.flipsBelowPercent}% or at +${p.flipsAtPercent}%.`),
       h('p', { class: 'tt-aside' }, 'The IRS has not published the 2027 figure. When it does, its figure replaces this one here and in every 2027 answer.'),
-    );
+    ]));
   }
 }
 

@@ -151,18 +151,21 @@
             </div>
             <p class="hint">Rows dated in another year are left out and counted for you.</p>
           </fieldset>
-          <div class="field">
-            <label for="tt-def-type">Rows with no category are</label>
-            <select id="tt-def-type"></select>
-          </div>
-          <div class="field">
-            <label for="tt-def-payee">Payees with no type are</label>
-            <select id="tt-def-payee"></select>
-          </div>
-          <div class="field">
-            <label for="tt-def-method">Rows with no payment method were paid by</label>
-            <select id="tt-def-method"></select>
-          </div>
+          <details class="tt-payer tt-defaults">
+            <summary>If your file has no category, payee type or payment method</summary>
+            <div class="field">
+              <label for="tt-def-type">Rows with no category are</label>
+              <select id="tt-def-type"></select>
+            </div>
+            <div class="field">
+              <label for="tt-def-payee">Payees with no type are</label>
+              <select id="tt-def-payee"></select>
+            </div>
+            <div class="field">
+              <label for="tt-def-method">Rows with no payment method were paid by</label>
+              <select id="tt-def-method"></select>
+            </div>
+          </details>
           <details class="tt-payer">
             <summary>Your details for the IRIS file (optional)</summary>
             <div class="field"><label for="tt-payer-name">Business name</label><input type="text" id="tt-payer-name" autocomplete="organization"></div>
@@ -195,22 +198,22 @@
   <section class="wrap tt-rules" data-jump="Left out" aria-labelledby="tt-rules-title">
     <h2 id="tt-rules-title">What is left out, and why</h2>
     <div class="tt-rule-cols">
-      <div>
-        <h3>Corporations</h3>
+      <details class="tt-rule">
+        <summary>Corporations</summary>
         <p>Payments to a C or S corporation, including an LLC taxed as one, are not reported, except fees for legal services, medical and health care payments, gross proceeds paid to an attorney, substitute payments and cash paid for fish. Ask for a Form W-9: it says how the payee is taxed.</p>
-      </div>
-      <div>
-        <h3>Cards and payment apps</h3>
+      </details>
+      <details class="tt-rule">
+        <summary>Cards and payment apps</summary>
         <p>Payments by credit, debit or gift card, or through a payment app or online marketplace, are reported by the processor on Form 1099-K, not by you. A payee paid partly by card and partly by check is checked on the check and bank payments alone.</p>
-      </div>
-      <div>
-        <h3>Goods, rent through an agent, employees</h3>
+      </details>
+      <details class="tt-rule">
+        <summary>Goods, rent through an agent, employees</summary>
         <p>Merchandise, freight, storage and telephone are not reported. Rent paid to a real estate agent or property manager is reported by the agent, not the tenant. Employees' wages go on Form W-2. Personal payments are not reported at all.</p>
-      </div>
-      <div>
-        <h3>Backup withholding</h3>
+      </details>
+      <details class="tt-rule">
+        <summary>Backup withholding</summary>
         <p>If you withheld federal income tax because a payee gave no TIN, the form is required whatever the amount, with the tax in box 4. Without a TIN, reportable payments are subject to backup withholding at 24%.</p>
-      </div>
+      </details>
     </div>
   </section>
 
@@ -224,7 +227,8 @@
       <li>The 2027 threshold shown is a provisional computation from 26 USC 6041(h) and BLS data; the IRS figure, once published, governs and replaces it.</li>
       <li>The IRIS CSV is prepared for you to review and upload yourself; we do not file with the IRS or any state.</li>
     </ul>
-    <h3>Sources</h3>
+    <details class="tt-fold">
+    <summary>Sources: IRS instructions, California FTB, the US Code and BLS</summary>
     <ul class="tt-sources" id="tt-sources">
       <li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026)</a>, read October 31, 2026</li>
       <li><a href="https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. April 2025), for 2025 payments</a>, read October 31, 2026</li>
@@ -236,6 +240,7 @@
       <li><a href="https://www.ftb.ca.gov/file/guide-to-information-returns-filed-with-california.html">California Franchise Tax Board: Guide to information returns filed with California</a>, read October 31, 2026</li>
       <li><a href="https://www.law.cornell.edu/uscode/text/26/6041">26 U.S. Code 6041</a>, <a href="https://www.law.cornell.edu/uscode/text/26/6041A">6041A</a> and <a href="https://www.law.cornell.edu/uscode/text/26/1">1(f)</a>, and the <a href="https://api.bls.gov/publicAPI/v1/timeseries/data/SUUR0000SA0">BLS chained CPI (SUUR0000SA0)</a>, read October 31, 2026</li>
     </ul>
+    </details>
     <h3>Prices</h3>
     <ul class="toll-prices"><li><strong>Year-end scan</strong>: $0.10 per payee-year for the first 500 each payment year, then $0.05 per payee-year; a repeat for the same payee-year is free; the IRIS upload file and the verdict CSV are included. <span class="toll-prices-inr">On a rupee account: ₹8.00 per payee-year for the first 500 each payment year, then ₹4.00 per payee-year; a repeat for the same payee-year is free; the IRIS upload file and the verdict CSV are included.</span></li><li><strong>Single-payee check</strong>: free. <span class="toll-prices-inr">On a rupee account: free.</span></li><li><strong>Lines, due dates, penalties, state rules and the 2027 projection</strong>: free. <span class="toll-prices-inr">On a rupee account: free.</span></li></ul>
   </section>
