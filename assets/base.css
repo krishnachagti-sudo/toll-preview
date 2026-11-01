@@ -515,3 +515,12 @@ html.has-parts { scroll-padding-top: 146px; }
 }
 .docs-see { margin: 10px 0 0; font-size: 15px; color: var(--muted); }
 .docs-see a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- account: coming back, and the first visit ---------- */
+.next-note { margin: 14px 0 0; padding: 12px 16px; border: 1px solid var(--line-2); border-left: 3px solid var(--warm); border-radius: var(--radius); background: var(--bg-1); color: var(--text-2); font-size: 15px; max-width: 46rem; }
+.next-note a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+.welcome { margin: 24px 0 32px; padding: 22px 24px; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: linear-gradient(180deg, rgba(255, 120, 70, 0.07), transparent 70%), var(--bg-1); max-width: 46rem; }
+.welcome h2 { margin: 0 0 8px; font-size: 22px; }
+.welcome p { margin: 0; color: var(--text-2); }
+.welcome .welcome-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.toll-fix { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }

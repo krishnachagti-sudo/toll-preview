@@ -65,6 +65,7 @@
       <p class="eyebrow">Account</p>
       <h1>Sign in or create an account</h1>
       <p class="lede">One account and one balance pay for every tool. Each month you get a small free allowance, and you only add money when you choose to.</p>
+      <p class="next-note" id="next-note" hidden>Sign in or create an account to keep going. You will go straight back to the page you were on.</p>
     </div>
     <div class="signed-out-grid ledger-section">
       <form id="signup-form" novalidate>
@@ -117,6 +118,15 @@
         <p class="muted" id="who-email"></p>
       </div>
       <button type="button" class="btn btn-quiet btn-small" id="logout">Sign out</button>
+    </div>
+
+    <p class="next-note" id="back-note" hidden><a id="back-link" href="/toll-preview/">Back to the page you were on</a></p>
+
+    <!-- Shown once, right after creating an account: what the free allowance is for, and where to go. -->
+    <div class="welcome" id="welcome" hidden>
+      <h2>Your account is ready</h2>
+      <p>You have <strong id="welcome-grant"></strong> free this month. Every tool takes its price from that first, so you can try them before you add any money.</p>
+      <p class="welcome-actions"><a class="btn btn-small" href="/toll-preview/tools/">Pick a tool</a><a class="btn btn-quiet btn-small" href="#top-up">Add money</a></p>
     </div>
 
     <section aria-labelledby="balance-title">

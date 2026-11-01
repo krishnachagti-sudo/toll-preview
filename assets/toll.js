@@ -99,10 +99,17 @@
     return mePromise;
   }
 
+  // The account page, with this page as where to come back to (not from the home or account pages).
+  function signInHref() {
+    var path = location.pathname;
+    if (path === base + '/' || path === base || path.indexOf(base + '/account') === 0) return base + '/account';
+    return base + '/account?next=' + encodeURIComponent(path);
+  }
+
   function renderChip(el, account) {
     el.textContent = '';
     if (!account) {
-      el.appendChild(h('a', { class: 'toll-chip-link', href: base + '/account' }, 'Sign in'));
+      el.appendChild(h('a', { class: 'toll-chip-link', href: signInHref() }, 'Sign in'));
       return;
     }
     el.appendChild(h('a', { class: 'toll-chip-balance', href: base + '/account', title: 'Your balance. Open your account.' }, [
@@ -337,8 +344,43 @@
       el.textContent = 'No free runs left today. Sign in to keep going, or come back tomorrow.';
     });
   }
+  // After a run, the answer box in the section the run came from ([id$="-out"], or the fx board)
+  // is brought on screen if it is not, so pressing the button always shows something happening.
+  // On a wide screen the answer sits beside the form, often above the button that was pressed.
+  function reveal(from) {
+    var sec = from && from.closest && from.closest('section');
+    var out = sec && sec.querySelector('[id$="-out"], [id$="-board"]');
+    if (!out || !out.offsetHeight) return;
+    var r = out.getBoundingClientRect(), top = 150;
+    if (r.top >= top && r.top < window.innerHeight - 120) return;
+    var y = window.pageYOffset + r.top - top;
+    var smooth = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    if (window.__lenis) window.__lenis.scrollTo(y, { duration: smooth ? 0.9 : 0, immediate: !smooth });
+    else window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+  }
+  // A tool shows a refused call's message as text. When the fix is in the account (add money, or
+  // raise a limit), the message gains a link straight to that part of the account page.
+  function linkFix(from, e) {
+    var sec = (from && from.closest && from.closest('section')) || document;
+    var href = base + '/account' + (e.code === 'insufficient_balance' ? '#top-up' : '#limits');
+    var text = e.code === 'insufficient_balance' ? 'Add money' : 'Change your limit';
+    [].forEach.call(sec.querySelectorAll('[role="alert"], .form-error, .field-error'), function (el) {
+      if (el.textContent.indexOf(e.message) === -1 || el.querySelector('.toll-fix')) return;
+      el.appendChild(document.createTextNode(' '));
+      el.appendChild(h('a', { class: 'toll-fix', href: href }, text));
+    });
+  }
+
+  // What started the run: the form submitted or button pressed last (a tool may disable its button
+  // while it works, which drops focus to the page).
+  var lastAction = null;
+  document.addEventListener('submit', function (e) { lastAction = e.target; }, true);
+  document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('button')) lastAction = e.target; }, true);
   function run(slug, input) {
+    var from = lastAction || document.activeElement;
     return api('/api/run/' + encodeURIComponent(slug || tool), { body: input === undefined ? {} : input }).then(function (json) {
+      // Two frames: the tool draws its answer when this resolves, then it is measured.
+      requestAnimationFrame(function () { requestAnimationFrame(function () { reveal(from); }); });
       if (json && json.freeRunsLeft === 0) noFreeRunsLeft();
       if (json && json.balance && mePromise) {
         mePromise.then(function (account) {
@@ -351,6 +393,9 @@
       return json;
     }, function (e) {
       if (e.code === 'rate_limited') noFreeRunsLeft(); // the web runner's only limit is the free runs
+      if (e.code === 'insufficient_balance' || e.code === 'cap_reached') {
+        requestAnimationFrame(function () { requestAnimationFrame(function () { linkFix(from, e); }); });
+      }
       throw e;
     });
   }
@@ -393,6 +438,7 @@
 
   window.Toll = {
     base: base,
+    signInHref: signInHref,
     brand: brand,
     tool: tool,
     api: api,

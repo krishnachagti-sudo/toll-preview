@@ -286,6 +286,10 @@
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; mark(); }); } }, { passive: true });
     mark();
   }
+  // "Get started" brings you back to this page after signing up.
+  if (window.Toll && window.Toll.signInHref) {
+    [].forEach.call(document.querySelectorAll('.site-head a.nav-start, .site-head [data-toll-chip] a.toll-chip-link'), function (a) { a.href = window.Toll.signInHref(); });
+  }
   toolParts();
   docsSpy();
   foldIntro();

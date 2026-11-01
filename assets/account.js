@@ -73,11 +73,26 @@
 
   function busy(button, on) { if (button) button.disabled = on; }
 
+  // ---------- where to go after signing in ----------
+  // A tool sends people here with ?next=<its page>. Only a path on this site, under the base path,
+  // and not this page, is followed.
+  function nextPath() {
+    var n = new URLSearchParams(location.search).get('next');
+    var base = Toll.base || '';
+    if (!n || n.charAt(0) !== '/' || n.charAt(1) === '/' || n.indexOf('\\') >= 0) return null;
+    if (n.indexOf(base + '/') !== 0 || n.indexOf(base + '/account') === 0) return null;
+    return n;
+  }
+  var justSignedUp = false;
+
   // ---------- views ----------
   function show(view) {
     $('loading').hidden = true;
     $('signed-out').hidden = view !== 'out';
     $('signed-in').hidden = view !== 'in';
+    $('next-note').hidden = !(view === 'out' && nextPath());
+    $('back-note').hidden = !(view === 'in' && nextPath());
+    if (nextPath()) $('back-link').href = nextPath();
     if (view !== 'in') forgetSignedIn();
   }
 
@@ -87,6 +102,7 @@
     $('new-key-value').textContent = '';
     $('new-key-name').textContent = '';
     $('new-key').hidden = true;
+    $('welcome').hidden = true;
     ['key-list', 'ledger', 'topup-amounts', 'who-email', 'balance-total', 'balance-grant', 'balance-paid',
       'cap-current', 'cap-spent', 'key-error', 'cap-error', 'cap-status', 'topup-error', 'new-key-status'].forEach(function (id) {
       $(id).textContent = '';
@@ -124,6 +140,8 @@
     $('balance-total').textContent = b.display;
     $('balance-grant').textContent = b.grantDisplay;
     $('balance-paid').textContent = b.paidDisplay;
+    $('welcome-grant').textContent = b.grantDisplay;
+    $('welcome').hidden = !justSignedUp;
     [].forEach.call(document.querySelectorAll('.cur-symbol'), function (s) { s.textContent = SYMBOL[account.currency]; });
 
     var amounts = $('topup-amounts');
@@ -162,6 +180,8 @@
       currency: currency ? currency.value : 'USD',
     } }).then(function () {
       form.reset();
+      if (nextPath()) { window.location.assign(nextPath()); return; }
+      justSignedUp = true;
       return load();
     }, function (err) {
       showError($('signup-error'), err, form);
@@ -177,6 +197,7 @@
     Toll.api('/api/account/login', { body: { email: $('login-email').value, password: $('login-password').value } })
       .then(function () {
         form.reset();
+        if (nextPath()) { window.location.assign(nextPath()); return; }
         return load();
       }, function (err) {
         $('login-error').textContent = err.message;
