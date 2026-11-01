@@ -524,3 +524,6 @@ html.has-parts { scroll-padding-top: 146px; }
 .welcome p { margin: 0; color: var(--text-2); }
 .welcome .welcome-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .toll-fix { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+/* Legal pages: the version date, and a company detail the owner has not filled in yet */
+.legal-date { color: var(--muted); font-size: 14px; margin-top: 12px; }
+mark.fill { background: rgba(255, 176, 63, 0.16); color: #ffd79a; border-radius: 4px; padding: 0 4px; }
