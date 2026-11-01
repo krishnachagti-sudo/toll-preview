@@ -166,3 +166,26 @@
 }
 #calls .fold{margin:40px 0 0}
 #calls .fold + .calls{margin-top:24px}
+/* Pricing: passes side by side, the credit packs beside their terms, the team plan */
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.offer{display:flex;flex-direction:column;gap:10px;padding:28px 24px;border:1px solid var(--line-2);border-radius:20px;background:rgba(255,255,255,.02)}
+.offer-main{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.05)}
+.offer-k{margin:0;font:500 13px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.offer-price{margin:6px 0 0;font-size:40px;font-weight:600;letter-spacing:-.02em;color:var(--text);line-height:1.05}
+.offer-price .alt{font-size:16px;font-weight:400;color:var(--muted);letter-spacing:0}
+.offer-price .per{font-size:16px;font-weight:400;color:var(--muted)}
+.offer-term{margin:0;color:var(--text-2);font-size:14px}
+.offer-who{margin:0;color:var(--text-2)}
+.offer-list{margin:6px 0 10px;padding:0;list-style:none;display:grid;gap:8px;color:var(--text-2);font-size:15px}
+.offer-list li{padding-left:22px;position:relative}
+.offer-list li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--warm,#ffb03f)}
+.offer .btn{margin-top:auto;align-self:flex-start}
+.credit-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:start}
+.packs td{color:var(--text);font-size:16px}
+.packs td .alt,.packs td .muted{color:var(--muted);font-size:14px}
+.team-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:24px;align-items:center;padding:28px;border:1px solid var(--line-2);border-radius:20px;background:rgba(255,255,255,.02)}
+.team-card .offer-list{margin:0}
+@media (max-width:900px){
+  .offers,.credit-grid,.team-card{grid-template-columns:1fr}
+  .team-card .btn{justify-self:start}
+}

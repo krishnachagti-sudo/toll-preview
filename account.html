@@ -144,20 +144,29 @@
         <div>
           <dt>Paid balance</dt>
           <dd class="money" id="balance-paid"></dd>
-          <dd class="note">Money you added. It never expires.</dd>
+          <dd class="note">Money you added, and any bonus credit. It stays until you spend it.</dd>
+        </div>
+        <div id="pass-row" hidden>
+          <dt id="pass-name">Pass</dt>
+          <dd class="money" id="balance-pass"></dd>
+          <dd class="note" id="pass-note"></dd>
         </div>
       </dl>
     </section>
 
     <section class="ledger-section" id="top-up" aria-labelledby="topup-title">
-      <h2 id="topup-title">Add money</h2>
+      <h2 id="topup-title">Get a pass or add credit</h2>
       <div class="promise">
-        <p><strong>This is a one-time payment.</strong> There is no subscription and no automatic top-up. Your balance only goes up when you add money here yourself.</p>
+        <p><strong>This is a one-time payment.</strong> Nothing renews and nothing tops itself up. A pass covers your use of the tools on the web; credit pays for the API, MCP and the web. <a class="ul" href="/toll-preview/pricing/">Compare them</a>.</p>
       </div>
       <form id="topup-form" novalidate>
         <fieldset>
-          <legend class="visually-hidden">Amount</legend>
-          <div class="choice-row" id="topup-amounts"></div>
+          <legend class="choice-h">Passes</legend>
+          <div class="choice-grid" id="buy-passes"></div>
+        </fieldset>
+        <fieldset>
+          <legend class="choice-h">Credit</legend>
+          <div class="choice-grid" id="buy-packs"></div>
         </fieldset>
         <p id="topup-error" class="form-error" role="alert"></p>
         <button class="btn" type="submit">Continue to payment</button>

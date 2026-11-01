@@ -88,6 +88,8 @@
         var account = json.account;
         account.balance = json.balance;
         account.limits = json.limits;
+        account.products = json.products || [];
+        account.passes = json.passes || [];
         return account;
       }, function (e) {
         if (e.status === 401) return null;

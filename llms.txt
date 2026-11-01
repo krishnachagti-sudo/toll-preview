@@ -57,7 +57,7 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 ## About
 
 - [Tools](https://krishnachagti-sudo.github.io/toll-preview/tools/): Every live tool by category, with what it does and its price per use in words.
-- [Pricing](https://krishnachagti-sudo.github.io/toll-preview/pricing/): The wallet terms, every live tool's price in words, how a charge is quoted, reserved, settled and refunded, and common questions.
+- [Pricing](https://krishnachagti-sudo.github.io/toll-preview/pricing/): Free use, passes for people, credit packs for code and agents, the team plan, every live tool's price in words, how a charge works, and common questions.
 - [How it works](https://krishnachagti-sudo.github.io/toll-preview/how-it-works/): Top up once, use any tool on the web, over REST or over MCP, and pay per use from one balance.
 - [Developers](https://krishnachagti-sudo.github.io/toll-preview/developers/): The REST API: a quickstart with real requests and responses, API keys, errors, idempotency keys, rate limits, quotes and the OpenAPI document.
 - [MCP for AI agents](https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/): Connect an AI agent over MCP: the server address, authentication, the tools it lists, quote\_price and example calls.

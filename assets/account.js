@@ -7,13 +7,12 @@
   var $ = function (id) { return document.getElementById(id); };
 
   var MICROS = 1000000;
-  var TOPUPS = {
-    USD: [[20, '$20'], [50, '$50'], [100, '$100'], [500, '$500']],
-    INR: [[200, '₹200'], [500, '₹500'], [1000, '₹1,000'], [5000, '₹5,000']],
-  };
   var SYMBOL = { USD: '$', INR: '₹' };
   var KIND = {
     topup: 'Top-up',
+    bonus: 'Bonus credit',
+    pass: 'Pass allowance for the month',
+    pass_expiry: 'Unused pass allowance lapsed',
     grant: 'Monthly free allowance',
     grant_expiry: 'Unused allowance expired',
     charge: 'Call',
@@ -103,12 +102,13 @@
     $('new-key-name').textContent = '';
     $('new-key').hidden = true;
     $('welcome').hidden = true;
-    ['key-list', 'ledger', 'topup-amounts', 'who-email', 'balance-total', 'balance-grant', 'balance-paid',
+    ['key-list', 'ledger', 'buy-passes', 'buy-packs', 'who-email', 'balance-total', 'balance-grant', 'balance-paid', 'balance-pass', 'pass-note',
       'cap-current', 'cap-spent', 'key-error', 'cap-error', 'cap-status', 'topup-error', 'new-key-status'].forEach(function (id) {
       $(id).textContent = '';
     });
     // Without the marker, the next account rebuilds its choices even in the same currency.
-    $('topup-amounts').removeAttribute('data-currency');
+    $('buy-packs').removeAttribute('data-currency');
+    $('pass-row').hidden = true;
     $('cap-amount').value = '';
     $('key-name').value = '';
     $('key-cap').value = '';
@@ -144,16 +144,33 @@
     $('welcome').hidden = !justSignedUp;
     [].forEach.call(document.querySelectorAll('.cur-symbol'), function (s) { s.textContent = SYMBOL[account.currency]; });
 
-    var amounts = $('topup-amounts');
-    if (amounts.getAttribute('data-currency') !== account.currency) {
-      amounts.textContent = '';
-      amounts.setAttribute('data-currency', account.currency);
-      TOPUPS[account.currency].forEach(function (pair, i) {
-        amounts.appendChild(h('label', { class: 'choice' }, [
-          h('input', { type: 'radio', name: 'amount', value: String(pair[0]), checked: i === 0 }),
-          h('span', null, pair[1]),
+    // A pass the account holds: what is left of this month's allowance, and when the pass ends.
+    var pass = account.passes[0];
+    $('pass-row').hidden = !pass;
+    if (pass) {
+      $('pass-name').textContent = pass.name;
+      $('balance-pass').textContent = b.passDisplay;
+      $('pass-note').textContent = 'Left of this month\'s ' + pass.allowanceDisplay + ' for using the tools on the web. Spent before your balance. Ends ' + new Date(pass.endsAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) + '.';
+    }
+
+    // The passes and packs on offer, in the account's currency. ?buy=<id> (from the pricing page)
+    // picks one and scrolls here.
+    if ($('buy-packs').getAttribute('data-currency') !== account.currency) {
+      $('buy-packs').setAttribute('data-currency', account.currency);
+      var wanted = new URLSearchParams(window.location.search).get('buy');
+      var picked = account.products.some(function (p) { return p.id === wanted; }) ? wanted : 'pass-year';
+      ['buy-passes', 'buy-packs'].forEach(function (id) { $(id).textContent = ''; });
+      account.products.forEach(function (p) {
+        $(p.kind === 'pass' ? 'buy-passes' : 'buy-packs').appendChild(h('label', { class: 'choice choice-card' }, [
+          h('input', { type: 'radio', name: 'product', value: p.id, checked: p.id === picked }),
+          h('span', { class: 'cc-name' }, p.kind === 'pass' ? p.name : p.display),
+          h('span', { class: 'cc-price' }, p.kind === 'pass' ? p.display : (p.note || 'No bonus')),
+          p.kind === 'pass' ? h('span', { class: 'cc-note' }, p.note) : null,
         ]));
       });
+      if (wanted && picked === wanted) {
+        try { $('top-up').scrollIntoView({ block: 'start' }); } catch (e) { /* older browsers */ }
+      }
     }
 
     var cap = account.monthlyCapMicros;
@@ -215,12 +232,12 @@
   // ---------- top-up ----------
   $('topup-form').addEventListener('submit', function (ev) {
     ev.preventDefault();
-    var picked = ev.currentTarget.querySelector('input[name="amount"]:checked');
+    var picked = ev.currentTarget.querySelector('input[name="product"]:checked');
     var button = ev.currentTarget.querySelector('button[type="submit"]');
     $('topup-error').textContent = '';
-    if (!picked) { $('topup-error').textContent = 'Pick an amount.'; return; }
+    if (!picked) { $('topup-error').textContent = 'Pick a pass or an amount of credit.'; return; }
     busy(button, true);
-    Toll.api('/api/topup', { body: { amountMicros: Number(picked.value) * MICROS } }).then(function (json) {
+    Toll.api('/api/topup', { body: { product: picked.value } }).then(function (json) {
       window.location.assign(json.url);
     }, function (err) {
       $('topup-error').textContent = err.message;

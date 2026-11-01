@@ -338,6 +338,19 @@ fieldset { border: 0; padding: 0; margin: 0 0 16px; min-width: 0; }
 .choice input:checked + span { background: var(--text); color: var(--bg); border-color: var(--text); }
 .choice input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
 
+/* Pass and credit choices on the account page: a card per product, the picked one inverted */
+.choice-h { font-weight: 550; color: var(--text); margin: 8px 0 10px; }
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin-bottom: 16px; }
+.choice-card { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid var(--line-2); border-radius: 14px; background: rgba(255, 255, 255, 0.02); cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+.choice-card:hover { border-color: var(--line-3); }
+.choice.choice-card span { display: block; min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; }
+.choice-card .cc-name { font-weight: 600; color: var(--text); }
+.choice-card .cc-price { color: var(--text-2); font-variant-numeric: tabular-nums; font-weight: 500; }
+.choice-card .cc-note { color: var(--muted); font-size: 13px; font-weight: 400; }
+.choice-card:has(input:checked) { background: var(--text); border-color: var(--text); }
+.choice-card:has(input:checked) span { color: var(--bg); }
+.choice-card:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+
 .radio-list { display: grid; gap: 8px; }
 .radio-list label { display: flex; gap: 10px; align-items: baseline; font-weight: 400; color: var(--text); }
 

@@ -359,7 +359,7 @@ async function getWorksheet() {
   try {
     const account = await T.me().catch(() => null);
     if (!account) {
-      showError({ message: 'The worksheet is $3.00 per driver and tax year, taken from a prepaid balance.', code: 'unauthorized' });
+      showError({ message: 'The worksheet is $9.00 per driver and tax year, taken from a prepaid balance.', code: 'unauthorized' });
       return;
     }
     if (!pendingQuote || pendingQuote.key !== key) {
