@@ -7,7 +7,7 @@
        data-tool-name="<slug>"                            the tool's name
        data-buys="<slug>"                                 calls a $20 top-up pays for
    - Fills the site's own address into the code samples and the MCP URL.
-   - The hero replay, the code tabs, the request form and reveal-on-scroll. */
+   - The hero replay, the tool tabs, the code tabs, the request form and reveal-on-scroll. */
 (function () {
   'use strict';
 
@@ -197,6 +197,64 @@
     });
   }
 
+  // ---------- the live tools: one demo at a time, behind tabs ----------
+  // Without JavaScript every tool's row is shown, one after another.
+  var SHORT = { 'fx-on-date': 'Exchange rate', 'delivery-date-calculator': 'Delivery date', 'trucker-per-diem': 'Trucker per diem',
+    'tax-set-aside': 'Tax set-aside', 'mileage-reimbursement': 'Mileage', '1099-threshold': '1099 threshold' };
+  function toolTabs() {
+    var sec = document.getElementById('tools');
+    if (!sec) return;
+    var feats = [].slice.call(sec.querySelectorAll('.feat'));
+    if (feats.length < 2) return;
+    var list = document.createElement('div');
+    list.className = 'feat-tabs rv in';
+    list.setAttribute('role', 'tablist');
+    list.setAttribute('aria-label', 'Live tools');
+    var tabs = feats.map(function (f, i) {
+      var link = f.querySelector('.lnk');
+      var slug = ((link && link.getAttribute('href')) || '').split('/').filter(Boolean).pop() || 'tool' + i;
+      var name = SHORT[slug] || ((link && link.querySelector('[data-tool-name]')) || {}).textContent || 'Tool ' + (i + 1);
+      var hue = (f.className.match(/hue-\w+/) || [''])[0];
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = hue;
+      b.id = 'feat-tab-' + slug;
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-controls', 'feat-' + slug);
+      b.innerHTML = '<i aria-hidden="true"></i>';
+      b.appendChild(document.createTextNode(name));
+      f.id = 'feat-' + slug;
+      f.setAttribute('role', 'tabpanel');
+      f.setAttribute('aria-labelledby', b.id);
+      b.addEventListener('click', function () { show(i); });
+      list.appendChild(b);
+      return b;
+    });
+    function show(n, focus) {
+      tabs.forEach(function (b, i) {
+        var on = i === n;
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+        feats[i].hidden = !on;
+        if (on) each('.rv', function (el) { el.classList.add('in'); }, feats[i]);
+      });
+      if (focus) tabs[n].focus();
+    }
+    list.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(document.activeElement), n = -1;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') n = 0;
+      else if (e.key === 'End') n = tabs.length - 1;
+      if (n < 0 || i < 0) return;
+      e.preventDefault();
+      show(n, true);
+    });
+    sec.querySelector('.sec-head').after(list);
+    sec.classList.add('tabbed');
+    show(0);
+  }
+
   // ---------- small touches ----------
   function spotlight() {
     each('.gcard', function (c) {
@@ -225,6 +283,7 @@
     fillOrigin(base);
     heroWindow();
     codePanel();
+    toolTabs();
     requestForm();
     spotlight();
     reveal();

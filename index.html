@@ -289,11 +289,6 @@
         <span class="eyebrow">The live tools</span>
         <h2 class="h2" id="tools-h">Each tool does one job.<br class="br-d"> <span class="dim">It shows its work.</span></h2>
       </div>
-      <div class="cats" aria-label="Categories">
-        <span class="cat-chip hue-date"><i></i>Dates and calendars</span>
-        <span class="cat-chip hue-money"><i></i>Money and rates</span>
-        <span class="cat-chip hue-file"><i></i>Files and images</span>
-      </div>
     </div>
 
     <div class="feat hue-date" style="margin-top:40px">
@@ -519,10 +514,10 @@
 </section>
 
 <!-- ================= HOW PAYING WORKS ================= -->
-<section class="sec" id="how" aria-labelledby="how-h" style="padding-top:88px">
+<section class="sec" id="pricing" aria-labelledby="how-h" style="padding-top:88px">
   <div class="wrap">
     <div class="rv">
-      <span class="eyebrow">How paying works</span>
+      <span class="eyebrow">Pricing</span>
       <h2 class="h2" id="how-h">Top up once.<br class="br-d"> <span class="dim">Pay only for what you run.</span></h2>
     </div>
     <div class="pay">
@@ -532,49 +527,6 @@
         <li><span class="n">03</span><div><h3>Pay per use</h3><p>Each call takes its price from your balance, often a fraction of a cent. Failed calls are refunded automatically.</p></div></li>
         <li><span class="n">04</span><div><h3>Set a hard limit</h3><p>On the account and on each API key. A call past the limit is refused, not billed.</p></div></li>
       </ol>
-      <div class="panel-glow rv" style="--hue:var(--warm)">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-wallet"/></svg><b>Account</b><span class="tchip">Sample account</span></div>
-          <div class="panel-body">
-            <div class="acct-top">
-              <div class="tile"><div class="l">Balance</div><div class="v">$20.2495</div><div class="h">Exact, not rounded</div></div>
-              <div class="tile"><div class="l">Monthly limit</div><div class="v sm">$5.00</div><div class="h">Example. Calls past it are refused</div></div>
-            </div>
-            <div class="mini-h">API keys</div>
-            <div class="keyrow"><span class="mono">tk_live_3fK9&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span><span class="lim">limit $5.00</span><span class="toggle" aria-hidden="true"></span></div>
-            <div class="mini-h">Recent charges</div>
-            <ul class="feed">
-              <li class="hue-money"><span class="pip"></span><span class="what"><span data-tool-name="fx-on-date">Exchange rate on a date</span><span class="when">USD to INR</span></span><span class="amt">&minus;<span data-price="fx-on-date">$0.001</span></span></li>
-              <li class="hue-date"><span class="pip"></span><span class="what"><span data-tool-name="business-days">Business days</span><span class="when">England and Wales</span></span><span class="amt">&minus;<span data-price="business-days">$0.0005</span></span></li>
-              <li class="hue-date"><span class="pip"></span><span class="what"><span data-tool-name="business-days">Business days</span><span class="when">United States</span></span><span class="amt">&minus;<span data-price="business-days">$0.0005</span></span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="buys rv"><b>What $20 buys</b><span><span class="mono" data-buys="business-days">40,000</span> business-day calls</span><span>or</span><span><span class="mono" data-buys="fx-on-date">20,000</span> exchange-rate lookups</span></div>
-  </div>
-</section>
-
-<!-- ================= PRICING ================= -->
-<section class="sec" id="pricing" aria-labelledby="price-h">
-  <div class="wrap">
-    <div class="rv">
-      <span class="eyebrow">Pricing</span>
-      <h2 class="h2" id="price-h">Priced per call.<br class="br-d"> <span class="dim">Shown to the fraction of a cent.</span></h2>
-    </div>
-    <div class="price-grid">
-      <div class="tbl rv">
-        <table>
-          <thead><tr><th scope="col">Tool</th><th scope="col">Use it on</th><th scope="col" class="num">USD per call</th><th scope="col" class="num">INR per call</th></tr></thead>
-          <tbody>
-            <tr><td><div class="tname hue-date"><i></i><span><a href="/toll-preview/business-days/" data-tool-name="business-days">Business days</a><small>Dates and calendars</small></span></div></td><td><span class="via">Web &middot; API &middot; MCP</span></td><td class="num" data-price="business-days">$0.0005</td><td class="num" data-price="business-days" data-currency="INR">&#8377;0.04</td></tr>
-            <tr><td><div class="tname hue-money"><i></i><span><a href="/toll-preview/fx-on-date/" data-tool-name="fx-on-date">Exchange rate on a date</a><small>Money and rates</small></span></div></td><td><span class="via">Web &middot; API &middot; MCP</span></td><td class="num" data-price="fx-on-date">$0.001</td><td class="num" data-price="fx-on-date" data-currency="INR">&#8377;0.08</td></tr>
-            <tr><td><div class="tname hue-money"><i></i><span><a href="/toll-preview/1099-threshold/" data-tool-name="1099-threshold">1099 threshold tracker</a><small>Money and rates, per payee-year</small></span></div></td><td><span class="via">Web &middot; API &middot; MCP</span></td><td class="num" data-price="1099-threshold">from $0.10</td><td class="num" data-price="1099-threshold" data-currency="INR">from &#8377;8.00</td></tr>
-            <tr><td><div class="tname hue-file"><i></i><span><a href="/toll-preview/image-to-size/" data-tool-name="image-to-size">Image to size</a><small>Files and images</small></span></div></td><td><span class="via">In your browser</span></td><td class="num" data-price="image-to-size">Free</td><td class="num" data-price="image-to-size" data-currency="INR">Free</td></tr>
-          </tbody>
-        </table>
-      </div>
       <div class="terms rv">
         <h3>Wallet terms</h3>
         <dl>
@@ -586,9 +538,10 @@
           <div class="row"><dt>Call that fails</dt><dd>Refunded automatically</dd></div>
           <div class="row"><dt>Subscription</dt><dd>None</dd></div>
         </dl>
-        <a class="btn btn-light btn-lg" href="/toll-preview/account" data-signed-in-text="Your account">Create account</a>
+        <div class="terms-cta"><a class="btn btn-light btn-lg" href="/toll-preview/account" data-signed-in-text="Your account">Create account</a><a class="lnk" href="/toll-preview/pricing/">Every tool's price <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
       </div>
     </div>
+    <div class="buys rv"><b>What $20 buys</b><span><span class="mono" data-buys="business-days">40,000</span> business-day calls</span><span>or</span><span><span class="mono" data-buys="fx-on-date">20,000</span> exchange-rate lookups</span></div>
   </div>
 </section>
 

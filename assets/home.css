@@ -218,6 +218,16 @@ html.motion .replay{display:inline-flex}
 /* close-ups of the real UI, lit per tool */
 .feat{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:center;padding:56px 0}
 .feat + .feat{border-top:1px solid var(--line)}
+/* With home.js the rows sit behind tabs, one at a time, all laid out the same way. */
+.feat-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.feat-tabs button{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.02);color:var(--muted);font:inherit;font-size:14px;cursor:pointer;transition:color .15s,background .15s,border-color .15s}
+.feat-tabs button i{width:6px;height:6px;border-radius:50%;background:var(--hue);box-shadow:0 0 8px var(--hue)}
+.feat-tabs button:hover{color:var(--text)}
+.feat-tabs button[aria-selected="true"]{color:#fff;background:rgba(255,255,255,.09);border-color:var(--line-3)}
+.tabbed .feat{border-top:0;padding-top:40px;padding-bottom:0}
+.tabbed .feat[hidden]{display:none}
+.tabbed .feat.flip{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.tabbed .feat.flip .feat-copy{order:0}
 .feat.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
 .feat.flip .feat-copy{order:2}
 .feat-copy .tag{display:inline-flex;align-items:center;gap:8px;font:500 11.5px/1 var(--font-mono);color:var(--muted);letter-spacing:.02em;margin-bottom:16px}
@@ -287,6 +297,10 @@ html.motion .replay{display:inline-flex}
 .terms dt{color:var(--muted)}
 .terms dd{margin:0;text-align:right;color:var(--text);font-family:var(--font-mono);font-size:13px}
 .terms .btn{width:100%;margin-top:18px}
+.terms-cta .lnk{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:14px;font-size:14px;color:var(--text-2)}
+.terms-cta .lnk svg{width:14px;height:14px}
+.terms-cta .lnk:hover{color:#fff}
+.pay{align-items:start}
 
 /* developers: code panel with terminal glow */
 #developers{overflow-x:clip}
@@ -394,6 +408,8 @@ html.motion .replay{display:inline-flex}
   .hero{padding-top:80px}
   .feat,.feat.flip{grid-template-columns:1fr;gap:32px;padding:40px 0}
   .feat.flip .feat-copy{order:0}
+  .tabbed .feat.flip{grid-template-columns:1fr}
+  .tabbed .feat,.tabbed .feat.flip{padding:24px 0 0}
   .moments{grid-template-columns:1fr 1fr}
   .moment,.moment.wide{grid-column:span 1}
   .moment.full{grid-column:1/-1}
@@ -401,6 +417,9 @@ html.motion .replay{display:inline-flex}
   .sec{padding-top:96px}
 }
 @media (max-width:720px){
+  .feat-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:32px calc(-1 * var(--gutter)) 0;padding:0 var(--gutter)}
+  .feat-tabs::-webkit-scrollbar{display:none}
+  .feat-tabs button{flex:none}
   .br-d{display:none}
   .hero{padding-top:64px}
   .h1{margin-top:22px}
