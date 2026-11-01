@@ -14,6 +14,7 @@
 .crumbs a:hover{color:var(--text)}
 .crumbs [aria-current]{color:var(--text-2)}
 .sec.tight{padding-top:104px}
+#live.sec.tight{padding-top:56px}
 .h2-sm{font-size:clamp(30px,3.6vw,42px)}
 .small-lede{font-size:15px}
 .code-cap{margin:14px 0 0;font-size:13px;line-height:1.55;color:var(--faint);max-width:64ch}
@@ -22,10 +23,23 @@
 .tool-groups{display:grid;gap:44px;margin-top:48px}
 .group-head{margin-bottom:16px}
 .tool-group .moments{margin-top:0}
-.tool-card p{max-width:none}
-.tool-card .pw{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 24px;margin:20px 0 0}
-.tool-card .pw dt{font:500 11px/1.5 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
-.tool-card .pw dd{margin:4px 0 0;font:400 13.5px/1.5 var(--font-mono);color:var(--text)}
+.tool-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:0}
+.tool-grid .moment{grid-column:auto}
+.tool-card{min-height:0}
+.tool-card[hidden]{display:none}
+.tool-card .tag{margin-bottom:14px}
+.tool-jump .cat-chip[aria-pressed="true"]{color:#fff;background:rgba(255,255,255,.08);border-color:var(--line-3)}
+.tool-card h3{margin-top:0;max-width:none;font-size:clamp(19px,1.6vw,22px)}
+.tool-card p{max-width:none;font-size:14.5px}
+.tool-card .res{padding-top:20px}
+.tool-card .tc-price{font-family:var(--font-mono);color:var(--text)}
+.tool-card .tc-price .alt{color:var(--faint)}
+.tool-card .tc-price .dot{background:var(--hue)}
+.tool-more{margin:28px 0 0;font-size:14px;color:var(--muted)}
+.hero-actions.tool-jump{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px}
+.tool-jump .cat-chip{height:44px;padding:0 16px;font-size:14px;transition:border-color .15s,color .15s}
+.tool-jump .cat-chip:hover{color:var(--text);border-color:color-mix(in srgb,var(--hue) 45%,transparent)}
+.h1 .dim{color:#6e727b}
 .dev-list.wide{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px;margin-top:40px}
 .dev-list a.ul{white-space:nowrap}
 
@@ -78,6 +92,9 @@
 /* ---------- pricing ---------- */
 .exact-panel{margin-top:40px;max-width:720px}
 
+@media (max-width:1080px){
+  .tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:900px){
   .calls,.examples,.dev-list.wide{grid-template-columns:1fr}
 }
@@ -86,6 +103,8 @@
   .sec.tight{padding-top:80px}
   .dev.ref{padding:32px 0}
   .tool-groups{gap:36px}
+  .tool-grid{grid-template-columns:1fr}
+  .tool-jump{justify-content:flex-start}
   .examples .r-main{font-size:22px}
   .tbl.keep th,.tbl.keep td{padding:12px}
   .tbl td.words{min-width:6.5rem;font-size:12.5px}

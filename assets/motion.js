@@ -891,7 +891,7 @@
       var target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
       if (!target) return;
       e.preventDefault();
-      lenis.scrollTo(target, { offset: -72, duration: 1.4 });
+      lenis.scrollTo(target, { offset: -(parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 96), duration: 1.4 });
       history.pushState(null, '', url.hash);
       if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
       target.focus({ preventScroll: true });

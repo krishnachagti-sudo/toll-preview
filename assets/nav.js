@@ -6,6 +6,10 @@
    - The search box (and "/" or Cmd/Ctrl+K anywhere) opens a dialog that finds tools and the guide
      and table pages under them, as you type, from {base}/nav.json.
 
+   - On a tool's page, a bar under the header jumps to its parts (the calculator, the rules,
+     the prices, the code, the guides) and marks the one you are reading. On a phone a long
+     intro folds to a few lines with "Read more", so the calculator is near the top.
+
    The index is fetched once, the first time someone reaches for either. Without JavaScript the
    Tools link and the search box both go to the tools page. */
 (function () {
@@ -185,4 +189,77 @@
     else if (e.key === '/' && !typing && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); openSearch(); }
     else if (e.key === 'Escape' && panel && !panel.hidden) setPanel(false);
   });
+  // ---------- a tool page's parts ----------
+  // A section's name in the bar: its data-jump, else its aria-label or heading, cut at the first
+  // comma. The calculator and the code get the same words on every tool.
+  function jumpName(sec, i) {
+    if (sec.dataset.jump) return sec.dataset.jump;
+    if (i === 0) return 'Calculator';
+    var label = sec.getAttribute('aria-label') || ((sec.querySelector('h2') || {}).textContent || '');
+    if (/^use this from code$/i.test(label.trim())) return 'From code';
+    return label.trim().split(/[,:]\s/)[0];
+  }
+  function toolParts() {
+    var main = document.getElementById('main');
+    if (!cfg.tool || !main) return;
+    var secs = [].filter.call(main.children, function (n) { return n.tagName === 'SECTION'; });
+    var intro = secs.shift();
+    if (!intro || secs.length < 3) return;
+    var bar = h('nav', { class: 'tool-parts', 'aria-label': 'On this page', 'data-lenis-prevent': '' });
+    var row = h('div', { class: 'tp-row' });
+    var links = secs.map(function (sec, i) {
+      if (!sec.id) sec.id = 'part-' + (i === 0 ? 'calculator' : jumpName(sec, i).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+      var a = h('a', { href: '#' + sec.id, text: jumpName(sec, i) });
+      row.appendChild(a);
+      return a;
+    });
+    bar.appendChild(row);
+    intro.after(bar);
+    document.documentElement.classList.add('has-parts');
+    // The part nearest the top of the screen is the one being read.
+    var cur = -1;
+    function mark() {
+      var line = 170, at = 0;
+      secs.forEach(function (sec, i) { if (sec.getBoundingClientRect().top < line) at = i; });
+      if (at === cur) return;
+      cur = at;
+      links.forEach(function (a, i) { if (i === at) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
+      var a = links[at];
+      if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+    }
+    var ticking = false;
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; mark(); }); } }, { passive: true });
+    mark();
+  }
+
+  // On a phone, an intro's long lede folds to four lines behind "Read more".
+  function foldIntro() {
+    if (!cfg.tool || !window.matchMedia('(max-width: 720px)').matches) return;
+    var main = document.getElementById('main');
+    var intro = main && main.querySelector(':scope > section');
+    var lede = intro && intro.querySelector('.lede');
+    if (!lede) return;
+    lede.classList.add('folded');
+    if (lede.scrollHeight <= lede.clientHeight + 4) { lede.classList.remove('folded'); return; }
+    var more = h('button', { type: 'button', class: 'lede-more', 'aria-expanded': 'false', text: 'Read more' });
+    more.addEventListener('click', function () { lede.classList.remove('folded'); more.remove(); });
+    lede.after(more);
+  }
+  // The tools page's category chips filter its list.
+  function toolFilter() {
+    var chips = document.querySelectorAll('[data-tool-filter]');
+    if (!chips.length) return;
+    [].forEach.call(chips, function (chip) {
+      chip.setAttribute('role', 'button');
+      chip.addEventListener('click', function (e) {
+        e.preventDefault();
+        var id = chip.getAttribute('data-tool-filter');
+        [].forEach.call(chips, function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        [].forEach.call(document.querySelectorAll('.tool-card[data-group]'), function (card) { card.hidden = !!id && card.getAttribute('data-group') !== id; });
+      });
+    });
+  }
+  toolParts();
+  foldIntro();
+  toolFilter();
 })();

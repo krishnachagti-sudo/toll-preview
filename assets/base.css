@@ -467,3 +467,27 @@ table.rules th button:focus-visible { outline: 2px solid var(--focus); outline-o
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* ---------- a tool page's parts (nav.js) ---------- */
+html.has-parts { scroll-padding-top: 146px; }
+.tool-parts { position: sticky; top: 78px; z-index: 40; display: flex; justify-content: center; padding: 6px var(--gutter) 0; margin: 8px 0 0; pointer-events: none; }
+.tool-parts .tp-row {
+  pointer-events: auto; display: flex; gap: 2px; max-width: 100%; overflow-x: auto; scrollbar-width: none;
+  padding: 4px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(14, 15, 18, 0.9); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.7);
+}
+.tool-parts .tp-row::-webkit-scrollbar { display: none; }
+.tool-parts a {
+  flex: none; display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 999px;
+  font-size: 14px; color: var(--muted); text-decoration: none; white-space: nowrap; transition: color .15s, background .15s;
+}
+.tool-parts a:hover { color: var(--text); background: rgba(255, 255, 255, 0.05); text-decoration: none; }
+.tool-parts a[aria-current] { color: #fff; background: rgba(255, 255, 255, 0.1); }
+.lede.folded { margin-bottom: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+.lede-more { margin: 8px 0 0; padding: 0; border: 0; background: none; color: var(--text); font: inherit; font-size: 15px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; min-height: 32px; }
+@media (max-width: 720px) {
+  .tool-parts { padding: 4px 0 0; justify-content: flex-start; }
+  .tool-parts .tp-row { border-radius: 0; border-left: 0; border-right: 0; width: 100%; padding: 4px 12px; }
+  .tool-parts a { height: 34px; padding: 0 12px; font-size: 13.5px; }
+}
