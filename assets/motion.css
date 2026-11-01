@@ -1,7 +1,7 @@
 /* Motion for every page. Loaded from the shared head after each page's own stylesheet;
    motion.js adds the classes it keys on (html.lg, html.mx, html.mx-field-on and friends).
-   - The bar: a floating glass pill with refraction, lit by the pointer, with a reading-progress
-     line along its lower rim.
+   - The bar: clear at the top, a floating glass pill with refraction once scrolled, lit by the
+     pointer, with a reading-progress line along its lower rim.
    - The page: a smoky glow behind it, lit from the content in view; momentum scrolling,
      word-by-word headlines, magnetic buttons; fluid type and spacing; sliding tab highlights;
      scroll-scrubbed product panels, tilting cards, filling step lines, counting figures, staggered
@@ -24,9 +24,13 @@
   }
 }
 
-/* ---------- header: a floating glass pill ---------- */
-/* The glass, rim and refraction are drawn over the pill's box, so the row itself goes clear. */
-.lg .nav-row{z-index:1;background:none;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+/* ---------- header: clear at the top, a floating glass pill once scrolled ---------- */
+/* The glass, rim and refraction are drawn by motion.js, so the row itself goes clear; at the top a
+   hairline marks the bar's lower edge. */
+.lg .nav-row{z-index:1;background:none;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.lg .site-head{border-bottom:1px solid var(--line);transition:border-color .35s ease}
+.lg .site-head.lg-capsule{border-bottom-color:transparent}
+.lg .nav-row .logo,.lg .head-nav,.lg .nav-search,.lg .nav-cta,.lg .menu>summary{will-change:transform}
 
 .lg-glass{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
   background:

@@ -122,9 +122,9 @@ code, pre, kbd { font-family: var(--font-mono); font-size: 0.9em; }
 .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 2px; background: var(--hue, var(--warm)); box-shadow: 0 0 10px color-mix(in srgb, var(--hue, var(--warm)) 70%, transparent); }
 .lede { font-size: 17px; line-height: 1.55; max-width: 40rem; color: var(--muted); }
 
-/* ---------- header: a floating pill on every page ----------
-   The pill is the row itself. Without motion.js it is drawn here; with it (html.lg) the glass,
-   its lit rim and the reading-progress line are laid over the same box. */
+/* ---------- header: a full-width bar that condenses into a floating pill ----------
+   Without motion.js the row is always drawn as the pill, here; with it (html.lg) the glass,
+   its lit rim and the reading-progress line grow from the full bar into the pill on scroll. */
 .site-head { position: sticky; top: 0; z-index: 50; padding: 10px var(--gutter) 8px; pointer-events: none; }
 .site-head > * { pointer-events: auto; }
 .nav-row {

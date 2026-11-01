@@ -1,9 +1,10 @@
 /* Motion for every page. Loaded deferred from the shared head (routes/pages.js render()), after
    each page's own scripts; motion.css carries the styles it keys on. Two parts:
 
-   1. The bar: a floating glass pill on every page and at every scroll position (with refraction in
-      Chromium), lit by the pointer, with a reading-progress line along its lower rim. The pill's
-      box is the nav row base.css lays out; this fits the glass, rim and refraction map to it.
+   1. The bar: clear and full width at the top of the page; after a short scroll it condenses into
+      a floating glass pill (with refraction in Chromium) around the links and search, lit by the
+      pointer, with a reading-progress line along its lower rim. Two springs drive it; per frame it
+      only writes transforms, a clip-path, opacity and an SVG rim. Positions are measured up front.
    2. The page: a smoky glow lit from the page's own content, word-by-word headlines, reveals and
       cascades, magnetic buttons, tilting cards, scroll-linked panels and steps, counting figures,
       sliding tab highlights, and momentum scrolling.
@@ -19,6 +20,7 @@
   if (!head || !row) return;
 
   var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqNarrow = window.matchMedia('(max-width: 900px)');
   var mqHover = window.matchMedia('(hover: hover) and (pointer: fine)');
   var reduce = mqReduce.matches;
 
@@ -33,9 +35,10 @@
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   // ---------- capsule geometry (the shape it settles into) ----------
-  var CAP_TOP = 10, CAP_H = 60, CAP_R = 30;
+  var CAP_TOP = 10, CAP_H = 60, CAP_R = 30, GAP = 28;
   var W0 = 0, H0 = 0;           // header box
   var capL = 0, capW = 0;       // the pill, in header coordinates
+  var groups = [];              // { node, dx }: the left and right clusters slide in to meet
 
   // ---------- layers ----------
   root.classList.add('lg', 'mx');
@@ -126,14 +129,36 @@
   }
 
   // ---------- measuring (only here, never inside the animation) ----------
-  // The pill is the nav row itself (base.css lays it out); the glass, its rim and the refraction
-  // map are fitted to the row's box inside the header.
+  // At the top the row is a full-width bar (base.css lays it out). The pill keeps the row's height
+  // and hugs its two clusters, the logo and links on the left and search and buttons on the right,
+  // which slide toward each other; on a narrow screen, or when they barely fit, it is the row's box.
+  function visible(n) { return n && n.offsetWidth > 0 && n.offsetHeight > 0; }
   function measure() {
     W0 = head.clientWidth;
     H0 = head.offsetHeight;
     if (!row.offsetWidth) return;
-    capL = row.offsetLeft; capW = row.offsetWidth;
     CAP_TOP = row.offsetTop; CAP_H = row.offsetHeight; CAP_R = CAP_H / 2;
+    var base = row.offsetLeft;
+    var left = [row.querySelector('.logo'), row.querySelector('.head-nav')].filter(visible);
+    var right = [row.querySelector('.nav-search'), row.querySelector('.nav-cta'), row.querySelector('.menu > summary')].filter(visible);
+    var cs = getComputedStyle(row), padL = parseFloat(cs.paddingLeft) || 0, padR = parseFloat(cs.paddingRight) || 0;
+    var span = function (ns) { var a = Infinity, b = -Infinity; ns.forEach(function (n) { a = Math.min(a, base + n.offsetLeft); b = Math.max(b, base + n.offsetLeft + n.offsetWidth); }); return [a, b]; };
+    capL = base; capW = row.offsetWidth;
+    groups = [];
+    if (left.length && right.length && !mqNarrow.matches) {
+      var l = span(left), r = span(right);
+      var natural = padL + (l[1] - l[0]) + GAP + (r[1] - r[0]) + padR;
+      if (natural < capW - 40) {
+        capW = Math.round(natural);
+        capL = Math.round(base + (row.offsetWidth - capW) / 2);
+        var dl = capL + padL - l[0], dr = capL + capW - padR - r[1];
+        left.forEach(function (n) { groups.push({ node: n, dx: dl }); });
+        right.forEach(function (n) { groups.push({ node: n, dx: dr }); });
+      }
+    }
+    [].forEach.call(row.querySelectorAll('.logo, .head-nav, .nav-search, .nav-cta, .menu > summary'), function (n) {
+      if (!groups.some(function (g) { return g.node === n; })) n.style.transform = '';
+    });
     if (!lightInit) { lx = tx = capL + capW * 0.32; lightInit = true; }
     buildMap();
   }
@@ -161,6 +186,7 @@
     gL = L; gR = R; gB = B; gr = r; drawProg();
     light.setAttribute('cx', lx.toFixed(1));
     light.setAttribute('cy', ly);
+    for (var i = 0; i < groups.length; i++) groups[i].node.style.transform = 'translate3d(' + (groups[i].dx * x).toFixed(2) + 'px,0,0)';
     if (feDisp) {
       // The map is drawn for the settled shape, so the bending fades in as the capsule arrives.
       var t = clamp((Math.min(x, y) - 0.82) / 0.18, 0, 1);
@@ -193,12 +219,21 @@
   function kick() { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
   function snap() { x = y = target; vx = vy = 0; lx = tx; render(); }
 
+  function setTarget(t) {
+    if (t === target) return;
+    target = t;
+    head.classList.toggle('lg-capsule', t === 1);
+    if (reduce) snap(); else kick();
+  }
+
   var docH = document.documentElement.scrollHeight;
   if ('ResizeObserver' in window) new ResizeObserver(function () { docH = document.documentElement.scrollHeight; }).observe(document.body);
   function onScroll() {
     var s = window.scrollY || window.pageYOffset;
     var p = clamp(s / Math.max(1, docH - window.innerHeight), 0, 1);
     if (Math.abs(p - prog) > 0.0005) { prog = p; drawProg(); }
+    if (s > 28) setTarget(1);
+    else if (s < 10) setTarget(0);
   }
 
   // ---------- light that follows the pointer ----------
@@ -260,11 +295,9 @@
   }
   function snapOrRender() { if (raf) return; render(); }
 
-  // The bar is a pill from the first paint, at every scroll position.
-  target = 1;
-  head.classList.add('lg-capsule');
   measure();
   onScroll();
+  // A page opened mid-scroll starts as the pill, without animating in.
   snap();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize);
