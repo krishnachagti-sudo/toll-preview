@@ -1,0 +1,72 @@
+/* IFTA calculator: a fuel-tax ledger. Sits inside the brand chrome and reuses its tokens. Credits
+   read in green, tax due in the page's amber, surcharges in blue, so a line's direction shows
+   before its figure is read. */
+.if {
+  --accent: var(--h-money);
+  --accent-ink: #1a0610;
+  --toll-accent: var(--h-money);
+  --toll-accent-ink: #1a0610;
+  --if-credit: #6fdc8c;
+  --if-due: #ffb547;
+  --if-sur: #45d3ff;
+}
+
+.if-intro { padding-block: 40px 8px; }
+.if-intro h1 { margin-bottom: 0.25em; }
+.if-price { color: var(--ink-soft); max-width: 44rem; margin: 0; font-variant-numeric: tabular-nums; }
+.if-who { margin-top: 8px; }
+.if-sample { max-width: 44rem; margin: 8px 0 0; }
+.if-sample .btn, .if-templates .btn { margin: 4px 6px 0 0; }
+.if-format { margin: 0 0 14px; color: var(--ink-soft); }
+.if-format summary { cursor: pointer; }
+.if-format p { margin: 6px 0 0; max-width: 40rem; }
+.if-templates { margin: 0 0 10px; font-size: 14px; color: var(--text-2); }
+
+.if-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.if-desk > * { min-width: 0; }
+@media (min-width: 960px) { .if-desk { grid-template-columns: 24rem 1fr; gap: 48px; } }
+
+.if-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.if-form legend { padding: 0; }
+.if-form > .btn { width: 100%; }
+.if textarea { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; }
+.if-get-note { margin: 10px 0 0; }
+
+/* Result */
+.if-out { min-height: 12rem; }
+.if-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
+.if-answer { font: 500 clamp(2rem, 7vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 10px; font-variant-numeric: lining-nums tabular-nums; }
+.if-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.if-answer.credit { color: var(--if-credit); }
+.if-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 12px; }
+.if-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.if-facts dd { margin: 2px 0 0; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.if-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 46rem; }
+.if-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
+.if-table { width: 100%; font-variant-numeric: tabular-nums; }
+.if-table td, .if-table th { white-space: nowrap; }
+.if-table td.due { color: var(--if-due); }
+.if-table td.credit { color: var(--if-credit); }
+.if-table td.sur { color: var(--if-sur); }
+.if-warn { margin: 0 0 8px; padding-left: 1.2em; max-width: 46rem; }
+.if-warn li { margin: 0 0 6px; }
+.if-warn.err li::marker { color: var(--if-due); }
+.if-warn li::marker { color: var(--if-sur); }
+.if-aside { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 10px; max-width: 44rem; }
+.if-late { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: end; margin: 6px 0 10px; }
+.if-late label { font-size: 13px; color: var(--text-2); display: block; margin-bottom: 4px; }
+.if-downloads { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Rules, prices, sources */
+.if-rules, .if-legal { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.if-rule-cols { display: grid; gap: 4px 40px; }
+@media (min-width: 760px) { .if-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.if-rule-cols p, .if-legal li { color: var(--ink-soft); max-width: 40rem; }
+.if-table-title { margin-top: 28px; }
+.if-sources a { word-break: break-word; }
+.if-code { margin-top: 40px; max-width: 52rem; }
+.if-code pre { max-width: 100%; }
+
+@media print {
+  .if-form, .if-code { display: none; }
+}

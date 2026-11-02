@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MACRS depreciation schedule with the mid-quarter test: Toll</title>
+<meta name="description" content="A client's fixed-asset additions for 2025 or 2026 run through the 40% mid-quarter test, Section 179 and bonus, with each figure tied to its Publication 946 table and a journal entry CSV.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/macrs-depreciation/files/page.css">
+<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"macrs-depreciation"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Toll">
+<meta property="og:title" content="MACRS depreciation schedule">
+<meta property="og:description" content="Paste a client's fixed-asset additions for 2025 or 2026 and get the IRS percentage-table schedule: the mid-quarter 40% test across every asset with the worksheet, Section 179 within the year's limit and phase-out, the special allowance by acquisition date (100% after January 19, 2025), each number tied to its Publication 946 table, and the journal entry as a CSV.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/","url":"https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/","name":"MACRS depreciation schedule","description":"Paste a client's fixed-asset additions for 2025 or 2026 and get the IRS percentage-table schedule: the mid-quarter 40% test across every asset with the worksheet, Section 179 within the year's limit and phase-out, the special allowance by acquisition date (100% after January 19, 2025), each number tied to its Publication 946 table, and the journal entry as a CSV.","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"MACRS depreciation schedule","item":"https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/"}]},{"@type":"WebApplication","name":"MACRS depreciation schedule","url":"https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/","description":"Paste a client's fixed-asset additions for 2025 or 2026 and get the IRS percentage-table schedule: the mid-quarter 40% test across every asset with the worksheet, Section 179 within the year's limit and phase-out, the special allowance by acquisition date (100% after January 19, 2025), each number tied to its Publication 946 table, and the journal entry as a CSV.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"name":"Schedule","@type":"Offer","price":"2","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"2","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"entity-year (up to 250 assets)"}}},{"name":"Schedule","@type":"Offer","price":"169","priceCurrency":"INR","priceSpecification":{"@type":"UnitPriceSpecification","price":"169","priceCurrency":"INR","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"entity-year (up to 250 assets)"}}},{"name":"Mid-quarter test","@type":"Offer","price":"0.1","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.1","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"test"}}},{"name":"Mid-quarter test","@type":"Offer","price":"8","priceCurrency":"INR","priceSpecification":{"@type":"UnitPriceSpecification","price":"8","priceCurrency":"INR","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"test"}}},{"name":"Table lookup","@type":"Offer","price":"0.1","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.1","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"lookup"}}},{"name":"Table lookup","@type":"Offer","price":"8","priceCurrency":"INR","priceSpecification":{"@type":"UnitPriceSpecification","price":"8","priceCurrency":"INR","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"lookup"}}},{"name":"Limits lookup","@type":"Offer","price":"0.1","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.1","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"lookup"}}},{"name":"Limits lookup","@type":"Offer","price":"8","priceCurrency":"INR","priceSpecification":{"@type":"UnitPriceSpecification","price":"8","priceCurrency":"INR","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"lookup"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Toll</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="md">
+  <section class="wrap md-intro">
+    <p class="eyebrow">Fixed assets and tax depreciation</p>
+    <h1>MACRS depreciation schedule</h1>
+    <p class="lede">Paste one client's assets placed in service in 2025 or 2026. The tool runs the 40% test across all of them and decides half-year or mid-quarter, applies Section 179 and the special allowance in the order Publication 946 sets, then reads each year's percentage from the IRS table it names. You get the schedule and the year's journal entry as CSV files.</p>
+    <p class="md-price" id="md-price">The 40% test with its worksheet and the year-1 total is $0.10 (free for a few runs a day before you sign in). The full schedule is $2.00 per entity and tax year for up to 250 assets, and running the same entity and year again with edits within 30 days is free.</p>
+    <p class="md-price md-who">A bookkeeper buys one schedule per client per tax year. Every row of the schedule names the Publication 946 table, column and percentage behind it, so a reviewer can check it against irs.gov.</p>
+    <p class="md-sample" id="md-sample">See a sample first: the schedule and journal entry for a made-up client's 2026 assets, made by this tool. <span id="md-sample-links">The sample files load with the page.</span></p>
+  </section>
+
+  <section class="wrap md-desk" aria-label="MACRS schedule">
+    <form class="md-form" id="md-form" novalidate>
+      <div class="field">
+        <label for="md-entity">Client or entity name</label>
+        <input type="text" id="md-entity" maxlength="80" autocomplete="organization" aria-describedby="md-entity-err">
+        <p class="field-error" id="md-entity-err"></p>
+      </div>
+      <div class="field">
+        <label for="md-year">Tax year (calendar year)</label>
+        <select id="md-year"><option value="2026">2026</option><option value="2025">2025</option></select>
+      </div>
+      <div class="field">
+        <label for="md-csv">Assets placed in service this year (CSV)</label>
+        <textarea id="md-csv" rows="9" spellcheck="false" aria-describedby="md-csv-hint md-csv-err"></textarea>
+        <p class="hint" id="md-csv-hint">Header row first. Columns: id, description, cost, acquired, placed_in_service, class, business_use_pct, section_179, vehicle, disposed_same_year. Dates are written 2026-03-14. Class is 3, 5, 7, 10, 15, 20, qip, 25, 27.5 or 39.</p>
+        <details class="md-format">
+          <summary>What each column means</summary>
+          <ul>
+            <li><b>acquired</b>: the date you acquired it, which for a purchase is the binding written contract date. It sets the special allowance: 100% after January 19, 2025. Not needed for buildings or a class you elect out.</li>
+            <li><b>class</b>: the recovery class you have decided on (Publication 946 Appendix B lists class lives). <b>qip</b> is qualified improvement property, 15-year straight line. 27.5 is residential rental property, 39 nonresidential real property; leave land out of a building's cost.</li>
+            <li><b>business_use_pct</b>: blank means 100. Section 179 needs more than 50%.</li>
+            <li><b>section_179</b>: the amount you elect to expense for that asset, in dollars.</li>
+            <li><b>vehicle</b>: heavy-suv (over 6,000 lb, Section 179 cap applies), heavy-truck (over 6,000 lb with a 6-foot bed or similar), or blank. Passenger automobiles are not covered yet.</li>
+            <li><b>disposed_same_year</b>: yes for an asset placed in service and disposed of in the same year; it is left out of the test and gets no depreciation.</li>
+          </ul>
+        </details>
+        <p class="field-error" id="md-csv-err"></p>
+      </div>
+
+      <fieldset class="field md-group">
+        <legend>Elections</legend>
+        <p class="hint">Elect out of the special allowance for a whole class. Electing out of every class gives the starting point for a state that does not follow federal bonus.</p>
+        <div class="md-classes" id="md-electout"></div>
+        <label class="check" id="md-40-row"><input type="checkbox" id="md-40"><span>2025: take 40% instead of 100% on property acquired after January 19, 2025</span></label>
+      </fieldset>
+
+      <fieldset class="field md-group">
+        <legend>Section 179 checks (optional)</legend>
+        <div class="field">
+          <label for="md-income">Business income for the Section 179 limit ($)</label>
+          <input type="number" id="md-income" min="0" step="1" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="md-s179cost">Cost of all section 179 property placed in service this year, if not just these assets ($)</label>
+          <input type="number" id="md-s179cost" min="0" step="1" inputmode="decimal">
+        </div>
+      </fieldset>
+
+      <p class="form-error" id="md-error" role="alert"></p>
+      <button class="btn btn-quiet" type="button" id="md-test">Run the 40% test</button>
+      <button class="btn" type="button" id="md-get">Get the schedule (CSV and journal entry)</button>
+      <p class="hint md-get-note" id="md-get-note">Your list stays in this browser until you run the test or get the schedule.</p>
+      <p class="visually-hidden" id="md-status" role="status"></p>
+    </form>
+
+    <div class="md-out" id="md-out">
+      <p class="muted">Run the 40% test to see the convention, the worksheet and the year-1 total.</p>
+    </div>
+  </section>
+
+  <section class="wrap md-rules" data-jump="The rules" aria-labelledby="md-rules-title">
+    <h2 id="md-rules-title">How the numbers are made</h2>
+    <div class="md-rule-cols">
+      <div>
+        <h3>The 40% test, across every asset</h3>
+        <p>Add up the bases placed in service in October, November and December, and the bases for the whole year. If the last three months are more than 40%, every asset outside the building classes uses the mid-quarter convention; exactly 40% stays half-year. Buildings and same-year disposals are left out. The basis is after Section 179 and personal use, before any bonus, so 100% bonus does not make the test go away.</p>
+      </div>
+      <div>
+        <h3>Section 179, then bonus, then MACRS</h3>
+        <p>Section 179 comes off first, within the year's limit ($2,500,000 for 2025 and $2,560,000 for 2026, reduced dollar for dollar above $4,000,000 and $4,090,000 of section 179 property; heavy SUVs capped at $31,300 and $32,000). The special allowance applies to what is left: 100% for property acquired after January 19, 2025, 40% for property acquired earlier and placed in service in 2025.</p>
+      </div>
+      <div>
+        <h3>The IRS table on every row</h3>
+        <p>The rest is depreciated with the Publication 946 Appendix A percentages: Table A-1 for half-year, A-2 to A-5 for each quarter, A-8 to A-12 for straight-line classes, A-6 and A-7a by month for buildings. Each year is the basis times the printed percentage, rounded to the cent; the last year takes what is left so the years add up to the basis.</p>
+      </div>
+    </div>
+    <h3 class="md-table-title">What is covered, and what is refused</h3>
+    <ul class="md-scope">
+      <li>Covered: calendar tax years 2025 and 2026; GDS classes 3, 5, 7, 10, 15 and 20-year, qualified improvement property, 25-year water utility property, 27.5 and 39-year real property; half-year, mid-quarter and mid-month conventions; Section 179 with the limit, phase-out and SUV cap; the special allowance by acquisition date, elections out by class, and the 2025 election of 40%.</li>
+      <li>Refused with a message: passenger automobiles (Section 280F caps); vehicles used 50% or less for business (ADS); property acquired before January 20, 2025 and placed in service in 2026 with bonus (the published sources disagree on its rate); Section 179 above the business income you give (the carryover is not computed); property acquired before September 28, 2017.</li>
+      <li>Not covered: fiscal and short tax years, ADS and the 150% or straight-line elections, farm property, long production period property and aircraft, qualified production property, disposals in later years, Form 4562 line amounts and state depreciation.</li>
+    </ul>
+  </section>
+
+  <section class="wrap md-legal" data-jump="Please read" aria-labelledby="md-legal-title">
+    <h2 id="md-legal-title">Please read</h2>
+    <ul id="md-disclaimers">
+      <li>Computed from IRS Publication 946 (2025, dated March 13, 2026) and Rev. Proc. 2025-32, rules version pub946-2025(2026-03-13)+rp2025-32+read-2026-11-02; not tax or legal advice.</li>
+      <li>Federal MACRS only, for calendar tax years 2025 and 2026. Many states do not follow federal bonus or Section 179; elect out of bonus for every class to get a starting point for those states, and apply your state's own rules.</li>
+      <li>You choose asset classes, acquisition dates and elections; this tool applies the rules to your inputs. It does not decide whether a cost is a repair or an improvement, or which class an asset belongs in.</li>
+      <li>Vehicles: business use is your figure, and at 50% or less the vehicle must use ADS, which is not computed here. Passenger automobiles under the Section 280F caps are not covered yet.</li>
+      <li>Check the result against your tax return software before filing.</li>
+    </ul>
+    <h3>Prices</h3>
+    <ul class="toll-prices"><li><strong>Schedule</strong>: $2.00 per entity-year (up to 250 assets); a repeat for the same entity and tax year is free for 30 days, and a larger one pays only the difference. <span class="toll-prices-inr">On a rupee account: ₹169.00 per entity-year (up to 250 assets); a repeat for the same entity and tax year is free for 30 days, and a larger one pays only the difference.</span></li><li><strong>Mid-quarter test</strong>: $0.10 per test; the 40% worksheet, the convention and the year-1 total, no schedule or files. <span class="toll-prices-inr">On a rupee account: ₹8.00 per test; the 40% worksheet, the convention and the year-1 total, no schedule or files.</span></li><li><strong>Table lookup</strong>: $0.10 per lookup. <span class="toll-prices-inr">On a rupee account: ₹8.00 per lookup.</span></li><li><strong>Limits lookup</strong>: $0.10 per lookup. <span class="toll-prices-inr">On a rupee account: ₹8.00 per lookup.</span></li></ul>
+    <h3>Sources, read November 2, 2026</h3>
+    <ul class="md-sources">
+      <li><a href="https://www.irs.gov/pub/irs-pdf/p946.pdf">IRS Publication 946 (2025), How To Depreciate Property</a> (dated March 13, 2026; also at <a href="https://www.irs.gov/publications/p946">irs.gov/publications/p946</a>): Appendix A Tables A-1 to A-12 and A-6, A-7a; chapter 2 (Section 179 dollar limits, business use, business income limit); chapter 3 (special depreciation allowance, election out); chapter 4 (which convention applies, the percentage tables)</li>
+      <li><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">Rev. Proc. 2025-32</a>, sec. 4.24: the 2026 Section 179 limit of $2,560,000, the $4,090,000 phase-out start and the $32,000 SUV cap</li>
+      <li><a href="https://www.ecfr.gov/current/title-26/chapter-I/subchapter-A/part-1/section-1.168(d)-1">26 CFR 1.168(d)-1</a>: the 40-percent test (read in the <a href="https://www.law.cornell.edu/cfr/text/26/1.168(d)-1">Cornell LII copy</a>)</li>
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">Intuit: Import journal entries in QuickBooks Online</a>: the journal import columns</li>
+    </ul>
+  </section>
+
+
+
+  <section class="wrap md-code" aria-label="Use this from code">
+    <div id="md-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This tool needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/toll.js"></script>
+<script type="module" src="/toll-preview/macrs-depreciation/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

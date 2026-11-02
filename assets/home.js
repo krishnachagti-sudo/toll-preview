@@ -200,7 +200,8 @@
   // ---------- the live tools: one demo at a time, behind tabs ----------
   // Without JavaScript every tool's row is shown, one after another.
   var SHORT = { 'fx-on-date': 'Exchange rate', 'delivery-date-calculator': 'Delivery date', 'trucker-per-diem': 'Trucker per diem',
-    'tax-set-aside': 'Tax set-aside', 'mileage-reimbursement': 'Mileage', '1099-threshold': '1099 threshold' };
+    'tax-set-aside': 'Tax set-aside', 'mileage-reimbursement': 'Mileage', '1099-threshold': '1099 threshold',
+    'ifta-calculator': 'IFTA return', 'macrs-depreciation': 'MACRS', 'qr-code-generator': 'QR codes' };
   function toolTabs() {
     var sec = document.getElementById('tools');
     if (!sec) return;

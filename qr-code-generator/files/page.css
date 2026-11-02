@@ -1,0 +1,73 @@
+/* QR code generator: a print desk inside the brand chrome, reusing its tokens. One accent (the
+   files hue) marks the proof; the code itself stays black on white, as it prints. */
+.qr {
+  --accent: var(--h-file);
+  --accent-ink: #04161d;
+  --toll-accent: var(--h-file);
+  --toll-accent-ink: #04161d;
+  --qr-warn: #ffb547;
+}
+
+.qr-intro { padding-block: 40px 8px; }
+.qr-intro h1 { margin-bottom: 0.25em; }
+.qr-price { color: var(--ink-soft); max-width: 46rem; margin: 0; }
+.qr-lede { color: var(--ink-soft); max-width: 46rem; }
+
+.qr-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.qr-desk > *, .qr-check-grid > * { min-width: 0; }
+@media (min-width: 960px) { .qr-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
+
+.qr-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.qr-form textarea, .qr-bulk textarea { font-family: var(--font-mono); font-size: 13px; }
+.qr-options summary, .qr-format summary { cursor: pointer; color: var(--ink-soft); margin: 6px 0 12px; }
+.qr-format p { margin: 6px 0 0; max-width: 40rem; color: var(--ink-soft); }
+.qr-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; align-items: end; }
+.qr input[type="color"] { width: 100%; min-height: 40px; padding: 2px; background: none; border: 1px solid var(--rule); border-radius: 4px; }
+.qr input[type="range"] { width: 100%; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 0 0 14px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; }
+
+.qr-out { min-height: 12rem; }
+.qr-preview { background: #fff; padding: 12px; border-radius: 6px; width: min(100%, 320px); line-height: 0; }
+.qr-preview svg { width: 100%; height: auto; display: block; }
+.qr-verified { color: var(--accent); font: 500 0.9rem/1.5 var(--font-mono); margin: 12px 0; }
+.qr-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+.qr-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
+.qr-payload { font-family: var(--font-mono); font-size: 13px; background: var(--toll-code-bg, rgba(127, 127, 127, 0.12)); padding: 10px 12px; border-radius: 4px; white-space: pre-wrap; word-break: break-all; margin: 0; max-width: 46rem; }
+.qr-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 14px 0; }
+.qr-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.qr-facts dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; }
+.qr-checks { margin: 8px 0 12px; padding-left: 1.1rem; max-width: 46rem; color: var(--ink-soft); }
+.qr-checks li { margin: 4px 0; }
+.qr-checks li.warn { color: var(--qr-warn); }
+.qr-aside, .qr-sub { color: var(--ink-soft); max-width: 46rem; }
+
+.qr-check, .qr-bulk { margin-top: 48px; }
+.qr-check-grid { display: grid; gap: 32px; align-items: start; }
+@media (min-width: 960px) { .qr-check-grid { grid-template-columns: 22rem 1fr; gap: 48px; } }
+.qr-run-note { margin: 10px 0 0; }
+.qr-verdict { font: 500 clamp(1.8rem, 6vw, 2.6rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; }
+.qr-verdict.v-vendor-redirect, .qr-verdict.v-unknown-redirect, .qr-verdict.v-unknown { color: var(--qr-warn); }
+.qr-verdict.v-static, .qr-verdict.v-direct, .qr-verdict.v-own-redirect { color: var(--accent); }
+.qr-quote { margin: 0 0 12px; padding-left: 14px; border-left: 3px solid var(--accent); max-width: 46rem; }
+.qr-quote p { margin: 4px 0; }
+.qr-chain { padding-left: 1.2rem; margin: 0 0 12px; max-width: 48rem; }
+.qr-chain li { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.qr-chain .when { font: 500 0.82rem/1.5 var(--font-mono); color: var(--ink-soft); min-width: 6rem; }
+.qr-url { word-break: break-all; font-family: var(--font-mono); font-size: 13px; }
+
+.qr-answer { font: 500 clamp(1.8rem, 6vw, 2.6rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; font-variant-numeric: tabular-nums; }
+.qr-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.qr-table { font-size: 0.9rem; margin: 10px 0; width: 100%; table-layout: fixed; }
+.qr-table td, .qr-table th { text-align: left; padding: 4px 8px 4px 0; vertical-align: top; }
+.qr-table th:first-child, .qr-table td:first-child { width: 3.5rem; }
+#qr-bulk-files p { margin: 12px 0 0; }
+
+.qr-rules { margin-top: 56px; }
+.qr-rule-cols { display: grid; gap: 24px; }
+@media (min-width: 900px) { .qr-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.qr-rule-cols p { color: var(--ink-soft); }
+.qr-notes { margin-top: 24px; padding-left: 1.1rem; max-width: 52rem; }
+.qr-notes li { margin: 6px 0; }
+.qr-prices { margin-top: 28px; }
+.qr-code { margin-top: 40px; }
