@@ -15,6 +15,23 @@ const MAX_TRIPS = 25;
 const SHOWN_FLAGS = 15;
 const SHOWN_LOG_LINES = 10;
 
+// The Spanish page (page.es.html, at /es/mileage-reimbursement/) is <html lang="es">: there this
+// script shows its own words in Spanish. The English page reads exactly the English words below.
+// Text worked out by core.js or the server (the answer sentence, notes, flags, source labels,
+// error messages) stays in English on both.
+const ES = document.documentElement.lang === 'es';
+const tr = (en, es) => (ES ? es : en);
+const ES_MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const esDate = (iso) => `${+iso.slice(8)} de ${ES_MONTHS[+iso.slice(5, 7) - 1]} de ${iso.slice(0, 4)}`;
+const esRange = (from, to) => {
+  if (from.slice(0, 4) === to.slice(0, 4) && from.slice(5) === '01-01' && to.slice(5) === '12-31') return `todo ${from.slice(0, 4)}`;
+  return `${from.slice(0, 4) === to.slice(0, 4) ? esDate(from).replace(/ de \d{4}$/, '') : esDate(from)} al ${esDate(to)}`;
+};
+const ES_SHORT = { business: 'negocios', medical: 'médico', moving: 'mudanza', charity: 'caridad', 'federal travel': 'viaje federal', motorcycle: 'motocicleta', airplane: 'avión', relocation: 'reubicación' };
+const shortOf = (purpose) => (ES ? ES_SHORT[PURPOSES[purpose].short] ?? PURPOSES[purpose].short : PURPOSES[purpose].short);
+const range = (from, to) => (ES ? esRange(from, to) : rangeText(from, to));
+const dateLong = (iso) => (ES ? esDate(iso) : longDate(iso));
+
 const $ = (id) => document.getElementById(id);
 const mode = () => document.querySelector('input[name="mode"]:checked').value;
 
@@ -59,9 +76,9 @@ function fillPeriods(values = []) {
   periodsIn($('mr-purpose').value, $('mr-year').value).forEach((p, i) => {
     const id = `mr-m${i + 1}`;
     box.appendChild(h('div', { class: 'field' }, [
-      h('label', { for: id }, `Miles, ${rangeText(p.from, p.to)}`),
+      h('label', { for: id }, tr(`Miles, ${rangeText(p.from, p.to)}`, `Millas, ${range(p.from, p.to)}`)),
       h('input', { type: 'text', id, inputmode: 'decimal', value: values[i] ?? old[i] ?? '', placeholder: '0' }),
-      h('p', { class: 'hint' }, `${p.rate.words}, ${p.rate.source.label}`),
+      h('p', { class: 'hint' }, tr(`${p.rate.words}, ${p.rate.source.label}`, `${p.rate.mills >= 1000 ? `${p.rate.dollars} por milla` : `${p.rate.cents} centavos por milla`}, ${p.rate.source.label}`)),
     ]));
   });
 }
@@ -90,23 +107,23 @@ function readForm() {
     periodsIn(purpose, $('mr-year').value).forEach((p, i) => {
       const raw = $(`mr-m${i + 1}`).value.trim();
       if (raw === '' || raw === '0') return;
-      if (scaled(raw, 2) === null) { errors.periods = `"${raw}" is not a number of miles.`; return; }
+      if (scaled(raw, 2) === null) { errors.periods = tr(`"${raw}" is not a number of miles.`, `"${raw}" no es un número de millas.`); return; }
       trips.push({ date: p.from, ...(p.to !== p.from ? { endDate: p.to } : {}), miles: raw, purpose });
     });
-    if (!trips.length && !errors.periods) errors.periods = 'Enter the miles for at least one period.';
+    if (!trips.length && !errors.periods) errors.periods = tr('Enter the miles for at least one period.', 'Ingrese las millas de al menos un período.');
   } else {
     const lines = $('mr-trips').value.split('\n').map((x) => x.trim()).filter(Boolean);
     for (const line of lines) {
       const t = tripLine(line);
-      if (!t) { errors.trips = `Could not read "${line}". Write a date, then the miles, for example 2026-07-14, 340.`; break; }
+      if (!t) { errors.trips = tr(`Could not read "${line}". Write a date, then the miles, for example 2026-07-14, 340.`, `No se pudo leer "${line}". Escriba una fecha y luego las millas, por ejemplo 2026-07-14, 340.`); break; }
       trips.push({ ...t, purpose, ...(purpose === 'business' ? {} : { paidDate: undefined }) });
     }
-    if (!trips.length && !errors.trips) errors.trips = 'Enter at least one trip.';
-    if (trips.length > MAX_TRIPS) errors.trips = `Up to ${MAX_TRIPS} trips here; put a longer list in the trip file below.`;
+    if (!trips.length && !errors.trips) errors.trips = tr('Enter at least one trip.', 'Ingrese al menos un viaje.');
+    if (trips.length > MAX_TRIPS) errors.trips = tr(`Up to ${MAX_TRIPS} trips here; put a longer list in the trip file below.`, `Hasta ${MAX_TRIPS} viajes aquí; ponga una lista más larga en el archivo de viajes de abajo.`);
   }
   const extra = $('mr-extra').value.trim();
   if (extra) {
-    if (scaled(extra, 2) === null) errors.extra = 'Parking and tolls must be an amount such as 12.50.';
+    if (scaled(extra, 2) === null) errors.extra = tr('Parking and tolls must be an amount such as 12.50.', 'El estacionamiento y los peajes deben ser un monto como 12.50.');
     else if (trips.length) trips[0].parking = extra;
   }
   for (const t of trips) if (t.paidDate === undefined) delete t.paidDate;
@@ -137,9 +154,9 @@ function renderCalc(r, { kind, note }) {
   const out = $('mr-out');
   out.textContent = '';
   const periods = h('div', { class: 'table-scroll' }, h('table', { class: 'rules mr-table' }, [
-    h('thead', {}, h('tr', {}, ['Period', 'Rate', 'Miles', 'Amount', 'Source'].map((x, i) => h('th', { scope: 'col', class: i && i < 4 ? 'num' : null }, x)))),
+    h('thead', {}, h('tr', {}, (ES ? ['Período', 'Tarifa', 'Millas', 'Monto', 'Fuente'] : ['Period', 'Rate', 'Miles', 'Amount', 'Source']).map((x, i) => h('th', { scope: 'col', class: i && i < 4 ? 'num' : null }, x)))),
     h('tbody', {}, r.periods.map((p) => h('tr', {}, [
-      h('th', { scope: 'row' }, `${PURPOSES[p.purpose].short === 'business' ? '' : `${PURPOSES[p.purpose].short}, `}${rangeText(p.from, p.to)}`),
+      h('th', { scope: 'row' }, `${PURPOSES[p.purpose].short === 'business' ? '' : `${shortOf(p.purpose)}, `}${range(p.from, p.to)}`),
       h('td', { class: 'num' }, `${p.rateCents}¢`),
       h('td', { class: 'num' }, milesText(Math.round(p.miles * 100))),
       h('td', { class: 'num' }, p.amount),
@@ -148,35 +165,35 @@ function renderCalc(r, { kind, note }) {
   ]));
   const notes = r.lines.filter((l) => l.note || l.basis === 'paid-date');
   out.appendChild(h('div', {}, [
-    kind === 'example' ? h('p', { class: 'mr-sheet-label' }, 'Worked example') : null,
-    h('p', { class: 'mr-answer' }, [h('small', {}, r.parkingAndTolls !== '$0.00' ? 'Mileage, parking and tolls' : 'Mileage amount'), r.total]),
+    kind === 'example' ? h('p', { class: 'mr-sheet-label' }, tr('Worked example', 'Ejemplo resuelto')) : null,
+    h('p', { class: 'mr-answer' }, [h('small', {}, r.parkingAndTolls !== '$0.00' ? tr('Mileage, parking and tolls', 'Millaje, estacionamiento y peajes') : tr('Mileage amount', 'Monto por millaje')), r.total]),
     h('p', { class: 'mr-sub' }, r.answer),
     periods,
     r.lines.length > 2 || mode() === 'trips' ? h('details', { class: 'mr-why', open: r.lines.length <= 8 ? true : null }, [
-      h('summary', {}, `Each trip (${r.lines.length})`),
+      h('summary', {}, tr(`Each trip (${r.lines.length})`, `Cada viaje (${r.lines.length})`)),
       h('ul', { class: 'mr-lines' }, r.lines.map((l) => h('li', {}, [
-        h('span', { class: 'when' }, l.endDate ? `${l.date} to ${l.endDate}` : l.date),
+        h('span', { class: 'when' }, l.endDate ? tr(`${l.date} to ${l.endDate}`, `${l.date} al ${l.endDate}`) : l.date),
         h('span', {}, `${milesText(Math.round(l.miles * 100))} mi x ${l.rateCents}¢ = ${l.amount}`),
-        l.basis === 'paid-date' ? h('span', { class: 'mr-tag' }, 'rate set by the paid date') : null,
+        l.basis === 'paid-date' ? h('span', { class: 'mr-tag' }, tr('rate set by the paid date', 'tarifa fijada por la fecha de pago')) : null,
       ]))),
     ]) : null,
     ...notes.map((l) => h('p', { class: 'mr-aside' }, l.note)),
-    h('p', { class: 'mr-aside' }, ['Sources: ', ...r.sources.flatMap((s, i) => [i ? '; ' : '', link(s.label, s.url)]), `. Rates read ${longDate(engine.irs.source.readOn)}.`]),
+    h('p', { class: 'mr-aside' }, [tr('Sources: ', 'Fuentes: '), ...r.sources.flatMap((s, i) => [i ? '; ' : '', link(s.label, s.url)]), tr(`. Rates read ${longDate(engine.irs.source.readOn)}.`, `. Tarifas consultadas el ${dateLong(engine.irs.source.readOn)}.`)]),
     note ? h('p', { class: 'mr-cost' }, note) : null,
   ]));
   $('mr-status').textContent = kind === 'run' ? r.answer : '';
 }
 
 function costNote(json) {
-  if (json.charged) return json.charged.amount ? `Charged ${json.charged.display}. Your balance is ${json.balance.display}.` : 'Free on this page.';
-  if (typeof json.freeRunsLeft === 'number') return `Free run. You have ${json.freeRunsLeft} free ${json.freeRunsLeft === 1 ? 'run' : 'runs'} left today.`;
+  if (json.charged) return json.charged.amount ? tr(`Charged ${json.charged.display}. Your balance is ${json.balance.display}.`, `Se cobró ${json.charged.display}. Su saldo es ${json.balance.display}.`) : tr('Free on this page.', 'Gratis en esta página.');
+  if (typeof json.freeRunsLeft === 'number') return tr(`Free run. You have ${json.freeRunsLeft} free ${json.freeRunsLeft === 1 ? 'run' : 'runs'} left today.`, `Ejecución gratis. Le ${json.freeRunsLeft === 1 ? 'queda' : 'quedan'} ${json.freeRunsLeft} ${json.freeRunsLeft === 1 ? 'ejecución gratis' : 'ejecuciones gratis'} hoy.`);
   return null;
 }
 
 function errorInto(box, e) {
   box.textContent = e.message;
-  if (e.code === 'unauthorized' || e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, 'Sign in'));
-  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, 'Open your account'));
+  if (e.code === 'unauthorized' || e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, tr('Sign in', 'Iniciar sesión')));
+  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, tr('Open your account', 'Abrir su cuenta')));
 }
 
 async function onSubmit(ev) {
@@ -198,7 +215,12 @@ async function onSubmit(ev) {
 
 // ---------- the trip file ----------
 
-const FIELD_WORDS = {
+const FIELD_WORDS = ES ? {
+  date: 'la fecha', endDate: 'la fecha final', miles: 'millas', purpose: 'el uso', employee: 'el empleado', vehicle: 'el vehículo',
+  start: 'el inicio', destination: 'el destino', businessPurpose: 'el motivo de negocios', parking: 'estacionamiento', tolls: 'peajes',
+  paidAmount: 'el monto pagado', paidRate: 'la tarifa pagada', paidDate: 'la fecha de pago', recordedOn: 'la fecha de anotación',
+  odometerStart: 'el odómetro inicial', odometerEnd: 'el odómetro final',
+} : {
   date: 'the date', endDate: 'the end date', miles: 'miles', purpose: 'the purpose', employee: 'the employee', vehicle: 'the vehicle',
   start: 'the start', destination: 'the destination', businessPurpose: 'the business purpose', parking: 'parking', tolls: 'tolls',
   paidAmount: 'the amount paid', paidRate: 'the rate paid', paidDate: 'the date paid', recordedOn: 'the date recorded',
@@ -228,7 +250,7 @@ function sampleLinks() {
   const { pdf, csv } = ex.output;
   box.textContent = '';
   box.append(
-    download(pdf.filename, new Blob([base64Bytes(pdf.base64)], { type: 'application/pdf' })), ' (PDF) and ',
+    download(pdf.filename, new Blob([base64Bytes(pdf.base64)], { type: 'application/pdf' })), tr(' (PDF) and ', ' (PDF) y '),
     download(pdf.filename.replace(/\.pdf$/, '.csv'), csv, 'text/csv'), ' (CSV).',
   );
 }
@@ -238,7 +260,7 @@ const options = () => {
   const rate = $('mr-employer').value.trim().replace(/¢|cents?/i, '').trim();
   if (rate) {
     const tenths = scaled(rate, 1);
-    if (tenths === null || tenths === 0) throw new MileageError('Your rate must be cents per mile with at most one decimal, such as 65.5.', 'employerRate');
+    if (tenths === null || tenths === 0) throw new MileageError(tr('Your rate must be cents per mile with at most one decimal, such as 65.5.', 'Su tarifa debe estar en centavos por milla con un decimal como máximo, por ejemplo 65.5.'), 'employerRate');
     o.employerRate = { cents: tenths / 10 };
   }
   const home = $('mr-home').value.trim();
@@ -251,10 +273,10 @@ const engineOptions = (o) => ({ ...(o.employerRate ? { employerRate: { mills: Ma
 // What a paid action costs: the signed-in account's own quote, or the price in words.
 async function priceLine(input, action, el) {
   const words = tool?.pricing?.actions.find((a) => a.name === action)?.text.USD ?? '';
-  if (!signedIn) { el.textContent = `${words}. Sign in to download.`; return; }
+  if (!signedIn) { el.textContent = tr(`${words}. Sign in to download.`, `${words}. Inicie sesión para descargar.`); return; }
   try {
     const q = (await T.api(`/api/run/${SLUG}/quote`, { body: input })).quote;
-    el.textContent = q.amount ? `This download costs ${q.display} from your balance (${words}).` : `This download is free for you now (${words}).`;
+    el.textContent = q.amount ? tr(`This download costs ${q.display} from your balance (${words}).`, `Esta descarga cuesta ${q.display} de su saldo (${words}).`) : tr(`This download is free for you now (${words}).`, `Esta descarga es gratis para usted ahora (${words}).`);
   } catch (e) {
     el.textContent = words;
   }
@@ -265,11 +287,11 @@ function factsList(pairs) {
 }
 
 function flagsList(flags) {
-  if (!flags.length) return h('p', { class: 'mr-aside' }, 'Nothing flagged: every business trip has a destination and a purpose, and nothing repeats.');
+  if (!flags.length) return h('p', { class: 'mr-aside' }, tr('Nothing flagged: every business trip has a destination and a purpose, and nothing repeats.', 'Nada marcado: cada viaje de negocios tiene un destino y un motivo, y nada se repite.'));
   const shown = flags.slice(0, SHOWN_FLAGS);
   return h('div', {}, [
-    h('ul', { class: 'mr-flags' }, shown.map((f) => h('li', {}, [h('span', { class: 'when' }, f.row ? `Row ${f.row}` : 'Year'), h('span', {}, f.message)]))),
-    flags.length > shown.length ? h('p', { class: 'mr-aside' }, `And ${flags.length - shown.length} more in the results file.`) : null,
+    h('ul', { class: 'mr-flags' }, shown.map((f) => h('li', {}, [h('span', { class: 'when' }, f.row ? tr(`Row ${f.row}`, `Fila ${f.row}`) : tr('Year', 'Año')), h('span', {}, f.message)]))),
+    flags.length > shown.length ? h('p', { class: 'mr-aside' }, tr(`And ${flags.length - shown.length} more in the results file.`, `Y ${flags.length - shown.length} más en el archivo de resultados.`)) : null,
   ]);
 }
 
@@ -279,17 +301,19 @@ function renderFile(r, { example = false } = {}) {
   const t = r.totals;
   const custom = r.lines.some((l) => l.employerRateCents);
   const anyPaid = t.paid !== null;
-  const cols = ['Employee', 'Trips', 'Miles', custom ? 'Due at your rate' : 'Due', 'Parking, tolls', ...(anyPaid ? ['Paid', 'True-up'] : []), 'W-2 box 12 L', 'W-2 box 1'];
+  const cols = ES
+    ? ['Empleado', 'Viajes', 'Millas', custom ? 'A pagar con su tarifa' : 'A pagar', 'Estacionamiento, peajes', ...(anyPaid ? ['Pagado', 'Ajuste'] : []), 'W-2 casilla 12 L', 'W-2 casilla 1']
+    : ['Employee', 'Trips', 'Miles', custom ? 'Due at your rate' : 'Due', 'Parking, tolls', ...(anyPaid ? ['Paid', 'True-up'] : []), 'W-2 box 12 L', 'W-2 box 1'];
   put(out,
-    example ? h('p', { class: 'mr-sheet-label' }, 'Worked example') : null,
+    example ? h('p', { class: 'mr-sheet-label' }, tr('Worked example', 'Ejemplo resuelto')) : null,
     h('p', { class: 'mr-sub mr-file-answer' }, r.answer),
     factsList([
-      ['Trips', String(t.trips)],
-      ['Miles', milesText(Math.round(t.miles * 100))],
-      ['Reimbursement', t.reimbursement],
-      ...(anyPaid ? [['Still owed', t.trueUpOwed]] : []),
-      ...(t.box1Wages !== '$0.00' ? [['Taxable excess', t.box1Wages]] : []),
-      ['Flagged rows', String(new Set(r.flags.map((f) => f.row)).size)],
+      [tr('Trips', 'Viajes'), String(t.trips)],
+      [tr('Miles', 'Millas'), milesText(Math.round(t.miles * 100))],
+      [tr('Reimbursement', 'Reembolso'), t.reimbursement],
+      ...(anyPaid ? [[tr('Still owed', 'Todavía se debe'), t.trueUpOwed]] : []),
+      ...(t.box1Wages !== '$0.00' ? [[tr('Taxable excess', 'Excedente tributable'), t.box1Wages]] : []),
+      [tr('Flagged rows', 'Filas marcadas'), String(new Set(r.flags.map((f) => f.row)).size)],
     ]),
     h('div', { class: 'table-scroll' }, h('table', { class: 'rules mr-table' }, [
       h('thead', {}, h('tr', {}, cols.map((x, i) => h('th', { scope: 'col', class: i ? 'num' : null }, x)))),
@@ -304,12 +328,12 @@ function renderFile(r, { example = false } = {}) {
         h('td', { class: 'num' }, e.box1Wages),
       ]))),
     ])),
-    h('p', { class: 'mr-heading' }, 'By rate period'),
+    h('p', { class: 'mr-heading' }, tr('By rate period', 'Por período de tarifa')),
     h('ul', { class: 'mr-lines' }, r.periods.map((p) => h('li', {}, [
-      h('span', { class: 'when' }, `${PURPOSES[p.purpose].short}, ${rangeText(p.from, p.to)}`),
+      h('span', { class: 'when' }, `${shortOf(p.purpose)}, ${range(p.from, p.to)}`),
       h('span', {}, `${milesText(Math.round(p.miles * 100))} mi x ${p.rateCents}¢ = ${p.amount}`),
     ]))),
-    h('p', { class: 'mr-heading' }, `Log check (${r.flags.length})`),
+    h('p', { class: 'mr-heading' }, tr(`Log check (${r.flags.length})`, `Revisión del registro (${r.flags.length})`)),
     flagsList(r.flags),
   );
 }
@@ -364,7 +388,7 @@ function logInput() {
   const vehicle = $('mr-vehicle').value.trim();
   const year = Number($('mr-taxyear').value);
   const { csv, rows, total } = logCsv(vehicle, year);
-  const input = { op: 'log', vehicle: vehicle || 'Vehicle', taxYear: year, csv, ...(options().commute ? { commute: options().commute } : {}) };
+  const input = { op: 'log', vehicle: vehicle || tr('Vehicle', 'Vehículo'), taxYear: year, csv, ...(options().commute ? { commute: options().commute } : {}) };
   const odo = (id) => { const v = scaled($(id).value.trim(), 1); return v === null ? undefined : v / 10; };
   if (odo('mr-odo-start') !== undefined) input.odometerStart = odo('mr-odo-start');
   if (odo('mr-odo-end') !== undefined) input.odometerEnd = odo('mr-odo-end');
@@ -391,7 +415,7 @@ function renderLog() {
   out.textContent = '';
   try {
     if (!read) read = logInput();
-    if (!read.rows) { out.append(h('p', { class: 'mr-aside' }, `No trips in the file for that vehicle in ${$('mr-taxyear').value}.`)); logBuy.hide(); return; }
+    if (!read.rows) { out.append(h('p', { class: 'mr-aside' }, tr(`No trips in the file for that vehicle in ${$('mr-taxyear').value}.`, `No hay viajes en el archivo para ese vehículo en ${$('mr-taxyear').value}.`))); logBuy.hide(); return; }
     const { trips } = readTrips({ csv: read.input.csv });
     const r = engine.log({
       trips,
@@ -407,19 +431,22 @@ function renderLog() {
     put(out,
       h('p', { class: 'mr-sub' }, r.answer),
       factsList([
-        ['Business miles', milesText(Math.round(s.businessMiles * 100))],
-        ['Standard mileage amount', s.standardMileageAmount],
-        ['Parking and tolls', s.businessParkingAndTolls],
-        ['Business use', s.businessUsePercent === null ? 'needs the odometer readings' : `${s.businessUsePercent}%`],
+        [tr('Business miles', 'Millas de negocios'), milesText(Math.round(s.businessMiles * 100))],
+        [tr('Standard mileage amount', 'Monto con la tarifa estándar por milla'), s.standardMileageAmount],
+        [tr('Parking and tolls', 'Estacionamiento y peajes'), s.businessParkingAndTolls],
+        [tr('Business use', 'Uso para negocios'), s.businessUsePercent === null ? tr('needs the odometer readings', 'necesita las lecturas del odómetro') : `${s.businessUsePercent}%`],
       ]),
-      h('p', { class: 'mr-heading' }, `First ${Math.min(SHOWN_LOG_LINES, r.lines.length)} of ${r.lines.length} log lines`),
+      h('p', { class: 'mr-heading' }, tr(`First ${Math.min(SHOWN_LOG_LINES, r.lines.length)} of ${r.lines.length} log lines`, `Primeras ${Math.min(SHOWN_LOG_LINES, r.lines.length)} de ${r.lines.length} líneas del registro`)),
       h('ul', { class: 'mr-lines' }, r.lines.slice(0, SHOWN_LOG_LINES).map((l) => h('li', {}, [
         h('span', { class: 'when' }, l.date),
-        h('span', {}, `${l.destination || '(no destination)'}: ${l.businessPurpose || (l.purpose === 'business' ? '(no purpose)' : PURPOSES[l.purpose].short)}, ${milesText(Math.round(l.miles * 100))} mi at ${l.rateCents}¢`),
+        h('span', {}, tr(
+          `${l.destination || '(no destination)'}: ${l.businessPurpose || (l.purpose === 'business' ? '(no purpose)' : PURPOSES[l.purpose].short)}, ${milesText(Math.round(l.miles * 100))} mi at ${l.rateCents}¢`,
+          `${l.destination || '(sin destino)'}: ${l.businessPurpose || (l.purpose === 'business' ? '(sin motivo)' : shortOf(l.purpose))}, ${milesText(Math.round(l.miles * 100))} mi a ${l.rateCents}¢`,
+        )),
       ]))),
-      h('p', { class: 'mr-heading' }, `Completeness check (${r.flags.length})`),
+      h('p', { class: 'mr-heading' }, tr(`Completeness check (${r.flags.length})`, `Revisión de que esté completo (${r.flags.length})`)),
       flagsList(r.flags),
-      read.rows < read.total ? h('p', { class: 'mr-aside' }, `${read.total - read.rows} rows of the file are for another vehicle or year and are left out.`) : null,
+      read.rows < read.total ? h('p', { class: 'mr-aside' }, tr(`${read.total - read.rows} rows of the file are for another vehicle or year and are left out.`, `${read.total - read.rows} filas del archivo son de otro vehículo o año y quedan fuera.`)) : null,
     );
   } catch (e) {
     out.append(h('p', { class: 'field-error' }, e.message));
@@ -460,7 +487,10 @@ function analyse() {
     const { trips, mapped, unknown } = readTrips({ csv: fileText });
     const r = engine.batch({ trips, ...engineOptions(o) });
     renderFile(r);
-    $('mr-file-out').prepend(h('p', { class: 'mr-aside' }, `Columns read: ${Object.entries(mapped).map(([k, v]) => `"${v}" as ${FIELD_WORDS[k] ?? k}`).join(', ')}${unknown.length ? `; not used: ${unknown.join(', ')}` : ''}.`));
+    $('mr-file-out').prepend(h('p', { class: 'mr-aside' }, tr(
+      `Columns read: ${Object.entries(mapped).map(([k, v]) => `"${v}" as ${FIELD_WORDS[k] ?? k}`).join(', ')}${unknown.length ? `; not used: ${unknown.join(', ')}` : ''}.`,
+      `Columnas leídas: ${Object.entries(mapped).map(([k, v]) => `"${v}" como ${FIELD_WORDS[k] ?? k}`).join(', ')}${unknown.length ? `; no usadas: ${unknown.join(', ')}` : ''}.`,
+    )));
     fileBuy.show(batchInput());
     setUpLog(trips);
   } catch (e) {
@@ -479,7 +509,7 @@ async function xlsxToCsv(buffer) {
   const view = new DataView(buffer);
   let eocd = -1;
   for (let i = bytes.length - 22; i >= Math.max(0, bytes.length - 65_557); i--) if (view.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
-  if (eocd < 0) throw new Error('That file is not a readable .xlsx workbook. Save it as CSV and open that instead.');
+  if (eocd < 0) throw new Error(tr('That file is not a readable .xlsx workbook. Save it as CSV and open that instead.', 'Ese archivo no es un libro .xlsx que se pueda leer. Guárdelo como CSV y abra ese.'));
   const count = view.getUint16(eocd + 10, true);
   let p = view.getUint32(eocd + 16, true);
   const members = {};
@@ -508,7 +538,7 @@ async function xlsxToCsv(buffer) {
   const sst = await read('xl/sharedStrings.xml');
   if (sst) for (const si of xml(sst).getElementsByTagName('si')) shared.push([...si.getElementsByTagName('t')].map((t) => t.textContent).join(''));
   const sheetName = Object.keys(members).filter((n) => /^xl\/worksheets\/sheet\d+\.xml$/.test(n)).sort((a, b) => Number(a.match(/\d+/)[0]) - Number(b.match(/\d+/)[0]))[0];
-  if (!sheetName) throw new Error('No worksheet found in that workbook.');
+  if (!sheetName) throw new Error(tr('No worksheet found in that workbook.', 'No se encontró ninguna hoja en ese libro.'));
   const sheet = xml(await read(sheetName));
   const grid = [];
   const colIndex = (ref) => [...ref.replace(/\d+/g, '')].reduce((n, c) => n * 26 + c.charCodeAt(0) - 64, 0) - 1;
@@ -549,7 +579,7 @@ async function onFile() {
   try {
     fileText = /\.xlsx$/i.test(f.name) ? await xlsxToCsv(await f.arrayBuffer()) : await f.text();
     $('mr-paste').value = fileText.length > 20_000 ? '' : fileText;
-    $('mr-paste').placeholder = fileText.length > 20_000 ? `${f.name} is open (too long to show here).` : '';
+    $('mr-paste').placeholder = fileText.length > 20_000 ? tr(`${f.name} is open (too long to show here).`, `${f.name} está abierto (es demasiado largo para mostrarlo aquí).`) : '';
     analyse();
   } catch (e) {
     $('mr-file-err').textContent = e.message;
@@ -588,28 +618,28 @@ async function start() {
   try {
     tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
   } catch {
-    $('mr-out').textContent = 'The worked example could not load. The calculator still works: press the button to run it.';
+    $('mr-out').textContent = tr('The worked example could not load. The calculator still works: press the button to run it.', 'No se pudo cargar el ejemplo resuelto. La calculadora sigue funcionando: presione el botón para usarla.');
     return;
   }
   const tables = tool.examples.find((x) => x.input.op === 'rates').output;
   sampleLinks();
   engine = makeEngine(tables);
-  T.me().then((account) => { signedIn = !!account; if (account) $('mr-run-note').textContent = 'Free on this page.'; }).catch(() => {});
+  T.me().then((account) => { signedIn = !!account; if (account) $('mr-run-note').textContent = tr('Free on this page.', 'Gratis en esta página.'); }).catch(() => {});
 
   fileBuy = buyBox($('mr-file-buy'), {
     action: 'batch',
-    label: 'Download the results',
-    intro: 'Every row with its rate, the rule that set it, the source, the amount due, the true-up and its flags, plus a file of employee totals for payroll.',
+    label: tr('Download the results', 'Descargar los resultados'),
+    intro: tr('Every row with its rate, the rule that set it, the source, the amount due, the true-up and its flags, plus a file of employee totals for payroll.', 'Cada fila con su tarifa, la regla que la fijó, la fuente, el monto a pagar, el ajuste y sus marcas, más un archivo con los totales por empleado para la nómina.'),
     inputNow: batchInput,
-    deliver: (json, got) => got.append('Your files: ', download('mileage-trips.csv', json.result.csv, 'text/csv'), ' and ', download('mileage-employees.csv', json.result.employeesCsv, 'text/csv'), `. ${costNote(json) ?? ''}`),
+    deliver: (json, got) => got.append(tr('Your files: ', 'Sus archivos: '), download('mileage-trips.csv', json.result.csv, 'text/csv'), tr(' and ', ' y '), download('mileage-employees.csv', json.result.employeesCsv, 'text/csv'), `. ${costNote(json) ?? ''}`),
   });
   logBuy = buyBox($('mr-log-buy'), {
     action: 'log',
-    label: 'Download the log PDF',
+    label: tr('Download the log PDF', 'Descargar el PDF del registro'),
     inputNow: () => logInput().input,
     deliver: (json, got) => {
       const pdf = json.result.pdf;
-      got.append('Your log: ', download(pdf.filename, new Blob([base64Bytes(pdf.base64)], { type: 'application/pdf' })), ' and ', download(pdf.filename.replace(/\.pdf$/, '.csv'), json.result.csv, 'text/csv'), `. ${costNote(json) ?? ''}`);
+      got.append(tr('Your log: ', 'Su registro: '), download(pdf.filename, new Blob([base64Bytes(pdf.base64)], { type: 'application/pdf' })), tr(' and ', ' y '), download(pdf.filename.replace(/\.pdf$/, '.csv'), json.result.csv, 'text/csv'), `. ${costNote(json) ?? ''}`);
     },
   });
   $('mr-purpose').addEventListener('change', () => { fillYears(); fillPeriods([]); });
@@ -641,9 +671,9 @@ async function start() {
   let result = null;
   try { result = read.input ? engine.calculate(read.input) : null; } catch { result = null; }
   if (result) {
-    renderCalc(result, { kind: 'example', note: `Worked out on this page${linked ? ' from the link you followed' : ''}. Press "Work it out" to run it, or change the miles.` });
+    renderCalc(result, { kind: 'example', note: tr(`Worked out on this page${linked ? ' from the link you followed' : ''}. Press "Work it out" to run it, or change the miles.`, `Calculado en esta página${linked ? ' con el enlace que siguió' : ''}. Presione "Calcular" para ejecutarlo, o cambie las millas.`) });
   } else {
-    $('mr-out').textContent = 'Enter your miles and press "Work it out".';
+    $('mr-out').textContent = tr('Enter your miles and press "Work it out".', 'Ingrese sus millas y presione "Calcular".');
   }
 
   // The trip file's worked example: the payroll sheet in the tool's examples, worked out here.

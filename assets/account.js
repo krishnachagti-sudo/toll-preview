@@ -1,4 +1,5 @@
-/* The account page: sign up and sign in, balance, top-ups, limits, API keys and the ledger.
+/* The account page: sign up and sign in, balance, top-ups, the nonprofit and invoice requests,
+   limits, API keys and the ledger.
    Every request goes through Toll.api, so every URL is built from TOLL.base. */
 (function () {
   'use strict';
@@ -10,6 +11,7 @@
   var SYMBOL = { USD: '$', INR: '₹' };
   var KIND = {
     topup: 'Top-up',
+    invoice: 'Paid by invoice or check',
     bonus: 'Bonus credit',
     pass: 'Pass allowance for the month',
     pass_expiry: 'Unused pass allowance lapsed',
@@ -102,10 +104,13 @@
     $('new-key-name').textContent = '';
     $('new-key').hidden = true;
     $('welcome').hidden = true;
-    ['key-list', 'ledger', 'buy-passes', 'buy-packs', 'who-email', 'balance-total', 'balance-grant', 'balance-paid', 'balance-pass', 'pass-note',
-      'cap-current', 'cap-spent', 'key-error', 'cap-error', 'cap-status', 'topup-error', 'new-key-status'].forEach(function (id) {
+    ['key-list', 'ledger', 'buy-passes', 'buy-packs', 'buy-bundles', 'who-email', 'balance-total', 'balance-grant', 'balance-paid', 'balance-pass', 'pass-note',
+      'balance-bundle', 'cap-current', 'cap-spent', 'key-error', 'cap-error', 'cap-status', 'topup-error', 'new-key-status',
+      'nonprofit-error', 'nonprofit-status', 'invoice-error', 'invoice-status', 'invoice-list'].forEach(function (id) {
       $(id).textContent = '';
     });
+    ['np-code', 'np-org', 'np-ein', 'np-email', 'inv-want', 'inv-company', 'inv-email', 'inv-po'].forEach(function (id) { $(id).value = ''; });
+    $('bundle-row').hidden = true;
     // Without the marker, the next account rebuilds its choices even in the same currency.
     $('buy-packs').removeAttribute('data-currency');
     $('pass-row').hidden = true;
@@ -122,7 +127,7 @@
       show('in');
       renderAccount();
       return Promise.all([loadKeys(), loadLedger()]).then(function () {
-        if (location.hash === '#top-up' || location.hash === '#keys' || location.hash === '#limits') {
+        if (['#top-up', '#keys', '#limits', '#nonprofit', '#invoice'].indexOf(location.hash) >= 0) {
           var target = $(location.hash.slice(1));
           if (target) target.scrollIntoView();
         }
@@ -153,19 +158,34 @@
       $('pass-note').textContent = 'Left of this month\'s ' + pass.allowanceDisplay + ' for using the tools on the web. Spent before your balance. Ends ' + new Date(pass.endsAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) + '.';
     }
 
-    // The passes and packs on offer, in the account's currency. ?buy=<id> (from the pricing page)
-    // picks one and scrolls here.
+    // Prepaid worksheets left from fleet bundles.
+    var left = (account.bundles || []).reduce(function (n, b) { return n + b.left; }, 0);
+    $('bundle-row').hidden = !(account.bundles && account.bundles.length);
+    $('balance-bundle').textContent = left + (left === 1 ? ' worksheet' : ' worksheets');
+
+    if (account.nonprofit) {
+      $('np-percent').textContent = account.nonprofit.percentOff + '%';
+      $('np-days').textContent = String(account.nonprofit.codeDays);
+    }
+    if (account.invoiceMinDisplay) $('invoice-min').textContent = account.invoiceMinDisplay;
+    if (!$('np-email').value) $('np-email').value = account.email;
+    renderInvoices(account.invoices);
+
+    // The passes, packs and bundles on offer, in the account's currency. ?buy=<id> (from the
+    // pricing page) picks one and scrolls here.
     if ($('buy-packs').getAttribute('data-currency') !== account.currency) {
       $('buy-packs').setAttribute('data-currency', account.currency);
       var wanted = new URLSearchParams(window.location.search).get('buy');
       var picked = account.products.some(function (p) { return p.id === wanted; }) ? wanted : 'pass-year';
-      ['buy-passes', 'buy-packs'].forEach(function (id) { $(id).textContent = ''; });
+      ['buy-passes', 'buy-packs', 'buy-bundles'].forEach(function (id) { $(id).textContent = ''; });
+      var BOX = { pass: 'buy-passes', pack: 'buy-packs', bundle: 'buy-bundles' };
       account.products.forEach(function (p) {
-        $(p.kind === 'pass' ? 'buy-passes' : 'buy-packs').appendChild(h('label', { class: 'choice choice-card' }, [
+        var named = p.kind !== 'pack';
+        $(BOX[p.kind]).appendChild(h('label', { class: 'choice choice-card' }, [
           h('input', { type: 'radio', name: 'product', value: p.id, checked: p.id === picked }),
-          h('span', { class: 'cc-name' }, p.kind === 'pass' ? p.name : p.display),
-          h('span', { class: 'cc-price' }, p.kind === 'pass' ? p.display : (p.note || 'No bonus')),
-          p.kind === 'pass' ? h('span', { class: 'cc-note' }, p.note) : null,
+          h('span', { class: 'cc-name' }, named ? p.name : p.display),
+          h('span', { class: 'cc-price' }, named ? p.display : (p.note || 'No bonus')),
+          named ? h('span', { class: 'cc-note' }, p.kind === 'pass' ? p.note + '. Nonprofit price ' + p.nonprofitDisplay : p.note) : null,
         ]));
       });
       if (wanted && picked === wanted) {
@@ -235,14 +255,71 @@
     var picked = ev.currentTarget.querySelector('input[name="product"]:checked');
     var button = ev.currentTarget.querySelector('button[type="submit"]');
     $('topup-error').textContent = '';
-    if (!picked) { $('topup-error').textContent = 'Pick a pass or an amount of credit.'; return; }
+    var form = ev.currentTarget;
+    clearErrors(form);
+    if (!picked) { $('topup-error').textContent = 'Pick a pass, an amount of credit or a bundle.'; return; }
+    var body = { product: picked.value };
+    var code = $('np-code').value.trim();
+    if (code) body.code = code;
     busy(button, true);
-    Toll.api('/api/topup', { body: { product: picked.value } }).then(function (json) {
+    Toll.api('/api/topup', { body: body }).then(function (json) {
       window.location.assign(json.url);
     }, function (err) {
-      $('topup-error').textContent = err.message;
+      showError($('topup-error'), err, form);
       busy(button, false);
     });
+  });
+
+  // ---------- nonprofit price and invoices ----------
+  $('nonprofit-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var form = ev.currentTarget;
+    var button = form.querySelector('button[type="submit"]');
+    clearErrors(form);
+    $('nonprofit-error').textContent = '';
+    $('nonprofit-status').textContent = '';
+    busy(button, true);
+    Toll.api('/api/requests/nonprofit', { body: { orgName: $('np-org').value, ein: $('np-ein').value, email: $('np-email').value } }).then(function () {
+      $('np-org').value = '';
+      $('np-ein').value = '';
+      $('nonprofit-status').textContent = 'Received. A person checks it by hand and emails you at the contact address.';
+    }, function (err) {
+      showError($('nonprofit-error'), err, form);
+    }).then(function () { busy(button, false); });
+  });
+
+  var INVOICE_STATUS = { requested: 'Asked for', issued: 'Invoice sent', paid: 'Paid', cancelled: 'Cancelled' };
+
+  function renderInvoices(list) {
+    var box = $('invoice-list');
+    box.textContent = '';
+    if (!list || !list.length) return;
+    box.appendChild(h('ul', { class: 'key-list' }, list.map(function (r) {
+      return h('li', { class: 'key-item' }, [
+        h('strong', null, r.company),
+        ' ',
+        h('span', { class: 'muted small' }, INVOICE_STATUS[r.status] + (r.amountDisplay ? ', ' + r.amountDisplay : '') + '. Asked ' + when(r.createdAt) + '.'),
+      ]);
+    })));
+  }
+
+  $('invoice-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var form = ev.currentTarget;
+    var button = form.querySelector('button[type="submit"]');
+    clearErrors(form);
+    $('invoice-error').textContent = '';
+    $('invoice-status').textContent = '';
+    busy(button, true);
+    Toll.api('/api/requests/invoice', { body: {
+      want: $('inv-want').value, company: $('inv-company').value, billingEmail: $('inv-email').value, poNumber: $('inv-po').value,
+    } }).then(function () {
+      ['inv-want', 'inv-company', 'inv-email', 'inv-po'].forEach(function (id) { $(id).value = ''; });
+      $('invoice-status').textContent = 'Received. We will email the invoice to your billing address.';
+      return Toll.me(true).then(function (a) { account = a; renderAccount(); });
+    }, function (err) {
+      showError($('invoice-error'), err, form);
+    }).then(function () { busy(button, false); });
   });
 
   // ---------- account limit ----------

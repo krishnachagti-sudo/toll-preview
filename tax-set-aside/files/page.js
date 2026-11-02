@@ -9,9 +9,21 @@ const SLUG = 'tax-set-aside';
 const $ = (id) => document.getElementById(id);
 const h = (tag, attrs, children) => T.h(tag, attrs, children);
 const STORE = 'tax-set-aside-ledger-v1';
+// The Spanish page (page.es.html, at /es/tax-set-aside/) is <html lang="es">: there this script
+// shows its own words in Spanish. The English page reads exactly the English words below.
+const ES = document.documentElement.lang === 'es';
+const tr = (en, es) => (ES ? es : en);
+const ES_STATUS = { single: 'soltero', mfj: 'casado declarando en conjunto', mfs: 'casado declarando por separado', hoh: 'jefe de familia', qss: 'cónyuge sobreviviente que reúne los requisitos' };
+const ES_MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const esDate = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} de ${ES_MONTHS[m - 1]} de ${y}`; };
+const statusName = (s) => (ES ? ES_STATUS[s] : STATUS_NAMES[s]);
+const dateLong = (iso) => (ES ? esDate(iso) : longDate(iso));
 // The paid price as a signed-out visitor sees it; a signed-in account's own currency is shown in
 // ts-price. Accounts are held in dollars or rupees, so a UK answer is still paid for in one of them.
-const paidPrice = (c) => `$0.10 (₹8) a payment from ${c === 'UK' ? 'an account held in dollars or rupees' : 'your balance'}, never more than $2.49 (₹199) a month`;
+const paidPrice = (c) => tr(
+  `$0.10 (₹8) a payment from ${c === 'UK' ? 'an account held in dollars or rupees' : 'your balance'}, never more than $2.49 (₹199) a month`,
+  `$0.10 (₹8) por pago de ${c === 'UK' ? 'una cuenta en dólares o en rupias' : 'su saldo'}, nunca más de $2.49 (₹199) al mes`,
+);
 
 let account = null;
 let last = null; // { input, result } of the last full answer
@@ -26,8 +38,8 @@ function syncCountry() {
   const c = country();
   document.querySelectorAll('[data-country]').forEach((el) => { el.hidden = el.dataset.country !== c; });
   $('ts-ytd-hint').textContent = c === 'UK'
-    ? 'Profit from self-employment since 6 April 2026, less expenses. Use a minus sign for a loss so far.'
-    : 'Income from self-employment since January 1, 2026, less expenses. Use a minus sign for a loss so far.';
+    ? tr('Profit from self-employment since 6 April 2026, less expenses. Use a minus sign for a loss so far.', 'Ganancia del trabajo por cuenta propia desde el 6 de abril de 2026, menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.')
+    : tr('Income from self-employment since January 1, 2026, less expenses. Use a minus sign for a loss so far.', 'Ingresos del trabajo por cuenta propia desde el 1 de enero de 2026, menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.');
   syncState();
 }
 
@@ -36,17 +48,17 @@ function fillStates(constants) {
   covered = constants.statesCovered;
   const all = { ...constants.statesCovered, ...constants.statesNotCovered };
   const sel = $('ts-state');
-  sel.replaceChildren(h('option', { value: '', text: 'Federal only' }));
+  sel.replaceChildren(h('option', { value: '', text: tr('Federal only', 'Solo federal') }));
   for (const [slug, name] of Object.entries(all).sort((a, b) => a[1].localeCompare(b[1]))) {
-    sel.append(h('option', { value: slug, text: covered[slug] ? name : `${name} (federal only)` }));
+    sel.append(h('option', { value: slug, text: covered[slug] ? name : tr(`${name} (federal only)`, `${name} (solo federal)`) }));
   }
   sel.value = 'texas';
 }
 function syncState() {
   const v = $('ts-state').value;
-  $('ts-state-hint').textContent = !v ? 'No state tax is added.'
-    : covered[v] ? `${covered[v]} income tax is included.`
-    : 'This state\'s income tax is not included yet: the answer is federal only, and says so.';
+  $('ts-state-hint').textContent = !v ? tr('No state tax is added.', 'No se suma impuesto estatal.')
+    : covered[v] ? tr(`${covered[v]} income tax is included.`, `Se incluye el impuesto sobre los ingresos de ${covered[v]}.`)
+    : tr('This state\'s income tax is not included yet: the answer is federal only, and says so.', 'El impuesto sobre los ingresos de este estado todavía no está incluido: la respuesta es solo federal y lo indica.');
 }
 
 const num = (id) => {
@@ -58,20 +70,20 @@ function readForm() {
   const errors = {};
   const c = country();
   const input = { op: 'payment', country: c, amount: num('ts-amount') };
-  if (!(input.amount > 0)) errors['ts-amount'] = 'Enter the amount received, more than 0.';
+  if (!(input.amount > 0)) errors['ts-amount'] = tr('Enter the amount received, more than 0.', 'Ingrese el monto recibido, mayor que 0.');
   const date = $('ts-date').value;
-  if (date) input.date = date; else errors['ts-date'] = 'Enter the date you were paid.';
+  if (date) input.date = date; else errors['ts-date'] = tr('Enter the date you were paid.', 'Ingrese la fecha en que le pagaron.');
   const exp = num('ts-expenses');
-  if (exp !== undefined) { if (exp >= 0) input.expenses = exp; else errors['ts-expenses'] = 'Expenses cannot be negative.'; }
+  if (exp !== undefined) { if (exp >= 0) input.expenses = exp; else errors['ts-expenses'] = tr('Expenses cannot be negative.', 'Los gastos no pueden ser negativos.'); }
   const ytd = num('ts-ytd');
-  if (ytd !== undefined) { if (Number.isFinite(ytd)) input.ytdNetProfit = ytd; else errors['ts-ytd'] = 'Enter a number.'; }
+  if (ytd !== undefined) { if (Number.isFinite(ytd)) input.ytdNetProfit = ytd; else errors['ts-ytd'] = tr('Enter a number.', 'Ingrese un número.'); }
   if (c === 'US') {
     input.filingStatus = $('ts-status').value;
     if ($('ts-state').value) input.state = $('ts-state').value;
     const miles = num('ts-miles');
     if (miles) input.miles = miles;
     const tips = num('ts-tips');
-    if (tips) { if (tips <= (input.amount ?? 0)) input.tips = tips; else errors['ts-tips'] = 'Tips cannot be more than the payment.'; }
+    if (tips) { if (tips <= (input.amount ?? 0)) input.tips = tips; else errors['ts-tips'] = tr('Tips cannot be more than the payment.', 'Las propinas no pueden ser más que el pago.'); }
     const w2 = num('ts-w2');
     if (w2) input.w2Wages = w2;
     if ($('ts-age').value !== '0') input.age65 = Number($('ts-age').value);
@@ -98,12 +110,15 @@ const row = (label, value, cls) => h('tr', cls ? { class: cls } : null, [h('th',
 function renderPercentage(input, result) {
   const out = $('ts-out');
   out.replaceChildren(
-    h('p', { class: 'ts-kicker', text: 'Your answer (free run)' }),
+    h('p', { class: 'ts-kicker', text: tr('Your answer (free run)', 'Su respuesta (ejecución gratis)') }),
     h('p', { class: 'ts-big num', text: `${result.percent.toFixed(1)}%` }),
-    h('p', { class: 'ts-sub', text: `of this payment goes to your tax pot.` }),
+    h('p', { class: 'ts-sub', text: tr(`of this payment goes to your tax pot.`, 'de este pago va a su fondo para impuestos.') }),
     ...(result.flags ?? []).map((x) => h('p', { class: 'ts-flag', text: x })),
-    h('p', { class: 'muted', text: `Sign in for the amount in ${result.country === 'UK' ? 'pounds' : 'dollars'}, the breakdown, the working with every source, the next due date and the year ledger: ${paidPrice(result.country)}.` }),
-    h('p', null, [h('a', { class: 'btn btn-small', href: `${T.base}/account?next=${encodeURIComponent(window.location.pathname)}`, text: 'Sign in' })]),
+    h('p', { class: 'muted', text: tr(
+      `Sign in for the amount in ${result.country === 'UK' ? 'pounds' : 'dollars'}, the breakdown, the working with every source, the next due date and the year ledger: ${paidPrice(result.country)}.`,
+      `Inicie sesión para ver el monto en ${result.country === 'UK' ? 'libras' : 'dólares'}, el desglose, el cálculo con cada fuente, la próxima fecha de pago y el registro del año: ${paidPrice(result.country)}.`,
+    ) }),
+    h('p', null, [h('a', { class: 'btn btn-small', href: `${T.base}/account?next=${encodeURIComponent(window.location.pathname)}`, text: tr('Sign in', 'Iniciar sesión') })]),
   );
 }
 
@@ -112,46 +127,55 @@ function render(input, result, { kind }) {
   const m = fmt(c);
   const out = $('ts-out');
   const b = result.breakdown;
-  const where = c === 'UK' ? NATION_NAMES[result.nation] : result.state ? result.state.name : 'federal only';
+  const where = c === 'UK' ? NATION_NAMES[result.nation] : result.state ? result.state.name : tr('federal only', 'solo federal');
   const lines = c === 'UK'
-    ? [row('Income Tax', m(b.incomeTax)), row('Class 4 National Insurance', m(b.class4)), ...(b.studentLoan ? [row('Student loan', m(b.studentLoan))] : [])]
+    ? [row('Income Tax', m(b.incomeTax)), row('Class 4 National Insurance', m(b.class4)), ...(b.studentLoan ? [row(tr('Student loan', 'Préstamo estudiantil'), m(b.studentLoan))] : [])]
     : [
-      row('Self-employment tax', m(b.seTax)),
-      ...(b.additionalMedicare ? [row('Additional Medicare Tax', m(b.additionalMedicare))] : []),
-      row('Federal income tax', m(b.federalIncomeTax)),
-      row(result.state?.covered ? `${result.state.name} income tax` : 'State income tax', result.state?.covered ? m(b.state) : 'not included'),
+      row(tr('Self-employment tax', 'Impuesto sobre el trabajo por cuenta propia'), m(b.seTax)),
+      ...(b.additionalMedicare ? [row(tr('Additional Medicare Tax', 'Impuesto adicional del Medicare'), m(b.additionalMedicare))] : []),
+      row(tr('Federal income tax', 'Impuesto federal sobre los ingresos'), m(b.federalIncomeTax)),
+      row(result.state?.covered ? tr(`${result.state.name} income tax`, `Impuesto sobre los ingresos de ${result.state.name}`) : tr('State income tax', 'Impuesto estatal sobre los ingresos'), result.state?.covered ? m(b.state) : tr('not included', 'no incluido')),
     ];
   const children = [
-    h('p', { class: 'ts-kicker', text: kind === 'example' ? 'Worked example' : 'Your answer' }),
+    h('p', { class: 'ts-kicker', text: kind === 'example' ? tr('Worked example', 'Ejemplo resuelto') : tr('Your answer', 'Su respuesta') }),
     h('p', { class: 'ts-big num', text: m(result.setAside) }),
-    h('p', { class: 'ts-sub', text: `${result.percent.toFixed(1)}% of this ${whole(c)(result.payment.amount)} payment. ${c === 'US' ? `${STATUS_NAMES[result.filingStatus][0].toUpperCase()}${STATUS_NAMES[result.filingStatus].slice(1)}, ${where}` : where}, with ${whole(c)(result.ytdNetProfitBefore)} of profit before it.` }),
-    h('div', { class: 'table-scroll' }, h('table', { class: 'ts-table' }, [h('tbody', null, [...lines, row('Set aside', m(result.setAside), 'ts-total')])])),
+    h('p', { class: 'ts-sub', text: tr(
+      `${result.percent.toFixed(1)}% of this ${whole(c)(result.payment.amount)} payment. ${c === 'US' ? `${statusName(result.filingStatus)[0].toUpperCase()}${statusName(result.filingStatus).slice(1)}, ${where}` : where}, with ${whole(c)(result.ytdNetProfitBefore)} of profit before it.`,
+      `${result.percent.toFixed(1)}% de este pago de ${whole(c)(result.payment.amount)}. ${c === 'US' ? `${statusName(result.filingStatus)[0].toUpperCase()}${statusName(result.filingStatus).slice(1)}, ${where}` : where}, con ${whole(c)(result.ytdNetProfitBefore)} de ganancia antes de este pago.`,
+    ) }),
+    h('div', { class: 'table-scroll' }, h('table', { class: 'ts-table' }, [h('tbody', null, [...lines, row(tr('Set aside', 'Apartar'), m(result.setAside), 'ts-total')])])),
   ];
   if (c === 'UK') {
-    children.push(h('p', { class: 'ts-poa' }, [h('strong', { text: `First year of Self Assessment? Set aside ${m(result.firstYearSetAside)} (${result.firstYearPercent.toFixed(1)}%). ` }), 'Your first January bill also carries the first payment on account for the next year, half of this year\'s tax again.']));
+    children.push(h('p', { class: 'ts-poa' }, [
+      h('strong', { text: tr(`First year of Self Assessment? Set aside ${m(result.firstYearSetAside)} (${result.firstYearPercent.toFixed(1)}%). `, `¿Primer año de Self Assessment? Aparte ${m(result.firstYearSetAside)} (${result.firstYearPercent.toFixed(1)}%). `) }),
+      tr('Your first January bill also carries the first payment on account for the next year, half of this year\'s tax again.', 'Su primera cuenta de enero también incluye el primer payment on account del año siguiente: otra vez la mitad del impuesto de este año.'),
+    ]));
   }
-  if (result.marginalRate !== null) children.push(h('p', { class: 'muted small', text: `That is ${result.marginalRate.toFixed(1)}% of the ${whole(c)(result.payment.net)} of profit this payment adds.` }));
+  if (result.marginalRate !== null) children.push(h('p', { class: 'muted small', text: tr(`That is ${result.marginalRate.toFixed(1)}% of the ${whole(c)(result.payment.net)} of profit this payment adds.`, `Es el ${result.marginalRate.toFixed(1)}% de los ${whole(c)(result.payment.net)} de ganancia que agrega este pago.`) }));
   for (const x of [...result.crossings, ...result.flags]) children.push(h('p', { class: 'ts-flag', text: x }));
   if (result.nextDue) {
     children.push(h('p', { class: 'ts-due' }, c === 'UK'
-      ? [h('strong', { text: `Next Self Assessment date: ${ukDate(result.nextDue.due)}. ` }), result.nextDue.what + '.']
-      : [h('strong', { text: `Next federal estimated payment: ${longDate(result.nextDue.due)}` }), ` (Form 1040-ES, period ${result.nextDue.period}).${result.nextStateDue ? ` ${result.nextStateDue.state}: ${longDate(result.nextStateDue.due)}, ${Math.round(result.nextStateDue.share * 100)}% of the year's state estimate.` : ''}`]));
+      ? [h('strong', { text: tr(`Next Self Assessment date: ${ukDate(result.nextDue.due)}. `, `Próxima fecha de Self Assessment: ${dateLong(result.nextDue.due)}. `) }), result.nextDue.what + '.']
+      : [h('strong', { text: tr(`Next federal estimated payment: ${longDate(result.nextDue.due)}`, `Próximo pago federal de impuestos estimados: ${dateLong(result.nextDue.due)}`) }), tr(
+        ` (Form 1040-ES, period ${result.nextDue.period}).${result.nextStateDue ? ` ${result.nextStateDue.state}: ${longDate(result.nextStateDue.due)}, ${Math.round(result.nextStateDue.share * 100)}% of the year's state estimate.` : ''}`,
+        ` (Formulario 1040-ES, período ${result.nextDue.period}).${result.nextStateDue ? ` ${result.nextStateDue.state}: ${dateLong(result.nextStateDue.due)}, el ${Math.round(result.nextStateDue.share * 100)}% del impuesto estatal estimado del año.` : ''}`,
+      )]));
   }
   const working = h('details', { class: 'ts-working' }, [
-    h('summary', { text: 'Show the working and sources' }),
+    h('summary', { text: tr('Show the working and sources', 'Ver el cálculo y las fuentes') }),
     h('div', { class: 'table-scroll' }, h('table', { class: 'ts-table' }, h('tbody', null, result.working.map((w) => h('tr', null, [
       h('th', { scope: 'row' }, w.source ? h('a', { href: w.source, text: w.label, rel: 'noopener' }) : w.label),
       h('td', { class: 'num', text: w.value }),
     ]))))),
-    h('ul', { class: 'ts-sources' }, result.sources.map((s) => h('li', null, [h('a', { href: s.url, text: s.name, rel: 'noopener' }), ` (read ${s.readOn})`]))),
-    h('p', { class: 'muted small', text: `Input fingerprint ${result.inputHash}: the same inputs always give this answer.` }),
+    h('ul', { class: 'ts-sources' }, result.sources.map((s) => h('li', null, [h('a', { href: s.url, text: s.name, rel: 'noopener' }), tr(` (read ${s.readOn})`, ` (consultada el ${s.readOn})`)]))),
+    h('p', { class: 'muted small', text: tr(`Input fingerprint ${result.inputHash}: the same inputs always give this answer.`, `Huella de los datos ${result.inputHash}: los mismos datos siempre dan esta respuesta.`) }),
   ]);
   children.push(working);
   if (kind === 'answer') {
     last = { input, result };
-    children.push(h('p', null, [h('button', { class: 'btn btn-quiet btn-small', type: 'button', text: 'Add to my year', onclick: addToYear })]));
+    children.push(h('p', null, [h('button', { class: 'btn btn-quiet btn-small', type: 'button', text: tr('Add to my year', 'Agregar a mi año'), onclick: addToYear })]));
   } else {
-    children.push(h('p', { class: 'muted small', text: `Worked out on the server for the inputs shown in the form. Press "${$('ts-run').textContent}" to work out your own.` }));
+    children.push(h('p', { class: 'muted small', text: tr(`Worked out on the server for the inputs shown in the form. Press "${$('ts-run').textContent}" to work out your own.`, `Calculado en el servidor con los datos que muestra el formulario. Presione "${$('ts-run').textContent}" para calcular el suyo.`) }));
   }
   out.replaceChildren(...children);
 }
@@ -165,11 +189,11 @@ async function onSubmit(e) {
   const signedIn = Boolean(account);
   const body = signedIn ? input : { ...input, detail: 'percentage' };
   $('ts-run').disabled = true;
-  $('ts-status-live').textContent = 'Working it out.';
+  $('ts-status-live').textContent = tr('Working it out.', 'Calculando.');
   try {
     const res = await T.run(SLUG, body);
     if (signedIn) render(input, res.result, { kind: 'answer' }); else renderPercentage(input, res.result);
-    $('ts-status-live').textContent = 'Done.';
+    $('ts-status-live').textContent = tr('Done.', 'Listo.');
   } catch (err) {
     $('ts-error').textContent = err.message;
     if (err.fields) showErrors(Object.fromEntries(Object.entries(err.fields).map(([k, v]) => [`ts-${{ ytdNetProfit: 'ytd', amount: 'amount', date: 'date', expenses: 'expenses', tips: 'tips' }[k] ?? k}`, v])));
@@ -206,7 +230,7 @@ function renderLedger(note) {
   const body = $('ts-ledger-body');
   const rows = ledgerState.rows;
   if (!rows.length) {
-    body.replaceChildren(h('p', { class: 'muted', text: 'Nothing yet. Work out a payment, then press "Add to my year".' }));
+    body.replaceChildren(h('p', { class: 'muted', text: tr('Nothing yet. Work out a payment, then press "Add to my year".', 'Todavía nada. Calcule un pago y luego presione "Agregar a mi año".') }));
     return;
   }
   const c = rows[0].country;
@@ -215,10 +239,13 @@ function renderLedger(note) {
   const saved = ledgerState.saved ?? 0;
   body.replaceChildren(
     h('div', { class: 'table-scroll' }, h('table', { class: 'ts-table' }, [
-      h('thead', null, h('tr', null, ['Date', 'Payment', 'Set aside'].map((t) => h('th', { scope: 'col', text: t })))),
+      h('thead', null, h('tr', null, (ES ? ['Fecha', 'Pago', 'Apartar'] : ['Date', 'Payment', 'Set aside']).map((t) => h('th', { scope: 'col', text: t })))),
       h('tbody', null, rows.map((r) => h('tr', null, [h('td', { text: r.date }), h('td', { class: 'num', text: m(r.amount) }), h('td', { class: 'num', text: m(r.setAside) })]))),
     ])),
-    h('p', { class: 'ts-sum' }, [h('strong', { text: `Should be in your pot: ${m(should)}. ` }), saved >= should ? `You have ${m(saved)}, enough.` : `You have ${m(saved)}: move ${m(should - saved)} to catch up.`]),
+    h('p', { class: 'ts-sum' }, [
+      h('strong', { text: tr(`Should be in your pot: ${m(should)}. `, `Debería tener apartado: ${m(should)}. `) }),
+      saved >= should ? tr(`You have ${m(saved)}, enough.`, `Tiene ${m(saved)}, suficiente.`) : tr(`You have ${m(saved)}: move ${m(should - saved)} to catch up.`, `Tiene ${m(saved)}: mueva ${m(should - saved)} para ponerse al día.`),
+    ]),
     ...(note ? [h('p', { class: 'muted small', text: note })] : []),
   );
 }
@@ -226,7 +253,7 @@ function renderLedger(note) {
 async function replay() {
   const rows = ledgerState.rows;
   if (!rows.length) return;
-  if (!account) { $('ts-ledger-note').textContent = 'Sign in to replay your year: $0.10 per 25 payments.'; return; }
+  if (!account) { $('ts-ledger-note').textContent = tr('Sign in to replay your year: $0.10 per 25 payments.', 'Inicie sesión para recalcular su año: $0.10 por cada 25 pagos.'); return; }
   const c = rows[0].country;
   const mixed = rows.some((r) => r.country !== c || JSON.stringify(r.profile) !== JSON.stringify(rows[0].profile));
   const input = { op: 'ledger', ...rows[0].profile, payments: rows.map((r) => Object.fromEntries(Object.entries({ date: r.date, amount: r.amount, expenses: r.expenses, miles: r.miles, tips: r.tips }).filter(([, v]) => v !== undefined))) };
@@ -236,7 +263,7 @@ async function replay() {
     const order = res.result.rows;
     ledgerState.rows = order.map((x) => ({ ...rows[x.index], setAside: x.setAside }));
     save(ledgerState);
-    renderLedger(`Replayed in date order from a profit of zero${mixed ? ', using the settings of the first payment' : ''}.`);
+    renderLedger(tr(`Replayed in date order from a profit of zero${mixed ? ', using the settings of the first payment' : ''}.`, `Recalculado en orden de fecha desde una ganancia de cero${mixed ? ', con la configuración del primer pago' : ''}.`));
   } catch (err) {
     $('ts-ledger-note').textContent = err.message;
   }
@@ -284,10 +311,13 @@ function fromQuery() {
 
 function showPrice() {
   if (account) {
-    $('ts-price').textContent = `${account.currency === 'INR' ? '₹8' : '$0.10'} per payment from your balance, at most ${account.currency === 'INR' ? '₹199' : '$2.49'} a calendar month for this tool.`;
+    $('ts-price').textContent = tr(
+      `${account.currency === 'INR' ? '₹8' : '$0.10'} per payment from your balance, at most ${account.currency === 'INR' ? '₹199' : '$2.49'} a calendar month for this tool.`,
+      `${account.currency === 'INR' ? '₹8' : '$0.10'} por pago de su saldo, como máximo ${account.currency === 'INR' ? '₹199' : '$2.49'} por mes calendario por esta herramienta.`,
+    );
     $('ts-run-note').textContent = '';
   } else {
-    $('ts-run-note').textContent = 'Signed out you get the percentage, free, 5 runs a day. Sign in for the amount and the working.';
+    $('ts-run-note').textContent = tr('Signed out you get the percentage, free, 5 runs a day. Sign in for the amount and the working.', 'Sin iniciar sesión obtiene el porcentaje, gratis, 5 ejecuciones al día. Inicie sesión para ver el monto y el cálculo.');
   }
 }
 
@@ -313,7 +343,7 @@ async function start() {
   try {
     tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
   } catch {
-    $('ts-out').textContent = 'The worked example could not load. The calculator still works: press the button to run it.';
+    $('ts-out').textContent = tr('The worked example could not load. The calculator still works: press the button to run it.', 'No se pudo cargar el ejemplo resuelto. La calculadora sigue funcionando: presione el botón para usarla.');
     syncCountry();
     return;
   }
@@ -324,7 +354,7 @@ async function start() {
   const ex = tool.examples[0];
   if (!linked) render(ex.input, ex.output, { kind: 'example' });
   else if (T.takeRunFlag()) $('ts-form').requestSubmit();
-  else $('ts-out').replaceChildren(h('p', { class: 'muted', text: `The form is filled in from the page you came from. Press "${$('ts-run').textContent}" to work it out${account ? '' : ' (signed out you get the percentage, free)'}.` }));
+  else $('ts-out').replaceChildren(h('p', { class: 'muted', text: tr(`The form is filled in from the page you came from. Press "${$('ts-run').textContent}" to work it out${account ? '' : ' (signed out you get the percentage, free)'}.`, `El formulario viene lleno desde la página de la que llegó. Presione "${$('ts-run').textContent}" para calcularlo${account ? '' : ' (sin iniciar sesión obtiene el porcentaje, gratis)'}.`) }));
 }
 
 start();

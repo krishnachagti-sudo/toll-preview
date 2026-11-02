@@ -90,6 +90,10 @@
         account.limits = json.limits;
         account.products = json.products || [];
         account.passes = json.passes || [];
+        account.bundles = json.bundles || [];
+        account.invoices = json.invoices || [];
+        account.nonprofit = json.nonprofit || null;
+        account.invoiceMinDisplay = json.invoiceMinDisplay || '';
         return account;
       }, function (e) {
         if (e.status === 401) return null;

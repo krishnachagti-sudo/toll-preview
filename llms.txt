@@ -62,7 +62,7 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 - [Developers](https://krishnachagti-sudo.github.io/toll-preview/developers/): The REST API: a quickstart with real requests and responses, API keys, errors, idempotency keys, rate limits, quotes and the OpenAPI document.
 - [MCP for AI agents](https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/): Connect an AI agent over MCP: the server address, authentication, the tools it lists, quote\_price and example calls.
 - [Why exact](https://krishnachagti-sudo.github.io/toll-preview/why-exact/): Exact answers versus AI guesses, with worked examples from the tools: observed holidays, substitute days, weekend exchange rates and holiday delivery dates.
-- [About](https://krishnachagti-sudo.github.io/toll-preview/about/): Who makes the tools and how they work: a small Conyso team, exact tools for specific jobs, no AI in the answers.
+- [About](https://krishnachagti-sudo.github.io/toll-preview/about/): Who makes the tools and how they work: Conyso Holdings, exact tools for specific jobs, no AI in the answers.
 - [Who it's for](https://krishnachagti-sudo.github.io/toll-preview/for/): The tools grouped by who uses them, with a page for each kind of work.
 - [For freelancers](https://krishnachagti-sudo.github.io/toll-preview/for/freelancers/): For freelancers and the self-employed: tax set-aside per payment, an IRS mileage log, exchange rates on a date and business-day due dates.
 - [For truckers](https://krishnachagti-sudo.github.io/toll-preview/for/truckers/): For owner-operator truckers: the year's per diem worksheet at the IRS transportation rate, and tax set-aside per settlement.
@@ -74,6 +74,8 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 - [For nonprofits](https://krishnachagti-sudo.github.io/toll-preview/for/nonprofits/): For nonprofit treasurers and bookkeepers: mileage at the IRS business and charity rates, and 1099 scans with an IRIS file.
 - [For payroll and HR](https://krishnachagti-sudo.github.io/toll-preview/for/payroll-and-hr/): For payroll and HR: mileage reimbursement sheets at the IRS rate by date, and dates in business days.
 - [For small business owners](https://krishnachagti-sudo.github.io/toll-preview/for/small-business-owners/): For small business owners: 1099 scans for contractors with an IRIS file, and mileage at the IRS rate by date.
+- [Para conductores](https://krishnachagti-sudo.github.io/toll-preview/es/para/conductores/): En español, para conductores de viajes y entregas: cuánto apartar para impuestos de cada pago, con millas y propinas, y las millas a la tarifa del IRS con un registro de millaje.
+- [Status](https://krishnachagti-sudo.github.io/toll-preview/status/): Each live tool's last check and 90 days of recorded checks, measured from inside the server.
 - [Docs](https://krishnachagti-sudo.github.io/toll-preview/docs): How to call the tools from code: REST and MCP, authentication, errors, idempotency and limits.
 - [Privacy](https://krishnachagti-sudo.github.io/toll-preview/privacy): What Toll stores about visitors and accounts, in plain words.
 - [Terms of service](https://krishnachagti-sudo.github.io/toll-preview/terms/): The terms for using Toll: accounts and keys, the prepaid balance, prices, refunds, acceptable use and liability.

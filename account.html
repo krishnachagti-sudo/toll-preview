@@ -151,6 +151,11 @@
           <dd class="money" id="balance-pass"></dd>
           <dd class="note" id="pass-note"></dd>
         </div>
+        <div id="bundle-row" hidden>
+          <dt>Fleet bundle</dt>
+          <dd class="money" id="balance-bundle"></dd>
+          <dd class="note">Per diem worksheets left. Each pays for the first worksheet for a driver and tax year, before any money. They stay until you use them.</dd>
+        </div>
       </dl>
     </section>
 
@@ -168,9 +173,76 @@
           <legend class="choice-h">Credit</legend>
           <div class="choice-grid" id="buy-packs"></div>
         </fieldset>
+        <fieldset>
+          <legend class="choice-h">Fleet bundles of per diem worksheets</legend>
+          <div class="choice-grid" id="buy-bundles"></div>
+        </fieldset>
+        <div class="field">
+          <label for="np-code">Nonprofit code, if you have one</label>
+          <input id="np-code" type="text" maxlength="40" autocomplete="off" spellcheck="false" aria-describedby="np-code-hint">
+          <p class="hint small muted" id="np-code-hint">For a pass only. We send a code after we check your nonprofit, below.</p>
+          <p class="field-error" data-error-for="code"></p>
+        </div>
         <p id="topup-error" class="form-error" role="alert"></p>
         <button class="btn" type="submit">Continue to payment</button>
       </form>
+    </section>
+
+    <section class="ledger-section" id="nonprofit" aria-labelledby="nonprofit-title">
+      <h2 id="nonprofit-title">Nonprofit price</h2>
+      <p>US nonprofits recognized as tax-exempt by the IRS pay <span id="np-percent">50%</span> less for a pass. Tell us who you are. A person checks your EIN in the IRS Tax Exempt Organization Search, then emails you a code for this account's email address. Nothing is approved automatically. A code works once and expires <span id="np-days">60</span> days after we send it.</p>
+      <form id="nonprofit-form" novalidate>
+        <div class="field">
+          <label for="np-org">Organization's legal name</label>
+          <input id="np-org" type="text" maxlength="200" autocomplete="organization">
+          <p class="field-error" data-error-for="orgName"></p>
+        </div>
+        <div class="field">
+          <label for="np-ein">EIN</label>
+          <input id="np-ein" type="text" maxlength="10" inputmode="numeric" autocomplete="off" placeholder="12-3456789">
+          <p class="field-error" data-error-for="ein"></p>
+        </div>
+        <div class="field">
+          <label for="np-email">Contact email</label>
+          <input id="np-email" type="email" maxlength="254" autocomplete="email" aria-describedby="np-email-hint">
+          <p class="hint small muted" id="np-email-hint">The code works only for the account with this email, so keep it the one you sign in with.</p>
+          <p class="field-error" data-error-for="email"></p>
+        </div>
+        <p id="nonprofit-error" class="form-error" role="alert"></p>
+        <button class="btn btn-small" type="submit">Ask for the nonprofit price</button>
+        <p id="nonprofit-status" class="status" role="status"></p>
+      </form>
+    </section>
+
+    <section class="ledger-section" id="invoice" aria-labelledby="invoice-title">
+      <h2 id="invoice-title">Pay by invoice or check</h2>
+      <p>For the Team plan, or any order of <span id="invoice-min">$250</span> or more. Tell us what you want and we send an invoice; payment details come on the invoice. Your credit, pass or bundle starts when the payment arrives.</p>
+      <form id="invoice-form" novalidate>
+        <div class="field">
+          <label for="inv-want">What you want</label>
+          <textarea id="inv-want" rows="3" maxlength="1000" placeholder="The Team plan, or 4 Fleet bundles of 10"></textarea>
+          <p class="field-error" data-error-for="want"></p>
+        </div>
+        <div class="field">
+          <label for="inv-company">Company name</label>
+          <input id="inv-company" type="text" maxlength="200" autocomplete="organization">
+          <p class="field-error" data-error-for="company"></p>
+        </div>
+        <div class="field">
+          <label for="inv-email">Billing email</label>
+          <input id="inv-email" type="email" maxlength="254" autocomplete="email">
+          <p class="field-error" data-error-for="billingEmail"></p>
+        </div>
+        <div class="field">
+          <label for="inv-po">PO number (optional)</label>
+          <input id="inv-po" type="text" maxlength="60" autocomplete="off">
+          <p class="field-error" data-error-for="poNumber"></p>
+        </div>
+        <p id="invoice-error" class="form-error" role="alert"></p>
+        <button class="btn btn-small" type="submit">Ask for an invoice</button>
+        <p id="invoice-status" class="status" role="status"></p>
+      </form>
+      <div id="invoice-list"></div>
     </section>
 
     <section class="ledger-section" id="limits" aria-labelledby="limits-title">
@@ -273,6 +345,7 @@
           <li><a href="/toll-preview/docs">Docs</a></li>
           <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
           <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
         </ul>
       </nav>
       <nav aria-label="Company">
