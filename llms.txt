@@ -74,6 +74,7 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 - [For nonprofits](https://krishnachagti-sudo.github.io/toll-preview/for/nonprofits/): For nonprofit treasurers and bookkeepers: mileage at the IRS business and charity rates, and 1099 scans with an IRIS file.
 - [For payroll and HR](https://krishnachagti-sudo.github.io/toll-preview/for/payroll-and-hr/): For payroll and HR: mileage reimbursement sheets at the IRS rate by date, and dates in business days.
 - [For small business owners](https://krishnachagti-sudo.github.io/toll-preview/for/small-business-owners/): For small business owners: 1099 scans for contractors with an IRIS file, and mileage at the IRS rate by date.
+- [For landlords](https://krishnachagti-sudo.github.io/toll-preview/for/landlords/): For landlords and property managers: security deposit deadlines and letters by state, 1099s for contractors, and mileage at the IRS rate.
 - [Para conductores](https://krishnachagti-sudo.github.io/toll-preview/es/para/conductores/): En español, para conductores de viajes y entregas: cuánto apartar para impuestos de cada pago, con millas y propinas, y las millas a la tarifa del IRS con un registro de millaje.
 - [Status](https://krishnachagti-sudo.github.io/toll-preview/status/): Each live tool's last check and 90 days of recorded checks, measured from inside the server.
 - [Docs](https://krishnachagti-sudo.github.io/toll-preview/docs): How to call the tools from code: REST and MCP, authentication, errors, idempotency and limits.
