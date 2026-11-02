@@ -219,6 +219,20 @@ function base64Bytes(b64) {
   return out;
 }
 
+// The sample log near the price: the tool's own "log" worked example (made-up trips for one van),
+// so the PDF a paid run gives can be seen before paying.
+function sampleLinks() {
+  const box = $('mr-sample-links');
+  const ex = tool.examples.find((x) => x.input.op === 'log');
+  if (!box || !ex?.output.pdf) return;
+  const { pdf, csv } = ex.output;
+  box.textContent = '';
+  box.append(
+    download(pdf.filename, new Blob([base64Bytes(pdf.base64)], { type: 'application/pdf' })), ' (PDF) and ',
+    download(pdf.filename.replace(/\.pdf$/, '.csv'), csv, 'text/csv'), ' (CSV).',
+  );
+}
+
 const options = () => {
   const o = {};
   const rate = $('mr-employer').value.trim().replace(/¢|cents?/i, '').trim();
@@ -578,6 +592,7 @@ async function start() {
     return;
   }
   const tables = tool.examples.find((x) => x.input.op === 'rates').output;
+  sampleLinks();
   engine = makeEngine(tables);
   T.me().then((account) => { signedIn = !!account; if (account) $('mr-run-note').textContent = 'Free on this page.'; }).catch(() => {});
 

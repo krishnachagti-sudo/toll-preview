@@ -220,7 +220,7 @@ function renderReport(r, { kind, note }) {
   const d = r.dueDates;
   const owed = Object.values(s.forms).reduce((a, b) => a + b, 0);
   put(out,
-    kind === 'example' ? h('p', { class: 'tt-sheet-label' }, 'Worked example: a remodeling business\'s 2026 payments') : null,
+    kind === 'example' ? h('p', { class: 'tt-sheet-label' }, 'Sample: a made-up remodeling business\'s 2026 payments') : null,
     h('p', { class: 'tt-answer' }, [h('small', {}, `${r.paymentYear} payments, ${lineText(r.general)} line${r.lineStatus === 'provisional' ? ' (provisional)' : ''}`), `${s.file} of ${s.payees} need a form`]),
     h('p', { class: 'tt-sub' }, r.answer),
     h('dl', { class: 'tt-facts' }, [
@@ -440,6 +440,10 @@ async function start() {
   }
   if (!linked) renderCheck(tool.examples.find((x) => x.input.op === 'check').output, { kind: 'example', note: 'Change the amount, the payee or the payment and press "Check this payee".' });
   renderReport(tool.examples.find((x) => x.input.op === 'scan').output, { kind: 'example', note: 'Drop your own payments CSV above to see your own list.' });
+  // The same sample's files, near the price, so what a paid scan gives can be seen before paying.
+  const sample = $('tt-sample-links');
+  const sampleFiles = tool.examples.find((x) => x.input.op === 'scan').output.files ?? [];
+  if (sample && sampleFiles.length) { sample.textContent = ''; put(sample, ...sampleFiles.flatMap((f) => [download(f), ' '])); }
 }
 
 start();

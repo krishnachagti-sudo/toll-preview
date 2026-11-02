@@ -16,6 +16,7 @@
 .dd-intro { padding-block: 40px 8px; }
 .dd-intro h1 { margin-bottom: 0.25em; }
 .dd-price { color: var(--ink-soft); max-width: 42rem; margin: 0; font-variant-numeric: tabular-nums; }
+.dd-carriers { color: var(--ink-soft); max-width: 46rem; margin: 10px 0 0; }
 
 .dd-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
 .dd-desk > * { min-width: 0; }

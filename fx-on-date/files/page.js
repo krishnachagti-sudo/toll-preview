@@ -1,6 +1,7 @@
 // The Exchange rate on a date page. core.js (the same file the server uses) supplies the currency
-// list and the wording for dates; the rate itself always comes from the server through Toll.run.
-import { CURRENCIES, FIRST_FIXING, SOURCE, fixingNote, longDate, isRealDate } from './core.js';
+// list, the sources and the wording for dates; the rate itself always comes from the server
+// through Toll.run.
+import { CURRENCIES, FIRST_FIXING, SOURCES, SOURCE_IDS, fixingNote, longDate, isRealDate } from './core.js';
 
 const T = window.Toll;
 const h = T.h;
@@ -10,6 +11,23 @@ const QUICK = [['USD', 'INR'], ['EUR', 'USD'], ['GBP', 'USD'], ['EUR', 'INR'], [
 
 const $ = (id) => document.getElementById(id);
 const FIELD_ERRORS = { base: 'fx-base-err', quote: 'fx-quote-err', date: 'fx-date-err' };
+
+// What the selector's hint and the date hint say for each source.
+const HINTS = {
+  ecb: ["The European Central Bank's daily euro reference rate.", 'From 4 January 1999. Weekends and bank holidays use the last fixing before them.'],
+  treasury: ["Treasury's quarterly rate, in units per US dollar. One side must be USD.", 'The report in effect on that day, from the report as of 31 March 2001.'],
+  irs: ['The IRS average for the year of your date, in units per US dollar. One side must be USD.', 'Only the year of the date counts.'],
+  hmrc: ["HMRC's rate for the month of your date, in units per pound. One side must be GBP.", 'Only the month of the date counts, from January 2021.'],
+};
+const sourceOf = () => (SOURCE_IDS.includes($('fx-source').value) ? $('fx-source').value : 'ecb');
+
+function syncSource() {
+  const [what, when] = HINTS[sourceOf()];
+  const hint = $('fx-source-hint');
+  hint.textContent = `${what} `;
+  hint.appendChild(h('a', { href: '#fx-which' }, 'Which rate to use'));
+  $('fx-date-hint').textContent = when;
+}
 
 // 1.113 -> "1.1130", 20193.16 -> "20,193.1600", 95.269093 -> "95.269093"
 // Set once the visitor changes the form or runs it, so the worked example, which arrives
@@ -39,11 +57,14 @@ function showFieldErrors(fields) {
 
 // { input } for a good form, or { errors } for a bad one, so a typo never spends a run.
 function readForm() {
+  const source = sourceOf();
   const input = { base: $('fx-base').value, quote: $('fx-quote').value, date: $('fx-date').value.trim() };
+  // The default source is left out, so the request is the same one the API always took.
+  if (source !== 'ecb') input.source = source;
   const errors = {};
   if (!input.date) errors.date = 'Pick a date.';
   else if (!isRealDate(input.date)) errors.date = 'That is not a real calendar date.';
-  else if (input.date < FIRST_FIXING) errors.date = 'The ECB has no rates before 4 January 1999.';
+  else if (source === 'ecb' && input.date < FIRST_FIXING) errors.date = 'The ECB has no rates before 4 January 1999.';
   return Object.keys(errors).length ? { errors } : { input };
 }
 
@@ -63,9 +84,14 @@ function setPair(base, quote) {
 
 // ---------- the ticket ----------
 
-function head(right) {
-  return h('div', { class: 'fx-ticket-head' }, [h('span', {}, 'ECB reference rate'), h('span', {}, right)]);
+const HEADS = { ecb: 'ECB reference rate', treasury: 'US Treasury reporting rate', irs: 'IRS yearly average', hmrc: 'HMRC monthly rate' };
+
+function head(right, source = 'ecb') {
+  return h('div', { class: 'fx-ticket-head' }, [h('span', {}, HEADS[source] || HEADS.ecb), h('span', {}, right)]);
 }
+
+// The source id of an answer, from its source name.
+const idOf = (r) => SOURCE_IDS.find((id) => SOURCES[id].name === r.source) || 'ecb';
 
 function tear() {
   return h('div', { class: 'fx-tear', 'aria-hidden': 'true' }, [h('i')]);
@@ -81,22 +107,30 @@ function show(node) {
   board.appendChild(node);
 }
 
-function idleTicket(line = 'The rate, its inverse and the fixing date appear here.') {
+function idleTicket(line = 'The rate, its inverse and the date or period used appear here.') {
+  const source = sourceOf();
   show(h('article', { class: 'fx-ticket idle' }, [
-    head('Waiting'),
+    head('Waiting', source),
     h('div', { class: 'fx-ticket-body' }, [
       h('p', { class: 'fx-pair-name' }, 'Pick two currencies and a date'),
       h('span', { class: 'fx-rate' }, '–'),
       h('p', { class: 'fx-inverse' }, line),
     ]),
     tear(),
-    h('div', { class: 'fx-stub' }, [h('p', { class: 'fx-source' }, `Source: ${SOURCE}.`)]),
+    h('div', { class: 'fx-stub' }, [h('p', { class: 'fx-source' }, `Source: ${SOURCES[source].name}.`)]),
   ]));
 }
+
+// "Wednesday 31 Dec 2025 to Monday 30 Mar 2026"
+const span = (from, to) => `${longDate(from)} to ${longDate(to)}`;
 
 // example: true labels the ticket as a worked example (the tool's first real example), so it is
 // never mistaken for the visitor's own lookup.
 function resultTicket(r, costLine, { example = false } = {}) {
+  if (!r.fixingDate) {
+    otherTicket(r, costLine, { example });
+    return;
+  }
   const note = fixingNote(r.requestedDate, r.fixingDate);
   show(h('article', { class: example ? 'fx-ticket example' : 'fx-ticket' }, [
     head(`Fixing ${r.fixingDate}`),
@@ -121,10 +155,38 @@ function resultTicket(r, costLine, { example = false } = {}) {
   $('fx-board').setAttribute('aria-busy', 'false');
 }
 
-// The ECB has no rate for this pair and date. The run was free, and the ticket says so.
+// An answer from Treasury, the IRS or HMRC: the publication and period used, and the rate as published.
+function otherTicket(r, costLine, { example = false } = {}) {
+  const id = idOf(r);
+  show(h('article', { class: example ? 'fx-ticket example' : 'fx-ticket' }, [
+    head(r.effectiveDate ? `Effective ${r.effectiveDate}` : `From ${r.periodStart}`, id),
+    h('div', { class: 'fx-ticket-body' }, [
+      example ? h('p', { class: 'fx-example-tag' }, 'Worked example') : null,
+      pairName(r.base, r.quote),
+      h('p', { class: 'fx-rate-line' }, `1 ${r.base} buys`),
+      h('span', { class: 'fx-rate' }, [fmt(r.rate), ' ', h('small', {}, r.quote)]),
+      h('p', { class: 'fx-inverse' }, ['The other way round: 1 ', r.quote, ' = ', h('b', {}, fmt(r.inverse)), ` ${r.base}`]),
+    ]),
+    tear(),
+    h('div', { class: 'fx-stub' }, [
+      h('dl', { class: 'fx-facts' }, [
+        h('dt', {}, 'You asked for'), h('dd', {}, longDate(r.requestedDate)),
+        h('dt', {}, 'Publication'), h('dd', {}, r.publication),
+        h('dt', {}, 'Rate covers'), h('dd', {}, span(r.periodStart, r.periodEnd)),
+        h('dt', {}, 'As published'), h('dd', {}, `${r.publishedRate} ${r.publishedAs}`),
+      ]),
+      h('p', { class: 'fx-source' }, ['Source: ', h('a', { href: r.sourceUrl, rel: 'noopener' }, r.source), '.']),
+      costLine ? h('p', { class: 'fx-cost' }, costLine) : null,
+    ]),
+  ]));
+  $('fx-board').setAttribute('aria-busy', 'false');
+}
+
+// The source has no rate for this pair and date. The run was free, and the ticket says so.
 function noRateTicket(input, message, costLine) {
+  const source = input.source || 'ecb';
   show(h('article', { class: 'fx-ticket none' }, [
-    head('No rate'),
+    head('No rate', source),
     h('div', { class: 'fx-ticket-body' }, [
       pairName(input.base, input.quote),
       h('span', { class: 'fx-rate' }, '–'),
@@ -132,7 +194,7 @@ function noRateTicket(input, message, costLine) {
     ]),
     tear(),
     h('div', { class: 'fx-stub' }, [
-      h('p', { class: 'fx-source' }, `Source: ${SOURCE}.`),
+      h('p', { class: 'fx-source' }, `Source: ${SOURCES[source].name}.`),
       costLine ? h('p', { class: 'fx-cost' }, costLine) : null,
     ]),
   ]));
@@ -207,6 +269,8 @@ function showExample(tool) {
     return;
   }
   setPair(ex.input.base, ex.input.quote);
+  $('fx-source').value = ex.input.source || 'ecb';
+  syncSource();
   $('fx-date').value = ex.input.date;
   resultTicket(ex.output, 'A worked example from the ECB file, not your own lookup. Press "Get the rate" to run it for real.', { example: true });
 }
@@ -220,7 +284,7 @@ function loadTool() {
 
 // ---------- inputs from the address ----------
 
-// A link may carry the inputs (?base=USD&quote=INR&date=2026-10-23): the form opens with them
+// A link may carry the inputs (?base=USD&quote=INR&date=2026-10-23, plus &source=treasury): the form opens with them
 // filled in, ready to run. The rate itself costs a run, so nothing is run until the visitor asks.
 // Anything unusable is ignored and the worked example shows instead.
 function fromQuery() {
@@ -228,8 +292,10 @@ function fromQuery() {
   const base = (q.get('base') || '').toUpperCase();
   const quote = (q.get('quote') || '').toUpperCase();
   const date = (q.get('date') || '').trim();
-  if (!NAMES[base] || !NAMES[quote] || !isRealDate(date) || date < FIRST_FIXING) return null;
-  return { base, quote, date };
+  const source = (q.get('source') || 'ecb').toLowerCase();
+  if (!SOURCE_IDS.includes(source)) return null;
+  if (!NAMES[base] || !NAMES[quote] || !isRealDate(date) || (source === 'ecb' && date < FIRST_FIXING)) return null;
+  return { base, quote, date, source };
 }
 
 // ---------- start ----------
@@ -252,8 +318,10 @@ function start() {
   $('fx-form').addEventListener('change', touch);
   $('fx-base').addEventListener('change', syncQuick);
   $('fx-quote').addEventListener('change', syncQuick);
+  $('fx-source').addEventListener('change', syncSource);
   $('fx-form').addEventListener('submit', (ev) => { touch(); onSubmit(ev); });
   syncQuick();
+  syncSource();
 
   const chip = document.querySelector('[data-toll-chip]');
   if (chip) T.mountAccountChip(chip);
@@ -262,6 +330,8 @@ function start() {
   if (asked) {
     touch();
     setPair(asked.base, asked.quote);
+    $('fx-source').value = asked.source;
+    syncSource();
     $('fx-date').value = asked.date;
     idleTicket(`Press "Get the rate" for ${asked.base} to ${asked.quote} on ${longDate(asked.date)}.`);
     if (T.takeRunFlag()) $('fx-form').requestSubmit();

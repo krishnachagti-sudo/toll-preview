@@ -13,6 +13,12 @@
 .tt-intro { padding-block: 40px 8px; }
 .tt-intro h1 { margin-bottom: 0.25em; }
 .tt-price { color: var(--ink-soft); max-width: 46rem; margin: 0; font-variant-numeric: tabular-nums; }
+.tt-sample { max-width: 46rem; margin: 8px 0 0; }
+.tt-sample .btn { margin: 4px 6px 0 0; }
+.tt-format { margin: 0 0 16px; color: var(--ink-soft); max-width: 46rem; }
+.tt-format summary { cursor: pointer; }
+.tt-format ul { padding-left: 1.1em; }
+.tt-format li { margin-bottom: 4px; }
 .tt h2 { margin-top: 0; }
 .tt-free { display: inline-block; vertical-align: middle; font: 500 0.7rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--tt-file); border: 1px solid var(--tt-file); padding: 1px 8px; border-radius: 999px; margin-left: 6px; }
 

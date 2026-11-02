@@ -15,6 +15,7 @@ Send a POST with a JSON body to /api/v1/tools/fx-on-date on this site, with your
 | base | string | USD | Three-letter code of the currency you convert from. |
 | quote | string | INR | Three-letter code of the currency you convert to. |
 | date | string | 2026-10-24 | The day, written YYYY-MM-DD, from 1999-01-04. |
+| source | string | ecb | Optional. ecb (the default) for the ECB reference rate; treasury, irs or hmrc for the US Treasury reporting rate, the IRS yearly average or the HMRC monthly rate, which answer with the publication and period used instead of fixingDate. |
 
 ## The answer
 
@@ -39,7 +40,7 @@ The result sits inside the usual envelope with what the call cost, your balance 
 
 ## For AI agents over MCP
 
-The same tool is available to AI agents through the MCP endpoint at /mcp on this site. Its MCP name is fx-on-date and its input is the same three fields; calls are priced and limited like API calls. [Connection details are in the docs](https://krishnachagti-sudo.github.io/toll-preview/docs).
+The same tool is available to AI agents through the MCP endpoint at /mcp on this site. Its MCP name is fx-on-date and its input is the same fields; calls are priced and limited like API calls. [Connection details are in the docs](https://krishnachagti-sudo.github.io/toll-preview/docs).
 
 ## Errors you can expect
 
@@ -82,4 +83,4 @@ No. A date with no fixing in the 7 days before it, a date before 4 January 1999,
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-exchange-rate-api/  
-Data as of: 2026-10-31
+Data as of: 2026-11-02

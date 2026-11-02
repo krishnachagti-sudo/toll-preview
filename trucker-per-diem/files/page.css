@@ -20,6 +20,12 @@
 .pd-intro { padding-block: 40px 8px; }
 .pd-intro h1 { margin-bottom: 0.25em; }
 .pd-price { color: var(--ink-soft); max-width: 44rem; margin: 0; font-variant-numeric: tabular-nums; }
+.pd-who { margin-top: 8px; }
+.pd-sample { max-width: 44rem; margin: 8px 0 0; }
+.pd-sample .btn { margin: 4px 6px 0 0; }
+.pd-format { margin-top: 6px; color: var(--ink-soft); }
+.pd-format summary { cursor: pointer; }
+.pd-format p { margin: 6px 0 0; max-width: 40rem; }
 
 .pd-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
 .pd-desk > * { min-width: 0; }

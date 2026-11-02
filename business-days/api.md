@@ -14,6 +14,7 @@ POST `https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-da
 | `start` | A date written like 2026-07-01, from 1971 to 2100. Never counted itself. |
 | `end` | `between` only: the last date, counted. Before the start, the count is negative. |
 | `days` | `add` only: a whole number from -3650 to 3650; negative goes back |
+| `daysOff` | Optional: up to 400 of your own days off (company closures, state or local holidays), as dates like 2026-07-06. Skipped like holidays and listed in `daysOffSkipped` |
 
 ```shell
 curl -X POST 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days' \
@@ -45,7 +46,7 @@ curl -X POST 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/bus
 }
 ```
 
-Amounts are whole micro-units (1,000,000 to the dollar or rupee); the response also carries your balance after the charge. `holidaysSkipped` lists each weekday holiday inside the range, with the date it was taken off. For `add` the result is `{ date, holidaysSkipped }`: adding 1 business day to 2026-12-24 in `GB-ENG` gives 2026-12-29, past Christmas Day and the Boxing Day substitute day.
+Amounts are whole micro-units (1,000,000 to the dollar or rupee); the response also carries your balance after the charge. `holidaysSkipped` lists each weekday holiday inside the range, with the date it was taken off. For `add` the result is `{ date, holidaysSkipped }`: adding 1 business day to 2026-12-24 in `GB-ENG` gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With `daysOff` the result also has `daysOffSkipped`: each of your days off that fell on a weekday in the range and was not already a holiday, as `{ date, name }`.
 
 Invalid input is a 400 `invalid_input` with the field that was wrong, and is never charged. Retries are safe with an `Idempotency-Key` header. The [docs](https://krishnachagti-sudo.github.io/toll-preview/docs) cover errors, limits and idempotency for every tool.
 
@@ -69,7 +70,7 @@ Agents that speak the Model Context Protocol call the same tool, named `business
 
 ## What it knows
 
-US federal holidays as set by [5 U.S.C. 6103](https://www.law.cornell.edu/uscode/text/5/6103) on their observed days, and England and Wales bank holidays with substitute days and one-off royal days, from 1971 to 2100. Weekends are Saturday and Sunday. It does not know state, company or Scottish holidays.
+US federal holidays as set by [5 U.S.C. 6103](https://www.law.cornell.edu/uscode/text/5/6103) on their observed days, and England and Wales bank holidays with substitute days and one-off royal days, from 1971 to 2100. Weekends are Saturday and Sunday. It does not know state, company or Scottish holidays; send those as `daysOff`.
 
 ## Sources
 

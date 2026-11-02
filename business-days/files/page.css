@@ -1,5 +1,5 @@
 /* Business days: a wall calendar. Sits inside the brand chrome and reuses its tokens; the
-   holiday colour is this page's own. */
+   holiday and own-day-off colours are this page's own. */
 .bd {
   /* Dates and calendars are lit amber across the site. */
   --accent: var(--h-date);
@@ -9,6 +9,8 @@
   --toll-accent-ink: #1a1206;
   --bd-hol: #ff8a70;
   --bd-hol-wash: rgba(255, 122, 95, 0.13);
+  --bd-own: #a99bff;
+  --bd-own-wash: rgba(169, 155, 255, 0.13);
   --bd-hatch: rgba(255, 255, 255, 0.07);
   --bd-cell: 3rem;
 }
@@ -39,6 +41,7 @@
 .bd-skipped li:first-child { border-top: 1px solid var(--rule); }
 .bd-skipped .when { font-family: var(--font-mono); font-size: 0.88rem; white-space: nowrap; }
 .bd-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--bd-hol); flex: none; transform: translateY(-1px); }
+.bd-dot.own { background: var(--bd-own); border-radius: 2px; }
 .bd-none { color: var(--ink-soft); margin: 0 0 12px; }
 .bd-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 18px 0 6px; }
 .bd-aside { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 12px; max-width: 40rem; }
@@ -68,6 +71,9 @@
 .bd-day.we { background: var(--paper-sunk) repeating-linear-gradient(135deg, transparent 0 5px, var(--bd-hatch) 5px 6px); }
 .bd-day.hol { background: var(--bd-hol-wash); }
 .bd-day.hol .bd-num { color: var(--bd-hol); font-weight: 600; }
+.bd-day.own { background: var(--bd-own-wash); }
+.bd-day.own .bd-num { color: var(--bd-own); font-weight: 600; }
+.bd-day.own::after { content: ""; position: absolute; top: 5px; right: 5px; width: 8px; height: 8px; border-radius: 2px; background: var(--bd-own); }
 .bd-day.hol::after { content: ""; position: absolute; top: 5px; right: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--bd-hol); }
 .bd-day.counted { background: var(--accent-wash); }
 .bd-day.counted .bd-num { color: var(--ink); }
@@ -84,6 +90,8 @@
 .bd-key.we { background: var(--paper-sunk) repeating-linear-gradient(135deg, transparent 0 4px, var(--bd-hatch) 4px 5px); }
 .bd-key.hol { background: var(--bd-hol-wash); }
 .bd-key.hol::after { content: ""; position: absolute; top: 3px; right: 3px; width: 6px; height: 6px; border-radius: 50%; background: var(--bd-hol); }
+.bd-key.own { background: var(--bd-own-wash); }
+.bd-key.own::after { content: ""; position: absolute; top: 3px; right: 3px; width: 6px; height: 6px; border-radius: 1px; background: var(--bd-own); }
 .bd-key.counted { background: var(--accent-wash); }
 .bd-key.start { box-shadow: inset 0 0 0 2px var(--ink); }
 .bd-key.land { background: var(--accent); }

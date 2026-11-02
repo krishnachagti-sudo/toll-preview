@@ -42,7 +42,7 @@ A start on a Saturday or Sunday counts from the Monday, so it ends on the same d
 
 ## How this is counted
 
-The start day is never counted: day 1 is the next business day, as in [Excel's WORKDAY](https://krishnachagti-sudo.github.io/toll-preview/business-days/excel-workday/). Weekends are Saturday and Sunday. US dates skip the federal holidays of 5 U.S.C. 6103 on their observed days; England and Wales dates skip the bank holidays GOV.UK publishes. Neither knows state, company or carrier holidays, so check the terms your deadline comes from.
+The start day is never counted: day 1 is the next business day, as in [Excel's WORKDAY](https://krishnachagti-sudo.github.io/toll-preview/business-days/excel-workday/). Weekends are Saturday and Sunday. US dates skip the federal holidays of 5 U.S.C. 6103 on their observed days; England and Wales dates skip the bank holidays GOV.UK publishes. The figures here leave out state, company and carrier holidays: add those as your own days off in the [calculator](https://krishnachagti-sudo.github.io/toll-preview/business-days/), and check the terms your deadline comes from.
 
 > "Today" is the date in Washington, DC; this page turns over at midnight there.
 

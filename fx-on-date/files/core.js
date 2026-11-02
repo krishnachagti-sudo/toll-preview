@@ -246,3 +246,286 @@ export function rateOn(table, { base, quote, date, maxLookbackDays = DEFAULT_LOO
   }
   return { ...crossRate(perEur(quote), perEur(base)), fixingDate };
 }
+
+// ---------- other official sources ----------
+//
+// Three more published tables, each quoted against one currency (its anchor), so one side of the
+// pair must be that currency. The rate the authority prints is kept as text (publishedRate) and
+// the answer is worked out from it exactly, the same way as an ECB cross:
+//  - treasury: U.S. Treasury Reporting Rates of Exchange (quarterly, units per US dollar). Treasury
+//    says agencies use each report "as of the date of this report and for the ensuing three
+//    months", and that an amendment is a separate line "with a new effective date". So a date uses
+//    the latest report dated on or before it, and in that report the latest line for the currency
+//    whose effective date is on or before it.
+//  - irs: IRS yearly average currency exchange rates (units per US dollar), the year of the date.
+//  - hmrc: HMRC monthly exchange rates (units per pound), which cover the first to the last day of
+//    their month. HMRC's weekly amendments are not in the monthly files and are not used.
+
+export const SOURCE_IDS = ['ecb', 'treasury', 'irs', 'hmrc'];
+export const SOURCES = {
+  ecb: { name: SOURCE, label: 'ECB reference (default)' },
+  treasury: {
+    name: 'U.S. Treasury Reporting Rates of Exchange',
+    label: 'US Treasury reporting rate',
+    anchor: 'USD',
+    url: 'https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange',
+  },
+  irs: {
+    name: 'IRS yearly average currency exchange rates',
+    label: 'IRS yearly average',
+    anchor: 'USD',
+    url: 'https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates',
+  },
+  hmrc: {
+    name: 'HMRC monthly exchange rates',
+    label: 'HMRC monthly rate',
+    anchor: 'GBP',
+    url: 'https://www.trade-tariff.service.gov.uk/exchange_rates',
+  },
+};
+
+// Treasury's country-currency names for each code. A name with a date applies only to reports
+// dated on or after it (for example "Turkey-Lira" before 2005 is the old lira, not TRY).
+export const TREASURY_NAMES = {
+  AUD: [['Australia-Dollar']], BRL: [['Brazil-Real']], BGN: [['Bulgaria-Lev New'], ['Bulgaria-Lev', '2015-03-31']],
+  CAD: [['Canada-Dollar']], CNY: [['China-Renminbi']], CZK: [['Czech Republic-Koruna']], DKK: [['Denmark-Krone']],
+  EUR: [['Euro Zone-Euro']], HKD: [['Hong Kong-Dollar']], HUF: [['Hungary-Forint']], ISK: [['Iceland-Krona']],
+  INR: [['India-Rupee']], IDR: [['Indonesia-Rupiah']], ILS: [['Israel-Shekel']], JPY: [['Japan-Yen']], KRW: [['Korea-Won']],
+  MYR: [['Malaysia-Ringgit']], MXN: [['Mexico-Peso'], ['Mexico-New Peso']], NZD: [['New Zealand-Dollar']],
+  NOK: [['Norway-Krone']], PHP: [['Philippines-Peso']], PLN: [['Poland-Zloty']],
+  RON: [['Romania-New Leu'], ['Romania-Leu', '2015-03-31']], SGD: [['Singapore-Dollar']], ZAR: [['South Africa-Rand']],
+  SEK: [['Sweden-Krona']], CHF: [['Switzerland-Franc']], THB: [['Thailand-Baht']],
+  TRY: [['Turkey-New Lira'], ['Turkey-Lira', '2015-03-31']], GBP: [['United Kingdom-Pound'], ['United Kingdom-Pound Sterling']],
+};
+
+// The IRS table's country and currency for each code.
+export const IRS_NAMES = {
+  AUD: 'Australia|Dollar', BRL: 'Brazil|Real', CAD: 'Canada|Dollar', CNY: 'China|Yuan', DKK: 'Denmark|Krone',
+  EUR: 'Euro Zone|Euro', HKD: 'Hong Kong|Dollar', HUF: 'Hungary|Forint', ISK: 'Iceland|Krona', INR: 'India|Rupee',
+  ILS: 'Israel|New Shekel', JPY: 'Japan|Yen', MXN: 'Mexico|Peso', NZD: 'New Zealand|Dollar', NOK: 'Norway|Kroner',
+  SGD: 'Singapore|Dollar', ZAR: 'South Africa|Rand', KRW: 'South Korean|Won', SEK: 'Sweden|Krona', CHF: 'Switzerland|Franc',
+  THB: 'Thailand|Baht', TRY: 'Turkey|New Lira', GBP: 'United Kingdom|Pound', RUB: 'Russia|Ruble',
+};
+
+const PLAIN_NUMBER = /^\d+(\.\d+)?$/;
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+// "December 31, 2025"
+export function usDate(iso) {
+  const [y, m, d] = parts(iso);
+  return `${MONTH_NAMES[m - 1]} ${d}, ${y}`;
+}
+
+// The quarter-end after a quarter-end: 2025-12-31 -> 2026-03-31.
+export function nextQuarterEnd(iso) {
+  const [y, m] = parts(iso);
+  const q = Math.floor((m - 1) / 3);
+  return q === 3 ? `${y + 1}-03-31` : [`${y}-06-30`, `${y}-09-30`, `${y}-12-31`][q];
+}
+
+// A minimal CSV reader: commas, double-quoted cells with "" for a quote, CRLF or LF.
+export function parseCsvRows(text) {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let quoted = false;
+  const s = text.replace(/^﻿/, '');
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (quoted) {
+      if (c === '"' && s[i + 1] === '"') { cell += '"'; i++; } else if (c === '"') quoted = false; else cell += c;
+    } else if (c === '"') quoted = true;
+    else if (c === ',') { row.push(cell); cell = ''; } else if (c === '\n' || c === '\r') {
+      if (c === '\r' && s[i + 1] === '\n') i++;
+      row.push(cell); rows.push(row); row = []; cell = '';
+    } else cell += c;
+  }
+  if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+  return rows.filter((r) => !(r.length === 1 && r[0].trim() === ''));
+}
+
+// A CSV cell for parseCsvRows.
+export const csvCell = (v) => (/[",\r\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
+
+function header(rows, expected, what) {
+  const got = (rows[0] ?? []).map((s) => s.trim());
+  if (got.join(',') !== expected.join(',')) throw new FxError('bad_data', `The ${what} file does not have the expected columns.`);
+}
+
+// Units of quote per base from a published rate, where the anchor is one side of the pair.
+function anchored(anchor, base, quote, published) {
+  if (base === quote) return { rate: 1, inverse: 1 };
+  const perAnchor = Number(published);
+  return base === anchor ? crossRate(perAnchor, 1) : crossRate(1, perAnchor);
+}
+
+function checkAnchored(src, base, quote, known) {
+  const { anchor, label } = SOURCES[src];
+  for (const [code, field] of [[base, 'base'], [quote, 'quote']]) {
+    if (code !== anchor && !known.has(code)) {
+      throw new FxError('invalid_input', `${code} is not a currency in the ${label} data. Supported codes: ${[anchor, ...[...known].sort()].join(', ')}.`, field);
+    }
+  }
+  if (base !== anchor && quote !== anchor) {
+    throw new FxError('invalid_input', `The ${label} is published against the ${anchor === 'USD' ? 'US dollar' : 'British pound'}, so base or quote must be ${anchor}.`);
+  }
+}
+
+function notAfterToday(date, today, label) {
+  if (today !== undefined && date > today) throw new FxError('not_available', `${date} is after today, so there is no ${label} for it yet.`);
+}
+
+// ----- Treasury -----
+
+// text (record_date,country_currency_desc,exchange_rate,effective_date) ->
+// { reports: Map(recordDate -> Map(desc -> [{ effective, rate }] by effective date)), recordDates, earliest, latest }
+export function parseTreasuryCsv(text) {
+  if (typeof text !== 'string') throw new FxError('bad_data', 'The Treasury file is empty.');
+  const rows = parseCsvRows(text);
+  header(rows, ['record_date', 'country_currency_desc', 'exchange_rate', 'effective_date'], 'Treasury');
+  const reports = new Map();
+  for (let i = 1; i < rows.length; i++) {
+    const [record, desc, rate, effective] = rows[i].map((s) => s.trim());
+    if (!isRealDate(record) || !isRealDate(effective) || effective < record || !desc || !PLAIN_NUMBER.test(rate)) {
+      throw new FxError('bad_data', `The Treasury file has a bad row on line ${i + 1}.`);
+    }
+    if (!reports.has(record)) reports.set(record, new Map());
+    const r = reports.get(record);
+    if (!r.has(desc)) r.set(desc, []);
+    r.get(desc).push({ effective, rate });
+  }
+  if (reports.size === 0) throw new FxError('bad_data', 'The Treasury file has no rates in it.');
+  for (const r of reports.values()) for (const lines of r.values()) lines.sort((a, b) => (a.effective < b.effective ? -1 : a.effective > b.effective ? 1 : 0));
+  const recordDates = [...reports.keys()].sort();
+  return { reports, recordDates, earliest: recordDates[0], latest: recordDates[recordDates.length - 1] };
+}
+
+const TREASURY_KNOWN = new Set(Object.keys(TREASURY_NAMES));
+
+// -> { rate, inverse, reportDate, effectiveDate, amended, publishedRate, periodStart, periodEnd }
+export function treasuryRateOn(table, { base, quote, date, today }) {
+  checkAnchored('treasury', base, quote, TREASURY_KNOWN);
+  if (!isRealDate(date)) throw new FxError('invalid_input', 'Date must be a real date written like 2026-10-29.', 'date');
+  notAfterToday(date, today, 'US Treasury reporting rate');
+  if (date < table.earliest) {
+    throw new FxError('not_available', `The Treasury data starts with the report as of ${table.earliest}, so it has no rate for ${date}.`);
+  }
+  const next = nextQuarterEnd(table.latest);
+  if (date >= next) {
+    throw new FxError('not_available', `Treasury has not published its report as of ${next} yet. The latest report is as of ${table.latest}.`);
+  }
+  let reportDate = table.earliest;
+  for (const d of table.recordDates) if (d <= date) reportDate = d;
+  const reportEnd = isoOf(dayNumber(nextQuarterEnd(reportDate)) - 1);
+  const report = table.reports.get(reportDate);
+  const foreign = base === 'USD' ? quote : base;
+  let line = null;
+  let following = null;
+  if (foreign === 'USD') line = { effective: reportDate, rate: '1' };
+  else {
+    const names = TREASURY_NAMES[foreign].filter(([, from]) => !from || reportDate >= from).map(([n]) => n);
+    const lines = names.map((n) => report.get(n)).find(Boolean);
+    if (!lines) throw new FxError('not_available', `The Treasury report as of ${reportDate} has no ${foreign} rate.`);
+    for (const l of lines) {
+      if (l.effective <= date) line = l;
+      else if (!following) following = l;
+    }
+    if (!line) throw new FxError('not_available', `The Treasury report as of ${reportDate} has no ${foreign} rate in effect on ${date}.`);
+    if (Number(line.rate) <= 0) throw new FxError('not_available', `The Treasury report as of ${reportDate} lists the ${foreign} rate as ${line.rate}, so it cannot be used.`);
+  }
+  return {
+    ...anchored('USD', base, quote, line.rate),
+    reportDate,
+    effectiveDate: line.effective,
+    amended: line.effective !== reportDate,
+    publishedRate: line.rate,
+    periodStart: line.effective,
+    periodEnd: following ? isoOf(dayNumber(following.effective) - 1) : reportEnd,
+  };
+}
+
+// ----- IRS -----
+
+// The IRS sources file -> { year, publishedRate, rate, inverse }
+export function irsRateOn(data, { base, quote, date, today }) {
+  const known = new Set(Object.keys(IRS_NAMES));
+  checkAnchored('irs', base, quote, known);
+  if (!isRealDate(date)) throw new FxError('invalid_input', 'Date must be a real date written like 2026-10-29.', 'date');
+  notAfterToday(date, today, 'IRS yearly average');
+  const year = date.slice(0, 4);
+  const col = data.columns.indexOf(year);
+  if (col < 0) {
+    const years = data.years.slice().sort((a, b) => a - b);
+    throw new FxError('not_available', `The IRS table has yearly averages for ${years[0]} to ${years[years.length - 1]}, not ${year}.`);
+  }
+  const foreign = base === 'USD' ? quote : base;
+  let published = '1';
+  if (foreign !== 'USD') {
+    const row = data.rows.find(([country, currency]) => `${country}|${currency}` === IRS_NAMES[foreign]);
+    const cell = row ? row[col] : undefined;
+    if (cell === undefined || cell === '') throw new FxError('not_available', `The IRS table has no ${year} rate for ${foreign}.`);
+    if (!PLAIN_NUMBER.test(cell) || Number(cell) <= 0) {
+      throw new FxError('not_available', `The IRS table prints the ${year} ${foreign} rate as "${cell}", which is not a plain number, so it is not used.`);
+    }
+    published = cell;
+  }
+  return { ...anchored('USD', base, quote, published), year: Number(year), publishedRate: published };
+}
+
+// ----- HMRC -----
+
+// text (month,published,country,code,rate,start,end) ->
+// { months: Map('YYYY-MM' -> { published, start, end, rates: Map(code -> rate, or null when the file
+//   gives one code two different rates) }), codes: Set, earliest, latest }
+export function parseHmrcCsv(text) {
+  if (typeof text !== 'string') throw new FxError('bad_data', 'The HMRC file is empty.');
+  const rows = parseCsvRows(text);
+  header(rows, ['month', 'published', 'country', 'code', 'rate', 'start', 'end'], 'HMRC');
+  const months = new Map();
+  const codes = new Set();
+  for (let i = 1; i < rows.length; i++) {
+    const [month, published, , code, rate, start, end] = rows[i].map((s) => s.trim());
+    if (!/^\d{4}-\d{2}$/.test(month) || !isRealDate(start) || !isRealDate(end) || !start.startsWith(month) || !end.startsWith(month)
+      || !/^[A-Z]{3}$/.test(code) || !PLAIN_NUMBER.test(rate) || (published !== '' && !isRealDate(published))) {
+      throw new FxError('bad_data', `The HMRC file has a bad row on line ${i + 1}.`);
+    }
+    if (!months.has(month)) months.set(month, { published: published || null, start, end, rates: new Map() });
+    const m = months.get(month);
+    if (m.start !== start || m.end !== end) throw new FxError('bad_data', `The HMRC file has two periods for ${month}.`);
+    if (!m.rates.has(code)) m.rates.set(code, rate);
+    else if (m.rates.get(code) !== null && Number(m.rates.get(code)) !== Number(rate)) m.rates.set(code, null);
+    codes.add(code);
+  }
+  if (months.size === 0) throw new FxError('bad_data', 'The HMRC file has no rates in it.');
+  const keys = [...months.keys()].sort();
+  return { months, codes, earliest: keys[0], latest: keys[keys.length - 1] };
+}
+
+// -> { month, published, periodStart, periodEnd, publishedRate, rate, inverse }
+export function hmrcRateOn(table, { base, quote, date, today }) {
+  checkAnchored('hmrc', base, quote, new Set([...table.codes].filter((c) => c !== 'GBP')));
+  if (!isRealDate(date)) throw new FxError('invalid_input', 'Date must be a real date written like 2026-10-29.', 'date');
+  notAfterToday(date, today, 'HMRC monthly rate');
+  const key = date.slice(0, 7);
+  const month = table.months.get(key);
+  if (!month) {
+    if (key > table.latest) throw new FxError('not_available', `HMRC has not published its monthly rates for ${key} yet. The latest month is ${table.latest}.`);
+    throw new FxError('not_available', `The HMRC monthly rates held here start in ${table.earliest}, so there is none for ${key}.`);
+  }
+  const foreign = base === 'GBP' ? quote : base;
+  let published = '1';
+  if (foreign !== 'GBP') {
+    if (!month.rates.has(foreign)) throw new FxError('not_available', `HMRC's monthly rates for ${key} have no ${foreign} rate.`);
+    published = month.rates.get(foreign);
+    if (published === null) throw new FxError('not_available', `HMRC's monthly rates for ${key} list more than one ${foreign} rate, so none is used.`);
+    if (Number(published) <= 0) throw new FxError('not_available', `HMRC's monthly rates for ${key} list the ${foreign} rate as ${published}, so it cannot be used.`);
+  }
+  return {
+    ...anchored('GBP', base, quote, published),
+    month: key,
+    published: month.published,
+    periodStart: month.start,
+    periodEnd: month.end,
+    publishedRate: published,
+  };
+}

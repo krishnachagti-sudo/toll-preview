@@ -61,6 +61,10 @@ For each business use: the miles, the date, the business destination and the bus
 
 No. Pub 463 says: "If you maintain a log on a weekly basis that accounts for use during the week, the log is considered a timely kept record."
 
+### Does a log I rebuild later count?
+
+Pub 463 asks for records made at or near the time: "A timely kept record has more value than a statement prepared later when there is generally a lack of accurate recall." If your records are incomplete, it says you must prove each missing element with your own detailed statement and other supporting evidence. A log made in the calculator shows the trips you entered and lists the gaps it can see; it does not make a rebuilt log timely.
+
 ### Can I log only part of the year?
 
 Pub 463 allows sampling: "You can keep an adequate record for parts of a tax year and use that record to prove the amount of business or investment use for the entire year." You must show by other evidence that the sampled periods are representative of the year.

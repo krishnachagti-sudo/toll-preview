@@ -332,6 +332,21 @@ function download(name, type, data) {
 }
 const fromBase64 = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
 
+// The sample worksheet near the price: the tool's own "worksheet" example (a made-up driver and
+// made-up trips), so what a paid run gives can be seen before paying.
+function sampleLinks(tool) {
+  const box = $('pd-sample-links');
+  const ex = tool.examples.find((x) => x.input.op === 'worksheet');
+  if (!box || !ex) return;
+  const f = ex.output.files;
+  const link = (name, type, data, text) => h('a', { href: URL.createObjectURL(new Blob([data], { type })), download: name, class: 'btn btn-quiet btn-small' }, text);
+  box.textContent = '';
+  box.append(
+    link(f.pdf.name, 'application/pdf', fromBase64(f.pdf.base64), 'Sample worksheet (PDF)'), ' ',
+    link(f.csv.name, 'text/csv', f.csv.text, 'Sample day-by-day CSV'),
+  );
+}
+
 function showError(e) {
   const box = $('pd-error');
   box.textContent = e.message;
@@ -453,6 +468,7 @@ async function start() {
     return;
   }
   const rates = tool.examples.find((x) => x.input.op === 'rates').output;
+  sampleLinks(tool);
   engine = makeEngine(rates);
   rateTable(rates.periods);
   for (let y = engine.maxYear; y >= MIN_YEAR; y--) $('pd-year').appendChild(h('option', { value: String(y) }, y === engine.maxYear ? `${y} (January to September)` : String(y)));

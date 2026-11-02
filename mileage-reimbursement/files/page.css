@@ -11,6 +11,12 @@
 .mr-intro { padding-block: 40px 8px; }
 .mr-intro h1 { margin-bottom: 0.25em; }
 .mr-price { color: var(--ink-soft); max-width: 46rem; margin: 0; font-variant-numeric: tabular-nums; }
+.mr-sample { max-width: 46rem; margin: 8px 0 0; }
+.mr-format { margin-top: 6px; color: var(--ink-soft); }
+.mr-format summary { cursor: pointer; }
+.mr-format p { margin: 6px 0 0; max-width: 40rem; }
+.mr-later { margin: 24px 0 8px; max-width: 46rem; }
+.mr-later p { color: var(--ink-soft); }
 
 .mr-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
 .mr-desk > * { min-width: 0; }

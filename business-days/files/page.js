@@ -9,6 +9,7 @@ const T = window.Toll;
 const h = T.h;
 const SLUG = 'business-days';
 const MAX_DRAWN_DAYS = 100;
+const MAX_DAYS_OFF = 400;
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -29,16 +30,19 @@ const signed = (n) => (n < 0 ? `−${Math.abs(n)}` : String(n));
 
 // ---------- form ----------
 
-const FIELD_ERRORS = { start: 'bd-start-err', end: 'bd-end-err', days: 'bd-days-err' };
+const FIELD_ERRORS = { start: 'bd-start-err', end: 'bd-end-err', days: 'bd-days-err', daysOff: 'bd-off-err' };
 
 function clearErrors() {
   $('bd-error').textContent = '';
   for (const id of Object.values(FIELD_ERRORS)) $(id).textContent = '';
 }
 
+// The server names a bad day off by its place in the list (daysOff.3); it shows under the box.
+const fieldOf = (k) => k.split('.')[0];
+
 function showFieldErrors(fields) {
-  const known = Object.keys(fields).filter((k) => FIELD_ERRORS[k]);
-  for (const k of known) $(FIELD_ERRORS[k]).textContent = fields[k];
+  const known = Object.keys(fields).filter((k) => FIELD_ERRORS[fieldOf(k)]);
+  for (const k of known) $(FIELD_ERRORS[fieldOf(k)]).textContent = fields[k];
   return known.length === Object.keys(fields).length;
 }
 
@@ -50,6 +54,18 @@ function checkDate(label, value) {
   return null;
 }
 
+// The days off box: dates one per line or comma separated, in any order and repeated at will.
+// { dates } sorted and once each, or { error } naming the first entry it could not read.
+function readDaysOff(raw) {
+  const dates = new Set();
+  for (const item of raw.split(/[\n,]+/).map((x) => x.trim()).filter(Boolean)) {
+    if (!isRealDate(item)) return { error: `Could not read "${item.slice(0, 40)}". Write each day off like 2026-07-06, one per line or comma separated.` };
+    dates.add(item);
+  }
+  if (dates.size > MAX_DAYS_OFF) return { error: `At most ${MAX_DAYS_OFF} days off.` };
+  return { dates: [...dates].sort() };
+}
+
 // { input } for a good form, or { errors } for a bad one, so a typo never spends a run.
 function readForm() {
   const op = pick('op');
@@ -58,18 +74,22 @@ function readForm() {
   const errors = {};
   const sErr = checkDate('Start', start);
   if (sErr) errors.start = sErr;
+  const off = readDaysOff($('bd-off').value);
+  if (off.error) errors.daysOff = off.error;
+  // Only sent when there are some, so a run without them is the same call as before.
+  const own = off.dates?.length ? { daysOff: off.dates } : {};
   if (op === 'between') {
     const end = $('bd-end').value.trim();
     const eErr = checkDate('End', end);
     if (eErr) errors.end = eErr;
     if (Object.keys(errors).length) return { errors };
-    return { input: { op, region, start, end } };
+    return { input: { op, region, start, end, ...own } };
   }
   const raw = $('bd-days').value.trim();
   const days = Number(raw);
   if (raw === '' || !Number.isInteger(days) || days < -3650 || days > 3650) errors.days = 'Days must be a whole number from -3650 to 3650.';
   if (Object.keys(errors).length) return { errors };
-  return { input: { op, region, start, days } };
+  return { input: { op, region, start, days, ...own } };
 }
 
 function syncMode() {
@@ -104,11 +124,18 @@ function describe(input, result) {
 
 const spanOf = (view) => dayNumber(view.hi) - dayNumber(view.lo) + 1;
 
+// calendarDays with your own days off marked: own is true on a weekday that is not already a
+// public holiday, the same rule the count uses.
+function daysWithOwn(input, from, to) {
+  const own = new Set(input.daysOff ?? []);
+  return calendarDays(input.region, from, to).map((d) => ({ ...d, own: own.has(d.date) && !d.weekend && !d.holiday }));
+}
+
 function build(input, result) {
   const view = describe(input, result);
   // A range too long to draw has no day list: the server's holiday list is all that is shown.
-  const days = spanOf(view) > MAX_DRAWN_DAYS ? [] : calendarDays(input.region, view.lo, view.hi);
-  const isBusiness = (d) => !d.weekend && !d.holiday;
+  const days = spanOf(view) > MAX_DRAWN_DAYS ? [] : daysWithOwn(input, view.lo, view.hi);
+  const isBusiness = (d) => !d.weekend && !d.holiday && !d.own;
   // Counted days, numbered from the start day outward.
   let counted = [];
   if (view.countFrom === 'after') counted = days.filter((d) => d.date > view.lo && isBusiness(d));
@@ -128,6 +155,7 @@ function dayCell(d, { view, ordinals }, info) {
   if (!inRange) classes.push('out');
   if (d.weekend) classes.push('we');
   if (d.holiday) { classes.push('hol'); said.push(`holiday, ${d.holiday}`); }
+  if (d.own) { classes.push('own'); said.push('your day off'); }
   if (ord !== undefined) { classes.push('counted'); said.push(`business day ${ord}`); }
   let tag = null;
   if (d.date === view.start) { classes.push('start'); tag = 'Start'; said.push('start day'); }
@@ -143,10 +171,10 @@ function dayCell(d, { view, ordinals }, info) {
   ]);
 }
 
-function monthCard(region, year, month, built) {
+function monthCard(input, year, month, built) {
   const first = `${String(year).padStart(4, '0')}-${String(month).padStart(2, '0')}-01`;
   const last = `${first.slice(0, 8)}${String(monthLength(year, month)).padStart(2, '0')}`;
-  const days = calendarDays(region, first, last);
+  const days = daysWithOwn(input, first, last);
   const lead = (weekdayOf(first) + 6) % 7; // weeks start on Monday
   const cells = [];
   HEADINGS.forEach((name, i) => cells.push(h('div', { class: `bd-wd${i > 4 ? ' we' : ''}`, 'aria-hidden': 'true' }, name)));
@@ -168,7 +196,7 @@ function calendar(input, built) {
   let [y, m] = part(view.lo);
   const [ey, em] = part(view.hi);
   while (y < ey || (y === ey && m <= em)) {
-    months.push(monthCard(input.region, y, m, built));
+    months.push(monthCard(input, y, m, built));
     m += 1;
     if (m > 12) { m = 1; y += 1; }
   }
@@ -176,13 +204,15 @@ function calendar(input, built) {
     h('li', {}, [h('span', { class: 'bd-key counted' }), 'Counted business day']),
     h('li', {}, [h('span', { class: 'bd-key we' }), 'Weekend']),
     h('li', {}, [h('span', { class: 'bd-key hol' }), 'Holiday']),
+    input.daysOff?.length ? h('li', {}, [h('span', { class: 'bd-key own' }), 'Your day off']) : null,
     h('li', {}, [h('span', { class: 'bd-key start' }), 'Start day']),
     input.op === 'add' && input.days !== 0 ? h('li', {}, [h('span', { class: 'bd-key land' }), 'Result']) : null,
   ]);
   return h('div', {}, [h('div', { class: 'bd-cal' }, months), legend]);
 }
 
-function holidayList(input, skipped, built) {
+function holidayList(input, result, built) {
+  const skipped = result.holidaysSkipped;
   const nodes = [];
   if (skipped.length) {
     nodes.push(h('p', { class: 'bd-heading' }, `Holidays skipped (${skipped.length})`));
@@ -193,6 +223,18 @@ function holidayList(input, skipped, built) {
     ]))));
   } else {
     nodes.push(h('p', { class: 'bd-none' }, 'No holidays fell on a weekday in this range.'));
+  }
+  // Your own days off, listed the same way, when the run had any.
+  const own = result.daysOffSkipped ?? [];
+  if (own.length) {
+    nodes.push(h('p', { class: 'bd-heading' }, `Your days off skipped (${own.length})`));
+    nodes.push(h('ul', { class: 'bd-skipped' }, own.map((x) => h('li', {}, [
+      h('span', { class: 'bd-dot own', 'aria-hidden': 'true' }),
+      h('span', { class: 'when' }, shortDate(x.date)),
+      h('span', {}, x.name),
+    ]))));
+  } else if (input.daysOff?.length) {
+    nodes.push(h('p', { class: 'bd-none' }, 'None of your days off fell on a weekday in this range that was not already a holiday.'));
   }
   // Holidays inside the drawn span that the count did not use (a holiday start day).
   const used = new Set(skipped.map((x) => `${x.date}|${x.name}`));
@@ -240,7 +282,7 @@ function render(input, result, { kind, note }) {
   out.appendChild(h('div', {}, [
     kind === 'example' ? h('p', { class: 'bd-sheet-label' }, 'Worked example') : null,
     ...headline(input, result),
-    ...holidayList(input, result.holidaysSkipped, built),
+    ...holidayList(input, result, built),
     calendar(input, built),
     note ? h('p', { class: 'bd-cost' }, note) : null,
   ]));

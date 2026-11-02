@@ -261,47 +261,78 @@ function holidaysOn(region, day) {
 
 // ---------- counting and adding ----------
 
+// Your own days off (company closures, state or local holidays), as a Set of 'YYYY-MM-DD', or
+// null when none were given. Only the dates are compared, so a day off outside 1971-2100 is
+// simply never met.
+export const OWN_DAY_OFF = 'Your day off';
+function ownSet(daysOff) {
+  if (daysOff === undefined || daysOff === null) return null;
+  if (!Array.isArray(daysOff) || !daysOff.every(isRealDate)) throw new TypeError('Days off must be a list of dates like 2026-07-01.');
+  return new Set(daysOff);
+}
+
+// What one weekday is: a public holiday (listed in holidaysSkipped), one of your own days off
+// that is not also a public holiday (listed in daysOffSkipped), or null for a business day.
+function offOn(region, d, own) {
+  const hs = holidaysOn(region, d);
+  if (hs.length) return { holidays: hs };
+  const iso = isoOf(d);
+  return own && own.has(iso) ? { own: { date: iso, name: OWN_DAY_OFF } } : null;
+}
+
+// The answer, with daysOffSkipped only when days off were given, so a call without them gets
+// exactly the answer it always did.
+const withOwn = (result, own, skipped) => (own ? { ...result, daysOffSkipped: skipped } : result);
+
 // Business days d with start < d <= end. Negative when end is before start: the count over
 // (end, start], negated. holidaysSkipped: holidays that fall on weekdays inside the counted range.
-export function between(region, start, end) {
+// daysOff (optional): your own dates to skip too; each one that falls on a weekday in the range
+// and is not already a holiday is listed in daysOffSkipped.
+export function between(region, start, end, daysOff) {
   checkRegion(region);
+  const own = ownSet(daysOff);
   const s = dayNumber(start);
   const e = dayNumber(end);
   if (e < s) {
-    const back = between(region, end, start);
-    return { businessDays: back.businessDays === 0 ? 0 : -back.businessDays, holidaysSkipped: back.holidaysSkipped };
+    const back = between(region, end, start, daysOff);
+    return { ...back, businessDays: back.businessDays === 0 ? 0 : -back.businessDays };
   }
   let count = 0;
   const skipped = [];
+  const ownSkipped = [];
   for (let d = s + 1; d <= e; d++) {
     if (isWeekend(d)) continue;
-    const hs = holidaysOn(region, d);
-    if (hs.length) skipped.push(...hs);
-    else count += 1;
+    const off = offOn(region, d, own);
+    if (!off) count += 1;
+    else if (off.holidays) skipped.push(...off.holidays);
+    else ownSkipped.push(off.own);
   }
-  return { businessDays: count, holidaysSkipped: skipped };
+  return withOwn({ businessDays: count, holidaysSkipped: skipped }, own, ownSkipped);
 }
 
 // The date `days` business days after (or before, when negative) start. Zero returns start as given.
-// holidaysSkipped: weekday holidays passed on the way, in date order.
-export function addBusinessDays(region, start, days) {
+// holidaysSkipped: weekday holidays passed on the way, in date order. daysOff as in between().
+export function addBusinessDays(region, start, days, daysOff) {
   checkRegion(region);
   if (!Number.isInteger(days)) throw new TypeError('Days must be a whole number.');
+  const own = ownSet(daysOff);
   let d = dayNumber(start);
-  if (days === 0) return { date: start, holidaysSkipped: [] };
+  if (days === 0) return withOwn({ date: start, holidaysSkipped: [] }, own, []);
   const step = days > 0 ? 1 : -1;
   let left = Math.abs(days);
   const skipped = [];
+  const ownSkipped = [];
   while (left > 0) {
     d += step;
     if (d < MIN_DAY || d > MAX_DAY) throw new RangeError(RANGE_MESSAGE);
     if (isWeekend(d)) continue;
-    const hs = holidaysOn(region, d);
-    if (hs.length) skipped.push(...hs);
-    else left -= 1;
+    const off = offOn(region, d, own);
+    if (!off) left -= 1;
+    else if (off.holidays) skipped.push(...off.holidays);
+    else ownSkipped.push(off.own);
   }
-  if (step < 0) skipped.reverse();
-  return { date: isoOf(d), holidaysSkipped: skipped };
+  if (step < 0) { skipped.reverse(); ownSkipped.reverse(); }
+  return withOwn({ date: isoOf(d), holidaysSkipped: skipped }, own, ownSkipped);
 }
 
 // Every day from `from` to `to` inclusive, for drawing a calendar.

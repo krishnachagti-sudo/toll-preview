@@ -81,6 +81,7 @@
 <tr><th scope="row"><code>start</code></th><td>A date written like 2026-07-01, from 1971 to 2100. Never counted itself.</td></tr>
 <tr><th scope="row"><code>end</code></th><td><code>between</code> only: the last date, counted. Before the start, the count is negative.</td></tr>
 <tr><th scope="row"><code>days</code></th><td><code>add</code> only: a whole number from -3650 to 3650; negative goes back</td></tr>
+<tr><th scope="row"><code>daysOff</code></th><td>Optional: up to 400 of your own days off (company closures, state or local holidays), as dates like 2026-07-06. Skipped like holidays and listed in <code>daysOffSkipped</code></td></tr>
 </tbody></table></div>
 <pre><code class="language-shell">curl -X POST 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days' \
   -H &quot;Authorization: Bearer $API_KEY&quot; \
@@ -107,7 +108,7 @@
   },
   &quot;dataVersion&quot;: &quot;holiday-rules-2026.10&quot;
 }</code></pre>
-<p>Amounts are whole micro-units (1,000,000 to the dollar or rupee); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>{ date, holidaysSkipped }</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day.</p>
+<p>Amounts are whole micro-units (1,000,000 to the dollar or rupee); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>{ date, holidaysSkipped }</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With <code>daysOff</code> the result also has <code>daysOffSkipped</code>: each of your days off that fell on a weekday in the range and was not already a holiday, as <code>{ date, name }</code>.</p>
 <p>Invalid input is a 400 <code>invalid_input</code> with the field that was wrong, and is never charged. Retries are safe with an <code>Idempotency-Key</code> header. The <a href="/toll-preview/docs">docs</a> cover errors, limits and idempotency for every tool.</p>
 </section>
 <section>
@@ -127,7 +128,7 @@
 </section>
 <section>
 <h2 id="coverage">What it knows</h2>
-<p>US federal holidays as set by <a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103</a> on their observed days, and England and Wales bank holidays with substitute days and one-off royal days, from 1971 to 2100. Weekends are Saturday and Sunday. It does not know state, company or Scottish holidays.</p>
+<p>US federal holidays as set by <a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103</a> on their observed days, and England and Wales bank holidays with substitute days and one-off royal days, from 1971 to 2100. Weekends are Saturday and Sunday. It does not know state, company or Scottish holidays; send those as <code>daysOff</code>.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
@@ -171,6 +172,7 @@
           <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
           <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
           <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
         </ul>
       </nav>
       <nav aria-label="Developers">

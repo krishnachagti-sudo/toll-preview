@@ -118,7 +118,11 @@
 .pl-switch label:hover{color:var(--text)}
 .pl-switch input:checked + label{color:#fff;background:rgba(255,255,255,.09)}
 .pl-switch input:focus-visible + label{outline:2px solid var(--text);outline-offset:2px}
-.plist:has(#pl-usd:checked) .pl-inr,.plist:has(#pl-inr:checked) .pl-usd{display:none}
+.plist .pl-inr,.cur-inr{display:none}
+body:has(#cur-inr:checked) .pl-usd,body:has(#cur-inr:checked) .cur-usd{display:none}
+body:has(#cur-inr:checked) .pl-inr{display:grid}
+body:has(#cur-inr:checked) .cur-inr{display:inline}
+.cur-switch{border:0;padding:0;margin-top:20px;width:max-content;max-width:100%}
 .pl-tool{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:8px 28px;padding:20px 24px;border-top:1px solid var(--line)}
 .pl-switch + .pl-tool{border-top:0}
 @media (min-width:901px){.price-grid .terms{position:sticky;top:100px}}
@@ -177,6 +181,7 @@
 .offer-price .per{font-size:16px;font-weight:400;color:var(--muted)}
 .offer-term{margin:0;color:var(--text-2);font-size:14px}
 .offer-who{margin:0;color:var(--text-2)}
+.offer-fine{margin:0;font-size:13px;color:var(--muted)}
 .offer-list{margin:6px 0 10px;padding:0;list-style:none;display:grid;gap:8px;color:var(--text-2);font-size:15px}
 .offer-list li{padding-left:22px;position:relative}
 .offer-list li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--warm,#ffb03f)}
@@ -190,3 +195,4 @@
   .offers,.offers.two,.credit-grid,.team-card{grid-template-columns:1fr}
   .team-card .btn{justify-self:start}
 }
+.who-runs{margin:22px 0 0;font-size:14px;color:var(--muted);line-height:1.8}

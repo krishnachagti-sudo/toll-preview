@@ -62,15 +62,19 @@ function syncMode() {
 const FIELD_ERRORS = {
   deliverBy: 'dd-by-err', orderAt: 'dd-order-err', cutoff: 'dd-cutoff-err', shipDays: 'dd-ship-err', processingDays: 'dd-processing-err',
   processingDaysMax: 'dd-processing-err', closures: 'dd-closures-err', transitDays: 'dd-transit-err', transitDaysMax: 'dd-transit-err',
+  carrierClosures: 'dd-carrier-closures-err',
 };
 
 function clearErrors() {
   $('dd-error').textContent = '';
   for (const id of new Set(Object.values(FIELD_ERRORS))) $(id).textContent = '';
 }
+// The server names a bad list entry by its place (carrierClosures.2); it shows under the list's box.
+const fieldOf = (k) => k.split('.')[0];
+
 function showFieldErrors(fields) {
-  const known = Object.keys(fields).filter((k) => FIELD_ERRORS[k]);
-  for (const k of known) $(FIELD_ERRORS[k]).textContent = fields[k];
+  const known = Object.keys(fields).filter((k) => FIELD_ERRORS[fieldOf(k)]);
+  for (const k of known) $(FIELD_ERRORS[fieldOf(k)]).textContent = fields[k];
   return known.length === Object.keys(fields).length;
 }
 
@@ -78,6 +82,20 @@ const inYears = (iso) => { const y = Number(iso.slice(0, 4)); return y >= MIN_YE
 const CLOSURE_RE = /^(\d{4}-\d{2}-\d{2})(?:\s*(?:to|-|–)\s*(\d{4}-\d{2}-\d{2}))?\s*(.*)$/;
 const wholeOrBlank = (raw) => (raw.trim() === '' ? undefined : Number(raw));
 const isDays = (n) => Number.isInteger(n) && n >= 0 && n <= 60;
+const MAX_CARRIER_CLOSURES = 60;
+
+// The carrier closures box: dates one per line or comma separated, as pasted from a carrier's
+// holiday page. { dates } sorted and once each, or { error } naming the first entry it could not read.
+function readCarrierClosures(raw) {
+  const dates = new Set();
+  for (const item of raw.split(/[\n,]+/).map((x) => x.trim()).filter(Boolean)) {
+    if (!businessDays.isRealDate(item)) return { error: `Could not read "${item.slice(0, 40)}". Write each date like 2026-12-26, one per line or comma separated.` };
+    if (!inYears(item)) return { error: YEAR_MESSAGE };
+    dates.add(item);
+  }
+  if (dates.size > MAX_CARRIER_CLOSURES) return { error: `At most ${MAX_CARRIER_CLOSURES} carrier closures.` };
+  return { dates: [...dates].sort() };
+}
 
 // { input } for a good form, or { errors } for a bad one, so a typo never spends a run.
 function readForm() {
@@ -108,6 +126,9 @@ function readForm() {
     input.deliveryDays = checkedDays('deliver');
     if (!input.deliveryDays.length) errors.transitDays = 'Pick at least one day the carrier delivers.';
     input.carrierHolidays = $('dd-carrier-fed').checked ? 'federal' : 'none';
+    const cc = readCarrierClosures($('dd-carrier-closures').value);
+    if (cc.error) errors.carrierClosures = cc.error;
+    else if (cc.dates.length) input.carrierClosures = cc.dates;
   }
   const t = wholeOrBlank($('dd-transit').value);
   const tMax = wholeOrBlank($('dd-transit-max').value);
