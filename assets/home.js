@@ -277,6 +277,20 @@
     [].forEach.call(els, function (el) { io.observe(el); });
   }
 
+  // The currency switch on brand pages: each [data-inr] shows its rupee amount while it is ticked.
+  function currencySwitch() {
+    var box = document.querySelector('[data-cur-switch]');
+    if (!box) return;
+    function apply() {
+      each('[data-inr]', function (el) {
+        if (!el.hasAttribute('data-usd')) el.setAttribute('data-usd', el.textContent);
+        el.textContent = el.getAttribute(box.checked ? 'data-inr' : 'data-usd');
+      });
+    }
+    box.addEventListener('change', apply);
+    if (box.checked) apply();
+  }
+
   function boot() {
     var Toll = window.Toll;
     var base = Toll ? Toll.base : '';
@@ -287,6 +301,7 @@
     requestForm();
     spotlight();
     reveal();
+    currencySwitch();
     if (!Toll) return;
     Toll.api('/api/v1/tools').then(function (json) { fillFromTools(json.tools || []); }, function () { /* keep the printed values */ });
     Toll.me().then(function (account) {

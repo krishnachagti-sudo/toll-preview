@@ -118,11 +118,11 @@
 .pl-switch label:hover{color:var(--text)}
 .pl-switch input:checked + label{color:#fff;background:rgba(255,255,255,.09)}
 .pl-switch input:focus-visible + label{outline:2px solid var(--text);outline-offset:2px}
-.plist .pl-inr,.cur-inr{display:none}
-body:has(#cur-inr:checked) .pl-usd,body:has(#cur-inr:checked) .cur-usd{display:none}
+.plist .pl-inr{display:none}
+body:has(#cur-inr:checked) .pl-usd{display:none}
 body:has(#cur-inr:checked) .pl-inr{display:grid}
-body:has(#cur-inr:checked) .cur-inr{display:inline}
-.cur-switch{border:0;padding:0;margin-top:20px;width:max-content;max-width:100%}
+.cur-switch{display:inline-flex;gap:10px;align-items:center;margin-top:18px;font-size:14px;color:var(--muted);cursor:pointer}
+.cur-switch input{width:16px;height:16px;accent-color:var(--text)}
 .pl-tool{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:8px 28px;padding:20px 24px;border-top:1px solid var(--line)}
 .pl-switch + .pl-tool{border-top:0}
 @media (min-width:901px){.price-grid .terms{position:sticky;top:100px}}

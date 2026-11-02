@@ -104,7 +104,7 @@
           <p class="hint" id="pd-trips-hint">One trip per line: the day you left, "to", the day you got back, then "Canada" (or OCONUS) for trips outside the lower 48, then any load number. The first and last days count as departure and return days.</p>
           <details class="pd-format">
             <summary>What this box reads, and ELD exports</summary>
-            <p>Dates must be written year first, like <code>2025-03-02 to 2025-03-13 Load 1180</code>; a one-day trip can be a single date. There is no file upload, and an ELD or load-board export is not read as it is. Copy each trip's leave and return dates into this format. In a spreadsheet with the leave date in column A and the return date in column B, <code>=TEXT(A2,"yyyy-mm-dd")&amp;" to "&amp;TEXT(B2,"yyyy-mm-dd")</code> writes the line for you; paste the column here.</p>
+            <p>Dates must be written year first, like <code>2025-03-02 to 2025-03-13 Load 1180</code>; a one-day trip can be a single date. From an ELD or load-board export, copy each trip's leave and return dates into this format. In a spreadsheet with the leave date in column A and the return date in column B, <code>=TEXT(A2,"yyyy-mm-dd")&amp;" to "&amp;TEXT(B2,"yyyy-mm-dd")</code> writes the line for you; paste the column here.</p>
           </details>
           <p class="field-error" id="pd-trips-err"></p>
         </div>
