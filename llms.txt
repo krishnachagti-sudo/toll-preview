@@ -63,6 +63,10 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 - [MCP for AI agents](https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/): Connect an AI agent over MCP: the server address, authentication, the tools it lists, quote\_price and example calls.
 - [Why exact](https://krishnachagti-sudo.github.io/toll-preview/why-exact/): Exact answers versus AI guesses, with worked examples from the tools: observed holidays, substitute days, weekend exchange rates and holiday delivery dates.
 - [About](https://krishnachagti-sudo.github.io/toll-preview/about/): Who makes the tools and how they work: a small Conyso team, exact tools for specific jobs, no AI in the answers.
+- [For freelancers](https://krishnachagti-sudo.github.io/toll-preview/for/freelancers/): For freelancers and the self-employed: tax set-aside per payment, an IRS mileage log, exchange rates on a date and business-day due dates.
+- [For truckers](https://krishnachagti-sudo.github.io/toll-preview/for/truckers/): For owner-operator truckers: the year's per diem worksheet at the IRS transportation rate, and tax set-aside per settlement.
+- [For bookkeepers](https://krishnachagti-sudo.github.io/toll-preview/for/bookkeepers/): For bookkeepers and tax preparers: 1099 thresholds with an IRIS file, payroll mileage at the IRS rate by date, per diem worksheets, set-aside and exchange rates.
+- [For online sellers](https://krishnachagti-sudo.github.io/toll-preview/for/online-sellers/): For online sellers: delivery and holiday order-by dates, business-day handling times, photos under an upload size and exchange rates on a date.
 - [Docs](https://krishnachagti-sudo.github.io/toll-preview/docs): How to call the tools from code: REST and MCP, authentication, errors, idempotency and limits.
 - [Privacy](https://krishnachagti-sudo.github.io/toll-preview/privacy): What Toll stores about visitors and accounts, in plain words.
 - [Terms of service](https://krishnachagti-sudo.github.io/toll-preview/terms/): The terms for using Toll: accounts and keys, the prepaid balance, prices, refunds, acceptable use and liability.

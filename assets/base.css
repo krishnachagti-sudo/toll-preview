@@ -272,7 +272,7 @@ html.nav-locked { overflow: hidden; }
 
 /* ---------- footer ---------- */
 .site-foot { border-top: 1px solid var(--line); margin-top: 120px; padding: 64px 0 40px; font-size: 14px; background: #060708; }
-.foot { display: grid; grid-template-columns: minmax(0, 4fr) repeat(4, minmax(0, 2fr)); gap: 32px; }
+.foot { display: grid; grid-template-columns: minmax(0, 3fr) repeat(5, minmax(0, 2fr)); gap: 28px; }
 .foot-h { font-size: 12.5px; font-weight: 500; color: var(--text); margin: 0 0 14px; }
 .foot ul { list-style: none; margin: 0; padding: 0; }
 .foot li { margin: 0 0 10px; }
