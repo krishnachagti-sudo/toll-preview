@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How an IFTA return is calculated, line by line: Toll</title>
+<title>How an IFTA return is calculated, line by line: Endwise</title>
 <meta name="description" content="Fleet MPG, taxable gallons, tax-paid credit and surcharges, worked through a 3rd quarter 2026 diesel example with the rounding Oregon DOT Form 9740 prints.">
 <meta name="theme-color" content="#08090a">
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
@@ -13,12 +13,12 @@
 <link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/">
 <link rel="alternate" type="text/markdown" href="/toll-preview/ifta-calculator/how-ifta-is-calculated.md">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Toll">
+<meta property="og:site_name" content="Endwise">
 <meta property="og:title" content="How an IFTA return is calculated, line by line">
 <meta property="og:description" content="Fleet MPG, taxable gallons, tax-paid credit and surcharges, worked through a 3rd quarter 2026 diesel example with the rounding Oregon DOT Form 9740 prints.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/","url":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/","name":"How an IFTA return is calculated, line by line","description":"Fleet MPG, taxable gallons, tax-paid credit and surcharges, worked through a 3rd quarter 2026 diesel example with the rounding Oregon DOT Form 9740 prints.","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"IFTA quarterly return calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/"},{"@type":"ListItem","position":3,"name":"How an IFTA return is worked out","item":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/"}]},{"@type":"HowTo","name":"How an IFTA return is calculated, line by line","description":"Fleet MPG, taxable gallons, tax-paid credit and surcharges, worked through a 3rd quarter 2026 diesel example with the rounding Oregon DOT Form 9740 prints.","step":[{"@type":"HowToStep","position":1,"name":"Total the miles","text":"Add every mile each qualified vehicle drove, in IFTA jurisdictions and outside them (Alaska, Hawaii, D.C., the territories, Mexico), rounded to whole miles."},{"@type":"HowToStep","position":2,"name":"Total the fuel","text":"Add every gallon put in the propulsion tanks, wherever it was bought and whether tax was paid or not. Not diesel exhaust fluid, not reefer fuel."},{"@type":"HowToStep","position":3,"name":"Fleet MPG","text":"Miles / gallons, carried to three decimals and rounded to two."},{"@type":"HowToStep","position":4,"name":"Taxable gallons","text":"Each jurisdiction's taxable miles / MPG, rounded to a whole number."},{"@type":"HowToStep","position":5,"name":"Net and tax","text":"Taxable gallons less tax-paid gallons bought there, times the quarter's rate. Negative is a credit."},{"@type":"HowToStep","position":6,"name":"Surcharges","text":"Where the matrix prints a surcharge row for the fuel, taxable gallons times that rate, with no credit."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do I owe Kentucky even though I fueled there?","acceptedAnswer":{"@type":"Answer","text":"The surcharge has no tax-paid credit: in the example, 60 taxable gallons x $0.1050 = $6.30, whatever was bought in Kentucky."}},{"@type":"Question","name":"Why is a state a credit?","acceptedAnswer":{"@type":"Answer","text":"You bought more tax-paid fuel there than you burned there: in Illinois the example truck burned 41 gallons on 260 miles but bought 160, so -119 gallons x $0.7380 = -$87.82."}}]}]}</script>
-<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":"ifta-calculator"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/","url":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/","name":"How an IFTA return is calculated, line by line","description":"Fleet MPG, taxable gallons, tax-paid credit and surcharges, worked through a 3rd quarter 2026 diesel example with the rounding Oregon DOT Form 9740 prints.","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"IFTA quarterly return calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/"},{"@type":"ListItem","position":3,"name":"How an IFTA return is worked out","item":"https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/how-ifta-is-calculated/"}]},{"@type":"HowTo","name":"How an IFTA return is calculated, line by line","description":"Fleet MPG, taxable gallons, tax-paid credit and surcharges, worked through a 3rd quarter 2026 diesel example with the rounding Oregon DOT Form 9740 prints.","step":[{"@type":"HowToStep","position":1,"name":"Total the miles","text":"Add every mile each qualified vehicle drove, in IFTA jurisdictions and outside them (Alaska, Hawaii, D.C., the territories, Mexico), rounded to whole miles."},{"@type":"HowToStep","position":2,"name":"Total the fuel","text":"Add every gallon put in the propulsion tanks, wherever it was bought and whether tax was paid or not. Not diesel exhaust fluid, not reefer fuel."},{"@type":"HowToStep","position":3,"name":"Fleet MPG","text":"Miles / gallons, carried to three decimals and rounded to two."},{"@type":"HowToStep","position":4,"name":"Taxable gallons","text":"Each jurisdiction's taxable miles / MPG, rounded to a whole number."},{"@type":"HowToStep","position":5,"name":"Net and tax","text":"Taxable gallons less tax-paid gallons bought there, times the quarter's rate. Negative is a credit."},{"@type":"HowToStep","position":6,"name":"Surcharges","text":"Where the matrix prints a surcharge row for the fuel, taxable gallons times that rate, with no credit."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do I owe Kentucky even though I fueled there?","acceptedAnswer":{"@type":"Answer","text":"The surcharge has no tax-paid credit: in the example, 60 taxable gallons x $0.1050 = $6.30, whatever was bought in Kentucky."}},{"@type":"Question","name":"Why is a state a credit?","acceptedAnswer":{"@type":"Answer","text":"You bought more tax-paid fuel there than you burned there: in Illinois the example truck burned 41 gallons on 260 miles but bought 160, so -119 gallons x $0.7380 = -$87.82."}}]}]}</script>
+<script>window.TOLL={"base":"/toll-preview","brand":"Endwise","tool":"ifta-calculator"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
 <script src="/toll-preview/assets/nav.js" defer></script>
@@ -29,7 +29,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap nav-row">
-    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Toll</span></a>
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
     <nav class="head-nav" aria-label="Main">
       <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
       <a href="/toll-preview/pricing/">Pricing</a>
@@ -65,7 +65,7 @@
 </header>
 
 <main id="main" class="wrap cp">
-<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Toll</a></li><li><a href="/toll-preview/ifta-calculator/">IFTA quarterly return calculator</a></li><li aria-current="page">How an IFTA return is worked out</li></ol></nav>
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/ifta-calculator/">IFTA quarterly return calculator</a></li><li aria-current="page">How an IFTA return is worked out</li></ol></nav>
 <header class="cp-head" style="--hue: var(--h-money)">
 <p class="eyebrow">Guide</p>
 <h1>How an IFTA return is worked out</h1>
@@ -112,7 +112,7 @@
   <div class="wrap">
     <div class="foot">
       <div class="foot-brand">
-        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
         <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
       </div>
       <nav aria-label="Product">
@@ -177,7 +177,7 @@
       </nav>
     </div>
     <div class="foot-legal">
-      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
       <p>No ad or analytics trackers.</p>
     </div>
   </div>

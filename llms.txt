@@ -1,8 +1,8 @@
-# Toll
+# Endwise
 
-> Toll: exact answers for specific jobs, paid per use from one prepaid balance, on the web, over a REST API or through MCP.
+> Endwise: exact answers for specific jobs, paid per use from one prepaid balance, on the web, over a REST API or through MCP.
 
-Toll is a Conyso product. Every tool is deterministic: the same input always gives the same answer, with no AI model in the loop. Each content page has a Markdown copy at the same address ending in .md.
+Endwise is a Conyso product. Every tool is deterministic: the same input always gives the same answer, with no AI model in the loop. Each content page has a Markdown copy at the same address ending in .md.
 
 ## Tools
 
@@ -86,9 +86,9 @@ Toll is a Conyso product. Every tool is deterministic: the same input always giv
 - [Para conductores](https://krishnachagti-sudo.github.io/toll-preview/es/para/conductores/): En español, para conductores de viajes y entregas: cuánto apartar para impuestos de cada pago, con millas y propinas, y las millas a la tarifa del IRS con un registro de millaje.
 - [Status](https://krishnachagti-sudo.github.io/toll-preview/status/): Each live tool's last check and 90 days of recorded checks, measured from inside the server.
 - [Docs](https://krishnachagti-sudo.github.io/toll-preview/docs): How to call the tools from code: REST and MCP, authentication, errors, idempotency and limits.
-- [Privacy](https://krishnachagti-sudo.github.io/toll-preview/privacy): What Toll stores about visitors and accounts, in plain words.
-- [Terms of service](https://krishnachagti-sudo.github.io/toll-preview/terms/): The terms for using Toll: accounts and keys, the prepaid balance, prices, refunds, acceptable use and liability.
-- [Refunds and cancellation](https://krishnachagti-sudo.github.io/toll-preview/refunds/): What Toll refunds automatically, how to get unused money back, and how to close an account.
-- [Acceptable use](https://krishnachagti-sudo.github.io/toll-preview/acceptable-use/): What Toll may not be used for.
-- [Security](https://krishnachagti-sudo.github.io/toll-preview/security/): How Toll protects accounts, keys and balances, and how to report a vulnerability.
-- [Contact](https://krishnachagti-sudo.github.io/toll-preview/contact/): How to reach Toll for support, billing, privacy and security.
+- [Privacy](https://krishnachagti-sudo.github.io/toll-preview/privacy): What Endwise stores about visitors and accounts, in plain words.
+- [Terms of service](https://krishnachagti-sudo.github.io/toll-preview/terms/): The terms for using Endwise: accounts and keys, the prepaid balance, prices, refunds, acceptable use and liability.
+- [Refunds and cancellation](https://krishnachagti-sudo.github.io/toll-preview/refunds/): What Endwise refunds automatically, how to get unused money back, and how to close an account.
+- [Acceptable use](https://krishnachagti-sudo.github.io/toll-preview/acceptable-use/): What Endwise may not be used for.
+- [Security](https://krishnachagti-sudo.github.io/toll-preview/security/): How Endwise protects accounts, keys and balances, and how to report a vulnerability.
+- [Contact](https://krishnachagti-sudo.github.io/toll-preview/contact/): How to reach Endwise for support, billing, privacy and security.

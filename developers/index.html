@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REST API for developers: Toll</title>
-<meta name="description" content="Call any Toll tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.">
+<title>REST API for developers: Endwise</title>
+<meta name="description" content="Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.">
 <meta name="theme-color" content="#08090a">
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
@@ -14,12 +14,12 @@
 <script src="/toll-preview/assets/home.js"></script>
 <link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/developers/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Toll">
-<meta property="og:title" content="REST API for developers: Toll">
-<meta property="og:description" content="Call any Toll tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="REST API for developers: Endwise">
+<meta property="og:description" content="Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/developers/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/","name":"REST API for developers: Toll","description":"Call any Toll tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Toll","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Toll","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"}]}]}</script>
-<script>window.TOLL={"base":"/toll-preview","brand":"Toll","tool":null}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/","name":"REST API for developers: Endwise","description":"Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"}]}]}</script>
+<script>window.TOLL={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
 <script src="/toll-preview/assets/nav.js" defer></script>
@@ -44,7 +44,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap nav-row">
-    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Toll</span></a>
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
     <nav class="head-nav" aria-label="Main">
       <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
       <a href="/toll-preview/pricing/">Pricing</a>
@@ -85,7 +85,7 @@
   <div class="noise" aria-hidden="true"></div>
   <div class="sub-glow" aria-hidden="true"></div>
   <div class="wrap">
-    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/toll-preview/">Toll</a></li><li aria-current="page">Developers</li></ol></nav>
+    <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/toll-preview/">Endwise</a></li><li aria-current="page">Developers</li></ol></nav>
     <span class="eyebrow">Developers</span>
     <h1 class="h1" id="page-h">One POST.<br class="br-d"> One exact answer.</h1>
     <p class="hero-lede">Call any tool over REST with a Bearer key and a JSON body. Each call takes its price from your balance and tells you what it cost.</p>
@@ -468,7 +468,7 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
   <div class="wrap">
     <div class="foot">
       <div class="foot-brand">
-        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Toll</span></a>
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
         <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
       </div>
       <nav aria-label="Product">
@@ -533,7 +533,7 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
       </nav>
     </div>
     <div class="foot-legal">
-      <p>Toll is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
       <p>No ad or analytics trackers.</p>
     </div>
   </div>

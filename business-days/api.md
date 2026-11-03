@@ -57,7 +57,7 @@ Agents that speak the Model Context Protocol call the same tool, named `business
 ```json
 {
   "mcpServers": {
-    "toll": {
+    "endwise": {
       "type": "http",
       "url": "https://krishnachagti-sudo.github.io/toll-preview/mcp",
       "headers": {
