@@ -336,11 +336,10 @@ function showPrice() {
     const price = json.tool.price.display;
     const el = $('bd-price');
     if (account) {
-      const mine = account.currency === 'INR' ? price.INR : price.USD;
-      el.textContent = `Each run costs ${mine}, taken from your balance.`;
+      el.textContent = `Each run costs ${T.money(price)}, taken from your balance.`;
       $('bd-run-note').textContent = '';
     } else {
-      el.textContent = `Each run costs ${price.USD} (${price.INR} on a rupee account). Without an account you get 5 free runs a day.`;
+      el.textContent = `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`;
       $('bd-run-note').textContent = '5 free runs a day, no account needed.';
     }
   }).catch(() => {});

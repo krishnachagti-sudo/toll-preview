@@ -281,6 +281,13 @@ html.nav-locked { overflow: hidden; }
 .foot .about { color: var(--muted); max-width: 30ch; margin: 16px 0 0; font-size: 13.5px; }
 .foot-legal { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; }
 .foot-legal p { margin: 0; }
+/* "Prices in" (routes/pages.js pricesInSwitch): shown only while more than one currency is offered. */
+.prices-in fieldset { display: flex; align-items: center; gap: 6px; margin: 0; padding: 0; border: 0; }
+.prices-in legend { float: left; margin-right: 4px; padding: 0; color: var(--faint); }
+.prices-in button { font: inherit; color: var(--muted); background: transparent; border: 1px solid var(--line-2); border-radius: 999px; padding: 2px 10px; cursor: pointer; }
+.prices-in button:hover { color: var(--text); border-color: var(--line-3); }
+.prices-in button[aria-pressed="true"] { color: var(--text); border-color: var(--line-3); background: var(--bg-2); }
+.prices-in button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 900px) {
   .foot { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
   .foot-brand { grid-column: 1 / -1; }
@@ -498,7 +505,9 @@ table.rules th button:focus-visible { outline: 2px solid var(--focus); outline-o
 
 /* ---------- a tool page's parts (nav.js) ---------- */
 html.has-parts { scroll-padding-top: 146px; }
-.tool-parts { position: sticky; top: 78px; z-index: 40; display: flex; justify-content: center; padding: 6px var(--gutter) 0; margin: 8px 0 0; pointer-events: none; }
+/* The page's own row of parts; once it reaches the header it rises into it (nav.js, motion.css). */
+.tool-parts { position: relative; z-index: 40; display: flex; justify-content: center; padding: 6px var(--gutter) 0; margin: 8px 0 0; pointer-events: none; }
+.tool-parts .tp-row { will-change: transform, opacity; }
 .tool-parts .tp-row {
   pointer-events: auto; display: flex; gap: 2px; max-width: 100%; overflow-x: auto; scrollbar-width: none;
   padding: 4px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.09);

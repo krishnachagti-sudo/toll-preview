@@ -1,6 +1,6 @@
 # Business days API
 
-POST `https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days` with {"op":"between","region":"US","start":"2026-07-01","end":"2026-07-08"} returns 4 business days and names the holiday it skipped, Independence Day (observed) on 2026-07-03. Each call costs $0.0005 (₹0.04 on a rupee account).
+POST `https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days` with {"op":"between","region":"US","start":"2026-07-01","end":"2026-07-08"} returns 4 business days and names the holiday it skipped, Independence Day (observed) on 2026-07-03. Each call costs $0.0005.
 
 - Business days: 4
 - Per call: $0.0005
@@ -46,7 +46,7 @@ curl -X POST 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/bus
 }
 ```
 
-Amounts are whole micro-units (1,000,000 to the dollar or rupee); the response also carries your balance after the charge. `holidaysSkipped` lists each weekday holiday inside the range, with the date it was taken off. For `add` the result is `{ date, holidaysSkipped }`: adding 1 business day to 2026-12-24 in `GB-ENG` gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With `daysOff` the result also has `daysOffSkipped`: each of your days off that fell on a weekday in the range and was not already a holiday, as `{ date, name }`.
+Amounts are whole micro-units (1,000,000 to the dollar); the response also carries your balance after the charge. `holidaysSkipped` lists each weekday holiday inside the range, with the date it was taken off. For `add` the result is `{ date, holidaysSkipped }`: adding 1 business day to 2026-12-24 in `GB-ENG` gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With `daysOff` the result also has `daysOffSkipped`: each of your days off that fell on a weekday in the range and was not already a holiday, as `{ date, name }`.
 
 Invalid input is a 400 `invalid_input` with the field that was wrong, and is never charged. Retries are safe with an `Idempotency-Key` header. The [docs](https://krishnachagti-sudo.github.io/toll-preview/docs) cover errors, limits and idempotency for every tool.
 

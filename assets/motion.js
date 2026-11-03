@@ -36,6 +36,9 @@
 
   // ---------- capsule geometry (the shape it settles into) ----------
   var CAP_TOP = 10, CAP_H = 60, CAP_R = 30, GAP = 28;
+  // When a page's parts attach to the bar (nav.js: hp-docked, hp-wide) the capsule widens to the
+  // full row and grows down over the tray; two more springs carry it there.
+  var fullL = 0, fullW = 0, TRAY_H = 0;
   var W0 = 0, H0 = 0;           // header box
   var capL = 0, capW = 0;       // the pill, in header coordinates
   var groups = [];              // { node, dx }: the left and right clusters slide in to meet
@@ -99,7 +102,7 @@
   // the rim each pixel samples from further out along the edge normal, strongest at the edge.
   function buildMap() {
     if (!refract || !W0) return;
-    var key = W0 + 'x' + H0 + ':' + capL + ':' + capW;
+    var key = W0 + 'x' + H0 + ':' + capL + ':' + capW + ':' + TRAY_H;
     if (key === mapKey) return;
     mapKey = key;
     var w = W0, h = H0, c = document.createElement('canvas');
@@ -125,7 +128,9 @@
     feImg.setAttribute('width', w); feImg.setAttribute('height', h);
     feImg.setAttribute('href', c.toDataURL('image/png'));
     var f = feImg.parentNode;
-    f.setAttribute('width', w); f.setAttribute('height', h);
+    // The filter region also covers the tray under the bar, or the glass would stop at the bar's
+    // edge; the map is not drawn there, which is fine because the bending is off while it is open.
+    f.setAttribute('width', w); f.setAttribute('height', h + TRAY_H);
   }
 
   // ---------- measuring (only here, never inside the animation) ----------
@@ -144,6 +149,10 @@
     var cs = getComputedStyle(row), padL = parseFloat(cs.paddingLeft) || 0, padR = parseFloat(cs.paddingRight) || 0;
     var span = function (ns) { var a = Infinity, b = -Infinity; ns.forEach(function (n) { a = Math.min(a, base + n.offsetLeft); b = Math.max(b, base + n.offsetLeft + n.offsetWidth); }); return [a, b]; };
     capL = base; capW = row.offsetWidth;
+    fullL = base; fullW = row.offsetWidth;
+    var tray = head.querySelector('.hp-tray');
+    TRAY_H = tray ? tray.offsetHeight : 0;
+    if (glass) glass.style.bottom = -TRAY_H + 'px';
     groups = [];
     if (left.length && right.length && !mqNarrow.matches) {
       var l = span(left), r = span(right);
@@ -167,29 +176,32 @@
   // x: width and horizontal positions (softer, a little overshoot). y: height, radius, opacity.
   var SX = { k: 230, c: 24.5 }, SY = { k: 440, c: 34 };
   var x = 0, vx = 0, y = 0, vy = 0, target = 0;
+  var sw = 0, vsw = 0, swT = 0, ex = 0, vex = 0, exT = 0;
   var lx = 0, tx = 0, ly = -36, lightInit = false;
   var raf = 0, last = 0, lastDisp = -1;
 
   function render() {
     if (!W0) return;
-    var L = lerp(0, capL, x), R = lerp(W0, capL + capW, x);
-    var T = lerp(0, CAP_TOP, y), B = lerp(H0, CAP_TOP + CAP_H, y);
+    var cl = lerp(capL, fullL, sw), cw = lerp(capW, fullW, sw);
+    var L = lerp(0, cl, x), R = lerp(W0, cl + cw, x);
+    var T = lerp(0, CAP_TOP, y), B = lerp(H0, CAP_TOP + CAP_H, y) + TRAY_H * ex * y;
+    var HG = H0 + TRAY_H;
     var h = B - T, w = R - L;
-    var r = clamp(lerp(0, CAP_R, y), 0, Math.min(h, w) / 2);
+    var r = clamp(lerp(0, CAP_R, y) - 4 * ex, 0, Math.min(h, w) / 2);
     var a = clamp(Math.min(y * 1.5, x * 2.2), 0, 1);
     glass.style.opacity = a;
     over.style.opacity = a;
-    glass.style.clipPath = 'inset(' + T.toFixed(2) + 'px ' + (W0 - R).toFixed(2) + 'px ' + (H0 - B).toFixed(2) + 'px ' + L.toFixed(2) + 'px round ' + r.toFixed(2) + 'px)';
+    glass.style.clipPath = 'inset(' + T.toFixed(2) + 'px ' + (W0 - R).toFixed(2) + 'px ' + (HG - B).toFixed(2) + 'px ' + L.toFixed(2) + 'px round ' + r.toFixed(2) + 'px)';
     setRect(rOuter, L - 0.5, T - 0.5, w + 1, h + 1, r + 0.5);
     setRect(rEdge, L + 0.5, T + 0.5, w - 1, h - 1, Math.max(r - 0.5, 0));
     setRect(rLow, L + 0.5, T + 0.5, w - 1, h - 1, Math.max(r - 0.5, 0));
     gL = L; gR = R; gB = B; gr = r; drawProg();
     light.setAttribute('cx', lx.toFixed(1));
     light.setAttribute('cy', ly);
-    for (var i = 0; i < groups.length; i++) groups[i].node.style.transform = 'translate3d(' + (groups[i].dx * x).toFixed(2) + 'px,0,0)';
+    for (var i = 0; i < groups.length; i++) groups[i].node.style.transform = 'translate3d(' + (groups[i].dx * x * (1 - sw)).toFixed(2) + 'px,0,0)';
     if (feDisp) {
       // The map is drawn for the settled shape, so the bending fades in as the capsule arrives.
-      var t = clamp((Math.min(x, y) - 0.82) / 0.18, 0, 1);
+      var t = clamp((Math.min(x, y) - 0.82) / 0.18, 0, 1) * clamp(1 - Math.max(sw, ex) * 4, 0, 1);
       var disp = Math.round(REFRACT_PX * t * t * (3 - 2 * t) * 2) / 2;
       if (disp !== lastDisp) { feDisp.setAttribute('scale', disp); lastDisp = disp; }
     }
@@ -200,7 +212,8 @@
     n.setAttribute('rx', r.toFixed(2));
   }
   function settled() {
-    return Math.abs(x - target) < 0.0005 && Math.abs(vx) < 0.0005 && Math.abs(y - target) < 0.0005 && Math.abs(vy) < 0.0005 && Math.abs(lx - tx) < 0.3;
+    return Math.abs(x - target) < 0.0005 && Math.abs(vx) < 0.0005 && Math.abs(y - target) < 0.0005 && Math.abs(vy) < 0.0005 && Math.abs(lx - tx) < 0.3
+      && Math.abs(sw - swT) < 0.0005 && Math.abs(vsw) < 0.0005 && Math.abs(ex - exT) < 0.0005 && Math.abs(vex) < 0.0005;
   }
   function frame(now) {
     var dt = Math.min((now - (last || now)) / 1000, 1 / 30);
@@ -210,14 +223,25 @@
     for (var i = 0; i < n; i++) {
       vx += (SX.k * (target - x) - SX.c * vx) * h; x += vx * h;
       vy += (SY.k * (target - y) - SY.c * vy) * h; y += vy * h;
+      vsw += (SX.k * (swT - sw) - SX.c * vsw) * h; sw += vsw * h;
+      vex += (SY.k * (exT - ex) - SY.c * vex) * h; ex += vex * h;
     }
     lx += (tx - lx) * Math.min(1, dt * 9);
-    if (settled()) { x = y = target; vx = vy = 0; lx = tx; render(); raf = 0; last = 0; return; }
+    if (settled()) { x = y = target; vx = vy = 0; sw = swT; ex = exT; vsw = vex = 0; lx = tx; render(); raf = 0; last = 0; return; }
     render();
     raf = requestAnimationFrame(frame);
   }
   function kick() { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
-  function snap() { x = y = target; vx = vy = 0; lx = tx; render(); }
+  function snap() { x = y = target; vx = vy = 0; sw = swT; ex = exT; vsw = vex = 0; lx = tx; render(); }
+
+  function follow() {
+    var s1 = head.classList.contains('hp-docked') ? 1 : 0, e1 = head.classList.contains('hp-wide') ? 1 : 0;
+    if (s1 === swT && e1 === exT) return;
+    swT = s1; exT = e1;
+    if (TRAY_H === 0 && e1) measure();
+    if (reduce) snap(); else kick();
+  }
+  if ('MutationObserver' in window) new MutationObserver(follow).observe(head, { attributes: true, attributeFilter: ['class'] });
 
   function setTarget(t) {
     if (t === target) return;
@@ -636,6 +660,61 @@
       if (tabs) hi.push(indicator(tabs, 'button.s-item', 'aria-current', 'mx-tool-tabs'));
       morph(app, 'button.s-item', hi, '.view-wrap');
     }
+  }
+
+  /* ---------------- gliding pills ----------------
+     Anywhere the page picks one of a few things (a tool's choice pills, the code tabs, the tools
+     page's filter, the docs contents, the search results) a highlight glides to the chosen one
+     instead of jumping, in the shape that group already uses: a solid pill, a soft pill, an
+     underline or a bar down the side. The group's own highlight hands over to it (motion.css,
+     .gl-*). Groups that appear later (the search dialog) are picked up when they do. */
+  var GLIDE = [
+    { group: '.choice-row', cur: '.choice input:checked + span', kind: 'solid' },
+    { group: '.toll-code-tabs', cur: '[aria-selected="true"]', kind: 'line' },
+    { group: '.tool-jump', cur: '.cat-chip[aria-pressed="true"]', kind: 'soft' },
+    { group: '.docs-toc ol', cur: 'a[aria-current]', kind: 'side' },
+    { group: '.nav-pal-list, .nav-pal [role="listbox"]', cur: '[aria-selected="true"]', kind: 'soft' }
+  ];
+  function glide(g, spec) {
+    if (g.glReady) return;
+    g.glReady = true;
+    g.classList.add('gl-group', 'gl-' + spec.kind);
+    var ind = document.createElement('span');
+    ind.className = 'gl-ind';
+    ind.setAttribute('aria-hidden', 'true');
+    var queued = false;
+    function place() {
+      queued = false;
+      if (ind.parentNode !== g) g.insertBefore(ind, g.firstChild);
+      var cur = g.querySelector(spec.cur);
+      if (!cur || !cur.offsetWidth || !g.offsetWidth) { ind.style.opacity = '0'; return; }
+      // Layout offsets, not screen boxes, so a reveal or a press that scales things on the way in
+      // cannot knock the highlight off its item.
+      var x = 0, y = 0, n = cur;
+      while (n && n !== g) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+      if (n !== g) { var gr = g.getBoundingClientRect(), r = cur.getBoundingClientRect(); x = r.left - gr.left + g.scrollLeft; y = r.top - gr.top + g.scrollTop; }
+      ind.style.width = cur.offsetWidth + 'px';
+      ind.style.height = cur.offsetHeight + 'px';
+      ind.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      ind.style.opacity = '1';
+      if (!g.classList.contains('gl-ready')) requestAnimationFrame(function () { g.classList.add('gl-ready'); });
+    }
+    function queue() { if (!queued) { queued = true; requestAnimationFrame(place); } }
+    new MutationObserver(queue).observe(g, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-selected', 'aria-pressed', 'aria-current', 'hidden'] });
+    g.addEventListener('change', queue);
+    window.addEventListener('resize', queue);
+    if ('ResizeObserver' in window) new ResizeObserver(queue).observe(g);
+    place();
+  }
+  function glideAll(scope) {
+    GLIDE.forEach(function (spec) { [].forEach.call((scope || document).querySelectorAll(spec.group), function (g) { glide(g, spec); }); });
+  }
+  glideAll();
+  if ('MutationObserver' in window) {
+    // The search dialog and the code panel are built after load.
+    new MutationObserver(function (list) {
+      for (var i = 0; i < list.length; i++) if (list[i].addedNodes.length) { glideAll(); return; }
+    }).observe(document.body, { childList: true, subtree: true });
   }
 
   /* ---------------- the field: a smoky glow lit from the page's own content ---------------- */

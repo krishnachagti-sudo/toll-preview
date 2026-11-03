@@ -249,11 +249,10 @@ function showPrice(tool, account) {
   const price = tool.price.display;
   const el = $('fx-price');
   if (account) {
-    const mine = account.currency === 'INR' ? price.INR : price.USD;
-    el.textContent = `Each run costs ${mine}, taken from your balance. A day with no rate costs nothing.`;
+    el.textContent = `Each run costs ${T.money(price)}, taken from your balance. A day with no rate costs nothing.`;
     $('fx-run-note').textContent = '';
   } else {
-    el.textContent = `Each run costs ${price.USD} (${price.INR} on a rupee account). Without an account you get 5 free runs a day.`;
+    el.textContent = `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`;
     $('fx-run-note').textContent = '5 free runs a day, no account needed.';
   }
 }
@@ -302,7 +301,7 @@ function fromQuery() {
 
 function start() {
   fillSelect($('fx-base'), 'USD');
-  fillSelect($('fx-quote'), 'INR');
+  fillSelect($('fx-quote'), 'EUR');
   // Today in UTC, as plain text. The server decides which fixing applies.
   $('fx-date').value = new Date().toISOString().slice(0, 10);
 

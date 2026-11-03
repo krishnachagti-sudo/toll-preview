@@ -362,7 +362,11 @@ function analyseBulk() {
     const codes = plan.ok.length;
     box.appendChild(h('p', { class: 'qr-answer' }, [`${codes.toLocaleString('en-US')} ${codes === 1 ? 'code' : 'codes'}`, h('small', null, `${plan.errors.length} ${plan.errors.length === 1 ? 'row' : 'rows'} refused, never charged`)]));
     const price = Math.max(10, codes) * 0.002;
-    if (codes) box.appendChild(h('p', { class: 'qr-sub' }, `About ${money(price)} for this job ($0.002 a code, at least 10 a job${codes > 5000 ? '; codes beyond 5,000 in a calendar month are $0.0005' : ''}). The exact price is shown before anything is charged.`));
+    // The rate in the page's currency (T.prices); the estimate for the job only in dollars, where
+    // it is worked out here.
+    const rate = T.prices(`$0.002 a code, at least 10 a job${codes > 5000 ? '; codes beyond 5,000 in a calendar month are $0.0005' : ''}`);
+    const about = T.currency === 'USD' ? `About ${money(price)} for this job (${rate}).` : `${rate[0].toUpperCase()}${rate.slice(1)}.`;
+    if (codes) box.appendChild(h('p', { class: 'qr-sub' }, `${about} The exact price is shown before anything is charged.`));
     if (ignored.length) box.appendChild(h('p', { class: 'qr-aside' }, `Not used: ${ignored.join(', ')} (usable in file names as {${ignored[0]}}).`));
     const list = [...plan.errors.map((e) => ({ row: e.row, text: e.text, err: true })), ...plan.warnings].sort((a, b) => a.row - b.row);
     if (list.length) box.appendChild(h('ul', { class: 'qr-checks' }, list.slice(0, 12).map((x) => h('li', { class: x.err ? 'warn' : '' }, `Row ${x.row}: ${x.text}`))));

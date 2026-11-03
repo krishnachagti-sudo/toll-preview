@@ -350,10 +350,10 @@ function showPrice(tool) {
   T.me().then((account) => {
     const price = tool.price.display;
     if (account) {
-      $('dd-price').textContent = `Each run costs ${account.currency === 'INR' ? price.INR : price.USD}, taken from your balance.`;
+      $('dd-price').textContent = `Each run costs ${T.money(price)}, taken from your balance.`;
       $('dd-run-note').textContent = '';
     } else {
-      $('dd-price').textContent = `Each run costs ${price.USD} (${price.INR} on a rupee account). Without an account you get 5 free runs a day.`;
+      $('dd-price').textContent = `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`;
       $('dd-run-note').textContent = '5 free runs a day, no account needed.';
     }
   }).catch(() => {});

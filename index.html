@@ -106,11 +106,11 @@
 
   <div class="stage">
     <div class="glow" aria-hidden="true"><i class="beam"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>
-    <div class="win" id="app" role="group" aria-label="Product shot of the Endwise app: exchange rate on 24 October 2026, US dollar to Indian rupee. 1 USD buys 94.945055 INR, from the European Central Bank fixing of Friday 23 October 2026.">
+    <div class="win" id="app" role="group" aria-label="Product shot of the Endwise app: exchange rate on 24 October 2026, US dollar to euro. 1 USD buys 0.893416 EUR, from the European Central Bank fixing of Friday 23 October 2026.">
       <!-- command bar -->
       <div class="cmd">
         <svg aria-hidden="true"><use href="#i-search"/></svg>
-        <div class="cmd-q"><span id="qtext">Exchange rate on 24 Oct 2026, USD to INR</span><span class="caret" aria-hidden="true"></span></div>
+        <div class="cmd-q"><span id="qtext">Exchange rate on 24 Oct 2026, USD to EUR</span><span class="caret" aria-hidden="true"></span></div>
         <span class="cmd-r" aria-hidden="true"><span class="lbl">Run</span><span class="kc" id="enter">&#8629;</span></span>
       </div>
 
@@ -150,15 +150,15 @@
               <p class="desc">Official European Central Bank reference rates since 4 January 1999.</p>
               <div class="fields">
                 <div class="mfield"><span class="mlabel">From</span><div class="inp"><span class="flag"><i>US</i>USD</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
-                <div class="mfield"><span class="mlabel">To</span><div class="inp"><span class="flag"><i>IN</i>INR</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
+                <div class="mfield"><span class="mlabel">To</span><div class="inp"><span class="flag"><i>EU</i>EUR</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
                 <div class="mfield wide"><span class="mlabel">Date</span><div class="inp"><span class="mono">2026-10-24</span><svg aria-hidden="true"><use href="#i-cal"/></svg></div></div>
                 <span class="run">Run <kbd>&#8984;&#8629;</kbd></span>
               </div>
               <div class="result">
                 <div class="result-top">
                   <div class="r-label">European Central Bank reference rate</div>
-                  <div class="r-main">1 USD buys <span class="num">94.945055</span> INR</div>
-                  <div class="r-sub">1 INR buys <span class="mono">0.010532</span> USD</div>
+                  <div class="r-main">1 USD buys <span class="num">0.893416</span> EUR</div>
+                  <div class="r-sub">1 EUR buys <span class="mono">1.1193</span> USD</div>
                 </div>
                 <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>Saturday 24 Oct 2026 had no ECB fixing, so this uses the last one before it: Friday 23 Oct 2026.</span></div>
                 <div class="r-foot"><span>Requested 2026-10-24 &middot; Fixing 2026-10-23</span><span class="charged">Charged <span data-price="fx-on-date">$0.001</span></span></div>
@@ -223,7 +223,7 @@
           <div>
             <div class="act-h"><span>Activity</span><span>Today</span></div>
             <ul class="feed">
-              <li data-for="fx" class="hue-money hot"><span class="pip"></span><span class="what"><span data-tool-name="fx-on-date">Exchange rate on a date</span><span class="when">USD to INR &middot; just now</span></span><span class="amt">&minus;<span data-price="fx-on-date">$0.001</span></span></li>
+              <li data-for="fx" class="hue-money hot"><span class="pip"></span><span class="what"><span data-tool-name="fx-on-date">Exchange rate on a date</span><span class="when">USD to EUR &middot; just now</span></span><span class="amt">&minus;<span data-price="fx-on-date">$0.001</span></span></li>
               <li data-for="bd" class="hue-date"><span class="pip"></span><span class="what"><span data-tool-name="business-days">Business days</span><span class="when">England and Wales &middot; 2 min ago</span></span><span class="amt">&minus;<span data-price="business-days">$0.0005</span></span></li>
               <li data-for="img" class="hue-file"><span class="pip"></span><span class="what"><span data-tool-name="image-to-size">Image to size</span><span class="when">In your browser &middot; 6 min ago</span></span><span class="amt" data-price="image-to-size">Free</span></li>
             </ul>
@@ -303,7 +303,7 @@
         <span class="tag"><i></i>Dates and calendars</span>
         <h3>Business days, with every skipped day named</h3>
         <p>Count the working days between two dates, or add working days to a date. US federal holidays follow 5 U.S.C. 6103 with OPM observed-day rules. England and Wales use the official bank holidays.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="business-days">$0.0005</span> per call</span><span class="tchip" data-price="business-days" data-currency="INR">&#8377;0.04</span><span class="tchip">Web, API, MCP</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="business-days">$0.0005</span> per call</span><span class="tchip">Web, API, MCP</span></div>
         <a class="lnk" href="/toll-preview/business-days/">Open <span data-tool-name="business-days">Business days</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -332,18 +332,18 @@
         <span class="tag"><i></i>Money and rates</span>
         <h3>Exchange rates that tell you which day they came from</h3>
         <p>Official European Central Bank reference rates since 4 January 1999, or the US Treasury reporting rate, the IRS yearly average or the UK HMRC monthly rate. If the ECB did not publish on your date, you get the last fixing before it, and you are told which day. A day with no rate costs nothing.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="fx-on-date">$0.001</span> per call</span><span class="tchip" data-price="fx-on-date" data-currency="INR">&#8377;0.08</span><span class="tchip">Web, API, MCP</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="fx-on-date">$0.001</span> per call</span><span class="tchip">Web, API, MCP</span></div>
         <a class="lnk" href="/toll-preview/fx-on-date/">Open <span data-tool-name="fx-on-date">Exchange rate on a date</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
         <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-fx"/></svg><b>USD to INR</b><span class="tchip">2026-10-24</span></div>
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-fx"/></svg><b>USD to EUR</b><span class="tchip">2026-10-24</span></div>
           <div class="panel-body">
             <div class="result">
               <div class="result-top">
                 <div class="r-label">Requested Sat 24 Oct 2026 &middot; Fixing Fri 23 Oct 2026</div>
-                <div class="r-main"><span class="num">94.945055</span></div>
-                <div class="r-sub">Inverse <span class="mono">0.010532</span></div>
+                <div class="r-main"><span class="num">0.893416</span></div>
+                <div class="r-sub">Inverse <span class="mono">1.1193</span></div>
               </div>
               <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>No ECB fixing on Saturday 24 Oct 2026. Using Friday 23 Oct 2026.</span></div>
               <div class="r-foot"><span>European Central Bank</span><span class="charged">Charged <span data-price="fx-on-date">$0.001</span></span></div>
@@ -380,7 +380,7 @@
         <span class="tag"><i></i>Dates and calendars</span>
         <h3>The last day to order for Christmas, from your own cutoff</h3>
         <p>Your cutoff time, shipping days, closures and processing days on your calendar; transit on the carrier's own delivery days. It works out when an order arrives, or the last moment to order, with USPS's 2026 holiday send-by dates and every skipped holiday named.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="delivery-date-calculator">$0.0005</span> per call</span><span class="tchip" data-price="delivery-date-calculator" data-currency="INR">&#8377;0.04</span><span class="tchip">Web, API, MCP</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="delivery-date-calculator">$0.0005</span> per call</span><span class="tchip">Web, API, MCP</span></div>
         <a class="lnk" href="/toll-preview/delivery-date-calculator/">Open <span data-tool-name="delivery-date-calculator">Delivery date and holiday order-by calculator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -409,7 +409,7 @@
         <span class="tag"><i></i>Owner-operator taxes</span>
         <h3>A trucker's per diem, priced day by day</h3>
         <p>Trips in, deduction out: each day at the IRS transportation rate in force that day, departure and return days at 3/4, the 80% hours-of-service limit, and log checks before you file. The totals are free on the page; the worksheet for your preparer is a PDF and CSV.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="trucker-per-diem">from $0.02</span></span><span class="tchip" data-price="trucker-per-diem" data-currency="INR">from &#8377;2.00</span><span class="tchip">Worksheet $9.00</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="trucker-per-diem">from $0.02</span></span><span class="tchip" data-prices="trucker-per-diem">Worksheet $9.00</span></div>
         <a class="lnk" href="/toll-preview/trucker-per-diem/">Open <span data-tool-name="trucker-per-diem">Trucker per diem worksheet</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -439,7 +439,7 @@
         <span class="tag"><i></i>Money and rates</span>
         <h3>How much of this payment to set aside for tax</h3>
         <p>Give one payment and what you have earned so far this year. It works out the tax that payment adds: US self-employment, federal and state tax, or UK Income Tax and Class 4, split wherever the payment crosses a bracket, with every rate cited.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="tax-set-aside">from $0.10</span> per payment</span><span class="tchip" data-price="tax-set-aside" data-currency="INR">from &#8377;8.00</span><span class="tchip">Web, API, MCP</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="tax-set-aside">from $0.10</span> per payment</span><span class="tchip">Web, API, MCP</span></div>
         <a class="lnk" href="/toll-preview/tax-set-aside/">Open <span data-tool-name="tax-set-aside">Tax set-aside per payment</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -469,7 +469,7 @@
         <span class="tag"><i></i>Money and rates</span>
         <h3>Mileage at the IRS rate for each trip's date</h3>
         <p>The IRS rate went from 72.5 to 76 cents a mile on July 1, 2026. Each trip is priced at the rate in force on its date, and an allowance paid before July 1 stays at the old rate, as Announcement 2026-11 says. Totals a payroll trip sheet per employee with the true-up owed, and makes the year's log for one vehicle.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span>Free on the web</span><span class="tchip">Files <span data-price="mileage-reimbursement">from $0.001</span> a trip row</span><span class="tchip" data-price="mileage-reimbursement" data-currency="INR">from &#8377;0.09</span><span class="tchip">Web, API, MCP</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span>Free on the web</span><span class="tchip">Files <span data-price="mileage-reimbursement">from $0.001</span> a trip row</span><span class="tchip">Web, API, MCP</span></div>
         <a class="lnk" href="/toll-preview/mileage-reimbursement/">Open <span data-tool-name="mileage-reimbursement">Mileage reimbursement and IRS mileage log</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -497,7 +497,7 @@
         <span class="tag"><i></i>Money and rates</span>
         <h3>Which payees need a 1099, at the new $2,000 line</h3>
         <p>Upload a year of payments. Each payee gets a verdict: the form and box, the date it crossed the line, or why it is left out (a corporation, a card payment, merchandise). Payees set up twice are merged by TIN, and the forms you owe come out as a file for the IRS's free IRIS portal.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="1099-threshold">from $0.10</span> per payee-year</span><span class="tchip" data-price="1099-threshold" data-currency="INR">from &#8377;8.00</span><span class="tchip">Web, API, MCP</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="1099-threshold">from $0.10</span> per payee-year</span><span class="tchip">Web, API, MCP</span></div>
         <a class="lnk" href="/toll-preview/1099-threshold/">Open <span data-tool-name="1099-threshold">1099 threshold tracker</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -523,7 +523,7 @@
         <span class="tag"><i></i>Fleet taxes</span>
         <h3>An IFTA return from the trip sheet</h3>
         <p>Miles and fuel by state in, the quarterly return out: each state's rate for that quarter, the Kentucky and Virginia surcharges, and the due date. The estimate is free on the page. The return checks odometers, overlapping trips and fuel receipts, then comes as a PDF and CSV for your base state.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="ifta-calculator">from $0.01</span></span><span class="tchip" data-price="ifta-calculator" data-currency="INR">from &#8377;1.00</span><span class="tchip">Return from $5.00</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="ifta-calculator">from $0.01</span></span><span class="tchip" data-prices="ifta-calculator">Return from $5.00</span></div>
         <a class="lnk" href="/toll-preview/ifta-calculator/">Open <span data-tool-name="ifta-calculator">IFTA quarterly return calculator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -554,7 +554,7 @@
         <span class="tag"><i></i>Money and rates</span>
         <h3>A MACRS schedule with the mid-quarter test done</h3>
         <p>List what the business bought this year. Each asset gets its class, Section 179 and bonus, and its first-year deduction from the IRS Publication 946 tables. The 40% fourth-quarter test is worked out in the open, and the whole schedule comes as a PDF and CSV for the return.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="macrs-depreciation">from $0.10</span></span><span class="tchip" data-price="macrs-depreciation" data-currency="INR">from &#8377;8.00</span><span class="tchip">Schedule $2.00</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="macrs-depreciation">from $0.10</span></span><span class="tchip" data-prices="macrs-depreciation">Schedule $2.00</span></div>
         <a class="lnk" href="/toll-preview/macrs-depreciation/">Open <span data-tool-name="macrs-depreciation">MACRS depreciation schedule</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -580,7 +580,7 @@
         <span class="tag"><i></i>Files and images</span>
         <h3>QR codes that never expire, read back before you print</h3>
         <p>A link, WiFi, a contact card, a text or a place. Every code is decoded again before you get it, so you see the exact text it holds. Make a batch from a spreadsheet as a ZIP and a label sheet, or check whether a code you already printed runs through a vendor that can switch it off.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span>Free on the web</span><span class="tchip"><span data-price="qr-code-generator">from $0.002</span> over the API</span><span class="tchip" data-price="qr-code-generator" data-currency="INR">from &#8377;0.10</span></div>
+        <div class="meta"><span class="tchip"><span class="dot"></span>Free on the web</span><span class="tchip"><span data-price="qr-code-generator">from $0.002</span> over the API</span></div>
         <a class="lnk" href="/toll-preview/qr-code-generator/">Open <span data-tool-name="qr-code-generator">QR code generator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
@@ -616,7 +616,7 @@
     </div>
     <div class="pay">
       <ol class="steps rv">
-        <li><span class="n">01</span><div><h3>Top up once</h3><p>Add from $20 or &#8377;200. There is no subscription. Nothing renews and nothing tops itself up.</p></div></li>
+        <li><span class="n">01</span><div><h3>Top up once</h3><p>Add from $10. There is no subscription. Nothing renews and nothing tops itself up.</p></div></li>
         <li><span class="n">02</span><div><h3>Use any tool</h3><p>On the website, through the REST API, or from an AI agent over MCP. One key and one balance for all our tools.</p></div></li>
         <li><span class="n">03</span><div><h3>Pay per use</h3><p>Each call takes its price from your balance, often a fraction of a cent. Failed calls are refunded automatically.</p></div></li>
         <li><span class="n">04</span><div><h3>Set a hard limit</h3><p>On the account and on each API key. A call past the limit is refused, not billed.</p></div></li>
@@ -624,8 +624,8 @@
       <div class="terms rv">
         <h3>Wallet terms</h3>
         <dl>
-          <div class="row"><dt>Top up from</dt><dd>$20 / &#8377;200</dd></div>
-          <div class="row"><dt>Free each month, spent first</dt><dd>$0.25 / &#8377;20</dd></div>
+          <div class="row"><dt>Top up from</dt><dd>$10</dd></div>
+          <div class="row"><dt>Free each month, spent first</dt><dd>$0.25</dd></div>
           <div class="row"><dt>Without an account</dt><dd>5 free runs a day</dd></div>
           <div class="row"><dt>Hard monthly limit</dt><dd>Account and each key</dd></div>
           <div class="row"><dt>Call past your limit</dt><dd>Refused, not billed</dd></div>
@@ -635,7 +635,7 @@
         <div class="terms-cta"><a class="btn btn-light btn-lg" href="/toll-preview/account" data-signed-in-text="Your account">Create account</a><a class="lnk" href="/toll-preview/pricing/">Every tool's price <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
       </div>
     </div>
-    <div class="buys rv"><b>What $20 buys</b><span><span class="mono" data-buys="business-days">40,000</span> business-day calls</span><span>or</span><span><span class="mono" data-buys="fx-on-date">20,000</span> exchange-rate lookups</span></div>
+    <div class="buys rv" data-topup="20000000"><b>What $20 buys</b><span><span class="mono" data-buys="business-days">40,000</span> business-day calls</span><span>or</span><span><span class="mono" data-buys="fx-on-date">20,000</span> exchange-rate lookups</span></div>
   </div>
 </section>
 
@@ -722,14 +722,14 @@ print(r.json())</code></pre>
 <pre data-ep="fx" data-lang="curl" hidden><code>curl -X POST <span class="js-origin"></span>/toll-preview/api/v1/tools/fx-on-date \
   -H "Authorization: Bearer tk_live_..." \
   -H "Content-Type: application/json" \
-  -d '{"base":"USD","quote":"INR","date":"2026-10-24"}'</code></pre>
+  -d '{"base":"USD","quote":"EUR","date":"2026-10-24"}'</code></pre>
 <pre data-ep="fx" data-lang="js" hidden><code>const res = await fetch("<span class="js-origin"></span>/toll-preview/api/v1/tools/fx-on-date", {
   method: "POST",
   headers: {
     "Authorization": "Bearer tk_live_...",
     "Content-Type": "application/json"
   },
-  body: JSON.stringify({ base: "USD", quote: "INR", date: "2026-10-24" })
+  body: JSON.stringify({ base: "USD", quote: "EUR", date: "2026-10-24" })
 });
 const data = await res.json();</code></pre>
 <pre data-ep="fx" data-lang="py" hidden><code>import requests
@@ -737,7 +737,7 @@ const data = await res.json();</code></pre>
 r = requests.post(
     "<span class="js-origin"></span>/toll-preview/api/v1/tools/fx-on-date",
     headers={"Authorization": "Bearer tk_live_..."},
-    json={"base": "USD", "quote": "INR", "date": "2026-10-24"},
+    json={"base": "USD", "quote": "EUR", "date": "2026-10-24"},
 )
 print(r.json())</code></pre>
           <div class="resp-h"><span>Response <span class="ok">200 OK</span></span><span class="cost" data-cost="bd">Charged <span data-price="business-days">$0.0005</span></span><span class="cost" data-cost="add" hidden>Charged <span data-price="business-days">$0.0005</span></span><span class="cost" data-cost="fx" hidden>Charged <span data-price="fx-on-date">$0.001</span></span></div>
@@ -757,11 +757,11 @@ print(r.json())</code></pre>
 }</code></pre>
 <pre data-resp="fx" hidden><code>{
   "base": "USD",
-  "quote": "INR",
+  "quote": "EUR",
   "requestedDate": "2026-10-24",
   "fixingDate": "2026-10-23",
-  "rate": 94.945055,
-  "inverse": 0.010532
+  "rate": 0.893416,
+  "inverse": 1.1193
 }</code></pre>
           </div>
         </div>
@@ -805,11 +805,11 @@ print(r.json())</code></pre>
       <p class="sec-lede" style="font-size:15px">More detail is in the <a class="ul" href="/toll-preview/docs">docs</a>.</p>
     </div>
     <div class="faq">
-      <details open><summary>Is there a subscription?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. You top up from $20 or &#8377;200 and each call takes its price from that balance. Nothing renews, and nothing tops itself up.</p></details>
-      <details><summary>Can I try it without an account?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. You get 5 free runs a day without an account. With an account you also get $0.25 (&#8377;20) free each month, spent before your own money.</p></details>
+      <details open><summary>Is there a subscription?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. You top up from $10 and each call takes its price from that balance. Nothing renews, and nothing tops itself up.</p></details>
+      <details><summary>Can I try it without an account?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. You get 5 free runs a day without an account. With an account you also get $0.25 free each month, spent before your own money.</p></details>
       <details><summary>Can a bug in my code drain my balance?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Set a hard monthly limit on your account and on each API key. A call past the limit is refused, not billed.</p></details>
       <details><summary>What happens if a call fails?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>It is refunded automatically.</p></details>
-      <details><summary>What if the ECB did not publish a rate on my date?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>You get the last fixing before that date, and the answer tells you which day it came from. For example, USD to INR on Saturday 24 Oct 2026 returns 94.945055 from the Friday 23 Oct 2026 fixing. A day with no rate costs nothing.</p></details>
+      <details><summary>What if the ECB did not publish a rate on my date?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>You get the last fixing before that date, and the answer tells you which day it came from. For example, USD to EUR on Saturday 24 Oct 2026 returns 0.893416 from the Friday 23 Oct 2026 fixing. A day with no rate costs nothing.</p></details>
       <details><summary>Do you use AI to get the answers?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Every answer comes from a fixed method and a named source, so the same input always gives the same answer.</p></details>
       <details><summary>Do you track me?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>There are no ad or analytics trackers. IP addresses are not stored. Visitor counting uses a daily hash that is deleted the next day. The <a class="ul" href="/toll-preview/privacy">privacy page</a> lists everything we keep.</p></details>
     </div>
@@ -925,6 +925,7 @@ print(r.json())</code></pre>
     <div class="foot-legal">
       <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
       <p>No ad or analytics trackers.</p>
+      
     </div>
   </div>
 </footer>

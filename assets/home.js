@@ -1,11 +1,12 @@
 /* The home page. Loaded in <head> so the motion classes are set before the first paint; the
    rest waits for the DOM (and for toll.js, which loads at the end of the body).
 
-   - Fills every price, tool name and "what $20 buys" figure from GET {base}/api/v1/tools.
-     The markup carries the same values as a no-JavaScript fallback:
-       data-price="<slug>" [data-currency="USD"|"INR"]   the per-call price, "from" the lowest action price, or "Free"
-       data-tool-name="<slug>"                            the tool's name
-       data-buys="<slug>"                                 calls a $20 top-up pays for
+   - Fills every price, tool name and "what $20 buys" figure from GET {base}/api/v1/tools, in the
+     page's currency (Toll.money; dollars unless the server said otherwise). The server prints the
+     same values as a no-JavaScript fallback:
+       data-price="<slug>"        the per-call price, "from" the lowest action price, or "Free"
+       data-tool-name="<slug>"    the tool's name
+       data-buys="<slug>"         calls the top-up in the enclosing data-topup pays for
    - Fills the site's own address into the code samples and the MCP URL.
    - The hero replay, the tool tabs, the code tabs, the request form and reveal-on-scroll. */
 (function () {
@@ -16,24 +17,24 @@
   var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   if (!reduce) root.classList.add('motion');
 
-  // The smallest top-up is $20 (the pricing terms say so); "what it buys" divides it by the price.
-  var MIN_TOPUP_USD_MICROS = 20000000;
+  // The top-up "what it buys" divides by the price, when the page does not say (data-topup).
+  var TOPUP_USD_MICROS = 20000000;
 
   function each(selector, fn, scope) {
     [].forEach.call((scope || document).querySelectorAll(selector), fn);
   }
 
   // ---------- prices and names from the tools API ----------
-  function fillFromTools(tools) {
+  function fillFromTools(tools, Toll) {
+    var currency = Toll.currency;
     var bySlug = {};
     tools.forEach(function (t) { bySlug[t.slug] = t; });
     each('[data-price]', function (el) {
       var t = bySlug[el.getAttribute('data-price')];
       if (!t) return;
-      var currency = el.getAttribute('data-currency') || 'USD';
       // A tool with several actions has no single price: show its lowest paid price as "from".
-      el.textContent = t.price && t.price.display ? t.price.display[currency]
-        : t.pricing && t.pricing.from ? 'from ' + t.pricing.from.display[currency] : 'Free';
+      el.textContent = t.price && t.price.display ? Toll.money(t.price.display)
+        : t.pricing && t.pricing.from ? 'from ' + Toll.money(t.pricing.from.display) : 'Free';
     });
     each('[data-tool-name]', function (el) {
       var t = bySlug[el.getAttribute('data-tool-name')];
@@ -41,8 +42,10 @@
     });
     each('[data-buys]', function (el) {
       var t = bySlug[el.getAttribute('data-buys')];
-      if (!t || !t.price || !(t.price.USD > 0)) return;
-      el.textContent = Math.floor(MIN_TOPUP_USD_MICROS / t.price.USD).toLocaleString('en-US');
+      var box = el.closest('[data-topup]');
+      var topup = box ? Number(box.getAttribute('data-topup')) : TOPUP_USD_MICROS;
+      if (!t || !t.price || !(t.price[currency] > 0)) return;
+      el.textContent = Math.floor(topup / t.price[currency]).toLocaleString('en-US');
     });
   }
 
@@ -278,20 +281,6 @@
     [].forEach.call(els, function (el) { io.observe(el); });
   }
 
-  // The currency switch on brand pages: each [data-inr] shows its rupee amount while it is ticked.
-  function currencySwitch() {
-    var box = document.querySelector('[data-cur-switch]');
-    if (!box) return;
-    function apply() {
-      each('[data-inr]', function (el) {
-        if (!el.hasAttribute('data-usd')) el.setAttribute('data-usd', el.textContent);
-        el.textContent = el.getAttribute(box.checked ? 'data-inr' : 'data-usd');
-      });
-    }
-    box.addEventListener('change', apply);
-    if (box.checked) apply();
-  }
-
   function boot() {
     var Toll = window.Toll;
     var base = Toll ? Toll.base : '';
@@ -302,9 +291,8 @@
     requestForm();
     spotlight();
     reveal();
-    currencySwitch();
     if (!Toll) return;
-    Toll.api('/api/v1/tools').then(function (json) { fillFromTools(json.tools || []); }, function () { /* keep the printed values */ });
+    Toll.api('/api/v1/tools').then(function (json) { fillFromTools(json.tools || [], Toll); }, function () { /* keep the printed values */ });
     Toll.me().then(function (account) {
       if (!account) return;
       each('[data-signed-in-text]', function (el) { el.textContent = el.getAttribute('data-signed-in-text'); });

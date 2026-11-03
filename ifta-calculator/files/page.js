@@ -201,7 +201,8 @@ function renderCheck(r, sheet) {
   );
 }
 
-const priceFor = (vehicles) => (vehicles <= 5 ? '$5.00' : vehicles <= 25 ? '$9.00' : '$15.00');
+// The return's price for a fleet size, in the page's currency (T.prices swaps the dollar text).
+const priceFor = (vehicles) => T.prices(vehicles <= 5 ? '$5.00' : vehicles <= 25 ? '$9.00' : '$15.00');
 
 function renderReturn(r, json) {
   const out = $('if-out');

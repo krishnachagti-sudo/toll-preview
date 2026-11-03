@@ -8,7 +8,16 @@
   var $ = function (id) { return document.getElementById(id); };
 
   var MICROS = 1000000;
-  var SYMBOL = { USD: '$', INR: '₹' };
+  // The sign before a typed amount, in the account's currency: "$" for a dollar account, the
+  // currency's own sign for another (its code where the browser has none).
+  function symbolOf(currency) {
+    if (currency === 'USD') return '$';
+    try {
+      var part = new Intl.NumberFormat('en', { style: 'currency', currency: currency }).formatToParts(0).filter(function (p) { return p.type === 'currency'; })[0];
+      if (part && part.value !== currency) return part.value;
+    } catch (e) { /* the code below */ }
+    return currency + ' ';
+  }
   var KIND = {
     topup: 'Top-up',
     invoice: 'Paid by invoice or check',
@@ -147,7 +156,7 @@
     $('balance-paid').textContent = b.paidDisplay;
     $('welcome-grant').textContent = b.grantDisplay;
     $('welcome').hidden = !justSignedUp;
-    [].forEach.call(document.querySelectorAll('.cur-symbol'), function (s) { s.textContent = SYMBOL[account.currency]; });
+    [].forEach.call(document.querySelectorAll('.cur-symbol'), function (s) { s.textContent = symbolOf(account.currency); });
 
     // A pass the account holds: what is left of this month's allowance, and when the pass ends.
     var pass = account.passes[0];
@@ -209,13 +218,13 @@
     var button = form.querySelector('button[type="submit"]');
     clearErrors(form);
     $('signup-error').textContent = '';
-    var currency = form.querySelector('input[name="currency"]:checked');
     busy(button, true);
-    Toll.api('/api/account/signup', { body: {
-      email: $('signup-email').value,
-      password: $('signup-password').value,
-      currency: currency ? currency.value : 'USD',
-    } }).then(function () {
+    // The currency choice is on the form only when more than one is offered; without it the
+    // server opens the account in the currency this page was shown in.
+    var body = { email: $('signup-email').value, password: $('signup-password').value };
+    var currency = form.querySelector('input[name="currency"]:checked');
+    if (currency) body.currency = currency.value;
+    Toll.api('/api/account/signup', { body: body }).then(function () {
       form.reset();
       if (nextPath()) { window.location.assign(nextPath()); return; }
       justSignedUp = true;
@@ -223,6 +232,13 @@
     }, function (err) {
       showError($('signup-error'), err, form);
     }).then(function () { busy(button, false); });
+  });
+
+  // The line under the currency choice says what the picked currency means.
+  [].forEach.call(document.querySelectorAll('#signup-form input[name="currency"]'), function (radio) {
+    radio.addEventListener('change', function () {
+      if (radio.checked && $('signup-currency-line')) $('signup-currency-line').textContent = radio.getAttribute('data-line');
+    });
   });
 
   $('login-form').addEventListener('submit', function (ev) {
@@ -385,7 +401,7 @@
         var save = h('button', { type: 'submit', class: 'btn btn-small' }, 'Save');
         var form = h('form', { class: 'cap-edit', novalidate: true }, [
           h('label', { for: inputId, class: 'visually-hidden' }, 'Monthly limit for ' + key.name),
-          h('div', { class: 'money-input' }, [h('span', { 'aria-hidden': 'true' }, SYMBOL[account.currency]), input]),
+          h('div', { class: 'money-input' }, [h('span', { 'aria-hidden': 'true' }, symbolOf(account.currency)), input]),
           save,
         ]);
         form.addEventListener('submit', function (ev) {

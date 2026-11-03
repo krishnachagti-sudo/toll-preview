@@ -33,7 +33,6 @@
 .tool-card p{max-width:none;font-size:14.5px}
 .tool-card .res{padding-top:20px}
 .tool-card .tc-price{font-family:var(--font-mono);color:var(--text)}
-.tool-card .tc-price .alt{color:var(--faint)}
 .tool-card .tc-price .dot{background:var(--hue)}
 .tool-more{margin:28px 0 0;font-size:14px;color:var(--muted)}
 .hero-actions.tool-jump{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px}
@@ -110,21 +109,9 @@
   .tbl td.words{min-width:6.5rem;font-size:12.5px}
 }
 
-/* ---------- pricing: every tool's prices, one currency at a time ---------- */
+/* ---------- pricing: every tool's prices ---------- */
 .plist{border:1px solid var(--line-2);border-radius:var(--radius-lg);background:var(--bg-1);overflow:hidden}
-.pl-switch{display:flex;gap:4px;padding:12px;border-bottom:1px solid var(--line)}
-.pl-switch input{position:absolute;opacity:0;pointer-events:none}
-.pl-switch label{display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:999px;font-size:14px;color:var(--muted);cursor:pointer;transition:color .15s,background .15s}
-.pl-switch label:hover{color:var(--text)}
-.pl-switch input:checked + label{color:#fff;background:rgba(255,255,255,.09)}
-.pl-switch input:focus-visible + label{outline:2px solid var(--text);outline-offset:2px}
-.plist .pl-inr{display:none}
-body:has(#cur-inr:checked) .pl-usd{display:none}
-body:has(#cur-inr:checked) .pl-inr{display:grid}
-.cur-switch{display:inline-flex;gap:10px;align-items:center;margin-top:18px;font-size:14px;color:var(--muted);cursor:pointer}
-.cur-switch input{width:16px;height:16px;accent-color:var(--text)}
 .pl-tool{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:8px 28px;padding:20px 24px;border-top:1px solid var(--line)}
-.pl-switch + .pl-tool{border-top:0}
 @media (min-width:901px){.price-grid .terms{position:sticky;top:100px}}
 .pl-name a{font-weight:550;font-size:15.5px;color:var(--text);text-decoration:none}
 .pl-name a:hover{text-decoration:underline;text-underline-offset:3px}
@@ -136,7 +123,6 @@ body:has(#cur-inr:checked) .pl-inr{display:grid}
 .pl-cap{color:var(--muted);font-size:13px;padding-top:8px;border-top:1px dashed var(--line)}
 @media (max-width:720px){
   .pl-tool{grid-template-columns:1fr;padding:18px}
-  .pl-switch label{flex:1;justify-content:center}
 }
 /* A folded reference block (the developer error codes) */
 .fold{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0 32px}
@@ -177,7 +163,6 @@ body:has(#cur-inr:checked) .pl-inr{display:grid}
 .offer-main{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.05)}
 .offer-k{margin:0;font:500 13px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .offer-price{margin:6px 0 0;font-size:40px;font-weight:600;letter-spacing:-.02em;color:var(--text);line-height:1.05}
-.offer-price .alt{font-size:16px;font-weight:400;color:var(--muted);letter-spacing:0}
 .offer-price .per{font-size:16px;font-weight:400;color:var(--muted)}
 .offer-term{margin:0;color:var(--text-2);font-size:14px}
 .offer-who{margin:0;color:var(--text-2)}
@@ -188,7 +173,7 @@ body:has(#cur-inr:checked) .pl-inr{display:grid}
 .offer .btn{margin-top:auto;align-self:flex-start}
 .credit-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:start}
 .packs td{color:var(--text);font-size:16px}
-.packs td .alt,.packs td .muted{color:var(--muted);font-size:14px}
+.packs td .muted{color:var(--muted);font-size:14px}
 .team-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:24px;align-items:center;padding:28px;border:1px solid var(--line-2);border-radius:20px;background:rgba(255,255,255,.02)}
 .team-card .offer-list{margin:0}
 @media (max-width:900px){

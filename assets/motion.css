@@ -375,3 +375,116 @@ input[type=checkbox]:checked,input[type=radio]:checked{animation:tl-pop .35s var
   .tl-toast.show{opacity:1;transform:translate(-50%,0)}
   html.js main table.tl-rows tbody tr{opacity:1;transform:none}
 }
+
+/* ---------- a page's parts attach to the bar (nav.js: hp-docked, hp-slim-on, hp-wide) ----------
+   Reading: one slim row, the main links folded into Menu and the parts in their place. Reaching:
+   the main row returns and the parts sit in a tray under it. The glass is motion.js's capsule, which
+   widens and grows down with these classes. Each row has a pill that slides to the part being read. */
+.hp-tabs{position:relative;display:flex;gap:2px;align-items:center;overflow-x:auto;scrollbar-width:none;padding:4px}
+.hp-tabs::-webkit-scrollbar{display:none}
+.hp-tabs a,.tool-parts .tp-row a{position:relative;z-index:1}
+.hp-tabs a{flex:none;display:inline-flex;align-items:center;height:34px;padding:0 13px;border-radius:999px;font-size:14px;color:#c9ccd1;text-decoration:none;white-space:nowrap;
+  transition:color .25s,opacity .3s,transform .5s var(--lg-spring),filter .3s}
+.hp-tabs a:hover,.hp-tabs a[aria-current]{color:#fff;text-decoration:none}
+.hp-tabs a::after,.tool-parts .tp-row a::after{content:"";position:absolute;left:50%;bottom:3px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--tl-ember,#ff5a36);transform:scale(0);transition:transform .35s var(--lg-spring)}
+.hp-tabs a:hover:not([aria-current])::after,.tool-parts .tp-row a:hover:not([aria-current])::after{transform:scale(1)}
+.hp-ind{position:absolute;z-index:0;top:4px;bottom:4px;left:0;width:0;border-radius:999px;background:rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  opacity:0;pointer-events:none;transition:transform .55s var(--lg-spring),width .55s var(--lg-spring),opacity .3s}
+.tool-parts .tp-row{position:relative}
+.tool-parts .tp-row a[aria-current]{background:none}
+.tool-parts .hp-ind.on{opacity:1}
+
+/* The slim row: Menu, then the parts, between the logo and the search icon. */
+.hp-slim{position:absolute;top:0;bottom:0;display:flex;align-items:center;gap:8px;pointer-events:none;z-index:2}
+.hp-menu{flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px 0 10px;border-radius:999px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);
+  color:#d6d9de;font:500 14px/1 var(--font-text);cursor:pointer;opacity:0;transform:scale(.85);transition:opacity .14s,transform .3s ease-in,background .2s,color .2s}
+.site-head.hp-slim-on .hp-menu{transition:opacity .25s,transform .5s var(--lg-spring),background .2s,color .2s}
+.hp-menu:hover{background:rgba(255,255,255,.1);color:#fff}
+.hp-menu svg path{transition:d .3s}
+.hp-slim-tabs{flex:1;min-width:0;-webkit-mask:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent)}
+/* Leaving is quick and all at once; arriving waits a beat and staggers, so the two rows never sit
+   half-visible on top of each other. */
+.hp-slim-tabs a{opacity:0;transform:translateY(9px);filter:blur(3px);transition:color .25s,opacity .14s,transform .3s ease-in,filter .14s}
+.site-head.hp-slim-on .hp-slim{pointer-events:auto}
+.site-head.hp-slim-on .hp-menu{opacity:1;transform:none;transition-delay:.06s}
+.site-head.hp-slim-on .hp-slim-tabs a{opacity:1;transform:none;filter:none;transition-delay:0s,calc(var(--i,0) * 35ms + 80ms),calc(var(--i,0) * 35ms + 80ms),calc(var(--i,0) * 35ms + 80ms)}
+.site-head.hp-slim-on .hp-slim-tabs .hp-ind.on{opacity:1;transition-delay:.12s}
+.head-nav>a{transition:color .15s,background .15s,opacity .3s,transform .5s var(--lg-spring),filter .3s}
+.site-head.hp-docked .head-nav>a{transition-delay:0s,0s,90ms,90ms,90ms}
+.site-head.hp-docked .head-nav>a:nth-child(2){transition-delay:0s,0s,125ms,125ms,125ms}
+.site-head.hp-docked .head-nav>a:nth-child(3){transition-delay:0s,0s,160ms,160ms,160ms}
+.site-head.hp-slim-on .head-nav>a{opacity:0;transform:translateY(-9px);filter:blur(3px);pointer-events:none;transition:color .15s,background .15s,opacity .14s,transform .3s ease-in,filter .14s;transition-delay:0s}
+.nav-search{transition:border-color .15s,background .15s,color .15s,width .55s var(--lg-soft),padding .55s var(--lg-soft)}
+.nav-search .ph,.nav-search kbd{transition:opacity .25s}
+.site-head.hp-slim-on .nav-search{width:42px;padding:0 0 0 12px}
+.site-head.hp-slim-on .nav-search .ph,.site-head.hp-slim-on .nav-search kbd{opacity:0}
+.site-head.hp-slim-on .nav-search:hover svg{transform:rotate(-12deg) scale(1.08)}
+.nav-search svg{flex:none;transition:transform .5s var(--lg-spring)}
+
+/* The tray: under the bar, as wide as it, inside the glass. */
+.hp-tray{position:absolute;left:0;right:0;margin:0 auto;width:min(1180px,calc(100% - 2 * var(--gutter)));top:calc(10px + 60px);display:flex;justify-content:center;
+  padding:0 10px 6px;pointer-events:none;z-index:2}
+.hp-tray::before{content:"";position:absolute;left:18px;right:18px;top:0;height:1px;background:rgba(255,255,255,.07);opacity:0;transition:opacity .4s}
+.hp-tray .hp-tabs{max-width:100%}
+.hp-tray-tabs a{opacity:0;transform:translateY(-7px);filter:blur(2px)}
+.site-head.hp-wide .hp-tray{pointer-events:auto}
+.site-head.hp-wide .hp-tray::before{opacity:1}
+.site-head.hp-wide .hp-tray-tabs a{opacity:1;transform:none;filter:none;transition-delay:0s,calc(var(--i,0) * 30ms + 60ms),calc(var(--i,0) * 30ms + 60ms),calc(var(--i,0) * 30ms + 60ms)}
+.site-head.hp-wide .hp-tray-tabs .hp-ind.on{opacity:1;transition-delay:.12s}
+html.has-parts{scroll-padding-top:150px}
+/* Without the glass (motion.js did not run) the tray brings its own background. */
+html:not(.lg) .site-head.hp-wide .hp-tray{background:rgba(20,21,25,.92);border:1px solid rgba(255,255,255,.12);border-top:0;border-radius:0 0 20px 20px}
+
+/* Attaching: the bar settles with a small bump. */
+.site-head.hp-bump .logo-mark{animation:hp-dot .7s .1s var(--lg-spring)}
+@keyframes hp-dot{35%{transform:scale(1.14) rotate(-4deg)}}
+
+@media (max-width:900px){
+  .hp-slim{display:none}
+  .site-head.hp-slim-on .head-nav>a{opacity:1;transform:none;filter:none}
+  .hp-tray{width:calc(100% - 2 * var(--gutter));justify-content:flex-start}
+  .hp-tray .hp-tabs{-webkit-mask:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 12px),transparent);mask:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 12px),transparent)}
+}
+@media (prefers-reduced-motion:reduce){
+  .hp-tabs a,.hp-menu,.hp-ind,.head-nav>a,.nav-search,.hp-tray::before{transition:none!important}
+  .site-head.hp-bump .logo-mark{animation:none}
+}
+
+/* ---------- gliding pills (motion.js glide) ----------
+   The highlight moves to the chosen item; the item's own highlight steps aside so there is one. */
+.gl-group{position:relative;isolation:isolate}
+.gl-ind{position:absolute;left:0;top:0;z-index:-1;pointer-events:none;opacity:0;
+  transition:transform .5s var(--lg-spring),width .5s var(--lg-spring),height .5s var(--lg-spring),opacity .2s}
+.gl-group:not(.gl-ready) .gl-ind{transition:none}
+/* A tool's choice pills: the white pill slides; the text flips colour as it arrives. */
+.gl-solid .gl-ind{border-radius:999px;background:var(--text);box-shadow:0 6px 18px -8px rgba(255,255,255,.35)}
+.gl-solid .choice input:checked+span{background:transparent;border-color:transparent;color:var(--bg);transition:color .25s .08s,background .15s,border-color .15s,transform .35s var(--lg-spring)}
+.gl-solid .choice span{position:relative;z-index:1}
+/* Soft pills: the tools filter and the search results. */
+.gl-soft .gl-ind{border-radius:999px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px var(--line-3,rgba(255,255,255,.16))}
+.gl-soft .cat-chip[aria-pressed="true"]{background:transparent;border-color:transparent}
+.nav-results.gl-soft .gl-ind{border-radius:12px;box-shadow:none;background:rgba(255,255,255,.07)}
+.nav-results.gl-soft .nav-hit[aria-selected="true"]{background:transparent}
+.nav-results.gl-soft .nav-hit{position:relative;z-index:1}
+/* Underline: the code tabs on a tool page. */
+.gl-line .gl-ind{background:none}
+.gl-line .gl-ind::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;border-radius:2px;background:var(--tl-ember,#ff5a36)}
+.gl-line .toll-code-tab[aria-selected="true"]{border-bottom-color:transparent}
+/* A bar down the side: the docs contents on a wide screen; a soft pill on a phone. */
+.gl-side .gl-ind{background:none}
+.gl-side .gl-ind::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;border-radius:2px;background:var(--warm)}
+.gl-side a[aria-current]{border-left-color:transparent}
+@media (max-width:900px){
+  .gl-side .gl-ind{border-radius:999px;background:rgba(255,255,255,.1)}
+  .gl-side .gl-ind::before{display:none}
+  .gl-side a[aria-current]{background:transparent}
+}
+@media (prefers-reduced-motion:reduce){.gl-ind{transition:opacity .2s!important}}
+
+/* The phone menu: its items come in one after another as the sheet opens. */
+@media (prefers-reduced-motion:no-preference){
+  .menu[open] .menu-panel>*{animation:tl-row .45s var(--mx-out) both}
+  .menu[open] .menu-panel>:nth-child(2){animation-delay:.04s}.menu[open] .menu-panel>:nth-child(3){animation-delay:.08s}
+  .menu[open] .menu-panel>:nth-child(4){animation-delay:.12s}.menu[open] .menu-panel>:nth-child(5){animation-delay:.16s}
+  .menu[open] .menu-panel>:nth-child(n+6){animation-delay:.2s}
+}

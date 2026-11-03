@@ -371,8 +371,7 @@ async function onScan(ev) {
 
 function showPrice() {
   const scan = tool.pricing.actions.find((a) => a.name === 'scan');
-  const currency = account?.currency === 'INR' ? 'INR' : 'USD';
-  $('tt-price').textContent = `A year-end scan costs ${scan.text[currency]}. Checking one payee is free${account ? '' : ': 5 free checks a day without an account'}.`;
+  $('tt-price').textContent = `A year-end scan costs ${T.money(scan.text)}. Checking one payee is free${account ? '' : ': 5 free checks a day without an account'}.`;
   $('tt-check-note').textContent = account ? 'Free, and not taken from your balance.' : '5 free checks a day, no account needed.';
   $('tt-scan-note').textContent = account ? 'Charged from your balance, once per payee for the year.' : 'A scan needs an account. The free preview above needs none.';
   $('tt-scan-run').textContent = account ? 'Run the scan' : 'Sign in to run the scan';

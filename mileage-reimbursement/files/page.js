@@ -272,7 +272,8 @@ const engineOptions = (o) => ({ ...(o.employerRate ? { employerRate: { mills: Ma
 
 // What a paid action costs: the signed-in account's own quote, or the price in words.
 async function priceLine(input, action, el) {
-  const words = tool?.pricing?.actions.find((a) => a.name === action)?.text.USD ?? '';
+  const text = tool?.pricing?.actions.find((a) => a.name === action)?.text;
+  const words = text ? T.money(text) : '';
   if (!signedIn) { el.textContent = tr(`${words}. Sign in to download.`, `${words}. Inicie sesión para descargar.`); return; }
   try {
     const q = (await T.api(`/api/run/${SLUG}/quote`, { body: input })).quote;

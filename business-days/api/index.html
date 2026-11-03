@@ -69,7 +69,7 @@
 <header class="cp-head">
 <p class="eyebrow">Developers</p>
 <h1>Business days API</h1>
-<p class="cp-answer">POST <code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days</code> with {&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;} returns 4 business days and names the holiday it skipped, Independence Day (observed) on 2026-07-03. Each call costs $0.0005 (₹0.04 on a rupee account).</p>
+<p class="cp-answer">POST <code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days</code> with {&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;} returns 4 business days and names the holiday it skipped, Independence Day (observed) on 2026-07-03. Each call costs $0.0005.</p>
 <dl class="cp-facts"><div><dt>Business days</dt><dd class="num">4</dd></div><div><dt>Per call</dt><dd class="num">$0.0005</dd></div></dl>
 </header>
 <div class="cp-body prose">
@@ -108,7 +108,7 @@
   },
   &quot;dataVersion&quot;: &quot;holiday-rules-2026.10&quot;
 }</code></pre>
-<p>Amounts are whole micro-units (1,000,000 to the dollar or rupee); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>{ date, holidaysSkipped }</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With <code>daysOff</code> the result also has <code>daysOffSkipped</code>: each of your days off that fell on a weekday in the range and was not already a holiday, as <code>{ date, name }</code>.</p>
+<p>Amounts are whole micro-units (1,000,000 to the dollar); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>{ date, holidaysSkipped }</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With <code>daysOff</code> the result also has <code>daysOffSkipped</code>: each of your days off that fell on a weekday in the range and was not already a holiday, as <code>{ date, name }</code>.</p>
 <p>Invalid input is a 400 <code>invalid_input</code> with the field that was wrong, and is never charged. Retries are safe with an <code>Idempotency-Key</code> header. The <a href="/toll-preview/docs">docs</a> cover errors, limits and idempotency for every tool.</p>
 </section>
 <section>
@@ -212,6 +212,7 @@
     <div class="foot-legal">
       <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
       <p>No ad or analytics trackers.</p>
+      
     </div>
   </div>
 </footer>

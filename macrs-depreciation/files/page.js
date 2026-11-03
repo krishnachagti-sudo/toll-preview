@@ -153,7 +153,7 @@ async function getSchedule() {
   try {
     const account = await T.me().catch(() => null);
     if (!account) {
-      showError({ message: 'The schedule is $2.00 per entity and tax year, taken from a prepaid balance.', code: 'unauthorized' });
+      showError({ message: T.prices('The schedule is $2.00 per entity and tax year, taken from a prepaid balance.'), code: 'unauthorized' });
       return;
     }
     if (!pendingQuote || pendingQuote.key !== key) {

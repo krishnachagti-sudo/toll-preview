@@ -7,7 +7,8 @@
      and table pages under them, as you type, from {base}/nav.json.
 
    - On a tool's page (and a long brand page), a bar under the header jumps to its parts (the calculator, the rules,
-     the prices, the code, the guides) and marks the one you are reading. On a phone a long
+     the prices, the code, the guides) and marks the one you are reading. When it reaches the header it
+     attaches to it: one slim row while reading, the full bar with a tray of parts when reaching up. On a phone a long
      intro folds to a few lines with "Read more", so the calculator is near the top.
 
    The index is fetched once, the first time someone reaches for either. Without JavaScript the
@@ -225,20 +226,146 @@
     bar.appendChild(row);
     intro.after(bar);
     document.documentElement.classList.add('has-parts');
-    // The part nearest the top of the screen is the one being read.
+    docked(bar, row, secs, links);
+  }
+
+  // ---------- the parts attach to the bar ----------
+  // Once the page's own row of parts reaches the header it rises into it. Reading (scrolling down),
+  // the bar is one slim row: the main links fold into Menu and the parts take their place. Reaching
+  // (scrolling up past a little travel, resting the pointer on the bar, or Menu) it opens: the main
+  // row comes back and the parts sit in a tray under it. On a narrow screen there is no room for
+  // the slim row, so docked is always the tray. motion.js reshapes the glass to match (hp-docked,
+  // hp-wide); every row of parts marks the one being read with a sliding pill.
+  function docked(bar, row, secs, links) {
+    var navRow = head.querySelector('.nav-row');
+    var mainNav = head.querySelector('.head-nav');
+    var search = head.querySelector('.nav-search');
+    if (!navRow || !mainNav) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var narrow = window.matchMedia('(max-width: 900px)');
+    var smooth = function () { return reduce ? 'auto' : 'smooth'; };
+
+    function copyRow(cls) {
+      var r = h('div', { class: 'hp-tabs ' + cls });
+      r.appendChild(h('span', { class: 'hp-ind', 'aria-hidden': 'true' }));
+      links.forEach(function (a, i) {
+        var c = h('a', { href: a.getAttribute('href'), tabindex: '-1', text: a.textContent });
+        c.style.setProperty('--i', i);
+        r.appendChild(c);
+      });
+      return r;
+    }
+    var menuBtn = h('button', { type: 'button', class: 'hp-menu', 'aria-label': 'Open the main menu', 'aria-expanded': 'false' }, [
+      svgIcon('M3 6h12M3 10h12M3 14h7'), h('span', { text: 'Menu' })]);
+    var slimTabs = copyRow('hp-slim-tabs');
+    var slim = h('nav', { class: 'hp-slim', 'aria-label': 'On this page' }, [menuBtn, slimTabs]);
+    mainNav.after(slim);
+    var trayTabs = copyRow('hp-tray-tabs');
+    var tray = h('nav', { class: 'hp-tray', 'aria-label': 'On this page' }, [trayTabs]);
+    head.appendChild(tray);
+    var rows = [row, slimTabs, trayTabs];
+    row.insertBefore(h('span', { class: 'hp-ind', 'aria-hidden': 'true' }), row.firstChild);
+    links.forEach(function (a, i) { a.style.setProperty('--i', i); });
+
+    // The pill slides to the current part in a row; a row that is not showing hides its pill.
+    function place(r) {
+      var ind = r.querySelector(':scope > .hp-ind'), on = r.querySelector('a[aria-current]');
+      if (!ind) return;
+      if (!on || !on.offsetWidth || !r.offsetWidth) { ind.classList.remove('on'); return; }
+      ind.style.width = on.offsetWidth + 'px';
+      ind.style.transform = 'translateX(' + on.offsetLeft + 'px)';
+      ind.classList.add('on');
+      if (r.scrollWidth > r.clientWidth) r.scrollTo({ left: on.offsetLeft - r.clientWidth / 2 + on.offsetWidth / 2, behavior: smooth() });
+    }
+    function placeAll() { rows.forEach(place); }
+
+    // The slim row fills the space between the logo and the search, which narrows to its icon.
+    function fitSlim() {
+      var logo = navRow.querySelector('.logo');
+      var left = logo ? logo.offsetLeft + logo.offsetWidth + 18 : 160;
+      var right = search ? navRow.clientWidth - (search.offsetLeft + search.offsetWidth) + 42 + 12 : 200;
+      slim.style.left = left + 'px';
+      slim.style.right = right + 'px';
+    }
+
+    var isDocked = false, wide = false, upward = false, hovering = false, travel = 0, lastY = window.scrollY;
+    var enterTimer = 0, leaveTimer = 0, bumpTimer = 0;
+    function set() {
+      var w = isDocked && (narrow.matches || upward || hovering);
+      head.classList.toggle('hp-docked', isDocked);
+      head.classList.toggle('hp-slim-on', isDocked && !w);
+      menuBtn.setAttribute('aria-expanded', w ? 'true' : 'false');
+      [].forEach.call(slimTabs.querySelectorAll('a'), function (a) { a.tabIndex = isDocked && !w ? 0 : -1; });
+      [].forEach.call(trayTabs.querySelectorAll('a'), function (a) { a.tabIndex = w ? 0 : -1; });
+      if (w !== wide) {
+        wide = w;
+        head.classList.toggle('hp-wide', w);
+      }
+      setTimeout(placeAll, 80);
+    }
+    head.addEventListener('pointerenter', function (e) {
+      if (e.pointerType !== 'mouse' || !isDocked) return;
+      clearTimeout(leaveTimer);
+      // A pointer passing over the bar on its way elsewhere does not open it: it has to rest.
+      enterTimer = setTimeout(function () { hovering = true; set(); }, 140);
+    });
+    head.addEventListener('pointerleave', function () {
+      clearTimeout(enterTimer);
+      leaveTimer = setTimeout(function () { hovering = false; set(); }, 380);
+    });
+    menuBtn.addEventListener('click', function () { upward = true; set(); });
+    head.addEventListener('focusin', function (e) { if (tray.contains(e.target)) { upward = true; set(); } });
+
     var cur = -1;
-    function mark() {
+    function tick() {
+      var y = window.scrollY, dy = y - lastY;
+      lastY = y;
+      if ((dy > 0) !== (travel > 0)) travel = 0;
+      travel += dy;
+      if (travel < -28) upward = true; else if (travel > 28) upward = false;
+
+      // The page's row rises into the bar as it reaches it.
+      var limit = navRow.getBoundingClientRect().bottom + 6;
+      var top = bar.getBoundingClientRect().top;
+      var k = Math.max(0, Math.min(1, (top - limit) / 110));
+      row.style.opacity = reduce ? (k > 0 ? 1 : 0) : k;
+      row.style.transform = reduce ? '' : 'translateY(' + (-(1 - k) * 14).toFixed(1) + 'px) scale(' + (0.97 + k * 0.03).toFixed(3) + ')';
+      row.style.pointerEvents = k > 0.5 ? '' : 'none';
+      var now = top < limit;
+      if (now !== isDocked) {
+        isDocked = now;
+        if (!now) upward = false;
+        if (now) {
+          fitSlim();
+          if (!reduce) { head.classList.remove('hp-bump'); void head.offsetWidth; head.classList.add('hp-bump'); clearTimeout(bumpTimer); bumpTimer = setTimeout(function () { head.classList.remove('hp-bump'); }, 800); }
+        }
+      }
+      set();
+
+      // The part nearest the top of the screen is the one being read.
       var line = 170, at = 0;
       secs.forEach(function (sec, i) { if (sec.getBoundingClientRect().top < line) at = i; });
-      if (at === cur) return;
-      cur = at;
-      links.forEach(function (a, i) { if (i === at) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
-      var a = links[at];
-      if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+      if (at !== cur) {
+        cur = at;
+        rows.forEach(function (r) {
+          [].forEach.call(r.querySelectorAll('a'), function (a, i) { if (i === at) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
+        });
+        placeAll();
+      }
     }
     var ticking = false;
-    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; mark(); }); } }, { passive: true });
-    mark();
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; tick(); }); } }, { passive: true });
+    window.addEventListener('resize', function () { if (isDocked) fitSlim(); placeAll(); });
+    narrow.addEventListener('change', set);
+    tick();
+    setTimeout(placeAll, 120);
+  }
+  function svgIcon(d) {
+    var ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg'), path = document.createElementNS(ns, 'path');
+    svg.setAttribute('viewBox', '0 0 18 18'); svg.setAttribute('width', '15'); svg.setAttribute('height', '15'); svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('fill', 'none'); svg.setAttribute('stroke', 'currentColor'); svg.setAttribute('stroke-width', '1.7'); svg.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('d', d); svg.appendChild(path);
+    return svg;
   }
 
   // On a phone, an intro's long lede folds to four lines behind "Read more".

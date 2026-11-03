@@ -18,11 +18,11 @@ const ES_MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio
 const esDate = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} de ${ES_MONTHS[m - 1]} de ${y}`; };
 const statusName = (s) => (ES ? ES_STATUS[s] : STATUS_NAMES[s]);
 const dateLong = (iso) => (ES ? esDate(iso) : longDate(iso));
-// The paid price as a signed-out visitor sees it; a signed-in account's own currency is shown in
-// ts-price. Accounts are held in dollars or rupees, so a UK answer is still paid for in one of them.
+// The paid price as a signed-out visitor sees it, in the page's currency (T.prices). A page in
+// dollars says a UK answer is still paid for in dollars.
 const paidPrice = (c) => tr(
-  `$0.10 (₹8) a payment from ${c === 'UK' ? 'an account held in dollars or rupees' : 'your balance'}, never more than $2.49 (₹199) a month`,
-  `$0.10 (₹8) por pago de ${c === 'UK' ? 'una cuenta en dólares o en rupias' : 'su saldo'}, nunca más de $2.49 (₹199) al mes`,
+  T.prices(`$0.10 a payment from ${c === 'UK' && T.currency === 'USD' ? 'an account held in US dollars' : 'your balance'}, never more than $2.49 a month`),
+  `$0.10 por pago de ${c === 'UK' ? 'una cuenta en dólares estadounidenses' : 'su saldo'}, nunca más de $2.49 al mes`,
 );
 
 let account = null;
@@ -253,7 +253,7 @@ function renderLedger(note) {
 async function replay() {
   const rows = ledgerState.rows;
   if (!rows.length) return;
-  if (!account) { $('ts-ledger-note').textContent = tr('Sign in to replay your year: $0.10 per 25 payments.', 'Inicie sesión para recalcular su año: $0.10 por cada 25 pagos.'); return; }
+  if (!account) { $('ts-ledger-note').textContent = tr(T.prices('Sign in to replay your year: $0.10 per 25 payments.'), 'Inicie sesión para recalcular su año: $0.10 por cada 25 pagos.'); return; }
   const c = rows[0].country;
   const mixed = rows.some((r) => r.country !== c || JSON.stringify(r.profile) !== JSON.stringify(rows[0].profile));
   const input = { op: 'ledger', ...rows[0].profile, payments: rows.map((r) => Object.fromEntries(Object.entries({ date: r.date, amount: r.amount, expenses: r.expenses, miles: r.miles, tips: r.tips }).filter(([, v]) => v !== undefined))) };
@@ -312,8 +312,8 @@ function fromQuery() {
 function showPrice() {
   if (account) {
     $('ts-price').textContent = tr(
-      `${account.currency === 'INR' ? '₹8' : '$0.10'} per payment from your balance, at most ${account.currency === 'INR' ? '₹199' : '$2.49'} a calendar month for this tool.`,
-      `${account.currency === 'INR' ? '₹8' : '$0.10'} por pago de su saldo, como máximo ${account.currency === 'INR' ? '₹199' : '$2.49'} por mes calendario por esta herramienta.`,
+      T.prices('$0.10 per payment from your balance, at most $2.49 a calendar month for this tool.'),
+      '$0.10 por pago de su saldo, como máximo $2.49 por mes calendario por esta herramienta.',
     );
     $('ts-run-note').textContent = '';
   } else {

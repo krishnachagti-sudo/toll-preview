@@ -11,7 +11,7 @@
 <meta property="og:title" content="Privacy: Endwise">
 <meta property="og:description" content="What Endwise keeps about you, in plain words: your account, one sign-in cookie, hashed API keys, payments and tool requests. No ad or analytics trackers.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/privacy">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/privacy","url":"https://krishnachagti-sudo.github.io/toll-preview/privacy","name":"Privacy: Endwise","description":"What Endwise keeps about you, in plain words: your account, one sign-in cookie, hashed API keys, payments and tool requests. No ad or analytics trackers.","dateModified":"2026-11-01","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://krishnachagti-sudo.github.io/toll-preview/privacy"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/privacy","url":"https://krishnachagti-sudo.github.io/toll-preview/privacy","name":"Privacy: Endwise","description":"What Endwise keeps about you, in plain words: your account, one sign-in cookie, hashed API keys, payments and tool requests. No ad or analytics trackers.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://krishnachagti-sudo.github.io/toll-preview/privacy"}]}]}</script>
 <meta name="theme-color" content="#08090a">
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
@@ -73,7 +73,7 @@
     <section aria-labelledby="p-short">
       <h2 id="p-short">The short version</h2>
       <ul>
-        <li>There are no ad or analytics trackers, and no third-party scripts, on any page except the Razorpay payment page.</li>
+        <li>There are no ad or analytics trackers, and no third-party scripts, on any page.</li>
         <li>Your IP address is never written to our database. We only use it, for the day, to make the visitor hash described below.</li>
         <li>What you type into a tool is used to work out the answer. It is not stored, with one exception for API retries, explained below.</li>
         <li>The image tool runs in your browser. Your image never leaves your device.</li>
@@ -82,7 +82,7 @@
 
     <section aria-labelledby="p-account">
       <h2 id="p-account">If you create an account</h2>
-      <p>We store your email address, a hash of your password (never the password itself), the currency you chose, the monthly spending limit you set, and when you signed up.</p>
+      <p>We store your email address, a hash of your password (never the password itself), your balance's currency (US dollars), the monthly spending limit you set, and when you signed up.</p>
       <p>We also keep a ledger of your balance: each top-up, each monthly free allowance, each charge and each refund, with the amount, the tool, the API key that made the call, and the time. The ledger does not hold what you asked the tool.</p>
     </section>
 
@@ -101,6 +101,7 @@
       <h2 id="p-visitor">Free runs without an account, and sign-up limits</h2>
       <p>Without an account you get 5 free runs a day, and one visitor can create at most 3 accounts a day. To count these we make a visitor hash from the date, your IP address and a secret only the server knows. We store that hash with a count for the day. The hash changes every day, and rows from earlier days are deleted as soon as the next day's first free run or sign-up is recorded.</p>
       <p>The same daily hash is used, in memory only, to slow down repeated sign-in attempts and page-view beacons. Those counts are never written to the database.</p>
+      
     </section>
 
     <section aria-labelledby="p-views">
@@ -117,8 +118,7 @@
 
     <section aria-labelledby="p-pay">
       <h2 id="p-pay">Payments</h2>
-      <p>Rupee top-ups are paid through Razorpay. The payment page loads Razorpay's checkout script and passes it your email address so you do not have to type it. Your card or bank details go to Razorpay, never to us. From Razorpay we keep the payment's ID, amount and currency, and our own record of the top-up: its amount, reference and status.</p>
-      <p>Dollar top-ups are not open yet.</p>
+      <p>Top-ups are not open yet. Before they open, this section will name the payment provider that takes them and say what we keep from it.</p>
     </section>
 
     <section aria-labelledby="p-requests">
@@ -199,6 +199,7 @@
     <div class="foot-legal">
       <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
       <p>No ad or analytics trackers.</p>
+      
     </div>
   </div>
 </footer>

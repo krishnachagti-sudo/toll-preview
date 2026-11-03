@@ -18,7 +18,7 @@
 <meta property="og:title" content="REST API for developers: Endwise">
 <meta property="og:description" content="Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/developers/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/","name":"REST API for developers: Endwise","description":"Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/","name":"REST API for developers: Endwise","description":"Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"}]}]}</script>
 <script>window.TOLL={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -101,7 +101,7 @@
     </div>
     <div class="dev">
   <div class="rv">
-    <ol class="steps rv"><li><span class="n">01</span><div><h3><a href="/toll-preview/account">Create an account</a></h3><p>Every account gets $0.25 / ₹20 free each month, spent first, so you can try any tool before you pay.</p></div></li><li><span class="n">02</span><div><h3>Create an API key</h3><p>On your account page. Keys start with <code>tk_live_</code> and are shown once.</p></div></li><li><span class="n">03</span><div><h3>Send a POST</h3><p>To <code>/toll-preview/api/v1/tools/&lt;tool&gt;</code>, with the key as a Bearer token and the tool's input as JSON.</p></div></li></ol>
+    <ol class="steps rv"><li><span class="n">01</span><div><h3><a href="/toll-preview/account">Create an account</a></h3><p>Every account gets $0.25 free each month, spent first, so you can try any tool before you pay.</p></div></li><li><span class="n">02</span><div><h3>Create an API key</h3><p>On your account page. Keys start with <code>tk_live_</code> and are shown once.</p></div></li><li><span class="n">03</span><div><h3>Send a POST</h3><p>To <code>/toll-preview/api/v1/tools/&lt;tool&gt;</code>, with the key as a Bearer token and the tool's input as JSON.</p></div></li></ol>
   </div>
   <div class="code-wrap rv">
 <div class="code" id="code">
@@ -154,14 +154,14 @@ print(r.json())</code></pre>
 <pre data-ep="fx-on-date" data-lang="curl" hidden><code>curl -X POST <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/fx-on-date \
   -H &quot;Authorization: Bearer tk_live_...&quot; \
   -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;base&quot;:&quot;USD&quot;,&quot;quote&quot;:&quot;INR&quot;,&quot;date&quot;:&quot;2026-10-24&quot;}'</code></pre>
+  -d '{&quot;base&quot;:&quot;USD&quot;,&quot;quote&quot;:&quot;EUR&quot;,&quot;date&quot;:&quot;2026-10-24&quot;}'</code></pre>
 <pre data-ep="fx-on-date" data-lang="js" hidden><code>const res = await fetch(&quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/fx-on-date&quot;, {
   method: &quot;POST&quot;,
   headers: {
     &quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;,
     &quot;Content-Type&quot;: &quot;application/json&quot;
   },
-  body: JSON.stringify({ base: &quot;USD&quot;, quote: &quot;INR&quot;, date: &quot;2026-10-24&quot; })
+  body: JSON.stringify({ base: &quot;USD&quot;, quote: &quot;EUR&quot;, date: &quot;2026-10-24&quot; })
 });
 const data = await res.json();</code></pre>
 <pre data-ep="fx-on-date" data-lang="py" hidden><code>import requests
@@ -169,7 +169,7 @@ const data = await res.json();</code></pre>
 r = requests.post(
     &quot;<span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/api/v1/tools/fx-on-date&quot;,
     headers={&quot;Authorization&quot;: &quot;Bearer tk_live_...&quot;},
-    json={&quot;base&quot;: &quot;USD&quot;, &quot;quote&quot;: &quot;INR&quot;, &quot;date&quot;: &quot;2026-10-24&quot;},
+    json={&quot;base&quot;: &quot;USD&quot;, &quot;quote&quot;: &quot;EUR&quot;, &quot;date&quot;: &quot;2026-10-24&quot;},
 )
 print(r.json())</code></pre>
   <div class="resp-h"><span>Response <span class="ok">200 OK</span></span><span class="cost" data-cost="business-days">Charged $0.0005</span><span class="cost" data-cost="delivery-date-calculator" hidden>Charged $0.0005</span><span class="cost" data-cost="fx-on-date" hidden>Charged $0.001</span></div>
@@ -252,11 +252,11 @@ print(r.json())</code></pre>
   &quot;ok&quot;: true,
   &quot;result&quot;: {
     &quot;base&quot;: &quot;USD&quot;,
-    &quot;quote&quot;: &quot;INR&quot;,
+    &quot;quote&quot;: &quot;EUR&quot;,
     &quot;requestedDate&quot;: &quot;2026-10-24&quot;,
     &quot;fixingDate&quot;: &quot;2026-10-23&quot;,
-    &quot;rate&quot;: 94.945055,
-    &quot;inverse&quot;: 0.010532,
+    &quot;rate&quot;: 0.893416,
+    &quot;inverse&quot;: 1.1193,
     &quot;source&quot;: &quot;European Central Bank euro foreign exchange reference rates&quot;
   },
   &quot;charged&quot;: {
@@ -292,7 +292,7 @@ print(r.json())</code></pre>
 Content-Type: application/json</code></pre>
 </div></div></div>
 <div class="dev ref rv" id="responses"><div><h3 class="ref-h">What a call returns</h3><p class="ref-p">A successful call answers with <code>result</code>, what it cost in <code>charged</code>, and your balance after the charge. <code>dataVersion</code> names the reference data the answer came from, when a tool uses any.</p>
-<p class="ref-p">Amounts are whole numbers of micro-units: one dollar or one rupee is 1,000,000. The <code>display</code> fields show the same amount as text, exactly. A tool whose price depends on what you ask also says which action was charged, and why.</p></div><div><div class="code solo">
+<p class="ref-p">Amounts are whole numbers of micro-units: one dollar is 1,000,000. The <code>display</code> fields show the same amount as text, exactly. A tool whose price depends on what you ask also says which action was charged, and why.</p></div><div><div class="code solo">
   <div class="resp-h"><span>Charged and balance</span></div>
   <pre><code>{
   &quot;charged&quot;: {
@@ -360,7 +360,7 @@ Content-Type: application/json</code></pre>
   <pre><code>Idempotency-Key: invoice-4471-due-date</code></pre>
 </div></div></div>
 <div class="dev ref rv" id="limits"><div><h3 class="ref-h">Rate limits and spending limits</h3><p class="ref-p">Each key can make 10 requests a second, with short bursts of up to 20. Past that you get <code>rate_limited</code>; wait briefly and retry.</p>
-<p class="ref-p">Every key has a hard monthly spending limit (a new key gets $5 / ₹400 unless you choose another), and you can set one for the whole account. A call that would pass a limit is refused with <code>cap_reached</code> and charges nothing. Limits count from the 1st of each month (UTC).</p></div><div><div class="code solo">
+<p class="ref-p">Every key has a hard monthly spending limit (a new key gets $5 unless you choose another), and you can set one for the whole account. A call that would pass a limit is refused with <code>cap_reached</code> and charges nothing. Limits count from the 1st of each month (UTC).</p></div><div><div class="code solo">
   <div class="resp-h"><span>Too many requests <span class="ok">429</span></span></div>
   <pre><code>{
   &quot;ok&quot;: false,
@@ -447,7 +447,7 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
 </tr>
   </tbody>
 </table></div>
-<p class="code-cap rv">Starting prices for a dollar account. Each tool's page has its full prices, and the <a class="ul" href="/toll-preview/pricing/">pricing page</a> shows rupee prices.</p>
+<p class="code-cap rv">Starting prices. Each tool's page and the <a class="ul" href="/toll-preview/pricing/">pricing page</a> have the full prices.</p>
   </div>
 </section>
 <section class="closing" aria-labelledby="close-h">
@@ -455,7 +455,7 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
   <div class="noise" aria-hidden="true"></div>
   <div class="wrap rv">
     <h2 id="close-h">Get a key. Make the call.</h2>
-    <p class="sec-lede">Every account gets $0.25 / ₹20 free each month, spent first.</p>
+    <p class="sec-lede">Every account gets $0.25 free each month, spent first.</p>
     <div class="hero-actions">
       <a href="/toll-preview/account" class="btn btn-light btn-lg">Create account <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       <a href="/toll-preview/docs" class="btn btn-ghost btn-lg">Read the docs</a>
@@ -535,6 +535,7 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
     <div class="foot-legal">
       <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
       <p>No ad or analytics trackers.</p>
+      
     </div>
   </div>
 </footer>

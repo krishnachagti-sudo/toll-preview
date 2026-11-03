@@ -374,7 +374,7 @@ async function getWorksheet() {
   try {
     const account = await T.me().catch(() => null);
     if (!account) {
-      showError({ message: 'The worksheet is $9.00 per driver and tax year, taken from a prepaid balance.', code: 'unauthorized' });
+      showError({ message: T.prices('The worksheet is $9.00 per driver and tax year, taken from a prepaid balance.'), code: 'unauthorized' });
       return;
     }
     if (!pendingQuote || pendingQuote.key !== key) {
@@ -398,7 +398,7 @@ async function getWorksheet() {
     );
     pendingQuote = null;
     button.textContent = 'Get the worksheet (PDF and CSV)';
-    $('pd-get-note').textContent = 'A later run for the same driver and year is $0.10 for 15 months.';
+    $('pd-get-note').textContent = T.prices('A later run for the same driver and year is $0.10 for 15 months.');
   } catch (e) {
     showError(e);
   } finally {

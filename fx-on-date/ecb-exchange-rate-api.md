@@ -1,10 +1,10 @@
 # ECB exchange rate API for any date
 
-POST /api/v1/tools/fx-on-date with base USD, quote INR and date 2026-10-24 returns rate 94.945055 and fixingDate 2026-10-23, the ECB reference rate and the fixing it came from, for $0.001 (₹0.08 on a rupee account).
+POST /api/v1/tools/fx-on-date with base USD, quote EUR and date 2026-10-24 returns rate 0.893416 and fixingDate 2026-10-23, the ECB reference rate and the fixing it came from, for $0.001.
 
 ## Try the same call in the browser
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-10-24)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=EUR&date=2026-10-24)
 
 ## The request
 
@@ -13,7 +13,7 @@ Send a POST with a JSON body to /api/v1/tools/fx-on-date on this site, with your
 | Field | Type | Example | Meaning |
 | --- | --- | --- | --- |
 | base | string | USD | Three-letter code of the currency you convert from. |
-| quote | string | INR | Three-letter code of the currency you convert to. |
+| quote | string | EUR | Three-letter code of the currency you convert to. |
 | date | string | 2026-10-24 | The day, written YYYY-MM-DD, from 1999-01-04. |
 | source | string | ecb | Optional. ecb (the default) for the ECB reference rate; treasury, irs or hmrc for the US Treasury reporting rate, the IRS yearly average or the HMRC monthly rate, which answer with the publication and period used instead of fixingDate. |
 
@@ -23,17 +23,18 @@ The result sits inside the usual envelope with what the call cost, your balance 
 
 | Field | Example | Meaning |
 | --- | --- | --- |
-| base, quote | USD, INR | The pair you asked for. |
+| base, quote | USD, EUR | The pair you asked for. |
 | requestedDate | 2026-10-24 | The date you asked for. |
 | fixingDate | 2026-10-23 | The ECB fixing used: the same day, or the last one up to 7 days before it. |
-| rate | 94.945055 | Units of quote per one base, rounded half away from zero to 6 decimals. |
-| inverse | 0.010532 | Units of base per one quote, from the unrounded rate. |
+| rate | 0.893416 | Units of quote per one base, rounded half away from zero to 6 decimals. |
+| inverse | 1.1193 | Units of base per one quote, from the unrounded rate. |
 | source | European Central Bank euro foreign exchange reference rates | Where the rate comes from. |
 
 ## More worked examples
 
 | Example | Date asked | Fixing used | Rate |
 | --- | --- | --- | ---: |
+| US dollars to euros on a Saturday, which uses the Friday fixing | 2026-10-24 | 2026-10-23 | 0.893416 |
 | US dollars to Indian rupees on a Saturday, which uses the Friday fixing | 2026-10-24 | 2026-10-23 | 94.945055 |
 | Pounds to yen on Christmas Day 2024, when the ECB did not publish | 2024-12-25 | 2024-12-24 | 197.149931 |
 | Euros to US dollars on a day with a fixing | 2026-10-29 | 2026-10-29 | 1.113 |
@@ -67,7 +68,7 @@ A weekend or TARGET holiday has no fixing, so a date like that uses the last fix
 
 ### What does a call return on a weekend date?
 
-The last ECB fixing before it, and fixingDate says which day that was. For USD to INR on 2026-10-24 (a Saturday) the answer is 94.945055 from the fixing of 2026-10-23.
+The last ECB fixing before it, and fixingDate says which day that was. For USD to EUR on 2026-10-24 (a Saturday) the answer is 0.893416 from the fixing of 2026-10-23.
 
 ### Am I charged when there is no rate?
 

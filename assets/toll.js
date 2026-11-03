@@ -1,9 +1,14 @@
 /* Shared browser helpers for every page: brand pages and tool pages alike.
    The server injects window.TOLL = { base, brand, tool } into each page; every URL here is
-   built from TOLL.base, so the site works under any base path.
+   built from TOLL.base, so the site works under any base path. When the page's prices are not in
+   US dollars it also carries { currency, locale } and, on a tool page, { prices }: the tool's
+   dollar prices as text, each with the same price in that currency.
 
    window.Toll = {
      base, brand, tool,
+     currency, locale         the page's currency ("USD" unless the server said otherwise) and locale.
+     money(display)           an API "display" object ({ USD: "$0.10", ... }) in the page's currency.
+     prices(text)             a dollar sentence with the tool's own prices in the page's currency.
      api(path, opts)          fetch base + path as JSON; opts: { method, body, keepalive }.
                               Resolves with the JSON body (null for 204). Rejects with an Error
                               carrying .code, .status and .fields when the server says no.
@@ -24,6 +29,23 @@
   var base = typeof cfg.base === 'string' ? cfg.base : '';
   var brand = typeof cfg.brand === 'string' ? cfg.brand : '';
   var tool = typeof cfg.tool === 'string' ? cfg.tool : null;
+  var currency = typeof cfg.currency === 'string' ? cfg.currency : 'USD';
+  var locale = typeof cfg.locale === 'string' ? cfg.locale : 'en-US';
+  var swaps = cfg.prices && typeof cfg.prices === 'object' ? cfg.prices : {};
+
+  // ---------- prices in the page's currency ----------
+  // Whole amounts in another currency drop their ".00", as the server writes them; dollar text
+  // stays exactly as the API writes it.
+  function natural(text) {
+    return currency === 'USD' ? text : String(text).replace(/([^\d.,][\d,]+)\.00(?!\d)/g, '$1');
+  }
+  function money(display) {
+    if (!display) return '';
+    return natural(display[currency] || display.USD || '');
+  }
+  function prices(text) {
+    return currency === 'USD' ? text : natural(String(text).replace(/\$\d[\d,]*(?:\.\d+)?/g, function (m) { return swaps[m] || m; }));
+  }
 
   // ---------- small DOM helper ----------
   function h(tag, attrs, children) {
@@ -300,9 +322,9 @@
     });
 
     var price = info.price && info.price.display
-      ? 'Each call costs ' + info.price.display.USD + ' (or ' + info.price.display.INR + ' on a rupee account), taken from your balance.'
+      ? 'Each call costs ' + money(info.price.display) + ', taken from your balance.'
       : info.pricing && info.pricing.text
-        ? 'Prices, taken from your balance: ' + info.pricing.text.USD
+        ? 'Prices, taken from your balance: ' + money(info.pricing.text)
         : '';
 
     el.textContent = '';
@@ -582,6 +604,10 @@
     takeRunFlag: takeRunFlag,
     brand: brand,
     tool: tool,
+    currency: currency,
+    locale: locale,
+    money: money,
+    prices: prices,
     api: api,
     me: me,
     mountAccountChip: mountAccountChip,
