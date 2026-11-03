@@ -68,6 +68,7 @@
 .bd-tag { font: 600 0.56rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; align-self: flex-start; }
 .bd-day.pad { background: transparent; }
 .bd-day.out { opacity: 0.38; }
+.bd-day.unk { background: var(--paper-sunk); opacity: 0.5; }
 .bd-day.we { background: var(--paper-sunk) repeating-linear-gradient(135deg, transparent 0 5px, var(--bd-hatch) 5px 6px); }
 .bd-day.hol { background: var(--bd-hol-wash); }
 .bd-day.hol .bd-num { color: var(--bd-hol); font-weight: 600; }

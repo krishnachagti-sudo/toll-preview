@@ -238,6 +238,8 @@
     var s1 = head.classList.contains('hp-docked') ? 1 : 0, e1 = head.classList.contains('hp-wide') ? 1 : 0;
     if (s1 === swT && e1 === exT) return;
     swT = s1; exT = e1;
+    // The bending is invisible while the parts are attached, so the costly filter is switched off.
+    if (refract) root.classList.toggle('lg-refract', !s1);
     if (TRAY_H === 0 && e1) measure();
     if (reduce) snap(); else kick();
   }
@@ -252,7 +254,14 @@
 
   var docH = document.documentElement.scrollHeight;
   if ('ResizeObserver' in window) new ResizeObserver(function () { docH = document.documentElement.scrollHeight; }).observe(document.body);
+  // Scroll events can come several times a frame; the work runs once per frame.
+  var scrollQueued = false;
   function onScroll() {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(function () { scrollQueued = false; scrolled(); });
+  }
+  function scrolled() {
     var s = window.scrollY || window.pageYOffset;
     var p = clamp(s / Math.max(1, docH - window.innerHeight), 0, 1);
     if (Math.abs(p - prog) > 0.0005) { prog = p; drawProg(); }
@@ -320,7 +329,7 @@
   function snapOrRender() { if (raf) return; render(); }
 
   measure();
-  onScroll();
+  scrolled();
   // A page opened mid-scroll starts as the pill, without animating in.
   snap();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -863,9 +872,28 @@
 
     // Where each light sits and how bright it wants to be: bright while its thing spans the middle
     // of the screen, fading with distance from it.
-    function aim() {
+    // Each lit thing's box on the page is measured once and again when the page's size changes;
+    // a frame only subtracts the scroll (reading every box each frame forced a layout per frame).
+    var boxesAt = -1;
+    function boxes() {
+      var y = window.scrollY || window.pageYOffset, x0 = window.scrollX || 0;
       for (var j = 0; j < LIGHTS.length; j++) {
-        var L = LIGHTS[j], r = L.el.getBoundingClientRect(), s = L.s;
+        var b = LIGHTS[j].el.getBoundingClientRect();
+        LIGHTS[j].box = { left: b.left + x0, top: b.top + y, width: b.width, height: b.height };
+      }
+      boxesAt = 1;
+    }
+    if ('ResizeObserver' in window) new ResizeObserver(function () { boxesAt = -1; }).observe(document.body);
+    window.addEventListener('resize', function () { boxesAt = -1; });
+    // The scroll position as of the scroll event, read before anything is written that frame;
+    // reading it inside the frame, after the bar has moved, would lay the page out again.
+    var sy = window.scrollY || 0, sx = window.scrollX || 0;
+    window.addEventListener('scroll', function () { sy = window.scrollY; sx = window.scrollX; }, { passive: true });
+    function aim() {
+      if (boxesAt < 0) boxes();
+      for (var j = 0; j < LIGHTS.length; j++) {
+        var L = LIGHTS[j], B = L.box, s = L.s;
+        var r = { left: B.left - sx, top: B.top - sy, width: B.width, height: B.height, bottom: B.top - sy + B.height };
         L.wt = 0;
         if (r.bottom < -vh * 0.3 || r.top > vh * 1.3 || !r.width) continue;
         var x = r.left + r.width / 2, y, u, d;

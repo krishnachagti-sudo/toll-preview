@@ -10,8 +10,8 @@ POST `https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-da
 | Field | Value |
 | --- | --- |
 | `op` | `between` to count, or `add` to add days to a date |
-| `region` | `US` (federal holidays) or `GB-ENG` (England and Wales bank holidays) |
-| `start` | A date written like 2026-07-01, from 1971 to 2100. Never counted itself. |
+| `region` | `US` (federal holidays), `GB-ENG` (England and Wales bank holidays) or `IN-CENTRAL-DELHI` (India: closed holidays of central government offices in Delhi and New Delhi, 2025 to 2027; its answers carry a `note` saying so) |
+| `start` | A date written like 2026-07-01, from 1971 to 2100 (for India, from 2024-12-31 to 2027). Never counted itself. |
 | `end` | `between` only: the last date, counted. Before the start, the count is negative. |
 | `days` | `add` only: a whole number from -3650 to 3650; negative goes back |
 | `daysOff` | Optional: up to 400 of your own days off (company closures, state or local holidays), as dates like 2026-07-06. Skipped like holidays and listed in `daysOffSkipped` |
@@ -42,7 +42,7 @@ curl -X POST 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/bus
     "currency": "USD",
     "display": "$0.0005"
   },
-  "dataVersion": "holiday-rules-2026.10"
+  "dataVersion": "holiday-rules-2026.11"
 }
 ```
 

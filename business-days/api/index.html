@@ -77,8 +77,8 @@
 <h2 id="request">Request</h2>
 <div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Field</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row"><code>op</code></th><td><code>between</code> to count, or <code>add</code> to add days to a date</td></tr>
-<tr><th scope="row"><code>region</code></th><td><code>US</code> (federal holidays) or <code>GB-ENG</code> (England and Wales bank holidays)</td></tr>
-<tr><th scope="row"><code>start</code></th><td>A date written like 2026-07-01, from 1971 to 2100. Never counted itself.</td></tr>
+<tr><th scope="row"><code>region</code></th><td><code>US</code> (federal holidays), <code>GB-ENG</code> (England and Wales bank holidays) or <code>IN-CENTRAL-DELHI</code> (India: closed holidays of central government offices in Delhi and New Delhi, 2025 to 2027; its answers carry a <code>note</code> saying so)</td></tr>
+<tr><th scope="row"><code>start</code></th><td>A date written like 2026-07-01, from 1971 to 2100 (for India, from 2024-12-31 to 2027). Never counted itself.</td></tr>
 <tr><th scope="row"><code>end</code></th><td><code>between</code> only: the last date, counted. Before the start, the count is negative.</td></tr>
 <tr><th scope="row"><code>days</code></th><td><code>add</code> only: a whole number from -3650 to 3650; negative goes back</td></tr>
 <tr><th scope="row"><code>daysOff</code></th><td>Optional: up to 400 of your own days off (company closures, state or local holidays), as dates like 2026-07-06. Skipped like holidays and listed in <code>daysOffSkipped</code></td></tr>
@@ -106,7 +106,7 @@
     &quot;currency&quot;: &quot;USD&quot;,
     &quot;display&quot;: &quot;$0.0005&quot;
   },
-  &quot;dataVersion&quot;: &quot;holiday-rules-2026.10&quot;
+  &quot;dataVersion&quot;: &quot;holiday-rules-2026.11&quot;
 }</code></pre>
 <p>Amounts are whole micro-units (1,000,000 to the dollar); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>{ date, holidaysSkipped }</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With <code>daysOff</code> the result also has <code>daysOffSkipped</code>: each of your days off that fell on a weekday in the range and was not already a holiday, as <code>{ date, name }</code>.</p>
 <p>Invalid input is a 400 <code>invalid_input</code> with the field that was wrong, and is never charged. Retries are safe with an <code>Idempotency-Key</code> header. The <a href="/toll-preview/docs">docs</a> cover errors, limits and idempotency for every tool.</p>

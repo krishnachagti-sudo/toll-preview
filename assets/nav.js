@@ -316,6 +316,18 @@
     menuBtn.addEventListener('click', function () { upward = true; set(); });
     head.addEventListener('focusin', function (e) { if (tray.contains(e.target)) { upward = true; set(); } });
 
+    // Positions are measured once (and again when the page's size changes), never inside the
+    // scroll frame: reading layout there after the bar's own writes made the browser lay the page
+    // out again on every frame.
+    var barTop = 0, limit = 0, secTops = [], lastK = -1;
+    function measure() {
+      var y = window.scrollY;
+      limit = navRow.getBoundingClientRect().bottom + 6;
+      row.style.transform = '';
+      barTop = bar.getBoundingClientRect().top + y;
+      secTops = secs.map(function (sec) { return sec.getBoundingClientRect().top + y; });
+      lastK = -1;
+    }
     var cur = -1;
     function tick() {
       var y = window.scrollY, dy = y - lastY;
@@ -324,13 +336,15 @@
       travel += dy;
       if (travel < -28) upward = true; else if (travel > 28) upward = false;
 
-      // The page's row rises into the bar as it reaches it.
-      var limit = navRow.getBoundingClientRect().bottom + 6;
-      var top = bar.getBoundingClientRect().top;
+      // The page's row rises into the bar as it reaches it (written only while it is moving).
+      var top = barTop - y;
       var k = Math.max(0, Math.min(1, (top - limit) / 110));
-      row.style.opacity = reduce ? (k > 0 ? 1 : 0) : k;
-      row.style.transform = reduce ? '' : 'translateY(' + (-(1 - k) * 14).toFixed(1) + 'px) scale(' + (0.97 + k * 0.03).toFixed(3) + ')';
-      row.style.pointerEvents = k > 0.5 ? '' : 'none';
+      if (Math.abs(k - lastK) > 0.004) {
+        lastK = k;
+        row.style.opacity = reduce ? (k > 0 ? 1 : 0) : k;
+        row.style.transform = reduce || k === 1 ? '' : 'translateY(' + (-(1 - k) * 14).toFixed(1) + 'px) scale(' + (0.97 + k * 0.03).toFixed(3) + ')';
+        row.style.pointerEvents = k > 0.5 ? '' : 'none';
+      }
       var now = top < limit;
       if (now !== isDocked) {
         isDocked = now;
@@ -344,7 +358,7 @@
 
       // The part nearest the top of the screen is the one being read.
       var line = 170, at = 0;
-      secs.forEach(function (sec, i) { if (sec.getBoundingClientRect().top < line) at = i; });
+      secTops.forEach(function (t, i) { if (t - y < line) at = i; });
       if (at !== cur) {
         cur = at;
         rows.forEach(function (r) {
@@ -355,8 +369,10 @@
     }
     var ticking = false;
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; tick(); }); } }, { passive: true });
-    window.addEventListener('resize', function () { if (isDocked) fitSlim(); placeAll(); });
+    window.addEventListener('resize', function () { measure(); if (isDocked) fitSlim(); placeAll(); });
+    if ('ResizeObserver' in window) new ResizeObserver(function () { measure(); tick(); }).observe(document.body);
     narrow.addEventListener('change', set);
+    measure();
     tick();
     setTimeout(placeAll, 120);
   }

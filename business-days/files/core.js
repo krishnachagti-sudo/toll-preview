@@ -1,4 +1,4 @@
-// Business-day arithmetic for US federal and England & Wales holidays.
+// Business-day arithmetic for US federal, England & Wales and India (central government, Delhi) holidays.
 //
 // Pure and dependency-free: Node (tool.js, tests) and the browser (page.js) load this same file.
 // Dates are 'YYYY-MM-DD' strings. All arithmetic is on whole day numbers (days since
@@ -15,11 +15,21 @@
 //  England and Wales: Banking and Financial Dealings Act 1971 and royal proclamations. New Year's
 //      Day from 1974, the early May bank holiday from 1978. A holiday that lands on a weekend moves
 //      to the next weekday that is not already a holiday. One-off changes are in GB_MOVED and GB_EXTRA.
+//  India (central government, Delhi): a table, IN_LIST below, copied from the Department of Personnel
+//      and Training's office memorandum for each year (its sources are listed there). Festival dates
+//      follow lunar calendars, so there is no rule to compute; a year is covered only once its
+//      memorandum has been read, and other years are refused (IN_YEARS).
 
 export const MIN_YEAR = 1971;
 export const MAX_YEAR = 2100;
-export const REGIONS = { US: 'United States (federal)', 'GB-ENG': 'England and Wales' };
+export const IN = 'IN-CENTRAL-DELHI';
+export const REGIONS = { US: 'United States (federal)', 'GB-ENG': 'England and Wales', [IN]: 'India (central government, Delhi)' };
 export const RANGE_MESSAGE = `Dates must fall between ${MIN_YEAR} and ${MAX_YEAR}.`;
+// India is covered only for the years whose official holiday memorandum has been read.
+export const IN_YEARS = { min: 2025, max: 2027 };
+export const IN_RANGE_MESSAGE = `India (central government, Delhi) covers ${IN_YEARS.min} to ${IN_YEARS.max} only: the years whose official DoPT holiday list has been checked. Other years are refused rather than guessed.`;
+// What every India answer says it is.
+export const IN_NOTE = 'Closed (gazetted) holidays of central government administrative offices in Delhi and New Delhi, from the yearly office memorandum of the Department of Personnel and Training. Not restricted (optional) holidays, not any state\'s list and not bank holidays: states and banks differ. Weekends are Saturday and Sunday (the 5-day week).';
 
 // ---------- calendar arithmetic ----------
 
@@ -213,19 +223,157 @@ function gbHolidays(y) {
   return out;
 }
 
+// ---------- India (central government, Delhi) ----------
+
+// The closed (gazetted) holidays that the Government of India, Ministry of Personnel, Public
+// Grievances and Pensions, Department of Personnel and Training (DoPT) declares each year for the
+// administrative offices of the Central Government located at Delhi/New Delhi: Annexure-I of its
+// office memorandum "Holidays to be observed in Central Government Offices during the year YYYY",
+// with any later DoPT memorandum that moves one of them or declares another holiday for all Central
+// Government offices. Names and dates are as printed; every printed weekday was checked.
+// Not included: restricted holidays (Annexure-II), the lists of offices outside Delhi and of the
+// states, bank holidays, paid holidays for voting, and one-off office closures (such as the closure
+// of Delhi offices on 11 September 2026 for the BRICS summit, DoPT O.M. No. 12/7/2023-JCA dated
+// 3 September 2026), as the US list leaves out one-off closures ordered by the President.
+// A holiday on a Saturday or Sunday is not moved: the memorandum allows no substitute day (para 3.2).
+//
+// Weekends: Saturday and Sunday. DoPT O.M. No. 13/4/85-JCA dated 21 May 1985 introduced the 5-day
+// week in the civil administrative offices of the Government of India from 3 June 1985, Monday to
+// Friday with all Saturdays closed (https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html,
+// read 2026-11-03).
+//
+// Sources, all read 2026-11-03 from DoPT's circulars archive (listed at
+// https://doptcirculars.nic.in/Default.aspx?URL=dFaVfDsok83H):
+//  2025: O.M. F.No.12/2/2023-JCA dated 9 July 2024,
+//        https://documents.doptcirculars.nic.in/D2/D02est/List%20of%20holidays%202025KtKLw.pdf
+//        plus O.M. F.No.12/4/2020-JCA2 dated 27 March 2025 (14 April 2025, Dr. B.R. Ambedkar),
+//        https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20on%2014th%20April%202025%20Birthday%20of%20Dr%20B%20R%20AmbedkarDHZ8b.pdf
+//  2026: O.M. F.No.12/2/2023-JCA dated 3 July 2025,
+//        https://documents.doptcirculars.nic.in/D2/D02est/Holidays%20to%20be%20observed%20in%20Central%20Government%20Offices%20during%20the%20year%2020265vgBs.pdf
+//        plus O.M. F.No.12/3/2023-JCA dated 22 May 2026, moving Id-ul-Zuha (Bakrid) from 27 to
+//        28 May 2026 for Delhi/New Delhi offices,
+//        https://documents.doptcirculars.nic.in/D2/D02est/Change%20in%20the%20date%20of%20holiday%20of%20Id-ul-Zuhamg709.PDF
+//        DoPT's lists hold no 2026 memorandum for 14 April (Dr. B.R. Ambedkar), so that day is not in 2026.
+//  2027: O.M. F.No.12/2/2023-JCA dated 16 July 2026 (DoPT's site gives 17 July 2026 as the file date),
+//        https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20list%202027Cj0HU.PDF
+//        also at https://dopt.gov.in/static/uploads/2026/08/2ffd159748162a48c025f7e6ca5807d5.pdf
+//        Dates of Id-ul-Fitr, Id-ul-Zuha, Muharram and Id-e-Milad may still be moved on the sighting
+//        of the moon (para 5.1); a change is added here when DoPT publishes it.
+export const IN_SOURCES = {
+  2025: [
+    { text: 'DoPT O.M. F.No.12/2/2023-JCA dated 9 July 2024: holidays during 2025', href: 'https://documents.doptcirculars.nic.in/D2/D02est/List%20of%20holidays%202025KtKLw.pdf' },
+    { text: 'DoPT O.M. F.No.12/4/2020-JCA2 dated 27 March 2025: holiday on 14 April 2025', href: 'https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20on%2014th%20April%202025%20Birthday%20of%20Dr%20B%20R%20AmbedkarDHZ8b.pdf' },
+  ],
+  2026: [
+    { text: 'DoPT O.M. F.No.12/2/2023-JCA dated 3 July 2025: holidays during 2026', href: 'https://documents.doptcirculars.nic.in/D2/D02est/Holidays%20to%20be%20observed%20in%20Central%20Government%20Offices%20during%20the%20year%2020265vgBs.pdf' },
+    { text: 'DoPT O.M. F.No.12/3/2023-JCA dated 22 May 2026: Id-ul-Zuha (Bakrid) moved to 28 May 2026', href: 'https://documents.doptcirculars.nic.in/D2/D02est/Change%20in%20the%20date%20of%20holiday%20of%20Id-ul-Zuhamg709.PDF' },
+  ],
+  2027: [
+    { text: 'DoPT O.M. F.No.12/2/2023-JCA dated 16 July 2026: holidays during 2027', href: 'https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20list%202027Cj0HU.PDF' },
+  ],
+};
+export const IN_WEEKEND_SOURCE = { text: 'DoPT O.M. No. 13/4/85-JCA dated 21 May 1985: the 5-day week', href: 'https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html' };
+export const IN_READ_ON = '2026-11-03';
+
+// [month-day, name] per year, in date order.
+const IN_LIST = {
+  2025: [
+    ['01-26', 'Republic Day'],
+    ['02-26', 'Maha Shivaratri'],
+    ['03-14', 'Holi'],
+    ['03-31', 'Id-ul-Fitr'],
+    ['04-10', 'Mahavir Jayanti'],
+    ['04-14', 'Birthday of Dr. B.R. Ambedkar'],
+    ['04-18', 'Good Friday'],
+    ['05-12', 'Budha Purnima'],
+    ['06-07', 'Id-ul-Zuha (Bakrid)'],
+    ['07-06', 'Muharram'],
+    ['08-15', 'Independence Day'],
+    ['08-16', 'Janmashtami'],
+    ['09-05', 'Milad-un-Nabi or Id-e-Milad (Birthday of Prophet Mohammad)'],
+    ['10-02', "Mahatma Gandhi's Birthday"],
+    ['10-02', 'Dussehra'],
+    ['10-20', 'Diwali (Deepavali)'],
+    ['11-05', "Guru Nanak's Birthday"],
+    ['12-25', 'Christmas Day'],
+  ],
+  2026: [
+    ['01-26', 'Republic Day'],
+    ['03-04', 'Holi'],
+    ['03-21', 'Id-ul-Fitr'],
+    ['03-26', 'Ram Navami'],
+    ['03-31', 'Mahavir Jayanti'],
+    ['04-03', 'Good Friday'],
+    ['05-01', 'Budha Purnima'],
+    ['05-28', 'Id-ul-Zuha (Bakrid)'], // 27 May in the list; moved by the O.M. of 22 May 2026
+    ['06-26', 'Muharram'],
+    ['08-15', 'Independence Day'],
+    ['08-26', 'Milad-un-Nabi or Id-e-Milad (Birthday of Prophet Mohammad)'],
+    ['09-04', 'Janmashtami (Vaishnav)'], // printed "Vaishnva"
+    ['10-02', "Mahatma Gandhi's Birthday"],
+    ['10-20', 'Dussehra'],
+    ['11-08', 'Diwali (Deepavali)'],
+    ['11-24', "Guru Nanak's Birthday"],
+    ['12-25', 'Christmas Day'],
+  ],
+  2027: [
+    ['01-26', 'Republic Day'],
+    ['03-10', 'Id-ul-Fitr'],
+    ['03-23', 'Holi'],
+    ['03-26', 'Good Friday'],
+    ['04-15', 'Ram Navami'],
+    ['04-19', 'Mahavir Jayanti'],
+    ['05-17', 'Id-ul-Zuha (Bakrid)'],
+    ['05-20', 'Budha Purnima'],
+    ['06-16', 'Muharram'],
+    ['08-15', 'Independence Day'],
+    ['08-15', 'Milad-un-Nabi or Id-e-Milad (Prophet Mohammad\'s Birthday)'],
+    ['08-25', 'Janmashtami (Vaishnav)'],
+    ['10-02', "Mahatma Gandhi's Birthday"],
+    ['10-09', 'Dussehra (Vijaya Dashmi)'],
+    ['10-29', 'Diwali (Deepavali)'],
+    ['11-14', "Guru Nanak's Birthday"],
+    ['12-25', 'Christmas Day'],
+  ],
+};
+
+function inHolidays(y) {
+  return IN_LIST[y].map(([md, name]) => ({ day: daysFromCivil(y, Number(md.slice(0, 2)), Number(md.slice(3))), name }));
+}
+
 // ---------- holiday lookup ----------
 
-const RULES = { US: usHolidays, 'GB-ENG': gbHolidays };
+const RULES = { US: usHolidays, 'GB-ENG': gbHolidays, [IN]: inHolidays };
+
+// The years a region covers, and what a call outside them is told.
+const yearsOf = (region) => (region === IN ? [IN_YEARS.min, IN_YEARS.max] : [MIN_YEAR, MAX_YEAR]);
+export const rangeMessage = (region) => (region === IN ? IN_RANGE_MESSAGE : RANGE_MESSAGE);
+const firstDay = (region) => daysFromCivil(yearsOf(region)[0], 1, 1);
+const lastDay = (region) => daysFromCivil(yearsOf(region)[1], 12, 31);
+// True when a day number falls in a year the region covers.
+const covers = (region, n) => n >= firstDay(region) && n <= lastDay(region);
+
+// Every day an answer depends on must be in a covered year. The day a count or a step starts from is
+// never itself counted, so it may be the day before the first covered year (31 December 2024 for India).
+// dayNumber, with the region's own message for a year outside 1971-2100.
+function dayIn(region, iso) {
+  try { return dayNumber(iso); } catch (e) { if (e instanceof RangeError) throw new RangeError(rangeMessage(region)); throw e; }
+}
+
+function checkSpan(region, lo, hi) {
+  if (lo < firstDay(region) - 1 || hi > lastDay(region)) throw new RangeError(rangeMessage(region));
+}
 const cache = new Map();
 
 function checkRegion(region) {
-  if (!Object.prototype.hasOwnProperty.call(RULES, region)) throw new TypeError('Region must be "US" or "GB-ENG".');
+  if (!Object.prototype.hasOwnProperty.call(RULES, region)) throw new TypeError(`Region must be "US", "GB-ENG" or "${IN}".`);
 }
 
 // Sorted [{ date, name }] for one region and year. Each entry appears once.
 export function holidays(region, year) {
   checkRegion(region);
-  if (!Number.isInteger(year) || year < MIN_YEAR || year > MAX_YEAR) throw new RangeError(RANGE_MESSAGE);
+  const [lo, hi] = yearsOf(region);
+  if (!Number.isInteger(year) || year < lo || year > hi) throw new RangeError(rangeMessage(region));
   const key = `${region}:${year}`;
   let list = cache.get(key);
   if (!list) {
@@ -254,7 +402,7 @@ function holidayMap(region, year) {
 
 // The holidays on one day number (empty when none).
 function holidaysOn(region, day) {
-  if (day < MIN_DAY || day > MAX_DAY) throw new RangeError(RANGE_MESSAGE);
+  if (!covers(region, day)) throw new RangeError(rangeMessage(region));
   const iso = isoOf(day);
   return (holidayMap(region, Number(iso.slice(0, 4))).get(iso) ?? []).map((name) => ({ date: iso, name }));
 }
@@ -284,6 +432,9 @@ function offOn(region, d, own) {
 // exactly the answer it always did.
 const withOwn = (result, own, skipped) => (own ? { ...result, daysOffSkipped: skipped } : result);
 
+// An India answer says which list it used (IN_NOTE); the other regions' answers are unchanged.
+const noted = (region, result) => (region === IN ? { ...result, note: IN_NOTE } : result);
+
 // Business days d with start < d <= end. Negative when end is before start: the count over
 // (end, start], negated. holidaysSkipped: holidays that fall on weekdays inside the counted range.
 // daysOff (optional): your own dates to skip too; each one that falls on a weekday in the range
@@ -291,12 +442,13 @@ const withOwn = (result, own, skipped) => (own ? { ...result, daysOffSkipped: sk
 export function between(region, start, end, daysOff) {
   checkRegion(region);
   const own = ownSet(daysOff);
-  const s = dayNumber(start);
-  const e = dayNumber(end);
+  const s = dayIn(region, start);
+  const e = dayIn(region, end);
   if (e < s) {
     const back = between(region, end, start, daysOff);
     return { ...back, businessDays: back.businessDays === 0 ? 0 : -back.businessDays };
   }
+  checkSpan(region, s, e);
   let count = 0;
   const skipped = [];
   const ownSkipped = [];
@@ -307,7 +459,7 @@ export function between(region, start, end, daysOff) {
     else if (off.holidays) skipped.push(...off.holidays);
     else ownSkipped.push(off.own);
   }
-  return withOwn({ businessDays: count, holidaysSkipped: skipped }, own, ownSkipped);
+  return noted(region, withOwn({ businessDays: count, holidaysSkipped: skipped }, own, ownSkipped));
 }
 
 // The date `days` business days after (or before, when negative) start. Zero returns start as given.
@@ -316,15 +468,16 @@ export function addBusinessDays(region, start, days, daysOff) {
   checkRegion(region);
   if (!Number.isInteger(days)) throw new TypeError('Days must be a whole number.');
   const own = ownSet(daysOff);
-  let d = dayNumber(start);
-  if (days === 0) return withOwn({ date: start, holidaysSkipped: [] }, own, []);
+  let d = dayIn(region, start);
+  if (days === 0) return noted(region, withOwn({ date: start, holidaysSkipped: [] }, own, []));
+  checkSpan(region, d, d);
   const step = days > 0 ? 1 : -1;
   let left = Math.abs(days);
   const skipped = [];
   const ownSkipped = [];
   while (left > 0) {
     d += step;
-    if (d < MIN_DAY || d > MAX_DAY) throw new RangeError(RANGE_MESSAGE);
+    if (d < MIN_DAY || d > MAX_DAY || !covers(region, d)) throw new RangeError(rangeMessage(region));
     if (isWeekend(d)) continue;
     const off = offOn(region, d, own);
     if (!off) left -= 1;
@@ -332,17 +485,23 @@ export function addBusinessDays(region, start, days, daysOff) {
     else ownSkipped.push(off.own);
   }
   if (step < 0) { skipped.reverse(); ownSkipped.reverse(); }
-  return withOwn({ date: isoOf(d), holidaysSkipped: skipped }, own, ownSkipped);
+  return noted(region, withOwn({ date: isoOf(d), holidaysSkipped: skipped }, own, ownSkipped));
 }
 
 // Every day from `from` to `to` inclusive, for drawing a calendar.
-// [{ date, weekday (0 = Sunday), weekend, holiday (names joined, or null) }]
+// [{ date, weekday (0 = Sunday), weekend, holiday (names joined, or null) }]. A day in a year the
+// region does not cover (India outside IN_YEARS) has holiday null and uncovered: true, so a page can
+// grey it out rather than show it as a plain working day.
 export function calendarDays(region, from, to) {
   checkRegion(region);
   const s = dayNumber(from);
   const e = dayNumber(to);
   const out = [];
   for (let d = s; d <= e; d++) {
+    if (!covers(region, d)) {
+      out.push({ date: isoOf(d), weekday: weekdayOfDay(d), weekend: isWeekend(d), holiday: null, uncovered: true });
+      continue;
+    }
     const hs = holidaysOn(region, d);
     out.push({ date: isoOf(d), weekday: weekdayOfDay(d), weekend: isWeekend(d), holiday: hs.length ? hs.map((h) => h.name).join('; ') : null });
   }

@@ -2,7 +2,7 @@
 // the calendar; the answer for a real run always comes from the server through Toll.run.
 import {
   between, addBusinessDays, calendarDays, weekdayOf, dayNumber, isRealDate, monthLength, REGIONS,
-  MIN_YEAR, MAX_YEAR, RANGE_MESSAGE,
+  MIN_YEAR, MAX_YEAR, RANGE_MESSAGE, IN,
 } from './core.js';
 
 const T = window.Toll;
@@ -17,6 +17,7 @@ const HEADINGS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const REGION_HINTS = {
   US: 'US federal holidays.',
   'GB-ENG': 'Bank holidays in England and Wales.',
+  [IN]: 'Closed (gazetted) holidays of central government offices in Delhi and New Delhi, from DoPT\'s yearly list, 2025 to 2027. Not restricted holidays, not a state\'s list, not bank holidays.',
 };
 
 const $ = (id) => document.getElementById(id);
@@ -153,6 +154,7 @@ function dayCell(d, { view, ordinals }, info) {
   const classes = ['bd-day'];
   const said = [];
   if (!inRange) classes.push('out');
+  if (d.uncovered) { classes.push('unk'); said.push('year not covered'); }
   if (d.weekend) classes.push('we');
   if (d.holiday) { classes.push('hol'); said.push(`holiday, ${d.holiday}`); }
   if (d.own) { classes.push('own'); said.push('your day off'); }
@@ -283,6 +285,7 @@ function render(input, result, { kind, note }) {
     kind === 'example' ? h('p', { class: 'bd-sheet-label' }, 'Worked example') : null,
     ...headline(input, result),
     ...holidayList(input, result, built),
+    result.note ? h('p', { class: 'bd-aside' }, result.note) : null,
     calendar(input, built),
     note ? h('p', { class: 'bd-cost' }, note) : null,
   ]));
@@ -315,6 +318,12 @@ async function onSubmit(ev) {
   const read = readForm();
   if (read.errors) {
     showFieldErrors(read.errors);
+    return;
+  }
+  // A range the engine refuses (India outside the years its list covers) is told here, free.
+  const refused = outOfRange(read.input);
+  if (refused) {
+    $('bd-error').textContent = refused;
     return;
   }
   const button = $('bd-run');
@@ -373,6 +382,17 @@ function fillForm(input) {
   if (input.op === 'between') $('bd-end').value = input.end;
   else $('bd-days').value = String(input.days);
   syncMode();
+}
+
+// The engine's message when it would refuse these dates, or null.
+function outOfRange(input) {
+  try {
+    if (input.op === 'between') between(input.region, input.start, input.end);
+    else addBusinessDays(input.region, input.start, input.days);
+    return null;
+  } catch (e) {
+    return e instanceof RangeError ? e.message : null;
+  }
 }
 
 // The same answer the server would give, worked out on the page; null when out of range.
