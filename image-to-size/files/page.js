@@ -3,7 +3,7 @@
 // and quality to try; this file only knows how to encode and how to show the result.
 import { fitToSize, PRESETS, BYTES_PER_KB } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 
 const TYPES = ['image/jpeg', 'image/png', 'image/webp'];

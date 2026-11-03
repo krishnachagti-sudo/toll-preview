@@ -1,13 +1,13 @@
 // The trucker per diem page. core.js (the same file the server runs) prices the log here, free,
 // as it is typed: the rate table comes from the tool's published rates example, so the page and the
 // server read the same dated notices. Only the worksheet (PDF and CSV) is a paid run, through
-// Toll.run. The log is kept in this browser (localStorage) and sent only for the worksheet.
+// Endwise.run. The log is kept in this browser (localStorage) and sent only for the worksheet.
 import {
   makeEngine, PerDiemError, COUNT_KEYS, STATUS_WORDS, money, longDate, shortDate, isRealDate,
   dayNumber, fromDayNumber, monthName, MIN_YEAR,
 } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'trucker-per-diem';
 const STORE_KEY = 'trucker-per-diem.v1';
@@ -457,7 +457,7 @@ function apply(state) {
 // ---------- start ----------
 
 async function start() {
-  const chip = document.querySelector('[data-toll-chip]');
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('pd-code'), SLUG);
   let tool;

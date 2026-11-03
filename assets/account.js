@@ -1,10 +1,10 @@
 /* The account page: sign up and sign in, balance, top-ups, the nonprofit and invoice requests,
    limits, API keys and the ledger.
-   Every request goes through Toll.api, so every URL is built from TOLL.base. */
+   Every request goes through Endwise.api, so every URL is built from ENDWISE.base. */
 (function () {
   'use strict';
 
-  var h = Toll.h;
+  var h = Endwise.h;
   var $ = function (id) { return document.getElementById(id); };
 
   var MICROS = 1000000;
@@ -88,7 +88,7 @@
   // and not this page, is followed.
   function nextPath() {
     var n = new URLSearchParams(location.search).get('next');
-    var base = Toll.base || '';
+    var base = Endwise.base || '';
     if (!n || n.charAt(0) !== '/' || n.charAt(1) === '/' || n.indexOf('\\') >= 0) return null;
     if (n.indexOf(base + '/') !== 0 || n.indexOf(base + '/account') === 0) return null;
     return n;
@@ -130,7 +130,7 @@
   }
 
   function load() {
-    return Toll.me(true).then(function (a) {
+    return Endwise.me(true).then(function (a) {
       account = a;
       if (!a) { show('out'); return; }
       show('in');
@@ -224,7 +224,7 @@
     var body = { email: $('signup-email').value, password: $('signup-password').value };
     var currency = form.querySelector('input[name="currency"]:checked');
     if (currency) body.currency = currency.value;
-    Toll.api('/api/account/signup', { body: body }).then(function () {
+    Endwise.api('/api/account/signup', { body: body }).then(function () {
       form.reset();
       if (nextPath()) { window.location.assign(nextPath()); return; }
       justSignedUp = true;
@@ -247,7 +247,7 @@
     var button = form.querySelector('button[type="submit"]');
     $('login-error').textContent = '';
     busy(button, true);
-    Toll.api('/api/account/login', { body: { email: $('login-email').value, password: $('login-password').value } })
+    Endwise.api('/api/account/login', { body: { email: $('login-email').value, password: $('login-password').value } })
       .then(function () {
         form.reset();
         if (nextPath()) { window.location.assign(nextPath()); return; }
@@ -259,7 +259,7 @@
 
   $('logout').addEventListener('click', function () {
     forgetSignedIn();
-    Toll.api('/api/account/logout', { body: {} }).then(load, function (err) {
+    Endwise.api('/api/account/logout', { body: {} }).then(load, function (err) {
       $('load-error').hidden = false;
       $('load-error').textContent = err.message;
     });
@@ -278,7 +278,7 @@
     var code = $('np-code').value.trim();
     if (code) body.code = code;
     busy(button, true);
-    Toll.api('/api/topup', { body: body }).then(function (json) {
+    Endwise.api('/api/topup', { body: body }).then(function (json) {
       window.location.assign(json.url);
     }, function (err) {
       showError($('topup-error'), err, form);
@@ -295,7 +295,7 @@
     $('nonprofit-error').textContent = '';
     $('nonprofit-status').textContent = '';
     busy(button, true);
-    Toll.api('/api/requests/nonprofit', { body: { orgName: $('np-org').value, ein: $('np-ein').value, email: $('np-email').value } }).then(function () {
+    Endwise.api('/api/requests/nonprofit', { body: { orgName: $('np-org').value, ein: $('np-ein').value, email: $('np-email').value } }).then(function () {
       $('np-org').value = '';
       $('np-ein').value = '';
       $('nonprofit-status').textContent = 'Received. A person checks it by hand and emails you at the contact address.';
@@ -327,12 +327,12 @@
     $('invoice-error').textContent = '';
     $('invoice-status').textContent = '';
     busy(button, true);
-    Toll.api('/api/requests/invoice', { body: {
+    Endwise.api('/api/requests/invoice', { body: {
       want: $('inv-want').value, company: $('inv-company').value, billingEmail: $('inv-email').value, poNumber: $('inv-po').value,
     } }).then(function () {
       ['inv-want', 'inv-company', 'inv-email', 'inv-po'].forEach(function (id) { $(id).value = ''; });
       $('invoice-status').textContent = 'Received. We will email the invoice to your billing address.';
-      return Toll.me(true).then(function (a) { account = a; renderAccount(); });
+      return Endwise.me(true).then(function (a) { account = a; renderAccount(); });
     }, function (err) {
       showError($('invoice-error'), err, form);
     }).then(function () { busy(button, false); });
@@ -342,8 +342,8 @@
   function saveCap(micros) {
     $('cap-error').textContent = '';
     $('cap-status').textContent = '';
-    return Toll.api('/api/account/cap', { body: { monthlyCapMicros: micros } }).then(function () {
-      return Toll.me(true).then(function (a) {
+    return Endwise.api('/api/account/cap', { body: { monthlyCapMicros: micros } }).then(function () {
+      return Endwise.me(true).then(function (a) {
         account = a;
         renderAccount();
         $('cap-status').textContent = micros === null ? 'Limit removed.' : 'Limit saved.';
@@ -364,7 +364,7 @@
 
   // ---------- API keys ----------
   function loadKeys() {
-    return Toll.api('/api/keys').then(function (json) { renderKeys(json.keys); }, function (err) {
+    return Endwise.api('/api/keys').then(function (json) { renderKeys(json.keys); }, function (err) {
       $('key-list').textContent = '';
       $('key-list').appendChild(h('p', { class: 'form-error' }, err.message));
     });
@@ -387,7 +387,7 @@
           return;
         }
         revoke.disabled = true;
-        Toll.api('/api/keys/' + key.id + '/revoke', { body: {} }).then(loadKeys, function (err) {
+        Endwise.api('/api/keys/' + key.id + '/revoke', { body: {} }).then(loadKeys, function (err) {
           status.textContent = err.message;
           revoke.disabled = false;
         });
@@ -409,7 +409,7 @@
           var limit = readLimit(input.value, '5 or 5.50');
           if (limit.error) { status.textContent = limit.error; return; }
           save.disabled = true;
-          Toll.api('/api/keys/' + key.id + '/cap', { body: { monthlyCapMicros: limit.micros } }).then(loadKeys, function (err) {
+          Endwise.api('/api/keys/' + key.id + '/cap', { body: { monthlyCapMicros: limit.micros } }).then(loadKeys, function (err) {
             status.textContent = err.message;
             save.disabled = false;
           });
@@ -466,7 +466,7 @@
       body.monthlyCapMicros = limit.micros;
     }
     busy(button, true);
-    Toll.api('/api/keys', { body: body }).then(function (json) {
+    Endwise.api('/api/keys', { body: body }).then(function (json) {
       $('new-key-name').textContent = ' "' + body.name.trim() + '"';
       $('new-key-value').textContent = json.key;
       $('new-key-status').textContent = '';
@@ -481,7 +481,7 @@
   });
 
   $('new-key-copy').addEventListener('click', function () {
-    Toll.copy($('new-key-value').textContent, $('new-key-value'), $('new-key-status'));
+    Endwise.copy($('new-key-value').textContent, $('new-key-value'), $('new-key-status'));
   });
   $('new-key-done').addEventListener('click', function () {
     $('new-key-value').textContent = '';
@@ -491,8 +491,8 @@
   // ---------- ledger ----------
   function loadLedger() {
     return Promise.all([
-      Toll.api('/api/account/ledger'),
-      Toll.api('/api/v1/tools').catch(function () { return { tools: [] }; }),
+      Endwise.api('/api/account/ledger'),
+      Endwise.api('/api/v1/tools').catch(function () { return { tools: [] }; }),
     ]).then(function (r) {
       r[1].tools.forEach(function (t) { toolNames[t.slug] = t.name; });
       renderLedger(r[0].entries);

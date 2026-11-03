@@ -1,14 +1,14 @@
 // The delivery date page. core.js (the same file the server runs) works out the worked example and
 // draws the two calendars; it is built on the Business days engine, loaded from that tool's files.
 // The USPS tables come from this tool's published calendar example, so the page and the server
-// read the same dated data. The answer for a real run always comes from the server through Toll.run.
+// read the same dated data. The answer for a real run always comes from the server through Endwise.run.
 import * as businessDays from '../../business-days/files/core.js';
 import {
   makeEngine, bannerSnippet, longDate, shortDate, clockText, parseClock, wallClock, zoneName,
   WEEKDAY_KEYS, WEEKDAYS, DEFAULT_STORE, MIN_YEAR, MAX_YEAR, YEAR_MESSAGE,
 } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'delivery-date-calculator';
 const MAX_DRAWN_DAYS = 42;
@@ -190,7 +190,7 @@ function strip(input, from, to, marks) {
       h('span', { class: `dd-cell store${d.store ? ' off' : ''}`, 'aria-hidden': 'true' }),
       h('span', { class: `dd-cell carrier${d.carrier ? ' off' : ''}`, 'aria-hidden': 'true' }),
       mark ? h('span', { class: 'dd-col-mark', 'aria-hidden': 'true' }, mark) : null,
-      h('span', { class: 'toll-visually-hidden' }, said),
+      h('span', { class: 'endwise-visually-hidden' }, said),
     ]);
   });
   return h('div', { class: 'dd-strip-wrap' }, [
@@ -398,7 +398,7 @@ async function start() {
   dayBoxes($('dd-deliver'), 'deliver', ['mon', 'tue', 'wed', 'thu', 'fri']);
   document.querySelectorAll('input[name="op"], input[name="carrier"], #dd-nocut').forEach((el) => el.addEventListener('change', syncMode));
   $('dd-form').addEventListener('submit', onSubmit);
-  const chip = document.querySelector('[data-toll-chip]');
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('dd-code'), SLUG);
 

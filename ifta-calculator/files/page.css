@@ -4,8 +4,8 @@
 .if {
   --accent: var(--h-money);
   --accent-ink: #1a0610;
-  --toll-accent: var(--h-money);
-  --toll-accent-ink: #1a0610;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1a0610;
   --if-credit: #6fdc8c;
   --if-due: #ffb547;
   --if-sur: #45d3ff;

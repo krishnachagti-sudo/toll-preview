@@ -2,13 +2,13 @@
 // and the trip sheet check here, free, as they are typed: the rate matrix comes from the tool's
 // published rates example, so the page and the server read the same dated tables. Only the
 // prepared return (every line, error and missing field, PDF and CSV) is a paid run, through
-// Toll.run. Entries are kept in this browser (localStorage) and sent only for the return.
+// Endwise.run. Entries are kept in this browser (localStorage) and sent only for the return.
 import {
   makeEngine, IftaError, money, whole, longDate, quarterWords, rateText, rate10k, templateCsv,
   tripsFromCsv, receiptsFromCsv, vehiclesFromCsv, csvLine, TRIP_COLUMNS, RECEIPT_COLUMNS, VEHICLE_COLUMNS, isRealDate, QUARTER_RE,
 } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'ifta-calculator';
 const STORE_KEY = 'ifta-calculator.v1';
@@ -404,7 +404,7 @@ function apply(state) {
 // ---------- start ----------
 
 async function start() {
-  const chip = document.querySelector('[data-toll-chip]');
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('if-code'), SLUG);
   try {

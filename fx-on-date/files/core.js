@@ -11,8 +11,8 @@
 // unrounded ratio, rounded the same way, so it is never the inverse of an already-rounded rate.
 //
 // Errors are FxError, which carries a code ('invalid_input', 'not_available', 'bad_data') and, for
-// invalid input, the field it belongs to. core.js cannot import the server's TollError because
-// the browser loads this file too, so tool.js turns an FxError into a TollError.
+// invalid input, the field it belongs to. core.js cannot import the server's EndwiseError because
+// the browser loads this file too, so tool.js turns an FxError into a EndwiseError.
 
 export const SOURCE = 'European Central Bank euro foreign exchange reference rates';
 export const FIRST_FIXING = '1999-01-04';

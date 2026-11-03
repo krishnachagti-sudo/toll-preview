@@ -47,8 +47,8 @@
 
 /* Text inside the capsule is lifted a step so it holds AA over any background the glass sits on. */
 .lg .head-nav>a{transition:color .25s ease}
-.lg .lg-capsule .head-nav>a,.lg .lg-capsule [data-toll-chip] a.toll-chip-link{color:#d6d9de}
-.lg .lg-capsule .head-nav>a:hover,.lg .lg-capsule [data-toll-chip] a.toll-chip-link:hover{color:#fff}
+.lg .lg-capsule .head-nav>a,.lg .lg-capsule [data-endwise-chip] a.endwise-chip-link{color:#d6d9de}
+.lg .lg-capsule .head-nav>a:hover,.lg .lg-capsule [data-endwise-chip] a.endwise-chip-link:hover{color:#fff}
 .lg .lg-capsule .nav-cta .sep{background:rgba(255,255,255,.16)}
 .lg .menu summary{transition:border-radius .5s var(--lg-spring),background .3s,border-color .3s}
 .lg .lg-capsule .menu summary{border-radius:999px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
@@ -236,7 +236,7 @@ html.motion .gcard.moment.rv.in:active{--ty:-1px}
   html.motion .terms.rv.in .row:nth-child(7){animation-delay:.54s}
 }
 @keyframes mx-row{from{opacity:0;transform:translateY(12px)}}
-/* The Toll column in the comparison gets a soft band that draws down behind it. */
+/* The Endwise column in the comparison gets a soft band that draws down behind it. */
 .compare{position:relative}
 .mx-band{position:absolute;top:0;bottom:0;pointer-events:none;z-index:0;border-radius:10px;transform-origin:50% 0;
   background:linear-gradient(180deg,rgba(255,154,98,.12),rgba(255,154,98,.03));box-shadow:inset 0 0 0 1px rgba(255,154,98,.18)}
@@ -294,7 +294,7 @@ html.mx-vt-local::view-transition-old(*),html.mx-vt-local::view-transition-new(*
 }
 
 /* ---------- micro-interactions: the full stop ----------
-   The mark is a short line that ends in a dot; every small finish on the site borrows it. toll.js
+   The mark is a short line that ends in a dot; every small finish on the site borrows it. endwise.js
    adds the classes (tl-busy, tl-done, tl-land, tl-col, tl-rows) and the toast; these are the looks.
    Pseudo-elements carry the fill and the mark, so a tool that rewrites its button's text keeps them. */
 :root{--tl-ember:#ff5a36;
@@ -469,7 +469,7 @@ html:not(.lg) .site-head.hp-wide .hp-tray{background:rgba(20,21,25,.92);border:1
 /* Underline: the code tabs on a tool page. */
 .gl-line .gl-ind{background:none}
 .gl-line .gl-ind::after{content:"";position:absolute;left:10px;right:10px;bottom:-1px;height:2px;border-radius:2px;background:var(--tl-ember,#ff5a36)}
-.gl-line .toll-code-tab[aria-selected="true"]{border-bottom-color:transparent}
+.gl-line .endwise-code-tab[aria-selected="true"]{border-bottom-color:transparent}
 /* A bar down the side: the docs contents on a wide screen; a soft pill on a phone. */
 .gl-side .gl-ind{background:none}
 .gl-side .gl-ind::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;border-radius:2px;background:var(--warm)}

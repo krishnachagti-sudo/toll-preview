@@ -16,7 +16,7 @@
 (function () {
   'use strict';
 
-  var cfg = window.TOLL || {};
+  var cfg = window.ENDWISE || {};
   var base = typeof cfg.base === 'string' ? cfg.base : '';
   var head = document.querySelector('.site-head');
   if (!head) return;
@@ -430,8 +430,8 @@
     mark();
   }
   // "Get started" brings you back to this page after signing up.
-  if (window.Toll && window.Toll.signInHref) {
-    [].forEach.call(document.querySelectorAll('.site-head a.nav-start, .site-head [data-toll-chip] a.toll-chip-link'), function (a) { a.href = window.Toll.signInHref(); });
+  if (window.Endwise && window.Endwise.signInHref) {
+    [].forEach.call(document.querySelectorAll('.site-head a.nav-start, .site-head [data-endwise-chip] a.endwise-chip-link'), function (a) { a.href = window.Endwise.signInHref(); });
   }
   toolParts();
   docsSpy();

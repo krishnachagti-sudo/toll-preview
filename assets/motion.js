@@ -356,7 +356,7 @@
    - scrolly():   one per-frame scroll pass: the app window settles, the hero grid drifts,
                   the steps light up one by one.
    - counts():    figures count up once when they arrive.
-   - band():      the comparison's Toll column gets a band that draws down behind it.
+   - band():      the comparison's Endwise column gets a band that draws down behind it.
    - switchers(): tab and tool highlights slide between items (view transitions).
    - reveals():   pages without the home page's script still reveal their .rv blocks.
    - lenis():     momentum scrolling, and in-page links that glide. */
@@ -679,7 +679,7 @@
      .gl-*). Groups that appear later (the search dialog) are picked up when they do. */
   var GLIDE = [
     { group: '.choice-row', cur: '.choice input:checked + span', kind: 'solid' },
-    { group: '.toll-code-tabs', cur: '[aria-selected="true"]', kind: 'line' },
+    { group: '.endwise-code-tabs', cur: '[aria-selected="true"]', kind: 'line' },
     { group: '.tool-jump', cur: '.cat-chip[aria-pressed="true"]', kind: 'soft' },
     { group: '.docs-toc ol', cur: 'a[aria-current]', kind: 'side' },
     { group: '.nav-pal-list, .nav-pal [role="listbox"]', cur: '[aria-selected="true"]', kind: 'soft' }

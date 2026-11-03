@@ -18,7 +18,7 @@
 <meta property="og:description" content="One POST returns the ECB rate for a pair on a date, the fixing actually used and the inverse, for $0.001 a call. AI agents get the same tool over MCP.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-exchange-rate-api/">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-exchange-rate-api/","url":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-exchange-rate-api/","name":"ECB exchange rate API: any date over REST and MCP","description":"One POST returns the ECB rate for a pair on a date, the fixing actually used and the inverse, for $0.001 a call. AI agents get the same tool over MCP.","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Exchange rate on a date","item":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/"},{"@type":"ListItem","position":3,"name":"ECB exchange rate API for any date","item":"https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-exchange-rate-api/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does a call return on a weekend date?","acceptedAnswer":{"@type":"Answer","text":"The last ECB fixing before it, and fixingDate says which day that was. For USD to EUR on 2026-10-24 (a Saturday) the answer is 0.893416 from the fixing of 2026-10-23."}},{"@type":"Question","name":"Am I charged when there is no rate?","acceptedAnswer":{"@type":"Answer","text":"No. A date with no fixing in the 7 days before it, a date before 4 January 1999, or a working day the ECB has not published yet returns not_available and costs nothing."}}]}]}</script>
-<script>window.TOLL={"base":"/toll-preview","brand":"Endwise","tool":"fx-on-date"}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fx-on-date"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
 <script src="/toll-preview/assets/nav.js" defer></script>
@@ -37,7 +37,7 @@
     </nav>
     <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
     <div class="nav-cta">
-      <span data-toll-chip><a class="toll-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
       <a class="btn nav-start" href="/toll-preview/account">Get started</a>
     </div>
     <details class="menu">
@@ -210,7 +210,7 @@
   </div>
 </footer>
 
-<script src="/toll-preview/assets/toll.js"></script>
+<script src="/toll-preview/assets/endwise.js"></script>
 <div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
 </body>
 </html>

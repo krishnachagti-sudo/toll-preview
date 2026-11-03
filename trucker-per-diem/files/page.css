@@ -4,8 +4,8 @@
 .pd {
   --accent: var(--h-money);
   --accent-ink: #1a0610;
-  --toll-accent: var(--h-money);
-  --toll-accent-ink: #1a0610;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1a0610;
   --pd-full: #6fdc8c;
   --pd-full-wash: rgba(111, 220, 140, 0.2);
   --pd-partial: #ffb547;

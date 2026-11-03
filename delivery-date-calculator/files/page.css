@@ -3,8 +3,8 @@
 .dd {
   --accent: var(--h-date);
   --accent-ink: #1a1206;
-  --toll-accent: var(--h-date);
-  --toll-accent-ink: #1a1206;
+  --endwise-accent: var(--h-date);
+  --endwise-accent-ink: #1a1206;
   --dd-store: #ffb547;
   --dd-store-wash: rgba(255, 181, 71, 0.16);
   --dd-carrier: #5fd1c1;

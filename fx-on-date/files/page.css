@@ -5,8 +5,8 @@
   --accent: var(--h-money);
   --accent-ink: #1d0611;
   --accent-wash: rgba(255, 95, 168, 0.1);
-  --toll-accent: var(--h-money);
-  --toll-accent-ink: #1d0611;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1d0611;
   --fx-stamp: var(--h-money);
   --fx-stamp-wash: rgba(255, 95, 168, 0.1);
 }

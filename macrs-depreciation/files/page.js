@@ -1,10 +1,10 @@
 // The MACRS schedule page. Nothing is worked out in this browser: the 40% test (a cheap run, free
 // for a few runs a day before sign-in) and the schedule (paid once per entity and tax year) both go
-// through Toll.run, so the page shows exactly what the API returns. The asset list is kept in this
+// through Endwise.run, so the page shows exactly what the API returns. The asset list is kept in this
 // browser (localStorage) between visits.
 import { CLASS_KEYS, money } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'macrs-depreciation';
 const STORE_KEY = 'macrs-depreciation.v1';
@@ -240,7 +240,7 @@ async function sampleLinks() {
 }
 
 function start() {
-  const chip = document.querySelector('[data-toll-chip]');
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('md-code'), SLUG);
   const el = $('md-electout');

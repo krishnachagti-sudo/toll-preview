@@ -2,7 +2,7 @@
 // touched; nothing here runs on any other page.
 //
 // Playing here never runs a tool on the server, so it never spends a free run and never charges
-// anyone: there is no Toll.run in this file. Each mockup is worked out in this browser by the same
+// anyone: there is no Endwise.run in this file. Each mockup is worked out in this browser by the same
 // core.js its tool's page uses for its previews, with the data that page reads (the tool's own
 // published examples, from the tools API the static copy serves too). Where a tool has no engine
 // in the browser (the exchange rate needs the ECB file, the tax set-aside its tax tables, the MACRS
@@ -14,7 +14,7 @@
 // kept equal to the form, and a status line for screen readers. With every field at its printed
 // value the printed result is put back as it was.
 
-const T = window.Toll;
+const T = window.Endwise;
 
 // ---------- data and engines, loaded on first use ----------
 

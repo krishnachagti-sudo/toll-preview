@@ -1,9 +1,9 @@
 // The Exchange rate on a date page. core.js (the same file the server uses) supplies the currency
 // list, the sources and the wording for dates; the rate itself always comes from the server
-// through Toll.run.
+// through Endwise.run.
 import { CURRENCIES, FIRST_FIXING, SOURCES, SOURCE_IDS, fixingNote, longDate, isRealDate } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'fx-on-date';
 const NAMES = Object.fromEntries(CURRENCIES.map((c) => [c.code, c.name]));
@@ -322,7 +322,7 @@ function start() {
   syncQuick();
   syncSource();
 
-  const chip = document.querySelector('[data-toll-chip]');
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('fx-code'), SLUG);
   const asked = fromQuery();

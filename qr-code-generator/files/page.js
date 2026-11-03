@@ -9,7 +9,7 @@ import {
   rowsFromTable, planBulk,
 } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'qr-code-generator';
 const $ = (id) => document.getElementById(id);
@@ -407,7 +407,7 @@ async function runBulk() {
     }
   } catch (err) {
     $('qr-bulk-error').textContent = err.status === 401 ? 'Sign in to make the files; the rows above stay on this page.' : (err.fields ? Object.values(err.fields)[0] : err.message);
-    if (err.status === 401) $('qr-bulk-error').appendChild(h('a', { class: 'toll-fix', href: T.signInHref() }, ' Sign in'));
+    if (err.status === 401) $('qr-bulk-error').appendChild(h('a', { class: 'endwise-fix', href: T.signInHref() }, ' Sign in'));
   } finally {
     btn.disabled = false;
   }

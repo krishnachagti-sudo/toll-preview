@@ -1,10 +1,10 @@
 /* Shared browser helpers for every page: brand pages and tool pages alike.
-   The server injects window.TOLL = { base, brand, tool } into each page; every URL here is
-   built from TOLL.base, so the site works under any base path. When the page's prices are not in
+   The server injects window.ENDWISE = { base, brand, tool } into each page; every URL here is
+   built from ENDWISE.base, so the site works under any base path. When the page's prices are not in
    US dollars it also carries { currency, locale } and, on a tool page, { prices }: the tool's
    dollar prices as text, each with the same price in that currency.
 
-   window.Toll = {
+   window.Endwise = {
      base, brand, tool,
      currency, locale         the page's currency ("USD" unless the server said otherwise) and locale.
      money(display)           an API "display" object ({ USD: "$0.10", ... }) in the page's currency.
@@ -20,12 +20,12 @@
      copy(text, el, statusEl) copy text, falling back to selecting el; a toast says it worked.
      toast(text)              a short note at the foot of the screen with the mark ("Copied").
    }
-   Elements with data-toll-chip get an account chip; elements with data-toll-code get a code
+   Elements with data-endwise-chip get an account chip; elements with data-endwise-code get a code
    panel for the slug in the attribute (or this page's tool). */
 (function () {
   'use strict';
 
-  var cfg = window.TOLL || {};
+  var cfg = window.ENDWISE || {};
   var base = typeof cfg.base === 'string' ? cfg.base : '';
   var brand = typeof cfg.brand === 'string' ? cfg.brand : '';
   var tool = typeof cfg.tool === 'string' ? cfg.tool : null;
@@ -138,21 +138,21 @@
   function renderChip(el, account) {
     el.textContent = '';
     if (!account) {
-      el.appendChild(h('a', { class: 'toll-chip-link', href: signInHref() }, 'Sign in'));
+      el.appendChild(h('a', { class: 'endwise-chip-link', href: signInHref() }, 'Sign in'));
       return;
     }
-    el.appendChild(h('a', { class: 'toll-chip-balance', href: base + '/account', title: 'Your balance. Open your account.' }, [
-      h('span', { class: 'toll-visually-hidden' }, 'Balance '),
+    el.appendChild(h('a', { class: 'endwise-chip-balance', href: base + '/account', title: 'Your balance. Open your account.' }, [
+      h('span', { class: 'endwise-visually-hidden' }, 'Balance '),
       account.balance.display,
     ]));
-    el.appendChild(h('a', { class: 'toll-chip-topup', href: base + '/account#top-up' }, 'Top up'));
+    el.appendChild(h('a', { class: 'endwise-chip-topup', href: base + '/account#top-up' }, 'Top up'));
   }
 
   function renderChips() {
     if (!mePromise) return;
     mePromise.then(function (account) {
       // Lets the chrome swap "Get started" for the balance once someone is signed in.
-      document.documentElement.classList.toggle('toll-signed-in', !!account);
+      document.documentElement.classList.toggle('endwise-signed-in', !!account);
       chips.forEach(function (el) { renderChip(el, account); });
     }, function () {
       chips.forEach(function (el) { renderChip(el, null); });
@@ -162,7 +162,7 @@
   function mountAccountChip(el) {
     if (!el || chips.indexOf(el) !== -1) return;
     injectStyles();
-    el.classList.add('toll-chip');
+    el.classList.add('endwise-chip');
     chips.push(el);
     me();
     renderChips();
@@ -289,12 +289,12 @@
   var panelCount = 0;
 
   function buildPanel(el, info) {
-    var id = 'toll-code-' + (++panelCount);
+    var id = 'endwise-code-' + (++panelCount);
     var list = snippets(info);
-    var tabs = h('div', { class: 'toll-code-tabs', role: 'tablist', 'aria-label': 'Use this from code' });
-    var note = h('p', { class: 'toll-code-note' });
-    var pre = h('pre', { class: 'toll-code-pre', id: id + '-panel', role: 'tabpanel', tabindex: '0' });
-    var status = h('span', { class: 'toll-code-status', role: 'status' });
+    var tabs = h('div', { class: 'endwise-code-tabs', role: 'tablist', 'aria-label': 'Use this from code' });
+    var note = h('p', { class: 'endwise-code-note' });
+    var pre = h('pre', { class: 'endwise-code-pre', id: id + '-panel', role: 'tabpanel', tabindex: '0' });
+    var status = h('span', { class: 'endwise-code-status', role: 'status' });
     var current = 0;
 
     function select(i, focus) {
@@ -312,7 +312,7 @@
 
     list.forEach(function (s, i) {
       tabs.appendChild(h('button', {
-        type: 'button', role: 'tab', id: id + '-tab-' + i, 'aria-controls': id + '-panel', class: 'toll-code-tab',
+        type: 'button', role: 'tab', id: id + '-tab-' + i, 'aria-controls': id + '-panel', class: 'endwise-code-tab',
         onclick: function () { select(i); },
         onkeydown: function (ev) {
           if (ev.key === 'ArrowRight') { ev.preventDefault(); select((current + 1) % list.length, true); }
@@ -328,15 +328,15 @@
         : '';
 
     el.textContent = '';
-    el.appendChild(h('div', { class: 'toll-code' }, [
-      h('div', { class: 'toll-code-head' }, [
-        h('strong', { class: 'toll-code-title' }, 'Use this from code'),
-        h('button', { type: 'button', class: 'toll-code-copy', onclick: function () { copy(list[current].code, pre, status); } }, 'Copy'),
+    el.appendChild(h('div', { class: 'endwise-code' }, [
+      h('div', { class: 'endwise-code-head' }, [
+        h('strong', { class: 'endwise-code-title' }, 'Use this from code'),
+        h('button', { type: 'button', class: 'endwise-code-copy', onclick: function () { copy(list[current].code, pre, status); } }, 'Copy'),
       ]),
       tabs,
       note,
       pre,
-      h('p', { class: 'toll-code-foot' }, [
+      h('p', { class: 'endwise-code-foot' }, [
         price ? price + ' ' : '',
         h('a', { href: base + '/account' }, 'Get an API key'),
         ' · ',
@@ -395,9 +395,9 @@
     var href = base + '/account' + (e.code === 'insufficient_balance' ? '#top-up' : '#limits');
     var text = e.code === 'insufficient_balance' ? 'Add money' : 'Change your limit';
     [].forEach.call(sec.querySelectorAll('[role="alert"], .form-error, .field-error'), function (el) {
-      if (el.textContent.indexOf(e.message) === -1 || el.querySelector('.toll-fix')) return;
+      if (el.textContent.indexOf(e.message) === -1 || el.querySelector('.endwise-fix')) return;
       el.appendChild(document.createTextNode(' '));
-      el.appendChild(h('a', { class: 'toll-fix', href: href }, text));
+      el.appendChild(h('a', { class: 'endwise-fix', href: href }, text));
     });
   }
 
@@ -573,32 +573,32 @@
     return api('/api/events', { body: body, keepalive: true }).then(function () {}, function () {});
   }
 
-  // ---------- component styles (scoped; tool pages can theme them with --toll-* variables) ----------
+  // ---------- component styles (scoped; tool pages can theme them with --endwise-* variables) ----------
   var styled = false;
   function injectStyles() {
     if (styled) return;
     styled = true;
     var css = ''
-      + '.toll-chip{display:inline-flex;align-items:center;gap:12px;font-variant-numeric:tabular-nums}'
-      + '.toll-chip a{color:inherit;text-decoration:none;font-weight:500}'
-      + '.toll-chip a:hover{text-decoration:underline}'
-      + '.toll-chip .toll-chip-balance{font-feature-settings:"tnum" 1}'
-      + '.toll-chip .toll-chip-topup,.toll-chip .toll-chip-link{padding:6px 12px;border:1px solid currentColor;border-radius:4px;min-height:34px;display:inline-flex;align-items:center}'
-      + '.toll-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}'
-      + '.toll-code{border-top:1px solid var(--toll-rule,rgba(127,127,127,.4));padding-top:12px}'
-      + '.toll-code-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}'
-      + '.toll-code-tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--toll-rule,rgba(127,127,127,.4))}'
-      + '.toll-code-tab{font:inherit;font-size:.9rem;background:none;border:0;border-bottom:2px solid transparent;color:inherit;padding:8px 12px;cursor:pointer;margin-bottom:-1px;min-height:40px}'
-      + '.toll-code-tab[aria-selected="true"]{border-bottom-color:var(--toll-accent,#1c6a51);font-weight:600}'
-      + '.toll-code-copy{font:inherit;font-size:.9rem;background:var(--toll-accent,#1c6a51);color:var(--toll-accent-ink,#fff);border:0;border-radius:4px;padding:6px 14px;min-height:34px;cursor:pointer}'
-      + '.toll-code-note{font-size:.875rem;color:var(--toll-muted,inherit);opacity:.9;margin:10px 0 6px}'
-      + '.toll-code-pre{font-family:var(--toll-font-mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace);font-size:.85rem;line-height:1.5;background:var(--toll-code-bg,rgba(127,127,127,.12));padding:12px 14px;border-radius:4px;overflow-x:auto;margin:0;white-space:pre}'
-      + '.toll-code-foot{font-size:.875rem;margin:10px 0 0}'
-      + '.toll-code-status{color:var(--toll-muted,inherit)}';
-    document.head.appendChild(h('style', { id: 'toll-components' }, css));
+      + '.endwise-chip{display:inline-flex;align-items:center;gap:12px;font-variant-numeric:tabular-nums}'
+      + '.endwise-chip a{color:inherit;text-decoration:none;font-weight:500}'
+      + '.endwise-chip a:hover{text-decoration:underline}'
+      + '.endwise-chip .endwise-chip-balance{font-feature-settings:"tnum" 1}'
+      + '.endwise-chip .endwise-chip-topup,.endwise-chip .endwise-chip-link{padding:6px 12px;border:1px solid currentColor;border-radius:4px;min-height:34px;display:inline-flex;align-items:center}'
+      + '.endwise-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}'
+      + '.endwise-code{border-top:1px solid var(--endwise-rule,rgba(127,127,127,.4));padding-top:12px}'
+      + '.endwise-code-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}'
+      + '.endwise-code-tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--endwise-rule,rgba(127,127,127,.4))}'
+      + '.endwise-code-tab{font:inherit;font-size:.9rem;background:none;border:0;border-bottom:2px solid transparent;color:inherit;padding:8px 12px;cursor:pointer;margin-bottom:-1px;min-height:40px}'
+      + '.endwise-code-tab[aria-selected="true"]{border-bottom-color:var(--endwise-accent,#1c6a51);font-weight:600}'
+      + '.endwise-code-copy{font:inherit;font-size:.9rem;background:var(--endwise-accent,#1c6a51);color:var(--endwise-accent-ink,#fff);border:0;border-radius:4px;padding:6px 14px;min-height:34px;cursor:pointer}'
+      + '.endwise-code-note{font-size:.875rem;color:var(--endwise-muted,inherit);opacity:.9;margin:10px 0 6px}'
+      + '.endwise-code-pre{font-family:var(--endwise-font-mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace);font-size:.85rem;line-height:1.5;background:var(--endwise-code-bg,rgba(127,127,127,.12));padding:12px 14px;border-radius:4px;overflow-x:auto;margin:0;white-space:pre}'
+      + '.endwise-code-foot{font-size:.875rem;margin:10px 0 0}'
+      + '.endwise-code-status{color:var(--endwise-muted,inherit)}';
+    document.head.appendChild(h('style', { id: 'endwise-components' }, css));
   }
 
-  window.Toll = {
+  window.Endwise = {
     base: base,
     signInHref: signInHref,
     takeRunFlag: takeRunFlag,
@@ -631,9 +631,9 @@
         if (menu) menu.removeAttribute('open');
       });
     });
-    [].forEach.call(document.querySelectorAll('[data-toll-chip]'), mountAccountChip);
-    [].forEach.call(document.querySelectorAll('[data-toll-code]'), function (el) {
-      mountCodePanel(el, el.getAttribute('data-toll-code') || tool);
+    [].forEach.call(document.querySelectorAll('[data-endwise-chip]'), mountAccountChip);
+    [].forEach.call(document.querySelectorAll('[data-endwise-code]'), function (el) {
+      mountCodePanel(el, el.getAttribute('data-endwise-code') || tool);
     });
     micro();
     track('page_view');

@@ -3,8 +3,8 @@
 .tt {
   --accent: var(--h-money);
   --accent-ink: #1a0610;
-  --toll-accent: var(--h-money);
-  --toll-accent-ink: #1a0610;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1a0610;
   --tt-file: #5fd3a0;
   --tt-near: #ffb547;
   --tt-out: var(--muted);

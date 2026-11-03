@@ -1,14 +1,14 @@
 // The 1099 threshold page. core.js (the same file the server runs) works out the worked examples,
 // the line table, links from the content pages and the free preview of an upload; it reads the
 // rule files from the tool's "rules" example, so the page and the server read the same dated data.
-// A real check or scan always comes from the server through Toll.run.
+// A real check or scan always comes from the server through Endwise.run.
 import * as businessDays from '../../business-days/files/core.js';
 import {
   makeEngine, paymentsFromCsv, parseCsv, detectColumns, toCents, money, lineText, longDate, shortDate,
   PAYMENT_TYPES, PAYEE_TYPES, METHODS, COLUMN_FIELDS, LINE_BOXES, BOXES, PAYMENT_YEARS,
 } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = '1099-threshold';
 const $ = (id) => document.getElementById(id);
@@ -410,7 +410,7 @@ async function start() {
     onCsvChanged();
   });
   for (const el of document.querySelectorAll('input[name="scan-year"], #tt-def-type, #tt-def-payee, #tt-def-method')) el.addEventListener('change', schedulePreview);
-  const chip = document.querySelector('[data-toll-chip]');
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('tt-code'), SLUG);
 

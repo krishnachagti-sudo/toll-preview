@@ -1,8 +1,8 @@
 /* The home page. Loaded in <head> so the motion classes are set before the first paint; the
-   rest waits for the DOM (and for toll.js, which loads at the end of the body).
+   rest waits for the DOM (and for endwise.js, which loads at the end of the body).
 
    - Fills every price, tool name and "what $20 buys" figure from GET {base}/api/v1/tools, in the
-     page's currency (Toll.money; dollars unless the server said otherwise). The server prints the
+     page's currency (Endwise.money; dollars unless the server said otherwise). The server prints the
      same values as a no-JavaScript fallback:
        data-price="<slug>"        the per-call price, "from" the lowest action price, or "Free"
        data-tool-name="<slug>"    the tool's name
@@ -26,16 +26,16 @@
   }
 
   // ---------- prices and names from the tools API ----------
-  function fillFromTools(tools, Toll) {
-    var currency = Toll.currency;
+  function fillFromTools(tools, Endwise) {
+    var currency = Endwise.currency;
     var bySlug = {};
     tools.forEach(function (t) { bySlug[t.slug] = t; });
     each('[data-price]', function (el) {
       var t = bySlug[el.getAttribute('data-price')];
       if (!t) return;
       // A tool with several actions has no single price: show its lowest paid price as "from".
-      el.textContent = t.price && t.price.display ? Toll.money(t.price.display)
-        : t.pricing && t.pricing.from ? 'from ' + Toll.money(t.pricing.from.display) : 'Free';
+      el.textContent = t.price && t.price.display ? Endwise.money(t.price.display)
+        : t.pricing && t.pricing.from ? 'from ' + Endwise.money(t.pricing.from.display) : 'Free';
     });
     each('[data-tool-name]', function (el) {
       var t = bySlug[el.getAttribute('data-tool-name')];
@@ -191,9 +191,9 @@
       if (email) body.email = email;
       msg.textContent = 'Sending...';
       send.disabled = true;
-      // Toll.api posts JSON with the content type the server's same-origin check requires, and
+      // Endwise.api posts JSON with the content type the server's same-origin check requires, and
       // rejects with the message from the standard error body (a 429 included).
-      window.Toll.api('/api/requests', { body: body }).then(function (json) {
+      window.Endwise.api('/api/requests', { body: body }).then(function (json) {
         if (!json || json.received !== true) throw new Error('That did not go through. Please try again in a moment.');
         form.reset();
         msg.textContent = 'Thanks. We read every request.';
@@ -325,8 +325,8 @@
   }
 
   function boot() {
-    var Toll = window.Toll;
-    var base = Toll ? Toll.base : '';
+    var Endwise = window.Endwise;
+    var base = Endwise ? Endwise.base : '';
     fillOrigin(base);
     heroWindow();
     codePanel();
@@ -335,9 +335,9 @@
     requestForm();
     spotlight();
     reveal();
-    if (!Toll) return;
-    Toll.api('/api/v1/tools').then(function (json) { fillFromTools(json.tools || [], Toll); }, function () { /* keep the printed values */ });
-    Toll.me().then(function (account) {
+    if (!Endwise) return;
+    Endwise.api('/api/v1/tools').then(function (json) { fillFromTools(json.tools || [], Endwise); }, function () { /* keep the printed values */ });
+    Endwise.me().then(function (account) {
       if (!account) return;
       each('[data-signed-in-text]', function (el) { el.textContent = el.getAttribute('data-signed-in-text'); });
     }, function () {});

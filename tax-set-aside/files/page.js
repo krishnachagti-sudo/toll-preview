@@ -1,10 +1,10 @@
 // The tax set-aside page. The worked example at rest is the tool's own first example, worked out on
-// the server when it booted; every real answer comes from the server through Toll.run (signed in:
+// the server when it booted; every real answer comes from the server through Endwise.run (signed in:
 // the full answer, charged; signed out: the percentage on a free run). The year ledger lives in
 // this browser's localStorage and is never sent anywhere except to a replay the visitor asks for.
 import { usd, gbp, longDate, ukDate, STATUS_NAMES, NATION_NAMES } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const SLUG = 'tax-set-aside';
 const $ = (id) => document.getElementById(id);
 const h = (tag, attrs, children) => T.h(tag, attrs, children);

@@ -3,8 +3,8 @@
 .ts {
   --accent: var(--h-money);
   --accent-ink: #07130c;
-  --toll-accent: var(--h-money);
-  --toll-accent-ink: #07130c;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #07130c;
   --hue: var(--h-money);
   --ts-wash: color-mix(in srgb, var(--h-money) 14%, transparent);
 }

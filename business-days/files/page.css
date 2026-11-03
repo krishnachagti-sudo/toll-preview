@@ -5,8 +5,8 @@
   --accent: var(--h-date);
   --accent-ink: #1a1206;
   --accent-wash: rgba(255, 181, 71, 0.12);
-  --toll-accent: var(--h-date);
-  --toll-accent-ink: #1a1206;
+  --endwise-accent: var(--h-date);
+  --endwise-accent-ink: #1a1206;
   --bd-hol: #ff8a70;
   --bd-hol-wash: rgba(255, 122, 95, 0.13);
   --bd-own: #a99bff;

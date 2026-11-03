@@ -1,11 +1,11 @@
 // The Business days page. core.js (the same file the server uses) draws the worked example and
-// the calendar; the answer for a real run always comes from the server through Toll.run.
+// the calendar; the answer for a real run always comes from the server through Endwise.run.
 import {
   between, addBusinessDays, calendarDays, weekdayOf, dayNumber, isRealDate, monthLength, REGIONS,
   MIN_YEAR, MAX_YEAR, RANGE_MESSAGE, IN,
 } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'business-days';
 const MAX_DRAWN_DAYS = 100;
@@ -169,7 +169,7 @@ function dayCell(d, { view, ordinals }, info) {
     h('span', { class: 'bd-num', 'aria-hidden': 'true' }, String(dayOfMonth)),
     ord !== undefined && d.date !== view.landing ? h('span', { class: 'bd-ord', 'aria-hidden': 'true' }, ord) : null,
     tag ? h('span', { class: 'bd-tag', 'aria-hidden': 'true' }, tag) : null,
-    said.length ? h('span', { class: 'toll-visually-hidden' }, title) : null,
+    said.length ? h('span', { class: 'endwise-visually-hidden' }, title) : null,
   ]);
 }
 
@@ -411,8 +411,8 @@ function start() {
   $('bd-form').addEventListener('submit', onSubmit);
   syncMode();
 
-  // The chip in the header is mounted by toll.js; calling again is harmless.
-  const chip = document.querySelector('[data-toll-chip]');
+  // The chip in the header is mounted by endwise.js; calling again is harmless.
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('bd-code'), SLUG);
   showPrice();

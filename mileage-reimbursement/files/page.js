@@ -1,14 +1,14 @@
 // The mileage reimbursement page. core.js (the same file the server runs) prices the worked example
 // and previews a trip file in the browser, from the rate tables in this tool's published example,
 // so the page and the server read the same dated data. A calculation run here goes through
-// Toll.run (free on this page); the paid downloads (the results CSV and the log PDF) are the
+// Endwise.run (free on this page); the paid downloads (the results CSV and the log PDF) are the
 // server's answer to the same file.
 import {
   makeEngine, readTrips, parseCsv, mapColumns, dateOf, scaled, usd, milesText, centsText, longDate, rangeText,
   MileageError, PURPOSES, TEMPLATE_COLUMNS,
 } from './core.js';
 
-const T = window.Toll;
+const T = window.Endwise;
 const h = T.h;
 const SLUG = 'mileage-reimbursement';
 const MAX_TRIPS = 25;
@@ -612,7 +612,7 @@ function fromQuery() {
 async function start() {
   document.querySelectorAll('input[name="mode"]').forEach((el) => el.addEventListener('change', syncMode));
   $('mr-form').addEventListener('submit', onSubmit);
-  const chip = document.querySelector('[data-toll-chip]');
+  const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('mr-code'), SLUG);
 

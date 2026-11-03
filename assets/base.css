@@ -52,13 +52,13 @@
   --radius: 10px;
   --radius-lg: 16px;
 
-  /* What toll.js components (account chip, code panel) read. */
-  --toll-accent: var(--accent);
-  --toll-accent-ink: var(--accent-ink);
-  --toll-rule: var(--line-2);
-  --toll-code-bg: var(--bg-1);
-  --toll-muted: var(--muted);
-  --toll-font-mono: var(--font-mono);
+  /* What endwise.js components (account chip, code panel) read. */
+  --endwise-accent: var(--accent);
+  --endwise-accent-ink: var(--accent-ink);
+  --endwise-rule: var(--line-2);
+  --endwise-code-bg: var(--bg-1);
+  --endwise-muted: var(--muted);
+  --endwise-font-mono: var(--font-mono);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -158,20 +158,20 @@ code, pre, kbd { font-family: var(--font-mono); font-size: 0.9em; }
 .nav-cta { display: flex; align-items: center; gap: 16px; margin-left: 14px; font-size: 16px; }
 .nav-cta .btn { min-height: 42px; padding: 0 20px; font-size: 15px; }
 
-/* The account chip (toll.js mountAccountChip): "Sign in" signed out, balance and "Top up" signed in.
+/* The account chip (endwise.js mountAccountChip): "Sign in" signed out, balance and "Top up" signed in.
    These selectors outrank the chip's own injected styles. */
-.site-head .toll-chip { gap: 14px; font-size: 16px; }
-.site-head [data-toll-chip] a { text-decoration: none; font-weight: 500; }
-.site-head [data-toll-chip] a.toll-chip-link { color: #d6d9de; border: 0; padding: 0; min-height: 0; }
-.site-head [data-toll-chip] a.toll-chip-link:hover { color: #fff; text-decoration: none; }
-.site-head .toll-chip a.toll-chip-balance { font-family: var(--font-mono); font-size: 14.5px; color: var(--text); }
-.site-head .toll-chip a.toll-chip-topup {
+.site-head .endwise-chip { gap: 14px; font-size: 16px; }
+.site-head [data-endwise-chip] a { text-decoration: none; font-weight: 500; }
+.site-head [data-endwise-chip] a.endwise-chip-link { color: #d6d9de; border: 0; padding: 0; min-height: 0; }
+.site-head [data-endwise-chip] a.endwise-chip-link:hover { color: #fff; text-decoration: none; }
+.site-head .endwise-chip a.endwise-chip-balance { font-family: var(--font-mono); font-size: 14.5px; color: var(--text); }
+.site-head .endwise-chip a.endwise-chip-topup {
   min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-2);
   background: rgba(255, 255, 255, 0.04); color: var(--text);
 }
-.site-head .toll-chip a.toll-chip-topup:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--line-3); text-decoration: none; }
+.site-head .endwise-chip a.endwise-chip-topup:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--line-3); text-decoration: none; }
 /* A signed-in visitor sees their balance; "Get started" is for newcomers. */
-.toll-signed-in .nav-start { display: none; }
+.endwise-signed-in .nav-start { display: none; }
 
 /* The tools panel under the pill (nav.js fills it from nav.json). */
 .nav-tools-panel {
@@ -235,7 +235,7 @@ code, pre, kbd { font-family: var(--font-mono); font-size: 0.9em; }
   .menu { display: block; }
 }
 @media (max-width: 380px) {
-  .site-head .toll-chip a.toll-chip-topup { display: none; }
+  .site-head .endwise-chip a.endwise-chip-topup { display: none; }
 }
 
 /* ---------- search (nav.js) ---------- */
@@ -545,7 +545,7 @@ html.has-parts { scroll-padding-top: 146px; }
 .welcome h2 { margin: 0 0 8px; font-size: 22px; }
 .welcome p { margin: 0; color: var(--text-2); }
 .welcome .welcome-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-.toll-fix { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.endwise-fix { color: var(--text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 /* Legal pages: the version date, and a company detail the owner has not filled in yet */
 .legal-date { color: var(--muted); font-size: 14px; margin-top: 12px; }
 mark.fill { background: rgba(255, 176, 63, 0.16); color: #ffd79a; border-radius: 4px; padding: 0 4px; }

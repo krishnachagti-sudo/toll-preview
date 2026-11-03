@@ -3,8 +3,8 @@
 .mr {
   --accent: var(--h-money);
   --accent-ink: #06170f;
-  --toll-accent: var(--h-money);
-  --toll-accent-ink: #06170f;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06170f;
   --mr-owed: #ffb547;
 }
 

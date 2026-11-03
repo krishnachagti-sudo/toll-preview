@@ -5,8 +5,8 @@
   --accent: var(--h-file);
   --accent-ink: #04161d;
   --accent-wash: rgba(69, 211, 255, 0.1);
-  --toll-accent: var(--h-file);
-  --toll-accent-ink: #04161d;
+  --endwise-accent: var(--h-file);
+  --endwise-accent-ink: #04161d;
   --its-steel: var(--h-file);
   --its-steel-wash: rgba(69, 211, 255, 0.1);
   --its-tick: rgba(255, 255, 255, 0.36);
