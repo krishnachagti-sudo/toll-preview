@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section nav: three ways to attach</title>
+<style>
+@font-face{font-family:IT;src:url("../../assets/fonts/inter-tight-latin.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:IN;src:url("../../assets/fonts/inter-latin.woff2") format("woff2");font-weight:100 900}
+:root{--bg:#08090a;--bg1:#0e0f11;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.13);--text:#f4f5f6;--text2:#c9ccd1;--muted:#8a8f98;--ember:#ff5a36;
+  --spring:linear(0,.047,.157,.298,.448,.591,.716,.821,.903,.964,1.006,1.032,1.046,1.052,1.051,1.046,1.039,1.031,1.024,1.017,1.011,1.006,1.003,1,.999,.998,.997,.997,.998,.998,1);--out:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 IN,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+
+/* the picker */
+.pick{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:60;display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(20,21,24,.92);border:1px solid var(--line2);box-shadow:0 20px 50px -20px #000}
+.pick button{font:500 13.5px IT;color:var(--muted);background:none;border:0;border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.pick button[aria-pressed=true]{background:#f4f5f6;color:#0b0c0e}
+
+/* main pill */
+.head{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:50;width:min(1100px,calc(100% - 24px))}
+.glass{background:linear-gradient(180deg,rgba(30,31,36,.78),rgba(15,16,19,.86));-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);
+  border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 50px -24px rgba(0,0,0,.9)}
+.bar{position:relative;display:flex;align-items:center;gap:22px;height:60px;padding:0 10px 0 20px;border-radius:30px}
+.logo{display:flex;align-items:center;gap:9px;font:650 19px IT;letter-spacing:-.02em;flex:none}
+.logo svg{width:24px;height:24px}
+.links{display:flex;gap:22px;font:500 15px IT;color:var(--text2);transition:opacity .25s,transform .45s var(--spring)}
+.search{flex:1;max-width:340px;margin-left:auto;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);font:14px IN;transition:max-width .45s var(--out),padding .45s var(--out)}
+.search svg{width:16px;height:16px;flex:none}
+.search span{white-space:nowrap;overflow:hidden}
+.cta{flex:none;font:600 14.5px IT;background:#f4f5f6;color:#0b0c0e;border-radius:999px;padding:10px 16px}
+.progress{position:absolute;left:24px;right:24px;bottom:-1px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--ember),#ff3d86);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* section tabs (shared look) */
+.tabs{display:flex;gap:4px;align-items:center;font:500 14.5px IT;color:var(--text2);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{position:relative;padding:8px 14px;border-radius:999px;white-space:nowrap;transition:color .2s,background .25s}
+.tabs a:hover{color:#fff}
+.tabs a.on{background:rgba(255,255,255,.1);color:#fff}
+
+/* page */
+.hero{max-width:820px;margin:0 auto;padding:150px 16px 30px;text-align:center}
+.hero h1{font:650 clamp(34px,6vw,56px)/1.05 IT;letter-spacing:-.03em;margin:0 0 14px}
+.hero p{color:var(--muted);margin:0}
+.inpage{max-width:1000px;margin:26px auto 0;padding:0 16px;display:flex;justify-content:center}
+.inpage .tabs{padding:6px;border-radius:999px}
+main{max-width:760px;margin:0 auto;padding:30px 16px 220px}
+section{padding:64px 0 10px;scroll-margin-top:150px}
+section h2{font:650 30px IT;letter-spacing:-.02em;margin:0 0 12px}
+section p{color:var(--text2)}
+.fake{height:180px;border-radius:16px;border:1px solid var(--line2);background:linear-gradient(135deg,#121317,#0d0e10);margin:18px 0}
+
+/* Only one layer is glass: the whole unit in V1, the bar alone in V2 and V3. */
+.unit{border-radius:30px}
+.v2 .unit,.v3 .unit{background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* ===== V1: docked tray ===== */
+.tray{overflow:hidden;max-height:0;opacity:0;border-top:1px solid transparent;transition:max-height .5s var(--out),opacity .3s,border-color .3s,padding .5s var(--out);padding:0 10px}
+.tray .tabs{justify-content:center}
+.v1.docked .bar{border-radius:30px 30px 0 0;border-bottom-color:transparent}
+.v1.docked .tray{max-height:60px;opacity:1;padding:6px 10px 8px;border-top-color:rgba(255,255,255,.07)}
+.v1 .unit{border-radius:30px;transition:border-radius .4s var(--out)}
+.v1.docked .unit{border-radius:26px}
+.v1 .bar.glass,.v1 .tray.glass{box-shadow:none;border:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.v1.docked .progress{bottom:auto;top:59px}
+
+/* ===== V2: merge into one row ===== */
+.merge{position:absolute;left:190px;right:auto;top:0;height:100%;display:flex;align-items:center;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .45s var(--spring);max-width:calc(100% - 420px)}
+.v2.docked .links{opacity:0;transform:translateY(-8px);pointer-events:none}
+.v2.docked .merge{opacity:1;transform:none;pointer-events:auto}
+.v2.docked .search{max-width:40px;padding:0 11px}
+.v2.docked .search span{display:none}
+.merge .tabs a{padding:7px 12px;font-size:14px}
+
+/* ===== V3: hanging tab ===== */
+.hang{position:absolute;left:50%;top:100%;transform:translate(-50%,-12px);opacity:0;pointer-events:none;transition:transform .5s var(--spring),opacity .25s}
+.v3.docked .hang{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+.neck{display:block;width:64px;height:10px;margin:0 auto -1px;background:radial-gradient(14px 10px at 0 0,transparent 98%,rgba(15,16,19,.92) 100%) left/50% 100% no-repeat,radial-gradient(14px 10px at 100% 0,transparent 98%,rgba(15,16,19,.92) 100%) right/50% 100% no-repeat}
+.pull{display:flex;align-items:center;gap:10px;padding:7px 8px 7px 14px;border-radius:0 0 18px 18px;border-top:0!important;cursor:pointer;font:500 14px IT;color:#fff;min-width:240px;justify-content:space-between;position:relative}
+.pull .now{display:flex;align-items:center;gap:8px}
+.pull .dot{width:6px;height:6px;border-radius:50%;background:var(--ember);box-shadow:0 0 8px var(--ember)}
+.pull .count{font:12px ui-monospace,monospace;color:var(--muted)}
+.pull .chev{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.07);transition:transform .35s var(--spring)}
+.pull .mini{position:absolute;left:14px;right:14px;bottom:4px;height:2px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden}
+.pull .mini i{display:block;height:100%;width:100%;background:var(--ember);transform-origin:left;transform:scaleX(var(--sp,0))}
+.list{margin-top:6px;padding:6px;border-radius:16px;display:grid;gap:2px;min-width:260px;max-height:0;opacity:0;overflow:hidden;transition:max-height .45s var(--out),opacity .25s,padding .45s}
+.v3.open .list{max-height:320px;opacity:1}
+.v3.open .pull .chev{transform:rotate(180deg)}
+.list a{padding:9px 12px;border-radius:10px;font:500 14px IT;color:var(--text2);display:flex;justify-content:space-between}
+.list a:hover{background:rgba(255,255,255,.06);color:#fff}
+.list a.on{color:#fff;background:rgba(255,255,255,.08)}
+.list a.on::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--ember);align-self:center}
+
+/* in-page tabs hide once a variant has taken them */
+.inpage{transition:opacity .25s}
+.docked~.page .inpage,.page.taken .inpage{opacity:0}
+
+@media (max-width:760px){.links,.search span{display:none}.search{max-width:40px;padding:0 11px}.bar{gap:12px}
+  .merge{left:132px;right:132px;max-width:none}.merge .tabs{-webkit-mask:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 12px),transparent);mask:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 12px),transparent)}
+  .v2.docked .search{display:none}.v2.docked .cta{margin-left:auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="head v1" id="head">
+  <div class="unit glass">
+    <div class="bar glass">
+      <a class="logo" href="#top"><svg viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a>
+      <nav class="links"><a href="#">Tools</a><a href="#">Pricing</a><a href="#">Developers</a></nav>
+      <div class="merge"><nav class="tabs" data-tabs></nav></div>
+      <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search tools and answers</span></div>
+      <a class="cta" href="#">Get started</a>
+      <span class="progress"></span>
+    </div>
+    <div class="tray glass"><nav class="tabs" data-tabs></nav></div>
+  </div>
+  <div class="hang">
+    <span class="neck"></span>
+    <div class="pull glass" role="button" tabindex="0" aria-expanded="false"><span class="now"><span class="dot"></span><span id="nowName">Calculator</span></span><span class="count" id="nowCount">1 / 6</span><span class="chev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></span><span class="mini"><i></i></span></div>
+    <nav class="list glass" data-list></nav>
+  </div>
+</header>
+
+<div class="page" id="page">
+  <div class="hero" id="top">
+    <h1>How much of each payment to set aside</h1>
+    <p>Scroll down. The section tabs below attach to the bar in the style you pick at the bottom of the screen.</p>
+  </div>
+  <div class="inpage"><nav class="tabs glass" data-tabs></nav></div>
+  <main id="main"></main>
+</div>
+
+<div class="pick" role="group" aria-label="Variation">
+  <button type="button" data-v="v1" aria-pressed="true">1. Docked tray</button>
+  <button type="button" data-v="v2" aria-pressed="false">2. One row</button>
+  <button type="button" data-v="v3" aria-pressed="false">3. Hanging tab</button>
+</div>
+
+<script>
+(function () {
+  var S = ['Calculator', 'Your year', 'How it is worked out', 'Prices', 'Set-aside by place and case', 'From code'];
+  var main = document.getElementById('main'), head = document.getElementById('head'), page = document.getElementById('page');
+  var copy = 'Each payment you get as a freelancer has tax in it that nobody withholds. This section is placeholder text so the page is long enough to scroll; the real tool page has its own content here.';
+  S.forEach(function (s, i) {
+    var sec = document.createElement('section'); sec.id = 's' + i;
+    sec.innerHTML = '<h2>' + s + '</h2><p>' + copy + '</p><div class="fake"></div><p>' + copy + '</p><p>' + copy + '</p>';
+    main.appendChild(sec);
+  });
+  document.querySelectorAll('[data-tabs]').forEach(function (nav) {
+    S.forEach(function (s, i) { var a = document.createElement('a'); a.href = '#s' + i; a.textContent = s; nav.appendChild(a); });
+  });
+  var list = document.querySelector('[data-list]');
+  S.forEach(function (s, i) { var a = document.createElement('a'); a.href = '#s' + i; a.textContent = s; list.appendChild(a); });
+  var inpage = document.querySelector('.inpage');
+  var pull = document.querySelector('.pull');
+  pull.addEventListener('click', function () { var o = head.classList.toggle('open'); pull.setAttribute('aria-expanded', o); });
+  pull.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pull.click(); } });
+  list.addEventListener('click', function () { head.classList.remove('open'); pull.setAttribute('aria-expanded', 'false'); });
+
+  function setV(v) {
+    head.className = 'head ' + v; tick();
+    document.querySelectorAll('.pick button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === v); });
+  }
+  document.querySelectorAll('.pick button').forEach(function (b) { b.onclick = function () { setV(b.dataset.v); }; });
+
+  var current = -1;
+  function tick() {
+    var y = window.scrollY, docH = document.documentElement.scrollHeight - innerHeight;
+    head.style.setProperty('--p', Math.min(1, y / Math.max(1, docH)));
+    // The tabs attach once the in-page row has scrolled up under the bar.
+    var docked = inpage.getBoundingClientRect().top < 84;
+    head.classList.toggle('docked', docked);
+    page.classList.toggle('taken', docked);
+    if (!docked) { head.classList.remove('open'); }
+    var idx = 0;
+    S.forEach(function (_, i) { if (document.getElementById('s' + i).getBoundingClientRect().top < 170) idx = i; });
+    var sec = document.getElementById('s' + idx), r = sec.getBoundingClientRect();
+    head.style.setProperty('--sp', Math.min(1, Math.max(0, (170 - r.top) / r.height)));
+    if (idx !== current) {
+      current = idx;
+      document.querySelectorAll('[data-tabs] a, [data-list] a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#s' + idx); });
+      document.getElementById('nowName').textContent = S[idx];
+      document.getElementById('nowCount').textContent = (idx + 1) + ' / ' + S.length;
+      document.querySelectorAll('.tray [data-tabs], .merge [data-tabs]').forEach(function (nav) {
+        var on = nav.querySelector('a.on'); if (on && nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: on.offsetLeft - 40, behavior: 'smooth' });
+      });
+    }
+  }
+  addEventListener('scroll', tick, { passive: true }); addEventListener('resize', tick); tick();
+})();
+</script>
+</body>
+</html>
