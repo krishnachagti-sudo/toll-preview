@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why AI assistants get dates and numbers wrong: Endwise</title>
+<meta name="description" content="Why a chatbot can be confidently wrong about business days, holidays, exchange rates and tax rules, with worked cases and how to fix it.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/guides/why-ai-gets-numbers-wrong.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Why AI assistants get dates and numbers wrong">
+<meta property="og:description" content="Why a chatbot can be confidently wrong about business days, holidays, exchange rates and tax rules, with worked cases and how to fix it.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/","name":"Why AI assistants get dates and numbers wrong","description":"Why a chatbot can be confidently wrong about business days, holidays, exchange rates and tax rules, with worked cases and how to fix it.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"Why AI assistants get dates and numbers wrong","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does ChatGPT get dates wrong?","acceptedAnswer":{"@type":"Answer","text":"It predicts likely text instead of running a date rule. A count of business days needs every holiday and weekend checked in turn, and a text predictor can skip that step and still write a confident answer. Check any date it gives you, or give it a tool that computes dates."}},{"@type":"Question","name":"Can an AI assistant look up today's exchange rate?","acceptedAnswer":{"@type":"Answer","text":"Only if it has a tool or search that fetches a published rate. Without one, it answers from what it learned in training, which ends at a cutoff date. A rate for a given day is a fact in a published table, not something to recall."}},{"@type":"Question","name":"What is a knowledge cutoff?","acceptedAnswer":{"@type":"Answer","text":"The date after which a model has little or no training data. Anthropic defines a reliable knowledge cutoff as the date through which the model's knowledge is most extensive and reliable. Tax thresholds and mileage rates that changed after that date can be wrong."}},{"@type":"Question","name":"How do I stop an AI from guessing numbers?","acceptedAnswer":{"@type":"Answer","text":"Give it a tool that returns the answer from a named source, and ask it to show the tool's output. Then it reports the figure instead of producing one."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">Why AI assistants get dates and numbers wrong</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Why AI assistants get dates and numbers wrong</h1>
+<p class="cp-answer">An AI assistant predicts likely text. It does not look up a rule or a published figure, its knowledge ends at a cutoff date, and it may not show its working. So it can state a business-day count, an observed holiday or an exchange rate that is off by 1 day or 1 decimal, in a confident sentence. Check the number, or give the assistant a tool that returns it exactly.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="why">Why does an AI assistant get dates and numbers wrong?</h2>
+<p>A language model writes the most likely next words. That works well for prose. It is a poor fit for a question that has one right answer defined by a rule or a published table, such as &quot;how many business days between these dates&quot; or &quot;what was the euro rate on that Saturday&quot;.</p>
+<p>Three things go wrong, and they stack.</p>
+<ul><li><strong>It predicts text, it does not run the rule. </strong>A business-day count needs each day checked against weekends and every holiday, including the ones moved to a Friday or a Monday. A model can write a tidy answer without doing that check.</li><li><strong>Its knowledge stops at a cutoff. </strong>Anthropic's model documentation separates a reliable knowledge cutoff, &quot;the date through which the model's knowledge is most extensive and reliable&quot;, from the wider range of training data. OpenAI's model pages list a knowledge cutoff for each model too. A rate, threshold or deadline that changed after that date may not be in the model at all, and the model will not always tell you so.</li><li><strong>It may not show its working. </strong>A single number with no list of skipped days, no rate date and no named source gives you nothing to check.</li></ul>
+<p>Model makers say this about their own products. Anthropic's guide to reducing hallucinations says these techniques don't eliminate them entirely and adds &quot;Always validate critical information&quot;. Both companies also document ways to connect a model to outside tools and search, which is the fix this page ends with. Sources are listed below.</p>
+</section>
+<section>
+<h2 id="cases">Which dates and numbers are easiest to get wrong?</h2>
+<p>The ones where a small rule decides the answer. Here are cases worked out by the tools themselves. Each answer below is the tool's own output for the question shown, so you can run it again and get the same result.</p>
+</section>
+<section>
+<h2 id="case-7">Example: US business days from July 1 to July 8, 2026</h2>
+<p><strong>Exact answer: </strong>4 business days. Skipped: Independence Day (observed) (July 3, 2026).</p>
+<p><strong>Why it is easy to get wrong: </strong>July 4, 2026 is a Saturday, so the federal holiday is observed on Friday, July 3. Skip only the 4th, a weekend day anyway, and you count 5.</p>
+<p>Source: 5 U.S.C. 6103, OPM observed-day rules. <a href="/toll-preview/business-days/">Run it yourself in Business days</a>.</p>
+</section>
+<section>
+<h2 id="case-11">Example: One working day after December 24, 2026, in England and Wales</h2>
+<p><strong>Exact answer: </strong>December 29, 2026. Skipped: Christmas Day (December 25, 2026); Boxing Day (substitute day) (December 28, 2026).</p>
+<p><strong>Why it is easy to get wrong: </strong>Christmas Day is a Friday and Boxing Day falls on a Saturday, so its bank holiday moves to Monday, December 28. One working day on is Tuesday, not Monday.</p>
+<p>Source: GOV.UK bank holidays for England and Wales. <a href="/toll-preview/business-days/">Run it yourself in Business days</a>.</p>
+</section>
+<section>
+<h2 id="case-15">Example: US dollar to euro on Saturday, October 24, 2026</h2>
+<p><strong>Exact answer: </strong>1 USD = 0.893416 EUR, from the fixing of October 23, 2026.</p>
+<p><strong>Why it is easy to get wrong: </strong>The ECB publishes no reference rates at weekends. The answer uses the last fixing before the date and names it, rather than giving a rate for a day that has none.</p>
+<p>Source: European Central Bank reference rates. <a href="/toll-preview/fx-on-date/">Run it yourself in Exchange rate on a date</a>.</p>
+</section>
+<section>
+<h2 id="case-19">Example: Pound to yen on Christmas Day 2024</h2>
+<p><strong>Exact answer: </strong>1 GBP = 197.149931 JPY, from the fixing of December 24, 2024.</p>
+<p><strong>Why it is easy to get wrong: </strong>The ECB did not publish on December 25, 2024, and it has no direct pound to yen rate. The tool takes both rates against the euro from the last fixing and works out the cross rate.</p>
+<p>Source: European Central Bank reference rates. <a href="/toll-preview/fx-on-date/">Run it yourself in Exchange rate on a date</a>.</p>
+</section>
+<section>
+<h2 id="case-23">Example: An order placed at 4:30 pm Central the day before Thanksgiving 2026, by USPS Priority Mail</h2>
+<p><strong>Exact answer: </strong>An order placed Wednesday, November 25, 2026 at 4:30 pm CST with a 12:00 pm cutoff and 1 processing day ships Monday, November 30, 2026 and, by Priority Mail, arrives between Wednesday, December 2 and Thursday, December 3, 2026.</p>
+<p><strong>Why it is easy to get wrong: </strong>The order misses the noon cutoff, and the next day is Thanksgiving, a federal holiday the store does not ship on. So it is received on Friday, and with a weekend after it, handed over on Monday.</p>
+<p>Source: USPS service standards and postal holidays. <a href="/toll-preview/delivery-date-calculator/">Run it yourself in Delivery date and holiday order-by calculator</a>.</p>
+</section>
+<section>
+<h2 id="tax">What about tax rates and deadlines?</h2>
+<p>The same problem is worse where figures change every year. A threshold or a mileage rate can differ between one year and the next, and some change in the middle of a year. A model whose knowledge ends before the change will quote the old figure in a confident sentence. Due dates also move: a deadline on a weekend rolls to the next business day, and that is a rule to apply, not a sentence to recall.</p>
+<ul><li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a>: the Form 1099-NEC reporting line is $2,000 for 2026 payments and $600 for 2025 payments, from the IRS instructions. A model whose knowledge predates the change would give $600 for a 2026 payment.</li><li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement and IRS mileage log</a>: the IRS business rate for a trip on June 30, 2026 is 72.5 cents a mile, and 76 cents a mile from July 1. One rate for the whole year is wrong for half of it.</li><li><a href="/toll-preview/ifta-calculator/">IFTA quarterly return calculator</a>: the third quarter 2026 IFTA return is due November 2, 2026, not October 31, 2026, because the statutory date falls on a weekend. The date in the rules is not always the date to file by.</li></ul>
+</section>
+<section>
+<h2 id="fix">How do you fix it?</h2>
+<p>Give the assistant a tool for the exact part, and keep the model for the rest. The model decides which tool to call and explains the result. The tool applies the rule and returns the figure, with its source.</p>
+<p>The tools here work that way. They run over a standard connector called MCP (Model Context Protocol, a common way for an AI assistant to call outside tools), and over a plain REST API. There is no AI in the answers: the same input gives the same answer. Setup guides: <a href="/toll-preview/guides/use-with-claude/">Claude</a>, <a href="/toll-preview/guides/use-with-chatgpt/">ChatGPT</a> and <a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Cursor and VS Code</a>. For your own code, see <a href="/toll-preview/guides/build-an-agent/">building an agent</a>.</p>
+<p>Each tool runs 5 times a day on its page without an account, so you can compare it with your assistant's answer. <a href="/toll-preview/guides/check-numbers-from-ai/">How to check a number an AI gives you</a> sets out the steps.</p>
+<p class="cp-note">Start with <a href="/toll-preview/business-days/">Business days</a> if your numbers are dates.</p>
+<ul class="cp-sources"><li><a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">Anthropic: Reduce hallucinations</a></li><li><a href="https://platform.claude.com/docs/en/models/overview">Anthropic: Models overview (reliable knowledge cutoff and training data cutoff)</a></li><li><a href="https://developers.openai.com/api/docs/models">OpenAI: Models (knowledge cutoff listed per model, as of November 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Why does ChatGPT get dates wrong?</h3><p>It predicts likely text instead of running a date rule. A count of business days needs every holiday and weekend checked in turn, and a text predictor can skip that step and still write a confident answer. Check any date it gives you, or give it a tool that computes dates.</p><h3>Can an AI assistant look up today's exchange rate?</h3><p>Only if it has a tool or search that fetches a published rate. Without one, it answers from what it learned in training, which ends at a cutoff date. A rate for a given day is a fact in a published table, not something to recall.</p><h3>What is a knowledge cutoff?</h3><p>The date after which a model has little or no training data. Anthropic defines a reliable knowledge cutoff as the date through which the model's knowledge is most extensive and reliable. Tax thresholds and mileage rates that changed after that date can be wrong.</p><h3>How do I stop an AI from guessing numbers?</h3><p>Give it a tool that returns the answer from a named source, and ask it to show the tool's output. Then it reports the figure instead of producing one.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/guides/check-numbers-from-ai/">How to check a number an AI gives you</a></li><li><a href="/toll-preview/guides/use-with-claude/">Use exact tools from Claude</a></li><li><a href="/toll-preview/guides/use-with-chatgpt/">Use exact tools from ChatGPT</a></li><li><a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Use exact tools in Cursor and VS Code</a></li><li><a href="/toll-preview/why-exact/">Why exact answers</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/guides/why-ai-gets-numbers-wrong.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-03">2026-11-03</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

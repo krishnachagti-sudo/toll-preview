@@ -4,6 +4,17 @@
 
 Endwise is a Conyso product. Every tool is deterministic: the same input always gives the same answer, with no AI model in the loop. Each content page has a Markdown copy at the same address ending in .md.
 
+## Using Endwise
+
+- [Guides](https://krishnachagti-sudo.github.io/toll-preview/guides/): Every guide: using the tools from AI assistants and editors, building an agent, checking AI numbers, and paying per use.
+- [How to use Endwise with Claude (Claude Code and apps)](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/): Connect to Claude Code with one command, see what the Claude apps allow today, try a first prompt, and keep spend under control.
+- [Does Endwise work with ChatGPT? What works today](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/): What works today when you want ChatGPT to call exact tools: the MCP connector limits, a custom GPT Action with an API key, and the OpenAI API from code.
+- [How to add Endwise to Cursor and VS Code (MCP)](https://krishnachagti-sudo.github.io/toll-preview/guides/use-in-cursor-and-vs-code/): Exact mcp.json files for Cursor and VS Code with a Bearer key, how to keep keys out of git, and how to check it works.
+- [Give your own AI agent exact tools: 3 ways](https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/): For developers: three ways to give an agent exact tools (Anthropic MCP connector, OpenAI remote MCP, REST function calling), with samples, per-agent keys, quotes and error handling.
+- [Why AI assistants get dates and numbers wrong](https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/): Why language models miss on dates, holidays, rates and tax figures, shown with worked cases, and how to give an assistant a tool that gets them exactly.
+- [How to check a number an AI gives you](https://krishnachagti-sudo.github.io/toll-preview/guides/check-numbers-from-ai/): A short procedure for checking a date, rate or tax figure from an AI assistant, with what to test for each kind of number.
+- [Pay per use or a subscription: which costs less](https://krishnachagti-sudo.github.io/toll-preview/guides/pay-per-use-or-subscription/): The break-even formula for pay per use against a subscription, worked with Endwise prices: when per use wins and when a pass wins.
+
 ## Tools
 
 - [1099 threshold tracker](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/): Check which payees need a Form 1099-NEC or 1099-MISC for a payment year, in which box and why: the $2,000 line for 2026 payments, $600 for 2025, royalties at $10 and attorney gross proceeds at $600, with the corporation, card and merchandise exceptions, backup withholding, payees merged by TIN, due dates and an IRIS upload file.

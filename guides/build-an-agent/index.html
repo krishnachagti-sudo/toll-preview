@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Give your own AI agent exact tools: 3 ways: Endwise</title>
+<meta name="description" content="Connect your own agent to Endwise by Claude MCP connector, OpenAI remote MCP or plain REST function calling. Code samples, quotes, keys and error handling.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/guides/build-an-agent.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Give your own AI agent exact tools: 3 ways">
+<meta property="og:description" content="Connect your own agent to Endwise by Claude MCP connector, OpenAI remote MCP or plain REST function calling. Code samples, quotes, keys and error handling.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/","name":"Give your own AI agent exact tools: 3 ways","description":"Connect your own agent to Endwise by Claude MCP connector, OpenAI remote MCP or plain REST function calling. Code samples, quotes, keys and error handling.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"Give your own AI agent exact tools: 3 ways","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I give an AI agent access to an API with a key?","acceptedAnswer":{"@type":"Answer","text":"Three ways work with Endwise. Pass the MCP server address and your key to the Anthropic Messages API (mcp_servers) or the OpenAI Responses API (an mcp tool with headers), or define each tool as a function in your agent and make one POST per call to the REST API with the key as a Bearer token."}},{"@type":"Question","name":"How do I stop an agent from overspending?","acceptedAnswer":{"@type":"Answer","text":"Give each agent its own API key with a monthly spending limit. A call that would pass the limit is refused with cap_reached and charges nothing. Ask for a quote before expensive calls, and set an account-wide limit as a second guard."}},{"@type":"Question","name":"What should my agent do when a call fails?","acceptedAnswer":{"@type":"Answer","text":"Retry rate_limited after a short wait, reusing the same Idempotency-Key. Stop and tell a person on insufficient_balance and cap_reached, because retrying cannot fix them. Fix the arguments on invalid_input. upstream_failed is refunded and is safe to retry."}},{"@type":"Question","name":"Does the agent pay for failed calls?","acceptedAnswer":{"@type":"Answer","text":"No. A call with invalid input is refused before any charge. If a tool fails while it runs, the charge is refunded straight away and the response says so."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">Give your own AI agent exact tools: 3 ways</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Give your own AI agent exact tools: 3 ways</h1>
+<p class="cp-answer">Connect your agent to Endwise one of 3 ways: Anthropic's MCP connector, OpenAI's remote MCP tool, or plain function calling over REST. Each uses an API key sent as a Bearer token, and you should give every agent its own key with a monthly spending limit.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2>How do I give my AI agent exact tools?</h2>
+<p>Connect it to Endwise one of three ways. Each one ends in the same place: your agent asks for a tool by name, Endwise runs it and returns the result, and the cost comes out of one prepaid balance. No AI is involved in the answer, so the same input gives the same result.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Three ways to connect an agent</caption><thead><tr><th scope="col">Route</th><th scope="col">Use it when</th><th scope="col">How the key is sent</th></tr></thead><tbody>
+<tr><th scope="row">Anthropic Messages API, MCP connector</th><td>Your agent runs on Claude and you want no tool code</td><td><code>authorization_token</code> on the server entry</td></tr>
+<tr><th scope="row">OpenAI Responses API, remote MCP tool</th><td>Your agent runs on an OpenAI model and you want no tool code</td><td><code>headers</code> on the tool</td></tr>
+<tr><th scope="row">Function calling over REST</th><td>You want control of retries, logging and approval, or use any other model</td><td><code>Authorization: Bearer</code> on your own request</td></tr>
+</tbody></table></div>
+<p>MCP is the Model Context Protocol, a standard way for an AI app to find and call outside tools. The first two routes let the model provider connect to the Endwise MCP server for you. The third calls the REST API from your own code. <a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Claude Desktop, Cursor and VS Code</a> use the same server.</p>
+</section>
+<section>
+<h2>Which API key should each agent use?</h2>
+<p>Make one key per agent. Keys are created on the <a href="/toll-preview/account">account page</a>, start with <code>tk_live_</code>, and are shown once. Each key has its own monthly spending limit, and you can set one for the whole account too. A call that would pass either limit is refused with <code>cap_reached</code> and charges nothing. Limits count from the 1st of each month (UTC).</p>
+<ul><li>Put the key in an environment variable or a secrets store on your server. Never put it in a web page, a mobile app or a public repository.</li><li>Give an experimental agent a small limit. Raise it once you have seen what it spends.</li><li>Revoke a key on the account page and the agent stops at once. Other agents are not affected.</li><li>Check a key with GET /api/v1/me. It returns the balance and how much this key has spent against its limit this month.</li></ul>
+</section>
+<section>
+<h2>How do I use Claude with the MCP connector?</h2>
+<p>The Anthropic Messages API can connect to a remote MCP server without your own MCP client. You pass the server in <code>mcp_servers</code> and enable its tools with an <code>mcp_toolset</code> entry in <code>tools</code>. As of November 2026 it is a beta feature and needs a beta header, <code>mcp-client-2025-11-20</code>. Anthropic also documents a newer one, <code>mcp-client-2026-09-15</code>, that includes everything in the older one and adds pinning of the server's tool list.</p>
+<pre><code class="language-python">import os, anthropic
+
+client = anthropic.Anthropic()
+
+response = client.beta.messages.create(
+    model=&quot;claude-sonnet-5-5&quot;,
+    max_tokens=1000,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;}],
+    mcp_servers=[{
+        &quot;type&quot;: &quot;url&quot;,
+        &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
+        &quot;name&quot;: &quot;endwise&quot;,
+        &quot;authorization_token&quot;: os.environ[&quot;ENDWISE_API_KEY&quot;],
+    }],
+    tools=[{&quot;type&quot;: &quot;mcp_toolset&quot;, &quot;mcp_server_name&quot;: &quot;endwise&quot;}],
+    betas=[&quot;mcp-client-2025-11-20&quot;],
+)
+print(response)</code></pre>
+<p>Anthropic's documentation describes <code>authorization_token</code> as an OAuth token for servers that need one. A Endwise key is a bearer token too, and the MCP server reads it from an <code>Authorization: Bearer</code> header. Anthropic's page does not say whether a token that is not from an OAuth flow is accepted, so test with one cheap call and a low-limit key. If the connector refuses it, use the REST route below, which has no such question.</p>
+</section>
+<section>
+<h2>How do I use an OpenAI model with a remote MCP tool?</h2>
+<p>In the Responses API, add a tool of <code>type: &quot;mcp&quot;</code> with your <code>server_url</code>. OpenAI's API reference lists an optional <code>headers</code> map for it, described as HTTP headers to send to the MCP server, for authentication or other purposes. Send the key as a Bearer header:</p>
+<pre><code class="language-python">import os
+from openai import OpenAI
+
+client = OpenAI()
+
+resp = client.responses.create(
+    model=&quot;gpt-6-astra&quot;,
+    input=&quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;,
+    tools=[{
+        &quot;type&quot;: &quot;mcp&quot;,
+        &quot;server_label&quot;: &quot;endwise&quot;,
+        &quot;server_url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
+        &quot;headers&quot;: {&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]},
+        &quot;require_approval&quot;: &quot;never&quot;,
+    }],
+)
+print(resp.output_text)</code></pre>
+<p>By default OpenAI asks for approval before data is sent to a remote MCP server. <code>require_approval</code> can be <code>&quot;always&quot;</code>, <code>&quot;never&quot;</code>, or an object that lists the tools to skip approval for. <code>&quot;never&quot;</code> is fine for read-only lookups on a key with a low limit. For anything else, keep approval on and have your code or a person confirm.</p>
+</section>
+<section>
+<h2>How do I give any model the tools by plain function calling?</h2>
+<p>This route works with any model that supports function calling, and it is the one that gives you the most control. The tool list at <code>GET /api/v1/tools</code> needs no key and gives each tool's name, summary, prices in words and JSON input schema. Turn each entry into a function definition. When the model calls one, make a single POST to <code>/toll-preview/api/v1/tools/&lt;slug&gt;</code> with the arguments as the JSON body.</p>
+<pre><code class="language-python">import json, os, uuid, requests
+from openai import OpenAI
+
+BASE = &quot;https://krishnachagti-sudo.github.io/toll-preview/api/v1&quot;
+HEADERS = {&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]}
+
+# 1. Build the function list from the public tool list (needs no key).
+listed = requests.get(BASE + &quot;/tools&quot;).json()[&quot;tools&quot;]
+tools = []
+for t in listed:
+    if t[&quot;kind&quot;] != &quot;api&quot;:
+        continue
+    schema = {k: v for k, v in t[&quot;inputSchema&quot;].items() if k != &quot;$schema&quot;}
+    tools.append({&quot;type&quot;: &quot;function&quot;, &quot;name&quot;: t[&quot;slug&quot;], &quot;description&quot;: t[&quot;summary&quot;], &quot;parameters&quot;: schema})
+
+# 2. One POST per call. Reuse the key when you retry the same call.
+def run_tool(slug, args, call_key):
+    r = requests.post(f&quot;{BASE}/tools/{slug}&quot;, json=args,
+                      headers={**HEADERS, &quot;Idempotency-Key&quot;: call_key}, timeout=30)
+    return r.json()   # {&quot;ok&quot;: true, &quot;result&quot;: ...} or {&quot;ok&quot;: false, &quot;error&quot;: {...}}
+
+client = OpenAI()
+input_list = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;}]
+response = client.responses.create(model=&quot;gpt-6-astra&quot;, tools=tools, input=input_list)
+input_list += response.output
+for item in response.output:
+    if item.type == &quot;function_call&quot;:
+        out = run_tool(item.name, json.loads(item.arguments), item.call_id)
+        input_list.append({&quot;type&quot;: &quot;function_call_output&quot;, &quot;call_id&quot;: item.call_id, &quot;output&quot;: json.dumps(out)})
+response = client.responses.create(model=&quot;gpt-6-astra&quot;, tools=tools, input=input_list)
+print(response.output_text)</code></pre>
+<p>The sample uses OpenAI's function format (<code>type: &quot;function&quot;</code>, <code>name</code>, <code>parameters</code>, and a <code>function_call_output</code> item returned with the call's <code>call_id</code>). Other providers use a different wrapper around the same JSON schema.</p>
+</section>
+<section>
+<h2>What does a real call look like?</h2>
+<p>Count the business days from 1 July to 8 July 2026 in the US. One POST to https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days with the key in the Authorization header and this body:</p>
+<pre><code class="language-json">{
+  &quot;op&quot;: &quot;between&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;start&quot;: &quot;2026-07-01&quot;,
+  &quot;end&quot;: &quot;2026-07-08&quot;
+}</code></pre>
+<p>The tool's result:</p>
+<pre><code class="language-json">{
+  &quot;businessDays&quot;: 4,
+  &quot;holidaysSkipped&quot;: [
+    {
+      &quot;date&quot;: &quot;2026-07-03&quot;,
+      &quot;name&quot;: &quot;Independence Day (observed)&quot;
+    }
+  ]
+}</code></pre>
+<p>The full response wraps the result with <code>ok: true</code>, a <code>charged</code> block (the cost as a number and as text), your new balance, and a <code>dataVersion</code> naming the reference data used. This tool costs $0.0005 per call. See the <a href="/toll-preview/business-days/">Business days</a> page.</p>
+</section>
+<section>
+<h2>How does my agent check the price before an expensive call?</h2>
+<p>Ask for a quote. Send the same body to the tool's <code>/quote</code> address. It returns the amount as a number (whole micro-units, where one dollar is 1,000,000) and as text, plus the price in words, and it runs, charges and reserves nothing.</p>
+<pre><code class="language-text">POST https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days/quote
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+
+{&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;}</code></pre>
+<p>Over MCP, a free <code>quote_price</code> tool does the same, with the arguments <code>tool</code> and <code>arguments</code>. It is listed when some tool prices by what you ask for, so check <code>tools/list</code> before relying on it. Most tools have one fixed price, shown on their pages. Some price per row or per document, and those are the calls worth quoting. A simple rule for an agent: quote first whenever the input has a list, a batch or a file, and refuse to go ahead if the quote is above a number you set.</p>
+</section>
+<section>
+<h2>How should my agent handle errors?</h2>
+<p>Every REST error has the same shape, and every refused call is not charged. Over MCP the same message comes back as tool-result text that the model can read.</p>
+<pre><code class="language-json">{
+  &quot;ok&quot;: false,
+  &quot;error&quot;: { &quot;code&quot;: &quot;cap_reached&quot;, &quot;message&quot;: &quot;...&quot; }
+}</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Errors an agent should handle</caption><thead><tr><th scope="col" class="r num">Status</th><th scope="col">Code</th><th scope="col">What the agent should do</th></tr></thead><tbody>
+<tr><th scope="row">400</th><td><code>invalid_input</code></td><td>Read error.fields, fix the arguments and try again. Not charged.</td></tr>
+<tr><th scope="row">401</th><td><code>unauthorized</code></td><td>Stop. The key is missing, wrong or revoked.</td></tr>
+<tr><th scope="row">402</th><td><code>insufficient_balance</code></td><td>Stop and tell a person to add money. Retrying will not help.</td></tr>
+<tr><th scope="row">402</th><td><code>cap_reached</code></td><td>Stop until the 1st of the month or until a person raises the limit. Not charged.</td></tr>
+<tr><th scope="row">409</th><td><code>in_progress</code></td><td>The same Idempotency-Key is still running. Wait a moment and retry.</td></tr>
+<tr><th scope="row">422</th><td><code>idempotency_mismatch</code></td><td>You reused a key with different input. Use a new key per distinct call.</td></tr>
+<tr><th scope="row">422</th><td><code>not_available</code></td><td>The tool cannot answer this exactly. Do not retry; tell the user.</td></tr>
+<tr><th scope="row">429</th><td><code>rate_limited</code></td><td>Wait briefly and retry. A key can make 10 requests a second, with bursts up to 20.</td></tr>
+<tr><th scope="row">502</th><td><code>upstream_failed</code></td><td>The tool failed and the charge was refunded. Safe to retry.</td></tr>
+</tbody></table></div>
+<p>For retries, send an <code>Idempotency-Key</code> header, 1 to 200 characters, unique per logical call. If that key was already answered for the same tool, you get the stored answer back marked <code>Idempotent-Replay: true</code> and nothing more is charged. The sample above uses the model's own <code>call_id</code> as the key, so a retried tool call can never be billed twice.</p>
+<p>The full list of codes is in the <a href="/toll-preview/docs">docs</a>. Free tools in a browser need none of this: without an account you get 5 free runs a day on the web.</p>
+<ul class="cp-sources"><li><a href="https://platform.claude.com/docs/en/agents-and-tools/mcp-connector">Anthropic: MCP connector (Messages API)</a></li><li><a href="https://developers.openai.com/api/docs/guides/tools-connectors-mcp">OpenAI: MCP servers in the Responses API</a></li><li><a href="https://developers.openai.com/api/reference/resources/responses/methods/create">OpenAI: Responses API reference (the mcp tool and its headers field)</a></li><li><a href="https://developers.openai.com/api/docs/guides/function-calling">OpenAI: Function calling</a></li><li><a href="https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization">Model Context Protocol: authorization</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>How do I give an AI agent access to an API with a key?</h3><p>Three ways work with Endwise. Pass the MCP server address and your key to the Anthropic Messages API (mcp_servers) or the OpenAI Responses API (an mcp tool with headers), or define each tool as a function in your agent and make one POST per call to the REST API with the key as a Bearer token.</p><h3>How do I stop an agent from overspending?</h3><p>Give each agent its own API key with a monthly spending limit. A call that would pass the limit is refused with cap_reached and charges nothing. Ask for a quote before expensive calls, and set an account-wide limit as a second guard.</p><h3>What should my agent do when a call fails?</h3><p>Retry rate_limited after a short wait, reusing the same Idempotency-Key. Stop and tell a person on insufficient_balance and cap_reached, because retrying cannot fix them. Fix the arguments on invalid_input. upstream_failed is refunded and is safe to retry.</p><h3>Does the agent pay for failed calls?</h3><p>No. A call with invalid input is refused before any charge. If a tool fails while it runs, the charge is refunded straight away and the response says so.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/developers/">REST API for developers</a></li><li><a href="/toll-preview/developers/mcp/">MCP server for AI agents</a></li><li><a href="/toll-preview/guides/use-with-chatgpt/">Use Endwise with ChatGPT</a></li><li><a href="/toll-preview/guides/use-with-claude/">Use Endwise with Claude</a></li><li><a href="/toll-preview/docs">Docs: keys, errors and limits</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/guides/build-an-agent.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-03">2026-11-03</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>
