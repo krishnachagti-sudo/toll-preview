@@ -292,3 +292,86 @@ html.mx-vt-local::view-transition-old(*),html.mx-vt-local::view-transition-new(*
   .rv,.split .w,.rv tbody tr,.rv .crow{opacity:1 !important;transform:none !important;filter:none !important}
   .mx-field{display:none}
 }
+
+/* ---------- micro-interactions: the full stop ----------
+   The mark is a short line that ends in a dot; every small finish on the site borrows it. toll.js
+   adds the classes (tl-busy, tl-done, tl-land, tl-col, tl-rows) and the toast; these are the looks.
+   Pseudo-elements carry the fill and the mark, so a tool that rewrites its button's text keeps them. */
+:root{--tl-ember:#ff5a36;
+  --tl-mark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12h7.2' stroke='%23000' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='17.4' cy='12' r='1.9'/%3E%3C/svg%3E")}
+
+/* Buttons: a springy press; arrows lean the way they point. */
+.btn{position:relative;isolation:isolate;overflow:hidden;transition:background .15s,border-color .15s,color .15s,box-shadow .2s,transform .35s var(--lg-spring),padding .3s var(--mx-out)}
+.btn:active:not(:disabled){transform:scale(.97)}
+.btn svg,.lnk svg,.go svg{transition:transform .3s var(--lg-spring)}
+.btn:hover svg,.lnk:hover svg,a:hover>.go svg{transform:translateX(3px)}
+
+/* A run in progress: the button fills from the left, then the full stop draws on it. */
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;width:0;background:color-mix(in srgb,var(--tl-ember) 20%,transparent);pointer-events:none}
+.btn.tl-busy{cursor:progress}
+.btn.tl-busy:disabled{opacity:1}
+.btn.tl-busy::before{animation:tl-fill 1.6s cubic-bezier(.2,.7,.2,1) forwards}
+.btn.tl-done::before{width:100%;opacity:0;transition:opacity .5s .15s}
+@keyframes tl-fill{0%{width:0}70%{width:78%}100%{width:90%}}
+/* The mark takes the ::after layer (the pointer-lit rim) only while it shows. */
+.btn.tl-done{padding-right:40px}
+.btn.tl-done::after{content:"";position:absolute;inset:auto;right:13px;top:50%;width:18px;height:18px;margin-top:-9px;padding:0;border-radius:0;pointer-events:none;
+  opacity:1!important;-webkit-mask:var(--tl-mark) center/contain no-repeat!important;mask:var(--tl-mark) center/contain no-repeat!important;
+  background:linear-gradient(90deg,currentColor 0 61%,var(--tl-ember) 61%)!important;animation:tl-stop .55s var(--mx-out) both}
+@keyframes tl-stop{0%{clip-path:inset(0 100% 0 0)}55%{clip-path:inset(0 30% 0 0);transform:none}75%{clip-path:inset(0 0 0 0);transform:scale(1.12)}100%{clip-path:inset(0 0 0 0);transform:none}}
+.btn.tl-err{animation:tl-nudge .4s var(--mx-out)}
+@keyframes tl-nudge{20%{transform:translateX(-4px)}45%{transform:translateX(3px)}70%{transform:translateX(-1px)}}
+
+/* An answer lands: it slides in and stops, its parts follow, the charge ticks in. */
+.tl-land{animation:tl-in .55s var(--lg-spring) both}
+.tl-land>*{animation:tl-row .45s var(--mx-out) both}
+.tl-land>:nth-child(2){animation-delay:.05s}.tl-land>:nth-child(3){animation-delay:.1s}.tl-land>:nth-child(4){animation-delay:.15s}
+.tl-land>:nth-child(5){animation-delay:.2s}.tl-land>:nth-child(n+6){animation-delay:.25s}
+@keyframes tl-in{from{opacity:0;transform:translateX(-16px)}}
+@keyframes tl-row{from{opacity:0;transform:translateX(-8px)}}
+.tl-charged{display:inline-block;animation:tl-tick .6s .3s var(--lg-spring) both}
+@keyframes tl-tick{from{opacity:0;transform:translateY(-7px)}}
+
+/* Tables: the row under the pointer gets the line (an ember rule slides in from the left) and its
+   column lights faintly, so a figure can be read across and down. */
+main table tbody tr{transition:background .2s}
+main table tbody tr>:first-child{background-image:linear-gradient(var(--tl-ember),var(--tl-ember));background-repeat:no-repeat;background-size:2px 0;background-position:0 50%;transition:background-size .3s var(--mx-out),text-indent .35s var(--lg-spring)}
+main table tbody tr:hover{background:rgba(255,255,255,.05)}
+main table tbody tr:hover>:first-child{background-size:2px 62%;text-indent:10px}
+main table .tl-col{background-color:rgba(255,154,98,.06)}
+main table th.tl-col{color:var(--text)}
+html.js main table.tl-rows tbody tr{opacity:0;transform:translateY(6px)}
+html.js main table.tl-rows.tl-shown tbody tr{opacity:1;transform:none;transition:opacity .5s var(--mx-out),transform .6s var(--mx-out),background .2s;transition-delay:calc(var(--i,0) * 35ms),calc(var(--i,0) * 35ms),0s}
+
+/* Links in text: the underline warms to ember. Chips lift a little. */
+main a:not(.btn):not(.lnk){transition:text-decoration-color .25s,color .2s}
+main a:not(.btn):not(.lnk):hover{text-decoration-color:var(--tl-ember)}
+.tchip,.chip,.cat-chip{transition:transform .3s var(--lg-spring),border-color .2s,color .2s}
+.tchip:hover,.chip:hover,.cat-chip:hover{transform:translateY(-1px)}
+
+/* Choices press in, and the chosen one pops. Fields ease into focus. */
+.choice span{transition:background .2s,color .2s,border-color .2s,transform .35s var(--lg-spring)}
+.choice input:active+span{transform:scale(.96)}
+.choice input:checked+span{animation:tl-pop .4s var(--lg-spring)}
+@keyframes tl-pop{40%{transform:scale(1.05)}}
+input,select,textarea{transition:border-color .2s,box-shadow .3s var(--mx-out),background .2s}
+input[type=checkbox]:checked,input[type=radio]:checked{animation:tl-pop .35s var(--lg-spring)}
+
+/* Errors arrive with a small nudge so they are noticed. */
+[role=alert].tl-say,.form-error.tl-say{animation:tl-nudge .4s var(--mx-out)}
+
+/* The toast: copied, downloading. It carries the mark. */
+.tl-toast{position:fixed;left:50%;bottom:24px;z-index:80;display:flex;align-items:center;gap:9px;padding:10px 16px 10px 12px;border-radius:999px;
+  background:#f4f5f6;color:#0b0c0e;font:600 14px/1 var(--font-text);box-shadow:0 18px 50px -14px rgba(0,0,0,.8);
+  transform:translate(-50%,16px);opacity:0;pointer-events:none}
+.tl-toast i{width:18px;height:18px;border-radius:5px;background:#0b0c0e;position:relative}
+.tl-toast i::after{content:"";position:absolute;inset:0;-webkit-mask:var(--tl-mark) center/contain no-repeat;mask:var(--tl-mark) center/contain no-repeat;background:linear-gradient(90deg,#f4f5f6 0 61%,var(--tl-ember) 61%)}
+.tl-toast.show{animation:tl-toast 2.1s var(--mx-out) forwards}
+@keyframes tl-toast{0%{opacity:0;transform:translate(-50%,16px)}12%,82%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,6px)}}
+
+@media (prefers-reduced-motion:reduce){
+  .btn,.btn.tl-done::after,.btn::before,.tl-land,.tl-land>*,.tl-charged,.tl-toast.show,.choice span,[role=alert].tl-say,.btn.tl-err,input:checked{animation:none!important;transition:none!important}
+  .btn.tl-busy::before{width:90%}
+  .tl-toast.show{opacity:1;transform:translate(-50%,0)}
+  html.js main table.tl-rows tbody tr{opacity:1;transform:none}
+}

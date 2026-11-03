@@ -12,7 +12,8 @@
      mountCodePanel(el, slug) curl / JavaScript / Python / MCP for the tool's first example.
      run(slug, input)         run a tool from the page (signed in: charged; signed out: free daily runs).
      track(type)              first-party page_view beacon (sent once per page load automatically).
-     copy(text, el, statusEl) copy text, falling back to selecting el.
+     copy(text, el, statusEl) copy text, falling back to selecting el; a toast says it worked.
+     toast(text)              a short note at the foot of the screen with the mark ("Copied").
    }
    Elements with data-toll-chip get an account chip; elements with data-toll-code get a code
    panel for the slug in the attribute (or this page's tool). */
@@ -159,9 +160,10 @@
         try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
       }
       say(ok ? 'Copied.' : 'Selected. Press Ctrl+C or Cmd+C to copy.');
+      if (ok) toast('Copied');
     }
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function () { say('Copied.'); }, selectFallback);
+      navigator.clipboard.writeText(text).then(function () { say('Copied.'); toast('Copied'); }, selectFallback);
     } else {
       selectFallback();
     }
@@ -389,6 +391,122 @@
     return true;
   }
 
+  // ---------- micro-interactions: the full stop ----------
+  // The looks are in motion.css. A run's button fills while it works and shows the mark when it
+  // lands; the answer box slides in and stops; refused runs nudge their message; tables light the
+  // row and column under the pointer and, below the fold, come in row by row; copies and downloads
+  // say so in a small toast. Under reduced motion the states still show, without movement.
+  var reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function buttonOf(from) {
+    if (!from || !from.closest) return null;
+    if (from.tagName === 'FORM') return from.querySelector('button[type="submit"], button:not([type])');
+    return from.closest('button.btn');
+  }
+  function busy(from) {
+    var b = buttonOf(from);
+    if (!b) return null;
+    clearTimeout(b.tlTimer);
+    b.classList.remove('tl-done', 'tl-err');
+    void b.offsetWidth;
+    b.classList.add('tl-busy');
+    return b;
+  }
+  function settle(b, ok) {
+    if (!b) return;
+    b.classList.remove('tl-busy');
+    void b.offsetWidth;
+    b.classList.add(ok ? 'tl-done' : 'tl-err');
+    b.tlTimer = setTimeout(function () { b.classList.remove('tl-done', 'tl-err'); }, ok ? 1800 : 500);
+  }
+  function outOf(from) {
+    var sec = from && from.closest && from.closest('section');
+    return sec && sec.querySelector('[id$="-out"], [id$="-board"]');
+  }
+  function land(from) {
+    var out = outOf(from);
+    if (!out || !out.offsetHeight) return;
+    out.classList.remove('tl-land');
+    void out.offsetWidth;
+    out.classList.add('tl-land');
+    [].forEach.call(out.querySelectorAll('span, p, div, small, li'), function (el) {
+      if (el.children.length === 0 && /^\s*Charged\b/.test(el.textContent)) el.classList.add('tl-charged');
+    });
+    rows(out);
+  }
+  function nudge(from) {
+    var sec = (from && from.closest && from.closest('section')) || document;
+    [].forEach.call(sec.querySelectorAll('[role="alert"], .form-error'), function (el) {
+      if (!el.textContent.trim()) return;
+      el.classList.remove('tl-say');
+      void el.offsetWidth;
+      el.classList.add('tl-say');
+    });
+  }
+  var toastEl = null, toastTimer = 0;
+  function toast(text) {
+    if (!document.body) return;
+    if (!toastEl) {
+      toastEl = h('div', { class: 'tl-toast', role: 'status', 'aria-live': 'polite' });
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = '';
+    toastEl.appendChild(h('i', { 'aria-hidden': 'true' }));
+    toastEl.appendChild(document.createTextNode(text));
+    toastEl.classList.remove('show');
+    void toastEl.offsetWidth;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
+  }
+  // Tables: the column under the pointer lights with its row (the row's look is pure CSS).
+  var litCells = [];
+  function unlight() { litCells.forEach(function (c) { c.classList.remove('tl-col'); }); litCells = []; }
+  function lightColumn(cell) {
+    unlight();
+    var table = cell.closest('table');
+    if (!table || !cell.parentNode) return;
+    var i = [].indexOf.call(cell.parentNode.children, cell);
+    if (i < 1) return; // the first column is the row's label; the row already lights it
+    [].forEach.call(table.rows, function (r) {
+      var c = r.children[i];
+      if (c && !c.hasAttribute('colspan')) { c.classList.add('tl-col'); litCells.push(c); }
+    });
+  }
+  // Long tables below the fold come in row by row, once.
+  var rowObserver = null;
+  function rows(scope) {
+    if (reduced || !('IntersectionObserver' in window)) return;
+    if (!rowObserver) {
+      rowObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('tl-shown');
+          rowObserver.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+    }
+    [].forEach.call((scope || document).querySelectorAll('main table'), function (t) {
+      if (t.tlRows || !t.tBodies[0] || t.tBodies[0].rows.length < 3) return;
+      t.tlRows = true;
+      [].forEach.call(t.tBodies[0].rows, function (r, i) { r.style.setProperty('--i', Math.min(i, 24)); });
+      t.classList.add('tl-rows');
+      rowObserver.observe(t);
+    });
+  }
+  function micro() {
+    document.addEventListener('pointerover', function (e) {
+      var cell = e.target.closest && e.target.closest('main td, main th');
+      if (cell) lightColumn(cell); else if (litCells.length) unlight();
+    });
+    document.addEventListener('pointerleave', unlight);
+    // A download link says it is on its way (the browser's own bar can be easy to miss).
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[download], a[href$=".pdf"], a[href$=".csv"], a[href$=".zip"]');
+      if (a) toast('Downloading');
+    });
+    rows(document);
+  }
+
   // What started the run: the form submitted or button pressed last (a tool may disable its button
   // while it works, which drops focus to the page).
   var lastAction = null;
@@ -396,9 +514,11 @@
   document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('button')) lastAction = e.target; }, true);
   function run(slug, input) {
     var from = lastAction || document.activeElement;
+    var btn = busy(from);
     return api('/api/run/' + encodeURIComponent(slug || tool), { body: input === undefined ? {} : input }).then(function (json) {
+      settle(btn, true);
       // Two frames: the tool draws its answer when this resolves, then it is measured.
-      requestAnimationFrame(function () { requestAnimationFrame(function () { reveal(from); }); });
+      requestAnimationFrame(function () { requestAnimationFrame(function () { reveal(from); land(from); }); });
       if (json && json.freeRunsLeft === 0) noFreeRunsLeft();
       if (json && json.balance && mePromise) {
         mePromise.then(function (account) {
@@ -410,6 +530,8 @@
       }
       return json;
     }, function (e) {
+      settle(btn, false);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { nudge(from); }); });
       if (e.code === 'rate_limited') noFreeRunsLeft(); // the web runner's only limit is the free runs
       if (e.code === 'insufficient_balance' || e.code === 'cap_reached') {
         requestAnimationFrame(function () { requestAnimationFrame(function () { linkFix(from, e); }); });
@@ -467,6 +589,7 @@
     run: run,
     track: track,
     copy: copy,
+    toast: toast,
     h: h,
   };
 
@@ -486,6 +609,7 @@
     [].forEach.call(document.querySelectorAll('[data-toll-code]'), function (el) {
       mountCodePanel(el, el.getAttribute('data-toll-code') || tool);
     });
+    micro();
     track('page_view');
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
