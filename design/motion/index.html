@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endwise micro-interactions</title>
+<style>
+@font-face{font-family:IT;src:url("../../assets/fonts/inter-tight-latin.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:GM;src:url("../../assets/fonts/geist-mono-latin.woff2") format("woff2")}
+:root{--bg:#08090a;--bg1:#0e0f11;--bg2:#131417;--bg3:#191a1e;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.13);--text:#f4f5f6;--text2:#c9ccd1;--muted:#8a8f98;--ember:#ff5a36;--amber:#ffb03f;--magenta:#ff3d86;--ok:#5fd3a0;
+  --spring:linear(0,.047,.157,.298,.448,.591,.716,.821,.903,.964,1.006,1.032,1.046,1.052,1.051,1.046,1.039,1.031,1.024,1.017,1.011,1.006,1.003,1,.999,.998,.997,.997,.998,.998,1);--out:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 IT,system-ui,sans-serif;padding:36px 16px 80px}
+h1{font-size:28px;letter-spacing:-.02em;margin:0 0 6px;text-align:center}
+.sub{color:var(--muted);text-align:center;margin:0 auto 22px;max-width:640px}
+.pick{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.pick button{font:inherit;font-size:14px;color:var(--muted);background:transparent;border:1px solid var(--line2);border-radius:999px;padding:9px 16px;cursor:pointer}
+.pick button[aria-pressed=true]{color:#fff;background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22)}
+.desc{color:var(--muted);text-align:center;max-width:620px;margin:0 auto 26px;min-height:48px;font-size:14px}
+.stage{max-width:560px;margin:0 auto;position:relative}
+.card{background:var(--bg1);border:1px solid var(--line2);border-radius:18px;padding:22px;position:relative;overflow:hidden}
+.bar{display:flex;align-items:center;gap:10px;font:12.5px GM,monospace;color:var(--muted);margin-bottom:16px}
+.bar svg{width:18px;height:18px}
+.bar .price{margin-left:auto;border:1px solid var(--line2);border-radius:999px;padding:3px 10px;color:var(--text2)}
+.fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+input{width:100%;font:15px GM,monospace;color:var(--text);background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:10px 12px;outline:none}
+.run{margin-top:16px;width:100%;font:600 15px IT;color:#0b0c0e;background:#f4f5f6;border:0;border-radius:12px;padding:13px;cursor:pointer;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:10px}
+.run .lbl{position:relative}
+.result{margin-top:16px;border:1px solid var(--line2);border-radius:14px;padding:16px;background:var(--bg2)}
+.result .k{font:11.5px GM;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.result .v{font-size:34px;font-weight:650;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.rows{list-style:none;margin:10px 0 0;padding:0}
+.rows li{display:flex;justify-content:space-between;font:13px GM;color:var(--text2);padding:7px 0;border-top:1px solid var(--line)}
+.foot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;font:12.5px GM;color:var(--muted)}
+.charged{border-radius:999px;padding:3px 10px;border:1px solid var(--line2)}
+.copy{font:12.5px GM;color:var(--text2);background:transparent;border:1px solid var(--line2);border-radius:8px;padding:5px 10px;cursor:pointer}
+.hide{display:none}
+.mark{width:22px;height:22px;flex:none}
+.mark .ln{stroke-dasharray:8;stroke-dashoffset:0}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;background:#f4f5f6;color:#0b0c0e;border-radius:999px;padding:10px 16px;font:600 14px IT;display:flex;gap:8px;align-items:center;pointer-events:none}
+.toast .mark{width:18px;height:18px}
+
+/* ===== A. Quiet ===== */
+.A input{transition:border-color .15s,background .15s}
+.A input:focus{border-color:rgba(255,255,255,.35);background:var(--bg3)}
+.A .run{transition:transform .1s,background .15s}
+.A .run:hover{background:#fff}
+.A .run:active{transform:scale(.98)}
+.A .run.busy .lbl{opacity:.5}
+.A .result.in{animation:aIn .22s var(--out) both}
+@keyframes aIn{from{opacity:0;transform:translateY(4px)}}
+.A .copy{transition:color .15s,border-color .15s}
+.A .copy:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+.A .charged.in{animation:aIn .22s .1s var(--out) both}
+
+/* ===== B. Full stop (brand) ===== */
+.B input{transition:border-color .2s,box-shadow .25s var(--out)}
+.B input:focus{border-color:rgba(255,90,54,.55);box-shadow:0 0 0 4px rgba(255,90,54,.12)}
+.B .run{transition:transform .35s var(--spring),background .2s}
+.B .run:active{transform:scale(.97)}
+.B .run .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#ffe1d4,#ffd2bf)}
+.B .run.busy .fill{animation:bFill .9s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes bFill{to{width:100%}}
+.B .run .mark{display:none}
+.B .run.done .mark{display:block}
+.B .run.done .mark .ln{animation:bLine .32s var(--out) both}
+.B .run.done .mark .dot{transform-origin:17.4px 12px;animation:bDot .45s .22s var(--spring) both}
+@keyframes bLine{from{stroke-dashoffset:8}}
+@keyframes bDot{from{transform:translateX(6px) scale(0)}60%{transform:translateX(-.6px) scale(1.15)}}
+.B .result.in{animation:bIn .5s var(--spring) both}
+@keyframes bIn{from{opacity:0;transform:translateX(-18px)}}
+.B .rows li{opacity:0}
+.B .result.in .rows li{animation:bRow .4s var(--out) forwards}
+.B .result.in .rows li:nth-child(2){animation-delay:.08s}.B .result.in .rows li:nth-child(3){animation-delay:.16s}
+@keyframes bRow{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.B .charged.in{animation:bTick .5s .35s var(--spring) both;border-color:rgba(255,90,54,.5);color:#ffb59f}
+@keyframes bTick{from{transform:translateY(-8px);opacity:0}}
+.B .copy:active{transform:scale(.95)}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,20px)}12%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,8px)}}
+
+/* ===== C. Bold ===== */
+.C .card{transition:transform .5s var(--spring)}
+.C .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,120,70,.16),transparent 70%);opacity:0;transition:opacity .3s}
+.C .card:hover .glow{opacity:1}
+.C input{transition:border-color .2s,transform .3s var(--spring),box-shadow .3s}
+.C input:focus{border-color:var(--ember);transform:translateY(-2px);box-shadow:0 10px 30px -12px rgba(255,90,54,.6)}
+.C .run{background:linear-gradient(100deg,#ffb03f,#ff5a36 55%,#ff3d86);color:#fff;transition:transform .45s var(--spring),box-shadow .3s}
+.C .run:hover{box-shadow:0 12px 40px -10px rgba(255,90,54,.7)}
+.C .run.busy{animation:cPulse .5s ease-in-out infinite alternate}
+@keyframes cPulse{to{transform:scale(.97);filter:brightness(1.15)}}
+.C .card.whoosh{animation:cWhoosh .7s var(--out)}
+@keyframes cWhoosh{30%{transform:translateX(10px) skewX(-3deg) scale(.985)}60%{transform:translateX(-4px)}}
+.C .result.in{animation:cIn .6s var(--spring) both}
+@keyframes cIn{from{opacity:0;transform:scale(.9) translateY(10px);filter:blur(6px)}}
+.C .v{background:linear-gradient(90deg,#fff,#ffd0b8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.C .charged.in{animation:bTick .5s .3s var(--spring) both;border-color:rgba(255,90,54,.6);color:#ffb59f}
+.C .spark{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--ember);pointer-events:none}
+.C .run .mark path{stroke:#fff}.C .run .mark circle{fill:#fff}
+.C .run .mark{display:none}.C .run.done .mark{display:block}
+.toast.show{animation:toast 2.2s var(--out) forwards}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media (max-width:520px){.fields{grid-template-columns:1fr 1fr}.fields div:last-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<h1>Micro-interactions: three directions</h1>
+<p class="sub">The same IFTA card each time. Click into a field, press the button, copy the result. Switch with the buttons.</p>
+<div class="pick" role="group" aria-label="Direction">
+  <button type="button" data-v="A" aria-pressed="false">A. Quiet</button>
+  <button type="button" data-v="B" aria-pressed="true">B. Full stop</button>
+  <button type="button" data-v="C" aria-pressed="false">C. Bold</button>
+</div>
+<p class="desc" id="desc"></p>
+
+<div class="stage B" id="stage">
+  <div class="card" id="card"><div class="glow"></div>
+    <div class="bar"><svg viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise IFTA return<span class="price">estimate $0.01</span></div>
+    <div class="fields">
+      <div><label for="m">Miles</label><input id="m" value="4,350"></div>
+      <div><label for="g">Gallons</label><input id="g" value="690"></div>
+      <div><label for="q">Quarter</label><input id="q" value="2026 Q3"></div>
+    </div>
+    <button class="run" id="run" type="button"><span class="fill"></span><svg class="mark" viewBox="0 0 24 24"><path class="ln" d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle class="dot" cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg><span class="lbl">Work it out</span></button>
+    <div class="result hide" id="res">
+      <div class="k">Return, surcharges included</div>
+      <div class="v"><span id="num">$0.00</span> credit</div>
+      <ul class="rows"><li><span>Indiana</span><span>$25.20</span></li><li><span>Kentucky</span><span>$19.50</span></li><li><span>Illinois</span><span>-$87.82</span></li></ul>
+      <div class="foot"><span class="charged" id="ch">Charged $0.01</span><button class="copy" id="copy" type="button">Copy</button></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"><svg class="mark" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#0b0c0e"/><path d="M6 12h7.2" stroke="#f4f5f6" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Copied</div>
+
+<script>
+var D = {
+  A: 'Quiet, like Linear. Short fades and a 2% press, nothing bounces. Feels fast and serious; you barely notice it.',
+  B: 'Built on the logo. The button fills as it works, then the line draws and the ember dot lands: done. The answer slides in and stops, rows follow, the charge ticks in. Copy shows a small toast with the mark.',
+  C: 'Bold. A warm glow follows the cursor, fields lift on focus, the gradient button pulses while working, the card does a quick whoosh, the result un-blurs and sparks fly from the dot.'
+};
+var stage = document.getElementById('stage'), card = document.getElementById('card'), run = document.getElementById('run'),
+    res = document.getElementById('res'), num = document.getElementById('num'), ch = document.getElementById('ch'), toast = document.getElementById('toast');
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function v() { return stage.className.replace('stage', '').trim(); }
+function setV(x) { stage.className = 'stage ' + x; document.getElementById('desc').textContent = D[x]; reset();
+  document.querySelectorAll('.pick button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === x); }); }
+document.querySelectorAll('.pick button').forEach(function (b) { b.onclick = function () { setV(b.dataset.v); }; });
+function reset() { res.classList.add('hide'); res.classList.remove('in'); ch.classList.remove('in'); run.classList.remove('busy', 'done'); run.querySelector('.lbl').textContent = 'Work it out'; }
+function count(to, ms) { var t0 = performance.now(); (function f(t) { var p = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - p, 3);
+  num.textContent = '$' + (to * (reduce ? 1 : e)).toFixed(2); if (p < 1 && !reduce) requestAnimationFrame(f); })(t0); }
+function sparks() { var r = run.getBoundingClientRect(), c = card.getBoundingClientRect();
+  for (var i = 0; i < 14; i++) { var s = document.createElement('span'); s.className = 'spark'; s.style.left = (r.left - c.left + r.width / 2) + 'px'; s.style.top = (r.top - c.top + r.height / 2) + 'px'; card.appendChild(s);
+    var a = Math.random() * Math.PI * 2, d = 40 + Math.random() * 70;
+    s.animate([{ transform: 'translate(0,0) scale(1)', opacity: 1 }, { transform: 'translate(' + Math.cos(a) * d + 'px,' + Math.sin(a) * d + 'px) scale(0)', opacity: 0 }], { duration: 600 + Math.random() * 300, easing: 'cubic-bezier(.16,1,.3,1)' }).onfinish = s.remove.bind(s); } }
+run.onclick = function () {
+  reset(); var x = v(); run.classList.add('busy'); run.querySelector('.lbl').textContent = 'Working';
+  setTimeout(function () {
+    run.classList.remove('busy'); run.classList.add('done'); run.querySelector('.lbl').textContent = 'Done';
+    if (x === 'C') { card.classList.remove('whoosh'); void card.offsetWidth; card.classList.add('whoosh'); if (!reduce) sparks(); }
+    res.classList.remove('hide'); void res.offsetWidth; res.classList.add('in'); ch.classList.add('in');
+    count(28.73, x === 'A' ? 1 : 700);
+  }, x === 'A' ? 350 : 900);
+};
+document.getElementById('copy').onclick = function () {
+  var b = this, x = v();
+  if (x === 'A') { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1200); return; }
+  b.textContent = 'Copied'; toast.classList.remove('show'); void toast.offsetWidth; toast.classList.add('show'); setTimeout(function () { b.textContent = 'Copy'; }, 1600);
+};
+card.addEventListener('pointermove', function (e) { var r = card.getBoundingClientRect(); card.style.setProperty('--mx', e.clientX - r.left + 'px'); card.style.setProperty('--my', e.clientY - r.top + 'px'); });
+setV('B');
+</script>
+</body>
+</html>
