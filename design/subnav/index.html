@@ -74,6 +74,7 @@ section p{color:var(--text2)}
 .v2.docked .search{max-width:40px;padding:0 11px}
 .v2.docked .search span{display:none}
 .merge .tabs a{padding:7px 12px;font-size:14px}
+.merge .tabs{-webkit-mask:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);padding:0 8px}
 
 /* ===== V3: hanging tab ===== */
 .hang{position:absolute;left:50%;top:100%;transform:translate(-50%,-12px);opacity:0;pointer-events:none;transition:transform .5s var(--spring),opacity .25s}
@@ -94,6 +95,30 @@ section p{color:var(--text2)}
 .list a.on{color:#fff;background:rgba(255,255,255,.08)}
 .list a.on::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--ember);align-self:center}
 
+
+/* ===== V4: both. Reading (scrolling down): one row, the main links folded into Menu.
+   Reaching (scrolling up, or the pointer on the bar): the tray opens with the full main row. ===== */
+.v4 .bar.glass,.v4 .tray.glass{box-shadow:none;border:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.v4 .unit{transition:border-radius .4s var(--out)}
+.mbtn{display:none;flex:none;align-items:center;gap:6px;font:500 14px IT;color:var(--text2);background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:999px;padding:7px 12px;cursor:pointer}
+.mbtn svg{width:14px;height:14px}
+.v4.docked:not(.wide) .links{opacity:0;transform:translateY(-8px);pointer-events:none}
+.v4.docked:not(.wide) .merge{opacity:1;transform:none;pointer-events:auto;left:290px;max-width:calc(100% - 520px)}
+.v4.docked:not(.wide) .mbtn{display:inline-flex;position:absolute;left:176px}
+.v4.docked:not(.wide) .search{max-width:40px;padding:0 11px}
+.v4.docked:not(.wide) .search span{display:none}
+.v4.docked.wide .unit{border-radius:26px}
+.v4.docked.wide .tray{max-height:60px;opacity:1;padding:6px 10px 8px;border-top-color:rgba(255,255,255,.07)}
+.v4.docked.wide .progress{bottom:auto;top:59px}
+@media (max-width:760px){
+  .v4.docked:not(.wide) .links{opacity:0}
+  .v4.docked .merge{opacity:0!important;pointer-events:none!important}
+  .v4.docked .mbtn{display:none!important}
+  .v4.docked .unit{border-radius:26px}
+  .v4.docked .tray{max-height:60px;opacity:1;padding:6px 10px 8px;border-top-color:rgba(255,255,255,.07)}
+  .v4.docked .progress{bottom:auto;top:59px}
+}
+
 /* in-page tabs hide once a variant has taken them */
 .inpage{transition:opacity .25s}
 .docked~.page .inpage,.page.taken .inpage{opacity:0}
@@ -110,6 +135,7 @@ section p{color:var(--text2)}
     <div class="bar glass">
       <a class="logo" href="#top"><svg viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a>
       <nav class="links"><a href="#">Tools</a><a href="#">Pricing</a><a href="#">Developers</a></nav>
+      <button class="mbtn" type="button" aria-label="Open the main menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg>Menu</button>
       <div class="merge"><nav class="tabs" data-tabs></nav></div>
       <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search tools and answers</span></div>
       <a class="cta" href="#">Get started</a>
@@ -137,6 +163,7 @@ section p{color:var(--text2)}
   <button type="button" data-v="v1" aria-pressed="true">1. Docked tray</button>
   <button type="button" data-v="v2" aria-pressed="false">2. One row</button>
   <button type="button" data-v="v3" aria-pressed="false">3. Hanging tab</button>
+  <button type="button" data-v="v4" aria-pressed="false">4. Both</button>
 </div>
 
 <script>
@@ -161,18 +188,25 @@ section p{color:var(--text2)}
   list.addEventListener('click', function () { head.classList.remove('open'); pull.setAttribute('aria-expanded', 'false'); });
 
   function setV(v) {
-    head.className = 'head ' + v; tick();
+    head.className = 'head ' + v; upward = false; tick();
     document.querySelectorAll('.pick button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.v === v); });
   }
   document.querySelectorAll('.pick button').forEach(function (b) { b.onclick = function () { setV(b.dataset.v); }; });
 
-  var current = -1;
+  var current = -1, lastY = window.scrollY, upward = false, hovering = false;
+  head.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { hovering = true; tick(); } });
+  head.addEventListener('pointerleave', function () { hovering = false; tick(); });
+  document.querySelector('.mbtn').addEventListener('click', function () { upward = true; tick(); });
   function tick() {
     var y = window.scrollY, docH = document.documentElement.scrollHeight - innerHeight;
     head.style.setProperty('--p', Math.min(1, y / Math.max(1, docH)));
     // The tabs attach once the in-page row has scrolled up under the bar.
     var docked = inpage.getBoundingClientRect().top < 84;
+    var dy = window.scrollY - lastY;
+    if (dy < -6) upward = true; else if (dy > 6) upward = false;
+    lastY = window.scrollY;
     head.classList.toggle('docked', docked);
+    head.classList.toggle('wide', docked && (upward || hovering));
     page.classList.toggle('taken', docked);
     if (!docked) { head.classList.remove('open'); }
     var idx = 0;
