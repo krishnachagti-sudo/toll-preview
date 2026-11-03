@@ -422,6 +422,13 @@ function boot() {
   if (q.get('type') && TYPES.includes(q.get('type'))) $('qr-type').value = q.get('type');
   drawFields();
   if (q.get('url') && $('qr-f-url')) $('qr-f-url').value = q.get('url');
+  // A WiFi link carries the network and its security, never a password: for any network but the
+  // example's, the password box starts empty for the visitor to type.
+  if (q.get('ssid') && $('qr-f-ssid')) {
+    $('qr-f-ssid').value = q.get('ssid').slice(0, 64);
+    if (q.get('ssid') !== START.ssid) $('qr-f-password').value = '';
+  }
+  if (q.get('security') && WIFI_SECURITY.includes(q.get('security')) && $('qr-f-security')) $('qr-f-security').value = q.get('security');
   if (q.get('ecc') && ['L', 'M', 'Q', 'H'].includes(q.get('ecc'))) $('qr-ecc').value = q.get('ecc');
   $('qr-type').addEventListener('change', () => { drawFields(); make(); });
   $('qr-form').addEventListener('input', (e) => { if (e.target.id === 'qr-f-security') showEnterprise(); make(); });

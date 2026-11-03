@@ -106,7 +106,7 @@
 
   <div class="stage">
     <div class="glow" aria-hidden="true"><i class="beam"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>
-    <div class="win" id="app" role="group" aria-label="Product shot of the Endwise app: exchange rate on 24 October 2026, US dollar to euro. 1 USD buys 0.893416 EUR, from the European Central Bank fixing of Friday 23 October 2026.">
+    <div class="win" id="app" role="group" aria-label="The Endwise app, with three tools to try here: exchange rate on a date, business days and image to size.">
       <!-- command bar -->
       <div class="cmd">
         <svg aria-hidden="true"><use href="#i-search"/></svg>
@@ -145,39 +145,41 @@
           <!-- FX view -->
           <div class="view-wrap hue-money" data-for="fx">
             <div class="bar"><span class="crumb">Money and rates / <b data-tool-name="fx-on-date">Exchange rate on a date</b></span><span class="tchip"><span class="dot"></span><span data-price="fx-on-date">$0.001</span> per call</span><span class="seg" aria-hidden="true"><span class="on">Web</span><span>API</span><span>MCP</span></span></div>
-            <div class="view">
+            <div class="view" data-try="fx" data-layout="hero">
               <h3 data-tool-name="fx-on-date">Exchange rate on a date</h3>
               <p class="desc">Official European Central Bank reference rates since 4 January 1999.</p>
-              <div class="fields">
-                <div class="mfield"><span class="mlabel">From</span><div class="inp"><span class="flag"><i>US</i>USD</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
-                <div class="mfield"><span class="mlabel">To</span><div class="inp"><span class="flag"><i>EU</i>EUR</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
-                <div class="mfield wide"><span class="mlabel">Date</span><div class="inp"><span class="mono">2026-10-24</span><svg aria-hidden="true"><use href="#i-cal"/></svg></div></div>
-                <span class="run">Run <kbd>&#8984;&#8629;</kbd></span>
-              </div>
+              <form class="fields" action="/toll-preview/fx-on-date/" method="get">
+                <label class="mfield"><span class="mlabel">From</span><span class="inp"><span class="flag"><i aria-hidden="true">US</i><select name="base" data-f="base"><option value="USD" selected>USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="JPY">JPY</option><option value="CHF">CHF</option><option value="CAD">CAD</option><option value="AUD">AUD</option></select></span><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+                <label class="mfield"><span class="mlabel">To</span><span class="inp"><span class="flag"><i aria-hidden="true">EU</i><select name="quote" data-f="quote"><option value="USD">USD</option><option value="EUR" selected>EUR</option><option value="GBP">GBP</option><option value="JPY">JPY</option><option value="CHF">CHF</option><option value="CAD">CAD</option><option value="AUD">AUD</option></select></span><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+                <label class="mfield wide"><span class="mlabel">Date</span><span class="inp"><input type="date" name="date" data-f="date" value="2026-10-24" min="1999-01-04" max="2100-12-31" class="mono"></span></label>
+                <a class="run try-go" href="/toll-preview/fx-on-date/?base=USD&amp;quote=EUR&amp;date=2026-10-24">Run it for real</a>
+              </form>
               <div class="result">
                 <div class="result-top">
                   <div class="r-label">European Central Bank reference rate</div>
                   <div class="r-main">1 USD buys <span class="num">0.893416</span> EUR</div>
                   <div class="r-sub">1 EUR buys <span class="mono">1.1193</span> USD</div>
                 </div>
-                <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>Saturday 24 Oct 2026 had no ECB fixing, so this uses the last one before it: Friday 23 Oct 2026.</span></div>
-                <div class="r-foot"><span>Requested 2026-10-24 &middot; Fixing 2026-10-23</span><span class="charged">Charged <span data-price="fx-on-date">$0.001</span></span></div>
+                <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>No ECB fixing on Saturday 24 Oct 2026, so this uses Friday 23 Oct 2026.</span></div>
+                <div class="r-foot"><span data-try-foot>Requested 2026-10-24 &middot; Fixing 2026-10-23</span><span class="charged">A real run: <span data-price="fx-on-date">$0.001</span></span></div>
               </div>
+              <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
             </div>
           </div>
 
           <!-- BD view -->
           <div class="view-wrap hue-date" data-for="bd" hidden>
             <div class="bar"><span class="crumb">Dates and calendars / <b data-tool-name="business-days">Business days</b></span><span class="tchip"><span class="dot"></span><span data-price="business-days">$0.0005</span> per call</span><span class="seg" aria-hidden="true"><span class="on">Web</span><span>API</span><span>MCP</span></span></div>
-            <div class="view">
+            <div class="view" data-try="bd">
               <h3 data-tool-name="business-days">Business days</h3>
               <p class="desc">US federal holidays (5 U.S.C. 6103, with OPM observed-day rules) and England and Wales bank holidays.</p>
-              <div class="fields">
-                <div class="mfield wide"><span class="mlabel">Region</span><div class="inp"><span>England and Wales</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
-                <div class="mfield"><span class="mlabel">Start</span><div class="inp"><span class="mono">2026-12-23</span><svg aria-hidden="true"><use href="#i-cal"/></svg></div></div>
-                <div class="mfield"><span class="mlabel">End</span><div class="inp"><span class="mono">2026-12-31</span><svg aria-hidden="true"><use href="#i-cal"/></svg></div></div>
-                <span class="run">Run <kbd>&#8984;&#8629;</kbd></span>
-              </div>
+              <form class="fields" action="/toll-preview/business-days/" method="get">
+                <input type="hidden" name="op" value="between">
+                <label class="mfield wide"><span class="mlabel">Region</span><span class="inp"><select name="region" data-f="region"><option value="US">United States</option><option value="GB-ENG" selected>England and Wales</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+                <label class="mfield"><span class="mlabel">Start</span><span class="inp"><input type="date" name="start" data-f="start" value="2026-12-23" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
+                <label class="mfield"><span class="mlabel">End</span><span class="inp"><input type="date" name="end" data-f="end" value="2026-12-31" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
+                <a class="run try-go" href="/toll-preview/business-days/?op=between&amp;region=GB-ENG&amp;start=2026-12-23&amp;end=2026-12-31">Run it for real</a>
+              </form>
               <div class="result">
                 <div class="result-top">
                   <div class="r-label">Result</div>
@@ -189,22 +191,27 @@
                   <li><span class="d">Sat 26, Sun 27</span><span>Weekend</span><span class="t">weekend</span></li>
                   <li><span class="d">Mon 28 Dec</span><span>Boxing Day (substitute day)</span><span class="t">bank holiday</span></li>
                 </ul>
-                <div class="r-foot"><span>Source: England and Wales bank holidays, GOV.UK</span><span class="charged">Charged <span data-price="business-days">$0.0005</span></span></div>
+                <div class="r-foot"><span data-try-foot>England and Wales bank holidays, GOV.UK</span><span class="charged">A real run: <span data-price="business-days">$0.0005</span></span></div>
               </div>
+              <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
             </div>
           </div>
 
           <!-- IMG view -->
           <div class="view-wrap hue-file" data-for="img" hidden>
             <div class="bar"><span class="crumb">Files and images / <b data-tool-name="image-to-size">Image to size</b></span><span class="tchip"><span class="dot"></span><span data-price="image-to-size">Free</span></span><span class="seg" aria-hidden="true"><span class="on">Web</span></span></div>
-            <div class="view">
+            <div class="view" data-try="img">
               <h3 data-tool-name="image-to-size">Image to size</h3>
               <p class="desc">Pick the size the form allows. It runs in your browser, and it is free.</p>
-              <div class="drop"><svg aria-hidden="true"><use href="#i-up"/></svg><b>Drop an image</b> or choose a file</div>
-              <div class="fields f2">
-                <div class="mfield"><span class="mlabel">Target size</span><div class="inp"><span class="mono">200 KB</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
-                <span class="run">Compress</span>
-              </div>
+              <form action="/toll-preview/image-to-size/" method="get">
+                <label class="drop"><input type="file" class="visually-hidden" accept="image/jpeg,image/png,image/webp" data-f="file"><svg aria-hidden="true"><use href="#i-up"/></svg><b>Drop an image</b> or choose a file</label>
+                <div class="fields f2">
+                  <label class="mfield"><span class="mlabel">Target size</span><span class="inp"><select name="kb" data-f="kb" class="mono"><option value="20">20 KB</option><option value="50">50 KB</option><option value="100">100 KB</option><option value="200" selected>200 KB</option><option value="500">500 KB</option><option value="1000">1,000 KB</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+                  <button type="submit" class="run">Compress</button>
+                </div>
+              </form>
+              <p class="try-row"><a class="try-go" href="/toll-preview/image-to-size/?kb=200">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+              <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
             </div>
           </div>
         </div>
@@ -231,7 +238,7 @@
         </aside>
       </div>
     </div>
-    <p class="stage-cap"><span>A replay of a real answer, not a live call. Account figures are a sample.</span><a href="/toll-preview/fx-on-date/">Run it yourself</a>
+    <p class="stage-cap"><span>Try it here. Nothing is charged: answers are worked out in your browser, and the exchange rate shows the tool&#8217;s own worked examples. Account figures are a sample.</span><a href="/toll-preview/fx-on-date/">Run it yourself</a>
       <button class="replay" type="button" id="replay"><svg aria-hidden="true"><use href="#i-replay"/></svg>Replay</button></p>
   </div>
 </section>
@@ -307,21 +314,25 @@
         <a class="lnk" href="/toll-preview/business-days/">Open <span data-tool-name="business-days">Business days</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b data-tool-name="business-days">Business days</b><span class="tchip">US</span></div>
+        <div class="panel" data-try="bd">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b data-tool-name="business-days">Business days</b><span class="tchip" data-try-chip>US</span></div>
           <div class="panel-body">
-            <div class="fields f3">
-              <div class="mfield"><span class="mlabel">Region</span><div class="inp"><span>United States</span></div></div>
-              <div class="mfield"><span class="mlabel">Start</span><div class="inp"><span class="mono">2026-07-01</span></div></div>
-              <div class="mfield"><span class="mlabel">End</span><div class="inp"><span class="mono">2026-07-08</span></div></div>
-            </div>
+            <form class="fields f3" action="/toll-preview/business-days/" method="get">
+              <input type="hidden" name="op" value="between">
+              <label class="mfield"><span class="mlabel">Region</span><span class="inp"><select name="region" data-f="region"><option value="US" selected>United States</option><option value="GB-ENG">England and Wales</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">Start</span><span class="inp"><input type="date" name="start" data-f="start" value="2026-07-01" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">End</span><span class="inp"><input type="date" name="end" data-f="end" value="2026-07-08" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
+            </form>
             <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">Result</div><div class="r-main"><span class="num">4</span> business days</div></div>
               <ul class="skips">
                 <li><span class="d">Fri 3 Jul</span><span>Independence Day (observed)</span><span class="t">federal</span></li>
+                <li><span class="d">Sat 4, Sun 5</span><span>Weekend</span><span class="t">weekend</span></li>
               </ul>
-              <div class="r-foot"><span>5 U.S.C. 6103, OPM observed-day rules</span><span class="charged">Charged <span data-price="business-days">$0.0005</span></span></div>
+              <div class="r-foot"><span data-try-foot>5 U.S.C. 6103, OPM observed-day rules</span><span class="charged">A real run: <span data-price="business-days">$0.0005</span></span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/business-days/?op=between&amp;region=US&amp;start=2026-07-01&amp;end=2026-07-08">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -336,18 +347,25 @@
         <a class="lnk" href="/toll-preview/fx-on-date/">Open <span data-tool-name="fx-on-date">Exchange rate on a date</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-fx"/></svg><b>USD to EUR</b><span class="tchip">2026-10-24</span></div>
+        <div class="panel" data-try="fx" data-layout="panel">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-fx"/></svg><b data-try-title>USD to EUR</b><span class="tchip" data-try-chip>2026-10-24</span></div>
           <div class="panel-body">
-            <div class="result">
+            <form class="fields f3" action="/toll-preview/fx-on-date/" method="get">
+              <label class="mfield"><span class="mlabel">From</span><span class="inp"><select name="base" data-f="base"><option value="USD" selected>USD</option><option value="EUR">EUR</option><option value="GBP">GBP</option><option value="JPY">JPY</option><option value="CHF">CHF</option><option value="CAD">CAD</option><option value="AUD">AUD</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">To</span><span class="inp"><select name="quote" data-f="quote"><option value="USD">USD</option><option value="EUR" selected>EUR</option><option value="GBP">GBP</option><option value="JPY">JPY</option><option value="CHF">CHF</option><option value="CAD">CAD</option><option value="AUD">AUD</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">Date</span><span class="inp"><input type="date" name="date" data-f="date" value="2026-10-24" min="1999-01-04" max="2100-12-31" class="mono"></span></label>
+            </form>
+            <div class="result" style="margin-top:16px">
               <div class="result-top">
                 <div class="r-label">Requested Sat 24 Oct 2026 &middot; Fixing Fri 23 Oct 2026</div>
                 <div class="r-main"><span class="num">0.893416</span></div>
                 <div class="r-sub">Inverse <span class="mono">1.1193</span></div>
               </div>
-              <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>No ECB fixing on Saturday 24 Oct 2026. Using Friday 23 Oct 2026.</span></div>
-              <div class="r-foot"><span>European Central Bank</span><span class="charged">Charged <span data-price="fx-on-date">$0.001</span></span></div>
+              <div class="rnote"><svg aria-hidden="true"><use href="#i-info"/></svg><span>No ECB fixing on Saturday 24 Oct 2026, so this uses Friday 23 Oct 2026.</span></div>
+              <div class="r-foot"><span data-try-foot>European Central Bank</span><span class="charged">A real run: <span data-price="fx-on-date">$0.001</span></span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/fx-on-date/?base=USD&amp;quote=EUR&amp;date=2026-10-24">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -362,14 +380,18 @@
         <a class="lnk" href="/toll-preview/image-to-size/">Open <span data-tool-name="image-to-size">Image to size</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
+        <div class="panel" data-try="img">
           <div class="panel-bar"><svg aria-hidden="true"><use href="#i-img"/></svg><b data-tool-name="image-to-size">Image to size</b><span class="tchip"><span class="dot"></span><span data-price="image-to-size">Free</span></span></div>
           <div class="panel-body">
-            <div class="drop"><svg aria-hidden="true"><use href="#i-up"/></svg><b>Drop an image</b> or choose a file</div>
-            <div class="fields f2">
-              <div class="mfield"><span class="mlabel">Target size</span><div class="inp"><span class="mono">200 KB</span><svg aria-hidden="true"><use href="#i-chev"/></svg></div></div>
-              <span class="run">Compress</span>
-            </div>
+            <form action="/toll-preview/image-to-size/" method="get">
+              <label class="drop"><input type="file" class="visually-hidden" accept="image/jpeg,image/png,image/webp" data-f="file"><svg aria-hidden="true"><use href="#i-up"/></svg><b>Drop an image</b> or choose a file</label>
+              <div class="fields f2">
+                <label class="mfield"><span class="mlabel">Target size</span><span class="inp"><select name="kb" data-f="kb" class="mono"><option value="20">20 KB</option><option value="50">50 KB</option><option value="100">100 KB</option><option value="200" selected>200 KB</option><option value="500">500 KB</option><option value="1000">1,000 KB</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+                <button type="submit" class="run">Compress</button>
+              </div>
+            </form>
+            <p class="try-row"><a class="try-go" href="/toll-preview/image-to-size/?kb=200">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -384,21 +406,24 @@
         <a class="lnk" href="/toll-preview/delivery-date-calculator/">Open <span data-tool-name="delivery-date-calculator">Delivery date and holiday order-by calculator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
+        <div class="panel" data-try="dd">
           <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Order by, Christmas 2026</b><span class="tchip">USPS</span></div>
           <div class="panel-body">
-            <div class="fields f3">
-              <div class="mfield"><span class="mlabel">Cutoff</span><div class="inp"><span class="mono">2:00 pm ET</span></div></div>
-              <div class="mfield"><span class="mlabel">Processing</span><div class="inp"><span>1 day</span></div></div>
-              <div class="mfield"><span class="mlabel">Ships</span><div class="inp"><span>Mon to Fri</span></div></div>
-            </div>
+            <form class="fields f3" action="/toll-preview/delivery-date-calculator/" method="get">
+              <input type="hidden" name="op" value="order-by"><input type="hidden" name="by" value="2026-12-24"><input type="hidden" name="tz" value="America/New_York"><input type="hidden" name="dest" value="contiguous">
+              <label class="mfield"><span class="mlabel">Cutoff, Eastern</span><span class="inp"><input type="time" name="cutoff" data-f="cutoff" value="14:00" step="900" required class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Processing days</span><span class="inp"><input type="number" name="processing" data-f="processing" value="1" min="0" max="60" step="1" inputmode="numeric" required class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Ships</span><span class="inp"><select name="ship" data-f="ship"><option value="mon,tue,wed,thu,fri" selected>Mon to Fri</option><option value="mon,tue,wed,thu,fri,sat">Mon to Sat</option><option value="sun,mon,tue,wed,thu,fri,sat">Every day</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+            </form>
             <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">Last order, USPS Ground Advantage</div><div class="r-main"><span class="num">Wed 16 Dec</span> 2:00 pm</div></div>
               <ul class="skips">
-                <li><span class="d">Thu 17 Dec</span><span>Priority Mail and Express</span><span class="t">2:00 pm</span></li>
+                <li><span class="d">Thu 17 Dec</span><span>Priority Mail and Priority Mail Express</span><span class="t">2:00 pm</span></li>
               </ul>
-              <div class="r-foot"><span>USPS 2026 holiday send-by dates</span><span class="charged">Charged <span data-price="delivery-date-calculator">$0.0005</span></span></div>
+              <div class="r-foot"><span data-try-foot>USPS 2026 holiday send-by dates</span><span class="charged">A real run: <span data-price="delivery-date-calculator">$0.0005</span></span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/delivery-date-calculator/?op=order-by&amp;by=2026-12-24&amp;tz=America%2FNew_York&amp;dest=contiguous&amp;cutoff=14%3A00&amp;processing=1&amp;ship=mon%2Ctue%2Cwed%2Cthu%2Cfri">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -413,22 +438,27 @@
         <a class="lnk" href="/toll-preview/trucker-per-diem/">Open <span data-tool-name="trucker-per-diem">Trucker per diem worksheet</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
+        <div class="panel" data-try="pd">
           <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Tax year 2024</b><span class="tchip">IRS rate by date</span></div>
           <div class="panel-body">
-            <div class="fields f3">
-              <div class="mfield"><span class="mlabel">Full days</span><div class="inp"><span class="mono">240</span></div></div>
-              <div class="mfield"><span class="mlabel">Partial days</span><div class="inp"><span class="mono">40</span></div></div>
-              <div class="mfield"><span class="mlabel">Limit</span><div class="inp"><span>80% HOS</span></div></div>
-            </div>
+            <form class="fields f3" action="/toll-preview/trucker-per-diem/" method="get">
+              <input type="hidden" name="year" value="2024"><input type="hidden" name="mode" value="counts">
+              <label class="mfield"><span class="mlabel">Full days</span><span class="inp"><input type="number" name="full" data-f="full" value="240" min="0" max="366" step="1" inputmode="numeric" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Partial days</span><span class="inp"><input type="number" name="partial" data-f="partial" value="40" min="0" max="366" step="1" inputmode="numeric" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Limit</span><span class="inp"><select name="hos" data-f="hos"><option value="1" selected>80% HOS</option><option value="0">50%</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">Oct to Dec full</span><span class="inp"><input type="number" name="oct_full" data-f="oct_full" value="60" min="0" max="92" step="1" inputmode="numeric" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Oct to Dec partial</span><span class="inp"><input type="number" name="oct_partial" data-f="oct_partial" value="10" min="0" max="92" step="1" inputmode="numeric" class="mono"></span></label>
+            </form>
             <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">Schedule C line 24b</div><div class="r-main"><span class="num">$15,498.00</span></div></div>
               <ul class="skips">
                 <li><span class="d">Jan 1 to Sep 30</span><span>Notice 2023-68</span><span class="t">$69</span></li>
                 <li><span class="d">Oct 1 to Dec 31</span><span>Notice 2024-68</span><span class="t">$80</span></li>
               </ul>
-              <div class="r-foot"><span>IRS transportation-industry rates</span><span class="charged">Totals free on the page</span></div>
+              <div class="r-foot"><span data-try-foot>IRS transportation-industry rates</span><span class="charged">Totals free on the page</span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/trucker-per-diem/?year=2024&amp;mode=counts&amp;full=240&amp;partial=40&amp;hos=1&amp;oct_full=60&amp;oct_partial=10">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -443,22 +473,25 @@
         <a class="lnk" href="/toll-preview/tax-set-aside/">Open <span data-tool-name="tax-set-aside">Tax set-aside per payment</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-wallet"/></svg><b>Set aside, Texas 2026</b><span class="tchip">Single</span></div>
+        <div class="panel" data-try="ts">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-wallet"/></svg><b data-try-title>Set aside, Texas 2026</b><span class="tchip">Single</span></div>
           <div class="panel-body">
-            <div class="fields f3">
-              <div class="mfield"><span class="mlabel">Payment</span><div class="inp"><span class="mono">$3,000</span></div></div>
-              <div class="mfield"><span class="mlabel">Earned so far</span><div class="inp"><span class="mono">$40,000</span></div></div>
-              <div class="mfield"><span class="mlabel">State</span><div class="inp"><span>Texas</span></div></div>
-            </div>
+            <form class="fields f3" action="/toll-preview/tax-set-aside/" method="get">
+              <input type="hidden" name="country" value="US"><input type="hidden" name="status" value="single"><input type="hidden" name="date" value="2026-10-31">
+              <label class="mfield"><span class="mlabel">Payment, $</span><span class="inp"><input type="number" name="amount" data-f="amount" value="3000" min="0" step="any" inputmode="decimal" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Earned so far, $</span><span class="inp"><input type="number" name="ytd" data-f="ytd" value="40000" min="0" step="any" inputmode="decimal" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">State</span><span class="inp"><select name="state" data-f="state"><option value="texas" selected>Texas</option><option value="california">California</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+            </form>
             <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">Move to your tax pot</div><div class="r-main"><span class="num">$691.53</span> (23.1%)</div></div>
               <ul class="skips">
                 <li><span class="d">SE tax</span><span>15.3% of 92.35%</span><span class="t">$423.88</span></li>
                 <li><span class="d">Federal</span><span>12% bracket, after QBI</span><span class="t">$267.65</span></li>
               </ul>
-              <div class="r-foot"><span>IRS Rev. Proc. 2025-32 rates</span><span class="charged">Charged <span data-price="tax-set-aside">from $0.10</span></span></div>
+              <div class="r-foot"><span data-try-foot>IRS Rev. Proc. 2025-32 rates</span><span class="charged">A real run: <span data-price="tax-set-aside">from $0.10</span></span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/tax-set-aside/?country=US&amp;status=single&amp;date=2026-10-31&amp;amount=3000&amp;ytd=40000&amp;state=texas">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -473,20 +506,23 @@
         <a class="lnk" href="/toll-preview/mileage-reimbursement/">Open <span data-tool-name="mileage-reimbursement">Mileage reimbursement and IRS mileage log</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
+        <div class="panel" data-try="mr">
           <div class="panel-bar"><svg aria-hidden="true"><use href="#i-list"/></svg><b>Business miles, 2026</b><span class="tchip">IRS</span></div>
           <div class="panel-body">
-            <div class="fields f2">
-              <div class="mfield"><span class="mlabel">Jan 1 to Jun 30</span><div class="inp"><span class="mono">2,600 mi</span></div></div>
-              <div class="mfield"><span class="mlabel">From Jul 1</span><div class="inp"><span class="mono">1,600 mi</span></div></div>
-            </div>
+            <form class="fields f2e" action="/toll-preview/mileage-reimbursement/" method="get">
+              <input type="hidden" name="mode" value="split"><input type="hidden" name="purpose" value="business"><input type="hidden" name="year" value="2026">
+              <label class="mfield"><span class="mlabel">Miles, Jan 1 to Jun 30</span><span class="inp"><input type="number" name="m1" data-f="m1" value="2600" min="0" step="any" inputmode="decimal" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Miles from Jul 1</span><span class="inp"><input type="number" name="m2" data-f="m2" value="1600" min="0" step="any" inputmode="decimal" class="mono"></span></label>
+            </form>
             <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">2,600 x $0.725 + 1,600 x $0.76</div><div class="r-main"><span class="num">$3,101.00</span></div></div>
               <ul class="skips">
                 <li><span class="d">Jun 28 trip</span><span>Paid Jul 5: stays at 72.5 cents</span><span class="t">Ann. 2026-11</span></li>
               </ul>
-              <div class="r-foot"><span>IRS standard mileage rates</span><span class="charged">Free on this page</span></div>
+              <div class="r-foot"><span data-try-foot>IRS standard mileage rates</span><span class="charged">Free on this page</span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/mileage-reimbursement/?mode=split&amp;purpose=business&amp;year=2026&amp;m1=2600&amp;m2=1600">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -501,18 +537,27 @@
         <a class="lnk" href="/toll-preview/1099-threshold/">Open <span data-tool-name="1099-threshold">1099 threshold tracker</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
+        <div class="panel" data-try="t99">
           <div class="panel-bar"><svg aria-hidden="true"><use href="#i-list"/></svg><b>2026 payments</b><span class="tchip">$2,000 line</span></div>
           <div class="panel-body">
-            <div class="result">
+            <form class="fields f3" action="/toll-preview/1099-threshold/" method="get">
+              <input type="hidden" name="year" value="2026"><input type="hidden" name="amount" value="4250"><input type="hidden" name="type" value="services"><input type="hidden" name="payee" value="single-member-llc"><input type="hidden" name="method" value="check">
+              <label class="mfield"><span class="mlabel">Rivera, June payment</span><span class="inp"><input type="number" data-f="rivera" value="2450" min="0" step="any" inputmode="decimal" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Summit Staffing is</span><span class="inp"><select data-f="summit"><option value="c-corporation" selected>A corporation</option><option value="individual">A sole proprietor</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">Lumen Web paid by</span><span class="inp"><select data-f="lumen"><option value="card" selected>Card</option><option value="check">Check</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+            </form>
+            <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">Payees that need a form</div><div class="r-main"><span class="num">4</span> of 8</div></div>
               <ul class="skips">
-                <li><span class="d">Rivera Electric</span><span>1099-NEC box 1a</span><span class="t">$4,250</span></li>
-                <li><span class="d">Okafor &amp; Lin LLP</span><span>1099-MISC box 10</span><span class="t">$900</span></li>
-                <li><span class="d">Summit Staffing Inc</span><span>Corporation, left out</span><span class="t">$9,600</span></li>
+                <li><span class="d">Rivera Electric</span><span>1099-NEC box 1a</span><span class="t">$4,250.00</span></li>
+                <li><span class="d">Okafor &amp; Lin LLP</span><span>1099-NEC box 1a, 1099-MISC box 10</span><span class="t">$3,300.00</span></li>
+                <li><span class="d">Summit Staffing Inc</span><span>Corporation, left out</span><span class="t">$9,600.00</span></li>
+                <li><span class="d">Lumen Web Studio</span><span>Card payment, left out (1099-K)</span><span class="t">$3,100.00</span></li>
               </ul>
-              <div class="r-foot"><span>IRS instructions, Rev. 12/2026</span><span>IRIS upload file included</span></div>
+              <div class="r-foot"><span data-try-foot>IRS instructions, Rev. 12/2026</span><span>IRIS upload file included</span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/1099-threshold/?year=2026&amp;amount=4250&amp;type=services&amp;payee=single-member-llc&amp;method=check">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -527,23 +572,26 @@
         <a class="lnk" href="/toll-preview/ifta-calculator/">Open <span data-tool-name="ifta-calculator">IFTA quarterly return calculator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-gauge"/></svg><b>3rd quarter 2026</b><span class="tchip">Special diesel</span></div>
+        <div class="panel" data-try="ifta">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-gauge"/></svg><b data-try-title>3rd quarter 2026</b><span class="tchip">Special diesel</span></div>
           <div class="panel-body">
-            <div class="fields f3">
-              <div class="mfield"><span class="mlabel">Miles</span><div class="inp"><span class="mono">4,350</span></div></div>
-              <div class="mfield"><span class="mlabel">Gallons</span><div class="inp"><span class="mono">690</span></div></div>
-              <div class="mfield"><span class="mlabel">MPG</span><div class="inp"><span class="mono">6.30</span></div></div>
-            </div>
+            <form class="fields f3" action="/toll-preview/ifta-calculator/" method="get">
+              <input type="hidden" name="fuel" value="special_diesel"><input type="hidden" name="rows" value="MO:670:50,IL:260:160,IN:250,KY:380,WV:360,VA:370:150,OK:500:70,TX:270:60,TN:1290:200">
+              <label class="mfield"><span class="mlabel">Quarter</span><span class="inp"><select name="quarter" data-f="quarter"><option value="2026Q3" selected>3rd quarter 2026</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">Gallons bought</span><span class="inp"><input type="number" name="gallons" data-f="gallons" value="690" min="1" step="any" inputmode="decimal" class="mono"></span></label>
+              <div class="mfield"><span class="mlabel" id="ifta-mpg-l">Miles, MPG</span><span class="inp"><output class="mono" aria-labelledby="ifta-mpg-l" data-try-out>4,350 mi, 6.30</output></span></div>
+            </form>
             <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">Return, surcharges included</div><div class="r-main"><span class="num">$28.73</span> credit</div></div>
               <ul class="skips">
                 <li><span class="d">Indiana</span><span>40 gallons owed</span><span class="t">$25.20</span></li>
                 <li><span class="d">Kentucky</span><span>Tax plus surcharge</span><span class="t">$19.50</span></li>
-                <li><span class="d">Illinois</span><span>Bought more than burned</span><span class="t">&minus;$87.82</span></li>
+                <li><span class="d">Illinois</span><span>Bought more than burned</span><span class="t">-$87.82</span></li>
               </ul>
-              <div class="r-foot"><span>IFTA rate matrix, final rates</span><span>Due November 2, 2026</span></div>
+              <div class="r-foot"><span data-try-foot>IFTA rate matrix, final rates</span><span data-try-due>Due November 2, 2026</span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/ifta-calculator/?fuel=special_diesel&amp;rows=MO:670:50,IL:260:160,IN:250,KY:380,WV:360,VA:370:150,OK:500:70,TX:270:60,TN:1290:200&amp;quarter=2026Q3&amp;gallons=690">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -558,18 +606,25 @@
         <a class="lnk" href="/toll-preview/macrs-depreciation/">Open <span data-tool-name="macrs-depreciation">MACRS depreciation schedule</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-book"/></svg><b>Tax year 2026</b><span class="tchip">Half-year, 22.45%</span></div>
+        <div class="panel" data-try="macrs">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-book"/></svg><b>Tax year 2026</b><span class="tchip" data-try-chip>Half-year, 22.45%</span></div>
           <div class="panel-body">
-            <div class="result">
+            <form class="fields f2e" action="/toll-preview/macrs-depreciation/" method="get">
+              <input type="hidden" name="year" value="2026">
+              <label class="mfield"><span class="mlabel">Bonus on 7-year property</span><span class="inp"><select name="electout" data-f="electout"><option value="7" selected>Elected out</option><option value="">Taken</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">Business income, $</span><span class="inp"><input type="number" name="income" data-f="income" value="250000" min="0" step="any" inputmode="decimal" class="mono"></span></label>
+            </form>
+            <div class="result" style="margin-top:16px">
               <div class="result-top"><div class="r-label">First-year deduction</div><div class="r-main"><span class="num">$183,669.96</span></div></div>
               <ul class="skips">
                 <li><span class="d">SUV over 6,000 lb</span><span>Section 179 and bonus</span><span class="t">$56,800</span></li>
                 <li><span class="d">CNC router</span><span>7-year, bonus elected out</span><span class="t">$12,003.60</span></li>
                 <li><span class="d">Warehouse building</span><span>39-year, no bonus</span><span class="t">$6,580.50</span></li>
               </ul>
-              <div class="r-foot"><span>IRS Publication 946, Appendix A</span><span>PDF and CSV</span></div>
+              <div class="r-foot"><span data-try-foot>IRS Publication 946, Appendix A</span><span>PDF and CSV</span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/macrs-depreciation/?year=2026&amp;electout=7&amp;income=250000">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>
@@ -584,22 +639,25 @@
         <a class="lnk" href="/toll-preview/qr-code-generator/">Open <span data-tool-name="qr-code-generator">QR code generator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="panel-glow rv">
-        <div class="panel">
+        <div class="panel" data-try="qr">
           <div class="panel-bar"><svg aria-hidden="true"><use href="#i-img"/></svg><b>WiFi code</b><span class="tchip">Static</span></div>
           <div class="panel-body">
-            <div class="fields f3">
-              <div class="mfield"><span class="mlabel">Network</span><div class="inp"><span>Cafe Guest</span></div></div>
-              <div class="mfield"><span class="mlabel">Password</span><div class="inp"><span class="mono">tea;time42</span></div></div>
-              <div class="mfield"><span class="mlabel">Security</span><div class="inp"><span>WPA</span></div></div>
-            </div>
+            <form class="fields f3" action="/toll-preview/qr-code-generator/" method="get">
+              <input type="hidden" name="type" value="wifi">
+              <label class="mfield"><span class="mlabel">Network</span><span class="inp"><input type="text" name="ssid" data-f="ssid" value="Cafe Guest" maxlength="64" autocomplete="off" spellcheck="false"></span></label>
+              <label class="mfield"><span class="mlabel">Password<span class="visually-hidden">, kept on this page and never put in a link</span></span><span class="inp"><input type="text" data-f="password" value="tea;time42" maxlength="64" autocomplete="off" spellcheck="false" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">Security</span><span class="inp"><select name="security" data-f="security"><option value="WPA" selected>WPA</option><option value="WEP">WEP</option><option value="nopass">Open</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+            </form>
             <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Text the code holds</div><div class="r-main"><span class="num mono" style="font-size:.7em">WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;</span></div></div>
+              <div class="result-top"><div class="r-label">Text the code holds</div><div class="r-main"><span class="num mono">WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;</span></div></div>
               <ul class="skips">
                 <li><span class="d">Level M</span><span>Restores 15% damage</span><span class="t">Version 3</span></li>
                 <li><span class="d">Level H</span><span>Restores 30% damage</span><span class="t">Version 5</span></li>
               </ul>
-              <div class="r-foot"><span>The semicolon is escaped</span><span>Read back before download</span></div>
+              <div class="r-foot"><span data-try-foot>Special characters are escaped</span><span>Read back before download</span></div>
             </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/qr-code-generator/?type=wifi&amp;ssid=Cafe+Guest&amp;security=WPA">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
           </div>
         </div>
       </div>

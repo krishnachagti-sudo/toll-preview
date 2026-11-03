@@ -209,6 +209,22 @@ function apply(s) {
 }
 const sync40 = () => { $('md-40-row').hidden = $('md-year').value !== '2025'; };
 
+// ---------- settings from the address ----------
+
+// A link may carry settings for the sample assets (?year=2026&electout=7&income=250000, as the home
+// page's mockup sends them): the form opens with the sample's list and these settings, ready to
+// run. Anything unusable is ignored.
+function fromQuery() {
+  const q = new URLSearchParams(window.location.search);
+  if (!['year', 'electout', 'income'].some((k) => q.has(k))) return null;
+  const s = { ...EXAMPLE };
+  if (q.get('year') === '2025' || q.get('year') === '2026') s.year = q.get('year');
+  if (q.has('electout')) s.electOut = q.get('electout').split(',').filter((k) => CLASS_KEYS.includes(k));
+  const income = (q.get('income') ?? '').trim();
+  if (/^\d+(\.\d+)?$/.test(income)) s.income = income;
+  return s;
+}
+
 // The sample files near the price: the tool's own schedule example for a made-up client.
 async function sampleLinks() {
   const box = $('md-sample-links');
@@ -231,7 +247,7 @@ function start() {
   for (const k of CLASS_KEYS.filter((c) => c !== '27.5' && c !== '39')) {
     el.appendChild(h('label', { class: 'check' }, [h('input', { type: 'checkbox', value: k }), h('span', {}, classWord(k))]));
   }
-  apply(loadSaved() ?? EXAMPLE);
+  apply(fromQuery() ?? loadSaved() ?? EXAMPLE);
   sync40();
   $('md-year').addEventListener('change', sync40);
   $('md-form').addEventListener('input', () => { pendingQuote = null; $('md-get').textContent = 'Get the schedule (CSV and journal entry)'; });

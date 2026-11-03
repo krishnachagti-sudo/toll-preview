@@ -8,7 +8,8 @@
        data-tool-name="<slug>"    the tool's name
        data-buys="<slug>"         calls the top-up in the enclosing data-topup pays for
    - Fills the site's own address into the code samples and the MCP URL.
-   - The hero replay, the tool tabs, the code tabs, the request form and reveal-on-scroll. */
+   - The hero replay, the tool tabs, the code tabs, the request form and reveal-on-scroll.
+   - The mockups' inputs: home-try.js, loaded once a mockup is in view or touched. */
 (function () {
   'use strict';
 
@@ -100,6 +101,8 @@
     function play() {
       clear();
       show('fx');
+      // The exchange-rate view goes back to the answer being replayed (home-try.js, once loaded).
+      app.dispatchEvent(new CustomEvent('home:replay'));
       if (reduce) { settle(); return; }
       unflash();
       state('s0');
@@ -259,6 +262,46 @@
     show(0);
   }
 
+  // ---------- the mockups: real inputs, worked out in this browser ----------
+  // Each [data-try] mockup is a form that hands its inputs to the tool's page. home-try.js (an ES
+  // module) makes it work out its answer here, free; it and the engines it imports load only once
+  // a mockup comes near the screen or is touched, so a visit that never scrolls loads none of it.
+  function tryOut() {
+    var roots = document.querySelectorAll('[data-try]');
+    if (!roots.length) return;
+    var started = false;
+    var ready = false;
+    var io = null;
+    var TOUCH = ['focusin', 'pointerdown', 'input', 'change', 'dragenter'];
+    function go(e) {
+      if (started) return;
+      started = true;
+      if (io) io.disconnect();
+      TOUCH.forEach(function (type) { document.removeEventListener(type, inTry, true); });
+      var from = e && e.target && e.target.closest ? e.target : null;
+      import('./home-try.js').then(function (m) { m.start(from); ready = true; }, function () { /* the printed examples stay */ });
+    }
+    function inTry(e) { if (e.target.closest && e.target.closest('[data-try]')) go(e); }
+    TOUCH.forEach(function (type) { document.addEventListener(type, inTry, true); });
+    // A photo dropped before the module is ready is kept for it, and never opens in the tab.
+    each('[data-try] .drop', function (drop) {
+      drop.addEventListener('dragover', function (e) { if (!ready) e.preventDefault(); });
+      drop.addEventListener('drop', function (e) {
+        if (ready) return;
+        e.preventDefault();
+        drop.tryFile = e.dataTransfer && e.dataTransfer.files[0];
+        go(e);
+      });
+    });
+    if ('IntersectionObserver' in window) {
+      io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) go(); });
+      }, { rootMargin: '300px 0px' });
+      // The hero's window is on screen from the start; it waits for a touch.
+      [].forEach.call(roots, function (r) { if (!r.closest('#app')) io.observe(r); });
+    }
+  }
+
   // ---------- small touches ----------
   function spotlight() {
     each('.gcard', function (c) {
@@ -288,6 +331,7 @@
     heroWindow();
     codePanel();
     toolTabs();
+    tryOut();
     requestForm();
     spotlight();
     reveal();
