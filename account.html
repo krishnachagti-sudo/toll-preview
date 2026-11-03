@@ -60,6 +60,7 @@
 <main id="main" class="wrap">
   <p id="loading" class="muted page-head">Loading your account.</p>
   <p id="load-error" class="form-error" role="alert" hidden></p>
+  <p id="flash" class="next-note" role="status" hidden></p>
 
   <!-- Signed out -->
   <div id="signed-out" hidden>
@@ -100,8 +101,40 @@
           <input id="login-password" name="password" type="password" autocomplete="current-password" required>
         </div>
         <button class="btn" type="submit">Sign in</button>
+        <p class="small"><a href="#forgot" id="forgot-link">Forgot your password?</a></p>
+      </form>
+
+      <form id="forgot-form" novalidate hidden>
+        <h2>Set a new password</h2>
+        <p>Enter your account's email and we send you a link to choose a new password.</p>
+        <p id="forgot-error" class="form-error" role="alert"></p>
+        <div class="field">
+          <label for="forgot-email">Email</label>
+          <input id="forgot-email" name="email" type="email" autocomplete="email" required>
+          <p class="field-error" data-error-for="email"></p>
+        </div>
+        <button class="btn" type="submit">Email me a link</button>
+        <p id="forgot-status" class="status" role="status"></p>
       </form>
     </div>
+  </div>
+
+  <!-- Opened from a reset email: #reset=<token> -->
+  <div id="reset-view" hidden>
+    <div class="page-head">
+      <p class="eyebrow">Account</p>
+      <h1>Choose a new password</h1>
+    </div>
+    <form id="reset-form" class="ledger-section" novalidate>
+      <p id="reset-error" class="form-error" role="alert"></p>
+      <div class="field">
+        <label for="reset-password">New password</label>
+        <input id="reset-password" name="password" type="password" autocomplete="new-password" minlength="10" maxlength="200" required aria-describedby="reset-password-hint">
+        <p class="hint" id="reset-password-hint">At least 10 characters. Saving it signs you out everywhere else.</p>
+        <p class="field-error" data-error-for="password"></p>
+      </div>
+      <button class="btn" type="submit">Save and sign in</button>
+    </form>
   </div>
 
   <!-- Signed in -->
@@ -115,6 +148,13 @@
     </div>
 
     <p class="next-note" id="back-note" hidden><a id="back-link" href="/toll-preview/">Back to the page you were on</a></p>
+
+    <!-- Until the email is confirmed (and only when this site sends account emails). -->
+    <div class="next-note" id="verify-note" hidden>
+      <p>Confirm your email so you can set a new password if you forget it. We sent a link to <strong id="verify-email"></strong>.</p>
+      <button type="button" class="btn btn-quiet btn-small" id="verify-resend">Send the link again</button>
+      <p id="verify-status" class="status" role="status"></p>
+    </div>
 
     <!-- Shown once, right after creating an account: what the free allowance is for, and where to go. -->
     <div class="welcome" id="welcome" hidden>

@@ -100,6 +100,7 @@
     $('loading').hidden = true;
     $('signed-out').hidden = view !== 'out';
     $('signed-in').hidden = view !== 'in';
+    $('reset-view').hidden = view !== 'reset';
     $('next-note').hidden = !(view === 'out' && nextPath());
     $('back-note').hidden = !(view === 'in' && nextPath());
     if (nextPath()) $('back-link').href = nextPath();
@@ -115,7 +116,7 @@
     $('welcome').hidden = true;
     ['key-list', 'ledger', 'buy-passes', 'buy-packs', 'buy-bundles', 'who-email', 'balance-total', 'balance-grant', 'balance-paid', 'balance-pass', 'pass-note',
       'balance-bundle', 'cap-current', 'cap-spent', 'key-error', 'cap-error', 'cap-status', 'topup-error', 'new-key-status',
-      'nonprofit-error', 'nonprofit-status', 'invoice-error', 'invoice-status', 'invoice-list'].forEach(function (id) {
+      'nonprofit-error', 'nonprofit-status', 'invoice-error', 'invoice-status', 'invoice-list', 'verify-email', 'verify-status'].forEach(function (id) {
       $(id).textContent = '';
     });
     ['np-code', 'np-org', 'np-ein', 'np-email', 'inv-want', 'inv-company', 'inv-email', 'inv-po'].forEach(function (id) { $(id).value = ''; });
@@ -151,6 +152,8 @@
   function renderAccount() {
     var b = account.balance;
     $('who-email').textContent = 'Signed in as ' + account.email + '. Balance in ' + account.currency + '.';
+    $('verify-note').hidden = account.emailVerified || !account.emailsOn;
+    $('verify-email').textContent = account.email;
     $('balance-total').textContent = b.display;
     $('balance-grant').textContent = b.grantDisplay;
     $('balance-paid').textContent = b.paidDisplay;
@@ -210,6 +213,71 @@
     $('key-cap-hint').textContent = 'Leave it blank to use the default of ' + account.limits.defaultKeyCapDisplay + ' a month.';
     $('key-cap').placeholder = account.limits.defaultKeyCapDisplay.replace(/^[^0-9]+/, '');
   }
+
+  // ---------- links from account emails ----------
+  // The token comes after #, so it never reaches a server log. It is taken off the address
+  // straight away, so it is not left in the history or a shared screenshot.
+  function flash(text, isError) {
+    $('flash').textContent = text;
+    $('flash').className = isError ? 'form-error' : 'next-note';
+    $('flash').hidden = !text;
+  }
+  var resetToken = null;
+  function readEmailLink() {
+    var link = /^#(verify|reset)=([A-Za-z0-9_-]+)$/.exec(location.hash);
+    if (link) history.replaceState(null, '', location.pathname + location.search);
+    return link;
+  }
+
+  $('verify-resend').addEventListener('click', function (ev) {
+    var button = ev.currentTarget;
+    $('verify-status').textContent = '';
+    busy(button, true);
+    Endwise.api('/api/account/verify/send', { body: {} }).then(function (r) {
+      $('verify-status').textContent = r.verified ? 'Your email is already confirmed.' : 'Sent. Look for it in ' + r.sentTo + ', and in spam if it is not there in a few minutes.';
+    }, function (err) {
+      $('verify-status').textContent = err.message;
+    }).then(function () { busy(button, false); });
+  });
+
+  $('forgot-link').addEventListener('click', function (ev) {
+    ev.preventDefault();
+    $('forgot-form').hidden = false;
+    if (!$('forgot-email').value) $('forgot-email').value = $('login-email').value;
+    $('forgot-email').focus();
+  });
+
+  $('forgot-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var form = ev.currentTarget;
+    var button = form.querySelector('button[type="submit"]');
+    clearErrors(form);
+    $('forgot-error').textContent = '';
+    $('forgot-status').textContent = '';
+    busy(button, true);
+    Endwise.api('/api/account/forgot', { body: { email: $('forgot-email').value } }).then(function (r) {
+      $('forgot-status').textContent = r.message;
+    }, function (err) {
+      showError($('forgot-error'), err, form);
+    }).then(function () { busy(button, false); });
+  });
+
+  $('reset-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var form = ev.currentTarget;
+    var button = form.querySelector('button[type="submit"]');
+    clearErrors(form);
+    $('reset-error').textContent = '';
+    busy(button, true);
+    Endwise.api('/api/account/reset', { body: { token: resetToken, password: $('reset-password').value } }).then(function () {
+      form.reset();
+      resetToken = null;
+      flash('Your new password is saved, and you are signed in.');
+      return load();
+    }, function (err) {
+      showError($('reset-error'), err, form);
+    }).then(function () { busy(button, false); });
+  });
 
   // ---------- sign up / sign in / out ----------
   $('signup-form').addEventListener('submit', function (ev) {
@@ -535,5 +603,26 @@
     ])));
   }
 
-  load();
+  // A reset link opens the new-password form; a confirm link is posted, then the page loads as usual.
+  // Also on hashchange, for a link opened in a tab already on this page.
+  function openEmailLink(link) {
+    flash('');
+    if (link[1] === 'reset') {
+      resetToken = link[2];
+      show('reset');
+      $('reset-password').focus();
+      return;
+    }
+    Endwise.api('/api/account/verify', { body: { token: link[2] } }).then(function () {
+      flash('Your email is confirmed.');
+    }, function (err) {
+      flash(err.message, true);
+    }).then(load);
+  }
+  window.addEventListener('hashchange', function () {
+    var link = readEmailLink();
+    if (link) openEmailLink(link);
+  });
+  var first = readEmailLink();
+  if (first) openEmailLink(first); else load();
 })();

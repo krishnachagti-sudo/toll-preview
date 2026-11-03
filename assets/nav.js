@@ -69,18 +69,76 @@
   function setPanel(open) {
     if (!toolsBtn || !panel) return;
     panel.hidden = !open;
+    if (!open) byHover = false;
     toolsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     head.classList.toggle('nav-open', open);
     if (open) load().catch(function () {});
   }
-  if (toolsBtn && panel) {
-    toolsBtn.addEventListener('click', function (e) { e.preventDefault(); setPanel(panel.hidden); });
-    toolsBtn.addEventListener('pointerenter', function () { load().catch(function () {}); });
-    document.addEventListener('click', function (e) { if (!panel.hidden && !e.target.closest('#nav-tools-panel, .nav-tools')) setPanel(false); });
-    panel.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setPanel(false); toolsBtn.focus(); } });
+  // With a mouse the panel opens on hover, after a short pause so passing over Tools on the way
+  // elsewhere does not flash it, and closes a moment after the pointer leaves both the button and
+  // the panel, so a diagonal move into the panel keeps it open. A click on Tools then goes to the
+  // tools page, as the link says. By touch or keyboard a click opens and closes it instead.
+  var canHover = window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var openTimer = 0, closeTimer = 0, byHover = false;
+  function hoverIn() {
+    clearTimeout(closeTimer);
+    if (!panel.hidden) return;
+    openTimer = setTimeout(function () { byHover = true; setPanel(true); }, 120);
   }
+  function hoverOut() {
+    clearTimeout(openTimer);
+    if (panel.hidden || !byHover) return;
+    closeTimer = setTimeout(function () { setPanel(false); }, 260);
+  }
+  function firstLink() { return panel.querySelector('a'); }
+  if (toolsBtn && panel) {
+    toolsBtn.addEventListener('click', function (e) {
+      // A mouse click on a panel the hover already opened follows the link.
+      if (canHover && e.detail > 0 && !panel.hidden && byHover) return;
+      e.preventDefault();
+      clearTimeout(openTimer);
+      byHover = false;
+      setPanel(panel.hidden);
+    });
+    toolsBtn.addEventListener('pointerenter', function (e) { load().catch(function () {}); if (canHover && e.pointerType === 'mouse') hoverIn(); });
+    toolsBtn.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hoverOut(); });
+    panel.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') clearTimeout(closeTimer); });
+    panel.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hoverOut(); });
+    // Down arrow opens it from the keyboard and moves into the list.
+    toolsBtn.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown') return;
+      e.preventDefault();
+      byHover = false;
+      setPanel(true);
+      load().then(function () { var a = firstLink(); if (a) a.focus(); }, function () {});
+    });
+    // Up and down arrows step through the panel's links.
+    panel.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { setPanel(false); toolsBtn.focus(); return; }
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      var links = [].slice.call(panel.querySelectorAll('a'));
+      var i = links.indexOf(document.activeElement);
+      if (i < 0) return;
+      e.preventDefault();
+      links[(i + (e.key === 'ArrowDown' ? 1 : links.length - 1)) % links.length].focus();
+    });
+    // Tabbing out of the button and the panel closes it.
+    [toolsBtn, panel].forEach(function (el) {
+      el.addEventListener('focusout', function (e) {
+        var to = e.relatedTarget;
+        if (to && !panel.contains(to) && to !== toolsBtn) setPanel(false);
+      });
+    });
+    document.addEventListener('click', function (e) { if (!panel.hidden && !e.target.closest('#nav-tools-panel, .nav-tools')) setPanel(false); });
+  }
+  // The phone menu closes on Escape, on a tap outside it, and when one of its links is followed.
   var menu = head.querySelector('details.menu');
-  if (menu) menu.addEventListener('toggle', function () { if (menu.open) load().catch(function () {}); });
+  if (menu) {
+    menu.addEventListener('toggle', function () { if (menu.open) load().catch(function () {}); });
+    document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    menu.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); } });
+    menu.addEventListener('click', function (e) { if (e.target.closest('.menu-panel a')) menu.open = false; });
+  }
 
   // ---------- search ----------
   var dlg = null, input, list, status, hits = [], sel = 0, lastFocus = null;
