@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MCP server for AI agents: Endwise</title>
-<meta name="description" content="Connect an AI agent to Endwise over MCP: the server address, the Bearer key, the tools it lists, quote_price, and example calls with real answers.">
+<meta name="description" content="Connect an AI agent to Endwise over MCP: the server address, signing in or a Bearer key, the tools it lists, quote_price, and example calls with real answers.">
 <meta name="theme-color" content="#08090a">
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
@@ -16,9 +16,9 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Endwise">
 <meta property="og:title" content="MCP server for AI agents: Endwise">
-<meta property="og:description" content="Connect an AI agent to Endwise over MCP: the server address, the Bearer key, the tools it lists, quote_price, and example calls with real answers.">
+<meta property="og:description" content="Connect an AI agent to Endwise over MCP: the server address, signing in or a Bearer key, the tools it lists, quote_price, and example calls with real answers.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","name":"MCP server for AI agents: Endwise","description":"Connect an AI agent to Endwise over MCP: the server address, the Bearer key, the tools it lists, quote_price, and example calls with real answers.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"},{"@type":"ListItem","position":3,"name":"MCP for AI agents","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","name":"MCP server for AI agents: Endwise","description":"Connect an AI agent to Endwise over MCP: the server address, signing in or a Bearer key, the tools it lists, quote_price, and example calls with real answers.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"},{"@type":"ListItem","position":3,"name":"MCP for AI agents","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/"}]}]}</script>
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -88,7 +88,7 @@
     <nav aria-label="Breadcrumb"><ol class="crumbs"><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/developers/">Developers</a></li><li aria-current="page">MCP for AI agents</li></ol></nav>
     <span class="eyebrow">MCP for AI agents</span>
     <h1 class="h1" id="page-h">Give your agent<br class="br-d"> exact tools.</h1>
-    <p class="hero-lede">Endwise runs an MCP server over Streamable HTTP. Your agent gets the same tools, the same key and the same prices as the REST API, and the same answer every time.</p>
+    <p class="hero-lede">Endwise runs an MCP server over Streamable HTTP. Your agent gets the same tools and the same prices as the REST API, and the same answer every time. Apps that support MCP sign-in connect with just the address; other clients use an API key.</p>
     
   </div>
 </section>
@@ -96,7 +96,7 @@
   <div class="wrap">
     <div class="rv">
       <span class="eyebrow">Connect</span>
-      <h2 class="h2" id="connect-h">One address<br class="br-d"> <span class="dim">and your API key.</span></h2>
+      <h2 class="h2" id="connect-h">One address<br class="br-d"> <span class="dim">then sign in or add a key.</span></h2>
       
     </div>
     <div class="dev hue-agent">
@@ -107,7 +107,7 @@
       <div class="mcp-url"><code id="mcp-url"><span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/mcp</code><button class="copy" type="button" id="mcp-copy">Copy</button></div>
       <div class="h">Send JSON-RPC 2.0 requests with POST, one at a time. Batches are not supported.</div>
     </div>
-    <ol class="steps rv"><li><span class="n">01</span><div><h3><a href="/toll-preview/account">Create an API key</a></h3><p>On your account page. Make one key per agent, so you can limit or revoke each on its own.</p></div></li><li><span class="n">02</span><div><h3>Add the server</h3><p>Give your MCP client the address above, with your key as a Bearer token in the Authorization header.</p></div></li><li><span class="n">03</span><div><h3>List, then call</h3><p>Listing tools needs no key. Calling one takes your key, and is priced and limited exactly like an API call.</p></div></li></ol>
+    <ol class="steps rv"><li><span class="n">01</span><div><h3>Add the server</h3><p>Give your MCP client the address above. In the Claude apps, add it as a custom connector; in ChatGPT, add it as a custom MCP server and choose OAuth.</p></div></li><li><span class="n">02</span><div><h3>Sign in, or use a key</h3><p>Apps that support MCP sign-in (OAuth) open a Endwise page where you approve the app and set its monthly limit. For other clients, <a href="/toll-preview/account">create an API key</a> and send it as a Bearer token in the Authorization header.</p></div></li><li><span class="n">03</span><div><h3>List, then call</h3><p>Listing tools needs nothing. Calling one needs a sign-in or a key, and is priced and limited exactly like an API call. Connected apps show on your account page next to your keys, and you can disconnect one at any time.</p></div></li></ol>
   </div>
   <div class="rv"><div class="code solo">
   <div class="resp-h"><span>MCP client settings</span></div>
@@ -123,7 +123,7 @@
   }
 }</code></pre>
 </div>
-  <p class="code-cap">Most MCP clients take a block like this. Put your real key in place of YOUR_API_KEY, and keep it out of shared files.</p></div>
+  <p class="code-cap">Clients that use an API key take a block like this. Put your real key in place of YOUR_API_KEY, and keep it out of shared files. A client that signs in needs only the url.</p></div>
 </div>
   </div>
 </section>
@@ -207,7 +207,7 @@
     <div class="rv">
       <span class="eyebrow">Example calls</span>
       <h2 class="h2" id="calls-h">JSON-RPC over HTTP,<br class="br-d"> <span class="dim">with real answers.</span></h2>
-      <p class="sec-lede">Every answer below is what the server sends back. A refused call (no balance, a limit reached, invalid input) comes back as text with isError set to true, so the agent can read the reason and act on it. A call without a key gets error -32001.</p>
+      <p class="sec-lede">Every answer below is what the server sends back. A refused call (no balance, a limit reached, invalid input) comes back as text with isError set to true, so the agent can read the reason and act on it. A call without a sign-in or a key gets HTTP 401 with error -32001, and a WWW-Authenticate header that tells MCP clients where to sign in.</p>
     </div>
     <details class="fold rv"><summary>The handshake: initialize and tools/list</summary>
 <div class="calls"><div><div class="code solo">
@@ -817,6 +817,16 @@
               &quot;additionalProperties&quot;: false
             }
           ]
+        },
+        &quot;_meta&quot;: {
+          &quot;securitySchemes&quot;: [
+            {
+              &quot;type&quot;: &quot;oauth2&quot;,
+              &quot;scopes&quot;: [
+                &quot;tools&quot;
+              ]
+            }
+          ]
         }
       }
     ]
@@ -947,6 +957,9 @@
           <li><a href="/toll-preview/tools/">All tools</a></li>
           <li><a href="/toll-preview/pricing/">Pricing</a></li>
           <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
         </ul>
       </nav>
       <nav aria-label="Who it's for">
@@ -978,6 +991,9 @@
           <li><a href="/toll-preview/about/">About</a></li>
           <li><a href="/toll-preview/why-exact/">Why exact</a></li>
           <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
           <li><a href="https://conyso.com/">Conyso</a></li>
           <li><a href="/toll-preview/account">Account</a></li>
           <li><a href="/toll-preview/contact/">Contact</a></li>

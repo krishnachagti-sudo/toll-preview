@@ -98,14 +98,14 @@ client = anthropic.Anthropic()
 response = client.beta.messages.create(
     model=&quot;claude-sonnet-5-5&quot;,
     max_tokens=1000,
-    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;}],
-    mcp_servers=[{
+    messages=[&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;&#125;],
+    mcp_servers=[&#123;
         &quot;type&quot;: &quot;url&quot;,
         &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
         &quot;name&quot;: &quot;endwise&quot;,
         &quot;authorization_token&quot;: os.environ[&quot;ENDWISE_API_KEY&quot;],
-    }],
-    tools=[{&quot;type&quot;: &quot;mcp_toolset&quot;, &quot;mcp_server_name&quot;: &quot;endwise&quot;}],
+    &#125;],
+    tools=[&#123;&quot;type&quot;: &quot;mcp_toolset&quot;, &quot;mcp_server_name&quot;: &quot;endwise&quot;&#125;],
     betas=[&quot;mcp-client-2025-11-20&quot;],
 )
 print(response)</code></pre>
@@ -122,13 +122,13 @@ client = OpenAI()
 resp = client.responses.create(
     model=&quot;gpt-6-astra&quot;,
     input=&quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;,
-    tools=[{
+    tools=[&#123;
         &quot;type&quot;: &quot;mcp&quot;,
         &quot;server_label&quot;: &quot;endwise&quot;,
         &quot;server_url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
-        &quot;headers&quot;: {&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]},
+        &quot;headers&quot;: &#123;&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]&#125;,
         &quot;require_approval&quot;: &quot;never&quot;,
-    }],
+    &#125;],
 )
 print(resp.output_text)</code></pre>
 <p>By default OpenAI asks for approval before data is sent to a remote MCP server. <code>require_approval</code> can be <code>&quot;always&quot;</code>, <code>&quot;never&quot;</code>, or an object that lists the tools to skip approval for. <code>&quot;never&quot;</code> is fine for read-only lookups on a key with a low limit. For anything else, keep approval on and have your code or a person confirm.</p>
@@ -140,7 +140,7 @@ print(resp.output_text)</code></pre>
 from openai import OpenAI
 
 BASE = &quot;https://krishnachagti-sudo.github.io/toll-preview/api/v1&quot;
-HEADERS = {&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]}
+HEADERS = &#123;&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]&#125;
 
 # 1. Build the function list from the public tool list (needs no key).
 listed = requests.get(BASE + &quot;/tools&quot;).json()[&quot;tools&quot;]
@@ -148,23 +148,23 @@ tools = []
 for t in listed:
     if t[&quot;kind&quot;] != &quot;api&quot;:
         continue
-    schema = {k: v for k, v in t[&quot;inputSchema&quot;].items() if k != &quot;$schema&quot;}
-    tools.append({&quot;type&quot;: &quot;function&quot;, &quot;name&quot;: t[&quot;slug&quot;], &quot;description&quot;: t[&quot;summary&quot;], &quot;parameters&quot;: schema})
+    schema = &#123;k: v for k, v in t[&quot;inputSchema&quot;].items() if k != &quot;$schema&quot;&#125;
+    tools.append(&#123;&quot;type&quot;: &quot;function&quot;, &quot;name&quot;: t[&quot;slug&quot;], &quot;description&quot;: t[&quot;summary&quot;], &quot;parameters&quot;: schema&#125;)
 
 # 2. One POST per call. Reuse the key when you retry the same call.
 def run_tool(slug, args, call_key):
-    r = requests.post(f&quot;{BASE}/tools/{slug}&quot;, json=args,
-                      headers={**HEADERS, &quot;Idempotency-Key&quot;: call_key}, timeout=30)
-    return r.json()   # {&quot;ok&quot;: true, &quot;result&quot;: ...} or {&quot;ok&quot;: false, &quot;error&quot;: {...}}
+    r = requests.post(f&quot;&#123;BASE&#125;/tools/&#123;slug&#125;&quot;, json=args,
+                      headers=&#123;**HEADERS, &quot;Idempotency-Key&quot;: call_key&#125;, timeout=30)
+    return r.json()   # &#123;&quot;ok&quot;: true, &quot;result&quot;: ...&#125; or &#123;&quot;ok&quot;: false, &quot;error&quot;: &#123;...&#125;&#125;
 
 client = OpenAI()
-input_list = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;}]
+input_list = [&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;&#125;]
 response = client.responses.create(model=&quot;gpt-6-astra&quot;, tools=tools, input=input_list)
 input_list += response.output
 for item in response.output:
     if item.type == &quot;function_call&quot;:
         out = run_tool(item.name, json.loads(item.arguments), item.call_id)
-        input_list.append({&quot;type&quot;: &quot;function_call_output&quot;, &quot;call_id&quot;: item.call_id, &quot;output&quot;: json.dumps(out)})
+        input_list.append(&#123;&quot;type&quot;: &quot;function_call_output&quot;, &quot;call_id&quot;: item.call_id, &quot;output&quot;: json.dumps(out)&#125;)
 response = client.responses.create(model=&quot;gpt-6-astra&quot;, tools=tools, input=input_list)
 print(response.output_text)</code></pre>
 <p>The sample uses OpenAI's function format (<code>type: &quot;function&quot;</code>, <code>name</code>, <code>parameters</code>, and a <code>function_call_output</code> item returned with the call's <code>call_id</code>). Other providers use a different wrapper around the same JSON schema.</p>
@@ -172,22 +172,22 @@ print(response.output_text)</code></pre>
 <section>
 <h2>What does a real call look like?</h2>
 <p>Count the business days from 1 July to 8 July 2026 in the US. One POST to https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days with the key in the Authorization header and this body:</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;between&quot;,
   &quot;region&quot;: &quot;US&quot;,
   &quot;start&quot;: &quot;2026-07-01&quot;,
   &quot;end&quot;: &quot;2026-07-08&quot;
-}</code></pre>
+&#125;</code></pre>
 <p>The tool's result:</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;businessDays&quot;: 4,
   &quot;holidaysSkipped&quot;: [
-    {
+    &#123;
       &quot;date&quot;: &quot;2026-07-03&quot;,
       &quot;name&quot;: &quot;Independence Day (observed)&quot;
-    }
+    &#125;
   ]
-}</code></pre>
+&#125;</code></pre>
 <p>The full response wraps the result with <code>ok: true</code>, a <code>charged</code> block (the cost as a number and as text), your new balance, and a <code>dataVersion</code> naming the reference data used. This tool costs $0.0005 per call. See the <a href="/toll-preview/business-days/">Business days</a> page.</p>
 </section>
 <section>
@@ -197,16 +197,16 @@ print(response.output_text)</code></pre>
 Authorization: Bearer YOUR_API_KEY
 Content-Type: application/json
 
-{&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;}</code></pre>
+&#123;&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;&#125;</code></pre>
 <p>Over MCP, a free <code>quote_price</code> tool does the same, with the arguments <code>tool</code> and <code>arguments</code>. It is listed when some tool prices by what you ask for, so check <code>tools/list</code> before relying on it. Most tools have one fixed price, shown on their pages. Some price per row or per document, and those are the calls worth quoting. A simple rule for an agent: quote first whenever the input has a list, a batch or a file, and refuse to go ahead if the quote is above a number you set.</p>
 </section>
 <section>
 <h2>How should my agent handle errors?</h2>
 <p>Every REST error has the same shape, and every refused call is not charged. Over MCP the same message comes back as tool-result text that the model can read.</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;ok&quot;: false,
-  &quot;error&quot;: { &quot;code&quot;: &quot;cap_reached&quot;, &quot;message&quot;: &quot;...&quot; }
-}</code></pre>
+  &quot;error&quot;: &#123; &quot;code&quot;: &quot;cap_reached&quot;, &quot;message&quot;: &quot;...&quot; &#125;
+&#125;</code></pre>
 <div class="table-scroll"><table class="rules cp-table"><caption>Errors an agent should handle</caption><thead><tr><th scope="col" class="r num">Status</th><th scope="col">Code</th><th scope="col">What the agent should do</th></tr></thead><tbody>
 <tr><th scope="row">400</th><td><code>invalid_input</code></td><td>Read error.fields, fix the arguments and try again. Not charged.</td></tr>
 <tr><th scope="row">401</th><td><code>unauthorized</code></td><td>Stop. The key is missing, wrong or revoked.</td></tr>
@@ -250,6 +250,9 @@ Content-Type: application/json
           <li><a href="/toll-preview/tools/">All tools</a></li>
           <li><a href="/toll-preview/pricing/">Pricing</a></li>
           <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
         </ul>
       </nav>
       <nav aria-label="Who it's for">
@@ -281,6 +284,9 @@ Content-Type: application/json
           <li><a href="/toll-preview/about/">About</a></li>
           <li><a href="/toll-preview/why-exact/">Why exact</a></li>
           <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
           <li><a href="https://conyso.com/">Conyso</a></li>
           <li><a href="/toll-preview/account">Account</a></li>
           <li><a href="/toll-preview/contact/">Contact</a></li>

@@ -57,3 +57,5 @@ table.cp-table .r { padding-right: 24px; }
 .cp-sources, .cp-related ul { padding-left: 1.2em; }
 .cp-formats { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line); max-width: 56rem; }
 .cp-formats a { color: var(--muted); }
+/* Inline code (a feed address, a long path) wraps instead of pushing the page sideways on a phone. */
+.cp-answer code, .cp-body p code, .cp-body li code, .cp-body td code { overflow-wrap: anywhere; }

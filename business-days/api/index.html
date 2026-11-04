@@ -86,45 +86,45 @@
 <pre><code class="language-shell">curl -X POST 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days' \
   -H &quot;Authorization: Bearer $API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;}'</code></pre>
+  -d '&#123;&quot;op&quot;:&quot;between&quot;,&quot;region&quot;:&quot;US&quot;,&quot;start&quot;:&quot;2026-07-01&quot;,&quot;end&quot;:&quot;2026-07-08&quot;&#125;'</code></pre>
 </section>
 <section>
 <h2 id="response">Response</h2>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;ok&quot;: true,
-  &quot;result&quot;: {
+  &quot;result&quot;: &#123;
     &quot;businessDays&quot;: 4,
     &quot;holidaysSkipped&quot;: [
-      {
+      &#123;
         &quot;date&quot;: &quot;2026-07-03&quot;,
         &quot;name&quot;: &quot;Independence Day (observed)&quot;
-      }
+      &#125;
     ]
-  },
-  &quot;charged&quot;: {
+  &#125;,
+  &quot;charged&quot;: &#123;
     &quot;amount&quot;: 500,
     &quot;currency&quot;: &quot;USD&quot;,
     &quot;display&quot;: &quot;$0.0005&quot;
-  },
+  &#125;,
   &quot;dataVersion&quot;: &quot;holiday-rules-2026.11&quot;
-}</code></pre>
-<p>Amounts are whole micro-units (1,000,000 to the dollar); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>{ date, holidaysSkipped }</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With <code>daysOff</code> the result also has <code>daysOffSkipped</code>: each of your days off that fell on a weekday in the range and was not already a holiday, as <code>{ date, name }</code>.</p>
+&#125;</code></pre>
+<p>Amounts are whole micro-units (1,000,000 to the dollar); the response also carries your balance after the charge. <code>holidaysSkipped</code> lists each weekday holiday inside the range, with the date it was taken off. For <code>add</code> the result is <code>&#123; date, holidaysSkipped &#125;</code>: adding 1 business day to 2026-12-24 in <code>GB-ENG</code> gives 2026-12-29, past Christmas Day and the Boxing Day substitute day. With <code>daysOff</code> the result also has <code>daysOffSkipped</code>: each of your days off that fell on a weekday in the range and was not already a holiday, as <code>&#123; date, name &#125;</code>.</p>
 <p>Invalid input is a 400 <code>invalid_input</code> with the field that was wrong, and is never charged. Retries are safe with an <code>Idempotency-Key</code> header. The <a href="/toll-preview/docs">docs</a> cover errors, limits and idempotency for every tool.</p>
 </section>
 <section>
 <h2 id="mcp">From an AI agent (MCP)</h2>
 <p>Agents that speak the Model Context Protocol call the same tool, named <code>business-days</code>, with the same input and price. Add the server with your key:</p>
-<pre><code class="language-json">{
-  &quot;mcpServers&quot;: {
-    &quot;endwise&quot;: {
+<pre><code class="language-json">&#123;
+  &quot;mcpServers&quot;: &#123;
+    &quot;endwise&quot;: &#123;
       &quot;type&quot;: &quot;http&quot;,
       &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
-      &quot;headers&quot;: {
+      &quot;headers&quot;: &#123;
         &quot;Authorization&quot;: &quot;Bearer YOUR_API_KEY&quot;
-      }
-    }
-  }
-}</code></pre>
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
 </section>
 <section>
 <h2 id="coverage">What it knows</h2>
@@ -162,6 +162,9 @@
           <li><a href="/toll-preview/tools/">All tools</a></li>
           <li><a href="/toll-preview/pricing/">Pricing</a></li>
           <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
         </ul>
       </nav>
       <nav aria-label="Who it's for">
@@ -193,6 +196,9 @@
           <li><a href="/toll-preview/about/">About</a></li>
           <li><a href="/toll-preview/why-exact/">Why exact</a></li>
           <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
           <li><a href="https://conyso.com/">Conyso</a></li>
           <li><a href="/toll-preview/account">Account</a></li>
           <li><a href="/toll-preview/contact/">Contact</a></li>

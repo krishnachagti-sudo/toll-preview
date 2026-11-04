@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to use Endwise with Claude (Claude Code and apps): Endwise</title>
-<meta name="description" content="Connect Endwise to Claude with an API key: the Claude Code command, what the Claude apps allow today, a first prompt, spend limits and revoking a key.">
+<title>How to use Endwise with Claude (Claude apps and Claude Code)</title>
+<meta name="description" content="Connect Endwise to Claude by signing in: add it as a custom connector in claude.ai or Claude Desktop, or in Claude Code, approve it with a monthly limit, and disconnect any time.">
 <meta name="theme-color" content="#08090a">
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
@@ -14,10 +14,10 @@
 <link rel="alternate" type="text/markdown" href="/toll-preview/guides/use-with-claude.md">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Endwise">
-<meta property="og:title" content="How to use Endwise with Claude (Claude Code and apps)">
-<meta property="og:description" content="Connect Endwise to Claude with an API key: the Claude Code command, what the Claude apps allow today, a first prompt, spend limits and revoking a key.">
+<meta property="og:title" content="How to use Endwise with Claude (Claude apps and Claude Code)">
+<meta property="og:description" content="Connect Endwise to Claude by signing in: add it as a custom connector in claude.ai or Claude Desktop, or in Claude Code, approve it with a monthly limit, and disconnect any time.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/","name":"How to use Endwise with Claude (Claude Code and apps)","description":"Connect Endwise to Claude with an API key: the Claude Code command, what the Claude apps allow today, a first prompt, spend limits and revoking a key.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"How to use Endwise with Claude (Claude Code and apps)","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/"}]},{"@type":"HowTo","name":"How to use Endwise with Claude (Claude Code and apps)","description":"Connect Endwise to Claude with an API key: the Claude Code command, what the Claude apps allow today, a first prompt, spend limits and revoking a key.","step":[{"@type":"HowToStep","position":1,"name":"Make an API key","text":"Open your account page, create a key, give it a name and a monthly limit, and copy it. It is shown once."},{"@type":"HowToStep","position":2,"name":"Add the server to Claude Code","text":"Run claude mcp add with --transport http, the server address and a --header \"Authorization: Bearer YOUR_API_KEY\" option."},{"@type":"HowToStep","position":3,"name":"Check the connection","text":"Run claude mcp list, or type /mcp inside Claude Code, and confirm the server is listed as connected."},{"@type":"HowToStep","position":4,"name":"Ask a question that needs an exact answer","text":"Ask for a date count, an exchange rate or a mileage figure. Claude lists the tools, picks one and calls it."},{"@type":"HowToStep","position":5,"name":"Watch spend and revoke if needed","text":"Ask Claude to run quote_price first for a call you are unsure about. Revoke a key from your account page at any time."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can Claude connect to an API that needs a key?","acceptedAnswer":{"@type":"Answer","text":"Claude Code can, today, with a header option on one command. The Claude apps (claude.ai and Claude Desktop) have a Request headers section for API keys, but Anthropic says it is in beta and open to a limited set of organizations as of November 2026."}},{"@type":"Question","name":"Who can add a custom connector in the Claude apps?","acceptedAnswer":{"@type":"Answer","text":"According to Anthropic's documentation, a remote server can be added as a custom connector on Free, Pro, Max, Ultra, Team and Enterprise plans. On Team and Enterprise an Owner adds it for the organization. The Free plan allows one custom connector."}},{"@type":"Question","name":"Will Claude charge me for each tool call?","acceptedAnswer":{"@type":"Answer","text":"Claude does not. The tools charge your prepaid balance per call, the same as the API. Each key has a monthly limit, and a call past the limit is refused and not billed."}},{"@type":"Question","name":"How do I stop using a key?","acceptedAnswer":{"@type":"Answer","text":"Open your account page, find the key and choose Revoke. Calls made with it fail from then on. Then run claude mcp remove on your computer to drop the server entry."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/","name":"How to use Endwise with Claude (Claude apps and Claude Code)","description":"Connect Endwise to Claude by signing in: add it as a custom connector in claude.ai or Claude Desktop, or in Claude Code, approve it with a monthly limit, and disconnect any time.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"How to use Endwise with Claude (Claude apps and Claude Code)","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/"}]},{"@type":"HowTo","name":"How to use Endwise with Claude (Claude apps and Claude Code)","description":"Connect Endwise to Claude by signing in: add it as a custom connector in claude.ai or Claude Desktop, or in Claude Code, approve it with a monthly limit, and disconnect any time.","step":[{"@type":"HowToStep","position":1,"name":"Add a custom connector","text":"In claude.ai or Claude Desktop, go to Customize \u003e Connectors and choose Add custom connector. On Team and Enterprise plans an Owner adds it for the organization."},{"@type":"HowToStep","position":2,"name":"Enter the server address","text":"Enter the Endwise MCP server address. Leave the OAuth client ID and secret empty."},{"@type":"HowToStep","position":3,"name":"Sign in to Endwise and approve","text":"Claude opens an Endwise page. Sign in, check that the app named is Claude, set a monthly limit for it, and choose Approve."},{"@type":"HowToStep","position":4,"name":"Ask a question that needs an exact answer","text":"Ask for a date count, an exchange rate or a mileage figure. Claude lists the tools, picks one and calls it."},{"@type":"HowToStep","position":5,"name":"Watch spend and disconnect if needed","text":"Ask Claude to run quote_price first for a call you are unsure about. Disconnect Claude from your account page at any time."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can Claude connect to Endwise?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add Endwise as a custom connector by its address, and sign in to Endwise when Claude asks. You approve Claude on an Endwise page and give it a monthly limit. You do not need to copy an API key into Claude."}},{"@type":"Question","name":"Who can add a custom connector in the Claude apps?","acceptedAnswer":{"@type":"Answer","text":"According to Anthropic's documentation, a remote server can be added as a custom connector on Free, Pro, Max, Ultra, Team and Enterprise plans. On Team and Enterprise an Owner adds it for the organization, and each member then connects with their own account. The Free plan allows one custom connector."}},{"@type":"Question","name":"Will Claude charge me for each tool call?","acceptedAnswer":{"@type":"Answer","text":"Claude does not. The tools charge your prepaid balance per call, the same as the API. Each connected app has a monthly limit, and a call past the limit is refused and not billed."}},{"@type":"Question","name":"How do I stop Claude using Endwise?","acceptedAnswer":{"@type":"Answer","text":"Open your account page, find Claude under Connected apps and choose Disconnect. Calls from Claude fail from then on. You can also remove the connector in Claude under Customize \u003e Connectors."}},{"@type":"Question","name":"Can I still use an API key with Claude Code?","acceptedAnswer":{"@type":"Answer","text":"Yes. Claude Code accepts a header option on claude mcp add, so a Bearer API key works there as before."}}]}]}</script>
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -65,25 +65,40 @@
 </header>
 
 <main id="main" class="wrap cp">
-<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">How to use Endwise with Claude (Claude Code and apps)</li></ol></nav>
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">How to use Endwise with Claude (Claude apps and Claude Code)</li></ol></nav>
 <header class="cp-head">
 <p class="eyebrow">Guide</p>
-<h1>How to use Endwise with Claude (Claude Code and apps)</h1>
-<p class="cp-answer">In Claude Code it takes 1 command: <code>claude mcp add --transport http</code> with the Endwise server address and your API key as a Bearer header, then check it with <code>claude mcp list</code>. The Claude apps can connect too where an organization has the Request headers option, which Anthropic says is in beta for a limited set of organizations as of November 2026.</p>
+<h1>How to use Endwise with Claude (Claude apps and Claude Code)</h1>
+<p class="cp-answer">Yes, in 3 steps: in claude.ai or Claude Desktop, add Endwise as a custom connector at <code>https://krishnachagti-sudo.github.io/toll-preview/mcp</code>, sign in to Endwise, and approve Claude with a monthly limit. In Claude Code, run <code>claude mcp add --transport http</code> with the same address and sign in with <code>/mcp</code>, or send an API key as a header.</p>
 
 </header>
 <div class="cp-body prose">
 <section>
-<h2 id="can-claude">Can Claude connect to an API with a key?</h2>
-<p>Yes, in Claude Code. In the Claude apps it depends on your account. Endwise is a remote MCP server (MCP is a standard way for an AI app to call outside tools) at <code>https://krishnachagti-sudo.github.io/toll-preview/mcp</code>. It takes your API key as a Bearer token. Listing the tools needs no key. Calling one does.</p>
+<h2 id="can-claude">Can Claude connect to Endwise?</h2>
+<p>Yes. Endwise is a remote MCP server (MCP is a standard way for an AI app to call outside tools) at <code>https://krishnachagti-sudo.github.io/toll-preview/mcp</code>. Claude can list its tools without signing in. To run one, Claude asks you to sign in to Endwise and approve it, the usual OAuth sign-in. Claude then shows up on your <a href="/toll-preview/account">account page</a> under Connected apps, with its own monthly limit, like an API key.</p>
 <p>This page is current as of November 2026. Claude's features change, so the sources at the bottom are the final word.</p>
 </section>
 <section>
+<h2 id="claude-apps">How do I add it to claude.ai or Claude Desktop?</h2>
+<p>On a Free, Pro, Max or Ultra plan, go to <strong>Customize &gt; Connectors</strong>, choose <strong>Add custom connector</strong>, and enter the server address:</p>
+<pre><code class="language-text">https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
+<p>Leave the OAuth client ID and secret empty. If the dialog asks how to sign in, <strong>Sign in when needed</strong> lets Claude list the tools first and ask you to sign in when it calls one. For the OAuth client, Anthropic recommends <strong>Use Claude's published identity</strong>; Endwise also accepts <strong>Register automatically</strong>.</p>
+<p>On a Team or Enterprise plan, an Owner adds it for the organization at <strong>Organization settings &gt; Connectors</strong> by choosing <strong>Add</strong>, then <strong>Custom</strong>. On Enterprise, a member whose custom role includes managing the organization's libraries can add one too. Members then connect from <strong>Customize &gt; Connectors</strong> with their own Endwise account.</p>
+</section>
+<section>
+<h2 id="sign-in">What does the sign-in look like?</h2>
+<p>Claude opens a Endwise page. If you are not signed in, you sign in or create an account first and come straight back. The page then says which app is asking (for Claude, claude.ai), what it will be able to do, and where you go back to after you approve.</p>
+<ul><li>It can list the tools and their prices, run tools and pay for each run from your balance, and ask what a run would cost.</li><li>It cannot see your password, add money, change your account or make API keys.</li><li>You set its monthly limit on that page. Runs past the limit are refused and not billed.</li></ul>
+<p>Choose <strong>Approve</strong> and Claude carries on. Approving Claude again later keeps the same connection, its limit and its spending history.</p>
+</section>
+<section>
 <h2 id="claude-code">How do I add it to Claude Code?</h2>
-<p>Run one command in your terminal. Replace <code>YOUR_API_KEY</code> with a key from your <a href="/toll-preview/account">account page</a>.</p>
+<p>Run one command in your terminal:</p>
+<pre><code class="language-bash">claude mcp add --transport http endwise https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
+<p>Then type <code>/mcp</code> inside Claude Code and choose to sign in. A browser page opens on Endwise as above. Claude Code runs on your computer, so the page adds a line asking you to approve only if you started the connection yourself.</p>
+<p>Claude Code can also send an API key instead of signing in. Create a key on your <a href="/toll-preview/account">account page</a> and add the server with a header:</p>
 <pre><code class="language-bash">claude mcp add --transport http endwise https://krishnachagti-sudo.github.io/toll-preview/mcp \
   --header &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre>
-<p>Claude Code's documentation shows this form for a Bearer token: <code>claude mcp add --transport http &lt;name&gt; &lt;url&gt; --header &quot;Authorization: Bearer your-token&quot;</code>. HTTP is the transport it recommends for remote servers.</p>
 <p>Check it worked:</p>
 <pre><code class="language-bash">claude mcp list
 claude mcp get endwise
@@ -91,101 +106,69 @@ claude mcp get endwise
 /mcp</code></pre>
 </section>
 <section>
-<h2 id="scopes">Which scope should I use?</h2>
+<h2 id="scopes">Which scope should I use in Claude Code?</h2>
 <p>Claude Code stores a server at one of three scopes. Pass --scope (or -s) to choose. Local is the default.</p>
 <div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Scope</th><th scope="col">Loads in</th><th scope="col">Shared with your team</th><th scope="col">Stored in</th></tr></thead><tbody>
 <tr><th scope="row">local</th><td>This project only</td><td>No</td><td>~/.claude.json</td></tr>
 <tr><th scope="row">project</th><td>This project only</td><td>Yes, through version control</td><td>.mcp.json in the project root</td></tr>
 <tr><th scope="row">user</th><td>All your projects</td><td>No</td><td>~/.claude.json</td></tr>
 </tbody></table></div>
-<p>Use <code>--scope user</code> for a key you want everywhere. Avoid <code>--scope project</code> with a literal key, because that file is meant to be committed. Claude Code expands environment variables in a project file, so you can write the header like this and keep the key in your shell:</p>
-<pre><code class="language-json">{
-  &quot;mcpServers&quot;: {
-    &quot;endwise&quot;: {
+<p>With sign-in there is no key in the file, so any scope is safe to share. With an API key, avoid <code>--scope project</code> and a literal key, because that file is meant to be committed. Claude Code expands environment variables in a project file, so you can write the header like this and keep the key in your shell:</p>
+<pre><code class="language-json">&#123;
+  &quot;mcpServers&quot;: &#123;
+    &quot;endwise&quot;: &#123;
       &quot;type&quot;: &quot;http&quot;,
       &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
-      &quot;headers&quot;: {
-        &quot;Authorization&quot;: &quot;Bearer ${ENDWISE_API_KEY}&quot;
-      }
-    }
-  }
-}</code></pre>
+      &quot;headers&quot;: &#123;
+        &quot;Authorization&quot;: &quot;Bearer $&#123;ENDWISE_API_KEY&#125;&quot;
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
 <p class="cp-note">Set <code>ENDWISE_API_KEY</code> in your environment first. Claude Code's documentation says an unset variable with no default is left as the literal ${VAR} text, so the call would fail with an invalid key.</p>
-</section>
-<section>
-<h2 id="claude-apps">Can I use it in the Claude apps (claude.ai and Claude Desktop)?</h2>
-<p>Only if your account has the Request headers section. Anthropic documents it as in beta and available to a limited set of organizations.</p>
-<p>Here is what Anthropic's documentation says. Custom connectors by URL work on Free, Pro, Max, Ultra, Team and Enterprise plans. On a Free, Pro, Max or Ultra plan you go to <strong>Customize &gt; Connectors</strong>, choose <strong>Add custom connector</strong>, and enter the server address. The Free plan can add one.</p>
-<p>On a Team or Enterprise plan, an Owner adds it for the organization at <strong>Organization settings &gt; Connectors</strong> by choosing <strong>Add</strong>, then <strong>Custom</strong>. On Enterprise, a member whose custom role includes managing the organization's libraries can add one too. Other members cannot, and need to ask an Owner. Members then connect from <strong>Customize &gt; Connectors</strong>.</p>
-<p>For an API key, the documentation says to set Authentication to <strong>No sign-in</strong> and add the key under <strong>Request headers</strong>. Pick the header name <code>authorization</code> and enter the value with the scheme included:</p>
-<pre><code class="language-text">Bearer YOUR_API_KEY</code></pre>
-<p>Claude sends the value exactly as you enter it and adds no prefix, so leave out &quot;Bearer &quot; and the call fails. You can add up to four headers. You cannot change a header later: remove the connector and add it again.</p>
-<p>If you do not see <strong>Request headers</strong> in the dialog, Anthropic says your organization does not have access yet. In that case this route is not open to you. Use Claude Code instead.</p>
-</section>
-<section>
-<h2 id="workaround">Is there a workaround for Claude Desktop?</h2>
-<p>One, with a caveat. The <a href="https://github.com/geelen/mcp-remote">mcp-remote</a> npm package is a local bridge that runs on your computer and forwards to a remote server. Its README documents a <code>--header</code> option and a Claude Desktop config file at <code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS and <code>%APPDATA%\Claude\claude_desktop_config.json</code> on Windows. It is a third-party package, not made by Anthropic or by Endwise. Read it before you run it, since it runs with your user permissions.</p>
-<p>Its README says Claude Desktop on Windows has a bug where spaces inside args are not escaped, and shows a workaround that keeps the space in an env value. This is the shape it gives:</p>
-<pre><code class="language-json">{
-  &quot;mcpServers&quot;: {
-    &quot;endwise&quot;: {
-      &quot;command&quot;: &quot;npx&quot;,
-      &quot;args&quot;: [
-        &quot;mcp-remote&quot;,
-        &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
-        &quot;--header&quot;,
-        &quot;Authorization:${AUTH_HEADER}&quot;
-      ],
-      &quot;env&quot;: {
-        &quot;AUTH_HEADER&quot;: &quot;Bearer YOUR_API_KEY&quot;
-      }
-    }
-  }
-}</code></pre>
-<p class="cp-note">This config keeps your key in a plain file on your computer. We have not tested it against Claude Desktop, so if it fails, use Claude Code.</p>
 </section>
 <section>
 <h2 id="first-prompt">What should I ask first?</h2>
 <p>Ask something with one right answer. Try: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot;</p>
-<p>Claude first asks the server what it offers (a <code>tools/list</code> request, which needs no key). It then picks the <code>business-days</code> tool and calls it with arguments like these:</p>
-<pre><code class="language-json">{
+<p>Claude first asks the server what it offers (a <code>tools/list</code> request, which needs no sign-in). It then picks the <code>business-days</code> tool and calls it with arguments like these:</p>
+<pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;between&quot;,
   &quot;region&quot;: &quot;US&quot;,
   &quot;start&quot;: &quot;2026-07-01&quot;,
   &quot;end&quot;: &quot;2026-07-08&quot;
-}</code></pre>
+&#125;</code></pre>
 <p>The tool returns the same answer every time for the same input:</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;businessDays&quot;: 4,
   &quot;holidaysSkipped&quot;: [
-    {
+    &#123;
       &quot;date&quot;: &quot;2026-07-03&quot;,
       &quot;name&quot;: &quot;Independence Day (observed)&quot;
-    }
+    &#125;
   ]
-}</code></pre>
+&#125;</code></pre>
 <p>Claude then words the answer for you. Nothing in the figure came from a language model. This call costs <strong>$0.0005</strong>. Claude asks your permission before calling a tool, unless you chose to always allow it.</p>
 </section>
 <section>
 <h2 id="spend">How do I keep spending under control?</h2>
-<ul><li><strong>Give each key a monthly limit. </strong>Set it when you create the key. A call that would pass it is refused and not billed.</li><li><strong>Make one key per tool or agent. </strong>Then you can limit or revoke each on its own.</li><li><strong>Ask for a quote. </strong>The free <code>quote_price</code> tool says what a call would cost your account without running it. Try: &quot;Use quote_price to tell me what that would cost before you run it.&quot;</li><li><strong>Keep approval on. </strong>Claude asks before it calls a tool. Avoid &quot;always allow&quot; on a key with a high limit.</li></ul>
+<ul><li><strong>Set a monthly limit when you approve. </strong>A call that would pass it is refused and not billed. Change it later on your account page.</li><li><strong>Keep apps apart. </strong>Claude in the apps and Claude Code are separate connections, each with its own limit.</li><li><strong>Ask for a quote. </strong>The free <code>quote_price</code> tool says what a call would cost your account without running it. Try: &quot;Use quote_price to tell me what that would cost before you run it.&quot;</li><li><strong>Keep approval on. </strong>Claude asks before it calls a tool. Avoid &quot;always allow&quot; with a high limit.</li></ul>
 </section>
 <section>
-<h2 id="revoke">How do I revoke a key?</h2>
-<p>Open your <a href="/toll-preview/account">account page</a>, find the key under API keys and choose Revoke. It asks you to click again to confirm. Calls with that key then fail. Remove the entry from Claude too:</p>
+<h2 id="revoke">How do I disconnect Claude?</h2>
+<p>Open your <a href="/toll-preview/account">account page</a>, find Claude under Connected apps and choose Disconnect. It asks you to click again to confirm. Calls from Claude then fail. Remove the connector in Claude too, under <strong>Customize &gt; Connectors</strong> (Owners use <strong>Organization settings &gt; Connectors</strong>). For Claude Code:</p>
 <pre><code class="language-bash">claude mcp remove endwise</code></pre>
-<p>In the Claude apps, remove the connector under <strong>Customize &gt; Connectors</strong> (Owners use <strong>Organization settings &gt; Connectors</strong>).</p>
+<p>An API key is revoked the same way, under API keys on the account page.</p>
 </section>
 <section>
 <h2 id="troubleshooting">What can go wrong?</h2>
-<ul><li><strong>Unauthorized. </strong>The key is missing, wrong or revoked. Check that the header says &quot;Bearer &quot; then the key.</li><li><strong>Limit reached. </strong>The key or the account hit its monthly limit. Raise it on your account page. Nothing was charged.</li><li><strong>The server is not listed. </strong>Run claude mcp list. If the name is missing, repeat the add command. A name can be added only once per scope.</li></ul>
-<ul class="cp-sources"><li><a href="https://code.claude.com/docs/en/mcp">Claude Code docs: Connect Claude Code to tools via MCP</a></li><li><a href="https://claude.com/docs/connectors/custom">Claude docs: Add a connector that isn't in the directory</a></li><li><a href="https://github.com/geelen/mcp-remote">mcp-remote on GitHub (README)</a></li></ul>
+<ul><li><strong>Claude asks you to sign in again. </strong>The connection was disconnected, or not used for 60 days. Sign in again; the limit you set is kept.</li><li><strong>The Endwise page says the app cannot connect. </strong>Remove the connector and add it again. If the OAuth client setting is Use Claude's published identity, try Register automatically.</li><li><strong>Limit reached. </strong>The connection or the account hit its monthly limit. Raise it on your account page. Nothing was charged.</li><li><strong>Unauthorized in Claude Code with a key. </strong>The key is missing, wrong or revoked. Check that the header says &quot;Bearer &quot; then the key.</li></ul>
+<ul class="cp-sources"><li><a href="https://claude.com/docs/connectors/custom">Claude docs: Add a connector that isn't in the directory</a></li><li><a href="https://claude.com/docs/connectors/building/authentication">Claude docs: Authentication for connectors</a></li><li><a href="https://code.claude.com/docs/en/mcp">Claude Code docs: Connect Claude Code to tools via MCP</a></li></ul>
 </section>
-<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Make an API key.</strong> Open your account page, create a key, give it a name and a monthly limit, and copy it. It is shown once.</li><li><strong>Add the server to Claude Code.</strong> Run claude mcp add with --transport http, the server address and a --header &quot;Authorization: Bearer YOUR_API_KEY&quot; option.</li><li><strong>Check the connection.</strong> Run claude mcp list, or type /mcp inside Claude Code, and confirm the server is listed as connected.</li><li><strong>Ask a question that needs an exact answer.</strong> Ask for a date count, an exchange rate or a mileage figure. Claude lists the tools, picks one and calls it.</li><li><strong>Watch spend and revoke if needed.</strong> Ask Claude to run quote_price first for a call you are unsure about. Revoke a key from your account page at any time.</li></ol></section>
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Can Claude connect to an API that needs a key?</h3><p>Claude Code can, today, with a header option on one command. The Claude apps (claude.ai and Claude Desktop) have a Request headers section for API keys, but Anthropic says it is in beta and open to a limited set of organizations as of November 2026.</p><h3>Who can add a custom connector in the Claude apps?</h3><p>According to Anthropic's documentation, a remote server can be added as a custom connector on Free, Pro, Max, Ultra, Team and Enterprise plans. On Team and Enterprise an Owner adds it for the organization. The Free plan allows one custom connector.</p><h3>Will Claude charge me for each tool call?</h3><p>Claude does not. The tools charge your prepaid balance per call, the same as the API. Each key has a monthly limit, and a call past the limit is refused and not billed.</p><h3>How do I stop using a key?</h3><p>Open your account page, find the key and choose Revoke. Calls made with it fail from then on. Then run claude mcp remove on your computer to drop the server entry.</p></section>
-<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Use the tools in Cursor and VS Code</a></li><li><a href="/toll-preview/guides/build-an-agent/">Build an agent on exact tools</a></li><li><a href="/toll-preview/developers/mcp/">MCP for AI agents</a></li><li><a href="/toll-preview/account">Create an API key</a></li></ul></section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Add a custom connector.</strong> In claude.ai or Claude Desktop, go to Customize &gt; Connectors and choose Add custom connector. On Team and Enterprise plans an Owner adds it for the organization.</li><li><strong>Enter the server address.</strong> Enter the Endwise MCP server address. Leave the OAuth client ID and secret empty.</li><li><strong>Sign in to Endwise and approve.</strong> Claude opens an Endwise page. Sign in, check that the app named is Claude, set a monthly limit for it, and choose Approve.</li><li><strong>Ask a question that needs an exact answer.</strong> Ask for a date count, an exchange rate or a mileage figure. Claude lists the tools, picks one and calls it.</li><li><strong>Watch spend and disconnect if needed.</strong> Ask Claude to run quote_price first for a call you are unsure about. Disconnect Claude from your account page at any time.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Can Claude connect to Endwise?</h3><p>Yes. Add Endwise as a custom connector by its address, and sign in to Endwise when Claude asks. You approve Claude on an Endwise page and give it a monthly limit. You do not need to copy an API key into Claude.</p><h3>Who can add a custom connector in the Claude apps?</h3><p>According to Anthropic's documentation, a remote server can be added as a custom connector on Free, Pro, Max, Ultra, Team and Enterprise plans. On Team and Enterprise an Owner adds it for the organization, and each member then connects with their own account. The Free plan allows one custom connector.</p><h3>Will Claude charge me for each tool call?</h3><p>Claude does not. The tools charge your prepaid balance per call, the same as the API. Each connected app has a monthly limit, and a call past the limit is refused and not billed.</p><h3>How do I stop Claude using Endwise?</h3><p>Open your account page, find Claude under Connected apps and choose Disconnect. Calls from Claude fail from then on. You can also remove the connector in Claude under Customize &gt; Connectors.</p><h3>Can I still use an API key with Claude Code?</h3><p>Yes. Claude Code accepts a header option on claude mcp add, so a Bearer API key works there as before.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Use the tools in Cursor and VS Code</a></li><li><a href="/toll-preview/guides/build-an-agent/">Build an agent on exact tools</a></li><li><a href="/toll-preview/developers/mcp/">MCP for AI agents</a></li><li><a href="/toll-preview/account">Your account and connected apps</a></li></ul></section>
 </div>
-<p class="cp-formats small muted"><a href="/toll-preview/guides/use-with-claude.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-03">2026-11-03</time></p>
+<p class="cp-formats small muted"><a href="/toll-preview/guides/use-with-claude.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
 </main>
 
 <footer class="site-foot">
@@ -209,6 +192,9 @@ claude mcp get endwise
           <li><a href="/toll-preview/tools/">All tools</a></li>
           <li><a href="/toll-preview/pricing/">Pricing</a></li>
           <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
         </ul>
       </nav>
       <nav aria-label="Who it's for">
@@ -240,6 +226,9 @@ claude mcp get endwise
           <li><a href="/toll-preview/about/">About</a></li>
           <li><a href="/toll-preview/why-exact/">Why exact</a></li>
           <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
           <li><a href="https://conyso.com/">Conyso</a></li>
           <li><a href="/toll-preview/account">Account</a></li>
           <li><a href="/toll-preview/contact/">Contact</a></li>

@@ -1,15 +1,15 @@
 # Working days left this year, England and Wales
 
-There are 40 working days left in 2026 in England and Wales after today, Tuesday 3 November 2026 (the date in London), up to and including Thursday 31 December 2026. Counting today, 41.
+There are 39 working days left in 2026 in England and Wales after today, Wednesday 4 November 2026 (the date in London), up to and including Thursday 31 December 2026. Counting today, 40.
 
-- Left after today: 40
+- Left after today: 39
 - Working days in 2026: 253
-- Before today: 212
+- Before today: 213
 - Holidays to come: 2
 
 ## Count the working days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=GB-ENG&start=2026-11-03&end=2026-12-31)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=GB-ENG&start=2026-11-04&end=2026-12-31)
 
 ## Month by month, 2026
 
@@ -25,9 +25,9 @@ There are 40 working days left in 2026 in England and Wales after today, Tuesday
 | [August](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-august-2026/) | 20 | 0 |  |
 | [September](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-september-2026/) | 22 | 0 |  |
 | [October](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-october-2026/) | 22 | 0 |  |
-| [November](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-november-2026/) | 21 | 19 |  |
+| [November](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-november-2026/) | 21 | 18 |  |
 | [December](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-december-2026/) | 21 | 21 | 25 Dec: Christmas Day; 28 Dec: Boxing Day (substitute day) |
-| **All of 2026** | 253 | 40 |  |
+| **All of 2026** | 253 | 39 |  |
 
 Still to come on a weekday: Christmas Day (Friday 25 December 2026) and Boxing Day (substitute day) (Monday 28 December 2026).
 
@@ -51,5 +51,5 @@ Today is not counted, so on a working day the figure "counting today" is one mor
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/working-days-left-this-year-england-wales/  
-Worked out for: 2026-11-03  
+Worked out for: 2026-11-04  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/working-days-left-this-year-england-wales.csv

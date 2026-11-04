@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Endwise in Zapier, Make and n8n (one HTTP step): Endwise</title>
+<meta name="description" content="Call the Endwise API from Zapier, Make or n8n with one HTTP step: the URL, the Bearer header, a JSON body and how to map the result into the next step.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/guides/zapier-make-n8n/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/guides/zapier-make-n8n.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Use Endwise in Zapier, Make and n8n (one HTTP step)">
+<meta property="og:description" content="Call the Endwise API from Zapier, Make or n8n with one HTTP step: the URL, the Bearer header, a JSON body and how to map the result into the next step.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/guides/zapier-make-n8n/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/zapier-make-n8n/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/zapier-make-n8n/","name":"Use Endwise in Zapier, Make and n8n (one HTTP step)","description":"Call the Endwise API from Zapier, Make or n8n with one HTTP step: the URL, the Bearer header, a JSON body and how to map the result into the next step.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"Use Endwise in Zapier, Make and n8n (one HTTP step)","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/zapier-make-n8n/"}]},{"@type":"HowTo","name":"Use Endwise in Zapier, Make and n8n (one HTTP step)","description":"Call the Endwise API from Zapier, Make or n8n with one HTTP step: the URL, the Bearer header, a JSON body and how to map the result into the next step.","step":[{"@type":"HowToStep","position":1,"name":"Create an API key with a low monthly limit","text":"On your account page, create a key for the automation and set a monthly limit on it."},{"@type":"HowToStep","position":2,"name":"Add one HTTP step","text":"Use Webhooks by Zapier (Custom Request), Make's HTTP \u003e Make a request module, or n8n's HTTP Request node."},{"@type":"HowToStep","position":3,"name":"Set the URL, header and JSON body","text":"POST to the tool's address with an Authorization: Bearer header and the tool's input as JSON."},{"@type":"HowToStep","position":4,"name":"Add an Idempotency-Key header","text":"Build it from the input so a retry or replay returns the stored answer and charges nothing more."},{"@type":"HowToStep","position":5,"name":"Map the result into the next step","text":"Run the step once, then pick the field you need from the result object."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can Zapier, Make or n8n call the Endwise API?","acceptedAnswer":{"@type":"Answer","text":"Yes. All three can send a POST with headers and a JSON body, which is all the API needs: an Authorization: Bearer header and the tool's input as JSON. Zapier uses Webhooks by Zapier, Make uses the HTTP module and n8n uses the HTTP Request node."}},{"@type":"Question","name":"Which Zapier plans include Webhooks by Zapier?","acceptedAnswer":{"@type":"Answer","text":"Zapier's help pages say Webhooks by Zapier is available on the Professional, Team and Enterprise plans and is not included in the Free plan. Check Zapier's pricing page for what your plan includes today."}},{"@type":"Question","name":"Will a retried or replayed run charge me twice?","acceptedAnswer":{"@type":"Answer","text":"Not if you send an Idempotency-Key built from the input. The API returns the stored answer for a repeated key and charges nothing more. Without the header, each run is a new charge."}},{"@type":"Question","name":"Where do I keep the API key?","acceptedAnswer":{"@type":"Answer","text":"In the tool's credential store where it has one: a Make connection or an n8n Header Auth credential. Zapier's Webhooks step keeps header values in the step itself, where anyone with access to the Zap can read them. Use a key with a low monthly limit."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">Use Endwise in Zapier, Make and n8n (one HTTP step)</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Use Endwise in Zapier, Make and n8n (one HTTP step)</h1>
+<p class="cp-answer">Yes, with 1 HTTP step in each: Zapier's Webhooks by Zapier (Custom Request), Make's HTTP &gt; Make a request, or n8n's HTTP Request node. POST to <code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/TOOL-SLUG</code> with an <code>Authorization: Bearer YOUR_API_KEY</code> header and a JSON body, then map the <code>result</code> field.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="can-they">Can Zapier, Make and n8n call Endwise?</h2>
+<p>Yes. Each has a step that sends an HTTP <code>POST</code> with headers and a JSON body, and that is all the Endwise API needs. Every call goes to <code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/TOOL-SLUG</code>, carries <code>Authorization: Bearer YOUR_API_KEY</code>, and returns JSON with the answer under <code>result</code>. Create the key on your <a href="/toll-preview/account">account page</a>, one key per automation, with a monthly limit. This page is current as of November 2026.</p>
+<p>The examples use the business days tool. The body is the same in all three tools:</p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;between&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;start&quot;: &quot;2026-07-01&quot;,
+  &quot;end&quot;: &quot;2026-07-08&quot;
+&#125;</code></pre>
+<p>A successful call answers like this (the full response also has <code>ok</code>, <code>charged</code> and <code>balance</code>):</p>
+<pre><code class="language-json">&#123;
+  &quot;businessDays&quot;: 4,
+  &quot;holidaysSkipped&quot;: [
+    &#123;
+      &quot;date&quot;: &quot;2026-07-03&quot;,
+      &quot;name&quot;: &quot;Independence Day (observed)&quot;
+    &#125;
+  ]
+&#125;</code></pre>
+<p>Each call costs <strong>$0.0005</strong>, taken from your balance, with the free monthly allowance ($0.25) spent first.</p>
+</section>
+<section>
+<h2 id="cost">How do I stop automations paying twice?</h2>
+<p>Automations retry, replay and re-run. Send an <code>Idempotency-Key</code> header (1 to 200 characters) made from the input, such as <code>zap-2026-07-01-2026-07-08</code>. If that key was already answered for the same tool, the API returns the stored answer, marks it <code>Idempotent-Replay: true</code> and charges nothing more. The same key with different input is refused with <code>idempotency_mismatch</code>, so include every input that changes the answer. The documentation does not say how long stored answers are kept.</p>
+<p>A run that is refused (bad input, no balance, a monthly limit) is not charged. A <code>409 in_progress</code> or <code>429 rate_limited</code> means retry in a moment with the same key.</p>
+</section>
+<section>
+<h2 id="zapier">How do I do it in Zapier?</h2>
+<p>Use <strong>Webhooks by Zapier</strong>. Zapier's help pages say it is available on the Professional, Team and Enterprise plans, and not on Free. Add an action step, choose <strong>Webhooks by Zapier</strong>, and set the <strong>Event</strong> to <strong>Custom Request</strong>. Zapier's help says that with Custom Request you type the raw JSON into the <strong>Data</strong> field and it is sent exactly as entered, without Zapier parsing or formatting it.</p>
+<ul><li><strong>Method: </strong><code>POST</code></li><li><strong>URL: </strong><code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days</code></li><li><strong>Data: </strong>the JSON below, with the mapped fields from earlier steps in place of the placeholders</li><li><strong>Headers: </strong><code>Authorization</code> set to <code>Bearer YOUR_API_KEY</code>; <code>Content-Type</code> set to <code>application/json</code>; <code>Idempotency-Key</code> set to text plus the mapped dates</li></ul>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;between&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;start&quot;: &quot;&lt;Start Date from an earlier step&gt;&quot;,
+  &quot;end&quot;: &quot;&lt;End Date from an earlier step&gt;&quot;
+&#125;</code></pre>
+<p>Validate the JSON before you save, because Zapier does not check it. Then test the step. Zapier shows the response, and later steps can use its fields; the answer is under <code>result</code>.</p>
+<p class="cp-note">Zapier says Webhooks by Zapier supports basic authentication or none and stores credentials in step fields in plain text that anyone with access to the Zap can read. A header value is kept the same way. Zapier's other app, API by Zapier, keeps API keys in an app connection (static header keys are one of its options) and has an API Request action. Zapier's page does not list that action's field names, so follow the editor.</p>
+</section>
+<section>
+<h2 id="make">How do I do it in Make?</h2>
+<p>Add the <strong>HTTP</strong> app and choose the <strong>Make a request</strong> module. Make's documentation describes these fields:</p>
+<ul><li><strong>URL: </strong><code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days</code> (it must begin with https://)</li><li><strong>Method: </strong><code>POST</code></li><li><strong>Authentication type: </strong>API key. In the credentials, put <code>Bearer YOUR_API_KEY</code> as the key value (Make says to include any required prefix), choose &quot;In the header&quot; for the placement, and enter <code>Authorization</code> as the key name. Make's page says to use its authentication fields, not the Headers field, for credentials.</li><li><strong>Headers: </strong>add <code>Idempotency-Key</code> with the input-based value.</li><li><strong>Body content type: </strong><code>application/JSON</code></li><li><strong>Body input method: </strong>Data structure to map each field (Make escapes reserved characters for you), or JSON string to paste the body above (you escape them yourself).</li><li><strong>Parse response: </strong>Yes. This structures the output so you can map it.</li></ul>
+<p>Run the module once. The fields of the response, including <code>result</code> and its <code>businessDays</code> value, then appear in the mapping panel of later modules. Under the advanced settings, Make lets you set a timeout between 1 and 300 seconds.</p>
+</section>
+<section>
+<h2 id="n8n">How do I do it in n8n?</h2>
+<p>Add an <strong>HTTP Request</strong> node. The documented parameters are:</p>
+<ul><li><strong>Method: </strong><code>POST</code></li><li><strong>URL: </strong><code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days</code></li><li><strong>Authentication: </strong>use generic credentials and choose Header Auth. Create the credential with <strong>Name</strong> <code>Authorization</code> and <strong>Value</strong> <code>Bearer YOUR_API_KEY</code>. n8n keeps it in its credential store, not in the workflow.</li><li><strong>Send Headers: </strong>on, then add <code>Idempotency-Key</code> under Header Parameters.</li><li><strong>Send Body: </strong>on, with <strong>Body Content Type</strong> JSON and <strong>Specify Body</strong> Using JSON.</li></ul>
+<p>In the JSON field, switch to an expression. n8n marks an expression with double curly braces, and <code>$json</code> is the previous node's output. Write the body like this:</p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;between&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;start&quot;: &quot;&#123;&#123; $json.start &#125;&#125;&quot;,
+  &quot;end&quot;: &quot;&#123;&#123; $json.end &#125;&#125;&quot;
+&#125;</code></pre>
+<p>The node outputs the API's JSON. In a later node, the expression <code>&#123;&#123; $json.result.businessDays &#125;&#125;</code> reads the value. n8n's expressions page documents this form for reading earlier node data.</p>
+</section>
+<section>
+<h2 id="errors">What if a call fails?</h2>
+<p>Every error has the same shape: <code>&#123; &quot;ok&quot;: false, &quot;error&quot;: &#123; &quot;code&quot;: &quot;...&quot;, &quot;message&quot;: &quot;...&quot; &#125; &#125;</code>. Check <code>ok</code> before you use <code>result</code>, and send failures to an alert step. Stop and tell a person on <code>insufficient_balance</code> and <code>cap_reached</code>, because retrying cannot fix them. Fix the input on <code>invalid_input</code>. The full list is in the <a href="/toll-preview/docs">API documentation</a>.</p>
+<ul class="cp-sources"><li><a href="https://help.zapier.com/hc/en-us/articles/8496326446989-Send-webhooks-in-Zap-workflows">Zapier Help: Send webhooks in Zap workflows</a></li><li><a href="https://help.zapier.com/hc/en-us/articles/8496083355661-How-to-get-started-with-Webhooks-by-Zapier">Zapier Help: How to get started with Webhooks by Zapier</a></li><li><a href="https://help.zapier.com/hc/en-us/articles/44391646192397-Ways-to-make-API-requests-in-Zapier">Zapier Help: Ways to make API requests in Zapier</a></li><li><a href="https://apps.make.com/http">Make Apps Documentation: HTTP</a></li><li><a href="https://apps.make.com/api-key-authentication-type">Make Apps Documentation: API key authentication type</a></li><li><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/">n8n Docs: HTTP Request node</a></li><li><a href="https://docs.n8n.io/credentials/httprequest/">n8n Docs: HTTP Request credentials</a></li><li><a href="https://docs.n8n.io/code/expressions/">n8n Docs: Expressions</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Create an API key with a low monthly limit.</strong> On your account page, create a key for the automation and set a monthly limit on it.</li><li><strong>Add one HTTP step.</strong> Use Webhooks by Zapier (Custom Request), Make's HTTP &gt; Make a request module, or n8n's HTTP Request node.</li><li><strong>Set the URL, header and JSON body.</strong> POST to the tool's address with an Authorization: Bearer header and the tool's input as JSON.</li><li><strong>Add an Idempotency-Key header.</strong> Build it from the input so a retry or replay returns the stored answer and charges nothing more.</li><li><strong>Map the result into the next step.</strong> Run the step once, then pick the field you need from the result object.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Can Zapier, Make or n8n call the Endwise API?</h3><p>Yes. All three can send a POST with headers and a JSON body, which is all the API needs: an Authorization: Bearer header and the tool's input as JSON. Zapier uses Webhooks by Zapier, Make uses the HTTP module and n8n uses the HTTP Request node.</p><h3>Which Zapier plans include Webhooks by Zapier?</h3><p>Zapier's help pages say Webhooks by Zapier is available on the Professional, Team and Enterprise plans and is not included in the Free plan. Check Zapier's pricing page for what your plan includes today.</p><h3>Will a retried or replayed run charge me twice?</h3><p>Not if you send an Idempotency-Key built from the input. The API returns the stored answer for a repeated key and charges nothing more. Without the header, each run is a new charge.</p><h3>Where do I keep the API key?</h3><p>In the tool's credential store where it has one: a Make connection or an n8n Header Auth credential. Zapier's Webhooks step keeps header values in the step itself, where anyone with access to the Zap can read them. Use a key with a low monthly limit.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/guides/google-sheets/">Use Endwise in Google Sheets</a></li><li><a href="/toll-preview/guides/excel/">Use Endwise in Excel</a></li><li><a href="/toll-preview/guides/build-an-agent/">Build an agent on exact tools</a></li><li><a href="/toll-preview/docs">The REST API</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/guides/zapier-make-n8n.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

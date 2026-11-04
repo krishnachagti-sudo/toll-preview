@@ -114,7 +114,7 @@
     $('new-key-name').textContent = '';
     $('new-key').hidden = true;
     $('welcome').hidden = true;
-    ['key-list', 'ledger', 'buy-passes', 'buy-packs', 'buy-bundles', 'who-email', 'balance-total', 'balance-grant', 'balance-paid', 'balance-pass', 'pass-note',
+    ['key-list', 'app-list', 'ledger', 'buy-passes', 'buy-packs', 'buy-bundles', 'who-email', 'balance-total', 'balance-grant', 'balance-paid', 'balance-pass', 'pass-note',
       'balance-bundle', 'cap-current', 'cap-spent', 'key-error', 'cap-error', 'cap-status', 'topup-error', 'new-key-status',
       'nonprofit-error', 'nonprofit-status', 'invoice-error', 'invoice-status', 'invoice-list', 'verify-email', 'verify-status'].forEach(function (id) {
       $(id).textContent = '';
@@ -433,25 +433,31 @@
   // ---------- API keys ----------
   function loadKeys() {
     return Endwise.api('/api/keys').then(function (json) { renderKeys(json.keys); }, function (err) {
-      $('key-list').textContent = '';
-      $('key-list').appendChild(h('p', { class: 'form-error' }, err.message));
+      ['key-list', 'app-list'].forEach(function (id) {
+        $(id).textContent = '';
+        $(id).appendChild(h('p', { class: 'form-error' }, err.message));
+      });
     });
   }
 
+  // A connected app (kind 'oauth') is a key made by signing in from Claude or ChatGPT: the same
+  // limit and spend, no key text to show, and Disconnect in place of Revoke.
   function keyRow(key) {
     var revoked = !!key.revokedAt;
+    var app = key.kind === 'oauth';
+    var stopWord = app ? 'Disconnect' : 'Revoke';
     var status = h('span', { class: 'status', role: 'status' });
     var actions = h('div', { class: 'key-actions' });
     var editArea = h('div');
 
     if (!revoked) {
-      var revoke = h('button', { type: 'button', class: 'link-btn' }, 'Revoke');
+      var revoke = h('button', { type: 'button', class: 'link-btn' }, stopWord);
       var armed = false;
       revoke.addEventListener('click', function () {
         if (!armed) {
           armed = true;
-          revoke.textContent = 'Click again to revoke for good';
-          setTimeout(function () { armed = false; revoke.textContent = 'Revoke'; }, 5000);
+          revoke.textContent = app ? 'Click again to disconnect' : 'Click again to revoke for good';
+          setTimeout(function () { armed = false; revoke.textContent = stopWord; }, 5000);
           return;
         }
         revoke.disabled = true;
@@ -491,7 +497,7 @@
 
     return h('li', { class: 'key-item' + (revoked ? ' key-revoked' : '') }, [
       h('div', { class: 'key-top' }, [
-        h('div', null, [
+        h('div', null, app ? [h('strong', null, key.name)] : [
           h('strong', null, key.name),
           ' ',
           h('code', null, key.prefix + '…'),
@@ -499,7 +505,7 @@
         actions,
       ]),
       h('p', { class: 'key-meta money' }, revoked
-        ? ['Revoked ' + when(key.revokedAt) + '. It no longer works.']
+        ? [(app ? 'Disconnected ' : 'Revoked ') + when(key.revokedAt) + '. It no longer works.']
         : [
           'Limit ', h('strong', null, key.monthlyCapDisplay), ' a month. ',
           'Spent ', h('strong', null, key.spentThisMonthDisplay), ' this month. ',
@@ -510,16 +516,21 @@
     ]);
   }
 
-  function renderKeys(keys) {
-    var list = $('key-list');
+  function renderKeyList(id, keys, emptyText) {
+    var list = $(id);
     list.textContent = '';
     if (!keys.length) {
-      list.appendChild(h('p', { class: 'muted' }, 'You have no keys yet.'));
+      list.appendChild(h('p', { class: 'muted' }, emptyText));
       return;
     }
     var active = keys.filter(function (k) { return !k.revokedAt; });
     var revoked = keys.filter(function (k) { return k.revokedAt; });
     list.appendChild(h('ul', { class: 'key-list' }, active.concat(revoked).map(keyRow)));
+  }
+
+  function renderKeys(keys) {
+    renderKeyList('key-list', keys.filter(function (k) { return k.kind !== 'oauth'; }), 'You have no keys yet.');
+    renderKeyList('app-list', keys.filter(function (k) { return k.kind === 'oauth'; }), 'No apps are connected.');
   }
 
   $('key-form').addEventListener('submit', function (ev) {

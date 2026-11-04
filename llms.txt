@@ -6,14 +6,18 @@ Endwise is a Conyso product. Every tool is deterministic: the same input always 
 
 ## Using Endwise
 
-- [Guides](https://krishnachagti-sudo.github.io/toll-preview/guides/): Every guide: using the tools from AI assistants and editors, building an agent, checking AI numbers, and paying per use.
-- [How to use Endwise with Claude (Claude Code and apps)](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/): Connect to Claude Code with one command, see what the Claude apps allow today, try a first prompt, and keep spend under control.
-- [Does Endwise work with ChatGPT? What works today](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/): What works today when you want ChatGPT to call exact tools: the MCP connector limits, a custom GPT Action with an API key, and the OpenAI API from code.
+- [Guides](https://krishnachagti-sudo.github.io/toll-preview/guides/): Every guide: using the tools from AI assistants, editors, spreadsheets and automations, building an agent, checking AI numbers, and paying per use.
+- [How to use Endwise with Claude (Claude apps and Claude Code)](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/): Add Endwise as a custom connector, sign in and approve it with a monthly limit, try a first prompt, and keep spend under control.
+- [How to use Endwise with ChatGPT](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/): Add Endwise to ChatGPT as a custom MCP server, sign in and approve it with a monthly limit, and call the same tools from the OpenAI API.
 - [How to add Endwise to Cursor and VS Code (MCP)](https://krishnachagti-sudo.github.io/toll-preview/guides/use-in-cursor-and-vs-code/): Exact mcp.json files for Cursor and VS Code with a Bearer key, how to keep keys out of git, and how to check it works.
 - [Give your own AI agent exact tools: 3 ways](https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/): For developers: three ways to give an agent exact tools (Anthropic MCP connector, OpenAI remote MCP, REST function calling), with samples, per-agent keys, quotes and error handling.
+- [Use Endwise in Google Sheets: custom functions with Apps Script](https://krishnachagti-sudo.github.io/toll-preview/guides/google-sheets/): Apps Script code for Sheets: custom functions, a menu command that writes values, the API key kept in script properties, and no double charges on recalculation.
+- [Use Endwise in Excel with Power Query (POST with a JSON body)](https://krishnachagti-sudo.github.io/toll-preview/guides/excel/): Power Query M code for Excel: a POST with a Bearer header and Json.FromValue body, a reusable function for table rows, and how to avoid paying again on refresh.
+- [Use Endwise in Zapier, Make and n8n (one HTTP step)](https://krishnachagti-sudo.github.io/toll-preview/guides/zapier-make-n8n/): One HTTP step in Zapier (Webhooks), Make (HTTP) and n8n (HTTP Request): URL, Authorization header, JSON body, result mapping and retry safety.
 - [Why AI assistants get dates and numbers wrong](https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/): Why language models miss on dates, holidays, rates and tax figures, shown with worked cases, and how to give an assistant a tool that gets them exactly.
 - [How to check a number an AI gives you](https://krishnachagti-sudo.github.io/toll-preview/guides/check-numbers-from-ai/): A short procedure for checking a date, rate or tax figure from an AI assistant, with what to test for each kind of number.
 - [Pay per use or a subscription: which costs less](https://krishnachagti-sudo.github.io/toll-preview/guides/pay-per-use-or-subscription/): The break-even formula for pay per use against a subscription, worked with Endwise prices: when per use wins and when a pass wins.
+- [A spreadsheet or Endwise: which to use](https://krishnachagti-sudo.github.io/toll-preview/guides/spreadsheet-or-endwise/): An honest comparison of a spreadsheet and Endwise for business days, exchange rates, mileage, per diem and 1099 thresholds, including when the spreadsheet wins.
 
 ## Tools
 
@@ -60,6 +64,7 @@ Endwise is a Conyso product. Every tool is deterministic: the same input always 
 - [Owner-operator per diem deduction: Schedule C line 24b at 80%](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/owner-operator/): How an owner-operator figures and reports the per diem deduction on Schedule C, with the rest requirement and the 80% limit.
 - [Per diem partial days: the 3/4 rule for departure and return days](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/partial-days/): How departure and return days are prorated at 3/4 of the transportation-industry rate, with the amount for every notice period.
 - [Can company truck drivers claim per diem?](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/company-drivers/): Why W-2 truck drivers cannot deduct per diem, and how much employer per diem is tax-free under an accountable plan.
+- [Holiday calendars to subscribe to](https://krishnachagti-sudo.github.io/toll-preview/calendars/): Free .ics holiday calendars you subscribe to once: US federal, England and Wales bank holidays, India central government.
 
 ## Overviews
 
@@ -72,6 +77,11 @@ Endwise is a Conyso product. Every tool is deterministic: the same input always 
 - [EUR to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr/): EUR to INR on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 2009.
 - [GBP to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr/): GBP to INR on any date from the ECB reference rates: the latest fixing, month-end rates and yearly averages since 2009.
 - [Reduce image size in KB: 20 KB to 1 MB, compared](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/reduce-image-size-in-kb/): How to reduce a photo to a size in KB, with what limits from 20 KB to 1 MB did to four test photos.
+- [Sources and how we check the answers](https://krishnachagti-sudo.github.io/toll-preview/sources/): The official source, edition and read date behind each tool, and what its tests check the answers against.
+- [Data updates](https://krishnachagti-sudo.github.io/toll-preview/updates/): A dated log of changes to the data and rules behind the tools, newest first, each with its source.
+- [Free widgets for your site: IRS mileage rate, holidays](https://krishnachagti-sudo.github.io/toll-preview/widgets/): Free iframe widgets to paste into your site: the current IRS mileage rate, the next federal holiday and a business days counter.
+- [Free data downloads](https://krishnachagti-sudo.github.io/toll-preview/data/): Every table page that has a CSV copy, grouped by tool, with the page link, the CSV link and the data date.
+- [Press kit](https://krishnachagti-sudo.github.io/toll-preview/press/): Press kit: a one-sentence description, the maker, how it works, the logo, brand colors, how to write the name, and how to reach us.
 
 ## About
 
@@ -79,7 +89,7 @@ Endwise is a Conyso product. Every tool is deterministic: the same input always 
 - [Pricing](https://krishnachagti-sudo.github.io/toll-preview/pricing/): Free use, passes for people, credit packs for code and agents, the team plan, every live tool's price in words, how a charge works, and common questions.
 - [How it works](https://krishnachagti-sudo.github.io/toll-preview/how-it-works/): Top up once, use any tool on the web, over REST or over MCP, and pay per use from one balance.
 - [Developers](https://krishnachagti-sudo.github.io/toll-preview/developers/): The REST API: a quickstart with real requests and responses, API keys, errors, idempotency keys, rate limits, quotes and the OpenAPI document.
-- [MCP for AI agents](https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/): Connect an AI agent over MCP: the server address, authentication, the tools it lists, quote\_price and example calls.
+- [MCP for AI agents](https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/): Connect an AI agent over MCP: the server address, signing in or an API key, the tools it lists, quote\_price and example calls.
 - [Why exact](https://krishnachagti-sudo.github.io/toll-preview/why-exact/): Exact answers versus AI guesses, with worked examples from the tools: observed holidays, substitute days, weekend exchange rates and holiday delivery dates.
 - [About](https://krishnachagti-sudo.github.io/toll-preview/about/): Who makes the tools and how they work: Conyso Holdings, exact tools for specific jobs, no AI in the answers.
 - [Who it's for](https://krishnachagti-sudo.github.io/toll-preview/for/): The tools grouped by who uses them, with a page for each kind of work.

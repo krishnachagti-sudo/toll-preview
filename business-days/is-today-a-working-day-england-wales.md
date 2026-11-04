@@ -1,20 +1,19 @@
 # Is today a working day in England and Wales?
 
-Yes: today, Tuesday 3 November 2026 (the date in London), is a working day in England and Wales. The next working day is Wednesday 4 November 2026.
+Yes: today, Wednesday 4 November 2026 (the date in London), is a working day in England and Wales. The next working day is Thursday 5 November 2026.
 
-- Next working day: 4 November 2026
+- Next working day: 5 November 2026
 - Today: Working day
-- Left in 2026: 40
+- Left in 2026: 39
 
 ## Find the next working day after any date
 
-[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=GB-ENG&start=2026-11-03&days=1)
+[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=GB-ENG&start=2026-11-04&days=1)
 
 ## Today and the next 13 days
 
 | Date | Day | Working day | Not counted because |
 | --- | --- | --- | --- |
-| 3 November 2026 | Tuesday | Yes |  |
 | 4 November 2026 | Wednesday | Yes |  |
 | 5 November 2026 | Thursday | Yes |  |
 | 6 November 2026 | Friday | Yes |  |
@@ -28,8 +27,9 @@ Yes: today, Tuesday 3 November 2026 (the date in London), is a working day in En
 | 14 November 2026 | Saturday | No | Weekend |
 | 15 November 2026 | Sunday | No | Weekend |
 | 16 November 2026 | Monday | Yes |  |
+| 17 November 2026 | Tuesday | Yes |  |
 
-After today, 40 working days are left in 2026 in England and Wales ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/working-days-left-this-year-england-wales/)).
+After today, 39 working days are left in 2026 in England and Wales ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/working-days-left-this-year-england-wales/)).
 
 ## What counts as a working day here
 
@@ -58,5 +58,5 @@ A substitute bank holiday is given on the next weekday that is not already a hol
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-working-day-england-wales/  
-Worked out for: 2026-11-03  
+Worked out for: 2026-11-04  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-working-day-england-wales.csv

@@ -1,21 +1,20 @@
 # Is today a business day in the US?
 
-Yes: today, Tuesday, November 3, 2026 (the date in Washington, DC), is a business day in the US. The next business day is Wednesday, November 4, 2026.
+Yes: today, Wednesday, November 4, 2026 (the date in Washington, DC), is a business day in the US. The next business day is Thursday, November 5, 2026.
 
-- Next business day: November 4, 2026
+- Next business day: November 5, 2026
 - Today: Business day
 - Reserve Banks: Open
-- Left in 2026: 39
+- Left in 2026: 38
 
 ## Find the next business day after any date
 
-[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-03&days=1)
+[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-04&days=1)
 
 ## Today and the next 13 days
 
 | Date | Day | Business day | Reserve Banks open | Not counted because |
 | --- | --- | --- | --- | --- |
-| November 3, 2026 | Tuesday | Yes | Yes |  |
 | November 4, 2026 | Wednesday | Yes | Yes |  |
 | November 5, 2026 | Thursday | Yes | Yes |  |
 | November 6, 2026 | Friday | Yes | Yes |  |
@@ -29,8 +28,9 @@ Yes: today, Tuesday, November 3, 2026 (the date in Washington, DC), is a busines
 | November 14, 2026 | Saturday | No | No | Weekend |
 | November 15, 2026 | Sunday | No | No | Weekend |
 | November 16, 2026 | Monday | Yes | Yes |  |
+| November 17, 2026 | Tuesday | Yes | Yes |  |
 
-After today, 39 business days are left in 2026 in the US ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/)).
+After today, 38 business days are left in 2026 in the US ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/)).
 
 ## What counts as a business day here
 
@@ -67,5 +67,5 @@ For most federal employees a Saturday holiday is observed on the Friday before a
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-business-day-us/  
-Worked out for: 2026-11-03  
+Worked out for: 2026-11-04  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-business-day-us.csv

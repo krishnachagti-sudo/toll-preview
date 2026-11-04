@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Use Endwise in Google Sheets: custom functions with Apps Script</title>
+<meta name="description" content="Add =BUSINESSDAYS and =FXRATE to Google Sheets with a short Apps Script. Keep your API key in script properties and never pay twice for the same cell.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/guides/google-sheets/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/guides/google-sheets.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Use Endwise in Google Sheets: custom functions with Apps Script">
+<meta property="og:description" content="Add =BUSINESSDAYS and =FXRATE to Google Sheets with a short Apps Script. Keep your API key in script properties and never pay twice for the same cell.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/guides/google-sheets/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/google-sheets/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/google-sheets/","name":"Use Endwise in Google Sheets: custom functions with Apps Script","description":"Add =BUSINESSDAYS and =FXRATE to Google Sheets with a short Apps Script. Keep your API key in script properties and never pay twice for the same cell.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"Use Endwise in Google Sheets: custom functions with Apps Script","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/google-sheets/"}]},{"@type":"HowTo","name":"Use Endwise in Google Sheets: custom functions with Apps Script","description":"Add =BUSINESSDAYS and =FXRATE to Google Sheets with a short Apps Script. Keep your API key in script properties and never pay twice for the same cell.","step":[{"@type":"HowToStep","position":1,"name":"Create an API key with a low monthly limit","text":"On your account page, create a key just for the spreadsheet and set a monthly limit on it."},{"@type":"HowToStep","position":2,"name":"Open Apps Script","text":"In the sheet, choose Extensions \u003e Apps Script and paste in the code from this page."},{"@type":"HowToStep","position":3,"name":"Store the key as a script property","text":"In Project Settings, under Script properties, add ENDWISE_API_KEY with your key as the value."},{"@type":"HowToStep","position":4,"name":"Use the functions in a cell","text":"Type =BUSINESSDAYS(A2, B2, \"US\") or =FXRATE(\"USD\", \"EUR\", A2) in a cell. The first time, Sheets asks you to allow the script to call an external service."},{"@type":"HowToStep","position":5,"name":"Prefer the menu command for big lists","text":"For many rows, use the Endwise menu command. It writes the answers as plain values, so recalculating the sheet never calls the API again."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can a Google Sheets custom function call an API?","acceptedAnswer":{"@type":"Answer","text":"Yes. Google lists UrlFetchApp, the Apps Script service for fetching URLs, as supported in custom functions. A custom function must finish within 30 seconds, or the cell shows #ERROR!."}},{"@type":"Question","name":"Where should I keep the API key in Apps Script?","acceptedAnswer":{"@type":"Answer","text":"In script properties, set under Project Settings, and read with PropertiesService.getScriptProperties(). Do not type it into a cell or into the function call. Anyone who can edit the script can read the property, so use a key with a low monthly limit."}},{"@type":"Question","name":"Will a custom function call the API again every time the sheet recalculates?","acceptedAnswer":{"@type":"Answer","text":"Not on every recalculation. Google says a custom function recalculates when you edit it or change a cell passed to it as an argument. Each recalculation is a new paid call unless you cache the answer or send an Idempotency-Key, and the code on this page does both."}},{"@type":"Question","name":"What does a repeated call cost with an Idempotency-Key?","acceptedAnswer":{"@type":"Answer","text":"Nothing. If the key was already answered for the same tool, the API sends the stored answer again and charges nothing more. The same key with different input is refused with idempotency_mismatch."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">Use Endwise in Google Sheets: custom functions with Apps Script</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Use Endwise in Google Sheets: custom functions with Apps Script</h1>
+<p class="cp-answer">Yes, in 5 steps: paste a short Apps Script into the sheet, store your API key as a script property, and call <code>=BUSINESSDAYS(A2, B2, &quot;US&quot;)</code> or <code>=FXRATE(&quot;USD&quot;, &quot;EUR&quot;, A2)</code>. The code sends an Idempotency-Key and caches answers, so recalculating never pays twice for the same question.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="can-i">Can I use Endwise in Google Sheets?</h2>
+<p>Yes. Google Sheets runs short scripts written in Apps Script, and a script can call the Endwise REST API. You can wrap a tool in a custom function, which then works like any built-in formula, or run it from a menu command. Both send a <code>POST</code> to <code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/TOOL-SLUG</code> with your key in an <code>Authorization: Bearer</code> header. This page is current as of November 2026.</p>
+<p>Each call is billed to your balance, the free monthly allowance ($0.25) first. The free runs on the web pages (5 a day) do not apply to API calls, so the cost section below matters.</p>
+</section>
+<section>
+<h2 id="limits">What does Google allow in a custom function?</h2>
+<p>From Google's documentation:</p>
+<ul><li><strong>UrlFetchApp is allowed. </strong>Google lists it among the services a custom function can use.</li><li><strong>Properties are allowed, with one catch. </strong>The note in Google's table is that getUserProperties() only gets the properties of the spreadsheet owner. This page uses script properties, which are shared by everyone who runs the script.</li><li><strong>No sign-in prompts. </strong>Custom functions never ask users to authorize access to personal data. If one calls a service that needs authorization, Sheets shows &quot;You do not have permission to call&quot; that service. UrlFetchApp is not in that group.</li><li><strong>30 seconds. </strong>A custom function call must return within 30 seconds, or the cell shows #ERROR!.</li><li><strong>Daily fetch quota. </strong>Google lists 20,000 URL Fetch calls a day for consumer accounts and 100,000 for Google Workspace accounts.</li><li><strong>Recalculation. </strong>A custom function recalculates when you edit it or change a cell or range passed to it as an argument. Volatile functions such as NOW() cannot be used as arguments.</li></ul>
+<p>Google also says the cache works in custom functions but is &quot;not particularly useful&quot; there. It is useful for the cost problem below, because a cached answer needs no network call at all.</p>
+</section>
+<section>
+<h2 id="cost">How do I stop paying for the same call twice?</h2>
+<p>A sheet can ask the same question many times: fill-down over a column, a reopened file, an edited formula that is then undone. Three layers keep each distinct question to one charge:</p>
+<ul><li><strong>Idempotency-Key. </strong>The code below sends a key built from the tool and the input. The API sends back the stored answer for a repeated key, marks it <code>Idempotent-Replay: true</code>, and charges nothing more. The same key with different input is refused with <code>idempotency_mismatch</code>. The documentation does not say how long stored answers are kept, so treat this as a safety net, not storage.</li><li><strong>CacheService. </strong>The code caches each answer for 6 hours, the longest Google allows. Cached repeats make no call at all. Google calls the expiration a suggestion, and entries may go earlier, which the Idempotency-Key covers.</li><li><strong>A menu command that writes values. </strong>For lists, write the answers into cells as plain values. Nothing recalculates, and the answers stay in the file.</li></ul>
+<p>Know the cost before you fill down. Send the same body to <code>https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/TOOL-SLUG/quote</code> and the API says what it would charge without running anything. A column of 500 rows is 500 distinct questions, so 500 charges.</p>
+<p><strong>Business days</strong> costs <strong>$0.0005</strong> a call. <strong>Exchange rate on a date</strong> costs <strong>$0.001</strong>. Check each tool page for its current price.</p>
+</section>
+<section>
+<h2 id="code">What is the full code?</h2>
+<p>In the sheet, choose <strong>Extensions &gt; Apps Script</strong> and replace the contents of <code>Code.gs</code> with this. Then open <strong>Project Settings</strong>, find <strong>Script properties</strong>, choose <strong>Add script property</strong>, and add <code>ENDWISE_API_KEY</code> with your key (YOUR_API_KEY here) as the value. Create the key on your <a href="/toll-preview/account">account page</a>, one per spreadsheet, with a low monthly limit.</p>
+<pre><code class="language-javascript">// Endwise for Google Sheets. Paste into Extensions &gt; Apps Script.
+// Keep your key in Project Settings &gt; Script properties as ENDWISE_API_KEY, never in a cell.
+const ENDWISE_API = 'https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/';
+
+function endwiseKey_() &#123;
+  const key = PropertiesService.getScriptProperties().getProperty('ENDWISE_API_KEY');
+  if (!key) throw new Error('Add ENDWISE_API_KEY under Project Settings &gt; Script properties.');
+  return key;
+&#125;
+
+// The same tool and input always give the same key, so a repeat is answered for free.
+function idempotencyKey_(slug, input) &#123;
+  const digest = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, slug + JSON.stringify(input));
+  return 'sheets-' + digest.map((b) =&gt; ('0' + (b &amp; 0xff).toString(16)).slice(-2)).join('');
+&#125;
+
+// One call: cache first, then the API with an Idempotency-Key. Returns the &quot;result&quot; object.
+function endwise_(slug, input) &#123;
+  const idem = idempotencyKey_(slug, input);
+  const cache = CacheService.getScriptCache();
+  const hit = cache.get(idem);
+  if (hit) return JSON.parse(hit);
+
+  for (let attempt = 0; attempt &lt; 3; attempt++) &#123;
+    const response = UrlFetchApp.fetch(ENDWISE_API + slug, &#123;
+      method: 'post',
+      contentType: 'application/json',
+      headers: &#123; Authorization: 'Bearer ' + endwiseKey_(), 'Idempotency-Key': idem &#125;,
+      payload: JSON.stringify(input),
+      muteHttpExceptions: true,
+    &#125;);
+    const body = JSON.parse(response.getContentText());
+    if (body.ok) &#123;
+      cache.put(idem, JSON.stringify(body.result), 21600); // 6 hours, the longest the cache allows
+      return body.result;
+    &#125;
+    // Busy (the same key is still running) or rate limited: wait and try again. Nothing was charged.
+    if (body.error.code === 'in_progress' || body.error.code === 'rate_limited') &#123;
+      Utilities.sleep(1000);
+      continue;
+    &#125;
+    throw new Error(body.error.code + ': ' + body.error.message);
+  &#125;
+  throw new Error('Still busy after 3 tries. Try again in a moment.');
+&#125;
+
+// Dates in cells arrive as Date objects. Turn them into 2026-07-01 in the sheet's time zone.
+function isoDate_(value) &#123;
+  if (value instanceof Date) &#123;
+    const zone = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTimeZone();
+    return Utilities.formatDate(value, zone, 'yyyy-MM-dd');
+  &#125;
+  return String(value).trim();
+&#125;
+
+/**
+ * Business days between two dates, skipping public holidays.
+ * @param &#123;Date|string&#125; start The first date.
+ * @param &#123;Date|string&#125; end The last date.
+ * @param &#123;string&#125; region &quot;US&quot;, &quot;GB-ENG&quot; or &quot;IN-CENTRAL-DELHI&quot;.
+ * @return &#123;number&#125; The business days.
+ * @customfunction
+ */
+function BUSINESSDAYS(start, end, region) &#123;
+  const result = endwise_('business-days', &#123;
+    op: 'between',
+    region: region || 'US',
+    start: isoDate_(start),
+    end: isoDate_(end),
+  &#125;);
+  return result.businessDays;
+&#125;
+
+/**
+ * Exchange rate on a date: how much one unit of base is worth in quote.
+ * @param &#123;string&#125; base A currency code such as &quot;USD&quot;.
+ * @param &#123;string&#125; quote A currency code such as &quot;EUR&quot;.
+ * @param &#123;Date|string&#125; date The date.
+ * @return &#123;number&#125; The rate.
+ * @customfunction
+ */
+function FXRATE(base, quote, date) &#123;
+  const result = endwise_('fx-on-date', &#123;
+    base: String(base).toUpperCase(),
+    quote: String(quote).toUpperCase(),
+    date: isoDate_(date),
+  &#125;);
+  return result.rate;
+&#125;</code></pre>
+<p>The <code>@customfunction</code> tag in each comment is what makes the function appear in Sheets' autocomplete. The first time you use a function, Sheets asks you to allow the script to connect to an external service.</p>
+</section>
+<section>
+<h2 id="examples">What do the functions return?</h2>
+<p>A cell with =BUSINESSDAYS(&quot;2026-07-01&quot;, &quot;2026-07-08&quot;, &quot;US&quot;) sends this body:</p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;between&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;start&quot;: &quot;2026-07-01&quot;,
+  &quot;end&quot;: &quot;2026-07-08&quot;
+&#125;</code></pre>
+<p>The API answers with this result. The function returns one field from it, <code>businessDays</code>, so the cell shows <strong>4</strong>:</p>
+<pre><code class="language-json">&#123;
+  &quot;businessDays&quot;: 4,
+  &quot;holidaysSkipped&quot;: [
+    &#123;
+      &quot;date&quot;: &quot;2026-07-03&quot;,
+      &quot;name&quot;: &quot;Independence Day (observed)&quot;
+    &#125;
+  ]
+&#125;</code></pre>
+<p>=FXRATE(&quot;USD&quot;, &quot;EUR&quot;, &quot;2026-10-24&quot;) sends this body and shows <strong>0.893416</strong>, the <code>rate</code> field. The fixing date and source are in the same answer, in case you want a second function that returns them:</p>
+<pre><code class="language-json">&#123;
+  &quot;base&quot;: &quot;USD&quot;,
+  &quot;quote&quot;: &quot;EUR&quot;,
+  &quot;date&quot;: &quot;2026-10-24&quot;
+&#125;</code></pre>
+</section>
+<section>
+<h2 id="menu">How do I fill a whole list safely?</h2>
+<p>Add this to the same script file. Reload the sheet and a Endwise menu appears. Select the rows you want, then choose <strong>Count business days for selected rows</strong>. Columns A to C hold start, end and region, and the answers go in column D.</p>
+<pre><code class="language-javascript">// A menu command: fill column D with business days for the selected rows.
+// Column A = start, B = end, C = region. Rows that already have a value in D are skipped.
+function onOpen() &#123;
+  SpreadsheetApp.getUi()
+    .createMenu('Endwise')
+    .addItem('Count business days for selected rows', 'fillBusinessDays')
+    .addToUi();
+&#125;
+
+function fillBusinessDays() &#123;
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const selection = sheet.getActiveRange();
+  const first = selection.getRow();
+  const count = selection.getNumRows();
+  const rows = sheet.getRange(first, 1, count, 4).getValues();
+
+  const out = rows.map(([start, end, region, existing]) =&gt; &#123;
+    if (existing !== '' || start === '' || end === '') return [existing];
+    try &#123;
+      const result = endwise_('business-days', &#123;
+        op: 'between', region: region || 'US', start: isoDate_(start), end: isoDate_(end),
+      &#125;);
+      Utilities.sleep(150); // stay well under the per-key rate limit
+      return [result.businessDays];
+    &#125; catch (e) &#123;
+      return ['Error: ' + e.message];
+    &#125;
+  &#125;);
+  sheet.getRange(first, 4, count, 1).setValues(out);
+&#125;</code></pre>
+<p>The command skips any row that already has a value in column D, so running it twice costs nothing extra. It pauses briefly between rows because each key has a rate limit; a rate-limited call is refused and not charged, and the helper waits and retries. A command run from a menu is not bound by the 30-second custom function limit, but Google lists a 6-minute limit per script execution, so run very long lists in batches.</p>
+</section>
+<section>
+<h2 id="errors">How are errors shown?</h2>
+<p>The helper throws an error that carries the API's code and message, so a bad date shows as <code>invalid_input</code> with the reason. Refused calls are not charged. <code>insufficient_balance</code> and <code>cap_reached</code> mean you need to add money or raise the key's monthly limit on your account page. The full list is in the <a href="/toll-preview/docs">API documentation</a>.</p>
+<p class="cp-note">If two identical questions reach the API at the same moment, the second gets <code>in_progress</code> and the helper retries after a second. It then gets the stored answer without a second charge.</p>
+<ul class="cp-sources"><li><a href="https://developers.google.com/apps-script/guides/sheets/functions">Google Apps Script: Custom Functions in Google Sheets</a></li><li><a href="https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app">Google Apps Script reference: UrlFetchApp</a></li><li><a href="https://developers.google.com/apps-script/reference/cache/cache">Google Apps Script reference: Cache</a></li><li><a href="https://developers.google.com/apps-script/reference/properties/properties-service">Google Apps Script reference: PropertiesService</a></li><li><a href="https://developers.google.com/apps-script/guides/services/quotas">Google Apps Script: Quotas for Google Services</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Create an API key with a low monthly limit.</strong> On your account page, create a key just for the spreadsheet and set a monthly limit on it.</li><li><strong>Open Apps Script.</strong> In the sheet, choose Extensions &gt; Apps Script and paste in the code from this page.</li><li><strong>Store the key as a script property.</strong> In Project Settings, under Script properties, add ENDWISE_API_KEY with your key as the value.</li><li><strong>Use the functions in a cell.</strong> Type =BUSINESSDAYS(A2, B2, &quot;US&quot;) or =FXRATE(&quot;USD&quot;, &quot;EUR&quot;, A2) in a cell. The first time, Sheets asks you to allow the script to call an external service.</li><li><strong>Prefer the menu command for big lists.</strong> For many rows, use the Endwise menu command. It writes the answers as plain values, so recalculating the sheet never calls the API again.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Can a Google Sheets custom function call an API?</h3><p>Yes. Google lists UrlFetchApp, the Apps Script service for fetching URLs, as supported in custom functions. A custom function must finish within 30 seconds, or the cell shows #ERROR!.</p><h3>Where should I keep the API key in Apps Script?</h3><p>In script properties, set under Project Settings, and read with PropertiesService.getScriptProperties(). Do not type it into a cell or into the function call. Anyone who can edit the script can read the property, so use a key with a low monthly limit.</p><h3>Will a custom function call the API again every time the sheet recalculates?</h3><p>Not on every recalculation. Google says a custom function recalculates when you edit it or change a cell passed to it as an argument. Each recalculation is a new paid call unless you cache the answer or send an Idempotency-Key, and the code on this page does both.</p><h3>What does a repeated call cost with an Idempotency-Key?</h3><p>Nothing. If the key was already answered for the same tool, the API sends the stored answer again and charges nothing more. The same key with different input is refused with idempotency_mismatch.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/guides/excel/">Use Endwise in Excel</a></li><li><a href="/toll-preview/guides/spreadsheet-or-endwise/">Spreadsheet or Endwise: which to use for what</a></li><li><a href="/toll-preview/guides/zapier-make-n8n/">Use Endwise in Zapier, Make and n8n</a></li><li><a href="/toll-preview/docs">The REST API</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/guides/google-sheets.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

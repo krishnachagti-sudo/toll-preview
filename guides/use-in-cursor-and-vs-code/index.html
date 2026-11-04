@@ -81,43 +81,43 @@
 <section>
 <h2 id="cursor">How do I add Endwise to Cursor?</h2>
 <p>Cursor reads <code>.cursor/mcp.json</code> in your project for tools that only that project needs, or <code>~/.cursor/mcp.json</code> in your home folder for tools in every project.</p>
-<p>Cursor expands <code>${env:NAME}</code> in the <code>url</code> and <code>headers</code> values, and its documentation says to use environment variables for secrets and never hardcode them. Export the key in your shell profile first (<code>export ENDWISE_API_KEY=...</code>), then use this file:</p>
-<pre><code class="language-json">{
-  &quot;mcpServers&quot;: {
-    &quot;endwise&quot;: {
+<p>Cursor expands <code>$&#123;env:NAME&#125;</code> in the <code>url</code> and <code>headers</code> values, and its documentation says to use environment variables for secrets and never hardcode them. Export the key in your shell profile first (<code>export ENDWISE_API_KEY=...</code>), then use this file:</p>
+<pre><code class="language-json">&#123;
+  &quot;mcpServers&quot;: &#123;
+    &quot;endwise&quot;: &#123;
       &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
-      &quot;headers&quot;: {
-        &quot;Authorization&quot;: &quot;Bearer ${env:ENDWISE_API_KEY}&quot;
-      }
-    }
-  }
-}</code></pre>
+      &quot;headers&quot;: &#123;
+        &quot;Authorization&quot;: &quot;Bearer $&#123;env:ENDWISE_API_KEY&#125;&quot;
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
 <p>Restart Cursor after you save, so it starts with the variable set. An editor opened from the dock or Start menu can miss variables that are set only in a terminal.</p>
 <p class="cp-note">Cursor's documentation says remote servers do not support envFile, so the variable has to be in the environment Cursor starts with.</p>
 </section>
 <section>
 <h2 id="vscode">How do I add Endwise to VS Code?</h2>
 <p>VS Code reads <code>.vscode/mcp.json</code> in your workspace, or an mcp.json in your user profile. Its format differs from Cursor's: the top-level key is <code>servers</code>, not <code>mcpServers</code>, and a remote server has <code>&quot;type&quot;: &quot;http&quot;</code>.</p>
-<p>VS Code documents an <code>inputs</code> array for sensitive values. An input with <code>&quot;password&quot;: true</code> hides what you type. You refer to it as <code>${input:id}</code>. VS Code prompts you for the value when the server starts for the first time, then stores it securely for later. The key never appears in the file:</p>
-<pre><code class="language-json">{
+<p>VS Code documents an <code>inputs</code> array for sensitive values. An input with <code>&quot;password&quot;: true</code> hides what you type. You refer to it as <code>$&#123;input:id&#125;</code>. VS Code prompts you for the value when the server starts for the first time, then stores it securely for later. The key never appears in the file:</p>
+<pre><code class="language-json">&#123;
   &quot;inputs&quot;: [
-    {
+    &#123;
       &quot;type&quot;: &quot;promptString&quot;,
       &quot;id&quot;: &quot;endwise-key&quot;,
       &quot;description&quot;: &quot;Endwise API key&quot;,
       &quot;password&quot;: true
-    }
+    &#125;
   ],
-  &quot;servers&quot;: {
-    &quot;endwise&quot;: {
+  &quot;servers&quot;: &#123;
+    &quot;endwise&quot;: &#123;
       &quot;type&quot;: &quot;http&quot;,
       &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
-      &quot;headers&quot;: {
-        &quot;Authorization&quot;: &quot;Bearer ${input:endwise-key}&quot;
-      }
-    }
-  }
-}</code></pre>
+      &quot;headers&quot;: &#123;
+        &quot;Authorization&quot;: &quot;Bearer $&#123;input:endwise-key&#125;&quot;
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
 <p>You can also run <strong>MCP: Add Server</strong> from the Command Palette, choose <strong>HTTP</strong> and enter the address, then add the header by hand in the file it opens.</p>
 <p>Your organization can restrict which MCP servers are available. If the server is blocked, that is a policy question for your admin, not a setting in this file.</p>
 </section>
@@ -129,22 +129,22 @@
 <h2 id="check">How do I check it worked?</h2>
 <ul><li><strong>Cursor: </strong>open the Output panel (Cmd+Shift+U on a Mac), choose MCP Logs, and look for connection or authentication errors. Cursor's documentation lists this as the way to debug.</li><li><strong>VS Code: </strong>open the tools picker in chat and look for the server's tools. VS Code's documentation says to send a prompt that names the server, then confirm a tool from it was called and returned output without errors. A plausible answer alone is not proof.</li></ul>
 <p>A good first prompt is: &quot;Count the business days from 1 July to 8 July 2026 in the US.&quot; The editor lists the tools, calls <code>business-days</code> with arguments like these, and shows the call so you can see it ran:</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;between&quot;,
   &quot;region&quot;: &quot;US&quot;,
   &quot;start&quot;: &quot;2026-07-01&quot;,
   &quot;end&quot;: &quot;2026-07-08&quot;
-}</code></pre>
+&#125;</code></pre>
 <p>The answer is the same every time for the same input:</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;businessDays&quot;: 4,
   &quot;holidaysSkipped&quot;: [
-    {
+    &#123;
       &quot;date&quot;: &quot;2026-07-03&quot;,
       &quot;name&quot;: &quot;Independence Day (observed)&quot;
-    }
+    &#125;
   ]
-}</code></pre>
+&#125;</code></pre>
 <p>This call costs <strong>$0.0005</strong>. The free <code>quote_price</code> tool tells you the cost of a call before you make it.</p>
 </section>
 <section>
@@ -180,6 +180,9 @@
           <li><a href="/toll-preview/tools/">All tools</a></li>
           <li><a href="/toll-preview/pricing/">Pricing</a></li>
           <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
         </ul>
       </nav>
       <nav aria-label="Who it's for">
@@ -211,6 +214,9 @@
           <li><a href="/toll-preview/about/">About</a></li>
           <li><a href="/toll-preview/why-exact/">Why exact</a></li>
           <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
           <li><a href="https://conyso.com/">Conyso</a></li>
           <li><a href="/toll-preview/account">Account</a></li>
           <li><a href="/toll-preview/contact/">Contact</a></li>

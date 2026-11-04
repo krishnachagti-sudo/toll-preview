@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Does Endwise work with ChatGPT? What works today: Endwise</title>
-<meta name="description" content="Can ChatGPT use Endwise? Its MCP connector cannot send an API key, so it will not connect. A custom GPT Action can call the REST API. Steps and dates.">
+<title>How to use Endwise with ChatGPT: Endwise</title>
+<meta name="description" content="Connect Endwise to ChatGPT by signing in: add it as a custom MCP server with OAuth, approve ChatGPT on Endwise with a monthly limit, and disconnect any time.">
 <meta name="theme-color" content="#08090a">
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
@@ -14,10 +14,10 @@
 <link rel="alternate" type="text/markdown" href="/toll-preview/guides/use-with-chatgpt.md">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Endwise">
-<meta property="og:title" content="Does Endwise work with ChatGPT? What works today">
-<meta property="og:description" content="Can ChatGPT use Endwise? Its MCP connector cannot send an API key, so it will not connect. A custom GPT Action can call the REST API. Steps and dates.">
+<meta property="og:title" content="How to use Endwise with ChatGPT">
+<meta property="og:description" content="Connect Endwise to ChatGPT by signing in: add it as a custom MCP server with OAuth, approve ChatGPT on Endwise with a monthly limit, and disconnect any time.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/","name":"Does Endwise work with ChatGPT? What works today","description":"Can ChatGPT use Endwise? Its MCP connector cannot send an API key, so it will not connect. A custom GPT Action can call the REST API. Steps and dates.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"Does Endwise work with ChatGPT? What works today","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/"}]},{"@type":"HowTo","name":"Does Endwise work with ChatGPT? What works today","description":"Can ChatGPT use Endwise? Its MCP connector cannot send an API key, so it will not connect. A custom GPT Action can call the REST API. Steps and dates.","step":[{"@type":"HowToStep","position":1,"name":"Make a key for this GPT","text":"On your account page, create an API key named for the GPT and give it a small monthly spending limit. A limit stops the GPT spending more than you chose."},{"@type":"HowToStep","position":2,"name":"Open the Actions section of the GPT editor","text":"In the editor of the GPT you are building, go to the Action section. OpenAI says to paste your OpenAPI schema there."},{"@type":"HowToStep","position":3,"name":"Paste the OpenAPI schema","text":"Open the Endwise OpenAPI document in a browser, copy it, and paste it in."},{"@type":"HowToStep","position":4,"name":"Set authentication to API Key","text":"In the GPT editor, set Authentication to API Key and paste your key. If it asks how to send the key, choose Bearer."},{"@type":"HowToStep","position":5,"name":"Tell the GPT when to use the tool","text":"In the instructions, say that dates, amounts and other exact figures must come from the Endwise action, never from the model."},{"@type":"HowToStep","position":6,"name":"Test with a question you can check","text":"Ask a question with a known answer and compare the result shown in the action call with the tool page."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can ChatGPT connect to an MCP server that needs an API key?","acceptedAnswer":{"@type":"Answer","text":"Not today. OpenAI documents three authentication options for a custom MCP server in ChatGPT: OAuth, no authentication, and OAuth or no authentication. An API key sent as a Bearer header is not one of them, so the Endwise MCP server cannot be added in the ChatGPT app. This is as of November 2026."}},{"@type":"Question","name":"Can a custom GPT call the Endwise API?","acceptedAnswer":{"@type":"Answer","text":"Yes, for now. A GPT Action can call a REST API with an OpenAPI schema and API key authentication. OpenAI has announced that custom GPTs are being retired, with 11 December 2026 given as the scheduled date, so treat this route as short-lived."}},{"@type":"Question","name":"Can I use Endwise with the OpenAI API?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Responses API has a remote MCP tool with a headers field, so you can send the Endwise key as a Bearer header from your own code. The agent guide has a full sample."}},{"@type":"Question","name":"Is my Endwise key shared with OpenAI?","acceptedAnswer":{"@type":"Answer","text":"If you give a key to a GPT Action, you have given it to OpenAI. OpenAI says it encrypts the key when it stores it. Use a key made for that one GPT, with a low monthly limit, and revoke it on your account page if you stop using the GPT."}},{"@type":"Question","name":"Can ChatGPT do exact date math without a tool?","acceptedAnswer":{"@type":"Answer","text":"A chat model writes its answer as text, so a date or a sum can come out wrong with no sign that it did. With an Endwise action the figure comes from a tool that gives the same answer for the same input, and the action call shows the input and result."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/","url":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/","name":"How to use Endwise with ChatGPT","description":"Connect Endwise to ChatGPT by signing in: add it as a custom MCP server with OAuth, approve ChatGPT on Endwise with a monthly limit, and disconnect any time.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/"},{"@type":"ListItem","position":3,"name":"How to use Endwise with ChatGPT","item":"https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/"}]},{"@type":"HowTo","name":"How to use Endwise with ChatGPT","description":"Connect Endwise to ChatGPT by signing in: add it as a custom MCP server with OAuth, approve ChatGPT on Endwise with a monthly limit, and disconnect any time.","step":[{"@type":"HowToStep","position":1,"name":"Add a custom MCP server","text":"In ChatGPT on the web, go to Plugins, select the plus button, then Add custom MCP server."},{"@type":"HowToStep","position":2,"name":"Enter the server address","text":"Give it a name, such as Endwise, and enter the Endwise MCP server address as the Server URL."},{"@type":"HowToStep","position":3,"name":"Choose OAuth","text":"Set authentication to OAuth. ChatGPT finds the Endwise sign-in page by itself, so there is no client ID or secret to enter."},{"@type":"HowToStep","position":4,"name":"Create and install it","text":"Review the warning, select Create as a plugin, then install the plugin from your plugins."},{"@type":"HowToStep","position":5,"name":"Sign in to Endwise and approve","text":"ChatGPT opens an Endwise page. Sign in, check that the app named is chatgpt.com, set a monthly limit for it, and choose Approve."},{"@type":"HowToStep","position":6,"name":"Test with a question you can check","text":"Ask a question with a known answer and compare the result in the tool call with the tool page."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can ChatGPT connect to the Endwise MCP server?","acceptedAnswer":{"@type":"Answer","text":"Yes. OpenAI lists OAuth as a way to sign in to a custom MCP server in ChatGPT, and Endwise offers OAuth sign-in. Add the server with OAuth, then approve ChatGPT on the Endwise page that opens."}},{"@type":"Question","name":"Do I need an API key for ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"No. Signing in makes a connection that works like a key: it has its own monthly limit and shows under Connected apps on your account page, where you can disconnect it. Nothing to copy or paste."}},{"@type":"Question","name":"Can I use Endwise with the OpenAI API?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Responses API has a remote MCP tool with a headers field, so you can send an Endwise API key as a Bearer header from your own code. The agent guide has a full sample."}},{"@type":"Question","name":"Do I still need a custom GPT with an Action?","acceptedAnswer":{"@type":"Answer","text":"No. OpenAI has scheduled custom GPTs to stop running on 11 December 2026, and says their Actions do not carry over by themselves. A custom MCP server with OAuth is the route that lasts."}},{"@type":"Question","name":"Can ChatGPT do exact date math without a tool?","acceptedAnswer":{"@type":"Answer","text":"A chat model writes its answer as text, so a date or a sum can come out wrong with no sign that it did. With the Endwise tools the figure comes from a tool that gives the same answer for the same input, and the tool call shows the input and result."}}]}]}</script>
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -65,57 +65,60 @@
 </header>
 
 <main id="main" class="wrap cp">
-<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">Does Endwise work with ChatGPT? What works today</li></ol></nav>
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/guides/">Guides</a></li><li aria-current="page">How to use Endwise with ChatGPT</li></ol></nav>
 <header class="cp-head">
 <p class="eyebrow">Guide</p>
-<h1>Does Endwise work with ChatGPT? What works today</h1>
-<p class="cp-answer">Not through the ChatGPT app's MCP connector: as of November 2026 OpenAI lists only OAuth and no-authentication options, and Endwise needs an API key. Two things do work: a custom GPT Action with API key authentication (OpenAI has scheduled custom GPT retirement for 11 December 2026), and the OpenAI API's remote MCP tool from your own code.</p>
+<h1>How to use Endwise with ChatGPT</h1>
+<p class="cp-answer">Yes, in 3 steps: in ChatGPT on the web, add Endwise as a custom MCP server with OAuth, sign in to Endwise, and approve ChatGPT with a monthly limit. From your own code, the OpenAI API's remote MCP tool can send an API key instead.</p>
 
 </header>
 <div class="cp-body prose">
 <section>
-<h2>Can ChatGPT connect to an MCP server that needs an API key?</h2>
-<p>No, not today. ChatGPT can add a custom <strong>MCP server</strong> (MCP, the Model Context Protocol, is the standard way an AI app finds and calls outside tools). OpenAI lists three ways to sign in to one: <strong>OAuth</strong>, <strong>no authentication</strong>, and a mix of the two where the tool list needs no sign-in and each tool uses OAuth or none. An API key sent in an <code>Authorization</code> header is not on that list.</p>
-<p>Endwise's MCP server (https://krishnachagti-sudo.github.io/toll-preview/mcp) lists its tools to anyone, but running one needs an API key as a Bearer token. It does not offer OAuth. So there is no setting in the ChatGPT app that makes the two work together. Do not add it with &quot;No authentication&quot;: the tools would show up and every call would be refused.</p>
-<p class="cp-note">This is the state of OpenAI's documentation in November 2026. Connector options change, so check OpenAI's page (linked below) before you give up. If ChatGPT adds a key or header option, the same server address and Bearer key from the <a href="/toll-preview/developers/mcp/">MCP page</a> are what you would enter.</p>
+<h2>Can ChatGPT connect to the Endwise MCP server?</h2>
+<p>Yes. ChatGPT can add a custom <strong>MCP server</strong> (MCP, the Model Context Protocol, is the standard way an AI app finds and calls outside tools). OpenAI lists three ways to sign in to one: <strong>OAuth</strong>, <strong>no authentication</strong>, and a mix of the two. Endwise offers OAuth sign-in, so you choose <strong>OAuth</strong> and sign in to Endwise when ChatGPT asks.</p>
+<p>OpenAI's page says custom MCP servers are added in ChatGPT on the web, and that workspace permissions and security settings apply. If you do not see the option in a work or school workspace, ask its admin.</p>
 </section>
 <section>
-<h2>Can a custom GPT call Endwise with an API key?</h2>
-<p>Yes, for now. A custom GPT can have an <strong>Action</strong>: a REST API described by an OpenAPI schema, which the GPT calls when a question needs it. OpenAI's Action settings let you choose &quot;None&quot;, &quot;API Key&quot; or &quot;OAuth&quot;. API Key is what Endwise needs, because every call is a POST with a Bearer key.</p>
-<p>Endwise publishes its OpenAPI document with no key needed:</p>
-<pre><code class="language-text">https://krishnachagti-sudo.github.io/toll-preview/api/v1/openapi.json</code></pre>
-<p>The document gives each tool's address, its input schema and its price in words. Prices and limits are the same as for any API call, and each key has a monthly spending cap you set on the <a href="/toll-preview/account">account page</a>.</p>
-<p>The document names its server, so the Action editor can import it as it is, either from the address above or pasted in. The steps below go through it.</p>
+<h2>How do I add it?</h2>
+<p>In ChatGPT on the web, go to <strong>Plugins</strong>, select the plus button, then <strong>Add custom MCP server</strong>. Give it a name and enter this as the Server URL:</p>
+<pre><code class="language-text">https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
+<p>Set authentication to <strong>OAuth</strong>. ChatGPT reads Endwise's sign-in details from the server itself, so leave any client ID and secret empty. Review the warning, choose <strong>Create as a plugin</strong>, and install the plugin before you use it in a conversation.</p>
 </section>
 <section>
-<h2>What does a GPT get back from an Endwise action?</h2>
-<p>The GPT sends the tool's input as JSON and gets the tool's answer, what it cost, and your balance. Count the business days from 1 July to 8 July 2026 in the US. The input:</p>
-<pre><code class="language-json">{
+<h2>What does the sign-in look like?</h2>
+<p>ChatGPT opens a Endwise page. If you are not signed in, you sign in or create an account first and come straight back. The page names the app asking (chatgpt.com), says what it will be able to do, and where you go back to after you approve.</p>
+<ul><li>It can list the tools and their prices, run tools and pay for each run from your balance, and ask what a run would cost.</li><li>It cannot see your password, add money, change your account or make API keys.</li><li>You set its monthly limit on that page. Runs past the limit are refused and not billed.</li></ul>
+<p>After you approve, ChatGPT shows up on your <a href="/toll-preview/account">account page</a> under Connected apps, with its limit and what it has spent this month. Choose Disconnect there to stop it at once.</p>
+<p>OpenAI's page says ChatGPT treats a tool as a write action unless the tool says otherwise, and asks you to confirm write actions by default. A choice you make for one conversation can carry through that conversation.</p>
+</section>
+<section>
+<h2>What does ChatGPT get back from an Endwise tool?</h2>
+<p>ChatGPT sends the tool's input as JSON and gets the tool's answer. Count the business days from 1 July to 8 July 2026 in the US. The input:</p>
+<pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;between&quot;,
   &quot;region&quot;: &quot;US&quot;,
   &quot;start&quot;: &quot;2026-07-01&quot;,
   &quot;end&quot;: &quot;2026-07-08&quot;
-}</code></pre>
+&#125;</code></pre>
 <p>The result:</p>
-<pre><code class="language-json">{
+<pre><code class="language-json">&#123;
   &quot;businessDays&quot;: 4,
   &quot;holidaysSkipped&quot;: [
-    {
+    &#123;
       &quot;date&quot;: &quot;2026-07-03&quot;,
       &quot;name&quot;: &quot;Independence Day (observed)&quot;
-    }
+    &#125;
   ]
-}</code></pre>
-<p>That call costs $0.0005, taken from your balance. The full response also carries a <code>charged</code> block and your new balance. See the <a href="/toll-preview/business-days/">Business days</a> page for the rules behind the answer.</p>
+&#125;</code></pre>
+<p>That call costs $0.0005, taken from your balance. See the <a href="/toll-preview/business-days/">Business days</a> page for the rules behind the answer.</p>
 </section>
 <section>
-<h2>Will custom GPTs keep working?</h2>
-<p>Only for a limited time. OpenAI's help center has a custom GPT retirement and migration FAQ. It gives 11 December 2026 as the scheduled date when custom GPTs stop running, says timing can vary by account and workspace, and says existing GPT Actions do not carry over automatically. They have to be rebuilt as an app or a custom MCP server.</p>
-<p>For Endwise that second path has the same limit as the first section: a custom MCP server in ChatGPT cannot send an API key. If you need ChatGPT to use these tools after the GPT is retired, check OpenAI's connector options again at that time. Until then the Action route works, and you should not build anything long-lived on it.</p>
+<h2>What about custom GPTs?</h2>
+<p>You do not need one. OpenAI's help center has a custom GPT retirement and migration FAQ. It gives 11 December 2026 as the scheduled date when custom GPTs stop running, says timing can vary by account and workspace, and says existing GPT Actions do not carry over automatically. They have to be rebuilt as an app or a custom MCP server, which is the route above.</p>
 </section>
 <section>
 <h2>Can I use Endwise with the OpenAI API?</h2>
-<p>Yes, and this route has no gap. In the Responses API you add a remote MCP server as a tool. OpenAI's API reference lists an optional <code>headers</code> field for it, described as HTTP headers to send to the MCP server, for authentication or other purposes. That is where the Bearer key goes:</p>
+<p>Yes. In the Responses API you add a remote MCP server as a tool. OpenAI's API reference lists an optional <code>headers</code> field for it, described as HTTP headers to send to the MCP server, for authentication or other purposes. That is where an API key from your <a href="/toll-preview/account">account page</a> goes:</p>
 <pre><code class="language-python">from openai import OpenAI
 import os
 
@@ -124,32 +127,32 @@ client = OpenAI()
 resp = client.responses.create(
     model=&quot;gpt-6-astra&quot;,
     input=&quot;How many US business days are there from 2026-07-01 to 2026-07-08?&quot;,
-    tools=[{
+    tools=[&#123;
         &quot;type&quot;: &quot;mcp&quot;,
         &quot;server_label&quot;: &quot;endwise&quot;,
         &quot;server_url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
-        &quot;headers&quot;: {&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]},
+        &quot;headers&quot;: &#123;&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;ENDWISE_API_KEY&quot;]&#125;,
         &quot;require_approval&quot;: &quot;never&quot;,
-    }],
+    &#125;],
 )
 print(resp.output_text)</code></pre>
 <p>By default OpenAI asks for your approval before data goes to a remote MCP server. Setting <code>require_approval</code> to <code>&quot;never&quot;</code> skips that. Do it only with a key that has a low monthly limit. The <a href="/toll-preview/guides/build-an-agent/">agent guide</a> covers approvals, quotes before expensive calls and error handling.</p>
 </section>
 <section>
-<h2>Is my key shared with OpenAI?</h2>
-<p>In an Action, yes: you type the key into OpenAI's editor, and OpenAI sends it to Endwise with each call. OpenAI's Action docs say it encrypts the secret key in its database. In the API, your code sends the key to OpenAI in the request, and OpenAI's MCP guide says the Responses API does not store the value of its <code>authorization</code> field. It does not say the same about <code>headers</code>, so assume a key placed there reaches OpenAI.</p>
-<p>Either way, make a key for that one use, set a low monthly limit, and revoke it from the <a href="/toll-preview/account">account page</a> when you are done. Endwise stores only a fingerprint of a key, so it cannot show it to you again.</p>
+<h2>What does OpenAI hold?</h2>
+<p>With sign-in, ChatGPT holds a token that works only for the Endwise MCP server and only for that connection. It lasts an hour, and ChatGPT can renew it with a refresh token until you disconnect. No password or API key is given to OpenAI, and disconnecting on your account page ends the token at once.</p>
+<p>With the API, your code sends the key to OpenAI in the request. OpenAI's MCP guide says the Responses API does not store the value of its <code>authorization</code> field. It does not say the same about <code>headers</code>, so assume a key placed there reaches OpenAI. Make a key for that one use, set a low monthly limit, and revoke it when you are done.</p>
 </section>
 <section>
 <h2>Can ChatGPT do exact date math?</h2>
-<p>Not by itself. A chat model produces text that looks like an answer, so a date count can be off by a day with no warning. The reason is explained in <a href="/toll-preview/guides/why-ai-gets-numbers-wrong/">why AI gets numbers wrong</a>. If the figure comes from an action, the action call shows the input it sent and the result it got, and you can <a href="/toll-preview/guides/check-numbers-from-ai/">check it against the tool page</a>. Without any setup you can also use the tools directly on the web: 5 free runs a day, no account.</p>
-<ul class="cp-sources"><li><a href="https://developers.openai.com/api/docs/guides/custom-mcp-server">OpenAI: Add custom MCP server (ChatGPT plugins)</a></li><li><a href="https://developers.openai.com/api/docs/actions/authentication">OpenAI: GPT Action authentication</a></li><li><a href="https://developers.openai.com/api/docs/actions/getting-started">OpenAI: Getting started with GPT Actions</a></li><li><a href="https://developers.openai.com/api/docs/guides/tools-connectors-mcp">OpenAI: MCP servers in the Responses API</a></li><li><a href="https://developers.openai.com/api/reference/resources/responses/methods/create">OpenAI: Responses API reference (the mcp tool and its headers field)</a></li><li><a href="https://help.openai.com/en/articles/20001519">OpenAI Help Center: Custom GPT retirement and migration FAQ</a></li></ul>
+<p>Not by itself. A chat model produces text that looks like an answer, so a date count can be off by a day with no warning. The reason is explained in <a href="/toll-preview/guides/why-ai-gets-numbers-wrong/">why AI gets numbers wrong</a>. If the figure comes from a tool, the tool call shows the input it sent and the result it got, and you can <a href="/toll-preview/guides/check-numbers-from-ai/">check it against the tool page</a>. Without any setup you can also use the tools directly on the web: 5 free runs a day, no account.</p>
+<ul class="cp-sources"><li><a href="https://developers.openai.com/api/docs/guides/custom-mcp-server">OpenAI: Add custom MCP server (ChatGPT plugins)</a></li><li><a href="https://developers.openai.com/apps-sdk/build/auth">OpenAI Apps SDK: Authentication</a></li><li><a href="https://developers.openai.com/api/docs/guides/tools-connectors-mcp">OpenAI: MCP servers in the Responses API</a></li><li><a href="https://developers.openai.com/api/reference/resources/responses/methods/create">OpenAI: Responses API reference (the mcp tool and its headers field)</a></li><li><a href="https://help.openai.com/en/articles/20001519">OpenAI Help Center: Custom GPT retirement and migration FAQ</a></li></ul>
 </section>
-<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Make a key for this GPT.</strong> On your account page, create an API key named for the GPT and give it a small monthly spending limit. A limit stops the GPT spending more than you chose.</li><li><strong>Open the Actions section of the GPT editor.</strong> In the editor of the GPT you are building, go to the Action section. OpenAI says to paste your OpenAPI schema there.</li><li><strong>Paste the OpenAPI schema.</strong> Open the Endwise OpenAPI document in a browser, copy it, and paste it in.</li><li><strong>Set authentication to API Key.</strong> In the GPT editor, set Authentication to API Key and paste your key. If it asks how to send the key, choose Bearer.</li><li><strong>Tell the GPT when to use the tool.</strong> In the instructions, say that dates, amounts and other exact figures must come from the Endwise action, never from the model.</li><li><strong>Test with a question you can check.</strong> Ask a question with a known answer and compare the result shown in the action call with the tool page.</li></ol></section>
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Can ChatGPT connect to an MCP server that needs an API key?</h3><p>Not today. OpenAI documents three authentication options for a custom MCP server in ChatGPT: OAuth, no authentication, and OAuth or no authentication. An API key sent as a Bearer header is not one of them, so the Endwise MCP server cannot be added in the ChatGPT app. This is as of November 2026.</p><h3>Can a custom GPT call the Endwise API?</h3><p>Yes, for now. A GPT Action can call a REST API with an OpenAPI schema and API key authentication. OpenAI has announced that custom GPTs are being retired, with 11 December 2026 given as the scheduled date, so treat this route as short-lived.</p><h3>Can I use Endwise with the OpenAI API?</h3><p>Yes. The Responses API has a remote MCP tool with a headers field, so you can send the Endwise key as a Bearer header from your own code. The agent guide has a full sample.</p><h3>Is my Endwise key shared with OpenAI?</h3><p>If you give a key to a GPT Action, you have given it to OpenAI. OpenAI says it encrypts the key when it stores it. Use a key made for that one GPT, with a low monthly limit, and revoke it on your account page if you stop using the GPT.</p><h3>Can ChatGPT do exact date math without a tool?</h3><p>A chat model writes its answer as text, so a date or a sum can come out wrong with no sign that it did. With an Endwise action the figure comes from a tool that gives the same answer for the same input, and the action call shows the input and result.</p></section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Add a custom MCP server.</strong> In ChatGPT on the web, go to Plugins, select the plus button, then Add custom MCP server.</li><li><strong>Enter the server address.</strong> Give it a name, such as Endwise, and enter the Endwise MCP server address as the Server URL.</li><li><strong>Choose OAuth.</strong> Set authentication to OAuth. ChatGPT finds the Endwise sign-in page by itself, so there is no client ID or secret to enter.</li><li><strong>Create and install it.</strong> Review the warning, select Create as a plugin, then install the plugin from your plugins.</li><li><strong>Sign in to Endwise and approve.</strong> ChatGPT opens an Endwise page. Sign in, check that the app named is chatgpt.com, set a monthly limit for it, and choose Approve.</li><li><strong>Test with a question you can check.</strong> Ask a question with a known answer and compare the result in the tool call with the tool page.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Can ChatGPT connect to the Endwise MCP server?</h3><p>Yes. OpenAI lists OAuth as a way to sign in to a custom MCP server in ChatGPT, and Endwise offers OAuth sign-in. Add the server with OAuth, then approve ChatGPT on the Endwise page that opens.</p><h3>Do I need an API key for ChatGPT?</h3><p>No. Signing in makes a connection that works like a key: it has its own monthly limit and shows under Connected apps on your account page, where you can disconnect it. Nothing to copy or paste.</p><h3>Can I use Endwise with the OpenAI API?</h3><p>Yes. The Responses API has a remote MCP tool with a headers field, so you can send an Endwise API key as a Bearer header from your own code. The agent guide has a full sample.</p><h3>Do I still need a custom GPT with an Action?</h3><p>No. OpenAI has scheduled custom GPTs to stop running on 11 December 2026, and says their Actions do not carry over by themselves. A custom MCP server with OAuth is the route that lasts.</p><h3>Can ChatGPT do exact date math without a tool?</h3><p>A chat model writes its answer as text, so a date or a sum can come out wrong with no sign that it did. With the Endwise tools the figure comes from a tool that gives the same answer for the same input, and the tool call shows the input and result.</p></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/guides/build-an-agent/">Give your own AI agent exact tools</a></li><li><a href="/toll-preview/guides/use-with-claude/">Use Endwise with Claude</a></li><li><a href="/toll-preview/guides/why-ai-gets-numbers-wrong/">Why AI gets numbers wrong</a></li><li><a href="/toll-preview/developers/mcp/">MCP server for AI agents</a></li></ul></section>
 </div>
-<p class="cp-formats small muted"><a href="/toll-preview/guides/use-with-chatgpt.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-03">2026-11-03</time></p>
+<p class="cp-formats small muted"><a href="/toll-preview/guides/use-with-chatgpt.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
 </main>
 
 <footer class="site-foot">
@@ -173,6 +176,9 @@ print(resp.output_text)</code></pre>
           <li><a href="/toll-preview/tools/">All tools</a></li>
           <li><a href="/toll-preview/pricing/">Pricing</a></li>
           <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
         </ul>
       </nav>
       <nav aria-label="Who it's for">
@@ -204,6 +210,9 @@ print(resp.output_text)</code></pre>
           <li><a href="/toll-preview/about/">About</a></li>
           <li><a href="/toll-preview/why-exact/">Why exact</a></li>
           <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
           <li><a href="https://conyso.com/">Conyso</a></li>
           <li><a href="/toll-preview/account">Account</a></li>
           <li><a href="/toll-preview/contact/">Contact</a></li>
