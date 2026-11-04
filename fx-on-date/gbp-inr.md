@@ -1,20 +1,23 @@
 # GBP to INR exchange rate by date
 
-The latest ECB reference rate for GBP to INR is 126.868913 Indian rupees per British pound, from the fixing of Thursday 29 Oct 2026; one Indian rupee is 0.007882 British pounds.
+The latest ECB reference rate for GBP to INR is 127.06099 Indian rupees per British pound, from the fixing of Tuesday 3 Nov 2026; one Indian rupee is 0.00787 British pounds.
 
-- GBP to INR: 126.868913
-- Fixing: 2026-10-29
-- INR to GBP: 0.007882
+- GBP to INR: 127.06099
+- Fixing: 2026-11-03
+- INR to GBP: 0.00787
 - 2025 average: 114.929327
 
 ## GBP to INR on any date
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-10-29)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-11-03)
 
 ## The last 30 fixings
 
 | Fixing | GBP to INR | INR to GBP | Change |
 | --- | ---: | ---: | ---: |
+| Tuesday 3 Nov 2026 | 127.06099 | 0.00787 | −0.24% |
+| Monday 2 Nov 2026 | 127.363604 | 0.007852 | +0.11% |
+| Friday 30 Oct 2026 | 127.229551 | 0.00786 | +0.28% |
 | Thursday 29 Oct 2026 | 126.868913 | 0.007882 | +0.27% |
 | Wednesday 28 Oct 2026 | 126.525631 | 0.007904 | −0.20% |
 | Tuesday 27 Oct 2026 | 126.782256 | 0.007888 | −0.21% |
@@ -42,9 +45,6 @@ The latest ECB reference rate for GBP to INR is 126.868913 Indian rupees per Bri
 | Friday 25 Sep 2026 | 126.98065 | 0.007875 | +0.10% |
 | Thursday 24 Sep 2026 | 126.854953 | 0.007883 | −0.20% |
 | Wednesday 23 Sep 2026 | 127.108784 | 0.007867 | −0.50% |
-| Tuesday 22 Sep 2026 | 127.745978 | 0.007828 | −0.47% |
-| Monday 21 Sep 2026 | 128.348683 | 0.007791 | +0.32% |
-| Friday 18 Sep 2026 | 127.940731 | 0.007816 | −0.31% |
 
 ## Month-end rates and monthly averages
 
@@ -52,7 +52,8 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Month | Month-end fixing | Month-end rate | Average | High | Low | Fixings |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| [October 2026 (to 29 Oct)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-10-29) | Not yet | – | 126.954515 | 128.01779 | 125.919868 | 21 |
+| [November 2026 (to 3 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-11-03) | Not yet | – | 127.212297 | 127.363604 | 127.06099 | 2 |
+| [October 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-10-31) | 30 Oct | 127.229551 | 126.967017 | 128.01779 | 125.919868 | 22 |
 | [September 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-09-30) | 30 Sep | 127.330541 | 128.086912 | 129.385955 | 126.854953 | 22 |
 | [August 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-08-31) | 31 Aug | 128.854147 | 129.25907 | 130.686938 | 128.056317 | 21 |
 | [July 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2026-07-31) | 31 Jul | 128.018768 | 128.136946 | 130.182155 | 126.111105 | 23 |
@@ -88,7 +89,6 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 | [January 2024](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2024-01-31) | 31 Jan | 105.344414 | 105.54538 | 105.943677 | 105.050071 | 22 |
 | [December 2023](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2023-12-31) | 29 Dec | 105.752834 | 105.37477 | 106.189984 | 104.462959 | 19 |
 | [November 2023](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2023-11-30) | 30 Nov | 105.495438 | 103.408462 | 105.782144 | 100.928748 | 22 |
-| [October 2023](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=INR&date=2023-10-31) | 31 Oct | 101.205847 | 101.263259 | 102.472177 | 100.394699 | 22 |
 
 > Each month opens the tool on its last day. The table is also available as CSV.
 
@@ -96,7 +96,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Year | Average | High | Low | First fixing | Last fixing | Fixings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026 (to 29 Oct) | 126.410375 | 130.686938 (21 Aug) | 120.856452 (8 Jan) | 121.25129 | 126.868913 | 212 |
+| 2026 (to 3 Nov) | 126.421645 | 130.686938 (21 Aug) | 120.856452 (8 Jan) | 121.25129 | 127.06099 | 215 |
 | 2025 | 114.929327 | 122.169101 (16 Dec) | 105.057628 (13 Jan) | 106.483554 | 121.013637 | 255 |
 | 2024 | 106.979484 | 112.293071 (30 Sep) | 102.664257 (22 Apr) | 105.355185 | 107.254758 | 256 |
 | 2023 | 102.691187 | 107.721112 (14 Jul) | 97.021578 (8 Mar) | 99.76983 | 105.752834 | 255 |
@@ -132,9 +132,9 @@ A weekend or TARGET holiday has no fixing, so a date like that uses the last fix
 
 ## Questions
 
-### What was the GBP to INR rate at the end of September 2026?
+### What was the GBP to INR rate at the end of October 2026?
 
-127.330541 Indian rupees per British pound, the ECB fixing of Wednesday 30 Sep 2026. The month's average was 128.086912.
+127.229551 Indian rupees per British pound, the ECB fixing of Friday 30 Oct 2026. The month's average was 126.967017.
 
 ### What was the average GBP to INR rate in 2025?
 
@@ -142,7 +142,7 @@ A weekend or TARGET holiday has no fixing, so a date like that uses the last fix
 
 ### What GBP to INR rate applies on a weekend or holiday?
 
-The last ECB fixing before that day. For example, Saturday 24 Oct 2026 uses the fixing of Friday 23 Oct 2026: 126.925282.
+The last ECB fixing before that day. For example, Saturday 31 Oct 2026 uses the fixing of Friday 30 Oct 2026: 127.229551.
 
 ## Related
 
@@ -158,5 +158,5 @@ The last ECB fixing before that day. For example, Saturday 24 Oct 2026 uses the 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr/  
-Data as of: 2026-10-29  
+Data as of: 2026-11-03  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr.csv

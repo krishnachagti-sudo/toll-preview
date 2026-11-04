@@ -4,7 +4,7 @@ This is the log of changes to the Endwise REST API and MCP server, newest first.
 
 ## What changed in the API and the MCP server, and when?
 
-Each entry is a change a caller can see. Changes to the data and rules behind the tools are on the [data updates page](https://krishnachagti-sudo.github.io/toll-preview/updates/). Paths below start after the base path of the site.
+Each entry is a change a caller can see. Some are written by hand; others are recorded by the server itself, which compares its OpenAPI document and MCP tool list with the last ones it saw each time it starts. Changes to the data and rules behind the tools are on the [data updates page](https://krishnachagti-sudo.github.io/toll-preview/updates/). Paths below start after the base path of the site.
 
 Changes to the public API
 

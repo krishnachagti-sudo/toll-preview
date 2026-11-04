@@ -75,7 +75,7 @@
 <div class="cp-body prose">
 <section>
 <h2 id="log">What changed in the API and the MCP server, and when?</h2>
-<p>Each entry is a change a caller can see. Changes to the data and rules behind the tools are on the <a href="/toll-preview/updates/">data updates page</a>. Paths below start after the base path of the site.</p>
+<p>Each entry is a change a caller can see. Some are written by hand; others are recorded by the server itself, which compares its OpenAPI document and MCP tool list with the last ones it saw each time it starts. Changes to the data and rules behind the tools are on the <a href="/toll-preview/updates/">data updates page</a>. Paths below start after the base path of the site.</p>
 <div class="table-scroll"><table class="rules cp-table"><caption>Changes to the public API</caption><thead><tr><th scope="col">Date</th><th scope="col">Area</th><th scope="col">What changed</th></tr></thead><tbody>
 <tr><th scope="row">November 4, 2026</th><td>MCP</td><td>A tools/call request with no valid sign-in or API key now gets HTTP 401 with a WWW-Authenticate Bearer challenge, so OAuth clients know where to sign in. The body still carries the JSON-RPC error -32001, and its message reads &quot;Sign in to Endwise or add your API key as a Bearer token.&quot;</td></tr>
 <tr><th scope="row">November 4, 2026</th><td>Auth</td><td>The MCP endpoint accepts OAuth sign-in as well as API keys, so the Claude and ChatGPT apps can connect by signing in. Authorization uses PKCE (S256), dynamic client registration and refresh tokens that rotate. Each connected app has its own monthly limit and shows under Connected apps on the account page. Bearer API keys work as before. Access tokens are accepted on the MCP endpoint only, not on the REST API.</td></tr>

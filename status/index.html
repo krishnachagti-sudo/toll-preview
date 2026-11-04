@@ -18,7 +18,7 @@
 <meta property="og:title" content="Status: Endwise">
 <meta property="og:description" content="What the server's own checks recorded: each live tool's last check, and the share of recorded checks that passed over 90 days, with days without checks shown as no data.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/status/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/status/","url":"https://krishnachagti-sudo.github.io/toll-preview/status/","name":"Status: Endwise","description":"What the server's own checks recorded: each live tool's last check, and the share of recorded checks that passed over 90 days, with days without checks shown as no data.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Status","item":"https://krishnachagti-sudo.github.io/toll-preview/status/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/status/","url":"https://krishnachagti-sudo.github.io/toll-preview/status/","name":"Status: Endwise","description":"What the server's own checks recorded: each live tool's last check, and the share of recorded checks that passed over 90 days, with days without checks shown as no data.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Status","item":"https://krishnachagti-sudo.github.io/toll-preview/status/"}]}]}</script>
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -179,6 +179,42 @@
 <p class="status-legend rv"><span><i class="sd passing"></i>Passing</span><span><i class="sd mixed"></i>Some checks failed</span><span><i class="sd failing"></i>Failing</span><span><i class="sd no_data"></i>No checks recorded</span></p>
   </div>
 </section>
+<section class="sec tight" id="data" aria-labelledby="data-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Data</span>
+      <h2 class="h2" id="data-h">Downloaded data,<br class="br-d"> <span class="dim">and when it was fetched.</span></h2>
+      <p class="sec-lede">Some tools answer from official files the server downloads by itself. Each line is what the server recorded for that download: the latest date the file holds, the last attempt, and the last one that worked. A failed download keeps the file from before.</p>
+    </div>
+    <div class="tbl status-tbl rv"><table>
+  <caption class="visually-hidden">Data downloads per source</caption>
+  <thead><tr><th scope="col">Tool</th><th scope="col">Source</th><th scope="col">Data held</th><th scope="col">Last attempt</th><th scope="col">Last good download</th></tr></thead>
+  <tbody>
+<tr>
+  <td><a class="ul" href="/toll-preview/fx-on-date/">Exchange rate on a date</a></td>
+  <td>ECB euro reference rates</td>
+  <td class="mono">2026-11-03</td>
+  <td class="mono">never run</td>
+  <td class="mono">never</td>
+</tr>
+<tr>
+  <td><a class="ul" href="/toll-preview/fx-on-date/">Exchange rate on a date</a></td>
+  <td>U.S. Treasury Reporting Rates of Exchange</td>
+  <td class="mono">2026-09-30</td>
+  <td class="mono">never run</td>
+  <td class="mono">never</td>
+</tr>
+<tr>
+  <td><a class="ul" href="/toll-preview/fx-on-date/">Exchange rate on a date</a></td>
+  <td>HMRC monthly exchange rates</td>
+  <td class="mono">2026-11</td>
+  <td class="mono">never run</td>
+  <td class="mono">never</td>
+</tr>
+  </tbody>
+</table></div>
+  </div>
+</section>
 <section class="sec tight" id="method" aria-labelledby="method-h">
   <div class="wrap">
     <div class="rv">
@@ -190,7 +226,7 @@
   <p class="ref-p">A check runs a tool's first worked example through the same validation, pricing rules and run as an API call, with no account behind it. No balance is touched and no charge or refund is written. It passes when the run finishes without an error within 30 seconds. It does not compare the answer with the example's.</p>
   <p class="ref-p">The checks run inside the server. If the whole server is down, nothing is recorded, so this page cannot say so while it happens; those hours show later as fewer checks or a day with no data. There is no outside monitor behind this page.</p>
   <p class="ref-p">This is a record of what was measured, not a promise. There is no uptime guarantee. Checks are kept for 90 days.</p>
-  <p class="ref-p">The server started once in the last 90 days (deploys and restarts), most recently at 2026-11-04 08:47 UTC.</p>
+  <p class="ref-p">The server started once in the last 90 days (deploys and restarts), most recently at 2026-11-04 09:44 UTC.</p>
   <p class="ref-p">The same record as JSON, with every day's counts, needs no key: <a class="ul" href="/toll-preview/api/v1/status"><code>GET /toll-preview/api/v1/status</code></a>.</p>
 </div>
   </div>

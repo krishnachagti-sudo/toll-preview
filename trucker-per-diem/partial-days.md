@@ -30,7 +30,7 @@ Publication 463 lists two methods for departure and return days: 3/4 of the allo
 | October 1, 2025 | [Notice 2025-54](https://www.irs.gov/pub/irs-drop/n-25-54.pdf) | $80 | $60.00 | $64.50 | $3.75 |
 | October 1, 2026 | [Notice 2026-60](https://www.irs.gov/pub/irs-drop/n-26-60.pdf) | $80 | $60.00 | $64.50 | $3.75 |
 
-A trip from Monday to Friday is three full days and two partial days: in 2026, 3 x $80 + 2 x $60 = $360 of per diem, $288 at the 80% limit.
+A trip from Monday to Friday is three full days and two partial days: in 2026, 3 x $80 + 2 x $60 = $360.00 of per diem, $288.00 at the 80% limit.
 
 > Incidental-expenses-only days ($5) are prorated the same way (Publication 463) and are not subject to the 80% limit.
 

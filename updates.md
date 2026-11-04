@@ -4,7 +4,7 @@ This is the log of every change to the data and rules behind the tools, newest f
 
 ## What changed in the data and rules, and when?
 
-Newest first. Each line is a change to the data or the rules a tool uses: a rate added, a rule corrected, a new official source. The date is the day the change went into the site. Changes to how the site looks or to its code are not listed.
+Newest first. Each line is a change to the data or the rules a tool uses: a rate added, a rule corrected, a new official source. The date is the day the change went into the site. Lines about downloaded data, such as exchange rates, are written by the server when it notices the data a tool holds has changed. Changes to how the site looks or to its code are not listed.
 
 Changes to tool data and rules
 
@@ -24,6 +24,10 @@ Changes to tool data and rules
 | October 30, 2026 | [Business days](https://krishnachagti-sudo.github.io/toll-preview/business-days/) | Corrected the rule for New Year's Day: when 1 January falls on a Saturday, federal offices observe it on Friday 31 December of the year before, so that day now counts as a holiday. | [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/) |
 | October 30, 2026 | [Business days](https://krishnachagti-sudo.github.io/toll-preview/business-days/) | Added the holiday rules for the United States (federal) and for England and Wales, for any year from 1971 to 2100. | [GOV.UK: UK bank holidays](https://www.gov.uk/bank-holidays) |
 | October 30, 2026 | [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/) | Added the ECB euro foreign exchange reference rates, with every daily fixing from 4 January 1999. | [European Central Bank: Euro foreign exchange reference rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html) |
+
+## What data does each tool hold right now?
+
+The data each tool holds has not been recorded yet on this copy of the site. Each tool's answer names the data it used.
 
 ## Where can I see the sources and the checks behind the data?
 
