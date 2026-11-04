@@ -1,0 +1,5 @@
+occurrence,date,weekday,calendar_days,business_days,holidays_skipped
+Q4 2026 ends,2026-12-31,Thursday,57,38,2026-11-11 Veterans Day; 2026-11-26 Thanksgiving Day; 2026-12-25 Christmas Day
+Q1 2027 ends,2027-03-31,Wednesday,147,99,2026-11-11 Veterans Day; 2026-11-26 Thanksgiving Day; 2026-12-25 Christmas Day; 2027-01-01 New Year's Day; 2027-01-18 Birthday of Martin Luther King Jr.; 2027-02-15 Washington's Birthday
+Q2 2027 ends,2027-06-30,Wednesday,238,162,2026-11-11 Veterans Day; 2026-11-26 Thanksgiving Day; 2026-12-25 Christmas Day; 2027-01-01 New Year's Day; 2027-01-18 Birthday of Martin Luther King Jr.; 2027-02-15 Washington's Birthday; 2027-05-31 Memorial Day; 2027-06-18 Juneteenth National Independence Day (observed)
+Q3 2027 ends,2027-09-30,Thursday,330,226,2026-11-11 Veterans Day; 2026-11-26 Thanksgiving Day; 2026-12-25 Christmas Day; 2027-01-01 New Year's Day; 2027-01-18 Birthday of Martin Luther King Jr.; 2027-02-15 Washington's Birthday; 2027-05-31 Memorial Day; 2027-06-18 Juneteenth National Independence Day (observed); 2027-07-05 Independence Day (observed); 2027-09-06 Labor Day

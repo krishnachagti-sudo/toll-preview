@@ -59,3 +59,30 @@ table.cp-table .r { padding-right: 24px; }
 .cp-formats a { color: var(--muted); }
 /* Inline code (a feed address, a long path) wraps instead of pushing the page sideways on a phone. */
 .cp-answer code, .cp-body p code, .cp-body li code, .cp-body td code { overflow-wrap: anywhere; }
+
+/* ---------- Print ----------
+   A content page prints as a plain reference sheet: no header, footer, menus or tool forms; black on
+   white; a table is never split across two pages; the address of a short link is printed after it. */
+@media print {
+  :root { --bg: #fff; --bg-1: #fff; --bg-2: #fff; --bg-3: #fff; --text: #000; --text-2: #000; --muted: #333; --faint: #333; --paper: #fff; --ink: #000; --line: #999; --line-2: #999; --line-3: #666; --rule: #999; color-scheme: light; }
+  @page { margin: 14mm; }
+  html, body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+  .skip, .site-head, .site-foot, .nav-pal, .mx-field, .tl-toast, .cp-crumbs, .cp-tool, .cp-formats, .cp-related, .cp-eyebrow { display: none !important; }
+  .wrap, .cp, main { max-width: none !important; width: auto !important; padding: 0 !important; margin: 0 !important; }
+  .cp-head h1, .cp-answer, .cp-body, .cp-body p, .cp-body li, .cp-note { color: #000 !important; max-width: none; }
+  .cp-answer { font-size: 12pt; }
+  .cp-facts { background: #fff; border: 1px solid #666; break-inside: avoid; }
+  .cp-facts dd, .cp-facts dt { color: #000; }
+  .cp-body.prose section { max-width: none; }
+  .table-scroll { overflow: visible !important; }
+  table, .cp-table { width: 100%; border-collapse: collapse; break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, th, td { break-inside: avoid; page-break-inside: avoid; }
+  caption { break-after: avoid; color: #000; }
+  .cp-table th, .cp-table td { color: #000 !important; background: #fff !important; white-space: normal !important; min-width: 0 !important; border-bottom: 1px solid #999; padding: 4px 8px 4px 0; font-size: 10pt; }
+  h2, h3 { break-after: avoid; page-break-after: avoid; color: #000; }
+  a, a:visited { color: #000 !important; text-decoration: underline; }
+  .cp-body a[href^="/"]:not([href^="/#"])::after { content: " (" attr(href) ")"; font-size: 9pt; overflow-wrap: anywhere; }
+  .cp-sources a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; overflow-wrap: anywhere; }
+  .cp-sources li { break-inside: avoid; }
+}

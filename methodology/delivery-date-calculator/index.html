@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How delivery dates are calculated: method and sources: Endwise</title>
+<meta name="description" content="How the delivery date calculator works: cutoff time, processing days, store and USPS calendars, postal holidays and the last-order date, step by step.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/delivery-date-calculator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How delivery dates are calculated: method and sources">
+<meta property="og:description" content="How the delivery date calculator works: cutoff time, processing days, store and USPS calendars, postal holidays and the last-order date, step by step.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/","name":"How delivery dates are calculated: method and sources","description":"How the delivery date calculator works: cutoff time, processing days, store and USPS calendars, postal holidays and the last-order date, step by step.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How delivery dates are calculated: method and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the delivery date and holiday order-by calculator answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the delivery date and holiday order-by calculator refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Published USPS data is for the 2026 season only (read 2026-10-31). UPS and FedEx tables are not included, because both pages refused automated reading; for another carrier you give the carrier's own transit days, delivery days or send-by date. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How delivery dates are calculated: method and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How delivery dates are calculated: method and sources</h1>
+<p class="cp-answer">A delivery date is found by walking two calendars in turn: the store's shipping days for the cutoff and processing days, then the carrier's delivery days for transit. USPS delivers Monday to Saturday and closes on postal holidays, which are not the days a store observes as federal holidays, so the two calendars differ. Dates run from 2020 to 2035.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the delivery date and holiday order-by calculator compute?</h2>
+<p>Given when an order is placed, the tool says when it is received, when it ships and when it arrives. Given a date the parcel must arrive by, it says the last moment to order. A third operation lists the carrier's closed days and published send-by dates for a year.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>delivery-date</code>: From an order time, the store's time zone, cutoff, shipping days, closures and processing days, and a carrier and service, returns received, ships (earliest and latest), arrives (earliest and latest), the days skipped by name and a plain-words list of steps.</li><li><code>order-by</code>: From a date the parcel must arrive by (deliverBy) or the carrier's own send-by date (sendBy), returns for each USPS service the last order date and the exact instant, with the steps and whether it is still possible at asOf.</li><li><code>calendar</code>: For a year (2020 to 2035) and carrier usps or federal, returns the closed days by name, and for USPS the published holiday send-by dates.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>orderAt, timeZone, cutoff</code>: The order time (a store wall-clock time like 2026-12-11T15:12, or an instant with Z or an offset), an IANA zone like America/New_York and a 24-hour cutoff like 14:00, or null for none.</li><li><code>shipDays, closures, federalHolidays</code>: The weekdays the store ships (default Monday to Friday), its own closures and whether it observes federal holidays.</li><li><code>processingDays, processingDaysMax</code>: Whole shipping days between receiving an order and handing it over (0 to 60), as a range if you give both.</li><li><code>carrier, service, transitDays</code>: usps with a service name, or other with your own delivery days, transit days and holiday rule.</li></ul>
+<p>Outputs:</p>
+<ul><li>received, ships and arrives dates</li><li>steps: each step in words</li><li>skipped: each holiday or closure passed, by name and by which calendar</li><li>validUntil: the instant after which the order falls to the next shipping day</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The order time is read on the store's wall clock in its time zone. A time without an offset is taken as store time. A wall-clock time skipped by a daylight-saving change is resolved to the hour before it, so a cutoff is never later than the store meant.</li><li>The order is received on the order day if that day is a shipping day and the time is before the cutoff. Otherwise it is received on the next shipping day. With no cutoff, an order counts as received on its day if that is a shipping day.</li><li>Processing days are whole shipping days after the day received. 0 ships the same day. A range gives an earliest and a latest handover.</li><li>The handover is the first day, from the end of processing, on which the store ships and the carrier accepts parcels.</li><li>Transit days are carrier delivery days counted after the handover day. For USPS the minimum and maximum come from the delivery times on its services page, unless you give your own.</li><li>Every holiday or closure passed on either calendar is recorded by name in skipped, and every step is written out in steps.</li><li>For the last-order date the walk runs backward. If the target is the date USPS's holiday table says delivery is before (25 December in 2026) or the day before it, the published send-by date for the service is the limit. Otherwise the tool finds the latest handover whose slowest transit still arrives by the target. It then steps back over the longest processing time on the store calendar, and the cutoff on that day is the last moment to order.</li></ol>
+<p><strong>Two calendars, never one.</strong></p>
+<p>The store ships on its chosen weekdays, not on its own closures and, if it follows them, not on the US federal holidays as OPM observes them (a Saturday holiday is a Friday off).</p>
+<p>USPS delivers Monday to Saturday and closes on postal holidays. Those do not follow OPM's observed Fridays: USPS is open with normal delivery on the Friday before a Saturday holiday and closed on the Saturday, and a Sunday holiday closes the Monday. Priority Mail Express delivers every day.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>After the cutoff: an order at 3:12 pm with a 2 pm cutoff is received on the next shipping day.</li><li>Holidays by name: an order placed the afternoon before Thanksgiving skips Thanksgiving Day on the store calendar and says so.</li><li>Different weekends: a store that ships Monday to Friday and a carrier that delivers on Saturday are walked separately.</li><li>A range of processing or transit days gives an earliest and a latest date rather than one guess.</li><li>If the store and the carrier share no open day in the next 400 days (or the 400 days before the target), the tool refuses and says so.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>An order after the cutoff</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;delivery-date&quot;,
+  &quot;orderAt&quot;: &quot;2026-12-11T15:12&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;,
+  &quot;cutoff&quot;: &quot;14:00&quot;,
+  &quot;processingDays&quot;: 1,
+  &quot;carrier&quot;: &quot;usps&quot;,
+  &quot;service&quot;: &quot;ground-advantage&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>An order after the cutoff</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">received</th><td>2026-12-14</td></tr>
+<tr><th scope="row">ships</th><td>2026-12-15</td></tr>
+<tr><th scope="row">arrives</th><td>2026-12-17 to 2026-12-21</td></tr>
+<tr><th scope="row">skipped</th><td>none</td></tr>
+</tbody></table></div>
+<p><strong>Thanksgiving skipped by name</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;delivery-date&quot;,
+  &quot;orderAt&quot;: &quot;2026-11-25T16:30&quot;,
+  &quot;timeZone&quot;: &quot;America/Chicago&quot;,
+  &quot;cutoff&quot;: &quot;12:00&quot;,
+  &quot;processingDays&quot;: 1,
+  &quot;carrier&quot;: &quot;usps&quot;,
+  &quot;service&quot;: &quot;priority-mail&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Thanksgiving skipped by name</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">received</th><td>2026-11-27</td></tr>
+<tr><th scope="row">ships</th><td>2026-11-30</td></tr>
+<tr><th scope="row">arrives</th><td>2026-12-02 to 2026-12-03</td></tr>
+<tr><th scope="row">skipped</th><td>Thanksgiving Day (2026-11-26, store calendar)</td></tr>
+</tbody></table></div>
+<p><strong>The last order for Christmas 2026 by USPS Ground Advantage</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;order-by&quot;,
+  &quot;deliverBy&quot;: &quot;2026-12-24&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;,
+  &quot;cutoff&quot;: &quot;14:00&quot;,
+  &quot;processingDays&quot;: 1,
+  &quot;carrier&quot;: &quot;usps&quot;,
+  &quot;destination&quot;: &quot;contiguous&quot;,
+  &quot;asOf&quot;: &quot;2026-11-02T09:00&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>The last order for Christmas 2026 by USPS Ground Advantage</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">carrier send-by date</th><td>2026-12-17</td></tr>
+<tr><th scope="row">last handover</th><td>2026-12-17</td></tr>
+<tr><th scope="row">last order</th><td>Wednesday, December 16, 2026, 2:00 pm EST</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Published USPS data is for the 2026 season only (read 2026-10-31). UPS and FedEx tables are not included, because both pages refused automated reading; for another carrier you give the carrier's own transit days, delivery days or send-by date.</li><li>USPS delivery times are the ranges the carrier states for each service. The tool does not predict delays.</li><li>The store calendar covers weekdays, your closures and federal holidays. It does not model per-product lead times or weekend processing.</li><li>Dates must fall between 2020 and 2035; others are refused.</li><li>Defaults when you give nothing: America/New_York, a 14:00 cutoff, shipping Monday to Friday, federal holidays observed and 1 processing day.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>USPS send-by dates, postal holidays and delivery times were read from the USPS pages on 2026-10-31. The federal holiday rules come from the business days tool, last changed 2026-10-30.</p>
+<ul class="cp-sources"><li><a href="https://www.usps.com/holiday/holiday-shipping-dates.htm">USPS: 2026 Holiday Shipping Deadlines</a></li><li><a href="https://about.usps.com/newsroom/events/">USPS Newsroom: Holidays and events (postal holidays)</a></li><li><a href="https://www.usps.com/ship/mail-shipping-services.htm">USPS: Mail and shipping services</a></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists. USPS delivery times are compared with its services page, and the missing UPS and FedEx tables are checked to be absent, with the reason recorded.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/delivery-date-calculator/">Open the Delivery date and holiday order-by calculator tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the delivery date and holiday order-by calculator answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the delivery date and holiday order-by calculator refuse to answer?</h3><p>Published USPS data is for the 2026 season only (read 2026-10-31). UPS and FedEx tables are not included, because both pages refused automated reading; for another carrier you give the carrier's own transit days, delivery days or send-by date. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/delivery-date-calculator/">Open the Delivery date and holiday order-by calculator tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/">USPS holiday shipping deadlines 2026</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/delivery-date-calculator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

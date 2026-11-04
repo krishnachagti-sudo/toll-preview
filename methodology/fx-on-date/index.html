@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How exchange rates on a date are worked out: method: Endwise</title>
+<meta name="description" content="How the exchange rate on a date tool works: ECB reference rates, exact cross rates, weekends and holidays, and the Treasury, IRS and HMRC tables.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/fx-on-date.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How exchange rates on a date are worked out: method">
+<meta property="og:description" content="How the exchange rate on a date tool works: ECB reference rates, exact cross rates, weekends and holidays, and the Treasury, IRS and HMRC tables.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/","name":"How exchange rates on a date are worked out: method","description":"How the exchange rate on a date tool works: ECB reference rates, exact cross rates, weekends and holidays, and the Treasury, IRS and HMRC tables.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How exchange rates on a date are worked out: method","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the exchange rate on a date answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the exchange rate on a date refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"The default table is the ECB reference rate. It is a reference rate published once a day, not a rate you could trade at, and not a bank's rate. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How exchange rates on a date are worked out: method</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How exchange rates on a date are worked out: method</h1>
+<p class="cp-answer">The rate is the quote currency per euro divided by the base currency per euro, from the ECB reference file for that day, calculated in exact decimals and rounded half away from zero to 6 places. If the ECB published nothing on the date, the latest fixing in the 7 days before it is used and the answer says which.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the exchange rate on a date compute?</h2>
+<p>Given a base currency, a quote currency and a date, the tool returns the rate, its inverse and the date of the fixing it used. A source option swaps the default ECB table for the US Treasury reporting rates, the IRS yearly averages or the HMRC monthly rates, which tax authorities name for specific purposes.</p>
+<p>Inputs:</p>
+<ul><li><code>base, quote</code>: Three-letter currency codes in capitals, like USD and EUR. Any code in the ECB data file is accepted, including retired ones.</li><li><code>date</code>: A real calendar date written like 2026-10-29.</li><li><code>source</code>: ecb (default), treasury, irs or hmrc.</li></ul>
+<p>Outputs:</p>
+<ul><li>rate: units of quote per 1 base</li><li>inverse: units of base per 1 quote</li><li>requestedDate and fixingDate</li><li>for the other sources: the published rate as printed, the report or period it covers and a link to the table</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The ECB publishes how many units of each currency one euro buys, once per TARGET working day at about 16:00 CET. The file starts on 1999-01-04.</li><li>The rate from base to quote is (quote per euro) divided by (base per euro). EUR counts as 1.</li><li>The division is done exactly, as a ratio of decimal numbers in BigInt, using the decimal the ECB wrote. The result is rounded half away from zero to 6 decimal places.</li><li>The inverse is 1 divided by that same unrounded ratio, rounded the same way. It is never the inverse of an already-rounded rate.</li><li>The fixing is the one on the requested date. If there is none, the tool looks back one day at a time, up to 7 days, and uses the first fixing found. The answer carries fixingDate, and the call reports it when it differs from the requested date.</li><li>A date after the latest fixing is answered only when every day in between is a weekend. A weekday in that gap has its own fixing coming, so the tool refuses rather than use an older rate.</li><li>For the other sources the published rate is kept as text and the answer is worked out from it exactly. Treasury, IRS and HMRC are each quoted against one anchor currency (US dollar, US dollar, pound), so base or quote must be that currency.</li></ol>
+<p><strong>US Treasury reporting rates.</strong></p>
+<p>Quarterly, units per US dollar. Treasury says agencies use each report as of its date and for the ensuing three months, and that an amendment is a separate line with a new effective date. So a date uses the latest report dated on or before it, and within that report the latest line for the currency whose effective date is on or before the date. The answer gives the report date, the effective date and the period the rate covers.</p>
+<p><strong>IRS yearly average.</strong></p>
+<p>Units per US dollar for the calendar year of the date, copied from the IRS table (page updated 2026-09-17). A cell the IRS prints in a form that is not a plain number is refused rather than guessed.</p>
+<p><strong>HMRC monthly rates.</strong></p>
+<p>Units per pound, covering the first to the last day of the month of the date. HMRC's weekly amendments are not in the monthly files and are not used. A currency that the file lists with two different rates for the month is refused.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Weekends: a Saturday uses the Friday fixing (24 October 2026 uses 23 October 2026).</li><li>Target holidays: Christmas Day 2024 had no fixing, so the answer uses 24 December 2024 and says so in the note.</li><li>A same-currency pair returns 1 for rate and inverse.</li><li>A date before 1999-01-04 is refused: the ECB has no rates before the first day of the euro.</li><li>A date in the future is refused, and so is a weekday after the latest published fixing.</li><li>A currency missing from that day's row (the ECB leaves some blank) is refused for that date, not filled from another day.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A Saturday uses the Friday fixing</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;base&quot;: &quot;USD&quot;,
+  &quot;quote&quot;: &quot;EUR&quot;,
+  &quot;date&quot;: &quot;2026-10-24&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A Saturday uses the Friday fixing</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">requestedDate</th><td>2026-10-24</td></tr>
+<tr><th scope="row">fixingDate</th><td>2026-10-23</td></tr>
+<tr><th scope="row">rate (EUR per USD)</th><td>0.893416</td></tr>
+<tr><th scope="row">inverse (USD per EUR)</th><td>1.1193</td></tr>
+</tbody></table></div>
+<p><strong>Christmas Day 2024: no ECB fixing</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;base&quot;: &quot;GBP&quot;,
+  &quot;quote&quot;: &quot;JPY&quot;,
+  &quot;date&quot;: &quot;2024-12-25&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Christmas Day 2024: no ECB fixing</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">requestedDate</th><td>2024-12-25</td></tr>
+<tr><th scope="row">fixingDate</th><td>2024-12-24</td></tr>
+<tr><th scope="row">rate (JPY per GBP)</th><td>197.149931</td></tr>
+<tr><th scope="row">inverse (GBP per JPY)</th><td>0.005072</td></tr>
+</tbody></table></div>
+<p><strong>HMRC monthly rate</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;base&quot;: &quot;USD&quot;,
+  &quot;quote&quot;: &quot;GBP&quot;,
+  &quot;date&quot;: &quot;2025-01-15&quot;,
+  &quot;source&quot;: &quot;hmrc&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>HMRC monthly rate</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">publication</th><td>HMRC monthly exchange rates for January 2025 (published December 18, 2024)</td></tr>
+<tr><th scope="row">publishedRate</th><td>1.2707 (USD per 1 GBP)</td></tr>
+<tr><th scope="row">periodStart to periodEnd</th><td>2025-01-01 to 2025-01-31</td></tr>
+<tr><th scope="row">rate (GBP per USD)</th><td>0.786968</td></tr>
+<tr><th scope="row">inverse</th><td>1.2707</td></tr>
+</tbody></table></div>
+<p><strong>IRS yearly average</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;base&quot;: &quot;EUR&quot;,
+  &quot;quote&quot;: &quot;USD&quot;,
+  &quot;date&quot;: &quot;2023-06-15&quot;,
+  &quot;source&quot;: &quot;irs&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>IRS yearly average</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">publishedRate</th><td>0.924 (EUR per 1 USD)</td></tr>
+<tr><th scope="row">periodStart to periodEnd</th><td>2023-01-01 to 2023-12-31</td></tr>
+<tr><th scope="row">rate (USD per EUR)</th><td>1.082251</td></tr>
+<tr><th scope="row">inverse</th><td>0.924</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>The default table is the ECB reference rate. It is a reference rate published once a day, not a rate you could trade at, and not a bank's rate.</li><li>A date with no fixing uses an earlier day, at most 7 days back. Beyond that the tool refuses.</li><li>The Treasury, IRS and HMRC options are limited to the pairs that include their anchor currency and to the years and months held in their tables.</li><li>The tool does not tell you which rate a tax rule requires. It gives the number from the table you name.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>ECB rates are fetched each day after the ECB publishes them. The IRS table was read 2026-10-31. Treasury and HMRC files are refreshed with the data files.</p>
+<ul class="cp-sources"><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">ECB: euro foreign exchange reference rates</a></li><li><a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange">U.S. Treasury Reporting Rates of Exchange</a></li><li><a href="https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates">IRS: Yearly average currency exchange rates</a></li><li><a href="https://www.trade-tariff.service.gov.uk/exchange_rates">HMRC monthly exchange rates</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback and rounding that is exact on the decimal value. Treasury and HMRC values read on 2026-11-02 are pinned against the real files, and IRS averages against the stored IRS table, including the cells the IRS prints irregularly.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/fx-on-date/">Open the Exchange rate on a date tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the exchange rate on a date answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the exchange rate on a date refuse to answer?</h3><p>The default table is the ECB reference rate. It is a reference rate published once a day, not a rate you could trade at, and not a bank's rate. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/fx-on-date/">Open the Exchange rate on a date tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/fx-on-date/which-exchange-rate-for-us-taxes/">Which exchange rate to use for US taxes</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/fx-on-date.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

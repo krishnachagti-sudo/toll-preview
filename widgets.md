@@ -1,6 +1,6 @@
-# Free widgets for your site: IRS mileage rate, holidays
+# Free widgets for your site: IRS rates, tax dates
 
-Paste one iframe into your page and it shows a live figure from Endwise: the current IRS mileage rate, the next US federal holiday, or a business days counter. There are 3 free widgets, with no account, no script and no cookies.
+Paste one iframe into your page and it shows a live figure from Endwise: an IRS rate, a tax due date, the next US federal holiday or a business days counter. There are 6 free widgets, with no account, no script and no cookies.
 
 ## How do I add a widget to my site?
 
@@ -30,6 +30,42 @@ Copy this code:
 
 ```html
 <iframe src="https://krishnachagti-sudo.github.io/toll-preview/embed/next-holiday" title="Next US federal holiday" width="320" height="150" style="border:0;max-width:100%" loading="lazy"></iframe>
+```
+
+## Trucker per diem rate widget
+
+**What it shows:** The IRS special meals rate for the transportation industry, for the continental US and for outside it, the dates it covers and the IRS notice it comes from. It switches on its own when a new notice period starts.
+
+**Where it comes from:** The IRS transportation-industry per diem notices, read from the trucker per diem worksheet's dated data. Open the [live widget](https://krishnachagti-sudo.github.io/toll-preview/embed/trucker-per-diem) to see it.
+
+Copy this code:
+
+```html
+<iframe src="https://krishnachagti-sudo.github.io/toll-preview/embed/trucker-per-diem" title="Current IRS per diem rate for truckers" width="320" height="150" style="border:0;max-width:100%" loading="lazy"></iframe>
+```
+
+## Next IFTA return due date widget
+
+**What it shows:** The next IFTA quarterly return due date, the quarter it covers and how many days away it is. A due date on a weekend or holiday is shown on the next business day.
+
+**Where it comes from:** The IFTA due dates in the IFTA calculator, with the weekend and holiday shift worked out by the business days calculator. Open the [live widget](https://krishnachagti-sudo.github.io/toll-preview/embed/ifta-due-date) to see it.
+
+Copy this code:
+
+```html
+<iframe src="https://krishnachagti-sudo.github.io/toll-preview/embed/ifta-due-date" title="Next IFTA quarterly return due date" width="320" height="150" style="border:0;max-width:100%" loading="lazy"></iframe>
+```
+
+## 1099-NEC reporting line widget
+
+**What it shows:** The amount paid to one contractor at which a 1099-NEC is required for the current payment year, and the date the forms are due, moved to the next business day when it falls on a weekend or holiday.
+
+**Where it comes from:** The IRS Instructions for Forms 1099-MISC and 1099-NEC, read from the 1099 threshold check's dated data. It shows the latest year the IRS has published. Open the [live widget](https://krishnachagti-sudo.github.io/toll-preview/embed/1099-threshold) to see it.
+
+Copy this code:
+
+```html
+<iframe src="https://krishnachagti-sudo.github.io/toll-preview/embed/1099-threshold" title="1099-NEC reporting line for the current tax year" width="320" height="150" style="border:0;max-width:100%" loading="lazy"></iframe>
 ```
 
 ## Business days counter widget

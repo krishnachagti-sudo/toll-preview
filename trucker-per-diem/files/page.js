@@ -3,8 +3,8 @@
 // server read the same dated notices. Only the worksheet (PDF and CSV) is a paid run, through
 // Endwise.run. The log is kept in this browser (localStorage) and sent only for the worksheet.
 import {
-  makeEngine, PerDiemError, COUNT_KEYS, STATUS_WORDS, money, longDate, shortDate, isRealDate,
-  dayNumber, fromDayNumber, monthName, MIN_YEAR,
+  makeEngine, PerDiemError, COUNT_KEYS, STATUS_WORDS as EN_STATUS_WORDS, money, longDate as enLongDate, shortDate as enShortDate, isRealDate,
+  dayNumber, fromDayNumber, monthName as enMonthName, MIN_YEAR,
 } from './core.js';
 
 const T = window.Endwise;
@@ -12,6 +12,21 @@ const h = T.h;
 const SLUG = 'trucker-per-diem';
 const STORE_KEY = 'trucker-per-diem.v1';
 const $ = (id) => document.getElementById(id);
+
+// The Spanish page (page.es.html, at /es/trucker-per-diem/) is <html lang="es">: there this script
+// shows its own words in Spanish. The English page reads exactly the English words below. Text
+// worked out by core.js or the server (the answer sentence, "where the numbers go", notes, log
+// checks, notice names, error messages) stays in English on both.
+const ES = document.documentElement.lang === 'es';
+const tr = (en, es) => (ES ? es : en);
+const ES_MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const ES_WEEKDAYS = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+const longDate = (iso) => (ES ? `${+iso.slice(8, 10)} de ${ES_MONTHS[+iso.slice(5, 7) - 1]} de ${iso.slice(0, 4)}` : enLongDate(iso));
+const shortDate = (iso) => (ES ? `${ES_WEEKDAYS[new Date(dayNumber(iso) * 86400000).getUTCDay()]}, ${+iso.slice(8, 10)} ${ES_MONTHS[+iso.slice(5, 7) - 1].slice(0, 3)}` : enShortDate(iso));
+const dayMonth = (iso) => (ES ? `${+iso.slice(8, 10)} ${ES_MONTHS[+iso.slice(5, 7) - 1].slice(0, 3)}` : enShortDate(iso).slice(5));
+const monthName = (m) => (ES ? ES_MONTHS[m - 1] : enMonthName(m));
+const ES_STATUS = { full: 'Día completo', partial: 'Día de salida o regreso', incidental: 'Solo gastos imprevistos', 'incidental-partial': 'Solo gastos imprevistos, día parcial', reimbursed: 'Reembolsado', home: 'En casa' };
+const STATUS_WORDS = ES ? ES_STATUS : EN_STATUS_WORDS;
 
 let engine = null;
 let marks = {}; // date -> { status, locality }, set by tapping the calendar
@@ -22,14 +37,21 @@ let pendingQuote = null;
 let kind = 'example';
 
 const BRUSHES = [
-  { key: 'full', label: 'Full day' },
-  { key: 'partial', label: 'Departure or return' },
-  { key: 'incidental', label: 'Incidental only' },
-  { key: 'reimbursed', label: 'Reimbursed' },
-  { key: 'home', label: 'Home' },
-  { key: 'clear', label: 'Unmark' },
+  { key: 'full', label: tr('Full day', 'Día completo') },
+  { key: 'partial', label: tr('Departure or return', 'Salida o regreso') },
+  { key: 'incidental', label: tr('Incidental only', 'Solo imprevistos') },
+  { key: 'reimbursed', label: tr('Reimbursed', 'Reembolsado') },
+  { key: 'home', label: tr('Home', 'En casa') },
+  { key: 'clear', label: tr('Unmark', 'Quitar la marca') },
 ];
-const COUNT_LABELS = {
+const COUNT_LABELS = ES ? {
+  fullDays: 'Días completos',
+  partialDays: 'Días de salida o regreso',
+  oconusFullDays: 'Días completos fuera de los 48 estados contiguos',
+  oconusPartialDays: 'Días de salida o regreso fuera de ellos',
+  incidentalOnlyDays: 'Días de solo gastos imprevistos',
+  incidentalOnlyPartialDays: 'Días parciales de solo gastos imprevistos',
+} : {
   fullDays: 'Full days',
   partialDays: 'Departure or return days',
   oconusFullDays: 'Full days outside the lower 48',
@@ -68,7 +90,7 @@ const readCounts = (prefix) => {
     const raw = $(`${prefix}-${k}`).value.trim();
     if (raw === '') continue;
     const n = Number(raw);
-    if (!Number.isInteger(n) || n < 0 || n > 366) return { error: `${COUNT_LABELS[k]} must be a whole number from 0 to 366.` };
+    if (!Number.isInteger(n) || n < 0 || n > 366) return { error: tr(`${COUNT_LABELS[k]} must be a whole number from 0 to 366.`, `${COUNT_LABELS[k]} debe ser un número entero de 0 a 366.`) };
     if (n) out[k] = n;
   }
   return { counts: out };
@@ -96,16 +118,16 @@ function syncMode() {
   for (const el of document.querySelectorAll('[data-mode]')) el.hidden = el.dataset.mode !== m;
   const y = year();
   const ps = engine.yearPeriods(y);
-  const words = ps.map((p) => `$${p.conus} from ${longDate(p.clipFrom)} (${p.notice})`).join(', then ');
-  $('pd-year-hint').textContent = `${words}.${ps.length === 1 ? ` The rate for travel from ${longDate(fromDayNumber(dayNumber(engine.last) + 1))} is not published yet.` : ''}`;
+  const words = ps.map((p) => tr(`$${p.conus} from ${longDate(p.clipFrom)} (${p.notice})`, `$${p.conus} desde el ${longDate(p.clipFrom)} (${p.notice})`)).join(tr(', then ', ', y luego '));
+  $('pd-year-hint').textContent = `${words}.${ps.length === 1 ? tr(` The rate for travel from ${longDate(fromDayNumber(dayNumber(engine.last) + 1))} is not published yet.`, ` La tarifa para viajes desde el ${longDate(fromDayNumber(dayNumber(engine.last) + 1))} todavía no se ha publicado.`) : ''}`;
   $('pd-octdec').hidden = ps.length === 1;
   $('pd-octdec-hint').textContent = splitYear(y)
-    ? `Needed for ${y}: the rate changed on October 1 from $${ps[0].conus} to $${ps[1].conus}.`
-    : `Optional for ${y}: the rate was $${ps[0].conus} all year, so the split does not change the total.`;
+    ? tr(`Needed for ${y}: the rate changed on October 1 from $${ps[0].conus} to $${ps[1].conus}.`, `Necesario para ${y}: la tarifa cambió el 1 de octubre de $${ps[0].conus} a $${ps[1].conus}.`)
+    : tr(`Optional for ${y}: the rate was $${ps[0].conus} all year, so the split does not change the total.`, `Opcional para ${y}: la tarifa fue de $${ps[0].conus} todo el año, así que la división no cambia el total.`);
   $('pd-get').disabled = m !== 'log';
   $('pd-get-note').textContent = m === 'log'
-    ? 'Your log stays in this browser. It is sent only when you get the worksheet.'
-    : 'The worksheet is built from a day-by-day log: switch to "Trips and a calendar" to make one.';
+    ? tr('Your log stays in this browser. It is sent only when you get the worksheet.', 'Su registro se queda en este navegador. Solo se envía cuando obtiene la hoja de cálculo.')
+    : tr('The worksheet is built from a day-by-day log: switch to "Trips and a calendar" to make one.', 'La hoja de cálculo se hace con un registro día por día: cambie a "Viajes y un calendario" para hacerla.');
 }
 
 const TRIP_RE = /^(\d{4}-\d{2}-\d{2})(?:\s*(?:to|-|–)\s*(\d{4}-\d{2}-\d{2}))?\s*(.*)$/i;
@@ -115,7 +137,7 @@ function readTrips() {
   const trips = [];
   for (const line of $('pd-trips').value.split('\n').map((x) => x.trim()).filter(Boolean)) {
     const m = TRIP_RE.exec(line);
-    if (!m || !isRealDate(m[1]) || (m[2] && !isRealDate(m[2]))) return { error: `Could not read "${line}". Write 2026-03-02 to 2026-03-13, then "Canada" if it was outside the lower 48, then a load number.` };
+    if (!m || !isRealDate(m[1]) || (m[2] && !isRealDate(m[2]))) return { error: tr(`Could not read "${line}". Write 2026-03-02 to 2026-03-13, then "Canada" if it was outside the lower 48, then a load number.`, `No se pudo leer "${line}". Escriba 2026-03-02 to 2026-03-13, luego "Canada" si fue fuera de los 48 estados contiguos, y luego un número de carga.`) };
     let rest = m[3].trim();
     let locality = 'CONUS';
     const abroad = ABROAD.exec(rest);
@@ -172,40 +194,44 @@ function render(r) {
   const out = $('pd-out');
   out.textContent = '';
   const t = r.totals;
-  const label = kind === 'example' ? 'Worked example' : kind === 'saved' ? 'Your saved log' : 'Worked out on this page, free';
+  const label = kind === 'example' ? tr('Worked example', 'Ejemplo resuelto') : kind === 'saved' ? tr('Your saved log', 'Su registro guardado') : tr('Worked out on this page, free', 'Calculado en esta página, gratis');
   const sheet = h('div', {}, [
     h('p', { class: 'pd-sheet-label' }, label),
-    h('p', { class: 'pd-answer' }, [h('small', {}, `Schedule C line 24b, ${r.taxYear}`), t.display.deductible]),
+    h('p', { class: 'pd-answer' }, [h('small', {}, tr(`Schedule C line 24b, ${r.taxYear}`, `Anexo C, línea 24b, ${r.taxYear}`)), t.display.deductible]),
     h('dl', { class: 'pd-facts' }, [
-      h('div', {}, [h('dt', {}, 'Full per diem, for tax software'), h('dd', {}, t.display.perDiem)]),
-      h('div', {}, [h('dt', {}, 'Limit'), h('dd', {}, `${t.deductiblePct}%`)]),
-      t.scheduleCLine24a ? h('div', {}, [h('dt', {}, 'Line 24a, incidental only'), h('dd', {}, t.display.incidentalOnly)]) : null,
+      h('div', {}, [h('dt', {}, tr('Full per diem, for tax software', 'Viáticos (per diem) completos, para el programa de impuestos')), h('dd', {}, t.display.perDiem)]),
+      h('div', {}, [h('dt', {}, tr('Limit', 'Límite')), h('dd', {}, `${t.deductiblePct}%`)]),
+      t.scheduleCLine24a ? h('div', {}, [h('dt', {}, tr('Line 24a, incidental only', 'Línea 24a, solo gastos imprevistos')), h('dd', {}, t.display.incidentalOnly)]) : null,
     ]),
     h('p', { class: 'pd-sub' }, r.answer),
-    h('p', { class: 'pd-heading' }, 'By rate period'),
+    h('p', { class: 'pd-heading' }, tr('By rate period', 'Por período de tarifa')),
     table(
-      [{ label: 'Dates' }, { label: 'Notice' }, { label: 'Rate', num: true }, { label: 'Full', num: true }, { label: 'Partial', num: true }, { label: 'Per diem', num: true }, { label: 'Deductible', num: true }],
-      r.segments.map((s) => [`${shortDate(s.from).slice(5)} to ${shortDate(s.to).slice(5)}`, s.notices.map((n) => n.notice).join(', '), `$${s.rateConus}${s.oconusFullDays + s.oconusPartialDays ? ` / $${s.rateOconus}` : ''}`,
+      ES
+        ? [{ label: 'Fechas' }, { label: 'Aviso' }, { label: 'Tarifa', num: true }, { label: 'Completos', num: true }, { label: 'Parciales', num: true }, { label: 'Per diem', num: true }, { label: 'Deducible', num: true }]
+        : [{ label: 'Dates' }, { label: 'Notice' }, { label: 'Rate', num: true }, { label: 'Full', num: true }, { label: 'Partial', num: true }, { label: 'Per diem', num: true }, { label: 'Deductible', num: true }],
+      r.segments.map((s) => [`${dayMonth(s.from)} ${tr('to', 'al')} ${dayMonth(s.to)}`, s.notices.map((n) => n.notice).join(', '), `$${s.rateConus}${s.oconusFullDays + s.oconusPartialDays ? ` / $${s.rateOconus}` : ''}`,
         String(s.fullDays + s.oconusFullDays), String(s.partialDays + s.oconusPartialDays), s.perDiem, s.deductible]),
     ),
   ]);
   if (r.months) {
     const active = r.months.filter((m) => m.perDiem || m.incidentalOnly || m.reimbursedDays);
     if (active.length) {
-      sheet.append(h('p', { class: 'pd-heading' }, 'By month'), table(
-        [{ label: 'Month' }, { label: 'Full', num: true }, { label: 'Partial', num: true }, { label: 'Outside', num: true }, { label: 'Per diem', num: true }, { label: 'Deductible', num: true }],
-        active.map((m) => [m.name, String(m.fullDays), String(m.partialDays), String(m.oconusDays), m.perDiem, m.deductible]),
+      sheet.append(h('p', { class: 'pd-heading' }, tr('By month', 'Por mes')), table(
+        ES
+          ? [{ label: 'Mes' }, { label: 'Completos', num: true }, { label: 'Parciales', num: true }, { label: 'Fuera', num: true }, { label: 'Per diem', num: true }, { label: 'Deducible', num: true }]
+          : [{ label: 'Month' }, { label: 'Full', num: true }, { label: 'Partial', num: true }, { label: 'Outside', num: true }, { label: 'Per diem', num: true }, { label: 'Deductible', num: true }],
+        active.map((m) => [ES ? ES_MONTHS[+m.month.slice(5, 7) - 1] : m.name, String(m.fullDays), String(m.partialDays), String(m.oconusDays), m.perDiem, m.deductible]),
       ));
     }
-    sheet.append(h('p', { class: 'pd-heading' }, `Log checks (${r.warnings.length})`));
+    sheet.append(h('p', { class: 'pd-heading' }, tr(`Log checks (${r.warnings.length})`, `Revisiones del registro (${r.warnings.length})`)));
     sheet.append(r.warnings.length
       ? h('ul', { class: 'pd-warn' }, r.warnings.map((w) => h('li', {}, w.message)))
-      : h('p', { class: 'pd-aside' }, 'No problems found in the log.'));
+      : h('p', { class: 'pd-aside' }, tr('No problems found in the log.', 'No se encontraron problemas en el registro.')));
   }
   sheet.append(
-    h('p', { class: 'pd-heading' }, 'Where the numbers go'),
+    h('p', { class: 'pd-heading' }, tr('Where the numbers go', 'Dónde van los números')),
     h('ul', { class: 'pd-enter' }, r.howToEnter.map((x) => h('li', {}, x))),
-    h('details', { class: 'pd-why' }, [h('summary', {}, 'Rules applied'), h('ul', {}, [r.methodLock, r.limit.basis[0].toUpperCase() + r.limit.basis.slice(1) + '.', ...r.notes].map((x) => h('li', {}, x)))]),
+    h('details', { class: 'pd-why' }, [h('summary', {}, tr('Rules applied', 'Reglas aplicadas')), h('ul', {}, [r.methodLock, r.limit.basis[0].toUpperCase() + r.limit.basis.slice(1) + '.', ...r.notes].map((x) => h('li', {}, x)))]),
     h('div', { id: 'pd-files' }),
   );
   out.appendChild(sheet);
@@ -228,7 +254,7 @@ function renderCalendar(r) {
       const mark = marks[date];
       const status = row?.status ?? null;
       const off = date > engine.last;
-      const said = `${shortDate(date)}: ${status ? STATUS_WORDS[status] : 'not logged'}${row?.locality === 'OCONUS' && status !== 'home' ? ', outside the continental US' : ''}${row?.amount ? `, ${money(Math.round(row.amount * 100))}` : ''}${mark ? ' (marked)' : ''}`;
+      const said = `${shortDate(date)}: ${status ? STATUS_WORDS[status] : tr('not logged', 'sin anotar')}${row?.locality === 'OCONUS' && status !== 'home' ? tr(', outside the continental US', ', fuera de los Estados Unidos continentales') : ''}${row?.amount ? `, ${money(Math.round(row.amount * 100))}` : ''}${mark ? tr(' (marked)', ' (marcado)') : ''}`;
       const btn = h('button', {
         type: 'button',
         class: `pd-day${status ? ` s-${status}` : ''}${mark ? ' marked' : ''}${row?.locality === 'OCONUS' && status !== 'home' ? ' abroad' : ''}`,
@@ -246,7 +272,7 @@ function renderCalendar(r) {
     }
     cal.appendChild(h('div', { class: 'pd-month' }, [
       h('p', { class: 'pd-month-name' }, monthName(m)),
-      h('div', { class: 'pd-dow', 'aria-hidden': 'true' }, ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((x) => h('span', {}, x))),
+      h('div', { class: 'pd-dow', 'aria-hidden': 'true' }, (ES ? ['D', 'L', 'M', 'M', 'J', 'V', 'S'] : ['S', 'M', 'T', 'W', 'T', 'F', 'S']).map((x) => h('span', {}, x))),
       h('div', { class: 'pd-days' }, cells),
     ]));
   }
@@ -263,14 +289,14 @@ function renderCalendar(r) {
 function legend() {
   $('pd-legend').textContent = '';
   for (const s of ['full', 'partial', 'incidental', 'reimbursed', 'home']) $('pd-legend').appendChild(h('li', {}, [h('span', { class: `pd-key s-${s}` }), STATUS_WORDS[s]]));
-  $('pd-legend').appendChild(h('li', {}, [h('span', { class: 'pd-key s-full abroad' }), 'Outside the lower 48']));
+  $('pd-legend').appendChild(h('li', {}, [h('span', { class: 'pd-key s-full abroad' }), tr('Outside the lower 48', 'Fuera de los 48 estados contiguos')]));
 }
 
 function rateTable(periods) {
   const el = $('pd-rate-table');
   el.textContent = '';
   el.appendChild(h('table', { class: 'rules pd-table' }, [
-    h('thead', {}, h('tr', {}, ['Travel on or after', 'Notice', 'Full day', 'Partial day', 'Outside the lower 48', 'Incidental only'].map((x, i) => h('th', { scope: 'col', class: i > 1 ? 'r num' : null }, x)))),
+    h('thead', {}, h('tr', {}, (ES ? ['Viaje desde el', 'Aviso', 'Día completo', 'Día parcial', 'Fuera de los 48 contiguos', 'Solo imprevistos'] : ['Travel on or after', 'Notice', 'Full day', 'Partial day', 'Outside the lower 48', 'Incidental only']).map((x, i) => h('th', { scope: 'col', class: i > 1 ? 'r num' : null }, x)))),
     h('tbody', {}, periods.map((p) => h('tr', {}, [
       h('th', { scope: 'row' }, longDate(p.from)),
       h('td', {}, h('a', { href: p.url }, p.notice)),
@@ -299,7 +325,7 @@ function update() {
   clearErrors();
   syncMode();
   pendingQuote = null;
-  $('pd-get').textContent = 'Get the worksheet (PDF and CSV)';
+  $('pd-get').textContent = tr('Get the worksheet (PDF and CSV)', 'Obtener la hoja de cálculo (PDF y CSV)');
   const read = readForm();
   if (read.error) { $(read.field).textContent = read.error; return; }
   try {
@@ -327,7 +353,7 @@ const soon = () => { kind = 'edit'; clearTimeout(timer); timer = setTimeout(() =
 function download(name, type, data) {
   const blob = new Blob([data], { type });
   const url = URL.createObjectURL(blob);
-  const a = h('a', { href: url, download: name, class: 'btn btn-small' }, `Download ${name.endsWith('.pdf') ? 'the PDF' : 'the CSV'}`);
+  const a = h('a', { href: url, download: name, class: 'btn btn-small' }, tr(`Download ${name.endsWith('.pdf') ? 'the PDF' : 'the CSV'}`, `Descargar el ${name.endsWith('.pdf') ? 'PDF' : 'CSV'}`));
   return a;
 }
 const fromBase64 = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
@@ -342,16 +368,16 @@ function sampleLinks(tool) {
   const link = (name, type, data, text) => h('a', { href: URL.createObjectURL(new Blob([data], { type })), download: name, class: 'btn btn-quiet btn-small' }, text);
   box.textContent = '';
   box.append(
-    link(f.pdf.name, 'application/pdf', fromBase64(f.pdf.base64), 'Sample worksheet (PDF)'), ' ',
-    link(f.csv.name, 'text/csv', f.csv.text, 'Sample day-by-day CSV'),
+    link(f.pdf.name, 'application/pdf', fromBase64(f.pdf.base64), tr('Sample worksheet (PDF)', 'Hoja de muestra (PDF)')), ' ',
+    link(f.csv.name, 'text/csv', f.csv.text, tr('Sample day-by-day CSV', 'CSV de muestra, día por día')),
   );
 }
 
 function showError(e) {
   const box = $('pd-error');
   box.textContent = e.message;
-  if (e.code === 'unauthorized' || e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, 'Sign in or create an account'));
-  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, 'Open your account'));
+  if (e.code === 'unauthorized' || e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, tr('Sign in or create an account', 'Iniciar sesión o crear una cuenta')));
+  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, tr('Open your account', 'Abrir su cuenta')));
 }
 
 async function getWorksheet() {
@@ -359,10 +385,10 @@ async function getWorksheet() {
   if (timer) { clearTimeout(timer); timer = null; update(); }
   clearErrors();
   const read = readForm();
-  if (read.error || !lastResult || read.input.op !== 'preview') { $('pd-error').textContent = read.error ?? 'Fix the log first: the worksheet is built from the days shown.'; $('pd-error').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
+  if (read.error || !lastResult || read.input.op !== 'preview') { $('pd-error').textContent = read.error ?? tr('Fix the log first: the worksheet is built from the days shown.', 'Corrija primero el registro: la hoja de cálculo se hace con los días que se muestran.'); $('pd-error').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
   const driverLabel = $('pd-driver').value.trim();
   if (!driverLabel) {
-    $('pd-driver-err').textContent = 'Put the driver\'s name on the worksheet.';
+    $('pd-driver-err').textContent = tr('Put the driver\'s name on the worksheet.', 'Ponga el nombre del conductor en la hoja de cálculo.');
     $('pd-driver').scrollIntoView({ block: 'center', behavior: 'smooth' });
     $('pd-driver').focus({ preventScroll: true });
     return;
@@ -374,13 +400,13 @@ async function getWorksheet() {
   try {
     const account = await T.me().catch(() => null);
     if (!account) {
-      showError({ message: T.prices('The worksheet is $9.00 per driver and tax year, taken from a prepaid balance.'), code: 'unauthorized' });
+      showError({ message: T.prices(tr('The worksheet is $9.00 per driver and tax year, taken from a prepaid balance.', 'La hoja de cálculo cuesta $9.00 por conductor y año tributario, y se cobra de un saldo prepagado.')), code: 'unauthorized' });
       return;
     }
     if (!pendingQuote || pendingQuote.key !== key) {
       const q = (await T.api(`/api/run/${SLUG}/quote`, { body: input })).quote;
       pendingQuote = { key, q };
-      button.textContent = q.amount ? `Pay ${q.display} and download` : 'Download (no charge)';
+      button.textContent = q.amount ? tr(`Pay ${q.display} and download`, `Pagar ${q.display} y descargar`) : tr('Download (no charge)', 'Descargar (sin cargo)');
       $('pd-get-note').textContent = q.detail ?? '';
       return;
     }
@@ -389,16 +415,16 @@ async function getWorksheet() {
     const box = $('pd-files');
     box.textContent = '';
     box.append(
-      h('p', { class: 'pd-heading' }, 'Your worksheet'),
+      h('p', { class: 'pd-heading' }, tr('Your worksheet', 'Su hoja de cálculo')),
       h('p', { class: 'pd-downloads' }, [
         f.pdf ? download(f.pdf.name, 'application/pdf', fromBase64(f.pdf.base64)) : null, ' ',
         download(f.csv.name, 'text/csv', f.csv.text),
       ]),
-      h('p', { class: 'pd-aside' }, `Input hash ${json.result.inputHash.slice(0, 16)}. ${json.charged ? `Charged ${json.charged.display}. Your balance is ${json.balance.display}.` : ''}`),
+      h('p', { class: 'pd-aside' }, tr(`Input hash ${json.result.inputHash.slice(0, 16)}. ${json.charged ? `Charged ${json.charged.display}. Your balance is ${json.balance.display}.` : ''}`, `Hash de los datos: ${json.result.inputHash.slice(0, 16)}. ${json.charged ? `Se cobró ${json.charged.display}. Su saldo es ${json.balance.display}.` : ''}`)),
     );
     pendingQuote = null;
-    button.textContent = 'Get the worksheet (PDF and CSV)';
-    $('pd-get-note').textContent = T.prices('A later run for the same driver and year is $0.10 for 15 months.');
+    button.textContent = tr('Get the worksheet (PDF and CSV)', 'Obtener la hoja de cálculo (PDF y CSV)');
+    $('pd-get-note').textContent = T.prices(tr('A later run for the same driver and year is $0.10 for 15 months.', 'Una ejecución posterior para el mismo conductor y año cuesta $0.10 durante 15 meses.'));
   } catch (e) {
     showError(e);
   } finally {
@@ -464,14 +490,14 @@ async function start() {
   try {
     tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
   } catch {
-    $('pd-out').textContent = 'The rates could not load. Reload the page to try again.';
+    $('pd-out').textContent = tr('The rates could not load. Reload the page to try again.', 'No se pudieron cargar las tarifas. Vuelva a cargar la página para intentarlo de nuevo.');
     return;
   }
   const rates = tool.examples.find((x) => x.input.op === 'rates').output;
   sampleLinks(tool);
   engine = makeEngine(rates);
   rateTable(rates.periods);
-  for (let y = engine.maxYear; y >= MIN_YEAR; y--) $('pd-year').appendChild(h('option', { value: String(y) }, y === engine.maxYear ? `${y} (January to September)` : String(y)));
+  for (let y = engine.maxYear; y >= MIN_YEAR; y--) $('pd-year').appendChild(h('option', { value: String(y) }, y === engine.maxYear ? tr(`${y} (January to September)`, `${y} (enero a septiembre)`) : String(y)));
   brushes();
   legend();
 

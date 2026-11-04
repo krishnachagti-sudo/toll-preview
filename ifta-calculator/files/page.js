@@ -4,7 +4,7 @@
 // prepared return (every line, error and missing field, PDF and CSV) is a paid run, through
 // Endwise.run. Entries are kept in this browser (localStorage) and sent only for the return.
 import {
-  makeEngine, IftaError, money, whole, longDate, quarterWords, rateText, rate10k, templateCsv,
+  makeEngine, IftaError, money, whole, longDate as enLongDate, quarterWords as enQuarterWords, rateText, rate10k, templateCsv,
   tripsFromCsv, receiptsFromCsv, vehiclesFromCsv, csvLine, TRIP_COLUMNS, RECEIPT_COLUMNS, VEHICLE_COLUMNS, isRealDate, QUARTER_RE,
 } from './core.js';
 
@@ -13,6 +13,19 @@ const h = T.h;
 const SLUG = 'ifta-calculator';
 const STORE_KEY = 'ifta-calculator.v1';
 const $ = (id) => document.getElementById(id);
+
+// The Spanish page (page.es.html, at /es/ifta-calculator/) is <html lang="es">: there this script
+// shows its own words in Spanish. The English page reads exactly the English words below. Text
+// worked out by core.js or the server (the answer sentences, warnings, notes, record checks,
+// jurisdiction names, error messages) stays in English on both.
+const ES = document.documentElement.lang === 'es';
+const tr = (en, es) => (ES ? es : en);
+const ES_MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const longDate = (iso) => (ES ? `${+iso.slice(8, 10)} de ${ES_MONTHS[+iso.slice(5, 7) - 1]} de ${iso.slice(0, 4)}` : enLongDate(iso));
+const quarterWords = (q) => (ES ? `${['primer', 'segundo', 'tercer', 'cuarto'][+q.slice(-1) - 1]} trimestre de ${q.slice(0, 4)}` : enQuarterWords(q));
+const ES_FUELS = { Gasoline: 'gasolina', 'Special diesel': 'diésel', Gasohol: 'gasohol', Propane: 'propano', Ethanol: 'etanol', Methanol: 'metanol', Biodiesel: 'biodiésel' };
+const fuelWord = (name) => (ES ? ES_FUELS[name] ?? name.toLowerCase() : name);
+const fuelTitle = (name) => (ES && ES_FUELS[name] ? ES_FUELS[name][0].toUpperCase() + ES_FUELS[name].slice(1) : name);
 
 let engine = null;
 let rates = null;
@@ -59,11 +72,11 @@ function syncMode() {
   for (const el of document.querySelectorAll('[data-mode]')) el.hidden = el.dataset.mode !== m;
   const qd = engine.quarterData(quarter());
   const due = engine.dueDates({ year: +quarter().slice(0, 4) }).dueDates.find((d) => d.quarter === quarter());
-  $('if-quarter-hint').textContent = `${qd.label}, ${longDate(qd.from)} to ${longDate(qd.to)}: final rates. Return due ${longDate(due.due)}.`;
+  $('if-quarter-hint').textContent = tr(`${qd.label}, ${longDate(qd.from)} to ${longDate(qd.to)}: final rates. Return due ${longDate(due.due)}.`, `${qd.label}, del ${longDate(qd.from)} al ${longDate(qd.to)}: tarifas finales. La declaración vence el ${longDate(due.due)}.`);
   $('if-get').disabled = m !== 'sheet';
   $('if-get-note').textContent = m === 'sheet'
-    ? 'Your entries stay in this browser. They are sent only when you prepare the return.'
-    : 'The prepared return is built from trip sheets and receipts: switch to "Trip sheets and receipts" to make one. Estimates from totals are free.';
+    ? tr('Your entries stay in this browser. They are sent only when you prepare the return.', 'Lo que ingresa se queda en este navegador. Solo se envía cuando prepara la declaración.')
+    : tr('The prepared return is built from trip sheets and receipts: switch to "Trip sheets and receipts" to make one. Estimates from totals are free.', 'La declaración preparada se hace con hojas de viaje y recibos: cambie a "Hojas de viaje y recibos" para hacerla. Los cálculos a partir de totales son gratis.');
 }
 
 const ROW_RE = /^([A-Za-z]{2})[\s,;:]+([\d.,]+)(?:[\s,;:]+([\d.,]*))?(?:[\s,;:]+([\d.,]+))?\s*$/;
@@ -74,11 +87,11 @@ function readRows() {
   for (const line of $('if-rows').value.split('\n').map((x) => x.trim()).filter(Boolean)) {
     const m = ROW_RE.exec(line);
     if (!m || !Number.isFinite(n(m[2])) || (m[3] && !Number.isFinite(n(m[3]))) || (m[4] && !Number.isFinite(n(m[4])))) {
-      return { error: `Could not read "${line}". Write the code, the miles, then the tax-paid gallons, like "TX 1200 150".` };
+      return { error: tr(`Could not read "${line}". Write the code, the miles, then the tax-paid gallons, like "TX 1200 150".`, `No se pudo leer "${line}". Escriba el código, las millas y luego los galones con impuesto pagado, como "TX 1200 150".`) };
     }
     rows.push({ jurisdiction: m[1].toUpperCase(), miles: n(m[2]), ...(m[3] ? { taxPaidGallons: n(m[3]) } : {}), ...(m[4] ? { taxableMiles: n(m[4]) } : {}) });
   }
-  if (!rows.length) return { error: 'Add at least one jurisdiction, like "TX 1200 150".' };
+  if (!rows.length) return { error: tr('Add at least one jurisdiction, like "TX 1200 150".', 'Agregue al menos una jurisdicción, como "TX 1200 150".') };
   return { rows };
 }
 
@@ -90,14 +103,14 @@ function readForm() {
     const g = $('if-gallons').value.trim();
     const input = { op: 'estimate', quarter: quarter(), fuel: $('if-fuel').value, rows: r.rows };
     if (g !== '') {
-      if (!Number.isFinite(Number(g)) || Number(g) < 0) return { error: 'All fuel must be a number of gallons.', field: 'if-error' };
+      if (!Number.isFinite(Number(g)) || Number(g) < 0) return { error: tr('All fuel must be a number of gallons.', 'Todo el combustible debe ser un número de galones.'), field: 'if-error' };
       input.totalGallons = Number(g);
     }
     return { input };
   }
   try {
     const vehicles = vehiclesFromCsv($('if-vehicles').value);
-    if (!vehicles.length) return { error: 'List at least one vehicle under the header unit,vin,fuel.', field: 'if-error' };
+    if (!vehicles.length) return { error: tr('List at least one vehicle under the header unit,vin,fuel.', 'Anote al menos un vehículo bajo el encabezado unit,vin,fuel.'), field: 'if-error' };
     return { input: { op: 'check', quarter: quarter(), vehicles, trips: tripsFromCsv($('if-trips').value), receipts: receiptsFromCsv($('if-receipts').value) } };
   } catch (e) {
     if (e instanceof IftaError) return { error: e.message, field: 'if-error' };
@@ -123,35 +136,37 @@ const signed = (dollars, text) => ({ text, cls: dollars < 0 ? 'credit' : dollars
 
 function linesTable(f) {
   return table(
-    [{ label: 'Jurisdiction' }, { label: 'Miles', num: true }, { label: 'Taxable', num: true }, { label: 'Taxable gal', num: true }, { label: 'Tax-paid gal', num: true }, { label: 'Net gal', num: true }, { label: 'Rate', num: true }, { label: 'Tax (credit)', num: true }, { label: 'Surcharge', num: true }],
+    ES
+      ? [{ label: 'Jurisdicción' }, { label: 'Millas', num: true }, { label: 'Gravables', num: true }, { label: 'Gal. gravables', num: true }, { label: 'Gal. con impuesto pagado', num: true }, { label: 'Gal. netos', num: true }, { label: 'Tarifa', num: true }, { label: 'Impuesto (crédito)', num: true }, { label: 'Recargo', num: true }]
+      : [{ label: 'Jurisdiction' }, { label: 'Miles', num: true }, { label: 'Taxable', num: true }, { label: 'Taxable gal', num: true }, { label: 'Tax-paid gal', num: true }, { label: 'Net gal', num: true }, { label: 'Rate', num: true }, { label: 'Tax (credit)', num: true }, { label: 'Surcharge', num: true }],
     f.lines.map((l) => [`${l.jurisdiction} ${l.name}`, whole(l.totalMiles), whole(l.taxableMiles), whole(l.taxableGallons), whole(l.taxPaidGallons), whole(l.netTaxableGallons), l.display.rate,
       signed(l.tax, l.display.tax), l.surcharge ? { text: l.display.surcharge, cls: 'sur' } : '']),
-    ['Total', whole(f.totalMiles), '', '', whole(f.totalGallons), '', `${f.display.mpg} MPG`, signed(f.tax, f.display.tax), ''],
+    [tr('Total', 'Total'), whole(f.totalMiles), '', '', whole(f.totalGallons), '', `${f.display.mpg} ${tr('MPG', 'mpg')}`, signed(f.tax, f.display.tax), ''],
   );
 }
 
 function headline(label, cents, sub) {
   return [
     h('p', { class: 'if-label' }, label),
-    h('p', { class: `if-answer${cents < 0 ? ' credit' : ''}` }, [h('small', {}, sub), cents < 0 ? `${money(-cents)} credit` : `${money(cents)} due`]),
+    h('p', { class: `if-answer${cents < 0 ? ' credit' : ''}` }, [h('small', {}, sub), cents < 0 ? tr(`${money(-cents)} credit`, `Crédito de ${money(-cents)}`) : tr(`${money(cents)} due`, `${money(cents)} por pagar`)]),
   ];
 }
 
 function renderEstimate(r) {
   const out = $('if-out');
   out.textContent = '';
-  const label = kind === 'example' ? 'Worked example' : kind === 'saved' ? 'Your saved figures' : 'Worked out on this page, free';
+  const label = kind === 'example' ? tr('Worked example', 'Ejemplo resuelto') : kind === 'saved' ? tr('Your saved figures', 'Sus cifras guardadas') : tr('Worked out on this page, free', 'Calculado en esta página, gratis');
   const cents = Math.round(r.netDue * 100);
   out.append(
-    ...headline(label, cents, `${quarterWords(r.quarter)}, ${r.name.toLowerCase()}`),
+    ...headline(label, cents, `${quarterWords(r.quarter)}, ${fuelWord(r.name)}`),
     h('dl', { class: 'if-facts' }, [
-      h('div', {}, [h('dt', {}, 'Fleet MPG'), h('dd', {}, r.display.mpg)]),
-      h('div', {}, [h('dt', {}, 'Miles'), h('dd', {}, whole(r.totalMiles))]),
-      h('div', {}, [h('dt', {}, 'Gallons'), h('dd', {}, whole(r.totalGallons))]),
-      h('div', {}, [h('dt', {}, 'Due'), h('dd', {}, longDate(r.dueDate.due))]),
+      h('div', {}, [h('dt', {}, tr('Fleet MPG', 'Millas por galón de la flota')), h('dd', {}, r.display.mpg)]),
+      h('div', {}, [h('dt', {}, tr('Miles', 'Millas')), h('dd', {}, whole(r.totalMiles))]),
+      h('div', {}, [h('dt', {}, tr('Gallons', 'Galones')), h('dd', {}, whole(r.totalGallons))]),
+      h('div', {}, [h('dt', {}, tr('Due', 'Vence')), h('dd', {}, longDate(r.dueDate.due))]),
     ]),
     h('p', { class: 'if-sub' }, r.answer),
-    h('p', { class: 'if-heading' }, 'By jurisdiction'),
+    h('p', { class: 'if-heading' }, tr('By jurisdiction', 'Por jurisdicción')),
     linesTable(r),
     ...(r.warnings.length || r.notes.length ? [h('ul', { class: 'if-warn' }, [...r.warnings.map((w) => w.message), ...r.notes].map((x) => h('li', {}, x)))] : []),
     h('p', { class: 'if-aside' }, r.rateStatus.words),
@@ -163,10 +178,10 @@ function renderEstimate(r) {
 function lateBox(r) {
   const box = h('div', {});
   const input = h('input', { type: 'date', id: 'if-filed', value: '' });
-  const said = h('p', { class: 'if-aside', 'aria-live': 'polite' }, `On time until ${longDate(r.dueDate.due)}.`);
+  const said = h('p', { class: 'if-aside', 'aria-live': 'polite' }, tr(`On time until ${longDate(r.dueDate.due)}.`, `A tiempo hasta el ${longDate(r.dueDate.due)}.`));
   const show = () => {
     const d = input.value;
-    if (!isRealDate(d)) { said.textContent = `On time until ${longDate(r.dueDate.due)}.`; return; }
+    if (!isRealDate(d)) { said.textContent = tr(`On time until ${longDate(r.dueDate.due)}.`, `A tiempo hasta el ${longDate(r.dueDate.due)}.`); return; }
     try {
       // A surcharge is its own line: interest is owed on it even when the jurisdiction's tax line is a credit.
       const lines = r.lines.flatMap((l) => [{ jurisdiction: l.jurisdiction, tax: l.tax }, ...(l.surcharge ? [{ jurisdiction: l.jurisdiction, tax: l.surcharge.tax }] : [])]);
@@ -177,26 +192,26 @@ function lateBox(r) {
     }
   };
   input.addEventListener('input', show);
-  box.append(h('p', { class: 'if-heading' }, 'If it is filed late'), h('div', { class: 'if-late' }, [h('div', {}, [h('label', { for: 'if-filed' }, 'Filed on'), input])]), said);
+  box.append(h('p', { class: 'if-heading' }, tr('If it is filed late', 'Si se presenta tarde')), h('div', { class: 'if-late' }, [h('div', {}, [h('label', { for: 'if-filed' }, tr('Filed on', 'Presentada el')), input])]), said);
   return box;
 }
 
 function renderCheck(r, sheet) {
   const out = $('if-out');
   out.textContent = '';
-  const label = kind === 'example' ? 'Worked example' : kind === 'saved' ? 'Your saved trip sheet' : 'Checked on this page, free';
+  const label = kind === 'example' ? tr('Worked example', 'Ejemplo resuelto') : kind === 'saved' ? tr('Your saved trip sheet', 'Su hoja de viaje guardada') : tr('Checked on this page, free', 'Revisado en esta página, gratis');
   out.append(
     h('p', { class: 'if-label' }, label),
-    h('p', { class: 'if-answer' }, [h('small', {}, `${quarterWords(r.quarter)} trip sheet check`), r.passed ? 'Reconciles' : `${r.errorCount} error${r.errorCount === 1 ? '' : 's'}`]),
+    h('p', { class: 'if-answer' }, [h('small', {}, tr(`${quarterWords(r.quarter)} trip sheet check`, `Revisión de la hoja de viaje, ${quarterWords(r.quarter)}`)), r.passed ? tr('Reconciles', 'Cuadra') : tr(`${r.errorCount} error${r.errorCount === 1 ? '' : 's'}`, `${r.errorCount} ${r.errorCount === 1 ? 'error' : 'errores'}`)]),
     h('dl', { class: 'if-facts' }, [
-      h('div', {}, [h('dt', {}, 'Vehicles'), h('dd', {}, String(r.vehicles))]),
-      h('div', {}, [h('dt', {}, 'Trips'), h('dd', {}, String(r.trips))]),
-      h('div', {}, [h('dt', {}, 'Receipts'), h('dd', {}, String(r.receipts))]),
-      h('div', {}, [h('dt', {}, 'Warnings'), h('dd', {}, String(r.warningCount))]),
-      h('div', {}, [h('dt', {}, 'Missing fields'), h('dd', {}, String(r.missingCount))]),
+      h('div', {}, [h('dt', {}, tr('Vehicles', 'Vehículos')), h('dd', {}, String(r.vehicles))]),
+      h('div', {}, [h('dt', {}, tr('Trips', 'Viajes')), h('dd', {}, String(r.trips))]),
+      h('div', {}, [h('dt', {}, tr('Receipts', 'Recibos')), h('dd', {}, String(r.receipts))]),
+      h('div', {}, [h('dt', {}, tr('Warnings', 'Advertencias')), h('dd', {}, String(r.warningCount))]),
+      h('div', {}, [h('dt', {}, tr('Missing fields', 'Campos faltantes')), h('dd', {}, String(r.missingCount))]),
     ]),
     h('p', { class: 'if-sub' }, r.answer),
-    h('p', { class: 'if-aside' }, `Preparing the return lists every error, warning and missing field with what it puts at risk, works out each fuel's lines and gives the PDF and CSV: ${priceFor(sheet.vehicles.length)} for this ${sheet.vehicles.length}-vehicle fleet.`),
+    h('p', { class: 'if-aside' }, tr(`Preparing the return lists every error, warning and missing field with what it puts at risk, works out each fuel's lines and gives the PDF and CSV: ${priceFor(sheet.vehicles.length)} for this ${sheet.vehicles.length}-vehicle fleet.`, `Al preparar la declaración se listan todos los errores, advertencias y campos faltantes, con lo que ponen en riesgo, se calculan las líneas de cada combustible y se entregan el PDF y el CSV: ${priceFor(sheet.vehicles.length)} para esta flota de ${sheet.vehicles.length} ${sheet.vehicles.length === 1 ? 'vehículo' : 'vehículos'}.`)),
     h('div', { id: 'if-files' }),
   );
 }
@@ -208,23 +223,25 @@ function renderReturn(r, json) {
   const out = $('if-out');
   out.textContent = '';
   const cents = Math.round(r.netDue * 100);
-  out.append(...headline('Your prepared return', cents, `${quarterWords(r.quarter)}, ${r.licensee}`), h('p', { class: 'if-sub' }, r.answer));
-  for (const f of r.byFuel) out.append(h('p', { class: 'if-heading' }, `${f.name}: ${f.display.mpg} MPG`), linesTable(f));
+  out.append(...headline(tr('Your prepared return', 'Su declaración preparada'), cents, `${quarterWords(r.quarter)}, ${r.licensee}`), h('p', { class: 'if-sub' }, r.answer));
+  for (const f of r.byFuel) out.append(h('p', { class: 'if-heading' }, `${fuelTitle(f.name)}: ${f.display.mpg} ${tr('MPG', 'mpg')}`), linesTable(f));
   const rec = r.reconciliation;
-  out.append(h('p', { class: 'if-heading' }, `Reconciliation (${rec.errors.length} errors, ${rec.warnings.length} warnings)`));
-  out.append(table([{ label: 'Unit' }, { label: 'Trips', num: true }, { label: 'Miles logged', num: true }, { label: 'Odometer', num: true }, { label: 'Not logged', num: true }],
-    rec.perVehicle.map((v) => [v.unit, String(v.trips), whole(v.sumMiles), v.odoDelta === null ? 'none' : whole(v.odoDelta), whole(v.unlogged)])));
+  out.append(h('p', { class: 'if-heading' }, tr(`Reconciliation (${rec.errors.length} errors, ${rec.warnings.length} warnings)`, `Conciliación (${rec.errors.length} errores, ${rec.warnings.length} advertencias)`)));
+  out.append(table(ES
+    ? [{ label: 'Unidad' }, { label: 'Viajes', num: true }, { label: 'Millas anotadas', num: true }, { label: 'Odómetro', num: true }, { label: 'Sin anotar', num: true }]
+    : [{ label: 'Unit' }, { label: 'Trips', num: true }, { label: 'Miles logged', num: true }, { label: 'Odometer', num: true }, { label: 'Not logged', num: true }],
+    rec.perVehicle.map((v) => [v.unit, String(v.trips), whole(v.sumMiles), v.odoDelta === null ? tr('none', 'ninguno') : whole(v.odoDelta), whole(v.unlogged)])));
   if (rec.errors.length) out.append(h('ul', { class: 'if-warn err' }, rec.errors.map((e) => h('li', {}, e.message))));
   if (rec.warnings.length) out.append(h('ul', { class: 'if-warn' }, rec.warnings.map((e) => h('li', {}, e.message))));
-  out.append(h('p', { class: 'if-heading' }, `Record check (${r.recordCheck.missing.length} missing)`));
+  out.append(h('p', { class: 'if-heading' }, tr(`Record check (${r.recordCheck.missing.length} missing)`, `Revisión de los registros (${r.recordCheck.missing.length} faltantes)`)));
   out.append(r.recordCheck.missing.length
-    ? h('ul', { class: 'if-warn' }, r.recordCheck.missing.map((m) => h('li', {}, `${m.record}: no ${m.field}. ${m.effect}`)))
-    : h('p', { class: 'if-aside' }, 'Every trip and receipt has the fields an auditor asks for.'));
+    ? h('ul', { class: 'if-warn' }, r.recordCheck.missing.map((m) => h('li', {}, tr(`${m.record}: no ${m.field}. ${m.effect}`, `${m.record}: sin ${m.field}. ${m.effect}`))))
+    : h('p', { class: 'if-aside' }, tr('Every trip and receipt has the fields an auditor asks for.', 'Cada viaje y cada recibo tiene los campos que pide un auditor.')));
   const f = r.files;
   out.append(
-    h('p', { class: 'if-heading' }, 'Files'),
+    h('p', { class: 'if-heading' }, tr('Files', 'Archivos')),
     h('p', { class: 'if-downloads' }, [f.pdf ? download(f.pdf.name, 'application/pdf', fromBase64(f.pdf.base64)) : null, ' ', download(f.csv.name, 'text/csv', f.csv.text)]),
-    h('p', { class: 'if-aside' }, `Input hash ${r.inputHash.slice(0, 16)}, data ${r.dataVersion}. ${json.charged ? `Charged ${json.charged.display}. Your balance is ${json.balance.display}.` : ''}`),
+    h('p', { class: 'if-aside' }, tr(`Input hash ${r.inputHash.slice(0, 16)}, data ${r.dataVersion}. ${json.charged ? `Charged ${json.charged.display}. Your balance is ${json.balance.display}.` : ''}`, `Hash de los datos: ${r.inputHash.slice(0, 16)}, datos ${r.dataVersion}. ${json.charged ? `Se cobró ${json.charged.display}. Su saldo es ${json.balance.display}.` : ''}`)),
   );
 }
 
@@ -234,23 +251,26 @@ function rateTable() {
   el.textContent = '';
   const fuels = ['special_diesel', 'gasoline', 'propane', 'biodiesel'];
   const idx = fuels.map((f) => rates.fuels.findIndex((x) => x.key === f));
-  const cell = (row, i) => (row?.noIftaRate ? 'none' : row?.rates[i] == null ? '-' : rateText(rate10k(row.rates[i])));
+  const cell = (row, i) => (row?.noIftaRate ? tr('none', 'ninguna') : row?.rates[i] == null ? '-' : rateText(rate10k(row.rates[i])));
   const rows = rates.jurisdictions.map((j) => {
     const row = qd.rows.find((r) => r.code === j.code);
     const sur = qd.surcharges.find((r) => r.code === j.code);
     const held = qd.disputed.filter((d) => d.code === j.code).flatMap((d) => d.fuels);
-    return [`${j.code} ${j.name}`, ...idx.map((i, k) => (held.includes(fuels[k]) ? 'held back' : cell(row, i) + (sur && sur.rates[i] != null ? ` + ${rateText(rate10k(sur.rates[i]))}` : '')))];
+    return [`${j.code} ${j.name}`, ...idx.map((i, k) => (held.includes(fuels[k]) ? tr('held back', 'retenida') : cell(row, i) + (sur && sur.rates[i] != null ? ` + ${rateText(rate10k(sur.rates[i]))}` : '')))];
   });
-  el.appendChild(table([{ label: 'Jurisdiction' }, { label: 'Diesel', num: true }, { label: 'Gasoline', num: true }, { label: 'Propane', num: true }, { label: 'Biodiesel', num: true }], rows));
-  $('if-rate-title').textContent = `Rates for the ${quarterWords(qd.quarter)}, US dollars a gallon`;
-  $('if-rate-note').textContent = `"+" is the surcharge row. "-" means the matrix shows no rate. Exchange rate for Canadian rates: US $${qd.exchangeRate.usPerCa} per Canadian dollar. From the Oregon DOT copy of the matrix (${qd.primary.quote}), checked against New York State Tax's IFTA-105 table, both read ${longDate(qd.primary.readOn)}. All 15 fuel types are in the rates lookup.`;
+  el.appendChild(table(ES
+    ? [{ label: 'Jurisdicción' }, { label: 'Diésel', num: true }, { label: 'Gasolina', num: true }, { label: 'Propano', num: true }, { label: 'Biodiésel', num: true }]
+    : [{ label: 'Jurisdiction' }, { label: 'Diesel', num: true }, { label: 'Gasoline', num: true }, { label: 'Propane', num: true }, { label: 'Biodiesel', num: true }], rows));
+  $('if-rate-title').textContent = tr(`Rates for the ${quarterWords(qd.quarter)}, US dollars a gallon`, `Tarifas del ${quarterWords(qd.quarter)}, en dólares de EE. UU. por galón`);
+  $('if-rate-note').textContent = tr(`"+" is the surcharge row. "-" means the matrix shows no rate. Exchange rate for Canadian rates: US $${qd.exchangeRate.usPerCa} per Canadian dollar. From the Oregon DOT copy of the matrix (${qd.primary.quote}), checked against New York State Tax's IFTA-105 table, both read ${longDate(qd.primary.readOn)}. All 15 fuel types are in the rates lookup.`,
+    `"+" es la fila de recargo. "-" significa que la matriz no muestra tarifa. Tipo de cambio para las tarifas canadienses: US $${qd.exchangeRate.usPerCa} por dólar canadiense. Tomadas de la copia de la matriz de Oregon DOT (${qd.primary.quote}) y comparadas con la tabla IFTA-105 de New York State Tax, ambas consultadas el ${longDate(qd.primary.readOn)}. Los 15 tipos de combustible están en la consulta de tarifas.`);
 }
 
 function dueTable() {
   const years = [...new Set(engine.quarters.map((q) => +q.slice(0, 4)))];
   const rows = years.flatMap((y) => engine.dueDates({ year: y }).dueDates).filter((d) => d.quarter >= engine.first);
   $('if-due-table').textContent = '';
-  $('if-due-table').appendChild(table([{ label: 'Quarter' }, { label: 'Due' }, { label: 'Note' }], rows.map((d) => [quarterWords(d.quarter), longDate(d.due), d.moved ? `${longDate(d.statutory)} is a weekend` : ''])));
+  $('if-due-table').appendChild(table(ES ? [{ label: 'Trimestre' }, { label: 'Vence' }, { label: 'Nota' }] : [{ label: 'Quarter' }, { label: 'Due' }, { label: 'Note' }], rows.map((d) => [quarterWords(d.quarter), longDate(d.due), d.moved ? tr(`${longDate(d.statutory)} is a weekend`, `El ${longDate(d.statutory)} es fin de semana`) : ''])));
 }
 
 // ---------- working it out ----------
@@ -270,7 +290,7 @@ function update() {
   syncMode();
   rateTable();
   pendingQuote = null;
-  $('if-get').textContent = 'Prepare the return (PDF and CSV)';
+  $('if-get').textContent = tr('Prepare the return (PDF and CSV)', 'Preparar la declaración (PDF y CSV)');
   const read = readForm();
   if (read.error) { $(read.field).textContent = read.error; lastResult = null; return; }
   try {
@@ -298,7 +318,7 @@ const soon = () => { kind = 'edit'; clearTimeout(timer); timer = setTimeout(() =
 
 function download(name, type, data, text) {
   const url = URL.createObjectURL(new Blob([data], { type }));
-  return h('a', { href: url, download: name, class: 'btn btn-small' }, text ?? `Download ${name.endsWith('.pdf') ? 'the PDF' : 'the CSV'}`);
+  return h('a', { href: url, download: name, class: 'btn btn-small' }, text ?? tr(`Download ${name.endsWith('.pdf') ? 'the PDF' : 'the CSV'}`, `Descargar el ${name.endsWith('.pdf') ? 'PDF' : 'CSV'}`));
 }
 const fromBase64 = (b64) => Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
 
@@ -311,12 +331,12 @@ function sampleLinks() {
     const f = ex.output.files;
     box.textContent = '';
     box.append(
-      h('a', { href: URL.createObjectURL(new Blob([fromBase64(f.pdf.base64)], { type: 'application/pdf' })), download: f.pdf.name, class: 'btn btn-quiet btn-small' }, 'Sample return (PDF)'), ' ',
-      h('a', { href: URL.createObjectURL(new Blob([f.csv.text], { type: 'text/csv' })), download: f.csv.name, class: 'btn btn-quiet btn-small' }, 'Sample return CSV'),
+      h('a', { href: URL.createObjectURL(new Blob([fromBase64(f.pdf.base64)], { type: 'application/pdf' })), download: f.pdf.name, class: 'btn btn-quiet btn-small' }, tr('Sample return (PDF)', 'Declaración de muestra (PDF)')), ' ',
+      h('a', { href: URL.createObjectURL(new Blob([f.csv.text], { type: 'text/csv' })), download: f.csv.name, class: 'btn btn-quiet btn-small' }, tr('Sample return CSV', 'CSV de la declaración de muestra')),
     );
   }
   const t = $('if-templates');
-  for (const [k, label] of [['vehicles', 'Vehicles'], ['trips', 'Trip sheet'], ['receipts', 'Receipts']]) {
+  for (const [k, label] of [['vehicles', tr('Vehicles', 'Vehículos')], ['trips', tr('Trip sheet', 'Hoja de viaje')], ['receipts', tr('Receipts', 'Recibos')]]) {
     t.append(h('a', { href: URL.createObjectURL(new Blob([templateCsv(k)], { type: 'text/csv' })), download: `ifta-${k}-template.csv`, class: 'btn btn-quiet btn-small' }, label));
   }
 }
@@ -324,8 +344,8 @@ function sampleLinks() {
 function showError(e) {
   const box = $('if-error');
   box.textContent = e.message;
-  if (e.code === 'unauthorized' || e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, 'Sign in or create an account'));
-  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, 'Open your account'));
+  if (e.code === 'unauthorized' || e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, tr('Sign in or create an account', 'Iniciar sesión o crear una cuenta')));
+  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, tr('Open your account', 'Abrir su cuenta')));
 }
 
 async function getReturn() {
@@ -333,10 +353,10 @@ async function getReturn() {
   if (timer) { clearTimeout(timer); timer = null; update(); }
   clearErrors();
   const read = readForm();
-  if (read.error || !lastResult || read.input.op !== 'check') { $('if-error').textContent = read.error ?? 'Fix the trip sheet first: the return is built from what is shown.'; return; }
+  if (read.error || !lastResult || read.input.op !== 'check') { $('if-error').textContent = read.error ?? tr('Fix the trip sheet first: the return is built from what is shown.', 'Corrija primero la hoja de viaje: la declaración se hace con lo que se muestra.'); return; }
   const licensee = $('if-licensee').value.trim();
   if (!licensee) {
-    $('if-licensee-err').textContent = 'Put the licensee name or IFTA licence number on the return.';
+    $('if-licensee-err').textContent = tr('Put the licensee name or IFTA licence number on the return.', 'Ponga en la declaración el nombre del titular de la licencia o su número de licencia IFTA.');
     $('if-licensee').focus();
     return;
   }
@@ -347,21 +367,21 @@ async function getReturn() {
   try {
     const account = await T.me().catch(() => null);
     if (!account) {
-      showError({ message: `The prepared return is ${priceFor(input.vehicles.length)} per licensee and quarter, taken from a prepaid balance.`, code: 'unauthorized' });
+      showError({ message: tr(`The prepared return is ${priceFor(input.vehicles.length)} per licensee and quarter, taken from a prepaid balance.`, `La declaración preparada cuesta ${priceFor(input.vehicles.length)} por titular de licencia y trimestre, y se cobra de un saldo prepagado.`), code: 'unauthorized' });
       return;
     }
     if (!pendingQuote || pendingQuote.key !== key) {
       const q = (await T.api(`/api/run/${SLUG}/quote`, { body: input })).quote;
       pendingQuote = { key, q };
-      button.textContent = q.amount ? `Pay ${q.display} and prepare` : 'Prepare (no charge)';
+      button.textContent = q.amount ? tr(`Pay ${q.display} and prepare`, `Pagar ${q.display} y preparar`) : tr('Prepare (no charge)', 'Preparar (sin cargo)');
       $('if-get-note').textContent = q.detail ?? '';
       return;
     }
     const json = await T.run(SLUG, input);
     renderReturn(json.result, json);
     pendingQuote = null;
-    button.textContent = 'Prepare the return (PDF and CSV)';
-    $('if-get-note').textContent = 'Re-runs for the same licensee and quarter are free for 90 days.';
+    button.textContent = tr('Prepare the return (PDF and CSV)', 'Preparar la declaración (PDF y CSV)');
+    $('if-get-note').textContent = tr('Re-runs for the same licensee and quarter are free for 90 days.', 'Repetir la preparación para el mismo titular y trimestre es gratis durante 90 días.');
   } catch (e) {
     showError(e);
   } finally {
@@ -410,13 +430,13 @@ async function start() {
   try {
     tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
   } catch {
-    $('if-out').textContent = 'The rates could not load. Reload the page to try again.';
+    $('if-out').textContent = tr('The rates could not load. Reload the page to try again.', 'No se pudieron cargar las tarifas. Vuelva a cargar la página para intentarlo de nuevo.');
     return;
   }
   rates = tool.examples.find((x) => x.input.op === 'rates' && !x.input.quarter && !x.input.jurisdiction).output;
   engine = makeEngine({ rates, rules: rates.rules });
   for (const q of [...engine.quarters].reverse()) $('if-quarter').appendChild(h('option', { value: q }, quarterWords(q)));
-  for (const f of rates.computedFuels) $('if-fuel').appendChild(h('option', { value: f }, engine.fuelName[f]));
+  for (const f of rates.computedFuels) $('if-fuel').appendChild(h('option', { value: f }, fuelTitle(engine.fuelName[f])));
   for (const j of rates.jurisdictions) $('if-base').appendChild(h('option', { value: j.code }, `${j.code} ${j.name}`));
   sampleLinks();
   dueTable();

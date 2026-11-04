@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How QR codes are generated: ISO/IEC 18004 method: Endwise</title>
+<meta name="description" content="How the QR code generator works: data modes, the smallest version that fits, Reed-Solomon error correction, mask penalties and the read-back check.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/qr-code-generator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/qr-code-generator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How QR codes are generated: ISO/IEC 18004 method">
+<meta property="og:description" content="How the QR code generator works: data modes, the smallest version that fits, Reed-Solomon error correction, mask penalties and the read-back check.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/qr-code-generator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/qr-code-generator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/qr-code-generator/","name":"How QR codes are generated: ISO/IEC 18004 method","description":"How the QR code generator works: data modes, the smallest version that fits, Reed-Solomon error correction, mask penalties and the read-back check.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How QR codes are generated: ISO/IEC 18004 method","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/qr-code-generator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the qr code generator answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the qr code generator refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Static codes only. A static code holds its content and cannot expire, but it works only while its destination exists. The tool does not host redirects. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How QR codes are generated: ISO/IEC 18004 method</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How QR codes are generated: ISO/IEC 18004 method</h1>
+<p class="cp-answer">The text is encoded in the densest single mode that holds it, in the smallest of the 40 versions that fits at the chosen error correction level, with Reed-Solomon codewords added and the one of 8 masks with the lowest penalty applied. Every file is decoded again before it is returned.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the qr code generator compute?</h2>
+<p>The tool builds static QR Code symbols (Model 2) as SVG, PNG or PDF from a link, text, WiFi details, a contact card, email, SMS, phone or location, or from exact text you give. It can make many codes from a spreadsheet, read a code from a PNG, and report what a printed code encodes and where it redirects.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>static</code>: One code as a file, with the version, size in modules, error correction level, mask and mode, the read-back proof and print checks.</li><li><code>payload</code>: The exact text a payload type produces, and the version it needs at each error correction level, without making a file.</li><li><code>bulk</code>: Many codes from rows, a CSV or an .xlsx sheet, as files named by a column, a manifest and an optional label sheet. Rows that cannot be made are reported and not charged.</li><li><code>decode</code>: Reads a code from a PNG of a clean image.</li><li><code>expiry-check</code>: Says what a code encodes, follows a link's redirects, and reports a vendor's published expiry policy.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>type, fields</code>: A payload type (url, text, wifi, vcard, email, sms, phone, location) and its fields, or data: the exact text to encode, up to 7,100 characters.</li><li><code>ecc, boostEcc, mask</code>: Error correction L, M (default), Q or H; whether to raise the level when the size does not change; or a fixed mask 0 to 7.</li><li><code>margin, fg, bg, logo, logoShare</code>: The quiet zone in modules (default 4), colors, and a PNG logo of at most 30% of the code's width.</li><li><code>format, widthMm, sizePx, printerDpi</code>: The file type and size, and your printer's resolution for the print check.</li></ul>
+<p>Outputs:</p>
+<ul><li>version, modules, ecc, mask and mode of the symbol</li><li>verified and readBack: what a decoder read from the finished file</li><li>print.checks: quiet zone, module size, contrast</li><li>payloadNotes: any escaping applied</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The payload text is built from the fields by the grammar of its type (WiFi, vCard 3.0, mailto, SMS, geo), with special characters escaped as the format requires. Or your exact text is used as given.</li><li>One segment is chosen for the whole text in the densest single mode that holds it: numeric if it is digits only, alphanumeric if every character is in the 45-character set, otherwise byte (UTF-8).</li><li>The smallest version from 1 to 40 whose data capacity at the chosen error correction level holds the bit stream is used. With boostEcc on, the level is raised to M, Q or H as long as the version does not change.</li><li>The bit stream is the mode indicator, the character count, the data, a terminator of up to 4 zero bits, padding to a byte, then the pad bytes 0xEC and 0x11 until the capacity is filled.</li><li>The data is split into blocks for the version and level, Reed-Solomon error correction codewords are computed over GF(256) with polynomial 0x11D, and blocks are interleaved.</li><li>The codewords are placed in the module grid around the function patterns (finder, timing, alignment, version information).</li><li>Each of the 8 masks is applied and scored with the standard's penalty rules (N1 = 3, N2 = 3, N3 = 40, N4 = 10). The mask with the lowest penalty is used unless you fix one. The format and version information are then written.</li><li>The file is drawn as SVG, PNG or PDF, then read back with the decoder. If the decoded text is not the input, no file is returned.</li><li>Print checks are added: a quiet zone under 4 modules, light-on-dark colors, contrast below 4:1, module size in millimeters and, with your printer's dpi, a warning under 4 printer dots a module.</li></ol>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>WiFi passwords with a semicolon, comma, colon, quote or backslash are escaped with a backslash, and the notes say so.</li><li>The same text needs a different version at each error correction level: the payload operation shows version and modules at L, M, Q and H.</li><li>A logo covers modules, so the code relies on error correction; the file is read back with the logo to check that it still decodes, and a logo above 30% of the width is refused.</li><li>Text too long for version 40 at the chosen level is refused with the maximum for that mode.</li><li>In a bulk file, a blank row or a row with a missing link is refused, listed by row and not charged.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A static code for a menu link</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;static&quot;,
+  &quot;type&quot;: &quot;url&quot;,
+  &quot;fields&quot;: &#123;
+    &quot;url&quot;: &quot;https://example.com/menu&quot;
+  &#125;,
+  &quot;format&quot;: &quot;svg&quot;,
+  &quot;widthMm&quot;: 30,
+  &quot;printerDpi&quot;: 300
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A static code for a menu link</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">payload</th><td>https://example.com/menu</td></tr>
+<tr><th scope="row">version</th><td>2</td></tr>
+<tr><th scope="row">modules</th><td>25 x 25</td></tr>
+<tr><th scope="row">error correction</th><td>M</td></tr>
+<tr><th scope="row">mask</th><td>2</td></tr>
+<tr><th scope="row">mode</th><td>byte</td></tr>
+<tr><th scope="row">read back</th><td>https://example.com/menu</td></tr>
+</tbody></table></div>
+<p><strong>WiFi text with a semicolon in the password</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;payload&quot;,
+  &quot;type&quot;: &quot;wifi&quot;,
+  &quot;fields&quot;: &#123;
+    &quot;ssid&quot;: &quot;Cafe Guest&quot;,
+    &quot;password&quot;: &quot;tea;time42&quot;,
+    &quot;security&quot;: &quot;WPA&quot;
+  &#125;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>WiFi text with a semicolon in the password</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">payload</th><td>WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;</td></tr>
+<tr><th scope="row">bytes</th><td>39</td></tr>
+<tr><th scope="row">version at L</th><td>3 (29 x 29)</td></tr>
+<tr><th scope="row">version at M</th><td>3 (29 x 29)</td></tr>
+<tr><th scope="row">version at Q</th><td>4 (33 x 33)</td></tr>
+<tr><th scope="row">version at H</th><td>5 (37 x 37)</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Static codes only. A static code holds its content and cannot expire, but it works only while its destination exists. The tool does not host redirects.</li><li>Numeric, alphanumeric and byte modes in a single segment. Kanji mode and mixed-mode segmentation are not used.</li><li>The image reader handles clean images (renders and screenshots), not angled photos from a phone.</li><li>The expiry check reports what the code encodes, where a link redirects today (at most 10 hops, private addresses refused) and a vendor's published policy. It cannot see your account or promise what a vendor will do.</li><li>Test-scan every code at its final print size before a print run. QR Code is a registered trademark of DENSO WAVE INCORPORATED.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>Format and print rules were read 2026-11-02. The encoder follows ISO/IEC 18004.</p>
+<ul class="cp-sources"><li><a href="https://www.iso.org/standard/83389.html">ISO/IEC 18004 (QR Code bar code symbology specification)</a></li><li><a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE: Points for using QR Code (quiet zone of four modules)</a></li><li><a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE: Module size (4 or more printer dots a module)</a></li><li><a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE: Error correction (Level M 15% is most often selected)</a></li><li><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard)</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426: vCard 3.0 (escaping of commas, semicolons, backslashes and newlines)</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The encoder is compared bit for bit with an independent implementation (node-qrcode 1.5.4) at every one of the 40 versions and 4 error-correction levels, in numeric, alphanumeric and byte modes. A decoder reads every code back, and the Reed-Solomon error correction fixes damage up to its limit and refuses more.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/qr-code-generator/">Open the QR code generator tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the qr code generator answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the qr code generator refuse to answer?</h3><p>Static codes only. A static code holds its content and cannot expire, but it works only while its destination exists. The tool does not host redirects. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/qr-code-generator/">Open the QR code generator tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/qr-code-generator/static-vs-dynamic/">Static vs dynamic QR codes</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/qr-code-generator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

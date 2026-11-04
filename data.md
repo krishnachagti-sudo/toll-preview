@@ -1,6 +1,6 @@
 # Free data downloads
 
-214 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
+221 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
 
 ## What is in the files?
 
@@ -26,7 +26,7 @@ The tools behind these tables can be called over the REST API and over MCP, with
 | [1099 threshold 2026: $2,000 for 1099-NEC and most 1099-MISC boxes](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2026.csv) | 2026-10-31 |
 | [California 1099 threshold 2026: does the state follow $2,000?](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/state/california/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/state/california.csv) | 2026-10-31 |
 
-Business days: 133 downloads
+Business days: 139 downloads
 
 | Table | CSV | Data date |
 | --- | --- | --- |
@@ -97,6 +97,12 @@ Business days: 133 downloads
 | [How many business days are in September 2026? (US)](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-september-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-september-2026.csv) | 2026-10-30 |
 | [How many business days are in September 2027? (US)](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-september-2027/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-september-2027.csv) | 2026-10-30 |
 | [How many business days are left this year? (US)](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us.csv) | 2026-10-30 |
+| [How many business days until Christmas? Counted from today](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-christmas/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-christmas.csv) | 2026-10-30 |
+| [How many business days until July 4? Counted from today](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-july-4/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-july-4.csv) | 2026-10-30 |
+| [How many business days until New Year's Day? From today](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-new-years-day/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-new-years-day.csv) | 2026-10-30 |
+| [How many business days until Tax Day? Counted from today](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-tax-day/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-tax-day.csv) | 2026-10-30 |
+| [How many business days until the end of the quarter?](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-quarter/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-quarter.csv) | 2026-10-30 |
+| [How many business days until the end of the year?](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-year/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-year.csv) | 2026-10-30 |
 | [How many working days are in April 2026? (England and Wales)](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-april-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-april-2026.csv) | 2026-10-30 |
 | [How many working days are in April 2027? (England and Wales)](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-april-2027/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-april-2027.csv) | 2026-10-30 |
 | [How many working days are in August 2026? (England and Wales)](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-august-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-working-days-august-2026.csv) | 2026-10-30 |
@@ -238,6 +244,12 @@ Mileage reimbursement and IRS mileage log: 4 downloads
 | [IRS mileage rate 2026: 72.5 cents, then 76 from July 1](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/irs-mileage-rate-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/irs-mileage-rate-2026.csv) | 2026-10-31 |
 | [Medical mileage rate 2026: 20.5 cents, 23.5 from July 1](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/medical-mileage-rate-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/medical-mileage-rate-2026.csv) | 2026-10-31 |
 | [Mileage log template 2026 for Excel and Google Sheets](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/mileage-log-template/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/mileage-log-template.csv) | 2026-10-31 |
+
+Other: 1 download
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [IRS mileage rate history 2011 to 2026](https://krishnachagti-sudo.github.io/toll-preview/irs-mileage-rate-history/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/irs-mileage-rate-history.csv) | 2026-10-31 |
 
 Tax set-aside per payment: 23 downloads
 

@@ -15,7 +15,7 @@ Every answer comes from a named official source and a stated data date, with no 
 
 Data was read between 2026-10-30 and 2026-11-03, as dated in the tables.
 
-**1099 threshold tracker:** IRS instructions for payment years 2025 and 2026, read 2026-10-31. The 2027 line is worked out from 26 U.S.C. 6041(h) and the chained CPI (latest month 2026-09) and is marked provisional until the IRS publishes its own. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/).
+**1099 threshold tracker:** IRS instructions for payment years 2025 and 2026, read 2026-10-31. The 2027 line is worked out from 26 U.S.C. 6041(h) and the chained CPI (latest month 2026-09) and is marked provisional until the IRS publishes its own. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/).
 
 1099 threshold tracker: sources
 
@@ -32,7 +32,7 @@ Data was read between 2026-10-30 and 2026-11-03, as dated in the tables.
 | [California Franchise Tax Board: Guide to Information Returns Filed With California (last updated 01/29/2026)](https://www.ftb.ca.gov/file/guide-to-information-returns-filed-with-california.html) | updated 01/29/2026 | 2026-10-31 |
 | [IRS: IRIS CSV Template Formatting guidelines, tax year 2025 (ZIP, updated 01/14/2026)](https://www.irs.gov/pub/irs-efile/ty2025-template-formatting-guidelines.zip) | tax year 2025 | 2026-10-31 |
 
-**Business days:** The United States and England and Wales holidays are worked out by rule for any year from 1971 to 2100; the rules were last changed on 2026-10-30. India (central government, Delhi) covers 2025 to 2027 only, from the memoranda below, read on 2026-11-03; other years are refused, not guessed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/).
+**Business days:** The United States and England and Wales holidays are worked out by rule for any year from 1971 to 2100; the rules were last changed on 2026-10-30. India (central government, Delhi) covers 2025 to 2027 only, from the memoranda below, read on 2026-11-03; other years are refused, not guessed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/business-days/).
 
 Business days: sources
 
@@ -51,7 +51,7 @@ Business days: sources
 | [DoPT O.M. F.No.12/2/2023-JCA dated 16 July 2026: holidays during 2027](https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20list%202027Cj0HU.PDF) | holidays during 2027 | 2026-11-03 |
 | [DoPT O.M. No. 13/4/85-JCA dated 21 May 1985: the 5-day week](https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html) | the 5-day week | 2026-11-03 |
 
-**Delivery date and holiday order-by calculator:** USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/).
+**Delivery date and holiday order-by calculator:** USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/).
 
 Delivery date and holiday order-by calculator: sources
 
@@ -61,7 +61,7 @@ Delivery date and holiday order-by calculator: sources
 | [USPS Newsroom: Holidays and events (postal holidays)](https://about.usps.com/newsroom/events/) | 2026 | 2026-10-31 |
 | [USPS: Mail and shipping services](https://www.usps.com/ship/mail-shipping-services.htm) | current | 2026-10-31 |
 
-**Exchange rate on a date:** ECB rates are fetched each day after the ECB publishes them, around 16:00 CET; they start on 1999-01-04, and a date with no fixing uses the latest one in the 7 days before it and says which. Treasury rates come quarterly with amendments in between, HMRC rates monthly. The IRS table is copied by hand: 2021 to 2025, page updated 2026-09-17. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/).
+**Exchange rate on a date:** ECB rates are fetched each day after the ECB publishes them, around 16:00 CET; they start on 1999-01-04, and a date with no fixing uses the latest one in the 7 days before it and says which. Treasury rates come quarterly with amendments in between, HMRC rates monthly. The IRS table is copied by hand: 2021 to 2025, page updated 2026-09-17. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/).
 
 Exchange rate on a date: sources
 
@@ -73,7 +73,7 @@ Exchange rate on a date: sources
 | [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates) | every month since 2021-01 | refreshed with the data files |
 | [U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange (31 December reports)](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) | 2023-12-31, 2024-12-31, 2025-12-31 | 2026-10-31 |
 
-**IFTA quarterly return calculator:** Rates are held by quarter, final rates only: 4th Quarter 2025 to 3rd Quarter 2026, read 2026-11-02. A quarter that is not on file is refused, not guessed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/).
+**IFTA quarterly return calculator:** Rates are held by quarter, final rates only: 4th Quarter 2025 to 3rd Quarter 2026, read 2026-11-02. A quarter that is not on file is refused, not guessed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/).
 
 IFTA quarterly return calculator: sources
 
@@ -92,9 +92,9 @@ IFTA quarterly return calculator: sources
 | [Idaho State Tax Commission, IFTA reporting step 6 (interest)](https://tax.idaho.gov/taxes/product-excise-taxes/fuels-taxes-and-fees/consumer-fuels/ifta-licenses/ifta-reporting/idaho-ifta-reporting-step-6/) | rules | 2026-11-02 |
 | [Idaho State Tax Commission, IFTA licenses: records (IVDR)](https://tax.idaho.gov/?p=1239) | rules | 2026-11-02 |
 
-**Image to size:** Uses no outside data. The photo is shrunk in your browser and never leaves your device, so there is no source to read and nothing to go out of date. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/).
+**Image to size:** Uses no outside data. The photo is shrunk in your browser and never leaves your device, so there is no source to read and nothing to go out of date. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/image-to-size/).
 
-**MACRS depreciation schedule:** Percentage tables from Publication 946 (2025), dated 2026-03-13, read 2026-11-02. Section 179 limits for 2025 and 2026; other tax years are refused. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/).
+**MACRS depreciation schedule:** Percentage tables from Publication 946 (2025), dated 2026-03-13, read 2026-11-02. Section 179 limits for 2025 and 2026; other tax years are refused. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/macrs-depreciation/).
 
 MACRS depreciation schedule: sources
 
@@ -104,7 +104,7 @@ MACRS depreciation schedule: sources
 | [Rev. Proc. 2025-32 sec. 4.24, and IRS Publication 946 (2025), What's New for 2026](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf) | 2026 limits | 2026-11-02 |
 | [IRS Publication 946 (2025), What's New for 2025, and chapter 2, Dollar Limits](https://www.irs.gov/publications/p946) | 2025 limits | 2026-11-02 |
 
-**Mileage reimbursement and IRS mileage log:** IRS rates from 2011-01-01 through 2026-12-31, page updated 2026-07-28. GSA rates known through 2026-12-31, page updated 2026-10-23. Dates outside the loaded years are refused, not guessed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/).
+**Mileage reimbursement and IRS mileage log:** IRS rates from 2011-01-01 through 2026-12-31, page updated 2026-07-28. GSA rates known through 2026-12-31, page updated 2026-10-23. Dates outside the loaded years are refused, not guessed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/mileage-reimbursement/).
 
 Mileage reimbursement and IRS mileage log: sources
 
@@ -116,7 +116,7 @@ Mileage reimbursement and IRS mileage log: sources
 | [IRS: Internal Revenue Bulletin 2026-4 (January 20, 2026), Notice 2026-10](https://www.irs.gov/irb/2026-04_IRB) | see the document | 2026-10-31 |
 | [IRS: Publication 463 (2025), Travel, Gift, and Car Expenses](https://www.irs.gov/publications/p463) | see the document | 2026-10-31 |
 
-**QR code generator:** Format and print rules read 2026-11-02. The encoder follows the QR Code standard, ISO/IEC 18004. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/).
+**QR code generator:** Format and print rules read 2026-11-02. The encoder follows the QR Code standard, ISO/IEC 18004. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/qr-code-generator/).
 
 QR code generator: sources
 
@@ -134,7 +134,7 @@ QR code generator: sources
 | [Avery 5160 template: 1 x 2-5/8 in, 30 per sheet](https://www.avery.com/templates/5160) | see the document | 2026-11-02 |
 | [Avery 22816 template: 2 x 2 in square, 12 per sheet](https://www.avery.com/templates/22816) | see the document | 2026-11-02 |
 
-**Tax set-aside per payment:** US federal figures for tax year 2026, the UK for 2026-27, state rules read 2026-10-31. Payments outside 2026 are refused. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/).
+**Tax set-aside per payment:** US federal figures for tax year 2026, the UK for 2026-27, state rules read 2026-10-31. Payments outside 2026 are refused. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/tax-set-aside/).
 
 Tax set-aside per payment: sources
 
@@ -160,7 +160,7 @@ Tax set-aside per payment: sources
 | [GOV.UK: Understanding your Self Assessment tax bill, payments on account](https://www.gov.uk/understand-self-assessment-bill/payments-on-account) | UK 2026-27 | 2026-10-31 |
 | Each state's own tax agency or official state portal, named beside the state in the rates and thresholds answer | 2026 | 2026-10-31 |
 
-**Trucker per diem worksheet:** IRS notices from 2018-10-01 to 2027-09-30, read 2026-10-31. A date after the last notice is refused. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/).
+**Trucker per diem worksheet:** IRS notices from 2018-10-01 to 2027-09-30, read 2026-10-31. A date after the last notice is refused. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/trucker-per-diem/).
 
 Trucker per diem worksheet: sources
 

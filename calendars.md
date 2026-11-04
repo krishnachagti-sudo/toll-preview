@@ -114,6 +114,7 @@ From the same holiday rules the Business days tool uses, each tied to an officia
 ## Related
 
 - [Business days](https://krishnachagti-sudo.github.io/toll-preview/business-days/)
+- [Small business tax deadlines calendar](https://krishnachagti-sudo.github.io/toll-preview/deadlines/)
 - [Where the numbers come from](https://krishnachagti-sudo.github.io/toll-preview/sources/)
 - [Pay per use or a subscription](https://krishnachagti-sudo.github.io/toll-preview/guides/pay-per-use-or-subscription/)
 

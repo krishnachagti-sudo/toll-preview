@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the IFTA return is calculated: Form 9740 method: Endwise</title>
+<meta name="description" content="How the IFTA calculator works: fleet MPG, taxable gallons, tax-paid credits, surcharges, due dates, interest and penalty, following Oregon DOT Form 9740.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/ifta-calculator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the IFTA return is calculated: Form 9740 method">
+<meta property="og:description" content="How the IFTA calculator works: fleet MPG, taxable gallons, tax-paid credits, surcharges, due dates, interest and penalty, following Oregon DOT Form 9740.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/","name":"How the IFTA return is calculated: Form 9740 method","description":"How the IFTA calculator works: fleet MPG, taxable gallons, tax-paid credits, surcharges, due dates, interest and penalty, following Oregon DOT Form 9740.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the IFTA return is calculated: Form 9740 method","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the ifta quarterly return calculator answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the ifta quarterly return calculator refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Rates are final rates only, by quarter, from 4th Quarter 2025 to 3rd Quarter 2026. A quarter that is not on file is refused, not guessed. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the IFTA return is calculated: Form 9740 method</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the IFTA return is calculated: Form 9740 method</h1>
+<p class="cp-answer">The return follows Oregon DOT Form 735-9740: fleet MPG is total miles divided by total gallons, taxable gallons in each jurisdiction are its taxable miles divided by that MPG, and tax is net taxable gallons times the quarter's rate. Final matrix rates are held for 4th Quarter 2025 to 3rd Quarter 2026.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the ifta quarterly return calculator compute?</h2>
+<p>The tool works out an IFTA quarterly return, from totals by jurisdiction or from trip sheets and fuel receipts. It reconciles odometer readings, checks each record against the IFTA distance and fuel record elements, and works out due dates, interest and the late penalty.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>estimate</code>: One fuel type from totals by jurisdiction: miles, taxable miles, tax-paid gallons and all fuel put in the tanks. Returns fleet MPG, each jurisdiction's line and the net.</li><li><code>check</code>: Reconciles a trip sheet and receipts and checks the records, returning counts only.</li><li><code>return</code>: The full return for a licensee and quarter across all fuel types, as a PDF and a CSV, with the reconciliation and the record check.</li><li><code>rates</code>: The rates on file by quarter, jurisdiction and fuel, with source and cross-check.</li><li><code>due-dates</code>: The four due dates in a year, moved off weekends.</li><li><code>late-cost</code>: Interest and penalty for a return filed late.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>quarter</code>: Written like 2026Q3. A quarter with no rate table on file is refused.</li><li><code>fuel, rows</code>: The fuel type and, for each jurisdiction, miles, taxable miles (default all miles) and tax-paid gallons.</li><li><code>nonIftaMiles, totalGallons</code>: Miles in Alaska, Hawaii, D.C., the territories or Mexico, and all fuel put in the tanks wherever bought.</li><li><code>vehicles, trips, receipts</code>: For check and return: units with fuel type, trips with odometer readings and miles by jurisdiction, and receipts with gallons and jurisdiction.</li><li><code>filedOn, lines</code>: For late-cost: the filing date and the tax or credit by jurisdiction.</li></ul>
+<p>Outputs:</p>
+<ul><li>mpg and each jurisdiction line: taxable gallons, net taxable gallons, rate, tax and surcharge</li><li>netDue, with a credit shown as a negative figure</li><li>dueDate with the statutory date and the date it moves to</li><li>reconciliation and recordCheck for trip sheets</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Miles and gallons are rounded to whole numbers (525.5 becomes 526).</li><li>Fleet MPG for a fuel type is total miles (IFTA plus non-IFTA) divided by total gallons, carried to three decimals (cut, not rounded) and then rounded half up to two decimals (6.155 becomes 6.16).</li><li>Taxable gallons in a jurisdiction are its taxable miles divided by that MPG, rounded to a whole number.</li><li>Net taxable gallons are taxable gallons minus the tax-paid gallons bought there. Tax is net taxable gallons times the quarter's rate, in dollars and cents. A negative figure is a credit.</li><li>A surcharge (the Indiana, Kentucky and Virginia rows of the matrix) is taxable gallons times the surcharge rate, with no credit for fuel bought there.</li><li>Rates are held as ten-thousandths of a dollar and money as whole cents, so every step is exact integer arithmetic. The rate table is the one for the same quarter and year as the return.</li><li>The due date is the last day of the month after the quarter. If it falls on a Saturday or Sunday it moves to the next business day (Virginia DMV).</li><li>Interest on a late return is the tax due on each line times the monthly rate for each month or part of a month late, never on credits. The penalty is the greater of $50 or 10% of the net tax.</li></ol>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Weekend due dates: 31 October 2026 is a Saturday, so the third quarter 2026 return is due Monday, 2 November 2026. 31 January 2027 is a Sunday, so the fourth quarter is due Monday, 1 February 2027.</li><li>Part of a month is a month: a return filed one day late is one month late for interest.</li><li>Credits: a jurisdiction where you bought more fuel than you used shows a negative line and earns no interest.</li><li>Rounding is the form's: 6.155 MPG is 6.16, and gallons are whole numbers.</li><li>Interest rates change by period (the Idaho State Tax Commission table is held from 2019); each month late uses the rate for that month.</li><li>Receipts bought without fuel tax count in total fuel but earn no credit. Odometer gaps between trips are reconciled per unit.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Third quarter 2026, diesel, from totals by state</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;estimate&quot;,
+  &quot;quarter&quot;: &quot;2026Q3&quot;,
+  &quot;fuel&quot;: &quot;special_diesel&quot;,
+  &quot;rows&quot;: [
+    &#123;
+      &quot;jurisdiction&quot;: &quot;MO&quot;,
+      &quot;miles&quot;: 670,
+      &quot;taxPaidGallons&quot;: 50
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;IL&quot;,
+      &quot;miles&quot;: 260,
+      &quot;taxPaidGallons&quot;: 160
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;IN&quot;,
+      &quot;miles&quot;: 250
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;KY&quot;,
+      &quot;miles&quot;: 380
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;WV&quot;,
+      &quot;miles&quot;: 360
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;VA&quot;,
+      &quot;miles&quot;: 370,
+      &quot;taxPaidGallons&quot;: 150
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;OK&quot;,
+      &quot;miles&quot;: 500,
+      &quot;taxPaidGallons&quot;: 70
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;TX&quot;,
+      &quot;miles&quot;: 270,
+      &quot;taxPaidGallons&quot;: 60
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;TN&quot;,
+      &quot;miles&quot;: 1290,
+      &quot;taxPaidGallons&quot;: 200
+    &#125;
+  ],
+  &quot;totalGallons&quot;: 690
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Third quarter 2026, diesel, from totals by state</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">fleet MPG</th><td>6.30</td></tr>
+<tr><th scope="row">Kentucky</th><td>380 miles, 60 taxable gallons, tax $13.20, surcharge $6.30</td></tr>
+<tr><th scope="row">Illinois</th><td>41 taxable gallons less 160 paid is -119, tax -$87.82</td></tr>
+<tr><th scope="row">net</th><td>-$28.73</td></tr>
+<tr><th scope="row">due</th><td>2026-11-02</td></tr>
+</tbody></table></div>
+<p><strong>Due dates for 2026</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;due-dates&quot;,
+  &quot;year&quot;: 2026
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Due dates for 2026</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">2026Q1</th><td>2026-04-30</td></tr>
+<tr><th scope="row">2026Q2</th><td>2026-07-31</td></tr>
+<tr><th scope="row">2026Q3</th><td>2026-10-31 moved to 2026-11-02</td></tr>
+<tr><th scope="row">2026Q4</th><td>2027-01-31 moved to 2027-02-01</td></tr>
+</tbody></table></div>
+<p><strong>A second quarter 2026 return filed September 15, 2026</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;late-cost&quot;,
+  &quot;quarter&quot;: &quot;2026Q2&quot;,
+  &quot;filedOn&quot;: &quot;2026-09-15&quot;,
+  &quot;lines&quot;: [
+    &#123;
+      &quot;jurisdiction&quot;: &quot;TN&quot;,
+      &quot;tax&quot;: 120.5
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;KY&quot;,
+      &quot;tax&quot;: 64.1
+    &#125;,
+    &#123;
+      &quot;jurisdiction&quot;: &quot;IL&quot;,
+      &quot;tax&quot;: -30.25
+    &#125;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A second quarter 2026 return filed September 15, 2026</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">months late</th><td>2</td></tr>
+<tr><th scope="row">net tax</th><td>$154.35</td></tr>
+<tr><th scope="row">interest</th><td>$2.77</td></tr>
+<tr><th scope="row">penalty</th><td>$50.00</td></tr>
+<tr><th scope="row">total</th><td>$52.77</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Rates are final rates only, by quarter, from 4th Quarter 2025 to 3rd Quarter 2026. A quarter that is not on file is refused, not guessed.</li><li>Only fuels with a computed method are accepted. LNG, CNG, electricity, hydrogen and hythane are refused with the reason: the matrix copies give a rate but not the unit it applies to.</li><li>Rounding follows Oregon DOT Form 9740. Your base jurisdiction may compute or round differently, and its return governs.</li><li>It is a calculation, not tax or legal advice. Diesel exhaust fluid and fuel for a separate reefer tank are not IFTA fuel.</li><li>Due dates move only for weekends: the four statutory dates are never US federal holidays.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>Rates are held by quarter, 4th Quarter 2025 to 3rd Quarter 2026, all final, read 2026-11-02. Rules were read 2026-11-02.</p>
+<ul class="cp-sources"><li><a href="https://www.oregon.gov/odot/forms/motcarr/9740.pdf">Oregon DOT, IFTA Tax Return Form 735-9740 and its filing instructions (03-26)</a></li><li><a href="https://www.dmv.virginia.gov/businesses/motor-carriers/ifta/tax">Virginia DMV, IFTA tax returns</a></li><li><a href="https://tax.idaho.gov/taxes/product-excise-taxes/fuels-taxes-and-fees/consumer-fuels/ifta-licenses/ifta-reporting/idaho-ifta-reporting-step-6/">Idaho State Tax Commission, IFTA reporting step 6 (interest)</a></li><li><a href="https://tax.idaho.gov/?p=1239">Idaho State Tax Commission, IFTA licenses: records (IVDR)</a></li><li><a href="https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/3Q2026FuelRates.pdf">Oregon DOT copy of the IFTA matrix, 3Q2026 FINAL Fuel Tax Rates (PDF)</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>Each of the four quarters on file is final, from the Oregon DOT copy with the New York State Tax cross-check. A two-state return is worked out by hand in the test and compared with the engine. Due dates for 2026 are compared with the Oregon DOT calendar, and the late-interest example from the Idaho State Tax Commission ($100 over 3 months late is $1.25) is reproduced.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/ifta-calculator/">Open the IFTA quarterly return calculator tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the ifta quarterly return calculator answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the ifta quarterly return calculator refuse to answer?</h3><p>Rates are final rates only, by quarter, from 4th Quarter 2025 to 3rd Quarter 2026. A quarter that is not on file is refused, not guessed. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/ifta-calculator/">Open the IFTA quarterly return calculator tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/ifta-calculator/how-ifta-is-calculated/">How IFTA is calculated</a></li><li><a href="/toll-preview/ifta-calculator/due-dates/">IFTA due dates</a></li><li><a href="/toll-preview/ifta-calculator/record-keeping/">IFTA record keeping</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/ifta-calculator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

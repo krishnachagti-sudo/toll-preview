@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API changelog: Endwise</title>
+<meta name="description" content="Dated changes to the Endwise REST API and MCP server, newest first: endpoints, fields, error codes, sign-in and the OpenAPI document.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/developers/changelog/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/developers/changelog.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="API changelog">
+<meta property="og:description" content="Dated changes to the Endwise REST API and MCP server, newest first: endpoints, fields, error codes, sign-in and the OpenAPI document.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/developers/changelog/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/changelog/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/changelog/","name":"API changelog","description":"Dated changes to the Endwise REST API and MCP server, newest first: endpoints, fields, error codes, sign-in and the OpenAPI document.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"},{"@type":"ListItem","position":3,"name":"API changelog","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/changelog/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is the API documented?","acceptedAnswer":{"@type":"Answer","text":"The docs page covers keys, pricing, errors, idempotency and the MCP endpoint. The OpenAPI document at /api/v1/openapi.json lists every tool endpoint. This page lists what changed and when."}},{"@type":"Question","name":"Does this page list changes to prices or data?","acceptedAnswer":{"@type":"Answer","text":"No. It lists only changes a caller of the REST API or the MCP server can see. Changes to the data and rules behind the tools are on the data updates page."}},{"@type":"Question","name":"Will a change to the API break my integration?","acceptedAnswer":{"@type":"Answer","text":"Each entry says exactly what a caller sees. The REST API is versioned in its path (/api/v1). Read the entries since your integration was last tested."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/developers/">Developers</a></li><li aria-current="page">API changelog</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Overview</p>
+<h1>API changelog</h1>
+<p class="cp-answer">This is the log of changes to the Endwise REST API and MCP server, newest first. The latest change is dated November 4, 2026, and the log starts on October 30, 2026.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="log">What changed in the API and the MCP server, and when?</h2>
+<p>Each entry is a change a caller can see. Changes to the data and rules behind the tools are on the <a href="/toll-preview/updates/">data updates page</a>. Paths below start after the base path of the site.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Changes to the public API</caption><thead><tr><th scope="col">Date</th><th scope="col">Area</th><th scope="col">What changed</th></tr></thead><tbody>
+<tr><th scope="row">November 4, 2026</th><td>MCP</td><td>A tools/call request with no valid sign-in or API key now gets HTTP 401 with a WWW-Authenticate Bearer challenge, so OAuth clients know where to sign in. The body still carries the JSON-RPC error -32001, and its message reads &quot;Sign in to Endwise or add your API key as a Bearer token.&quot;</td></tr>
+<tr><th scope="row">November 4, 2026</th><td>Auth</td><td>The MCP endpoint accepts OAuth sign-in as well as API keys, so the Claude and ChatGPT apps can connect by signing in. Authorization uses PKCE (S256), dynamic client registration and refresh tokens that rotate. Each connected app has its own monthly limit and shows under Connected apps on the account page. Bearer API keys work as before. Access tokens are accepted on the MCP endpoint only, not on the REST API.</td></tr>
+<tr><th scope="row">November 4, 2026</th><td>MCP</td><td>Each tool in the tools/list reply now carries _meta.securitySchemes with an oauth2 scheme, which tells clients that offer sign-in (ChatGPT does) to ask for it.</td></tr>
+<tr><th scope="row">November 3, 2026</th><td>OpenAPI</td><td>The OpenAPI document at /api/v1/openapi.json now has a servers entry with the site origin, so tools that import the document (a GPT Action, code generators) know the host.</td></tr>
+<tr><th scope="row">November 3, 2026</th><td>REST</td><td>Prices in the tools list, in the tool descriptions and in the OpenAPI document are in US dollars only.</td></tr>
+<tr><th scope="row">October 31, 2026</th><td>REST</td><td>New endpoint: POST /api/v1/tools/{slug}/quote returns what an input would cost your account now, without running, charging or reserving anything. It is also in the OpenAPI document.</td></tr>
+<tr><th scope="row">October 31, 2026</th><td>MCP</td><td>New free tool quote_price: pass a tool name and the arguments you would call it with and it says what the call would cost this account, without running it.</td></tr>
+<tr><th scope="row">October 31, 2026</th><td>REST</td><td>Every API tool in GET /api/v1/tools and GET /api/v1/tools/{slug} now has a pricing block that lists the price of each action in words. The MCP and OpenAPI descriptions show the same prices.</td></tr>
+<tr><th scope="row">October 30, 2026</th><td>MCP</td><td>The MCP server is published at /mcp: POST, JSON-RPC 2.0 over stateless Streamable HTTP. It answers initialize, tools/list, tools/call and ping, and acknowledges notifications with HTTP 202. Calls use the same Bearer API key, prices and limits as the REST API.</td></tr>
+<tr><th scope="row">October 30, 2026</th><td>REST</td><td>The REST API is published under /api/v1: GET /tools, GET /tools/{slug}, POST /tools/{slug} to run a tool with a Bearer API key, GET /me for your balance and spend, and GET /openapi.json. The optional Idempotency-Key header makes a retry safe: a repeated key returns the stored answer, marked Idempotent-Replay: true, and charges nothing more.</td></tr>
+<tr><th scope="row">October 30, 2026</th><td>REST</td><td>Errors come back as { ok: false, error: { code, message } }. The codes at launch included: invalid_input (400), unauthorized (401), insufficient_balance (402), cap_reached (402), forbidden (403), unknown_tool (404), rate_limited (429) and upstream_failed (502). Idempotency-Key reuse with different input is refused as idempotency_mismatch (422).</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="docs">Where can I read how the API works?</h2>
+<p>See the <a href="/toll-preview/docs">docs</a> for keys, errors and idempotency, and the <a href="/toll-preview/developers/mcp/">MCP page</a> for connecting an AI assistant.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Where is the API documented?</h3><p>The docs page covers keys, pricing, errors, idempotency and the MCP endpoint. The OpenAPI document at /api/v1/openapi.json lists every tool endpoint. This page lists what changed and when.</p><h3>Does this page list changes to prices or data?</h3><p>No. It lists only changes a caller of the REST API or the MCP server can see. Changes to the data and rules behind the tools are on the data updates page.</p><h3>Will a change to the API break my integration?</h3><p>Each entry says exactly what a caller sees. The REST API is versioned in its path (/api/v1). Read the entries since your integration was last tested.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/docs">API and MCP docs</a></li><li><a href="/toll-preview/developers/">Developers</a></li><li><a href="/toll-preview/developers/mcp/">MCP for AI agents</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/developers/changelog.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

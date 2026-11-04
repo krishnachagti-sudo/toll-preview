@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the 1099 threshold is applied: method and sources: Endwise</title>
+<meta name="description" content="How the 1099 threshold tracker works: grouping payees, exclusions, box lines by year, backup withholding, due dates and the 2027 projection.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/1099-threshold.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the 1099 threshold is applied: method and sources">
+<meta property="og:description" content="How the 1099 threshold tracker works: grouping payees, exclusions, box lines by year, backup withholding, due dates and the 2027 projection.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/","name":"How the 1099 threshold is applied: method and sources","description":"How the 1099 threshold tracker works: grouping payees, exclusions, box lines by year, backup withholding, due dates and the 2027 projection.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the 1099 threshold is applied: method and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the 1099 threshold tracker answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the 1099 threshold tracker refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Payment years 2025, 2026 and 2027 only. Another year is refused. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the 1099 threshold is applied: method and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the 1099 threshold is applied: method and sources</h1>
+<p class="cp-answer">Payments are grouped by payee, the ones the IRS does not want on a 1099 are set aside, and each box total is compared with that box's line for the payment year: $600 for 2025 payments and $2,000 for 2026 payments on the general line. A total at exactly the line is reportable and one cent below is not.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the 1099 threshold tracker compute?</h2>
+<p>The tool checks which payees need a Form 1099-NEC or 1099-MISC for a payment year, in which box, and why, from a list of payments or from one payee. It also returns the lines, due dates, penalties and state rules, and works out the 2027 line from the statute.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>scan</code>: A year-end scan of a payments list (rows or a spreadsheet): one verdict per payee, the boxes and amounts, due dates, penalties, a verdict CSV and an IRIS upload file.</li><li><code>check</code>: One payee, one amount: whether a form is needed and why.</li><li><code>thresholds</code>: Every box line for a payment year with the due dates.</li><li><code>projection</code>: The line for a year the IRS has not published, worked out from 26 U.S.C. 6041(h).</li><li><code>penalty</code>: Information return penalties by the year the return is due.</li><li><code>state</code>: A state's own 1099 rule and its Combined Federal/State Filing status.</li><li><code>rules</code>: The rule files every answer comes from, with their sources.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>paymentYear</code>: The calendar year the payments were made: 2025, 2026 or 2027.</li><li><code>payee, tin, date, amount</code>: Who was paid, their taxpayer identification number, the payment date and the amount.</li><li><code>type, method, payeeType, state</code>: What the payment was for, how it was paid, what kind of payee it was, and the state.</li></ul>
+<p>Outputs:</p>
+<ul><li>a verdict per payee: file, near (within 25% of a line), under or exempt</li><li>the forms and boxes with amounts, and the date a box first reached its line</li><li>reasons in plain words, and what was left out and why</li><li>due dates, TIN and W-9 notes, state copies</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Payment rows are read (amounts like &quot;$1,234.50&quot; or &quot;(80.00)&quot; are understood, dates month first) and kept only if dated in the payment year. Rows from other years are counted aside.</li><li>Rows are grouped into payees: one payee per TIN (its 9 digits), otherwise per name, where case, spacing, punctuation and &quot;&amp;&quot; do not split a name. A row with no TIN joins a TIN-bearing payee of the same name only if exactly one TIN goes with that name. Names that match once words like LLC are dropped but whose keys differ are flagged as a possible duplicate vendor, never merged.</li><li>Each row, in date order, is left out with a reason if: its payment type is never reported (rent paid to a property manager, merchandise and freight, wages, personal payments); it was paid by card or payment app (the processor reports it on Form 1099-K); the payee type is never reported (tax-exempt, government, foreign); the payee is a corporation and the type is not one that is reported to corporations (legal fees, medical and health care, attorney gross proceeds, substitute payments, fish bought for resale); or fish was not paid in cash.</li><li>What remains is added to the box its type belongs to. The date the box total first reached its line is kept, and a later refund that takes the total back under the line undoes the crossing.</li><li>Each box total is compared with that box's line for the year. &quot;Any amount&quot; boxes are met by any positive total. Otherwise the total must be at least the line.</li><li>A form is required when a box that is not optional meets its line, or when any backup withholding was taken on that form's payments. Direct sales of $5,000 or more are a checkbox on the 1099-NEC, or on the 1099-MISC when no 1099-NEC is filed.</li><li>The verdict is file, near (no form yet but a total is at least 75% of a line), exempt (everything was left out) or under.</li><li>Due dates start from the form instructions' month and day and are rolled to the next business day using the business days engine, so a Saturday, Sunday or federal holiday moves them.</li><li>For a year the IRS has not published, the line is the statutory $2,000 indexed under 26 U.S.C. 6041(h): the C-CPI-U averaged over the 12 months ending August of the year before, divided by the average for the 12 months ending August 2025, applied to $2,000, with the increase rounded to the nearest $100. It is marked provisional.</li></ol>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Exactly at the line: a payee paid $2,000 in 2026 is in, and one cent less is out, for every box and year.</li><li>The line changed: $600 for 2025 payments, $2,000 for 2026 payments. Royalties stay at $10 and attorney gross proceeds at $600 because other sections set them.</li><li>Backup withholding forces a form at any amount.</li><li>A December check dated in the previous year belongs to that year's scan, not this one.</li><li>A payee with no TIN is flagged for a Form W-9 and, if reportable, for backup withholding at the rate on file.</li><li>A year with a gap in the published index: the projection says which months are missing and shows that filling the gap does not move the rounded result, or refuses and falls back to the statutory $2,000.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>One contractor paid $1,500 in 2026</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;paymentYear&quot;: 2026,
+  &quot;amount&quot;: 1500,
+  &quot;paymentType&quot;: &quot;services&quot;,
+  &quot;payeeType&quot;: &quot;individual&quot;,
+  &quot;method&quot;: &quot;check&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>One contractor paid $1,500 in 2026</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">required</th><td>false</td></tr>
+<tr><th scope="row">verdict</th><td>near</td></tr>
+<tr><th scope="row">answer</th><td>No: $1,500.00 is under the $2,000 line for 1099-NEC box 1a. It is within 25% of the line, so collect a Form W-9 now in case more payments follow.</td></tr>
+</tbody></table></div>
+<p><strong>A year-end scan: due dates after the roll</strong></p>
+<pre><code class="language-json">op: &quot;scan&quot;
+paymentYear: 2026
+payments: 13 items
+payer: &#123;...&#125;
+payees: 3 items
+exports: 2 items</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A year-end scan: due dates after the roll</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Of 8 payees paid in 2026, 4 need a form (2 Form 1099-NEC, 3 Form 1099-MISC) at the $2,000 line; 4 do not.</td></tr>
+<tr><th scope="row">1099-NEC to IRS and recipients</th><td>2027-02-01</td></tr>
+<tr><th scope="row">1099-MISC electronic filing</th><td>2027-03-31</td></tr>
+</tbody></table></div>
+<p><strong>The 2027 line from 26 U.S.C. 6041(h)</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;projection&quot;,
+  &quot;paymentYear&quot;: 2027
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>The 2027 line from 26 U.S.C. 6041(h)</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">status</th><td>provisional</td></tr>
+<tr><th scope="row">base average</th><td>177.205833</td></tr>
+<tr><th scope="row">current average</th><td>182.856455</td></tr>
+<tr><th scope="row">increase on $2,000 before rounding (cents)</th><td>6377</td></tr>
+<tr><th scope="row">line</th><td>$2,100</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Payment years 2025, 2026 and 2027 only. Another year is refused.</li><li>Payments to foreign persons are reported on Form 1042-S and are not covered. Employee wages go on Form W-2.</li><li>Card and payment-app rows are assumed to be goods or services reported by the processor. A personal transfer through an app is not reported by the app either.</li><li>A payee whose type is not given is treated as not a corporation, so the answer errs toward filing. A Form W-9 settles it.</li><li>A scan reads at most 5,000 payment rows. State rules are held only for states whose revenue agency page was read; other states are marked as not checked.</li><li>It does not file anything. It does not decide whether someone is an employee or a contractor.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>IRS instructions for payment years 2025 and 2026 were read 2026-10-31. The 2027 line is provisional until the IRS publishes it.</p>
+<ul class="cp-sources"><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026)</a></li><li><a href="https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. April 2025)</a></li><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), Filing dates</a></li><li><a href="https://www.irs.gov/payments/information-return-penalties">IRS: Information return penalties</a></li><li><a href="https://www.law.cornell.edu/uscode/text/26/6041">26 U.S. Code 6041(h), Inflation adjustment (Cornell LII)</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>Every federal line for 2025 and 2026 is compared with the IRS instructions with the revision recorded, and penalties, the CF/SF states and the IRIS CSV columns the same way. The 2027 projection is checked against the arithmetic in 26 U.S.C. 6041(h). A payee is in at exactly the line and out a cent below it, for every box and year.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/1099-threshold/">Open the 1099 threshold tracker tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the 1099 threshold tracker answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the 1099 threshold tracker refuse to answer?</h3><p>Payment years 2025, 2026 and 2027 only. Another year is refused. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/1099-threshold/">Open the 1099 threshold tracker tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/1099-threshold/2026/">1099 payee guides</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/1099-threshold.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>
