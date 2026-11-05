@@ -1,21 +1,20 @@
 # How long is 30 business days?
 
-30 business days from today, Wednesday, November 4, 2026 (the date in Washington, DC), is Friday, December 18, 2026 in the US, 44 calendar days away. In England and Wales it is Wednesday 16 December 2026.
+30 business days from today, Thursday, November 5, 2026 (the date in Washington, DC), is Monday, December 21, 2026 in the US, 46 calendar days away. In England and Wales it is Thursday 17 December 2026.
 
-- US date: December 18, 2026
-- Calendar days (US): 44
-- England and Wales: 16 December 2026
+- US date: December 21, 2026
+- Calendar days (US): 46
+- England and Wales: 17 December 2026
 - Calendar days (E&W): 42
 
 ## Add 30 business days to any date
 
-[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-04&days=30)
+[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-05&days=30)
 
 ## 30 business days from each of the next 10 days
 
 | Start | US: ends on | Days | England and Wales: ends on | Days |
 | --- | --- | ---: | --- | ---: |
-| [Wed, Nov 4, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-04&days=30) | Fri, Dec 18, 2026 | 44 | Wed 16 Dec 2026 | 42 |
 | [Thu, Nov 5, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-05&days=30) | Mon, Dec 21, 2026 | 46 | Thu 17 Dec 2026 | 42 |
 | [Fri, Nov 6, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-06&days=30) | Tue, Dec 22, 2026 | 46 | Fri 18 Dec 2026 | 42 |
 | [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-07&days=30) | Tue, Dec 22, 2026 | 45 | Fri 18 Dec 2026 | 41 |
@@ -25,6 +24,7 @@
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-11&days=30) | Thu, Dec 24, 2026 | 43 | Wed 23 Dec 2026 | 42 |
 | [Thu, Nov 12, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-12&days=30) | Mon, Dec 28, 2026 | 46 | Thu 24 Dec 2026 | 42 |
 | [Fri, Nov 13, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-13&days=30) | Tue, Dec 29, 2026 | 46 | Tue 29 Dec 2026 | 46 |
+| [Sat, Nov 14, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-14&days=30) | Tue, Dec 29, 2026 | 45 | Tue 29 Dec 2026 | 45 |
 
 ## 30 business days from each weekday, with no holidays
 
@@ -77,5 +77,5 @@ Not here: day 1 is the first business day after today, the way WORKDAY counts in
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-30-business-days/  
-Worked out for: 2026-11-04  
+Worked out for: 2026-11-05  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-30-business-days.csv

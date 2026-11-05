@@ -15,16 +15,16 @@ To cite a figure, give the page title, Endwise, the page address, the date the p
 This example uses a real table page, [US federal holidays 2026: dates and observed days](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2026/), whose data date is October 30, 2026. In APA style:
 
 ```text
-Endwise. (2026, October 30). US federal holidays 2026: dates and observed days. https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2026/
+Endwise. (2026, October 30). US federal holidays 2026: dates and observed days. Retrieved [Month Day, Year], from https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2026/
 ```
 
 In MLA style:
 
 ```text
-"US federal holidays 2026: dates and observed days." Endwise, 30 Oct. 2026, https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2026/.
+"US federal holidays 2026: dates and observed days." Endwise, Conyso Holdings, 30 Oct. 2026, https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2026/. Accessed [Day Mon. Year].
 ```
 
-If your style asks for an access date, add the day you read the page. Put the title in italics where your style asks for it.
+Put the day you read the page where the brackets are. Both styles ask for it here because Endwise pages are updated in place when their data changes. In MLA, set the site name, Endwise, in italics; in APA, set the page title in italics.
 
 To cite the rule behind the figure, cite the official source as well. The page names these: [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/) and [OPM: Federal holidays, "in lieu of" days](https://www.opm.gov/policy-data-oversight/pay-leave/work-schedules/fact-sheets/Federal-Holidays-In-Lieu-Of-Determination).
 
@@ -38,6 +38,7 @@ A tool's answer names the data it used and the official source. Cite the tool pa
 
 Every tool and table page names its official sources. [The sources page](https://krishnachagti-sudo.github.io/toll-preview/sources/) lists them with the edition and the day each was read.
 
+- [APA Style: Webpage on a website references](https://apastyle.apa.org/style-grammar-guidelines/references/examples/webpage-website-references)
 - [MLA Style Center: Works Cited, a quick guide](https://style.mla.org/works-cited-a-quick-guide/)
 
 ## Steps

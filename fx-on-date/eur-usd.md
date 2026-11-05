@@ -1,20 +1,22 @@
 # EUR to USD exchange rate by date
 
-The latest ECB reference rate for EUR to USD is 1.1179 US dollars per euro, from the fixing of Tuesday 3 Nov 2026; one US dollar is 0.894534 euros.
+The latest ECB reference rate for EUR to USD is 1.1224 US dollars per euro, from the fixing of Thursday 5 Nov 2026; one US dollar is 0.890948 euros.
 
-- EUR to USD: 1.1179
-- Fixing: 2026-11-03
-- USD to EUR: 0.894534
+- EUR to USD: 1.1224
+- Fixing: 2026-11-05
+- USD to EUR: 0.890948
 - 2025 average: 1.129983
 
 ## EUR to USD on any date
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-03)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-05)
 
 ## The last 30 fixings
 
 | Fixing | EUR to USD | USD to EUR | Change |
 | --- | ---: | ---: | ---: |
+| Thursday 5 Nov 2026 | 1.1224 | 0.890948 | −0.38% |
+| Wednesday 4 Nov 2026 | 1.1267 | 0.887548 | +0.79% |
 | Tuesday 3 Nov 2026 | 1.1179 | 0.894534 | −0.33% |
 | Monday 2 Nov 2026 | 1.1216 | 0.891583 | +0.39% |
 | Friday 30 Oct 2026 | 1.1172 | 0.895095 | +0.38% |
@@ -43,8 +45,6 @@ The latest ECB reference rate for EUR to USD is 1.1179 US dollars per euro, from
 | Tuesday 29 Sep 2026 | 1.1355 | 0.880669 | −0.20% |
 | Monday 28 Sep 2026 | 1.1378 | 0.878889 | −0.22% |
 | Friday 25 Sep 2026 | 1.1403 | 0.876962 | +0.32% |
-| Thursday 24 Sep 2026 | 1.1367 | 0.87974 | −0.39% |
-| Wednesday 23 Sep 2026 | 1.1411 | 0.876347 | −0.45% |
 
 ## Month-end rates and monthly averages
 
@@ -52,7 +52,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Month | Month-end fixing | Month-end rate | Average | High | Low | Fixings |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| [November 2026 (to 3 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-03) | Not yet | – | 1.11975 | 1.1216 | 1.1179 | 2 |
+| [November 2026 (to 5 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-05) | Not yet | – | 1.12215 | 1.1267 | 1.1179 | 4 |
 | [October 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-10-31) | 30 Oct | 1.1172 | 1.120159 | 1.1298 | 1.1130 | 22 |
 | [September 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-09-30) | 30 Sep | 1.1355 | 1.151323 | 1.1652 | 1.1355 | 22 |
 | [August 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-08-31) | 31 Aug | 1.1596 | 1.15931 | 1.1699 | 1.1515 | 21 |
@@ -96,7 +96,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Year | Average | High | Low | First fixing | Last fixing | Fixings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026 (to 3 Nov) | 1.15648 | 1.1974 (28 Jan) | 1.1130 (29 Oct) | 1.1721 | 1.1179 | 215 |
+| 2026 (to 5 Nov) | 1.156185 | 1.1974 (28 Jan) | 1.1130 (29 Oct) | 1.1721 | 1.1224 | 217 |
 | 2025 | 1.129983 | 1.1837 (17 Sep) | 1.0198 (13 Jan) | 1.0321 | 1.1750 | 255 |
 | 2024 | 1.08238 | 1.1196 (30 Sep) | 1.0389 (31 Dec) | 1.0956 | 1.0389 | 256 |
 | 2023 | 1.081269 | 1.1255 (18 Jul) | 1.0469 (3 Oct) | 1.0683 | 1.1050 | 255 |
@@ -184,5 +184,5 @@ The last ECB fixing before that day. For example, Saturday 31 Oct 2026 uses the 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/  
-Data as of: 2026-11-03  
+Data as of: 2026-11-05  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd.csv

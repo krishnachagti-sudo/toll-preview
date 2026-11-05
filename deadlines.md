@@ -1,10 +1,10 @@
 # Small business tax deadlines and calendar
 
-The next small business tax deadline is Friday, January 15, 2027, in 72 days: 2026 estimated tax payment 4 of 4 (Form 1040-ES). The list below runs to April 18, 2028, and the calendar feed at `https://krishnachagti-sudo.github.io/toll-preview/calendars/small-business-tax-deadlines.ics` is free.
+The next small business tax deadline is Friday, January 15, 2027, in 71 days: 2026 estimated tax payment 4 of 4 (Form 1040-ES). The list below runs to April 18, 2028, and the calendar feed at `https://krishnachagti-sudo.github.io/toll-preview/calendars/small-business-tax-deadlines.ics` is free.
 
 ## What are the next small business tax deadlines?
 
-Dates are for the United States and run from today, November 4, 2026, for the current and the next tax year. A date that moved is marked, and the next section says why.
+Dates are for the United States and run from today, November 5, 2026, for the current and the next tax year. A date that moved is marked, and the next section says why.
 
 US small business tax deadlines from today
 
@@ -109,4 +109,4 @@ No. It lists the due dates the sources publish. Your own dates can differ, for e
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/deadlines/  
-Worked out for: 2026-11-04
+Worked out for: 2026-11-05

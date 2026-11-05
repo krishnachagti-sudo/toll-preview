@@ -54,4 +54,4 @@ A weekend or TARGET holiday has no fixing, so a date like that uses the last fix
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/historical-exchange-rates-in-excel/  
-Data as of: 2026-11-03
+Data as of: 2026-11-05

@@ -1,23 +1,23 @@
 # How many business days until Tax Day?
 
-110 business days from today, Wednesday, November 4, 2026 (the date in Washington, DC), until Tax Day on Thursday, April 15, 2027. That is 162 calendar days, with 6 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
+109 business days from today, Thursday, November 5, 2026 (the date in Washington, DC), until Tax Day on Thursday, April 15, 2027. That is 161 calendar days, with 6 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
 
-- Business days: 110
-- Calendar days: 162
+- Business days: 109
+- Calendar days: 161
 - Holidays skipped: 6
 - Date: April 15, 2027
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2027-04-15)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2027-04-15)
 
 ## The count to Tax Day
 
 | From today | Count |
 | --- | ---: |
 | Counting to | Thursday, April 15, 2027 |
-| Calendar days | 162 |
-| Business days | 110 |
+| Calendar days | 161 |
+| Business days | 109 |
 | Holidays skipped | Nov 11: Veterans Day; Nov 26: Thanksgiving Day; Dec 25: Christmas Day; Jan 1: New Year's Day; Jan 18: Birthday of Martin Luther King Jr.; Feb 15: Washington's Birthday |
 
 April 15 is a business day, so it is the due date.
@@ -26,9 +26,9 @@ April 15 is a business day, so it is the due date.
 
 | Date | Day | Calendar days | Business days |
 | --- | --- | ---: | ---: |
-| [Tax Day 2027 (2026 returns)](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2027-04-15) | Apr 15, Thu | 162 | 110 |
-| [Tax Day 2028 (2027 returns)](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2028-04-18) | Apr 18, Tue | 531 | 362 |
-| [Tax Day 2029 (2028 returns)](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2029-04-17) | Apr 17, Tue | 895 | 611 |
+| [Tax Day 2027 (2026 returns)](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2027-04-15) | Apr 15, Thu | 161 | 109 |
+| [Tax Day 2028 (2027 returns)](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2028-04-18) | Apr 18, Tue | 530 | 361 |
+| [Tax Day 2029 (2028 returns)](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2029-04-17) | Apr 17, Tue | 894 | 610 |
 
 ## How this is counted
 
@@ -47,6 +47,7 @@ Weekends are Saturday and Sunday, and the holidays are those on [the US federal 
 ## Sources
 
 - [IRS Publication 509: Tax Calendars (due dates on a weekend or legal holiday)](https://www.irs.gov/publications/p509)
+- [IRS Notice 2011-17: Effect of Emancipation Day on filing and payment deadlines](https://www.irs.gov/pub/irs-drop/n-11-17.pdf)
 - [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
 - [OPM: Federal holidays, "in lieu of" days](https://www.opm.gov/policy-data-oversight/pay-leave/work-schedules/fact-sheets/Federal-Holidays-In-Lieu-Of-Determination)
 - [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103)
@@ -76,5 +77,5 @@ No. Day 1 is the next business day after today, the way WORKDAY and NETWORKDAYS 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-tax-day/  
-Worked out for: 2026-11-04  
+Worked out for: 2026-11-05  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-tax-day.csv

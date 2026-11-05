@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo usar Endwise con Claude (aplicaciones y Claude Code)</title>
+<meta name="description" content="Conecte Endwise a Claude iniciando sesión: agréguelo como conector personalizado en claude.ai o Claude Desktop, o en Claude Code, apruébelo con un límite mensual y desconéctelo cuando quiera.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/es/guias/usar-endwise-con-claude/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/es/guias/usar-endwise-con-claude.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Cómo usar Endwise con Claude (aplicaciones y Claude Code)">
+<meta property="og:description" content="Conecte Endwise a Claude iniciando sesión: agréguelo como conector personalizado en claude.ai o Claude Desktop, o en Claude Code, apruébelo con un límite mensual y desconéctelo cuando quiera.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/es/guias/usar-endwise-con-claude/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/es/guias/usar-endwise-con-claude/","url":"https://krishnachagti-sudo.github.io/toll-preview/es/guias/usar-endwise-con-claude/","name":"Cómo usar Endwise con Claude (aplicaciones y Claude Code)","description":"Conecte Endwise a Claude iniciando sesión: agréguelo como conector personalizado en claude.ai o Claude Desktop, o en Claude Code, apruébelo con un límite mensual y desconéctelo cuando quiera.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Cómo usar Endwise con Claude (aplicaciones y Claude Code)","item":"https://krishnachagti-sudo.github.io/toll-preview/es/guias/usar-endwise-con-claude/"}]},{"@type":"HowTo","name":"Cómo usar Endwise con Claude (aplicaciones y Claude Code)","description":"Conecte Endwise a Claude iniciando sesión: agréguelo como conector personalizado en claude.ai o Claude Desktop, o en Claude Code, apruébelo con un límite mensual y desconéctelo cuando quiera.","step":[{"@type":"HowToStep","position":1,"name":"Agregue un conector personalizado","text":"En claude.ai o Claude Desktop, vaya a Customize \u003e Connectors y elija Add custom connector. En los planes Team y Enterprise, un Owner lo agrega para la organización."},{"@type":"HowToStep","position":2,"name":"Escriba la dirección del servidor","text":"Escriba la dirección del servidor MCP de Endwise. Deje vacíos el ID de cliente y el secreto de OAuth."},{"@type":"HowToStep","position":3,"name":"Inicie sesión en Endwise y apruebe","text":"Claude abre una página de Endwise. Inicie sesión, compruebe que la aplicación que aparece es Claude, fije un límite mensual para ella y elija Approve."},{"@type":"HowToStep","position":4,"name":"Haga una pregunta que necesite una respuesta exacta","text":"Pida un conteo de fechas, un tipo de cambio o una cifra de millaje. Claude enumera las herramientas, elige una y la llama."},{"@type":"HowToStep","position":5,"name":"Vigile el gasto y desconecte si hace falta","text":"Pida a Claude que ejecute primero quote_price para una llamada de la que no esté seguro. Desconecte a Claude desde la página de su cuenta en cualquier momento."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Puede Claude conectarse a Endwise?","acceptedAnswer":{"@type":"Answer","text":"Sí. Agregue Endwise como conector personalizado por su dirección e inicie sesión en Endwise cuando Claude se lo pida. Usted aprueba a Claude en una página de Endwise y le da un límite mensual. No necesita copiar una clave de API en Claude."}},{"@type":"Question","name":"¿Quién puede agregar un conector personalizado en las aplicaciones de Claude?","acceptedAnswer":{"@type":"Answer","text":"Según la documentación de Anthropic, un servidor remoto se puede agregar como conector personalizado en los planes Free, Pro, Max, Ultra, Team y Enterprise. En Team y Enterprise lo agrega un Owner para la organización, y luego cada miembro se conecta con su propia cuenta. El plan Free permite un conector personalizado."}},{"@type":"Question","name":"¿Me cobrará Claude por cada llamada a una herramienta?","acceptedAnswer":{"@type":"Answer","text":"Claude no. Las herramientas cobran a su saldo prepagado por cada llamada, igual que la API. Cada aplicación conectada tiene un límite mensual, y una llamada que pase del límite se rechaza y no se cobra."}},{"@type":"Question","name":"¿Cómo dejo de usar Endwise en Claude?","acceptedAnswer":{"@type":"Answer","text":"Abra la página de su cuenta, busque Claude en Connected apps y elija Disconnect. Desde ese momento, las llamadas de Claude fallan. También puede quitar el conector en Claude, en Customize \u003e Connectors."}},{"@type":"Question","name":"¿Puedo seguir usando una clave de API con Claude Code?","acceptedAnswer":{"@type":"Answer","text":"Sí. Claude Code acepta una opción header en claude mcp add, así que una clave de API Bearer funciona allí como antes."}}]}]}</script>
+<link rel="alternate" hreflang="en" href="https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/">
+<link rel="alternate" hreflang="es" href="https://krishnachagti-sudo.github.io/toll-preview/es/guias/usar-endwise-con-claude/">
+<link rel="alternate" hreflang="x-default" href="https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Ruta de navegación"><ol><li><a href="/toll-preview/">Endwise</a></li><li aria-current="page">Cómo usar Endwise con Claude (aplicaciones y Claude Code)</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guía</p>
+<h1>Cómo usar Endwise con Claude (aplicaciones y Claude Code)</h1>
+<p class="cp-answer">Sí, en 3 pasos: en claude.ai o Claude Desktop, agregue Endwise como conector personalizado en <code>https://krishnachagti-sudo.github.io/toll-preview/mcp</code>, inicie sesión en Endwise y apruebe a Claude con un límite mensual. En Claude Code, ejecute <code>claude mcp add --transport http</code> con la misma dirección e inicie sesión con <code>/mcp</code>, o envíe una clave de API como encabezado.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="puede-claude">¿Puede Claude conectarse a Endwise?</h2>
+<p>Sí. Endwise es un servidor MCP remoto (MCP es una forma estándar de que una aplicación de IA llame a herramientas externas) en <code>https://krishnachagti-sudo.github.io/toll-preview/mcp</code>. Claude puede ver la lista de sus herramientas sin iniciar sesión. Para ejecutar una, Claude le pide que inicie sesión en Endwise y la apruebe, el inicio de sesión habitual con OAuth. Después Claude aparece en la <a href="/toll-preview/account">página de su cuenta</a> en Connected apps, con su propio límite mensual, como una clave de API.</p>
+<p>Esta página está al día a noviembre de 2026. Las funciones de Claude cambian, así que las fuentes del final tienen la última palabra.</p>
+</section>
+<section>
+<h2 id="apps-de-claude">¿Cómo lo agrego a claude.ai o a Claude Desktop?</h2>
+<p>En un plan Free, Pro, Max o Ultra, vaya a <strong>Customize &gt; Connectors</strong>, elija <strong>Add custom connector</strong> y escriba la dirección del servidor. Los nombres de los menús son los de la interfaz en inglés:</p>
+<pre><code class="language-text">https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
+<p>Deje vacíos el ID de cliente y el secreto de OAuth. Si el cuadro de diálogo pregunta cómo iniciar sesión, <strong>Sign in when needed</strong> deja que Claude vea primero la lista de herramientas y le pida iniciar sesión cuando llame a una. Para el cliente de OAuth, Anthropic recomienda <strong>Use Claude's published identity</strong>; Endwise también acepta <strong>Register automatically</strong>.</p>
+<p>En un plan Team o Enterprise, un Owner lo agrega para la organización en <strong>Organization settings &gt; Connectors</strong> eligiendo <strong>Add</strong> y luego <strong>Custom</strong>. En Enterprise, un miembro cuyo rol personalizado incluya administrar las bibliotecas de la organización también puede agregar uno. Después, los miembros se conectan desde <strong>Customize &gt; Connectors</strong> con su propia cuenta de Endwise.</p>
+</section>
+<section>
+<h2 id="inicio-de-sesion">¿Cómo es el inicio de sesión?</h2>
+<p>Claude abre una página de Endwise. Si no ha iniciado sesión, primero inicia sesión o crea una cuenta y vuelve de inmediato. La página dice qué aplicación lo pide (para Claude, claude.ai), qué podrá hacer y a dónde vuelve usted después de aprobar.</p>
+<ul><li>Puede ver la lista de herramientas y sus precios, ejecutar herramientas y pagar cada ejecución con su saldo, y preguntar cuánto costaría una ejecución.</li><li>No puede ver su contraseña, agregar dinero, cambiar su cuenta ni crear claves de API.</li><li>Usted fija su límite mensual en esa página. Las ejecuciones que pasen del límite se rechazan y no se cobran.</li></ul>
+<p>Elija <strong>Approve</strong> y Claude continúa. Si más adelante aprueba a Claude otra vez, se mantienen la misma conexión, su límite y su historial de gasto.</p>
+</section>
+<section>
+<h2 id="claude-code">¿Cómo lo agrego a Claude Code?</h2>
+<p>Ejecute un comando en su terminal:</p>
+<pre><code class="language-bash">claude mcp add --transport http endwise https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
+<p>Luego escriba <code>/mcp</code> dentro de Claude Code y elija iniciar sesión. Se abre en el navegador una página de Endwise como la de arriba. Claude Code se ejecuta en su computadora, así que la página añade una línea que le pide aprobar solo si usted inició la conexión.</p>
+<p>Claude Code también puede enviar una clave de API en lugar de iniciar sesión. Cree una clave en la <a href="/toll-preview/account">página de su cuenta</a> y agregue el servidor con un encabezado:</p>
+<pre><code class="language-bash">claude mcp add --transport http endwise https://krishnachagti-sudo.github.io/toll-preview/mcp \
+  --header &quot;Authorization: Bearer YOUR_API_KEY&quot;</code></pre>
+<p>Compruebe que funcionó:</p>
+<pre><code class="language-bash">claude mcp list
+claude mcp get endwise
+# inside Claude Code:
+/mcp</code></pre>
+</section>
+<section>
+<h2 id="alcances">¿Qué alcance (scope) debo usar en Claude Code?</h2>
+<p>Claude Code guarda un servidor en uno de tres alcances. Use --scope (o -s) para elegir. Local es el predeterminado.</p>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Alcance (scope)</th><th scope="col">Se carga en</th><th scope="col">Compartido con su equipo</th><th scope="col">Se guarda en</th></tr></thead><tbody>
+<tr><th scope="row">local</th><td>Solo este proyecto</td><td>No</td><td>~/.claude.json</td></tr>
+<tr><th scope="row">project</th><td>Solo este proyecto</td><td>Sí, mediante el control de versiones</td><td>.mcp.json en la raíz del proyecto</td></tr>
+<tr><th scope="row">user</th><td>Todos sus proyectos</td><td>No</td><td>~/.claude.json</td></tr>
+</tbody></table></div>
+<p>Con inicio de sesión no hay ninguna clave en el archivo, así que cualquier alcance es seguro para compartir. Con una clave de API, evite <code>--scope project</code> y una clave escrita tal cual, porque ese archivo está pensado para subirse al control de versiones. Claude Code expande las variables de entorno en un archivo de proyecto, así que puede escribir el encabezado así y mantener la clave en su shell:</p>
+<pre><code class="language-json">&#123;
+  &quot;mcpServers&quot;: &#123;
+    &quot;endwise&quot;: &#123;
+      &quot;type&quot;: &quot;http&quot;,
+      &quot;url&quot;: &quot;https://krishnachagti-sudo.github.io/toll-preview/mcp&quot;,
+      &quot;headers&quot;: &#123;
+        &quot;Authorization&quot;: &quot;Bearer $&#123;ENDWISE_API_KEY&#125;&quot;
+      &#125;
+    &#125;
+  &#125;
+&#125;</code></pre>
+<p class="cp-note">Primero defina <code>ENDWISE_API_KEY</code> en su entorno. La documentación de Claude Code dice que una variable sin definir y sin valor predeterminado se deja como el texto literal ${VAR}, y entonces la llamada fallaría con una clave no válida.</p>
+</section>
+<section>
+<h2 id="primera-pregunta">¿Qué debo preguntar primero?</h2>
+<p>Pregunte algo que tenga una sola respuesta correcta. Pruebe: &quot;Cuente los días hábiles entre el 1 de julio de 2026 y el 8 de julio de 2026 en EE. UU.&quot;</p>
+<p>Primero Claude le pregunta al servidor qué ofrece (una solicitud <code>tools/list</code>, que no necesita iniciar sesión). Luego elige la herramienta <code>business-days</code> y la llama con argumentos como estos:</p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;between&quot;,
+  &quot;region&quot;: &quot;US&quot;,
+  &quot;start&quot;: &quot;2026-07-01&quot;,
+  &quot;end&quot;: &quot;2026-07-08&quot;
+&#125;</code></pre>
+<p>La herramienta devuelve la misma respuesta cada vez para la misma entrada:</p>
+<pre><code class="language-json">&#123;
+  &quot;businessDays&quot;: 4,
+  &quot;holidaysSkipped&quot;: [
+    &#123;
+      &quot;date&quot;: &quot;2026-07-03&quot;,
+      &quot;name&quot;: &quot;Independence Day (observed)&quot;
+    &#125;
+  ]
+&#125;</code></pre>
+<p>Claude luego redacta la respuesta para usted. Nada de la cifra salió de un modelo de lenguaje. Esta llamada cuesta <strong>$0.0005</strong>. Claude le pide permiso antes de llamar a una herramienta, a menos que usted haya elegido permitirla siempre.</p>
+</section>
+<section>
+<h2 id="gasto">¿Cómo mantengo el gasto bajo control?</h2>
+<ul><li><strong>Fije un límite mensual al aprobar. </strong>Una llamada que lo pasaría se rechaza y no se cobra. Puede cambiarlo después en la página de su cuenta.</li><li><strong>Mantenga separadas las aplicaciones. </strong>Claude en las aplicaciones y Claude Code son conexiones distintas, cada una con su propio límite.</li><li><strong>Pida una cotización. </strong>La herramienta gratis <code>quote_price</code> dice cuánto costaría una llamada a su cuenta sin ejecutarla. Pruebe: &quot;Usa quote_price para decirme cuánto costaría eso antes de ejecutarlo.&quot;</li><li><strong>Mantenga activa la aprobación. </strong>Claude pregunta antes de llamar a una herramienta. Evite &quot;permitir siempre&quot; con un límite alto.</li></ul>
+</section>
+<section>
+<h2 id="revocar">¿Cómo desconecto a Claude?</h2>
+<p>Abra la <a href="/toll-preview/account">página de su cuenta</a>, busque Claude en Connected apps y elija Disconnect. Le pide que haga clic otra vez para confirmar. Desde ese momento, las llamadas de Claude fallan. Quite también el conector en Claude, en <strong>Customize &gt; Connectors</strong> (los Owners usan <strong>Organization settings &gt; Connectors</strong>). En Claude Code:</p>
+<pre><code class="language-bash">claude mcp remove endwise</code></pre>
+<p>Una clave de API se revoca de la misma forma, en API keys en la página de la cuenta.</p>
+</section>
+<section>
+<h2 id="problemas">¿Qué puede salir mal?</h2>
+<ul><li><strong>Claude le pide iniciar sesión otra vez. </strong>La conexión se desconectó, o no se usó durante 60 días. Inicie sesión otra vez; el límite que fijó se mantiene.</li><li><strong>La página de Endwise dice que la aplicación no puede conectarse. </strong>Quite el conector y agréguelo otra vez. Si la opción del cliente de OAuth es Use Claude's published identity, pruebe Register automatically.</li><li><strong>Límite alcanzado. </strong>La conexión o la cuenta llegó a su límite mensual. Súbalo en la página de su cuenta. No se cobró nada.</li><li><strong>Unauthorized en Claude Code con una clave. </strong>Falta la clave, es incorrecta o está revocada. Compruebe que el encabezado diga &quot;Bearer &quot; y luego la clave.</li></ul>
+</section>
+<section>
+<h2 id="fuentes">Fuentes</h2>
+<p>Documentación oficial de Anthropic, en inglés.</p>
+<ul class="cp-sources"><li><a href="https://claude.com/docs/connectors/custom">Claude docs: Add a connector that isn't in the directory</a></li><li><a href="https://claude.com/docs/connectors/building/authentication">Claude docs: Authentication for connectors</a></li><li><a href="https://code.claude.com/docs/en/mcp">Claude Code docs: Connect Claude Code to tools via MCP</a></li></ul>
+</section>
+<section><h2 id="steps">Pasos</h2><ol class="cp-steps"><li><strong>Agregue un conector personalizado.</strong> En claude.ai o Claude Desktop, vaya a Customize &gt; Connectors y elija Add custom connector. En los planes Team y Enterprise, un Owner lo agrega para la organización.</li><li><strong>Escriba la dirección del servidor.</strong> Escriba la dirección del servidor MCP de Endwise. Deje vacíos el ID de cliente y el secreto de OAuth.</li><li><strong>Inicie sesión en Endwise y apruebe.</strong> Claude abre una página de Endwise. Inicie sesión, compruebe que la aplicación que aparece es Claude, fije un límite mensual para ella y elija Approve.</li><li><strong>Haga una pregunta que necesite una respuesta exacta.</strong> Pida un conteo de fechas, un tipo de cambio o una cifra de millaje. Claude enumera las herramientas, elige una y la llama.</li><li><strong>Vigile el gasto y desconecte si hace falta.</strong> Pida a Claude que ejecute primero quote_price para una llamada de la que no esté seguro. Desconecte a Claude desde la página de su cuenta en cualquier momento.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Preguntas</h2><h3>¿Puede Claude conectarse a Endwise?</h3><p>Sí. Agregue Endwise como conector personalizado por su dirección e inicie sesión en Endwise cuando Claude se lo pida. Usted aprueba a Claude en una página de Endwise y le da un límite mensual. No necesita copiar una clave de API en Claude.</p><h3>¿Quién puede agregar un conector personalizado en las aplicaciones de Claude?</h3><p>Según la documentación de Anthropic, un servidor remoto se puede agregar como conector personalizado en los planes Free, Pro, Max, Ultra, Team y Enterprise. En Team y Enterprise lo agrega un Owner para la organización, y luego cada miembro se conecta con su propia cuenta. El plan Free permite un conector personalizado.</p><h3>¿Me cobrará Claude por cada llamada a una herramienta?</h3><p>Claude no. Las herramientas cobran a su saldo prepagado por cada llamada, igual que la API. Cada aplicación conectada tiene un límite mensual, y una llamada que pase del límite se rechaza y no se cobra.</p><h3>¿Cómo dejo de usar Endwise en Claude?</h3><p>Abra la página de su cuenta, busque Claude en Connected apps y elija Disconnect. Desde ese momento, las llamadas de Claude fallan. También puede quitar el conector en Claude, en Customize &gt; Connectors.</p><h3>¿Puedo seguir usando una clave de API con Claude Code?</h3><p>Sí. Claude Code acepta una opción header en claude mcp add, así que una clave de API Bearer funciona allí como antes.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Relacionado</h2><ul><li><a href="/toll-preview/es/guias/usar-endwise-con-chatgpt/">Usar Endwise con ChatGPT</a></li><li><a href="/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/">Por qué la IA se equivoca con fechas y números</a></li><li><a href="/toll-preview/es/guias/como-verificar-un-numero-de-la-ia/">Cómo verificar un número que le da una IA</a></li><li><a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Usar las herramientas en Cursor y VS Code (en inglés)</a></li><li><a href="/toll-preview/developers/mcp/">MCP para agentes de IA (en inglés)</a></li><li><a href="/toll-preview/account">Su cuenta y las aplicaciones conectadas</a></li><li><a href="/toll-preview/es/guias/">Guías en español</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/es/guias/usar-endwise-con-claude.md">Esta página en Markdown</a> <span aria-hidden="true">·</span> Datos al <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

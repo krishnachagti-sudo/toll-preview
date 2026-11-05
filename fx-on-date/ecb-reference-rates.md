@@ -1,56 +1,56 @@
 # ECB euro foreign exchange reference rates
 
-On Tuesday 3 Nov 2026 the ECB published euro reference rates for 29 currencies: one euro was 1.1179 US dollars, 0.83358 British pounds and 176.9500 Japanese yen.
+On Thursday 5 Nov 2026 the ECB published euro reference rates for 29 currencies: one euro was 1.1224 US dollars, 0.83393 British pounds and 177.8500 Japanese yen.
 
 - Currencies: 29
-- Latest fixing: 2026-11-03
-- Euro to US dollar: 1.1179
+- Latest fixing: 2026-11-05
+- Euro to US dollar: 1.1224
 
 ## Look up any pair on any date
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-03)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-05)
 
-## Every currency on 3 November 2026
+## Every currency on 5 November 2026
 
-ECB reference rates, fixing of Tuesday 3 Nov 2026, against the fixing of Monday 2 Nov 2026
+ECB reference rates, fixing of Thursday 5 Nov 2026, against the fixing of Wednesday 4 Nov 2026
 
 | Currency | Name | Units per euro | Euros per unit | Change |
 | --- | --- | ---: | ---: | ---: |
-| [USD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-03) | US dollar | 1.1179 | 0.894534 | −0.33% |
-| [JPY](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=JPY&date=2026-11-03) | Japanese yen | 176.9500 | 0.005651 | −0.08% |
-| [CZK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CZK&date=2026-11-03) | Czech koruna | 24.3430 | 0.04108 | −0.03% |
-| [DKK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=DKK&date=2026-11-03) | Danish krone | 7.4735 | 0.133806 | 0.00% |
-| [GBP](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=GBP&date=2026-11-03) | British pound | 0.83358 | 1.199645 | −0.27% |
-| [HUF](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=HUF&date=2026-11-03) | Hungarian forint | 364.4000 | 0.002744 | −0.03% |
-| [PLN](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=PLN&date=2026-11-03) | Polish zloty | 4.4190 | 0.226296 | +0.01% |
-| [RON](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=RON&date=2026-11-03) | Romanian leu | 5.3428 | 0.187168 | +0.04% |
-| [SEK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=SEK&date=2026-11-03) | Swedish krona | 10.9515 | 0.091312 | +0.04% |
-| [CHF](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CHF&date=2026-11-03) | Swiss franc | 0.9166 | 1.090988 | −0.29% |
-| [ISK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=ISK&date=2026-11-03) | Icelandic krona | 136.2000 | 0.007342 | 0.00% |
-| [NOK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=NOK&date=2026-11-03) | Norwegian krone | 10.3185 | 0.096913 | −0.57% |
-| [TRY](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=TRY&date=2026-11-03) | Turkish lira | 55.8921 | 0.017892 | −0.27% |
-| [AUD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=AUD&date=2026-11-03) | Australian dollar | 1.6007 | 0.624727 | +0.02% |
-| [BRL](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=BRL&date=2026-11-03) | Brazilian real | 6.1411 | 0.162837 | +0.69% |
-| [CAD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CAD&date=2026-11-03) | Canadian dollar | 1.5623 | 0.640082 | −0.32% |
-| [CNY](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CNY&date=2026-11-03) | Chinese yuan | 7.4590 | 0.134066 | +0.03% |
-| [HKD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=HKD&date=2026-11-03) | Hong Kong dollar | 8.7710 | 0.114012 | −0.33% |
-| [IDR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=IDR&date=2026-11-03) | Indonesian rupiah | 20,275.0200 | 0.000049 | −0.33% |
-| [ILS](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=ILS&date=2026-11-03) | Israeli shekel | 3.5292 | 0.28335 | +0.23% |
-| [INR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-11-03) | Indian rupee | 105.9155 | 0.009441 | −0.50% |
-| [KRW](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=KRW&date=2026-11-03) | South Korean won | 1,503.1200 | 0.000665 | −0.20% |
-| [MXN](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=MXN&date=2026-11-03) | Mexican peso | 20.7896 | 0.048101 | −0.98% |
-| [MYR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=MYR&date=2026-11-03) | Malaysian ringgit | 4.5577 | 0.219409 | −0.17% |
-| [NZD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=NZD&date=2026-11-03) | New Zealand dollar | 1.9876 | 0.503119 | −0.29% |
-| [PHP](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=PHP&date=2026-11-03) | Philippine peso | 70.9430 | 0.014096 | −0.46% |
-| [SGD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=SGD&date=2026-11-03) | Singapore dollar | 1.4322 | 0.698227 | −0.15% |
-| [THB](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=THB&date=2026-11-03) | Thai baht | 37.7350 | 0.026501 | −0.34% |
-| [ZAR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=ZAR&date=2026-11-03) | South African rand | 18.5995 | 0.053765 | −0.33% |
+| [USD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=USD&date=2026-11-05) | US dollar | 1.1224 | 0.890948 | −0.38% |
+| [JPY](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=JPY&date=2026-11-05) | Japanese yen | 177.8500 | 0.005623 | −0.25% |
+| [CZK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CZK&date=2026-11-05) | Czech koruna | 24.2890 | 0.041171 | −0.08% |
+| [DKK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=DKK&date=2026-11-05) | Danish krone | 7.4747 | 0.133785 | +0.01% |
+| [GBP](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=GBP&date=2026-11-05) | British pound | 0.83393 | 1.199141 | −0.08% |
+| [HUF](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=HUF&date=2026-11-05) | Hungarian forint | 363.1800 | 0.002753 | +0.04% |
+| [PLN](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=PLN&date=2026-11-05) | Polish zloty | 4.3890 | 0.227842 | −0.23% |
+| [RON](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=RON&date=2026-11-05) | Romanian leu | 5.3385 | 0.187319 | −0.10% |
+| [SEK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=SEK&date=2026-11-05) | Swedish krona | 10.9845 | 0.091037 | +0.12% |
+| [CHF](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CHF&date=2026-11-05) | Swiss franc | 0.9180 | 1.089325 | −0.09% |
+| [ISK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=ISK&date=2026-11-05) | Icelandic krona | 136.8000 | 0.00731 | 0.00% |
+| [NOK](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=NOK&date=2026-11-05) | Norwegian krone | 10.4365 | 0.095818 | +0.38% |
+| [TRY](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=TRY&date=2026-11-05) | Turkish lira | 56.1729 | 0.017802 | −0.33% |
+| [AUD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=AUD&date=2026-11-05) | Australian dollar | 1.6033 | 0.623714 | −0.17% |
+| [BRL](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=BRL&date=2026-11-05) | Brazilian real | 6.1355 | 0.162986 | −0.36% |
+| [CAD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CAD&date=2026-11-05) | Canadian dollar | 1.5675 | 0.637959 | −0.17% |
+| [CNY](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=CNY&date=2026-11-05) | Chinese yuan | 7.4846 | 0.133608 | −0.44% |
+| [HKD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=HKD&date=2026-11-05) | Hong Kong dollar | 8.8055 | 0.113565 | −0.39% |
+| [IDR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=IDR&date=2026-11-05) | Indonesian rupiah | 20,281.1500 | 0.000049 | −0.71% |
+| [ILS](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=ILS&date=2026-11-05) | Israeli shekel | 3.5598 | 0.280915 | −0.12% |
+| [INR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-11-05) | Indian rupee | 106.0395 | 0.00943 | −0.56% |
+| [KRW](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=KRW&date=2026-11-05) | South Korean won | 1,509.2800 | 0.000663 | +0.07% |
+| [MXN](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=MXN&date=2026-11-05) | Mexican peso | 20.8655 | 0.047926 | −0.68% |
+| [MYR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=MYR&date=2026-11-05) | Malaysian ringgit | 4.5412 | 0.220206 | −0.82% |
+| [NZD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=NZD&date=2026-11-05) | New Zealand dollar | 1.9966 | 0.500851 | −0.11% |
+| [PHP](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=PHP&date=2026-11-05) | Philippine peso | 70.7060 | 0.014143 | −1.22% |
+| [SGD](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=SGD&date=2026-11-05) | Singapore dollar | 1.4336 | 0.697545 | −0.43% |
+| [THB](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=THB&date=2026-11-05) | Thai baht | 37.5330 | 0.026643 | −0.97% |
+| [ZAR](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=ZAR&date=2026-11-05) | South African rand | 18.4268 | 0.054269 | −0.61% |
 
 > Each code opens the tool with the euro and that currency on this fixing. Change is against the fixing before.
 
 ## Weekdays with no fixing
 
-The ECB publishes no rates at weekends or on TARGET closing days. These are the weekdays in 2025 and in 2026 up to 3 November 2026 that have no fixing in the ECB's file; a date on one of them uses the fixing before it.
+The ECB publishes no rates at weekends or on TARGET closing days. These are the weekdays in 2025 and in 2026 up to 5 November 2026 that have no fixing in the ECB's file; a date on one of them uses the fixing before it.
 
 | Date | Uses the fixing of |
 | --- | --- |
@@ -126,5 +126,5 @@ Wednesday 1 Jan 2025, Friday 18 Apr 2025, Monday 21 Apr 2025, Thursday 1 May 202
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates/  
-Data as of: 2026-11-03  
+Data as of: 2026-11-05  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates.csv

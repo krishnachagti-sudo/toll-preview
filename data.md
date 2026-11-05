@@ -187,9 +187,9 @@ Exchange rate on a date: 26 downloads
 
 | Table | CSV | Data date |
 | --- | --- | --- |
-| [ECB euro reference rates: the latest fixing for every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates.csv) | 2026-11-03 |
-| [EUR to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr.csv) | 2026-11-03 |
-| [EUR to USD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd.csv) | 2026-11-03 |
+| [ECB euro reference rates: the latest fixing for every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates.csv) | 2026-11-05 |
+| [EUR to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr.csv) | 2026-11-05 |
+| [EUR to USD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd.csv) | 2026-11-05 |
 | [EUR to USD exchange rate on 30 June 2024: ECB reference rate](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2024-06-30/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2024-06-30.csv) | 2024-07-12 |
 | [EUR to USD exchange rate on 30 June 2025: ECB reference rate](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2025-06-30/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2025-06-30.csv) | 2025-07-14 |
 | [EUR to USD exchange rate on 30 June 2026: ECB reference rate](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2026-06-30/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2026-06-30.csv) | 2026-07-14 |
@@ -204,15 +204,15 @@ Exchange rate on a date: 26 downloads
 | [FBAR exchange rates 2023: Treasury rates for December 31](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2023/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2023.csv) | 2026-10-31 |
 | [FBAR exchange rates 2024: Treasury rates for December 31](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2024/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2024.csv) | 2026-10-31 |
 | [FBAR exchange rates 2025: Treasury rates for December 31](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2025/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2025.csv) | 2026-10-31 |
-| [GBP to EUR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur.csv) | 2026-11-03 |
-| [GBP to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr.csv) | 2026-11-03 |
+| [GBP to EUR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur.csv) | 2026-11-05 |
+| [GBP to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr.csv) | 2026-11-05 |
 | [IRS yearly average exchange rates 2021, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2021/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2021.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2022, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2022/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2022.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2023, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2023/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2023.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2024, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2024/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2024.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2025, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2025/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2025.csv) | 2026-09-17 |
-| [USD to CAD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad.csv) | 2026-11-03 |
-| [USD to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr.csv) | 2026-11-03 |
+| [USD to CAD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad.csv) | 2026-11-05 |
+| [USD to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr.csv) | 2026-11-05 |
 
 IFTA quarterly return calculator: 5 downloads
 
@@ -289,7 +289,11 @@ Trucker per diem worksheet: 5 downloads
 | [Per diem for truck drivers 2026: $80 a day, 80% deductible](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/2026.csv) | 2026-10-31 |
 | [Trucker per diem rate history since 2018 ($66, $69, $80)](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/rate-history/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/rate-history.csv) | 2026-10-31 |
 
-> Check the licence and terms of the source named on each table page before you reuse the figures.
+## Can you reuse these files?
+
+Yes. You may copy, share and use these files, including in commercial work, as long as you link to the page each file came from. [How to cite Endwise](https://krishnachagti-sudo.github.io/toll-preview/cite/) shows the wording.
+
+The figures themselves come from the official sources named on each table page, which may set their own terms for reuse.
 
 ## Questions
 

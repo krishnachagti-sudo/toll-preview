@@ -1,20 +1,22 @@
 # USD to INR exchange rate by date
 
-The latest ECB reference rate for USD to INR is 94.745058 Indian rupees per US dollar, from the fixing of Tuesday 3 Nov 2026; one Indian rupee is 0.010555 US dollars.
+The latest ECB reference rate for USD to INR is 94.475677 Indian rupees per US dollar, from the fixing of Thursday 5 Nov 2026; one Indian rupee is 0.010585 US dollars.
 
-- USD to INR: 94.745058
-- Fixing: 2026-11-03
-- INR to USD: 0.010555
+- USD to INR: 94.475677
+- Fixing: 2026-11-05
+- INR to USD: 0.010585
 - 2025 average: 87.166098
 
 ## USD to INR on any date
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-11-03)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-11-05)
 
 ## The last 30 fixings
 
 | Fixing | USD to INR | INR to USD | Change |
 | --- | ---: | ---: | ---: |
+| Thursday 5 Nov 2026 | 94.475677 | 0.010585 | −0.17% |
+| Wednesday 4 Nov 2026 | 94.640809 | 0.010566 | −0.11% |
 | Tuesday 3 Nov 2026 | 94.745058 | 0.010555 | −0.17% |
 | Monday 2 Nov 2026 | 94.909504 | 0.010536 | −0.05% |
 | Friday 30 Oct 2026 | 94.955245 | 0.010531 | −0.33% |
@@ -43,8 +45,6 @@ The latest ECB reference rate for USD to INR is 94.745058 Indian rupees per US d
 | Tuesday 29 Sep 2026 | 95.985029 | 0.010418 | 0.00% |
 | Monday 28 Sep 2026 | 95.983037 | 0.010419 | +0.17% |
 | Friday 25 Sep 2026 | 95.817329 | 0.010437 | −0.15% |
-| Thursday 24 Sep 2026 | 95.959796 | 0.010421 | +0.23% |
-| Wednesday 23 Sep 2026 | 95.740952 | 0.010445 | +0.15% |
 
 ## Month-end rates and monthly averages
 
@@ -52,7 +52,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Month | Month-end fixing | Month-end rate | Average | High | Low | Fixings |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| [November 2026 (to 3 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-11-03) | Not yet | – | 94.827281 | 94.909504 | 94.745058 | 2 |
+| [November 2026 (to 5 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-11-05) | Not yet | – | 94.692762 | 94.909504 | 94.475677 | 4 |
 | [October 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-10-31) | 30 Oct | 94.955245 | 95.532066 | 96.78482 | 94.469023 | 22 |
 | [September 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-09-30) | 30 Sep | 95.834875 | 95.471159 | 95.985029 | 94.489884 | 22 |
 | [August 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=INR&date=2026-08-31) | 31 Aug | 95.171611 | 95.446733 | 95.757432 | 95.122468 | 21 |
@@ -96,7 +96,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Year | Average | High | Low | First fixing | Last fixing | Fixings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026 (to 3 Nov) | 94.126807 | 96.8250 (20 May) | 89.852362 (7 Jan) | 90.196229 | 94.745058 | 215 |
+| 2026 (to 5 Nov) | 94.130783 | 96.8250 (20 May) | 89.852362 (7 Jan) | 90.196229 | 94.475677 | 217 |
 | 2025 | 87.166098 | 90.921365 (16 Dec) | 84.294719 (5 May) | 85.754287 | 89.869362 | 255 |
 | 2024 | 83.667889 | 85.603523 (31 Dec) | 82.717302 (7 Mar) | 83.319642 | 85.603523 | 256 |
 | 2023 | 82.591876 | 83.406792 (8 Dec) | 81.116756 (20 Jan) | 82.772629 | 83.171493 | 255 |
@@ -158,5 +158,5 @@ The last ECB fixing before that day. For example, Saturday 31 Oct 2026 uses the 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr/  
-Data as of: 2026-11-03  
+Data as of: 2026-11-05  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr.csv

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Por qué la IA se equivoca con fechas y números: Endwise</title>
+<meta name="description" content="Por qué un chatbot puede equivocarse con total seguridad en días hábiles, feriados, tipos de cambio y reglas de impuestos, con casos resueltos y cómo corregirlo.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Por qué la IA se equivoca con fechas y números">
+<meta property="og:description" content="Por qué un chatbot puede equivocarse con total seguridad en días hábiles, feriados, tipos de cambio y reglas de impuestos, con casos resueltos y cómo corregirlo.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/","url":"https://krishnachagti-sudo.github.io/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/","name":"Por qué la IA se equivoca con fechas y números","description":"Por qué un chatbot puede equivocarse con total seguridad en días hábiles, feriados, tipos de cambio y reglas de impuestos, con casos resueltos y cómo corregirlo.","dateModified":"2026-11-03","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Por qué la IA se equivoca con fechas y números","item":"https://krishnachagti-sudo.github.io/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Por qué ChatGPT se equivoca con las fechas?","acceptedAnswer":{"@type":"Answer","text":"Predice texto probable en lugar de aplicar una regla de fechas. Contar días hábiles exige revisar uno por uno los fines de semana y los feriados, y un predictor de texto puede saltarse ese paso y aun así escribir una respuesta segura. Verifique cualquier fecha que le dé, o dele una herramienta que calcule fechas."}},{"@type":"Question","name":"¿Puede un asistente de IA consultar el tipo de cambio de hoy?","acceptedAnswer":{"@type":"Answer","text":"Solo si tiene una herramienta o una búsqueda que obtenga un tipo publicado. Sin ella, responde con lo que aprendió en el entrenamiento, que termina en una fecha de corte. El tipo de cambio de un día es un dato de una tabla publicada, no algo que se recuerde."}},{"@type":"Question","name":"¿Qué es la fecha de corte del conocimiento?","acceptedAnswer":{"@type":"Answer","text":"Es la fecha después de la cual un modelo tiene pocos datos de entrenamiento, o ninguno. Anthropic define la fecha de corte de conocimiento confiable (reliable knowledge cutoff) como la fecha hasta la cual el conocimiento del modelo es más amplio y confiable. Los umbrales de impuestos y las tarifas de millaje que cambiaron después de esa fecha pueden estar mal."}},{"@type":"Question","name":"¿Cómo evito que una IA adivine los números?","acceptedAnswer":{"@type":"Answer","text":"Dele una herramienta que devuelva la respuesta desde una fuente con nombre, y pídale que muestre lo que devolvió la herramienta. Así informa la cifra en lugar de producirla."}}]}]}</script>
+<link rel="alternate" hreflang="en" href="https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/">
+<link rel="alternate" hreflang="es" href="https://krishnachagti-sudo.github.io/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/">
+<link rel="alternate" hreflang="x-default" href="https://krishnachagti-sudo.github.io/toll-preview/guides/why-ai-gets-numbers-wrong/">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Ruta de navegación"><ol><li><a href="/toll-preview/">Endwise</a></li><li aria-current="page">Por qué la IA se equivoca con fechas y números</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guía</p>
+<h1>Por qué la IA se equivoca con fechas y números</h1>
+<p class="cp-answer">Un asistente de IA predice texto probable. No consulta una regla ni una cifra publicada, su conocimiento termina en una fecha de corte y puede no mostrar su procedimiento. Por eso puede dar, en una frase segura, un conteo de días hábiles, un feriado observado o un tipo de cambio que se equivoca por 1 día o 1 decimal. Verifique el número, o dele al asistente una herramienta que lo devuelva con exactitud.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="por-que">¿Por qué un asistente de IA se equivoca con fechas y números?</h2>
+<p>Un modelo de lenguaje escribe las palabras que siguen con más probabilidad. Eso funciona bien para la prosa. Funciona mal cuando la pregunta tiene una sola respuesta correcta que define una regla o una tabla publicada, como &quot;cuántos días hábiles hay entre estas fechas&quot; o &quot;cuál era el tipo de cambio del euro ese sábado&quot;.</p>
+<p>Fallan tres cosas, y se suman.</p>
+<ul><li><strong>Predice texto, no aplica la regla. </strong>Contar días hábiles exige comparar cada día con los fines de semana y con todos los feriados, incluidos los que se pasan a un viernes o a un lunes. Un modelo puede escribir una respuesta ordenada sin hacer esa revisión.</li><li><strong>Su conocimiento termina en una fecha de corte. </strong>La documentación de modelos de Anthropic distingue la fecha de corte de conocimiento confiable (reliable knowledge cutoff), hasta la cual el conocimiento del modelo es más amplio y confiable, del rango más amplio de datos de entrenamiento. Las páginas de modelos de OpenAI también indican una fecha de corte del conocimiento para cada modelo. Un tipo de cambio, un umbral o una fecha límite que cambió después de esa fecha puede no estar en el modelo, y el modelo no siempre se lo dirá.</li><li><strong>Puede no mostrar su procedimiento. </strong>Un solo número, sin la lista de días omitidos, sin la fecha del tipo de cambio y sin una fuente con nombre, no le da nada que verificar.</li></ul>
+<p>Los fabricantes de modelos lo dicen de sus propios productos. La guía de Anthropic para reducir las alucinaciones dice que estas técnicas no las eliminan por completo, y añade que siempre se debe validar la información crítica. Las dos empresas también documentan formas de conectar un modelo a herramientas y búsquedas externas, que es la solución con la que termina esta página. Las fuentes están abajo.</p>
+</section>
+<section>
+<h2 id="casos">¿Qué fechas y números son más fáciles de equivocar?</h2>
+<p>Los que dependen de una regla pequeña. Estos son casos resueltos por las propias herramientas. Cada respuesta de abajo es la salida de la herramienta para la pregunta que se muestra, así que puede repetirla y obtendrá el mismo resultado.</p>
+</section>
+<section>
+<h2 id="caso-7">Ejemplo: Días hábiles en EE. UU. del 1 al 8 de julio de 2026</h2>
+<p><strong>Respuesta exacta: </strong>4 días hábiles. Días omitidos: Día de la Independencia (observado) (3 de julio de 2026).</p>
+<p><strong>Por qué es fácil equivocarse: </strong>El 4 de julio de 2026 cae en sábado, así que el feriado federal se observa el viernes 3 de julio. Si solo omite el día 4, que de todos modos es fin de semana, cuenta 5.</p>
+<p>Fuente: 5 U.S.C. 6103 y las reglas de días observados de la OPM. <a href="/toll-preview/business-days/">Pruébelo usted mismo en Business days (en inglés)</a>.</p>
+</section>
+<section>
+<h2 id="caso-11">Ejemplo: Un día laborable después del 24 de diciembre de 2026, en Inglaterra y Gales</h2>
+<p><strong>Respuesta exacta: </strong>martes, 29 de diciembre de 2026. Días omitidos: Navidad (25 de diciembre de 2026); Boxing Day (26 de diciembre) (día sustituto) (28 de diciembre de 2026).</p>
+<p><strong>Por qué es fácil equivocarse: </strong>La Navidad cae en viernes y el Boxing Day cae en sábado, así que su feriado bancario pasa al lunes 28 de diciembre. Un día laborable después es el martes, no el lunes.</p>
+<p>Fuente: GOV.UK, feriados bancarios (bank holidays) de Inglaterra y Gales. <a href="/toll-preview/business-days/">Pruébelo usted mismo en Business days (en inglés)</a>.</p>
+</section>
+<section>
+<h2 id="caso-15">Ejemplo: Dólar estadounidense a euro el sábado 24 de octubre de 2026</h2>
+<p><strong>Respuesta exacta: </strong>1 USD = 0.893416 EUR, según el tipo fijado el 23 de octubre de 2026.</p>
+<p><strong>Por qué es fácil equivocarse: </strong>El Banco Central Europeo (BCE) no publica tipos de referencia los fines de semana. La respuesta usa el último tipo fijado antes de la fecha y lo nombra, en lugar de dar un tipo para un día que no tiene.</p>
+<p>Fuente: Tipos de cambio de referencia del Banco Central Europeo. <a href="/toll-preview/fx-on-date/">Pruébelo usted mismo en Exchange rate on a date (en inglés)</a>.</p>
+</section>
+<section>
+<h2 id="caso-19">Ejemplo: Libra a yen el día de Navidad de 2024</h2>
+<p><strong>Respuesta exacta: </strong>1 GBP = 197.149931 JPY, según el tipo fijado el 24 de diciembre de 2024, a través del euro.</p>
+<p><strong>Por qué es fácil equivocarse: </strong>El BCE no publicó tipos el 25 de diciembre de 2024 y no tiene un tipo directo de libra a yen. La herramienta toma los dos tipos contra el euro del último día fijado y calcula el tipo cruzado.</p>
+<p>Fuente: Tipos de cambio de referencia del Banco Central Europeo. <a href="/toll-preview/fx-on-date/">Pruébelo usted mismo en Exchange rate on a date (en inglés)</a>.</p>
+</section>
+<section>
+<h2 id="caso-23">Ejemplo: Un pedido hecho a las 4:30 pm, hora del centro, el día antes de Acción de Gracias de 2026, enviado por USPS Priority Mail</h2>
+<p><strong>Respuesta exacta: </strong>Se envía el lunes, 30 de noviembre de 2026 y llega entre el miércoles, 2 de diciembre de 2026 y el jueves, 3 de diciembre de 2026.</p>
+<p><strong>Por qué es fácil equivocarse: </strong>El pedido llega después de la hora límite del mediodía, y el día siguiente es Acción de Gracias, un feriado federal en que la tienda no envía. Por eso se recibe el viernes y, con un fin de semana después, se entrega al transportista el lunes.</p>
+<p>Fuente: Estándares de servicio y feriados postales del USPS. <a href="/toll-preview/delivery-date-calculator/">Pruébelo usted mismo en Delivery date and holiday order-by calculator (en inglés)</a>.</p>
+</section>
+<section>
+<h2 id="impuestos">¿Y las tarifas y las fechas límite de impuestos?</h2>
+<p>El problema es peor donde las cifras cambian cada año. Un umbral o una tarifa de millaje puede ser distinto de un año al siguiente, y algunos cambian a mitad de año. Un modelo cuyo conocimiento termina antes del cambio citará la cifra vieja en una frase segura. Las fechas límite también se trasladan: una fecha límite que cae en fin de semana pasa al siguiente día hábil, y eso es una regla que se aplica, no una frase que se recuerda.</p>
+<ul><li><a href="/toll-preview/1099-threshold/">1099 threshold tracker (en inglés)</a>: el límite para declarar el Formulario 1099-NEC es $2,000 para los pagos de 2026 y $600 para los pagos de 2025, según las instrucciones del IRS. Un modelo cuyo conocimiento sea anterior al cambio daría $600 para un pago de 2026.</li><li><a href="/toll-preview/es/mileage-reimbursement/">Calculadora de reembolso de millaje</a>: la tarifa de negocio del IRS para un viaje el 30 de junio de 2026 es 72.5 centavos por milla, y 76 centavos desde el 1 de julio. Una sola tarifa para todo el año está mal para la mitad del año.</li><li><a href="/toll-preview/es/ifta-calculator/">Calculadora de la declaración trimestral del IFTA</a>: la declaración del IFTA del tercer trimestre de 2026 vence el 2 de noviembre de 2026, no el 31 de octubre de 2026, porque la fecha que fijan las reglas cae en fin de semana. La fecha de las reglas no siempre es la fecha límite para presentar.</li></ul>
+</section>
+<section>
+<h2 id="corregir">¿Cómo se corrige?</h2>
+<p>Dele al asistente una herramienta para la parte exacta, y deje al modelo el resto. El modelo decide qué herramienta llamar y explica el resultado. La herramienta aplica la regla y devuelve la cifra, con su fuente.</p>
+<p>Las herramientas de Endwise funcionan así. Se usan con un conector estándar llamado MCP (Model Context Protocol, una forma común de que un asistente de IA llame a herramientas externas) y con una API REST sencilla. No hay IA en las respuestas: la misma entrada da la misma respuesta. Guías de configuración: <a href="/toll-preview/es/guias/usar-endwise-con-claude/">Claude</a> y <a href="/toll-preview/es/guias/usar-endwise-con-chatgpt/">ChatGPT</a>. Para configurarlo en Cursor y VS Code, vea la <a href="/toll-preview/guides/use-in-cursor-and-vs-code/">guía en inglés</a>. Para su propio código, vea cómo <a href="/toll-preview/guides/build-an-agent/">crear un agente (en inglés)</a>.</p>
+<p>Cada herramienta se puede usar 5 veces al día en su página sin cuenta, para que compare con la respuesta de su asistente. <a href="/toll-preview/es/guias/como-verificar-un-numero-de-la-ia/">Cómo verificar un número que le da una IA</a> explica los pasos.</p>
+<p class="cp-note">Si sus números son fechas, empiece con <a href="/toll-preview/business-days/">Business days (en inglés)</a>.</p>
+</section>
+<section>
+<h2 id="fuentes">Fuentes</h2>
+<p>Documentación oficial, en inglés.</p>
+<ul class="cp-sources"><li><a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations">Anthropic: Reduce hallucinations</a></li><li><a href="https://platform.claude.com/docs/en/models/overview">Anthropic: Models overview (reliable knowledge cutoff and training data cutoff)</a></li><li><a href="https://developers.openai.com/api/docs/models">OpenAI: Models (knowledge cutoff listed per model, as of November 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Preguntas</h2><h3>¿Por qué ChatGPT se equivoca con las fechas?</h3><p>Predice texto probable en lugar de aplicar una regla de fechas. Contar días hábiles exige revisar uno por uno los fines de semana y los feriados, y un predictor de texto puede saltarse ese paso y aun así escribir una respuesta segura. Verifique cualquier fecha que le dé, o dele una herramienta que calcule fechas.</p><h3>¿Puede un asistente de IA consultar el tipo de cambio de hoy?</h3><p>Solo si tiene una herramienta o una búsqueda que obtenga un tipo publicado. Sin ella, responde con lo que aprendió en el entrenamiento, que termina en una fecha de corte. El tipo de cambio de un día es un dato de una tabla publicada, no algo que se recuerde.</p><h3>¿Qué es la fecha de corte del conocimiento?</h3><p>Es la fecha después de la cual un modelo tiene pocos datos de entrenamiento, o ninguno. Anthropic define la fecha de corte de conocimiento confiable (reliable knowledge cutoff) como la fecha hasta la cual el conocimiento del modelo es más amplio y confiable. Los umbrales de impuestos y las tarifas de millaje que cambiaron después de esa fecha pueden estar mal.</p><h3>¿Cómo evito que una IA adivine los números?</h3><p>Dele una herramienta que devuelva la respuesta desde una fuente con nombre, y pídale que muestre lo que devolvió la herramienta. Así informa la cifra en lugar de producirla.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Relacionado</h2><ul><li><a href="/toll-preview/es/guias/como-verificar-un-numero-de-la-ia/">Cómo verificar un número que le da una IA</a></li><li><a href="/toll-preview/es/guias/usar-endwise-con-claude/">Usar herramientas exactas desde Claude</a></li><li><a href="/toll-preview/es/guias/usar-endwise-con-chatgpt/">Usar herramientas exactas desde ChatGPT</a></li><li><a href="/toll-preview/why-exact/">Por qué respuestas exactas (en inglés)</a></li><li><a href="/toll-preview/es/guias/">Guías en español</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros.md">Esta página en Markdown</a> <span aria-hidden="true">·</span> Datos al <time datetime="2026-11-03">2026-11-03</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -1,23 +1,23 @@
 # How many business days until New Year's Day?
 
-38 business days from today, Wednesday, November 4, 2026 (the date in Washington, DC), until New Year's Day on Friday, January 1, 2027. That is 58 calendar days, with 4 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
+37 business days from today, Thursday, November 5, 2026 (the date in Washington, DC), until New Year's Day on Friday, January 1, 2027. That is 57 calendar days, with 4 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
 
-- Business days: 38
-- Calendar days: 58
+- Business days: 37
+- Calendar days: 57
 - Holidays skipped: 4
 - Date: January 1, 2027
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2027-01-01)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2027-01-01)
 
 ## The count to New Year's Day
 
 | From today | Count |
 | --- | ---: |
 | Counting to | Friday, January 1, 2027 |
-| Calendar days | 58 |
-| Business days | 38 |
+| Calendar days | 57 |
+| Business days | 37 |
 | Holidays skipped | Nov 11: Veterans Day; Nov 26: Thanksgiving Day; Dec 25: Christmas Day; Jan 1: New Year's Day |
 
 January 1 is a Friday.
@@ -26,9 +26,9 @@ January 1 is a Friday.
 
 | Date | Day | Calendar days | Business days |
 | --- | --- | ---: | ---: |
-| [New Year's Day 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2027-01-01) | Jan 1, Fri | 58 | 38 |
-| [New Year's Day 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2028-01-01) | Jan 1, Sat | 423 | 287 |
-| [New Year's Day 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-04&end=2029-01-01) | Jan 1, Mon | 789 | 537 |
+| [New Year's Day 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2027-01-01) | Jan 1, Fri | 57 | 37 |
+| [New Year's Day 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2028-01-01) | Jan 1, Sat | 422 | 286 |
+| [New Year's Day 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2029-01-01) | Jan 1, Mon | 788 | 536 |
 
 ## How this is counted
 
@@ -75,5 +75,5 @@ No. Day 1 is the next business day after today, the way WORKDAY and NETWORKDAYS 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-new-years-day/  
-Worked out for: 2026-11-04  
+Worked out for: 2026-11-05  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-new-years-day.csv
