@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compresser un JPG sans perdre en qualité, avec une limite en Ko</title>
+<meta name="description" content="Peut-on compresser un JPG à une limite en Ko sans perte de qualité ? Ce que l’outil change d’abord, avec des mesures pour six limites sur une photo.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/fr/compresser-jpg-sans-perdre-en-qualite/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/fr/compresser-jpg-sans-perdre-en-qualite.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Compresser un JPG sans perdre en qualité, avec une limite en Ko">
+<meta property="og:description" content="Peut-on compresser un JPG à une limite en Ko sans perte de qualité ? Ce que l’outil change d’abord, avec des mesures pour six limites sur une photo.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/fr/compresser-jpg-sans-perdre-en-qualite/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/fr/compresser-jpg-sans-perdre-en-qualite/","url":"https://krishnachagti-sudo.github.io/toll-preview/fr/compresser-jpg-sans-perdre-en-qualite/","name":"Compresser un JPG sans perdre en qualité, avec une limite en Ko","description":"Peut-on compresser un JPG à une limite en Ko sans perte de qualité ? Ce que l’outil change d’abord, avec des mesures pour six limites sur une photo.","dateModified":"2026-10-31","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Compresser un JPG sans perdre en qualité, avec une limite en Ko","item":"https://krishnachagti-sudo.github.io/toll-preview/fr/compresser-jpg-sans-perdre-en-qualite/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Peut-on mettre un JPG à 100 Ko sans que cela se voie ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de la photo. À 100 Ko, notre photo de 12 mégapixels a nettement perdu en pixels ; à 500 Ko, non. Plus la limite est haute, moins cela se voit."}},{"@type":"Question","name":"Jusqu’où descend la qualité JPEG ?","acceptedAnswer":{"@type":"Answer","text":"Jamais sous 35 %. L’outil préfère réduire l’image plutôt qu’enregistrer en qualité plus basse."}},{"@type":"Question","name":"Une photo déjà sous la limite est-elle modifiée ?","acceptedAnswer":{"@type":"Answer","text":"Un JPEG déjà dessous est rendu tel quel. Un PNG ou un WebP est toujours enregistré en JPEG."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Fil d'Ariane"><ol><li><a href="/toll-preview/">Endwise</a></li><li aria-current="page">Compresser un JPG sans perdre en qualité, avec une limite en Ko</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Compresser un JPG sans perdre en qualité, avec une limite en Ko</h1>
+<p class="cp-answer">Un JPG ne peut pas être ramené sans aucune perte à un poids imposé : quelque chose se perd toujours. L’outil limite cette perte : à 1 000 Ko, notre photo de 12 mégapixels a gardé tous ses pixels (qualité 81 %) ; à 100 Ko, il en est resté 2 476 × 1 857 px en qualité 40 %.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="lossless">Est-ce possible sans aucune perte de qualité ?</h2>
+<p>Seulement si la photo est déjà sous la limite : l’outil rend alors le JPEG tel quel. Sinon, l’image est réenregistrée en JPEG, ce qui perd toujours un peu. L’outil cherche la qualité la plus haute (au plus 92 %) qui tient sous votre limite.</p>
+</section>
+<section>
+<h2 id="order">Que change l’outil en premier : la qualité ou les pixels ?</h2>
+<p>La qualité. Il essaie la photo à sa taille d’origine, puis des niveaux de qualité jusqu’à 35 %. Ce n’est que si même 35 % reste trop lourd qu’il rend l’image 15 % plus étroite et plus basse, et cherche de nouveau la qualité, jusqu’à un dixième de la largeur.</p>
+</section>
+<section>
+<h2 id="results">Une photo de test, six limites</h2>
+<p>La même photo paysage de 12 mégapixels (4 032 × 3 024 px), pour six limites :</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Résultat de l’outil pour une photo, six limites</caption><thead><tr><th scope="col">Limite</th><th scope="col" class="r num">Nouveau poids</th><th scope="col" class="r num">Pixels</th><th scope="col" class="r num">Pixels conservés</th><th scope="col" class="r num">Qualité JPEG</th></tr></thead><tbody>
+<tr><th scope="row">1 000 Ko</th><td class="r num">916,5 Ko</td><td class="r num">4 032 × 3 024 px</td><td class="r num">100 %</td><td class="r num">81 %</td></tr>
+<tr><th scope="row">500 Ko</th><td class="r num">497,3 Ko</td><td class="r num">4 032 × 3 024 px</td><td class="r num">100 %</td><td class="r num">65 %</td></tr>
+<tr><th scope="row">200 Ko</th><td class="r num">199,1 Ko</td><td class="r num">3 427 × 2 570 px</td><td class="r num">72 %</td><td class="r num">48 %</td></tr>
+<tr><th scope="row">100 Ko</th><td class="r num">99,0 Ko</td><td class="r num">2 476 × 1 857 px</td><td class="r num">38 %</td><td class="r num">40 %</td></tr>
+<tr><th scope="row">50 Ko</th><td class="r num">49,0 Ko</td><td class="r num">1 521 × 1 141 px</td><td class="r num">14 %</td><td class="r num">40 %</td></tr>
+<tr><th scope="row">20 Ko</th><td class="r num">19,7 Ko</td><td class="r num">794 × 595 px</td><td class="r num">4 %</td><td class="r num">38 %</td></tr>
+</tbody></table></div>
+<p class="cp-note">Mesuré avec l’outil dans Chromium 149.0.7827.55 le 31/10/2026. Les autres navigateurs ont leur propre encodeur JPEG : le résultat peut y varier de quelques pour cent, mais reste sous la limite.</p>
+</section>
+<section>
+<h2 id="photos">Toutes les photos demandent-elles la même place ?</h2>
+<p>Non. Une photo pleine de détails fins demande plus d’octets pour le même nombre de pixels. À 200 Ko, la photo paysage a gardé 72 % de ses pixels, contre 27 % pour notre photo d’échassiers dans une eau ridée.</p>
+</section>
+<section>
+<h2 id="best">Comment obtenir le meilleur résultat ?</h2>
+<p>Prenez la plus grande limite que le formulaire accepte. À 500 Ko au lieu de 100 Ko, la photo de test a gardé tous ses pixels (qualité 65 %) au lieu de 2 476 × 1 857 px.</p>
+<p><a href="/toll-preview/fr/image-to-size/">Réduire une photo à un poids en Ko (l’outil)</a> | <a href="/toll-preview/fr/reduire-photo-en-ko/">Réduire une photo en Ko : 20, 50, 100 ou 200 Ko</a></p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<p>Les photos de test viennent de la NASA et sont dans le domaine public. Les résultats viennent de l’outil lui-même, dans les conditions de test indiquées plus haut.</p>
+<ul class="cp-sources"><li><a href="https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021">NASA, KSC-20210111-PH-JBS01_0021 domaine public</a></li><li><a href="https://images.nasa.gov/details/jsc2025e068207_alt">NASA, jsc2025e068207_alt domaine public</a></li><li><a href="https://images.nasa.gov/details/KSC-08pd4102">NASA, KSC-08pd4102 domaine public</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Peut-on mettre un JPG à 100 Ko sans que cela se voie ?</h3><p>Cela dépend de la photo. À 100 Ko, notre photo de 12 mégapixels a nettement perdu en pixels ; à 500 Ko, non. Plus la limite est haute, moins cela se voit.</p><h3>Jusqu’où descend la qualité JPEG ?</h3><p>Jamais sous 35 %. L’outil préfère réduire l’image plutôt qu’enregistrer en qualité plus basse.</p><h3>Une photo déjà sous la limite est-elle modifiée ?</h3><p>Un JPEG déjà dessous est rendu tel quel. Un PNG ou un WebP est toujours enregistré en JPEG.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Pages liées</h2><ul><li><a href="/toll-preview/fr/reduire-photo-en-ko/">Réduire une photo en Ko : 20, 50, 100 ou 200 Ko</a></li><li><a href="/toll-preview/fr/image-to-size/">Réduire une photo à un poids en Ko (l’outil)</a></li><li><a href="/toll-preview/image-to-size/reduce-image-size-in-kb/">Reduce image size in KB (en anglais)</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/fr/compresser-jpg-sans-perdre-en-qualite.md">Cette page en Markdown</a> <span aria-hidden="true">·</span> Données au <time datetime="2026-10-31">2026-10-31</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QRコードに有効期限はある?スタティックとダイナミック: Endwise</title>
+<meta name="description" content="無料のQRコードも、ダイナミックなら期限切れになることがあります。印刷したコードの見分け方と、プラン終了時にベンダー各社が公表している扱いを紹介します。">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-yuko-kigen-nashi/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/ja/qr-code-yuko-kigen-nashi.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="QRコードに有効期限はある?スタティックとダイナミック">
+<meta property="og:description" content="無料のQRコードも、ダイナミックなら期限切れになることがあります。印刷したコードの見分け方と、プラン終了時にベンダー各社が公表している扱いを紹介します。">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-yuko-kigen-nashi/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-yuko-kigen-nashi/","url":"https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-yuko-kigen-nashi/","name":"QRコードに有効期限はある?スタティックとダイナミック","description":"無料のQRコードも、ダイナミックなら期限切れになることがあります。印刷したコードの見分け方と、プラン終了時にベンダー各社が公表している扱いを紹介します。","dateModified":"2026-11-02","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"QRコード作成","item":"https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-generator/"},{"@type":"ListItem","position":3,"name":"QRコードの有効期限:スタティックとダイナミックの違い","item":"https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-yuko-kigen-nashi/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"無料のQRコードには有効期限がありますか?","acceptedAnswer":{"@type":"Answer","text":"スタティックコードに期限切れはありません。内容がコードそのものに入っているからです。無料のダイナミックコードは、ベンダーの転送を経由するため、期限切れになることがあります。無料のコードや失効したコードを制限したり停止したりするベンダーもあります。このページの表に、各社が書いている内容をまとめました。"}},{"@type":"Question","name":"印刷したQRコードがダイナミックかどうか、どう見分けますか?","acceptedAnswer":{"@type":"Answer","text":"スキャンして、ページが開く前にアドレスを見てください。自分のウェブサイトではなく、QRコードベンダーのドメインの短縮リンクなら、ダイナミックです。ツールのページにある確認機能は、リンクをたどってベンダー名を表示します。"}},{"@type":"Question","name":"ダイナミックコードをスタティックに変えられますか?","acceptedAnswer":{"@type":"Answer","text":"できません。印刷されたモジュールには、ベンダーのリンクが入っています。リンク先のページ用に新しいスタティックコードを作って、刷り直してください。"}}]}]}</script>
+<link rel="alternate" hreflang="en" href="https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/static-vs-dynamic/">
+<link rel="alternate" hreflang="es" href="https://krishnachagti-sudo.github.io/toll-preview/es/codigo-qr-que-no-caduca/">
+<link rel="alternate" hreflang="de" href="https://krishnachagti-sudo.github.io/toll-preview/de/qr-code-laeuft-nie-ab/">
+<link rel="alternate" hreflang="fr" href="https://krishnachagti-sudo.github.io/toll-preview/fr/qr-code-sans-expiration/">
+<link rel="alternate" hreflang="pt-BR" href="https://krishnachagti-sudo.github.io/toll-preview/pt/qr-code-que-nao-expira/">
+<link rel="alternate" hreflang="hi" href="https://krishnachagti-sudo.github.io/toll-preview/hi/qr-code-expire-nahi-hota/">
+<link rel="alternate" hreflang="ja" href="https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-yuko-kigen-nashi/">
+<link rel="alternate" hreflang="x-default" href="https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/static-vs-dynamic/">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="パンくずリスト"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/ja/qr-code-generator/">QRコード作成</a></li><li aria-current="page">QRコードの有効期限:スタティックとダイナミックの違い</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">ガイド</p>
+<h1>QRコードの有効期限:スタティックとダイナミックの違い</h1>
+<p class="cp-answer">スタティックのQRコードは、リンクや情報そのものをコードの中に持っていて、期限切れになりません。ダイナミックのQRコードは、ベンダーのドメインの短縮リンクを持っているだけで、そのベンダーが転送している間しか使えません。下の表は、転送用ドメインを2026年11月2日に確認した7社です。</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="kigen">無料のQRコードに有効期限はありますか?</h2>
+<p>スタティックにはありません。モジュールがリンクやWi-Fiの接続情報、連絡先カードをそのまま表していて、スマートフォンは印刷物から直接読み取ります。ダイナミックは、ベンダーのドメインの短縮リンクを表しています。ベンダーが各スキャンをあなたのページに転送していて、その転送を制限したり、止めたり、プランに紐づけたりできます。</p>
+<p>QRコードの考案元であるDENSO WAVE(デンソーウェーブ)は、FAQ(英語)で、JISまたはISOの規格に従う限り、QRコードの利用に申請やライセンス契約は不要で、料金もかからないと述べています。期限切れになりうるのは、間に入るサービスが維持しているものだけです。</p>
+</section>
+<section>
+<h2 id="miwake">印刷したQRコードがダイナミックかどうか、どう見分けますか?</h2>
+<ul><li>アドレスを表示してからページを開くカメラアプリでスキャンします。</li><li>ドメインが自分または自社のものなら、スタティックです。下の表にあるドメインのような短縮リンクなら、ダイナミックです。</li><li>または、コードの画像を有効期限の確認に入れてください。スマートフォンと同じようにリンクをたどり、ベンダーを経由しているか、どのベンダーかを表示します。</li></ul>
+<p><a href="/toll-preview/ja/qr-code-generator/">ツールのページ</a>では、確認は無料で、アカウントも不要です。</p>
+</section>
+<section>
+<h2 id="vendor">プランが終わると、ベンダーは何と言っていますか?</h2>
+<p>各ドメインは2026年11月2日に名前解決して確認し、要約は示した日付時点のベンダー自身のページに基づいています。英語の正確な引用は、英語版のページにあります。方針は変わることがあり、特定のコードについてベンダーが今後どうするかを予測するものではありません。</p>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">ベンダー</th><th scope="col">転送用ドメイン</th><th scope="col">ベンダーのページの内容</th><th scope="col">確認日</th></tr></thead><tbody>
+<tr><th scope="row">QR Code Generator PRO (qr-code-generator.com)</th><td>qrco.de, l.ead.me, q-r.to</td><td>有料プランが切れると、ダイナミックコードの背後にある短縮リンクが、スキャンをあなたのページに転送しなくなります。</td><td>2026年11月2日</td></tr>
+<tr><th scope="row">QR TIGER (qrcode-tiger.com)</th><td>qr1.be</td><td>プランが切れても、コードとデータは最長1年間保持されます。その間に更新しないと、すべてのデータが削除される場合があります。無料プランの3つのダイナミックコードは、それぞれ500スキャンまでに制限されています。</td><td>2026年11月2日</td></tr>
+<tr><th scope="row">Hovercode (hovercode.com)</th><td>hov.to, hovqr.co, scango.to</td><td>有料プランを解約すると無料プランに移行します。最初の3つのダイナミックコード、最初の3つの短縮リンク、最初のマルチリンクページは有効なままです。それ以外のコードは無効になり(削除はされません)、独自ドメインのコードは動かなくなります。</td><td>2026年11月2日</td></tr>
+<tr><th scope="row">QRStuff (qrstuff.com)</th><td>qrs.ly</td><td>プランが転送を有効にしている間は、コードは有効なままです。料金ページには、プラン終了後のダイナミックコードの扱いは書かれていません。</td><td>2026年11月2日</td></tr>
+<tr><th scope="row">QR.io (qr.io)</th><td>qr.codes</td><td>無料トライアルが終わっても、スタティックコードは使い続けられます。料金ページには、その後のダイナミックコードの扱いは書かれていません。</td><td>2026年11月2日</td></tr>
+<tr><th scope="row">QRFY (qrfy.com)</th><td>qrfy.io</td><td>公開されている方針は確認していません</td><td>-</td></tr>
+<tr><th scope="row">Bitly (bitly.com)</th><td>bit.ly</td><td>公開されている方針は確認していません</td><td>-</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="henkan">ダイナミックコードをスタティックに変えられますか?</h2>
+<p>できません。印刷されたモジュールにベンダーのリンクが入っているからです。ただし、古いコードが現在つながっているページ用に新しいスタティックコードを作り、刷り直すことはできます。その後は、どのベンダーにも左右されません。</p>
+</section>
+<section>
+<h2 id="website">スタティックなリンクも、ウェブサイトが必要です</h2>
+<p>https://example.com/menu を持つスタティックコードは、ずっとそのアドレスを指し続けます。メニューのページが移動したり、ドメインの契約が切れたりすると、コードはどこにもつながりません。印刷するコードは、自分が管理するドメインのページに向けてください。</p>
+</section>
+<section>
+<h2 id="sakusei">スタティックコードはこちらで作成</h2>
+<p><a href="/toll-preview/ja/qr-code-generator/">QRコード作成ツール</a>は、1つずつのコードをブラウザー上で、無料・アカウント不要で作ります。スプレッドシートからのコードは1コードあたり$0.002からです。</p>
+</section>
+<section>
+<h2 id="kakunin">ご確認ください</h2>
+<ul><li>スタティックコードは内容を直接持っていて有効期限はありませんが、リンク先(ウェブサイト、フォーム、ネットワーク)が存在する間だけ機能します。</li><li>印刷の前に、最終的な印刷サイズで必ず試しにスキャンしてください。</li><li>有効期限の確認:コードの内容と、現在どこに転送されるかに加え、日付を示したベンダーの公開方針を表示します。あなたのアカウントは見られず、ベンダーが今後どうするかを約束することもできません。方針は、示した日付時点のベンダー自身のページの要約で、変わることがあります。挙げているベンダーとは提携していません。</li><li>Wi-Fiコード:スマートフォンの対応状況は機種によって異なり、特に企業向け(WPA2-EAP)の項目で差が出ます。ゲストが使う機種で試してください。</li><li>「QRコード」は(株)デンソーウェーブの登録商標です。</li><li>QR Code is registered trademark of DENSO WAVE INCORPORATED.</li></ul>
+</section>
+<section>
+<h2 id="shuten">出典</h2>
+<ul class="cp-sources"><li><a href="https://www.qr-code-generator.com/blog/free-qr-code-generator-no-expiration/">QR Code Generator PRO (qr-code-generator.com):方針のページ、2026年11月2日確認</a></li><li><a href="https://www.qrcode-tiger.com/do-free-qr-codes-expire">QR TIGER (qrcode-tiger.com):方針のページ、2026年11月2日確認</a></li><li><a href="https://hovercode.com/pricing/">Hovercode (hovercode.com):方針のページ、2026年11月2日確認</a></li><li><a href="https://www.qrstuff.com/dynamic-qr-code">QRStuff (qrstuff.com):方針のページ、2026年11月2日確認</a></li><li><a href="https://qr.io/pricing">QR.io (qr.io):方針のページ、2026年11月2日確認</a></li><li><a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ: no licence needed to use QR Code; trademark notice, 2026年11月2日確認</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">よくある質問</h2><h3>無料のQRコードには有効期限がありますか?</h3><p>スタティックコードに期限切れはありません。内容がコードそのものに入っているからです。無料のダイナミックコードは、ベンダーの転送を経由するため、期限切れになることがあります。無料のコードや失効したコードを制限したり停止したりするベンダーもあります。このページの表に、各社が書いている内容をまとめました。</p><h3>印刷したQRコードがダイナミックかどうか、どう見分けますか?</h3><p>スキャンして、ページが開く前にアドレスを見てください。自分のウェブサイトではなく、QRコードベンダーのドメインの短縮リンクなら、ダイナミックです。ツールのページにある確認機能は、リンクをたどってベンダー名を表示します。</p><h3>ダイナミックコードをスタティックに変えられますか?</h3><p>できません。印刷されたモジュールには、ベンダーのリンクが入っています。リンク先のページ用に新しいスタティックコードを作って、刷り直してください。</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">関連ページ</h2><ul><li><a href="/toll-preview/ja/wifi-qr-code-sakusei/">Wi-Fi用QRコードの作り方</a></li><li><a href="/toll-preview/ja/meishi-qr-code-vcard/">名刺のQRコード(vCard)</a></li><li><a href="/toll-preview/ja/qr-code-generator/">QRコード作成</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/ja/qr-code-yuko-kigen-nashi.md">このページのMarkdown版</a> <span aria-hidden="true">·</span> データ日付 <time datetime="2026-11-02">2026-11-02</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

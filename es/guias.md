@@ -13,11 +13,21 @@
 ## ¿Qué herramientas tienen página en español?
 
 - [Calculadora de la declaración trimestral del IFTA](https://krishnachagti-sudo.github.io/toll-preview/es/ifta-calculator/)
+- [Image to size](https://krishnachagti-sudo.github.io/toll-preview/es/image-to-size/)
 - [Calculadora de reembolso de millaje](https://krishnachagti-sudo.github.io/toll-preview/es/mileage-reimbursement/)
+- [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/es/qr-code-generator/)
 - [Cuánto apartar para impuestos](https://krishnachagti-sudo.github.io/toll-preview/es/tax-set-aside/)
 - [Hoja de viáticos (per diem) para camioneros](https://krishnachagti-sudo.github.io/toll-preview/es/trucker-per-diem/)
 
 Las demás páginas del sitio están en inglés. [Todas las guías en inglés](https://krishnachagti-sudo.github.io/toll-preview/guides/).
+
+## Más guías en español
+
+- [Reducir una foto a 20, 50, 100 o 200 KB, gratis](https://krishnachagti-sudo.github.io/toll-preview/es/reducir-foto-a-kb/)
+- [Comprimir un JPG sin perder calidad con un límite en KB](https://krishnachagti-sudo.github.io/toll-preview/es/comprimir-jpg-sin-perder-calidad/)
+- [Código QR que no caduca: estático o dinámico](https://krishnachagti-sudo.github.io/toll-preview/es/codigo-qr-que-no-caduca/)
+- [Código QR para WiFi: el texto que leen los teléfonos](https://krishnachagti-sudo.github.io/toll-preview/es/codigo-qr-wifi/)
+- [Código QR para el menú de un restaurante, gratis](https://krishnachagti-sudo.github.io/toll-preview/es/codigo-qr-menu-restaurante/)
 
 ## Relacionado
 

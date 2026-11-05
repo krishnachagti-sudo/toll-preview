@@ -2,7 +2,7 @@
 // the calendar; the answer for a real run always comes from the server through Endwise.run.
 import {
   between, addBusinessDays, calendarDays, weekdayOf, dayNumber, isRealDate, monthLength, REGIONS,
-  MIN_YEAR, MAX_YEAR, RANGE_MESSAGE, IN,
+  MIN_YEAR, MAX_YEAR, RANGE_MESSAGE, IN, IN_NOTE,
 } from './core.js';
 
 const T = window.Endwise;
@@ -11,13 +11,117 @@ const SLUG = 'business-days';
 const MAX_DRAWN_DAYS = 100;
 const MAX_DAYS_OFF = 400;
 
-const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const HEADINGS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+// Words in other languages, by <html lang>. English is written in place below; say(key, english,
+// ...args) gives the other language's word when it has one. page.hi.html is the Hindi page.
+// HI_HOLIDAYS maps the engine's English holiday names to their common Hindi names (the same map is
+// in server/lib/guides/pages/i18n-business-days.js; a test keeps the two equal).
+const L = document.documentElement.lang.slice(0, 2);
+const HI_HOLIDAYS = {
+  'Republic Day': 'गणतंत्र दिवस',
+  'Maha Shivaratri': 'महाशिवरात्रि',
+  'Holi': 'होली',
+  'Id-ul-Fitr': 'ईद-उल-फ़ित्र',
+  'Mahavir Jayanti': 'महावीर जयंती',
+  'Birthday of Dr. B.R. Ambedkar': 'डॉ. बी.आर. अंबेडकर का जन्मदिन (अंबेडकर जयंती)',
+  'Good Friday': 'गुड फ्राइडे',
+  'Ram Navami': 'राम नवमी',
+  'Budha Purnima': 'बुद्ध पूर्णिमा',
+  'Id-ul-Zuha (Bakrid)': 'ईद-उल-ज़ुहा (बकरीद)',
+  'Muharram': 'मुहर्रम',
+  'Independence Day': 'स्वतंत्रता दिवस',
+  'Janmashtami': 'जन्माष्टमी',
+  'Janmashtami (Vaishnav)': 'जन्माष्टमी (वैष्णव)',
+  'Milad-un-Nabi or Id-e-Milad (Birthday of Prophet Mohammad)': 'मिलाद-उन-नबी या ईद-ए-मिलाद (पैगंबर मोहम्मद का जन्मदिन)',
+  'Milad-un-Nabi or Id-e-Milad (Prophet Mohammad\'s Birthday)': 'मिलाद-उन-नबी या ईद-ए-मिलाद (पैगंबर मोहम्मद का जन्मदिन)',
+  'Mahatma Gandhi\'s Birthday': 'महात्मा गांधी का जन्मदिन (गांधी जयंती)',
+  'Dussehra': 'दशहरा',
+  'Dussehra (Vijaya Dashmi)': 'दशहरा (विजयादशमी)',
+  'Diwali (Deepavali)': 'दिवाली (दीपावली)',
+  'Guru Nanak\'s Birthday': 'गुरु नानक का जन्मदिन',
+  'Christmas Day': 'क्रिसमस',
+  'Your day off': 'आपकी अपनी छुट्टी',
+};
+const STR = {
+  hi: {
+    weekdays: ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],
+    weekdaysShort: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
+    months: ['जनवरी', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'],
+    headings: ['सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि', 'रवि'],
+    regionUS: 'अमेरिका की संघीय छुट्टियां।',
+    regionGB: 'इंग्लैंड और वेल्स की बैंक छुट्टियां।',
+    regionIN: 'दिल्ली और नई दिल्ली के केंद्र सरकार के कार्यालयों की राजपत्रित (बंद) छुट्टियां, DoPT की सालाना सूची से, 2025 से 2027 तक। इसमें प्रतिबंधित छुट्टियां, किसी राज्य की सूची और बैंक की छुट्टियां शामिल नहीं हैं।',
+    regionNames: { US: 'अमेरिका (संघीय)', 'GB-ENG': 'इंग्लैंड और वेल्स', [IN]: 'भारत (केंद्र सरकार, दिल्ली)' },
+    pickStart: 'शुरू की तारीख चुनें।',
+    pickEnd: 'आखिरी तारीख चुनें।',
+    notReal: (label) => `${label === 'Start' ? 'शुरू की तारीख' : 'आखिरी तारीख'} कैलेंडर की असली तारीख नहीं है।`,
+    range: `तारीखें ${MIN_YEAR} से ${MAX_YEAR} के बीच की होनी चाहिए।`,
+    offBad: (x) => `"${x}" पढ़ा नहीं जा सका। हर छुट्टी ऐसे लिखें: 2026-07-06, एक लाइन में एक या कॉमा से अलग।`,
+    offMax: (n) => `अधिकतम ${n} छुट्टियां।`,
+    daysBad: 'दिनों की संख्या -3650 से 3650 के बीच की पूर्ण संख्या होनी चाहिए।',
+    btnAdd: 'तारीख निकालें',
+    btnBetween: 'कार्य दिवस गिनें',
+    hasNoDays: 'इस अवधि में कोई छुट्टी किसी कार्य दिवस पर नहीं पड़ी।',
+    keyCounted: 'गिना गया कार्य दिवस',
+    keyWeekend: 'सप्ताहांत',
+    keyHoliday: 'छुट्टी',
+    keyOwn: 'आपकी छुट्टी',
+    keyStart: 'शुरू का दिन',
+    keyResult: 'नतीजा',
+    legend: 'संकेत',
+    tagStart: 'शुरू',
+    tagEnd: 'आखिर',
+    tagResult: 'नतीजा',
+    saidUncovered: 'यह साल शामिल नहीं',
+    saidHoliday: (name) => `छुट्टी, ${name}`,
+    saidOwn: 'आपकी छुट्टी',
+    saidBusiness: (n) => `कार्य दिवस ${n}`,
+    saidStart: 'शुरू का दिन',
+    saidEnd: 'आखिरी दिन',
+    saidResult: 'नतीजा',
+    tooLong: (n) => `यह अवधि ${n} दिन लंबी है, इसे दिन-दर-दिन दिखाना संभव नहीं। इसमें पड़ने वाली छुट्टियां ऊपर सूची में हैं।`,
+    skippedHead: (n) => `छोड़ी गई छुट्टियां (${n})`,
+    noneFell: 'इस अवधि में कोई छुट्टी किसी कार्य दिवस पर नहीं पड़ी।',
+    ownHead: (n) => `छोड़ी गई आपकी छुट्टियां (${n})`,
+    ownNone: 'आपकी कोई छुट्टी इस अवधि में कार्य दिवस पर नहीं पड़ी, या वह पहले से सरकारी छुट्टी थी।',
+    unused: (list, reversed) => `कैलेंडर पर चिह्नित, पर गिनती से बाहर: ${list}. ${reversed ? 'आखिरी तारीख खुद कभी नहीं गिनी जाती।' : 'शुरू का दिन कभी नहीं गिना जाता।'}`,
+    bdOne: 'कार्य दिवस',
+    bdMany: 'कार्य दिवस',
+    subForward: (a, b, where) => `${a} के बाद से ${b} तक (${b} समेत)। ${where}।`,
+    subBack: (a, b, where) => `उल्टी गिनती: ${a} के बाद से ${b} तक (${b} समेत)। ${where}।`,
+    subZero: (a, where) => `${a} से 0 कार्य दिवस बाद वही दिन है। ${where}।`,
+    subAdd: (n, dir, a, where) => `${a} से ${n} कार्य दिवस ${dir}। ${where}।`,
+    after: 'बाद',
+    before: 'पहले',
+    sheetLabel: 'हल किया हुआ उदाहरण',
+    charged: (amount, balance) => `${amount} कटे। आपका बैलेंस ${balance} है।`,
+    freeRun: (n) => `मुफ़्त रन। आज आपके ${n} मुफ़्त रन बचे हैं।`,
+    signIn: 'साइन इन करें',
+    openAccount: 'अपना खाता खोलें',
+    priceAccount: (price) => `हर रन का खर्च ${price} है, आपके बैलेंस से कटता है।`,
+    priceFree: (price) => `हर रन का खर्च ${price} है। खाते के बिना रोज़ 5 मुफ़्त रन मिलते हैं।`,
+    runNoteFree: 'रोज़ 5 मुफ़्त रन, खाता ज़रूरी नहीं।',
+    linkedNote: (btn) => `यह आपके खोले लिंक से इसी पेज पर निकाला गया है। असली रन के लिए "${btn}" दबाएं।`,
+    exampleNote: 'यह इसी पेज पर निकाला गया उदाहरण है। असली रन के लिए "कार्य दिवस गिनें" दबाएं।',
+    inNote: 'दिल्ली और नई दिल्ली के केंद्र सरकार के प्रशासनिक कार्यालयों की राजपत्रित (बंद) छुट्टियां, कार्मिक एवं प्रशिक्षण विभाग (DoPT) के सालाना कार्यालय ज्ञापन से। इसमें प्रतिबंधित (वैकल्पिक) छुट्टियां, किसी राज्य की सूची और बैंक की छुट्टियां शामिल नहीं हैं: राज्यों और बैंकों की छुट्टियां अलग होती हैं। सप्ताहांत शनिवार और रविवार है (5 दिन का सप्ताह)।',
+    inRange: 'भारत (केंद्र सरकार, दिल्ली) में सिर्फ 2025 से 2027 शामिल हैं: जिन सालों की DoPT की आधिकारिक छुट्टी सूची जांची जा चुकी है। बाकी सालों को अंदाज़े से नहीं, मना कर दिया जाता है।',
+  },
+};
+const say = (key, en, ...args) => {
+  const v = STR[L]?.[key];
+  return v === undefined ? en : (typeof v === 'function' ? v(...args) : v);
+};
+const NUM = L === 'hi' ? 'en-IN' : 'en-US';
+const holidayName = (name) => (L === 'hi' ? HI_HOLIDAYS[name] ?? name : name);
+
+const WEEKDAYS = say('weekdays', ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
+const MONTHS = say('months', ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
+const HEADINGS = say('headings', ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
+const WEEKDAYS_SHORT = say('weekdaysShort', WEEKDAYS.map((x) => x.slice(0, 3)));
+const MONTHS_SHORT = L === 'hi' ? MONTHS : MONTHS.map((x) => x.slice(0, 3));
 const REGION_HINTS = {
-  US: 'US federal holidays.',
-  'GB-ENG': 'Bank holidays in England and Wales.',
-  [IN]: 'Closed (gazetted) holidays of central government offices in Delhi and New Delhi, from DoPT\'s yearly list, 2025 to 2027. Not restricted holidays, not a state\'s list, not bank holidays.',
+  US: say('regionUS', 'US federal holidays.'),
+  'GB-ENG': say('regionGB', 'Bank holidays in England and Wales.'),
+  [IN]: say('regionIN', 'Closed (gazetted) holidays of central government offices in Delhi and New Delhi, from DoPT\'s yearly list, 2025 to 2027. Not restricted holidays, not a state\'s list, not bank holidays.'),
 };
 
 const $ = (id) => document.getElementById(id);
@@ -25,8 +129,8 @@ const pick = (name) => document.querySelector(`input[name="${name}"]:checked`).v
 
 const part = (iso) => iso.split('-').map(Number);
 const longDate = (iso) => { const [y, m, d] = part(iso); return `${WEEKDAYS[weekdayOf(iso)]} ${d} ${MONTHS[m - 1]} ${y}`; };
-const shortDate = (iso) => { const [y, m, d] = part(iso); return `${WEEKDAYS[weekdayOf(iso)].slice(0, 3)} ${d} ${MONTHS[m - 1].slice(0, 3)} ${y}`; };
-const plural = (n, one, many) => `${Math.abs(n).toLocaleString('en-US')} ${Math.abs(n) === 1 ? one : many}`;
+const shortDate = (iso) => { const [y, m, d] = part(iso); return `${WEEKDAYS_SHORT[weekdayOf(iso)]} ${d} ${MONTHS_SHORT[m - 1]} ${y}`; };
+const plural = (n, one, many) => `${Math.abs(n).toLocaleString(NUM)} ${Math.abs(n) === 1 ? one : many}`;
 const signed = (n) => (n < 0 ? `−${Math.abs(n)}` : String(n));
 
 // ---------- form ----------
@@ -48,10 +152,10 @@ function showFieldErrors(fields) {
 }
 
 function checkDate(label, value) {
-  if (!value) return `Pick ${label === 'Start' ? 'a start' : 'an end'} date.`;
-  if (!isRealDate(value)) return `${label} is not a real calendar date.`;
+  if (!value) return label === 'Start' ? say('pickStart', 'Pick a start date.') : say('pickEnd', 'Pick an end date.');
+  if (!isRealDate(value)) return say('notReal', `${label} is not a real calendar date.`, label);
   const year = Number(value.slice(0, 4));
-  if (year < MIN_YEAR || year > MAX_YEAR) return RANGE_MESSAGE;
+  if (year < MIN_YEAR || year > MAX_YEAR) return say('range', RANGE_MESSAGE);
   return null;
 }
 
@@ -60,10 +164,10 @@ function checkDate(label, value) {
 function readDaysOff(raw) {
   const dates = new Set();
   for (const item of raw.split(/[\n,]+/).map((x) => x.trim()).filter(Boolean)) {
-    if (!isRealDate(item)) return { error: `Could not read "${item.slice(0, 40)}". Write each day off like 2026-07-06, one per line or comma separated.` };
+    if (!isRealDate(item)) return { error: say('offBad', `Could not read "${item.slice(0, 40)}". Write each day off like 2026-07-06, one per line or comma separated.`, item.slice(0, 40)) };
     dates.add(item);
   }
-  if (dates.size > MAX_DAYS_OFF) return { error: `At most ${MAX_DAYS_OFF} days off.` };
+  if (dates.size > MAX_DAYS_OFF) return { error: say('offMax', `At most ${MAX_DAYS_OFF} days off.`, MAX_DAYS_OFF) };
   return { dates: [...dates].sort() };
 }
 
@@ -88,7 +192,7 @@ function readForm() {
   }
   const raw = $('bd-days').value.trim();
   const days = Number(raw);
-  if (raw === '' || !Number.isInteger(days) || days < -3650 || days > 3650) errors.days = 'Days must be a whole number from -3650 to 3650.';
+  if (raw === '' || !Number.isInteger(days) || days < -3650 || days > 3650) errors.days = say('daysBad', 'Days must be a whole number from -3650 to 3650.');
   if (Object.keys(errors).length) return { errors };
   return { input: { op, region, start, days, ...own } };
 }
@@ -97,7 +201,7 @@ function syncMode() {
   const adding = pick('op') === 'add';
   $('bd-end-field').hidden = adding;
   $('bd-days-field').hidden = !adding;
-  $('bd-run').textContent = adding ? 'Find the date' : 'Count business days';
+  $('bd-run').textContent = adding ? say('btnAdd', 'Find the date') : say('btnBetween', 'Count business days');
   $('bd-region-hint').textContent = REGION_HINTS[pick('region')];
 }
 
@@ -154,15 +258,15 @@ function dayCell(d, { view, ordinals }, info) {
   const classes = ['bd-day'];
   const said = [];
   if (!inRange) classes.push('out');
-  if (d.uncovered) { classes.push('unk'); said.push('year not covered'); }
+  if (d.uncovered) { classes.push('unk'); said.push(say('saidUncovered', 'year not covered')); }
   if (d.weekend) classes.push('we');
-  if (d.holiday) { classes.push('hol'); said.push(`holiday, ${d.holiday}`); }
-  if (d.own) { classes.push('own'); said.push('your day off'); }
-  if (ord !== undefined) { classes.push('counted'); said.push(`business day ${ord}`); }
+  if (d.holiday) { classes.push('hol'); said.push(say('saidHoliday', `holiday, ${d.holiday}`, holidayName(d.holiday))); }
+  if (d.own) { classes.push('own'); said.push(say('saidOwn', 'your day off')); }
+  if (ord !== undefined) { classes.push('counted'); said.push(say('saidBusiness', `business day ${ord}`, ord)); }
   let tag = null;
-  if (d.date === view.start) { classes.push('start'); tag = 'Start'; said.push('start day'); }
-  if (d.date === view.end) { classes.push('end'); tag = 'End'; said.push('end day'); }
-  if (d.date === view.landing) { classes.push('land'); tag = 'Result'; said.push('result'); }
+  if (d.date === view.start) { classes.push('start'); tag = say('tagStart', 'Start'); said.push(say('saidStart', 'start day')); }
+  if (d.date === view.end) { classes.push('end'); tag = say('tagEnd', 'End'); said.push(say('saidEnd', 'end day')); }
+  if (d.date === view.landing) { classes.push('land'); tag = say('tagResult', 'Result'); said.push(say('saidResult', 'result')); }
   const dayOfMonth = Number(d.date.slice(8));
   const title = [shortDate(d.date), ...said].join(': ');
   return h('div', { class: classes.join(' '), title: said.length || d.weekend ? title : null }, [
@@ -192,7 +296,7 @@ function calendar(input, built) {
   const { view } = built;
   const span = spanOf(view);
   if (span > MAX_DRAWN_DAYS) {
-    return h('p', { class: 'bd-aside' }, `That range is ${span.toLocaleString('en-US')} days long, which is too long to draw day by day. The holidays in it are listed above.`);
+    return h('p', { class: 'bd-aside' }, say('tooLong', `That range is ${span.toLocaleString('en-US')} days long, which is too long to draw day by day. The holidays in it are listed above.`, span.toLocaleString(NUM)));
   }
   const months = [];
   let [y, m] = part(view.lo);
@@ -202,13 +306,13 @@ function calendar(input, built) {
     m += 1;
     if (m > 12) { m = 1; y += 1; }
   }
-  const legend = h('ul', { class: 'bd-legend', 'aria-label': 'Key' }, [
-    h('li', {}, [h('span', { class: 'bd-key counted' }), 'Counted business day']),
-    h('li', {}, [h('span', { class: 'bd-key we' }), 'Weekend']),
-    h('li', {}, [h('span', { class: 'bd-key hol' }), 'Holiday']),
-    input.daysOff?.length ? h('li', {}, [h('span', { class: 'bd-key own' }), 'Your day off']) : null,
-    h('li', {}, [h('span', { class: 'bd-key start' }), 'Start day']),
-    input.op === 'add' && input.days !== 0 ? h('li', {}, [h('span', { class: 'bd-key land' }), 'Result']) : null,
+  const legend = h('ul', { class: 'bd-legend', 'aria-label': say('legend', 'Key') }, [
+    h('li', {}, [h('span', { class: 'bd-key counted' }), say('keyCounted', 'Counted business day')]),
+    h('li', {}, [h('span', { class: 'bd-key we' }), say('keyWeekend', 'Weekend')]),
+    h('li', {}, [h('span', { class: 'bd-key hol' }), say('keyHoliday', 'Holiday')]),
+    input.daysOff?.length ? h('li', {}, [h('span', { class: 'bd-key own' }), say('keyOwn', 'Your day off')]) : null,
+    h('li', {}, [h('span', { class: 'bd-key start' }), say('keyStart', 'Start day')]),
+    input.op === 'add' && input.days !== 0 ? h('li', {}, [h('span', { class: 'bd-key land' }), say('keyResult', 'Result')]) : null,
   ]);
   return h('div', {}, [h('div', { class: 'bd-cal' }, months), legend]);
 }
@@ -217,54 +321,54 @@ function holidayList(input, result, built) {
   const skipped = result.holidaysSkipped;
   const nodes = [];
   if (skipped.length) {
-    nodes.push(h('p', { class: 'bd-heading' }, `Holidays skipped (${skipped.length})`));
+    nodes.push(h('p', { class: 'bd-heading' }, say('skippedHead', `Holidays skipped (${skipped.length})`, skipped.length)));
     nodes.push(h('ul', { class: 'bd-skipped' }, skipped.map((x) => h('li', {}, [
       h('span', { class: 'bd-dot', 'aria-hidden': 'true' }),
       h('span', { class: 'when' }, shortDate(x.date)),
-      h('span', {}, x.name),
+      h('span', {}, holidayName(x.name)),
     ]))));
   } else {
-    nodes.push(h('p', { class: 'bd-none' }, 'No holidays fell on a weekday in this range.'));
+    nodes.push(h('p', { class: 'bd-none' }, say('noneFell', 'No holidays fell on a weekday in this range.')));
   }
   // Your own days off, listed the same way, when the run had any.
   const own = result.daysOffSkipped ?? [];
   if (own.length) {
-    nodes.push(h('p', { class: 'bd-heading' }, `Your days off skipped (${own.length})`));
+    nodes.push(h('p', { class: 'bd-heading' }, say('ownHead', `Your days off skipped (${own.length})`, own.length)));
     nodes.push(h('ul', { class: 'bd-skipped' }, own.map((x) => h('li', {}, [
       h('span', { class: 'bd-dot own', 'aria-hidden': 'true' }),
       h('span', { class: 'when' }, shortDate(x.date)),
-      h('span', {}, x.name),
+      h('span', {}, holidayName(x.name)),
     ]))));
   } else if (input.daysOff?.length) {
-    nodes.push(h('p', { class: 'bd-none' }, 'None of your days off fell on a weekday in this range that was not already a holiday.'));
+    nodes.push(h('p', { class: 'bd-none' }, say('ownNone', 'None of your days off fell on a weekday in this range that was not already a holiday.')));
   }
   // Holidays inside the drawn span that the count did not use (a holiday start day).
   const used = new Set(skipped.map((x) => `${x.date}|${x.name}`));
   const reversed = input.op === 'between' && input.end < input.start;
   const unused = built.days.filter((d) => d.holiday && !used.has(`${d.date}|${d.holiday}`));
   if (unused.length) {
-    nodes.push(h('p', { class: 'bd-aside' }, `Marked on the calendar but outside the count: ${unused.map((d) => `${shortDate(d.date)}, ${d.holiday}`).join('; ')}. ${reversed ? 'The end date itself is never counted.' : 'The start day is never counted.'}`));
+    nodes.push(h('p', { class: 'bd-aside' }, say('unused', `Marked on the calendar but outside the count: ${unused.map((d) => `${shortDate(d.date)}, ${d.holiday}`).join('; ')}. ${reversed ? 'The end date itself is never counted.' : 'The start day is never counted.'}`, unused.map((d) => `${shortDate(d.date)}, ${holidayName(d.holiday)}`).join('; '), reversed)));
   }
   return nodes;
 }
 
 function headline(input, result) {
-  const where = REGIONS[input.region];
+  const where = say('regionNames', REGIONS)[input.region];
   if (input.op === 'between') {
     const n = result.businessDays;
     const forward = input.end >= input.start;
     const sub = forward
-      ? `After ${longDate(input.start)}, up to and including ${longDate(input.end)}. ${where}.`
-      : `Counting back: after ${longDate(input.end)}, up to and including ${longDate(input.start)}. ${where}.`;
+      ? say('subForward', `After ${longDate(input.start)}, up to and including ${longDate(input.end)}. ${where}.`, longDate(input.start), longDate(input.end), where)
+      : say('subBack', `Counting back: after ${longDate(input.end)}, up to and including ${longDate(input.start)}. ${where}.`, longDate(input.end), longDate(input.start), where);
     return [
-      h('p', { class: 'bd-answer' }, [signed(n), ' ', h('small', {}, Math.abs(n) === 1 ? 'business day' : 'business days')]),
+      h('p', { class: 'bd-answer' }, [signed(n), ' ', h('small', {}, Math.abs(n) === 1 ? say('bdOne', 'business day') : say('bdMany', 'business days'))]),
       h('p', { class: 'bd-sub' }, sub),
     ];
   }
   const n = input.days;
   const sub = n === 0
-    ? `Zero business days from ${longDate(input.start)} is the same day. ${where}.`
-    : `${plural(n, 'business day', 'business days')} ${n > 0 ? 'after' : 'before'} ${longDate(input.start)}. ${where}.`;
+    ? say('subZero', `Zero business days from ${longDate(input.start)} is the same day. ${where}.`, longDate(input.start), where)
+    : say('subAdd', `${plural(n, 'business day', 'business days')} ${n > 0 ? 'after' : 'before'} ${longDate(input.start)}. ${where}.`, Math.abs(n).toLocaleString(NUM), n > 0 ? say('after', 'after') : say('before', 'before'), longDate(input.start), where);
   return [
     h('p', { class: 'bd-answer' }, longDate(result.date)),
     h('p', { class: 'bd-sub' }, sub),
@@ -272,7 +376,7 @@ function headline(input, result) {
 }
 
 function summaryText(input, result) {
-  if (input.op === 'between') return `${signed(result.businessDays)} business days.`;
+  if (input.op === 'between') return `${signed(result.businessDays)} ${say('bdMany', 'business days')}.`;
   return `${longDate(result.date)}.`;
 }
 
@@ -282,10 +386,10 @@ function render(input, result, { kind, note }) {
   const out = $('bd-out');
   out.textContent = '';
   out.appendChild(h('div', {}, [
-    kind === 'example' ? h('p', { class: 'bd-sheet-label' }, 'Worked example') : null,
+    kind === 'example' ? h('p', { class: 'bd-sheet-label' }, say('sheetLabel', 'Worked example')) : null,
     ...headline(input, result),
     ...holidayList(input, result, built),
-    result.note ? h('p', { class: 'bd-aside' }, result.note) : null,
+    result.note ? h('p', { class: 'bd-aside' }, result.note === IN_NOTE ? say('inNote', IN_NOTE) : result.note) : null,
     calendar(input, built),
     note ? h('p', { class: 'bd-cost' }, note) : null,
   ]));
@@ -295,9 +399,9 @@ function render(input, result, { kind, note }) {
 // ---------- running ----------
 
 function costNote(json) {
-  if (json.charged) return `Charged ${json.charged.display}. Your balance is ${json.balance.display}.`;
+  if (json.charged) return say('charged', `Charged ${json.charged.display}. Your balance is ${json.balance.display}.`, json.charged.display, json.balance.display);
   if (typeof json.freeRunsLeft === 'number') {
-    return `Free run. You have ${json.freeRunsLeft} free ${json.freeRunsLeft === 1 ? 'run' : 'runs'} left today.`;
+    return say('freeRun', `Free run. You have ${json.freeRunsLeft} free ${json.freeRunsLeft === 1 ? 'run' : 'runs'} left today.`, json.freeRunsLeft);
   }
   return null;
 }
@@ -307,9 +411,9 @@ function showError(e) {
   const allShown = showFieldErrors(fields);
   const box = $('bd-error');
   if (allShown && Object.keys(fields).length) return;
-  box.textContent = e.message;
-  if (e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, 'Sign in'));
-  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, 'Open your account'));
+  box.textContent = L === 'hi' && e.code === 'invalid_input' && e.message.startsWith('India (central') ? say('inRange', e.message) : e.message;
+  if (e.code === 'rate_limited') box.append(' ', h('a', { href: `${T.base}/account` }, say('signIn', 'Sign in')));
+  if (e.code === 'insufficient_balance' || e.code === 'cap_reached') box.append(' ', h('a', { href: `${T.base}/account#top-up` }, say('openAccount', 'Open your account')));
 }
 
 async function onSubmit(ev) {
@@ -323,7 +427,7 @@ async function onSubmit(ev) {
   // A range the engine refuses (India outside the years its list covers) is told here, free.
   const refused = outOfRange(read.input);
   if (refused) {
-    $('bd-error').textContent = refused;
+    $('bd-error').textContent = L === 'hi' && refused.startsWith('India (central') ? say('inRange', refused) : refused;
     return;
   }
   const button = $('bd-run');
@@ -345,11 +449,11 @@ function showPrice() {
     const price = json.tool.price.display;
     const el = $('bd-price');
     if (account) {
-      el.textContent = `Each run costs ${T.money(price)}, taken from your balance.`;
+      el.textContent = say('priceAccount', `Each run costs ${T.money(price)}, taken from your balance.`, T.money(price));
       $('bd-run-note').textContent = '';
     } else {
-      el.textContent = `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`;
-      $('bd-run-note').textContent = '5 free runs a day, no account needed.';
+      el.textContent = say('priceFree', `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`, T.money(price));
+      $('bd-run-note').textContent = say('runNoteFree', '5 free runs a day, no account needed.');
     }
   }).catch(() => {});
 }
@@ -363,7 +467,7 @@ function fromQuery() {
   const q = new URLSearchParams(window.location.search);
   if (!q.has('start')) return null;
   const op = q.get('op') === 'add' ? 'add' : 'between';
-  const region = Object.prototype.hasOwnProperty.call(REGIONS, q.get('region')) ? q.get('region') : 'US';
+  const region = Object.prototype.hasOwnProperty.call(REGIONS, q.get('region')) ? q.get('region') : (L === 'hi' ? IN : 'US');
   const start = (q.get('start') || '').trim();
   if (checkDate('Start', start)) return null;
   if (op === 'between') {
@@ -425,14 +529,17 @@ function start() {
     fillForm(linked);
     render(linked, linkedResult, {
       kind: 'example',
-      note: `Worked out on this page from the link you followed. Press "${$('bd-run').textContent}" to run it for real.`,
+      note: say('linkedNote', `Worked out on this page from the link you followed. Press "${$('bd-run').textContent}" to run it for real.`, $('bd-run').textContent),
     });
     return;
   }
-  const example = { op: 'between', region: 'US', start: '2026-07-01', end: '2026-07-08' };
+  // The Hindi page opens on India with a span that crosses Dussehra; every other page on the US example.
+  const example = L === 'hi'
+    ? { op: 'between', region: IN, start: '2026-10-16', end: '2026-10-23' }
+    : { op: 'between', region: 'US', start: '2026-07-01', end: '2026-07-08' };
   render(example, between(example.region, example.start, example.end), {
     kind: 'example',
-    note: 'Worked out on this page. Press "Count business days" to run it for real.',
+    note: say('exampleNote', 'Worked out on this page. Press "Count business days" to run it for real.'),
   });
 }
 

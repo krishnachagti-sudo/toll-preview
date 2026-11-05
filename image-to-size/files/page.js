@@ -6,6 +6,216 @@ import { fitToSize, PRESETS, BYTES_PER_KB } from './core.js';
 const T = window.Endwise;
 const h = T.h;
 
+// ---------- words and number formats, by page language ----------
+// The page file for a language (page.<code>.html) sets <html lang>; English is the default and its
+// output is the original. Numbers follow the language's own habits: 1,234.5 / 1.234,5 / 1 234,5.
+const L = (document.documentElement.lang || 'en').slice(0, 2);
+const SEPS = {
+  en: { g: ',', d: '.', sp: ' ' }, es: { g: ' ', d: ',', sp: ' ' }, de: { g: '.', d: ',', sp: ' ' },
+  fr: { g: ' ', d: ',', sp: ' ' }, pt: { g: '.', d: ',', sp: ' ' }, hi: { g: ',', d: '.', sp: ' ' }, ja: { g: ',', d: '.', sp: ' ' },
+};
+const SEP = SEPS[L] || SEPS.en;
+const UNIT = L === 'fr' ? { B: 'o', KB: 'Ko', MB: 'Mo' } : { B: 'B', KB: 'KB', MB: 'MB' };
+const PCT = (L === 'de' || L === 'fr' || L === 'es') ? ' %' : '%';
+const num = (n) => (L === 'en' ? n.toLocaleString('en-US') : String(Math.trunc(n)).replace(/\B(?=(\d{3})+(?!\d))/g, SEP.g));
+const dec = (text) => (SEP.d === '.' ? text : text.replace('.', SEP.d));
+
+const EN = {
+  shrinkTo: (k) => `Shrink to ${k}`,
+  kbErr: (max) => `Enter a whole number of KB from 1 to ${max}.`,
+  fileType: 'That file is not a JPEG, PNG or WebP photo. Choose a different file.',
+  noRead: 'We could not read that photo. Try another JPEG, PNG or WebP file.',
+  replaceNote: (b, d) => `${b}, ${d}. Choose another to replace it.`,
+  working: 'Working on it.',
+  alreadySay: (b) => `Your photo is already ${b}, under the limit.`,
+  doneSay: (b) => `Done. The new photo is ${b}.`,
+  tooSmall: (k) => `This photo cannot get under ${k}, even at a tenth of its size. Try a larger limit.`,
+  tooSmallSay: 'The photo could not be made that small.',
+  fail: 'Your browser could not shrink this photo. Try a smaller photo, or another browser.',
+  failSay: 'Something went wrong.',
+  weighing: 'Weighing your photo against the limit.',
+  limitMark: (k) => `Your limit, ${k}`,
+  gaugeLabel: (p, k) => `The new photo is ${p}% of your ${k} limit.`,
+  keptNote: 'Your photo is already under the limit, so we return the original file as it is. Its camera details, including location if your camera saved it, are kept.',
+  smaller: (p) => `${p}% smaller than the original.`,
+  size: 'Size', dims: 'Dimensions', quality: 'Quality used', format: 'Format', unchanged: 'Unchanged',
+  qualityVal: (q) => `${q}%, saved as JPEG`,
+  before: 'Before', after: 'After', stampKept: 'Already fits', stampFits: 'Fits',
+  of: (k) => ` of ${k}`,
+  uses: (p) => `It uses ${p}% of your limit. `,
+  previewAlt: 'The shrunk photo, shown as it will download',
+  download: (n) => `Download ${n}`,
+  photo: 'Photo',
+};
+const TR = {
+  es: {
+    shrinkTo: (k) => `Reducir a ${k}`,
+    kbErr: (max) => `Escriba un número entero de KB, de 1 a ${max}.`,
+    fileType: 'Ese archivo no es una foto JPEG, PNG o WebP. Elija otro archivo.',
+    noRead: 'No pudimos leer esa foto. Pruebe con otro archivo JPEG, PNG o WebP.',
+    replaceNote: (b, d) => `${b}, ${d}. Elija otra para reemplazarla.`,
+    working: 'Trabajando en ello.',
+    alreadySay: (b) => `Su foto ya pesa ${b}, por debajo del límite.`,
+    doneSay: (b) => `Listo. La foto nueva pesa ${b}.`,
+    tooSmall: (k) => `Esta foto no baja de ${k}, ni siquiera con una décima parte de su tamaño. Pruebe con un límite mayor.`,
+    tooSmallSay: 'No se pudo reducir la foto a ese tamaño.',
+    fail: 'Su navegador no pudo reducir esta foto. Pruebe con una foto más pequeña o con otro navegador.',
+    failSay: 'Algo salió mal.',
+    weighing: 'Comparando su foto con el límite.',
+    limitMark: (k) => `Su límite, ${k}`,
+    gaugeLabel: (p, k) => `La foto nueva ocupa el ${p}${PCT} de su límite de ${k}.`,
+    keptNote: 'Su foto ya está por debajo del límite, así que devolvemos el archivo original tal cual. Conserva los datos de la cámara, incluida la ubicación si su cámara la guardó.',
+    smaller: (p) => `${p}${PCT} más pequeña que la original.`,
+    size: 'Tamaño', dims: 'Dimensiones', quality: 'Calidad usada', format: 'Formato', unchanged: 'Sin cambios',
+    qualityVal: (q) => `${q}${PCT}, guardada como JPEG`,
+    before: 'Antes', after: 'Después', stampKept: 'Ya cumple', stampFits: 'Cumple',
+    of: (k) => ` de ${k}`,
+    uses: (p) => `Usa el ${p}${PCT} de su límite. `,
+    previewAlt: 'La foto reducida, tal como se descargará',
+    download: (n) => `Descargar ${n}`,
+    photo: 'Foto',
+  },
+  de: {
+    shrinkTo: (k) => `Auf ${k} verkleinern`,
+    kbErr: (max) => `Geben Sie eine ganze Zahl in KB von 1 bis ${max} ein.`,
+    fileType: 'Diese Datei ist kein JPEG-, PNG- oder WebP-Foto. Wählen Sie eine andere Datei.',
+    noRead: 'Wir konnten dieses Foto nicht lesen. Versuchen Sie es mit einer anderen JPEG-, PNG- oder WebP-Datei.',
+    replaceNote: (b, d) => `${b}, ${d}. Wählen Sie ein anderes Foto, um es zu ersetzen.`,
+    working: 'Wird verarbeitet.',
+    alreadySay: (b) => `Ihr Foto ist schon ${b} groß und damit unter dem Limit.`,
+    doneSay: (b) => `Fertig. Das neue Foto ist ${b} groß.`,
+    tooSmall: (k) => `Dieses Foto kommt nicht unter ${k}, auch nicht bei einem Zehntel seiner Größe. Versuchen Sie ein höheres Limit.`,
+    tooSmallSay: 'Das Foto ließ sich nicht so klein machen.',
+    fail: 'Ihr Browser konnte dieses Foto nicht verkleinern. Versuchen Sie ein kleineres Foto oder einen anderen Browser.',
+    failSay: 'Etwas ist schiefgegangen.',
+    weighing: 'Ihr Foto wird mit dem Limit abgeglichen.',
+    limitMark: (k) => `Ihr Limit, ${k}`,
+    gaugeLabel: (p, k) => `Das neue Foto nutzt ${p}${PCT} Ihres Limits von ${k}.`,
+    keptNote: 'Ihr Foto liegt schon unter dem Limit, deshalb geben wir die Originaldatei unverändert zurück. Die Kameradaten bleiben erhalten, auch der Aufnahmeort, falls Ihre Kamera ihn gespeichert hat.',
+    smaller: (p) => `${p}${PCT} kleiner als das Original.`,
+    size: 'Größe', dims: 'Abmessungen', quality: 'Verwendete Qualität', format: 'Format', unchanged: 'Unverändert',
+    qualityVal: (q) => `${q}${PCT}, als JPEG gespeichert`,
+    before: 'Vorher', after: 'Nachher', stampKept: 'Passt bereits', stampFits: 'Passt',
+    of: (k) => ` von ${k}`,
+    uses: (p) => `Es nutzt ${p}${PCT} Ihres Limits. `,
+    previewAlt: 'Das verkleinerte Foto, so wie es heruntergeladen wird',
+    download: (n) => `${n} herunterladen`,
+    photo: 'Foto',
+  },
+  fr: {
+    shrinkTo: (k) => `Réduire à ${k}`,
+    kbErr: (max) => `Saisissez un nombre entier de Ko, de 1 à ${max}.`,
+    fileType: 'Ce fichier n’est pas une photo JPEG, PNG ou WebP. Choisissez un autre fichier.',
+    noRead: 'Nous n’avons pas pu lire cette photo. Essayez un autre fichier JPEG, PNG ou WebP.',
+    replaceNote: (b, d) => `${b}, ${d}. Choisissez-en une autre pour la remplacer.`,
+    working: 'Traitement en cours.',
+    alreadySay: (b) => `Votre photo fait déjà ${b}, sous la limite.`,
+    doneSay: (b) => `Terminé. La nouvelle photo fait ${b}.`,
+    tooSmall: (k) => `Cette photo ne peut pas passer sous ${k}, même réduite au dixième de sa taille. Essayez une limite plus haute.`,
+    tooSmallSay: 'La photo n’a pas pu être réduite à cette taille.',
+    fail: 'Votre navigateur n’a pas pu réduire cette photo. Essayez une photo plus petite ou un autre navigateur.',
+    failSay: 'Un problème est survenu.',
+    weighing: 'Comparaison de votre photo avec la limite.',
+    limitMark: (k) => `Votre limite, ${k}`,
+    gaugeLabel: (p, k) => `La nouvelle photo représente ${p}${PCT} de votre limite de ${k}.`,
+    keptNote: 'Votre photo est déjà sous la limite : nous vous rendons donc le fichier d’origine tel quel. Les données de l’appareil photo, dont le lieu si votre appareil l’a enregistré, sont conservées.',
+    smaller: (p) => `${p}${PCT} plus légère que l’originale.`,
+    size: 'Poids', dims: 'Dimensions', quality: 'Qualité utilisée', format: 'Format', unchanged: 'Inchangé',
+    qualityVal: (q) => `${q}${PCT}, enregistrée en JPEG`,
+    before: 'Avant', after: 'Après', stampKept: 'Déjà conforme', stampFits: 'Conforme',
+    of: (k) => ` sur ${k}`,
+    uses: (p) => `Elle utilise ${p}${PCT} de votre limite. `,
+    previewAlt: 'La photo réduite, telle qu’elle sera téléchargée',
+    download: (n) => `Télécharger ${n}`,
+    photo: 'Photo',
+  },
+  pt: {
+    shrinkTo: (k) => `Reduzir para ${k}`,
+    kbErr: (max) => `Digite um número inteiro de KB, de 1 a ${max}.`,
+    fileType: 'Esse arquivo não é uma foto JPEG, PNG ou WebP. Escolha outro arquivo.',
+    noRead: 'Não conseguimos ler essa foto. Tente outro arquivo JPEG, PNG ou WebP.',
+    replaceNote: (b, d) => `${b}, ${d}. Escolha outra para substituir.`,
+    working: 'Processando.',
+    alreadySay: (b) => `Sua foto já tem ${b}, abaixo do limite.`,
+    doneSay: (b) => `Pronto. A nova foto tem ${b}.`,
+    tooSmall: (k) => `Esta foto não fica abaixo de ${k}, nem com um décimo do tamanho. Tente um limite maior.`,
+    tooSmallSay: 'Não foi possível deixar a foto tão pequena.',
+    fail: 'Seu navegador não conseguiu reduzir esta foto. Tente uma foto menor ou outro navegador.',
+    failSay: 'Algo deu errado.',
+    weighing: 'Comparando sua foto com o limite.',
+    limitMark: (k) => `Seu limite, ${k}`,
+    gaugeLabel: (p, k) => `A nova foto usa ${p}${PCT} do seu limite de ${k}.`,
+    keptNote: 'Sua foto já está abaixo do limite, então devolvemos o arquivo original como está. Os dados da câmera, inclusive a localização se a câmera a gravou, são mantidos.',
+    smaller: (p) => `${p}${PCT} menor que o original.`,
+    size: 'Tamanho', dims: 'Dimensões', quality: 'Qualidade usada', format: 'Formato', unchanged: 'Sem alteração',
+    qualityVal: (q) => `${q}${PCT}, salva como JPEG`,
+    before: 'Antes', after: 'Depois', stampKept: 'Já cabe', stampFits: 'Cabe',
+    of: (k) => ` de ${k}`,
+    uses: (p) => `Usa ${p}${PCT} do seu limite. `,
+    previewAlt: 'A foto reduzida, como ela será baixada',
+    download: (n) => `Baixar ${n}`,
+    photo: 'Foto',
+  },
+  hi: {
+    shrinkTo: (k) => `${k} में बदलें`,
+    kbErr: (max) => `KB की पूरी संख्या लिखें, 1 से ${max} तक।`,
+    fileType: 'यह फ़ाइल JPEG, PNG या WebP फोटो नहीं है। कोई दूसरी फ़ाइल चुनें।',
+    noRead: 'हम यह फोटो नहीं पढ़ सके। कोई दूसरी JPEG, PNG या WebP फ़ाइल आज़माएँ।',
+    replaceNote: (b, d) => `${b}, ${d}। बदलने के लिए दूसरी फोटो चुनें।`,
+    working: 'काम हो रहा है।',
+    alreadySay: (b) => `आपकी फोटो पहले से ${b} की है, यानी सीमा के अंदर।`,
+    doneSay: (b) => `हो गया। नई फोटो ${b} की है।`,
+    tooSmall: (k) => `यह फोटो ${k} से नीचे नहीं आ सकती, अपने आकार के दसवें हिस्से तक छोटी करने पर भी नहीं। बड़ी सीमा आज़माएँ।`,
+    tooSmallSay: 'फोटो इतनी छोटी नहीं हो सकी।',
+    fail: 'आपका ब्राउज़र यह फोटो छोटी नहीं कर सका। कोई छोटी फोटो या दूसरा ब्राउज़र आज़माएँ।',
+    failSay: 'कुछ गड़बड़ हो गई।',
+    weighing: 'आपकी फोटो को सीमा से मिलाया जा रहा है।',
+    limitMark: (k) => `आपकी सीमा, ${k}`,
+    gaugeLabel: (p, k) => `नई फोटो आपकी ${k} की सीमा का ${p}% है।`,
+    keptNote: 'आपकी फोटो पहले से सीमा के अंदर है, इसलिए हम असली फ़ाइल जैसी है वैसी ही लौटाते हैं। कैमरे की जानकारी, और लोकेशन अगर कैमरे ने सेव की थी, बनी रहती है।',
+    smaller: (p) => `असली फोटो से ${p}% छोटी।`,
+    size: 'साइज़', dims: 'आयाम', quality: 'इस्तेमाल की गई क्वालिटी', format: 'फ़ॉर्मैट', unchanged: 'बिना बदलाव',
+    qualityVal: (q) => `${q}%, JPEG के रूप में सेव`,
+    before: 'पहले', after: 'बाद में', stampKept: 'पहले से सही', stampFits: 'सीमा में',
+    of: (k) => `, सीमा ${k}`,
+    uses: (p) => `यह आपकी सीमा का ${p}% इस्तेमाल करती है। `,
+    previewAlt: 'छोटी की गई फोटो, जैसी डाउनलोड होगी',
+    download: (n) => `${n} डाउनलोड करें`,
+    photo: 'फोटो',
+  },
+  ja: {
+    shrinkTo: (k) => `${k}以下にする`,
+    kbErr: (max) => `KBは1から${max}までの整数で入力してください。`,
+    fileType: 'このファイルはJPEG、PNG、WebPの写真ではありません。別のファイルを選んでください。',
+    noRead: 'この写真を読み込めませんでした。別のJPEG、PNG、WebPファイルをお試しください。',
+    replaceNote: (b, d) => `${b}、${d}。置き換えるには別の写真を選んでください。`,
+    working: '処理しています。',
+    alreadySay: (b) => `この写真はすでに${b}で、上限以下です。`,
+    doneSay: (b) => `完了しました。新しい写真は${b}です。`,
+    tooSmall: (k) => `この写真は、元の大きさの10分の1まで小さくしても${k}以下になりません。上限を大きくしてお試しください。`,
+    tooSmallSay: 'その大きさまで小さくできませんでした。',
+    fail: 'お使いのブラウザでは、この写真を小さくできませんでした。より小さい写真か、別のブラウザをお試しください。',
+    failSay: '問題が発生しました。',
+    weighing: '写真のサイズを上限と照らし合わせています。',
+    limitMark: (k) => `上限 ${k}`,
+    gaugeLabel: (p, k) => `新しい写真は上限${k}の${p}%です。`,
+    keptNote: 'この写真はすでに上限以下なので、元のファイルをそのまま返します。カメラの情報は、保存されていれば位置情報も含めて残ります。',
+    smaller: (p) => `元の写真より${p}%小さくなりました。`,
+    size: 'サイズ', dims: '縦横のピクセル数', quality: '使用した画質', format: '形式', unchanged: '変更なし',
+    qualityVal: (q) => `${q}%、JPEGで保存`,
+    before: '変更前', after: '変更後', stampKept: 'すでに収まっています', stampFits: '収まりました',
+    of: (k) => `（上限 ${k}）`,
+    uses: (p) => `上限の${p}%を使っています。`,
+    previewAlt: '小さくした写真（ダウンロードされる状態）',
+    download: (n) => `${n} をダウンロード`,
+    photo: '写真',
+  },
+};
+const tx = (key, ...args) => {
+  const v = TR[L] && TR[L][key] !== undefined ? TR[L][key] : EN[key];
+  return typeof v === 'function' ? v(...args) : v;
+};
+
 const TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_KB = 100000;
 // Phones and some browsers refuse canvases past roughly this many pixels.
@@ -27,12 +237,12 @@ const state = {
 // ---------- formatting ----------
 // Sizes round down, so a photo that fits is never shown as reaching the limit when it is under it.
 function bytesText(n) {
-  if (n < BYTES_PER_KB) return `${n} B`;
-  if (n < BYTES_PER_KB * BYTES_PER_KB) return `${(Math.floor(n / (BYTES_PER_KB / 10)) / 10).toFixed(1)} KB`;
-  return `${(Math.floor(n / (BYTES_PER_KB * BYTES_PER_KB / 100)) / 100).toFixed(2)} MB`;
+  if (n < BYTES_PER_KB) return `${n}${SEP.sp}${UNIT.B}`;
+  if (n < BYTES_PER_KB * BYTES_PER_KB) return `${dec((Math.floor(n / (BYTES_PER_KB / 10)) / 10).toFixed(1))}${SEP.sp}${UNIT.KB}`;
+  return `${dec((Math.floor(n / (BYTES_PER_KB * BYTES_PER_KB / 100)) / 100).toFixed(2))}${SEP.sp}${UNIT.MB}`;
 }
-const kbText = (kb) => `${kb.toLocaleString('en-US')} KB`;
-const dimsText = (w, hgt) => `${w.toLocaleString('en-US')} × ${hgt.toLocaleString('en-US')} px`;
+const kbText = (kb) => `${num(kb)}${SEP.sp}${UNIT.KB}`;
+const dimsText = (w, hgt) => `${num(w)} × ${num(hgt)} px`;
 const stemOf = (name) => (name.replace(/\.[^.]*$/, '').replace(/[^A-Za-z0-9._-]+/g, '-').replace(/^-+|-+$/g, '') || 'photo').slice(0, 60);
 
 function say(text) { els.status.textContent = text; }
@@ -47,7 +257,7 @@ function readKb() {
 
 function paintTarget() {
   [].forEach.call(els.chips.children, (b) => b.setAttribute('aria-pressed', String(Number(b.dataset.kb) === state.kb)));
-  els.go.textContent = `Shrink to ${kbText(state.kb)}`;
+  els.go.textContent = tx('shrinkTo', kbText(state.kb));
 }
 
 function buildChips() {
@@ -68,7 +278,7 @@ function buildChips() {
 els.kb.addEventListener('input', () => {
   const kb = readKb();
   if (kb === null) {
-    els.kbErr.textContent = `Enter a whole number of KB from 1 to ${MAX_KB.toLocaleString('en-US')}.`;
+    els.kbErr.textContent = tx('kbErr', num(MAX_KB));
     return;
   }
   els.kbErr.textContent = '';
@@ -102,25 +312,25 @@ function setDropFile(file, source) {
   els.dropIcon.classList.add('has-photo');
   els.dropIcon.appendChild(h('img', { src: state.previewUrl, alt: '' }));
   els.dropText.textContent = file.name;
-  els.dropNote.textContent = `${bytesText(file.size)}, ${dimsText(source.width, source.height)}. Choose another to replace it.`;
+  els.dropNote.textContent = tx('replaceNote', bytesText(file.size), dimsText(source.width, source.height));
 }
 
 async function takeFile(file) {
   els.fileErr.textContent = '';
   if (!file) return;
   if (file.type && !TYPES.includes(file.type)) {
-    els.fileErr.textContent = 'That file is not a JPEG, PNG or WebP photo. Choose a different file.';
+    els.fileErr.textContent = tx('fileType');
     return;
   }
   let source;
   try {
     source = await decode(file);
   } catch (e) {
-    els.fileErr.textContent = 'We could not read that photo. Try another JPEG, PNG or WebP file.';
+    els.fileErr.textContent = tx('noRead');
     return;
   }
   if (!source.width || !source.height) {
-    els.fileErr.textContent = 'We could not read that photo. Try another JPEG, PNG or WebP file.';
+    els.fileErr.textContent = tx('noRead');
     return;
   }
   if (state.source) state.source.release();
@@ -183,7 +393,7 @@ function makeEncoder(source, targetBytes, run) {
 async function shrink() {
   const kb = readKb();
   if (kb === null) {
-    els.kbErr.textContent = `Enter a whole number of KB from 1 to ${MAX_KB.toLocaleString('en-US')}.`;
+    els.kbErr.textContent = tx('kbErr', num(MAX_KB));
     return;
   }
   if (!state.source) return;
@@ -194,7 +404,7 @@ async function shrink() {
   const targetBytes = kb * BYTES_PER_KB;
   state.busy = true;
   els.go.disabled = true;
-  say('Working on it.');
+  say(tx('working'));
   showWorking();
 
   try {
@@ -203,7 +413,7 @@ async function shrink() {
     if (file.type === 'image/jpeg' && file.size <= targetBytes) {
       if (run !== state.run) return;
       showResult({ kb, file, source, blob: file, size: file.size, width: source.width, height: source.height, quality: null, unchanged: true });
-      say(`Your photo is already ${bytesText(file.size)}, under the limit.`);
+      say(tx('alreadySay', bytesText(file.size)));
       return;
     }
     const enc = makeEncoder(source, targetBytes, run);
@@ -211,15 +421,15 @@ async function shrink() {
     if (run !== state.run) return;
     const found = enc.find(fit.scale, fit.quality);
     showResult({ kb, file, source, blob: found.blob, size: found.blob.size, width: found.width, height: found.height, quality: fit.quality, unchanged: false });
-    say(`Done. The new photo is ${bytesText(found.blob.size)}.`);
+    say(tx('doneSay', bytesText(found.blob.size)));
   } catch (e) {
     if (run !== state.run || e.message === 'stale') return;
     if (e.message === 'too_small') {
-      showProblem(`This photo cannot get under ${kbText(kb)}, even at a tenth of its size. Try a larger limit.`);
-      say('The photo could not be made that small.');
+      showProblem(tx('tooSmall', kbText(kb)));
+      say(tx('tooSmallSay'));
     } else {
-      showProblem('Your browser could not shrink this photo. Try a smaller photo, or another browser.');
-      say('Something went wrong.');
+      showProblem(tx('fail'));
+      say(tx('failSay'));
     }
   } finally {
     if (run === state.run) {
@@ -250,7 +460,7 @@ function gauge(pct, label, limitText) {
   needle.style.left = `${pct}%`;
   return h('div', { class: 'its-gauge', role: 'img', 'aria-label': label }, [
     h('div', { class: 'its-gauge-track' }, [fill, needle]),
-    h('div', { class: 'its-gauge-marks', 'aria-hidden': 'true' }, [h('span', null, '0'), h('span', null, `Your limit, ${limitText}`)]),
+    h('div', { class: 'its-gauge-marks', 'aria-hidden': 'true' }, [h('span', null, '0'), h('span', null, tx('limitMark', limitText))]),
   ]);
 }
 
@@ -260,7 +470,7 @@ function showWorking() {
     h('div', { class: 'its-gauge', 'aria-hidden': 'true' }, [
       h('div', { class: 'its-gauge-track' }, [h('span', { class: 'its-gauge-needle its-sweep' })]),
     ]),
-    h('p', { class: 'muted' }, 'Weighing your photo against the limit.'),
+    h('p', { class: 'muted' }, tx('weighing')),
   ]));
 }
 
@@ -288,45 +498,45 @@ function showResult({ kb, file, source, blob, size, width, height, quality, unch
   const downloadName = unchanged ? file.name : `${stem}-${kb}kb.jpg`;
 
   const reduced = unchanged
-    ? 'Your photo is already under the limit, so we return the original file as it is. Its camera details, including location if your camera saved it, are kept.'
-    : `${Math.max(0, Math.floor((1 - size / file.size) * 100))}% smaller than the original.`;
+    ? tx('keptNote')
+    : tx('smaller', Math.max(0, Math.floor((1 - size / file.size) * 100)));
 
   const afterRows = [
-    h('dt', null, 'Size'), h('dd', { class: 'num' }, bytesText(size)),
-    h('dt', null, 'Dimensions'), h('dd', { class: 'num' }, dimsText(width, height)),
-    h('dt', null, unchanged ? 'Format' : 'Quality used'),
-    h('dd', { class: 'num' }, unchanged ? 'Unchanged' : `${Math.round(quality * 100)}%, saved as JPEG`),
+    h('dt', null, tx('size')), h('dd', { class: 'num' }, bytesText(size)),
+    h('dt', null, tx('dims')), h('dd', { class: 'num' }, dimsText(width, height)),
+    h('dt', null, unchanged ? tx('format') : tx('quality')),
+    h('dd', { class: 'num' }, unchanged ? tx('unchanged') : tx('qualityVal', Math.round(quality * 100))),
   ];
 
-  const preview = h('img', { class: 'its-preview', src: state.resultUrl, alt: 'The shrunk photo, shown as it will download', width: String(width), height: String(height) });
-  const download = h('a', { class: 'btn its-download', href: state.resultUrl, download: downloadName }, `Download ${downloadName}`);
+  const preview = h('img', { class: 'its-preview', src: state.resultUrl, alt: tx('previewAlt'), width: String(width), height: String(height) });
+  const download = h('a', { class: 'btn its-download', href: state.resultUrl, download: downloadName }, tx('download', downloadName));
 
   els.out.appendChild(h('div', { class: 'its-result' }, [
-    h('p', { class: 'its-stamp' }, unchanged ? 'Already fits' : 'Fits'),
-    h('p', { class: 'its-big num' }, [bytesText(size), h('small', null, ` of ${kbText(kb)}`)]),
-    gauge(Math.min(100, pct), `The new photo is ${pct}% of your ${kbText(kb)} limit.`, kbText(kb)),
-    h('p', { class: 'its-sub' }, `${unchanged ? '' : `It uses ${pct}% of your limit. `}${reduced}`),
+    h('p', { class: 'its-stamp' }, unchanged ? tx('stampKept') : tx('stampFits')),
+    h('p', { class: 'its-big num' }, [bytesText(size), h('small', null, tx('of', kbText(kb)))]),
+    gauge(Math.min(100, pct), tx('gaugeLabel', pct, kbText(kb)), kbText(kb)),
+    h('p', { class: 'its-sub' }, `${unchanged ? '' : tx('uses', pct)}${reduced}`),
 
     h('div', { class: 'its-ba' }, [
       h('div', { class: 'its-readout' }, [
         h('div', { class: 'its-readout-col' }, [
-          h('p', { class: 'its-col-title' }, 'Before'),
+          h('p', { class: 'its-col-title' }, tx('before')),
           h('dl', null, [
-            h('dt', null, 'Size'), h('dd', { class: 'num' }, bytesText(file.size)),
-            h('dt', null, 'Dimensions'), h('dd', { class: 'num' }, dimsText(source.width, source.height)),
-            h('dt', null, 'Format'), h('dd', null, file.type ? file.type.replace('image/', '').toUpperCase() : 'Photo'),
+            h('dt', null, tx('size')), h('dd', { class: 'num' }, bytesText(file.size)),
+            h('dt', null, tx('dims')), h('dd', { class: 'num' }, dimsText(source.width, source.height)),
+            h('dt', null, tx('format')), h('dd', null, file.type ? file.type.replace('image/', '').toUpperCase() : tx('photo')),
           ]),
         ]),
         h('div', { class: 'its-readout-col its-after' }, [
-          h('p', { class: 'its-col-title' }, 'After'),
+          h('p', { class: 'its-col-title' }, tx('after')),
           h('dl', null, afterRows),
         ]),
       ]),
     ]),
 
     h('div', { class: 'its-bars' }, [
-      bar('Before', bytesText(file.size), 1, 'is-before'),
-      bar('After', bytesText(size), size / file.size, 'is-after'),
+      bar(tx('before'), bytesText(file.size), 1, 'is-before'),
+      bar(tx('after'), bytesText(size), size / file.size, 'is-after'),
     ]),
 
     h('div', { class: 'its-preview-wrap' }, [preview]),
