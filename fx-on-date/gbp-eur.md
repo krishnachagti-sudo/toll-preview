@@ -1,20 +1,21 @@
 # GBP to EUR exchange rate by date
 
-The latest ECB reference rate for GBP to EUR is 1.199141 euros per British pound, from the fixing of Thursday 5 Nov 2026; one euro is 0.83393 British pounds.
+The latest ECB reference rate for GBP to EUR is 1.198825 euros per British pound, from the fixing of Friday 6 Nov 2026; one euro is 0.83415 British pounds.
 
-- GBP to EUR: 1.199141
-- Fixing: 2026-11-05
-- EUR to GBP: 0.83393
+- GBP to EUR: 1.198825
+- Fixing: 2026-11-06
+- EUR to GBP: 0.83415
 - 2025 average: 1.167565
 
 ## GBP to EUR on any date
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=EUR&date=2026-11-05)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=EUR&date=2026-11-06)
 
 ## The last 30 fixings
 
 | Fixing | GBP to EUR | EUR to GBP | Change |
 | --- | ---: | ---: | ---: |
+| Friday 6 Nov 2026 | 1.198825 | 0.83415 | −0.03% |
 | Thursday 5 Nov 2026 | 1.199141 | 0.83393 | +0.08% |
 | Wednesday 4 Nov 2026 | 1.198179 | 0.8346 | −0.12% |
 | Tuesday 3 Nov 2026 | 1.199645 | 0.83358 | +0.27% |
@@ -44,7 +45,6 @@ The latest ECB reference rate for GBP to EUR is 1.199141 euros per British pound
 | Wednesday 30 Sep 2026 | 1.170097 | 0.85463 | +0.30% |
 | Tuesday 29 Sep 2026 | 1.166616 | 0.85718 | +0.08% |
 | Monday 28 Sep 2026 | 1.165705 | 0.85785 | +0.30% |
-| Friday 25 Sep 2026 | 1.162183 | 0.86045 | −0.07% |
 
 ## Month-end rates and monthly averages
 
@@ -52,7 +52,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Month | Month-end fixing | Month-end rate | Average | High | Low | Fixings |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| [November 2026 (to 5 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=EUR&date=2026-11-05) | Not yet | – | 1.198356 | 1.199645 | 1.196458 | 4 |
+| [November 2026 (to 6 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=EUR&date=2026-11-06) | Not yet | – | 1.19845 | 1.199645 | 1.196458 | 5 |
 | [October 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=EUR&date=2026-10-31) | 30 Oct | 1.199328 | 1.186537 | 1.199328 | 1.171331 | 22 |
 | [September 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=EUR&date=2026-09-30) | 30 Sep | 1.170097 | 1.165335 | 1.170097 | 1.162048 | 22 |
 | [August 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=GBP&quote=EUR&date=2026-08-31) | 31 Aug | 1.16757 | 1.16815 | 1.171536 | 1.165977 | 21 |
@@ -96,7 +96,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Year | Average | High | Low | First fixing | Last fixing | Fixings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026 (to 5 Nov) | 1.161956 | 1.199645 (3 Nov) | 1.141162 (27 Feb) | 1.146921 | 1.199141 | 217 |
+| 2026 (to 6 Nov) | 1.162125 | 1.199645 (3 Nov) | 1.141162 (27 Feb) | 1.146921 | 1.198825 | 218 |
 | 2025 | 1.167565 | 1.211681 (3 Mar) | 1.130454 (14 Nov) | 1.203109 | 1.1460 | 255 |
 | 2024 | 1.181352 | 1.21318 (12 Dec) | 1.154135 (2 Jan) | 1.154135 | 1.206011 | 256 |
 | 2023 | 1.149881 | 1.17495 (11 Jul) | 1.119345 (7 Feb) | 1.128286 | 1.150682 | 255 |
@@ -168,5 +168,5 @@ The last ECB fixing before that day. For example, Saturday 31 Oct 2026 uses the 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur/  
-Data as of: 2026-11-05  
+Data as of: 2026-11-06  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur.csv

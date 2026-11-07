@@ -1,20 +1,21 @@
 # USD to CAD exchange rate by date
 
-The latest ECB reference rate for USD to CAD is 1.396561 Canadian dollars per US dollar, from the fixing of Thursday 5 Nov 2026; one Canadian dollar is 0.716045 US dollars.
+The latest ECB reference rate for USD to CAD is 1.406628 Canadian dollars per US dollar, from the fixing of Friday 6 Nov 2026; one Canadian dollar is 0.71092 US dollars.
 
-- USD to CAD: 1.396561
-- Fixing: 2026-11-05
-- CAD to USD: 0.716045
+- USD to CAD: 1.406628
+- Fixing: 2026-11-06
+- CAD to USD: 0.71092
 - 2025 average: 1.398067
 
 ## USD to CAD on any date
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=CAD&date=2026-11-05)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=CAD&date=2026-11-06)
 
 ## The last 30 fixings
 
 | Fixing | USD to CAD | CAD to USD | Change |
 | --- | ---: | ---: | ---: |
+| Friday 6 Nov 2026 | 1.406628 | 0.71092 | +0.72% |
 | Thursday 5 Nov 2026 | 1.396561 | 0.716045 | +0.22% |
 | Wednesday 4 Nov 2026 | 1.393539 | 0.717598 | −0.29% |
 | Tuesday 3 Nov 2026 | 1.397531 | 0.715548 | +0.01% |
@@ -44,7 +45,6 @@ The latest ECB reference rate for USD to CAD is 1.396561 Canadian dollars per US
 | Wednesday 30 Sep 2026 | 1.418318 | 0.705061 | +0.02% |
 | Tuesday 29 Sep 2026 | 1.417966 | 0.705236 | +0.10% |
 | Monday 28 Sep 2026 | 1.416593 | 0.705919 | +0.16% |
-| Friday 25 Sep 2026 | 1.414277 | 0.707075 | +0.18% |
 
 ## Month-end rates and monthly averages
 
@@ -52,7 +52,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Month | Month-end fixing | Month-end rate | Average | High | Low | Fixings |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| [November 2026 (to 5 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=CAD&date=2026-11-05) | Not yet | – | 1.396253 | 1.397531 | 1.393539 | 4 |
+| [November 2026 (to 6 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=CAD&date=2026-11-06) | Not yet | – | 1.398328 | 1.406628 | 1.393539 | 5 |
 | [October 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=CAD&date=2026-10-31) | 30 Oct | 1.396885 | 1.414005 | 1.426169 | 1.396885 | 22 |
 | [September 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=CAD&date=2026-09-30) | 30 Sep | 1.418318 | 1.396137 | 1.418318 | 1.376845 | 22 |
 | [August 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=USD&quote=CAD&date=2026-08-31) | 31 Aug | 1.388582 | 1.390785 | 1.406079 | 1.373964 | 21 |
@@ -96,7 +96,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Year | Average | High | Low | First fixing | Last fixing | Fixings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026 (to 5 Nov) | 1.388614 | 1.426169 (12 Oct) | 1.35244 (29 Jan) | 1.373347 | 1.396561 | 217 |
+| 2026 (to 6 Nov) | 1.388696 | 1.426169 (12 Oct) | 1.35244 (29 Jan) | 1.373347 | 1.406628 | 218 |
 | 2025 | 1.398067 | 1.46496 (3 Feb) | 1.356155 (17 Jun) | 1.442205 | 1.369191 | 255 |
 | 2024 | 1.369572 | 1.441847 (24 Dec) | 1.329409 (2 Jan) | 1.329409 | 1.43883 | 256 |
 | 2023 | 1.349942 | 1.386543 (1 Nov) | 1.312539 (14 Jul) | 1.357858 | 1.325068 | 255 |
@@ -168,5 +168,5 @@ The last ECB fixing before that day. For example, Saturday 31 Oct 2026 uses the 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad/  
-Data as of: 2026-11-05  
+Data as of: 2026-11-06  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad.csv

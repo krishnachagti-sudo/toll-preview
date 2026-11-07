@@ -88,7 +88,7 @@ Cents per mile, from the IRS table. 2011, 2022 and 2026 changed mid-year.
 | July 1 to December 31, 2011 | 55.5 | 23.5 | 14 | IR-2011-69 |
 | January 1 to June 30, 2011 | 51 | 19 | 14 | IR-2010-119 |
 
-Rates for 2027 are added here once the IRS announces them, usually in December.
+Rates for 2027 are added here once the IRS announces them, usually in December: [IRS mileage rate 2027](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/irs-mileage-rate-2027/).
 
 > The standard mileage rate is optional: actual car expenses may be used instead. This page computes amounts from the IRS table; it is not tax or legal advice.
 

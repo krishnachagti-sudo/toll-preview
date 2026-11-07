@@ -1,20 +1,21 @@
 # EUR to INR exchange rate by date
 
-The latest ECB reference rate for EUR to INR is 106.0395 Indian rupees per euro, from the fixing of Thursday 5 Nov 2026; one Indian rupee is 0.00943 euros.
+The latest ECB reference rate for EUR to INR is 104.8645 Indian rupees per euro, from the fixing of Friday 6 Nov 2026; one Indian rupee is 0.009536 euros.
 
-- EUR to INR: 106.0395
-- Fixing: 2026-11-05
-- INR to EUR: 0.00943
+- EUR to INR: 104.8645
+- Fixing: 2026-11-06
+- INR to EUR: 0.009536
 - 2025 average: 98.523912
 
 ## EUR to INR on any date
 
-[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-11-05)
+[Get the rate in the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-11-06)
 
 ## The last 30 fixings
 
 | Fixing | EUR to INR | INR to EUR | Change |
 | --- | ---: | ---: | ---: |
+| Friday 6 Nov 2026 | 104.8645 | 0.009536 | −1.11% |
 | Thursday 5 Nov 2026 | 106.0395 | 0.00943 | −0.56% |
 | Wednesday 4 Nov 2026 | 106.6318 | 0.009378 | +0.68% |
 | Tuesday 3 Nov 2026 | 105.9155 | 0.009441 | −0.50% |
@@ -44,7 +45,6 @@ The latest ECB reference rate for EUR to INR is 106.0395 Indian rupees per euro,
 | Wednesday 30 Sep 2026 | 108.8205 | 0.009189 | −0.16% |
 | Tuesday 29 Sep 2026 | 108.9910 | 0.009175 | −0.20% |
 | Monday 28 Sep 2026 | 109.2095 | 0.009157 | −0.05% |
-| Friday 25 Sep 2026 | 109.2605 | 0.009152 | +0.17% |
 
 ## Month-end rates and monthly averages
 
@@ -52,7 +52,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Month | Month-end fixing | Month-end rate | Average | High | Low | Fixings |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| [November 2026 (to 5 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-11-05) | Not yet | – | 106.259325 | 106.6318 | 105.9155 | 4 |
+| [November 2026 (to 6 Nov)](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-11-06) | Not yet | – | 105.98036 | 106.6318 | 104.8645 | 5 |
 | [October 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-10-31) | 30 Oct | 106.0840 | 107.011618 | 108.8320 | 106.0095 | 22 |
 | [September 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-09-30) | 30 Sep | 108.8205 | 109.914182 | 110.8645 | 108.8205 | 22 |
 | [August 2026](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/?base=EUR&quote=INR&date=2026-08-31) | 31 Aug | 110.3610 | 110.652924 | 111.9595 | 109.8275 | 21 |
@@ -96,7 +96,7 @@ The month-end rate is the ECB fixing on the month's last day, or the last fixing
 
 | Year | Average | High | Low | First fixing | Last fixing | Fixings |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026 (to 5 Nov) | 108.810988 | 112.3170 (20 May) | 104.9647 (15 Jan) | 105.7190 | 106.0395 | 217 |
+| 2026 (to 6 Nov) | 108.792885 | 112.3170 (20 May) | 104.8645 (6 Nov) | 105.7190 | 104.8645 | 218 |
 | 2025 | 98.523912 | 107.0690 (16 Dec) | 88.3335 (3 Jan) | 88.5070 | 105.5965 | 255 |
 | 2024 | 90.556254 | 93.8130 (30 Sep) | 87.9290 (22 Nov) | 91.2850 | 88.9335 | 256 |
 | 2023 | 89.300106 | 92.4490 (28 Dec) | 86.4210 (8 Mar) | 88.4260 | 91.9045 | 255 |
@@ -158,5 +158,5 @@ The last ECB fixing before that day. For example, Saturday 31 Oct 2026 uses the 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr/  
-Data as of: 2026-11-05  
+Data as of: 2026-11-06  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr.csv

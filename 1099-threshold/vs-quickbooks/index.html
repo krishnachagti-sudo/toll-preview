@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuickBooks 1099 vs a standalone 1099 threshold check: Endwise</title>
+<meta name="description" content="QuickBooks Online builds 1099s from vendors and mapped accounts; Endwise checks any payment list against the IRS line. Compared on rules, dates and price.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/vs-quickbooks/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/1099-threshold/vs-quickbooks.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="QuickBooks 1099 vs a standalone 1099 threshold check">
+<meta property="og:description" content="QuickBooks Online builds 1099s from vendors and mapped accounts; Endwise checks any payment list against the IRS line. Compared on rules, dates and price.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/vs-quickbooks/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/vs-quickbooks/","url":"https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/vs-quickbooks/","name":"QuickBooks 1099 vs a standalone 1099 threshold check","description":"QuickBooks Online builds 1099s from vendors and mapped accounts; Endwise checks any payment list against the IRS line. Compared on rules, dates and price.","dateModified":"2026-11-06","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"1099 threshold tracker","item":"https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/"},{"@type":"ListItem","position":3,"name":"QuickBooks Online 1099s compared","item":"https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/vs-quickbooks/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does QuickBooks use the $2,000 1099 threshold?","acceptedAnswer":{"@type":"Answer","text":"Intuit's help article on creating 1099s in QuickBooks Online (updated October 20, 2026) says 1099-NEC is for contractors \"paid $2,000 or more in cash or check during the previous year\"."}},{"@type":"Question","name":"Does QuickBooks include credit card payments on 1099s?","acceptedAnswer":{"@type":"Answer","text":"No. The same Intuit article says QuickBooks excludes payments made by credit card, debit card or a third-party system, because the payment companies report them."}},{"@type":"Question","name":"Can I use Endwise with a QuickBooks export?","acceptedAnswer":{"@type":"Answer","text":"Yes. Export your vendor payments to CSV and paste them into the tracker; it reads common column names and works out each payee's total."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"1099-threshold"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li><li aria-current="page">QuickBooks Online 1099s compared</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">Compared</p>
+<h1>QuickBooks Online 1099s compared</h1>
+<p class="cp-answer">Use QuickBooks Online when your books are already there: it maps expense accounts to 1099 boxes and e-files. Use Endwise to check any payment list against the IRS line without an accounting subscription: a contractor paid $1,800 by check in 2026 gets &quot;No: $1,800.00 is under the $2,000 line for 1099-NEC box 1a. It is within 25% of the line, so collect a Form W-9 now in case more payments follow.&quot;</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="table">QuickBooks Online and Endwise side by side</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>QuickBooks Online and Endwise, as of November 2026</caption><thead><tr><th scope="col">Question</th><th scope="col">QuickBooks Online</th><th scope="col">Endwise</th></tr></thead><tbody>
+<tr><th scope="row">What it does</th><td>Builds 1099s from vendors you flag, using accounts you map to 1099 boxes, and e-files them (Intuit help article).</td><td>Decides who needs a 1099-NEC or 1099-MISC from any list of payments, and why, and writes the IRIS upload file. It does not file.</td></tr>
+<tr><th scope="row">2026 line</th><td>The article says &quot;paid $2,000 or more in cash or check during the previous year&quot;.</td><td>$2,000 for 1099-NEC, with every 1099-MISC box at its own line, from the IRS instructions (Rev. 12/2026).</td></tr>
+<tr><th scope="row">Card payments</th><td>Excludes &quot;Payments made via credit card, debit card, or third-party system&quot;.</td><td>Left out too, with the amount shown per payee.</td></tr>
+<tr><th scope="row">How totals are found</th><td>From accounts mapped to 1099 boxes; an unmapped account leaves payments off.</td><td>From what each payment row says it was for and how it was paid.</td></tr>
+<tr><th scope="row">Due dates</th><td>The article gives &quot;1099-NEC by February 2&quot; for e-filing with the IRS.</td><td>Monday, February 1, 2027 for 2026 payments, worked out from the IRS rule that moves a weekend due date to the next business day.</td></tr>
+<tr><th scope="row">Price</th><td>The article says &quot;Fees may apply&quot; for e-filing on some subscriptions.</td><td>from $0.10; the single-payee check, the lines and due dates are free.</td></tr>
+</tbody></table></div>
+<p class="cp-note">QuickBooks Online facts are from its own site, read on November 6, 2026 (as of November 2026). Plans and prices change, so check its pages before you decide.</p>
+</section>
+<section>
+<h2 id="other-better">When is QuickBooks Online the better choice?</h2>
+<ul><li>Your bookkeeping is already in QuickBooks Online and you want the forms built from it.</li><li>You want to e-file and send copies to contractors from the same place.</li><li>You pay contractors through QuickBooks and want their W-9 details kept with the vendor.</li></ul>
+</section>
+<section>
+<h2 id="endwise-better">When is Endwise the better choice?</h2>
+<ul><li>You want a second check of the vendors QuickBooks flagged, before you file, from an export.</li><li>Your payments are in a spreadsheet, a bank export or another system.</li><li>You want the reason for each payee in words, from a named IRS document, the same way every time.</li><li>You pay only when you use it: from $0.10.</li></ul>
+</section>
+<section>
+<h2 id="export">How do I check a QuickBooks export?</h2>
+<ol><li>Run a vendor or transaction report for 2026 and export it to CSV.</li><li>Keep the columns for vendor, date, amount, account and payment method.</li><li>Paste it into the <a href="/toll-preview/1099-threshold/">1099 threshold tracker</a> and read each payee's verdict.</li></ol>
+<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/form-1099-nec/create-file-1099s-using-quickbooks-online/L2BapEpb1_US_en_US">Intuit QuickBooks: Create and file 1099s with QuickBooks Online (updated October 20, 2026; read November 6, 2026)</a></li><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), read October 31, 2026</a></li><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), Filing dates, read October 31, 2026</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Does QuickBooks use the $2,000 1099 threshold?</h3><p>Intuit's help article on creating 1099s in QuickBooks Online (updated October 20, 2026) says 1099-NEC is for contractors &quot;paid $2,000 or more in cash or check during the previous year&quot;.</p><h3>Does QuickBooks include credit card payments on 1099s?</h3><p>No. The same Intuit article says QuickBooks excludes payments made by credit card, debit card or a third-party system, because the payment companies report them.</p><h3>Can I use Endwise with a QuickBooks export?</h3><p>Yes. Export your vendor payments to CSV and paste them into the tracker; it reads common column names and works out each payee's total.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/compare/track1099/">Endwise vs Track1099</a></li><li><a href="/toll-preview/1099-threshold/card-and-payment-app-payments/">Card and payment app payments</a></li><li><a href="/toll-preview/1099-threshold/contractor-payment-log/">The contractor payment log</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/1099-threshold/vs-quickbooks.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-06">2026-11-06</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+holiday,holiday_date,holiday_weekday,federal_offices_closed,reserve_banks
+New Year's Day,2027-01-01,Friday,2027-01-01,closed
+Birthday of Martin Luther King Jr.,2027-01-18,Monday,2027-01-18,closed
+Washington's Birthday,2027-02-15,Monday,2027-02-15,closed
+Memorial Day,2027-05-31,Monday,2027-05-31,closed
+Juneteenth National Independence Day,2027-06-19,Saturday,2027-06-18,open
+Independence Day,2027-07-04,Sunday,2027-07-05,closed
+Labor Day,2027-09-06,Monday,2027-09-06,closed
+Columbus Day,2027-10-11,Monday,2027-10-11,closed
+Veterans Day,2027-11-11,Thursday,2027-11-11,closed
+Thanksgiving Day,2027-11-25,Thursday,2027-11-25,closed
+Christmas Day,2027-12-25,Saturday,2027-12-24,open
+New Year's Day,2028-01-01,Saturday,2027-12-31,open

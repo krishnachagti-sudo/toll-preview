@@ -20,7 +20,7 @@ What you must keep up to date: the holiday list, with observed days already move
 
 A spreadsheet has no rates of its own. In Google Sheets, `GOOGLEFINANCE` can fetch currency data. Google says quotes are not sourced from all markets and may be delayed up to 20 minutes, that data is provided "as is" for information only, that historical data comes back as an expanded array with headers, and that historical data cannot be downloaded or accessed through the Sheets API or Apps Script. In Excel, or anywhere else, you paste a table of rates from a source you choose.
 
-What you must keep up to date: the rate table, and a rule for dates with no rate. October 31, 2026 was a Saturday. The European Central Bank publishes no reference rate that day, so Exchange rate on a date uses the fixing of October 30, 2026, 1 EUR = 1.1172 USD, and says so. In a sheet you have to write that fallback yourself, or the lookup fails or returns a wrong day.
+What you must keep up to date: the rate table, and a rule for dates with no rate. November 7, 2026 was a Saturday. The European Central Bank publishes no reference rate that day, so Exchange rate on a date uses the fixing of November 6, 2026, 1 EUR = 1.1165 USD, and says so. In a sheet you have to write that fallback yourself, or the lookup fails or returns a wrong day.
 
 [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/) returns the rate for the date from a named official source (the ECB, U.S. Treasury, IRS or HMRC table, your pick), at $0.001 per call. The spreadsheet is the better choice when you convert live and do not need an audit trail, when you already hold the rates for your own period, or when the number is only for your own planning.
 

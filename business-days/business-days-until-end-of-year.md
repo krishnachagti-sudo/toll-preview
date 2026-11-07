@@ -1,23 +1,23 @@
 # How many business days until the end of the year?
 
-37 business days from today, Thursday, November 5, 2026 (the date in Washington, DC), until the end of the year on Thursday, December 31, 2026. That is 56 calendar days, with 3 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
+36 business days from today, Saturday, November 7, 2026 (the date in Washington, DC), until the end of the year on Thursday, December 31, 2026. That is 54 calendar days, with 3 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
 
-- Business days: 37
-- Calendar days: 56
+- Business days: 36
+- Calendar days: 54
 - Holidays skipped: 3
 - Date: December 31, 2026
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2026-12-31)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2026-12-31)
 
 ## The count to the end of the year
 
 | From today | Count |
 | --- | ---: |
 | Counting to | Thursday, December 31, 2026 |
-| Calendar days | 56 |
-| Business days | 37 |
+| Calendar days | 54 |
+| Business days | 36 |
 | Holidays skipped | Nov 11: Veterans Day; Nov 26: Thanksgiving Day; Dec 25: Christmas Day |
 
 December 31 is a Thursday.
@@ -26,10 +26,10 @@ December 31 is a Thursday.
 
 | Date | Day | Calendar days | Business days |
 | --- | --- | ---: | ---: |
-| [December 31, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2026-12-31) | Dec 31, Thu | 56 | 37 |
-| [December 31, 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2027-12-31) | Dec 31, Fri | 421 | 286 |
-| [December 31, 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2028-12-31) | Dec 31, Sun | 787 | 536 |
-| [December 31, 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2029-12-31) | Dec 31, Mon | 1152 | 786 |
+| [December 31, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2026-12-31) | Dec 31, Thu | 54 | 36 |
+| [December 31, 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2027-12-31) | Dec 31, Fri | 419 | 285 |
+| [December 31, 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2028-12-31) | Dec 31, Sun | 785 | 535 |
+| [December 31, 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2029-12-31) | Dec 31, Mon | 1150 | 785 |
 
 ## How this is counted
 
@@ -74,5 +74,5 @@ No. Day 1 is the next business day after today, the way WORKDAY and NETWORKDAYS 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-year/  
-Worked out for: 2026-11-05  
+Worked out for: 2026-11-07  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-year.csv

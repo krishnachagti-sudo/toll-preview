@@ -1,23 +1,23 @@
 # How many business days until July 4?
 
-163 business days from today, Thursday, November 5, 2026 (the date in Washington, DC), until July 4 on Sunday, July 4, 2027. That is 241 calendar days, with 8 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
+162 business days from today, Saturday, November 7, 2026 (the date in Washington, DC), until July 4 on Sunday, July 4, 2027. That is 239 calendar days, with 8 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
 
-- Business days: 163
-- Calendar days: 241
+- Business days: 162
+- Calendar days: 239
 - Holidays skipped: 8
 - Date: July 4, 2027
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2027-07-04)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2027-07-04)
 
 ## The count to July 4
 
 | From today | Count |
 | --- | ---: |
 | Counting to | Sunday, July 4, 2027 |
-| Calendar days | 241 |
-| Business days | 163 |
+| Calendar days | 239 |
+| Business days | 162 |
 | Holidays skipped | Nov 11: Veterans Day; Nov 26: Thanksgiving Day; Dec 25: Christmas Day; Jan 1: New Year's Day; Jan 18: Birthday of Martin Luther King Jr.; Feb 15: Washington's Birthday; May 31: Memorial Day; Jun 18: Juneteenth National Independence Day (observed) |
 
 July 4 is a Sunday.
@@ -26,9 +26,9 @@ July 4 is a Sunday.
 
 | Date | Day | Calendar days | Business days |
 | --- | --- | ---: | ---: |
-| [July 4, 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2027-07-04) | Jul 4, Sun | 241 | 163 |
-| [July 4, 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2028-07-04) | Jul 4, Tue | 607 | 413 |
-| [July 4, 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-05&end=2029-07-04) | Jul 4, Wed | 972 | 663 |
+| [July 4, 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2027-07-04) | Jul 4, Sun | 239 | 162 |
+| [July 4, 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2028-07-04) | Jul 4, Tue | 605 | 412 |
+| [July 4, 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2029-07-04) | Jul 4, Wed | 970 | 662 |
 
 ## How this is counted
 
@@ -73,5 +73,5 @@ No. Day 1 is the next business day after today, the way WORKDAY and NETWORKDAYS 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-july-4/  
-Worked out for: 2026-11-05  
+Worked out for: 2026-11-07  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-july-4.csv

@@ -1,22 +1,20 @@
 # Is today a business day in the US?
 
-Yes: today, Thursday, November 5, 2026 (the date in Washington, DC), is a business day in the US. The next business day is Friday, November 6, 2026.
+No: today, Saturday, November 7, 2026 (the date in Washington, DC), is a Saturday, so it is not a business day in the US. The next business day is Monday, November 9, 2026.
 
-- Next business day: November 6, 2026
-- Today: Business day
-- Reserve Banks: Open
-- Left in 2026: 37
+- Next business day: November 9, 2026
+- Today: Weekend
+- Reserve Banks: Closed
+- Left in 2026: 36
 
 ## Find the next business day after any date
 
-[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-05&days=1)
+[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-07&days=1)
 
 ## Today and the next 13 days
 
 | Date | Day | Business day | Reserve Banks open | Not counted because |
 | --- | --- | --- | --- | --- |
-| November 5, 2026 | Thursday | Yes | Yes |  |
-| November 6, 2026 | Friday | Yes | Yes |  |
 | November 7, 2026 | Saturday | No | No | Weekend |
 | November 8, 2026 | Sunday | No | No | Weekend |
 | November 9, 2026 | Monday | Yes | Yes |  |
@@ -29,8 +27,10 @@ Yes: today, Thursday, November 5, 2026 (the date in Washington, DC), is a busine
 | November 16, 2026 | Monday | Yes | Yes |  |
 | November 17, 2026 | Tuesday | Yes | Yes |  |
 | November 18, 2026 | Wednesday | Yes | Yes |  |
+| November 19, 2026 | Thursday | Yes | Yes |  |
+| November 20, 2026 | Friday | Yes | Yes |  |
 
-After today, 37 business days are left in 2026 in the US ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/)).
+After today, 36 business days are left in 2026 in the US ([day by day](https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/)).
 
 ## What counts as a business day here
 
@@ -67,5 +67,5 @@ For most federal employees a Saturday holiday is observed on the Friday before a
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-business-day-us/  
-Worked out for: 2026-11-05  
+Worked out for: 2026-11-07  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/is-today-a-business-day-us.csv

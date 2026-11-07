@@ -1,6 +1,6 @@
 # Free data downloads
 
-221 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
+227 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
 
 ## What is in the files?
 
@@ -26,7 +26,7 @@ The tools behind these tables can be called over the REST API and over MCP, with
 | [1099 threshold 2026: $2,000 for 1099-NEC and most 1099-MISC boxes](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2026.csv) | 2026-10-31 |
 | [California 1099 threshold 2026: does the state follow $2,000?](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/state/california/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/state/california.csv) | 2026-10-31 |
 
-Business days: 139 downloads
+Business days: 140 downloads
 
 | Table | CSV | Data date |
 | --- | --- | --- |
@@ -66,6 +66,7 @@ Business days: 139 downloads
 | [England and Wales bank holidays 2033: dates and substitutes](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-bank-holidays-2033/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-bank-holidays-2033.csv) | 2026-10-30 |
 | [England and Wales bank holidays 2034: dates and substitutes](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-bank-holidays-2034/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-bank-holidays-2034.csv) | 2026-10-30 |
 | [England and Wales bank holidays 2035: dates and substitutes](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-bank-holidays-2035/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/england-wales-bank-holidays-2035.csv) | 2026-10-30 |
+| [Federal Reserve bank holidays 2027: ACH and wire closed days](https://krishnachagti-sudo.github.io/toll-preview/business-days/federal-reserve-holidays-2027/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/federal-reserve-holidays-2027.csv) | 2026-11-06 |
 | [How long is 10 business days? The date from today](https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-10-business-days/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-10-business-days.csv) | 2026-10-30 |
 | [How long is 2 business days? The date from today](https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-2-business-days/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-2-business-days.csv) | 2026-10-30 |
 | [How long is 3 business days? The date from today](https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-3-business-days/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-3-business-days.csv) | 2026-10-30 |
@@ -170,7 +171,7 @@ Business days: 139 downloads
 | [US federal holidays 2034: dates and observed days](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2034/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2034.csv) | 2026-10-30 |
 | [US federal holidays 2035: dates and observed days](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2035/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-federal-holidays-2035.csv) | 2026-10-30 |
 
-Delivery date and holiday order-by calculator: 8 downloads
+Delivery date and holiday order-by calculator: 11 downloads
 
 | Table | CSV | Data date |
 | --- | --- | --- |
@@ -178,18 +179,21 @@ Delivery date and holiday order-by calculator: 8 downloads
 | [Holiday shipping deadlines 2026: USPS dates and last order](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026.csv) | 2026-10-31 |
 | [Last day to order for Christmas delivery 2026, by processing time](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-christmas-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-christmas-2026.csv) | 2026-10-31 |
 | [Last day to order for Hanukkah 2026 delivery (December 4)](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-hanukkah-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-hanukkah-2026.csv) | 2026-10-31 |
+| [Last day to order for Mother's Day 2027 delivery (USPS)](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-mothers-day-2027/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-mothers-day-2027.csv) | 2026-11-06 |
+| [Last day to order for Valentine's Day 2027 delivery (USPS)](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-valentines-day-2027/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/order-by-valentines-day-2027.csv) | 2026-11-06 |
 | [Priority Mail Christmas 2026 deadline: December 18](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/priority-mail/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/priority-mail.csv) | 2026-10-31 |
 | [Priority Mail Express Christmas 2026 deadline: December 19](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/priority-mail-express/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/priority-mail-express.csv) | 2026-10-31 |
 | [USPS Ground Advantage Christmas 2026 deadline: December 17](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/ground-advantage/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/ground-advantage.csv) | 2026-10-31 |
 | [USPS holiday shipping deadlines 2026 (with your last order date)](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/holiday-shipping-deadlines-2026/usps.csv) | 2026-10-31 |
+| [USPS postal holidays 2027: no mail delivery days](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/usps-postal-holidays-2027/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/usps-postal-holidays-2027.csv) | 2026-11-06 |
 
 Exchange rate on a date: 26 downloads
 
 | Table | CSV | Data date |
 | --- | --- | --- |
-| [ECB euro reference rates: the latest fixing for every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates.csv) | 2026-11-05 |
-| [EUR to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr.csv) | 2026-11-05 |
-| [EUR to USD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd.csv) | 2026-11-05 |
+| [ECB euro reference rates: the latest fixing for every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/ecb-reference-rates.csv) | 2026-11-06 |
+| [EUR to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-inr.csv) | 2026-11-06 |
+| [EUR to USD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd.csv) | 2026-11-06 |
 | [EUR to USD exchange rate on 30 June 2024: ECB reference rate](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2024-06-30/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2024-06-30.csv) | 2024-07-12 |
 | [EUR to USD exchange rate on 30 June 2025: ECB reference rate](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2025-06-30/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2025-06-30.csv) | 2025-07-14 |
 | [EUR to USD exchange rate on 30 June 2026: ECB reference rate](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2026-06-30/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/eur-usd/2026-06-30.csv) | 2026-07-14 |
@@ -204,15 +208,15 @@ Exchange rate on a date: 26 downloads
 | [FBAR exchange rates 2023: Treasury rates for December 31](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2023/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2023.csv) | 2026-10-31 |
 | [FBAR exchange rates 2024: Treasury rates for December 31](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2024/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2024.csv) | 2026-10-31 |
 | [FBAR exchange rates 2025: Treasury rates for December 31](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2025/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/fbar-exchange-rates-2025.csv) | 2026-10-31 |
-| [GBP to EUR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur.csv) | 2026-11-05 |
-| [GBP to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr.csv) | 2026-11-05 |
+| [GBP to EUR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-eur.csv) | 2026-11-06 |
+| [GBP to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/gbp-inr.csv) | 2026-11-06 |
 | [IRS yearly average exchange rates 2021, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2021/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2021.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2022, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2022/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2022.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2023, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2023/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2023.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2024, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2024/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2024.csv) | 2026-09-17 |
 | [IRS yearly average exchange rates 2025, every currency](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2025/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/irs-yearly-average-rates-2025.csv) | 2026-09-17 |
-| [USD to CAD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad.csv) | 2026-11-05 |
-| [USD to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr.csv) | 2026-11-05 |
+| [USD to CAD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad.csv) | 2026-11-06 |
+| [USD to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr.csv) | 2026-11-06 |
 
 IFTA quarterly return calculator: 5 downloads
 
@@ -236,6 +240,12 @@ Image to size: 7 downloads
 | [Compress an image to 500 KB, free in your browser](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/compress-image-to-500kb/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/compress-image-to-500kb.csv) | 2026-10-31 |
 | [DS-160 photo size: 240 kB or less, square, 600 to 1200 pixels](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/ds-160-photo-size/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/ds-160-photo-size.csv) | 2026-10-31 |
 
+MACRS depreciation schedule: 1 download
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [MACRS depreciation tables: Table A-1 half-year percentages](https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/macrs-tables/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/macrs-tables.csv) | 2026-11-02 |
+
 Mileage reimbursement and IRS mileage log: 4 downloads
 
 | Table | CSV | Data date |
@@ -251,7 +261,7 @@ Other: 1 download
 | --- | --- | --- |
 | [IRS mileage rate history 2011 to 2026](https://krishnachagti-sudo.github.io/toll-preview/irs-mileage-rate-history/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/irs-mileage-rate-history.csv) | 2026-10-31 |
 
-Tax set-aside per payment: 23 downloads
+Tax set-aside per payment: 24 downloads
 
 | Table | CSV | Data date |
 | --- | --- | --- |
@@ -278,6 +288,7 @@ Tax set-aside per payment: 23 downloads
 | [Small business tax set-aside per payment, with QBI (2026)](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/for/small-business/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/for/small-business.csv) | 2026-10-31 |
 | [Uber Eats tax calculator 2026: how much to set aside](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/for/uber-eats/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/for/uber-eats.csv) | 2026-10-31 |
 | [Uber tax calculator 2026: how much to set aside](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/for/uber/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/for/uber.csv) | 2026-10-31 |
+| [What percentage to save for taxes, by profit and state (2026)](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/set-aside-percentage-by-income/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/set-aside-percentage-by-income.csv) | 2026-11-06 |
 
 Trucker per diem worksheet: 5 downloads
 

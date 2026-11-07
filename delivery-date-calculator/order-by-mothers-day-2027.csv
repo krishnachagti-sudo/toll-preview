@@ -1,0 +1,17 @@
+service,processing_days,last_order_date,last_order_time,hand_over_by,transit_days_max
+USPS Ground Advantage,0,2027-05-03,2:00 pm EDT,2027-05-03,5
+First-Class Mail,0,2027-05-03,2:00 pm EDT,2027-05-03,5
+Priority Mail,0,2027-05-05,2:00 pm EDT,2027-05-05,3
+Priority Mail Express,0,2027-05-05,2:00 pm EDT,2027-05-05,3
+USPS Ground Advantage,1,2027-04-30,2:00 pm EDT,2027-05-03,5
+First-Class Mail,1,2027-04-30,2:00 pm EDT,2027-05-03,5
+Priority Mail,1,2027-05-04,2:00 pm EDT,2027-05-05,3
+Priority Mail Express,1,2027-05-04,2:00 pm EDT,2027-05-05,3
+USPS Ground Advantage,2,2027-04-29,2:00 pm EDT,2027-05-03,5
+First-Class Mail,2,2027-04-29,2:00 pm EDT,2027-05-03,5
+Priority Mail,2,2027-05-03,2:00 pm EDT,2027-05-05,3
+Priority Mail Express,2,2027-05-03,2:00 pm EDT,2027-05-05,3
+USPS Ground Advantage,3,2027-04-28,2:00 pm EDT,2027-05-03,5
+First-Class Mail,3,2027-04-28,2:00 pm EDT,2027-05-03,5
+Priority Mail,3,2027-04-30,2:00 pm EDT,2027-05-05,3
+Priority Mail Express,3,2027-04-30,2:00 pm EDT,2027-05-05,3

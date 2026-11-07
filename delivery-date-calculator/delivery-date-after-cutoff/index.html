@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why your delivery date is wrong for orders after the cutoff</title>
+<meta name="description" content="The 4 reasons an estimated delivery date is wrong for after-cutoff and weekend orders, with test cases around a 2027 holiday weekend you can run yourself.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/delivery-date-after-cutoff/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/delivery-date-calculator/delivery-date-after-cutoff.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Why your delivery date is wrong for orders after the cutoff">
+<meta property="og:description" content="The 4 reasons an estimated delivery date is wrong for after-cutoff and weekend orders, with test cases around a 2027 holiday weekend you can run yourself.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/delivery-date-after-cutoff/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/delivery-date-after-cutoff/","url":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/delivery-date-after-cutoff/","name":"Why your delivery date is wrong for orders after the cutoff","description":"The 4 reasons an estimated delivery date is wrong for after-cutoff and weekend orders, with test cases around a 2027 holiday weekend you can run yourself.","dateModified":"2026-11-06","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Delivery date calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/"},{"@type":"ListItem","position":3,"name":"Why delivery dates go wrong for Friday orders after the cutoff","item":"https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/delivery-date-after-cutoff/"}]},{"@type":"HowTo","name":"Why your delivery date is wrong for orders after the cutoff","description":"The 4 reasons an estimated delivery date is wrong for after-cutoff and weekend orders, with test cases around a 2027 holiday weekend you can run yourself.","step":[{"@type":"HowToStep","position":1,"name":"Use the store's clock","text":"Compare the order time with the cutoff in the store's time zone, not the visitor's or the server's."},{"@type":"HowToStep","position":2,"name":"Move the received day","text":"After the cutoff, or on a day the store does not ship, the order is received on the next shipping day."},{"@type":"HowToStep","position":3,"name":"Count processing on the store calendar","text":"Skip the store's non-shipping days and holidays while processing."},{"@type":"HowToStep","position":4,"name":"Count transit on the carrier calendar","text":"Skip the days the carrier does not deliver, which are not always the store's days off."},{"@type":"HowToStep","position":5,"name":"Test the edges","text":"Run the cases on this page before you publish: Friday after the cutoff, a visitor in another time zone, Saturday, Sunday and a Monday holiday."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does my estimate jump by 3 or 4 days on Friday afternoon?","acceptedAnswer":{"@type":"Answer","text":"After the Friday cutoff the order is received on Monday, or Tuesday when Monday is a holiday, so the whole estimate moves past the weekend. That is correct, and customers see it as a jump."}},{"@type":"Question","name":"Whose time zone decides the cutoff?","acceptedAnswer":{"@type":"Answer","text":"The store's. An order at 1:30 pm Pacific is 4:30 pm Eastern, after a 2:00 pm Eastern cutoff."}},{"@type":"Question","name":"Does USPS deliver on Martin Luther King Jr. Day?","acceptedAnswer":{"@type":"Answer","text":"No. It is a federal and postal holiday, so it is skipped on both calendars."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"delivery-date-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/delivery-date-calculator/">Delivery date calculator</a></li><li aria-current="page">Why delivery dates go wrong for Friday orders after the cutoff</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-date)">
+<p class="eyebrow">Guide</p>
+<h1>Why delivery dates go wrong for Friday orders after the cutoff</h1>
+<p class="cp-answer">An order 1 minute after a 2:00 pm Friday cutoff is received on the next shipping day, not Friday: for an order on Friday, January 15, 2027 that is Tuesday, January 19, because the weekend and Martin Luther King Jr. Day come first. With 1 processing day it ships Wednesday, January 20 instead of Tuesday, January 19, and arrives Friday, January 22 to Tuesday, January 26 by Ground Advantage.</p>
+
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run your own edge case</h2><p class="muted">Set the order time, cutoff and processing days of your store.</p><form method="get" action="/toll-preview/delivery-date-calculator/" class="cp-tool-form"><input type="hidden" name="op" value="delivery-date"><input type="hidden" name="order" value="2027-01-15T14:01"><input type="hidden" name="service" value="ground-advantage"><input type="hidden" name="tz" value="America/New_York"><input type="hidden" name="ship" value="mon,tue,wed,thu,fri"><div class="field"><label for="tf-processing">Processing days</label><input type="number" id="tf-processing" name="processing" value="1"></div><div class="field"><label for="tf-cutoff">Same-day cutoff (Eastern, 24-hour)</label><input type="text" id="tf-cutoff" name="cutoff" value="14:00"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work out the delivery date</button></form><p class="small"><a href="/toll-preview/delivery-date-calculator/?op=delivery-date&amp;order=2027-01-15T14%3A01&amp;service=ground-advantage&amp;tz=America%2FNew_York&amp;ship=mon%2Ctue%2Cwed%2Cthu%2Cfri&amp;processing=1&amp;cutoff=14%3A00">Open this order in the full calculator</a></p></aside>
+<section>
+<h2 id="causes">What are the usual causes?</h2>
+<ul><li>The cutoff is compared in the wrong time zone, often the visitor's browser or a server in UTC.</li><li>Processing days are counted as calendar days, so a weekend counts as processing.</li><li>Holidays are missing from the store calendar or the carrier calendar.</li><li>The store and carrier calendars are treated as one: USPS delivers on Saturdays and on some Fridays federal offices take off.</li></ul>
+</section>
+<section>
+<h2 id="tests">Test cases around Martin Luther King Jr. Day 2027</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>a store that ships Monday to Friday with a 2:00 pm Eastern cutoff, 1 processing day, USPS Ground Advantage.</caption><thead><tr><th scope="col">Order</th><th scope="col">Received</th><th scope="col">Ships</th><th scope="col">Arrives</th></tr></thead><tbody>
+<tr><th scope="row">Friday, 1 minute before the cutoff</th><td>Fri, Jan 15</td><td>Tue, Jan 19</td><td>Thu, Jan 21 to Mon, Jan 25</td></tr>
+<tr><th scope="row">Friday, 1 minute after the cutoff</th><td>Tue, Jan 19</td><td>Wed, Jan 20</td><td>Fri, Jan 22 to Tue, Jan 26</td></tr>
+<tr><th scope="row">Friday, 1:30 pm Pacific (4:30 pm Eastern)</th><td>Tue, Jan 19</td><td>Wed, Jan 20</td><td>Fri, Jan 22 to Tue, Jan 26</td></tr>
+<tr><th scope="row">Saturday morning</th><td>Tue, Jan 19</td><td>Wed, Jan 20</td><td>Fri, Jan 22 to Tue, Jan 26</td></tr>
+<tr><th scope="row">Sunday evening</th><td>Tue, Jan 19</td><td>Wed, Jan 20</td><td>Fri, Jan 22 to Tue, Jan 26</td></tr>
+<tr><th scope="row">Monday, Martin Luther King Jr. Day</th><td>Tue, Jan 19</td><td>Wed, Jan 20</td><td>Fri, Jan 22 to Tue, Jan 26</td></tr>
+</tbody></table></div>
+<p>Paste these into your own estimate and check each row. If one differs, the cause list above usually names it.</p>
+</section>
+<section>
+<h2 id="steps">What the calculator shows for each order</h2>
+<ul><li>Ordered Friday, January 15, 2027 at 2:01 pm EST; that is after the 2:00 pm cutoff, so it is received on the next shipping day, Tuesday, January 19, 2027.</li><li>1 processing day on the store's calendar (the store ships Monday to Friday, not on federal holidays) puts the handover on Wednesday, January 20, 2027.</li><li>USPS Ground Advantage takes 2 to 5 days (USPS's stated delivery time), counted on the carrier's calendar (USPS delivers Monday to Saturday, not on postal holidays): it arrives between Friday, January 22, 2027 and Tuesday, January 26, 2027.</li><li>Skipped on the way: Monday, January 18, Birthday of Martin Luther King Jr. (store's calendar).</li></ul>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://about.usps.com/newsroom/events/">USPS Newsroom: Holidays and events (read Saturday, October 31, 2026)</a></li><li><a href="https://www.usps.com/ship/mail-shipping-services.htm">USPS: Mail and shipping services, delivery times (read Saturday, October 31, 2026)</a></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Use the store's clock.</strong> Compare the order time with the cutoff in the store's time zone, not the visitor's or the server's.</li><li><strong>Move the received day.</strong> After the cutoff, or on a day the store does not ship, the order is received on the next shipping day.</li><li><strong>Count processing on the store calendar.</strong> Skip the store's non-shipping days and holidays while processing.</li><li><strong>Count transit on the carrier calendar.</strong> Skip the days the carrier does not deliver, which are not always the store's days off.</li><li><strong>Test the edges.</strong> Run the cases on this page before you publish: Friday after the cutoff, a visitor in another time zone, Saturday, Sunday and a Monday holiday.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Why does my estimate jump by 3 or 4 days on Friday afternoon?</h3><p>After the Friday cutoff the order is received on Monday, or Tuesday when Monday is a holiday, so the whole estimate moves past the weekend. That is correct, and customers see it as a jump.</p><h3>Whose time zone decides the cutoff?</h3><p>The store's. An order at 1:30 pm Pacific is 4:30 pm Eastern, after a 2:00 pm Eastern cutoff.</p><h3>Does USPS deliver on Martin Luther King Jr. Day?</h3><p>No. It is a federal and postal holiday, so it is skipped on both calendars.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/delivery-date-calculator/backorder-delivery-estimate/">Different estimates for backorder items</a></li><li><a href="/toll-preview/delivery-date-calculator/christmas-order-deadline-banner/">Christmas order deadline banner</a></li><li><a href="/toll-preview/delivery-date-calculator/usps-postal-holidays-2027/">USPS postal holidays 2027</a></li><li><a href="/toll-preview/delivery-date-calculator/">Delivery date calculator</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/delivery-date-calculator/delivery-date-after-cutoff.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-06">2026-11-06</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>
