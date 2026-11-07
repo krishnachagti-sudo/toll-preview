@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bulk redirect chain checker: hops, loops, 301 vs 302: Endwise</title>
+<meta name="description" content="Paste up to 1,000 URLs or an old-to-new redirect map and see every hop, loops, 301 vs 302, plain-HTTP hops and the final status. Up to 10 URLs free; $0.0003 a URL.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/redirect-chain-checker/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"redirect-chain-checker"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Bulk redirect chain checker">
+<meta property="og:description" content="Follow up to 1,000 URLs (or an old-to-new redirect map) hop by hop and get, per URL, every status code, the final URL and status, loops, chains, temporary 302/303/307 vs permanent 301/308 redirects, plain-HTTP hops, Google's 10-hop limit and whether it lands on the expected target, with a CSV.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/","url":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/","name":"Bulk redirect chain checker","description":"Follow up to 1,000 URLs (or an old-to-new redirect map) hop by hop and get, per URL, every status code, the final URL and status, loops, chains, temporary 302/303/307 vs permanent 301/308 redirects, plain-HTTP hops, Google's 10-hop limit and whether it lands on the expected target, with a CSV.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Bulk redirect chain checker","item":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/"}]},{"@type":"WebApplication","name":"Bulk redirect chain checker","url":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/","description":"Follow up to 1,000 URLs (or an old-to-new redirect map) hop by hop and get, per URL, every status code, the final URL and status, loops, chains, temporary 302/303/307 vs permanent 301/308 redirects, plain-HTTP hops, Google's 10-hop limit and whether it lands on the expected target, with a CSV.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Check of up to 10 URLs on this page","price":"0","priceCurrency":"USD"},{"name":"Bulk check","@type":"Offer","price":"0.0003","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.0003","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"URL"}}},{"@type":"Offer","name":"Pasted curl output and the status code table","price":"0","priceCurrency":"USD"}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="rc">
+  <section class="wrap rc-intro">
+    <p class="eyebrow">Website checks</p>
+    <h1>Bulk redirect chain checker</h1>
+    <p class="lede">Paste the URLs you moved, or your redirect map with the old and new URL on each line. Every URL is followed hop by hop. You see each status code, where it loops, which redirects are temporary 302s instead of 301s, any plain-HTTP hop, Google's 10-hop limit, the final status, and whether each old URL lands where you meant it to.</p>
+    <p data-prices class="rc-price" id="rc-price">Up to 10 URLs at a time are free on this page. Longer lists need an account: $0.0003 per URL, and $0.0001 per URL after 20,000 in a month. A URL listed twice is charged once, and URLs not reached in a run are not charged.</p>
+  </section>
+
+  <section class="wrap rc-desk" aria-label="Redirect check">
+    <form class="rc-form" id="rc-form" novalidate>
+      <div class="field">
+        <label for="rc-list">URLs, or old and new URL per line</label>
+        <textarea id="rc-list" rows="10" spellcheck="false" autocomplete="off" aria-describedby="rc-list-hint rc-list-err" placeholder="https://example.com/old-page, https://example.com/new-page
+http://example.com/about"></textarea>
+        <p class="hint" id="rc-list-hint">One per line. For a redirect map, put the expected new URL (or just its path, like /new-page) after a comma or tab.</p>
+        <p class="field-error" id="rc-list-err"></p>
+      </div>
+      <details class="rc-more" id="rc-more">
+        <summary>Options</summary>
+        <div class="field">
+          <label for="rc-ua">Send requests as</label>
+          <select id="rc-ua">
+            <option value="endwise">Our own checker (says who it is)</option>
+            <option value="googlebot">Googlebot smartphone</option>
+            <option value="chrome">Chrome on Windows</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="rc-hops">Stop after this many redirects</label>
+          <input type="number" id="rc-hops" min="1" max="20" value="20">
+        </div>
+        <label class="rc-check"><input type="checkbox" id="rc-meta" checked> Follow meta refresh tags</label>
+        <label class="rc-check"><input type="checkbox" id="rc-issues"> Show only URLs with something to fix or review</label>
+      </details>
+      <p class="form-error" id="rc-error" role="alert"></p>
+      <button class="btn" type="submit" id="rc-go">Check the redirects</button>
+      <p class="hint rc-go-note" id="rc-go-note">Up to 10 URLs free.</p>
+      <p class="visually-hidden" id="rc-status" role="status"></p>
+    </form>
+
+    <div class="rc-out" id="rc-out" aria-live="polite">
+      <p class="rc-label">Sample: a recorded run</p>
+      <p class="rc-answer" id="rc-sample-answer">Of 7 URLs, 1 answers with no redirect, 3 redirect in one hop, 2 chain through 2 or more hops (longest 3), 2 use a temporary redirect, 1 passes through plain http and 1 ends on a 4xx or 5xx. Against your map: 1 lands on the expected target in one hop, 1 reaches it through a chain, 0 land elsewhere.</p>
+      <p class="muted">A real run of this checker on seven public URLs, recorded on November 7, 2026 during the build. The full report loads with the page.</p>
+    </div>
+  </section>
+
+  <section class="wrap rc-rules" data-jump="What the report says" aria-labelledby="rc-rules-title">
+    <h2 id="rc-rules-title">What the report says</h2>
+    <div class="rc-rule-cols">
+      <div>
+        <h3>Permanent or temporary</h3>
+        <p>Google treats 301 and 308 as permanent redirects and 302, 303 and 307 as temporary; an instant meta refresh counts as permanent and a delayed one as temporary. Google uses a permanent redirect as a strong signal to index the target and a temporary one as a weak signal.</p>
+      </div>
+      <div>
+        <h3>Chains, loops and limits</h3>
+        <p>One hop is the aim. Two or more is a chain, with the URL to point straight at; five or more is long. Google's crawlers follow up to 10 hops by default; past that the report says so. A URL that comes back to one it already visited is a loop, with the hop where it starts.</p>
+      </div>
+      <div>
+        <h3>Plain HTTP and the expected target</h3>
+        <p>Any http:// URL after the first hop, a jump from https to http, or a chain that ends on http is flagged. With a redirect map, each old URL is matched against its new URL: in one hop, through a chain, off only by a trailing slash, sent to the homepage, or somewhere else.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap rc-curl" data-jump="Paste curl output" aria-labelledby="rc-curl-title">
+    <h2 id="rc-curl-title">Already ran curl? Paste its output</h2>
+    <p class="rc-sub">Paste what <code>curl -sIL https://your-url</code> printed and the URL you gave it. The same rules judge it, with nothing sent anywhere. Free.</p>
+    <div class="rc-pair">
+      <div class="field"><label for="rc-curl-url">The URL you ran curl on</label><input type="text" id="rc-curl-url" spellcheck="false" autocomplete="off" placeholder="http://example.com/old-page"></div>
+      <div class="field"><label for="rc-curl-expected">Expected target (optional)</label><input type="text" id="rc-curl-expected" spellcheck="false" autocomplete="off" placeholder="/new-page"></div>
+    </div>
+    <div class="field"><label for="rc-curl">curl output</label><textarea id="rc-curl" rows="6" spellcheck="false"></textarea></div>
+    <p class="form-error" id="rc-curl-error" role="alert"></p>
+    <button class="btn btn-quiet" type="button" id="rc-curl-go">Judge this output</button>
+    <div id="rc-curl-out" aria-live="polite"></div>
+  </section>
+
+  <section class="wrap rc-legal" data-jump="Please read" aria-labelledby="rc-legal-title">
+    <h2 id="rc-legal-title">Please read</h2>
+    <ul id="rc-disclaimers">
+      <li>A check shows what each server answered at that moment, to one request from our server in the United States with the user agent shown. Servers can answer differently for other user agents, countries, cookies or logins, and some block automated requests.</li>
+      <li>JavaScript redirects are not followed: only HTTP redirects (301, 302, 303, 307, 308), the Refresh header and meta refresh tags in the first 64 kB of a page.</li>
+      <li>What Google does with redirects is quoted from Google Search Central with the date it was read. Nothing here promises a ranking effect.</li>
+      <li>Private, local, link-local (cloud metadata) and reserved addresses are never fetched, on any hop; only ports 80, 443, 8080 and 8443 are used.</li>
+      <li>Check only sites you own or are working on. Each host gets at most two requests at a time.</li>
+    </ul>
+    <h3>Prices</h3>
+    <ul class="endwise-prices"><li><strong>Check of up to 10 URLs on this page</strong>: free.</li><li><strong>Bulk check</strong>: $0.0003 per URL for the first 20,000 each calendar month, then $0.0001 per URL; you pay only for what is delivered and the rest is refunded at once; a URL listed twice in a call is charged once; a private address, or a URL not reached in the call's time budget, is not delivered.</li><li><strong>Pasted curl output and the status code table</strong>: free.</li></ul>
+    <h3>Sources, read November 7, 2026</h3>
+    <ul class="rc-sources" id="rc-sources">
+      <li><a href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">Google Search Central: Redirects and Google Search</a> (last updated April 14, 2026): which redirects are permanent and temporary, meta refresh and JavaScript redirects</li>
+      <li><a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors">Google Search Central: HTTP status codes, network and DNS errors</a> (last updated February 4, 2026): the 10-hop limit and strong and weak signals</li>
+      <li><a href="https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/">Cloudflare: ERR_TOO_MANY_REDIRECTS</a> (last updated September 1, 2026): the Flexible encryption mode loop</li>
+      <li><a href="https://www.rfc-editor.org/rfc/rfc9110#section-15.4">RFC 9110, section 15.4</a>: the 3xx status codes and request methods</li>
+      <li><a href="https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/">Search Engine Journal, January 22, 2020</a>: John Mueller's advice to keep chains under 5 hops</li>
+    </ul>
+  </section>
+
+<section class="wrap cp-index" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Redirect checks</h2>
+<h3>Checks</h3><ul class="cp-index-list"><li><a href="/toll-preview/redirect-chain-checker/301-redirect-checker/" title="301 redirect checker (bulk): 301 or 302 on every hop">301 or 302: permanent and temporary redirects</a></li><li><a href="/toll-preview/redirect-chain-checker/redirect-loop-checker/" title="Redirect loop checker: find the cause of too many redirects">Redirect loops and too many redirects</a></li><li><a href="/toll-preview/redirect-chain-checker/http-to-https-redirect-checker/" title="HTTP to HTTPS redirect checker: all four homepage variants">HTTP to HTTPS and the four homepage variants</a></li><li><a href="/toll-preview/redirect-chain-checker/redirect-chain-contains-http/" title="Redirect chain contains HTTP: find the plain-HTTP hop">Plain HTTP inside a redirect chain</a></li><li><a href="/toll-preview/redirect-chain-checker/googlebot-redirect-checker/" title="Googlebot redirect checker: follow redirects as Googlebot">Redirects as Googlebot sees them</a></li><li><a href="/toll-preview/redirect-chain-checker/www-redirect-checker/" title="www redirect checker: www to non-www (or back) in one hop">www and non-www</a></li><li><a href="/toll-preview/redirect-chain-checker/bulk-http-status-checker/" title="Bulk HTTP status checker: final status after redirects">HTTP status of a list, after redirects</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Reference pages</h2>
+<h3>Reference</h3><ul class="cp-index-list"><li><a href="/toll-preview/redirect-chain-checker/redirect-status-codes/" title="Redirect status codes for SEO: 301 vs 302 vs 303 vs 307 vs 308">Redirect status codes</a></li><li><a href="/toll-preview/redirect-chain-checker/how-many-redirects-is-too-many/" title="How many redirects is too many? Googlebot follows up to 10 hops">How many redirects is too many</a></li></ul>
+</section>
+
+  <section class="wrap rc-code" aria-label="Use this from code">
+    <div id="rc-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This check needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/redirect-chain-checker/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

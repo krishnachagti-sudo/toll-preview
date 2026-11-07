@@ -1,0 +1,5 @@
+date,fund,method,amount,running_total,acknowledgment_needed,weekday
+2026-03-01,After-school program,Bank transfer,250.00,250.00,yes,Sunday
+2026-06-01,After-school program,Bank transfer,275.00,525.00,yes,Monday
+2026-09-01,After-school program,Bank transfer,250.00,775.00,yes,Tuesday
+2026-12-01,After-school program,Bank transfer,400.00,1175.00,yes,Tuesday

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirect loop checker: find the cause of too many redirects</title>
+<meta name="description" content="Find where a redirect loop starts and which two rules fight (http and https, www, trailing slash, Cloudflare Flexible SSL), for one URL or a list.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-loop-checker/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/redirect-chain-checker/redirect-loop-checker.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Redirect loop checker: find the cause of too many redirects">
+<meta property="og:description" content="Find where a redirect loop starts and which two rules fight (http and https, www, trailing slash, Cloudflare Flexible SSL), for one URL or a list.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-loop-checker/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-loop-checker/","url":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-loop-checker/","name":"Redirect loop checker: find the cause of too many redirects","description":"Find where a redirect loop starts and which two rules fight (http and https, www, trailing slash, Cloudflare Flexible SSL), for one URL or a list.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Redirect chain checker","item":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/"},{"@type":"ListItem","position":3,"name":"Redirect loop checker","item":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-loop-checker/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I fix ERR_TOO_MANY_REDIRECTS on Cloudflare?","acceptedAnswer":{"@type":"Answer","text":"Cloudflare: with the Flexible encryption mode, redirect loops occur if the origin redirects all HTTP requests to HTTPS; the fix is to remove the origin's HTTPS redirects or set the SSL/TLS encryption mode to Full or higher."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"redirect-chain-checker"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/redirect-chain-checker/">Redirect chain checker</a></li><li aria-current="page">Redirect loop checker</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Redirect checks</p>
+<h1>Redirect loop checker</h1>
+<p class="cp-answer">A redirect loop is a chain that comes back to a URL it already visited; the checker stops there, names the hop where the loop starts and the two rules that alternate. Of the 5 common patterns below, 4 loop within two URLs.</p>
+
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Find your loop</h2><p class="muted">Paste the URL that shows &quot;too many redirects&quot;. Up to 10 URLs free.</p><form method="get" action="/toll-preview/redirect-chain-checker/" class="cp-tool-form"><div class="field"><label for="tf-list">URL to check (paste a list in the full tool)</label><input type="text" id="tf-list" name="list" value="https://example.com/"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the redirects</button></form><p class="small"><a href="/toll-preview/redirect-chain-checker/?list=https%3A%2F%2Fexample.com%2F">Open this in the full tool</a></p></aside>
+<section>
+<h2>The usual loops and what the checker says</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Pattern</th><th scope="col">Hops</th><th scope="col" class="r num">Loop starts at hop</th><th scope="col">What the report says</th></tr></thead><tbody>
+<tr><th scope="row">http and https fight</th><td>301 https://example.com/a &gt; 301 http://example.com/a</td><td class="r num">1</td><td>The loop alternates between http and https of the same URL: one rule sends visitors to https and another sends them back. Look for an https-to-http rule at the origin, a proxy or a CMS setting.</td></tr>
+<tr><th scope="row">www and bare host fight</th><td>301 https://example.com/ &gt; 301 https://www.example.com/</td><td class="r num">1</td><td>The loop alternates between the www and bare host: two rules disagree on which one is canonical.</td></tr>
+<tr><th scope="row">Trailing slash added and removed</th><td>301 https://example.com/shop &gt; 301 https://example.com/shop/</td><td class="r num">1</td><td>The loop adds and removes a trailing slash: two rules disagree on the slash.</td></tr>
+<tr><th scope="row">Three-step cycle</th><td>302 https://example.com/a &gt; 302 https://example.com/b &gt; 302 https://example.com/c</td><td class="r num">1</td><td>Redirect loop</td></tr>
+<tr><th scope="row">Redirects to itself behind Cloudflare</th><td>301 https://example.com/</td><td class="r num">1</td><td>This URL redirects to itself behind Cloudflare: Cloudflare documents this loop when the origin redirects HTTP to HTTPS while the SSL/TLS encryption mode is Flexible. Its fix: remove the origin's HTTPS redirect or set the mode to Full or higher.</td></tr>
+</tbody></table></div>
+<p>The browser shows ERR_TOO_MANY_REDIRECTS (Chrome) or &quot;The page isn't redirecting properly&quot; (Firefox) and gives up. It does not say which rule is wrong; the hop list does.</p>
+</section>
+<section>
+<h2>Cloudflare's documented loops</h2>
+<ul><li>Flexible encryption mode, while the origin redirects all HTTP requests to HTTPS: Cloudflare reaches the origin over HTTP, the origin sends it to HTTPS, and the visitor sees the same URL again. Fix: remove the origin's HTTPS redirects or set the encryption mode to Full or higher.</li><li>Always Use HTTPS on, while the origin redirects HTTPS to HTTP. Fix: remove the origin's HTTP redirect or turn the setting off.</li><li>Redirect rules or Page Rules that conflict with each other.</li></ul>
+<ul class="cp-sources"><li><a href="https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/">Cloudflare: ERR_TOO_MANY_REDIRECTS (updated September 1, 2026, read November 7, 2026)</a></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors">Google Search Central: HTTP status codes, network and DNS errors (updated February 4, 2026, read November 7, 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>How do I fix ERR_TOO_MANY_REDIRECTS on Cloudflare?</h3><p>Cloudflare: with the Flexible encryption mode, redirect loops occur if the origin redirects all HTTP requests to HTTPS; the fix is to remove the origin's HTTPS redirects or set the SSL/TLS encryption mode to Full or higher.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/redirect-chain-checker/http-to-https-redirect-checker/">HTTP to HTTPS redirect checker</a></li><li><a href="/toll-preview/redirect-chain-checker/how-many-redirects-is-too-many/">How many redirects is too many?</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/redirect-chain-checker/redirect-loop-checker.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -144,6 +144,11 @@
   <td class="words">from $0.10</td>
 </tr>
 <tr>
+  <td><code>redirect-chain-checker</code></td>
+  <td><b class="t">Bulk redirect chain checker</b><span class="d">Follow up to 1,000 URLs (or an old-to-new redirect map) hop by hop and get, per URL, every status code, the final URL and status, loops, chains, temporary 302/303/307 vs permanent 301/308 redirects, plain-HTTP hops, Google's 10-hop limit and whether it lands on the expected target, with a CSV. Prices: Check of up to 10 URLs on this page: free. Bulk check: $0.0003 per URL for the first 20,000 each calendar month, then $0.0001 per URL; you pay only for what is delivered and the rest is refunded at once; a URL listed twice in a call is charged once; a private address, or a URL not reached in the call's time budget, is not delivered. Pasted curl output and the status code table: free.</span></td>
+  <td class="words">from $0.0003</td>
+</tr>
+<tr>
   <td><code>business-days</code></td>
   <td><b class="t">Business days</b><span class="d">Count the business days between two dates, or add business days to a date, for US federal, England and Wales, or India central government holidays. US holidays are the statutory federal ones only, with no executive-order closures. India (&quot;IN-CENTRAL-DELHI&quot;) is the closed (gazetted) holidays of central government offices in Delhi and New Delhi from the Department of Personnel and Training's yearly list, 2025 to 2027 only: not restricted holidays, not any state's list and not bank holidays. Add your own days off to skip them too. Costs $0.0005 per call.</span></td>
   <td class="words">$0.0005</td>
@@ -157,6 +162,11 @@
   <td><code>fx-on-date</code></td>
   <td><b class="t">Exchange rate on a date</b><span class="d">The official rate for a currency pair on a date, with the date or period actually used. By default the ECB euro reference rate (the latest fixing in the 7 days up to the date, and which); or, with source, the US Treasury reporting rate, the IRS yearly average or the HMRC monthly rate, each named with the publication it came from. Costs $0.001 per call.</span></td>
   <td class="words">$0.001</td>
+</tr>
+<tr>
+  <td><code>hours-calculator</code></td>
+  <td><b class="t">Hours calculator and timesheet</b><span class="d">Add up clock-in and clock-out times minus unpaid breaks, including overnight and split shifts and daylight-saving nights, split overtime by fixed workweek (over 40 hours, plus optional daily thresholds), check what time-clock rounding did to the punches under 29 CFR 785.48, convert hours and minutes to decimal, and make a signable timesheet PDF. Prices: Totals, conversions and the rounding check on this page: free. Totals, conversion or hours between times over the API or MCP: $0.002 per call. Timesheet PDF and CSV for one employee and pay period: $0.15 per timesheet; a repeat for the same employee and pay period is free for 30 days. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td>
+  <td class="words">from $0.002</td>
 </tr>
 <tr>
   <td><code>ifta-calculator</code></td>
@@ -174,8 +184,18 @@
   <td class="words">from $0.001</td>
 </tr>
 <tr>
+  <td><code>date-resolver</code></td>
+  <td><b class="t">Natural-language date resolver</b><span class="d">Turn a phrase such as &quot;90 days from today&quot;, &quot;10 business days after next Friday&quot; or &quot;end of next month&quot; into one exact calendar date with its weekday, from an explicit reference date. Business days skip weekends and US federal, England and Wales or India central government holidays, and every holiday skipped is named. Ambiguous phrases (&quot;next Friday&quot;) return both readings. Call it instead of doing date arithmetic yourself. Prices: Resolved phrase: $0.0005 per phrase for the first 10,000 each calendar month, then $0.0002 per phrase.</span></td>
+  <td class="words">from $0.0005</td>
+</tr>
+<tr>
   <td><code>qr-code-generator</code></td>
   <td><b class="t">QR code generator</b><span class="d">Static QR codes that never expire, for links, WiFi, contact cards, email, text messages, calls and map locations: every file is read back before you get it and shows the exact text it holds. Make a whole batch from a spreadsheet as a ZIP and a label sheet, and check whether a code you already printed goes through a vendor that can switch it off. Prices: Static code or payload over the API or MCP: $0.002 per call. Bulk codes (ZIP, manifest and label sheet): $0.002 per code for the first 5,000 each calendar month, then $0.0005 per code, at least 10 x the price per code for each job; rows that cannot be made into a code are never charged. Read a code from a PNG over the API or MCP: $0.002 per image. Expiry check over the API or MCP: $0.005 per check. Expiry check on this page: free.</span></td>
+  <td class="words">from $0.002</td>
+</tr>
+<tr>
+  <td><code>spf-lookup-counter</code></td>
+  <td><b class="t">SPF lookup counter</b><span class="d">Count exactly how many of the 10 DNS lookups a domain's SPF record uses under RFC 7208, with every nested include, void lookups, the mx limit and macros, the term that goes over, what a receiver decides for one sending IP, and what-if edits before you publish. Prices: Lookup count for one domain or draft record: $0.002 per check for the first 10,000 each calendar month, then $0.001 per check. Batch of up to 50 domains: $0.002 per domain for the first 10,000 each calendar month, then $0.001 per domain; you pay only for what is delivered and the rest is refunded at once. Macro explanation (no DNS): free.</span></td>
   <td class="words">from $0.002</td>
 </tr>
 <tr>
@@ -187,6 +207,16 @@
   <td><code>trucker-per-diem</code></td>
   <td><b class="t">Trucker per diem worksheet</b><span class="d">Turn an owner-operator's days on the road into the year's per diem deduction at the IRS transportation-industry rate in force each day ($80 since October 1, 2024; $69 and $66 before), with departure and return days at 3/4, the 80% hours-of-service limit, log checks and a worksheet for the preparer. Prices: Worksheet: $9.00 per driver-year worksheet (PDF and CSV); a repeat for the same driver and tax year costs $0.10 for 15 months. Log preview: $0.02 per log check; totals, monthly table and log checks, no files. Quick total: $0.02 per calculation. Rates lookup: $0.02 per lookup.</span></td>
   <td class="words">from $0.02</td>
+</tr>
+<tr>
+  <td><code>year-end-giving-statements</code></td>
+  <td><b class="t">Year-end giving statements</b><span class="d">Turn a year of gift rows (CSV or a list) into one contribution statement PDF per donor or household: every gift, the total, the IRS Publication 1771 goods-or-services sentence (or the intangible religious benefits sentence for a church), good faith estimates and the $75 quid pro quo disclosure where a gift bought something, gifts of property described without a value, plus a print file, a summary CSV and an email list. Prices: The IRS rules, with sources: free. Preview (every donor's totals and one sample statement): free. Statements (PDF per donor, print file, summary and email CSVs): $0.10 per donor statement; a repeat for the same donor statement is free for 180 days. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td>
+  <td class="words">from $0.10</td>
+</tr>
+<tr>
+  <td><code>zip-to-county</code></td>
+  <td><b class="t">ZIP code and UK postcode to county lookup</b><span class="d">Look up US ZIP codes and UK postcodes, one or 10,000 at a time: every county a ZIP touches with its county FIPS, share of the land, metro area and Census region (Census 2020 ZCTA file, OMB 2023), or a postcode's local authority, county, region and nation (ONS Postcode Directory), each answer with its source and date. Prices: One ZIP code or postcode, or one county's ZIP list, on this page: free. ZIP codes and postcodes (lists, REST and MCP): $0.0005 per code found for the first 100,000 each calendar month, then $0.0002 per code found; you pay only for what is delivered and the rest is refunded at once; codes not found are not charged. A county's ZIP list over REST or MCP: $0.001 per county.</span></td>
+  <td class="words">from $0.0005</td>
 </tr>
 <tr>
   <td><code>quote_price</code></td>

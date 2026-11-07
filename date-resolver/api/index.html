@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Date resolver API and MCP: exact dates for AI agents: Endwise</title>
+<meta name="description" content="Give your AI agent a tool that turns &quot;10 business days after next Friday&quot; into an exact date and weekday, with holidays skipped and the reading it used. REST and MCP, priced per phrase.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/date-resolver/api/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/date-resolver/api.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Date resolver API and MCP: exact dates for AI agents">
+<meta property="og:description" content="Give your AI agent a tool that turns &quot;10 business days after next Friday&quot; into an exact date and weekday, with holidays skipped and the reading it used. REST and MCP, priced per phrase.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/date-resolver/api/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/date-resolver/api/","url":"https://krishnachagti-sudo.github.io/toll-preview/date-resolver/api/","name":"Date resolver API and MCP: exact dates for AI agents","description":"Give your AI agent a tool that turns \"10 business days after next Friday\" into an exact date and weekday, with holidays skipped and the reading it used. REST and MCP, priced per phrase.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Date resolver","item":"https://krishnachagti-sudo.github.io/toll-preview/date-resolver/"},{"@type":"ListItem","position":3,"name":"Date resolver API and MCP","item":"https://krishnachagti-sudo.github.io/toll-preview/date-resolver/api/"}]},{"@type":"HowTo","name":"Date resolver API and MCP: exact dates for AI agents","description":"Give your AI agent a tool that turns \"10 business days after next Friday\" into an exact date and weekday, with holidays skipped and the reading it used. REST and MCP, priced per phrase.","step":[{"@type":"HowToStep","position":1,"name":"Get a key","text":"Create an account and an API key on your account page."},{"@type":"HowToStep","position":2,"name":"Add the MCP server","text":"Point your agent at the MCP endpoint with the key; the tool is called date-resolver."},{"@type":"HowToStep","position":3,"name":"Send the phrase and the reference date","text":"Always send ref: the date the phrase was said on, or \"today\" with a timeZone."},{"@type":"HowToStep","position":4,"name":"Use the date and say the weekday","text":"Write the returned date with its weekday; when ambiguous is true, ask the user which reading they meant or state the one used."}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"date-resolver"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/date-resolver/">Date resolver</a></li><li aria-current="page">Date resolver API and MCP</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-date)">
+<p class="eyebrow">For agents and code</p>
+<h1>Date resolver API and MCP</h1>
+<p class="cp-answer">POST {&quot;text&quot;:&quot;10 business days after next Friday&quot;,&quot;ref&quot;:&quot;2026-11-02&quot;} returns 2026-11-23 (Monday), skipping Veterans Day, and marks the phrase ambiguous: if &quot;next Friday&quot; means the Friday of next week, the date is 2026-11-30.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="why">Why an agent needs it</h2>
+<p>Language models predict text; they do not consult a calendar. Developers report models writing the wrong weekday beside dates even when given today's date. A deterministic tool gives the same answer every time and shows its working, so the agent can quote it.</p>
+</section>
+<section>
+<h2 id="request">Request</h2>
+<pre><code class="language-bash">curl -X POST https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/date-resolver \
+  -H &quot;Authorization: Bearer $ENDWISE_KEY&quot; -H &quot;Content-Type: application/json&quot; \
+  -d '&#123;&quot;text&quot;:&quot;10 business days after next Friday&quot;,&quot;ref&quot;:&quot;2026-11-02&quot;,&quot;region&quot;:&quot;US&quot;&#125;'</code></pre>
+</section>
+<section>
+<h2 id="response">Response (shortened)</h2>
+<pre><code class="language-json">&#123;
+  &quot;date&quot;: &quot;2026-11-23&quot;,
+  &quot;weekday&quot;: &quot;Monday&quot;,
+  &quot;ambiguous&quot;: true,
+  &quot;readings&quot;: [
+    &#123;
+      &quot;reading&quot;: &quot;next:nearest&quot;,
+      &quot;date&quot;: &quot;2026-11-23&quot;
+    &#125;,
+    &#123;
+      &quot;reading&quot;: &quot;next:next-week&quot;,
+      &quot;date&quot;: &quot;2026-11-30&quot;
+    &#125;
+  ],
+  &quot;holidaysSkipped&quot;: [
+    &#123;
+      &quot;date&quot;: &quot;2026-11-11&quot;,
+      &quot;name&quot;: &quot;Veterans Day&quot;
+    &#125;
+  ]
+&#125;</code></pre>
+<p>The full answer also has dateText, isoWeek, dayOfYear, calendarDaysFromRef, businessDay, the steps in words and the assumptions: reference date and where it came from, time zone, holiday calendar, weekday rule and the counting rules.</p>
+</section>
+<section>
+<h2 id="inputs">Inputs</h2>
+<ul><li><code>text</code> one phrase, or <code>texts</code> a list of up to 50 (priced per phrase).</li><li><code>ref</code> the reference date, YYYY-MM-DD, or &quot;today&quot; with <code>timeZone</code> (an IANA name such as America/New_York). Required: the tool never guesses today silently.</li><li><code>region</code> holidays for business days: US (federal, default), GB-ENG, IN-CENTRAL-DELHI or none; <code>daysOff</code> your own dates to skip.</li><li><code>weekdayRule</code> &quot;nearest&quot; (default) or &quot;next-week&quot;; <code>dateOrder</code> &quot;MDY&quot; (default) or &quot;DMY&quot; for 3/4/2027; <code>roll</code> none, following, preceding or modified-following for a date that lands on a weekend or holiday.</li></ul>
+</section>
+<section>
+<h2 id="refuses">What it refuses</h2>
+<p>A phrase it cannot read, a time of day (&quot;at 5pm&quot;) and dates outside 1900 to 2199 are refused with a message that says what it understands, and a refused call is not charged. It does not guess.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays (read November 7, 2026)</a></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Get a key.</strong> Create an account and an API key on your account page.</li><li><strong>Add the MCP server.</strong> Point your agent at the MCP endpoint with the key; the tool is called date-resolver.</li><li><strong>Send the phrase and the reference date.</strong> Always send ref: the date the phrase was said on, or &quot;today&quot; with a timeZone.</li><li><strong>Use the date and say the weekday.</strong> Write the returned date with its weekday; when ambiguous is true, ask the user which reading they meant or state the one used.</li></ol></section>
+
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/date-resolver/next-friday-meaning/">What &quot;next Friday&quot; means</a></li><li><a href="/toll-preview/date-resolver/date-arithmetic-traps/">Date arithmetic traps</a></li><li><a href="/toll-preview/business-days/api/">Business days API</a></li><li><a href="/toll-preview/docs">Docs: REST and MCP</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/date-resolver/api.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

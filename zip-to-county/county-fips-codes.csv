@@ -1,0 +1,3235 @@
+county_fips,county_name,state,state_name,zctas,cbsa_code,cbsa_title
+01001,Autauga County,AL,Alabama,11,33860,"Montgomery, AL"
+01003,Baldwin County,AL,Alabama,24,19300,"Daphne-Fairhope-Foley, AL"
+01005,Barbour County,AL,Alabama,9,21640,"Eufaula, AL-GA"
+01007,Bibb County,AL,Alabama,11,13820,"Birmingham, AL"
+01009,Blount County,AL,Alabama,17,13820,"Birmingham, AL"
+01011,Bullock County,AL,Alabama,7,,
+01013,Butler County,AL,Alabama,8,,
+01015,Calhoun County,AL,Alabama,14,11500,"Anniston-Oxford, AL"
+01017,Chambers County,AL,Alabama,10,29300,"LaGrange, GA-AL"
+01019,Cherokee County,AL,Alabama,11,,
+01021,Chilton County,AL,Alabama,14,13820,"Birmingham, AL"
+01023,Choctaw County,AL,Alabama,11,,
+01025,Clarke County,AL,Alabama,10,,
+01027,Clay County,AL,Alabama,12,,
+01029,Cleburne County,AL,Alabama,7,,
+01031,Coffee County,AL,Alabama,16,21460,"Enterprise, AL"
+01033,Colbert County,AL,Alabama,9,22520,"Florence-Muscle Shoals, AL"
+01035,Conecuh County,AL,Alabama,13,,
+01037,Coosa County,AL,Alabama,11,45180,"Talladega-Sylacauga, AL"
+01039,Covington County,AL,Alabama,13,,
+01041,Crenshaw County,AL,Alabama,11,,
+01043,Cullman County,AL,Alabama,19,18980,"Cullman, AL"
+01045,Dale County,AL,Alabama,14,37120,"Ozark, AL"
+01047,Dallas County,AL,Alabama,10,42820,"Selma, AL"
+01049,DeKalb County,AL,Alabama,24,22840,"Fort Payne, AL"
+01051,Elmore County,AL,Alabama,13,33860,"Montgomery, AL"
+01053,Escambia County,AL,Alabama,10,,
+01055,Etowah County,AL,Alabama,15,23460,"Gadsden, AL"
+01057,Fayette County,AL,Alabama,10,,
+01059,Franklin County,AL,Alabama,10,40770,"Russellville, AL"
+01061,Geneva County,AL,Alabama,14,20020,"Dothan, AL"
+01063,Greene County,AL,Alabama,9,46220,"Tuscaloosa, AL"
+01065,Hale County,AL,Alabama,9,46220,"Tuscaloosa, AL"
+01067,Henry County,AL,Alabama,9,20020,"Dothan, AL"
+01069,Houston County,AL,Alabama,14,20020,"Dothan, AL"
+01071,Jackson County,AL,Alabama,22,42460,"Scottsboro, AL"
+01073,Jefferson County,AL,Alabama,64,13820,"Birmingham, AL"
+01075,Lamar County,AL,Alabama,9,,
+01077,Lauderdale County,AL,Alabama,10,22520,"Florence-Muscle Shoals, AL"
+01079,Lawrence County,AL,Alabama,10,19460,"Decatur, AL"
+01081,Lee County,AL,Alabama,15,12220,"Auburn-Opelika, AL"
+01083,Limestone County,AL,Alabama,15,26620,"Huntsville, AL"
+01085,Lowndes County,AL,Alabama,8,33860,"Montgomery, AL"
+01087,Macon County,AL,Alabama,13,12220,"Auburn-Opelika, AL"
+01089,Madison County,AL,Alabama,25,26620,"Huntsville, AL"
+01091,Marengo County,AL,Alabama,16,,
+01093,Marion County,AL,Alabama,12,,
+01095,Marshall County,AL,Alabama,18,10700,"Albertville, AL"
+01097,Mobile County,AL,Alabama,39,33660,"Mobile, AL"
+01099,Monroe County,AL,Alabama,17,,
+01101,Montgomery County,AL,Alabama,28,33860,"Montgomery, AL"
+01103,Morgan County,AL,Alabama,16,19460,"Decatur, AL"
+01105,Perry County,AL,Alabama,9,,
+01107,Pickens County,AL,Alabama,8,46220,"Tuscaloosa, AL"
+01109,Pike County,AL,Alabama,9,45980,"Troy, AL"
+01111,Randolph County,AL,Alabama,8,,
+01113,Russell County,AL,Alabama,13,17980,"Columbus, GA-AL"
+01115,St. Clair County,AL,Alabama,18,13820,"Birmingham, AL"
+01117,Shelby County,AL,Alabama,23,13820,"Birmingham, AL"
+01119,Sumter County,AL,Alabama,11,,
+01121,Talladega County,AL,Alabama,12,45180,"Talladega-Sylacauga, AL"
+01123,Tallapoosa County,AL,Alabama,12,10760,"Alexander City, AL"
+01125,Tuscaloosa County,AL,Alabama,28,46220,"Tuscaloosa, AL"
+01127,Walker County,AL,Alabama,19,13820,"Birmingham, AL"
+01129,Washington County,AL,Alabama,16,,
+01131,Wilcox County,AL,Alabama,15,,
+01133,Winston County,AL,Alabama,12,,
+02013,Aleutians East Borough,AK,Alaska,5,,
+02016,Aleutians West Census Area,AK,Alaska,7,,
+02020,Anchorage Municipality,AK,Alaska,18,11260,"Anchorage, AK"
+02050,Bethel Census Area,AK,Alaska,27,,
+02060,Bristol Bay Borough,AK,Alaska,3,,
+02063,Chugach Census Area,AK,Alaska,4,,
+02066,Copper River Census Area,AK,Alaska,6,,
+02068,Denali Borough,AK,Alaska,6,,
+02070,Dillingham Census Area,AK,Alaska,7,,
+02090,Fairbanks North Star Borough,AK,Alaska,11,21820,"Fairbanks-College, AK"
+02100,Haines Borough,AK,Alaska,2,,
+02105,Hoonah-Angoon Census Area,AK,Alaska,7,,
+02110,Juneau City and Borough,AK,Alaska,2,27940,"Juneau, AK"
+02122,Kenai Peninsula Borough,AK,Alaska,15,,
+02130,Ketchikan Gateway Borough,AK,Alaska,1,28540,"Ketchikan, AK"
+02150,Kodiak Island Borough,AK,Alaska,6,,
+02158,Kusilvak Census Area,AK,Alaska,12,,
+02164,Lake and Peninsula Borough,AK,Alaska,14,,
+02170,Matanuska-Susitna Borough,AK,Alaska,12,11260,"Anchorage, AK"
+02180,Nome Census Area,AK,Alaska,14,,
+02185,North Slope Borough,AK,Alaska,10,,
+02188,Northwest Arctic Borough,AK,Alaska,11,,
+02195,Petersburg Borough,AK,Alaska,1,,
+02198,Prince of Wales-Hyder Census Area,AK,Alaska,12,,
+02220,Sitka City and Borough,AK,Alaska,1,,
+02230,Skagway Municipality,AK,Alaska,1,,
+02240,Southeast Fairbanks Census Area,AK,Alaska,7,,
+02275,Wrangell City and Borough,AK,Alaska,2,,
+02282,Yakutat City and Borough,AK,Alaska,1,,
+02290,Yukon-Koyukuk Census Area,AK,Alaska,33,,
+04001,Apache County,AZ,Arizona,34,,
+04003,Cochise County,AZ,Arizona,23,43420,"Sierra Vista-Douglas, AZ"
+04005,Coconino County,AZ,Arizona,31,22380,"Flagstaff, AZ"
+04007,Gila County,AZ,Arizona,14,37740,"Payson, AZ"
+04009,Graham County,AZ,Arizona,11,40940,"Safford, AZ"
+04011,Greenlee County,AZ,Arizona,4,,
+04012,La Paz County,AZ,Arizona,8,,
+04013,Maricopa County,AZ,Arizona,140,38060,"Phoenix-Mesa-Chandler, AZ"
+04015,Mohave County,AZ,Arizona,25,29420,"Lake Havasu City-Kingman, AZ"
+04017,Navajo County,AZ,Arizona,34,43320,"Show Low, AZ"
+04019,Pima County,AZ,Arizona,56,46060,"Tucson, AZ"
+04021,Pinal County,AZ,Arizona,35,38060,"Phoenix-Mesa-Chandler, AZ"
+04023,Santa Cruz County,AZ,Arizona,9,35700,"Nogales, AZ"
+04025,Yavapai County,AZ,Arizona,31,39150,"Prescott Valley-Prescott, AZ"
+04027,Yuma County,AZ,Arizona,10,49740,"Yuma, AZ"
+05001,Arkansas County,AR,Arkansas,13,,
+05003,Ashley County,AR,Arkansas,7,,
+05005,Baxter County,AR,Arkansas,12,34260,"Mountain Home, AR"
+05007,Benton County,AR,Arkansas,22,22220,"Fayetteville-Springdale-Rogers, AR"
+05009,Boone County,AR,Arkansas,10,25460,"Harrison, AR"
+05011,Bradley County,AR,Arkansas,7,,
+05013,Calhoun County,AR,Arkansas,6,15780,"Camden, AR"
+05015,Carroll County,AR,Arkansas,9,,
+05017,Chicot County,AR,Arkansas,6,,
+05019,Clark County,AR,Arkansas,11,11660,"Arkadelphia, AR"
+05021,Clay County,AR,Arkansas,13,,
+05023,Cleburne County,AR,Arkansas,17,,
+05025,Cleveland County,AR,Arkansas,7,38220,"Pine Bluff, AR"
+05027,Columbia County,AR,Arkansas,7,31620,"Magnolia, AR"
+05029,Conway County,AR,Arkansas,15,,
+05031,Craighead County,AR,Arkansas,17,27860,"Jonesboro, AR"
+05033,Crawford County,AR,Arkansas,11,22900,"Fort Smith, AR-OK"
+05035,Crittenden County,AR,Arkansas,12,32820,"Memphis, TN-MS-AR"
+05037,Cross County,AR,Arkansas,9,,
+05039,Dallas County,AR,Arkansas,7,,
+05041,Desha County,AR,Arkansas,12,,
+05043,Drew County,AR,Arkansas,9,,
+05045,Faulkner County,AR,Arkansas,15,30780,"Little Rock-North Little Rock-Conway, AR"
+05047,Franklin County,AR,Arkansas,13,,
+05049,Fulton County,AR,Arkansas,14,,
+05051,Garland County,AR,Arkansas,10,26300,"Hot Springs, AR"
+05053,Grant County,AR,Arkansas,14,30780,"Little Rock-North Little Rock-Conway, AR"
+05055,Greene County,AR,Arkansas,9,37500,"Paragould, AR"
+05057,Hempstead County,AR,Arkansas,11,,
+05059,Hot Spring County,AR,Arkansas,13,31680,"Malvern, AR"
+05061,Howard County,AR,Arkansas,9,,
+05063,Independence County,AR,Arkansas,20,12900,"Batesville, AR"
+05065,Izard County,AR,Arkansas,20,,
+05067,Jackson County,AR,Arkansas,12,,
+05069,Jefferson County,AR,Arkansas,19,38220,"Pine Bluff, AR"
+05071,Johnson County,AR,Arkansas,12,,
+05073,Lafayette County,AR,Arkansas,6,,
+05075,Lawrence County,AR,Arkansas,14,,
+05077,Lee County,AR,Arkansas,12,,
+05079,Lincoln County,AR,Arkansas,9,,
+05081,Little River County,AR,Arkansas,7,45500,"Texarkana, TX-AR"
+05083,Logan County,AR,Arkansas,13,,
+05085,Lonoke County,AR,Arkansas,11,30780,"Little Rock-North Little Rock-Conway, AR"
+05087,Madison County,AR,Arkansas,13,22220,"Fayetteville-Springdale-Rogers, AR"
+05089,Marion County,AR,Arkansas,17,,
+05091,Miller County,AR,Arkansas,6,45500,"Texarkana, TX-AR"
+05093,Mississippi County,AR,Arkansas,17,14180,"Blytheville, AR"
+05095,Monroe County,AR,Arkansas,9,,
+05097,Montgomery County,AR,Arkansas,9,,
+05099,Nevada County,AR,Arkansas,11,,
+05101,Newton County,AR,Arkansas,20,25460,"Harrison, AR"
+05103,Ouachita County,AR,Arkansas,8,15780,"Camden, AR"
+05105,Perry County,AR,Arkansas,8,30780,"Little Rock-North Little Rock-Conway, AR"
+05107,Phillips County,AR,Arkansas,13,,
+05109,Pike County,AR,Arkansas,10,,
+05111,Poinsett County,AR,Arkansas,11,27860,"Jonesboro, AR"
+05113,Polk County,AR,Arkansas,7,,
+05115,Pope County,AR,Arkansas,14,40780,"Russellville, AR"
+05117,Prairie County,AR,Arkansas,12,,
+05119,Pulaski County,AR,Arkansas,36,30780,"Little Rock-North Little Rock-Conway, AR"
+05121,Randolph County,AR,Arkansas,11,,
+05123,St. Francis County,AR,Arkansas,13,22620,"Forrest City, AR"
+05125,Saline County,AR,Arkansas,14,30780,"Little Rock-North Little Rock-Conway, AR"
+05127,Scott County,AR,Arkansas,10,,
+05129,Searcy County,AR,Arkansas,12,,
+05131,Sebastian County,AR,Arkansas,17,22900,"Fort Smith, AR-OK"
+05133,Sevier County,AR,Arkansas,6,,
+05135,Sharp County,AR,Arkansas,13,,
+05137,Stone County,AR,Arkansas,16,,
+05139,Union County,AR,Arkansas,10,20980,"El Dorado, AR"
+05141,Van Buren County,AR,Arkansas,14,,
+05143,Washington County,AR,Arkansas,20,22220,"Fayetteville-Springdale-Rogers, AR"
+05145,White County,AR,Arkansas,19,42620,"Searcy, AR"
+05147,Woodruff County,AR,Arkansas,10,,
+05149,Yell County,AR,Arkansas,14,40780,"Russellville, AR"
+06001,Alameda County,CA,California,53,41860,"San Francisco-Oakland-Fremont, CA"
+06003,Alpine County,CA,California,3,23820,"Gardnerville Ranchos, NV-CA"
+06005,Amador County,CA,California,12,,
+06007,Butte County,CA,California,21,17020,"Chico, CA"
+06009,Calaveras County,CA,California,21,,
+06011,Colusa County,CA,California,9,,
+06013,Contra Costa County,CA,California,49,41860,"San Francisco-Oakland-Fremont, CA"
+06015,Del Norte County,CA,California,5,18860,"Crescent City, CA"
+06017,El Dorado County,CA,California,25,40900,"Sacramento-Roseville-Folsom, CA"
+06019,Fresno County,CA,California,60,23420,"Fresno, CA"
+06021,Glenn County,CA,California,8,,
+06023,Humboldt County,CA,California,36,21700,"Eureka-Arcata, CA"
+06025,Imperial County,CA,California,18,20940,"El Centro, CA"
+06027,Inyo County,CA,California,14,13860,"Bishop, CA"
+06029,Kern County,CA,California,53,12540,"Bakersfield-Delano, CA"
+06031,Kings County,CA,California,13,25260,"Hanford-Corcoran, CA"
+06033,Lake County,CA,California,15,17340,"Clearlake, CA"
+06035,Lassen County,CA,California,18,45000,"Susanville, CA"
+06037,Los Angeles County,CA,California,304,31080,"Los Angeles-Long Beach-Anaheim, CA"
+06039,Madera County,CA,California,18,23420,"Fresno, CA"
+06041,Marin County,CA,California,29,41860,"San Francisco-Oakland-Fremont, CA"
+06043,Mariposa County,CA,California,13,,
+06045,Mendocino County,CA,California,29,46380,"Ukiah, CA"
+06047,Merced County,CA,California,24,32900,"Merced, CA"
+06049,Modoc County,CA,California,13,,
+06051,Mono County,CA,California,9,,
+06053,Monterey County,CA,California,33,41500,"Salinas, CA"
+06055,Napa County,CA,California,13,34900,"Napa, CA"
+06057,Nevada County,CA,California,12,46020,"Truckee-Grass Valley, CA"
+06059,Orange County,CA,California,92,31080,"Los Angeles-Long Beach-Anaheim, CA"
+06061,Placer County,CA,California,34,40900,"Sacramento-Roseville-Folsom, CA"
+06063,Plumas County,CA,California,18,,
+06065,Riverside County,CA,California,76,40140,"Riverside-San Bernardino-Ontario, CA"
+06067,Sacramento County,CA,California,58,40900,"Sacramento-Roseville-Folsom, CA"
+06069,San Benito County,CA,California,7,41940,"San Jose-Sunnyvale-Santa Clara, CA"
+06071,San Bernardino County,CA,California,100,40140,"Riverside-San Bernardino-Ontario, CA"
+06073,San Diego County,CA,California,116,41740,"San Diego-Chula Vista-Carlsbad, CA"
+06075,San Francisco County,CA,California,30,41860,"San Francisco-Oakland-Fremont, CA"
+06077,San Joaquin County,CA,California,37,44700,"Stockton-Lodi, CA"
+06079,San Luis Obispo County,CA,California,30,42020,"San Luis Obispo-Paso Robles, CA"
+06081,San Mateo County,CA,California,31,41860,"San Francisco-Oakland-Fremont, CA"
+06083,Santa Barbara County,CA,California,25,42200,"Santa Maria-Santa Barbara, CA"
+06085,Santa Clara County,CA,California,63,41940,"San Jose-Sunnyvale-Santa Clara, CA"
+06087,Santa Cruz County,CA,California,17,42100,"Santa Cruz-Watsonville, CA"
+06089,Shasta County,CA,California,30,39820,"Redding, CA"
+06091,Sierra County,CA,California,11,,
+06093,Siskiyou County,CA,California,23,,
+06095,Solano County,CA,California,21,46700,"Vallejo, CA"
+06097,Sonoma County,CA,California,40,42220,"Santa Rosa-Petaluma, CA"
+06099,Stanislaus County,CA,California,28,33700,"Modesto, CA"
+06101,Sutter County,CA,California,14,49700,"Yuba City, CA"
+06103,Tehama County,CA,California,17,39780,"Red Bluff, CA"
+06105,Trinity County,CA,California,14,,
+06107,Tulare County,CA,California,45,47300,"Visalia, CA"
+06109,Tuolumne County,CA,California,17,43760,"Sonora, CA"
+06111,Ventura County,CA,California,34,37100,CBSA 37100
+06113,Yolo County,CA,California,19,40900,"Sacramento-Roseville-Folsom, CA"
+06115,Yuba County,CA,California,18,49700,"Yuba City, CA"
+08001,Adams County,CO,Colorado,35,19740,"Denver-Aurora-Centennial, CO"
+08003,Alamosa County,CO,Colorado,5,10480,"Alamosa, CO"
+08005,Arapahoe County,CO,Colorado,33,19740,"Denver-Aurora-Centennial, CO"
+08007,Archuleta County,CO,Colorado,5,,
+08009,Baca County,CO,Colorado,8,,
+08011,Bent County,CO,Colorado,6,,
+08013,Boulder County,CO,Colorado,23,14500,"Boulder, CO"
+08014,Broomfield County,CO,Colorado,6,19740,"Denver-Aurora-Centennial, CO"
+08015,Chaffee County,CO,Colorado,7,,
+08017,Cheyenne County,CO,Colorado,5,,
+08019,Clear Creek County,CO,Colorado,6,19740,"Denver-Aurora-Centennial, CO"
+08021,Conejos County,CO,Colorado,8,10480,"Alamosa, CO"
+08023,Costilla County,CO,Colorado,7,10480,"Alamosa, CO"
+08025,Crowley County,CO,Colorado,6,,
+08027,Custer County,CO,Colorado,4,,
+08029,Delta County,CO,Colorado,8,,
+08031,Denver County,CO,Colorado,41,19740,"Denver-Aurora-Centennial, CO"
+08033,Dolores County,CO,Colorado,5,,
+08035,Douglas County,CO,Colorado,18,19740,"Denver-Aurora-Centennial, CO"
+08037,Eagle County,CO,Colorado,13,20780,"Edwards, CO"
+08039,Elbert County,CO,Colorado,14,19740,"Denver-Aurora-Centennial, CO"
+08041,El Paso County,CO,Colorado,47,17820,"Colorado Springs, CO"
+08043,Fremont County,CO,Colorado,12,15860,"Cañon City, CO"
+08045,Garfield County,CO,Colorado,8,40090,"Rifle, CO"
+08047,Gilpin County,CO,Colorado,5,19740,"Denver-Aurora-Centennial, CO"
+08049,Grand County,CO,Colorado,10,,
+08051,Gunnison County,CO,Colorado,12,,
+08053,Hinsdale County,CO,Colorado,3,,
+08055,Huerfano County,CO,Colorado,4,,
+08057,Jackson County,CO,Colorado,4,,
+08059,Jefferson County,CO,Colorado,34,19740,"Denver-Aurora-Centennial, CO"
+08061,Kiowa County,CO,Colorado,6,,
+08063,Kit Carson County,CO,Colorado,6,,
+08065,Lake County,CO,Colorado,2,14720,"Breckenridge, CO"
+08067,La Plata County,CO,Colorado,6,20420,"Durango, CO"
+08069,Larimer County,CO,Colorado,24,22660,"Fort Collins-Loveland, CO"
+08071,Las Animas County,CO,Colorado,12,,
+08073,Lincoln County,CO,Colorado,11,,
+08075,Logan County,CO,Colorado,9,44540,"Sterling, CO"
+08077,Mesa County,CO,Colorado,19,24300,"Grand Junction, CO"
+08079,Mineral County,CO,Colorado,3,,
+08081,Moffat County,CO,Colorado,7,44460,"Steamboat Springs, CO"
+08083,Montezuma County,CO,Colorado,8,,
+08085,Montrose County,CO,Colorado,12,33940,"Montrose, CO"
+08087,Morgan County,CO,Colorado,10,22820,"Fort Morgan, CO"
+08089,Otero County,CO,Colorado,7,,
+08091,Ouray County,CO,Colorado,3,,
+08093,Park County,CO,Colorado,12,19740,"Denver-Aurora-Centennial, CO"
+08095,Phillips County,CO,Colorado,4,,
+08097,Pitkin County,CO,Colorado,8,40090,"Rifle, CO"
+08099,Prowers County,CO,Colorado,6,,
+08101,Pueblo County,CO,Colorado,15,39380,"Pueblo, CO"
+08103,Rio Blanco County,CO,Colorado,4,,
+08105,Rio Grande County,CO,Colorado,4,,
+08107,Routt County,CO,Colorado,11,44460,"Steamboat Springs, CO"
+08109,Saguache County,CO,Colorado,9,,
+08111,San Juan County,CO,Colorado,2,,
+08113,San Miguel County,CO,Colorado,7,,
+08115,Sedgwick County,CO,Colorado,5,,
+08117,Summit County,CO,Colorado,4,14720,"Breckenridge, CO"
+08119,Teller County,CO,Colorado,7,17820,"Colorado Springs, CO"
+08121,Washington County,CO,Colorado,12,,
+08123,Weld County,CO,Colorado,43,24540,"Greeley, CO"
+08125,Yuma County,CO,Colorado,13,,
+09001,Fairfield County,CT,Connecticut,46,,
+09003,Hartford County,CT,Connecticut,61,,
+09005,Litchfield County,CT,Connecticut,42,,
+09007,Middlesex County,CT,Connecticut,25,,
+09009,New Haven County,CT,Connecticut,41,,
+09011,New London County,CT,Connecticut,34,,
+09013,Tolland County,CT,Connecticut,18,,
+09015,Windham County,CT,Connecticut,32,,
+10001,Kent County,DE,Delaware,19,20100,"Dover, DE"
+10003,New Castle County,DE,Delaware,32,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+10005,Sussex County,DE,Delaware,24,42580,"Seaford, DE"
+11001,District of Columbia,DC,District of Columbia,57,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+12001,Alachua County,FL,Florida,24,23540,"Gainesville, FL"
+12003,Baker County,FL,Florida,5,27260,"Jacksonville, FL"
+12005,Bay County,FL,Florida,16,37460,"Panama City-Panama City Beach, FL"
+12007,Bradford County,FL,Florida,9,,
+12009,Brevard County,FL,Florida,31,37340,"Palm Bay-Melbourne-Titusville, FL"
+12011,Broward County,FL,Florida,55,33100,"Miami-Fort Lauderdale-West Palm Beach, FL"
+12013,Calhoun County,FL,Florida,8,,
+12015,Charlotte County,FL,Florida,17,39460,"Punta Gorda, FL"
+12017,Citrus County,FL,Florida,17,26140,"Homosassa Springs, FL"
+12019,Clay County,FL,Florida,12,27260,"Jacksonville, FL"
+12021,Collier County,FL,Florida,24,34940,"Naples-Marco Island, FL"
+12023,Columbia County,FL,Florida,8,29380,"Lake City, FL"
+12027,DeSoto County,FL,Florida,5,11580,"Arcadia, FL"
+12029,Dixie County,FL,Florida,6,,
+12031,Duval County,FL,Florida,38,27260,"Jacksonville, FL"
+12033,Escambia County,FL,Florida,19,37860,"Pensacola-Ferry Pass-Brent, FL"
+12035,Flagler County,FL,Florida,7,19660,"Deltona-Daytona Beach-Ormond Beach, FL"
+12037,Franklin County,FL,Florida,8,,
+12039,Gadsden County,FL,Florida,7,45220,"Tallahassee, FL"
+12041,Gilchrist County,FL,Florida,5,23540,"Gainesville, FL"
+12043,Glades County,FL,Florida,5,17500,"Clewiston, FL"
+12045,Gulf County,FL,Florida,2,,
+12047,Hamilton County,FL,Florida,3,,
+12049,Hardee County,FL,Florida,4,,
+12051,Hendry County,FL,Florida,6,17500,"Clewiston, FL"
+12053,Hernando County,FL,Florida,12,45300,"Tampa-St. Petersburg-Clearwater, FL"
+12055,Highlands County,FL,Florida,9,42700,"Sebring, FL"
+12057,Hillsborough County,FL,Florida,58,45300,"Tampa-St. Petersburg-Clearwater, FL"
+12059,Holmes County,FL,Florida,4,,
+12061,Indian River County,FL,Florida,9,42680,"Sebastian-Vero Beach-West Vero Corridor, FL"
+12063,Jackson County,FL,Florida,14,,
+12065,Jefferson County,FL,Florida,5,45220,"Tallahassee, FL"
+12067,Lafayette County,FL,Florida,3,,
+12069,Lake County,FL,Florida,30,36740,"Orlando-Kissimmee-Sanford, FL"
+12071,Lee County,FL,Florida,38,15980,"Cape Coral-Fort Myers, FL"
+12073,Leon County,FL,Florida,14,45220,"Tallahassee, FL"
+12075,Levy County,FL,Florida,13,23540,"Gainesville, FL"
+12077,Liberty County,FL,Florida,3,,
+12079,Madison County,FL,Florida,5,,
+12081,Manatee County,FL,Florida,22,35840,"North Port-Bradenton-Sarasota, FL"
+12083,Marion County,FL,Florida,34,36100,"Ocala, FL"
+12085,Martin County,FL,Florida,12,38940,"Port St. Lucie, FL"
+12086,Miami-Dade County,FL,Florida,81,33100,"Miami-Fort Lauderdale-West Palm Beach, FL"
+12087,Monroe County,FL,Florida,11,28580,"Key West-Key Largo, FL"
+12089,Nassau County,FL,Florida,6,27260,"Jacksonville, FL"
+12091,Okaloosa County,FL,Florida,14,18880,"Crestview-Fort Walton Beach-Destin, FL"
+12093,Okeechobee County,FL,Florida,2,36380,"Okeechobee, FL"
+12095,Orange County,FL,Florida,49,36740,"Orlando-Kissimmee-Sanford, FL"
+12097,Osceola County,FL,Florida,17,36740,"Orlando-Kissimmee-Sanford, FL"
+12099,Palm Beach County,FL,Florida,53,33100,"Miami-Fort Lauderdale-West Palm Beach, FL"
+12101,Pasco County,FL,Florida,32,45300,"Tampa-St. Petersburg-Clearwater, FL"
+12103,Pinellas County,FL,Florida,48,45300,"Tampa-St. Petersburg-Clearwater, FL"
+12105,Polk County,FL,Florida,45,29460,"Lakeland-Winter Haven, FL"
+12107,Putnam County,FL,Florida,17,37260,"Palatka, FL"
+12109,St. Johns County,FL,Florida,12,27260,"Jacksonville, FL"
+12111,St. Lucie County,FL,Florida,17,38940,"Port St. Lucie, FL"
+12113,Santa Rosa County,FL,Florida,10,37860,"Pensacola-Ferry Pass-Brent, FL"
+12115,Sarasota County,FL,Florida,28,35840,"North Port-Bradenton-Sarasota, FL"
+12117,Seminole County,FL,Florida,17,36740,"Orlando-Kissimmee-Sanford, FL"
+12119,Sumter County,FL,Florida,12,48680,"Wildwood-The Villages, FL"
+12121,Suwannee County,FL,Florida,9,,
+12123,Taylor County,FL,Florida,6,,
+12125,Union County,FL,Florida,5,,
+12127,Volusia County,FL,Florida,30,19660,"Deltona-Daytona Beach-Ormond Beach, FL"
+12129,Wakulla County,FL,Florida,4,45220,"Tallahassee, FL"
+12131,Walton County,FL,Florida,13,18880,"Crestview-Fort Walton Beach-Destin, FL"
+12133,Washington County,FL,Florida,10,37460,"Panama City-Panama City Beach, FL"
+13001,Appling County,GA,Georgia,7,,
+13003,Atkinson County,GA,Georgia,5,20060,"Douglas, GA"
+13005,Bacon County,GA,Georgia,3,,
+13007,Baker County,GA,Georgia,6,,
+13009,Baldwin County,GA,Georgia,7,33300,"Milledgeville, GA"
+13011,Banks County,GA,Georgia,11,,
+13013,Barrow County,GA,Georgia,8,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13015,Bartow County,GA,Georgia,14,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13017,Ben Hill County,GA,Georgia,4,22340,"Fitzgerald, GA"
+13019,Berrien County,GA,Georgia,6,,
+13021,Bibb County,GA,Georgia,13,31420,"Macon-Bibb County, GA"
+13023,Bleckley County,GA,Georgia,6,,
+13025,Brantley County,GA,Georgia,6,15260,"Brunswick-St. Simons, GA"
+13027,Brooks County,GA,Georgia,10,46660,"Valdosta, GA"
+13029,Bryan County,GA,Georgia,3,42340,"Savannah, GA"
+13031,Bulloch County,GA,Georgia,11,44340,"Statesboro, GA"
+13033,Burke County,GA,Georgia,9,12260,"Augusta-Richmond County, GA-SC"
+13035,Butts County,GA,Georgia,5,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13037,Calhoun County,GA,Georgia,6,,
+13039,Camden County,GA,Georgia,8,28680,"Kingsland, GA"
+13043,Candler County,GA,Georgia,5,,
+13045,Carroll County,GA,Georgia,11,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13047,Catoosa County,GA,Georgia,8,16860,"Chattanooga, TN-GA"
+13049,Charlton County,GA,Georgia,4,,
+13051,Chatham County,GA,Georgia,15,42340,"Savannah, GA"
+13053,Chattahoochee County,GA,Georgia,2,17980,"Columbus, GA-AL"
+13055,Chattooga County,GA,Georgia,6,44900,"Summerville, GA"
+13057,Cherokee County,GA,Georgia,15,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13059,Clarke County,GA,Georgia,9,12020,"Athens-Clarke County, GA"
+13061,Clay County,GA,Georgia,6,,
+13063,Clayton County,GA,Georgia,16,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13065,Clinch County,GA,Georgia,7,,
+13067,Cobb County,GA,Georgia,25,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13069,Coffee County,GA,Georgia,10,20060,"Douglas, GA"
+13071,Colquitt County,GA,Georgia,14,34220,"Moultrie, GA"
+13073,Columbia County,GA,Georgia,7,12260,"Augusta-Richmond County, GA-SC"
+13075,Cook County,GA,Georgia,5,,
+13077,Coweta County,GA,Georgia,12,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13079,Crawford County,GA,Georgia,7,31420,"Macon-Bibb County, GA"
+13081,Crisp County,GA,Georgia,5,18380,"Cordele, GA"
+13083,Dade County,GA,Georgia,5,16860,"Chattanooga, TN-GA"
+13085,Dawson County,GA,Georgia,5,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13087,Decatur County,GA,Georgia,8,12460,"Bainbridge, GA"
+13089,DeKalb County,GA,Georgia,36,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13091,Dodge County,GA,Georgia,8,,
+13093,Dooly County,GA,Georgia,8,,
+13095,Dougherty County,GA,Georgia,7,10500,"Albany, GA"
+13097,Douglas County,GA,Georgia,8,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13099,Early County,GA,Georgia,8,,
+13101,Echols County,GA,Georgia,6,46660,"Valdosta, GA"
+13103,Effingham County,GA,Georgia,8,42340,"Savannah, GA"
+13105,Elbert County,GA,Georgia,4,,
+13107,Emanuel County,GA,Georgia,13,,
+13109,Evans County,GA,Georgia,7,44340,"Statesboro, GA"
+13111,Fannin County,GA,Georgia,8,,
+13113,Fayette County,GA,Georgia,8,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13115,Floyd County,GA,Georgia,13,40660,"Rome, GA"
+13117,Forsyth County,GA,Georgia,10,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13119,Franklin County,GA,Georgia,11,,
+13121,Fulton County,GA,Georgia,48,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13123,Gilmer County,GA,Georgia,6,,
+13125,Glascock County,GA,Georgia,5,,
+13127,Glynn County,GA,Georgia,9,15260,"Brunswick-St. Simons, GA"
+13129,Gordon County,GA,Georgia,8,15660,"Calhoun, GA"
+13131,Grady County,GA,Georgia,6,45620,"Thomasville, GA"
+13133,Greene County,GA,Georgia,7,,
+13135,Gwinnett County,GA,Georgia,26,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13137,Habersham County,GA,Georgia,7,18460,"Cornelia, GA"
+13139,Hall County,GA,Georgia,19,23580,"Gainesville, GA"
+13141,Hancock County,GA,Georgia,5,,
+13143,Haralson County,GA,Georgia,7,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13145,Harris County,GA,Georgia,12,17980,"Columbus, GA-AL"
+13147,Hart County,GA,Georgia,8,,
+13149,Heard County,GA,Georgia,6,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13151,Henry County,GA,Georgia,11,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13153,Houston County,GA,Georgia,12,47580,"Warner Robins, GA"
+13155,Irwin County,GA,Georgia,7,,
+13157,Jackson County,GA,Georgia,16,27600,"Jefferson, GA"
+13159,Jasper County,GA,Georgia,6,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13161,Jeff Davis County,GA,Georgia,4,,
+13163,Jefferson County,GA,Georgia,9,,
+13165,Jenkins County,GA,Georgia,5,,
+13167,Johnson County,GA,Georgia,5,20140,"Dublin, GA"
+13169,Jones County,GA,Georgia,8,31420,"Macon-Bibb County, GA"
+13171,Lamar County,GA,Georgia,9,,
+13173,Lanier County,GA,Georgia,5,46660,"Valdosta, GA"
+13175,Laurens County,GA,Georgia,15,20140,"Dublin, GA"
+13177,Lee County,GA,Georgia,7,10500,"Albany, GA"
+13179,Liberty County,GA,Georgia,10,25980,"Hinesville, GA"
+13181,Lincoln County,GA,Georgia,2,12260,"Augusta-Richmond County, GA-SC"
+13183,Long County,GA,Georgia,5,25980,"Hinesville, GA"
+13185,Lowndes County,GA,Georgia,11,46660,"Valdosta, GA"
+13187,Lumpkin County,GA,Georgia,5,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13189,McDuffie County,GA,Georgia,4,12260,"Augusta-Richmond County, GA-SC"
+13191,McIntosh County,GA,Georgia,4,15260,"Brunswick-St. Simons, GA"
+13193,Macon County,GA,Georgia,10,,
+13195,Madison County,GA,Georgia,11,12020,"Athens-Clarke County, GA"
+13197,Marion County,GA,Georgia,4,17980,"Columbus, GA-AL"
+13199,Meriwether County,GA,Georgia,10,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13201,Miller County,GA,Georgia,5,,
+13205,Mitchell County,GA,Georgia,7,,
+13207,Monroe County,GA,Georgia,10,31420,"Macon-Bibb County, GA"
+13209,Montgomery County,GA,Georgia,7,47080,"Vidalia, GA"
+13211,Morgan County,GA,Georgia,9,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13213,Murray County,GA,Georgia,7,19140,"Dalton, GA"
+13215,Muscogee County,GA,Georgia,11,17980,"Columbus, GA-AL"
+13217,Newton County,GA,Georgia,11,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13219,Oconee County,GA,Georgia,8,12020,"Athens-Clarke County, GA"
+13221,Oglethorpe County,GA,Georgia,10,12020,"Athens-Clarke County, GA"
+13223,Paulding County,GA,Georgia,11,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13225,Peach County,GA,Georgia,3,47580,"Warner Robins, GA"
+13227,Pickens County,GA,Georgia,9,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13229,Pierce County,GA,Georgia,7,48180,"Waycross, GA"
+13231,Pike County,GA,Georgia,8,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13233,Polk County,GA,Georgia,8,16340,"Cedartown, GA"
+13235,Pulaski County,GA,Georgia,5,,
+13237,Putnam County,GA,Georgia,5,,
+13239,Quitman County,GA,Georgia,2,21640,"Eufaula, AL-GA"
+13241,Rabun County,GA,Georgia,9,,
+13243,Randolph County,GA,Georgia,8,,
+13245,Richmond County,GA,Georgia,11,12260,"Augusta-Richmond County, GA-SC"
+13247,Rockdale County,GA,Georgia,9,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13249,Schley County,GA,Georgia,7,11140,"Americus, GA"
+13251,Screven County,GA,Georgia,6,,
+13253,Seminole County,GA,Georgia,4,,
+13255,Spalding County,GA,Georgia,7,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13257,Stephens County,GA,Georgia,6,45740,"Toccoa, GA"
+13259,Stewart County,GA,Georgia,6,17980,"Columbus, GA-AL"
+13261,Sumter County,GA,Georgia,8,11140,"Americus, GA"
+13263,Talbot County,GA,Georgia,8,17980,"Columbus, GA-AL"
+13265,Taliaferro County,GA,Georgia,5,,
+13267,Tattnall County,GA,Georgia,6,,
+13269,Taylor County,GA,Georgia,6,,
+13271,Telfair County,GA,Georgia,7,,
+13273,Terrell County,GA,Georgia,7,10500,"Albany, GA"
+13275,Thomas County,GA,Georgia,9,45620,"Thomasville, GA"
+13277,Tift County,GA,Georgia,10,45700,"Tifton, GA"
+13279,Toombs County,GA,Georgia,3,47080,"Vidalia, GA"
+13281,Towns County,GA,Georgia,3,,
+13283,Treutlen County,GA,Georgia,6,,
+13285,Troup County,GA,Georgia,7,29300,"LaGrange, GA-AL"
+13287,Turner County,GA,Georgia,4,45700,"Tifton, GA"
+13289,Twiggs County,GA,Georgia,6,31420,"Macon-Bibb County, GA"
+13291,Union County,GA,Georgia,4,,
+13293,Upson County,GA,Georgia,7,45580,"Thomaston, GA"
+13295,Walker County,GA,Georgia,14,16860,"Chattanooga, TN-GA"
+13297,Walton County,GA,Georgia,12,12060,"Atlanta-Sandy Springs-Roswell, GA"
+13299,Ware County,GA,Georgia,8,48180,"Waycross, GA"
+13301,Warren County,GA,Georgia,9,,
+13303,Washington County,GA,Georgia,10,,
+13305,Wayne County,GA,Georgia,7,27700,"Jesup, GA"
+13307,Webster County,GA,Georgia,6,,
+13309,Wheeler County,GA,Georgia,4,,
+13311,White County,GA,Georgia,7,,
+13313,Whitfield County,GA,Georgia,8,19140,"Dalton, GA"
+13315,Wilcox County,GA,Georgia,8,,
+13317,Wilkes County,GA,Georgia,5,,
+13319,Wilkinson County,GA,Georgia,9,,
+13321,Worth County,GA,Georgia,12,10500,"Albany, GA"
+15001,Hawaii County,HI,Hawaii,28,25900,"Hilo-Kailua, HI"
+15003,Honolulu County,HI,Hawaii,38,46520,"Urban Honolulu, HI"
+15005,Kalawao County,HI,Hawaii,1,27980,"Kahului-Wailuku, HI"
+15007,Kauai County,HI,Hawaii,16,28180,"Kapaa, HI"
+15009,Maui County,HI,Hawaii,14,27980,"Kahului-Wailuku, HI"
+16001,Ada County,ID,Idaho,19,14260,"Boise City, ID"
+16003,Adams County,ID,Idaho,6,,
+16005,Bannock County,ID,Idaho,10,38540,"Pocatello, ID"
+16007,Bear Lake County,ID,Idaho,10,,
+16009,Benewah County,ID,Idaho,9,,
+16011,Bingham County,ID,Idaho,12,13940,"Blackfoot, ID"
+16013,Blaine County,ID,Idaho,9,25200,"Hailey, ID"
+16015,Boise County,ID,Idaho,9,14260,"Boise City, ID"
+16017,Bonner County,ID,Idaho,18,41760,"Sandpoint, ID"
+16019,Bonneville County,ID,Idaho,14,26820,"Idaho Falls, ID"
+16021,Boundary County,ID,Idaho,5,,
+16023,Butte County,ID,Idaho,3,26820,"Idaho Falls, ID"
+16025,Camas County,ID,Idaho,4,25200,"Hailey, ID"
+16027,Canyon County,ID,Idaho,13,14260,"Boise City, ID"
+16029,Caribou County,ID,Idaho,7,,
+16031,Cassia County,ID,Idaho,9,15420,"Burley, ID"
+16033,Clark County,ID,Idaho,4,,
+16035,Clearwater County,ID,Idaho,7,,
+16037,Custer County,ID,Idaho,7,,
+16039,Elmore County,ID,Idaho,8,34300,"Mountain Home, ID"
+16041,Franklin County,ID,Idaho,7,30860,"Logan, UT-ID"
+16043,Fremont County,ID,Idaho,11,39940,"Rexburg, ID"
+16045,Gem County,ID,Idaho,7,14260,"Boise City, ID"
+16047,Gooding County,ID,Idaho,6,,
+16049,Idaho County,ID,Idaho,16,,
+16051,Jefferson County,ID,Idaho,10,26820,"Idaho Falls, ID"
+16053,Jerome County,ID,Idaho,5,46300,"Twin Falls, ID"
+16055,Kootenai County,ID,Idaho,13,17660,"Coeur d'Alene, ID"
+16057,Latah County,ID,Idaho,14,34140,"Moscow, ID"
+16059,Lemhi County,ID,Idaho,11,,
+16061,Lewis County,ID,Idaho,7,,
+16063,Lincoln County,ID,Idaho,6,25200,"Hailey, ID"
+16065,Madison County,ID,Idaho,8,39940,"Rexburg, ID"
+16067,Minidoka County,ID,Idaho,5,15420,"Burley, ID"
+16069,Nez Perce County,ID,Idaho,10,30300,"Lewiston, ID-WA"
+16071,Oneida County,ID,Idaho,4,14940,"Brigham City, UT-ID"
+16073,Owyhee County,ID,Idaho,12,14260,"Boise City, ID"
+16075,Payette County,ID,Idaho,7,36620,"Ontario, OR-ID"
+16077,Power County,ID,Idaho,4,,
+16079,Shoshone County,ID,Idaho,15,,
+16081,Teton County,ID,Idaho,5,27220,"Jackson, WY-ID"
+16083,Twin Falls County,ID,Idaho,10,46300,"Twin Falls, ID"
+16085,Valley County,ID,Idaho,5,,
+16087,Washington County,ID,Idaho,5,,
+17001,Adams County,IL,Illinois,23,39500,"Quincy, IL-MO"
+17003,Alexander County,IL,Illinois,8,16020,"Cape Girardeau, MO-IL"
+17005,Bond County,IL,Illinois,12,41180,"St. Louis, MO-IL"
+17007,Boone County,IL,Illinois,15,40420,"Rockford, IL"
+17009,Brown County,IL,Illinois,5,,
+17011,Bureau County,IL,Illinois,31,36837,"Ottawa, IL"
+17013,Calhoun County,IL,Illinois,7,41180,"St. Louis, MO-IL"
+17015,Carroll County,IL,Illinois,11,,
+17017,Cass County,IL,Illinois,8,,
+17019,Champaign County,IL,Illinois,35,16580,"Champaign-Urbana, IL"
+17021,Christian County,IL,Illinois,20,45380,"Taylorville, IL"
+17023,Clark County,IL,Illinois,11,,
+17025,Clay County,IL,Illinois,13,,
+17027,Clinton County,IL,Illinois,17,41180,"St. Louis, MO-IL"
+17029,Coles County,IL,Illinois,16,16660,"Charleston-Mattoon, IL"
+17031,Cook County,IL,Illinois,178,16980,"Chicago-Naperville-Elgin, IL-IN"
+17033,Crawford County,IL,Illinois,11,,
+17035,Cumberland County,IL,Illinois,12,20820,"Effingham, IL"
+17037,DeKalb County,IL,Illinois,22,16980,"Chicago-Naperville-Elgin, IL-IN"
+17039,De Witt County,IL,Illinois,13,,
+17041,Douglas County,IL,Illinois,13,,
+17043,DuPage County,IL,Illinois,43,16980,"Chicago-Naperville-Elgin, IL-IN"
+17045,Edgar County,IL,Illinois,15,,
+17047,Edwards County,IL,Illinois,6,,
+17049,Effingham County,IL,Illinois,15,20820,"Effingham, IL"
+17051,Fayette County,IL,Illinois,20,,
+17053,Ford County,IL,Illinois,21,16580,"Champaign-Urbana, IL"
+17055,Franklin County,IL,Illinois,19,,
+17057,Fulton County,IL,Illinois,24,15900,"Canton, IL"
+17059,Gallatin County,IL,Illinois,9,,
+17061,Greene County,IL,Illinois,13,,
+17063,Grundy County,IL,Illinois,16,16980,"Chicago-Naperville-Elgin, IL-IN"
+17065,Hamilton County,IL,Illinois,13,,
+17067,Hancock County,IL,Illinois,20,,
+17069,Hardin County,IL,Illinois,5,,
+17071,Henderson County,IL,Illinois,17,15460,"Burlington, IA-IL"
+17073,Henry County,IL,Illinois,24,19340,"Davenport-Moline-Rock Island, IA-IL"
+17075,Iroquois County,IL,Illinois,28,,
+17077,Jackson County,IL,Illinois,22,16060,"Carbondale, IL"
+17079,Jasper County,IL,Illinois,15,,
+17081,Jefferson County,IL,Illinois,17,34500,"Mount Vernon, IL"
+17083,Jersey County,IL,Illinois,11,41180,"St. Louis, MO-IL"
+17085,Jo Daviess County,IL,Illinois,15,,
+17087,Johnson County,IL,Illinois,10,,
+17089,Kane County,IL,Illinois,34,16980,"Chicago-Naperville-Elgin, IL-IN"
+17091,Kankakee County,IL,Illinois,21,28100,"Kankakee, IL"
+17093,Kendall County,IL,Illinois,19,16980,"Chicago-Naperville-Elgin, IL-IN"
+17095,Knox County,IL,Illinois,23,23660,"Galesburg, IL"
+17097,Lake County,IL,Illinois,36,16980,"Chicago-Naperville-Elgin, IL-IN"
+17099,LaSalle County,IL,Illinois,29,36837,"Ottawa, IL"
+17101,Lawrence County,IL,Illinois,7,,
+17103,Lee County,IL,Illinois,24,19940,"Dixon, IL"
+17105,Livingston County,IL,Illinois,29,38700,"Pontiac, IL"
+17107,Logan County,IL,Illinois,20,30660,"Lincoln, IL"
+17109,McDonough County,IL,Illinois,17,31380,"Macomb, IL"
+17111,McHenry County,IL,Illinois,24,16980,"Chicago-Naperville-Elgin, IL-IN"
+17113,McLean County,IL,Illinois,33,14010,"Bloomington, IL"
+17115,Macon County,IL,Illinois,27,19500,"Decatur, IL"
+17117,Macoupin County,IL,Illinois,28,41180,"St. Louis, MO-IL"
+17119,Madison County,IL,Illinois,36,41180,"St. Louis, MO-IL"
+17121,Marion County,IL,Illinois,15,16460,"Centralia, IL"
+17123,Marshall County,IL,Illinois,19,37900,"Peoria, IL"
+17125,Mason County,IL,Illinois,11,,
+17127,Massac County,IL,Illinois,8,37140,"Paducah, KY-IL"
+17129,Menard County,IL,Illinois,8,44100,"Springfield, IL"
+17131,Mercer County,IL,Illinois,18,19340,"Davenport-Moline-Rock Island, IA-IL"
+17133,Monroe County,IL,Illinois,10,41180,"St. Louis, MO-IL"
+17135,Montgomery County,IL,Illinois,28,,
+17137,Morgan County,IL,Illinois,16,27300,"Jacksonville, IL"
+17139,Moultrie County,IL,Illinois,11,,
+17141,Ogle County,IL,Illinois,27,40300,"Rochelle, IL"
+17143,Peoria County,IL,Illinois,28,37900,"Peoria, IL"
+17145,Perry County,IL,Illinois,12,,
+17147,Piatt County,IL,Illinois,16,16580,"Champaign-Urbana, IL"
+17149,Pike County,IL,Illinois,16,,
+17151,Pope County,IL,Illinois,10,,
+17153,Pulaski County,IL,Illinois,10,,
+17155,Putnam County,IL,Illinois,8,36837,"Ottawa, IL"
+17157,Randolph County,IL,Illinois,18,,
+17159,Richland County,IL,Illinois,9,,
+17161,Rock Island County,IL,Illinois,21,19340,"Davenport-Moline-Rock Island, IA-IL"
+17163,St. Clair County,IL,Illinois,34,41180,"St. Louis, MO-IL"
+17165,Saline County,IL,Illinois,11,,
+17167,Sangamon County,IL,Illinois,30,44100,"Springfield, IL"
+17169,Schuyler County,IL,Illinois,12,,
+17171,Scott County,IL,Illinois,9,27300,"Jacksonville, IL"
+17173,Shelby County,IL,Illinois,22,,
+17175,Stark County,IL,Illinois,10,37900,"Peoria, IL"
+17177,Stephenson County,IL,Illinois,19,23300,"Freeport, IL"
+17179,Tazewell County,IL,Illinois,21,37900,"Peoria, IL"
+17181,Union County,IL,Illinois,13,,
+17183,Vermilion County,IL,Illinois,27,19180,"Danville, IL"
+17185,Wabash County,IL,Illinois,7,,
+17187,Warren County,IL,Illinois,14,,
+17189,Washington County,IL,Illinois,13,,
+17191,Wayne County,IL,Illinois,20,,
+17193,White County,IL,Illinois,11,,
+17195,Whiteside County,IL,Illinois,15,44580,"Sterling, IL"
+17197,Will County,IL,Illinois,45,16980,"Chicago-Naperville-Elgin, IL-IN"
+17199,Williamson County,IL,Illinois,22,32060,"Marion-Herrin, IL"
+17201,Winnebago County,IL,Illinois,26,40420,"Rockford, IL"
+17203,Woodford County,IL,Illinois,16,37900,"Peoria, IL"
+18001,Adams County,IN,Indiana,8,19540,"Decatur, IN"
+18003,Allen County,IN,Indiana,33,23060,"Fort Wayne, IN"
+18005,Bartholomew County,IN,Indiana,15,18020,"Columbus, IN"
+18007,Benton County,IN,Indiana,11,29200,"Lafayette-West Lafayette, IN"
+18009,Blackford County,IN,Indiana,7,,
+18011,Boone County,IN,Indiana,13,26900,"Indianapolis-Carmel-Greenwood, IN"
+18013,Brown County,IN,Indiana,10,26900,"Indianapolis-Carmel-Greenwood, IN"
+18015,Carroll County,IN,Indiana,17,29200,"Lafayette-West Lafayette, IN"
+18017,Cass County,IN,Indiana,12,30900,"Logansport, IN"
+18019,Clark County,IN,Indiana,16,31140,"Louisville/Jefferson County, KY-IN"
+18021,Clay County,IN,Indiana,18,45460,"Terre Haute, IN"
+18023,Clinton County,IN,Indiana,12,23140,"Frankfort, IN"
+18025,Crawford County,IN,Indiana,10,,
+18027,Daviess County,IN,Indiana,7,47780,"Washington, IN"
+18029,Dearborn County,IN,Indiana,9,17140,"Cincinnati, OH-KY-IN"
+18031,Decatur County,IN,Indiana,11,24700,"Greensburg, IN"
+18033,DeKalb County,IN,Indiana,14,12140,"Auburn, IN"
+18035,Delaware County,IN,Indiana,21,34620,"Muncie, IN"
+18037,Dubois County,IN,Indiana,13,27540,"Jasper, IN"
+18039,Elkhart County,IN,Indiana,17,21140,"Elkhart-Goshen, IN"
+18041,Fayette County,IN,Indiana,8,18220,"Connersville, IN"
+18043,Floyd County,IN,Indiana,10,31140,"Louisville/Jefferson County, KY-IN"
+18045,Fountain County,IN,Indiana,10,,
+18047,Franklin County,IN,Indiana,15,17140,"Cincinnati, OH-KY-IN"
+18049,Fulton County,IN,Indiana,17,,
+18051,Gibson County,IN,Indiana,16,,
+18053,Grant County,IN,Indiana,15,31980,"Marion, IN"
+18055,Greene County,IN,Indiana,17,,
+18057,Hamilton County,IN,Indiana,23,26900,"Indianapolis-Carmel-Greenwood, IN"
+18059,Hancock County,IN,Indiana,16,26900,"Indianapolis-Carmel-Greenwood, IN"
+18061,Harrison County,IN,Indiana,16,31140,"Louisville/Jefferson County, KY-IN"
+18063,Hendricks County,IN,Indiana,19,26900,"Indianapolis-Carmel-Greenwood, IN"
+18065,Henry County,IN,Indiana,23,35220,"New Castle, IN"
+18067,Howard County,IN,Indiana,12,29020,"Kokomo, IN"
+18069,Huntington County,IN,Indiana,9,26540,"Huntington, IN"
+18071,Jackson County,IN,Indiana,8,42980,"Seymour, IN"
+18073,Jasper County,IN,Indiana,13,16980,"Chicago-Naperville-Elgin, IL-IN"
+18075,Jay County,IN,Indiana,9,,
+18077,Jefferson County,IN,Indiana,11,31500,"Madison, IN"
+18079,Jennings County,IN,Indiana,13,,
+18081,Johnson County,IN,Indiana,12,26900,"Indianapolis-Carmel-Greenwood, IN"
+18083,Knox County,IN,Indiana,12,47180,"Vincennes, IN"
+18085,Kosciusko County,IN,Indiana,21,47700,"Warsaw, IN"
+18087,LaGrange County,IN,Indiana,13,,
+18089,Lake County,IN,Indiana,28,16980,"Chicago-Naperville-Elgin, IL-IN"
+18091,LaPorte County,IN,Indiana,15,33140,"Michigan City-La Porte, IN"
+18093,Lawrence County,IN,Indiana,12,13260,"Bedford, IN"
+18095,Madison County,IN,Indiana,18,26900,"Indianapolis-Carmel-Greenwood, IN"
+18097,Marion County,IN,Indiana,41,26900,"Indianapolis-Carmel-Greenwood, IN"
+18099,Marshall County,IN,Indiana,15,38500,"Plymouth, IN"
+18101,Martin County,IN,Indiana,7,,
+18103,Miami County,IN,Indiana,14,37940,"Peru, IN"
+18105,Monroe County,IN,Indiana,19,14020,"Bloomington, IN"
+18107,Montgomery County,IN,Indiana,16,18820,"Crawfordsville, IN"
+18109,Morgan County,IN,Indiana,14,26900,"Indianapolis-Carmel-Greenwood, IN"
+18111,Newton County,IN,Indiana,12,16980,"Chicago-Naperville-Elgin, IL-IN"
+18113,Noble County,IN,Indiana,18,28340,"Kendallville, IN"
+18115,Ohio County,IN,Indiana,5,17140,"Cincinnati, OH-KY-IN"
+18117,Orange County,IN,Indiana,11,,
+18119,Owen County,IN,Indiana,14,14020,"Bloomington, IN"
+18121,Parke County,IN,Indiana,13,,
+18123,Perry County,IN,Indiana,14,,
+18125,Pike County,IN,Indiana,11,,
+18127,Porter County,IN,Indiana,16,16980,"Chicago-Naperville-Elgin, IL-IN"
+18129,Posey County,IN,Indiana,7,21780,"Evansville, IN"
+18131,Pulaski County,IN,Indiana,13,,
+18133,Putnam County,IN,Indiana,16,24600,"Greencastle, IN"
+18135,Randolph County,IN,Indiana,14,,
+18137,Ripley County,IN,Indiana,14,,
+18139,Rush County,IN,Indiana,16,,
+18141,St. Joseph County,IN,Indiana,25,43780,"South Bend-Mishawaka, IN-MI"
+18143,Scott County,IN,Indiana,6,,
+18145,Shelby County,IN,Indiana,17,26900,"Indianapolis-Carmel-Greenwood, IN"
+18147,Spencer County,IN,Indiana,16,,
+18149,Starke County,IN,Indiana,11,,
+18151,Steuben County,IN,Indiana,9,11420,"Angola, IN"
+18153,Sullivan County,IN,Indiana,13,45460,"Terre Haute, IN"
+18155,Switzerland County,IN,Indiana,9,,
+18157,Tippecanoe County,IN,Indiana,19,29200,"Lafayette-West Lafayette, IN"
+18159,Tipton County,IN,Indiana,11,26900,"Indianapolis-Carmel-Greenwood, IN"
+18161,Union County,IN,Indiana,6,,
+18163,Vanderburgh County,IN,Indiana,11,21780,"Evansville, IN"
+18165,Vermillion County,IN,Indiana,10,45460,"Terre Haute, IN"
+18167,Vigo County,IN,Indiana,20,45460,"Terre Haute, IN"
+18169,Wabash County,IN,Indiana,15,47340,"Wabash, IN"
+18171,Warren County,IN,Indiana,11,29200,"Lafayette-West Lafayette, IN"
+18173,Warrick County,IN,Indiana,12,21780,"Evansville, IN"
+18175,Washington County,IN,Indiana,12,31140,"Louisville/Jefferson County, KY-IN"
+18177,Wayne County,IN,Indiana,19,39980,"Richmond, IN"
+18179,Wells County,IN,Indiana,17,23060,"Fort Wayne, IN"
+18181,White County,IN,Indiana,18,33900,"Monticello, IN"
+18183,Whitley County,IN,Indiana,10,23060,"Fort Wayne, IN"
+19001,Adair County,IA,Iowa,14,,
+19003,Adams County,IA,Iowa,10,,
+19005,Allamakee County,IA,Iowa,10,,
+19007,Appanoose County,IA,Iowa,11,,
+19009,Audubon County,IA,Iowa,12,,
+19011,Benton County,IA,Iowa,24,16300,"Cedar Rapids, IA"
+19013,Black Hawk County,IA,Iowa,18,47940,"Waterloo-Cedar Falls, IA"
+19015,Boone County,IA,Iowa,21,11180,"Ames, IA"
+19017,Bremer County,IA,Iowa,13,47940,"Waterloo-Cedar Falls, IA"
+19019,Buchanan County,IA,Iowa,16,,
+19021,Buena Vista County,IA,Iowa,14,44740,"Storm Lake, IA"
+19023,Butler County,IA,Iowa,18,,
+19025,Calhoun County,IA,Iowa,15,,
+19027,Carroll County,IA,Iowa,17,16140,"Carroll, IA"
+19029,Cass County,IA,Iowa,13,,
+19031,Cedar County,IA,Iowa,18,,
+19033,Cerro Gordo County,IA,Iowa,17,32380,"Mason City, IA"
+19035,Cherokee County,IA,Iowa,15,,
+19037,Chickasaw County,IA,Iowa,9,,
+19039,Clarke County,IA,Iowa,9,,
+19041,Clay County,IA,Iowa,17,43980,"Spencer, IA"
+19043,Clayton County,IA,Iowa,24,,
+19045,Clinton County,IA,Iowa,21,17540,"Clinton, IA"
+19047,Crawford County,IA,Iowa,21,,
+19049,Dallas County,IA,Iowa,25,19780,"Des Moines-West Des Moines, IA"
+19051,Davis County,IA,Iowa,10,,
+19053,Decatur County,IA,Iowa,11,,
+19055,Delaware County,IA,Iowa,17,,
+19057,Des Moines County,IA,Iowa,12,15460,"Burlington, IA-IL"
+19059,Dickinson County,IA,Iowa,10,44020,"Spirit Lake, IA"
+19061,Dubuque County,IA,Iowa,20,20220,"Dubuque, IA"
+19063,Emmet County,IA,Iowa,7,,
+19065,Fayette County,IA,Iowa,24,,
+19067,Floyd County,IA,Iowa,13,,
+19069,Franklin County,IA,Iowa,19,,
+19071,Fremont County,IA,Iowa,11,,
+19073,Greene County,IA,Iowa,13,,
+19075,Grundy County,IA,Iowa,17,47940,"Waterloo-Cedar Falls, IA"
+19077,Guthrie County,IA,Iowa,18,19780,"Des Moines-West Des Moines, IA"
+19079,Hamilton County,IA,Iowa,15,,
+19081,Hancock County,IA,Iowa,13,,
+19083,Hardin County,IA,Iowa,13,,
+19085,Harrison County,IA,Iowa,15,36540,"Omaha, NE-IA"
+19087,Henry County,IA,Iowa,12,,
+19089,Howard County,IA,Iowa,9,,
+19091,Humboldt County,IA,Iowa,17,,
+19093,Ida County,IA,Iowa,12,,
+19095,Iowa County,IA,Iowa,21,,
+19097,Jackson County,IA,Iowa,16,,
+19099,Jasper County,IA,Iowa,21,19780,"Des Moines-West Des Moines, IA"
+19101,Jefferson County,IA,Iowa,16,,
+19103,Johnson County,IA,Iowa,24,26980,"Iowa City, IA"
+19105,Jones County,IA,Iowa,17,16300,"Cedar Rapids, IA"
+19107,Keokuk County,IA,Iowa,21,,
+19109,Kossuth County,IA,Iowa,21,,
+19111,Lee County,IA,Iowa,13,22800,"Fort Madison, IA"
+19113,Linn County,IA,Iowa,30,16300,"Cedar Rapids, IA"
+19115,Louisa County,IA,Iowa,13,,
+19117,Lucas County,IA,Iowa,9,,
+19119,Lyon County,IA,Iowa,12,,
+19121,Madison County,IA,Iowa,15,19780,"Des Moines-West Des Moines, IA"
+19123,Mahaska County,IA,Iowa,20,36820,"Oskaloosa, IA"
+19125,Marion County,IA,Iowa,19,37800,"Pella, IA"
+19127,Marshall County,IA,Iowa,21,32260,"Marshalltown, IA"
+19129,Mills County,IA,Iowa,11,36540,"Omaha, NE-IA"
+19131,Mitchell County,IA,Iowa,12,,
+19133,Monona County,IA,Iowa,15,,
+19135,Monroe County,IA,Iowa,7,,
+19137,Montgomery County,IA,Iowa,10,,
+19139,Muscatine County,IA,Iowa,14,34700,"Muscatine, IA"
+19141,O'Brien County,IA,Iowa,14,,
+19143,Osceola County,IA,Iowa,8,,
+19145,Page County,IA,Iowa,13,,
+19147,Palo Alto County,IA,Iowa,14,,
+19149,Plymouth County,IA,Iowa,15,30180,"Le Mars, IA"
+19151,Pocahontas County,IA,Iowa,16,,
+19153,Polk County,IA,Iowa,42,19780,"Des Moines-West Des Moines, IA"
+19155,Pottawattamie County,IA,Iowa,24,36540,"Omaha, NE-IA"
+19157,Poweshiek County,IA,Iowa,17,,
+19159,Ringgold County,IA,Iowa,12,,
+19161,Sac County,IA,Iowa,16,,
+19163,Scott County,IA,Iowa,22,19340,"Davenport-Moline-Rock Island, IA-IL"
+19165,Shelby County,IA,Iowa,19,,
+19167,Sioux County,IA,Iowa,19,,
+19169,Story County,IA,Iowa,23,11180,"Ames, IA"
+19171,Tama County,IA,Iowa,19,,
+19173,Taylor County,IA,Iowa,11,,
+19175,Union County,IA,Iowa,11,,
+19177,Van Buren County,IA,Iowa,13,,
+19179,Wapello County,IA,Iowa,12,36900,"Ottumwa, IA"
+19181,Warren County,IA,Iowa,21,19780,"Des Moines-West Des Moines, IA"
+19183,Washington County,IA,Iowa,13,26980,"Iowa City, IA"
+19185,Wayne County,IA,Iowa,13,,
+19187,Webster County,IA,Iowa,22,22700,"Fort Dodge, IA"
+19189,Winnebago County,IA,Iowa,11,,
+19191,Winneshiek County,IA,Iowa,12,,
+19193,Woodbury County,IA,Iowa,26,43580,"Sioux City, IA-NE-SD"
+19195,Worth County,IA,Iowa,10,32380,"Mason City, IA"
+19197,Wright County,IA,Iowa,16,,
+20001,Allen County,KS,Kansas,12,,
+20003,Anderson County,KS,Kansas,10,,
+20005,Atchison County,KS,Kansas,10,11860,"Atchison, KS"
+20007,Barber County,KS,Kansas,11,,
+20009,Barton County,KS,Kansas,10,24460,"Great Bend, KS"
+20011,Bourbon County,KS,Kansas,13,,
+20013,Brown County,KS,Kansas,13,,
+20015,Butler County,KS,Kansas,20,48620,"Wichita, KS"
+20017,Chase County,KS,Kansas,11,21380,"Emporia, KS"
+20019,Chautauqua County,KS,Kansas,10,,
+20021,Cherokee County,KS,Kansas,13,27900,"Joplin, MO-KS"
+20023,Cheyenne County,KS,Kansas,5,,
+20025,Clark County,KS,Kansas,6,,
+20027,Clay County,KS,Kansas,10,,
+20029,Cloud County,KS,Kansas,8,,
+20031,Coffey County,KS,Kansas,10,,
+20033,Comanche County,KS,Kansas,3,,
+20035,Cowley County,KS,Kansas,15,11680,"Arkansas City-Winfield, KS"
+20037,Crawford County,KS,Kansas,15,38260,"Pittsburg, KS"
+20039,Decatur County,KS,Kansas,8,,
+20041,Dickinson County,KS,Kansas,12,,
+20043,Doniphan County,KS,Kansas,10,41140,"St. Joseph, MO-KS"
+20045,Douglas County,KS,Kansas,12,29940,"Lawrence, KS"
+20047,Edwards County,KS,Kansas,7,,
+20049,Elk County,KS,Kansas,10,,
+20051,Ellis County,KS,Kansas,12,25700,"Hays, KS"
+20053,Ellsworth County,KS,Kansas,9,,
+20055,Finney County,KS,Kansas,7,23780,"Garden City, KS"
+20057,Ford County,KS,Kansas,10,19980,"Dodge City, KS"
+20059,Franklin County,KS,Kansas,13,36840,"Ottawa, KS"
+20061,Geary County,KS,Kansas,8,31740,"Manhattan, KS"
+20063,Gove County,KS,Kansas,10,,
+20065,Graham County,KS,Kansas,13,,
+20067,Grant County,KS,Kansas,3,,
+20069,Gray County,KS,Kansas,7,,
+20071,Greeley County,KS,Kansas,2,,
+20073,Greenwood County,KS,Kansas,11,,
+20075,Hamilton County,KS,Kansas,4,,
+20077,Harper County,KS,Kansas,11,,
+20079,Harvey County,KS,Kansas,13,48620,"Wichita, KS"
+20081,Haskell County,KS,Kansas,3,,
+20083,Hodgeman County,KS,Kansas,8,,
+20085,Jackson County,KS,Kansas,18,45820,"Topeka, KS"
+20087,Jefferson County,KS,Kansas,15,45820,"Topeka, KS"
+20089,Jewell County,KS,Kansas,14,,
+20091,Johnson County,KS,Kansas,35,28140,"Kansas City, MO-KS"
+20093,Kearny County,KS,Kansas,4,,
+20095,Kingman County,KS,Kansas,12,,
+20097,Kiowa County,KS,Kansas,7,,
+20099,Labette County,KS,Kansas,13,,
+20101,Lane County,KS,Kansas,5,,
+20103,Leavenworth County,KS,Kansas,13,28140,"Kansas City, MO-KS"
+20105,Lincoln County,KS,Kansas,10,,
+20107,Linn County,KS,Kansas,11,28140,"Kansas City, MO-KS"
+20109,Logan County,KS,Kansas,7,,
+20111,Lyon County,KS,Kansas,12,21380,"Emporia, KS"
+20113,McPherson County,KS,Kansas,13,32700,"McPherson, KS"
+20115,Marion County,KS,Kansas,19,,
+20117,Marshall County,KS,Kansas,13,,
+20119,Meade County,KS,Kansas,5,,
+20121,Miami County,KS,Kansas,11,28140,"Kansas City, MO-KS"
+20123,Mitchell County,KS,Kansas,7,,
+20125,Montgomery County,KS,Kansas,13,,
+20127,Morris County,KS,Kansas,9,,
+20129,Morton County,KS,Kansas,5,,
+20131,Nemaha County,KS,Kansas,16,,
+20133,Neosho County,KS,Kansas,11,,
+20135,Ness County,KS,Kansas,9,,
+20137,Norton County,KS,Kansas,7,,
+20139,Osage County,KS,Kansas,15,45820,"Topeka, KS"
+20141,Osborne County,KS,Kansas,12,,
+20143,Ottawa County,KS,Kansas,11,41460,"Salina, KS"
+20145,Pawnee County,KS,Kansas,9,,
+20147,Phillips County,KS,Kansas,9,,
+20149,Pottawatomie County,KS,Kansas,12,31740,"Manhattan, KS"
+20151,Pratt County,KS,Kansas,11,,
+20153,Rawlins County,KS,Kansas,10,,
+20155,Reno County,KS,Kansas,22,26740,"Hutchinson, KS"
+20157,Republic County,KS,Kansas,16,,
+20159,Rice County,KS,Kansas,13,,
+20161,Riley County,KS,Kansas,14,31740,"Manhattan, KS"
+20163,Rooks County,KS,Kansas,10,,
+20165,Rush County,KS,Kansas,10,,
+20167,Russell County,KS,Kansas,11,,
+20169,Saline County,KS,Kansas,9,41460,"Salina, KS"
+20171,Scott County,KS,Kansas,4,,
+20173,Sedgwick County,KS,Kansas,52,48620,"Wichita, KS"
+20175,Seward County,KS,Kansas,6,30580,"Liberal, KS"
+20177,Shawnee County,KS,Kansas,29,45820,"Topeka, KS"
+20179,Sheridan County,KS,Kansas,11,,
+20181,Sherman County,KS,Kansas,4,,
+20183,Smith County,KS,Kansas,10,,
+20185,Stafford County,KS,Kansas,9,,
+20187,Stanton County,KS,Kansas,3,,
+20189,Stevens County,KS,Kansas,4,,
+20191,Sumner County,KS,Kansas,18,48620,"Wichita, KS"
+20193,Thomas County,KS,Kansas,8,,
+20195,Trego County,KS,Kansas,8,,
+20197,Wabaunsee County,KS,Kansas,16,45820,"Topeka, KS"
+20199,Wallace County,KS,Kansas,4,,
+20201,Washington County,KS,Kansas,15,,
+20203,Wichita County,KS,Kansas,3,,
+20205,Wilson County,KS,Kansas,10,,
+20207,Woodson County,KS,Kansas,10,,
+20209,Wyandotte County,KS,Kansas,14,28140,"Kansas City, MO-KS"
+21001,Adair County,KY,Kentucky,11,,
+21003,Allen County,KY,Kentucky,6,14540,"Bowling Green, KY"
+21005,Anderson County,KY,Kentucky,5,23180,"Frankfort, KY"
+21007,Ballard County,KY,Kentucky,6,37140,"Paducah, KY-IL"
+21009,Barren County,KY,Kentucky,12,23980,"Glasgow, KY"
+21011,Bath County,KY,Kentucky,8,34460,"Mount Sterling, KY"
+21013,Bell County,KY,Kentucky,11,33180,"Middlesborough, KY"
+21015,Boone County,KY,Kentucky,9,17140,"Cincinnati, OH-KY-IN"
+21017,Bourbon County,KY,Kentucky,10,30460,"Lexington-Fayette, KY"
+21019,Boyd County,KY,Kentucky,4,26580,"Huntington-Ashland, WV-KY-OH"
+21021,Boyle County,KY,Kentucky,5,19220,"Danville, KY"
+21023,Bracken County,KY,Kentucky,7,17140,"Cincinnati, OH-KY-IN"
+21025,Breathitt County,KY,Kentucky,12,,
+21027,Breckinridge County,KY,Kentucky,18,,
+21029,Bullitt County,KY,Kentucky,11,31140,"Louisville/Jefferson County, KY-IN"
+21031,Butler County,KY,Kentucky,11,14540,"Bowling Green, KY"
+21033,Caldwell County,KY,Kentucky,6,,
+21035,Calloway County,KY,Kentucky,10,34660,"Murray, KY"
+21037,Campbell County,KY,Kentucky,10,17140,"Cincinnati, OH-KY-IN"
+21039,Carlisle County,KY,Kentucky,4,37140,"Paducah, KY-IL"
+21041,Carroll County,KY,Kentucky,8,,
+21043,Carter County,KY,Kentucky,11,26580,"Huntington-Ashland, WV-KY-OH"
+21045,Casey County,KY,Kentucky,15,,
+21047,Christian County,KY,Kentucky,15,17300,"Clarksville, TN-KY"
+21049,Clark County,KY,Kentucky,4,30460,"Lexington-Fayette, KY"
+21051,Clay County,KY,Kentucky,10,18340,"Corbin, KY"
+21053,Clinton County,KY,Kentucky,4,,
+21055,Crittenden County,KY,Kentucky,6,,
+21057,Cumberland County,KY,Kentucky,4,,
+21059,Daviess County,KY,Kentucky,10,36980,"Owensboro, KY"
+21061,Edmonson County,KY,Kentucky,12,14540,"Bowling Green, KY"
+21063,Elliott County,KY,Kentucky,6,,
+21065,Estill County,KY,Kentucky,5,40080,"Richmond-Berea, KY"
+21067,Fayette County,KY,Kentucky,19,30460,"Lexington-Fayette, KY"
+21069,Fleming County,KY,Kentucky,7,,
+21071,Floyd County,KY,Kentucky,34,38210,"Pikeville, KY"
+21073,Franklin County,KY,Kentucky,5,23180,"Frankfort, KY"
+21075,Fulton County,KY,Kentucky,3,,
+21077,Gallatin County,KY,Kentucky,6,17140,"Cincinnati, OH-KY-IN"
+21079,Garrard County,KY,Kentucky,5,,
+21081,Grant County,KY,Kentucky,8,17140,"Cincinnati, OH-KY-IN"
+21083,Graves County,KY,Kentucky,18,32460,"Mayfield, KY"
+21085,Grayson County,KY,Kentucky,9,,
+21087,Green County,KY,Kentucky,8,15820,"Campbellsville, KY"
+21089,Greenup County,KY,Kentucky,11,26580,"Huntington-Ashland, WV-KY-OH"
+21091,Hancock County,KY,Kentucky,5,,
+21093,Hardin County,KY,Kentucky,17,21060,"Elizabethtown, KY"
+21095,Harlan County,KY,Kentucky,27,,
+21097,Harrison County,KY,Kentucky,6,,
+21099,Hart County,KY,Kentucky,10,,
+21101,Henderson County,KY,Kentucky,8,25775,"Henderson, KY"
+21103,Henry County,KY,Kentucky,13,31140,"Louisville/Jefferson County, KY-IN"
+21105,Hickman County,KY,Kentucky,7,,
+21107,Hopkins County,KY,Kentucky,13,31580,"Madisonville, KY"
+21109,Jackson County,KY,Kentucky,6,,
+21111,Jefferson County,KY,Kentucky,43,31140,"Louisville/Jefferson County, KY-IN"
+21113,Jessamine County,KY,Kentucky,5,30460,"Lexington-Fayette, KY"
+21115,Johnson County,KY,Kentucky,19,,
+21117,Kenton County,KY,Kentucky,12,17140,"Cincinnati, OH-KY-IN"
+21119,Knott County,KY,Kentucky,24,,
+21121,Knox County,KY,Kentucky,19,18340,"Corbin, KY"
+21123,Larue County,KY,Kentucky,9,21060,"Elizabethtown, KY"
+21125,Laurel County,KY,Kentucky,8,18340,"Corbin, KY"
+21127,Lawrence County,KY,Kentucky,10,26580,"Huntington-Ashland, WV-KY-OH"
+21129,Lee County,KY,Kentucky,6,,
+21131,Leslie County,KY,Kentucky,23,,
+21133,Letcher County,KY,Kentucky,26,,
+21135,Lewis County,KY,Kentucky,9,,
+21137,Lincoln County,KY,Kentucky,11,19220,"Danville, KY"
+21139,Livingston County,KY,Kentucky,7,37140,"Paducah, KY-IL"
+21141,Logan County,KY,Kentucky,7,,
+21143,Lyon County,KY,Kentucky,4,,
+21145,McCracken County,KY,Kentucky,7,37140,"Paducah, KY-IL"
+21147,McCreary County,KY,Kentucky,8,,
+21149,McLean County,KY,Kentucky,8,36980,"Owensboro, KY"
+21151,Madison County,KY,Kentucky,5,40080,"Richmond-Berea, KY"
+21153,Magoffin County,KY,Kentucky,4,,
+21155,Marion County,KY,Kentucky,11,,
+21157,Marshall County,KY,Kentucky,8,,
+21159,Martin County,KY,Kentucky,9,,
+21161,Mason County,KY,Kentucky,5,,
+21163,Meade County,KY,Kentucky,12,31140,"Louisville/Jefferson County, KY-IN"
+21165,Menifee County,KY,Kentucky,5,34460,"Mount Sterling, KY"
+21167,Mercer County,KY,Kentucky,5,,
+21169,Metcalfe County,KY,Kentucky,10,23980,"Glasgow, KY"
+21171,Monroe County,KY,Kentucky,6,,
+21173,Montgomery County,KY,Kentucky,5,34460,"Mount Sterling, KY"
+21175,Morgan County,KY,Kentucky,8,,
+21177,Muhlenberg County,KY,Kentucky,17,,
+21179,Nelson County,KY,Kentucky,9,31140,"Louisville/Jefferson County, KY-IN"
+21181,Nicholas County,KY,Kentucky,6,,
+21183,Ohio County,KY,Kentucky,17,,
+21185,Oldham County,KY,Kentucky,11,31140,"Louisville/Jefferson County, KY-IN"
+21187,Owen County,KY,Kentucky,11,,
+21189,Owsley County,KY,Kentucky,9,,
+21191,Pendleton County,KY,Kentucky,10,17140,"Cincinnati, OH-KY-IN"
+21193,Perry County,KY,Kentucky,24,,
+21195,Pike County,KY,Kentucky,39,38210,"Pikeville, KY"
+21197,Powell County,KY,Kentucky,4,,
+21199,Pulaski County,KY,Kentucky,11,43700,"Somerset, KY"
+21201,Robertson County,KY,Kentucky,7,,
+21203,Rockcastle County,KY,Kentucky,7,40080,"Richmond-Berea, KY"
+21205,Rowan County,KY,Kentucky,4,,
+21207,Russell County,KY,Kentucky,7,,
+21209,Scott County,KY,Kentucky,6,30460,"Lexington-Fayette, KY"
+21211,Shelby County,KY,Kentucky,14,31140,"Louisville/Jefferson County, KY-IN"
+21213,Simpson County,KY,Kentucky,5,23190,"Franklin, KY"
+21215,Spencer County,KY,Kentucky,8,31140,"Louisville/Jefferson County, KY-IN"
+21217,Taylor County,KY,Kentucky,6,15820,"Campbellsville, KY"
+21219,Todd County,KY,Kentucky,9,,
+21221,Trigg County,KY,Kentucky,5,17300,"Clarksville, TN-KY"
+21223,Trimble County,KY,Kentucky,5,,
+21225,Union County,KY,Kentucky,5,,
+21227,Warren County,KY,Kentucky,9,14540,"Bowling Green, KY"
+21229,Washington County,KY,Kentucky,8,,
+21231,Wayne County,KY,Kentucky,5,,
+21233,Webster County,KY,Kentucky,11,25775,"Henderson, KY"
+21235,Whitley County,KY,Kentucky,7,18340,"Corbin, KY"
+21237,Wolfe County,KY,Kentucky,5,,
+21239,Woodford County,KY,Kentucky,3,30460,"Lexington-Fayette, KY"
+22001,Acadia Parish,LA,Louisiana,15,29180,"Lafayette, LA"
+22003,Allen Parish,LA,Louisiana,13,,
+22005,Ascension Parish,LA,Louisiana,8,12940,"Baton Rouge, LA"
+22007,Assumption Parish,LA,Louisiana,9,12940,"Baton Rouge, LA"
+22009,Avoyelles Parish,LA,Louisiana,16,,
+22011,Beauregard Parish,LA,Louisiana,9,19760,"DeRidder, LA"
+22013,Bienville Parish,LA,Louisiana,13,,
+22015,Bossier Parish,LA,Louisiana,15,43340,"Shreveport-Bossier City, LA"
+22017,Caddo Parish,LA,Louisiana,26,43340,"Shreveport-Bossier City, LA"
+22019,Calcasieu Parish,LA,Louisiana,18,29340,"Lake Charles, LA"
+22021,Caldwell Parish,LA,Louisiana,5,,
+22023,Cameron Parish,LA,Louisiana,8,29340,"Lake Charles, LA"
+22025,Catahoula Parish,LA,Louisiana,9,,
+22027,Claiborne Parish,LA,Louisiana,11,,
+22029,Concordia Parish,LA,Louisiana,6,35020,"Natchez, MS-LA"
+22031,De Soto Parish,LA,Louisiana,10,43340,"Shreveport-Bossier City, LA"
+22033,East Baton Rouge Parish,LA,Louisiana,28,12940,"Baton Rouge, LA"
+22035,East Carroll Parish,LA,Louisiana,4,,
+22037,East Feliciana Parish,LA,Louisiana,8,12940,"Baton Rouge, LA"
+22039,Evangeline Parish,LA,Louisiana,12,,
+22041,Franklin Parish,LA,Louisiana,7,,
+22043,Grant Parish,LA,Louisiana,8,10780,"Alexandria, LA"
+22045,Iberia Parish,LA,Louisiana,10,35340,"New Iberia, LA"
+22047,Iberville Parish,LA,Louisiana,8,12940,"Baton Rouge, LA"
+22049,Jackson Parish,LA,Louisiana,7,,
+22051,Jefferson Parish,LA,Louisiana,17,35380,"New Orleans-Metairie, LA"
+22053,Jefferson Davis Parish,LA,Louisiana,10,29340,"Lake Charles, LA"
+22055,Lafayette Parish,LA,Louisiana,16,29180,"Lafayette, LA"
+22057,Lafourche Parish,LA,Louisiana,15,26380,"Houma-Bayou Cane-Thibodaux, LA"
+22059,LaSalle Parish,LA,Louisiana,8,,
+22061,Lincoln Parish,LA,Louisiana,8,40820,"Ruston, LA"
+22063,Livingston Parish,LA,Louisiana,18,12940,"Baton Rouge, LA"
+22065,Madison Parish,LA,Louisiana,4,,
+22067,Morehouse Parish,LA,Louisiana,7,33740,"Monroe, LA"
+22069,Natchitoches Parish,LA,Louisiana,21,35060,"Natchitoches, LA"
+22071,Orleans Parish,LA,Louisiana,20,35380,"New Orleans-Metairie, LA"
+22073,Ouachita Parish,LA,Louisiana,15,33740,"Monroe, LA"
+22075,Plaquemines Parish,LA,Louisiana,8,35380,"New Orleans-Metairie, LA"
+22077,Pointe Coupee Parish,LA,Louisiana,17,12940,"Baton Rouge, LA"
+22079,Rapides Parish,LA,Louisiana,29,10780,"Alexandria, LA"
+22081,Red River Parish,LA,Louisiana,5,,
+22083,Richland Parish,LA,Louisiana,8,33740,"Monroe, LA"
+22085,Sabine Parish,LA,Louisiana,12,,
+22087,St. Bernard Parish,LA,Louisiana,6,35380,"New Orleans-Metairie, LA"
+22089,St. Charles Parish,LA,Louisiana,10,35380,"New Orleans-Metairie, LA"
+22091,St. Helena Parish,LA,Louisiana,7,12940,"Baton Rouge, LA"
+22093,St. James Parish,LA,Louisiana,7,35380,"New Orleans-Metairie, LA"
+22095,St. John the Baptist Parish,LA,Louisiana,6,35380,"New Orleans-Metairie, LA"
+22097,St. Landry Parish,LA,Louisiana,19,36660,"Opelousas, LA"
+22099,St. Martin Parish,LA,Louisiana,8,29180,"Lafayette, LA"
+22101,St. Mary Parish,LA,Louisiana,9,34020,"Morgan City, LA"
+22103,St. Tammany Parish,LA,Louisiana,18,43640,"Slidell-Mandeville-Covington, LA"
+22105,Tangipahoa Parish,LA,Louisiana,20,25220,"Hammond, LA"
+22107,Tensas Parish,LA,Louisiana,4,,
+22109,Terrebonne Parish,LA,Louisiana,13,26380,"Houma-Bayou Cane-Thibodaux, LA"
+22111,Union Parish,LA,Louisiana,10,33740,"Monroe, LA"
+22113,Vermilion Parish,LA,Louisiana,12,29180,"Lafayette, LA"
+22115,Vernon Parish,LA,Louisiana,14,,
+22117,Washington Parish,LA,Louisiana,6,14220,"Bogalusa, LA"
+22119,Webster Parish,LA,Louisiana,12,33380,"Minden, LA"
+22121,West Baton Rouge Parish,LA,Louisiana,5,12940,"Baton Rouge, LA"
+22123,West Carroll Parish,LA,Louisiana,5,,
+22125,West Feliciana Parish,LA,Louisiana,4,12940,"Baton Rouge, LA"
+22127,Winn Parish,LA,Louisiana,12,,
+23001,Androscoggin County,ME,Maine,14,30340,"Lewiston-Auburn, ME"
+23003,Aroostook County,ME,Maine,42,,
+23005,Cumberland County,ME,Maine,38,38860,"Portland-South Portland, ME"
+23007,Franklin County,ME,Maine,18,,
+23009,Hancock County,ME,Maine,41,,
+23011,Kennebec County,ME,Maine,27,12300,"Augusta-Waterville, ME"
+23013,Knox County,ME,Maine,19,,
+23015,Lincoln County,ME,Maine,27,,
+23017,Oxford County,ME,Maine,35,,
+23019,Penobscot County,ME,Maine,47,12620,"Bangor, ME"
+23021,Piscataquis County,ME,Maine,16,,
+23023,Sagadahoc County,ME,Maine,8,38860,"Portland-South Portland, ME"
+23025,Somerset County,ME,Maine,26,,
+23027,Waldo County,ME,Maine,18,,
+23029,Washington County,ME,Maine,31,,
+23031,York County,ME,Maine,36,38860,"Portland-South Portland, ME"
+24001,Allegany County,MD,Maryland,16,19060,"Cumberland, MD-WV"
+24003,Anne Arundel County,MD,Maryland,42,12580,"Baltimore-Columbia-Towson, MD"
+24005,Baltimore County,MD,Maryland,57,12580,"Baltimore-Columbia-Towson, MD"
+24009,Calvert County,MD,Maryland,14,30500,"Lexington Park, MD"
+24011,Caroline County,MD,Maryland,10,,
+24013,Carroll County,MD,Maryland,15,12580,"Baltimore-Columbia-Towson, MD"
+24015,Cecil County,MD,Maryland,15,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+24017,Charles County,MD,Maryland,25,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+24019,Dorchester County,MD,Maryland,19,15700,"Cambridge, MD"
+24021,Frederick County,MD,Maryland,35,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+24023,Garrett County,MD,Maryland,12,,
+24025,Harford County,MD,Maryland,24,12580,"Baltimore-Columbia-Towson, MD"
+24027,Howard County,MD,Maryland,25,12580,"Baltimore-Columbia-Towson, MD"
+24029,Kent County,MD,Maryland,9,,
+24031,Montgomery County,MD,Maryland,53,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+24033,Prince George's County,MD,Maryland,40,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+24035,Queen Anne's County,MD,Maryland,16,12580,"Baltimore-Columbia-Towson, MD"
+24037,St. Mary's County,MD,Maryland,27,30500,"Lexington Park, MD"
+24039,Somerset County,MD,Maryland,11,41540,"Salisbury, MD"
+24041,Talbot County,MD,Maryland,16,20660,"Easton, MD"
+24043,Washington County,MD,Maryland,21,25180,"Hagerstown-Martinsburg, MD-WV"
+24045,Wicomico County,MD,Maryland,16,41540,"Salisbury, MD"
+24047,Worcester County,MD,Maryland,12,36180,"Ocean Pines, MD"
+24510,Baltimore city,MD,Maryland,33,12580,"Baltimore-Columbia-Towson, MD"
+25001,Barnstable County,MA,Massachusetts,48,12700,"Barnstable Town, MA"
+25003,Berkshire County,MA,Massachusetts,36,38340,"Pittsfield, MA"
+25005,Bristol County,MA,Massachusetts,36,39300,"Providence-Warwick, RI-MA"
+25007,Dukes County,MA,Massachusetts,7,47240,"Vineyard Haven, MA"
+25009,Essex County,MA,Massachusetts,46,14460,"Boston-Cambridge-Newton, MA-NH"
+25011,Franklin County,MA,Massachusetts,33,24640,"Greenfield, MA"
+25013,Hampden County,MA,Massachusetts,42,44140,"Springfield, MA"
+25015,Hampshire County,MA,Massachusetts,28,11200,"Amherst Town-Northampton, MA"
+25017,Middlesex County,MA,Massachusetts,83,14460,"Boston-Cambridge-Newton, MA-NH"
+25019,Nantucket County,MA,Massachusetts,3,34880,"Nantucket, MA"
+25021,Norfolk County,MA,Massachusetts,41,14460,"Boston-Cambridge-Newton, MA-NH"
+25023,Plymouth County,MA,Massachusetts,36,14460,"Boston-Cambridge-Newton, MA-NH"
+25025,Suffolk County,MA,Massachusetts,39,14460,"Boston-Cambridge-Newton, MA-NH"
+25027,Worcester County,MA,Massachusetts,87,49340,"Worcester, MA"
+26001,Alcona County,MI,Michigan,13,,
+26003,Alger County,MI,Michigan,13,,
+26005,Allegan County,MI,Michigan,25,26090,"Holland, MI"
+26007,Alpena County,MI,Michigan,8,10980,"Alpena, MI"
+26009,Antrim County,MI,Michigan,16,,
+26011,Arenac County,MI,Michigan,10,,
+26013,Baraga County,MI,Michigan,7,,
+26015,Barry County,MI,Michigan,15,24340,"Grand Rapids-Wyoming-Kentwood, MI"
+26017,Bay County,MI,Michigan,17,13020,"Bay City, MI"
+26019,Benzie County,MI,Michigan,11,45900,"Traverse City, MI"
+26021,Berrien County,MI,Michigan,24,35660,"Niles, MI"
+26023,Branch County,MI,Michigan,13,17740,"Coldwater, MI"
+26025,Calhoun County,MI,Michigan,22,12980,"Battle Creek, MI"
+26027,Cass County,MI,Michigan,14,43780,"South Bend-Mishawaka, IN-MI"
+26029,Charlevoix County,MI,Michigan,10,,
+26031,Cheboygan County,MI,Michigan,15,,
+26033,Chippewa County,MI,Michigan,18,42300,"Sault Ste. Marie, MI"
+26035,Clare County,MI,Michigan,8,,
+26037,Clinton County,MI,Michigan,17,29620,"Lansing-East Lansing, MI"
+26039,Crawford County,MI,Michigan,4,,
+26041,Delta County,MI,Michigan,13,21540,"Escanaba, MI"
+26043,Dickinson County,MI,Michigan,11,27020,"Iron Mountain, MI-WI"
+26045,Eaton County,MI,Michigan,19,29620,"Lansing-East Lansing, MI"
+26047,Emmet County,MI,Michigan,11,37950,"Petoskey, MI"
+26049,Genesee County,MI,Michigan,34,22420,"Flint, MI"
+26051,Gladwin County,MI,Michigan,7,,
+26053,Gogebic County,MI,Michigan,7,,
+26055,Grand Traverse County,MI,Michigan,11,45900,"Traverse City, MI"
+26057,Gratiot County,MI,Michigan,21,10940,"Alma, MI"
+26059,Hillsdale County,MI,Michigan,19,25880,"Hillsdale, MI"
+26061,Houghton County,MI,Michigan,20,26340,"Houghton, MI"
+26063,Huron County,MI,Michigan,18,,
+26065,Ingham County,MI,Michigan,23,29620,"Lansing-East Lansing, MI"
+26067,Ionia County,MI,Michigan,21,24340,"Grand Rapids-Wyoming-Kentwood, MI"
+26069,Iosco County,MI,Michigan,12,,
+26071,Iron County,MI,Michigan,8,,
+26073,Isabella County,MI,Michigan,16,34380,"Mount Pleasant, MI"
+26075,Jackson County,MI,Michigan,29,27100,"Jackson, MI"
+26077,Kalamazoo County,MI,Michigan,25,28020,"Kalamazoo-Portage, MI"
+26079,Kalkaska County,MI,Michigan,8,45900,"Traverse City, MI"
+26081,Kent County,MI,Michigan,39,24340,"Grand Rapids-Wyoming-Kentwood, MI"
+26083,Keweenaw County,MI,Michigan,6,26340,"Houghton, MI"
+26085,Lake County,MI,Michigan,11,,
+26087,Lapeer County,MI,Michigan,22,19820,"Detroit-Warren-Dearborn, MI"
+26089,Leelanau County,MI,Michigan,11,45900,"Traverse City, MI"
+26091,Lenawee County,MI,Michigan,23,10300,"Adrian, MI"
+26093,Livingston County,MI,Michigan,21,19820,"Detroit-Warren-Dearborn, MI"
+26095,Luce County,MI,Michigan,3,,
+26097,Mackinac County,MI,Michigan,15,,
+26099,Macomb County,MI,Michigan,39,19820,"Detroit-Warren-Dearborn, MI"
+26101,Manistee County,MI,Michigan,15,,
+26103,Marquette County,MI,Michigan,15,32100,"Marquette, MI"
+26105,Mason County,MI,Michigan,10,31220,"Ludington, MI"
+26107,Mecosta County,MI,Michigan,17,13660,"Big Rapids, MI"
+26109,Menominee County,MI,Michigan,14,31940,"Marinette, WI-MI"
+26111,Midland County,MI,Michigan,16,33220,"Midland, MI"
+26113,Missaukee County,MI,Michigan,9,15620,"Cadillac, MI"
+26115,Monroe County,MI,Michigan,25,33780,"Monroe, MI"
+26117,Montcalm County,MI,Michigan,25,24340,"Grand Rapids-Wyoming-Kentwood, MI"
+26119,Montmorency County,MI,Michigan,5,,
+26121,Muskegon County,MI,Michigan,21,34740,"Muskegon-Norton Shores, MI"
+26123,Newaygo County,MI,Michigan,21,,
+26125,Oakland County,MI,Michigan,71,19820,"Detroit-Warren-Dearborn, MI"
+26127,Oceana County,MI,Michigan,12,,
+26129,Ogemaw County,MI,Michigan,9,,
+26131,Ontonagon County,MI,Michigan,12,,
+26133,Osceola County,MI,Michigan,9,,
+26135,Oscoda County,MI,Michigan,8,,
+26137,Otsego County,MI,Michigan,7,,
+26139,Ottawa County,MI,Michigan,25,24340,"Grand Rapids-Wyoming-Kentwood, MI"
+26141,Presque Isle County,MI,Michigan,7,,
+26143,Roscommon County,MI,Michigan,7,,
+26145,Saginaw County,MI,Michigan,28,40980,"Saginaw, MI"
+26147,St. Clair County,MI,Michigan,23,19820,"Detroit-Warren-Dearborn, MI"
+26149,St. Joseph County,MI,Michigan,13,44780,"Sturgis, MI"
+26151,Sanilac County,MI,Michigan,23,,
+26153,Schoolcraft County,MI,Michigan,7,,
+26155,Shiawassee County,MI,Michigan,19,37020,"Owosso, MI"
+26157,Tuscola County,MI,Michigan,21,,
+26159,Van Buren County,MI,Michigan,23,,
+26161,Washtenaw County,MI,Michigan,27,11460,"Ann Arbor, MI"
+26163,Wayne County,MI,Michigan,71,19820,"Detroit-Warren-Dearborn, MI"
+26165,Wexford County,MI,Michigan,13,15620,"Cadillac, MI"
+27001,Aitkin County,MN,Minnesota,12,,
+27003,Anoka County,MN,Minnesota,20,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27005,Becker County,MN,Minnesota,16,19810,"Detroit Lakes, MN"
+27007,Beltrami County,MN,Minnesota,18,13420,"Bemidji, MN"
+27009,Benton County,MN,Minnesota,9,41060,"St. Cloud, MN"
+27011,Big Stone County,MN,Minnesota,11,,
+27013,Blue Earth County,MN,Minnesota,20,31860,"Mankato, MN"
+27015,Brown County,MN,Minnesota,11,35580,"New Ulm, MN"
+27017,Carlton County,MN,Minnesota,15,20260,"Duluth, MN-WI"
+27019,Carver County,MN,Minnesota,18,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27021,Cass County,MN,Minnesota,24,14660,"Brainerd, MN"
+27023,Chippewa County,MN,Minnesota,10,,
+27025,Chisago County,MN,Minnesota,15,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27027,Clay County,MN,Minnesota,17,22020,"Fargo, ND-MN"
+27029,Clearwater County,MN,Minnesota,11,,
+27031,Cook County,MN,Minnesota,6,,
+27033,Cottonwood County,MN,Minnesota,13,,
+27035,Crow Wing County,MN,Minnesota,18,14660,"Brainerd, MN"
+27037,Dakota County,MN,Minnesota,22,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27039,Dodge County,MN,Minnesota,10,40340,"Rochester, MN"
+27041,Douglas County,MN,Minnesota,17,10820,"Alexandria, MN"
+27043,Faribault County,MN,Minnesota,14,,
+27045,Fillmore County,MN,Minnesota,16,40340,"Rochester, MN"
+27047,Freeborn County,MN,Minnesota,18,10660,"Albert Lea, MN"
+27049,Goodhue County,MN,Minnesota,17,39860,"Red Wing, MN"
+27051,Grant County,MN,Minnesota,11,,
+27053,Hennepin County,MN,Minnesota,73,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27055,Houston County,MN,Minnesota,9,29100,"La Crosse-Onalaska, WI-MN"
+27057,Hubbard County,MN,Minnesota,10,,
+27059,Isanti County,MN,Minnesota,13,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27061,Itasca County,MN,Minnesota,30,24330,"Grand Rapids, MN"
+27063,Jackson County,MN,Minnesota,14,,
+27065,Kanabec County,MN,Minnesota,9,,
+27067,Kandiyohi County,MN,Minnesota,16,48820,"Willmar, MN"
+27069,Kittson County,MN,Minnesota,11,,
+27071,Koochiching County,MN,Minnesota,14,,
+27073,Lac qui Parle County,MN,Minnesota,10,,
+27075,Lake County,MN,Minnesota,9,,
+27077,Lake of the Woods County,MN,Minnesota,4,,
+27079,Le Sueur County,MN,Minnesota,13,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27081,Lincoln County,MN,Minnesota,12,,
+27083,Lyon County,MN,Minnesota,14,32140,"Marshall, MN"
+27085,McLeod County,MN,Minnesota,12,26780,"Hutchinson, MN"
+27087,Mahnomen County,MN,Minnesota,8,,
+27089,Marshall County,MN,Minnesota,15,,
+27091,Martin County,MN,Minnesota,15,21860,"Fairmont, MN"
+27093,Meeker County,MN,Minnesota,13,,
+27095,Mille Lacs County,MN,Minnesota,12,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27097,Morrison County,MN,Minnesota,20,,
+27099,Mower County,MN,Minnesota,19,12380,"Austin, MN"
+27101,Murray County,MN,Minnesota,16,,
+27103,Nicollet County,MN,Minnesota,10,31860,"Mankato, MN"
+27105,Nobles County,MN,Minnesota,17,49380,"Worthington, MN"
+27107,Norman County,MN,Minnesota,15,,
+27109,Olmsted County,MN,Minnesota,21,40340,"Rochester, MN"
+27111,Otter Tail County,MN,Minnesota,34,22260,"Fergus Falls, MN"
+27113,Pennington County,MN,Minnesota,7,,
+27115,Pine County,MN,Minnesota,16,,
+27117,Pipestone County,MN,Minnesota,9,,
+27119,Polk County,MN,Minnesota,25,24220,"Grand Forks, ND-MN"
+27121,Pope County,MN,Minnesota,12,,
+27123,Ramsey County,MN,Minnesota,27,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27125,Red Lake County,MN,Minnesota,9,,
+27127,Redwood County,MN,Minnesota,22,,
+27129,Renville County,MN,Minnesota,16,,
+27131,Rice County,MN,Minnesota,16,22060,"Faribault-Northfield, MN"
+27133,Rock County,MN,Minnesota,13,43620,"Sioux Falls, SD-MN"
+27135,Roseau County,MN,Minnesota,11,,
+27137,St. Louis County,MN,Minnesota,52,20260,"Duluth, MN-WI"
+27139,Scott County,MN,Minnesota,10,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27141,Sherburne County,MN,Minnesota,9,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27143,Sibley County,MN,Minnesota,16,,
+27145,Stearns County,MN,Minnesota,33,41060,"St. Cloud, MN"
+27147,Steele County,MN,Minnesota,11,36940,"Owatonna, MN"
+27149,Stevens County,MN,Minnesota,8,,
+27151,Swift County,MN,Minnesota,11,,
+27153,Todd County,MN,Minnesota,19,,
+27155,Traverse County,MN,Minnesota,9,,
+27157,Wabasha County,MN,Minnesota,13,40340,"Rochester, MN"
+27159,Wadena County,MN,Minnesota,7,,
+27161,Waseca County,MN,Minnesota,13,,
+27163,Washington County,MN,Minnesota,19,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27165,Watonwan County,MN,Minnesota,10,,
+27167,Wilkin County,MN,Minnesota,12,47420,"Wahpeton, ND-MN"
+27169,Winona County,MN,Minnesota,14,49100,"Winona, MN"
+27171,Wright County,MN,Minnesota,19,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+27173,Yellow Medicine County,MN,Minnesota,14,,
+28001,Adams County,MS,Mississippi,2,35020,"Natchez, MS-LA"
+28003,Alcorn County,MS,Mississippi,5,18420,"Corinth, MS"
+28005,Amite County,MS,Mississippi,9,,
+28007,Attala County,MS,Mississippi,11,,
+28009,Benton County,MS,Mississippi,11,32820,"Memphis, TN-MS-AR"
+28011,Bolivar County,MS,Mississippi,18,17380,"Cleveland, MS"
+28013,Calhoun County,MS,Mississippi,12,,
+28015,Carroll County,MS,Mississippi,13,24900,"Greenwood, MS"
+28017,Chickasaw County,MS,Mississippi,8,,
+28019,Choctaw County,MS,Mississippi,9,,
+28021,Claiborne County,MS,Mississippi,5,,
+28023,Clarke County,MS,Mississippi,9,32940,"Meridian, MS"
+28025,Clay County,MS,Mississippi,8,,
+28027,Coahoma County,MS,Mississippi,11,17260,"Clarksdale, MS"
+28029,Copiah County,MS,Mississippi,9,27140,"Jackson, MS"
+28031,Covington County,MS,Mississippi,8,,
+28033,DeSoto County,MS,Mississippi,10,32820,"Memphis, TN-MS-AR"
+28035,Forrest County,MS,Mississippi,8,25620,"Hattiesburg, MS"
+28037,Franklin County,MS,Mississippi,8,,
+28039,George County,MS,Mississippi,3,,
+28041,Greene County,MS,Mississippi,7,,
+28043,Grenada County,MS,Mississippi,7,24980,"Grenada, MS"
+28045,Hancock County,MS,Mississippi,11,25060,"Gulfport-Biloxi, MS"
+28047,Harrison County,MS,Mississippi,13,25060,"Gulfport-Biloxi, MS"
+28049,Hinds County,MS,Mississippi,24,27140,"Jackson, MS"
+28051,Holmes County,MS,Mississippi,9,27140,"Jackson, MS"
+28053,Humphreys County,MS,Mississippi,8,,
+28055,Issaquena County,MS,Mississippi,6,,
+28057,Itawamba County,MS,Mississippi,10,46180,"Tupelo, MS"
+28059,Jackson County,MS,Mississippi,11,25060,"Gulfport-Biloxi, MS"
+28061,Jasper County,MS,Mississippi,14,29860,"Laurel, MS"
+28063,Jefferson County,MS,Mississippi,7,35020,"Natchez, MS-LA"
+28065,Jefferson Davis County,MS,Mississippi,9,,
+28067,Jones County,MS,Mississippi,13,29860,"Laurel, MS"
+28069,Kemper County,MS,Mississippi,11,,
+28071,Lafayette County,MS,Mississippi,13,37060,"Oxford, MS"
+28073,Lamar County,MS,Mississippi,6,25620,"Hattiesburg, MS"
+28075,Lauderdale County,MS,Mississippi,12,32940,"Meridian, MS"
+28077,Lawrence County,MS,Mississippi,8,,
+28079,Leake County,MS,Mississippi,7,,
+28081,Lee County,MS,Mississippi,15,46180,"Tupelo, MS"
+28083,Leflore County,MS,Mississippi,11,24900,"Greenwood, MS"
+28085,Lincoln County,MS,Mississippi,12,15020,"Brookhaven, MS"
+28087,Lowndes County,MS,Mississippi,9,18060,"Columbus, MS"
+28089,Madison County,MS,Mississippi,12,27140,"Jackson, MS"
+28091,Marion County,MS,Mississippi,8,,
+28093,Marshall County,MS,Mississippi,8,32820,"Memphis, TN-MS-AR"
+28095,Monroe County,MS,Mississippi,12,,
+28097,Montgomery County,MS,Mississippi,7,24980,"Grenada, MS"
+28099,Neshoba County,MS,Mississippi,8,,
+28101,Newton County,MS,Mississippi,11,,
+28103,Noxubee County,MS,Mississippi,6,18060,"Columbus, MS"
+28105,Oktibbeha County,MS,Mississippi,6,44260,"Starkville, MS"
+28107,Panola County,MS,Mississippi,11,,
+28109,Pearl River County,MS,Mississippi,5,38100,"Picayune, MS"
+28111,Perry County,MS,Mississippi,8,25620,"Hattiesburg, MS"
+28113,Pike County,MS,Mississippi,8,32620,"McComb, MS"
+28115,Pontotoc County,MS,Mississippi,11,,
+28117,Prentiss County,MS,Mississippi,8,46180,"Tupelo, MS"
+28119,Quitman County,MS,Mississippi,10,,
+28121,Rankin County,MS,Mississippi,14,27140,"Jackson, MS"
+28123,Scott County,MS,Mississippi,10,27140,"Jackson, MS"
+28125,Sharkey County,MS,Mississippi,7,,
+28127,Simpson County,MS,Mississippi,10,27140,"Jackson, MS"
+28129,Smith County,MS,Mississippi,15,,
+28131,Stone County,MS,Mississippi,6,25060,"Gulfport-Biloxi, MS"
+28133,Sunflower County,MS,Mississippi,16,,
+28135,Tallahatchie County,MS,Mississippi,18,,
+28137,Tate County,MS,Mississippi,5,32820,"Memphis, TN-MS-AR"
+28139,Tippah County,MS,Mississippi,9,,
+28141,Tishomingo County,MS,Mississippi,9,,
+28143,Tunica County,MS,Mississippi,5,32820,"Memphis, TN-MS-AR"
+28145,Union County,MS,Mississippi,11,,
+28147,Walthall County,MS,Mississippi,6,32620,"McComb, MS"
+28149,Warren County,MS,Mississippi,3,46980,"Vicksburg, MS"
+28151,Washington County,MS,Mississippi,10,24740,"Greenville, MS"
+28153,Wayne County,MS,Mississippi,8,,
+28155,Webster County,MS,Mississippi,10,44260,"Starkville, MS"
+28157,Wilkinson County,MS,Mississippi,4,,
+28159,Winston County,MS,Mississippi,10,,
+28161,Yalobusha County,MS,Mississippi,7,37060,"Oxford, MS"
+28163,Yazoo County,MS,Mississippi,9,27140,"Jackson, MS"
+29001,Adair County,MO,Missouri,9,28860,"Kirksville, MO"
+29003,Andrew County,MO,Missouri,17,41140,"St. Joseph, MO-KS"
+29005,Atchison County,MO,Missouri,9,,
+29007,Audrain County,MO,Missouri,14,33020,"Mexico, MO"
+29009,Barry County,MO,Missouri,18,,
+29011,Barton County,MO,Missouri,8,,
+29013,Bates County,MO,Missouri,13,28140,"Kansas City, MO-KS"
+29015,Benton County,MO,Missouri,13,,
+29017,Bollinger County,MO,Missouri,14,16020,"Cape Girardeau, MO-IL"
+29019,Boone County,MO,Missouri,13,17860,"Columbia, MO"
+29021,Buchanan County,MO,Missouri,15,41140,"St. Joseph, MO-KS"
+29023,Butler County,MO,Missouri,11,38740,"Poplar Bluff, MO"
+29025,Caldwell County,MO,Missouri,10,28140,"Kansas City, MO-KS"
+29027,Callaway County,MO,Missouri,19,27620,"Jefferson City, MO"
+29029,Camden County,MO,Missouri,18,,
+29031,Cape Girardeau County,MO,Missouri,19,16020,"Cape Girardeau, MO-IL"
+29033,Carroll County,MO,Missouri,10,,
+29035,Carter County,MO,Missouri,5,,
+29037,Cass County,MO,Missouri,18,28140,"Kansas City, MO-KS"
+29039,Cedar County,MO,Missouri,9,,
+29041,Chariton County,MO,Missouri,12,,
+29043,Christian County,MO,Missouri,21,44180,"Springfield, MO"
+29045,Clark County,MO,Missouri,12,,
+29047,Clay County,MO,Missouri,23,28140,"Kansas City, MO-KS"
+29049,Clinton County,MO,Missouri,11,28140,"Kansas City, MO-KS"
+29051,Cole County,MO,Missouri,9,27620,"Jefferson City, MO"
+29053,Cooper County,MO,Missouri,14,17860,"Columbia, MO"
+29055,Crawford County,MO,Missouri,13,,
+29057,Dade County,MO,Missouri,13,,
+29059,Dallas County,MO,Missouri,13,44180,"Springfield, MO"
+29061,Daviess County,MO,Missouri,16,,
+29063,DeKalb County,MO,Missouri,10,41140,"St. Joseph, MO-KS"
+29065,Dent County,MO,Missouri,8,,
+29067,Douglas County,MO,Missouri,16,,
+29069,Dunklin County,MO,Missouri,14,28380,"Kennett, MO"
+29071,Franklin County,MO,Missouri,23,41180,"St. Louis, MO-IL"
+29073,Gasconade County,MO,Missouri,12,,
+29075,Gentry County,MO,Missouri,13,,
+29077,Greene County,MO,Missouri,23,44180,"Springfield, MO"
+29079,Grundy County,MO,Missouri,7,,
+29081,Harrison County,MO,Missouri,13,,
+29083,Henry County,MO,Missouri,11,,
+29085,Hickory County,MO,Missouri,13,,
+29087,Holt County,MO,Missouri,6,,
+29089,Howard County,MO,Missouri,10,17860,"Columbia, MO"
+29091,Howell County,MO,Missouri,13,48460,"West Plains, MO"
+29093,Iron County,MO,Missouri,16,,
+29095,Jackson County,MO,Missouri,58,28140,"Kansas City, MO-KS"
+29097,Jasper County,MO,Missouri,19,27900,"Joplin, MO-KS"
+29099,Jefferson County,MO,Missouri,25,41180,"St. Louis, MO-IL"
+29101,Johnson County,MO,Missouri,19,47660,"Warrensburg, MO"
+29103,Knox County,MO,Missouri,12,,
+29105,Laclede County,MO,Missouri,12,30060,"Lebanon, MO"
+29107,Lafayette County,MO,Missouri,16,28140,"Kansas City, MO-KS"
+29109,Lawrence County,MO,Missouri,21,,
+29111,Lewis County,MO,Missouri,12,39500,"Quincy, IL-MO"
+29113,Lincoln County,MO,Missouri,17,41180,"St. Louis, MO-IL"
+29115,Linn County,MO,Missouri,15,,
+29117,Livingston County,MO,Missouri,12,,
+29119,McDonald County,MO,Missouri,15,,
+29121,Macon County,MO,Missouri,15,,
+29123,Madison County,MO,Missouri,7,,
+29125,Maries County,MO,Missouri,10,,
+29127,Marion County,MO,Missouri,10,25300,"Hannibal, MO"
+29129,Mercer County,MO,Missouri,7,,
+29131,Miller County,MO,Missouri,17,,
+29133,Mississippi County,MO,Missouri,6,43460,"Sikeston, MO"
+29135,Moniteau County,MO,Missouri,13,27620,"Jefferson City, MO"
+29137,Monroe County,MO,Missouri,16,,
+29139,Montgomery County,MO,Missouri,11,,
+29141,Morgan County,MO,Missouri,15,,
+29143,New Madrid County,MO,Missouri,17,,
+29145,Newton County,MO,Missouri,15,27900,"Joplin, MO-KS"
+29147,Nodaway County,MO,Missouri,18,32340,"Maryville, MO"
+29149,Oregon County,MO,Missouri,12,,
+29151,Osage County,MO,Missouri,16,27620,"Jefferson City, MO"
+29153,Ozark County,MO,Missouri,21,,
+29155,Pemiscot County,MO,Missouri,14,,
+29157,Perry County,MO,Missouri,8,,
+29159,Pettis County,MO,Missouri,15,42740,"Sedalia, MO"
+29161,Phelps County,MO,Missouri,12,40620,"Rolla, MO"
+29163,Pike County,MO,Missouri,12,,
+29165,Platte County,MO,Missouri,20,28140,"Kansas City, MO-KS"
+29167,Polk County,MO,Missouri,18,44180,"Springfield, MO"
+29169,Pulaski County,MO,Missouri,11,22780,"Fort Leonard Wood, MO"
+29171,Putnam County,MO,Missouri,10,,
+29173,Ralls County,MO,Missouri,9,25300,"Hannibal, MO"
+29175,Randolph County,MO,Missouri,12,33620,"Moberly, MO"
+29177,Ray County,MO,Missouri,12,28140,"Kansas City, MO-KS"
+29179,Reynolds County,MO,Missouri,11,,
+29181,Ripley County,MO,Missouri,9,,
+29183,St. Charles County,MO,Missouri,15,41180,"St. Louis, MO-IL"
+29185,St. Clair County,MO,Missouri,16,,
+29186,Ste. Genevieve County,MO,Missouri,8,,
+29187,St. Francois County,MO,Missouri,15,22100,"Farmington, MO"
+29189,St. Louis County,MO,Missouri,47,41180,"St. Louis, MO-IL"
+29195,Saline County,MO,Missouri,13,32180,"Marshall, MO"
+29197,Schuyler County,MO,Missouri,6,28860,"Kirksville, MO"
+29199,Scotland County,MO,Missouri,10,,
+29201,Scott County,MO,Missouri,14,43460,"Sikeston, MO"
+29203,Shannon County,MO,Missouri,9,,
+29205,Shelby County,MO,Missouri,9,,
+29207,Stoddard County,MO,Missouri,14,,
+29209,Stone County,MO,Missouri,18,,
+29211,Sullivan County,MO,Missouri,13,,
+29213,Taney County,MO,Missouri,21,14700,"Branson, MO"
+29215,Texas County,MO,Missouri,21,,
+29217,Vernon County,MO,Missouri,14,,
+29219,Warren County,MO,Missouri,10,41180,"St. Louis, MO-IL"
+29221,Washington County,MO,Missouri,16,,
+29223,Wayne County,MO,Missouri,15,,
+29225,Webster County,MO,Missouri,9,44180,"Springfield, MO"
+29227,Worth County,MO,Missouri,7,,
+29229,Wright County,MO,Missouri,11,,
+29510,St. Louis city,MO,Missouri,30,41180,"St. Louis, MO-IL"
+30001,Beaverhead County,MT,Montana,10,,
+30003,Big Horn County,MT,Montana,18,,
+30005,Blaine County,MT,Montana,10,,
+30007,Broadwater County,MT,Montana,6,25740,"Helena, MT"
+30009,Carbon County,MT,Montana,13,13740,"Billings, MT"
+30011,Carter County,MT,Montana,10,,
+30013,Cascade County,MT,Montana,18,24500,"Great Falls, MT"
+30015,Chouteau County,MT,Montana,13,,
+30017,Custer County,MT,Montana,7,,
+30019,Daniels County,MT,Montana,5,,
+30021,Dawson County,MT,Montana,8,,
+30023,Deer Lodge County,MT,Montana,5,,
+30025,Fallon County,MT,Montana,5,,
+30027,Fergus County,MT,Montana,11,,
+30029,Flathead County,MT,Montana,16,28060,"Kalispell, MT"
+30031,Gallatin County,MT,Montana,10,14580,"Bozeman, MT"
+30033,Garfield County,MT,Montana,9,,
+30035,Glacier County,MT,Montana,5,,
+30037,Golden Valley County,MT,Montana,3,,
+30039,Granite County,MT,Montana,5,,
+30041,Hill County,MT,Montana,10,,
+30043,Jefferson County,MT,Montana,9,25740,"Helena, MT"
+30045,Judith Basin County,MT,Montana,12,,
+30047,Lake County,MT,Montana,15,,
+30049,Lewis and Clark County,MT,Montana,12,25740,"Helena, MT"
+30051,Liberty County,MT,Montana,7,,
+30053,Lincoln County,MT,Montana,7,,
+30055,McCone County,MT,Montana,6,,
+30057,Madison County,MT,Montana,18,,
+30059,Meagher County,MT,Montana,4,,
+30061,Mineral County,MT,Montana,6,33540,"Missoula, MT"
+30063,Missoula County,MT,Montana,17,33540,"Missoula, MT"
+30065,Musselshell County,MT,Montana,5,,
+30067,Park County,MT,Montana,11,,
+30069,Petroleum County,MT,Montana,4,,
+30071,Phillips County,MT,Montana,8,,
+30073,Pondera County,MT,Montana,6,,
+30075,Powder River County,MT,Montana,9,,
+30077,Powell County,MT,Montana,8,,
+30079,Prairie County,MT,Montana,7,,
+30081,Ravalli County,MT,Montana,9,,
+30083,Richland County,MT,Montana,9,,
+30085,Roosevelt County,MT,Montana,10,,
+30087,Rosebud County,MT,Montana,12,,
+30089,Sanders County,MT,Montana,11,,
+30091,Sheridan County,MT,Montana,11,,
+30093,Silver Bow County,MT,Montana,7,15580,"Butte-Silver Bow, MT"
+30095,Stillwater County,MT,Montana,10,13740,"Billings, MT"
+30097,Sweet Grass County,MT,Montana,7,,
+30099,Teton County,MT,Montana,12,,
+30101,Toole County,MT,Montana,10,,
+30103,Treasure County,MT,Montana,3,,
+30105,Valley County,MT,Montana,14,,
+30107,Wheatland County,MT,Montana,6,,
+30109,Wibaux County,MT,Montana,2,,
+30111,Yellowstone County,MT,Montana,16,13740,"Billings, MT"
+31001,Adams County,NE,Nebraska,14,25580,"Hastings, NE"
+31003,Antelope County,NE,Nebraska,11,,
+31005,Arthur County,NE,Nebraska,8,,
+31007,Banner County,NE,Nebraska,8,42420,"Scottsbluff, NE"
+31009,Blaine County,NE,Nebraska,5,,
+31011,Boone County,NE,Nebraska,8,,
+31013,Box Butte County,NE,Nebraska,3,,
+31015,Boyd County,NE,Nebraska,5,,
+31017,Brown County,NE,Nebraska,5,,
+31019,Buffalo County,NE,Nebraska,14,28260,"Kearney, NE"
+31021,Burt County,NE,Nebraska,8,,
+31023,Butler County,NE,Nebraska,14,,
+31025,Cass County,NE,Nebraska,20,36540,"Omaha, NE-IA"
+31027,Cedar County,NE,Nebraska,13,,
+31029,Chase County,NE,Nebraska,7,,
+31031,Cherry County,NE,Nebraska,19,,
+31033,Cheyenne County,NE,Nebraska,5,,
+31035,Clay County,NE,Nebraska,15,25580,"Hastings, NE"
+31037,Colfax County,NE,Nebraska,7,18100,"Columbus, NE"
+31039,Cuming County,NE,Nebraska,11,,
+31041,Custer County,NE,Nebraska,21,,
+31043,Dakota County,NE,Nebraska,8,43580,"Sioux City, IA-NE-SD"
+31045,Dawes County,NE,Nebraska,6,,
+31047,Dawson County,NE,Nebraska,12,30420,"Lexington, NE"
+31049,Deuel County,NE,Nebraska,4,,
+31051,Dixon County,NE,Nebraska,12,,
+31053,Dodge County,NE,Nebraska,14,23340,"Fremont, NE"
+31055,Douglas County,NE,Nebraska,37,36540,"Omaha, NE-IA"
+31057,Dundy County,NE,Nebraska,7,,
+31059,Fillmore County,NE,Nebraska,14,,
+31061,Franklin County,NE,Nebraska,8,,
+31063,Frontier County,NE,Nebraska,13,,
+31065,Furnas County,NE,Nebraska,9,,
+31067,Gage County,NE,Nebraska,18,13100,"Beatrice, NE"
+31069,Garden County,NE,Nebraska,9,,
+31071,Garfield County,NE,Nebraska,3,,
+31073,Gosper County,NE,Nebraska,9,30420,"Lexington, NE"
+31075,Grant County,NE,Nebraska,3,,
+31077,Greeley County,NE,Nebraska,8,,
+31079,Hall County,NE,Nebraska,11,24260,"Grand Island, NE"
+31081,Hamilton County,NE,Nebraska,14,,
+31083,Harlan County,NE,Nebraska,8,,
+31085,Hayes County,NE,Nebraska,8,,
+31087,Hitchcock County,NE,Nebraska,6,,
+31089,Holt County,NE,Nebraska,14,,
+31091,Hooker County,NE,Nebraska,1,,
+31093,Howard County,NE,Nebraska,11,24260,"Grand Island, NE"
+31095,Jefferson County,NE,Nebraska,13,,
+31097,Johnson County,NE,Nebraska,12,,
+31099,Kearney County,NE,Nebraska,11,28260,"Kearney, NE"
+31101,Keith County,NE,Nebraska,7,,
+31103,Keya Paha County,NE,Nebraska,4,,
+31105,Kimball County,NE,Nebraska,5,,
+31107,Knox County,NE,Nebraska,11,,
+31109,Lancaster County,NE,Nebraska,44,30700,"Lincoln, NE"
+31111,Lincoln County,NE,Nebraska,14,35820,"North Platte, NE"
+31113,Logan County,NE,Nebraska,3,35820,"North Platte, NE"
+31115,Loup County,NE,Nebraska,5,,
+31117,McPherson County,NE,Nebraska,5,,
+31119,Madison County,NE,Nebraska,8,35740,"Norfolk, NE"
+31121,Merrick County,NE,Nebraska,9,24260,"Grand Island, NE"
+31123,Morrill County,NE,Nebraska,7,,
+31125,Nance County,NE,Nebraska,8,,
+31127,Nemaha County,NE,Nebraska,13,,
+31129,Nuckolls County,NE,Nebraska,10,,
+31131,Otoe County,NE,Nebraska,20,,
+31133,Pawnee County,NE,Nebraska,11,,
+31135,Perkins County,NE,Nebraska,10,,
+31137,Phelps County,NE,Nebraska,10,,
+31139,Pierce County,NE,Nebraska,9,35740,"Norfolk, NE"
+31141,Platte County,NE,Nebraska,11,18100,"Columbus, NE"
+31143,Polk County,NE,Nebraska,10,,
+31145,Red Willow County,NE,Nebraska,8,,
+31147,Richardson County,NE,Nebraska,9,,
+31149,Rock County,NE,Nebraska,4,,
+31151,Saline County,NE,Nebraska,12,,
+31153,Sarpy County,NE,Nebraska,14,36540,"Omaha, NE-IA"
+31155,Saunders County,NE,Nebraska,18,36540,"Omaha, NE-IA"
+31157,Scotts Bluff County,NE,Nebraska,9,42420,"Scottsbluff, NE"
+31159,Seward County,NE,Nebraska,19,30700,"Lincoln, NE"
+31161,Sheridan County,NE,Nebraska,10,,
+31163,Sherman County,NE,Nebraska,8,,
+31165,Sioux County,NE,Nebraska,8,,
+31167,Stanton County,NE,Nebraska,10,35740,"Norfolk, NE"
+31169,Thayer County,NE,Nebraska,17,,
+31171,Thomas County,NE,Nebraska,4,,
+31173,Thurston County,NE,Nebraska,10,,
+31175,Valley County,NE,Nebraska,6,,
+31177,Washington County,NE,Nebraska,15,36540,"Omaha, NE-IA"
+31179,Wayne County,NE,Nebraska,11,,
+31181,Webster County,NE,Nebraska,8,25580,"Hastings, NE"
+31183,Wheeler County,NE,Nebraska,6,,
+31185,York County,NE,Nebraska,15,,
+32001,Churchill County,NV,Nevada,3,21980,"Fallon, NV"
+32003,Clark County,NV,Nevada,76,29820,"Las Vegas-Henderson-North Las Vegas, NV"
+32005,Douglas County,NV,Nevada,9,23820,"Gardnerville Ranchos, NV-CA"
+32007,Elko County,NV,Nevada,15,21220,"Elko, NV"
+32009,Esmeralda County,NV,Nevada,4,,
+32011,Eureka County,NV,Nevada,4,21220,"Elko, NV"
+32013,Humboldt County,NV,Nevada,9,49080,"Winnemucca, NV"
+32015,Lander County,NV,Nevada,2,,
+32017,Lincoln County,NV,Nevada,5,,
+32019,Lyon County,NV,Nevada,9,39900,"Reno, NV"
+32021,Mineral County,NV,Nevada,6,,
+32023,Nye County,NV,Nevada,11,37220,"Pahrump, NV"
+32027,Pershing County,NV,Nevada,3,,
+32029,Storey County,NV,Nevada,6,39900,"Reno, NV"
+32031,Washoe County,NV,Nevada,28,39900,"Reno, NV"
+32033,White Pine County,NV,Nevada,8,,
+32510,Carson City,NV,Nevada,4,16180,"Carson City, NV"
+33001,Belknap County,NH,New Hampshire,15,29060,"Laconia, NH"
+33003,Carroll County,NH,New Hampshire,31,,
+33005,Cheshire County,NH,New Hampshire,27,28300,"Keene, NH"
+33007,Coos County,NH,New Hampshire,16,,
+33009,Grafton County,NH,New Hampshire,37,30150,"Lebanon-Claremont, NH-VT"
+33011,Hillsborough County,NH,New Hampshire,34,31700,"Manchester-Nashua, NH"
+33013,Merrimack County,NH,New Hampshire,31,18180,"Concord, NH"
+33015,Rockingham County,NH,New Hampshire,38,14460,"Boston-Cambridge-Newton, MA-NH"
+33017,Strafford County,NH,New Hampshire,17,14460,"Boston-Cambridge-Newton, MA-NH"
+33019,Sullivan County,NH,New Hampshire,19,30150,"Lebanon-Claremont, NH-VT"
+34001,Atlantic County,NJ,New Jersey,30,12100,"Atlantic City-Hammonton, NJ"
+34003,Bergen County,NJ,New Jersey,66,35620,"New York-Newark-Jersey City, NY-NJ"
+34005,Burlington County,NJ,New Jersey,39,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+34007,Camden County,NJ,New Jersey,35,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+34009,Cape May County,NJ,New Jersey,16,12100,"Atlantic City-Hammonton, NJ"
+34011,Cumberland County,NJ,New Jersey,22,47220,"Vineland, NJ"
+34013,Essex County,NJ,New Jersey,31,35620,"New York-Newark-Jersey City, NY-NJ"
+34015,Gloucester County,NJ,New Jersey,31,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+34017,Hudson County,NJ,New Jersey,16,35620,"New York-Newark-Jersey City, NY-NJ"
+34019,Hunterdon County,NJ,New Jersey,26,35620,"New York-Newark-Jersey City, NY-NJ"
+34021,Mercer County,NJ,New Jersey,26,45940,"Trenton-Princeton, NJ"
+34023,Middlesex County,NJ,New Jersey,44,35620,"New York-Newark-Jersey City, NY-NJ"
+34025,Monmouth County,NJ,New Jersey,52,35620,"New York-Newark-Jersey City, NY-NJ"
+34027,Morris County,NJ,New Jersey,58,35620,"New York-Newark-Jersey City, NY-NJ"
+34029,Ocean County,NJ,New Jersey,30,35620,"New York-Newark-Jersey City, NY-NJ"
+34031,Passaic County,NJ,New Jersey,33,35620,"New York-Newark-Jersey City, NY-NJ"
+34033,Salem County,NJ,New Jersey,14,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+34035,Somerset County,NJ,New Jersey,33,35620,"New York-Newark-Jersey City, NY-NJ"
+34037,Sussex County,NJ,New Jersey,22,35620,"New York-Newark-Jersey City, NY-NJ"
+34039,Union County,NJ,New Jersey,27,35620,"New York-Newark-Jersey City, NY-NJ"
+34041,Warren County,NJ,New Jersey,22,10900,"Allentown-Bethlehem-Easton, PA-NJ"
+35001,Bernalillo County,NM,New Mexico,29,10740,"Albuquerque, NM"
+35003,Catron County,NM,New Mexico,9,,
+35005,Chaves County,NM,New Mexico,9,40740,"Roswell, NM"
+35006,Cibola County,NM,New Mexico,17,,
+35007,Colfax County,NM,New Mexico,10,,
+35009,Curry County,NM,New Mexico,7,17580,"Clovis, NM"
+35011,De Baca County,NM,New Mexico,3,,
+35013,Doña Ana County,NM,New Mexico,26,29740,"Las Cruces, NM"
+35015,Eddy County,NM,New Mexico,9,16100,"Carlsbad-Artesia, NM"
+35017,Grant County,NM,New Mexico,17,43500,"Silver City, NM"
+35019,Guadalupe County,NM,New Mexico,7,,
+35021,Harding County,NM,New Mexico,7,,
+35023,Hidalgo County,NM,New Mexico,5,,
+35025,Lea County,NM,New Mexico,11,26020,"Hobbs, NM"
+35027,Lincoln County,NM,New Mexico,18,40760,"Ruidoso, NM"
+35028,Los Alamos County,NM,New Mexico,2,31060,"Los Alamos, NM"
+35029,Luna County,NM,New Mexico,3,19700,"Deming, NM"
+35031,McKinley County,NM,New Mexico,25,23700,"Gallup, NM"
+35033,Mora County,NM,New Mexico,14,29780,"Las Vegas, NM"
+35035,Otero County,NM,New Mexico,18,10460,"Alamogordo, NM"
+35037,Quay County,NM,New Mexico,11,,
+35039,Rio Arriba County,NM,New Mexico,37,21580,"Española, NM"
+35041,Roosevelt County,NM,New Mexico,12,17580,"Clovis, NM"
+35043,Sandoval County,NM,New Mexico,21,10740,"Albuquerque, NM"
+35045,San Juan County,NM,New Mexico,22,22140,"Farmington, NM"
+35047,San Miguel County,NM,New Mexico,23,29780,"Las Vegas, NM"
+35049,Santa Fe County,NM,New Mexico,16,42140,"Santa Fe, NM"
+35051,Sierra County,NM,New Mexico,10,,
+35053,Socorro County,NM,New Mexico,14,,
+35055,Taos County,NM,New Mexico,21,45340,"Taos, NM"
+35057,Torrance County,NM,New Mexico,10,10740,"Albuquerque, NM"
+35059,Union County,NM,New Mexico,9,,
+35061,Valencia County,NM,New Mexico,9,10740,"Albuquerque, NM"
+36001,Albany County,NY,New York,47,10580,"Albany-Schenectady-Troy, NY"
+36003,Allegany County,NY,New York,38,,
+36005,Bronx County,NY,New York,28,35620,"New York-Newark-Jersey City, NY-NJ"
+36007,Broome County,NY,New York,31,13780,"Binghamton, NY"
+36009,Cattaraugus County,NY,New York,37,36460,"Olean, NY"
+36011,Cayuga County,NY,New York,26,12180,"Auburn, NY"
+36013,Chautauqua County,NY,New York,38,27460,"Jamestown-Dunkirk, NY"
+36015,Chemung County,NY,New York,22,21300,"Elmira, NY"
+36017,Chenango County,NY,New York,27,,
+36019,Clinton County,NY,New York,27,38460,"Plattsburgh, NY"
+36021,Columbia County,NY,New York,38,26460,"Hudson, NY"
+36023,Cortland County,NY,New York,18,18660,"Cortland, NY"
+36025,Delaware County,NY,New York,47,,
+36027,Dutchess County,NY,New York,35,28880,"Kiryas Joel-Poughkeepsie-Newburgh, NY"
+36029,Erie County,NY,New York,72,15380,"Buffalo-Cheektowaga, NY"
+36031,Essex County,NY,New York,36,,
+36033,Franklin County,NY,New York,24,,
+36035,Fulton County,NY,New York,14,24100,"Gloversville, NY"
+36037,Genesee County,NY,New York,20,12860,"Batavia, NY"
+36039,Greene County,NY,New York,42,,
+36041,Hamilton County,NY,New York,14,,
+36043,Herkimer County,NY,New York,29,46540,"Utica-Rome, NY"
+36045,Jefferson County,NY,New York,43,48060,"Watertown-Fort Drum, NY"
+36047,Kings County,NY,New York,40,35620,"New York-Newark-Jersey City, NY-NJ"
+36049,Lewis County,NY,New York,23,,
+36051,Livingston County,NY,New York,31,40380,"Rochester, NY"
+36053,Madison County,NY,New York,31,45060,"Syracuse, NY"
+36055,Monroe County,NY,New York,52,40380,"Rochester, NY"
+36057,Montgomery County,NY,New York,20,11220,"Amsterdam, NY"
+36059,Nassau County,NY,New York,70,35620,"New York-Newark-Jersey City, NY-NJ"
+36061,New York County,NY,New York,70,35620,"New York-Newark-Jersey City, NY-NJ"
+36063,Niagara County,NY,New York,22,15380,"Buffalo-Cheektowaga, NY"
+36065,Oneida County,NY,New York,55,46540,"Utica-Rome, NY"
+36067,Onondaga County,NY,New York,58,45060,"Syracuse, NY"
+36069,Ontario County,NY,New York,27,40380,"Rochester, NY"
+36071,Orange County,NY,New York,52,28880,"Kiryas Joel-Poughkeepsie-Newburgh, NY"
+36073,Orleans County,NY,New York,15,40380,"Rochester, NY"
+36075,Oswego County,NY,New York,28,45060,"Syracuse, NY"
+36077,Otsego County,NY,New York,46,36580,"Oneonta, NY"
+36079,Putnam County,NY,New York,13,35620,"New York-Newark-Jersey City, NY-NJ"
+36081,Queens County,NY,New York,68,35620,"New York-Newark-Jersey City, NY-NJ"
+36083,Rensselaer County,NY,New York,31,10580,"Albany-Schenectady-Troy, NY"
+36085,Richmond County,NY,New York,13,35620,"New York-Newark-Jersey City, NY-NJ"
+36087,Rockland County,NY,New York,26,35620,"New York-Newark-Jersey City, NY-NJ"
+36089,St. Lawrence County,NY,New York,54,32390,"Massena-Ogdensburg, NY"
+36091,Saratoga County,NY,New York,27,10580,"Albany-Schenectady-Troy, NY"
+36093,Schenectady County,NY,New York,19,10580,"Albany-Schenectady-Troy, NY"
+36095,Schoharie County,NY,New York,24,10580,"Albany-Schenectady-Troy, NY"
+36097,Schuyler County,NY,New York,18,,
+36099,Seneca County,NY,New York,15,42900,"Seneca Falls, NY"
+36101,Steuben County,NY,New York,40,18500,"Corning, NY"
+36103,Suffolk County,NY,New York,109,35620,"New York-Newark-Jersey City, NY-NJ"
+36105,Sullivan County,NY,New York,62,33910,"Monticello, NY"
+36107,Tioga County,NY,New York,15,13780,"Binghamton, NY"
+36109,Tompkins County,NY,New York,18,27060,"Ithaca, NY"
+36111,Ulster County,NY,New York,63,28740,"Kingston, NY"
+36113,Warren County,NY,New York,27,24020,"Glens Falls, NY"
+36115,Washington County,NY,New York,28,24020,"Glens Falls, NY"
+36117,Wayne County,NY,New York,22,40380,"Rochester, NY"
+36119,Westchester County,NY,New York,78,35620,"New York-Newark-Jersey City, NY-NJ"
+36121,Wyoming County,NY,New York,25,,
+36123,Yates County,NY,New York,13,,
+37001,Alamance County,NC,North Carolina,13,15500,"Burlington, NC"
+37003,Alexander County,NC,North Carolina,8,25860,"Hickory-Lenoir-Morganton, NC"
+37005,Alleghany County,NC,North Carolina,7,,
+37007,Anson County,NC,North Carolina,8,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37009,Ashe County,NC,North Carolina,13,,
+37011,Avery County,NC,North Carolina,13,,
+37013,Beaufort County,NC,North Carolina,15,47820,"Washington, NC"
+37015,Bertie County,NC,North Carolina,10,,
+37017,Bladen County,NC,North Carolina,18,,
+37019,Brunswick County,NC,North Carolina,14,48900,"Wilmington, NC"
+37021,Buncombe County,NC,North Carolina,20,11700,"Asheville, NC"
+37023,Burke County,NC,North Carolina,17,25860,"Hickory-Lenoir-Morganton, NC"
+37025,Cabarrus County,NC,North Carolina,16,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37027,Caldwell County,NC,North Carolina,10,25860,"Hickory-Lenoir-Morganton, NC"
+37029,Camden County,NC,North Carolina,5,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+37031,Carteret County,NC,North Carolina,19,33980,"Morehead City, NC"
+37033,Caswell County,NC,North Carolina,16,,
+37035,Catawba County,NC,North Carolina,14,25860,"Hickory-Lenoir-Morganton, NC"
+37037,Chatham County,NC,North Carolina,20,20500,"Durham-Chapel Hill, NC"
+37039,Cherokee County,NC,North Carolina,4,,
+37041,Chowan County,NC,North Carolina,4,,
+37043,Clay County,NC,North Carolina,5,,
+37045,Cleveland County,NC,North Carolina,15,43140,"Shelby-Kings Mountain, NC"
+37047,Columbus County,NC,North Carolina,16,,
+37049,Craven County,NC,North Carolina,11,35100,"New Bern, NC"
+37051,Cumberland County,NC,North Carolina,25,22180,"Fayetteville, NC"
+37053,Currituck County,NC,North Carolina,15,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+37055,Dare County,NC,North Carolina,14,28620,"Kill Devil Hills, NC"
+37057,Davidson County,NC,North Carolina,14,49180,"Winston-Salem, NC"
+37059,Davie County,NC,North Carolina,6,49180,"Winston-Salem, NC"
+37061,Duplin County,NC,North Carolina,19,,
+37063,Durham County,NC,North Carolina,17,20500,"Durham-Chapel Hill, NC"
+37065,Edgecombe County,NC,North Carolina,16,40580,"Rocky Mount, NC"
+37067,Forsyth County,NC,North Carolina,22,49180,"Winston-Salem, NC"
+37069,Franklin County,NC,North Carolina,13,39580,"Raleigh-Cary, NC"
+37071,Gaston County,NC,North Carolina,18,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37073,Gates County,NC,North Carolina,7,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+37075,Graham County,NC,North Carolina,3,,
+37077,Granville County,NC,North Carolina,12,,
+37079,Greene County,NC,North Carolina,11,,
+37081,Guilford County,NC,North Carolina,35,24660,"Greensboro-High Point, NC"
+37083,Halifax County,NC,North Carolina,9,40260,"Roanoke Rapids, NC"
+37085,Harnett County,NC,North Carolina,18,11360,"Anderson Creek, NC"
+37087,Haywood County,NC,North Carolina,7,48200,"Waynesville, NC"
+37089,Henderson County,NC,North Carolina,17,11700,"Asheville, NC"
+37091,Hertford County,NC,North Carolina,9,,
+37093,Hoke County,NC,North Carolina,9,22180,"Fayetteville, NC"
+37095,Hyde County,NC,North Carolina,7,,
+37097,Iredell County,NC,North Carolina,16,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37099,Jackson County,NC,North Carolina,13,,
+37101,Johnston County,NC,North Carolina,22,39580,"Raleigh-Cary, NC"
+37103,Jones County,NC,North Carolina,9,35100,"New Bern, NC"
+37105,Lee County,NC,North Carolina,5,41820,"Sanford, NC"
+37107,Lenoir County,NC,North Carolina,10,28820,"Kinston, NC"
+37109,Lincoln County,NC,North Carolina,11,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37111,McDowell County,NC,North Carolina,9,32000,"Marion, NC"
+37113,Macon County,NC,North Carolina,6,,
+37115,Madison County,NC,North Carolina,6,11700,"Asheville, NC"
+37117,Martin County,NC,North Carolina,11,,
+37119,Mecklenburg County,NC,North Carolina,37,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37121,Mitchell County,NC,North Carolina,4,,
+37123,Montgomery County,NC,North Carolina,9,,
+37125,Moore County,NC,North Carolina,19,38240,"Pinehurst-Southern Pines, NC"
+37127,Nash County,NC,North Carolina,15,40580,"Rocky Mount, NC"
+37129,New Hanover County,NC,North Carolina,10,48900,"Wilmington, NC"
+37131,Northampton County,NC,North Carolina,13,40260,"Roanoke Rapids, NC"
+37133,Onslow County,NC,North Carolina,17,27340,"Jacksonville, NC"
+37135,Orange County,NC,North Carolina,15,20500,"Durham-Chapel Hill, NC"
+37137,Pamlico County,NC,North Carolina,10,35100,"New Bern, NC"
+37139,Pasquotank County,NC,North Carolina,1,21020,"Elizabeth City, NC"
+37141,Pender County,NC,North Carolina,13,48900,"Wilmington, NC"
+37143,Perquimans County,NC,North Carolina,6,,
+37145,Person County,NC,North Carolina,10,20500,"Durham-Chapel Hill, NC"
+37147,Pitt County,NC,North Carolina,18,24780,"Greenville, NC"
+37149,Polk County,NC,North Carolina,7,,
+37151,Randolph County,NC,North Carolina,24,24660,"Greensboro-High Point, NC"
+37153,Richmond County,NC,North Carolina,11,40460,"Rockingham, NC"
+37155,Robeson County,NC,North Carolina,16,31300,"Lumberton, NC"
+37157,Rockingham County,NC,North Carolina,11,24660,"Greensboro-High Point, NC"
+37159,Rowan County,NC,North Carolina,20,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37161,Rutherford County,NC,North Carolina,18,22580,"Forest City, NC"
+37163,Sampson County,NC,North Carolina,17,,
+37165,Scotland County,NC,North Carolina,7,29900,"Laurinburg, NC"
+37167,Stanly County,NC,North Carolina,12,10620,"Albemarle, NC"
+37169,Stokes County,NC,North Carolina,16,49180,"Winston-Salem, NC"
+37171,Surry County,NC,North Carolina,12,34340,"Mount Airy, NC"
+37173,Swain County,NC,North Carolina,5,,
+37175,Transylvania County,NC,North Carolina,10,14820,"Brevard, NC"
+37177,Tyrrell County,NC,North Carolina,3,,
+37179,Union County,NC,North Carolina,12,16740,"Charlotte-Concord-Gastonia, NC-SC"
+37181,Vance County,NC,North Carolina,9,25780,"Henderson, NC"
+37183,Wake County,NC,North Carolina,41,39580,"Raleigh-Cary, NC"
+37185,Warren County,NC,North Carolina,10,,
+37187,Washington County,NC,North Carolina,4,,
+37189,Watauga County,NC,North Carolina,10,14380,"Boone, NC"
+37191,Wayne County,NC,North Carolina,15,24140,"Goldsboro, NC"
+37193,Wilkes County,NC,North Carolina,23,35900,"North Wilkesboro, NC"
+37195,Wilson County,NC,North Carolina,17,48980,"Wilson, NC"
+37197,Yadkin County,NC,North Carolina,7,49180,"Winston-Salem, NC"
+37199,Yancey County,NC,North Carolina,6,,
+38001,Adams County,ND,North Dakota,6,,
+38003,Barnes County,ND,North Dakota,20,,
+38005,Benson County,ND,North Dakota,18,,
+38007,Billings County,ND,North Dakota,8,19860,"Dickinson, ND"
+38009,Bottineau County,ND,North Dakota,14,,
+38011,Bowman County,ND,North Dakota,5,,
+38013,Burke County,ND,North Dakota,9,,
+38015,Burleigh County,ND,North Dakota,13,13900,"Bismarck, ND"
+38017,Cass County,ND,North Dakota,30,22020,"Fargo, ND-MN"
+38019,Cavalier County,ND,North Dakota,18,,
+38021,Dickey County,ND,North Dakota,8,,
+38023,Divide County,ND,North Dakota,10,,
+38025,Dunn County,ND,North Dakota,13,19860,"Dickinson, ND"
+38027,Eddy County,ND,North Dakota,7,,
+38029,Emmons County,ND,North Dakota,8,,
+38031,Foster County,ND,North Dakota,8,,
+38033,Golden Valley County,ND,North Dakota,4,,
+38035,Grand Forks County,ND,North Dakota,22,24220,"Grand Forks, ND-MN"
+38037,Grant County,ND,North Dakota,13,,
+38039,Griggs County,ND,North Dakota,10,,
+38041,Hettinger County,ND,North Dakota,5,,
+38043,Kidder County,ND,North Dakota,13,,
+38045,LaMoure County,ND,North Dakota,12,,
+38047,Logan County,ND,North Dakota,7,,
+38049,McHenry County,ND,North Dakota,19,33500,"Minot, ND"
+38051,McIntosh County,ND,North Dakota,6,,
+38053,McKenzie County,ND,North Dakota,12,,
+38055,McLean County,ND,North Dakota,18,,
+38057,Mercer County,ND,North Dakota,10,,
+38059,Morton County,ND,North Dakota,8,13900,"Bismarck, ND"
+38061,Mountrail County,ND,North Dakota,12,,
+38063,Nelson County,ND,North Dakota,10,,
+38065,Oliver County,ND,North Dakota,6,13900,"Bismarck, ND"
+38067,Pembina County,ND,North Dakota,14,,
+38069,Pierce County,ND,North Dakota,12,,
+38071,Ramsey County,ND,North Dakota,12,,
+38073,Ransom County,ND,North Dakota,11,,
+38075,Renville County,ND,North Dakota,9,33500,"Minot, ND"
+38077,Richland County,ND,North Dakota,20,47420,"Wahpeton, ND-MN"
+38079,Rolette County,ND,North Dakota,11,,
+38081,Sargent County,ND,North Dakota,12,,
+38083,Sheridan County,ND,North Dakota,9,,
+38085,Sioux County,ND,North Dakota,9,,
+38087,Slope County,ND,North Dakota,9,,
+38089,Stark County,ND,North Dakota,10,19860,"Dickinson, ND"
+38091,Steele County,ND,North Dakota,12,,
+38093,Stutsman County,ND,North Dakota,21,27420,"Jamestown, ND"
+38095,Towner County,ND,North Dakota,13,,
+38097,Traill County,ND,North Dakota,13,,
+38099,Walsh County,ND,North Dakota,16,,
+38101,Ward County,ND,North Dakota,24,33500,"Minot, ND"
+38103,Wells County,ND,North Dakota,12,,
+38105,Williams County,ND,North Dakota,10,48780,"Williston, ND"
+39001,Adams County,OH,Ohio,13,,
+39003,Allen County,OH,Ohio,20,30620,"Lima, OH"
+39005,Ashland County,OH,Ohio,19,11740,"Ashland, OH"
+39007,Ashtabula County,OH,Ohio,20,17410,"Cleveland, OH"
+39009,Athens County,OH,Ohio,19,11900,"Athens, OH"
+39011,Auglaize County,OH,Ohio,18,47540,"Wapakoneta, OH"
+39013,Belmont County,OH,Ohio,29,48540,"Wheeling, WV-OH"
+39015,Brown County,OH,Ohio,20,17140,"Cincinnati, OH-KY-IN"
+39017,Butler County,OH,Ohio,18,17140,"Cincinnati, OH-KY-IN"
+39019,Carroll County,OH,Ohio,21,15940,"Canton-Massillon, OH"
+39021,Champaign County,OH,Ohio,18,46500,"Urbana, OH"
+39023,Clark County,OH,Ohio,23,44220,"Springfield, OH"
+39025,Clermont County,OH,Ohio,23,17140,"Cincinnati, OH-KY-IN"
+39027,Clinton County,OH,Ohio,13,48940,"Wilmington, OH"
+39029,Columbiana County,OH,Ohio,28,41400,"Salem, OH"
+39031,Coshocton County,OH,Ohio,18,18740,"Coshocton, OH"
+39033,Crawford County,OH,Ohio,15,15340,"Bucyrus, OH"
+39035,Cuyahoga County,OH,Ohio,52,17410,"Cleveland, OH"
+39037,Darke County,OH,Ohio,25,24820,"Greenville, OH"
+39039,Defiance County,OH,Ohio,16,19580,"Defiance, OH"
+39041,Delaware County,OH,Ohio,24,18140,"Columbus, OH"
+39043,Erie County,OH,Ohio,13,41780,"Sandusky, OH"
+39045,Fairfield County,OH,Ohio,19,18140,"Columbus, OH"
+39047,Fayette County,OH,Ohio,11,47920,"Washington Court House, OH"
+39049,Franklin County,OH,Ohio,50,18140,"Columbus, OH"
+39051,Fulton County,OH,Ohio,12,45780,"Toledo, OH"
+39053,Gallia County,OH,Ohio,12,23680,"Gallipolis, OH"
+39055,Geauga County,OH,Ohio,20,17410,"Cleveland, OH"
+39057,Greene County,OH,Ohio,25,19430,"Dayton-Kettering-Beavercreek, OH"
+39059,Guernsey County,OH,Ohio,20,15740,"Cambridge, OH"
+39061,Hamilton County,OH,Ohio,58,17140,"Cincinnati, OH-KY-IN"
+39063,Hancock County,OH,Ohio,24,22300,"Findlay, OH"
+39065,Hardin County,OH,Ohio,16,,
+39067,Harrison County,OH,Ohio,17,,
+39069,Henry County,OH,Ohio,18,,
+39071,Highland County,OH,Ohio,15,,
+39073,Hocking County,OH,Ohio,16,18140,"Columbus, OH"
+39075,Holmes County,OH,Ohio,19,,
+39077,Huron County,OH,Ohio,14,35940,"Norwalk, OH"
+39079,Jackson County,OH,Ohio,11,,
+39081,Jefferson County,OH,Ohio,23,48260,"Weirton-Steubenville, WV-OH"
+39083,Knox County,OH,Ohio,16,34540,"Mount Vernon, OH"
+39085,Lake County,OH,Ohio,11,17410,"Cleveland, OH"
+39087,Lawrence County,OH,Ohio,14,26580,"Huntington-Ashland, WV-KY-OH"
+39089,Licking County,OH,Ohio,30,18140,"Columbus, OH"
+39091,Logan County,OH,Ohio,19,13340,"Bellefontaine, OH"
+39093,Lorain County,OH,Ohio,24,17410,"Cleveland, OH"
+39095,Lucas County,OH,Ohio,30,45780,"Toledo, OH"
+39097,Madison County,OH,Ohio,12,18140,"Columbus, OH"
+39099,Mahoning County,OH,Ohio,38,49660,"Youngstown-Warren, OH"
+39101,Marion County,OH,Ohio,14,32020,"Marion, OH"
+39103,Medina County,OH,Ohio,24,17410,"Cleveland, OH"
+39105,Meigs County,OH,Ohio,17,,
+39107,Mercer County,OH,Ohio,18,16380,"Celina, OH"
+39109,Miami County,OH,Ohio,18,19430,"Dayton-Kettering-Beavercreek, OH"
+39111,Monroe County,OH,Ohio,16,,
+39113,Montgomery County,OH,Ohio,42,19430,"Dayton-Kettering-Beavercreek, OH"
+39115,Morgan County,OH,Ohio,11,,
+39117,Morrow County,OH,Ohio,18,18140,"Columbus, OH"
+39119,Muskingum County,OH,Ohio,23,49780,"Zanesville, OH"
+39121,Noble County,OH,Ohio,15,,
+39123,Ottawa County,OH,Ohio,20,41780,"Sandusky, OH"
+39125,Paulding County,OH,Ohio,15,,
+39127,Perry County,OH,Ohio,17,18140,"Columbus, OH"
+39129,Pickaway County,OH,Ohio,17,18140,"Columbus, OH"
+39131,Pike County,OH,Ohio,13,,
+39133,Portage County,OH,Ohio,24,10420,"Akron, OH"
+39135,Preble County,OH,Ohio,16,,
+39137,Putnam County,OH,Ohio,20,,
+39139,Richland County,OH,Ohio,19,31900,"Mansfield, OH"
+39141,Ross County,OH,Ohio,16,17060,"Chillicothe, OH"
+39143,Sandusky County,OH,Ohio,17,23380,"Fremont, OH"
+39145,Scioto County,OH,Ohio,22,39020,"Portsmouth, OH"
+39147,Seneca County,OH,Ohio,20,45660,"Tiffin, OH"
+39149,Shelby County,OH,Ohio,18,43380,"Sidney, OH"
+39151,Stark County,OH,Ohio,43,15940,"Canton-Massillon, OH"
+39153,Summit County,OH,Ohio,43,10420,"Akron, OH"
+39155,Trumbull County,OH,Ohio,31,49660,"Youngstown-Warren, OH"
+39157,Tuscarawas County,OH,Ohio,27,35420,"New Philadelphia-Dover, OH"
+39159,Union County,OH,Ohio,21,18140,"Columbus, OH"
+39161,Van Wert County,OH,Ohio,14,46780,"Van Wert, OH"
+39163,Vinton County,OH,Ohio,15,,
+39165,Warren County,OH,Ohio,24,17140,"Cincinnati, OH-KY-IN"
+39167,Washington County,OH,Ohio,21,31930,"Marietta, OH"
+39169,Wayne County,OH,Ohio,25,49300,"Wooster, OH"
+39171,Williams County,OH,Ohio,12,,
+39173,Wood County,OH,Ohio,34,45780,"Toledo, OH"
+39175,Wyandot County,OH,Ohio,13,,
+40001,Adair County,OK,Oklahoma,8,,
+40003,Alfalfa County,OK,Oklahoma,13,,
+40005,Atoka County,OK,Oklahoma,15,,
+40007,Beaver County,OK,Oklahoma,7,,
+40009,Beckham County,OK,Oklahoma,7,21120,"Elk City, OK"
+40011,Blaine County,OK,Oklahoma,14,,
+40013,Bryan County,OK,Oklahoma,15,20460,"Durant, OK"
+40015,Caddo County,OK,Oklahoma,17,,
+40017,Canadian County,OK,Oklahoma,14,36420,"Oklahoma City, OK"
+40019,Carter County,OK,Oklahoma,16,11620,"Ardmore, OK"
+40021,Cherokee County,OK,Oklahoma,16,45140,"Tahlequah, OK"
+40023,Choctaw County,OK,Oklahoma,12,,
+40025,Cimarron County,OK,Oklahoma,5,,
+40027,Cleveland County,OK,Oklahoma,23,36420,"Oklahoma City, OK"
+40029,Coal County,OK,Oklahoma,10,,
+40031,Comanche County,OK,Oklahoma,19,30020,"Lawton, OK"
+40033,Cotton County,OK,Oklahoma,11,30020,"Lawton, OK"
+40035,Craig County,OK,Oklahoma,10,,
+40037,Creek County,OK,Oklahoma,21,46140,"Tulsa, OK"
+40039,Custer County,OK,Oklahoma,13,48220,"Weatherford, OK"
+40041,Delaware County,OK,Oklahoma,13,,
+40043,Dewey County,OK,Oklahoma,12,,
+40045,Ellis County,OK,Oklahoma,7,,
+40047,Garfield County,OK,Oklahoma,22,21420,"Enid, OK"
+40049,Garvin County,OK,Oklahoma,13,,
+40051,Grady County,OK,Oklahoma,14,36420,"Oklahoma City, OK"
+40053,Grant County,OK,Oklahoma,10,,
+40055,Greer County,OK,Oklahoma,4,,
+40057,Harmon County,OK,Oklahoma,6,,
+40059,Harper County,OK,Oklahoma,7,,
+40061,Haskell County,OK,Oklahoma,7,,
+40063,Hughes County,OK,Oklahoma,10,,
+40065,Jackson County,OK,Oklahoma,10,11060,"Altus, OK"
+40067,Jefferson County,OK,Oklahoma,8,,
+40069,Johnston County,OK,Oklahoma,13,,
+40071,Kay County,OK,Oklahoma,10,38620,"Ponca City, OK"
+40073,Kingfisher County,OK,Oklahoma,12,,
+40075,Kiowa County,OK,Oklahoma,9,,
+40077,Latimer County,OK,Oklahoma,7,,
+40079,Le Flore County,OK,Oklahoma,24,,
+40081,Lincoln County,OK,Oklahoma,16,36420,"Oklahoma City, OK"
+40083,Logan County,OK,Oklahoma,15,36420,"Oklahoma City, OK"
+40085,Love County,OK,Oklahoma,8,,
+40087,McClain County,OK,Oklahoma,13,36420,"Oklahoma City, OK"
+40089,McCurtain County,OK,Oklahoma,16,,
+40091,McIntosh County,OK,Oklahoma,11,,
+40093,Major County,OK,Oklahoma,15,,
+40095,Marshall County,OK,Oklahoma,3,,
+40097,Mayes County,OK,Oklahoma,17,,
+40099,Murray County,OK,Oklahoma,7,,
+40101,Muskogee County,OK,Oklahoma,15,34780,"Muskogee, OK"
+40103,Noble County,OK,Oklahoma,11,,
+40105,Nowata County,OK,Oklahoma,7,,
+40107,Okfuskee County,OK,Oklahoma,11,,
+40109,Oklahoma County,OK,Oklahoma,55,36420,"Oklahoma City, OK"
+40111,Okmulgee County,OK,Oklahoma,11,46140,"Tulsa, OK"
+40113,Osage County,OK,Oklahoma,22,46140,"Tulsa, OK"
+40115,Ottawa County,OK,Oklahoma,10,33060,"Miami, OK"
+40117,Pawnee County,OK,Oklahoma,12,46140,"Tulsa, OK"
+40119,Payne County,OK,Oklahoma,15,44660,"Stillwater, OK"
+40121,Pittsburg County,OK,Oklahoma,19,32540,"McAlester, OK"
+40123,Pontotoc County,OK,Oklahoma,10,10220,"Ada, OK"
+40125,Pottawatomie County,OK,Oklahoma,17,43060,"Shawnee, OK"
+40127,Pushmataha County,OK,Oklahoma,16,,
+40129,Roger Mills County,OK,Oklahoma,9,,
+40131,Rogers County,OK,Oklahoma,12,46140,"Tulsa, OK"
+40133,Seminole County,OK,Oklahoma,10,,
+40135,Sequoyah County,OK,Oklahoma,9,22900,"Fort Smith, AR-OK"
+40137,Stephens County,OK,Oklahoma,10,20340,"Duncan, OK"
+40139,Texas County,OK,Oklahoma,9,25100,"Guymon, OK"
+40141,Tillman County,OK,Oklahoma,9,,
+40143,Tulsa County,OK,Oklahoma,43,46140,"Tulsa, OK"
+40145,Wagoner County,OK,Oklahoma,16,46140,"Tulsa, OK"
+40147,Washington County,OK,Oklahoma,12,12780,"Bartlesville, OK"
+40149,Washita County,OK,Oklahoma,18,48220,"Weatherford, OK"
+40151,Woods County,OK,Oklahoma,8,,
+40153,Woodward County,OK,Oklahoma,11,49260,"Woodward, OK"
+41001,Baker County,OR,Oregon,13,12520,"Baker City, OR"
+41003,Benton County,OR,Oregon,10,18700,"Corvallis, OR"
+41005,Clackamas County,OR,Oregon,37,38900,"Portland-Vancouver-Hillsboro, OR-WA"
+41007,Clatsop County,OR,Oregon,9,11820,"Astoria, OR"
+41009,Columbia County,OR,Oregon,9,38900,"Portland-Vancouver-Hillsboro, OR-WA"
+41011,Coos County,OR,Oregon,10,18300,"Coos Bay-North Bend, OR"
+41013,Crook County,OR,Oregon,7,13460,"Bend, OR"
+41015,Curry County,OR,Oregon,7,15060,"Brookings, OR"
+41017,Deschutes County,OR,Oregon,10,13460,"Bend, OR"
+41019,Douglas County,OR,Oregon,30,40700,"Roseburg, OR"
+41021,Gilliam County,OR,Oregon,4,,
+41023,Grant County,OR,Oregon,12,,
+41025,Harney County,OR,Oregon,10,,
+41027,Hood River County,OR,Oregon,3,26220,"Hood River, OR"
+41029,Jackson County,OR,Oregon,18,32780,"Medford, OR"
+41031,Jefferson County,OR,Oregon,8,13460,"Bend, OR"
+41033,Josephine County,OR,Oregon,11,24420,"Grants Pass, OR"
+41035,Klamath County,OR,Oregon,18,28900,"Klamath Falls, OR"
+41037,Lake County,OR,Oregon,10,,
+41039,Lane County,OR,Oregon,39,21660,"Eugene-Springfield, OR"
+41041,Lincoln County,OR,Oregon,18,35440,"Newport, OR"
+41043,Linn County,OR,Oregon,22,10540,"Albany, OR"
+41045,Malheur County,OR,Oregon,15,36620,"Ontario, OR-ID"
+41047,Marion County,OR,Oregon,28,41420,"Salem, OR"
+41049,Morrow County,OR,Oregon,7,25840,"Hermiston-Pendleton, OR"
+41051,Multnomah County,OR,Oregon,44,38900,"Portland-Vancouver-Hillsboro, OR-WA"
+41053,Polk County,OR,Oregon,11,41420,"Salem, OR"
+41055,Sherman County,OR,Oregon,5,,
+41057,Tillamook County,OR,Oregon,16,,
+41059,Umatilla County,OR,Oregon,14,25840,"Hermiston-Pendleton, OR"
+41061,Union County,OR,Oregon,8,29260,"La Grande, OR"
+41063,Wallowa County,OR,Oregon,5,,
+41065,Wasco County,OR,Oregon,9,45520,"The Dalles, OR"
+41067,Washington County,OR,Oregon,32,38900,"Portland-Vancouver-Hillsboro, OR-WA"
+41069,Wheeler County,OR,Oregon,5,,
+41071,Yamhill County,OR,Oregon,15,38900,"Portland-Vancouver-Hillsboro, OR-WA"
+42001,Adams County,PA,Pennsylvania,18,23900,"Gettysburg, PA"
+42003,Allegheny County,PA,Pennsylvania,119,38300,"Pittsburgh, PA"
+42005,Armstrong County,PA,Pennsylvania,37,38300,"Pittsburgh, PA"
+42007,Beaver County,PA,Pennsylvania,28,38300,"Pittsburgh, PA"
+42009,Bedford County,PA,Pennsylvania,29,,
+42011,Berks County,PA,Pennsylvania,64,39740,"Reading, PA"
+42013,Blair County,PA,Pennsylvania,20,11020,"Altoona, PA"
+42015,Bradford County,PA,Pennsylvania,28,42380,"Sayre, PA"
+42017,Bucks County,PA,Pennsylvania,60,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+42019,Butler County,PA,Pennsylvania,37,38300,"Pittsburgh, PA"
+42021,Cambria County,PA,Pennsylvania,52,27780,"Johnstown, PA"
+42023,Cameron County,PA,Pennsylvania,4,,
+42025,Carbon County,PA,Pennsylvania,21,10900,"Allentown-Bethlehem-Easton, PA-NJ"
+42027,Centre County,PA,Pennsylvania,35,44300,"State College, PA"
+42029,Chester County,PA,Pennsylvania,46,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+42031,Clarion County,PA,Pennsylvania,32,,
+42033,Clearfield County,PA,Pennsylvania,52,20180,"DuBois, PA"
+42035,Clinton County,PA,Pennsylvania,16,30820,"Lock Haven, PA"
+42037,Columbia County,PA,Pennsylvania,20,14100,"Bloomsburg-Berwick, PA"
+42039,Crawford County,PA,Pennsylvania,27,32740,"Meadville, PA"
+42041,Cumberland County,PA,Pennsylvania,21,25420,"Harrisburg-Carlisle, PA"
+42043,Dauphin County,PA,Pennsylvania,31,25420,"Harrisburg-Carlisle, PA"
+42045,Delaware County,PA,Pennsylvania,45,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+42047,Elk County,PA,Pennsylvania,15,41260,"St. Marys, PA"
+42049,Erie County,PA,Pennsylvania,35,21500,"Erie, PA"
+42051,Fayette County,PA,Pennsylvania,65,38300,"Pittsburgh, PA"
+42053,Forest County,PA,Pennsylvania,11,,
+42055,Franklin County,PA,Pennsylvania,31,16540,"Chambersburg, PA"
+42057,Fulton County,PA,Pennsylvania,17,,
+42059,Greene County,PA,Pennsylvania,26,,
+42061,Huntingdon County,PA,Pennsylvania,34,26500,"Huntingdon, PA"
+42063,Indiana County,PA,Pennsylvania,53,26860,"Indiana, PA"
+42065,Jefferson County,PA,Pennsylvania,30,,
+42067,Juniata County,PA,Pennsylvania,15,,
+42069,Lackawanna County,PA,Pennsylvania,29,42540,"Scranton--Wilkes-Barre, PA"
+42071,Lancaster County,PA,Pennsylvania,61,29540,"Lancaster, PA"
+42073,Lawrence County,PA,Pennsylvania,23,38300,"Pittsburgh, PA"
+42075,Lebanon County,PA,Pennsylvania,21,30140,"Lebanon, PA"
+42077,Lehigh County,PA,Pennsylvania,36,10900,"Allentown-Bethlehem-Easton, PA-NJ"
+42079,Luzerne County,PA,Pennsylvania,51,42540,"Scranton--Wilkes-Barre, PA"
+42081,Lycoming County,PA,Pennsylvania,30,48700,"Williamsport, PA"
+42083,McKean County,PA,Pennsylvania,22,14620,"Bradford, PA"
+42085,Mercer County,PA,Pennsylvania,28,25850,"Hermitage, PA"
+42087,Mifflin County,PA,Pennsylvania,14,30380,"Lewistown, PA"
+42089,Monroe County,PA,Pennsylvania,35,20700,"East Stroudsburg, PA"
+42091,Montgomery County,PA,Pennsylvania,71,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+42093,Montour County,PA,Pennsylvania,10,44980,"Sunbury, PA"
+42095,Northampton County,PA,Pennsylvania,26,10900,"Allentown-Bethlehem-Easton, PA-NJ"
+42097,Northumberland County,PA,Pennsylvania,28,44980,"Sunbury, PA"
+42099,Perry County,PA,Pennsylvania,16,25420,"Harrisburg-Carlisle, PA"
+42101,Philadelphia County,PA,Pennsylvania,49,37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD"
+42103,Pike County,PA,Pennsylvania,19,25770,"Hemlock Farms, PA"
+42105,Potter County,PA,Pennsylvania,15,,
+42107,Schuylkill County,PA,Pennsylvania,59,39060,"Pottsville, PA"
+42109,Snyder County,PA,Pennsylvania,15,42780,"Selinsgrove, PA"
+42111,Somerset County,PA,Pennsylvania,41,43740,"Somerset, PA"
+42113,Sullivan County,PA,Pennsylvania,13,,
+42115,Susquehanna County,PA,Pennsylvania,31,,
+42117,Tioga County,PA,Pennsylvania,25,,
+42119,Union County,PA,Pennsylvania,14,30260,"Lewisburg, PA"
+42121,Venango County,PA,Pennsylvania,23,36340,"Oil City, PA"
+42123,Warren County,PA,Pennsylvania,20,47620,"Warren, PA"
+42125,Washington County,PA,Pennsylvania,65,38300,"Pittsburgh, PA"
+42127,Wayne County,PA,Pennsylvania,30,,
+42129,Westmoreland County,PA,Pennsylvania,89,38300,"Pittsburgh, PA"
+42131,Wyoming County,PA,Pennsylvania,15,42540,"Scranton--Wilkes-Barre, PA"
+42133,York County,PA,Pennsylvania,47,49620,"York-Hanover, PA"
+44001,Bristol County,RI,Rhode Island,3,39300,"Providence-Warwick, RI-MA"
+44003,Kent County,RI,Rhode Island,9,39300,"Providence-Warwick, RI-MA"
+44005,Newport County,RI,Rhode Island,8,39300,"Providence-Warwick, RI-MA"
+44007,Providence County,RI,Rhode Island,43,39300,"Providence-Warwick, RI-MA"
+44009,Washington County,RI,Rhode Island,20,39300,"Providence-Warwick, RI-MA"
+45001,Abbeville County,SC,South Carolina,13,24940,"Greenwood, SC"
+45003,Aiken County,SC,South Carolina,23,12260,"Augusta-Richmond County, GA-SC"
+45005,Allendale County,SC,South Carolina,6,,
+45007,Anderson County,SC,South Carolina,19,24860,"Greenville-Anderson-Greer, SC"
+45009,Bamberg County,SC,South Carolina,8,,
+45011,Barnwell County,SC,South Carolina,7,,
+45013,Beaufort County,SC,South Carolina,16,25940,"Hilton Head Island-Bluffton-Port Royal, SC"
+45015,Berkeley County,SC,South Carolina,18,16700,"Charleston-North Charleston, SC"
+45017,Calhoun County,SC,South Carolina,7,17900,"Columbia, SC"
+45019,Charleston County,SC,South Carolina,31,16700,"Charleston-North Charleston, SC"
+45021,Cherokee County,SC,South Carolina,8,23500,"Gaffney, SC"
+45023,Chester County,SC,South Carolina,11,16740,"Charlotte-Concord-Gastonia, NC-SC"
+45025,Chesterfield County,SC,South Carolina,11,,
+45027,Clarendon County,SC,South Carolina,11,,
+45029,Colleton County,SC,South Carolina,14,,
+45031,Darlington County,SC,South Carolina,10,22500,"Florence, SC"
+45033,Dillon County,SC,South Carolina,11,,
+45035,Dorchester County,SC,South Carolina,15,16700,"Charleston-North Charleston, SC"
+45037,Edgefield County,SC,South Carolina,10,12260,"Augusta-Richmond County, GA-SC"
+45039,Fairfield County,SC,South Carolina,9,17900,"Columbia, SC"
+45041,Florence County,SC,South Carolina,12,22500,"Florence, SC"
+45043,Georgetown County,SC,South Carolina,5,34680,"Murrells Inlet, SC"
+45045,Greenville County,SC,South Carolina,27,24860,"Greenville-Anderson-Greer, SC"
+45047,Greenwood County,SC,South Carolina,9,24940,"Greenwood, SC"
+45049,Hampton County,SC,South Carolina,13,,
+45051,Horry County,SC,South Carolina,16,34820,"Myrtle Beach-Conway-North Myrtle Beach, SC"
+45053,Jasper County,SC,South Carolina,10,25940,"Hilton Head Island-Bluffton-Port Royal, SC"
+45055,Kershaw County,SC,South Carolina,13,17900,"Columbia, SC"
+45057,Lancaster County,SC,South Carolina,5,16740,"Charlotte-Concord-Gastonia, NC-SC"
+45059,Laurens County,SC,South Carolina,16,24860,"Greenville-Anderson-Greer, SC"
+45061,Lee County,SC,South Carolina,12,,
+45063,Lexington County,SC,South Carolina,18,17900,"Columbia, SC"
+45065,McCormick County,SC,South Carolina,11,,
+45067,Marion County,SC,South Carolina,8,,
+45069,Marlboro County,SC,South Carolina,8,,
+45071,Newberry County,SC,South Carolina,11,35140,"Newberry, SC"
+45073,Oconee County,SC,South Carolina,13,42860,"Seneca, SC"
+45075,Orangeburg County,SC,South Carolina,24,36700,"Orangeburg, SC"
+45077,Pickens County,SC,South Carolina,15,24860,"Greenville-Anderson-Greer, SC"
+45079,Richland County,SC,South Carolina,25,17900,"Columbia, SC"
+45081,Saluda County,SC,South Carolina,12,17900,"Columbia, SC"
+45083,Spartanburg County,SC,South Carolina,34,43900,"Spartanburg, SC"
+45085,Sumter County,SC,South Carolina,15,44940,"Sumter, SC"
+45087,Union County,SC,South Carolina,9,43900,"Spartanburg, SC"
+45089,Williamsburg County,SC,South Carolina,12,,
+45091,York County,SC,South Carolina,15,16740,"Charlotte-Concord-Gastonia, NC-SC"
+46003,Aurora County,SD,South Dakota,9,,
+46005,Beadle County,SD,South Dakota,11,26700,"Huron, SD"
+46007,Bennett County,SD,South Dakota,7,,
+46009,Bon Homme County,SD,South Dakota,7,,
+46011,Brookings County,SD,South Dakota,13,15100,"Brookings, SD"
+46013,Brown County,SD,South Dakota,20,10100,"Aberdeen, SD"
+46015,Brule County,SD,South Dakota,6,,
+46017,Buffalo County,SD,South Dakota,6,,
+46019,Butte County,SD,South Dakota,8,,
+46021,Campbell County,SD,South Dakota,7,,
+46023,Charles Mix County,SD,South Dakota,10,,
+46025,Clark County,SD,South Dakota,13,,
+46027,Clay County,SD,South Dakota,8,46820,"Vermillion, SD"
+46029,Codington County,SD,South Dakota,10,47980,"Watertown, SD"
+46031,Corson County,SD,South Dakota,16,,
+46033,Custer County,SD,South Dakota,9,39660,"Rapid City, SD"
+46035,Davison County,SD,South Dakota,6,33580,"Mitchell, SD"
+46037,Day County,SD,South Dakota,11,,
+46039,Deuel County,SD,South Dakota,12,,
+46041,Dewey County,SD,South Dakota,10,,
+46043,Douglas County,SD,South Dakota,8,,
+46045,Edmunds County,SD,South Dakota,10,10100,"Aberdeen, SD"
+46047,Fall River County,SD,South Dakota,7,,
+46049,Faulk County,SD,South Dakota,10,,
+46051,Grant County,SD,South Dakota,12,,
+46053,Gregory County,SD,South Dakota,9,,
+46055,Haakon County,SD,South Dakota,5,,
+46057,Hamlin County,SD,South Dakota,12,,
+46059,Hand County,SD,South Dakota,8,,
+46061,Hanson County,SD,South Dakota,7,33580,"Mitchell, SD"
+46063,Harding County,SD,South Dakota,12,,
+46065,Hughes County,SD,South Dakota,3,38180,"Pierre, SD"
+46067,Hutchinson County,SD,South Dakota,14,,
+46069,Hyde County,SD,South Dakota,5,,
+46071,Jackson County,SD,South Dakota,12,,
+46073,Jerauld County,SD,South Dakota,5,,
+46075,Jones County,SD,South Dakota,5,,
+46077,Kingsbury County,SD,South Dakota,9,,
+46079,Lake County,SD,South Dakota,14,,
+46081,Lawrence County,SD,South Dakota,9,43940,"Spearfish, SD"
+46083,Lincoln County,SD,South Dakota,12,43620,"Sioux Falls, SD-MN"
+46085,Lyman County,SD,South Dakota,9,,
+46087,McCook County,SD,South Dakota,12,43620,"Sioux Falls, SD-MN"
+46089,McPherson County,SD,South Dakota,8,,
+46091,Marshall County,SD,South Dakota,10,,
+46093,Meade County,SD,South Dakota,19,39660,"Rapid City, SD"
+46095,Mellette County,SD,South Dakota,7,,
+46097,Miner County,SD,South Dakota,9,,
+46099,Minnehaha County,SD,South Dakota,23,43620,"Sioux Falls, SD-MN"
+46101,Moody County,SD,South Dakota,13,,
+46102,Oglala Lakota County,SD,South Dakota,11,,
+46103,Pennington County,SD,South Dakota,20,39660,"Rapid City, SD"
+46105,Perkins County,SD,South Dakota,9,,
+46107,Potter County,SD,South Dakota,5,,
+46109,Roberts County,SD,South Dakota,16,,
+46111,Sanborn County,SD,South Dakota,8,33580,"Mitchell, SD"
+46115,Spink County,SD,South Dakota,15,,
+46117,Stanley County,SD,South Dakota,4,38180,"Pierre, SD"
+46119,Sully County,SD,South Dakota,6,,
+46121,Todd County,SD,South Dakota,9,,
+46123,Tripp County,SD,South Dakota,8,,
+46125,Turner County,SD,South Dakota,15,43620,"Sioux Falls, SD-MN"
+46127,Union County,SD,South Dakota,9,43580,"Sioux City, IA-NE-SD"
+46129,Walworth County,SD,South Dakota,7,,
+46135,Yankton County,SD,South Dakota,10,49460,"Yankton, SD"
+46137,Ziebach County,SD,South Dakota,7,,
+47001,Anderson County,TN,Tennessee,11,28940,"Knoxville, TN"
+47003,Bedford County,TN,Tennessee,13,43180,"Shelbyville, TN"
+47005,Benton County,TN,Tennessee,7,,
+47007,Bledsoe County,TN,Tennessee,9,,
+47009,Blount County,TN,Tennessee,13,28940,"Knoxville, TN"
+47011,Bradley County,TN,Tennessee,8,17420,"Cleveland, TN"
+47013,Campbell County,TN,Tennessee,11,28940,"Knoxville, TN"
+47015,Cannon County,TN,Tennessee,9,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47017,Carroll County,TN,Tennessee,14,,
+47019,Carter County,TN,Tennessee,8,27740,"Johnson City, TN"
+47021,Cheatham County,TN,Tennessee,12,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47023,Chester County,TN,Tennessee,12,27180,"Jackson, TN"
+47025,Claiborne County,TN,Tennessee,11,,
+47027,Clay County,TN,Tennessee,7,,
+47029,Cocke County,TN,Tennessee,8,35460,"Newport, TN"
+47031,Coffee County,TN,Tennessee,9,46100,"Tullahoma-Manchester, TN"
+47033,Crockett County,TN,Tennessee,8,27180,"Jackson, TN"
+47035,Cumberland County,TN,Tennessee,11,18900,"Crossville, TN"
+47037,Davidson County,TN,Tennessee,37,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47039,Decatur County,TN,Tennessee,9,,
+47041,DeKalb County,TN,Tennessee,11,,
+47043,Dickson County,TN,Tennessee,11,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47045,Dyer County,TN,Tennessee,11,20540,"Dyersburg, TN"
+47047,Fayette County,TN,Tennessee,15,32820,"Memphis, TN-MS-AR"
+47049,Fentress County,TN,Tennessee,9,,
+47051,Franklin County,TN,Tennessee,16,49010,"Winchester, TN"
+47053,Gibson County,TN,Tennessee,13,27180,"Jackson, TN"
+47055,Giles County,TN,Tennessee,17,,
+47057,Grainger County,TN,Tennessee,9,28940,"Knoxville, TN"
+47059,Greene County,TN,Tennessee,10,24620,"Greeneville, TN"
+47061,Grundy County,TN,Tennessee,10,,
+47063,Hamblen County,TN,Tennessee,7,34100,"Morristown, TN"
+47065,Hamilton County,TN,Tennessee,32,16860,"Chattanooga, TN-GA"
+47067,Hancock County,TN,Tennessee,5,,
+47069,Hardeman County,TN,Tennessee,12,,
+47071,Hardin County,TN,Tennessee,14,,
+47073,Hawkins County,TN,Tennessee,12,28700,"Kingsport-Bristol, TN-VA"
+47075,Haywood County,TN,Tennessee,6,,
+47077,Henderson County,TN,Tennessee,14,,
+47079,Henry County,TN,Tennessee,9,37540,"Paris, TN"
+47081,Hickman County,TN,Tennessee,13,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47083,Houston County,TN,Tennessee,8,,
+47085,Humphreys County,TN,Tennessee,4,,
+47087,Jackson County,TN,Tennessee,11,18260,"Cookeville, TN"
+47089,Jefferson County,TN,Tennessee,10,34100,"Morristown, TN"
+47091,Johnson County,TN,Tennessee,5,,
+47093,Knox County,TN,Tennessee,31,28940,"Knoxville, TN"
+47095,Lake County,TN,Tennessee,3,,
+47097,Lauderdale County,TN,Tennessee,4,,
+47099,Lawrence County,TN,Tennessee,11,29980,"Lawrenceburg, TN"
+47101,Lewis County,TN,Tennessee,7,,
+47103,Lincoln County,TN,Tennessee,12,22190,"Fayetteville, TN"
+47105,Loudon County,TN,Tennessee,9,28940,"Knoxville, TN"
+47107,McMinn County,TN,Tennessee,12,11940,"Athens, TN"
+47109,McNairy County,TN,Tennessee,15,,
+47111,Macon County,TN,Tennessee,8,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47113,Madison County,TN,Tennessee,13,27180,"Jackson, TN"
+47115,Marion County,TN,Tennessee,12,16860,"Chattanooga, TN-GA"
+47117,Marshall County,TN,Tennessee,12,30280,"Lewisburg, TN"
+47119,Maury County,TN,Tennessee,10,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47121,Meigs County,TN,Tennessee,6,11940,"Athens, TN"
+47123,Monroe County,TN,Tennessee,9,,
+47125,Montgomery County,TN,Tennessee,15,17300,"Clarksville, TN-KY"
+47127,Moore County,TN,Tennessee,10,46100,"Tullahoma-Manchester, TN"
+47129,Morgan County,TN,Tennessee,12,28940,"Knoxville, TN"
+47131,Obion County,TN,Tennessee,12,46460,"Union City, TN"
+47133,Overton County,TN,Tennessee,12,18260,"Cookeville, TN"
+47135,Perry County,TN,Tennessee,4,,
+47137,Pickett County,TN,Tennessee,6,,
+47139,Polk County,TN,Tennessee,13,17420,"Cleveland, TN"
+47141,Putnam County,TN,Tennessee,11,18260,"Cookeville, TN"
+47143,Rhea County,TN,Tennessee,6,,
+47145,Roane County,TN,Tennessee,10,28940,"Knoxville, TN"
+47147,Robertson County,TN,Tennessee,12,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47149,Rutherford County,TN,Tennessee,20,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47151,Scott County,TN,Tennessee,9,,
+47153,Sequatchie County,TN,Tennessee,8,16860,"Chattanooga, TN-GA"
+47155,Sevier County,TN,Tennessee,10,42940,"Sevierville, TN"
+47157,Shelby County,TN,Tennessee,41,32820,"Memphis, TN-MS-AR"
+47159,Smith County,TN,Tennessee,15,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47161,Stewart County,TN,Tennessee,8,17300,"Clarksville, TN-KY"
+47163,Sullivan County,TN,Tennessee,12,28700,"Kingsport-Bristol, TN-VA"
+47165,Sumner County,TN,Tennessee,10,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47167,Tipton County,TN,Tennessee,10,32820,"Memphis, TN-MS-AR"
+47169,Trousdale County,TN,Tennessee,5,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47171,Unicoi County,TN,Tennessee,6,27740,"Johnson City, TN"
+47173,Union County,TN,Tennessee,11,28940,"Knoxville, TN"
+47175,Van Buren County,TN,Tennessee,7,,
+47177,Warren County,TN,Tennessee,7,32660,"McMinnville, TN"
+47179,Washington County,TN,Tennessee,13,27740,"Johnson City, TN"
+47181,Wayne County,TN,Tennessee,10,,
+47183,Weakley County,TN,Tennessee,12,32280,"Martin, TN"
+47185,White County,TN,Tennessee,5,18260,"Cookeville, TN"
+47187,Williamson County,TN,Tennessee,16,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+47189,Wilson County,TN,Tennessee,12,34980,"Nashville-Davidson--Murfreesboro--Franklin, TN"
+48001,Anderson County,TX,Texas,12,37300,"Palestine, TX"
+48003,Andrews County,TX,Texas,1,11380,"Andrews, TX"
+48005,Angelina County,TX,Texas,7,31260,"Lufkin, TX"
+48007,Aransas County,TX,Texas,5,18580,"Corpus Christi, TX"
+48009,Archer County,TX,Texas,10,48660,"Wichita Falls, TX"
+48011,Armstrong County,TX,Texas,6,11100,"Amarillo, TX"
+48013,Atascosa County,TX,Texas,16,41700,"San Antonio-New Braunfels, TX"
+48015,Austin County,TX,Texas,13,26420,"Houston-Pasadena-The Woodlands, TX"
+48017,Bailey County,TX,Texas,6,,
+48019,Bandera County,TX,Texas,7,41700,"San Antonio-New Braunfels, TX"
+48021,Bastrop County,TX,Texas,15,12420,"Austin-Round Rock-San Marcos, TX"
+48023,Baylor County,TX,Texas,2,,
+48025,Bee County,TX,Texas,11,13300,"Beeville, TX"
+48027,Bell County,TX,Texas,23,28660,"Killeen-Temple, TX"
+48029,Bexar County,TX,Texas,78,41700,"San Antonio-New Braunfels, TX"
+48031,Blanco County,TX,Texas,8,,
+48033,Borden County,TX,Texas,9,,
+48035,Bosque County,TX,Texas,11,47380,"Waco, TX"
+48037,Bowie County,TX,Texas,10,45500,"Texarkana, TX-AR"
+48039,Brazoria County,TX,Texas,21,26420,"Houston-Pasadena-The Woodlands, TX"
+48041,Brazos County,TX,Texas,11,17780,"College Station-Bryan, TX"
+48043,Brewster County,TX,Texas,5,,
+48045,Briscoe County,TX,Texas,4,,
+48047,Brooks County,TX,Texas,2,10860,"Alice, TX"
+48049,Brown County,TX,Texas,10,15220,"Brownwood, TX"
+48051,Burleson County,TX,Texas,7,17780,"College Station-Bryan, TX"
+48053,Burnet County,TX,Texas,13,,
+48055,Caldwell County,TX,Texas,14,12420,"Austin-Round Rock-San Marcos, TX"
+48057,Calhoun County,TX,Texas,6,38920,"Port Lavaca, TX"
+48059,Callahan County,TX,Texas,9,10180,"Abilene, TX"
+48061,Cameron County,TX,Texas,17,15180,"Brownsville-Harlingen, TX"
+48063,Camp County,TX,Texas,2,34420,"Mount Pleasant, TX"
+48065,Carson County,TX,Texas,6,11100,"Amarillo, TX"
+48067,Cass County,TX,Texas,15,,
+48069,Castro County,TX,Texas,10,,
+48071,Chambers County,TX,Texas,11,26420,"Houston-Pasadena-The Woodlands, TX"
+48073,Cherokee County,TX,Texas,12,27380,"Jacksonville, TX"
+48075,Childress County,TX,Texas,5,,
+48077,Clay County,TX,Texas,9,48660,"Wichita Falls, TX"
+48079,Cochran County,TX,Texas,4,31180,"Lubbock, TX"
+48081,Coke County,TX,Texas,4,,
+48083,Coleman County,TX,Texas,15,,
+48085,Collin County,TX,Texas,40,19100,"Dallas-Fort Worth-Arlington, TX"
+48087,Collingsworth County,TX,Texas,6,,
+48089,Colorado County,TX,Texas,18,,
+48091,Comal County,TX,Texas,14,41700,"San Antonio-New Braunfels, TX"
+48093,Comanche County,TX,Texas,14,,
+48095,Concho County,TX,Texas,8,,
+48097,Cooke County,TX,Texas,16,23620,"Gainesville, TX"
+48099,Coryell County,TX,Texas,17,28660,"Killeen-Temple, TX"
+48101,Cottle County,TX,Texas,4,,
+48103,Crane County,TX,Texas,2,,
+48105,Crockett County,TX,Texas,6,,
+48107,Crosby County,TX,Texas,9,31180,"Lubbock, TX"
+48109,Culberson County,TX,Texas,2,,
+48111,Dallam County,TX,Texas,4,,
+48113,Dallas County,TX,Texas,95,19100,"Dallas-Fort Worth-Arlington, TX"
+48115,Dawson County,TX,Texas,4,,
+48117,Deaf Smith County,TX,Texas,6,25820,"Hereford, TX"
+48119,Delta County,TX,Texas,7,,
+48121,Denton County,TX,Texas,40,19100,"Dallas-Fort Worth-Arlington, TX"
+48123,DeWitt County,TX,Texas,9,,
+48125,Dickens County,TX,Texas,7,,
+48127,Dimmit County,TX,Texas,6,,
+48129,Donley County,TX,Texas,6,,
+48131,Duval County,TX,Texas,8,,
+48133,Eastland County,TX,Texas,9,,
+48135,Ector County,TX,Texas,11,36220,"Odessa, TX"
+48137,Edwards County,TX,Texas,4,,
+48139,Ellis County,TX,Texas,20,19100,"Dallas-Fort Worth-Arlington, TX"
+48141,El Paso County,TX,Texas,31,21340,"El Paso, TX"
+48143,Erath County,TX,Texas,13,44500,"Stephenville, TX"
+48145,Falls County,TX,Texas,17,47380,"Waco, TX"
+48147,Fannin County,TX,Texas,19,14300,"Bonham, TX"
+48149,Fayette County,TX,Texas,15,,
+48151,Fisher County,TX,Texas,9,,
+48153,Floyd County,TX,Texas,7,38380,"Plainview, TX"
+48155,Foard County,TX,Texas,3,,
+48157,Fort Bend County,TX,Texas,35,26420,"Houston-Pasadena-The Woodlands, TX"
+48159,Franklin County,TX,Texas,7,,
+48161,Freestone County,TX,Texas,9,,
+48163,Frio County,TX,Texas,5,,
+48165,Gaines County,TX,Texas,5,,
+48167,Galveston County,TX,Texas,19,26420,"Houston-Pasadena-The Woodlands, TX"
+48169,Garza County,TX,Texas,4,31180,"Lubbock, TX"
+48171,Gillespie County,TX,Texas,7,23240,"Fredericksburg, TX"
+48173,Glasscock County,TX,Texas,4,,
+48175,Goliad County,TX,Texas,6,47020,"Victoria, TX"
+48177,Gonzales County,TX,Texas,15,,
+48179,Gray County,TX,Texas,9,37420,"Pampa, TX"
+48181,Grayson County,TX,Texas,21,43300,"Sherman-Denison, TX"
+48183,Gregg County,TX,Texas,10,30980,"Longview, TX"
+48185,Grimes County,TX,Texas,12,,
+48187,Guadalupe County,TX,Texas,14,41700,"San Antonio-New Braunfels, TX"
+48189,Hale County,TX,Texas,10,38380,"Plainview, TX"
+48191,Hall County,TX,Texas,7,,
+48193,Hamilton County,TX,Texas,10,,
+48195,Hansford County,TX,Texas,3,,
+48197,Hardeman County,TX,Texas,2,,
+48199,Hardin County,TX,Texas,12,13140,"Beaumont-Port Arthur, TX"
+48201,Harris County,TX,Texas,143,26420,"Houston-Pasadena-The Woodlands, TX"
+48203,Harrison County,TX,Texas,15,30980,"Longview, TX"
+48205,Hartley County,TX,Texas,4,,
+48207,Haskell County,TX,Texas,11,,
+48209,Hays County,TX,Texas,14,12420,"Austin-Round Rock-San Marcos, TX"
+48211,Hemphill County,TX,Texas,4,,
+48213,Henderson County,TX,Texas,16,11980,"Athens, TX"
+48215,Hidalgo County,TX,Texas,30,32580,"McAllen-Edinburg-Mission, TX"
+48217,Hill County,TX,Texas,19,,
+48219,Hockley County,TX,Texas,11,31180,"Lubbock, TX"
+48221,Hood County,TX,Texas,8,24180,"Granbury, TX"
+48223,Hopkins County,TX,Texas,13,44860,"Sulphur Springs, TX"
+48225,Houston County,TX,Texas,8,,
+48227,Howard County,TX,Texas,6,13700,"Big Spring, TX"
+48229,Hudspeth County,TX,Texas,6,21340,"El Paso, TX"
+48231,Hunt County,TX,Texas,18,19100,"Dallas-Fort Worth-Arlington, TX"
+48233,Hutchinson County,TX,Texas,8,14420,"Borger, TX"
+48235,Irion County,TX,Texas,4,41660,"San Angelo, TX"
+48237,Jack County,TX,Texas,11,,
+48239,Jackson County,TX,Texas,10,,
+48241,Jasper County,TX,Texas,9,,
+48243,Jeff Davis County,TX,Texas,2,,
+48245,Jefferson County,TX,Texas,18,13140,"Beaumont-Port Arthur, TX"
+48247,Jim Hogg County,TX,Texas,2,,
+48249,Jim Wells County,TX,Texas,8,10860,"Alice, TX"
+48251,Johnson County,TX,Texas,16,19100,"Dallas-Fort Worth-Arlington, TX"
+48253,Jones County,TX,Texas,10,10180,"Abilene, TX"
+48255,Karnes County,TX,Texas,10,,
+48257,Kaufman County,TX,Texas,13,19100,"Dallas-Fort Worth-Arlington, TX"
+48259,Kendall County,TX,Texas,9,41700,"San Antonio-New Braunfels, TX"
+48261,Kenedy County,TX,Texas,3,,
+48263,Kent County,TX,Texas,4,,
+48265,Kerr County,TX,Texas,11,28500,"Kerrville, TX"
+48267,Kimble County,TX,Texas,6,,
+48269,King County,TX,Texas,2,,
+48271,Kinney County,TX,Texas,1,,
+48273,Kleberg County,TX,Texas,4,28780,"Kingsville, TX"
+48275,Knox County,TX,Texas,6,,
+48277,Lamar County,TX,Texas,14,37580,"Paris, TX"
+48279,Lamb County,TX,Texas,14,,
+48281,Lampasas County,TX,Texas,6,28660,"Killeen-Temple, TX"
+48283,La Salle County,TX,Texas,5,,
+48285,Lavaca County,TX,Texas,8,,
+48287,Lee County,TX,Texas,9,,
+48289,Leon County,TX,Texas,8,,
+48291,Liberty County,TX,Texas,15,26420,"Houston-Pasadena-The Woodlands, TX"
+48293,Limestone County,TX,Texas,14,,
+48295,Lipscomb County,TX,Texas,7,,
+48297,Live Oak County,TX,Texas,10,,
+48299,Llano County,TX,Texas,10,,
+48301,Loving County,TX,Texas,1,,
+48303,Lubbock County,TX,Texas,26,31180,"Lubbock, TX"
+48305,Lynn County,TX,Texas,8,31180,"Lubbock, TX"
+48307,McCulloch County,TX,Texas,7,,
+48309,McLennan County,TX,Texas,29,47380,"Waco, TX"
+48311,McMullen County,TX,Texas,7,,
+48313,Madison County,TX,Texas,5,,
+48315,Marion County,TX,Texas,7,,
+48317,Martin County,TX,Texas,8,33260,"Midland, TX"
+48319,Mason County,TX,Texas,6,,
+48321,Matagorda County,TX,Texas,14,13060,"Bay City, TX"
+48323,Maverick County,TX,Texas,3,20580,"Eagle Pass, TX"
+48325,Medina County,TX,Texas,15,41700,"San Antonio-New Braunfels, TX"
+48327,Menard County,TX,Texas,4,,
+48329,Midland County,TX,Texas,9,33260,"Midland, TX"
+48331,Milam County,TX,Texas,14,,
+48333,Mills County,TX,Texas,9,,
+48335,Mitchell County,TX,Texas,3,,
+48337,Montague County,TX,Texas,10,,
+48339,Montgomery County,TX,Texas,27,26420,"Houston-Pasadena-The Woodlands, TX"
+48341,Moore County,TX,Texas,7,20300,"Dumas, TX"
+48343,Morris County,TX,Texas,7,34420,"Mount Pleasant, TX"
+48345,Motley County,TX,Texas,6,,
+48347,Nacogdoches County,TX,Texas,10,34860,"Nacogdoches, TX"
+48349,Navarro County,TX,Texas,17,18620,"Corsicana, TX"
+48351,Newton County,TX,Texas,11,,
+48353,Nolan County,TX,Texas,9,45020,"Sweetwater, TX"
+48355,Nueces County,TX,Texas,27,18580,"Corpus Christi, TX"
+48357,Ochiltree County,TX,Texas,5,,
+48359,Oldham County,TX,Texas,6,11100,"Amarillo, TX"
+48361,Orange County,TX,Texas,4,13140,"Beaumont-Port Arthur, TX"
+48363,Palo Pinto County,TX,Texas,12,33420,"Mineral Wells, TX"
+48365,Panola County,TX,Texas,13,,
+48367,Parker County,TX,Texas,19,19100,"Dallas-Fort Worth-Arlington, TX"
+48369,Parmer County,TX,Texas,5,,
+48371,Pecos County,TX,Texas,6,,
+48373,Polk County,TX,Texas,9,,
+48375,Potter County,TX,Texas,17,11100,"Amarillo, TX"
+48377,Presidio County,TX,Texas,4,,
+48379,Rains County,TX,Texas,6,,
+48381,Randall County,TX,Texas,15,11100,"Amarillo, TX"
+48383,Reagan County,TX,Texas,2,,
+48385,Real County,TX,Texas,8,,
+48387,Red River County,TX,Texas,9,37580,"Paris, TX"
+48389,Reeves County,TX,Texas,5,45880,"Town of Pecos, TX"
+48391,Refugio County,TX,Texas,5,,
+48393,Roberts County,TX,Texas,5,37420,"Pampa, TX"
+48395,Robertson County,TX,Texas,10,17780,"College Station-Bryan, TX"
+48397,Rockwall County,TX,Texas,9,19100,"Dallas-Fort Worth-Arlington, TX"
+48399,Runnels County,TX,Texas,11,,
+48401,Rusk County,TX,Texas,20,30980,"Longview, TX"
+48403,Sabine County,TX,Texas,6,,
+48405,San Augustine County,TX,Texas,4,,
+48407,San Jacinto County,TX,Texas,8,26420,"Houston-Pasadena-The Woodlands, TX"
+48409,San Patricio County,TX,Texas,9,18580,"Corpus Christi, TX"
+48411,San Saba County,TX,Texas,8,,
+48413,Schleicher County,TX,Texas,3,,
+48415,Scurry County,TX,Texas,8,43660,"Snyder, TX"
+48417,Shackelford County,TX,Texas,5,,
+48419,Shelby County,TX,Texas,7,,
+48421,Sherman County,TX,Texas,5,,
+48423,Smith County,TX,Texas,23,46340,"Tyler, TX"
+48425,Somervell County,TX,Texas,7,,
+48427,Starr County,TX,Texas,11,40100,"Rio Grande City-Roma, TX"
+48429,Stephens County,TX,Texas,8,,
+48431,Sterling County,TX,Texas,2,,
+48433,Stonewall County,TX,Texas,7,,
+48435,Sutton County,TX,Texas,2,,
+48437,Swisher County,TX,Texas,5,,
+48439,Tarrant County,TX,Texas,76,19100,"Dallas-Fort Worth-Arlington, TX"
+48441,Taylor County,TX,Texas,17,10180,"Abilene, TX"
+48443,Terrell County,TX,Texas,3,,
+48445,Terry County,TX,Texas,6,,
+48447,Throckmorton County,TX,Texas,7,,
+48449,Titus County,TX,Texas,6,34420,"Mount Pleasant, TX"
+48451,Tom Green County,TX,Texas,17,41660,"San Angelo, TX"
+48453,Travis County,TX,Texas,63,12420,"Austin-Round Rock-San Marcos, TX"
+48455,Trinity County,TX,Texas,8,,
+48457,Tyler County,TX,Texas,10,,
+48459,Upshur County,TX,Texas,12,30980,"Longview, TX"
+48461,Upton County,TX,Texas,4,,
+48463,Uvalde County,TX,Texas,8,46620,"Uvalde, TX"
+48465,Val Verde County,TX,Texas,8,19620,"Del Rio, TX"
+48467,Van Zandt County,TX,Texas,13,,
+48469,Victoria County,TX,Texas,12,47020,"Victoria, TX"
+48471,Walker County,TX,Texas,11,26660,"Huntsville, TX"
+48473,Waller County,TX,Texas,11,26420,"Houston-Pasadena-The Woodlands, TX"
+48475,Ward County,TX,Texas,6,,
+48477,Washington County,TX,Texas,7,14780,"Brenham, TX"
+48479,Webb County,TX,Texas,10,29700,"Laredo, TX"
+48481,Wharton County,TX,Texas,13,20900,"El Campo, TX"
+48483,Wheeler County,TX,Texas,6,,
+48485,Wichita County,TX,Texas,11,48660,"Wichita Falls, TX"
+48487,Wilbarger County,TX,Texas,6,46900,"Vernon, TX"
+48489,Willacy County,TX,Texas,6,39700,"Raymondville, TX"
+48491,Williamson County,TX,Texas,27,12420,"Austin-Round Rock-San Marcos, TX"
+48493,Wilson County,TX,Texas,12,41700,"San Antonio-New Braunfels, TX"
+48495,Winkler County,TX,Texas,2,,
+48497,Wise County,TX,Texas,18,19100,"Dallas-Fort Worth-Arlington, TX"
+48499,Wood County,TX,Texas,12,,
+48501,Yoakum County,TX,Texas,4,,
+48503,Young County,TX,Texas,6,,
+48505,Zapata County,TX,Texas,5,49820,"Zapata, TX"
+48507,Zavala County,TX,Texas,4,,
+49001,Beaver County,UT,Utah,4,,
+49003,Box Elder County,UT,Utah,20,14940,"Brigham City, UT-ID"
+49005,Cache County,UT,Utah,18,30860,"Logan, UT-ID"
+49007,Carbon County,UT,Utah,6,39220,"Price, UT"
+49009,Daggett County,UT,Utah,2,,
+49011,Davis County,UT,Utah,13,36260,"Ogden, UT"
+49013,Duchesne County,UT,Utah,12,,
+49015,Emery County,UT,Utah,9,,
+49017,Garfield County,UT,Utah,11,,
+49019,Grand County,UT,Utah,4,,
+49021,Iron County,UT,Utah,11,16260,"Cedar City, UT"
+49023,Juab County,UT,Utah,6,39340,"Provo-Orem-Lehi, UT"
+49025,Kane County,UT,Utah,7,,
+49027,Millard County,UT,Utah,12,,
+49029,Morgan County,UT,Utah,2,36260,"Ogden, UT"
+49031,Piute County,UT,Utah,7,,
+49033,Rich County,UT,Utah,4,21740,"Evanston, WY-UT"
+49035,Salt Lake County,UT,Utah,42,41620,"Salt Lake City-Murray, UT"
+49037,San Juan County,UT,Utah,12,,
+49039,Sanpete County,UT,Utah,15,,
+49041,Sevier County,UT,Utah,12,,
+49043,Summit County,UT,Utah,9,25720,"Heber, UT"
+49045,Tooele County,UT,Utah,8,41620,"Salt Lake City-Murray, UT"
+49047,Uintah County,UT,Utah,11,46860,"Vernal, UT"
+49049,Utah County,UT,Utah,26,39340,"Provo-Orem-Lehi, UT"
+49051,Wasatch County,UT,Utah,6,25720,"Heber, UT"
+49053,Washington County,UT,Utah,21,41100,"St. George, UT"
+49055,Wayne County,UT,Utah,6,,
+49057,Weber County,UT,Utah,10,36260,"Ogden, UT"
+50001,Addison County,VT,Vermont,20,,
+50003,Bennington County,VT,Vermont,22,13540,"Bennington, VT"
+50005,Caledonia County,VT,Vermont,22,,
+50007,Chittenden County,VT,Vermont,21,15540,"Burlington-South Burlington, VT"
+50009,Essex County,VT,Vermont,12,,
+50011,Franklin County,VT,Vermont,18,15540,"Burlington-South Burlington, VT"
+50013,Grand Isle County,VT,Vermont,5,15540,"Burlington-South Burlington, VT"
+50015,Lamoille County,VT,Vermont,11,,
+50017,Orange County,VT,Vermont,31,30150,"Lebanon-Claremont, NH-VT"
+50019,Orleans County,VT,Vermont,24,,
+50021,Rutland County,VT,Vermont,30,40860,"Rutland, VT"
+50023,Washington County,VT,Vermont,28,12740,"Barre, VT"
+50025,Windham County,VT,Vermont,26,14710,"Brattleboro, VT"
+50027,Windsor County,VT,Vermont,39,30150,"Lebanon-Claremont, NH-VT"
+51001,Accomack County,VA,Virginia,33,,
+51003,Albemarle County,VA,Virginia,24,16820,"Charlottesville, VA"
+51005,Alleghany County,VA,Virginia,7,,
+51007,Amelia County,VA,Virginia,5,40060,"Richmond, VA"
+51009,Amherst County,VA,Virginia,9,31340,"Lynchburg, VA"
+51011,Appomattox County,VA,Virginia,8,31340,"Lynchburg, VA"
+51013,Arlington County,VA,Virginia,12,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51015,Augusta County,VA,Virginia,28,44420,"Staunton-Stuarts Draft, VA"
+51017,Bath County,VA,Virginia,7,,
+51019,Bedford County,VA,Virginia,19,31340,"Lynchburg, VA"
+51021,Bland County,VA,Virginia,6,,
+51023,Botetourt County,VA,Virginia,12,40220,"Roanoke, VA"
+51025,Brunswick County,VA,Virginia,16,,
+51027,Buchanan County,VA,Virginia,16,,
+51029,Buckingham County,VA,Virginia,11,,
+51031,Campbell County,VA,Virginia,14,31340,"Lynchburg, VA"
+51033,Caroline County,VA,Virginia,11,,
+51035,Carroll County,VA,Virginia,17,,
+51036,Charles City County,VA,Virginia,5,40060,"Richmond, VA"
+51037,Charlotte County,VA,Virginia,14,,
+51041,Chesterfield County,VA,Virginia,16,40060,"Richmond, VA"
+51043,Clarke County,VA,Virginia,7,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51045,Craig County,VA,Virginia,5,40220,"Roanoke, VA"
+51047,Culpeper County,VA,Virginia,19,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51049,Cumberland County,VA,Virginia,7,,
+51051,Dickenson County,VA,Virginia,12,,
+51053,Dinwiddie County,VA,Virginia,12,40060,"Richmond, VA"
+51057,Essex County,VA,Virginia,9,,
+51059,Fairfax County,VA,Virginia,49,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51061,Fauquier County,VA,Virginia,24,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51063,Floyd County,VA,Virginia,11,13980,"Blacksburg-Christiansburg-Radford, VA"
+51065,Fluvanna County,VA,Virginia,10,16820,"Charlottesville, VA"
+51067,Franklin County,VA,Virginia,16,40220,"Roanoke, VA"
+51069,Frederick County,VA,Virginia,12,49020,"Winchester, VA-WV"
+51071,Giles County,VA,Virginia,10,13980,"Blacksburg-Christiansburg-Radford, VA"
+51073,Gloucester County,VA,Virginia,6,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51075,Goochland County,VA,Virginia,15,40060,"Richmond, VA"
+51077,Grayson County,VA,Virginia,9,,
+51079,Greene County,VA,Virginia,5,16820,"Charlottesville, VA"
+51081,Greensville County,VA,Virginia,5,,
+51083,Halifax County,VA,Virginia,14,,
+51085,Hanover County,VA,Virginia,12,40060,"Richmond, VA"
+51087,Henrico County,VA,Virginia,17,40060,"Richmond, VA"
+51089,Henry County,VA,Virginia,12,32300,"Martinsville, VA"
+51091,Highland County,VA,Virginia,7,,
+51093,Isle of Wight County,VA,Virginia,8,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51095,James City County,VA,Virginia,5,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51097,King and Queen County,VA,Virginia,14,40060,"Richmond, VA"
+51099,King George County,VA,Virginia,3,,
+51101,King William County,VA,Virginia,6,40060,"Richmond, VA"
+51103,Lancaster County,VA,Virginia,6,,
+51105,Lee County,VA,Virginia,11,,
+51107,Loudoun County,VA,Virginia,21,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51109,Louisa County,VA,Virginia,12,,
+51111,Lunenburg County,VA,Virginia,12,,
+51113,Madison County,VA,Virginia,22,,
+51115,Mathews County,VA,Virginia,15,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51117,Mecklenburg County,VA,Virginia,13,,
+51119,Middlesex County,VA,Virginia,12,,
+51121,Montgomery County,VA,Virginia,11,13980,"Blacksburg-Christiansburg-Radford, VA"
+51125,Nelson County,VA,Virginia,18,16820,"Charlottesville, VA"
+51127,New Kent County,VA,Virginia,6,40060,"Richmond, VA"
+51131,Northampton County,VA,Virginia,11,,
+51133,Northumberland County,VA,Virginia,7,,
+51135,Nottoway County,VA,Virginia,8,,
+51137,Orange County,VA,Virginia,13,29470,"Lake of the Woods, VA"
+51139,Page County,VA,Virginia,6,,
+51141,Patrick County,VA,Virginia,14,,
+51143,Pittsylvania County,VA,Virginia,20,19260,"Danville, VA"
+51145,Powhatan County,VA,Virginia,5,40060,"Richmond, VA"
+51147,Prince Edward County,VA,Virginia,12,,
+51149,Prince George County,VA,Virginia,7,40060,"Richmond, VA"
+51153,Prince William County,VA,Virginia,19,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51155,Pulaski County,VA,Virginia,9,13980,"Blacksburg-Christiansburg-Radford, VA"
+51157,Rappahannock County,VA,Virginia,10,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51159,Richmond County,VA,Virginia,6,,
+51161,Roanoke County,VA,Virginia,14,40220,"Roanoke, VA"
+51163,Rockbridge County,VA,Virginia,13,,
+51165,Rockingham County,VA,Virginia,22,25500,"Harrisonburg, VA"
+51167,Russell County,VA,Virginia,11,,
+51169,Scott County,VA,Virginia,12,28700,"Kingsport-Bristol, TN-VA"
+51171,Shenandoah County,VA,Virginia,15,,
+51173,Smyth County,VA,Virginia,10,,
+51175,Southampton County,VA,Virginia,12,,
+51177,Spotsylvania County,VA,Virginia,13,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51179,Stafford County,VA,Virginia,5,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51181,Surry County,VA,Virginia,10,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51183,Sussex County,VA,Virginia,11,40060,"Richmond, VA"
+51185,Tazewell County,VA,Virginia,18,14140,"Bluefield, WV-VA"
+51187,Warren County,VA,Virginia,7,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51191,Washington County,VA,Virginia,11,28700,"Kingsport-Bristol, TN-VA"
+51193,Westmoreland County,VA,Virginia,8,,
+51195,Wise County,VA,Virginia,8,,
+51197,Wythe County,VA,Virginia,11,,
+51199,York County,VA,Virginia,9,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51510,Alexandria city,VA,Virginia,8,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51520,Bristol city,VA,Virginia,2,28700,"Kingsport-Bristol, TN-VA"
+51530,Buena Vista city,VA,Virginia,1,,
+51540,Charlottesville city,VA,Virginia,5,16820,"Charlottesville, VA"
+51550,Chesapeake city,VA,Virginia,6,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51570,Colonial Heights city,VA,Virginia,1,40060,"Richmond, VA"
+51580,Covington city,VA,Virginia,1,,
+51590,Danville city,VA,Virginia,2,19260,"Danville, VA"
+51595,Emporia city,VA,Virginia,1,,
+51600,Fairfax city,VA,Virginia,3,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51610,Falls Church city,VA,Virginia,4,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51620,Franklin city,VA,Virginia,1,,
+51630,Fredericksburg city,VA,Virginia,3,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51640,Galax city,VA,Virginia,1,,
+51650,Hampton city,VA,Virginia,12,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51660,Harrisonburg city,VA,Virginia,3,25500,"Harrisonburg, VA"
+51670,Hopewell city,VA,Virginia,1,40060,"Richmond, VA"
+51678,Lexington city,VA,Virginia,1,,
+51680,Lynchburg city,VA,Virginia,6,31340,"Lynchburg, VA"
+51683,Manassas city,VA,Virginia,1,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51685,Manassas Park city,VA,Virginia,1,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+51690,Martinsville city,VA,Virginia,1,32300,"Martinsville, VA"
+51700,Newport News city,VA,Virginia,8,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51710,Norfolk city,VA,Virginia,15,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51720,Norton city,VA,Virginia,1,,
+51730,Petersburg city,VA,Virginia,2,40060,"Richmond, VA"
+51735,Poquoson city,VA,Virginia,1,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51740,Portsmouth city,VA,Virginia,8,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51750,Radford city,VA,Virginia,2,13980,"Blacksburg-Christiansburg-Radford, VA"
+51760,Richmond city,VA,Virginia,17,40060,"Richmond, VA"
+51770,Roanoke city,VA,Virginia,11,40220,"Roanoke, VA"
+51775,Salem city,VA,Virginia,1,40220,"Roanoke, VA"
+51790,Staunton city,VA,Virginia,2,44420,"Staunton-Stuarts Draft, VA"
+51800,Suffolk city,VA,Virginia,8,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51810,Virginia Beach city,VA,Virginia,12,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51820,Waynesboro city,VA,Virginia,1,44420,"Staunton-Stuarts Draft, VA"
+51830,Williamsburg city,VA,Virginia,2,47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC"
+51840,Winchester city,VA,Virginia,1,49020,"Winchester, VA-WV"
+53001,Adams County,WA,Washington,11,36830,"Othello, WA"
+53003,Asotin County,WA,Washington,3,30300,"Lewiston, ID-WA"
+53005,Benton County,WA,Washington,12,28420,"Kennewick-Richland, WA"
+53007,Chelan County,WA,Washington,14,48300,"Wenatchee-East Wenatchee, WA"
+53009,Clallam County,WA,Washington,9,38820,"Port Angeles, WA"
+53011,Clark County,WA,Washington,20,38900,"Portland-Vancouver-Hillsboro, OR-WA"
+53013,Columbia County,WA,Washington,5,,
+53015,Cowlitz County,WA,Washington,12,31020,"Longview-Kelso, WA"
+53017,Douglas County,WA,Washington,13,48300,"Wenatchee-East Wenatchee, WA"
+53019,Ferry County,WA,Washington,9,,
+53021,Franklin County,WA,Washington,7,28420,"Kennewick-Richland, WA"
+53023,Garfield County,WA,Washington,2,,
+53025,Grant County,WA,Washington,19,34180,"Moses Lake, WA"
+53027,Grays Harbor County,WA,Washington,22,10140,"Aberdeen, WA"
+53029,Island County,WA,Washington,8,36020,"Oak Harbor, WA"
+53031,Jefferson County,WA,Washington,9,39040,"Port Townsend, WA"
+53033,King County,WA,Washington,89,42660,"Seattle-Tacoma-Bellevue, WA"
+53035,Kitsap County,WA,Washington,22,14740,"Bremerton-Silverdale-Port Orchard, WA"
+53037,Kittitas County,WA,Washington,12,21260,"Ellensburg, WA"
+53039,Klickitat County,WA,Washington,16,,
+53041,Lewis County,WA,Washington,24,16500,"Centralia, WA"
+53043,Lincoln County,WA,Washington,16,,
+53045,Mason County,WA,Washington,15,43220,"Shelton, WA"
+53047,Okanogan County,WA,Washington,22,,
+53049,Pacific County,WA,Washington,14,,
+53051,Pend Oreille County,WA,Washington,9,,
+53053,Pierce County,WA,Washington,60,42660,"Seattle-Tacoma-Bellevue, WA"
+53055,San Juan County,WA,Washington,10,,
+53057,Skagit County,WA,Washington,17,34580,"Mount Vernon-Anacortes, WA"
+53059,Skamania County,WA,Washington,8,38900,"Portland-Vancouver-Hillsboro, OR-WA"
+53061,Snohomish County,WA,Washington,30,42660,"Seattle-Tacoma-Bellevue, WA"
+53063,Spokane County,WA,Washington,48,44060,"Spokane-Spokane Valley, WA"
+53065,Stevens County,WA,Washington,21,44060,"Spokane-Spokane Valley, WA"
+53067,Thurston County,WA,Washington,16,36500,"Olympia-Lacey-Tumwater, WA"
+53069,Wahkiakum County,WA,Washington,6,,
+53071,Walla Walla County,WA,Washington,8,47460,"Walla Walla, WA"
+53073,Whatcom County,WA,Washington,18,13380,"Bellingham, WA"
+53075,Whitman County,WA,Washington,22,39420,"Pullman, WA"
+53077,Yakima County,WA,Washington,22,49420,"Yakima, WA"
+54001,Barbour County,WV,West Virginia,12,,
+54003,Berkeley County,WV,West Virginia,12,25180,"Hagerstown-Martinsburg, MD-WV"
+54005,Boone County,WV,West Virginia,31,16620,"Charleston, WV"
+54007,Braxton County,WV,West Virginia,18,,
+54009,Brooke County,WV,West Virginia,9,48260,"Weirton-Steubenville, WV-OH"
+54011,Cabell County,WV,West Virginia,14,26580,"Huntington-Ashland, WV-KY-OH"
+54013,Calhoun County,WV,West Virginia,16,,
+54015,Clay County,WV,West Virginia,16,16620,"Charleston, WV"
+54017,Doddridge County,WV,West Virginia,10,17220,"Clarksburg, WV"
+54019,Fayette County,WV,West Virginia,45,13220,"Beckley, WV"
+54021,Gilmer County,WV,West Virginia,16,,
+54023,Grant County,WV,West Virginia,12,,
+54025,Greenbrier County,WV,West Virginia,22,,
+54027,Hampshire County,WV,West Virginia,20,49020,"Winchester, VA-WV"
+54029,Hancock County,WV,West Virginia,5,48260,"Weirton-Steubenville, WV-OH"
+54031,Hardy County,WV,West Virginia,11,,
+54033,Harrison County,WV,West Virginia,22,17220,"Clarksburg, WV"
+54035,Jackson County,WV,West Virginia,16,,
+54037,Jefferson County,WV,West Virginia,9,47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV"
+54039,Kanawha County,WV,West Virginia,48,16620,"Charleston, WV"
+54041,Lewis County,WV,West Virginia,11,,
+54043,Lincoln County,WV,West Virginia,20,,
+54045,Logan County,WV,West Virginia,34,,
+54047,McDowell County,WV,West Virginia,38,,
+54049,Marion County,WV,West Virginia,18,21900,"Fairmont, WV"
+54051,Marshall County,WV,West Virginia,10,48540,"Wheeling, WV-OH"
+54053,Mason County,WV,West Virginia,19,,
+54055,Mercer County,WV,West Virginia,20,14140,"Bluefield, WV-VA"
+54057,Mineral County,WV,West Virginia,10,19060,"Cumberland, MD-WV"
+54059,Mingo County,WV,West Virginia,20,,
+54061,Monongalia County,WV,West Virginia,19,34060,"Morgantown, WV"
+54063,Monroe County,WV,West Virginia,15,,
+54065,Morgan County,WV,West Virginia,4,25180,"Hagerstown-Martinsburg, MD-WV"
+54067,Nicholas County,WV,West Virginia,27,,
+54069,Ohio County,WV,West Virginia,6,48540,"Wheeling, WV-OH"
+54071,Pendleton County,WV,West Virginia,10,,
+54073,Pleasants County,WV,West Virginia,5,,
+54075,Pocahontas County,WV,West Virginia,13,,
+54077,Preston County,WV,West Virginia,17,34060,"Morgantown, WV"
+54079,Putnam County,WV,West Virginia,17,26580,"Huntington-Ashland, WV-KY-OH"
+54081,Raleigh County,WV,West Virginia,45,13220,"Beckley, WV"
+54083,Randolph County,WV,West Virginia,23,21180,"Elkins, WV"
+54085,Ritchie County,WV,West Virginia,14,,
+54087,Roane County,WV,West Virginia,13,,
+54089,Summers County,WV,West Virginia,17,,
+54091,Taylor County,WV,West Virginia,10,17220,"Clarksburg, WV"
+54093,Tucker County,WV,West Virginia,11,,
+54095,Tyler County,WV,West Virginia,11,,
+54097,Upshur County,WV,West Virginia,12,,
+54099,Wayne County,WV,West Virginia,17,26580,"Huntington-Ashland, WV-KY-OH"
+54101,Webster County,WV,West Virginia,11,,
+54103,Wetzel County,WV,West Virginia,13,,
+54105,Wirt County,WV,West Virginia,8,37620,"Parkersburg-Vienna, WV"
+54107,Wood County,WV,West Virginia,13,37620,"Parkersburg-Vienna, WV"
+54109,Wyoming County,WV,West Virginia,40,,
+55001,Adams County,WI,Wisconsin,14,,
+55003,Ashland County,WI,Wisconsin,11,,
+55005,Barron County,WI,Wisconsin,19,39960,"Rice Lake, WI"
+55007,Bayfield County,WI,Wisconsin,15,,
+55009,Brown County,WI,Wisconsin,19,24580,"Green Bay, WI"
+55011,Buffalo County,WI,Wisconsin,9,,
+55013,Burnett County,WI,Wisconsin,11,,
+55015,Calumet County,WI,Wisconsin,14,11540,"Appleton, WI"
+55017,Chippewa County,WI,Wisconsin,14,20740,"Eau Claire, WI"
+55019,Clark County,WI,Wisconsin,21,,
+55021,Columbia County,WI,Wisconsin,20,31540,"Madison, WI"
+55023,Crawford County,WI,Wisconsin,13,,
+55025,Dane County,WI,Wisconsin,46,31540,"Madison, WI"
+55027,Dodge County,WI,Wisconsin,32,13180,"Beaver Dam, WI"
+55029,Door County,WI,Wisconsin,13,,
+55031,Douglas County,WI,Wisconsin,12,20260,"Duluth, MN-WI"
+55033,Dunn County,WI,Wisconsin,22,32860,"Menomonie, WI"
+55035,Eau Claire County,WI,Wisconsin,15,20740,"Eau Claire, WI"
+55037,Florence County,WI,Wisconsin,4,27020,"Iron Mountain, MI-WI"
+55039,Fond du Lac County,WI,Wisconsin,24,22540,"Fond du Lac, WI"
+55041,Forest County,WI,Wisconsin,11,,
+55043,Grant County,WI,Wisconsin,24,38420,"Platteville, WI"
+55045,Green County,WI,Wisconsin,12,31540,"Madison, WI"
+55047,Green Lake County,WI,Wisconsin,12,,
+55049,Iowa County,WI,Wisconsin,19,31540,"Madison, WI"
+55051,Iron County,WI,Wisconsin,12,,
+55053,Jackson County,WI,Wisconsin,15,,
+55055,Jefferson County,WI,Wisconsin,19,48020,"Watertown-Fort Atkinson, WI"
+55057,Juneau County,WI,Wisconsin,15,,
+55059,Kenosha County,WI,Wisconsin,17,28450,"Kenosha, WI"
+55061,Kewaunee County,WI,Wisconsin,6,24580,"Green Bay, WI"
+55063,La Crosse County,WI,Wisconsin,15,29100,"La Crosse-Onalaska, WI-MN"
+55065,Lafayette County,WI,Wisconsin,14,,
+55067,Langlade County,WI,Wisconsin,16,,
+55069,Lincoln County,WI,Wisconsin,7,,
+55071,Manitowoc County,WI,Wisconsin,20,31820,"Manitowoc, WI"
+55073,Marathon County,WI,Wisconsin,29,48140,"Wausau, WI"
+55075,Marinette County,WI,Wisconsin,16,31940,"Marinette, WI-MI"
+55077,Marquette County,WI,Wisconsin,14,,
+55078,Menominee County,WI,Wisconsin,4,43020,"Shawano, WI"
+55079,Milwaukee County,WI,Wisconsin,37,33340,"Milwaukee-Waukesha, WI"
+55081,Monroe County,WI,Wisconsin,12,43890,"Sparta, WI"
+55083,Oconto County,WI,Wisconsin,19,24580,"Green Bay, WI"
+55085,Oneida County,WI,Wisconsin,14,,
+55087,Outagamie County,WI,Wisconsin,25,11540,"Appleton, WI"
+55089,Ozaukee County,WI,Wisconsin,13,33340,"Milwaukee-Waukesha, WI"
+55091,Pepin County,WI,Wisconsin,6,,
+55093,Pierce County,WI,Wisconsin,13,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+55095,Polk County,WI,Wisconsin,20,,
+55097,Portage County,WI,Wisconsin,21,44620,"Stevens Point-Plover, WI"
+55099,Price County,WI,Wisconsin,14,,
+55101,Racine County,WI,Wisconsin,16,39540,"Racine-Mount Pleasant, WI"
+55103,Richland County,WI,Wisconsin,15,,
+55105,Rock County,WI,Wisconsin,20,27500,"Janesville-Beloit, WI"
+55107,Rusk County,WI,Wisconsin,14,,
+55109,St. Croix County,WI,Wisconsin,18,33460,"Minneapolis-St. Paul-Bloomington, MN-WI"
+55111,Sauk County,WI,Wisconsin,19,12660,"Baraboo, WI"
+55113,Sawyer County,WI,Wisconsin,12,,
+55115,Shawano County,WI,Wisconsin,26,43020,"Shawano, WI"
+55117,Sheboygan County,WI,Wisconsin,18,43100,"Sheboygan, WI"
+55119,Taylor County,WI,Wisconsin,14,,
+55121,Trempealeau County,WI,Wisconsin,14,,
+55123,Vernon County,WI,Wisconsin,18,29100,"La Crosse-Onalaska, WI-MN"
+55125,Vilas County,WI,Wisconsin,13,,
+55127,Walworth County,WI,Wisconsin,18,48580,"Whitewater-Elkhorn, WI"
+55129,Washburn County,WI,Wisconsin,12,,
+55131,Washington County,WI,Wisconsin,18,33340,"Milwaukee-Waukesha, WI"
+55133,Waukesha County,WI,Wisconsin,31,33340,"Milwaukee-Waukesha, WI"
+55135,Waupaca County,WI,Wisconsin,17,,
+55137,Waushara County,WI,Wisconsin,17,,
+55139,Winnebago County,WI,Wisconsin,18,36780,"Oshkosh-Neenah, WI"
+55141,Wood County,WI,Wisconsin,15,49220,"Wisconsin Rapids-Marshfield, WI"
+56001,Albany County,WY,Wyoming,12,29660,"Laramie, WY"
+56003,Big Horn County,WY,Wyoming,15,,
+56005,Campbell County,WY,Wyoming,8,23940,"Gillette, WY"
+56007,Carbon County,WY,Wyoming,13,,
+56009,Converse County,WY,Wyoming,5,,
+56011,Crook County,WY,Wyoming,10,,
+56013,Fremont County,WY,Wyoming,12,40180,"Riverton, WY"
+56015,Goshen County,WY,Wyoming,12,,
+56017,Hot Springs County,WY,Wyoming,3,,
+56019,Johnson County,WY,Wyoming,5,,
+56021,Laramie County,WY,Wyoming,13,16940,"Cheyenne, WY"
+56023,Lincoln County,WY,Wyoming,16,,
+56025,Natrona County,WY,Wyoming,14,16220,"Casper, WY"
+56027,Niobrara County,WY,Wyoming,7,,
+56029,Park County,WY,Wyoming,8,17650,"Cody, WY"
+56031,Platte County,WY,Wyoming,5,,
+56033,Sheridan County,WY,Wyoming,12,43260,"Sheridan, WY"
+56035,Sublette County,WY,Wyoming,6,,
+56037,Sweetwater County,WY,Wyoming,12,40540,"Rock Springs, WY"
+56039,Teton County,WY,Wyoming,9,27220,"Jackson, WY-ID"
+56041,Uinta County,WY,Wyoming,6,21740,"Evanston, WY-UT"
+56043,Washakie County,WY,Wyoming,2,,
+56045,Weston County,WY,Wyoming,4,,
+60010,Eastern District,AS,American Samoa,1,,
+60020,Manu'a District,AS,American Samoa,1,,
+60030,Rose Island,AS,American Samoa,0,,
+60040,Swains Island,AS,American Samoa,1,,
+60050,Western District,AS,American Samoa,1,,
+66010,Guam,GU,Guam,7,,
+69085,Northern Islands Municipality,MP,Commonwealth of the Northern Mariana Islands,0,,
+69100,Rota Municipality,MP,Commonwealth of the Northern Mariana Islands,1,,
+69110,Saipan Municipality,MP,Commonwealth of the Northern Mariana Islands,1,,
+69120,Tinian Municipality,MP,Commonwealth of the Northern Mariana Islands,1,,
+72001,Adjuntas Municipio,PR,Puerto Rico,4,,
+72003,Aguada Municipio,PR,Puerto Rico,4,10380,"Aguadilla, PR"
+72005,Aguadilla Municipio,PR,Puerto Rico,3,10380,"Aguadilla, PR"
+72007,Aguas Buenas Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72009,Aibonito Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72011,Añasco Municipio,PR,Puerto Rico,5,10380,"Aguadilla, PR"
+72013,Arecibo Municipio,PR,Puerto Rico,5,11640,"Arecibo, PR"
+72015,Arroyo Municipio,PR,Puerto Rico,2,25020,"Guayama, PR"
+72017,Barceloneta Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72019,Barranquitas Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72021,Bayamón Municipio,PR,Puerto Rico,8,41980,"San Juan-Bayamón-Caguas, PR"
+72023,Cabo Rojo Municipio,PR,Puerto Rico,2,32420,"Mayagüez, PR"
+72025,Caguas Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72027,Camuy Municipio,PR,Puerto Rico,1,11640,"Arecibo, PR"
+72029,Canóvanas Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72031,Carolina Municipio,PR,Puerto Rico,7,41980,"San Juan-Bayamón-Caguas, PR"
+72033,Cataño Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72035,Cayey Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72037,Ceiba Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72039,Ciales Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72041,Cidra Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72043,Coamo Municipio,PR,Puerto Rico,4,17620,"Coamo, PR"
+72045,Comerío Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72047,Corozal Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72049,Culebra Municipio,PR,Puerto Rico,1,,
+72051,Dorado Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72053,Fajardo Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72054,Florida Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72055,Guánica Municipio,PR,Puerto Rico,2,,
+72057,Guayama Municipio,PR,Puerto Rico,2,25020,"Guayama, PR"
+72059,Guayanilla Municipio,PR,Puerto Rico,2,38660,"Ponce, PR"
+72061,Guaynabo Municipio,PR,Puerto Rico,10,41980,"San Juan-Bayamón-Caguas, PR"
+72063,Gurabo Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72065,Hatillo Municipio,PR,Puerto Rico,2,11640,"Arecibo, PR"
+72067,Hormigueros Municipio,PR,Puerto Rico,2,32420,"Mayagüez, PR"
+72069,Humacao Municipio,PR,Puerto Rico,4,41980,"San Juan-Bayamón-Caguas, PR"
+72071,Isabela Municipio,PR,Puerto Rico,3,10380,"Aguadilla, PR"
+72073,Jayuya Municipio,PR,Puerto Rico,1,,
+72075,Juana Díaz Municipio,PR,Puerto Rico,3,38660,"Ponce, PR"
+72077,Juncos Municipio,PR,Puerto Rico,1,41980,"San Juan-Bayamón-Caguas, PR"
+72079,Lajas Municipio,PR,Puerto Rico,3,32420,"Mayagüez, PR"
+72081,Lares Municipio,PR,Puerto Rico,2,29720,"Lares, PR"
+72083,Las Marías Municipio,PR,Puerto Rico,3,,
+72085,Las Piedras Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72087,Loíza Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72089,Luquillo Municipio,PR,Puerto Rico,1,41980,"San Juan-Bayamón-Caguas, PR"
+72091,Manatí Municipio,PR,Puerto Rico,4,41980,"San Juan-Bayamón-Caguas, PR"
+72093,Maricao Municipio,PR,Puerto Rico,2,,
+72095,Maunabo Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72097,Mayagüez Municipio,PR,Puerto Rico,3,32420,"Mayagüez, PR"
+72099,Moca Municipio,PR,Puerto Rico,4,10380,"Aguadilla, PR"
+72101,Morovis Municipio,PR,Puerto Rico,1,41980,"San Juan-Bayamón-Caguas, PR"
+72103,Naguabo Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72105,Naranjito Municipio,PR,Puerto Rico,1,41980,"San Juan-Bayamón-Caguas, PR"
+72107,Orocovis Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72109,Patillas Municipio,PR,Puerto Rico,2,25020,"Guayama, PR"
+72111,Peñuelas Municipio,PR,Puerto Rico,1,38660,"Ponce, PR"
+72113,Ponce Municipio,PR,Puerto Rico,8,38660,"Ponce, PR"
+72115,Quebradillas Municipio,PR,Puerto Rico,2,11640,"Arecibo, PR"
+72117,Rincón Municipio,PR,Puerto Rico,1,10380,"Aguadilla, PR"
+72119,Río Grande Municipio,PR,Puerto Rico,1,41980,"San Juan-Bayamón-Caguas, PR"
+72121,Sabana Grande Municipio,PR,Puerto Rico,3,32420,"Mayagüez, PR"
+72123,Salinas Municipio,PR,Puerto Rico,2,17640,"Coco, PR"
+72125,San Germán Municipio,PR,Puerto Rico,5,32420,"Mayagüez, PR"
+72127,San Juan Municipio,PR,Puerto Rico,21,41980,"San Juan-Bayamón-Caguas, PR"
+72129,San Lorenzo Municipio,PR,Puerto Rico,4,41980,"San Juan-Bayamón-Caguas, PR"
+72131,San Sebastián Municipio,PR,Puerto Rico,3,10380,"Aguadilla, PR"
+72133,Santa Isabel Municipio,PR,Puerto Rico,2,17620,"Coamo, PR"
+72135,Toa Alta Municipio,PR,Puerto Rico,7,41980,"San Juan-Bayamón-Caguas, PR"
+72137,Toa Baja Municipio,PR,Puerto Rico,5,41980,"San Juan-Bayamón-Caguas, PR"
+72139,Trujillo Alto Municipio,PR,Puerto Rico,4,41980,"San Juan-Bayamón-Caguas, PR"
+72141,Utuado Municipio,PR,Puerto Rico,6,46580,"Utuado, PR"
+72143,Vega Alta Municipio,PR,Puerto Rico,3,41980,"San Juan-Bayamón-Caguas, PR"
+72145,Vega Baja Municipio,PR,Puerto Rico,4,41980,"San Juan-Bayamón-Caguas, PR"
+72147,Vieques Municipio,PR,Puerto Rico,1,,
+72149,Villalba Municipio,PR,Puerto Rico,1,38660,"Ponce, PR"
+72151,Yabucoa Municipio,PR,Puerto Rico,2,41980,"San Juan-Bayamón-Caguas, PR"
+72153,Yauco Municipio,PR,Puerto Rico,3,38660,"Ponce, PR"
+78010,St. Croix Island,VI,United States Virgin Islands,4,,
+78020,St. John Island,VI,United States Virgin Islands,1,,
+78030,St. Thomas Island,VI,United States Virgin Islands,1,,

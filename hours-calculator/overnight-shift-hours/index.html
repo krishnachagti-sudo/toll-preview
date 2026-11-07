@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overnight shift hours, daylight-saving nights and the Excel #### fix</title>
+<meta name="description" content="10 PM to 6:30 AM with a 30-minute break is 8.00 hours. Night shifts across midnight, the hour gained or lost when clocks change, and =MOD(end-start,1)*24 in Excel.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/hours-calculator/overnight-shift-hours.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Overnight shift hours, daylight-saving nights and the Excel #### fix">
+<meta property="og:description" content="10 PM to 6:30 AM with a 30-minute break is 8.00 hours. Night shifts across midnight, the hour gained or lost when clocks change, and =MOD(end-start,1)*24 in Excel.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours/","url":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours/","name":"Overnight shift hours, daylight-saving nights and the Excel #### fix","description":"10 PM to 6:30 AM with a 30-minute break is 8.00 hours. Night shifts across midnight, the hour gained or lost when clocks change, and =MOD(end-start,1)*24 in Excel.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Time card calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/"},{"@type":"ListItem","position":3,"name":"Overnight shift hours","item":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours/"}]},{"@type":"Dataset","name":"Overnight shift hours, daylight-saving nights and the Excel #### fix","description":"10 PM to 6:30 AM with a 30-minute break is 8.00 hours. Night shifts across midnight, the hour gained or lost when clocks change, and =MOD(end-start,1)*24 in Excel.","url":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours/","dateModified":"2026-11-07","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours.csv"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does Excel show #### for my night shift?","acceptedAnswer":{"@type":"Answer","text":"Excel cannot show a negative time, and 6:00 AM minus 10:00 PM is negative. Use =MOD(end-start,1) for the duration and =MOD(end-start,1)*24 for decimal hours."}},{"@type":"Question","name":"How many hours is a 10 PM to 6 AM shift when the clocks change?","acceptedAnswer":{"@type":"Answer","text":"9.00 hours on the night clocks fall back (the 1 AM hour happens twice) and 7.00 on the night they spring forward, against 8.00 on other nights."}},{"@type":"Question","name":"Which workweek does an overnight shift count in?","acceptedAnswer":{"@type":"Answer","text":"Hours count in the workweek they are worked. With a workweek starting Sunday at midnight, a Saturday 10 PM to Sunday 6 AM shift puts 2:00 in the old week and 7:00 in the new one (on the November 1, 2026 change night)."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"hours-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/hours-calculator/">Time card calculator</a></li><li aria-current="page">Overnight shift hours</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-date)">
+<p class="eyebrow">Shift lengths</p>
+<h1>Overnight shift hours</h1>
+<p class="cp-answer">When the out time is earlier than the in time, add 24 hours: 10:00 PM to 6:30 AM with a 30-minute break is 8:00 (8.00 hours); on the night clocks fall back, 10:00 PM to 6:00 AM is 9.00 real hours, and 7.00 on the night they spring forward.</p>
+<dl class="cp-facts"><div><dt>10 PM to 6:30 AM, 30-minute break</dt><dd class="num">8.00</dd></div><div><dt>10 PM to 6 AM, clocks fall back</dt><dd class="num">9.00</dd></div><div><dt>10 PM to 6 AM, clocks spring forward</dt><dd class="num">7.00</dd></div></dl>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Your night shift</h2><p class="muted">Type the start and end as on the time card; an end earlier than the start is the next morning.</p><form method="get" action="/toll-preview/hours-calculator/" class="cp-tool-form"><div class="field"><label for="tf-from">Start</label><input type="text" id="tf-from" name="from" value="10:00 pm"></div><div class="field"><label for="tf-to">End</label><input type="text" id="tf-to" name="to" value="6:30 am"></div><div class="field"><label for="tf-brk">Unpaid break (minutes)</label><input type="number" id="tf-brk" name="brk" value="30"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work it out</button></form><p class="small"><a href="/toll-preview/hours-calculator/?from=10%3A00+pm&amp;to=6%3A30+am&amp;brk=30">Open these times in the calculator</a></p></aside>
+<section>
+<h2 id="shifts">Common night shifts</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>End plus 24 hours, minus start, minus the unpaid break.</caption><thead><tr><th scope="col">Shift</th><th scope="col">Unpaid break</th><th scope="col" class="r num">Hours</th><th scope="col" class="r num">Decimal</th></tr></thead><tbody>
+<tr><th scope="row">6:00 PM to 2:00 AM</th><td>none</td><td class="r num">8:00</td><td class="r num">8.00</td></tr>
+<tr><th scope="row">7:00 PM to 7:00 AM</th><td>30 min</td><td class="r num">11:30</td><td class="r num">11.50</td></tr>
+<tr><th scope="row">8:00 PM to 4:30 AM</th><td>30 min</td><td class="r num">8:00</td><td class="r num">8.00</td></tr>
+<tr><th scope="row">10:00 PM to 6:00 AM</th><td>none</td><td class="r num">8:00</td><td class="r num">8.00</td></tr>
+<tr><th scope="row">10:00 PM to 6:30 AM</th><td>30 min</td><td class="r num">8:00</td><td class="r num">8.00</td></tr>
+<tr><th scope="row">11:00 PM to 7:00 AM</th><td>30 min</td><td class="r num">7:30</td><td class="r num">7.50</td></tr>
+<tr><th scope="row">11:00 PM to 7:30 AM</th><td>30 min</td><td class="r num">8:00</td><td class="r num">8.00</td></tr>
+<tr><th scope="row">12:00 AM to 8:00 AM</th><td>none</td><td class="r num">8:00</td><td class="r num">8.00</td></tr>
+<tr><th scope="row">3:00 PM to 1:00 AM</th><td>30 min</td><td class="r num">9:30</td><td class="r num">9.50</td></tr>
+<tr><th scope="row">9:00 PM to 9:00 AM</th><td>60 min</td><td class="r num">11:00</td><td class="r num">11.00</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="dst">Daylight-saving nights</h2>
+<p>Clock times hide the change. In America/New_York, 10:00 PM on October 31 to 6:00 AM on November 1, 2026 is 9:00 of real time, because 1 AM to 2 AM happens twice; 10:00 PM on March 13 to 6:00 AM on March 14, 2027 is 7:00. Pick a time zone in the calculator and it counts the real time.</p>
+</section>
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">The change night on a timesheet</h2><p class="muted">Opens the calculator with the November 1 shift and the Eastern time zone.</p><form method="get" action="/toll-preview/hours-calculator/" class="cp-tool-form"><input type="hidden" name="start" value="2026-10-31"><input type="hidden" name="weeks" value="1"><div class="field"><label for="tf-d0">Sat, Oct 31</label><input type="text" id="tf-d0" name="d0" value="10:00 pm - 6:00 am"></div><input type="hidden" name="tz" value="America/New_York"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open the change night</button></form><p class="small"><a href="/toll-preview/hours-calculator/?start=2026-10-31&amp;weeks=1&amp;d0=10%3A00+pm+-+6%3A00+am&amp;tz=America%2FNew_York">Open these times in the calculator</a></p></aside>
+<section>
+<h2 id="excel">In Excel or Google Sheets</h2>
+<p>With the in time in A2 and the out time in B2, this gives the hours as a decimal for any shift, overnight or not:</p>
+<pre><code class="language-excel">=MOD(B2-A2,1)*24</code></pre>
+<p>Keep the brackets: <code>=B2-A2*24</code> multiplies only the start. Take off a 30-minute lunch with <code>=MOD(B2-A2,1)*24-0.5</code>. A spreadsheet counts clock times, so it gives 8 hours on a change night too.</p>
+<p class="cp-note">Worked out from the times shown, under the federal rules quoted. A state law, contract or policy may require more. Not legal or payroll advice.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://www.law.cornell.edu/cfr/text/29/778.105">29 CFR 778.105, Determining the workweek (read November 7, 2026)</a></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay">DOL Wage and Hour Division, Fact Sheet #23, Overtime Pay (revised October 2019, read November 7, 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Why does Excel show #### for my night shift?</h3><p>Excel cannot show a negative time, and 6:00 AM minus 10:00 PM is negative. Use =MOD(end-start,1) for the duration and =MOD(end-start,1)*24 for decimal hours.</p><h3>How many hours is a 10 PM to 6 AM shift when the clocks change?</h3><p>9.00 hours on the night clocks fall back (the 1 AM hour happens twice) and 7.00 on the night they spring forward, against 8.00 on other nights.</p><h3>Which workweek does an overnight shift count in?</h3><p>Hours count in the workweek they are worked. With a workweek starting Sunday at midnight, a Saturday 10 PM to Sunday 6 AM shift puts 2:00 in the old week and 7:00 in the new one (on the November 1, 2026 change night).</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/hours-calculator/hours-between-times/">Hours between two times</a></li><li><a href="/toll-preview/hours-calculator/military-time-chart/">24-hour (military) time chart</a></li><li><a href="/toll-preview/hours-calculator/biweekly-timesheet-overtime/">Biweekly timesheet with overtime</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/hours-calculator/overnight-shift-hours.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/hours-calculator/overnight-shift-hours.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

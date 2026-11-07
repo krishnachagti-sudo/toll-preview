@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPF macros explained: %{i}, %{ir}, %{d2} and every RFC 7208 example</title>
+<meta name="description" content="What SPF macros like %{i}, %{ir}, %{v} and %{d2} mean, with every RFC 7208 Section 7.4 example expanded by the same engine the counter runs.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/spf-lookup-counter/macros.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="SPF macros explained: %{i}, %{ir}, %{d2} and every RFC 7208 example">
+<meta property="og:description" content="What SPF macros like %{i}, %{ir}, %{v} and %{d2} mean, with every RFC 7208 Section 7.4 example expanded by the same engine the counter runs.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros/","url":"https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros/","name":"SPF macros explained: %{i}, %{ir}, %{d2} and every RFC 7208 example","description":"What SPF macros like %{i}, %{ir}, %{v} and %{d2} mean, with every RFC 7208 Section 7.4 example expanded by the same engine the counter runs.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"SPF lookup counter","item":"https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/"},{"@type":"ListItem","position":3,"name":"SPF macros, expanded","item":"https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros/"}]},{"@type":"Dataset","name":"SPF macros explained: %{i}, %{ir}, %{d2} and every RFC 7208 example","description":"What SPF macros like %{i}, %{ir}, %{v} and %{d2} mean, with every RFC 7208 Section 7.4 example expanded by the same engine the counter runs.","url":"https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros/","dateModified":"2026-11-07","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros.csv"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does %{i} mean in an SPF record?","acceptedAnswer":{"@type":"Answer","text":"It is the sending IP address, filled in when the record is checked (RFC 7208 Section 7.2). %{ir} is the same address reversed, so 192.0.2.3 becomes 3.2.0.192."}},{"@type":"Question","name":"Does a term with a macro count toward the 10 lookups?","acceptedAnswer":{"@type":"Answer","text":"Yes. exists:%{i}._spf.example.com is one exists term, so it costs 1 lookup whatever name it builds."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"spf-lookup-counter"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/spf-lookup-counter/">SPF lookup counter</a></li><li aria-current="page">SPF macros, expanded</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-file)">
+<p class="eyebrow">Reference table</p>
+<h1>SPF macros, expanded</h1>
+<p class="cp-answer">SPF macros are placeholders RFC 7208 Section 7 fills in at check time: %{i} is the sending IP, %{d} the domain, %{s} the sender; for sender strong-bad@email.example.com and IP 192.0.2.3, %{ir}.%{v}._spf.%{d2} becomes 3.2.0.192.in-addr._spf.example.com.</p>
+
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Expand your own macro</h2><p class="muted">Free, and it runs in your browser: no DNS is queried.</p><form method="get" action="/toll-preview/spf-lookup-counter/" class="cp-tool-form"><div class="field"><label for="tf-macro">Macro</label><input type="text" id="tf-macro" name="macro" value="%{ir}.%{v}._spf.%{d2}"></div><div class="field"><label for="tf-mdomain">Domain</label><input type="text" id="tf-mdomain" name="mdomain" value="email.example.com"></div><div class="field"><label for="tf-mip">Sending IP</label><input type="text" id="tf-mip" name="mip" value="192.0.2.3"></div><div class="field"><label for="tf-msender">Sender</label><input type="text" id="tf-msender" name="msender" value="strong-bad@email.example.com"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Expand it</button></form><p class="small"><a href="/toll-preview/spf-lookup-counter/?macro=%25%7Bir%7D.%25%7Bv%7D._spf.%25%7Bd2%7D&amp;mdomain=email.example.com&amp;mip=192.0.2.3&amp;msender=strong-bad%40email.example.com">Open the macro explainer</a></p></aside>
+<section>
+<h2 id="examples">RFC 7208 Section 7.4, expanded</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>Sender strong-bad@email.example.com, domain email.example.com</caption><thead><tr><th scope="col">Macro</th><th scope="col">Connection</th><th scope="col">Expansion</th></tr></thead><tbody>
+<tr><th scope="row"><code>%&#123;s&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>strong-bad@email.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;o&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>email.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;d&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>email.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;d4&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>email.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;d3&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>email.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;d2&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;d1&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>com</code></td></tr>
+<tr><th scope="row"><code>%&#123;dr&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>com.example.email</code></td></tr>
+<tr><th scope="row"><code>%&#123;d2r&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>example.email</code></td></tr>
+<tr><th scope="row"><code>%&#123;l&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>strong-bad</code></td></tr>
+<tr><th scope="row"><code>%&#123;l-&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>strong.bad</code></td></tr>
+<tr><th scope="row"><code>%&#123;lr&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>strong-bad</code></td></tr>
+<tr><th scope="row"><code>%&#123;lr-&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>bad.strong</code></td></tr>
+<tr><th scope="row"><code>%&#123;l1r-&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>strong</code></td></tr>
+<tr><th scope="row"><code>%&#123;ir&#125;.%&#123;v&#125;._spf.%&#123;d2&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>3.2.0.192.in-addr._spf.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;lr-&#125;.lp._spf.%&#123;d2&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>bad.strong.lp._spf.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;lr-&#125;.lp.%&#123;ir&#125;.%&#123;v&#125;._spf.%&#123;d2&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>bad.strong.lp.3.2.0.192.in-addr._spf.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;ir&#125;.%&#123;v&#125;.%&#123;l1r-&#125;.lp._spf.%&#123;d2&#125;</code></th><td>IPv4 192.0.2.3</td><td><code>3.2.0.192.in-addr.strong.lp._spf.example.com</code></td></tr>
+<tr><th scope="row"><code>%&#123;d2&#125;.trusted-domains.example.net</code></th><td>IPv4 192.0.2.3</td><td><code>example.com.trusted-domains.example.net</code></td></tr>
+<tr><th scope="row"><code>%&#123;ir&#125;.%&#123;v&#125;._spf.%&#123;d2&#125;</code></th><td>IPv6 2001:db8::cb01</td><td><code>1.0.b.c.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6._spf.example.com</code></td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="letters">The letters</h2>
+<ul><li>s: the sender; l: its local part; o: its domain</li><li>d: the domain being checked</li><li>i: the sending IP (IPv6 as 32 dotted nibbles); v: &quot;in-addr&quot; or &quot;ip6&quot;</li><li>h: the HELO name; p: the validated reverse name (do not use)</li><li>c, r, t: only in exp text</li><li>A digit keeps that many right-hand parts; r reverses; a capital letter URL-escapes the result</li></ul>
+<p>Why it matters for counting: a checker that does not expand macros cannot follow a term like include:%{ir}.%{v}._spf.example.com, so it either skips what that include costs or guesses. The counter counts the term and, given a sending IP, follows it.</p>
+<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc7208">IETF RFC 7208: Sender Policy Framework (SPF), read 2026-11-07</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7208#section-7.4">RFC 7208 Section 7.4</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>What does %{i} mean in an SPF record?</h3><p>It is the sending IP address, filled in when the record is checked (RFC 7208 Section 7.2). %{ir} is the same address reversed, so 192.0.2.3 becomes 3.2.0.192.</p><h3>Does a term with a macro count toward the 10 lookups?</h3><p>Yes. exists:%{i}._spf.example.com is one exists term, so it costs 1 lookup whatever name it builds.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/spf-lookup-counter/checkers-disagree/">Why two SPF checkers disagree</a></li><li><a href="/toll-preview/spf-lookup-counter/void-lookups/">Void lookups</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/spf-lookup-counter/macros.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/spf-lookup-counter/macros.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

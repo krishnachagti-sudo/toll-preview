@@ -10,11 +10,12 @@
 .status-tbl td.mono{white-space:normal;min-width:9rem}
 .status-tbl td.days{min-width:280px}
 .strip{display:flex;gap:1px;align-items:stretch;height:26px}
-.sd{display:inline-block;flex:1 1 0;min-width:2px;border-radius:1px;background:var(--line-2)}
-.sd.passing{background:#3ddc97}
-.sd.mixed{background:var(--h-date)}
-.sd.failing{background:#ff5f5f}
-.sd.no_data{background:transparent;border:1px dashed var(--line-3,rgba(255,255,255,.18))}
+/* A strip mark with no class is a day with no data. */
+.sd,.strip>i{display:inline-block;flex:1 1 0;min-width:2px;border-radius:1px;background:var(--line-2)}
+.sd.passing,.strip>i.passing{background:#3ddc97}
+.sd.mixed,.strip>i.mixed{background:var(--h-date)}
+.sd.failing,.strip>i.failing{background:#ff5f5f}
+.sd.no_data,.strip>i:not([class]){background:transparent;border:1px dashed var(--line-3,rgba(255,255,255,.18))}
 .status-legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:13px;color:var(--muted)}
 .status-legend span{display:inline-flex;align-items:center;gap:8px}
 .status-legend .sd{width:10px;height:14px;flex:none}

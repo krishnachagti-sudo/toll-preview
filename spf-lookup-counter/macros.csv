@@ -1,0 +1,21 @@
+macro,connection,expansion
+%{s},IPv4 192.0.2.3,strong-bad@email.example.com
+%{o},IPv4 192.0.2.3,email.example.com
+%{d},IPv4 192.0.2.3,email.example.com
+%{d4},IPv4 192.0.2.3,email.example.com
+%{d3},IPv4 192.0.2.3,email.example.com
+%{d2},IPv4 192.0.2.3,example.com
+%{d1},IPv4 192.0.2.3,com
+%{dr},IPv4 192.0.2.3,com.example.email
+%{d2r},IPv4 192.0.2.3,example.email
+%{l},IPv4 192.0.2.3,strong-bad
+%{l-},IPv4 192.0.2.3,strong.bad
+%{lr},IPv4 192.0.2.3,strong-bad
+%{lr-},IPv4 192.0.2.3,bad.strong
+%{l1r-},IPv4 192.0.2.3,strong
+%{ir}.%{v}._spf.%{d2},IPv4 192.0.2.3,3.2.0.192.in-addr._spf.example.com
+%{lr-}.lp._spf.%{d2},IPv4 192.0.2.3,bad.strong.lp._spf.example.com
+%{lr-}.lp.%{ir}.%{v}._spf.%{d2},IPv4 192.0.2.3,bad.strong.lp.3.2.0.192.in-addr._spf.example.com
+%{ir}.%{v}.%{l1r-}.lp._spf.%{d2},IPv4 192.0.2.3,3.2.0.192.in-addr.strong.lp._spf.example.com
+%{d2}.trusted-domains.example.net,IPv4 192.0.2.3,example.com.trusted-domains.example.net
+%{ir}.%{v}._spf.%{d2},IPv6 2001:db8::cb01,1.0.b.c.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6._spf.example.com

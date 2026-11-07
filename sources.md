@@ -1,6 +1,6 @@
 # Sources and how we check the answers
 
-Every answer comes from a named official source and a stated data date, with no AI in between. Data on this page was read between 2026-10-30 and 2026-11-03; each tool's source, edition and checks are below.
+Every answer comes from a named official source and a stated data date, with no AI in between. Data on this page was read between 2026-10-30 and 2026-11-07; each tool's source, edition and checks are below.
 
 ## How does every answer get made?
 
@@ -13,7 +13,7 @@ Every answer comes from a named official source and a stated data date, with no 
 
 ## Where does each tool's data come from?
 
-Data was read between 2026-10-30 and 2026-11-03, as dated in the tables.
+Data was read between 2026-10-30 and 2026-11-07, as dated in the tables.
 
 **1099 threshold tracker:** IRS instructions for payment years 2025 and 2026, read 2026-10-31. The 2027 line is worked out from 26 U.S.C. 6041(h) and the chained CPI (latest month 2026-09) and is marked provisional until the IRS publishes its own. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/).
 
@@ -51,6 +51,16 @@ Business days: sources
 | [DoPT O.M. F.No.12/2/2023-JCA dated 16 July 2026: holidays during 2027](https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20list%202027Cj0HU.PDF) | holidays during 2027 | 2026-11-03 |
 | [DoPT O.M. No. 13/4/85-JCA dated 21 May 1985: the 5-day week](https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html) | the 5-day week | 2026-11-03 |
 
+**Natural-language date resolver:** The grammar and counting rules are fixed in the code. Business days use the Business days tool's holiday calendars (rules last changed 2026-10-30); the OPM federal holiday page was read on 2026-11-07. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/date-resolver/).
+
+Natural-language date resolver: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/) | federal holidays and observed days | 2026-11-07 |
+| [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103) | rules as of 2026-10-30 | 2026-10-30 |
+| [ISO 8601: Date and time format](https://www.iso.org/iso-8601-date-and-time-format.html) | weeks Monday to Sunday | not recorded |
+
 **Delivery date and holiday order-by calculator:** USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/).
 
 Delivery date and holiday order-by calculator: sources
@@ -72,6 +82,21 @@ Exchange rate on a date: sources
 | [IRS: Yearly average currency exchange rates](https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates) | page updated 2026-09-17 | 2026-10-31 |
 | [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates) | every month since 2021-01 | refreshed with the data files |
 | [U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange (31 December reports)](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) | 2023-12-31, 2024-12-31, 2025-12-31 | 2026-10-31 |
+
+**Hours calculator and timesheet:** The federal rules were copied by hand on 2026-11-07. No state rule is held. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/hours-calculator/).
+
+Hours calculator and timesheet: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [29 CFR 785.48 Use of time clocks](https://www.law.cornell.edu/cfr/text/29/785.48) | current text | 2026-11-07 |
+| [29 CFR 785.18 Rest](https://www.law.cornell.edu/cfr/text/29/785.18) | current text | 2026-11-07 |
+| [29 CFR 785.19 Meal](https://www.law.cornell.edu/cfr/text/29/785.19) | current text | 2026-11-07 |
+| [29 CFR 778.104 Each workweek stands alone](https://www.law.cornell.edu/cfr/text/29/778.104) | current text | 2026-11-07 |
+| [29 CFR 778.105 Determining the workweek](https://www.law.cornell.edu/cfr/text/29/778.105) | current text | 2026-11-07 |
+| [U.S. Department of Labor, Wage and Hour Division, Fact Sheet #23: Overtime Pay Requirements of the FLSA](https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay) | revised October 2019 | 2026-11-07 |
+| [U.S. Department of Labor, Wage and Hour Division, Fact Sheet #21: Recordkeeping Requirements under the FLSA](https://www.dol.gov/agencies/whd/fact-sheets/21-flsa-recordkeeping) | revised July 2008 | 2026-11-07 |
+| [U.S. Department of Labor: Minimum Length of Meal Period Required under State Law for Adult Employees in Private Sector](https://www.dol.gov/agencies/whd/state/meal-breaks) | last updated 2023-01-01 | 2026-11-07 |
 
 **IFTA quarterly return calculator:** Rates are held by quarter, final rates only: 4th Quarter 2025 to 3rd Quarter 2026, read 2026-11-02. A quarter that is not on file is refused, not guessed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/).
 
@@ -134,6 +159,33 @@ QR code generator: sources
 | [Avery 5160 template: 1 x 2-5/8 in, 30 per sheet](https://www.avery.com/templates/5160) | see the document | 2026-11-02 |
 | [Avery 22816 template: 2 x 2 in square, 12 per sheet](https://www.avery.com/templates/22816) | see the document | 2026-11-02 |
 
+**Bulk redirect chain checker:** Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/).
+
+Bulk redirect chain checker: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [Google Search Central: Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects) | page updated 2026-04-14 | 2026-11-07 |
+| [Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search](https://developers.google.com/search/docs/crawling-indexing/http-network-errors) | page updated 2026-02-04 | 2026-11-07 |
+| [Cloudflare: ERR\_TOO\_MANY\_REDIRECTS](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/) | page updated 2026-09-01 | 2026-11-07 |
+| [Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain](https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/) | see the document | 2026-11-07 |
+| [RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx)](https://www.rfc-editor.org/rfc/rfc9110#section-15.4) | see the document | 2026-11-07 |
+
+**SPF lookup counter:** The rules are RFC 7208's and change only with the code. Each check reads live DNS at the moment of the call, through 1.1.1.1 and 8.8.8.8. The provider include hosts were read from each provider's own setup page on 2026-11-07, and what each include costs was measured on public DNS on 2026-11-07. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/spf-lookup-counter/).
+
+SPF lookup counter: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [RFC 7208: Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1](https://www.rfc-editor.org/rfc/rfc7208) | the rules every count applies | not recorded |
+| [Google Workspace: SPF setup](https://knowledge.workspace.google.com/admin/security/set-up-spf) | include \_spf.google.com | 2026-11-07 |
+| [Microsoft 365: SPF setup](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure) | include spf.protection.outlook.com | 2026-11-07 |
+| [Amazon SES (custom MAIL FROM domain): SPF setup](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html) | include amazonses.com | 2026-11-07 |
+| [Zendesk: SPF setup](https://support.zendesk.com/hc/en-us/articles/4408832543770) | include mail.zendesk.com | 2026-11-07 |
+| [HubSpot: SPF setup](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot) | include shared.hubspot.com | 2026-11-07 |
+| [Postmark: SPF setup](https://postmarkapp.com/support/article/1092-how-do-i-set-up-spf-for-postmark) | include spf.mtasv.net | 2026-11-07 |
+| [Zoho Mail: SPF setup](https://www.zoho.com/mail/help/adminconsole/spf-configuration.html) | include zohomail.com | 2026-11-07 |
+
 **Tax set-aside per payment:** US federal figures for tax year 2026, the UK for 2026-27, state rules read 2026-10-31. Payments outside 2026 are refused. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/tax-set-aside/).
 
 Tax set-aside per payment: sources
@@ -184,6 +236,30 @@ Trucker per diem worksheet: sources
 | [49 CFR 395.22(i) (ELD back-ups kept 6 months)](https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395/subpart-B/section-395.22) | see the document | 2026-10-31 |
 | [IRS: How long should I keep records?](https://www.irs.gov/businesses/small-businesses-self-employed/how-long-should-i-keep-records) | see the document | 2026-10-31 |
 
+**Year-end giving statements:** The IRS rules are quoted from irs.gov, read on 2026-11-07, and change only by hand with the tests that pin them. The gifts themselves come from your own file. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/year-end-giving-statements/).
+
+Year-end giving statements: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IRS Publication 1771 (Rev. 11-2023), Charitable Contributions: Substantiation and Disclosure Requirements](https://www.irs.gov/pub/irs-pdf/p1771.pdf) | Rev. 11-2023 | 2026-11-07 |
+| [IRS: Charitable contributions, written acknowledgments](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-written-acknowledgments) | page updated 2026-06-28 | 2026-11-07 |
+| [IRS: Charitable contributions, quid pro quo contributions](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-quid-pro-quo-contributions) | page updated 2026-06-28 | 2026-11-07 |
+| [IRS Publication 6196 (10-2026), Charitable Contribution Deduction Tips for Non-Itemizers](https://www.irs.gov/pub/irs-pdf/p6196.pdf) | 10-2026 | 2026-11-07 |
+
+**ZIP code and UK postcode to county lookup:** US answers come from Census 2020 files and OMB's July 2023 delineation, read 2026-11-07. UK answers come from the ONS Postcode Directory, August 2026, read 2026-11-07; Northern Ireland is not covered. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/zip-to-county/).
+
+ZIP code and UK postcode to county lookup: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [Census 2020 ZCTA5 to County relationship file](https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt) | 2020 | 2026-11-07 |
+| [Census 2020 national county codes](https://www2.census.gov/geo/docs/reference/codes2020/national_county2020.txt) | 2020 | 2026-11-07 |
+| [Census 2020 national state codes](https://www2.census.gov/geo/docs/reference/codes2020/national_state2020.txt) | 2020 | 2026-11-07 |
+| [Census regions and divisions](https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt) | 2020 | 2026-11-07 |
+| [OMB July 2023 CBSA delineation (Census list 1)](https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx) | July 2023 | 2026-11-07 |
+| [ONS Postcode Directory (August 2026), ONSPD\_AUG\_2026.zip](https://geoportal.statistics.gov.uk/) | August 2026 | 2026-11-07 |
+
 ## How do we check the answers?
 
 These are the checks in each tool's test suite. Only what a test asserts is listed. Where a tool has no official worked example to compare with, the list says what is checked instead.
@@ -202,6 +278,14 @@ These are the checks in each tool's test suite. Only what a test asserts is list
 - India is compared with the DoPT memoranda for 2025, 2026 and 2027, name by name, and the weekday printed in each memorandum must agree with the calendar. The Bakrid move to 28 May 2026 is checked.
 - Counting days and adding days must agree with each other, forwards and backwards.
 
+**Natural-language date resolver**
+
+- Calendar days, weeks, months, quarters and years are checked phrase by phrase from a fixed reference date: 90 days from Monday, November 2, 2026 is Sunday, January 31, 2027.
+- Month ends are clamped and leap years kept: 1 month after January 31, 2027 is February 28, and 1 year after February 29, 2028 is February 28, 2029.
+- "Next Friday", "last Tuesday" and dates with no year are checked on both readings, and the second reading is given only when it differs.
+- Business days must equal the Business days tool's own add for US federal holidays; England and Wales, India, weekends only and your own days off are checked too.
+- Rolling (following, preceding, modified following), ISO weeks and the refusal of times, unknown words and out-of-range dates are checked.
+
 **Delivery date and holiday order-by calculator**
 
 - Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists.
@@ -213,6 +297,14 @@ These are the checks in each tool's test suite. Only what a test asserts is list
 - The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback to the day, rounding that is exact on the decimal value.
 - When the real downloaded files are present, the worked examples and the currency list are compared with them. Treasury and HMRC values read on 2026-11-02 are pinned against the real files.
 - IRS yearly averages are tested against the stored IRS table, including the cells the IRS prints irregularly, which are refused rather than guessed.
+
+**Hours calculator and timesheet**
+
+- The federal rules held are compared with the text read from Cornell LII and dol.gov on 2026-11-07: 29 CFR 785.48, 785.18, 785.19, 778.104 and 778.105, and DOL Fact Sheets #21 and #23.
+- A worked week is reproduced: 46 hours with 6 of overtime, and $18.50 x 40 + $27.75 x 6 = $906.50.
+- A biweekly period of 30 and 50 hours gives 10 hours of overtime, never averaged (29 CFR 778.104), and moving the workweek start moves the overtime.
+- Daylight-saving nights in America/New\_York are checked: 10 PM to 6 AM is 9 hours on October 31, 2026 and 7 hours on March 13, 2027.
+- Rounding to 5, 6 and 15 minutes, nearest and in up and out down, is checked punch by punch, and the same timesheet input gives the same PDF bytes.
 
 **IFTA quarterly return calculator**
 
@@ -242,6 +334,20 @@ These are the checks in each tool's test suite. Only what a test asserts is list
 - A decoder reads every code back, and the Reed-Solomon error correction fixes damage up to its limit and refuses more.
 - Payload formats (WiFi, vCard, mailto, SMS, geo) are checked against the formats the sources describe, and the DENSO WAVE quiet-zone and module-size rules against the print checks.
 
+**Bulk redirect chain checker**
+
+- Google's redirect table and facts are checked as read on 2026-11-07, as the verdicts use them.
+- Every verdict is checked against a fake web: one hop, chains, loops and their patterns, hop limits, plain HTTP, meta refresh, errors, refusals and expected targets.
+- Pasted curl output is judged like a live run, and the worked examples equal what run() returns.
+- Private, loopback, link-local, metadata, CGNAT, reserved and IPv6 address forms are refused.
+
+**SPF lookup counter**
+
+- Counting is checked on a recorded DNS zone: include, a, mx, ptr, exists and redirect count; ip4, ip6, all and exp do not; nested includes share one budget and the 11th term is named.
+- Void lookups, two records, no record, syntax errors, mx over 10 names, loops and duplicate includes are each checked to give the RFC 7208 result.
+- The macro expander reproduces every example in RFC 7208 Section 7.4, IPv4 and IPv6, and check\_host() is checked for each mechanism, the default and the void limit on its path.
+- Private and special-use names are never queried on any hop, and the query and time caps stop a check.
+
 **Tax set-aside per payment**
 
 - The 2026 federal figures (brackets, standard deduction, self-employment tax, QBI thresholds, the tips, overtime and senior deductions, payment due dates) are compared with Rev. Proc. 2025-32 and the IRS pages named in the data.
@@ -253,6 +359,18 @@ These are the checks in each tool's test suite. Only what a test asserts is list
 - Every notice period is compared with the notice: its URL, effective date and the sentence in section 3 that sets the rate. A gap in the rate table is refused.
 - The rate in force on each date is checked across every October 1 change, including the split years 2021 and 2024.
 - Worked examples are reproduced, such as 240 full and 40 partial days in 2026 giving $21,600 of per diem and $17,280 at 80%.
+
+**Year-end giving statements**
+
+- The thresholds ($250, $75, the $10 penalty up to $5,000, the $1,000 and $2,000 non-itemizer lines) and the quoted rules are pinned to their irs.gov sources and the read date.
+- The goods-or-services sentence is checked for no benefits, intangible religious benefits only and gifts with a benefit; gifts under $250 are never added together, and $75.00 is not quid pro quo while $75.01 is.
+- Gifts of property are described with their value in no output, refunds are subtracted, vehicles and extra addresses are flagged, and the PDFs and ZIP are the same bytes every time.
+
+**ZIP code and UK postcode to county lookup**
+
+- The file counts are pinned: 33,791 ZCTAs, 10,180 in more than one county, 3,234 counties, and 2,652,624 Great Britain postcodes decoded back to the counts the build wrote.
+- ZIP 77002 is all in Harris County, ZIP 39573 is split across six Mississippi counties with shares adding to 100, and the Bronx, Connecticut, Puerto Rico and a ZIP with no ZCTA give the noted answers.
+- Postcodes are checked in two-tier and single-tier councils, Scotland, Wales and London, terminated and unplaced; Northern Ireland, the Crown dependencies and unknown postcodes are named, not charged.
 
 ## Questions
 

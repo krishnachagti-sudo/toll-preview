@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How redirect chains are checked: method and sources: Endwise</title>
+<meta name="description" content="How the redirect chain checker works: each hop it follows, permanent and temporary codes, loops, Google's 10-hop limit, plain HTTP and map targets.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/redirect-chain-checker.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How redirect chains are checked: method and sources">
+<meta property="og:description" content="How the redirect chain checker works: each hop it follows, permanent and temporary codes, loops, Google's 10-hop limit, plain HTTP and map targets.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/","name":"How redirect chains are checked: method and sources","description":"How the redirect chain checker works: each hop it follows, permanent and temporary codes, loops, Google's 10-hop limit, plain HTTP and map targets.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How redirect chains are checked: method and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the bulk redirect chain checker answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the bulk redirect chain checker refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"JavaScript redirects are not followed: only HTTP redirects, the Refresh header and meta refresh tags. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How redirect chains are checked: method and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How redirect chains are checked: method and sources</h1>
+<p class="cp-answer">Each URL is followed hop by hop, up to 20 redirects. 301 and 308 count as permanent and 302, 303 and 307 as temporary, as Google Search Central lists them, and a chain of more than 10 redirects is flagged as past Google's default limit.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the bulk redirect chain checker compute?</h2>
+<p>The tool takes a list of up to 1,000 URLs, or an old-to-new redirect map, and requests each URL from our server, following every redirect. For each URL it gives every hop with its status code, the final URL and status, and verdicts such as a loop, a chain, a temporary redirect, a plain-HTTP hop or a wrong target, graded ok, review or fix, with a CSV. It can also judge pasted curl output without making any request, and it lists Google's redirect status codes.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>check</code>: Fetches each URL in list (text, one per line or &quot;old,new&quot; per line) or urls (a list, or { url, expected } rows) and follows its redirects. The answer has a summary line, counts, one row per URL with every hop and its verdicts, and a CSV. Options: userAgent (endwise, googlebot or chrome), maxHops (at most 20), followMetaRefresh and issuesOnly.</li><li><code>analyse</code>: Judges one chain from pasted curl -sIL output, or from a list of { status, location } answers, exactly as a live run is judged, without any request. Free.</li><li><code>codes</code>: Returns Google's table of redirect status codes (permanent or temporary, and whether the method may change), the meta refresh rule, the facts quoted in the verdicts, the limits and the sources. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>list or urls</code>: The URLs, or a redirect map with the expected target per row. A bare host is read as http://. A header line and comments are skipped. At most 1,000 different URLs per call, each at most 2,048 characters.</li><li><code>expected</code>: Where a URL should land: a full URL, or a path such as /new-page, read on the site the chain ends on when that is the same site (www and scheme aside), else on the old URL's site over https.</li><li><code>userAgent, maxHops, followMetaRefresh, issuesOnly</code>: Who the requests are sent as, the redirects to follow before stopping (default 20), whether meta refresh and the Refresh header are followed (default yes), and whether only rows to fix or review are returned.</li><li><code>url and curl or hops</code>: For analyse: the URL the output starts from, and the pasted output or the answers in order.</li></ul>
+<p>Outputs:</p>
+<ul><li>rows: per URL, the hops (status, kind, next URL, what changed), redirects, finalUrl, finalStatus, verdicts, severity, a one-line summary and notes</li><li>summary: counts of chains, loops, temporary redirects, plain HTTP, broken endings and map results</li><li>csv: the rows as a spreadsheet, with formula-like cells defused</li><li>billedUrls: the different URLs actually fetched</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each line is read as a URL, or as an old URL and its expected target. Credentials, other schemes and unreadable lines are refused and listed by line number. A URL given twice is fetched once.</li><li>Before every hop the address is checked: private, loopback, link-local (cloud metadata), CGNAT and reserved addresses are never fetched, and only ports 80, 443, 8080 and 8443 are used.</li><li>Each URL is requested with the chosen user agent. A 3xx answer (other than 304) with a Location is followed to the next URL; a 2xx answer is followed too when it carries a Refresh header or a meta refresh in the first 64 kB of the page. Anything else ends the chain.</li><li>The walk stops when a URL repeats (a loop), after 20 redirects, on a missing or unreadable Location, on a refused address or on a failed request. At most 2 requests go to one host at a time and 16 overall, and URLs not reached within 40 seconds are returned as not checked.</li><li>Each redirect is classed by Google's table: 301 and 308 permanent, 302, 303 and 307 temporary, a 0-second refresh permanent and a delayed one temporary.</li><li>The verdicts are set: loop, too many hops, broken (ends on 4xx or 5xx), more than 10 redirects (past Google's default), a downgrade from https to http, ending on http, a plain-HTTP URL after the first hop, a temporary redirect, a long chain (5 or more), a chain (2 or more), meta refresh and, against the map, a match, a match through a chain, a trailing-slash difference, a wrong target, or a redirect to the homepage.</li><li>Each row is graded fix (a loop, an error, a broken ending, a downgrade, a wrong target and the other severe verdicts), review (any other verdict) or ok, and given a one-line summary and notes on how to fix it.</li></ol>
+<p><strong>Google Search Central.</strong></p>
+<p>The permanent and temporary codes, the meta refresh rule and the 10-hop default come from Google's pages on redirects and on HTTP status codes, with the dates they were updated and read.</p>
+<p><strong>RFC 9110.</strong></p>
+<p>The method column of the status code table is from RFC 9110 section 15.4: 307 and 308 keep the method, 303 becomes a GET, and clients may turn a POST into a GET on 301 and 302.</p>
+<p><strong>Our own rules.</strong></p>
+<p>A plain http:// URL reached by a redirect is flagged; the address you typed is not, since a visitor who types http:// is expected to take one hop to https. A redirect from a page to the root of a site is flagged as sent to the homepage unless the root is the expected target.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Loops are reported with the hop they start at and the cycle, and the http and https, www and bare host, trailing slash and Cloudflare self-loop patterns get their own note.</li><li>A relative Location is read against the URL that sent it, and an empty or unreadable Location is a bad-location verdict.</li><li>A Refresh header and a meta refresh are hops when followMetaRefresh is on; a refresh with no URL is not a redirect.</li><li>A redirect to a private address in the middle of a chain stops the chain there, and the URL is still counted as checked.</li><li>An expected path is read on the right site, so /new-page matches on www or the bare host alike.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Judging pasted curl -sIL output against an expected target (no request made)</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;analyse&quot;,
+  &quot;url&quot;: &quot;http://example.com/old-page&quot;,
+  &quot;curl&quot;: &quot;HTTP/1.1 301 Moved Permanently\nLocation: https://example.com/old-page\n\nHTTP/2 302\nlocation: /new-page\n\nHTTP/2 200\ncontent-type: text/html; charset=UTF-8\n&quot;,
+  &quot;expected&quot;: &quot;/new-page&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Judging pasted curl -sIL output against an expected target (no request made)</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">summary</th><td>http://example.com/old-page reaches https://example.com/new-page (200) in 2 redirects, with a temporary redirect.</td></tr>
+<tr><th scope="row">chain</th><td>301 http://example.com/old-page &gt; 302 https://example.com/old-page &gt; 200 https://example.com/new-page</td></tr>
+<tr><th scope="row">redirects</th><td>2</td></tr>
+<tr><th scope="row">verdicts</th><td>temporary, chain, via-chain</td></tr>
+<tr><th scope="row">expected target</th><td>via-chain</td></tr>
+<tr><th scope="row">severity</th><td>review</td></tr>
+</tbody></table></div>
+<p><strong>Google's redirect codes and limits</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;codes&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Google's redirect codes and limits</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">301</th><td>Moved Permanently: permanent</td></tr>
+<tr><th scope="row">302</th><td>Found: temporary</td></tr>
+<tr><th scope="row">303</th><td>See Other: temporary</td></tr>
+<tr><th scope="row">307</th><td>Temporary Redirect: temporary</td></tr>
+<tr><th scope="row">308</th><td>Permanent Redirect: permanent</td></tr>
+<tr><th scope="row">Google hop limit</th><td>10</td></tr>
+<tr><th scope="row">long chain from</th><td>5</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>JavaScript redirects are not followed: only HTTP redirects, the Refresh header and meta refresh tags.</li><li>A check is one request per hop from our server in the United States. Servers can answer differently for other user agents, countries, cookies or logins, and some block automated requests.</li><li>Nothing here promises a ranking effect. What Google does with redirects is quoted from Google with the date it was read.</li><li>Private, local and reserved addresses are never fetched, on any hop.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.</p>
+<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc9110#section-15.4">RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx) (read 2026-11-07)</a></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">Google Search Central: Redirects and Google Search (read 2026-11-07)</a></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors">Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search (read 2026-11-07)</a></li><li><a href="https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/">Cloudflare: ERR_TOO_MANY_REDIRECTS (read 2026-11-07)</a></li><li><a href="https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/">Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain (read 2026-11-07)</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>Every verdict is checked against a fake web, with no network: one hop, chains, Google's codes, loops and their patterns, hop limits, plain HTTP, meta refresh, errors and refusals, and expected targets. Pasted curl output is judged like a live run, the worked examples equal run(), and blocked address forms are checked one by one.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/redirect-chain-checker/">Open the Bulk redirect chain checker tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the bulk redirect chain checker answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the bulk redirect chain checker refuse to answer?</h3><p>JavaScript redirects are not followed: only HTTP redirects, the Refresh header and meta refresh tags. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/redirect-chain-checker/">Open the Bulk redirect chain checker tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/redirect-chain-checker/redirect-status-codes/">Redirect status codes</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/redirect-chain-checker.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

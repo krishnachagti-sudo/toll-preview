@@ -1,0 +1,8 @@
+code,name,google_treats_as,request_method,defined_in
+301,Moved Permanently,permanent,may change POST to GET,RFC 9110 15.4.2
+302,Found,temporary,may change POST to GET,RFC 9110 15.4.3
+303,See Other,temporary,becomes GET,RFC 9110 15.4.4
+307,Temporary Redirect,temporary,kept,RFC 9110 15.4.8
+308,Permanent Redirect,permanent,kept,RFC 9110 15.4.9
+meta refresh 0 s,Instant meta refresh,permanent,GET,HTML
+meta refresh > 0 s,Delayed meta refresh,temporary,GET,HTML

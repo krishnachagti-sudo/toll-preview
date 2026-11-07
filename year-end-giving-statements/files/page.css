@@ -1,0 +1,63 @@
+/* Giving statements: a treasurer's desk inside the brand chrome, reusing its tokens. One accent
+   (money green) carries the answer; the donor list reads as ruled ledger lines. */
+.gs {
+  --accent: var(--h-money);
+  --accent-ink: #06170f;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06170f;
+}
+
+.gs-intro { padding-block: 40px 8px; }
+.gs-intro h1 { margin-bottom: 0.25em; }
+.gs-price { color: var(--ink-soft); max-width: 46rem; margin: 0; font-variant-numeric: tabular-nums; }
+.gs-sample { max-width: 46rem; margin: 8px 0 0; }
+.gs-sample a, .gs-got a { color: var(--accent); }
+
+.gs-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.gs-desk > * { min-width: 0; }
+@media (min-width: 960px) { .gs-desk { grid-template-columns: 24rem 1fr; gap: 48px; } }
+
+.gs-form { border-top: 3px double var(--rule-strong); padding-top: 12px; }
+.gs-form legend { padding: 0; }
+.gs-form textarea { font-family: var(--font-mono); font-size: 13px; }
+.gs-step { font: 500 0.82rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 10px; }
+.gs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; align-items: end; }
+.gs-format, .gs-options { margin-top: 6px; color: var(--ink-soft); }
+.gs-format summary, .gs-options summary { cursor: pointer; }
+.gs-format p { margin: 6px 0 0; max-width: 40rem; }
+.gs-options { margin-bottom: 8px; }
+.gs-options[open] summary { margin-bottom: 12px; }
+.gs input[type="date"] { color-scheme: dark; }
+.choice-line { display: flex; gap: 8px; align-items: center; font-size: 14px; margin: 6px 0; cursor: pointer; }
+.choice-line input { width: 18px; height: 18px; flex: none; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 0 0 14px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; }
+
+.gs-out { min-height: 12rem; }
+.gs-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
+.gs-answer { font-size: 1.15rem; line-height: 1.45; margin: 0 0 14px; max-width: 46rem; font-variant-numeric: tabular-nums; }
+.gs-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 14px; }
+.gs-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.gs-facts dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; font-size: 1.1rem; }
+.gs-table { font-variant-numeric: tabular-nums; margin-bottom: 10px; }
+.gs-table .num { text-align: right; white-space: nowrap; }
+.gs-table .gs-sentence { color: var(--ink-soft); font-size: 0.88rem; }
+.gs-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
+.gs-flags { list-style: none; margin: 0 0 12px; padding: 0; max-width: 48rem; }
+.gs-flags li { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.gs-flags .when { font: 500 0.82rem/1.5 var(--font-mono); color: var(--ink-soft); min-width: 7.5rem; }
+.gs-aside { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 10px; max-width: 46rem; }
+.gs-buy { border-top: 1px solid var(--rule); margin-top: 18px; padding-top: 6px; }
+.gs-buy .btn { margin: 0 0 8px; }
+.gs-got { margin: 0 0 12px; }
+
+.gs-rules { margin-top: 56px; }
+.gs-rule-cols { display: grid; gap: 24px; }
+@media (min-width: 900px) { .gs-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.gs-rule-cols h3 { margin-top: 0; }
+.gs-notes { padding-left: 1.1em; max-width: 60rem; }
+.gs-notes li { margin-bottom: 8px; }
+.gs-prices { margin-top: 24px; }
+.gs-code { margin-top: 40px; }
+.table-wrap { overflow-x: auto; }
+.gs-form #gs-paste { white-space: pre; overflow-wrap: normal; overflow-x: auto; }

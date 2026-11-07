@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How ZIP to county works: Census and ONS method: Endwise</title>
+<meta name="description" content="How the ZIP and postcode lookup works: Census 2020 ZCTA land shares, OMB 2023 metro areas, Census regions and the ONS Postcode Directory, step by step.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/zip-to-county/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/zip-to-county.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How ZIP to county works: Census and ONS method">
+<meta property="og:description" content="How the ZIP and postcode lookup works: Census 2020 ZCTA land shares, OMB 2023 metro areas, Census regions and the ONS Postcode Directory, step by step.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/zip-to-county/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/zip-to-county/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/zip-to-county/","name":"How ZIP to county works: Census and ONS method","description":"How the ZIP and postcode lookup works: Census 2020 ZCTA land shares, OMB 2023 metro areas, Census regions and the ONS Postcode Directory, step by step.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How ZIP to county works: Census and ONS method","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/zip-to-county/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the zip code and uk postcode to county lookup answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the zip code and uk postcode to county lookup refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"It answers for ZCTAs, not USPS delivery routes, so a new ZIP or a PO-box-only ZIP is not found. Use the street address for those. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How ZIP to county works: Census and ONS method</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How ZIP to county works: Census and ONS method</h1>
+<p class="cp-answer">A US ZIP code is looked up as its ZCTA in the Census 2020 ZCTA to county file: 33,791 ZCTAs, 10,180 of them in more than one county, each county's share given by land area. A UK postcode is looked up in the ONS Postcode Directory (August 2026), which places 2,652,624 Great Britain postcodes, live and terminated, in their local authority.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the zip code and uk postcode to county lookup compute?</h2>
+<p>Given ZIP codes or UK postcodes, one or a list, the tool says for each ZIP every county it has land in, with the county FIPS code, the share of the land, the metro or micro area and the Census region, and for each postcode its local authority, county, region and nation. Given a county FIPS code, it lists every ZCTA with land in that county.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>lookup</code>: Looks up a list of ZIP codes and postcodes (at most 10,000 in one call). Each result says whether it was found, with its counties or areas and notes; codes not found are named with the reason. country is auto (digits are a ZIP, letters a postcode), us or gb.</li><li><code>county</code>: Lists every ZCTA with land in a county, given its 5-digit FIPS code, with the county's share of each ZCTA's land, the other counties a shared ZCTA touches, and the county's metro or micro area.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>codes</code>: ZIP codes or UK postcodes as typed or pasted, each at most 40 characters. ZIP+4, ZIPs that lost a leading zero and postcodes in any case or spacing are read.</li><li><code>country</code>: auto, us or gb (default auto).</li><li><code>fips</code>: For county: a 5-digit county FIPS code, such as 48201, that is in the Census 2020 file.</li></ul>
+<p>Outputs:</p>
+<ul><li>For a ZIP: the county with the most land, every county with its FIPS code, land in square meters, share percent and metro area, the states crossed, the Census region and division, and the land area</li><li>For a postcode: the local authority, the county (two-tier areas), the county or unitary authority ONS reports, the region (England), the nation, and whether the postcode is live or terminated</li><li>summary: codes, found, not found, unreadable, US and GB found, and ZIPs crossing a county line</li><li>sources: the files used, with their vintage and read date, and the ONS attribution for postcodes</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each entry is read. Digits are a ZIP code: 3 or 4 digits are padded with leading zeros (a spreadsheet drops them), and ZIP+4 keeps its first five digits, each with a note. Letters are a postcode, read in any case or spacing and written back as outward and inward code, such as SW1A 1AA. Anything else is reported as not readable.</li><li>A ZIP is looked up as the ZCTA of the same number. A ZIP with no ZCTA, such as a PO-box-only ZIP or one created after 2020, is reported as not found, with the advice to use the street address.</li><li>The ZCTA's land parts are listed largest first (ties by FIPS code), and each county's share is its land over the ZCTA's land, as a percentage with two decimals. Parts that are water only are left out.</li><li>Each county gets its OMB July 2023 metro or micro area and its state's Census region and division. A ZIP that crosses a state line, a state outside the Census regions and a Connecticut county are noted.</li><li>A postcode in Northern Ireland, Guernsey, Jersey or the Isle of Man is named and not covered. Any other postcode is found in the ONS Postcode Directory, with its local authority and so its county, region and nation. A terminated postcode keeps the areas of its last location, and a postcode ONS has not placed has no local authority yet.</li><li>A list is summarized, and the sources used are attached to the answer.</li></ol>
+<p><strong>ZCTAs and ZIP codes.</strong></p>
+<p>A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. The file read on 2026-11-07 has 46,953 ZCTA-county land parts across 3,234 counties; 7 parts with water only are left out.</p>
+<p>County shares are by land area, not by addresses or population.</p>
+<p><strong>Connecticut and Puerto Rico.</strong></p>
+<p>Connecticut answers use the 8 counties of the 2020 file. Census and federal data from 2022 on use 9 planning regions instead, and OMB's 2023 metro areas are built from them, so no metro area is given for a Connecticut county. Census regions cover the 50 states and DC, so Puerto Rico has no region.</p>
+<p><strong>Great Britain postcodes.</strong></p>
+<p>The ONS Postcode Directory (August 2026) has 1,749,110 live and 903,514 terminated postcodes in 350 local authorities. A single-tier council has no county above it, so it is also the county or unitary authority ONS reports. Northern Ireland (BT) postcodes need a separate Land and Property Services license for commercial use, so they are not covered.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>ZIP 39573 in Mississippi has land in six counties: each is listed with its share, largest first.</li><li>ZIP 2134 is read as 02134, and 10463-2201 as 10463, each with a note saying so.</li><li>ZIP 00501 has no ZCTA in the Census 2020 file, so it is reported as not found and not charged.</li><li>A ZCTA with land in two states lists both states.</li><li>GIR 0AA is in the directory but not placed in a local authority, and says so.</li><li>A postcode issued after the directory's release is reported as not in it.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>ZIP 77002: one county, all of its land</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;lookup&quot;,
+  &quot;codes&quot;: [
+    &quot;77002&quot;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>ZIP 77002: one county, all of its land</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">county</th><td>Harris County, TX</td></tr>
+<tr><th scope="row">FIPS</th><td>48201</td></tr>
+<tr><th scope="row">share of land</th><td>100%</td></tr>
+<tr><th scope="row">metro area</th><td>Houston-Pasadena-The Woodlands, TX</td></tr>
+</tbody></table></div>
+<p><strong>ZIP 39573: six counties, by share of land</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;lookup&quot;,
+  &quot;codes&quot;: [
+    &quot;39573&quot;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>ZIP 39573: six counties, by share of land</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">Stone County, MS (28131)</th><td>58.96%</td></tr>
+<tr><th scope="row">George County, MS (28039)</th><td>15.98%</td></tr>
+<tr><th scope="row">Hancock County, MS (28045)</th><td>11.49%</td></tr>
+<tr><th scope="row">Jackson County, MS (28059)</th><td>8.2%</td></tr>
+<tr><th scope="row">Pearl River County, MS (28109)</th><td>2.84%</td></tr>
+<tr><th scope="row">Harrison County, MS (28047)</th><td>2.53%</td></tr>
+</tbody></table></div>
+<p><strong>Postcode SW1A 1AA: a single-tier council</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;lookup&quot;,
+  &quot;codes&quot;: [
+    &quot;SW1A 1AA&quot;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Postcode SW1A 1AA: a single-tier council</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">local authority</th><td>Westminster (E09000033)</td></tr>
+<tr><th scope="row">county</th><td>none (single-tier)</td></tr>
+<tr><th scope="row">region</th><td>London</td></tr>
+<tr><th scope="row">nation</th><td>England</td></tr>
+</tbody></table></div>
+<p><strong>A pasted list with a lost leading zero, a ZIP+4 and a Northern Ireland postcode</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;lookup&quot;,
+  &quot;codes&quot;: [
+    &quot;2134&quot;,
+    &quot;10463-2201&quot;,
+    &quot;00501&quot;,
+    &quot;ME14 1XQ&quot;,
+    &quot;cf10 1ep&quot;,
+    &quot;BT1 5GS&quot;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A pasted list with a lost leading zero, a ZIP+4 and a Northern Ireland postcode</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">found</th><td>4 of 6</td></tr>
+<tr><th scope="row">not found</th><td>2</td></tr>
+<tr><th scope="row">ZIPs crossing a county line</th><td>1</td></tr>
+<tr><th scope="row">answer</th><td>4 of 6 codes found; 1 ZIP crosses a county line; 2 not in the official files.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>It answers for ZCTAs, not USPS delivery routes, so a new ZIP or a PO-box-only ZIP is not found. Use the street address for those.</li><li>Shares are by land area, not by addresses or population.</li><li>Northern Ireland, the Channel Islands and the Isle of Man are not covered.</li><li>It does not geocode street addresses or give a postcode's coordinates.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The US files are the Census 2020 ZCTA to county relationship file, Census 2020 county and state codes, the Census regions and OMB's July 2023 delineation, read on 2026-11-07. The postcode file is the ONS Postcode Directory, August 2026, read on 2026-11-07. Each file is recorded with its address and SHA-256 hash.</p>
+<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">Census 2020 ZCTA5 to County relationship file</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 metropolitan and micropolitan delineation (Census list 1)</a></li><li><a href="https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt">Census Bureau regions and divisions</a></li><li><a href="https://geoportal.statistics.gov.uk/">ONS Postcode Directory (August 2026)</a></li><li><a href="https://www.ons.gov.uk/methodology/geography/geographicalproducts/postcodeproducts">ONS: Postcode products</a></li><li><a href="https://www.ons.gov.uk/methodology/geography/licences">ONS: Licences</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The counts are pinned against the files: 33,791 ZCTAs and 10,180 in more than one county, 2,652,624 postcodes decoded back to the counts the build wrote. Answers are checked for one-county and six-county ZIPs, a state line, Connecticut, Puerto Rico, two-tier and single-tier councils, Scotland, Wales, London, terminated and unplaced postcodes.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/zip-to-county/">Open the ZIP code and UK postcode to county lookup tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the zip code and uk postcode to county lookup answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the zip code and uk postcode to county lookup refuse to answer?</h3><p>It answers for ZCTAs, not USPS delivery routes, so a new ZIP or a PO-box-only ZIP is not found. Use the street address for those. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/zip-to-county/">Open the ZIP code and UK postcode to county lookup tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/zip-to-county/county-fips-codes/">County FIPS codes</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/zip-to-county.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

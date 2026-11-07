@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Year-end giving statements from a spreadsheet, one PDF per donor: Endwise</title>
+<meta name="description" content="Turn a year of gifts into a contribution statement for every donor: each gift, the total and the IRS Publication 1771 wording. Free preview, $0.10 a statement.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/year-end-giving-statements/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"year-end-giving-statements"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Year-end giving statements">
+<meta property="og:description" content="Turn a year of gift rows (CSV or a list) into one contribution statement PDF per donor or household: every gift, the total, the IRS Publication 1771 goods-or-services sentence (or the intangible religious benefits sentence for a church), good faith estimates and the $75 quid pro quo disclosure where a gift bought something, gifts of property described without a value, plus a print file, a summary CSV and an email list.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/","url":"https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/","name":"Year-end giving statements","description":"Turn a year of gift rows (CSV or a list) into one contribution statement PDF per donor or household: every gift, the total, the IRS Publication 1771 goods-or-services sentence (or the intangible religious benefits sentence for a church), good faith estimates and the $75 quid pro quo disclosure where a gift bought something, gifts of property described without a value, plus a print file, a summary CSV and an email list.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Year-end giving statements","item":"https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/"}]},{"@type":"WebApplication","name":"Year-end giving statements","url":"https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/","description":"Turn a year of gift rows (CSV or a list) into one contribution statement PDF per donor or household: every gift, the total, the IRS Publication 1771 goods-or-services sentence (or the intangible religious benefits sentence for a church), good faith estimates and the $75 quid pro quo disclosure where a gift bought something, gifts of property described without a value, plus a print file, a summary CSV and an email list.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"The IRS rules, with sources","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Preview (every donor's totals and one sample statement)","price":"0","priceCurrency":"USD"},{"name":"Statements (PDF per donor, print file, summary and email CSVs)","@type":"Offer","price":"0.1","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.1","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"donor statement"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="gs">
+  <section class="wrap gs-intro">
+    <p class="eyebrow">Church and nonprofit giving statements</p>
+    <h1>Year-end giving statements</h1>
+    <p class="lede">Open the sheet of this year's gifts. You get one statement per donor or household, with every gift, the total and the sentence IRS Publication 1771 asks for. Churches get the intangible religious benefits wording. A gala ticket gets its good faith estimate and the deductible part. A gift of stock or goods is described without a value.</p>
+    <p data-prices class="gs-price" id="gs-price">The totals and one sample statement are free. All the statements cost $0.10 a donor, and never more than $19 in a month. Making a donor's statement again within 180 days is free.</p>
+    <p class="gs-sample" id="gs-sample">See what you get first: <span id="gs-sample-links">the sample statements load with the page.</span></p>
+  </section>
+
+  <section class="wrap gs-desk" aria-label="Statement maker">
+    <form class="gs-form" id="gs-form" novalidate>
+      <h2 class="gs-step">1. Your gifts</h2>
+      <div class="field">
+        <label for="gs-upload">Gift file (CSV or TSV)</label>
+        <input type="file" id="gs-upload" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values">
+      </div>
+      <div class="field">
+        <label for="gs-paste">Or paste it</label>
+        <textarea id="gs-paste" rows="7" spellcheck="false" aria-describedby="gs-paste-hint gs-file-err"></textarea>
+        <p class="hint" id="gs-paste-hint">A heading line, then one gift a line. Copy the cells straight from Excel or Google Sheets. <a href="#" id="gs-template">Download a blank template</a>.</p>
+        <details class="gs-format">
+          <summary>What the file needs</summary>
+          <p>Three columns: the donor (headed Donor, Name, Customer, Family or Member), the date (Date, Gift date, Donation date) and the amount (Amount, Gift amount, Gross, Total). Dates may be written 2026-01-04, 1/4/2026 or Jan 4, 2026. Amounts may have a $ sign or commas, and a refund may be negative or in brackets.</p>
+          <p>Optional columns: Donor ID or Envelope number (gifts are grouped by it when present), Fund, Method, Type, Description, Benefit value and Benefit description (for a ticket or auction item), Address, City, State, ZIP and Email.</p>
+          <p>A gift of property: put "In-kind" or "Stock" in Type, or leave the amount empty, and describe it in Description. Its value is never printed. Gifts dated outside the period are set aside and counted.</p>
+        </details>
+        <p class="field-error" id="gs-file-err"></p>
+      </div>
+
+      <h2 class="gs-step">2. Your organization</h2>
+      <div class="field"><label for="gs-name">Name, as it should appear</label><input type="text" id="gs-name" maxlength="120" autocomplete="organization"></div>
+      <div class="field"><label for="gs-address">Address</label><textarea id="gs-address" rows="2" maxlength="300" spellcheck="false"></textarea></div>
+      <fieldset class="field">
+        <legend>What donors got in return</legend>
+        <label class="choice-line"><input type="radio" name="benefits" value="religious"><span>Only intangible religious benefits (most churches)</span></label>
+        <label class="choice-line"><input type="radio" name="benefits" value="none" checked><span>Nothing, except where a gift row has a benefit value</span></label>
+      </fieldset>
+      <div class="gs-pair">
+        <div class="field"><label for="gs-signer">Signed by</label><input type="text" id="gs-signer" maxlength="80"></div>
+        <div class="field"><label for="gs-title">Their title</label><input type="text" id="gs-title" maxlength="80"></div>
+      </div>
+      <div class="gs-pair">
+        <div class="field"><label for="gs-ein">EIN (optional)</label><input type="text" id="gs-ein" inputmode="numeric" placeholder="12-3456789"></div>
+        <div class="field"><label for="gs-date">Statement date</label><input type="date" id="gs-date"></div>
+      </div>
+      <details class="gs-options">
+        <summary>Message and options</summary>
+        <div class="field"><label for="gs-message">Opening message (optional)</label><textarea id="gs-message" rows="3" maxlength="600"></textarea></div>
+        <label class="check"><input type="checkbox" id="gs-exempt"><span>Say we are a 501(c)(3) tax-exempt organization</span></label>
+        <label class="check"><input type="checkbox" id="gs-nonitem"><span>Add the 2026 note for donors who do not itemize (IRS Pub 6196)</span></label>
+        <label class="check"><input type="checkbox" id="gs-flip"><span>Names are written "Last, First": print them "First Last"</span></label>
+        <div class="field">
+          <label for="gs-merge">Households to merge (optional)</label>
+          <textarea id="gs-merge" rows="3" spellcheck="false" placeholder="John and Mary Smith: John Smith; Mary Smith" aria-describedby="gs-merge-hint"></textarea>
+          <p class="hint" id="gs-merge-hint">One household a line: the name to print, a colon, then the names or donor IDs in the file. "Smith, John" and "John Smith" are already treated as the same donor.</p>
+        </div>
+      </details>
+
+      <h2 class="gs-step">3. The period</h2>
+      <div class="gs-pair">
+        <div class="field"><label for="gs-year">Tax year</label><select id="gs-year"></select></div>
+        <div class="field"><label for="gs-range">Or a date range</label><select id="gs-range"><option value="">The whole year</option><option value="q1">January to March</option><option value="q2">April to June</option><option value="q3">July to September</option><option value="q4">October to December</option><option value="h1">January to June</option></select></div>
+      </div>
+      <p class="form-error" id="gs-error" role="alert"></p>
+      <p class="visually-hidden" id="gs-status" role="status"></p>
+    </form>
+
+    <div class="gs-out">
+      <div id="gs-summary"><p class="muted">Loading the worked example.</p></div>
+      <div class="gs-buy" id="gs-buy" hidden>
+        <p class="gs-heading">Check one, then make them all</p>
+        <p class="gs-aside">The preview is free and shows the first donor's statement exactly as it will print, marked PREVIEW.</p>
+        <button class="btn btn-quiet" type="button" id="gs-preview">Preview a statement</button>
+        <p class="gs-got" id="gs-preview-got" role="status"></p>
+        <p class="gs-aside" id="gs-quote"></p>
+        <button class="btn" type="button" id="gs-make">Make all the statements</button>
+        <p class="gs-got" id="gs-got" role="status"></p>
+        <p class="form-error" id="gs-buy-err" role="alert"></p>
+        <p class="gs-aside small">Your gifts are sent to make the statements, used for that answer and not kept. A large file goes in several parts, split by donor; the price is the same.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap gs-rules" data-jump="The IRS rules" aria-labelledby="gs-rules-title">
+    <h2 id="gs-rules-title">What the statements say, and why</h2>
+    <div class="gs-rule-cols">
+      <div>
+        <h3>The $250 rule</h3>
+        <p>A donor cannot deduct a single gift of $250 or more without a written acknowledgment from you, and one annual statement may cover several such gifts (Pub 1771). Gifts under $250 are not added together for this rule, but donors still need a written record of every money gift, so most organizations send everyone a statement.</p>
+      </div>
+      <div>
+        <h3>Goods or services</h3>
+        <p>Each statement says no goods or services were provided, or, for a church, that only intangible religious benefits were. Where a row has a benefit value, the gift is marked, the description and your good faith estimate are printed, and the deductible part is shown. A payment over $75 that was partly for goods or services also needs a disclosure when it is made; the statement repeats it and the preview flags it.</p>
+      </div>
+      <div>
+        <h3>When to send</h3>
+        <p>There is no fixed IRS mailing date. The donor must have the statement by the earlier of filing their return or its due date, including extensions. Pub 1771 says charities typically send by January 31; for 2026 gifts that is Sunday, January 31, 2027. Email to the donor is fine.</p>
+      </div>
+    </div>
+    <ul class="gs-notes small muted" id="gs-notes">
+      <li>Computed from your file and the rules in IRS Publication 1771 (Rev. 11-2023), read November 7, 2026. Your organization decides the good faith estimate of any goods or services and whether an exception applies (token items, membership benefits, intangible religious benefits); the statements print what you enter.</li>
+      <li>Gifts of property are described, never valued. Vehicles, boats and airplanes claimed at over $500 follow Form 1098-C rules, which this tool does not produce. The donor's Social Security number is not needed and is not printed.</li>
+      <li>Not tax or legal advice. Sources: <a href="https://www.irs.gov/pub/irs-pdf/p1771.pdf">IRS Publication 1771 (Rev. 11-2023)</a>, <a href="https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-written-acknowledgments">IRS: written acknowledgments</a> and <a href="https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-quid-pro-quo-contributions">IRS: quid pro quo contributions</a> (both updated June 28, 2026), <a href="https://www.irs.gov/pub/irs-pdf/p6196.pdf">IRS Publication 6196 (10-2026)</a>; all read November 7, 2026.</li>
+    </ul>
+    <div class="gs-prices">
+      <h3>Prices</h3>
+      <ul class="endwise-prices"><li><strong>The IRS rules, with sources</strong>: free.</li><li><strong>Preview (every donor's totals and one sample statement)</strong>: free.</li><li><strong>Statements (PDF per donor, print file, summary and email CSVs)</strong>: $0.10 per donor statement; a repeat for the same donor statement is free for 180 days.</li><li>At most $19.00 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+      <p data-prices class="small muted">A church with 100 donors pays $10.00. The free $0.25 each month on a signed-in account covers two statements.</p>
+    </div>
+  </section>
+
+<section class="wrap cp-index" aria-labelledby="cp-index-title"><h2 id="cp-index-title">IRS rules</h2>
+<h3>Rules</h3><ul class="cp-index-list"><li><a href="/toll-preview/year-end-giving-statements/requirements/" title="Church giving statement requirements (IRS Pub 1771)">What a giving statement must include</a></li><li><a href="/toll-preview/year-end-giving-statements/deadline/" title="When are giving statements due? January 31 vs the IRS rule">When giving statements are due</a></li><li><a href="/toll-preview/year-end-giving-statements/quid-pro-quo/" title="Quid pro quo contributions: the $75 disclosure rule, worked">Quid pro quo gifts and the $75 disclosure</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Templates</h2>
+<h3>Templates</h3><ul class="cp-index-list"><li><a href="/toll-preview/year-end-giving-statements/templates/church-contribution-statement/" title="Church contribution statement template (filled example)">Church contribution statement</a></li><li><a href="/toll-preview/year-end-giving-statements/templates/nonprofit-year-end-statement/" title="Nonprofit year-end donation statement template (with a gala ticket)">Nonprofit year-end statement</a></li><li><a href="/toll-preview/year-end-giving-statements/templates/year-end-giving-letter/" title="Year-end giving letter template that is also the tax receipt">Year-end giving letter</a></li></ul>
+</section>
+
+  <section class="wrap gs-code" aria-label="Use this from code">
+    <div id="gs-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript. You can also call the tool from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/year-end-giving-statements/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

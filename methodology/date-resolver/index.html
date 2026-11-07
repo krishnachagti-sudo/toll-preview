@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How date phrases are resolved: rules and sources: Endwise</title>
+<meta name="description" content="How the date resolver reads a phrase: days not counting the start, month-end clamping, ISO weeks, business days with named holidays, and both readings.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/date-resolver/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/date-resolver.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How date phrases are resolved: rules and sources">
+<meta property="og:description" content="How the date resolver reads a phrase: days not counting the start, month-end clamping, ISO weeks, business days with named holidays, and both readings.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/date-resolver/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/date-resolver/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/date-resolver/","name":"How date phrases are resolved: rules and sources","description":"How the date resolver reads a phrase: days not counting the start, month-end clamping, ISO weeks, business days with named holidays, and both readings.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How date phrases are resolved: rules and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/date-resolver/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the natural-language date resolver answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the natural-language date resolver refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Times of day are refused: the answer is a calendar date, never a time. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How date phrases are resolved: rules and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How date phrases are resolved: rules and sources</h1>
+<p class="cp-answer">A phrase is read by a small fixed grammar and worked out on whole day numbers from an explicit reference date, so the machine's time zone cannot change it. The start day is not counted, months keep the day of the month or the month's last day, weeks run Monday to Sunday, and business days skip weekends and the chosen holidays. Dates run from 1900 to 2199.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the natural-language date resolver compute?</h2>
+<p>The tool turns a phrase such as &quot;90 days from today&quot;, &quot;10 business days after next Friday&quot; or &quot;end of next month&quot; into one calendar date with its weekday, ISO week and day of the year. It says every step it took and every holiday it skipped. When a phrase can honestly mean two dates, such as &quot;next Friday&quot; said on a Monday, the answer says so and gives both.</p>
+<p>Inputs:</p>
+<ul><li><code>text or texts</code>: One phrase, or a list of up to 50 phrases, each at most 200 characters. One of the two, not both.</li><li><code>ref</code>: The date the phrase is said on, like 2026-11-07, or &quot;today&quot; with a timeZone. It is required, so the answer never depends on the server's clock.</li><li><code>timeZone</code>: An IANA name like America/New_York, needed with ref &quot;today&quot;: today is the date in that zone at the moment of the call.</li><li><code>region</code>: US (federal holidays, the default), GB-ENG (England and Wales bank holidays), IN-CENTRAL-DELHI (India, central government offices in Delhi) or none (weekends only).</li><li><code>daysOff</code>: Optional list of your own dates (at most 400), skipped as business days and named as your days off.</li><li><code>weekdayRule, dateOrder, roll</code>: weekdayRule &quot;nearest&quot; (default) or &quot;next-week&quot; for &quot;next Friday&quot;; dateOrder &quot;MDY&quot; (default) or &quot;DMY&quot; for 3/4/2027; roll none (default), following, preceding or modified-following.</li></ul>
+<p>Outputs:</p>
+<ul><li>date, weekday, dateText, isoWeek and dayOfYear</li><li>calendarDaysFromRef and businessDay: whether the date itself is a business day in the chosen calendar</li><li>ambiguous, and readings: the other reading with its date when the phrase can mean two days</li><li>holidaysSkipped and daysOffSkipped, each with its date and name; rolledFrom when a roll moved the date</li><li>steps in words, and assumptions: the reference date and where it came from, the holiday calendar, the weekday rule, the date order, the roll and the counting rules</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The phrase is lowercased and split into words and numbers. Number words such as &quot;twenty-one&quot; are read as numbers, and filler such as &quot;excluding federal holidays&quot; is dropped, because business days always skip the chosen holidays.</li><li>A small hand-written grammar reads the phrase into a tree: an offset (such as 3 weeks) from or before an anchor (today, a weekday, the start or end of a period, an nth weekday of a month, or a written date). Anything it does not know is refused with a list of the forms it does know.</li><li>Every date is turned into a whole day number (days since 1970-01-01). No date objects are used, so the time zone of the machine cannot change an answer.</li><li>Calendar days and weeks are added as whole days. Months, quarters and years keep the day of the month, or the month's last day when it is shorter.</li><li>Business days are added with the Business days engine for the chosen region, which skips Saturdays, Sundays and that region's holidays and names each one. With region none only weekends are skipped. Your own days off are skipped too.</li><li>If a roll is asked for and the result is not a business day, it is moved to the next business day (following), the one before (preceding), or the next one unless that is in another month, in which case the one before (modified following).</li><li>Where the phrase allowed a second reading, the phrase is worked out again with the other choice, and the second date is given when it differs.</li></ol>
+<p><strong>Counting.</strong></p>
+<p>The start day is never counted: 1 day after a Friday is the Saturday, and 1 business day after a Friday is the Monday. &quot;Net 30&quot; is 30 calendar days after the invoice date.</p>
+<p>January 31 plus 1 month is February 28, or February 29 in a leap year. A quarter is 3 months.</p>
+<p><strong>Weekdays and weeks.</strong></p>
+<p>Weeks run Monday to Sunday, as in ISO 8601, and &quot;end of the week&quot; is the Sunday, with the Friday as the other reading.</p>
+<p>&quot;Friday&quot; or &quot;this Friday&quot; is the coming Friday, or the reference date itself if it is a Friday, with the Friday a week later as the other reading. &quot;Next Friday&quot; is the nearest Friday after the reference date by default; the Friday of next week is the other reading when it is a different day, and weekdayRule &quot;next-week&quot; swaps the two. &quot;Last Friday&quot; works the same way backwards.</p>
+<p><strong>Written dates.</strong></p>
+<p>A date with no year, such as &quot;March 3&quot;, is the next one on or after the reference date, with the one in the reference date's year as the other reading. 3/4/2027 is read month first unless dateOrder is DMY, and the other order is given as the other reading when both are real dates.</p>
+<p><strong>Holidays.</strong></p>
+<p>The holiday calendars are the Business days tool's, imported read-only: US federal holidays under 5 U.S.C. 6103 on the days OPM observes them, and England and Wales bank holidays, both by rule from 1971 to 2100; India's central government holidays for offices in Delhi from the DoPT memoranda, 2025 to 2027.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A Saturday New Year's Day: the US holiday is observed on Friday, December 31, so 1 business day after Thursday, December 30, 2027 is Monday, January 3, 2028.</li><li>&quot;Next Friday&quot; said on a Saturday or Sunday is the same day on both readings, so the answer is not marked ambiguous.</li><li>A roll on a date that is already a business day leaves it unchanged and reports no rolledFrom.</li><li>Modified following never leaves the month: Saturday, July 31, 2027 rolls back to Friday, July 30.</li><li>Quantities above 99,999 are refused, and so are dates outside 1900 to 2199 or outside the holiday calendar's years.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>&quot;10 business days after next Friday&quot;, said on Monday, November 2, 2026</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;text&quot;: &quot;10 business days after next Friday&quot;,
+  &quot;ref&quot;: &quot;2026-11-02&quot;,
+  &quot;region&quot;: &quot;US&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>&quot;10 business days after next Friday&quot;, said on Monday, November 2, 2026</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">date</th><td>2026-11-23</td></tr>
+<tr><th scope="row">weekday</th><td>Monday</td></tr>
+<tr><th scope="row">holidaysSkipped</th><td>Veterans Day (2026-11-11)</td></tr>
+<tr><th scope="row">other reading</th><td>2026-11-30</td></tr>
+</tbody></table></div>
+<p><strong>Net 30 from Monday, October 12, 2026, rolled to the following business day</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;text&quot;: &quot;net 30 from 2026-10-12&quot;,
+  &quot;ref&quot;: &quot;2026-10-12&quot;,
+  &quot;roll&quot;: &quot;following&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Net 30 from Monday, October 12, 2026, rolled to the following business day</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">date</th><td>2026-11-12</td></tr>
+<tr><th scope="row">weekday</th><td>Thursday</td></tr>
+<tr><th scope="row">rolledFrom</th><td>2026-11-11</td></tr>
+</tbody></table></div>
+<p><strong>Three phrases in one call, said on Saturday, November 7, 2026</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;texts&quot;: [
+    &quot;end of next month&quot;,
+    &quot;first Monday of March 2027&quot;,
+    &quot;last business day of this quarter&quot;
+  ],
+  &quot;ref&quot;: &quot;2026-11-07&quot;,
+  &quot;region&quot;: &quot;US&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Three phrases in one call, said on Saturday, November 7, 2026</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">end of next month</th><td>2026-12-31 (Thursday)</td></tr>
+<tr><th scope="row">first Monday of March 2027</th><td>2027-03-01 (Monday)</td></tr>
+<tr><th scope="row">last business day of this quarter</th><td>2026-12-31 (Thursday)</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Times of day are refused: the answer is a calendar date, never a time.</li><li>Only the grammar's forms are read. A phrase it does not know is refused with the forms it does know, never guessed.</li><li>Holidays are the US federal, England and Wales or India central government (Delhi) calendars only. State, bank, school and company calendars are not included, except your own days off.</li><li>The tool does not decide which reading of an ambiguous phrase you meant. It gives the default and the other one.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The grammar and counting rules are fixed in the code. The holiday rules are the Business days tool's, last changed on 2026-10-30, and the OPM federal holiday page was read on 2026-11-07.</p>
+<ul class="cp-sources"><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></li><li><a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601: Date and time format</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>Calendar days, months, quarters and years, month-end clamping, weekdays on both readings, periods, business days, written dates, rolling and ISO weeks are each checked phrase by phrase from a fixed reference date. Business days must equal the Business days tool's own add, and refused phrases are checked to be refused.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/date-resolver/">Open the Natural-language date resolver tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the natural-language date resolver answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the natural-language date resolver refuse to answer?</h3><p>Times of day are refused: the answer is a calendar date, never a time. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/date-resolver/">Open the Natural-language date resolver tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/date-resolver/api/">Date resolver guides and API</a></li><li><a href="/toll-preview/methodology/business-days/">How business days are counted</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/date-resolver.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

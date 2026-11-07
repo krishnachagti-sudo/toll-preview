@@ -1,0 +1,11 @@
+provider,include_host,lookups,left_of_10,nested_includes,ip4_ranges,ip6_ranges,measured_on
+Amazon SES (custom MAIL FROM domain),amazonses.com,1,9,,13,0,2026-11-07
+Google Workspace,_spf.google.com,1,9,,2,6,2026-11-07
+Microsoft 365,spf.protection.outlook.com,1,9,,6,5,2026-11-07
+Microsoft 365 GCC High and DoD,spf.protection.office365.us,1,9,,4,3,2026-11-07
+Postmark,spf.mtasv.net,1,9,,4,0,2026-11-07
+Zendesk,mail.zendesk.com,1,9,,5,0,2026-11-07
+HubSpot,shared.hubspot.com,2,8,shared1.hubspot.com,27,0,2026-11-07
+Microsoft 365 operated by 21Vianet,spf.protection.partner.outlook.cn,2,8,spfa.protection.partner.outlook.cn,10,4,2026-11-07
+Zoho Mail,zohomail.com,2,8,spf.zohomail.com,8,0,2026-11-07
+Zoho (several Zoho services),one.zoho.com,4,6,spf.zoho.com zeptomail.net zcsend.net,73,3,2026-11-07

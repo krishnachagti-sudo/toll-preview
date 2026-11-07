@@ -1,0 +1,15 @@
+start,start_weekday,date_before,weekday,us_business_days_between
+2026-11-07,Saturday,2026-05-11,Monday,124
+2026-11-08,Sunday,2026-05-12,Tuesday,123
+2026-11-09,Monday,2026-05-13,Wednesday,123
+2026-11-10,Tuesday,2026-05-14,Thursday,123
+2026-11-11,Wednesday,2026-05-15,Friday,122
+2026-11-12,Thursday,2026-05-16,Saturday,123
+2026-11-13,Friday,2026-05-17,Sunday,124
+2026-11-14,Saturday,2026-05-18,Monday,123
+2026-11-15,Sunday,2026-05-19,Tuesday,122
+2026-11-16,Monday,2026-05-20,Wednesday,122
+2026-11-17,Tuesday,2026-05-21,Thursday,122
+2026-11-18,Wednesday,2026-05-22,Friday,122
+2026-11-19,Thursday,2026-05-23,Saturday,123
+2026-11-20,Friday,2026-05-24,Sunday,124

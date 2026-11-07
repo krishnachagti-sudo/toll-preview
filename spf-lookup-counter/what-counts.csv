@@ -1,0 +1,11 @@
+term,counts_toward_10,extra_limit,rfc7208_section
+include,yes,1 plus every lookup inside the included record,5.2
+a,yes,none beyond the 10,5.3
+mx,yes,"at most 10 MX names, else permerror",4.6.4
+ptr,yes,names past the first 10 ignored; do not use,5.5
+exists,yes,none beyond the 10,5.7
+redirect=,yes,ignored when the record has all,6.1
+ip4,no,none,5.6
+ip6,no,none,5.6
+all,no,terms after it are ignored,5.1
+exp=,no,looked up only after a fail,6.2

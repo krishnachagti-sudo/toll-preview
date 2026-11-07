@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to convert ZIP codes to counties in Excel (XLOOKUP)</title>
+<meta name="description" content="Add a county and county FIPS column to a list of ZIP codes in Excel or Google Sheets with XLOOKUP and a free crosswalk CSV, keeping leading zeros and flagging split ZIPs.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-county-in-excel/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/zip-to-county/zip-to-county-in-excel.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How to convert ZIP codes to counties in Excel (XLOOKUP)">
+<meta property="og:description" content="Add a county and county FIPS column to a list of ZIP codes in Excel or Google Sheets with XLOOKUP and a free crosswalk CSV, keeping leading zeros and flagging split ZIPs.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-county-in-excel/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-county-in-excel/","url":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-county-in-excel/","name":"How to convert ZIP codes to counties in Excel (XLOOKUP)","description":"Add a county and county FIPS column to a list of ZIP codes in Excel or Google Sheets with XLOOKUP and a free crosswalk CSV, keeping leading zeros and flagging split ZIPs.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"ZIP code to county lookup","item":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/"},{"@type":"ListItem","position":3,"name":"ZIP code to county in Excel","item":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-county-in-excel/"}]},{"@type":"HowTo","name":"How to convert ZIP codes to counties in Excel (XLOOKUP)","description":"Add a county and county FIPS column to a list of ZIP codes in Excel or Google Sheets with XLOOKUP and a free crosswalk CSV, keeping leading zeros and flagging split ZIPs.","step":[{"@type":"HowToStep","position":1,"name":"Download the crosswalk","text":"Open your state's page (or the national crosswalk) and download \"The table as CSV\"."},{"@type":"HowToStep","position":2,"name":"Import it as text","text":"In Excel use Data \u003e From Text/CSV, and set the zcta and county_fips columns to Text so 02134 keeps its 0. Name the sheet Crosswalk."},{"@type":"HowToStep","position":3,"name":"Repair your ZIP column","text":"If your ZIPs lost their zeros, use =TEXT(A2,\"00000\") in a new column; for ZIP+4 use =LEFT(A2,5)."},{"@type":"HowToStep","position":4,"name":"Look up the county","text":"Use =XLOOKUP(TEXT(A2,\"00000\"), Crosswalk!A:A, Crosswalk!C:C, \"not found\") for the county name, or column B for the FIPS code. The first match is the largest county."},{"@type":"HowToStep","position":5,"name":"Flag split ZIPs","text":"Add =COUNTIF(Crosswalk!A:A, TEXT(A2,\"00000\")) \u003e 1: TRUE means the ZIP has land in more than one county, so check those addresses or split the counts by share_percent."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why did Excel turn 02134 into 2134?","acceptedAnswer":{"@type":"Answer","text":"It read the ZIP as a number. Format the column as Text before pasting, or rebuild it with =TEXT(A2,\"00000\")."}},{"@type":"Question","name":"What does XLOOKUP return for a ZIP in two counties?","acceptedAnswer":{"@type":"Answer","text":"The first row, which in these CSVs is the county with the largest share. ZIP 10463 gives Bronx County, NY (95.75%); New York County, NY has the rest."}},{"@type":"Question","name":"Can I do it without a spreadsheet formula?","acceptedAnswer":{"@type":"Answer","text":"Yes: paste the column into the lookup and download the result as a CSV, one row per ZIP and county."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"zip-to-county"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/zip-to-county/">ZIP code to county lookup</a></li><li aria-current="page">ZIP code to county in Excel</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-file)">
+<p class="eyebrow">Guide</p>
+<h1>ZIP code to county in Excel</h1>
+<p class="cp-answer">To add a county to a column of ZIP codes in Excel, download your state's crosswalk CSV, import its zcta and county_fips columns as text, and look each ZIP up with =XLOOKUP(TEXT(A2,&quot;00000&quot;), Crosswalk!A:A, Crosswalk!C:C): the first match is the county with the largest share, so 2134 becomes 02134, Suffolk County, MA.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="formulas">The formulas</h2>
+<pre><code class="language-excel">=XLOOKUP(TEXT(A2,&quot;00000&quot;), Crosswalk!A:A, Crosswalk!C:C, &quot;not found&quot;)</code></pre>
+<pre><code class="language-excel">=COUNTIF(Crosswalk!A:A, TEXT(A2,&quot;00000&quot;)) &gt; 1</code></pre>
+<p>In Google Sheets, XLOOKUP works the same way; on older Excel use =INDEX(Crosswalk!C:C, MATCH(TEXT(A2,&quot;00000&quot;), Crosswalk!A:A, 0)).</p>
+</section>
+<section>
+<h2 id="example">Two ZIP codes, worked out</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>From the lookup, with the Census 2020 ZCTA file.</caption><thead><tr><th scope="col">You typed</th><th scope="col">ZIP</th><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">Share</th></tr></thead><tbody>
+<tr><th scope="row">2134</th><td>02134</td><td>Suffolk County, MA</td><td>25025</td><td class="r num">100%</td></tr>
+<tr><th scope="row">10463</th><td>10463</td><td>Bronx County, NY</td><td>36005</td><td class="r num">95.75%</td></tr>
+<tr><th scope="row">10463</th><td>10463</td><td>New York County, NY</td><td>36061</td><td class="r num">4.25%</td></tr>
+</tbody></table></div>
+</section>
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Or skip the formulas</h2><p class="muted">Paste the whole column: counties, FIPS codes, shares and metro areas as a CSV, leading zeros restored and flagged.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="2134"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=2134">Open 2134 in the lookup</a></p></aside>
+<p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Download the crosswalk.</strong> Open your state's page (or the national crosswalk) and download &quot;The table as CSV&quot;.</li><li><strong>Import it as text.</strong> In Excel use Data &gt; From Text/CSV, and set the zcta and county_fips columns to Text so 02134 keeps its 0. Name the sheet Crosswalk.</li><li><strong>Repair your ZIP column.</strong> If your ZIPs lost their zeros, use =TEXT(A2,&quot;00000&quot;) in a new column; for ZIP+4 use =LEFT(A2,5).</li><li><strong>Look up the county.</strong> Use =XLOOKUP(TEXT(A2,&quot;00000&quot;), Crosswalk!A:A, Crosswalk!C:C, &quot;not found&quot;) for the county name, or column B for the FIPS code. The first match is the largest county.</li><li><strong>Flag split ZIPs.</strong> Add =COUNTIF(Crosswalk!A:A, TEXT(A2,&quot;00000&quot;)) &gt; 1: TRUE means the ZIP has land in more than one county, so check those addresses or split the counts by share_percent.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Why did Excel turn 02134 into 2134?</h3><p>It read the ZIP as a number. Format the column as Text before pasting, or rebuild it with =TEXT(A2,&quot;00000&quot;).</p><h3>What does XLOOKUP return for a ZIP in two counties?</h3><p>The first row, which in these CSVs is the county with the largest share. ZIP 10463 gives Bronx County, NY (95.75%); New York County, NY has the rest.</p><h3>Can I do it without a spreadsheet formula?</h3><p>Yes: paste the column into the lookup and download the result as a CSV, one row per ZIP and county.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/zip-to-county/crosswalk/">ZIP code to county crosswalk</a></li><li><a href="/toll-preview/zip-to-county/zips-that-cross-county-lines/">ZIP codes that cross county lines</a></li><li><a href="/toll-preview/zip-to-county/zip-vs-zcta/">ZIP code vs ZCTA</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/zip-to-county/zip-to-county-in-excel.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

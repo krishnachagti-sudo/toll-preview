@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZIP code to CBSA (metro area) crosswalk, OMB 2023: Endwise</title>
+<meta name="description" content="Every ZIP code area (ZCTA) with its metropolitan or micropolitan statistical area (CBSA) and share of land, from the Census 2020 ZCTA file and OMB's July 2023 delineation. Free CSV.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/zip-to-county/zip-to-cbsa.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="ZIP code to CBSA (metro area) crosswalk, OMB 2023">
+<meta property="og:description" content="Every ZIP code area (ZCTA) with its metropolitan or micropolitan statistical area (CBSA) and share of land, from the Census 2020 ZCTA file and OMB's July 2023 delineation. Free CSV.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa/","url":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa/","name":"ZIP code to CBSA (metro area) crosswalk, OMB 2023","description":"Every ZIP code area (ZCTA) with its metropolitan or micropolitan statistical area (CBSA) and share of land, from the Census 2020 ZCTA file and OMB's July 2023 delineation. Free CSV.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"ZIP code to county lookup","item":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/"},{"@type":"ListItem","position":3,"name":"ZIP code to CBSA crosswalk","item":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa/"}]},{"@type":"Dataset","name":"ZIP code to CBSA (metro area) crosswalk, OMB 2023","description":"Every ZIP code area (ZCTA) with its metropolitan or micropolitan statistical area (CBSA) and share of land, from the Census 2020 ZCTA file and OMB's July 2023 delineation. Free CSV.","url":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa/","dateModified":"2026-11-07","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa.csv"}],"temporalCoverage":"2023","spatialCoverage":{"@type":"Place","name":"United States"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a CBSA?","acceptedAnswer":{"@type":"Answer","text":"A core based statistical area: a metropolitan or micropolitan statistical area defined by OMB from whole counties. The July 2023 delineation used here has 388 metro areas among the CBSAs with ZCTA land."}},{"@type":"Question","name":"How many ZIP codes are in no metro or micro area?","acceptedAnswer":{"@type":"Answer","text":"9,075 ZCTAs have most of their land outside any CBSA."}},{"@type":"Question","name":"Why do Connecticut ZIP codes have no CBSA here?","acceptedAnswer":{"@type":"Answer","text":"OMB's 2023 delineation builds Connecticut's CBSAs from its 9 planning regions, but the Census 2020 ZCTA file places ZCTAs in the 8 old counties, so the 288 ZCTAs wholly in Connecticut are left without one rather than guessed."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"zip-to-county"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/zip-to-county/">ZIP code to county lookup</a></li><li aria-current="page">ZIP code to CBSA crosswalk</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-file)">
+<p class="eyebrow">Reference table</p>
+<h1>ZIP code to CBSA crosswalk</h1>
+<p class="cp-answer">26,524 of the 33,791 ZCTAs have land in a metro or micro area (CBSA) under OMB's July 2023 delineation; New York-Newark-Jersey City, NY-NJ (35620) has the most, 904. A ZCTA's CBSA comes from its counties, so a ZCTA across a CBSA line gets each CBSA's share of its land.</p>
+<dl class="cp-facts"><div><dt>ZCTAs in a CBSA</dt><dd class="num">26,524</dd></div><div><dt>CBSAs with ZCTA land</dt><dd class="num">928</dd></div><div><dt>Mostly outside any CBSA</dt><dd class="num">9,075</dd></div></dl>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up a ZIP code's metro area</h2><p class="muted">The lookup gives each county's CBSA with the county.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="10463"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=10463">Open 10463 in the lookup</a></p></aside>
+<section>
+<h2 id="top">The CBSAs with the most ZIP code areas</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>ZCTAs with any land in the CBSA.</caption><thead><tr><th scope="col">CBSA</th><th scope="col">Code</th><th scope="col">Type</th><th scope="col" class="r num">ZCTAs</th></tr></thead><tbody>
+<tr><th scope="row">New York-Newark-Jersey City, NY-NJ</th><td>35620</td><td>Metropolitan</td><td class="r num">904</td></tr>
+<tr><th scope="row">Pittsburgh, PA</th><td>38300</td><td>Metropolitan</td><td class="r num">406</td></tr>
+<tr><th scope="row">Chicago-Naperville-Elgin, IL-IN</th><td>16980</td><td>Metropolitan</td><td class="r num">403</td></tr>
+<tr><th scope="row">Philadelphia-Camden-Wilmington, PA-NJ-DE-MD</th><td>37980</td><td>Metropolitan</td><td class="r num">401</td></tr>
+<tr><th scope="row">Los Angeles-Long Beach-Anaheim, CA</th><td>31080</td><td>Metropolitan</td><td class="r num">390</td></tr>
+<tr><th scope="row">Washington-Arlington-Alexandria, DC-VA-MD-WV</th><td>47900</td><td>Metropolitan</td><td class="r num">367</td></tr>
+<tr><th scope="row">Dallas-Fort Worth-Arlington, TX</th><td>19100</td><td>Metropolitan</td><td class="r num">292</td></tr>
+<tr><th scope="row">Boston-Cambridge-Newton, MA-NH</th><td>14460</td><td>Metropolitan</td><td class="r num">291</td></tr>
+<tr><th scope="row">St. Louis, MO-IL</th><td>41180</td><td>Metropolitan</td><td class="r num">266</td></tr>
+<tr><th scope="row">Houston-Pasadena-The Woodlands, TX</th><td>26420</td><td>Metropolitan</td><td class="r num">256</td></tr>
+<tr><th scope="row">Minneapolis-St. Paul-Bloomington, MN-WI</th><td>33460</td><td>Metropolitan</td><td class="r num">249</td></tr>
+<tr><th scope="row">Atlanta-Sandy Springs-Roswell, GA</th><td>12060</td><td>Metropolitan</td><td class="r num">237</td></tr>
+<tr><th scope="row">Detroit-Warren-Dearborn, MI</th><td>19820</td><td>Metropolitan</td><td class="r num">233</td></tr>
+<tr><th scope="row">Kansas City, MO-KS</th><td>28140</td><td>Metropolitan</td><td class="r num">228</td></tr>
+<tr><th scope="row">Miami-Fort Lauderdale-West Palm Beach, FL</th><td>33100</td><td>Metropolitan</td><td class="r num">189</td></tr>
+<tr><th scope="row">Cincinnati, OH-KY-IN</th><td>17140</td><td>Metropolitan</td><td class="r num">186</td></tr>
+<tr><th scope="row">San Francisco-Oakland-Fremont, CA</th><td>41860</td><td>Metropolitan</td><td class="r num">182</td></tr>
+<tr><th scope="row">Baltimore-Columbia-Towson, MD</th><td>12580</td><td>Metropolitan</td><td class="r num">174</td></tr>
+<tr><th scope="row">Seattle-Tacoma-Bellevue, WA</th><td>42660</td><td>Metropolitan</td><td class="r num">172</td></tr>
+<tr><th scope="row">Phoenix-Mesa-Chandler, AZ</th><td>38060</td><td>Metropolitan</td><td class="r num">169</td></tr>
+<tr><th scope="row">Riverside-San Bernardino-Ontario, CA</th><td>40140</td><td>Metropolitan</td><td class="r num">169</td></tr>
+<tr><th scope="row">Columbus, OH</th><td>18140</td><td>Metropolitan</td><td class="r num">164</td></tr>
+<tr><th scope="row">Denver-Aurora-Centennial, CO</th><td>19740</td><td>Metropolitan</td><td class="r num">148</td></tr>
+<tr><th scope="row">Indianapolis-Carmel-Greenwood, IN</th><td>26900</td><td>Metropolitan</td><td class="r num">143</td></tr>
+<tr><th scope="row">Tampa-St. Petersburg-Clearwater, FL</th><td>45300</td><td>Metropolitan</td><td class="r num">142</td></tr>
+</tbody></table></div>
+<p class="cp-note">Connecticut: no CBSA is given for its 2020 counties (see the questions below).</p>
+<p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a></li><li><a href="https://www.census.gov/geographies/reference-files/time-series/demo/metro-micro/delineation-files.html">U.S. Census Bureau: CBSA delineation files (where list 1 is published)</a></li><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>What is a CBSA?</h3><p>A core based statistical area: a metropolitan or micropolitan statistical area defined by OMB from whole counties. The July 2023 delineation used here has 388 metro areas among the CBSAs with ZCTA land.</p><h3>How many ZIP codes are in no metro or micro area?</h3><p>9,075 ZCTAs have most of their land outside any CBSA.</p><h3>Why do Connecticut ZIP codes have no CBSA here?</h3><p>OMB's 2023 delineation builds Connecticut's CBSAs from its 9 planning regions, but the Census 2020 ZCTA file places ZCTAs in the 8 old counties, so the 288 ZCTAs wholly in Connecticut are left without one rather than guessed.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/zip-to-county/crosswalk/">ZIP code to county crosswalk</a></li><li><a href="/toll-preview/zip-to-county/county-fips-codes/">County FIPS codes</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/zip-to-county/zip-to-cbsa.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/zip-to-county/zip-to-cbsa.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

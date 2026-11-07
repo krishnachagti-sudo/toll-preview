@@ -1,0 +1,8 @@
+what,payment,goods_services_value,deductible_part,disclosure_required
+Concert ticket (the Pub 1771 example),100.00,40.00,60.00,yes
+Raffle dinner,60.00,25.00,35.00,no
+Gala lunch,75.00,30.00,45.00,no
+"Gala lunch, one cent more",75.01,30.00,45.01,yes
+Gala dinner ticket,150.00,60.00,90.00,yes
+Golf outing for one,500.00,100.00,400.00,yes
+Auction item (weekend stay),1000.00,250.00,750.00,yes

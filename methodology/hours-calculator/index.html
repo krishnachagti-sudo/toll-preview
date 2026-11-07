@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How hours and overtime are calculated: method and sources</title>
+<meta name="description" content="How the hours calculator works: punches in whole minutes, unpaid breaks, overnight shifts, overtime per fixed workweek, the rounding check and its sources.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/hours-calculator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/hours-calculator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How hours and overtime are calculated: method and sources">
+<meta property="og:description" content="How the hours calculator works: punches in whole minutes, unpaid breaks, overnight shifts, overtime per fixed workweek, the rounding check and its sources.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/hours-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/hours-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/hours-calculator/","name":"How hours and overtime are calculated: method and sources","description":"How the hours calculator works: punches in whole minutes, unpaid breaks, overnight shifts, overtime per fixed workweek, the rounding check and its sources.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How hours and overtime are calculated: method and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/hours-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the hours calculator and timesheet answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the hours calculator and timesheet refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Overtime follows the federal rule unless other thresholds are set. A state law, contract or policy may require more, and no state rule is held. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How hours and overtime are calculated: method and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How hours and overtime are calculated: method and sources</h1>
+<p class="cp-answer">Hours are added up in whole minutes from each in and out punch, less unpaid breaks, and decimals are worked out from the minutes. Overtime is the time over 40 hours in each fixed workweek, never averaged over two weeks, at 1.5 times the rate. Rounding to 5, 6, 15 minutes is shown next to the punches as entered.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the hours calculator and timesheet compute?</h2>
+<p>The tool adds up clock-in and clock-out times less unpaid breaks, across midnight and, with a time zone, across daylight-saving changes. It splits the hours into regular time, overtime and optional double time by workweek, shows what time-clock rounding does to the punches, converts hours and minutes to decimal hours and back, and makes a timesheet PDF to sign.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>calculate</code>: Adds up a list of days, each with in and out pairs and unpaid break minutes. The answer has the totals, each day and each workweek, pay when an hourly rate is given, the rounding check when rounding is asked for, and flags.</li><li><code>timesheet</code>: The same calculation for one named employee and pay period, with a CSV and a signable PDF timesheet.</li><li><code>convert</code>: Turns hours and minutes into decimal hours (7 hours 53 minutes is 7.88), or decimal hours into hours and minutes to the nearest minute.</li><li><code>between</code>: The time between two clock times on one shift, less a break, across midnight when the end is earlier than the start, and with a date and time zone across a daylight-saving change.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>days</code>: Up to 62 days, each with a date, up to 6 in and out pairs and unpaid break minutes (0 to 720). Times may be written like 8:45 am, 17:15, 0845, noon or midnight; without am or pm a time is on the 24-hour clock.</li><li><code>weekStart, weekStartTime</code>: The day and time the fixed workweek starts. The default is Sunday at 12:00 AM.</li><li><code>weeklyOvertimeAfter, dailyOvertimeAfter, dailyDoubleTimeAfter</code>: Hours thresholds. Weekly overtime starts after 40 hours unless set otherwise or set to null; daily overtime and double time apply only when given.</li><li><code>rounding</code>: Optional: an increment of 5, 6, 15 minutes, and a mode of nearest (the default) or in-up-out-down.</li><li><code>timeZone, hourlyRate, periodStart, periodEnd</code>: A zone like America/Chicago to count real elapsed time; a rate in dollars with at most 2 decimals for gross pay; the pay period, which must hold every day entered.</li><li><code>employee, employer, approver</code>: For a timesheet: the names printed on it.</li></ul>
+<p>Outputs:</p>
+<ul><li>totals: worked, regular, overtime, double time and unpaid breaks, each in minutes, h:mm and decimal hours</li><li>days and weeks, with the hours of each and where each workweek starts</li><li>pay: regular, overtime at 1.5 times, double time at 2 times and gross, when a rate is given</li><li>rounding: the punched and rounded totals, the net difference and how many punches moved for or against the worker</li><li>flags: long shifts, short unpaid breaks, a break longer than the time punched, clock changes and workweeks cut by the pay period</li><li>for a timesheet, a CSV and a PDF</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each clock time is read to a minute of the day. An out punch at or before its in punch is the next day, so overnight shifts need no date of their own.</li><li>Every punch is placed on one wall-clock line of whole minutes. With a time zone, the real minutes between two punches are counted, so a shift over the night clocks fall back is an hour longer.</li><li>When rounding is asked for, each punch is rounded to the increment: nearest rounds the lower half down and the upper half up, and in-up-out-down rounds every in punch up and every out punch down. The unrounded punches are worked out too, for the check.</li><li>Each shift is split at the moment its workweek ends, so a shift over the boundary counts in both weeks.</li><li>The unpaid break comes off the earliest minutes of the day. Daily double time and daily overtime, when set, are the last minutes of the day, and are not counted again in the weekly overtime.</li><li>In each workweek, the straight-time minutes over the weekly threshold are overtime. Each workweek stands alone: hours are never averaged over two weeks.</li><li>Decimals are worked out from the minutes, to two places, half up. Pay is minutes times the rate, 1.5 times for overtime and 2 times for double time, to the nearest cent.</li></ol>
+<p><strong>Workweek and overtime.</strong></p>
+<p>29 CFR 778.105: a workweek is a fixed and regularly recurring period of 168 hours that may begin on any day and at any hour. 29 CFR 778.104 and DOL Fact Sheet #23: overtime is due on hours over 40 in a workweek, and averaging over two or more weeks is not permitted.</p>
+<p><strong>Rounding.</strong></p>
+<p>29 CFR 785.48(b) accepts recording time to the nearest 5 minutes, or the nearest one-tenth or quarter of an hour, as long as it does not fail to pay employees for all the time they worked over a period of time. The check shows what rounding did to these punches; it does not decide whether a rounding practice is lawful.</p>
+<p><strong>Breaks.</strong></p>
+<p>29 CFR 785.18: rest periods of 5 to about 20 minutes count as hours worked, so an unpaid break or gap under 20 minutes is flagged. 29 CFR 785.19: a meal period is ordinarily 30 minutes or more.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A biweekly pay period of 30 and 50 hours has 10 hours of overtime, because each workweek stands alone.</li><li>On the night clocks fall back in New York (October 31, 2026), 10 PM to 6 AM is 9 hours; on the night they spring forward (March 13, 2027) it is 7. A time skipped by the spring change is read with the offset before it, and a time that happens twice is read as its first occurrence; both are reported.</li><li>Equal start and end times on one shift are a full 24 hours.</li><li>A shift longer than 16 hours is flagged as a possible AM and PM slip, and a pair longer than 24 hours is refused.</li><li>A pay period given outright that cuts a workweek is flagged, because weekly overtime then counts only the hours entered.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A week with lunches, a split shift and a Saturday morning, at $18.50 an hour</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;calculate&quot;,
+  &quot;days&quot;: [
+    &#123;
+      &quot;date&quot;: &quot;2026-11-02&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;8:45 am&quot;,
+          &quot;out&quot;: &quot;5:15 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-03&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;9:00 am&quot;,
+          &quot;out&quot;: &quot;6:00 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-04&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;8:30 am&quot;,
+          &quot;out&quot;: &quot;12:00 pm&quot;
+        &#125;,
+        &#123;
+          &quot;in&quot;: &quot;12:30 pm&quot;,
+          &quot;out&quot;: &quot;5:00 pm&quot;
+        &#125;
+      ]
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-05&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;9:00 am&quot;,
+          &quot;out&quot;: &quot;7:30 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;8:45 am&quot;,
+          &quot;out&quot;: &quot;4:45 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-07&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;9:00 am&quot;,
+          &quot;out&quot;: &quot;1:00 pm&quot;
+        &#125;
+      ]
+    &#125;
+  ],
+  &quot;hourlyRate&quot;: &quot;18.50&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A week with lunches, a split shift and a Saturday morning, at $18.50 an hour</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">worked</th><td>46:00</td></tr>
+<tr><th scope="row">regular</th><td>40.00</td></tr>
+<tr><th scope="row">overtime</th><td>6.00</td></tr>
+<tr><th scope="row">overtime pay</th><td>$166.50</td></tr>
+<tr><th scope="row">gross</th><td>$906.50</td></tr>
+</tbody></table></div>
+<p><strong>A biweekly pay period of 30 and 50 hours</strong></p>
+<pre><code class="language-json">op: &quot;calculate&quot;
+days: 10 items</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A biweekly pay period of 30 and 50 hours</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">week from 2026-11-01</th><td>30.00 worked, 0.00 overtime</td></tr>
+<tr><th scope="row">week from 2026-11-08</th><td>50.00 worked, 10.00 overtime</td></tr>
+<tr><th scope="row">overtime</th><td>10.00</td></tr>
+</tbody></table></div>
+<p><strong>The rounding check: in up and out down to the quarter hour</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;calculate&quot;,
+  &quot;days&quot;: [
+    &#123;
+      &quot;date&quot;: &quot;2026-11-02&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;6:53 am&quot;,
+          &quot;out&quot;: &quot;3:08 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-03&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;7:06 am&quot;,
+          &quot;out&quot;: &quot;3:22 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-04&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;6:58 am&quot;,
+          &quot;out&quot;: &quot;3:04 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-05&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;7:07 am&quot;,
+          &quot;out&quot;: &quot;3:13 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-11-06&quot;,
+      &quot;punches&quot;: [
+        &#123;
+          &quot;in&quot;: &quot;7:02 am&quot;,
+          &quot;out&quot;: &quot;3:09 pm&quot;
+        &#125;
+      ],
+      &quot;breakMinutes&quot;: 30
+    &#125;
+  ],
+  &quot;rounding&quot;: &#123;
+    &quot;increment&quot;: 15,
+    &quot;mode&quot;: &quot;in-up-out-down&quot;
+  &#125;,
+  &quot;hourlyRate&quot;: &quot;17.00&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>The rounding check: in up and out down to the quarter hour</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">punched</th><td>38:20</td></tr>
+<tr><th scope="row">paid after rounding</th><td>37:00</td></tr>
+<tr><th scope="row">net</th><td>-1:20</td></tr>
+<tr><th scope="row">punches against the worker</th><td>10</td></tr>
+<tr><th scope="row">pay difference</th><td>-$22.67</td></tr>
+</tbody></table></div>
+<p><strong>An overnight shift on the night clocks fall back in New York</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;between&quot;,
+  &quot;start&quot;: &quot;10:00 pm&quot;,
+  &quot;end&quot;: &quot;6:00 am&quot;,
+  &quot;date&quot;: &quot;2026-10-31&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>An overnight shift on the night clocks fall back in New York</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">hours</th><td>9:00</td></tr>
+<tr><th scope="row">decimal</th><td>9.00</td></tr>
+<tr><th scope="row">overnight</th><td>true</td></tr>
+</tbody></table></div>
+<p><strong>7 hours 53 minutes in decimal hours</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;convert&quot;,
+  &quot;hours&quot;: 7,
+  &quot;minutes&quot;: 53
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>7 hours 53 minutes in decimal hours</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">decimal</th><td>7.88</td></tr>
+<tr><th scope="row">exact</th><td>7.8833</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Overtime follows the federal rule unless other thresholds are set. A state law, contract or policy may require more, and no state rule is held.</li><li>The rounding check does not decide whether a rounding practice is lawful.</li><li>Gross pay uses the hourly rate entered. Other pay that can count toward the regular rate for overtime, such as some bonuses, is not included.</li><li>Not legal or payroll advice.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The federal rules were copied by hand from Cornell LII and dol.gov on 2026-11-07 (Fact Sheet #23 revised October 2019, Fact Sheet #21 revised July 2008). A change on a source page is caught by the daily watch and checked by a person.</p>
+<ul class="cp-sources"><li><a href="https://www.law.cornell.edu/cfr/text/29/785.48">29 CFR 785.48 Use of time clocks</a></li><li><a href="https://www.law.cornell.edu/cfr/text/29/785.18">29 CFR 785.18 Rest</a></li><li><a href="https://www.law.cornell.edu/cfr/text/29/785.19">29 CFR 785.19 Meal</a></li><li><a href="https://www.law.cornell.edu/cfr/text/29/778.104">29 CFR 778.104 Each workweek stands alone</a></li><li><a href="https://www.law.cornell.edu/cfr/text/29/778.105">29 CFR 778.105 Determining the workweek</a></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay">U.S. Department of Labor, Wage and Hour Division, Fact Sheet #23: Overtime Pay Requirements of the FLSA</a></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/21-flsa-recordkeeping">U.S. Department of Labor, Wage and Hour Division, Fact Sheet #21: Recordkeeping Requirements under the FLSA</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The rules held are compared with the text read from each source. The worked week, the biweekly period, a shift over the workweek boundary, daily overtime and double time, rounding to 5, 6 and 15 minutes, daylight-saving nights and conversions are each checked to the minute, and the same timesheet input gives the same PDF bytes.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/hours-calculator/">Open the Hours calculator and timesheet tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the hours calculator and timesheet answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the hours calculator and timesheet refuse to answer?</h3><p>Overtime follows the federal rule unless other thresholds are set. A state law, contract or policy may require more, and no state rule is held. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/hours-calculator/">Open the Hours calculator and timesheet tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/hours-calculator/">Hours calculator</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/hours-calculator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

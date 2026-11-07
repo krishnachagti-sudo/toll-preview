@@ -1,6 +1,6 @@
 # Free data downloads
 
-227 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
+318 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
 
 ## What is in the files?
 
@@ -25,6 +25,12 @@ The tools behind these tables can be called over the REST API and over MCP, with
 | [1099 threshold 2025: $600 (forms filed in early 2026)](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2025/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2025.csv) | 2026-10-31 |
 | [1099 threshold 2026: $2,000 for 1099-NEC and most 1099-MISC boxes](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/2026.csv) | 2026-10-31 |
 | [California 1099 threshold 2026: does the state follow $2,000?](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/state/california/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/state/california.csv) | 2026-10-31 |
+
+Bulk redirect chain checker: 1 download
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [Redirect status codes for SEO: 301 vs 302 vs 303 vs 307 vs 308](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-status-codes/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-status-codes.csv) | 2026-11-07 |
 
 Business days: 140 downloads
 
@@ -218,6 +224,17 @@ Exchange rate on a date: 26 downloads
 | [USD to CAD exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-cad.csv) | 2026-11-06 |
 | [USD to INR exchange rate history: ECB reference rates by date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/usd-inr.csv) | 2026-11-06 |
 
+Hours calculator and timesheet: 6 downloads
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [Calculate hours worked with a lunch break (and two punches a day)](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/hours-with-lunch-break/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/hours-with-lunch-break.csv) | 2026-11-07 |
+| [Hours between two times: common shifts with and without lunch](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/hours-between-times/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/hours-between-times.csv) | 2026-11-07 |
+| [Military time chart for time cards, with decimal hours](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/military-time-chart/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/military-time-chart.csv) | 2026-11-07 |
+| [Minutes to decimal hours chart (1 to 60) for payroll](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/minutes-to-decimal-chart/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/minutes-to-decimal-chart.csv) | 2026-11-07 |
+| [Overnight shift hours, daylight-saving nights and the Excel #### fix](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/overnight-shift-hours.csv) | 2026-11-07 |
+| [Time clock rounding rules: 5, 6 and 15 minutes (29 CFR 785.48)](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/time-clock-rounding-rules/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/time-clock-rounding-rules.csv) | 2026-11-07 |
+
 IFTA quarterly return calculator: 5 downloads
 
 | Table | CSV | Data date |
@@ -255,11 +272,44 @@ Mileage reimbursement and IRS mileage log: 4 downloads
 | [Medical mileage rate 2026: 20.5 cents, 23.5 from July 1](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/medical-mileage-rate-2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/medical-mileage-rate-2026.csv) | 2026-10-31 |
 | [Mileage log template 2026 for Excel and Google Sheets](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/mileage-log-template/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/mileage-log-template.csv) | 2026-10-31 |
 
+Natural-language date resolver: 20 downloads
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [Date arithmetic traps: month ends, leap days, ISO weeks, observed holidays](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/date-arithmetic-traps/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/date-arithmetic-traps.csv) | 2026-11-07 |
+| [What date is 100 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-from-today.csv) | 2026-11-07 |
+| [What date is 12 weeks from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/12-weeks-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/12-weeks-from-today.csv) | 2026-11-07 |
+| [What date is 120 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-from-today.csv) | 2026-11-07 |
+| [What date is 14 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-from-today.csv) | 2026-11-07 |
+| [What date is 180 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-from-today.csv) | 2026-11-07 |
+| [What date is 30 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/30-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/30-days-from-today.csv) | 2026-11-07 |
+| [What date is 45 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-from-today.csv) | 2026-11-07 |
+| [What date is 6 weeks from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/6-weeks-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/6-weeks-from-today.csv) | 2026-11-07 |
+| [What date is 60 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/60-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/60-days-from-today.csv) | 2026-11-07 |
+| [What date is 8 weeks from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/8-weeks-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/8-weeks-from-today.csv) | 2026-11-07 |
+| [What date is 90 days from today?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-from-today/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-from-today.csv) | 2026-11-07 |
+| [What date was 100 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-ago.csv) | 2026-11-07 |
+| [What date was 120 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-ago.csv) | 2026-11-07 |
+| [What date was 14 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-ago.csv) | 2026-11-07 |
+| [What date was 180 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-ago.csv) | 2026-11-07 |
+| [What date was 30 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/30-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/30-days-ago.csv) | 2026-11-07 |
+| [What date was 45 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-ago.csv) | 2026-11-07 |
+| [What date was 60 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/60-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/60-days-ago.csv) | 2026-11-07 |
+| [What date was 90 days ago?](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-ago/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-ago.csv) | 2026-11-07 |
+
 Other: 1 download
 
 | Table | CSV | Data date |
 | --- | --- | --- |
 | [IRS mileage rate history 2011 to 2026](https://krishnachagti-sudo.github.io/toll-preview/irs-mileage-rate-history/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/irs-mileage-rate-history.csv) | 2026-10-31 |
+
+SPF lookup counter: 3 downloads
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [SPF include lookup costs: Google, Microsoft 365, Amazon SES and more](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/include-costs/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/include-costs.csv) | 2026-11-07 |
+| [SPF macros explained: %{i}, %{ir}, %{d2} and every RFC 7208 example](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/macros.csv) | 2026-11-07 |
+| [The SPF 10 lookup limit: what counts and what does not](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/what-counts/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/what-counts.csv) | 2026-11-07 |
 
 Tax set-aside per payment: 24 downloads
 
@@ -299,6 +349,77 @@ Trucker per diem worksheet: 5 downloads
 | [Per diem for truck drivers 2025: $80 a day all year](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/2025/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/2025.csv) | 2026-10-31 |
 | [Per diem for truck drivers 2026: $80 a day, 80% deductible](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/2026/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/2026.csv) | 2026-10-31 |
 | [Trucker per diem rate history since 2018 ($66, $69, $80)](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/rate-history/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/rate-history.csv) | 2026-10-31 |
+
+Year-end giving statements: 4 downloads
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [Church contribution statement template (filled example)](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/church-contribution-statement/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/church-contribution-statement.csv) | 2026-11-07 |
+| [Nonprofit year-end donation statement template (with a gala ticket)](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/nonprofit-year-end-statement/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/nonprofit-year-end-statement.csv) | 2026-11-07 |
+| [Quid pro quo contributions: the $75 disclosure rule, worked](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/quid-pro-quo/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/quid-pro-quo.csv) | 2026-11-07 |
+| [Year-end giving letter template that is also the tax receipt](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/year-end-giving-letter/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/year-end-giving-letter.csv) | 2026-11-07 |
+
+ZIP code and UK postcode to county lookup: 57 downloads
+
+| Table | CSV | Data date |
+| --- | --- | --- |
+| [Alabama ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/alabama/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/alabama.csv) | 2026-11-07 |
+| [Alaska ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/alaska/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/alaska.csv) | 2026-11-07 |
+| [Arizona ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/arizona/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/arizona.csv) | 2026-11-07 |
+| [Arkansas ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/arkansas/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/arkansas.csv) | 2026-11-07 |
+| [California ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/california/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/california.csv) | 2026-11-07 |
+| [Colorado ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/colorado/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/colorado.csv) | 2026-11-07 |
+| [Connecticut ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/connecticut/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/connecticut.csv) | 2026-11-07 |
+| [County FIPS codes: all 3,234 US counties, with ZIP counts](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/county-fips-codes/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/county-fips-codes.csv) | 2026-11-07 |
+| [Delaware ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/delaware/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/delaware.csv) | 2026-11-07 |
+| [District of Columbia ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/district-of-columbia/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/district-of-columbia.csv) | 2026-11-07 |
+| [Florida ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/florida/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/florida.csv) | 2026-11-07 |
+| [Georgia ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/georgia/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/georgia.csv) | 2026-11-07 |
+| [Hawaii ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/hawaii/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/hawaii.csv) | 2026-11-07 |
+| [Idaho ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/idaho/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/idaho.csv) | 2026-11-07 |
+| [Illinois ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/illinois/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/illinois.csv) | 2026-11-07 |
+| [Indiana ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/indiana/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/indiana.csv) | 2026-11-07 |
+| [Iowa ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/iowa/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/iowa.csv) | 2026-11-07 |
+| [Kansas ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/kansas/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/kansas.csv) | 2026-11-07 |
+| [Kentucky ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/kentucky/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/kentucky.csv) | 2026-11-07 |
+| [Louisiana ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/louisiana/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/louisiana.csv) | 2026-11-07 |
+| [Maine ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/maine/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/maine.csv) | 2026-11-07 |
+| [Maryland ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/maryland/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/maryland.csv) | 2026-11-07 |
+| [Massachusetts ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/massachusetts/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/massachusetts.csv) | 2026-11-07 |
+| [Michigan ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/michigan/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/michigan.csv) | 2026-11-07 |
+| [Minnesota ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/minnesota/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/minnesota.csv) | 2026-11-07 |
+| [Mississippi ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/mississippi/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/mississippi.csv) | 2026-11-07 |
+| [Missouri ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/missouri/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/missouri.csv) | 2026-11-07 |
+| [Montana ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/montana/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/montana.csv) | 2026-11-07 |
+| [Nebraska ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/nebraska/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/nebraska.csv) | 2026-11-07 |
+| [Nevada ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/nevada/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/nevada.csv) | 2026-11-07 |
+| [New Hampshire ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-hampshire/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-hampshire.csv) | 2026-11-07 |
+| [New Jersey ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-jersey/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-jersey.csv) | 2026-11-07 |
+| [New Mexico ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-mexico/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-mexico.csv) | 2026-11-07 |
+| [New York ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-york/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/new-york.csv) | 2026-11-07 |
+| [North Carolina ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/north-carolina/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/north-carolina.csv) | 2026-11-07 |
+| [North Dakota ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/north-dakota/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/north-dakota.csv) | 2026-11-07 |
+| [Ohio ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/ohio/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/ohio.csv) | 2026-11-07 |
+| [Oklahoma ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/oklahoma/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/oklahoma.csv) | 2026-11-07 |
+| [Oregon ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/oregon/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/oregon.csv) | 2026-11-07 |
+| [Pennsylvania ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/pennsylvania/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/pennsylvania.csv) | 2026-11-07 |
+| [Puerto Rico ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/puerto-rico/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/puerto-rico.csv) | 2026-11-07 |
+| [Rhode Island ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/rhode-island/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/rhode-island.csv) | 2026-11-07 |
+| [South Carolina ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/south-carolina/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/south-carolina.csv) | 2026-11-07 |
+| [South Dakota ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/south-dakota/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/south-dakota.csv) | 2026-11-07 |
+| [Tennessee ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/tennessee/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/tennessee.csv) | 2026-11-07 |
+| [Texas ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/texas/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/texas.csv) | 2026-11-07 |
+| [UK postcode to local authority lookup (ONSPD August 2026)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/uk-postcode-to-local-authority/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/uk-postcode-to-local-authority.csv) | 2026-11-07 |
+| [Utah ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/utah/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/utah.csv) | 2026-11-07 |
+| [Vermont ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/vermont/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/vermont.csv) | 2026-11-07 |
+| [Virginia ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/virginia/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/virginia.csv) | 2026-11-07 |
+| [Washington ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/washington/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/washington.csv) | 2026-11-07 |
+| [West Virginia ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/west-virginia/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/west-virginia.csv) | 2026-11-07 |
+| [Wisconsin ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/wisconsin/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/wisconsin.csv) | 2026-11-07 |
+| [Wyoming ZIP code to county crosswalk (CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/wyoming/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/state/wyoming.csv) | 2026-11-07 |
+| [ZIP code to CBSA (metro area) crosswalk, OMB 2023](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-to-cbsa.csv) | 2026-11-07 |
+| [ZIP code to county crosswalk (Census 2020 ZCTA file, CSV)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/crosswalk/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/crosswalk.csv) | 2026-11-07 |
+| [ZIP codes that cross county lines: 10,180 of 33,791 (Census 2020)](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zips-that-cross-county-lines/) | [CSV](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zips-that-cross-county-lines.csv) | 2026-11-07 |
 
 ## Can you reuse these files?
 
