@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How CSV exports are fixed: method and sources: Endwise</title>
+<meta name="description" content="How the CSV fixer works: encoding detection, RFC 4180 parsing, the proof for DD/MM or MM/DD dates, ZIP codes and leading zeros, long IDs and saved recipes.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/fix-csv-export/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/fix-csv-export.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How CSV exports are fixed: method and sources">
+<meta property="og:description" content="How the CSV fixer works: encoding detection, RFC 4180 parsing, the proof for DD/MM or MM/DD dates, ZIP codes and leading zeros, long IDs and saved recipes.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/fix-csv-export/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/fix-csv-export/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/fix-csv-export/","name":"How CSV exports are fixed: method and sources","description":"How the CSV fixer works: encoding detection, RFC 4180 parsing, the proof for DD/MM or MM/DD dates, ZIP codes and leading zeros, long IDs and saved recipes.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How CSV exports are fixed: method and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/fix-csv-export/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the fix a csv export (leading zeros, dates, encoding) with a saved recipe answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the fix a csv export (leading zeros, dates, encoding) with a saved recipe refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"One call takes one file of at most 2,000,000 bytes (2 MB), 100,000 rows and 300 columns. An empty file, or one holding null bytes (an .xlsx, a PDF or UTF-16 read the wrong way), is refused. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How CSV exports are fixed: method and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How CSV exports are fixed: method and sources</h1>
+<p class="cp-answer">A date is read as DD/MM only when its first part is above 12, and as MM/DD only when its second part is; a column proven one way reads its other dates that way, and a date with both parts 12 or below is otherwise listed and left as written. ZIP codes go back to 5 or 9 digits, and one call takes a file of up to 2,000,000 bytes.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the fix a csv export (leading zeros, dates, encoding) with a saved recipe compute?</h2>
+<p>The tool takes the bytes of a CSV export and works out its encoding, its delimiter and what each column holds: dates and which order they are written in, ZIP codes and codes that lost their leading zeros, IDs of 16 or more digits, values Excel already damaged, amounts with currency signs and accents garbled by the wrong encoding. A scan reports it all, with the first 20 rows fixed and a suggested recipe. A fix returns the whole file fixed, a change report and the recipe, which holds settings only and applies the same fix to next month's export.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>scan</code>: Reads the file and returns the answer sentence, the encoding and delimiter, each column with what it holds and the rule it would get, ragged rows, how the columns differ from a recipe, the changes a fix would make, a preview of the first 20 rows before and after, and a suggested recipe. Free.</li><li><code>fix</code>: Applies the rules to every row and returns the fixed file (base64), the counts of each change, the values left as written with their lines, a change report CSV (up to 5,000 rows listed, all counted) and the recipe used.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>file or text</code>: The CSV as its bytes in base64 (so the encoding can be read) or as text, one of the two, at most 2,000,000 bytes.</li><li><code>name</code>: The file name, used to name the fixed file (name-fixed.csv).</li><li><code>recipe</code>: An earlier recipe: the input settings (encoding, delimiter, header row, garbled-accent repair), the output choices and a rule per column by heading (keep, date with an order, zip, code with an optional width, or number with a decimal mark).</li><li><code>output</code>: The encoding written (utf-8-bom by default, utf-8 or windows-1252), the delimiter, CRLF or LF line ends, dates as iso (YYYY-MM-DD, the default), mdy or dmy, and excelGuard, which writes codes as =&quot;...&quot; so Excel keeps them as text.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: one sentence on what was found or fixed</li><li>encoding, delimiter and rows</li><li>columns: per column, its kind (date, zip, code, long-id, number, text or empty), the proof counts for dates, the code widths, and the rule applied</li><li>changes and flags: the count of each kind of change, and the values left as written with the reason and their lines</li><li>drift: headings missing, added or moved since the recipe</li><li>recipe: the settings that fix the file, never its values; and for fix, the fixed file and the change report CSV</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The bytes are decoded. A byte order mark comes first (EF BB BF for UTF-8, FF FE and FE FF for UTF-16), then UTF-16 without a BOM when most bytes in odd or even places are zero, then strict UTF-8 (overlong forms, surrogates and code points above U+10FFFF are invalid). A file that is not valid UTF-8 is read as Windows-1252, and the first bad byte and its offset are named.</li><li>Text that was UTF-8 read as Windows-1252 (CafÃ© for Café) is turned back field by field, only where turning it back gives valid UTF-8 with a non-ASCII character in it.</li><li>The delimiter is found from the first 50 records: of comma, semicolon, tab and pipe, the one that splits the most records into the same number of fields (more than one); a tie goes to more fields, then in that order. The records are parsed by RFC 4180: quoted fields may hold the delimiter, doubled quotes and line breaks. Rows with a different field count from the heading row are listed.</li><li>Each column is analysed. It is a date column when at least 90% of its filled values read as dates; a first part above 12 proves DD/MM, a second part above 12 proves MM/DD, and both in one column make it mixed. Two-digit years follow Excel's rule: 00 to 29 are 2000 to 2029, 30 to 99 are 1930 to 1999.</li><li>A column headed ZIP, postal or postcode with at least 90% ZIP-shaped values is a ZIP column. A column of digits only is a code column when values start with 0, a long-ID column when values have 16 or more digits or were already turned into scientific notation (E+15 and up), and otherwise a number. Amounts with currency signs, digit-grouping commas, brackets or a trailing minus are noted.</li><li>Each column gets its rule: the recipe's, matched by heading with case and spaces ignored, or else the suggestion from the analysis. A column the recipe knew without a rule is kept as written, and a new one gets the suggestion. Missing, added and moved headings are reported.</li><li>The rules are applied to every value. Dates are rewritten when their own day proves the order, or by the column's proven order or the recipe; a value that reads the same either way is settled; a date against the recipe's order is flagged, not swapped. ZIP codes are padded to 5 digits, or 9 for ZIP+4. Codes are padded only to a width the recipe states, and a longer value is flagged. Amounts become plain numbers, with brackets read as negative.</li><li>The file is written by RFC 4180, quoting only fields that hold the delimiter, a quote or a line break, in the chosen encoding; a character with no Windows-1252 byte is written as &quot;?&quot; and counted. The change report lists each change with its line, column, before, after and rule.</li></ol>
+<p><strong>RFC 4180.</strong></p>
+<p>The CSV format of RFC 4180 is read and written: fields separated by the delimiter, records by line breaks, a field with the delimiter, a quote or a line break in double quotes, and a quote inside a field doubled. A quote opened and never closed is reported with its line, and a quote inside an unquoted field is kept as written.</p>
+<p><strong>WHATWG Encoding Standard and Unicode.</strong></p>
+<p>Windows-1252 is decoded and encoded by the WHATWG index-windows-1252 table dated 2024-09-18: bytes 0x80 to 0x9F map to the 32 code points it lists, and 0xA0 to 0xFF are the same code points as the bytes. The UTF-8 byte order mark is EF BB BF, used only as a signature, as the Unicode FAQ says.</p>
+<p><strong>Microsoft Excel.</strong></p>
+<p>Two-digit years follow the 2029 rule from Microsoft's page on two-digit years. IDs of 16 or more digits are flagged because Excel keeps at most 15 significant digits; a value already in scientific notation has lost digits and is flagged, never filled in.</p>
+<p><strong>Our own rules.</strong></p>
+<p>Nothing is guessed. A date with both parts 12 or below is settled only by its column's proven order or the recipe. A code is padded only to a width a rule gives (ZIP 5, ZIP+4 9) or the recipe states; a width the analysis finds is suggested, never applied. The same bytes and recipe always give the same bytes out.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A column that mixes DD/MM and MM/DD rewrites each provable date its own way and leaves the ambiguous ones as written, unless the recipe says how to read them.</li><li>A date column with no proof either way asks for the order instead of guessing.</li><li>ZIP+4 written with a space is written back with a hyphen, and 6 to 9 digits with no hyphen are padded to 9 digits.</li><li>Two columns with the same heading are told apart by position.</li><li>A file with a line break at the end has no empty last row, and blank lines in the middle are kept.</li><li>A file without a heading row names its columns Column 1, Column 2 and so on.</li><li>Values Excel already turned into dates in a text column (such as 1-Mar) are counted and reported.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Scan a monthly export: encoding, ZIP codes, the date order and its proof, damaged IDs</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;scan&quot;,
+  &quot;text&quot;: &quot;Account,Customer,ZIP,Posted,Amount,Order ID\r\n0010,CafÃ© Rio,2134,13/03/2026,\&quot;$1,200.50\&quot;,4000123412341234\r\n0200,ZoÃ« Park,90210,03/04/2026,(45.00),4000123412349876\r\n3000,Ann Lee,501,05/05/2026,12.00,1.23457E+15\r\n0040,Ã‰lise Roy,7030,28/02/2026,\&quot;$2,050.00\&quot;,4000555566667777\r\n&quot;,
+  &quot;name&quot;: &quot;bank-export-march.csv&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Scan a monthly export: encoding, ZIP codes, the date order and its proof, damaged IDs</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Your file is UTF-8 without a BOM, comma-separated, with 4 rows and 6 columns: 3 ZIP codes in &quot;ZIP&quot; lost their leading zero; 1 column of codes with leading zeros to keep as text (&quot;Account&quot;); 3 IDs of 16 or more digits that Excel would cut to 15; dates in &quot;Posted&quot; read DD/MM (2 values prove it); 1 value already in scientific notation (1.23E+15), whose lost digits are not in the file; 3 amounts written with currency signs, digit-grouping commas or brackets in &quot;Amount&quot; (a recipe can write them as plain numbers); 3 values with accents or symbols that Excel shows garbled unless the file has a BOM; 3 values with garbled accents (such as Ã© for é) to repair.</td></tr>
+<tr><th scope="row">encoding</th><td>utf-8</td></tr>
+<tr><th scope="row">rows</th><td>4</td></tr>
+<tr><th scope="row">Account</th><td>code; rule code</td></tr>
+<tr><th scope="row">Customer</th><td>text; rule keep</td></tr>
+<tr><th scope="row">ZIP</th><td>zip; rule zip</td></tr>
+<tr><th scope="row">Posted</th><td>date; rule date (dmy)</td></tr>
+<tr><th scope="row">Amount</th><td>number; rule keep</td></tr>
+<tr><th scope="row">Order ID</th><td>long-id; rule code</td></tr>
+</tbody></table></div>
+<p><strong>Fix it with a saved recipe: ZIP codes restored, dates as YYYY-MM-DD, amounts plain</strong></p>
+<pre><code class="language-json">op: &quot;fix&quot;
+text: &quot;Account,Customer,ZIP,Posted,Amount,Order ID\r\n0010,CafÃ© Rio,2134,13/03/2026,\&quot;$1,200.50\&quot;,4000123412341234\r\n0200,ZoÃ« Park,90210,03/04/2026,(45.00),4000123412349876\r\n3000,Ann Lee,501,05/05/2026,12.00,1.23457E+15\r\n0040,Ã‰lise Roy,7030,28/02/2026,\&quot;$2,050.00\&quot;,4000555566667777\r\n&quot;
+name: &quot;bank-export-march.csv&quot;
+recipe: &#123;...&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Fix it with a saved recipe: ZIP codes restored, dates as YYYY-MM-DD, amounts plain</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Fixed 4 rows: 3 ZIP codes restored to full width, 4 dates written as YYYY-MM-DD, 3 amounts written as plain numbers, 3 garbled values repaired; saved as UTF-8 with a BOM. 1 other value could not be fixed and is listed with its line.</td></tr>
+<tr><th scope="row">file</th><td>bank-export-march-fixed.csv, 271 bytes, utf-8-bom</td></tr>
+<tr><th scope="row">changes: zip-restored</th><td>3</td></tr>
+<tr><th scope="row">changes: date-proved-dmy</th><td>2</td></tr>
+<tr><th scope="row">changes: amount-plain</th><td>3</td></tr>
+<tr><th scope="row">changes: date-column-dmy</th><td>1</td></tr>
+<tr><th scope="row">changes: date-same</th><td>1</td></tr>
+<tr><th scope="row">changes: mojibake</th><td>3</td></tr>
+<tr><th scope="row">changes listed</th><td>13</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>One call takes one file of at most 2,000,000 bytes (2 MB), 100,000 rows and 300 columns. An empty file, or one holding null bytes (an .xlsx, a PDF or UTF-16 read the wrong way), is refused.</li><li>Digits Excel already cut to 15, and zeros already stripped from codes with no known width, are not in the file any more. They are flagged, never invented.</li><li>It does not check the file against a schema, rename headings or remove rows.</li><li>Files are processed in memory and not kept; a recipe holds settings only, never the file's values.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The Windows-1252 table is the WHATWG index dated 2024-09-18, read on 2026-11-08. The Microsoft and Unicode facts were read on 2026-11-08, and the Microsoft pages are checked for changes once a day. The rules change only with the code (engine fix-csv-export-1); nothing is fetched when a file is fixed.</p>
+<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc4180.txt">IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005)</a></li><li><a href="https://encoding.spec.whatwg.org/index-windows-1252.txt">WHATWG Encoding Standard: index-windows-1252 (dated 2024-09-18)</a></li><li><a href="https://www.unicode.org/faq/utf_bom.html">Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM</a></li><li><a href="https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers">Microsoft Learn: How Excel works with two-digit year numbers</a></li><li><a href="https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers">Microsoft Support: Keeping leading zeros and large numbers</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests pin the Windows-1252 table to the WHATWG index and the facts to their read date, then check decoding (BOMs, strict UTF-8, Windows-1252), encoding with and without a BOM, garbled-accent repair, RFC 4180 parsing and writing, delimiter detection, what each date proves, the 2029 rule, ZIP codes and amounts, mixed and unproven date columns, codes and widths, long IDs, recipes applied to next month's file with drift, limits and refusals, and that the same file and recipe give the same bytes. The worked examples equal run().</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/fix-csv-export/">Open the Fix a CSV export (leading zeros, dates, encoding) with a saved recipe tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the fix a csv export (leading zeros, dates, encoding) with a saved recipe answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the fix a csv export (leading zeros, dates, encoding) with a saved recipe refuse to answer?</h3><p>One call takes one file of at most 2,000,000 bytes (2 MB), 100,000 rows and 300 columns. An empty file, or one holding null bytes (an .xlsx, a PDF or UTF-16 read the wrong way), is refused. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/fix-csv-export/">Open the Fix a CSV export (leading zeros, dates, encoding) with a saved recipe tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/fix-csv-export/csv-date-format-dd-mm-mm-dd/">DD/MM and MM/DD dates in a CSV</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/fix-csv-export.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

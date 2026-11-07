@@ -1,0 +1,21 @@
+manufacturer country,code,in the EU,responsible person needed
+the United States,US,no,yes
+the United Kingdom,GB,no,yes
+China,CN,no,yes
+Hong Kong,HK,no,yes
+India,IN,no,yes
+Canada,CA,no,yes
+Australia,AU,no,yes
+Japan,JP,no,yes
+South Korea,KR,no,yes
+Türkiye,TR,no,yes
+Switzerland,CH,no,yes
+Norway,NO,no,yes
+Northern Ireland,XI,no,yes
+Germany,DE,yes,no (the manufacturer is the EU operator)
+France,FR,yes,no (the manufacturer is the EU operator)
+Ireland,IE,yes,no (the manufacturer is the EU operator)
+Netherlands,NL,yes,no (the manufacturer is the EU operator)
+Poland,PL,yes,no (the manufacturer is the EU operator)
+Italy,IT,yes,no (the manufacturer is the EU operator)
+Spain,ES,yes,no (the manufacturer is the EU operator)

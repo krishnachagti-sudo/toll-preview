@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How recipe costs are calculated: method and sources: Endwise</title>
+<meta name="description" content="How the recipe cost calculator works: edible portion cost, NIST unit factors, USDA cup weights, sub-recipes, food cost %, menu price and pour cost.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/recipe-cost-calculator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/recipe-cost-calculator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How recipe costs are calculated: method and sources">
+<meta property="og:description" content="How the recipe cost calculator works: edible portion cost, NIST unit factors, USDA cup weights, sub-recipes, food cost %, menu price and pour cost.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/recipe-cost-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/recipe-cost-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/recipe-cost-calculator/","name":"How recipe costs are calculated: method and sources","description":"How the recipe cost calculator works: edible portion cost, NIST unit factors, USDA cup weights, sub-recipes, food cost %, menu price and pour cost.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How recipe costs are calculated: method and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/recipe-cost-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the recipe cost calculator and menu re-coster answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the recipe cost calculator and menu re-coster refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Costs are only as current as the prices entered and only as true as the yields given. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How recipe costs are calculated: method and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How recipe costs are calculated: method and sources</h1>
+<p class="cp-answer">Each ingredient's cost per gram, milliliter or piece is its pack price divided by its pack size and by its yield %. Each recipe line is converted into the pack's unit with NIST Handbook 44's exact factors (1 lb = 453.59237 g, 1 gal = 3785.411784 ml), and a portion costs the batch total divided by the portions. Food cost % is portion cost / menu price x 100, and the price that meets a target is portion cost / target, rounded up.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the recipe cost calculator and menu re-coster compute?</h2>
+<p>From one price list (each ingredient with its pack size, unit, price and yield %), the tool costs every recipe and every sub-recipe used inside another. For each recipe it gives the batch and portion cost, the cost of each line, the food cost % against the menu price, the price that meets your target and a rounded suggested price. If the list carries last time's prices it also says how far each dish moved. The same engine answers single calculations (menu price, food cost %, pour cost, cake and bakery pricing, catering per guest, yield, unit conversion and actual food cost) and builds an Excel workbook with live formulas.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>recost</code>: Costs a whole menu: the price list as ingredients or priceListCsv, the recipes as recipes or recipesCsv, a target food cost % (default 30), a price ending and a drift threshold in points (default 1). The answer has a summary, a repricing list of dishes over target, the drift since the last prices, the ingredients that changed or are unused, every recipe with its lines, and a CSV.</li><li><code>workbook</code>: Costs the same menu as recost and returns it as an Excel workbook with four sheets (Menu, Lines, Prices, Settings) whose formulas read one price list, so one price edit updates every recipe.</li><li><code>template</code>: Returns the workbook built from the sample menu of 6 recipes. Free.</li><li><code>cost</code>: Costs one recipe (with any sub-recipes it uses) from a price list: the plate cost, the food cost % against its menu price and the price at the target.</li><li><code>menu-price</code>: The menu price for a plate cost at a target food cost %: cost / target, rounded up to the chosen ending, with the food cost % at that price and the gross profit.</li><li><code>food-cost</code>: Food cost % = cost / price x 100, with the gross profit and margin, and the price at a target if one is given.</li><li><code>pour</code>: Pour cost: the bottle's usable volume after any loss, divided by the pour, gives the pours a bottle; the bottle price over the pours, plus any mixer and garnish, is the cost per pour. With a drink price it gives the pour cost %, and with a target the price that meets it.</li><li><code>bake</code>: Cake and bakery pricing: ingredients, labor (hours x rate), overhead (a % of ingredients and labor plus a per-batch amount) and packaging per piece make the batch cost; the cost per piece divided by (1 - profit margin) is the price.</li><li><code>catering</code>: Catering per guest: each item's cost per portion times the portions per guest, summed, is the food cost a guest; that over the target, plus any extra per guest, is the price a guest. It also gives the portions to make of each item, rounded up.</li><li><code>yield</code>: Yield and edible portion cost: yield % = edible weight / as-purchased weight x 100, and the edible portion price = as-purchased price / yield.</li><li><code>convert</code>: Converts a quantity between units with NIST's exact factors; between volume and weight or count and weight only with grams per cup, grams each or a USDA household weight.</li><li><code>actual</code>: Actual food cost: beginning inventory + purchases - ending inventory is the cost of food sold, as a % of food sales; with an ideal % it gives the gap in points and dollars.</li><li><code>reference</code>: Returns the unit table from NIST Handbook 44 Appendix C and the 35 USDA household weights the tool uses, with their sources. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>ingredients or priceListCsv</code>: The price list: for each ingredient a name, pack size, pack unit and pack price, with optional yield % (default 100), previous pack price, grams per cup, grams each or a USDA weight. At most 2,000 ingredients; a CSV is found by its header names and holds at most 150,000 characters.</li><li><code>recipes or recipesCsv</code>: Each recipe: a name, portions (default 1), an optional menu price, what one batch makes (a weight or volume), an extra cost per portion, and up to 120 lines of item, quantity and unit. At most 500 recipes. In a CSV, rows with a blank recipe name belong to the recipe above.</li><li><code>units</code>: g, kg, oz, lb, ml, l, tsp, tbsp, fl oz, cup, pt, qt, gal, each, dozen, written in many common forms (pounds, fl. oz, tablespoons). A sub-recipe can also be used by portion or by batch. The single letters t and T are not read, since they mean teaspoon or tablespoon depending on who wrote the recipe.</li><li><code>targetPct, ending, driftPoints</code>: The target food cost %, above 0 and at most 100; the price ending, one of cent, quarter, half, whole, .95, .99 (default cent); and how many points a dish must move to be listed as drift.</li><li><code>single calculations</code>: Each takes its own figures, such as cost and targetPct for menu-price, bottle and pour sizes and prices for pour, or guests and items for catering.</li></ul>
+<p>Outputs:</p>
+<ul><li>recipes: per recipe, the batch cost, portion cost, food cost %, price at target, suggested price, status (on target, over target or no menu price), the cost change and points moved, and each line's cost and share</li><li>summary: recipes, priced, over target, the average food cost % and how many moved more than the threshold</li><li>reprice and drift: the dishes to reprice and the dishes that moved</li><li>csv: one row per recipe, with formula-like cells written as text</li><li>file: for workbook and template, the .xlsx file</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each ingredient is read: a name used once, a pack unit among g, kg, oz, lb, ml, l, tsp, tbsp, fl oz, cup, pt, qt, gal, each, dozen, a pack size above 0, a price of 0 or more and a yield % above 0 and at most 100.</li><li>Its edible portion cost per gram, milliliter or piece is the pack price divided by the pack size in that base unit and by the yield (pack price / base quantity / (yield % / 100)). With a previous price the same is worked out for the old price.</li><li>Each recipe line is either an ingredient or another recipe. An ingredient line is converted into the dimension of its pack: within weight, volume or count by NIST's exact factors; from volume to weight with the grams per cup or the USDA household weight given for it; from a count to weight with grams each or a USDA count weight such as a large egg. Without that weight the line is refused, naming what to add.</li><li>A sub-recipe line counts portions: by portion, by batch (times its portions), or by weight or volume against what one batch makes. Sub-recipes may nest up to 12 deep, and a circle of sub-recipes is refused, naming it.</li><li>The batch cost is the sum of the lines plus the extra cost per portion times the portions, and the portion cost is the batch cost divided by the portions.</li><li>The food cost % is the portion cost / menu price x 100. The price at target is the portion cost / target, and the suggested price is that rounded up, never down, to whole cents and then to the chosen ending. A dish is over target when its food cost % is above the target.</li><li>When the price list has previous prices, each dish's points moved is its food cost % now less its food cost % at the old prices; dishes that moved more than the threshold are listed, with the ingredients whose price changed and where they are used.</li><li>Costs are kept at full precision and rounded only for output: costs to 4 decimals, prices to cents and percentages to 1 decimal.</li></ol>
+<p><strong>NIST Handbook 44 (2026), Appendix C.</strong></p>
+<p>Every factor is exact: 1 lb = 453.59237 g, 1 oz = 28.349523125 g, 1 gal = 231 cubic inches = 3785.411784 ml, 1 fl oz = 1/128 gal = 29.5735295625 ml, 1 cup = 8 fl oz, 1 tbsp = 1/2 fl oz and 1 tsp = 1/3 tbsp. A dozen is 12 pieces.</p>
+<p><strong>USDA FoodData Central, SR Legacy.</strong></p>
+<p>The 35 household weights (such as a cup of all-purpose flour or a large egg) are the gram weights USDA lists for that measure. They are averages: packing, sifting and brand change them, so your own grams per cup or grams each are used first.</p>
+<p><strong>Costing formulas.</strong></p>
+<p>Yield % = edible weight / as-purchased weight x 100, and edible portion cost = as-purchased cost / yield, as the LibreTexts chapter on recipe and menu costing sets out. Food cost % = cost / price x 100, and the price at a target = cost / target.</p>
+<p><strong>Our own rules.</strong></p>
+<p>A suggested price is always rounded up, since a price rounded down would land above the target food cost. The target food cost % is your choice; the tool sets no standard range.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A price change ripples through a sub-recipe into every dish that uses it, and a dish that does not use it keeps its cost.</li><li>With no previous prices, no drift is claimed.</li><li>The same name on the price list twice, or as both a recipe and an ingredient, is refused.</li><li>A sub-recipe used by weight or volume needs what one batch makes, in the same dimension.</li><li>Rounding up to .95 or .99 moves to the next dollar only when the price is already past that ending, and floating point never pushes a whole-cent price up a cent.</li><li>A pour larger than the bottle, an edible weight above the as-purchased weight, and an ending inventory above the beginning inventory plus purchases are each refused.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A six-recipe menu with two sauces after butter, cream and salmon went up, against a 30% target</strong></p>
+<pre><code class="language-json">op: &quot;recost&quot;
+targetPct: 30
+ingredients: 13 items
+recipes: 6 items</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A six-recipe menu with two sauces after butter, cream and salmon went up, against a 30% target</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">recipes, priced, over target</th><td>6, 4, 2</td></tr>
+<tr><th scope="row">average food cost</th><td>29.3%</td></tr>
+<tr><th scope="row">Lemon butter sauce</th><td>$0.60 a portion</td></tr>
+<tr><th scope="row">Alfredo sauce</th><td>$1.01 a portion</td></tr>
+<tr><th scope="row">Pan-seared salmon</th><td>$6.09 a portion, 32.1% of $19.00, over target</td></tr>
+<tr><th scope="row">Spaghetti Alfredo</th><td>$3.18 a portion, 26.5% of $12.00, on target</td></tr>
+<tr><th scope="row">Lemon chicken plate</th><td>$3.79 a portion, 30.3% of $12.50, over target</td></tr>
+<tr><th scope="row">Shortbread cookies</th><td>$0.21 a portion, 28.1% of $0.75, on target</td></tr>
+<tr><th scope="row">to reprice</th><td>Pan-seared salmon to $20.31; Lemon chicken plate to $12.63</td></tr>
+<tr><th scope="row">moved more than 1 point</th><td>Pan-seared salmon (5 points); Shortbread cookies (4.4 points)</td></tr>
+</tbody></table></div>
+<p><strong>Menu price for a $6.00 plate at a 30% food cost, rounded to .95</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;menu-price&quot;,
+  &quot;cost&quot;: 6,
+  &quot;targetPct&quot;: 30,
+  &quot;ending&quot;: &quot;.95&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Menu price for a $6.00 plate at a 30% food cost, rounded to .95</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">exact price</th><td>$20.00</td></tr>
+<tr><th scope="row">price</th><td>$20.95</td></tr>
+<tr><th scope="row">food cost at that price</th><td>28.6%</td></tr>
+<tr><th scope="row">gross profit</th><td>$14.95</td></tr>
+</tbody></table></div>
+<p><strong>Pour cost of a 1.5 oz pour from a $28, 750 ml bottle sold at $9</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;pour&quot;,
+  &quot;bottleSize&quot;: 750,
+  &quot;bottleUnit&quot;: &quot;ml&quot;,
+  &quot;bottlePrice&quot;: 28,
+  &quot;pourSize&quot;: 1.5,
+  &quot;pourUnit&quot;: &quot;fl oz&quot;,
+  &quot;drinkPrice&quot;: 9,
+  &quot;targetPct&quot;: 20
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Pour cost of a 1.5 oz pour from a $28, 750 ml bottle sold at $9</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">bottle</th><td>25.3605 fl oz</td></tr>
+<tr><th scope="row">pours a bottle</th><td>16.9</td></tr>
+<tr><th scope="row">cost per pour</th><td>$1.66</td></tr>
+<tr><th scope="row">pour cost</th><td>18.4%</td></tr>
+<tr><th scope="row">price at 20%</th><td>$8.28</td></tr>
+</tbody></table></div>
+<p><strong>Edible portion cost of salmon at $11 per pound with a 64% yield</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;yield&quot;,
+  &quot;yieldPct&quot;: 64,
+  &quot;apPrice&quot;: 11,
+  &quot;unit&quot;: &quot;lb&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Edible portion cost of salmon at $11 per pound with a 64% yield</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">yield</th><td>64.0%</td></tr>
+<tr><th scope="row">edible portion price</th><td>$17.19 per lb</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Costs are only as current as the prices entered and only as true as the yields given.</li><li>A menu re-cost counts ingredients and any extra cost per portion; labor and overhead enter only the cake and bakery calculation.</li><li>USDA household weights are averages; for exact costs, weigh your own and give grams per cup or grams each.</li><li>It reads no supplier price feeds or inventory systems: the price list is what you give it.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The unit factors are NIST Handbook 44 (2026 edition), Appendix C, read on 2026-11-08. The household weights are USDA FoodData Central's SR Legacy release (April 2018), read on 2026-11-08. Both are read once when the server starts and change only with a deploy. Prices are yours and are used as given at the moment of the call.</p>
+<ul class="cp-sources"><li><a href="https://www.nist.gov/document/2026-nist-handbook-44-appendix-c">NIST Handbook 44 (2026 edition), Appendix C: General Tables of Units of Measurement (read 2026-11-08)</a></li><li><a href="https://fdc.nal.usda.gov/download-datasets">USDA FoodData Central, SR Legacy (April 2018), food_portion.csv (read 2026-11-08)</a></li><li><a href="https://workforce.libretexts.org/Bookshelves/Food_Production_Service_and_Culinary_Arts/Introduction_to_Food_Production_and_Service_(Egan)/02%3A_Menus_and_Recipes/2.04%3A_Recipe_and_Menu_Costing">Recipe and Menu Costing, Introduction to Food Production and Service (Beth Egan, LibreTexts, CC BY 4.0)</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The NIST factors are checked to be exact against each other and the USDA weights against the published figures. Unit aliases and conversions, the sample menu with its sub-recipes, yields and USDA cups, a price change rippling through a sub-recipe, refused input, rounding up to each ending, every single calculation, CSV reading and writing, and the workbook's sheets and formulas are each tested, and the worked examples equal run().</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/recipe-cost-calculator/">Open the Recipe cost calculator and menu re-coster tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the recipe cost calculator and menu re-coster answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the recipe cost calculator and menu re-coster refuse to answer?</h3><p>Costs are only as current as the prices entered and only as true as the yields given. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/recipe-cost-calculator/">Open the Recipe cost calculator and menu re-coster tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/recipe-cost-calculator/food-cost-percentage-calculator/">Food cost percentage calculator</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/recipe-cost-calculator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

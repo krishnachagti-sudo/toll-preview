@@ -1,0 +1,8 @@
+url_as_typed,inside_loc
+https://www.example.com/products?item=12&desc=vacation,https://www.example.com/products?item=12&amp;desc=vacation
+https://www.example.com/ümlat.php&q=name,https://www.example.com/%C3%BCmlat.php&amp;q=name
+https://www.example.com/red shoes/,https://www.example.com/red%20shoes/
+https://www.example.com/café/menu,https://www.example.com/caf%C3%A9/menu
+"https://www.example.com/search?q=""tea""",https://www.example.com/search?q=%22tea%22
+https://www.example.com/a?b=1&c=2&d=3,https://www.example.com/a?b=1&amp;c=2&amp;d=3
+https://www.example.com/日本/,https://www.example.com/%E6%97%A5%E6%9C%AC/

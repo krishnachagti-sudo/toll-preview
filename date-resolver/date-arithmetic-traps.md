@@ -62,6 +62,7 @@ Week 53 of 2026 (2026-W53): ISO weeks start on Monday and week 1 is the week wit
 - [What "next Friday" means](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/next-friday-meaning/)
 - [Date resolver API and MCP](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/api/)
 - [US federal holidays and business days](https://krishnachagti-sudo.github.io/toll-preview/business-days/)
+- [Leap day 2028](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/leap-day-2028/)
 
 ---
 

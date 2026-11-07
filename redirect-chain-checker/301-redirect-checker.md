@@ -62,6 +62,7 @@ Not as strongly. Google uses a 301 as a strong signal and a 302 as a weak signal
 - [Redirect status codes: 301, 302, 303, 307, 308](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-status-codes/)
 - [Redirect loop checker](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-loop-checker/)
 - [How many redirects is too many?](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/how-many-redirects-is-too-many/)
+- [Site migration redirect checklist](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/site-migration-redirect-checklist/)
 
 ---
 

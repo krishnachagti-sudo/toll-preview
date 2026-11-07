@@ -1,0 +1,15 @@
+url_length,with_lastmod,bytes_per_entry,entries_in_50mb,binding_limit
+40,no,65,806595,urls
+40,yes,109,480997,urls
+100,no,125,419429,urls
+100,yes,169,310228,urls
+250,no,275,190649,urls
+250,yes,319,164353,urls
+500,no,525,99864,urls
+500,yes,569,92141,urls
+1000,no,1025,51149,urls
+1000,yes,1069,49044,bytes
+1500,no,1525,34379,bytes
+1500,yes,1569,33415,bytes
+2000,no,2025,25890,bytes
+2000,yes,2069,25340,bytes

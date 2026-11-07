@@ -71,6 +71,7 @@ Hours count in the workweek they are worked. With a workweek starting Sunday at 
 - [Hours between two times](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/hours-between-times/)
 - [24-hour (military) time chart](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/military-time-chart/)
 - [Biweekly timesheet with overtime](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/biweekly-timesheet-overtime/)
+- [Daylight saving nights, 2026 to 2030](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/daylight-saving-time-2026-2027-night-shifts/)
 
 ---
 

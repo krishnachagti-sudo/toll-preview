@@ -70,6 +70,7 @@ No new wording is required. Eligible taxpayers who do not itemize may be able to
 
 - [Quid pro quo gifts and the $75 disclosure](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/quid-pro-quo/)
 - [Church contribution statement template](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/church-contribution-statement/)
+- [The 2026 deduction for donors who do not itemize](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/2026-non-itemizer-deduction/)
 
 ---
 

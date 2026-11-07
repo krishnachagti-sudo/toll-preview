@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fix a CSV export: leading zeros, dates and encoding, saved as a recipe: Endwise</title>
+<meta name="description" content="Restore leading zeros on ZIP codes and account codes, settle DD/MM vs MM/DD per column with proof, fix garbled accents and the BOM, and save the fix for next month's file. Scan free; $0.25 a file.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/fix-csv-export/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fix-csv-export"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Fix a CSV export (leading zeros, dates, encoding) with a saved recipe">
+<meta property="og:description" content="Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","url":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","description":"Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","item":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/"}]},{"@type":"WebApplication","name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","url":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","description":"Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Scan (what is wrong, the date proof and a suggested recipe, with the first 20 rows fixed)","price":"0","priceCurrency":"USD"},{"name":"Fixed file","@type":"Offer","price":"0.25","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.25","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"file"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="fx">
+  <section class="wrap fx-intro">
+    <p class="eyebrow">Data files</p>
+    <h1>Fix a CSV export</h1>
+    <p class="lede">The export you pull every month opens wrong: ZIP codes and account codes lose their leading zeros, dates flip between DD/MM and MM/DD, long IDs turn into 1.23E+15, accents come out as Ã©. Drop the file in. You see what is wrong, column by column, with the values that prove each date order. Fix it once and save the fix as a recipe; next month's file gets the same fix, and a warning if its columns changed.</p>
+    <p data-prices class="fx-price">The scan is free and runs in your browser: nothing is uploaded until you ask for the fixed file. The fixed file is $0.25, and running the same file again within a day is free. At most $2.49 a month, however many files you fix.</p>
+  </section>
+
+  <section class="wrap fx-desk" aria-label="Fix a file">
+    <div class="fx-form">
+      <div class="fx-drop" id="fx-drop">
+        <label for="fx-file" class="fx-drop-label">Choose a CSV file, or drop it here</label>
+        <input type="file" id="fx-file" accept=".csv,.txt,.tsv,text/csv,text/plain">
+        <p class="fx-hint" id="fx-file-name">Up to 2 MB. Comma, semicolon, tab or pipe separated.</p>
+      </div>
+      <p class="fx-hint"><button type="button" class="link-btn" id="fx-sample">Try the sample export</button> (a made-up monthly bank export with every problem in it)</p>
+      <div class="fx-recipe-box">
+        <label for="fx-recipe-file">Recipe from last time (optional)</label>
+        <input type="file" id="fx-recipe-file" accept=".json,application/json">
+        <p class="fx-hint" id="fx-recipe-note">A recipe you saved here is used again by itself when the file has the same columns.</p>
+      </div>
+      <details class="fx-more" id="fx-more">
+        <summary>How to save the fixed file</summary>
+        <div class="field">
+          <label for="fx-out-enc">Encoding</label>
+          <select id="fx-out-enc">
+            <option value="utf-8-bom">UTF-8 with a BOM (for Excel)</option>
+            <option value="utf-8">UTF-8 without a BOM (for scripts and databases)</option>
+            <option value="windows-1252">Windows-1252 (older systems)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fx-out-dates">Write dates as</label>
+          <select id="fx-out-dates">
+            <option value="iso">YYYY-MM-DD (reads the same everywhere)</option>
+            <option value="mdy">MM/DD/YYYY</option>
+            <option value="dmy">DD/MM/YYYY</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fx-out-eol">Line ends</label>
+          <select id="fx-out-eol">
+            <option value="crlf">CRLF (RFC 4180, Windows)</option>
+            <option value="lf">LF (Mac, Linux)</option>
+          </select>
+        </div>
+        <label class="fx-check"><input type="checkbox" id="fx-out-guard"> Write codes as ="00123" so Excel keeps the zeros when the file is double-clicked (other importers read this literally)</label>
+      </details>
+      <p class="form-error" id="fx-error" role="alert"></p>
+      <button class="btn" type="button" id="fx-go" disabled>Download the fixed file ($0.25)</button>
+      <p class="fx-hint" id="fx-go-note">Choose a file to see what is wrong with it, free.</p>
+      <p class="visually-hidden" id="fx-status" role="status"></p>
+    </div>
+
+    <div class="fx-out" id="fx-out" aria-live="polite">
+      <p class="fx-label">Sample: a made-up monthly export</p>
+      <p class="fx-answer" id="fx-sample-answer">Your file is UTF-8 without a BOM, comma-separated, with 4 rows and 6 columns: 3 ZIP codes in "ZIP" lost their leading zero; 1 column of codes with leading zeros to keep as text ("Account"); 3 IDs of 16 or more digits that Excel would cut to 15; dates in "Posted" read DD/MM (2 values prove it); 1 value already in scientific notation (1.23E+15), whose lost digits are not in the file; 3 amounts written with currency signs, digit-grouping commas or brackets in "Amount" (a recipe can write them as plain numbers); 3 values with accents or symbols that Excel shows garbled unless the file has a BOM; 3 values with garbled accents (such as Ã© for é) to repair.</p>
+      <p class="muted">The scan of the sample file. Choose your own file and the same scan runs on it, in your browser.</p>
+    </div>
+  </section>
+
+  <section class="wrap fx-rules" data-jump="How it decides" aria-labelledby="fx-rules-title">
+    <h2 id="fx-rules-title">How it decides</h2>
+    <div class="fx-rule-cols">
+      <div>
+        <h3>Dates: proof, not guesses</h3>
+        <p>A date like 13/03/2026 can only be DD/MM; 03/13/2026 can only be MM/DD. Each column is read by the values that prove its order. A column holding both is mixed: each provable row is read its own way, and rows like 03/04/2026, which read either way, are listed and left as written unless your recipe names the order. Two-digit years follow Excel's own rule: 00 to 29 are 2000 to 2029, 30 to 99 are 1930 to 1999.</p>
+      </div>
+      <div>
+        <h3>Leading zeros: only to a known width</h3>
+        <p>ZIP codes go back to 5 digits (ZIP+4 to 9), because that is what a ZIP code is. Codes such as account numbers are kept as text, so the zeros that are still there stay. A code is padded to a width only when your recipe states it: when most values share a width and the rest are shorter, the scan shows that width for you to confirm, but never applies it by itself.</p>
+      </div>
+      <div>
+        <h3>Encoding and garbled accents</h3>
+        <p>A byte order mark is read first, then the bytes are checked as UTF-8; a file that is not valid UTF-8 is read as Windows-1252. Text that was UTF-8 read the wrong way (CafÃ© for Café) is turned back, value by value, only where that gives valid UTF-8. The fixed file is UTF-8 with a BOM by default, which Excel reads correctly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap fx-legal" data-jump="Please read" aria-labelledby="fx-legal-title">
+    <h2 id="fx-legal-title">Please read</h2>
+    <ul id="fx-disclaimers">
+      <li>Files are processed in memory and not kept. A recipe holds settings only (column headings and rules), never the values in your file.</li>
+      <li>A date whose day and month are both 12 or below cannot be settled from the value alone. It is read by its column's proven order or by your recipe; otherwise it is listed and left as written.</li>
+      <li>Digits Excel already cut to 15, and zeros already stripped from codes with no known width, are not in the file any more. They are flagged, never invented.</li>
+      <li>Check the change report before importing the file into an accounting or payroll system.</li>
+    </ul>
+    <h3>Prices</h3>
+    <ul class="endwise-prices"><li><strong>Scan (what is wrong, the date proof and a suggested recipe, with the first 20 rows fixed)</strong>: free.</li><li><strong>Fixed file</strong>: $0.25 per file; a repeat for the same file is free for 1 day.</li><li>At most $2.49 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+    <h3>Sources, read November 8, 2026</h3>
+    <ul class="fx-sources">
+      <li><a href="https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers">Microsoft Support: Keeping leading zeros and large numbers</a>: Excel's 15 significant digits, and why formatting does not bring zeros back</li>
+      <li><a href="https://support.microsoft.com/en-US/Excel/data-import-and-analysis-options-in-excel">Microsoft Support: Data import and analysis options</a>: the four automatic data conversions</li>
+      <li><a href="https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers">Microsoft Learn: How Excel works with two-digit year numbers</a> (updated July 22, 2026): the 2029 rule</li>
+      <li><a href="https://www.rfc-editor.org/rfc/rfc4180.txt">RFC 4180</a>: the CSV format, quoting and line ends</li>
+      <li><a href="https://www.unicode.org/faq/utf_bom.html">Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM</a>: the UTF-8 byte order mark, EF BB BF</li>
+      <li><a href="https://encoding.spec.whatwg.org/index-windows-1252.txt">WHATWG Encoding Standard: index-windows-1252</a> (dated September 18, 2024): how Windows-1252 bytes are read</li>
+    </ul>
+  </section>
+
+<section class="wrap cp-index" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Fix a breakage</h2>
+<h3>Problems</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/keep-leading-zeros-csv/" title="Keep leading zeros in a CSV (restore 0010, not 10)">Leading zeros</a></li><li><a href="/toll-preview/fix-csv-export/csv-zip-codes-leading-zeros/" title="ZIP codes lost their leading zero? Restore them in your CSV">ZIP codes</a></li><li><a href="/toll-preview/fix-csv-export/csv-date-format-dd-mm-mm-dd/" title="CSV dates flipped between DD/MM and MM/DD: detect and fix">DD/MM vs MM/DD</a></li><li><a href="/toll-preview/fix-csv-export/csv-mixed-date-formats/" title="One column, two date formats: fix mixed DD/MM and MM/DD dates safely">Mixed date formats</a></li><li><a href="/toll-preview/fix-csv-export/csv-utf-8-bom/" title="CSV UTF-8 with or without BOM for Excel">UTF-8 BOM</a></li><li><a href="/toll-preview/fix-csv-export/csv-encoding-windows-1252-to-utf-8/" title="CSV encoding: convert Windows-1252 to UTF-8 and fix Ã© characters">Windows-1252 to UTF-8</a></li><li><a href="/toll-preview/fix-csv-export/csv-long-numbers-scientific-notation/" title="Long numbers turned into 1.23E+15 in a CSV: keep every digit">Long numbers</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Guides</h2>
+<h3>Excel and scripts</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/guide/open-csv-in-excel-without-changing-data/" title="Open a CSV in Excel without losing zeros or changing dates">Open a CSV without changing it</a></li><li><a href="/toll-preview/fix-csv-export/guide/excel-automatic-data-conversion/" title="Excel automatic data conversion: the 4 settings and the CSV notice">Automatic data conversion settings</a></li><li><a href="/toll-preview/fix-csv-export/guide/power-query-keep-leading-zeros/" title="Power Query: keep leading zeros on every refresh">Power Query and leading zeros</a></li><li><a href="/toll-preview/fix-csv-export/guide/save-csv-without-losing-zeros/" title="Save as CSV without losing zeros or long numbers">Save as CSV without losing zeros</a></li><li><a href="/toll-preview/fix-csv-export/guide/python-read-csv-utf-8-bom/" title="Read and write a UTF-8 BOM CSV in Python and PowerShell">Python and PowerShell</a></li></ul>
+<h3>Questions</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/guides/saved-recipe/" title="Save a recipe for a monthly CSV export (and catch column changes)">Save a recipe for a monthly export</a></li><li><a href="/toll-preview/fix-csv-export/guides/gene-names-dates/" title="Gene names turned into dates by Excel (SEPT2, MARCH1)">Gene names turned into dates</a></li><li><a href="/toll-preview/fix-csv-export/guides/delimiters-locale/" title="Semicolon vs comma CSV delimiters by locale">Delimiters by locale</a></li><li><a href="/toll-preview/fix-csv-export/guides/csv-with-commas-in-fields/" title="Commas and quotes inside CSV fields: why columns shift">Commas inside fields</a></li><li><a href="/toll-preview/fix-csv-export/guides/negative-numbers-currency-formats/" title="Currency symbols, brackets and negative numbers in CSV exports">Currency and negative amounts</a></li></ul>
+<h3>Compared</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/vs/openrefine/" title="OpenRefine vs Endwise for fixing a recurring CSV export">OpenRefine</a></li><li><a href="/toll-preview/fix-csv-export/vs/power-query/" title="Power Query vs Endwise for CSV dates and leading zeros">Power Query</a></li><li><a href="/toll-preview/fix-csv-export/vs/pandas/" title="pandas vs Endwise for cleaning a CSV export">pandas</a></li><li><a href="/toll-preview/fix-csv-export/vs/csvlint/" title="CSV Lint vs a recipe-based CSV fixer">CSV Lint</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">By system</h2>
+<h3>Imports and exports</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/for/quickbooks-online-bank-import/" title="QuickBooks Online bank CSV import: fix the date format and amounts">QuickBooks Online bank import</a></li><li><a href="/toll-preview/fix-csv-export/for/jira-export/" title="Jira CSV export garbled in Excel: fix the encoding">Jira export</a></li></ul>
+</section>
+
+  <section class="wrap fx-code" aria-label="Use this from code">
+    <div id="fx-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to read your file. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/fix-csv-export/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+month_or_case,calendar_year_protected_hours,rolling_protected_hours
+2026-10,160,160
+2026-11,168,168
+2026-12,152,152
+2027-01,168,0
+2027-02,160,0
+2027-03,152,0
+balance on 2026-11-10: rolling,88,392
+balance on 2026-11-10: calendar,128,352
+balance on 2026-11-10: fixed,312,168
+balance on 2026-11-10: forward,88,392

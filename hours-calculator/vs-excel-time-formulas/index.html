@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel time formulas or a time card calculator: which to use</title>
+<meta name="description" content="What Microsoft's own time formulas do, where a timesheet needs more (midnight, overtime per workweek, clock changes), and when Excel is the better choice.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/vs-excel-time-formulas/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/hours-calculator/vs-excel-time-formulas.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Excel time formulas or a time card calculator: which to use">
+<meta property="og:description" content="What Microsoft's own time formulas do, where a timesheet needs more (midnight, overtime per workweek, clock changes), and when Excel is the better choice.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/vs-excel-time-formulas/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/vs-excel-time-formulas/","url":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/vs-excel-time-formulas/","name":"Excel time formulas or a time card calculator: which to use","description":"What Microsoft's own time formulas do, where a timesheet needs more (midnight, overtime per workweek, clock changes), and when Excel is the better choice.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Time card calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/"},{"@type":"ListItem","position":3,"name":"Excel time formulas vs the time card calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/vs-excel-time-formulas/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I get hours between two times in Excel?","acceptedAnswer":{"@type":"Answer","text":"Microsoft Support gives =B2-A2 for the time and =(B2-A2)*1440 for minutes, with =INT((B2-A2)*24) for whole hours. For decimal hours use =(B2-A2)*24, and =MOD(B2-A2,1)*24 when the shift crosses midnight."}},{"@type":"Question","name":"Why does Excel show #### for a night shift?","acceptedAnswer":{"@type":"Answer","text":"The end is earlier than the start, so the difference is negative, which a time format cannot show. =MOD(B2-A2,1) fixes it."}},{"@type":"Question","name":"When is Excel the better choice?","acceptedAnswer":{"@type":"Answer","text":"When the hours already live in a workbook, feed other formulas, or need to recalculate across many rows as you edit."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"hours-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/hours-calculator/">Time card calculator</a></li><li aria-current="page">Excel time formulas vs the time card calculator</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-date)">
+<p class="eyebrow">Compare</p>
+<h1>Excel time formulas vs the time card calculator</h1>
+<p class="cp-answer">Excel works out time with formulas such as =B2-A2 and =(B2-A2)*24; you need extra steps for a shift that crosses midnight (10:00 PM to 6:30 AM with a 30-minute break is 8.00 hours), for overtime per workweek and for daylight-saving nights (9.00 real hours on November 1, 2026), which the calculator does from the punches.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="formulas">What Microsoft's formulas do</h2>
+<p>Microsoft Support's page &quot;Calculate the difference between two times in Excel&quot; (read November 8, 2026) gives these, with the start in A2 and the end in B2:</p>
+<pre><code class="language-excel">=B2-A2                 time between, shown in a time format
+=TEXT(B2-A2,&quot;h:mm&quot;)    as text, hours and minutes
+=INT((B2-A2)*24)       whole hours
+=(B2-A2)*1440          minutes
+=HOUR(B2-A2)  =MINUTE(B2-A2)</code></pre>
+<p>Each assumes the end is later than the start on the same day.</p>
+</section>
+<section>
+<h2 id="gaps">Where a timesheet needs more</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Job</th><th scope="col">In Excel</th><th scope="col">In the calculator</th></tr></thead><tbody>
+<tr><th scope="row">Decimal hours</th><td>=(B2-A2)*24</td><td>Shown for every day and the week</td></tr>
+<tr><th scope="row">Shift across midnight</th><td>=MOD(B2-A2,1)*24, see <a href="/toll-preview/hours-calculator/overnight-shift-hours/">overnight shifts</a></td><td>Read from the punches: 10 PM to 6:30 AM, 30 minutes off, is 8.00</td></tr>
+<tr><th scope="row">Overtime per workweek</th><td>SUMIFS by week, then MAX(0, total − 40)</td><td>Each workweek counted alone; set the start day and hour</td></tr>
+<tr><th scope="row">Daylight-saving night</th><td>Counts clock time: 8 hours</td><td>Real time with a zone set: 9.00 hours on the fall night</td></tr>
+<tr><th scope="row">Rounding check</th><td>MROUND per punch, by hand</td><td>Every punch rounded and the net gain or loss shown</td></tr>
+<tr><th scope="row">Signed timesheet</th><td>Build and format a template</td><td>A PDF with signature lines</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="excel-better">When Excel is better</h2>
+<ul><li>The hours are already in a workbook and feed payroll formulas there.</li><li>You need many rows recalculated live as you edit.</li><li>You want to change the logic yourself, for a rule the calculator does not model.</li></ul>
+</section>
+<section>
+<h2 id="price">What the calculator costs</h2>
+<p>Totals, conversions and the rounding check are free on the calculator page; a signed-ready timesheet PDF and CSV costs $0.15 per employee and pay period; an API or MCP call costs $0.002.</p>
+</section>
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Try a week</h2><p class="muted">Opens the calculator with a 9 to 5 week and a 30-minute lunch.</p><form method="get" action="/toll-preview/hours-calculator/" class="cp-tool-form"><input type="hidden" name="start" value="2026-11-02"><input type="hidden" name="weeks" value="1"><div class="field"><label for="tf-d0">Mon, Nov 2</label><input type="text" id="tf-d0" name="d0" value="9:00 am - 5:00 pm"></div><input type="hidden" name="b0" value="30"><div class="field"><label for="tf-d1">Tue, Nov 3</label><input type="text" id="tf-d1" name="d1" value="9:00 am - 5:00 pm"></div><input type="hidden" name="b1" value="30"><div class="field"><label for="tf-d2">Wed, Nov 4</label><input type="text" id="tf-d2" name="d2" value="9:00 am - 5:00 pm"></div><input type="hidden" name="b2" value="30"><div class="field"><label for="tf-d3">Thu, Nov 5</label><input type="text" id="tf-d3" name="d3" value="9:00 am - 5:00 pm"></div><input type="hidden" name="b3" value="30"><div class="field"><label for="tf-d4">Fri, Nov 6</label><input type="text" id="tf-d4" name="d4" value="9:00 am - 5:00 pm"></div><input type="hidden" name="b4" value="30"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open in the calculator</button></form><p class="small"><a href="/toll-preview/hours-calculator/?start=2026-11-02&amp;weeks=1&amp;d0=9%3A00+am+-+5%3A00+pm&amp;b0=30&amp;d1=9%3A00+am+-+5%3A00+pm&amp;b1=30&amp;d2=9%3A00+am+-+5%3A00+pm&amp;b2=30&amp;d3=9%3A00+am+-+5%3A00+pm&amp;b3=30&amp;d4=9%3A00+am+-+5%3A00+pm&amp;b4=30">Open these times in the calculator</a></p></aside>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://support.microsoft.com/en-us/office/calculate-the-difference-between-two-times-e1c78778-749b-49a3-b13e-737715505ff6">Microsoft Support: Calculate the difference between two times in Excel (read November 8, 2026)</a></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay">DOL Wage and Hour Division, Fact Sheet #23, Overtime Pay (revised October 2019, read November 7, 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>How do I get hours between two times in Excel?</h3><p>Microsoft Support gives =B2-A2 for the time and =(B2-A2)*1440 for minutes, with =INT((B2-A2)*24) for whole hours. For decimal hours use =(B2-A2)*24, and =MOD(B2-A2,1)*24 when the shift crosses midnight.</p><h3>Why does Excel show #### for a night shift?</h3><p>The end is earlier than the start, so the difference is negative, which a time format cannot show. =MOD(B2-A2,1) fixes it.</p><h3>When is Excel the better choice?</h3><p>When the hours already live in a workbook, feed other formulas, or need to recalculate across many rows as you edit.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/hours-calculator/overnight-shift-hours/">Overnight shift hours and the MOD formula</a></li><li><a href="/toll-preview/hours-calculator/vs-clockify/">Clockify or the calculator</a></li><li><a href="/toll-preview/compare/timeanddate/">timeanddate or Endwise</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/hours-calculator/vs-excel-time-formulas.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

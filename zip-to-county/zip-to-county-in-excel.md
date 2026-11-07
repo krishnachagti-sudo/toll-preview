@@ -61,6 +61,7 @@ Yes: paste the column into the lookup and download the result as a CSV, one row 
 - [ZIP code to county crosswalk](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/crosswalk/)
 - [ZIP codes that cross county lines](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zips-that-cross-county-lines/)
 - [ZIP code vs ZCTA](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-vs-zcta/)
+- [ZIP codes that start with 0](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/zip-codes-that-start-with-0/)
 
 ---
 

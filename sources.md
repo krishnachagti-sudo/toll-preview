@@ -1,6 +1,6 @@
 # Sources and how we check the answers
 
-Every answer comes from a named official source and a stated data date, with no AI in between. Data on this page was read between 2026-10-30 and 2026-11-07; each tool's source, edition and checks are below.
+Every answer comes from a named official source and a stated data date, with no AI in between. Data on this page was read between 2026-10-30 and 2026-11-08; each tool's source, edition and checks are below.
 
 ## How does every answer get made?
 
@@ -13,7 +13,7 @@ Every answer comes from a named official source and a stated data date, with no 
 
 ## Where does each tool's data come from?
 
-Data was read between 2026-10-30 and 2026-11-07, as dated in the tables.
+Data was read between 2026-10-30 and 2026-11-08, as dated in the tables.
 
 **1099 threshold tracker:** IRS instructions for payment years 2025 and 2026, read 2026-10-31. The 2027 line is worked out from 26 U.S.C. 6041(h) and the chained CPI (latest month 2026-09) and is marked provisional until the IRS publishes its own. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-threshold/).
 
@@ -71,6 +71,29 @@ Delivery date and holiday order-by calculator: sources
 | [USPS Newsroom: Holidays and events (postal holidays)](https://about.usps.com/newsroom/events/) | 2026 | 2026-10-31 |
 | [USPS: Mail and shipping services](https://www.usps.com/ship/mail-shipping-services.htm) | current | 2026-10-31 |
 
+**Fix a CSV export (leading zeros, dates, encoding) with a saved recipe:** The Windows-1252 table is the WHATWG index dated 2024-09-18, read on 2026-11-08. The Microsoft and Unicode facts were read on 2026-11-08, and the Microsoft pages are checked for changes once a day. The rules change only with the code (engine fix-csv-export-1); nothing is fetched when a file is fixed. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/fix-csv-export/).
+
+Fix a CSV export (leading zeros, dates, encoding) with a saved recipe: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005)](https://www.rfc-editor.org/rfc/rfc4180.txt) | see the document | not recorded |
+| [WHATWG Encoding Standard: index-windows-1252 (dated 2024-09-18)](https://encoding.spec.whatwg.org/index-windows-1252.txt) | index dated 2024-09-18 | 2026-11-08 |
+| [Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM](https://www.unicode.org/faq/utf_bom.html) | see the document | 2026-11-08 |
+| [Microsoft Learn: How Excel works with two-digit year numbers](https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers) | page updated 2026-07-22 | 2026-11-08 |
+| [Microsoft Support: Keeping leading zeros and large numbers](https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers) | see the document | 2026-11-08 |
+
+**FMLA eligibility checker:** The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/fmla-eligibility-checker/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/fmla-eligibility-checker/).
+
+FMLA eligibility checker: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)](https://www.ecfr.gov/current/title-29/part-825) | eCFR current to 2026-11-02 | 2026-11-08 |
+| [DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act](https://www.dol.gov/agencies/whd/fact-sheets/28-fmla) | revised March 2025 | 2026-11-08 |
+| [DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act](https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf) | dated 2023-02-09 | 2026-11-08 |
+| [DOL: FMLA forms](https://www.dol.gov/agencies/whd/fmla/forms) | see the document | 2026-11-08 |
+
 **Exchange rate on a date:** ECB rates are fetched each day after the ECB publishes them, around 16:00 CET; they start on 1999-01-04, and a date with no fixing uses the latest one in the 7 days before it and says which. Treasury rates come quarterly with amendments in between, HMRC rates monthly. The IRS table is copied by hand: 2021 to 2025, page updated 2026-09-17. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/).
 
 Exchange rate on a date: sources
@@ -82,6 +105,21 @@ Exchange rate on a date: sources
 | [IRS: Yearly average currency exchange rates](https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates) | page updated 2026-09-17 | 2026-10-31 |
 | [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates) | every month since 2021-01 | refreshed with the data files |
 | [U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange (31 December reports)](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) | 2023-12-31, 2024-12-31, 2025-12-31 | 2026-10-31 |
+
+**GPSR listing checker:** The rule texts were read on EUR-Lex on 2026-11-08, the Member State languages on european-union.europa.eu on 2026-11-08, and the channel field names on each channel's own pages on 2026-11-08. They are read once when the server starts and change only with a deploy (data version gpsr-2023-988+guidelines-c2025-6233+read-2026-11-08). [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/gpsr-listing-checker/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/gpsr-listing-checker/).
+
+GPSR listing checker: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [EUR-Lex: Regulation (EU) 2023/988 on general product safety (GPSR), OJ L 135, 23.5.2023, p. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988) | Article 19 items; applies from 2024-12-13 | 2026-11-08 |
+| [EUR-Lex: Commission Notice C/2025/6233: Guidelines on the application of the EU general product safety legislative framework by businesses, OJ C, 21.11.2025](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:C_202506233) | sections 2.1 and 3.1.1 | 2026-11-08 |
+| [EUR-Lex: Regulation (EU) 2019/1020 on market surveillance and compliance of products, Article 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019R1020) | who can be the responsible person | 2026-11-08 |
+| [European Union: EU countries (country profiles)](https://european-union.europa.eu/principles-countries-history/eu-countries_en) | 27 Member States, official EU languages | 2026-11-08 |
+| [Amazon Selling Partner API changelog: attributes for GPSR in programmatic listings submissions](https://developer-docs.amazon/sp-api/changelog/developers-can-use-attributes-in-their-programmatic-listings-submissions-to-comply-with-gpsr) | Amazon field names | 2026-11-08 |
+| [Etsy Help: What is the General Product Safety Regulation (GPSR)?](https://help.etsy.com/hc/en-us/articles/28211364687383-What-is-the-General-Product-Safety-Regulation-GPSR) | Etsy field names | 2026-11-08 |
+| [eBay Help: Product safety disclosures and hazardous materials labelling](https://www.ebay.com/help/selling/selling/product-safety-disclosures-hazardous-materials-labelling?id=5407) | eBay field names | 2026-11-08 |
+| [Shopify Help Center: Using CSV files to import and export products](https://help.shopify.com/en/manual/products/import-export/using-csv) | Shopify field names | 2026-11-08 |
 
 **Hours calculator and timesheet:** The federal rules were copied by hand on 2026-11-07. No state rule is held. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/hours-calculator/).
 
@@ -141,6 +179,19 @@ Mileage reimbursement and IRS mileage log: sources
 | [IRS: Internal Revenue Bulletin 2026-4 (January 20, 2026), Notice 2026-10](https://www.irs.gov/irb/2026-04_IRB) | see the document | 2026-10-31 |
 | [IRS: Publication 463 (2025), Travel, Gift, and Car Expenses](https://www.irs.gov/publications/p463) | see the document | 2026-10-31 |
 
+**Name tag generator:** Every template was read from its avery.com page, and its label outlines measured from the blank PDF template that page offers, on 2026-11-08. The data changes only by hand, with the tests that pin each template. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/name-tag-generator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/name-tag-generator/).
+
+Name tag generator: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [Avery template 5395: Adhesive Name Badges](https://www.avery.com/templates/5395) | blank PDF template U-0121-01 | 2026-11-08 |
+| [Avery template 5895: Adhesive Name Badges](https://www.avery.com/templates/5895) | blank PDF template U-0086-01 | 2026-11-08 |
+| [Avery template 5390: Name Badge Inserts](https://www.avery.com/templates/5390) | blank PDF template U-0119-01 | 2026-11-08 |
+| [Avery template 5392: Name Badges Insert Refills](https://www.avery.com/templates/5392) | blank PDF template U-0114-01 | 2026-11-08 |
+| [Avery template 5146: Print or Write Name Badge Labels](https://www.avery.com/templates/5146) | blank PDF template U-0236-01 | 2026-11-08 |
+| [Avery template 5147: Print or Write Name Badge Labels](https://www.avery.com/templates/5147) | blank PDF template U-0237-01 | 2026-11-08 |
+
 **QR code generator:** Format and print rules read 2026-11-02. The encoder follows the QR Code standard, ISO/IEC 18004. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/qr-code-generator/).
 
 QR code generator: sources
@@ -159,6 +210,16 @@ QR code generator: sources
 | [Avery 5160 template: 1 x 2-5/8 in, 30 per sheet](https://www.avery.com/templates/5160) | see the document | 2026-11-02 |
 | [Avery 22816 template: 2 x 2 in square, 12 per sheet](https://www.avery.com/templates/22816) | see the document | 2026-11-02 |
 
+**Recipe cost calculator and menu re-coster:** The unit factors are NIST Handbook 44 (2026 edition), Appendix C, read on 2026-11-08. The household weights are USDA FoodData Central's SR Legacy release (April 2018), read on 2026-11-08. Both are read once when the server starts and change only with a deploy. Prices are yours and are used as given at the moment of the call. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/recipe-cost-calculator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/recipe-cost-calculator/).
+
+Recipe cost calculator and menu re-coster: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [NIST Handbook 44 (2026 edition), Appendix C: General Tables of Units of Measurement](https://www.nist.gov/document/2026-nist-handbook-44-appendix-c) | 2026 edition, Appendix C | 2026-11-08 |
+| [USDA FoodData Central, SR Legacy (April 2018), food\_portion.csv](https://fdc.nal.usda.gov/download-datasets) | 35 household weights | 2026-11-08 |
+| [Recipe and Menu Costing, Introduction to Food Production and Service (Beth Egan, LibreTexts)](https://workforce.libretexts.org/Bookshelves/Food_Production_Service_and_Culinary_Arts/Introduction_to_Food_Production_and_Service_%28Egan%29/02%3A_Menus_and_Recipes/2.04%3A_Recipe_and_Menu_Costing) | yield and edible portion cost formulas | not recorded |
+
 **Bulk redirect chain checker:** Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/).
 
 Bulk redirect chain checker: sources
@@ -170,6 +231,25 @@ Bulk redirect chain checker: sources
 | [Cloudflare: ERR\_TOO\_MANY\_REDIRECTS](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/) | page updated 2026-09-01 | 2026-11-07 |
 | [Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain](https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/) | see the document | 2026-11-07 |
 | [RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx)](https://www.rfc-editor.org/rfc/rfc9110#section-15.4) | see the document | 2026-11-07 |
+
+**Sitemap validator:** The rules and limits were read on 2026-11-08: the sitemaps.org protocol (page updated 2016-11-21), Google's Build and submit a sitemap page (updated 2026-07-08) and the Search Console Sitemaps report help. The pages are checked for changes once a day. A check fetches the sitemap live at the moment of the call; paste and rules make no request. Engine sitemap-validator-1. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/sitemap-validator/).
+
+Sitemap validator: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [sitemaps.org: Sitemaps XML format (protocol)](https://www.sitemaps.org/protocol.html) | page updated 2016-11-21 | 2026-11-08 |
+| [sitemaps.org: sitemap.xsd and siteindex.xsd](https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd) | page updated 2008-03-26 | 2026-11-08 |
+| [Google Search Central: Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) | page updated 2026-07-08 | 2026-11-08 |
+| [Google Search Central: What is a sitemap (Do I need a sitemap?)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview) | page updated 2025-12-10 | 2026-11-08 |
+| [Google Search Central: Manage your sitemaps with a sitemap index file](https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps) | page updated 2025-12-10 | 2026-11-08 |
+| [Google Search Central: News sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap) | page updated 2025-12-10 | 2026-11-08 |
+| [Google Search Central: Image sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps) | page updated 2025-12-10 | 2026-11-08 |
+| [Search Console Help: Manage your sitemaps using the Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en) | see the document | 2026-11-08 |
+| [Google Search Central: Robots meta tag, data-nosnippet and X-Robots-Tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag) | page updated 2026-03-24 | 2026-11-08 |
+| [Google Search Central Blog: Sitemaps ping endpoint is going away](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping) | published 2023-06-26 | 2026-11-08 |
+| [RFC 9309: Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309) | published 2022-09 | 2026-11-08 |
+| [Search Engine Journal: Google Explains The "Couldn't Fetch" Sitemap Errors](https://www.searchenginejournal.com/google-explains-couldnt-fetch-sitemap-errors/592040/) | published 2026-10-06 | 2026-11-08 |
 
 **SPF lookup counter:** The rules are RFC 7208's and change only with the code. Each check reads live DNS at the moment of the call, through 1.1.1.1 and 8.8.8.8. The provider include hosts were read from each provider's own setup page on 2026-11-07, and what each include costs was measured on public DNS on 2026-11-07. [Open the tool](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/). [How it is calculated](https://krishnachagti-sudo.github.io/toll-preview/methodology/spf-lookup-counter/).
 
@@ -292,11 +372,34 @@ These are the checks in each tool's test suite. Only what a test asserts is list
 - USPS delivery times are compared with the USPS services page.
 - UPS and FedEx tables are checked to be absent, with the reason recorded, so the tool never invents them.
 
+**Fix a CSV export (leading zeros, dates, encoding) with a saved recipe**
+
+- The Windows-1252 table in the engine equals the WHATWG index dated 2024-09-18, and the quoted facts are dated 2026-11-08.
+- Decoding, encoding with and without a BOM, garbled-accent repair, RFC 4180 parsing and writing, and delimiter detection are each checked.
+- What each date proves about its order, the 2029 rule for two-digit years, mixed and unproven date columns, ZIP codes, amounts, code widths and long IDs are checked.
+- A recipe applied to next month's file reports drift, and the same file and recipe always give the same bytes.
+- Limits and refusals are checked, and the worked examples equal what run() returns.
+
+**FMLA eligibility checker**
+
+- The thresholds (12 months or 52 weeks, 1,250 hours, 50 employees within 75 miles, 7 years, 20 workweeks, 5 business days) and the quoted sections of Part 825 are pinned to eCFR and dol.gov as read on 2026-11-08.
+- The 12-month test is checked on the anniversary and the day before, a leap-day hire, seasonal periods in weeks, 51 and 52 weeks, and breaks of seven years kept by USERRA, an agreement or the employer.
+- The hours window, logs, USERRA credit, missing records and flight crew are checked, and so are 75 and 75.1 miles, staff abroad and the 300 employees of FAB 2023-1 example 5.
+- The notice due date skips weekends, Veterans Day, Thanksgiving and closed days; the rolling balance reproduces the 825.200(c) example; calendar, fixed, forward and military caregiver years and the ledger CSV are checked.
+
 **Exchange rate on a date**
 
 - The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback to the day, rounding that is exact on the decimal value.
 - When the real downloaded files are present, the worked examples and the currency list are compared with them. Treasury and HMRC values read on 2026-11-02 are pinned against the real files.
 - IRS yearly averages are tested against the stored IRS table, including the cells the IRS prints irregularly, which are refused rather than guessed.
+
+**GPSR listing checker**
+
+- The quoted rule texts, the Article 2(2) exclusions and the read date 2026-11-08 are pinned to the EUR-Lex and Commission texts as read.
+- The 27 Member States carry the official EU languages europa.eu lists, and the channel field names are pinned to each channel's page.
+- CSV reading (commas, semicolons, tabs, quotes, line breaks, BOM), header matching and Shopify variant rows are each checked.
+- Each Article 19 item is checked on its own: manufacturer, responsible person by country, picture, identifier, GTIN check digits, warnings and their language per market, exclusions and defaults.
+- The responsible person operation is checked for EU, non-EU, UK, EEA and Northern Ireland cases, the worked examples equal run(), and formula-like cells are written as text.
 
 **Hours calculator and timesheet**
 
@@ -328,11 +431,25 @@ These are the checks in each tool's test suite. Only what a test asserts is list
 - The 2026 change is checked (72.5 cents to June 30, 76 cents from July 1), with the paid-date rule from Announcement 2026-11, and the 2011 and 2022 mid-year changes.
 - A worked example is reproduced: 4,200 miles split at July 1 is 2,600 x $0.725 + 1,600 x $0.76 = $3,101.00.
 
+**Name tag generator**
+
+- Each of the 6 templates is pinned to its avery.com page and blank PDF template: size as sold, labels per sheet, sheet and label size, first and last label position, and compatible numbers.
+- Every line of every badge stays 0.12 inch inside its label in every style, names shrink, wrap and are cut only in that order, and the sheet maths is checked at its boundaries.
+- CSV reading, heading matching, name case fixing, duplicates and sorting are checked, and the badge, alignment test and check-in PDFs are valid and the same bytes every time.
+
 **QR code generator**
 
 - The encoder is compared bit for bit with an independent implementation (node-qrcode 1.5.4) at every one of the 40 versions and 4 error-correction levels, and in numeric, alphanumeric and byte modes.
 - A decoder reads every code back, and the Reed-Solomon error correction fixes damage up to its limit and refuses more.
 - Payload formats (WiFi, vCard, mailto, SMS, geo) are checked against the formats the sources describe, and the DENSO WAVE quiet-zone and module-size rules against the print checks.
+
+**Recipe cost calculator and menu re-coster**
+
+- The NIST Handbook 44 factors are checked exact against each other, and the USDA household weights against the figures as read on 2026-11-08.
+- Unit aliases and conversions, and volume to weight only with a weight, are checked.
+- The sample menu is costed to the cent, with sub-recipes by volume and by portion, yields and USDA cups; a price change ripples into every dish that uses it, and refused input names the problem.
+- Rounding up to each price ending and every single calculation (menu price, food cost %, pour, bake, catering, yield, actual) are checked against worked figures.
+- CSV in and out, and the workbook (a valid zip with four sheets, live formulas and the engine's values) are checked, and the worked examples equal run().
 
 **Bulk redirect chain checker**
 
@@ -340,6 +457,14 @@ These are the checks in each tool's test suite. Only what a test asserts is list
 - Every verdict is checked against a fake web: one hop, chains, loops and their patterns, hop limits, plain HTTP, meta refresh, errors, refusals and expected targets.
 - Pasted curl output is judged like a live run, and the worked examples equal what run() returns.
 - Private, loopback, link-local, metadata, CGNAT, reserved and IPv6 address forms are refused.
+
+**Sitemap validator**
+
+- The rules, limits and source dates are checked as read on 2026-11-08, and every Search Console name maps to a real issue code.
+- The XML reader, every format and entry problem, the URL and byte limits, URL scope, W3C dates, the lastmod heuristics, image and news extensions and nested indexes are each checked.
+- robots.txt matching (merged groups, the \* fallback, longest match, Allow on a tie, \* and $), noindex and canonical reading, and every live verdict are checked.
+- Fetching is checked against a fake web: gzip, redirects, size caps, the per-host limit, the time budget, robots.txt blocking, and private addresses refused and not charged.
+- The worked example, paste and rules equal what run() returns, and bad input is refused before any charge.
 
 **SPF lookup counter**
 

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How GPSR listings are checked: method and sources: Endwise</title>
+<meta name="description" content="How the GPSR listing checker reads a listing export and checks each SKU against Article 19: manufacturer, EU responsible person, picture and warnings.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/gpsr-listing-checker/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/gpsr-listing-checker.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How GPSR listings are checked: method and sources">
+<meta property="og:description" content="How the GPSR listing checker reads a listing export and checks each SKU against Article 19: manufacturer, EU responsible person, picture and warnings.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/gpsr-listing-checker/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/gpsr-listing-checker/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/gpsr-listing-checker/","name":"How GPSR listings are checked: method and sources","description":"How the GPSR listing checker reads a listing export and checks each SKU against Article 19: manufacturer, EU responsible person, picture and warnings.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How GPSR listings are checked: method and sources","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/gpsr-listing-checker/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the gpsr listing checker answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the gpsr listing checker refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"It checks what the listing data shows against Article 19. It does not certify that a product is safe or compliant, and it cannot confirm that an address is real or that a company is established in the EU. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How GPSR listings are checked: method and sources</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How GPSR listings are checked: method and sources</h1>
+<p class="cp-answer">Each SKU is checked against the 4 items of Article 19 of Regulation (EU) 2023/988, which applies from 2024-12-13: (a) the manufacturer's name, postal and electronic address, (b) an EU responsible person when the manufacturer is outside the EU, (c) a picture, the type and an identifier, and (d) warnings in a language of each of the 27 Member States you sell into. A finding is missing or to check; the tool never says a product is safe.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the gpsr listing checker compute?</h2>
+<p>The tool reads a listing export from Amazon, Etsy, eBay, Shopify or any CSV, finds the columns that hold each Article 19 item, and checks every SKU. Each SKU gets a verdict (ok, check, missing or out of scope) and a list of findings, each cited to its article, with what to fix. The answer also has a fix list CSV, a checklist CSV and a label block per SKU. Two more operations say whether a manufacturer in a given country needs an EU responsible person, and return the rule set and the 27 Member States with their official EU languages.</p>
+<p>Operations (the op field):</p>
+<ul><li><code>check</code>: Checks a file of listings, given as rows (a list of objects) or as csv text, one of the two. Options: platform (generic, amazon, etsy, ebay, shopify), markets (the EU countries you sell into), columns (your header for a field the tool does not recognize) and defaults (shop-wide manufacturer and responsible person details that fill blank cells). The answer has a summary, one result per SKU, labels, fixCsv, checklistCsv and the columns used and ignored.</li><li><code>responsible-person</code>: For one manufacturer country, says whether the listing must show an EU responsible person, who can be one under Article 4(2) of Regulation (EU) 2019/1020, and what the listing must show. With rpCountry it also says whether a responsible person in that country is established in the EU. Free.</li><li><code>rules</code>: Returns the four Article 19 items quoted from EUR-Lex, the date they apply from, the Article 2(2) exclusions, the 27 Member States with their official EU languages, the channel sources and the read date. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>rows or csv</code>: The listings. CSV text of at most 100,000 characters, at most 5,000 rows in one file, and at most 2,000 characters in a cell. The file needs a SKU, title or handle column.</li><li><code>columns</code>: Optional: maps a field (such as manufacturerName) to the header that holds it, for headers the tool does not know.</li><li><code>platform</code>: Optional: generic, amazon, etsy, ebay, shopify (default generic). shopify joins variant rows to their product; amazon checks where safety documents are hosted.</li><li><code>markets</code>: Optional: up to 27 EU countries as codes or names, such as DE, France or EL. A country outside the EU is refused.</li><li><code>defaults</code>: Optional: the manufacturer's and the responsible person's name, postal address, email and country, and the warning languages, used only where a row is blank.</li><li><code>manufacturerCountry, rpCountry</code>: For responsible-person: the manufacturer's country, and optionally the responsible person's, as a code or a name. A country the tool does not know is refused.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: how many SKUs are missing an Article 19 item, the most common gap, and how many need a check by hand</li><li>results: per SKU, the line, verdict, whether a responsible person is needed, the manufacturer country, the warning languages declared and detected, and the findings with article and fix</li><li>labels: a block per SKU with the manufacturer, the responsible person when needed and the identifiers</li><li>fixCsv and checklistCsv: the fix list and the checklist as spreadsheets</li><li>columnsUsed and columnsIgnored: which header was read as which field</li></ul>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The file is read. For CSV, the delimiter is whichever of comma, tab and semicolon appears most often in the first line outside quotes; quoted cells may hold the delimiter, doubled quotes and line breaks; a leading byte order mark and blank rows are dropped. A quote that is never closed is refused.</li><li>Each header is matched to a field by name, compared in lower case with &quot;#1&quot;-style indexes and everything but letters and digits removed, so &quot;Variant SKU&quot; and &quot;variant_sku&quot; are one header. The names cover Amazon, Etsy, eBay and Shopify exports; columns maps any other. The first header for a field wins. With platform shopify, a variant row takes the product's fields from the row above with the same handle, and a row with no SKU or barcode is an extra image row, not a SKU.</li><li>Shop-wide defaults fill only the blank manufacturer, responsible person and warning language cells. A row marked as one of the Article 2(2) exclusions is out of scope and not checked.</li><li>Item (a): the manufacturer's name is required; with no manufacturer column, a brand is used and flagged to check that it is the registered trade name or mark. The postal address is required, and flagged to check if it has no digit or fewer than two parts. The electronic address must be an email address; a web address is flagged to check (Commission guidelines, section 3.1.1), and anything else is missing.</li><li>Item (b): the manufacturer's country is read from a country column, or else from the last parts of its address. An EU country needs no responsible person; a country outside the EU does, and then the responsible person's name, postal address and email address are each required. A responsible person outside the EU is missing; one in Norway, Iceland or Liechtenstein is flagged to check. An unknown manufacturer country with no responsible person given is flagged to check.</li><li>Item (c): a picture is required, and flagged to check if it is not a web address. One of type, model, MPN, barcode or batch number is required. Barcodes of 8, 12, 13 or 14 digits are checked against the GS1 mod-10 check digit. A row with no title is flagged to check.</li><li>Item (d): when there are warnings, their languages are read from a language column (codes such as de, de_DE, or names such as German or Deutsch), or else guessed from the text: Greek and Bulgarian by their script, other languages by common safety words, with at least 2 hits and more than any other language. Each chosen market none of whose official EU languages is among them is flagged. No warnings at all is flagged to check, unless the row is marked noWarningsNeeded or carries Amazon's gpsr_safety_attestation as true.</li><li>On Amazon, a safety document hosted on drive.google.com, docs.google.com, dropbox.com, www.dropbox.com, dl.dropboxusercontent.com is missing, since Amazon does not take those links.</li><li>Each SKU is missing if any finding is missing, check if any finding needs a check, and ok otherwise. A label block is printed only when the manufacturer's name, postal and electronic address are present and, when needed, the responsible person's too, in the EU.</li></ol>
+<p><strong>Regulation (EU) 2023/988, Article 19.</strong></p>
+<p>The offer must show: (a) name, registered trade name or registered trade mark of the manufacturer, as well as the postal and electronic address at which they can be contacted; (b) where the manufacturer is not established in the Union, the name, postal and electronic address of the responsible person within the meaning of Article 16(1) of this Regulation or Article 4(1) of Regulation (EU) 2019/1020; (c) information allowing the identification of the product, including a picture of it, its type and any other product identifier; and (d) any warning or safety information to be affixed to the product or to the packaging or included in an accompanying document in accordance with this Regulation or the applicable Union harmonisation legislation in a language which can be easily understood by consumers, as determined by the Member State in which the product is made available on the market.</p>
+<p>The regulation applies from 2024-12-13 (Article 52). Article 2(2) leaves out 9 kinds of product, among them food, feed, medicinal products and antiques.</p>
+<p><strong>Regulation (EU) 2019/1020, Article 4(2).</strong></p>
+<p>A manufacturer established in the EU is itself the operator. Otherwise the responsible person can be an importer, where the manufacturer is not established in the Union; an authorised representative who has a written mandate from the manufacturer designating the authorised representative to perform the tasks set out in paragraph 3 on the manufacturer's behalf; or a fulfilment service provider established in the Union with respect to the products it handles, where no other economic operator as mentioned in points (a), (b) and (c) is established in the Union.</p>
+<p><strong>Commission guidelines C/2025/6233.</strong></p>
+<p>An electronic address can be an e-mail address or dedicated section of your website that enables consumers to contact you directly and easily. A website is not in itself sufficient if it does not allow direct communication with you.</p>
+<p><strong>Member State languages.</strong></p>
+<p>The 27 Member States and their 24 official EU languages are as each country's page on european-union.europa.eu lists them. Article 19(d) leaves the language of warnings to each Member State; the check compares with the official EU languages, and a national rule can ask for more.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A file with no SKU, title or handle column is refused with a hint to map one with columns.</li><li>A brand with no manufacturer column is flagged to check, not counted as missing, and a brand used this way is still printed on the label.</li><li>A country is read from a code, an English name or a native name such as Deutschland; a country column wins over the address.</li><li>An unknown manufacturer country with a responsible person given checks that person as if one were needed.</li><li>A barcode that is not 8, 12, 13 or 14 digits is not checked; one with a wrong last digit is flagged, since a typo there identifies another product.</li><li>A warning language the tool does not know is flagged as not recognized, and a guess needs at least 2 common words and a clear lead.</li><li>In the fix list CSV, a cell that starts like a spreadsheet formula is written as text.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Five listings for Germany and France: which SKUs miss what</strong></p>
+<pre><code class="language-json">op: &quot;check&quot;
+csv: &quot;sku,title,manufacturer,manufacturer address,manufacturer email,responsible person,responsible person address,responsible person email,image url,type,gtin,warnings,warning language,excluded\r\nMUG-01,Stoneware mug 350 ml,Harbor &amp; Pine LLC,\&quot;412 Elm St, Portland, OR 97205, USA\&quot;,safety@harborpine.example,EuroRep GmbH,\&quot;Hauptstr. 5, 10115 Berlin, Germany\&quot;,gpsr@eurorep.example,https://cdn.example.com/mug-01.jpg,Mug,0012345678905,\&quot;Nicht für die Mikrowelle geeignet. Ne pas utiliser au micro-ondes.\&quot;,\&quot;de, fr\&quot;,\r\nKNIFE-02,Paring knife,Harbor &amp; Pine LLC,\&quot;412 Elm St, Portland, OR 97205, USA\&quot;,safety@harborpine.example,Brit Rep Ltd,\&quot;1 High St, London, UK\&quot;,rep@britrep.example,https://cdn.example.com/knife-02.jpg,Kitchen knife,4006381333931,Sharp blade. Keep away from children.,en,\r\nCANDLE-03,Soy candle,Harbor &amp; Pine LLC,\&quot;412 Elm St, Portland, OR 97205, USA\&quot;,https://harborpine.example,EuroRep GmbH,\&quot;Hauptstr. 5, 10115 Berlin, Germany\&quot;,gpsr@eurorep.example,https://cdn.example.com/candle-03.jpg,Candle,4006381333932,Kerze nie unbeaufsichtigt brennen lassen. Von Kindern fernhalten.,,\r\nTRAY-04,Serving tray,Harbor &amp; Pine LLC,\&quot;412 Elm St, Portland, OR 97205, USA\&quot;,safety@harborpine.example,,,,,,,,,\r\nJAM-05,Fig jam,Harbor &amp; Pine LLC,\&quot;412 Elm St, Portland, OR 97205, USA\&quot;,safety@harborpine.example,,,,,,,,,food&quot;
+markets: 2 items
+columns: &#123;...&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Five listings for Germany and France: which SKUs miss what</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Your file has 5 SKUs; 2 are missing a GPSR Article 19 item. 1 more needs a check by hand. 1 marked out of scope.</td></tr>
+<tr><th scope="row">markets</th><td>DE, FR</td></tr>
+<tr><th scope="row">line 2: MUG-01</th><td>ok</td></tr>
+<tr><th scope="row">line 3: KNIFE-02</th><td>missing (missing rp-outside-eu, check warning-language)</td></tr>
+<tr><th scope="row">line 4: CANDLE-03</th><td>check (check manufacturer-website, check gtin-check-digit, check warning-language)</td></tr>
+<tr><th scope="row">line 5: TRAY-04</th><td>missing (missing rp-name, missing rp-postal, missing rp-electronic, missing picture, missing identifier, check warnings)</td></tr>
+<tr><th scope="row">line 6: JAM-05</th><td>out-of-scope</td></tr>
+<tr><th scope="row">label blocks printed for</th><td>MUG-01, CANDLE-03</td></tr>
+</tbody></table></div>
+<p><strong>A US manufacturer with a responsible person in the United Kingdom</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;responsible-person&quot;,
+  &quot;manufacturerCountry&quot;: &quot;US&quot;,
+  &quot;rpCountry&quot;: &quot;United Kingdom&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A US manufacturer with a responsible person in the United Kingdom</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>A manufacturer in the United States is outside the EU, so every listing must also show the name, postal and electronic address of an EU responsible person (Article 19(b)): an importer, an authorised representative with a written mandate, or a fulfilment service provider established in the EU.</td></tr>
+<tr><th scope="row">responsible person needed</th><td>yes</td></tr>
+<tr><th scope="row">responsible person in the EU</th><td>no</td></tr>
+<tr><th scope="row">note</th><td>A responsible person in the United Kingdom is not established in the EU, so it cannot be the responsible person (Article 16(1)).</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>It checks what the listing data shows against Article 19. It does not certify that a product is safe or compliant, and it cannot confirm that an address is real or that a company is established in the EU.</li><li>Each Member State decides the language of warnings. The check compares with that state's official EU languages; national rules can ask for more.</li><li>Products under other EU product laws (toys, cosmetics, electrical goods and more) can need further warnings and marks that this check does not cover.</li><li>How the rules apply in Norway, Iceland and Liechtenstein (the EEA Agreement) and in Northern Ireland (the Windsor Framework) is not applied; those cases are flagged with a note.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The rule texts were read on EUR-Lex on 2026-11-08, the Member State languages on european-union.europa.eu on 2026-11-08, and the channel field names on each channel's own pages on 2026-11-08. They are read once when the server starts and change only with a deploy (data version gpsr-2023-988+guidelines-c2025-6233+read-2026-11-08).</p>
+<ul class="cp-sources"><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988">EUR-Lex: Regulation (EU) 2023/988 on general product safety (GPSR), OJ L 135, 23.5.2023, p. 1 (read 2026-11-08)</a></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:C_202506233">EUR-Lex: Commission Notice C/2025/6233: Guidelines on the application of the EU general product safety legislative framework by businesses, OJ C, 21.11.2025 (read 2026-11-08)</a></li><li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019R1020">EUR-Lex: Regulation (EU) 2019/1020 on market surveillance and compliance of products, Article 4 (read 2026-11-08)</a></li><li><a href="https://european-union.europa.eu/principles-countries-history/eu-countries_en">European Union: EU countries (country profiles) (read 2026-11-08)</a></li><li><a href="https://developer-docs.amazon/sp-api/changelog/developers-can-use-attributes-in-their-programmatic-listings-submissions-to-comply-with-gpsr">Amazon Selling Partner API changelog: attributes for GPSR in programmatic listings submissions (read 2026-11-08)</a></li><li><a href="https://help.etsy.com/hc/en-us/articles/28211364687383-What-is-the-General-Product-Safety-Regulation-GPSR">Etsy Help: What is the General Product Safety Regulation (GPSR)? (read 2026-11-08)</a></li><li><a href="https://www.ebay.com/help/selling/selling/product-safety-disclosures-hazardous-materials-labelling?id=5407">eBay Help: Product safety disclosures and hazardous materials labelling (read 2026-11-08)</a></li><li><a href="https://help.shopify.com/en/manual/products/import-export/using-csv">Shopify Help Center: Using CSV files to import and export products (read 2026-11-08)</a></li></ul>
+<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The quoted rule texts, the exclusions, the 27 Member States with their languages and the channel field names are pinned to the files as read. Each check is tested on its own: CSV reading, header matching, Shopify variant rows, each Article 19 item with its edge cases, language guessing, exclusions, defaults, markets and the responsible person operation. The worked examples equal run(), and the fix list CSV writes formula-like cells as text.</p>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p><a href="/toll-preview/gpsr-listing-checker/">Open the GPSR listing checker tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the gpsr listing checker answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the gpsr listing checker refuse to answer?</h3><p>It checks what the listing data shows against Article 19. It does not certify that a product is safe or compliant, and it cannot confirm that an address is real or that a company is established in the EU. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/gpsr-listing-checker/">Open the GPSR listing checker tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/gpsr-listing-checker/requirements/">GPSR requirements: the 4 Article 19 items</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/gpsr-listing-checker.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

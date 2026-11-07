@@ -1,0 +1,13 @@
+old_url,expected,redirects,final_url,final_status,result,verdicts
+https://example.com/about-us,/about,1,https://example.com/about,200,Lands on the target,OK
+https://example.com/products/blue-widget,/shop/blue-widget,1,https://example.com/shop/blue-widget/,200,Off by a trailing slash,Matches the expected target except for a trailing slash
+https://example.com/blog/2019/launch,/news/launch,2,https://example.com/news/launch,200,Lands on the target through a chain,Chain (2 or more hops); Reaches the expected target through a chain
+https://example.com/contact.html,/contact,1,https://example.com/contact,200,Lands on the target,"Temporary redirect (302, 303, 307 or delayed refresh)"
+https://example.com/old-category,/shop/garden,1,https://example.com/,200,Lands on the wrong page,Lands somewhere other than the expected target; Redirected to the homepage
+https://example.com/team,/about/team,1,https://example.com/about/team,404,Never reaches a page,Ends on a 4xx or 5xx
+https://example.com/pricing,/plans,2,,,Never reaches a page,Redirect loop; Chain (2 or more hops)
+http://example.com/faq,/help,2,https://example.com/help,200,Lands on the target through a chain,Chain (2 or more hops); Reaches the expected target through a chain
+https://example.com/careers,https://jobs.example.com/,1,https://jobs.example.com/,200,Lands on the target,OK
+https://example.com/press,/news,1,https://example.com/news,200,Lands on the target,OK
+https://example.com/docs/v1/start,/docs/start,1,https://example.com/docs/start,200,Lands on the target,OK
+https://example.com/summer-sale,/sale,1,https://example.com/sale,200,Lands on the target,"Temporary redirect (302, 303, 307 or delayed refresh)"

@@ -18,7 +18,7 @@
 <meta property="og:title" content="REST API for developers: Endwise">
 <meta property="og:description" content="Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/developers/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/","name":"REST API for developers: Endwise","description":"Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/","name":"REST API for developers: Endwise","description":"Call any Endwise tool over REST: one POST with a Bearer API key and a JSON body. Real requests and responses, errors, retries, quotes and OpenAPI.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"}]}]}</script>
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -416,6 +416,21 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
   <td class="words">$0.001</td>
 </tr>
 <tr>
+  <td><div class="tname hue-file"><i></i><span><a href="/toll-preview/fix-csv-export/">Fix a CSV export (leading zeros, dates, encoding) with a saved recipe</a><small>fix-csv-export</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/fix-csv-export</code></td>
+  <td class="words">from $0.25</td>
+</tr>
+<tr>
+  <td><div class="tname hue-date"><i></i><span><a href="/toll-preview/fmla-eligibility-checker/">FMLA eligibility checker</a><small>fmla-eligibility-checker</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/fmla-eligibility-checker</code></td>
+  <td class="words">from $0.01</td>
+</tr>
+<tr>
+  <td><div class="tname hue-file"><i></i><span><a href="/toll-preview/gpsr-listing-checker/">GPSR listing checker</a><small>gpsr-listing-checker</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/gpsr-listing-checker</code></td>
+  <td class="words">from $0.01</td>
+</tr>
+<tr>
   <td><div class="tname hue-date"><i></i><span><a href="/toll-preview/hours-calculator/">Hours calculator and timesheet</a><small>hours-calculator</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/hours-calculator</code></td>
   <td class="words">from $0.002</td>
@@ -441,6 +456,11 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
   <td class="words">from $0.001</td>
 </tr>
 <tr>
+  <td><div class="tname hue-file"><i></i><span><a href="/toll-preview/name-tag-generator/">Name tag generator</a><small>name-tag-generator</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/name-tag-generator</code></td>
+  <td class="words">from $0.01</td>
+</tr>
+<tr>
   <td><div class="tname hue-date"><i></i><span><a href="/toll-preview/date-resolver/">Natural-language date resolver</a><small>date-resolver</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/date-resolver</code></td>
   <td class="words">from $0.0005</td>
@@ -449,6 +469,16 @@ GET <span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-pre
   <td><div class="tname hue-file"><i></i><span><a href="/toll-preview/qr-code-generator/">QR code generator</a><small>qr-code-generator</small></span></div></td>
   <td><code>POST /toll-preview/api/v1/tools/qr-code-generator</code></td>
   <td class="words">from $0.002</td>
+</tr>
+<tr>
+  <td><div class="tname hue-money"><i></i><span><a href="/toll-preview/recipe-cost-calculator/">Recipe cost calculator and menu re-coster</a><small>recipe-cost-calculator</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/recipe-cost-calculator</code></td>
+  <td class="words">from $0.002</td>
+</tr>
+<tr>
+  <td><div class="tname hue-file"><i></i><span><a href="/toll-preview/sitemap-validator/">Sitemap validator</a><small>sitemap-validator</small></span></div></td>
+  <td><code>POST /toll-preview/api/v1/tools/sitemap-validator</code></td>
+  <td class="words">from $0.0005</td>
 </tr>
 <tr>
   <td><div class="tname hue-agent"><i></i><span><a href="/toll-preview/spf-lookup-counter/">SPF lookup counter</a><small>spf-lookup-counter</small></span></div></td>

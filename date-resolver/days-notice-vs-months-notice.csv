@@ -1,0 +1,16 @@
+notice_given,days,end_by_days,weekday_days,months,end_by_months,weekday_months,days_apart
+2027-01-15,30,2027-02-14,Sunday,1,2027-02-15,Monday,1
+2027-01-15,60,2027-03-16,Tuesday,2,2027-03-15,Monday,-1
+2027-01-15,90,2027-04-15,Thursday,3,2027-04-15,Thursday,0
+2027-01-31,30,2027-03-02,Tuesday,1,2027-02-28,Sunday,-2
+2027-01-31,60,2027-04-01,Thursday,2,2027-03-31,Wednesday,-1
+2027-01-31,90,2027-05-01,Saturday,3,2027-04-30,Friday,-1
+2027-03-31,30,2027-04-30,Friday,1,2027-04-30,Friday,0
+2027-03-31,60,2027-05-30,Sunday,2,2027-05-31,Monday,1
+2027-03-31,90,2027-06-29,Tuesday,3,2027-06-30,Wednesday,1
+2027-08-31,30,2027-09-30,Thursday,1,2027-09-30,Thursday,0
+2027-08-31,60,2027-10-30,Saturday,2,2027-10-31,Sunday,1
+2027-08-31,90,2027-11-29,Monday,3,2027-11-30,Tuesday,1
+2027-11-30,30,2027-12-30,Thursday,1,2027-12-30,Thursday,0
+2027-11-30,60,2028-01-29,Saturday,2,2028-01-30,Sunday,1
+2027-11-30,90,2028-02-28,Monday,3,2028-02-29,Tuesday,1

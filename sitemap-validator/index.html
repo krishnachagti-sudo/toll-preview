@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sitemap validator: schema, limits, lastmod, noindex: Endwise</title>
+<meta name="description" content="Check an XML sitemap or index before Google does: schema, 50,000 URL and 50MB limits, lastmod, robots.txt, and each URL's status, noindex and canonical. One sitemap with 10 live URLs free.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/sitemap-validator/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"sitemap-validator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Sitemap validator">
+<meta property="og:description" content="Check an XML sitemap or sitemap index before Google does: the sitemaps.org schema, the 50,000 URL and 50MB limits, lastmod format and sanity, host and folder scope, image and news tags, robots.txt against every listed URL, and (optionally) each listed URL's status, redirect, noindex and canonical, answered in Search Console's own error names, with a CSV.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/","url":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/","name":"Sitemap validator","description":"Check an XML sitemap or sitemap index before Google does: the sitemaps.org schema, the 50,000 URL and 50MB limits, lastmod format and sanity, host and folder scope, image and news tags, robots.txt against every listed URL, and (optionally) each listed URL's status, redirect, noindex and canonical, answered in Search Console's own error names, with a CSV.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Sitemap validator","item":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/"}]},{"@type":"WebApplication","name":"Sitemap validator","url":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/","description":"Check an XML sitemap or sitemap index before Google does: the sitemaps.org schema, the 50,000 URL and 50MB limits, lastmod format and sanity, host and folder scope, image and news tags, robots.txt against every listed URL, and (optionally) each listed URL's status, redirect, noindex and canonical, answered in Search Console's own error names, with a CSV.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"One sitemap on this page (an index and up to 10 of its files) with up to 10 URLs checked live","price":"0","priceCurrency":"USD"},{"name":"Sitemap check","@type":"Offer","price":"0.0005","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.0005","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"check"}}},{"@type":"Offer","name":"Pasted sitemap XML, nothing fetched","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"The limits and rules table","price":"0","priceCurrency":"USD"}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="sv">
+  <section class="wrap sv-intro">
+    <p class="eyebrow">Website checks</p>
+    <h1>Sitemap validator</h1>
+    <p class="lede">Give the address of your sitemap or sitemap index. It is read the way a crawler reads it: the status and format, the sitemaps.org schema, the 50,000 URL and 50MB limits, every lastmod date, the host and folder rules, image and news tags, and robots.txt against every listed URL. Then a sample of the listed URLs is requested live to see which redirect, return an error, say noindex or name another URL as canonical. Problems are named the way Search Console names them.</p>
+    <p data-prices class="sv-price" id="sv-price">One sitemap (an index and up to 10 of its files) with up to 10 URLs checked live is free on this page. Bigger checks need an account: $0.0005 per check, and $0.0001 per check after 20,000 in a month, where a check is one sitemap file read or one URL requested live. Pasting XML is free.</p>
+  </section>
+
+  <section class="wrap sv-desk" aria-label="Sitemap check">
+    <form class="sv-form" id="sv-form" novalidate>
+      <div class="field">
+        <label for="sv-url">Sitemap address</label>
+        <input type="text" id="sv-url" spellcheck="false" autocomplete="url" inputmode="url" placeholder="https://example.com/sitemap.xml" aria-describedby="sv-url-hint sv-url-err">
+        <p class="hint" id="sv-url-hint">A sitemap (.xml, .xml.gz or .txt) or a sitemap index. Search Console shows the address you submitted on its Sitemaps page.</p>
+        <p class="field-error" id="sv-url-err"></p>
+      </div>
+      <div class="sv-pair">
+        <div class="field">
+          <label for="sv-live">URLs to check live</label>
+          <input type="number" id="sv-live" min="0" max="250" value="10" aria-describedby="sv-live-hint">
+          <p class="hint" id="sv-live-hint">10 or fewer is free. Up to 250 a run with an account.</p>
+        </div>
+        <div class="field">
+          <label for="sv-pick">Which URLs</label>
+          <select id="sv-pick">
+            <option value="first">The first ones listed</option>
+            <option value="spread">Spread through the list</option>
+          </select>
+        </div>
+      </div>
+      <details class="sv-more" id="sv-more">
+        <summary>For a sitemap index</summary>
+        <div class="field">
+          <label for="sv-max">Child sitemaps to read</label>
+          <input type="number" id="sv-max" min="0" max="50" value="10">
+          <p class="hint">10 or fewer is free on this page; up to 50 a run with an account.</p>
+        </div>
+      </details>
+      <p class="form-error" id="sv-error" role="alert"></p>
+      <button class="btn" type="submit" id="sv-go">Validate the sitemap</button>
+      <p class="hint sv-go-note" id="sv-go-note">Free at these settings.</p>
+      <p class="visually-hidden" id="sv-status" role="status"></p>
+    </form>
+
+    <div class="sv-out" id="sv-out" aria-live="polite">
+      <p class="sv-label">Worked example, not a real site</p>
+      <p class="sv-answer" id="sv-sample-answer">https://www.example.com/sitemap_index.xml is not valid: an index of 2 sitemaps; 2 child files read hold 11 URLs, the largest 707 bytes uncompressed, 4 errors and 1 warning, 1 future lastmod date, 1 URL blocked by robots.txt; of 9 URLs checked live, 2 did not answer 200, 2 are noindex and 2 name another canonical.</p>
+      <ul class="sv-sample-list" id="sv-sample-list">
+        <li><strong>Parsing error</strong>: a bare &amp; in <code>/products/teapot?colour=blue&amp;size=large</code>; write <code>&amp;amp;</code>.</li>
+        <li><strong>Invalid date</strong>: <code>2026/10/15</code> uses slashes; lastmod is <code>YYYY-MM-DD</code>.</li>
+        <li><strong>Path mismatch</strong>: <code>https://example.com/products/cup</code> has no www; the sitemap is on www.example.com.</li>
+        <li><strong>Blocked by robots.txt</strong>: <code>/cart/checkout</code> matches <code>Disallow: /cart/</code>.</li>
+        <li><strong>Live</strong>: one 301 redirect, one 404, two noindex (a meta tag and an X-Robots-Tag header) and two pages naming another canonical.</li>
+      </ul>
+      <p class="muted">A made-up store on example.com, its answers replayed by the same code a real check runs. The full report loads with the page.</p>
+    </div>
+  </section>
+
+  <section class="wrap sv-paste" data-jump="Paste XML" aria-labelledby="sv-paste-title">
+    <h2 id="sv-paste-title">Not online yet? Paste the XML</h2>
+    <p class="sv-sub">Paste a sitemap or index (or a text sitemap, one URL per line). It is checked in your browser by the same rules, with nothing sent anywhere. Add the address it will live at to check the host and folder rules too. Free.</p>
+    <div class="field"><label for="sv-paste-url">Where it will live (optional)</label><input type="text" id="sv-paste-url" spellcheck="false" autocomplete="off" placeholder="https://example.com/sitemap.xml"></div>
+    <div class="field"><label for="sv-xml">Sitemap XML</label><textarea id="sv-xml" rows="8" spellcheck="false"></textarea></div>
+    <p class="form-error" id="sv-paste-error" role="alert"></p>
+    <button class="btn btn-quiet" type="button" id="sv-paste-go">Check this XML</button>
+    <div id="sv-paste-out" aria-live="polite"></div>
+  </section>
+
+  <section class="wrap sv-rules" data-jump="What it checks" aria-labelledby="sv-rules-title">
+    <h2 id="sv-rules-title">What it checks</h2>
+    <div class="sv-rule-cols">
+      <div>
+        <h3>The file</h3>
+        <p>That the address answers 200 with XML, not a login or an HTML page; gzip; UTF-8; well-formed XML with line numbers (a bare &amp; is the usual culprit); the sitemaps.org namespace and tags; at most 50,000 URLs and 50MB (52,428,800 bytes) uncompressed; and for an index, at most 50,000 sitemaps, no index inside an index.</p>
+      </div>
+      <div>
+        <h3>The entries</h3>
+        <p>Absolute, escaped URLs under 2,048 characters on the sitemap's own protocol and host (www included), inside its folder; duplicates; lastmod in W3C Datetime (a time needs a time zone); changefreq and priority values; image and news tags. Sanity flags for lastmod (our heuristic): future dates, and one date on nearly every URL.</p>
+      </div>
+      <div>
+        <h3>The URLs</h3>
+        <p>robots.txt run against every listed URL, and the sitemap itself, as Googlebot reads it. For the URLs checked live: redirects, 404s and other errors, noindex in a robots meta tag or an X-Robots-Tag header, and a rel=canonical that names a different URL.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sv-legal" data-jump="Please read" aria-labelledby="sv-legal-title">
+    <h2 id="sv-legal-title">Please read</h2>
+    <ul id="sv-disclaimers">
+      <li>A check shows what each server answered at that moment, to one request from our server in the United States. Servers can answer Googlebot, other countries or signed-in visitors differently, and some block automated requests.</li>
+      <li>Search Console is the record of what Google fetched and parsed. This check cannot see Google's crawl schedule, crawl demand or manual actions, so a clean result here does not make "Couldn't fetch" go away by itself.</li>
+      <li>The lastmod sanity flags (future dates, one date on nearly every URL, dates later than the file) are our own heuristics, not Google's rules.</li>
+      <li>noindex and canonical are read from the HTML the server sends (the first 256 kB) and from the X-Robots-Tag and Link headers; tags added by JavaScript are not seen.</li>
+      <li>Private, local, link-local (cloud metadata) and reserved addresses are never fetched, on any hop; only ports 80, 443, 8080 and 8443 are used. Check only sites you own or work on.</li>
+    </ul>
+    <h3>Prices</h3>
+    <ul class="endwise-prices"><li><strong>One sitemap on this page (an index and up to 10 of its files) with up to 10 URLs checked live</strong>: free.</li><li><strong>Sitemap check</strong>: $0.0005 per check for the first 20,000 each calendar month, then $0.0001 per check; you pay only for what is delivered and the rest is refunded at once; a check is one sitemap file read or one listed URL requested live; files and URLs not reached in the call's time, URLs robots.txt blocks, and the sitemap read again for a later batch of live checks are not charged.</li><li><strong>Pasted sitemap XML, nothing fetched</strong>: free.</li><li><strong>The limits and rules table</strong>: free.</li></ul>
+    <h3>Sources, read November 8, 2026</h3>
+    <ul class="sv-sources" id="sv-sources">
+      <li><a href="https://www.sitemaps.org/protocol.html">sitemaps.org: Sitemaps XML format</a> (last updated November 21, 2016) and its <a href="https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">XML schemas</a> (2008): tags, limits, escaping, scope</li>
+      <li><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">Google Search Central: Build and submit a sitemap</a> (last updated July 8, 2026): limits, UTF-8, absolute URLs, lastmod, ignored tags</li>
+      <li><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps">Google Search Central: Sitemap index files</a>, <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps">image sitemaps</a> and <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap">news sitemaps</a> (each last updated December 10, 2025)</li>
+      <li><a href="https://support.google.com/webmasters/answer/7451001?hl=en">Search Console Help: Manage your sitemaps using the Sitemaps report</a>: the status and error names</li>
+      <li><a href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag">Google Search Central: Robots meta tag and X-Robots-Tag</a> (last updated March 24, 2026) and <a href="https://www.rfc-editor.org/rfc/rfc9309">RFC 9309, the Robots Exclusion Protocol</a></li>
+    </ul>
+  </section>
+
+<section class="wrap cp-index" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Search Console errors</h2>
+<h3>Errors</h3><ul class="cp-index-list"><li><a href="/toll-preview/sitemap-validator/sitemap-could-not-be-read/" title="Sitemap could not be read (Couldn't fetch): find the real cause">Sitemap could not be read (Couldn't fetch)</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-general-http-error/" title="Sitemap &quot;General HTTP error&quot; in Search Console: what each status means">Sitemap general HTTP error</a></li><li><a href="/toll-preview/sitemap-validator/submitted-url-marked-noindex/" title="Submitted URL marked noindex: find every noindex URL in your sitemap">Submitted URL marked noindex</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-invalid-date/" title="Sitemap &quot;Invalid date&quot; error: the wrong date formats and their fixes">Sitemap invalid date</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-url-not-allowed/" title="Sitemap &quot;URL not allowed&quot; and &quot;Path mismatch&quot;: the host and folder rules">URL not allowed and path mismatch (www)</a></li><li><a href="/toll-preview/sitemap-validator/nested-sitemap-indexes/" title="Nested sitemap indexes: why an index cannot list another index">Nested sitemap indexes</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-parsing-error/" title="Sitemap &quot;Parsing error&quot;: find the line that breaks the XML">Sitemap parsing error</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-blocked-by-robots-txt/" title="Sitemap contains URLs blocked by robots.txt: test every listed URL">Sitemap URLs blocked by robots.txt</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Reference</h2>
+<h3>Reference</h3><ul class="cp-index-list"><li><a href="/toll-preview/sitemap-validator/sitemap-size-limit/" title="Sitemap size limit: 50,000 URLs and 50MB (52,428,800 bytes) uncompressed">Sitemap size limit: 50,000 URLs and 50MB</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-lastmod-format/" title="Sitemap lastmod date format (W3C Datetime), with valid and invalid examples">Sitemap lastmod date format</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-escaping-encoding/" title="Sitemap escaping and encoding: &amp;amp;, UTF-8 and percent-encoding">Escaping and encoding: &amp;amp; and UTF-8</a></li><li><a href="/toll-preview/sitemap-validator/search-console-sitemap-errors/" title="Search Console sitemap errors decoded: every message and what to check">Search Console sitemap errors decoded</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Sitemap types</h2>
+<h3>Types</h3><ul class="cp-index-list"><li><a href="/toll-preview/sitemap-validator/sitemap-index-checker/" title="Sitemap index checker: child sitemaps, limits and nested indexes">Sitemap index checker</a></li><li><a href="/toll-preview/sitemap-validator/image-sitemap-validator/" title="Image sitemap validator: image:loc, 1,000 per URL, deprecated tags">Image sitemap validator</a></li><li><a href="/toll-preview/sitemap-validator/news-sitemap-validator/" title="Google News sitemap validator: 1,000 tags, required tags, two-day rule">News sitemap validator</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Guides</h2>
+<h3>Guides</h3><ul class="cp-index-list"><li><a href="/toll-preview/sitemap-validator/validate-sitemap-for-google/" title="How to validate a sitemap for Google before you submit it">Validate a sitemap for Google</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-xsd-validation/" title="Validate a sitemap against the sitemaps.org XSD (the strict check)">Strict validation against the sitemaps.org XSD</a></li><li><a href="/toll-preview/sitemap-validator/clean-sitemap-urls/" title="Remove noindex, redirected and 404 URLs from your sitemap">Remove noindex, redirected and 404 URLs</a></li><li><a href="/toll-preview/sitemap-validator/do-i-need-a-sitemap/" title="Do I need a sitemap? Small sites, large sites and new sites">Do I need a sitemap?</a></li></ul>
+</section>
+<section class="wrap cp-index" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Comparisons</h2>
+<h3>Comparisons</h3><ul class="cp-index-list"><li><a href="/toll-preview/sitemap-validator/vs/search-console-sitemaps-report/" title="Search Console Sitemaps report vs a pre-submit sitemap validator">Search Console's Sitemaps report vs a pre-submit check</a></li><li><a href="/toll-preview/sitemap-validator/vs/seotesting/" title="SEOTesting XML sitemap validator alternative: file and URL checks">SEOTesting sitemap validator vs this validator</a></li><li><a href="/toll-preview/sitemap-validator/vs/screaming-frog/" title="Screaming Frog sitemap audit vs a pay-per-check sitemap validator">Screaming Frog vs this sitemap validator</a></li><li><a href="/toll-preview/sitemap-validator/vs/xml-sitemaps-com/" title="XML-Sitemaps.com vs a sitemap validator: generate, then check">XML-Sitemaps.com vs this sitemap validator</a></li></ul>
+</section>
+
+  <section class="wrap sv-code" aria-label="Use this from code">
+    <div id="sv-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This check needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/sitemap-validator/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

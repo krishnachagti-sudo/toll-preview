@@ -37,6 +37,7 @@ A URL that reaches its final page through two or more redirects. The fix is to p
 
 - [Googlebot redirect checker](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/googlebot-redirect-checker/)
 - [Redirect loop checker](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-loop-checker/)
+- [Flatten redirect chains](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/flatten-redirect-chains/)
 
 ---
 

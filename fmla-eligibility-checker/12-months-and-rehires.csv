@@ -1,0 +1,9 @@
+case,service_counted,meets_12_months,met_for_leave_starting
+"Hired 2025-11-10, one continuous job",12 months,yes,"November 10, 2026"
+"Hired 2025-11-10, leave a day early",11 months,no,"November 10, 2026"
+Two seasons and the current job,71 weeks,yes,"July 6, 2026"
+Rehired after a break under 7 years,325 weeks,yes,"December 28, 2015"
+Rehired after a break over 7 years,8 months,no,"March 2, 2027"
+"Same, under a written rehire agreement",368 weeks,yes,"April 29, 2013"
+"Same, the break was USERRA service",759 weeks,yes,"April 29, 2013"
+"Same, the employer counts old service",368 weeks,yes,"April 29, 2013"

@@ -1,0 +1,62 @@
+/* Fix a CSV export: a column ledger. Sits inside the brand chrome and reuses its tokens. One accent
+   (the file hue); a changed cell is marked by the accent and the old value struck out, so the
+   fix reads without colour too. */
+.fx {
+  --accent: var(--h-file);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-file);
+  --endwise-accent-ink: #06121a;
+  --fx-warn: #ffb547;
+}
+
+.fx-intro { padding-block: 40px 8px; }
+.fx-intro h1 { margin-bottom: 0.25em; }
+.fx-price { color: var(--ink-soft); max-width: 46rem; margin: 0; }
+
+.fx-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.fx-desk > * { min-width: 0; }
+@media (min-width: 1040px) { .fx-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
+
+.fx-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.fx-form > .btn { width: 100%; }
+.fx-drop { border: 1px dashed var(--rule-strong); border-radius: 8px; padding: 18px; margin-bottom: 10px; }
+.fx-drop.over { border-color: var(--accent); }
+.fx-drop-label { display: block; font-weight: 500; margin-bottom: 8px; }
+.fx-drop input, .fx-recipe-box input { width: 100%; }
+.fx-hint { color: var(--ink-soft); font-size: 0.9rem; margin: 6px 0 12px; }
+.fx-recipe-box { border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 8px; }
+.fx-recipe-box label { display: block; margin-bottom: 6px; }
+.fx-more { border-top: 1px solid var(--rule); padding-top: 12px; margin-bottom: 16px; }
+.fx-more summary { cursor: pointer; color: var(--text-2); margin-bottom: 8px; }
+.fx-more select { width: 100%; }
+.fx-check { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+.fx-out { min-height: 12rem; }
+.fx-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
+.fx-answer { font: 500 clamp(1rem, 2.2vw, 1.12rem)/1.5 var(--font-display); margin: 0 0 12px; max-width: 56rem; }
+.fx-h { font-size: 1.05rem; margin: 22px 0 8px; }
+.fx-ask, .fx-drift { border-left: 3px solid var(--fx-warn); padding-left: 10px; color: var(--ink); }
+.fx-done { border: 1px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+.fx-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+
+.fx-cols, .fx-preview { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.fx-cols th, .fx-cols td, .fx-preview th, .fx-preview td { border-top: 1px solid var(--rule); padding: 6px 8px; text-align: left; vertical-align: top; }
+.fx-cols th[scope="row"] { font-family: var(--font-mono); font-weight: 500; overflow-wrap: break-word; min-width: 7rem; }
+.fx-cols .fx-new th { color: var(--fx-warn); }
+.fx-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+.fx-controls select, .fx-controls input { font-size: 0.85rem; max-width: 14rem; }
+.fx-controls input { width: 7rem; }
+.fx-found { color: var(--ink-soft); }
+.fx-preview { font-family: var(--font-mono); font-size: 0.8rem; }
+.fx-preview td { white-space: nowrap; }
+.fx-preview .fx-changed { color: var(--accent); }
+.fx-preview .fx-changed s { color: var(--ink-soft); }
+.fx-flags { color: var(--ink-soft); font-size: 0.9rem; padding-left: 1.2em; }
+
+.fx-rules, .fx-legal { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.fx-rule-cols { display: grid; gap: 24px; }
+@media (min-width: 900px) { .fx-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.fx-rule-cols h3 { font-size: 1rem; margin-bottom: 6px; }
+.fx-rule-cols p { color: var(--ink-soft); margin: 0; }
+.fx-legal ul { padding-left: 1.2em; color: var(--ink-soft); }
+.fx-code { margin-top: 48px; }

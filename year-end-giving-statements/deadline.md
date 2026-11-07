@@ -57,6 +57,7 @@ Yes: An organization can provide the acknowledgment electronically, such as via 
 
 - [What a giving statement must include](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/requirements/)
 - [Church contribution statement template](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/templates/church-contribution-statement/)
+- [Giving statements for 2026 gifts: the dates](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/2026-giving-statements-dates/)
 
 ---
 

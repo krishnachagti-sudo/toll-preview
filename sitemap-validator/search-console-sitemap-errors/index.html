@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search Console sitemap errors decoded: every message and what to check</title>
+<meta name="description" content="Every sitemap status and error in Search Console's Sitemaps report, what Google says it means, and the test that finds it in your file.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/search-console-sitemap-errors/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/sitemap-validator/search-console-sitemap-errors.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Search Console sitemap errors decoded: every message and what to check">
+<meta property="og:description" content="Every sitemap status and error in Search Console's Sitemaps report, what Google says it means, and the test that finds it in your file.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/search-console-sitemap-errors/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/search-console-sitemap-errors/","url":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/search-console-sitemap-errors/","name":"Search Console sitemap errors decoded: every message and what to check","description":"Every sitemap status and error in Search Console's Sitemaps report, what Google says it means, and the test that finds it in your file.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Sitemap validator","item":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/"},{"@type":"ListItem","position":3,"name":"Search Console sitemap errors, decoded","item":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/search-console-sitemap-errors/"}]},{"@type":"Dataset","name":"Search Console sitemap errors decoded: every message and what to check","description":"Every sitemap status and error in Search Console's Sitemaps report, what Google says it means, and the test that finds it in your file.","url":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/search-console-sitemap-errors/","dateModified":"2026-11-08","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/search-console-sitemap-errors.csv"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Leading whitespace stop Google reading my sitemap?","acceptedAnswer":{"@type":"Answer","text":"No. Search Console says it won't prevent processing; remove the whitespace so the file follows the XML standard."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"sitemap-validator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/sitemap-validator/">Sitemap validator</a></li><li aria-current="page">Search Console sitemap errors, decoded</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Reference</p>
+<h1>Search Console sitemap errors, decoded</h1>
+<p class="cp-answer">This table maps 25 messages from Search Console's Sitemaps report help, from Couldn't fetch to Too many News URLs, to the check that finds each in your file before you submit; 24 have one, and Temporary error is Google's to retry.</p>
+
+</header>
+<div class="cp-body prose">
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Search Console says</th><th scope="col">What it means</th><th scope="col">The validator's check</th></tr></thead><tbody>
+<tr><th scope="row">Couldn't fetch / Sitemap could not be read</th><td>Google could not retrieve the sitemap: blocked by robots.txt, a manual action, a wrong URL (404), another general error such as the server being unavailable, or low crawl demand.</td><td>The sitemap could not be downloaded; The sitemap URL does not answer 200; robots.txt blocks Googlebot from the sitemap itself; An HTML page came back instead of a sitemap</td></tr>
+<tr><th scope="row">HTTP error [code] / General HTTP error</th><td>A 4xx answer, or another HTTP error, when downloading the sitemap.</td><td>The sitemap URL does not answer 200</td></tr>
+<tr><th scope="row">Compression error</th><td>The compressed sitemap could not be uncompressed.</td><td>The gzip file could not be uncompressed</td></tr>
+<tr><th scope="row">Empty sitemap</th><td>The sitemap lists no URLs.</td><td>No URLs listed</td></tr>
+<tr><th scope="row">Sitemap file size error</th><td>Larger than 50MB uncompressed.</td><td>Over 50MB (52,428,800 bytes) uncompressed</td></tr>
+<tr><th scope="row">Invalid attribute value / Invalid tag value</th><td>A tag or attribute holds a value the sitemap format does not allow.</td><td>A changefreq that is not one of the seven values; A priority outside 0.0 to 1.0</td></tr>
+<tr><th scope="row">Invalid date</th><td>A date not in W3C Datetime, or not a real date; a time needs a time zone.</td><td>A date that is not W3C Datetime, or not a real date</td></tr>
+<tr><th scope="row">Invalid URL</th><td>Unsupported characters, spaces or quotes, or a malformed scheme such as htp://.</td><td>A URL that is not valid (scheme, spaces, quotes or brackets); A relative URL; sitemaps need full absolute URLs; A URL of 2,048 characters or more</td></tr>
+<tr><th scope="row">Invalid URL in sitemap index file: incomplete URL</th><td>The index lists a sitemap without its full URL.</td><td>A relative URL; sitemaps need full absolute URLs</td></tr>
+<tr><th scope="row">Invalid XML: too many tags</th><td>A tag such as &lt;loc&gt; appears twice in one entry.</td><td>The same tag twice in one entry</td></tr>
+<tr><th scope="row">Missing XML tag</th><td>An entry is missing a required tag.</td><td>An entry with no &lt;loc&gt;; An &lt;image:image&gt; without &lt;image:loc&gt;; A news entry without a required tag</td></tr>
+<tr><th scope="row">Incorrect sitemap index format: Nested sitemap indexes</th><td>An index lists itself or another index.</td><td>A sitemap index lists another index, or itself</td></tr>
+<tr><th scope="row">Parsing error</th><td>The XML could not be parsed, often because of an unescaped character such as &amp;.</td><td>The XML is not well-formed; A bare &amp; that is not escaped as &amp;amp;; An entity XML does not define, such as &amp;nbsp;</td></tr>
+<tr><th scope="row">Too many sitemaps</th><td>An index lists more than 50,000 sitemaps.</td><td>More than 50,000 sitemaps in the index</td></tr>
+<tr><th scope="row">Too many URLs</th><td>A sitemap lists more than 50,000 URLs.</td><td>More than 50,000 URLs</td></tr>
+<tr><th scope="row">Unsupported format</th><td>Not a supported format: the wrong header or namespace, or attributes in curly quotes.</td><td>The root element is not &lt;urlset&gt; or &lt;sitemapindex&gt;; An HTML page came back instead of a sitemap; An attribute in curly quotes instead of straight quotes</td></tr>
+<tr><th scope="row">URL not allowed</th><td>A URL at a higher level or on another domain or protocol than the sitemap.</td><td>A URL on another host, protocol or port than the sitemap; A URL above or beside the sitemap's folder</td></tr>
+<tr><th scope="row">Path mismatch: Missing www / Includes www</th><td>The sitemap and its URLs disagree about www.</td><td>www and the bare domain mixed between the sitemap and its URLs</td></tr>
+<tr><th scope="row">Incorrect namespace</th><td>The root element's namespace is missing, mistyped or wrong for the file type.</td><td>The sitemap namespace is missing or wrong; An image, news or video prefix is bound to the wrong namespace</td></tr>
+<tr><th scope="row">Leading whitespace</th><td>The file starts with whitespace before the XML declaration; Google still processes it.</td><td>Text or whitespace before the XML declaration</td></tr>
+<tr><th scope="row">Too many News URLs</th><td>More than 1,000 news URLs in one sitemap.</td><td>More than 1,000 &lt;news:news&gt; tags</td></tr>
+<tr><th scope="row">Missing &lt;publication&gt; tag</th><td>A news URL without its &lt;news:publication&gt; tag.</td><td>A news entry without a required tag</td></tr>
+<tr><th scope="row">Sitemap contains urls which are blocked by robots.txt</th><td>robots.txt blocks the sitemap or URLs it lists.</td><td>Listed URLs that robots.txt blocks for Googlebot; robots.txt blocks Googlebot from the sitemap itself</td></tr>
+<tr><th scope="row">URLs not followed</th><td>Google could not crawl all listed URLs: too many redirects, or relative URLs.</td><td>A relative URL; sitemaps need full absolute URLs</td></tr>
+<tr><th scope="row">Temporary error</th><td>A problem on Google's side; Google retries. Nothing in the file to fix.</td><td>Nothing to check: Google retries</td></tr>
+</tbody></table></div>
+<p class="cp-note">Meanings summarize Search Console Help, read November 8, 2026. Video sitemap errors are not covered.</p>
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run all the checks on your sitemap</h2><p class="muted">Free on the page for one sitemap and 10 live URLs.</p><form method="get" action="/toll-preview/sitemap-validator/" class="cp-tool-form"><div class="field"><label for="tf-url">Sitemap address</label><input type="url" id="tf-url" name="url" value="https://www.example.com/sitemap.xml"></div><input type="hidden" name="live" value="10"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Validate this sitemap</button></form><p class="small"><a href="/toll-preview/sitemap-validator/?url=https%3A%2F%2Fwww.example.com%2Fsitemap.xml&amp;live=10">Open the validator with this address</a></p></aside>
+<ul class="cp-sources"><li><a href="https://support.google.com/webmasters/answer/7451001?hl=en">Search Console Help: Manage your sitemaps using the Sitemaps report, read November 8, 2026</a></li></ul>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Does Leading whitespace stop Google reading my sitemap?</h3><p>No. Search Console says it won't prevent processing; remove the whitespace so the file follows the XML standard.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/sitemap-validator/sitemap-could-not-be-read/">Sitemap could not be read</a></li><li><a href="/toll-preview/sitemap-validator/sitemap-parsing-error/">Sitemap parsing error</a></li><li><a href="/toll-preview/sitemap-validator/vs/search-console-sitemaps-report/">Search Console report vs a pre-submit check</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/sitemap-validator/search-console-sitemap-errors.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/sitemap-validator/search-console-sitemap-errors.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

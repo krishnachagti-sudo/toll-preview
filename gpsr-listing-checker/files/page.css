@@ -1,0 +1,71 @@
+/* GPSR listing checker: a per-SKU audit sheet. The verdict column carries the page's one idea. */
+.gp {
+  --accent: var(--h-file);
+  --endwise-accent: var(--h-file);
+  --gp-missing: #ff7a6b;
+  --gp-check: #ffb547;
+  --gp-ok: #6fd39a;
+}
+.gp-intro { padding-block: 40px 8px; }
+.gp-price ul { margin: 0; padding-left: 1.2em; color: var(--ink-soft); }
+.gp-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.gp-desk > * { min-width: 0; }
+@media (min-width: 1040px) { .gp-desk { grid-template-columns: 24rem 1fr; gap: 48px; } }
+.gp-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.gp-form .btn[type="submit"] { width: 100%; }
+.gp textarea { width: 100%; font: 13px/1.4 var(--font-mono); }
+.gp-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--rule); margin-bottom: 14px; }
+.gp-tabs button { font: inherit; background: none; border: 0; border-bottom: 2px solid transparent; color: inherit; padding: 8px 12px; min-height: 40px; cursor: pointer; margin-bottom: -1px; }
+.gp-tabs button[aria-selected="true"] { border-bottom-color: var(--accent); font-weight: 600; }
+.gp-grid { display: grid; gap: 0 14px; }
+@media (min-width: 560px) { .gp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.gp-more { border-top: 1px solid var(--rule); padding: 10px 0; }
+.gp-more summary { cursor: pointer; min-height: 32px; }
+.gp-markets { border: 1px solid var(--rule); border-radius: 4px; margin: 12px 0; padding: 8px 12px; }
+.gp-market-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 2px 10px; font-size: 14px; }
+.gp-market { display: flex; align-items: center; gap: 6px; min-height: 30px; }
+.gp-label { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0; }
+.gp-answer { font-size: 1.1rem; overflow-wrap: anywhere; }
+.gp-figures { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline; margin: 10px 0 16px; }
+.gp-fig { display: flex; flex-direction: column; }
+.gp-big { font: 600 2.2rem/1 var(--font-mono); font-variant-numeric: tabular-nums; }
+.gp-fig-missing .gp-big { color: var(--gp-missing); }
+.gp-fig-check-by-hand .gp-big { color: var(--gp-check); }
+.gp-fig-ready .gp-big { color: var(--gp-ok); }
+.gp-issues { border-top: 1px solid var(--rule); padding-top: 10px; }
+.gp-issues h3 { font-size: 1rem; margin: 0 0 6px; }
+.gp-issues ul { list-style: none; padding: 0; margin: 0; }
+.gp-issues li { margin: 3px 0; }
+.gp-n { display: inline-block; min-width: 2.4em; text-align: center; font: 600 12px/1.6 var(--font-mono); border-radius: 4px; background: var(--gp-check); color: #0b0b0b; }
+.gp-issues .sev-missing .gp-n { background: var(--gp-missing); }
+.gp-table-wrap { overflow-x: auto; margin-top: 14px; }
+.gp-table { border-collapse: collapse; font-size: 13px; width: 100%; }
+.gp-table th, .gp-table td { text-align: left; vertical-align: top; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--rule); }
+.gp-table td:last-child { min-width: 16rem; }
+.gp-verdict { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
+.gp-verdict.v-missing { color: var(--gp-missing); border-color: var(--gp-missing); }
+.gp-verdict.v-check { color: var(--gp-check); border-color: var(--gp-check); }
+.gp-verdict.v-ok { color: var(--gp-ok); border-color: var(--gp-ok); }
+.gp-fixes { margin: 0; padding-left: 1.1em; }
+.gp-fixes li { margin-bottom: 4px; overflow-wrap: anywhere; }
+.gp-fixes .sev-missing::marker { color: var(--gp-missing); }
+.gp-fixes .sev-check::marker { color: var(--gp-check); }
+.gp-art { font: 12px/1.4 var(--font-mono); color: var(--ink-soft); }
+.gp-downloads { margin-top: 14px; }
+.gp-dl { font-family: var(--font-mono); }
+.gp-labels { border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 10px; }
+.gp-labels summary { cursor: pointer; min-height: 32px; }
+.gp-label-block { margin: 10px 0; }
+.gp-label-block figcaption { font: 12px/1.4 var(--font-mono); color: var(--ink-soft); }
+.gp-label-block pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; border: 1px solid var(--rule); border-radius: 4px; padding: 8px 10px; margin: 4px 0 0; }
+.gp-rp, .gp-rules { margin-top: 40px; }
+.gp-rp-form { display: grid; gap: 0 16px; }
+@media (min-width: 760px) { .gp-rp-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gp-rp-form .btn { justify-self: start; } }
+.gp-rules li { margin-bottom: 6px; }
+/* A phone stacks each row: SKU and verdict side by side, the fixes full width under them. */
+@media (max-width: 600px) {
+  .gp-table thead, .gp-table td:first-child { display: none; }
+  .gp-table tr { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; border-bottom: 1px solid var(--rule); padding: 8px 0; }
+  .gp-table td { border: 0; padding: 0; }
+  .gp-table td:last-child { grid-column: 1 / -1; min-width: 0; }
+}

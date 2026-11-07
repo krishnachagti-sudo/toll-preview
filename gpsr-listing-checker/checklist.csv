@@ -1,0 +1,6 @@
+sku,title,manufacturer name,manufacturer postal address,manufacturer electronic address,responsible person (EU),picture,type or identifier,warnings,warning languages,verdict
+MUG-01,Stoneware mug 350 ml,Harbor & Pine LLC,"412 Elm St, Portland, OR 97205, USA",safety@harborpine.example,EuroRep GmbH,https://cdn.example.com/mug-01.jpg,Mug / 0012345678905,yes,de fr,ok
+KNIFE-02,Paring knife,Harbor & Pine LLC,"412 Elm St, Portland, OR 97205, USA",safety@harborpine.example,Brit Rep Ltd (outside the EU),https://cdn.example.com/knife-02.jpg,Kitchen knife / 4006381333931,yes,en,missing
+CANDLE-03,Soy candle,Harbor & Pine LLC,"412 Elm St, Portland, OR 97205, USA",https://harborpine.example,EuroRep GmbH,https://cdn.example.com/candle-03.jpg,Candle / 4006381333932,yes,de,check
+TRAY-04,Serving tray,Harbor & Pine LLC,"412 Elm St, Portland, OR 97205, USA",safety@harborpine.example,MISSING,MISSING,MISSING,none,,missing
+JAM-05,Fig jam,Harbor & Pine LLC,"412 Elm St, Portland, OR 97205, USA",safety@harborpine.example,,,,none,,out-of-scope

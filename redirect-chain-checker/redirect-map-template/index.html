@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirect map template for a site migration (CSV, worked)</title>
+<meta name="description" content="A redirect map as old,new rows, and the same 12 rows checked after launch: on target, through a chain, off by a slash, wrong page, loop, 404.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-map-template/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/redirect-chain-checker/redirect-map-template.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Redirect map template for a site migration (CSV, worked)">
+<meta property="og:description" content="A redirect map as old,new rows, and the same 12 rows checked after launch: on target, through a chain, off by a slash, wrong page, loop, 404.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-map-template/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-map-template/","url":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-map-template/","name":"Redirect map template for a site migration (CSV, worked)","description":"A redirect map as old,new rows, and the same 12 rows checked after launch: on target, through a chain, off by a slash, wrong page, loop, 404.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Redirect chain checker","item":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/"},{"@type":"ListItem","position":3,"name":"Redirect map template","item":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-map-template/"}]},{"@type":"Dataset","name":"Redirect map template for a site migration (CSV, worked)","description":"A redirect map as old,new rows, and the same 12 rows checked after launch: on target, through a chain, off by a slash, wrong page, loop, 404.","url":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-map-template/","dateModified":"2026-11-08","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/redirect-map-template.csv"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What columns does a redirect map need?","acceptedAnswer":{"@type":"Answer","text":"Two are enough to check it: the old URL and where it should land. Add the redirect type, an owner and notes for your own tracking; the checker reads the first two columns of each line."}},{"@type":"Question","name":"Can the new URL be a path?","acceptedAnswer":{"@type":"Answer","text":"Yes. A target such as /about is read on the site the old URL ends on, so a map written in paths works after a domain move."}},{"@type":"Question","name":"What if the target is right except for the slash?","acceptedAnswer":{"@type":"Answer","text":"The row is marked \"Matches the expected target except for a trailing slash\". Decide which form is canonical and redirect to it directly."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"redirect-chain-checker"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/redirect-chain-checker/">Redirect chain checker</a></li><li aria-current="page">Redirect map template</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Template</p>
+<h1>Redirect map template</h1>
+<p class="cp-answer">A redirect map is one line per old URL with the page it should land on, such as &quot;/about-us,/about&quot;. Checked after launch, 6 of these 12 rows land on target and 6 need a look.</p>
+
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="format">The map as you paste it</h2>
+<pre><code class="language-csv">old,new
+https://example.com/about-us,/about
+https://example.com/products/blue-widget,/shop/blue-widget
+https://example.com/blog/2019/launch,/news/launch
+https://example.com/contact.html,/contact
+https://example.com/old-category,/shop/garden
+https://example.com/team,/about/team
+https://example.com/pricing,/plans
+http://example.com/faq,/help
+https://example.com/careers,https://jobs.example.com/
+https://example.com/press,/news
+https://example.com/docs/v1/start,/docs/start
+https://example.com/summer-sale,/sale</code></pre>
+<p>One line per old URL: the old address, a comma (or a tab, semicolon or space) and the target, as a full URL or a path. A header line is skipped. Lines starting with # are ignored.</p>
+</section>
+<section>
+<h2 id="checked">The same map, checked after launch</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>Each row judged by the checker. Hops are shown as status and path.</caption><thead><tr><th scope="col">Old URL</th><th scope="col">Target</th><th scope="col">Hops</th><th scope="col">Result</th><th scope="col">What the report says</th></tr></thead><tbody>
+<tr><th scope="row">/about-us</th><td>/about</td><td>301 /about-us &gt; 200 /about</td><td>Lands on the target</td><td>OK</td></tr>
+<tr><th scope="row">/products/blue-widget</th><td>/shop/blue-widget</td><td>301 /products/blue-widget &gt; 200 /shop/blue-widget/</td><td>Off by a trailing slash</td><td>Matches the expected target except for a trailing slash</td></tr>
+<tr><th scope="row">/blog/2019/launch</th><td>/news/launch</td><td>301 /blog/2019/launch &gt; 301 /blog/launch &gt; 200 /news/launch</td><td>Lands on the target through a chain</td><td>Chain (2 or more hops); Reaches the expected target through a chain</td></tr>
+<tr><th scope="row">/contact.html</th><td>/contact</td><td>302 /contact.html &gt; 200 /contact</td><td>Lands on the target</td><td>Temporary redirect (302, 303, 307 or delayed refresh)</td></tr>
+<tr><th scope="row">/old-category</th><td>/shop/garden</td><td>301 /old-category &gt; 200 /</td><td>Lands on the wrong page</td><td>Lands somewhere other than the expected target; Redirected to the homepage</td></tr>
+<tr><th scope="row">/team</th><td>/about/team</td><td>301 /team &gt; 404 /about/team</td><td>Never reaches a page</td><td>Ends on a 4xx or 5xx</td></tr>
+<tr><th scope="row">/pricing</th><td>/plans</td><td>301 /pricing &gt; 301 /plans</td><td>Never reaches a page</td><td>Redirect loop; Chain (2 or more hops)</td></tr>
+<tr><th scope="row">http://example.com/faq</th><td>/help</td><td>301 http://example.com/faq &gt; 301 /faq &gt; 200 /help</td><td>Lands on the target through a chain</td><td>Chain (2 or more hops); Reaches the expected target through a chain</td></tr>
+<tr><th scope="row">/careers</th><td>https://jobs.example.com/</td><td>301 /careers &gt; 200 https://jobs.example.com/</td><td>Lands on the target</td><td>OK</td></tr>
+<tr><th scope="row">/press</th><td>/news</td><td>301 /press &gt; 200 /news</td><td>Lands on the target</td><td>OK</td></tr>
+<tr><th scope="row">/docs/v1/start</th><td>/docs/start</td><td>308 /docs/v1/start &gt; 200 /docs/start</td><td>Lands on the target</td><td>OK</td></tr>
+<tr><th scope="row">/summer-sale</th><td>/sale</td><td>307 /summer-sale &gt; 200 /sale</td><td>Lands on the target</td><td>Temporary redirect (302, 303, 307 or delayed refresh)</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="rules">Rules for writing the map</h2>
+<ul><li>One to one wherever an equivalent page exists.</li><li>The nearest parent (a category, a section) where it does not.</li><li>Never a blanket redirect of everything to the homepage (<a href="/toll-preview/redirect-chain-checker/redirect-to-homepage/">why</a>).</li><li>Targets are final URLs: the exact scheme, host and trailing slash the new site serves, so each row is one hop.</li><li>Temporary codes (302, 307) only for rows that will change back, such as a seasonal sale page.</li></ul>
+</section>
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check your map</h2><p class="muted">Open the full tool and paste your map as old,new lines; the CSV it returns has a row per old URL.</p><form method="get" action="/toll-preview/redirect-chain-checker/" class="cp-tool-form"><div class="field"><label for="tf-list">URL to check (paste a list or an old,new map in the full tool)</label><input type="text" id="tf-list" name="list" value="https://example.com/about-us"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the redirects</button></form><p class="small"><a href="/toll-preview/redirect-chain-checker/?list=https%3A%2F%2Fexample.com%2Fabout-us">Open this in the full tool</a></p></aside>
+<p class="cp-note">Made-up rows on example.com addresses, judged by the checker's own rules.</p>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes">Google Search Central: Site moves with URL changes (read November 8, 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>What columns does a redirect map need?</h3><p>Two are enough to check it: the old URL and where it should land. Add the redirect type, an owner and notes for your own tracking; the checker reads the first two columns of each line.</p><h3>Can the new URL be a path?</h3><p>Yes. A target such as /about is read on the site the old URL ends on, so a map written in paths works after a domain move.</p><h3>What if the target is right except for the slash?</h3><p>The row is marked &quot;Matches the expected target except for a trailing slash&quot;. Decide which form is canonical and redirect to it directly.</p></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/redirect-chain-checker/site-migration-redirect-checklist/">Site migration redirect checklist</a></li><li><a href="/toll-preview/redirect-chain-checker/flatten-redirect-chains/">Flatten redirect chains</a></li><li><a href="/toll-preview/redirect-chain-checker/redirect-to-homepage/">Redirects to the homepage</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/redirect-chain-checker/redirect-map-template.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/redirect-chain-checker/redirect-map-template.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

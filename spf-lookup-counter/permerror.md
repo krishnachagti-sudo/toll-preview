@@ -42,6 +42,7 @@ The include returns permerror, not a non-match (RFC 7208 Section 5.2).
 
 - [Fix "too many DNS lookups"](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/too-many-dns-lookups/)
 - [Void lookups](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/void-lookups/)
+- [Two SPF records: merge them into one](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/two-spf-records/)
 
 ---
 

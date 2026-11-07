@@ -70,6 +70,7 @@ Not always: each include also costs whatever is inside the record it points at, 
 - [What counts toward the 10 lookups](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/what-counts/)
 - [Every provider include and its cost](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/include-costs/)
 - [Void lookups: the second limit](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/void-lookups/)
+- [Add a sender without going over 10](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/add-a-sender/)
 
 ---
 

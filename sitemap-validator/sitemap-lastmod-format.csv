@@ -1,0 +1,15 @@
+value,valid,kind_or_reason
+2026-11-08,yes,date
+2026-11-08T09:30:00+00:00,yes,datetime
+2026-11-08T09:30:00Z,yes,datetime
+2026-11-08T09:30:00.45-05:00,yes,datetime
+2026-11-08T09:30+01:00,yes,datetime-nosec
+2026-11-08T09:30:00,no,a time without a time zone (add Z or an offset such as +00:00)
+2026-11-08 09:30:00,no,"a space between date and time; use T, as in 2026-11-08T09:30:00+00:00"
+2026/11/08,no,slashes; use hyphens: YYYY-MM-DD
+11/08/2026,no,day and month first; the format is YYYY-MM-DD
+2026-11,no,only a year or month; the sitemap schema needs a full date (YYYY-MM-DD)
+2026-02-30,no,2026-02-30 is not a real date (that month has 28 days)
+"Sun, 08 Nov 2026 09:30:00 GMT",no,an email-style (RFC 822) date; use YYYY-MM-DD
+1762594200,no,a Unix timestamp; use YYYY-MM-DD
+2026-11-8,no,month and day need two digits each (2026-01-05)
