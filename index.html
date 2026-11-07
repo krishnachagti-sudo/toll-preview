@@ -305,46 +305,20 @@
       </div>
     </div>
 
-    <div class="feat hue-date" style="margin-top:40px">
+    <div class="feat hue-money" data-group="money" style="margin-top:40px">
       <div class="feat-copy rv">
-        <span class="tag"><i></i>Dates and calendars</span>
-        <h3>Business days, with every skipped day named</h3>
-        <p>Count the working days between two dates, or add working days to a date. US federal holidays follow 5 U.S.C. 6103 with OPM observed-day rules. England and Wales use the official bank holidays.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="business-days">$0.0005</span> per call</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/business-days/">Open <span data-tool-name="business-days">Business days</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="bd">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b data-tool-name="business-days">Business days</b><span class="tchip" data-try-chip>US</span></div>
-          <div class="panel-body">
-            <form class="fields f3" action="/toll-preview/business-days/" method="get">
-              <input type="hidden" name="op" value="between">
-              <label class="mfield"><span class="mlabel">Region</span><span class="inp"><select name="region" data-f="region"><option value="US" selected>United States</option><option value="GB-ENG">England and Wales</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-              <label class="mfield"><span class="mlabel">Start</span><span class="inp"><input type="date" name="start" data-f="start" value="2026-07-01" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">End</span><span class="inp"><input type="date" name="end" data-f="end" value="2026-07-08" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Result</div><div class="r-main"><span class="num">4</span> business days</div></div>
-              <ul class="skips">
-                <li><span class="d">Fri 3 Jul</span><span>Independence Day (observed)</span><span class="t">federal</span></li>
-                <li><span class="d">Sat 4, Sun 5</span><span>Weekend</span><span class="t">weekend</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>5 U.S.C. 6103, OPM observed-day rules</span><span class="charged">A real run: <span data-price="business-days">$0.0005</span></span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/business-days/?op=between&amp;region=US&amp;start=2026-07-01&amp;end=2026-07-08">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat flip hue-money">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Money and rates</span>
-        <h3>Exchange rates that tell you which day they came from</h3>
-        <p>Official European Central Bank reference rates since 4 January 1999, or the US Treasury reporting rate, the IRS yearly average or the UK HMRC monthly rate. If the ECB did not publish on your date, you get the last fixing before it, and you are told which day. A day with no rate costs nothing.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="fx-on-date">$0.001</span> per call</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/fx-on-date/">Open <span data-tool-name="fx-on-date">Exchange rate on a date</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <span class="tag"><i></i>Money and tax</span>
+        <h3>Rates and tax figures, with the rule they came from</h3>
+        <p>Official rates and IRS tables, applied to your own numbers, with every source cited.</p>
+        <ul class="feed" aria-label="Money and tax">
+          <li><span class="pip"></span><a class="what" href="/toll-preview/tax-set-aside/"><span data-tool-name="tax-set-aside">Tax set-aside per payment</span><span class="when">How much of a payment to save for tax</span></a><span class="amt"><span data-price="tax-set-aside">from $0.10</span> per payment</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/1099-threshold/"><span data-tool-name="1099-threshold">1099 threshold tracker</span><span class="when">Which payees need a 1099, and why</span></a><span class="amt"><span data-price="1099-threshold">from $0.10</span> per payee-year</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/mileage-reimbursement/"><span data-tool-name="mileage-reimbursement">Mileage reimbursement and IRS mileage log</span><span class="when">The IRS rate for each trip, and a mileage log</span></a><span class="amt"><span data-price="mileage-reimbursement">from $0.001</span> a trip row</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/trucker-per-diem/"><span data-tool-name="trucker-per-diem">Trucker per diem worksheet</span><span class="when">Days on the road at the IRS per diem rate</span></a><span class="amt"><span data-price="trucker-per-diem">from $0.02</span> per calculation</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/ifta-calculator/"><span data-tool-name="ifta-calculator">IFTA quarterly return calculator</span><span class="when">IFTA return per state, checked against your odometer</span></a><span class="amt"><span data-price="ifta-calculator">from $0.01</span> per lookup</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/macrs-depreciation/"><span data-tool-name="macrs-depreciation">MACRS depreciation schedule</span><span class="when">MACRS schedule with the 40% test and IRS tables</span></a><span class="amt"><span data-price="macrs-depreciation">from $0.10</span> per lookup</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/fx-on-date/"><span data-tool-name="fx-on-date">Exchange rate on a date</span><span class="when">The official ECB, US Treasury, IRS or HMRC rate on a date</span></a><span class="amt"><span data-price="fx-on-date">$0.001</span> per call</span></li>
+        </ul>
       </div>
       <div class="panel-glow rv">
         <div class="panel" data-try="fx" data-layout="panel">
@@ -371,13 +345,54 @@
       </div>
     </div>
 
-    <div class="feat hue-file">
+    <div class="feat flip hue-date" data-group="dates">
+      <div class="feat-copy rv">
+        <span class="tag"><i></i>Dates and calendars</span>
+        <h3>Dates worked out on the real calendar</h3>
+        <p>Working days, delivery deadlines, date phrases and hours, with every holiday and rule named.</p>
+        <ul class="feed" aria-label="Dates and calendars">
+          <li><span class="pip"></span><a class="what" href="/toll-preview/business-days/"><span data-tool-name="business-days">Business days</span><span class="when">Count working days, with holidays skipped</span></a><span class="amt"><span data-price="business-days">$0.0005</span> per call</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/delivery-date-calculator/"><span data-tool-name="delivery-date-calculator">Delivery date and holiday order-by calculator</span><span class="when">The last day to order for delivery by a date</span></a><span class="amt"><span data-price="delivery-date-calculator">$0.0005</span> per call</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/date-resolver/"><span data-tool-name="date-resolver">Natural-language date resolver</span><span class="when">Any date phrase to an exact date and weekday</span></a><span class="amt"><span data-price="date-resolver">from $0.0005</span> per phrase</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/hours-calculator/"><span data-tool-name="hours-calculator">Hours calculator and timesheet</span><span class="when">Hours, overtime and a timesheet you can sign</span></a><span class="amt"><span data-price="hours-calculator">from $0.002</span> over the API</span></li>
+        </ul>
+      </div>
+      <div class="panel-glow rv">
+        <div class="panel" data-try="bd">
+          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b data-tool-name="business-days">Business days</b><span class="tchip" data-try-chip>US</span></div>
+          <div class="panel-body">
+            <form class="fields f3" action="/toll-preview/business-days/" method="get">
+              <input type="hidden" name="op" value="between">
+              <label class="mfield"><span class="mlabel">Region</span><span class="inp"><select name="region" data-f="region"><option value="US" selected>United States</option><option value="GB-ENG">England and Wales</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
+              <label class="mfield"><span class="mlabel">Start</span><span class="inp"><input type="date" name="start" data-f="start" value="2026-07-01" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
+              <label class="mfield"><span class="mlabel">End</span><span class="inp"><input type="date" name="end" data-f="end" value="2026-07-08" min="1971-01-01" max="2100-12-31" class="mono"></span></label>
+            </form>
+            <div class="result" style="margin-top:16px">
+              <div class="result-top"><div class="r-label">Result</div><div class="r-main"><span class="num">4</span> business days</div></div>
+              <ul class="skips">
+                <li><span class="d">Fri 3 Jul</span><span>Independence Day (observed)</span><span class="t">federal</span></li>
+                <li><span class="d">Sat 4, Sun 5</span><span>Weekend</span><span class="t">weekend</span></li>
+              </ul>
+              <div class="r-foot"><span data-try-foot>5 U.S.C. 6103, OPM observed-day rules</span><span class="charged">A real run: <span data-price="business-days">$0.0005</span></span></div>
+            </div>
+            <p class="try-row"><a class="try-go" href="/toll-preview/business-days/?op=between&amp;region=US&amp;start=2026-07-01&amp;end=2026-07-08">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat hue-file" data-group="files">
       <div class="feat-copy rv">
         <span class="tag"><i></i>Files and images</span>
-        <h3>An image at the size the form asks for</h3>
-        <p>Set the limit, drop the image, and get a file that fits. It runs in your browser and it is free.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="image-to-size">Free</span></span><span class="tchip">In your browser</span></div>
-        <a class="lnk" href="/toll-preview/image-to-size/">Open <span data-tool-name="image-to-size">Image to size</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <h3>Files that meet the spec they are for</h3>
+        <p>Images under a size limit, QR codes, donor statements and redirect lists, made or checked to the rule they have to meet.</p>
+        <ul class="feed" aria-label="Files and images">
+          <li><span class="pip"></span><a class="what" href="/toll-preview/image-to-size/"><span data-tool-name="image-to-size">Image to size</span><span class="when">Shrink a photo under a size in KB</span></a><span class="amt"><span data-price="image-to-size">Free</span> in your browser</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/qr-code-generator/"><span data-tool-name="qr-code-generator">QR code generator</span><span class="when">QR codes that never expire, proven before download</span></a><span class="amt"><span data-price="qr-code-generator">from $0.002</span> over the API</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/year-end-giving-statements/"><span data-tool-name="year-end-giving-statements">Year-end giving statements</span><span class="when">Giving statements for every donor, from your sheet</span></a><span class="amt"><span data-price="year-end-giving-statements">from $0.10</span> per donor statement</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/redirect-chain-checker/"><span data-tool-name="redirect-chain-checker">Bulk redirect chain checker</span><span class="when">Every hop, loop and 302 in your redirect list</span></a><span class="amt"><span data-price="redirect-chain-checker">from $0.0003</span> a URL in bulk</span></li>
+        </ul>
       </div>
       <div class="panel-glow rv">
         <div class="panel" data-try="img">
@@ -397,413 +412,15 @@
       </div>
     </div>
 
-    <div class="feat flip hue-date">
+    <div class="feat flip hue-agent" data-group="other">
       <div class="feat-copy rv">
-        <span class="tag"><i></i>Dates and calendars</span>
-        <h3>The last day to order for Christmas, from your own cutoff</h3>
-        <p>Your cutoff time, shipping days, closures and processing days on your calendar; transit on the carrier's own delivery days. It works out when an order arrives, or the last moment to order, with USPS's 2026 holiday send-by dates and every skipped holiday named.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="delivery-date-calculator">$0.0005</span> per call</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/delivery-date-calculator/">Open <span data-tool-name="delivery-date-calculator">Delivery date and holiday order-by calculator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="dd">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Order by, Christmas 2026</b><span class="tchip">USPS</span></div>
-          <div class="panel-body">
-            <form class="fields f3" action="/toll-preview/delivery-date-calculator/" method="get">
-              <input type="hidden" name="op" value="order-by"><input type="hidden" name="by" value="2026-12-24"><input type="hidden" name="tz" value="America/New_York"><input type="hidden" name="dest" value="contiguous">
-              <label class="mfield"><span class="mlabel">Cutoff, Eastern</span><span class="inp"><input type="time" name="cutoff" data-f="cutoff" value="14:00" step="900" required class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Processing days</span><span class="inp"><input type="number" name="processing" data-f="processing" value="1" min="0" max="60" step="1" inputmode="numeric" required class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Ships</span><span class="inp"><select name="ship" data-f="ship"><option value="mon,tue,wed,thu,fri" selected>Mon to Fri</option><option value="mon,tue,wed,thu,fri,sat">Mon to Sat</option><option value="sun,mon,tue,wed,thu,fri,sat">Every day</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Last order, USPS Ground Advantage</div><div class="r-main"><span class="num">Wed 16 Dec</span> 2:00 pm</div></div>
-              <ul class="skips">
-                <li><span class="d">Thu 17 Dec</span><span>Priority Mail and Priority Mail Express</span><span class="t">2:00 pm</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>USPS 2026 holiday send-by dates</span><span class="charged">A real run: <span data-price="delivery-date-calculator">$0.0005</span></span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/delivery-date-calculator/?op=order-by&amp;by=2026-12-24&amp;tz=America%2FNew_York&amp;dest=contiguous&amp;cutoff=14%3A00&amp;processing=1&amp;ship=mon%2Ctue%2Cwed%2Cthu%2Cfri">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat hue-money">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Owner-operator taxes</span>
-        <h3>A trucker's per diem, priced day by day</h3>
-        <p>Trips in, deduction out: each day at the IRS transportation rate in force that day, departure and return days at 3/4, the 80% hours-of-service limit, and log checks before you file. The totals are free on the page; the worksheet for your preparer is a PDF and CSV.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="trucker-per-diem">from $0.02</span></span><span class="tchip" data-prices="trucker-per-diem">Worksheet $9.00</span></div>
-        <a class="lnk" href="/toll-preview/trucker-per-diem/">Open <span data-tool-name="trucker-per-diem">Trucker per diem worksheet</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="pd">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Tax year 2024</b><span class="tchip">IRS rate by date</span></div>
-          <div class="panel-body">
-            <form class="fields f3" action="/toll-preview/trucker-per-diem/" method="get">
-              <input type="hidden" name="year" value="2024"><input type="hidden" name="mode" value="counts">
-              <label class="mfield"><span class="mlabel">Full days</span><span class="inp"><input type="number" name="full" data-f="full" value="240" min="0" max="366" step="1" inputmode="numeric" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Partial days</span><span class="inp"><input type="number" name="partial" data-f="partial" value="40" min="0" max="366" step="1" inputmode="numeric" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Limit</span><span class="inp"><select name="hos" data-f="hos"><option value="1" selected>80% HOS</option><option value="0">50%</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-              <label class="mfield"><span class="mlabel">Oct to Dec full</span><span class="inp"><input type="number" name="oct_full" data-f="oct_full" value="60" min="0" max="92" step="1" inputmode="numeric" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Oct to Dec partial</span><span class="inp"><input type="number" name="oct_partial" data-f="oct_partial" value="10" min="0" max="92" step="1" inputmode="numeric" class="mono"></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Schedule C line 24b</div><div class="r-main"><span class="num">$15,498.00</span></div></div>
-              <ul class="skips">
-                <li><span class="d">Jan 1 to Sep 30</span><span>Notice 2023-68</span><span class="t">$69</span></li>
-                <li><span class="d">Oct 1 to Dec 31</span><span>Notice 2024-68</span><span class="t">$80</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>IRS transportation-industry rates</span><span class="charged">Totals free on the page</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/trucker-per-diem/?year=2024&amp;mode=counts&amp;full=240&amp;partial=40&amp;hos=1&amp;oct_full=60&amp;oct_partial=10">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat flip hue-money">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Money and rates</span>
-        <h3>How much of this payment to set aside for tax</h3>
-        <p>Give one payment and what you have earned so far this year. It works out the tax that payment adds: US self-employment, federal and state tax, or UK Income Tax and Class 4, split wherever the payment crosses a bracket, with every rate cited.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="tax-set-aside">from $0.10</span> per payment</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/tax-set-aside/">Open <span data-tool-name="tax-set-aside">Tax set-aside per payment</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="ts">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-wallet"/></svg><b data-try-title>Set aside, Texas 2026</b><span class="tchip">Single</span></div>
-          <div class="panel-body">
-            <form class="fields f3" action="/toll-preview/tax-set-aside/" method="get">
-              <input type="hidden" name="country" value="US"><input type="hidden" name="status" value="single"><input type="hidden" name="date" value="2026-10-31">
-              <label class="mfield"><span class="mlabel">Payment, $</span><span class="inp"><input type="number" name="amount" data-f="amount" value="3000" min="0" step="any" inputmode="decimal" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Earned so far, $</span><span class="inp"><input type="number" name="ytd" data-f="ytd" value="40000" min="0" step="any" inputmode="decimal" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">State</span><span class="inp"><select name="state" data-f="state"><option value="texas" selected>Texas</option><option value="california">California</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Move to your tax pot</div><div class="r-main"><span class="num">$691.53</span> (23.1%)</div></div>
-              <ul class="skips">
-                <li><span class="d">SE tax</span><span>15.3% of 92.35%</span><span class="t">$423.88</span></li>
-                <li><span class="d">Federal</span><span>12% bracket, after QBI</span><span class="t">$267.65</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>IRS Rev. Proc. 2025-32 rates</span><span class="charged">A real run: <span data-price="tax-set-aside">from $0.10</span></span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/tax-set-aside/?country=US&amp;status=single&amp;date=2026-10-31&amp;amount=3000&amp;ytd=40000&amp;state=texas">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat hue-money">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Money and rates</span>
-        <h3>Mileage at the IRS rate for each trip's date</h3>
-        <p>The IRS rate went from 72.5 to 76 cents a mile on July 1, 2026. Each trip is priced at the rate in force on its date, and an allowance paid before July 1 stays at the old rate, as Announcement 2026-11 says. Totals a payroll trip sheet per employee with the true-up owed, and makes the year's log for one vehicle.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span>Free on the web</span><span class="tchip">Files <span data-price="mileage-reimbursement">from $0.001</span> a trip row</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/mileage-reimbursement/">Open <span data-tool-name="mileage-reimbursement">Mileage reimbursement and IRS mileage log</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="mr">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-list"/></svg><b>Business miles, 2026</b><span class="tchip">IRS</span></div>
-          <div class="panel-body">
-            <form class="fields f2e" action="/toll-preview/mileage-reimbursement/" method="get">
-              <input type="hidden" name="mode" value="split"><input type="hidden" name="purpose" value="business"><input type="hidden" name="year" value="2026">
-              <label class="mfield"><span class="mlabel">Miles, Jan 1 to Jun 30</span><span class="inp"><input type="number" name="m1" data-f="m1" value="2600" min="0" step="any" inputmode="decimal" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Miles from Jul 1</span><span class="inp"><input type="number" name="m2" data-f="m2" value="1600" min="0" step="any" inputmode="decimal" class="mono"></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">2,600 x $0.725 + 1,600 x $0.76</div><div class="r-main"><span class="num">$3,101.00</span></div></div>
-              <ul class="skips">
-                <li><span class="d">Jun 28 trip</span><span>Paid Jul 5: stays at 72.5 cents</span><span class="t">Ann. 2026-11</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>IRS standard mileage rates</span><span class="charged">Free on this page</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/mileage-reimbursement/?mode=split&amp;purpose=business&amp;year=2026&amp;m1=2600&amp;m2=1600">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat flip hue-money">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Money and rates</span>
-        <h3>Which payees need a 1099, at the new $2,000 line</h3>
-        <p>Upload a year of payments. Each payee gets a verdict: the form and box, the date it crossed the line, or why it is left out (a corporation, a card payment, merchandise). Payees set up twice are merged by TIN, and the forms you owe come out as a file for the IRS's free IRIS portal.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="1099-threshold">from $0.10</span> per payee-year</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/1099-threshold/">Open <span data-tool-name="1099-threshold">1099 threshold tracker</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="t99">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-list"/></svg><b>2026 payments</b><span class="tchip">$2,000 line</span></div>
-          <div class="panel-body">
-            <form class="fields f3" action="/toll-preview/1099-threshold/" method="get">
-              <input type="hidden" name="year" value="2026"><input type="hidden" name="amount" value="4250"><input type="hidden" name="type" value="services"><input type="hidden" name="payee" value="single-member-llc"><input type="hidden" name="method" value="check">
-              <label class="mfield"><span class="mlabel">Rivera, June payment</span><span class="inp"><input type="number" data-f="rivera" value="2450" min="0" step="any" inputmode="decimal" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Summit Staffing is</span><span class="inp"><select data-f="summit"><option value="c-corporation" selected>A corporation</option><option value="individual">A sole proprietor</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-              <label class="mfield"><span class="mlabel">Lumen Web paid by</span><span class="inp"><select data-f="lumen"><option value="card" selected>Card</option><option value="check">Check</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Payees that need a form</div><div class="r-main"><span class="num">4</span> of 8</div></div>
-              <ul class="skips">
-                <li><span class="d">Rivera Electric</span><span>1099-NEC box 1a</span><span class="t">$4,250.00</span></li>
-                <li><span class="d">Okafor &amp; Lin LLP</span><span>1099-NEC box 1a, 1099-MISC box 10</span><span class="t">$3,300.00</span></li>
-                <li><span class="d">Summit Staffing Inc</span><span>Corporation, left out</span><span class="t">$9,600.00</span></li>
-                <li><span class="d">Lumen Web Studio</span><span>Card payment, left out (1099-K)</span><span class="t">$3,100.00</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>IRS instructions, Rev. 12/2026</span><span>IRIS upload file included</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/1099-threshold/?year=2026&amp;amount=4250&amp;type=services&amp;payee=single-member-llc&amp;method=check">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat hue-money">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Fleet taxes</span>
-        <h3>An IFTA return from the trip sheet</h3>
-        <p>Miles and fuel by state in, the quarterly return out: each state's rate for that quarter, the Kentucky and Virginia surcharges, and the due date. The estimate is free on the page. The return checks odometers, overlapping trips and fuel receipts, then comes as a PDF and CSV for your base state.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="ifta-calculator">from $0.01</span></span><span class="tchip" data-prices="ifta-calculator">Return from $5.00</span></div>
-        <a class="lnk" href="/toll-preview/ifta-calculator/">Open <span data-tool-name="ifta-calculator">IFTA quarterly return calculator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="ifta">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-gauge"/></svg><b data-try-title>3rd quarter 2026</b><span class="tchip">Special diesel</span></div>
-          <div class="panel-body">
-            <form class="fields f3" action="/toll-preview/ifta-calculator/" method="get">
-              <input type="hidden" name="fuel" value="special_diesel"><input type="hidden" name="rows" value="MO:670:50,IL:260:160,IN:250,KY:380,WV:360,VA:370:150,OK:500:70,TX:270:60,TN:1290:200">
-              <label class="mfield"><span class="mlabel">Quarter</span><span class="inp"><select name="quarter" data-f="quarter"><option value="2026Q3" selected>3rd quarter 2026</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-              <label class="mfield"><span class="mlabel">Gallons bought</span><span class="inp"><input type="number" name="gallons" data-f="gallons" value="690" min="1" step="any" inputmode="decimal" class="mono"></span></label>
-              <div class="mfield"><span class="mlabel" id="ifta-mpg-l">Miles, MPG</span><span class="inp"><output class="mono" aria-labelledby="ifta-mpg-l" data-try-out>4,350 mi, 6.30</output></span></div>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Return, surcharges included</div><div class="r-main"><span class="num">$28.73</span> credit</div></div>
-              <ul class="skips">
-                <li><span class="d">Indiana</span><span>40 gallons owed</span><span class="t">$25.20</span></li>
-                <li><span class="d">Kentucky</span><span>Tax plus surcharge</span><span class="t">$19.50</span></li>
-                <li><span class="d">Illinois</span><span>Bought more than burned</span><span class="t">-$87.82</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>IFTA rate matrix, final rates</span><span data-try-due>Due November 2, 2026</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/ifta-calculator/?fuel=special_diesel&amp;rows=MO:670:50,IL:260:160,IN:250,KY:380,WV:360,VA:370:150,OK:500:70,TX:270:60,TN:1290:200&amp;quarter=2026Q3&amp;gallons=690">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat flip hue-money">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Money and rates</span>
-        <h3>A MACRS schedule with the mid-quarter test done</h3>
-        <p>List what the business bought this year. Each asset gets its class, Section 179 and bonus, and its first-year deduction from the IRS Publication 946 tables. The 40% fourth-quarter test is worked out in the open, and the whole schedule comes as a PDF and CSV for the return.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="macrs-depreciation">from $0.10</span></span><span class="tchip" data-prices="macrs-depreciation">Schedule $2.00</span></div>
-        <a class="lnk" href="/toll-preview/macrs-depreciation/">Open <span data-tool-name="macrs-depreciation">MACRS depreciation schedule</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="macrs">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-book"/></svg><b>Tax year 2026</b><span class="tchip" data-try-chip>Half-year, 22.45%</span></div>
-          <div class="panel-body">
-            <form class="fields f2e" action="/toll-preview/macrs-depreciation/" method="get">
-              <input type="hidden" name="year" value="2026">
-              <label class="mfield"><span class="mlabel">Bonus on 7-year property</span><span class="inp"><select name="electout" data-f="electout"><option value="7" selected>Elected out</option><option value="">Taken</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-              <label class="mfield"><span class="mlabel">Business income, $</span><span class="inp"><input type="number" name="income" data-f="income" value="250000" min="0" step="any" inputmode="decimal" class="mono"></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">First-year deduction</div><div class="r-main"><span class="num">$183,669.96</span></div></div>
-              <ul class="skips">
-                <li><span class="d">SUV over 6,000 lb</span><span>Section 179 and bonus</span><span class="t">$56,800</span></li>
-                <li><span class="d">CNC router</span><span>7-year, bonus elected out</span><span class="t">$12,003.60</span></li>
-                <li><span class="d">Warehouse building</span><span>39-year, no bonus</span><span class="t">$6,580.50</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>IRS Publication 946, Appendix A</span><span>PDF and CSV</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/macrs-depreciation/?year=2026&amp;electout=7&amp;income=250000">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat hue-file">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Files and images</span>
-        <h3>QR codes that never expire, read back before you print</h3>
-        <p>A link, WiFi, a contact card, a text or a place. Every code is decoded again before you get it, so you see the exact text it holds. Make a batch from a spreadsheet as a ZIP and a label sheet, or check whether a code you already printed runs through a vendor that can switch it off.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span>Free on the web</span><span class="tchip"><span data-price="qr-code-generator">from $0.002</span> over the API</span></div>
-        <a class="lnk" href="/toll-preview/qr-code-generator/">Open <span data-tool-name="qr-code-generator">QR code generator</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel" data-try="qr">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-img"/></svg><b>WiFi code</b><span class="tchip">Static</span></div>
-          <div class="panel-body">
-            <form class="fields f3" action="/toll-preview/qr-code-generator/" method="get">
-              <input type="hidden" name="type" value="wifi">
-              <label class="mfield"><span class="mlabel">Network</span><span class="inp"><input type="text" name="ssid" data-f="ssid" value="Cafe Guest" maxlength="64" autocomplete="off" spellcheck="false"></span></label>
-              <label class="mfield"><span class="mlabel">Password<span class="visually-hidden">, kept on this page and never put in a link</span></span><span class="inp"><input type="text" data-f="password" value="tea;time42" maxlength="64" autocomplete="off" spellcheck="false" class="mono"></span></label>
-              <label class="mfield"><span class="mlabel">Security</span><span class="inp"><select name="security" data-f="security"><option value="WPA" selected>WPA</option><option value="WEP">WEP</option><option value="nopass">Open</option></select><svg aria-hidden="true"><use href="#i-chev"/></svg></span></label>
-            </form>
-            <div class="result" style="margin-top:16px">
-              <div class="result-top"><div class="r-label">Text the code holds</div><div class="r-main"><span class="num mono">WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;</span></div></div>
-              <ul class="skips">
-                <li><span class="d">Level M</span><span>Restores 15% damage</span><span class="t">Version 3</span></li>
-                <li><span class="d">Level H</span><span>Restores 30% damage</span><span class="t">Version 5</span></li>
-              </ul>
-              <div class="r-foot"><span data-try-foot>Special characters are escaped</span><span>Read back before download</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/qr-code-generator/?type=wifi&amp;ssid=Cafe+Guest&amp;security=WPA">Run it for real <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-            <p class="visually-hidden" role="status" aria-live="polite" data-try-say></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat flip hue-date">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Dates and calendars</span>
-        <h3>Any date phrase to an exact date and weekday</h3>
-        <p>Write the date the way people say it: &ldquo;90 days from today&rdquo;, &ldquo;10 business days after next Friday&rdquo;, &ldquo;end of next month&rdquo;. You get one calendar date with its weekday, every holiday skipped by name, and both readings when a phrase like &ldquo;next Friday&rdquo; can mean two days.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="date-resolver">from $0.0005</span> per phrase</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/date-resolver/">Open <span data-tool-name="date-resolver">Natural-language date resolver</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>10 business days after next Friday</b><span class="tchip">US</span></div>
-          <div class="panel-body">
-            <div class="result">
-              <div class="result-top"><div class="r-label">Said on Mon 2 Nov 2026</div><div class="r-main"><span class="num">Mon 23 Nov</span> 2026</div></div>
-              <ul class="skips">
-                <li><span class="d">Wed 11 Nov</span><span>Veterans Day, skipped</span><span class="t">holiday</span></li>
-                <li><span class="d">Mon 30 Nov</span><span>If &ldquo;next Friday&rdquo; means next week's</span><span class="t">2nd reading</span></li>
-              </ul>
-              <div class="r-foot"><span>5 U.S.C. 6103, OPM observed days</span><span class="charged">A real run: <span data-price="date-resolver">from $0.0005</span></span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/date-resolver/?text=10+business+days+after+next+Friday&amp;ref=2026-11-02">Try it on the tool page <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat hue-date">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Dates and calendars</span>
-        <h3>Hours, overtime and a timesheet you can sign</h3>
-        <p>Clock-in and clock-out times minus unpaid breaks, overnight and split shifts included. Overtime is split by fixed workweek over 40 hours, with daily thresholds if you set them, and the rounding check shows what the time clock did to the punches under 29 CFR 785.48.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span>Free on the web</span><span class="tchip"><span data-price="hours-calculator">from $0.002</span> over the API</span></div>
-        <a class="lnk" href="/toll-preview/hours-calculator/">Open <span data-tool-name="hours-calculator">Hours calculator and timesheet</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-cal"/></svg><b>Week of Mon 2 Nov 2026</b><span class="tchip">$18.50 an hour</span></div>
-          <div class="panel-body">
-            <div class="result">
-              <div class="result-top"><div class="r-label">Hours worked</div><div class="r-main"><span class="num">46:00</span> 46.00 hours</div></div>
-              <ul class="skips">
-                <li><span class="d">Regular</span><span>Up to 40 hours a workweek</span><span class="t">40.00</span></li>
-                <li><span class="d">Overtime</span><span>Over 40 hours a workweek</span><span class="t">6.00</span></li>
-                <li><span class="d">Gross pay</span><span>At $18.50, overtime at 1.5x</span><span class="t">$906.50</span></li>
-              </ul>
-              <div class="r-foot"><span>FLSA workweek, DOL Fact Sheet #23</span><span class="charged">Totals free on the page</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/hours-calculator/">Try it on the tool page <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat flip hue-file">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Files and images</span>
-        <h3>Giving statements for every donor, from your sheet</h3>
-        <p>Paste the year&rsquo;s gifts from any spreadsheet. Gifts are grouped by donor, and each statement carries the IRS goods-or-services sentence, with gifts of $250 or more and quid pro quo payments over $75 flagged. You get a PDF per donor, a print file and an email list.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="year-end-giving-statements">from $0.10</span> per donor statement</span><span class="tchip">Preview free</span></div>
-        <a class="lnk" href="/toll-preview/year-end-giving-statements/">Open <span data-tool-name="year-end-giving-statements">Year-end giving statements</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-list"/></svg><b>Grace Community Church (sample)</b><span class="tchip">2026</span></div>
-          <div class="panel-body">
-            <div class="result">
-              <div class="result-top"><div class="r-label">Given in 2026 by 3 donors</div><div class="r-main"><span class="num">$885.00</span> + 1 property gift</div></div>
-              <ul class="skips">
-                <li><span class="d">Ana Ruiz</span><span>3 gifts, 1 of property</span><span class="t">$40.00</span></li>
-                <li><span class="d">Ben Okafor</span><span>2 gifts, 1 of $250 or more</span><span class="t">$370.00</span></li>
-                <li><span class="d">John and Mary Smith</span><span>4 gifts, 1 of $250 or more</span><span class="t">$475.00</span></li>
-              </ul>
-              <div class="r-foot"><span>IRS Publication 1771</span><span class="charged">Preview free</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/year-end-giving-statements/?sample=church">Try it on the tool page <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat hue-file">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Files and images</span>
-        <h3>Every hop, loop and 302 in your redirect list</h3>
-        <p>Paste up to 1,000 URLs, or an old-to-new redirect map, and get every hop and status code per URL: loops, chains, temporary 302, 303 and 307 against permanent 301 and 308, plain-HTTP hops and Google&rsquo;s 10-hop limit, with a CSV.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span>10 URLs free</span><span class="tchip"><span data-price="redirect-chain-checker">from $0.0003</span> a URL in bulk</span></div>
-        <a class="lnk" href="/toll-preview/redirect-chain-checker/">Open <span data-tool-name="redirect-chain-checker">Bulk redirect chain checker</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-list"/></svg><b>http://example.com/old-page</b><span class="tchip">Pasted curl output</span></div>
-          <div class="panel-body">
-            <div class="result">
-              <div class="result-top"><div class="r-label">Lands on /new-page (200)</div><div class="r-main"><span class="num">2 redirects</span> review</div></div>
-              <ul class="skips">
-                <li><span class="d">301</span><span>http to https</span><span class="t">permanent</span></li>
-                <li><span class="d">302</span><span>/old-page to /new-page</span><span class="t">temporary</span></li>
-                <li><span class="d">200</span><span>https://example.com/new-page</span><span class="t">final</span></li>
-              </ul>
-              <div class="r-foot"><span>Google Search Central, RFC 9110</span><span class="charged">Curl output read free</span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/redirect-chain-checker/">Try it on the tool page <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat flip hue-agent">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Email</span>
-        <h3>Exact SPF lookup count, every nested include</h3>
-        <p>SPF allows 10 DNS lookups. The count follows every nested include, void lookups, the mx limit and macros under RFC 7208, names the term that goes over, and tries an edit before you publish it.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span><span data-price="spf-lookup-counter">from $0.002</span> per check</span><span class="tchip">Web, API, MCP</span></div>
-        <a class="lnk" href="/toll-preview/spf-lookup-counter/">Open <span data-tool-name="spf-lookup-counter">SPF lookup counter</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-      <div class="panel-glow rv">
-        <div class="panel">
-          <div class="panel-bar"><svg aria-hidden="true"><use href="#i-search"/></svg><b>Adding HubSpot to a draft record</b><span class="tchip">What-if</span></div>
-          <div class="panel-body">
-            <div class="result">
-              <div class="result-top"><div class="r-label">example.com, after the edit</div><div class="r-main"><span class="num">4 of 10</span> lookups</div></div>
-              <ul class="skips">
-                <li><span class="d">include:shared.hubspot.com</span><span>Added</span><span class="t">2</span></li>
-                <li><span class="d">include:_spf.google.com</span><span>Google Workspace</span><span class="t">1</span></li>
-                <li><span class="d">include:spf.protection.outlook.com</span><span>Microsoft 365</span><span class="t">1</span></li>
-              </ul>
-              <div class="r-foot"><span>RFC 7208, DNS recorded Nov 7, 2026</span><span class="charged">A real run: <span data-price="spf-lookup-counter">from $0.002</span></span></div>
-            </div>
-            <p class="try-row"><a class="try-go" href="/toll-preview/spf-lookup-counter/?domain=example.com&amp;record=v%3Dspf1+include%3A_spf.google.com+include%3Aspf.protection.outlook.com+~all&amp;add=include%3Ashared.hubspot.com">Try it on the tool page <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feat hue-agent">
-      <div class="feat-copy rv">
-        <span class="tag"><i></i>Places and data</span>
-        <h3>Every county a ZIP touches, FIPS and source date</h3>
-        <p>Look up US ZIP codes or UK postcodes, one or 10,000 at a time. Each ZIP gets every county it touches, with the county FIPS, the share of its land, the metro area and Census region; each postcode its local authority, county, region and nation.</p>
-        <div class="meta"><span class="tchip"><span class="dot"></span>One code free</span><span class="tchip"><span data-price="zip-to-county">from $0.0005</span> a code in bulk</span></div>
-        <a class="lnk" href="/toll-preview/zip-to-county/">Open <span data-tool-name="zip-to-county">ZIP code and UK postcode to county lookup</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <span class="tag"><i></i>Other tools</span>
+        <h3>Lookups with the source and the date on them</h3>
+        <p>SPF lookup counts under RFC 7208 and ZIP codes to counties from the Census files, each with its source.</p>
+        <ul class="feed" aria-label="Other tools">
+          <li><span class="pip"></span><a class="what" href="/toll-preview/spf-lookup-counter/"><span data-tool-name="spf-lookup-counter">SPF lookup counter</span><span class="when">Exact SPF lookup count, every nested include</span></a><span class="amt"><span data-price="spf-lookup-counter">from $0.002</span> per check</span></li>
+          <li><span class="pip"></span><a class="what" href="/toll-preview/zip-to-county/"><span data-tool-name="zip-to-county">ZIP code and UK postcode to county lookup</span><span class="when">Every county a ZIP touches, FIPS and source date</span></a><span class="amt"><span data-price="zip-to-county">from $0.0005</span> a code in bulk</span></li>
+        </ul>
       </div>
       <div class="panel-glow rv">
         <div class="panel">

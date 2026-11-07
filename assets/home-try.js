@@ -5,9 +5,8 @@
 // anyone: there is no Endwise.run in this file. Each mockup is worked out in this browser by the same
 // core.js its tool's page uses for its previews, with the data that page reads (the tool's own
 // published examples, from the tools API the static copy serves too). Where a tool has no engine
-// in the browser (the exchange rate needs the ECB file, the tax set-aside its tax tables, the MACRS
-// schedule the Publication 946 tables), the mockup shows the tool's own worked examples and hands
-// anything else to the tool's page.
+// in the browser (the exchange rate needs the ECB file), the mockup shows the tool's own worked
+// examples and hands anything else to the tool's page.
 //
 // Every mockup is a [data-try] element: a GET form whose named fields are the tool page's query
 // string (so it hands off even without JavaScript), a .result, a "Run it for real" link (a.try-go)
@@ -21,7 +20,6 @@ const T = window.Endwise;
 const once = (fn) => { let p = null; return () => (p ||= fn()); };
 const toolCache = {};
 const toolOf = (slug) => (toolCache[slug] ||= T.api(`/api/v1/tools/${slug}`).then((json) => json.tool));
-const example = (tool, test) => tool.examples.find((x) => test(x.input));
 
 const businessDays = once(() => import('../business-days/files/core.js'));
 
@@ -32,35 +30,6 @@ const ENGINES = {
     return { fx, examples: tool.examples };
   }),
   img: once(async () => ({ img: await import('../image-to-size/files/core.js') })),
-  dd: once(async () => {
-    const [bd, dd, tool] = await Promise.all([businessDays(), import('../delivery-date-calculator/files/core.js'), toolOf('delivery-date-calculator')]);
-    // The USPS tables from the tool's published calendar example, as its page reads them.
-    const cal = example(tool, (i) => i.op === 'calendar').output;
-    return { dd, engine: dd.makeEngine(bd, { deadlines: cal.holidayDeadlines, standards: cal.serviceStandards }) };
-  }),
-  pd: once(async () => {
-    const [pd, tool] = await Promise.all([import('../trucker-per-diem/files/core.js'), toolOf('trucker-per-diem')]);
-    return { pd, engine: pd.makeEngine(example(tool, (i) => i.op === 'rates').output) };
-  }),
-  ts: once(async () => {
-    const [ts, tool] = await Promise.all([import('../tax-set-aside/files/core.js'), toolOf('tax-set-aside')]);
-    return { ts, examples: tool.examples };
-  }),
-  mr: once(async () => {
-    const [mr, tool] = await Promise.all([import('../mileage-reimbursement/files/core.js'), toolOf('mileage-reimbursement')]);
-    return { mr, engine: mr.makeEngine(example(tool, (i) => i.op === 'rates').output) };
-  }),
-  t99: once(async () => {
-    const [bd, t99, tool] = await Promise.all([businessDays(), import('../1099-threshold/files/core.js'), toolOf('1099-threshold')]);
-    return { t99, engine: t99.makeEngine(bd, example(tool, (i) => i.op === 'rules').output.files), scan: example(tool, (i) => i.op === 'scan').input };
-  }),
-  ifta: once(async () => {
-    const [ifta, tool] = await Promise.all([import('../ifta-calculator/files/core.js'), toolOf('ifta-calculator')]);
-    const rates = example(tool, (i) => i.op === 'rates' && !i.quarter && !i.jurisdiction).output;
-    return { ifta, engine: ifta.makeEngine({ rates, rules: rates.rules }), estimate: example(tool, (i) => i.op === 'estimate').input };
-  }),
-  macrs: once(async () => ({})),
-  qr: once(async () => ({ qr: await import('../qr-code-generator/files/core.js') })),
 };
 
 // ---------- words ----------
@@ -71,13 +40,8 @@ const parts = (iso) => iso.split('-').map(Number);
 const weekday = (iso) => { const [y, m, d] = parts(iso); return WEEKDAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()]; };
 // "Fri 25 Dec", or "Fri 25 Dec 2026" with the year.
 const day = (iso, year) => { const [y, m, d] = parts(iso); return `${weekday(iso)} ${d} ${MONTHS[m - 1]}${year ? ` ${y}` : ''}`; };
-// "Jan 1"
-const monthDay = (iso) => { const [, m, d] = parts(iso); return `${MONTHS[m - 1]} ${d}`; };
 const isDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s) && !Number.isNaN(Date.parse(`${s}T00:00:00Z`)) && new Date(`${s}T00:00:00Z`).toISOString().startsWith(s);
 const grouped = (n) => n.toLocaleString('en-US');
-// A whole or decimal amount typed in a box: a number, or null.
-const amount = (raw) => (/^\s*\d+(\.\d+)?\s*$/.test(raw) ? Number(raw) : null);
-const count = (raw, max) => (/^\s*\d+\s*$/.test(raw) && Number(raw) <= max ? Number(raw) : null);
 // The ECB rate as the tool's page writes it: 1.113 -> "1.1130", 95.269093 -> "95.269093".
 const rateText = (n) => n.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 6 });
 
@@ -211,255 +175,6 @@ const MOCKS = {
         title,
         chip: o.requestedDate,
         say,
-      };
-    },
-  },
-
-  dd: {
-    read(v) {
-      const processing = count(v.processing, 60);
-      if (!/^\d{2}:\d{2}$/.test(v.cutoff)) return { problem: 'Pick a cutoff time.' };
-      if (processing === null) return { problem: 'Processing days must be a whole number from 0 to 60.' };
-      // The same input the tool's page builds for an order-by run with USPS.
-      return {
-        op: 'order-by', timeZone: 'America/New_York', cutoff: v.cutoff, shipDays: v.ship.split(','), federalHolidays: true,
-        processingDays: processing, carrier: 'usps', deliverBy: '2026-12-24', destination: 'contiguous',
-      };
-    },
-    solve({ dd, engine }, input) {
-      let r;
-      try {
-        r = engine.orderBy(input);
-      } catch (e) {
-        if (e instanceof dd.DeliveryError) return problem('Last order', e.message);
-        throw e;
-      }
-      const [first, ...rest] = r.deadlines;
-      const time = dd.clockText(dd.parseClock(input.cutoff));
-      const byDate = new Map();
-      for (const d of rest) if (d.lastOrderDate !== first.lastOrderDate) byDate.set(d.lastOrderDate, [...(byDate.get(d.lastOrderDate) ?? []), d.name]);
-      return {
-        label: `Last order, ${first.name}`,
-        main: [{ num: day(first.lastOrderDate) }, ` ${time}`],
-        note: first.stillPossible ? null : 'That moment has already passed.',
-        rows: [...byDate].map(([date, names]) => [day(date), names.join(' and '), time]),
-        say: r.answer,
-      };
-    },
-  },
-
-  pd: {
-    read(v) {
-      const n = {};
-      for (const k of ['full', 'partial', 'oct_full', 'oct_partial']) {
-        n[k] = v[k].trim() === '' ? 0 : count(v[k], 366);
-        if (n[k] === null) return { problem: 'Day counts must be whole numbers from 0 to 366.' };
-      }
-      // As the page's "day counts" mode sends them: only the counts that are not zero.
-      const some = (full, partial) => ({ ...(full ? { fullDays: full } : {}), ...(partial ? { partialDays: partial } : {}) });
-      return {
-        op: 'quick', taxYear: 2024, ...some(n.full, n.partial), octDec: some(n.oct_full, n.oct_partial),
-        hosSubject: v.hos === '1', interstate: true, transportationIndustry: true,
-      };
-    },
-    solve({ pd, engine }, input) {
-      let r;
-      try {
-        r = engine.quick(input);
-      } catch (e) {
-        if (e instanceof pd.PerDiemError) return problem('Schedule C line 24b', e.message);
-        throw e;
-      }
-      return {
-        label: 'Schedule C line 24b',
-        main: [{ num: r.totals.display.deductible }],
-        rows: r.segments.map((s) => [`${monthDay(s.from)} to ${monthDay(s.to)}`, s.notices.map((x) => x.notice).join(', '), `$${s.rateConus}`]),
-        say: r.answer,
-      };
-    },
-  },
-
-  ts: {
-    read(v) {
-      const a = amount(v.amount);
-      const y = amount(v.ytd);
-      if (a === null || y === null) return { problem: 'Enter the payment and what you have earned so far as amounts in dollars.' };
-      return { amount: a, ytd: y, state: v.state };
-    },
-    solve({ ts, examples }, v, root) {
-      const stateName = root.querySelector(`[data-f="state"] option[value="${v.state}"]`).textContent;
-      // The tax tables run on the server; here are the tool's own worked examples.
-      const ex = examples.find((x) => x.input.op === 'payment' && x.input.country === 'US' && x.input.filingStatus === 'single' && x.input.state === v.state
-        && x.input.amount === v.amount && x.input.ytdNetProfit === v.ytd && !x.input.miles && !x.input.tips && !x.input.expenses);
-      const title = `Set aside, ${stateName} 2026`;
-      if (!ex) {
-        return {
-          label: 'Move to your tax pot',
-          msg: 'Work this one out on the tool page.',
-          note: 'The tax tables run when the tool runs. Here you can try its worked examples: a $3,000 payment on $40,000 earned so far, in Texas or California. Signed out, the tool page gives you the percentage free, 5 runs a day.',
-          rows: [],
-          title,
-          say: 'This payment is worked out on the tool page. Run it for real there.',
-        };
-      }
-      const o = ex.output;
-      const cents = (n) => ts.usd(n, { cents: true });
-      return {
-        label: 'Move to your tax pot',
-        main: [{ num: cents(o.setAside) }, ` (${o.percent}%)`],
-        rows: [
-          ['SE tax', '15.3% of 92.35%', cents(o.breakdown.seTax)],
-          ['Federal', `${Math.round(o.year.after.bracketRate * 100)}% bracket, after QBI`, cents(o.breakdown.federalIncomeTax)],
-          ...(o.breakdown.state ? [[o.state.name, 'State income tax', cents(o.breakdown.state)]] : []),
-        ],
-        title,
-        say: `Set aside ${cents(o.setAside)}, ${o.percent}% of the payment.`,
-      };
-    },
-  },
-
-  mr: {
-    read(v) {
-      const raw = [v.m1.trim() || '0', v.m2.trim() || '0'];
-      if (raw.some((x) => amount(x) === null)) return { problem: 'Miles must be a number, such as 2600.' };
-      return raw;
-    },
-    solve({ mr, engine }, miles) {
-      // The year's rate periods, as the page's split form lists them.
-      const field = mr.PURPOSES.business.field;
-      const periods = engine.irs.periods.filter((p) => p.from <= '2026-12-31' && p.to >= '2026-01-01' && p[field] !== null && p[field] !== undefined)
-        .map((p) => ({ from: p.from > '2026-01-01' ? p.from : '2026-01-01', to: p.to < '2026-12-31' ? p.to : '2026-12-31' }));
-      const trips = periods.map((p, i) => ({ date: p.from, ...(p.to !== p.from ? { endDate: p.to } : {}), miles: miles[i] ?? '0', purpose: 'business' }))
-        .filter((t) => Number(t.miles) > 0);
-      if (!trips.length) return problem('Total', 'Enter the miles for at least one period.');
-      let r;
-      try {
-        r = engine.calculate({ op: 'calculate', trips });
-      } catch (e) {
-        if (e instanceof mr.MileageError) return problem('Total', e.message);
-        throw e;
-      }
-      const dollars = (c) => { const dp = (c.split('.')[1] ?? '').length + 2; return `$${(Number(c) / 100).toFixed(Math.max(2, dp))}`; };
-      return {
-        label: r.periods.map((p) => `${grouped(p.miles)} x ${dollars(p.rateCents)}`).join(' + '),
-        main: [{ num: r.total }],
-        say: r.answer,
-      };
-    },
-  },
-
-  t99: {
-    read(v) {
-      const rivera = amount(v.rivera);
-      if (rivera === null) return { problem: 'Enter Rivera Electric\'s June payment as an amount in dollars.' };
-      return { rivera, summit: v.summit, lumen: v.lumen };
-    },
-    solve({ t99, engine, scan }, v) {
-      // The tool's own sample year of payments, with the three changes made here.
-      const payments = scan.payments.map((p) => {
-        if (p.payee === 'Rivera Electric LLC') return { ...p, amount: v.rivera };
-        if (p.payee === 'Summit Staffing Inc') return { ...p, payeeType: v.summit };
-        if (p.payee === 'Lumen Web Studio') return { ...p, method: v.lumen };
-        return p;
-      });
-      const r = engine.scan({ ...scan, payments });
-      const why = (p) => {
-        if (p.verdict === 'file') return p.boxes.filter((b) => b.met).map((b) => `${b.form} box ${b.box}`).join(', ');
-        if (p.verdict === 'near') return 'Under the $2,000 line, near it';
-        if (p.verdict === 'under') return 'Under the line';
-        if (t99.PAYEE_TYPES[p.payeeType]?.corporate) return 'Corporation, left out';
-        if (payments.some((x) => x.payee === p.name && t99.METHODS[x.method]?.form1099K)) return 'Card payment, left out (1099-K)';
-        return 'Left out';
-      };
-      const shown = ['Rivera Electric', 'Okafor & Lin LLP', 'Summit Staffing Inc', 'Lumen Web Studio'];
-      return {
-        label: 'Payees that need a form',
-        main: [{ num: String(r.summary.file) }, ` of ${r.summary.payees}`],
-        rows: shown.map((name) => r.payees.find((p) => p.name === name)).filter(Boolean).map((p) => [p.name, why(p), t99.money(p.paid)]),
-        say: r.answer,
-      };
-    },
-    // The hand-off checks one payee: the one changed last, as a single payment.
-    handOff(form, key, v) {
-      const set = (name, value) => { form.querySelector(`input[type="hidden"][name="${name}"]`).value = value; };
-      if (key === 'rivera' && amount(v.rivera) !== null) { set('amount', String(1800 + amount(v.rivera))); set('payee', 'single-member-llc'); set('method', 'check'); }
-      if (key === 'summit') { set('amount', '9600'); set('payee', v.summit); set('method', 'ach'); }
-      if (key === 'lumen') { set('amount', '3100'); set('payee', 'individual'); set('method', v.lumen); }
-    },
-  },
-
-  ifta: {
-    prepare(root, { ifta, engine }) {
-      // Every quarter on file, newest first, as the tool's page lists them.
-      const sel = root.querySelector('[data-f="quarter"]');
-      for (const q of [...engine.quarters].reverse()) {
-        if (!sel.querySelector(`option[value="${q}"]`)) sel.appendChild(T.h('option', { value: q }, ifta.quarterWords(q)));
-      }
-    },
-    read(v) {
-      const gallons = amount(v.gallons);
-      if (!gallons) return { problem: 'Gallons must be a number above zero.' };
-      return { quarter: v.quarter, gallons };
-    },
-    solve({ ifta, engine, estimate }, v, root) {
-      let r;
-      try {
-        r = engine.estimate({ ...estimate, quarter: v.quarter, totalGallons: v.gallons });
-      } catch (e) {
-        if (e instanceof ifta.IftaError) return problem('Return, surcharges included', e.message);
-        throw e;
-      }
-      const cents = (x) => Math.round(x * 100);
-      const line = (code) => {
-        const l = r.lines.find((x) => x.jurisdiction === code);
-        if (!l) return null;
-        const words = l.surcharge ? 'Tax plus surcharge' : l.netTaxableGallons > 0 ? `${grouped(l.netTaxableGallons)} gallons owed` : l.netTaxableGallons < 0 ? 'Bought more than burned' : 'Nothing owed';
-        return [l.name, words, ifta.money(cents(l.tax) + (l.surcharge ? cents(l.surcharge.tax) : 0))];
-      };
-      root.querySelector('[data-try-out]').textContent = `${ifta.whole(r.totalMiles)} mi, ${r.display.mpg}`;
-      root.querySelector('[data-try-due]').textContent = `Due ${ifta.longDate(r.dueDate.due)}`;
-      return {
-        label: 'Return, surcharges included',
-        main: [{ num: ifta.money(Math.abs(cents(r.netDue))) }, r.netDue < 0 ? ' credit' : ' due'],
-        rows: ['IN', 'KY', 'IL'].map(line).filter(Boolean),
-        foot: `IFTA rate matrix, ${r.rateStatus.status} rates`,
-        title: ifta.quarterWords(v.quarter),
-        say: r.answer,
-      };
-    },
-  },
-
-  macrs: {
-    read: (v) => v,
-    // The Publication 946 tables are read on the server, so anything but the sample is handed off.
-    solve: () => ({
-      label: 'First-year deduction',
-      msg: 'Work this schedule out on the tool page.',
-      note: 'The IRS Publication 946 tables run when the tool runs. Here you can see its sample schedule: bonus elected out on 7-year property, $250,000 of business income.',
-      rows: [],
-      chip: 'Not worked out here',
-      say: 'These settings are worked out on the tool page. Run it for real there.',
-    }),
-  },
-
-  qr: {
-    read: (v) => v,
-    solve({ qr }, v) {
-      let payload;
-      let notes;
-      try {
-        ({ payload, notes } = qr.buildPayload('wifi', { ssid: v.ssid, password: v.password, security: v.security }));
-      } catch (e) {
-        if (e instanceof qr.QrError) return { ...problem('Text the code holds', e.message), foot: '' };
-        throw e;
-      }
-      const rows = ['M', 'H'].map((ecc) => [`Level ${ecc}`, `Restores ${qr.ECC_RESTORE[ecc]} damage`, `Version ${qr.encodeText(payload, { ecc }).version}`]);
-      return {
-        label: 'Text the code holds',
-        main: [{ num: payload, mono: true }],
-        rows,
-        foot: notes.some((n) => /escaped/.test(n)) ? 'Special characters are escaped' : 'Nothing needed escaping',
-        say: `The code holds ${payload}`,
       };
     },
   },
@@ -682,7 +397,7 @@ function remember(root) {
   root.tryPrinted = {
     parts: [...res.children].filter((c) => c !== foot).map((c) => c.cloneNode(true)),
     foot: foot && foot.querySelector('[data-try-foot]') ? foot.querySelector('[data-try-foot]').textContent : null,
-    texts: [...root.querySelectorAll('[data-try-title], [data-try-chip], [data-try-out], [data-try-due]')].map((el) => [el, el.textContent]),
+    texts: [...root.querySelectorAll('[data-try-title], [data-try-chip]')].map((el) => [el, el.textContent]),
   };
   root.tryHasSub = !!res.querySelector('.r-sub');
   root.tryRows = res.querySelector('.skips');
@@ -740,8 +455,6 @@ function wire(root) {
     if (stamp === shown) paint(root, view);
   }
   const soon = (e) => {
-    // The 1099 hand-off checks the payee changed last; with every field at its printed value, Rivera.
-    if (key === 't99' && e && e.target.dataset.f) mock.handOff(form, fieldsOf(root).every(atDefault) ? 'rivera' : e.target.dataset.f, valuesOf(root));
     clearTimeout(timer);
     timer = setTimeout(update, e && e.type === 'change' ? 0 : 220);
   };

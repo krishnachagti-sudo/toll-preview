@@ -8,7 +8,7 @@
        data-tool-name="<slug>"    the tool's name
        data-buys="<slug>"         calls the top-up in the enclosing data-topup pays for
    - Fills the site's own address into the code samples and the MCP URL.
-   - The hero replay, the tool tabs, the code tabs, the request form and reveal-on-scroll.
+   - The hero replay, the tool group tabs, the code tabs, the request form and reveal-on-scroll.
    - The mockups' inputs: home-try.js, loaded once a mockup is in view or touched. */
 (function () {
   'use strict';
@@ -203,13 +203,9 @@
     });
   }
 
-  // ---------- the live tools: one demo at a time, behind tabs ----------
-  // Without JavaScript every tool's row is shown, one after another.
-  var SHORT = { 'fx-on-date': 'Exchange rate', 'delivery-date-calculator': 'Delivery date', 'trucker-per-diem': 'Trucker per diem',
-    'tax-set-aside': 'Tax set-aside', 'mileage-reimbursement': 'Mileage', '1099-threshold': '1099 threshold',
-    'ifta-calculator': 'IFTA return', 'macrs-depreciation': 'MACRS', 'qr-code-generator': 'QR codes',
-    'date-resolver': 'Date resolver', 'hours-calculator': 'Hours', 'year-end-giving-statements': 'Giving statements',
-    'redirect-chain-checker': 'Redirects', 'spf-lookup-counter': 'SPF lookups', 'zip-to-county': 'ZIP to county' };
+  // ---------- the live tools: one group at a time, behind tabs ----------
+  // Each .feat row is a group of tools (lib/brand/parts.js), named by its tag. Without JavaScript
+  // every group's row is shown, one after another.
   function toolTabs() {
     var sec = document.getElementById('tools');
     if (!sec) return;
@@ -220,19 +216,18 @@
     list.setAttribute('role', 'tablist');
     list.setAttribute('aria-label', 'Live tools');
     var tabs = feats.map(function (f, i) {
-      var link = f.querySelector('.lnk');
-      var slug = ((link && link.getAttribute('href')) || '').split('/').filter(Boolean).pop() || 'tool' + i;
-      var name = SHORT[slug] || ((link && link.querySelector('[data-tool-name]')) || {}).textContent || 'Tool ' + (i + 1);
+      var id = f.getAttribute('data-group') || 'group' + i;
+      var name = ((f.querySelector('.tag') || {}).textContent || '').trim() || 'Tools ' + (i + 1);
       var hue = (f.className.match(/hue-\w+/) || [''])[0];
       var b = document.createElement('button');
       b.type = 'button';
       b.className = hue;
-      b.id = 'feat-tab-' + slug;
+      b.id = 'feat-tab-' + id;
       b.setAttribute('role', 'tab');
-      b.setAttribute('aria-controls', 'feat-' + slug);
+      b.setAttribute('aria-controls', 'feat-' + id);
       b.innerHTML = '<i aria-hidden="true"></i>';
       b.appendChild(document.createTextNode(name));
-      f.id = 'feat-' + slug;
+      f.id = 'feat-' + id;
       f.setAttribute('role', 'tabpanel');
       f.setAttribute('aria-labelledby', b.id);
       b.addEventListener('click', function () { show(i); });
