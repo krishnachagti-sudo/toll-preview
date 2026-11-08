@@ -1,0 +1,415 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mileage reimbursement calculator 2026, rate by trip date | Endwise</title><meta name="description" content="Price every trip at the IRS mileage rate in force on its date: 72.5 cents a business mile through June 30, 2026, 76 cents from July 1."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&display=swap" rel="stylesheet"><style>:root{
+--bg:#ffffff;--bg-soft:#f7f7f4;--bg-sunk:#f2f2ee;
+--ink:#111317;--ink-2:#3a3e46;--muted:#666b74;--faint:#8b9098;
+--line:#e7e6e1;--line-2:#d9d8d2;
+--accent:#ff5a36;--accent-strong:#d23f19;--accent-hover:#b8340f;
+--accent-soft:#fff3ee;--accent-line:#ffd6c8;
+--ok:#1d7a4f;--ok-soft:#ecf7f1;
+--radius:12px;--radius-lg:16px;
+--shadow-panel:0 1px 2px rgba(17,19,23,.04),0 8px 24px -6px rgba(17,19,23,.08),0 24px 48px -24px rgba(17,19,23,.10);
+--font:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--font);font-feature-settings:"ss01","tnum" 0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg{display:block}
+a{color:var(--accent-strong);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+h1,h2,h3,h4{margin:0;color:var(--ink);font-weight:650;letter-spacing:-.022em}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:2px solid var(--accent-strong);outline-offset:2px;border-radius:6px}
+/* header */
+.hdr{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.6) blur(10px);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;height:64px;gap:28px}
+.logo{display:flex;align-items:center;gap:9px;color:var(--ink);font-weight:650;font-size:18px;letter-spacing:-.02em}
+.logo:hover{text-decoration:none}
+.nav{display:flex;align-items:center;gap:4px}
+.nav>a,.nav summary{color:var(--ink-2);font-size:15px;padding:8px 12px;border-radius:8px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:5px}
+.nav summary::-webkit-details-marker{display:none}
+.nav>a:hover,.nav summary:hover{background:var(--bg-soft);text-decoration:none;color:var(--ink)}
+.menu{position:relative}
+.menu-pop{position:absolute;top:calc(100% + 8px);left:0;width:560px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-panel);padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.menu-pop h4{font-size:12px;font-weight:600;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin:4px 0 4px}
+.menu-pop a{display:block;color:var(--ink);font-size:14px;padding:5px 0}
+.menu-pop .all{grid-column:1/-1;border-top:1px solid var(--line);margin-top:8px;padding-top:12px;font-weight:550;color:var(--accent-strong)}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.search{display:flex;align-items:center;gap:8px;width:250px;white-space:nowrap;height:38px;padding:0 12px;border:1px solid var(--line);border-radius:10px;color:var(--faint);font-size:14px;background:var(--bg-soft)}
+.search kbd{margin-left:auto;font:500 11px var(--mono);border:1px solid var(--line-2);border-radius:5px;padding:1px 5px;color:var(--muted);background:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 16px;border-radius:10px;font:550 15px var(--font);border:1px solid transparent;cursor:pointer;white-space:nowrap;text-decoration:none!important}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#2a2d33}
+.btn-accent{background:var(--accent-strong);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 1px 2px rgba(17,19,23,.12)}
+.btn-accent:hover{background:var(--accent-hover)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line-2)}
+.btn-ghost:hover{background:var(--bg-soft)}
+.btn-plain{color:var(--ink-2);padding:0 10px}
+.btn-plain:hover{color:var(--ink)}
+.btn-lg{height:46px;padding:0 20px;font-size:16px}
+.mnav{display:none}
+.tab .s{display:none}
+/* hero */
+.hero{padding:40px 0 56px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,580px);grid-template-areas:"intro side" "trust side" "extras side";grid-template-rows:auto auto 1fr;column-gap:64px;row-gap:28px;align-items:start}
+.intro{grid-area:intro;padding-top:8px}
+.side{grid-area:side}
+.extras{grid-area:extras;display:grid;gap:16px;align-content:start}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted);margin-bottom:18px}
+.crumbs a{color:var(--muted)}
+.crumbs span[aria-hidden]{color:var(--line-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:550;color:var(--accent-strong);margin-bottom:12px}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.h1{font-size:44px;line-height:1.08;letter-spacing:-.032em;font-weight:680}
+.lede{font-size:18px;line-height:1.55;color:var(--ink-2);margin-top:14px;max-width:560px}
+.lede strong{color:var(--ink);font-weight:600}
+.price-line{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:15px;color:var(--ink)}
+.price-line .tag{display:inline-flex;align-items:center;gap:6px;font-weight:550}
+.price-line .tag svg{color:var(--ok)}
+details.how{font-size:14px;color:var(--ink-2)}
+details.how summary{cursor:pointer;color:var(--accent-strong);font-weight:500;list-style:none;display:inline-flex;align-items:center;gap:4px}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary svg{transition:transform .15s}
+details.how[open] summary svg{transform:rotate(180deg)}
+details.how .how-body{margin-top:10px;padding:14px 16px;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;display:grid;gap:8px}
+.how-body div{display:flex;justify-content:space-between;gap:16px}
+.how-body div span:last-child{font-weight:550;color:var(--ink);text-align:right;white-space:nowrap}
+.how-body p{color:var(--muted);font-size:13px}
+/* panel */
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-panel);overflow:visible}
+.tabs{display:flex;align-items:stretch;gap:2px;padding:0 10px;border-bottom:1px solid var(--line);position:relative}
+.tab{appearance:none;background:none;border:0;font:500 14px var(--font);color:var(--muted);padding:14px 10px 13px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;list-style:none;display:flex;align-items:center;gap:5px}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.more{margin-left:auto;position:relative}
+.more summary::-webkit-details-marker{display:none}
+.more-pop{position:absolute;right:0;top:calc(100% + 6px);z-index:5;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-panel);padding:6px;min-width:200px}
+.more-pop a{display:block;padding:8px 10px;border-radius:8px;color:var(--ink);font-size:14px}
+.more-pop a:hover{background:var(--bg-soft);text-decoration:none}
+.pbody{padding:22px 24px 24px}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label,.flabel{font-size:14px;font-weight:550;color:var(--ink)}
+.field .fmt{font-weight:400;color:var(--faint)}
+.hint{font-size:13px;color:var(--muted)}
+.input,.select{height:44px;width:100%;border:1px solid var(--line-2);border-radius:10px;padding:0 14px;font:400 16px var(--font);color:var(--ink);background:#fff;font-variant-numeric:tabular-nums;display:flex;align-items:center}
+.select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23666b74' stroke-width='1.6' viewBox='0 0 12 12'%3E%3Cpath d='m3 4.5 3 3 3-3'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.input:focus,.select:focus{outline:none;border-color:var(--accent-strong);box-shadow:0 0 0 3px var(--accent-soft)}
+.affix{position:relative}
+.affix .input{padding-right:64px}
+.affix .unit{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--faint)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row2 .field{margin-bottom:16px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-sunk);border-radius:10px;padding:3px;gap:3px}
+.seg span{text-align:center;font-size:14px;font-weight:500;color:var(--muted);padding:8px 6px;border-radius:8px;cursor:pointer}
+.seg span[aria-pressed=true]{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(17,19,23,.08),0 0 0 1px rgba(17,19,23,.04)}
+.addlink{font-size:14px;color:var(--accent-strong);font-weight:500;display:inline-flex;align-items:center;gap:6px;margin:-4px 0 18px}
+.run{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.run .btn{flex:0 0 auto}
+.run .hint{flex:1 1 180px}
+/* result */
+.result{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--accent-soft),#fff 70%);padding:22px 24px 24px;border-radius:0 0 var(--radius-lg) var(--radius-lg)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent-strong);background:#fff;border:1px solid var(--accent-line);border-radius:999px;padding:3px 10px}
+.rlabel{font-size:14px;color:var(--muted);margin-top:12px}
+.rbig{font-size:44px;line-height:1.1;font-weight:680;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:2px}
+.rnote{font-size:14px;color:var(--ink-2);margin-top:8px}
+.mt{width:100%;border-collapse:collapse;font-size:14px;margin-top:16px;font-variant-numeric:tabular-nums}
+.mt th{font-size:12px;font-weight:600;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line-2)}
+.mt td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.mt .r{text-align:right}
+.mt tr:last-child td{border-bottom:0}
+.src{font-size:13px;color:var(--muted);margin-top:12px}
+/* trust */
+.trust{grid-area:trust;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;padding:18px 0 0;border-top:1px solid var(--line)}
+.ti{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.ti .ic{flex:0 0 30px;height:30px;border-radius:8px;background:var(--bg-soft);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink)}
+.ti b{display:block;color:var(--ink);font-weight:600;font-size:14px}
+.ti a{color:var(--ink-2);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:2px}
+.ti a:hover{color:var(--accent-strong)}
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.card.soft{background:var(--bg-soft)}
+.card h3{font-size:16px;letter-spacing:-.01em;font-weight:620}
+.kicker{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.rates{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.rate{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.rate .v{font-size:28px;font-weight:680;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.rate .v small{font-size:16px;font-weight:550;color:var(--muted);margin-left:2px}
+.rate .p{font-size:13px;color:var(--muted)}
+.files{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.file{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 12px;border:1px solid var(--line-2);border-radius:9px;background:#fff;color:var(--ink);font-size:14px;font-weight:500}
+.file:hover{border-color:var(--ink);text-decoration:none}
+.file em{font-style:normal;color:var(--faint);font-size:12px;font-weight:600}
+/* sections */
+.sec{padding:72px 0;border-top:1px solid var(--line)}
+.sec.tint{background:var(--bg-soft)}
+.sec-head{max-width:640px;margin-bottom:32px}
+.sec-head h2{font-size:32px;line-height:1.15;letter-spacing:-.028em}
+.sec-head p{color:var(--ink-2);font-size:17px;margin-top:10px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.prose p{color:var(--ink-2);margin-top:10px;font-size:15.5px}
+.prose p:first-child{margin-top:0}
+/* article */
+.article{display:grid;grid-template-columns:220px minmax(0,720px);gap:64px;padding:56px 0 72px;border-top:1px solid var(--line)}
+.toc{position:sticky;top:96px;align-self:start;font-size:14px}
+.toc .kicker{margin-bottom:10px}
+.toc a{display:block;color:var(--muted);padding:6px 0 6px 12px;border-left:2px solid var(--line)}
+.toc a:hover{color:var(--ink);text-decoration:none;border-left-color:var(--ink-2)}
+.toc a.on{color:var(--ink);border-left-color:var(--accent);font-weight:550}
+.art h2{font-size:24px;line-height:1.25;margin:48px 0 12px;letter-spacing:-.02em}
+.art h2:first-child{margin-top:0}
+.art p,.art li{color:var(--ink-2);font-size:16.5px;line-height:1.65}
+.art p+p{margin-top:12px}
+.art ol{padding-left:22px;margin:12px 0}
+.art li{margin:8px 0;padding-left:4px}
+.callout{margin:18px 0;padding:16px 18px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--line);font-size:15.5px;color:var(--ink-2)}
+.callout strong{color:var(--ink)}
+.note{font-size:14px;color:var(--muted);margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.dt{width:100%;border-collapse:collapse;font-size:15px;margin:18px 0 8px;font-variant-numeric:tabular-nums}
+.dt caption{caption-side:bottom;text-align:left;font-size:13px;color:var(--muted);padding-top:10px}
+.dt th{font-size:12.5px;font-weight:600;color:var(--muted);text-align:left;padding:10px 12px;background:var(--bg-soft);border-bottom:1px solid var(--line-2)}
+.dt th:first-child{border-radius:8px 0 0 0}.dt th:last-child{border-radius:0 8px 0 0}
+.dt td{padding:12px;border-bottom:1px solid var(--line);color:var(--ink-2);vertical-align:top}
+.dt td:first-child{color:var(--ink);font-weight:550}
+.dt .r{text-align:right}
+.dt tr.hl td{background:#fffaf7}
+.dt tfoot td{font-weight:650;color:var(--ink);border-bottom:0;border-top:1px solid var(--line-2)}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent-strong);border:1px solid var(--accent-line);white-space:nowrap}
+.pill.gray{background:var(--bg-sunk);color:var(--muted);border-color:var(--line)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:10px}
+.srcs{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+.srcs li{font-size:14.5px;display:flex;gap:10px;align-items:baseline;margin:0;padding:0}
+.srcs li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;background:var(--line-2);transform:translateY(-2px)}
+.srcs .when{color:var(--muted);font-size:13px}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:600;color:var(--ink);font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;color:var(--muted);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"\2212"}
+.faq details p{margin-top:10px;color:var(--ink-2);font-size:15.5px}
+.related{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.related a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:10px;color:var(--ink);font-weight:500;font-size:15px}
+.related a:hover{border-color:var(--ink-2);text-decoration:none}
+.related a::after{content:"\2192";color:var(--faint)}
+.downloads{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;color:var(--muted);margin-top:28px}
+/* answer box */
+.answer{margin-top:22px;border:1px solid var(--accent-line);background:linear-gradient(180deg,var(--accent-soft),#fffaf8);border-radius:var(--radius-lg);padding:22px 24px;position:relative;overflow:hidden}
+.answer::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.answer .alabel{font-size:13px;font-weight:600;color:var(--accent-strong);display:flex;align-items:center;gap:6px}
+.answer .abig{font-size:36px;line-height:1.1;font-weight:690;letter-spacing:-.03em;margin-top:8px;font-variant-numeric:tabular-nums}
+.answer .atext{font-size:16.5px;color:var(--ink-2);margin-top:10px;line-height:1.55}
+.answer .atext strong{color:var(--ink)}
+.answer .asrc{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:14px;padding-top:12px;border-top:1px solid var(--accent-line);font-size:13px;color:var(--muted)}
+.answer .asrc b{color:var(--ink-2);font-weight:550}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.stat{background:#fff;border:1px solid var(--accent-line);border-radius:10px;padding:10px 12px}
+.stat .v{font-size:26px;font-weight:690;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-size:12.5px;color:var(--muted);margin-top:2px}
+/* footer */
+.ftr{background:var(--bg-soft);border-top:1px solid var(--line);padding:56px 0 32px;font-size:14px}
+.ftr-grid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px}
+.ftr h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px;letter-spacing:0}
+.ftr a{display:block;color:var(--muted);padding:4px 0}
+.ftr a:hover{color:var(--ink)}
+.ftr .about{color:var(--muted);max-width:280px;margin-top:12px}
+.ftr-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.ftr-base a{display:inline;padding:0}
+@media (max-width:1080px){
+.search{display:none}
+.hero-grid{column-gap:40px;grid-template-columns:minmax(0,1fr) minmax(0,520px)}
+.h1{font-size:38px}
+.article{grid-template-columns:minmax(0,1fr);gap:0}
+.toc{display:none}
+.ftr-grid{grid-template-columns:1fr 1fr 1fr}
+.ftr-grid>div:first-child{grid-column:1/-1}
+}
+@media (max-width:860px){
+.wrap{padding:0 16px}
+.nav,.hdr-right .search,.hdr-right .btn-ink{display:none}
+.mnav{display:block;position:relative}
+.mnav summary{list-style:none;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line-2);border-radius:10px;cursor:pointer}
+.mnav summary::-webkit-details-marker{display:none}
+.mnav-pop{position:absolute;right:0;top:calc(100% + 8px);width:min(320px,calc(100vw - 32px));background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-panel);padding:10px}
+.mnav-pop a{display:block;padding:10px 12px;color:var(--ink);font-size:15px;border-radius:8px}
+.hdr .wrap{height:56px;gap:12px}
+.hero{padding:20px 0 40px}
+.hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "side" "trust" "extras";row-gap:20px}
+.intro{padding-top:0}
+.h1{font-size:31px;line-height:1.12}
+.lede{font-size:16px;margin-top:10px}
+.price-line{margin-top:12px;font-size:14.5px}
+.crumbs{margin-bottom:12px;font-size:12.5px}
+.eyebrow{margin-bottom:8px}
+.pbody{padding:18px 16px 20px}
+.result{padding:18px 16px 20px}
+.tabs{padding:0 6px}
+.tab{padding:12px 8px 11px;font-size:13.5px}
+.rbig{font-size:38px}
+.trust{grid-template-columns:1fr;gap:12px;padding-top:4px;border-top:0}
+.sec{padding:48px 0}
+.sec-head h2{font-size:26px}
+.grid2,.grid3,.grid4{grid-template-columns:minmax(0,1fr)}
+.tab .l{display:none}
+.tab .s{display:inline}
+.answer .stats{display:none}
+.article{padding:36px 0 48px}
+.art h2{font-size:21px;margin-top:36px}
+.answer{padding:18px 18px}
+.answer .abig{font-size:32px}
+.stats{grid-template-columns:1fr 1fr}
+.related{grid-template-columns:1fr}
+.ftr-grid{grid-template-columns:1fr 1fr}
+/* stacked tables */
+.stack thead{display:none}
+.stack,.stack tbody,.stack tr,.stack td{display:block;width:100%}
+.stack tr{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:#fff}
+.stack tr.hl{background:#fffaf7;border-color:var(--accent-line)}
+.stack tr.hl td{background:none}
+.stack td{border:0;padding:3px 0;display:flex;justify-content:space-between;gap:16px;text-align:right}
+.stack td::before{content:attr(data-l);font-size:13px;color:var(--muted);font-weight:500;text-align:left;flex:0 0 auto}
+.stack td:first-child{display:block;text-align:left;font-size:16px;padding-bottom:6px}
+.stack td:first-child::before{display:none}
+.stack td:empty{display:none}
+.stack tfoot tr{background:var(--bg-soft)}
+.stack caption{display:block}
+.mt.stack tr{padding:10px 12px}
+}
+@media (max-width:380px){.h1{font-size:29px}.row2{grid-template-columns:1fr}}
+.ftr .logo{display:flex;padding:0}
+.src svg{display:inline;vertical-align:-2px;color:var(--ok)}
+</style></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-co" viewBox="0 0 16 16"><path d="M2.5 14V3.5l5-1.5v12M7.5 6l6 1.5V14M1.5 14h13M4.5 6v.01M4.5 8.5v.01M4.5 11v.01M10.5 9.5v.01M10.5 12v.01" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-eq" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m5.3 8.2 1.8 1.8 3.6-3.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-doc" viewBox="0 0 16 16"><path d="M9.5 1.8H4.3a1 1 0 0 0-1 1v10.4a1 1 0 0 0 1 1h7.4a1 1 0 0 0 1-1V5zM9.5 1.8V5h3.2M5.8 8.2h4.4M5.8 10.8h3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-lock" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7.2" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.3 7V5a2.7 2.7 0 0 1 5.4 0v2" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-cal" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2 6.5h12M5.3 1.8v2.4M10.7 1.8v2.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+<symbol id="i-check" viewBox="0 0 16 16"><path d="m3.2 8.4 3 3 6.6-6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-down" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-dl" viewBox="0 0 16 16"><path d="M8 2.5v8M4.8 7.5 8 10.7l3.2-3.2M2.8 13.5h10.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-search" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.5 10.5 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="i-menu" viewBox="0 0 16 16"><path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+<symbol id="i-up" viewBox="0 0 16 16"><path d="M8 13V3.5M4 7l4-4 4 4M2.5 14h11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg><header class="hdr"><div class="wrap"><a class="logo" href="home.html" aria-label="Endwise home"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#111317"/><path d="M6 12h7.2" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a>
+<nav class="nav" aria-label="Main">
+<details class="menu"><summary>Tools <svg width="14" height="14" aria-hidden="true"><use href="#i-down"/></svg></summary><div class="menu-pop">
+<div><h4>Money and tax</h4><a href="tool.html">Mileage reimbursement</a><a href="#">Tax set-aside per payment</a><a href="#">1099 threshold tracker</a><a href="#">Exchange rate on a date</a><a href="#">Trucker per diem worksheet</a></div>
+<div><h4>Dates and calendars</h4><a href="#">Business days</a><a href="#">Delivery date and order-by</a><a href="#">Hours calculator and timesheet</a><h4 style="margin-top:12px">Files and images</h4><a href="#">Image to size</a><a href="#">QR code generator</a></div>
+<a class="all" href="#">All tools, side by side &rarr;</a></div></details>
+<a href="home.html#pricing">Pricing</a><a href="home.html#developers">Developers</a></nav>
+<div class="hdr-right"><div class="search"><svg width="15" height="15" aria-hidden="true"><use href="#i-search"/></svg>Search tools and answers<kbd>/</kbd></div>
+<a class="btn btn-plain" href="#">Sign in</a><a class="btn btn-ink" href="#">Get started</a>
+<details class="mnav"><summary aria-label="Menu"><svg width="18" height="18" aria-hidden="true"><use href="#i-menu"/></svg></summary><div class="mnav-pop"><a href="#">Tools</a><a href="home.html#pricing">Pricing</a><a href="home.html#developers">Developers</a><a href="#">Get started</a></div></details>
+</div></div></header><main>
+<section class="hero"><div class="wrap hero-grid">
+<div class="intro">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="home.html">Endwise</a><span aria-hidden="true">/</span><a href="#">Money and tax</a></nav>
+<div class="eyebrow">IRS mileage rates, by trip date</div>
+<h1 class="h1">Mileage reimbursement calculator</h1>
+<p class="lede">For 2026 the IRS rate is <strong>72.5 cents a business mile through June 30</strong> and <strong>76 cents from July 1</strong>, so this prices every trip at the rate for its date.</p>
+<div class="price-line"><span class="tag"><svg width="15" height="15" aria-hidden="true"><use href="#i-check"/></svg>Free on this page. Mileage log PDF: $4.</span>
+<details class="how"><summary>How pricing works <svg width="13" height="13" aria-hidden="true"><use href="#i-down"/></svg></summary><div class="how-body">
+<div><span>Rate lookup or calculation on this page</span><span>Free</span></div>
+<div><span>Rate lookup or calculation over the API or MCP</span><span>$0.002 per call</span></div>
+<div><span>Trip file (per-employee totals, true-up, W-2 split, results CSV)</span><span>$0.001 per trip row, at least $0.25 per file</span></div>
+<div><span>Vehicle-year log PDF with the completeness check</span><span>$4.00 per vehicle-year</span></div>
+<p>A repeat log for the same vehicle and tax year is free for 30 days. The free $0.25 each month on a signed-in account covers one file of up to 250 trips.</p>
+</div></details></div>
+</div>
+
+<div class="side">
+<div class="panel">
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true">Calculator</button>
+<button class="tab" role="tab" aria-selected="false"><span class="l">Trip sheet or log</span><span class="s">Trip file</span></button>
+<button class="tab" role="tab" aria-selected="false"><span class="l">The rules</span><span class="s">Rules</span></button>
+<details class="more"><summary class="tab">More <svg width="13" height="13" aria-hidden="true"><use href="#i-down"/></svg></summary><div class="more-pop"><a href="#">Mileage rates</a><a href="#">Mileage logs</a><a href="guide.html">Mileage guides</a><a href="#">From code</a></div></details>
+</div>
+<div class="pbody">
+<div class="field"><span class="flabel">How do you have your miles?</span><div class="seg"><span aria-pressed="true">Miles per rate period</span><span aria-pressed="false">A list of trips</span></div></div>
+<div class="row2">
+<div class="field"><label for="pu">Purpose</label><select class="select" id="pu"><option>Business (self-employed, or an employer's allowance)</option></select></div>
+<div class="field"><label for="yr">Year</label><select class="select" id="yr"><option>2026</option></select></div>
+</div>
+<div class="field"><label for="m1">Miles, January 1 to June 30, 2026</label><div class="affix"><input class="input" id="m1" inputmode="decimal" value="2,600"><span class="unit">miles</span></div><span class="hint">72.5 cents a mile, IRS IR-2025-128, Notice 2026-10</span></div>
+<div class="field"><label for="m2">Miles, July 1 to December 31, 2026</label><div class="affix"><input class="input" id="m2" inputmode="decimal" value="1,600"><span class="unit">miles</span></div><span class="hint">76 cents a mile, IRS IR-2026-29, Announcement 2026-11</span></div>
+<a class="addlink" href="#">+ Add business parking and tolls (optional)</a>
+<div class="run"><a class="btn btn-accent btn-lg" href="#">Work it out</a><span class="hint">Free on this page. Without an account it uses one of your 5 free runs a day.</span></div>
+</div>
+<div class="result" aria-live="polite">
+<span class="badge">Worked example</span>
+<div class="rlabel">Mileage amount</div>
+<div class="rbig">$3,101.00</div>
+<p class="rnote num">4,200 business miles, 2,600 before July 1, 2026 and 1,600 from July 1: 2,600 x $0.725 + 1,600 x $0.76 = $3,101.00.</p>
+<table class="mt stack"><thead><tr><th>Period</th><th class="r">Rate</th><th class="r">Miles</th><th class="r">Amount</th></tr></thead><tbody>
+<tr><td>January 1 to June 30, 2026</td><td class="r" data-l="Rate">72.5&cent;</td><td class="r" data-l="Miles">2,600</td><td class="r" data-l="Amount">$1,885.00</td></tr>
+<tr><td>July 1 to December 31, 2026</td><td class="r" data-l="Rate">76&cent;</td><td class="r" data-l="Miles">1,600</td><td class="r" data-l="Amount">$1,216.00</td></tr>
+</tbody></table>
+<p class="src">Sources: IRS IR-2025-128, Notice 2026-10; IRS IR-2026-29, Announcement 2026-11. Rates read October 31, 2026.</p>
+</div>
+</div>
+</div>
+<div class="trust">
+<div class="ti"><span class="ic"><svg width="15" height="15" aria-hidden="true"><use href="#i-co"/></svg></span><div><b>Made by Conyso</b>Endwise is a Conyso product. <a href="#">About</a> &middot; <a href="#">Legal</a></div></div>
+<div class="ti"><span class="ic"><svg width="15" height="15" aria-hidden="true"><use href="#i-eq"/></svg></span><div><b>Exact, no AI</b>A fixed method and a named source. Same input, same answer.</div></div>
+<div class="ti"><span class="ic"><svg width="15" height="15" aria-hidden="true"><use href="#i-doc"/></svg></span><div><b>IRS sources, read October 31, 2026</b>Rates from the <a href="#">IRS standard mileage rates</a> table, <a href="#">Announcement 2026-11</a> and <a href="#">Pub 463</a>.</div></div>
+<div class="ti"><span class="ic"><svg width="15" height="15" aria-hidden="true"><use href="#i-lock"/></svg></span><div><b>Your data</b>Files you upload are processed and not kept. No ad or analytics trackers.</div></div>
+</div>
+<div class="extras">
+<div class="card soft"><div class="kicker">2026 business rates</div>
+<div class="rates"><div class="rate"><div class="v">72.5<small>&cent;</small></div><div class="p">January 1 to June 30</div></div><div class="rate"><div class="v">76<small>&cent;</small></div><div class="p">July 1 to December 31</div></div></div>
+<p class="hint" style="margin-top:10px">Medical or moving: 20.5 then 23.5 cents. Charity: 14 cents all year, fixed by law (IRC 170(i)).</p></div>
+<div class="card"><h3>Sample log (example trips)</h3><p class="hint" style="margin-top:4px">What the $4 log looks like, made by this tool from example 2026 trips for one van.</p>
+<div class="files"><a class="file" href="#"><svg width="15" height="15" aria-hidden="true"><use href="#i-dl"/></svg>Sample log <em>PDF</em></a><a class="file" href="#"><svg width="15" height="15" aria-hidden="true"><use href="#i-dl"/></svg>Sample trips <em>CSV</em></a></div></div>
+</div>
+</div></section>
+
+<section class="sec tint" id="trip-file"><div class="wrap">
+<div class="sec-head"><h2>A payroll trip sheet or a year's log</h2><p>Open the spreadsheet your drivers already send, or the trips a mileage app exported. Totals are worked out in your browser. You pay only to download the results file or the log PDF; those trips are sent once, used for that answer and not kept.</p></div>
+<div class="grid2" style="align-items:start">
+<div class="card">
+<div class="field"><span class="flabel">Trip file (CSV, TSV or Excel .xlsx)</span>
+<div style="border:1.5px dashed var(--line-2);border-radius:12px;padding:28px 16px;text-align:center;background:var(--bg-soft)"><div style="display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid var(--line)"><svg width="18" height="18" aria-hidden="true"><use href="#i-up"/></svg></div><p style="margin-top:10px;font-weight:550">Drop a file or <a href="#">choose one</a></p><p class="hint" style="margin-top:2px">or paste it: a heading line, then one trip a line</p></div></div>
+<p class="hint">Needs a Date column and a Miles column. It also reads Employee, Vehicle, Destination, Business purpose, Parking, Tolls, Paid amount, Paid date and Recorded on. Dates may be written 2026-07-14, 7/14/2026 or 7/14/26. <a href="#">Download a blank template</a>.</p>
+</div>
+<div class="card"><span class="badge">Worked example</span>
+<p style="margin-top:10px;font-weight:550">5 trips for 2 employees: $390.62 due at the IRS rate in force on each trip date; $12.58 still owed on trips already paid.</p>
+<div class="stats"><div class="stat" style="border-color:var(--line)"><div class="v">5</div><div class="l">Trips</div></div><div class="stat" style="border-color:var(--line)"><div class="v">519.5</div><div class="l">Miles</div></div><div class="stat" style="border-color:var(--line)"><div class="v">$390.62</div><div class="l">Reimbursement</div></div><div class="stat" style="border-color:var(--line)"><div class="v">$12.58</div><div class="l">Still owed</div></div></div>
+<table class="mt stack"><thead><tr><th>Employee</th><th class="r">Trips</th><th class="r">Miles</th><th class="r">Due</th><th class="r">Paid</th><th class="r">True-up</th></tr></thead><tbody>
+<tr><td>Ana Ruiz</td><td class="r" data-l="Trips">3</td><td class="r" data-l="Miles">415</td><td class="r" data-l="Due">$311.20</td><td class="r" data-l="Paid">$300.88</td><td class="r" data-l="True-up">$10.32</td></tr>
+<tr><td>Ben Okafor</td><td class="r" data-l="Trips">2</td><td class="r" data-l="Miles">104.5</td><td class="r" data-l="Due">$79.42</td><td class="r" data-l="Paid">$77.16</td><td class="r" data-l="True-up">$2.26</td></tr>
+</tbody></table>
+<p class="src"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg> Log check: nothing flagged. Every business trip has a destination and a purpose, and nothing repeats.</p>
+</div></div>
+</div></section>
+
+<section class="sec" id="rules"><div class="wrap">
+<div class="sec-head"><h2>Two dates, not one</h2><p>The trip date sets the rate. For employer allowances, the date it was paid can matter too.</p></div>
+<div class="grid2">
+<div class="card prose"><h3>The trip date</h3><p>The IRS sets its optional standard mileage rates by period. For 2026: 72.5 cents a business mile, 20.5 cents medical or moving and 14 cents charity from January 1 to June 30 (Notice 2026-10, IR-2025-128); 76, 23.5 and 14 cents from July 1 to December 31 (Announcement 2026-11, IR-2026-29). A trip that runs over July 1 is entered as two legs.</p></div>
+<div class="card prose"><h3>The date an allowance is paid</h3><p>Announcement 2026-11 applies the new rates to employer mileage allowances only when they are paid on or after July 1, 2026 for miles driven on or after July 1. A June 28 trip reimbursed July 5 stays at 72.5 cents; so does an advance paid in June for July miles. The 2011 and 2022 mid-year changes had the same rule.</p></div>
+<div class="card prose"><h3>Above the federal rate</h3><p>Pub 463: when an allowance is more than the federal rate, the employer reports the amount up to the federal rate in W-2 box 12 with code L (not taxable) and the excess in box 1 as wages. The trip file shows both per employee.</p></div>
+<div class="card prose"><h3>Does a log I rebuild later count?</h3><p>The IRS asks for records made at or near the time, and a log kept weekly counts as timely (Pub 463). The PDF's completeness check lists gaps it can see. It cannot make a log rebuilt from memory into a timely record, and it does not say whether the IRS will accept it.</p></div>
+</div>
+<p class="note">This tool computes amounts from the trips you enter. It does not decide which trips are business, medical or charity. Medical and charity amounts are inputs to Schedule A; deduction limits are not applied. Rates for 2027 are added only once the IRS announces them. Not tax or legal advice. Sources, read October 31, 2026: <a href="#">IRS standard mileage rates</a> (updated July 28, 2026), <a href="#">Announcement 2026-11</a>, <a href="#">Notice 2026-10</a>, <a href="#">Publication 463 (2025)</a>, <a href="#">GSA POV rates</a> (updated October 23, 2026).</p>
+</div></section>
+
+<section class="sec tint"><div class="wrap">
+<div class="sec-head"><h2>Rates, logs and guides</h2></div>
+<div class="grid4">
+<div><div class="kicker">Rates</div><div class="related" style="grid-template-columns:1fr"><a href="guide.html">IRS mileage rate 2027</a><a href="#">IRS mileage rate 2026</a><a href="#">Medical mileage rate 2026</a></div></div>
+<div><div class="kicker">Logs</div><div class="related" style="grid-template-columns:1fr"><a href="#">Mileage log template 2026</a><a href="#">IRS mileage log requirements</a></div></div>
+<div><div class="kicker">Guides</div><div class="related" style="grid-template-columns:1fr"><a href="#">Split trips at the July 1 change</a><a href="#">Paid date or trip date</a></div></div>
+<div><div class="kicker">Employers</div><div class="related" style="grid-template-columns:1fr"><a href="#">July 2026 mileage true-up</a><a href="#">Accountable plan rules</a></div></div>
+</div>
+</div></section>
+</main><footer class="ftr"><div class="wrap"><div class="ftr-grid">
+<div><a class="logo" href="home.html" aria-label="Endwise home"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#111317"/><path d="M6 12h7.2" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a><p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p></div>
+<div><h4>Product</h4><a href="#">All tools</a><a href="tool.html">Mileage reimbursement</a><a href="#">Business days</a><a href="#">Exchange rate on a date</a><a href="#">Holiday calendars</a><a href="home.html#pricing">Pricing</a></div>
+<div><h4>Developers</h4><a href="#">REST API</a><a href="#">MCP for agents</a><a href="#">Docs</a><a href="#">OpenAPI</a><a href="#">Status</a></div>
+<div><h4>Company</h4><a href="#">About</a><a href="#">Why exact</a><a href="#">Sources</a><a href="#">Methodology</a><a href="#">Accuracy promise</a><a href="#">Contact</a></div>
+<div><h4>Legal</h4><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Refunds</a><a href="#">Acceptable use</a><a href="#">Security</a></div>
+</div><div class="ftr-base"><span>Endwise is a Conyso product. &copy; 2026 Conyso. No ad or analytics trackers.</span><span><a href="#">En espa&ntilde;ol</a> &middot; <a href="#">Deutsch</a> &middot; <a href="#">Fran&ccedil;ais</a> &middot; <a href="#">Portugu&ecirc;s</a></span></div></div></footer></body></html>
