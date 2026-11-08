@@ -1,26 +1,14 @@
 [
   {
-    "file": "ph-desk.webp",
-    "kind": "photo",
-    "source_page": "https://unsplash.com/photos/laptop-mug-and-notebooks-on-a-dark-workspace-uxxGF7g754U",
-    "download_url": "https://images.unsplash.com/photo-1752225494606-ae09aca08bea",
-    "photographer": "Dhony Koswara",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "Laptop, mug and notebooks on a dark desk",
-    "used_on": "Tools hub, behind the product screenshots",
-    "downloaded": "2026-11-10"
-  },
-  {
-    "file": "ph-calendar.webp",
+    "file": "th-calendar.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/calendar-CnLE5_b5PHw",
     "download_url": "https://images.unsplash.com/photo-1631972756576-61af43a6fb6f",
     "photographer": "Behnam Norouzi",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "Close-up of a desk calendar grid (cropped below the month and year)",
-    "used_on": "Business days page, holiday calendars section",
+    "description": "Close-up of a desk calendar grid (cropped below the month and year) (small crop)",
+    "used_on": "Business days page, holiday calendars heading photo",
     "downloaded": "2026-11-10"
   },
   {
@@ -48,99 +36,99 @@
     "downloaded": "2026-11-09"
   },
   {
-    "file": "band-money.webp",
+    "file": "th-money.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/tax-forms-with-calculator-and-pen-on-dark-surface-7edddu99-8Q",
     "download_url": "https://images.unsplash.com/photo-1772588627488-cd80adbe891d",
     "photographer": "Kelly Sikkema",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "Tax forms with a calculator and pen on a dark surface",
-    "used_on": "Tools hub, Money and tax band",
+    "description": "Tax forms with a calculator and pen on a dark surface (small crop)",
+    "used_on": "Tools hub, Money and tax heading photo",
     "downloaded": "2026-11-10"
   },
   {
-    "file": "band-dates.webp",
+    "file": "th-dates.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/an-open-planner-with-a-pen-on-a-wooden-desk-7ja5zM7PBu8",
     "download_url": "https://images.unsplash.com/photo-1783099779469-5b02ae272c09",
     "photographer": "Cabri Caldwell",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "An open planner with a pen on a wooden desk",
-    "used_on": "Tools hub, Dates and calendars band",
+    "description": "An open planner with a pen on a wooden desk (small crop)",
+    "used_on": "Tools hub, Dates and calendars heading photo",
     "downloaded": "2026-11-10"
   },
   {
-    "file": "band-files.webp",
+    "file": "th-files.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/coil-of-black-photo-negative-film-hCDI6sPTjRY",
     "download_url": "https://images.unsplash.com/photo-1570385404967-fe4e1b48454b",
     "photographer": "Eric TERRADE",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "A coil of photo negative film",
-    "used_on": "Tools hub, Files and images band",
+    "description": "A coil of photo negative film (small crop)",
+    "used_on": "Tools hub, Files and images heading photo",
     "downloaded": "2026-11-10"
   },
   {
-    "file": "band-other.webp",
+    "file": "th-other.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/a-lot-of-brown-boxes-that-are-open-gthSas4oYC0",
     "download_url": "https://images.unsplash.com/photo-1700165644892-3dd6b67b25bc",
     "photographer": "Luke Heibert",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "Rows of open brown boxes",
-    "used_on": "Tools hub, Other tools band",
+    "description": "Rows of open brown boxes (small crop)",
+    "used_on": "Tools hub, Other tools heading photo",
     "downloaded": "2026-11-10"
   },
   {
-    "file": "band-deciding.webp",
+    "file": "th-deciding.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/line-graph-with-ruler-and-pens-6EnTPvPPL6I",
     "download_url": "https://images.unsplash.com/photo-1543286386-713bdd548da4",
     "photographer": "Isaac Smith",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "A hand-drawn line graph on dotted paper with a metal ruler (cropped to the graph)",
-    "used_on": "Guides hub, Deciding and checking band",
+    "description": "A hand-drawn line graph on dotted paper with a metal ruler (cropped to the graph) (small crop)",
+    "used_on": "Guides hub, Deciding and checking heading photo",
     "downloaded": "2026-11-10"
   },
   {
-    "file": "band-assistant.webp",
+    "file": "th-assistant.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/hands-typing-on-a-keyboard-with-computer-screens-8ljjFxQFwKM",
     "download_url": "https://images.unsplash.com/photo-1759662011366-8a743eae9649",
     "photographer": "Jakub Żerdzicki",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "Hands typing on a keyboard at a desk at night",
-    "used_on": "Guides hub, With your AI assistant band",
+    "description": "Hands typing on a keyboard at a desk at night (small crop)",
+    "used_on": "Guides hub, With your AI assistant heading photo",
     "downloaded": "2026-11-10"
   },
   {
-    "file": "band-sheets.webp",
+    "file": "th-sheets.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/hands-typing-on-a-laptop-with-a-spreadsheet-on-screen-iDqNlr1Y1_w",
     "download_url": "https://images.unsplash.com/photo-1759752393975-7ca7b302fcc6",
     "photographer": "Bluestonex",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "A laptop with a spreadsheet on screen",
-    "used_on": "Guides hub, In spreadsheets and automations band",
+    "description": "A laptop with a spreadsheet on screen (small crop)",
+    "used_on": "Guides hub, In spreadsheets and automations heading photo",
     "downloaded": "2026-11-10"
   },
   {
-    "file": "band-dev.webp",
+    "file": "th-dev.webp",
     "kind": "photo",
     "source_page": "https://unsplash.com/photos/laptop-screen-displaying-colorful-code-8qEB0fTe9Vw",
     "download_url": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3",
     "photographer": "Mohammad Rahmani",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "A laptop screen showing code",
-    "used_on": "Guides hub, For developers band",
+    "description": "A laptop screen showing code (small crop)",
+    "used_on": "Guides hub, For developers heading photo",
     "downloaded": "2026-11-10"
   },
   {
@@ -151,36 +139,6 @@
     "licence": "Own product screenshot",
     "description": "Mileage reimbursement calculator, desktop",
     "used_on": "Tools hub header; index",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ss-mileage-log-pdf.webp",
-    "kind": "screenshot",
-    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/ (sample log PDF, page 1)",
-    "photographer": "Endwise screenshot (headless Chromium)",
-    "licence": "Own product screenshot",
-    "description": "Mileage log PDF, page 1",
-    "used_on": "Tools hub header",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ss-mileage-log-top.webp",
-    "kind": "screenshot",
-    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/ (sample log PDF, page 1, summary)",
-    "photographer": "Endwise screenshot (headless Chromium)",
-    "licence": "Own product screenshot",
-    "description": "Mileage log PDF, summary block",
-    "used_on": "Tools hub, Mileage card",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ss-business-days-phone.webp",
-    "kind": "screenshot",
-    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-07-01&end=2026-07-08 (390 px)",
-    "photographer": "Endwise screenshot (headless Chromium)",
-    "licence": "Own product screenshot",
-    "description": "Business days on a phone",
-    "used_on": "Tools hub header",
     "downloaded": "2026-11-09"
   },
   {
@@ -212,5 +170,55 @@
     "description": "Image to size after a run",
     "used_on": "Image to size overview; index",
     "downloaded": "2026-11-09"
+  },
+  {
+    "file": "ss-mileage-result.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/ (result, 640 px wide)",
+    "photographer": "Endwise screenshot (headless Chromium)",
+    "licence": "Own product screenshot",
+    "description": "Mileage reimbursement result",
+    "used_on": "Tools hub header",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "ss-mileage-result-m.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/ (result, 390 px wide, top)",
+    "photographer": "Endwise screenshot (headless Chromium)",
+    "licence": "Own product screenshot",
+    "description": "Mileage reimbursement result, phone crop",
+    "used_on": "Tools hub header on phones",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "ss-mileage-log-rows.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/ (sample log PDF, page 1, three summary rows)",
+    "photographer": "Endwise screenshot (headless Chromium)",
+    "licence": "Own product screenshot",
+    "description": "Mileage log PDF, summary rows",
+    "used_on": "Tools hub, Mileage card",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "ss-its-top.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/image-to-size/?kb=100 (run on the NASA landscape test photo, top of the result)",
+    "photographer": "Endwise screenshot (headless Chromium)",
+    "licence": "Own product screenshot",
+    "description": "Image to size result",
+    "used_on": "Image to size overview",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "ss-its-m.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/image-to-size/?kb=100 (390 px wide, result line)",
+    "photographer": "Endwise screenshot (headless Chromium)",
+    "licence": "Own product screenshot",
+    "description": "Image to size result, phone crop",
+    "used_on": "Image to size overview on phones",
+    "downloaded": "2026-11-10"
   }
 ]
