@@ -1,166 +1,216 @@
 [
   {
-    "file": "ph-tax-forms.webp",
-    "source_page": "https://unsplash.com/photos/tax-forms-with-calculator-and-pen-on-dark-surface-7edddu99-8Q",
-    "photographer": "Kelly Sikkema",
+    "file": "ph-desk.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/laptop-mug-and-notebooks-on-a-dark-workspace-uxxGF7g754U",
+    "download_url": "https://images.unsplash.com/photo-1752225494606-ae09aca08bea",
+    "photographer": "Dhony Koswara",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "Tax forms with a calculator and pen on a dark surface",
-    "downloaded": "2026-11-09"
+    "description": "Laptop, mug and notebooks on a dark desk",
+    "used_on": "Tools hub, behind the product screenshots",
+    "downloaded": "2026-11-10"
   },
   {
-    "file": "ph-planner.webp",
-    "source_page": "https://unsplash.com/photos/an-open-planner-with-a-pen-on-a-wooden-desk-7ja5zM7PBu8",
-    "photographer": "Cabri Caldwell",
+    "file": "ph-calendar.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/calendar-CnLE5_b5PHw",
+    "download_url": "https://images.unsplash.com/photo-1631972756576-61af43a6fb6f",
+    "photographer": "Behnam Norouzi",
     "licence": "Unsplash License",
     "licence_url": "https://unsplash.com/license",
-    "description": "An open planner with a pen on a wooden desk",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-film.webp",
-    "source_page": "https://unsplash.com/photos/coil-of-black-photo-negative-film-hCDI6sPTjRY",
-    "photographer": "Eric TERRADE",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "A coil of photo negative film",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-boxes.webp",
-    "source_page": "https://unsplash.com/photos/a-lot-of-brown-boxes-that-are-open-gthSas4oYC0",
-    "photographer": "Luke Heibert",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "Rows of open brown shipping boxes",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-figures.webp",
-    "source_page": "https://unsplash.com/photos/a-close-up-of-a-paper-with-numbers-on-it-tuJ3tXSayco",
-    "photographer": "Annie Spratt",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "Close-up of printed tables of figures",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-laptop-dark.webp",
-    "source_page": "https://unsplash.com/photos/black-laptop-computer-turned-on-in-dim-light-o9XN28KdyN8",
-    "photographer": "Martin Katler",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "A laptop glowing in a dark room",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-dashboard.webp",
-    "source_page": "https://unsplash.com/photos/laptop-computer-on-glass-top-table-hpjSkU2UYSU",
-    "photographer": "Carlos Muza",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "A laptop showing charts and tables on a glass desk",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-code.webp",
-    "source_page": "https://unsplash.com/photos/laptop-screen-displaying-colorful-code-8qEB0fTe9Vw",
-    "photographer": "Mohammad Rahmani",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "A laptop screen showing code",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-july.webp",
-    "source_page": "https://unsplash.com/photos/july-calendar-on-focus-photography-50u9zYeHNu4",
-    "photographer": "Maddi Bazzocco",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "A July wall calendar",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ph-road.webp",
-    "source_page": "https://unsplash.com/photos/double-yellow-lines-on-an-asphalt-road-at-dusk-6NJ5WxAvMnE",
-    "photographer": "Michael Eufemia",
-    "licence": "Unsplash License",
-    "licence_url": "https://unsplash.com/license",
-    "description": "Double yellow lines on a road at dusk",
-    "downloaded": "2026-11-09"
+    "description": "Close-up of a desk calendar grid (cropped below the month and year)",
+    "used_on": "Business days page, holiday calendars section",
+    "downloaded": "2026-11-10"
   },
   {
     "file": "nasa-landscape.webp",
+    "kind": "photo",
     "source_page": "https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021",
+    "download_url": "https://images-assets.nasa.gov/image/KSC-20210111-PH-JBS01_0021/KSC-20210111-PH-JBS01_0021~orig.JPG",
     "photographer": "NASA/Ben Smegelsky",
     "licence": "Public domain (NASA media usage guidelines)",
     "licence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
     "description": "A pelican on a dock post at sunrise, Kennedy Space Center",
+    "used_on": "Image to size overview (test photo); tools hub Image to size preview",
     "downloaded": "2026-11-09"
   },
   {
     "file": "nasa-busy.webp",
+    "kind": "photo",
     "source_page": "https://images.nasa.gov/details/KSC-08pd4102",
+    "download_url": "https://images-assets.nasa.gov/image/KSC-08pd4102/KSC-08pd4102~large.jpg",
     "photographer": "NASA",
     "licence": "Public domain (NASA media usage guidelines)",
     "licence_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
     "description": "A heron, spoonbills and ibis feeding in shallow water, Kennedy Space Center",
+    "used_on": "Image to size overview (test photo)",
     "downloaded": "2026-11-09"
   },
   {
-    "file": "ss-mileage.webp",
-    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/",
-    "photographer": "Endwise screenshot (headless Chromium)",
-    "licence": "Own product screenshot",
-    "downloaded": "2026-11-09"
+    "file": "band-money.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/tax-forms-with-calculator-and-pen-on-dark-surface-7edddu99-8Q",
+    "download_url": "https://images.unsplash.com/photo-1772588627488-cd80adbe891d",
+    "photographer": "Kelly Sikkema",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "Tax forms with a calculator and pen on a dark surface",
+    "used_on": "Tools hub, Money and tax band",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "band-dates.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/an-open-planner-with-a-pen-on-a-wooden-desk-7ja5zM7PBu8",
+    "download_url": "https://images.unsplash.com/photo-1783099779469-5b02ae272c09",
+    "photographer": "Cabri Caldwell",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "An open planner with a pen on a wooden desk",
+    "used_on": "Tools hub, Dates and calendars band",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "band-files.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/coil-of-black-photo-negative-film-hCDI6sPTjRY",
+    "download_url": "https://images.unsplash.com/photo-1570385404967-fe4e1b48454b",
+    "photographer": "Eric TERRADE",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "A coil of photo negative film",
+    "used_on": "Tools hub, Files and images band",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "band-other.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/a-lot-of-brown-boxes-that-are-open-gthSas4oYC0",
+    "download_url": "https://images.unsplash.com/photo-1700165644892-3dd6b67b25bc",
+    "photographer": "Luke Heibert",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "Rows of open brown boxes",
+    "used_on": "Tools hub, Other tools band",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "band-deciding.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/line-graph-with-ruler-and-pens-6EnTPvPPL6I",
+    "download_url": "https://images.unsplash.com/photo-1543286386-713bdd548da4",
+    "photographer": "Isaac Smith",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "A hand-drawn line graph on dotted paper with a metal ruler (cropped to the graph)",
+    "used_on": "Guides hub, Deciding and checking band",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "band-assistant.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/hands-typing-on-a-keyboard-with-computer-screens-8ljjFxQFwKM",
+    "download_url": "https://images.unsplash.com/photo-1759662011366-8a743eae9649",
+    "photographer": "Jakub Żerdzicki",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "Hands typing on a keyboard at a desk at night",
+    "used_on": "Guides hub, With your AI assistant band",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "band-sheets.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/hands-typing-on-a-laptop-with-a-spreadsheet-on-screen-iDqNlr1Y1_w",
+    "download_url": "https://images.unsplash.com/photo-1759752393975-7ca7b302fcc6",
+    "photographer": "Bluestonex",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "A laptop with a spreadsheet on screen",
+    "used_on": "Guides hub, In spreadsheets and automations band",
+    "downloaded": "2026-11-10"
+  },
+  {
+    "file": "band-dev.webp",
+    "kind": "photo",
+    "source_page": "https://unsplash.com/photos/laptop-screen-displaying-colorful-code-8qEB0fTe9Vw",
+    "download_url": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3",
+    "photographer": "Mohammad Rahmani",
+    "licence": "Unsplash License",
+    "licence_url": "https://unsplash.com/license",
+    "description": "A laptop screen showing code",
+    "used_on": "Guides hub, For developers band",
+    "downloaded": "2026-11-10"
   },
   {
     "file": "ss-mileage-desk.webp",
+    "kind": "screenshot",
     "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/",
     "photographer": "Endwise screenshot (headless Chromium)",
     "licence": "Own product screenshot",
+    "description": "Mileage reimbursement calculator, desktop",
+    "used_on": "Tools hub header; index",
     "downloaded": "2026-11-09"
   },
   {
     "file": "ss-mileage-log-pdf.webp",
+    "kind": "screenshot",
     "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/ (sample log PDF, page 1)",
     "photographer": "Endwise screenshot (headless Chromium)",
     "licence": "Own product screenshot",
+    "description": "Mileage log PDF, page 1",
+    "used_on": "Tools hub header",
     "downloaded": "2026-11-09"
   },
   {
-    "file": "ss-tax-set-aside.webp",
-    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/",
+    "file": "ss-mileage-log-top.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/ (sample log PDF, page 1, summary)",
     "photographer": "Endwise screenshot (headless Chromium)",
     "licence": "Own product screenshot",
-    "downloaded": "2026-11-09"
-  },
-  {
-    "file": "ss-business-days.webp",
-    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-07-01&end=2026-07-08",
-    "photographer": "Endwise screenshot (headless Chromium)",
-    "licence": "Own product screenshot",
+    "description": "Mileage log PDF, summary block",
+    "used_on": "Tools hub, Mileage card",
     "downloaded": "2026-11-09"
   },
   {
     "file": "ss-business-days-phone.webp",
+    "kind": "screenshot",
     "source_page": "https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-07-01&end=2026-07-08 (390 px)",
     "photographer": "Endwise screenshot (headless Chromium)",
     "licence": "Own product screenshot",
+    "description": "Business days on a phone",
+    "used_on": "Tools hub header",
     "downloaded": "2026-11-09"
   },
   {
-    "file": "ss-qr-code.webp",
-    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/",
+    "file": "ss-business-days.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-07-01&end=2026-07-08",
     "photographer": "Endwise screenshot (headless Chromium)",
     "licence": "Own product screenshot",
+    "description": "Business days result",
+    "used_on": "Index",
+    "downloaded": "2026-11-09"
+  },
+  {
+    "file": "ss-qr.webp",
+    "kind": "screenshot",
+    "source_page": "https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/ (code for https://example.com/menu)",
+    "photographer": "Endwise screenshot (headless Chromium)",
+    "licence": "Own product screenshot",
+    "description": "The QR code the tool made",
+    "used_on": "Tools hub, QR card",
     "downloaded": "2026-11-09"
   },
   {
     "file": "ss-image-to-size.webp",
+    "kind": "screenshot",
     "source_page": "https://krishnachagti-sudo.github.io/toll-preview/image-to-size/?kb=100 (run on the NASA landscape test photo)",
     "photographer": "Endwise screenshot (headless Chromium)",
     "licence": "Own product screenshot",
+    "description": "Image to size after a run",
+    "used_on": "Image to size overview; index",
     "downloaded": "2026-11-09"
   }
 ]
