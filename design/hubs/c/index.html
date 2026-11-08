@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Option c: Bold and visual-first</title><meta name="description" content="Endwise hub and deep page mockups, option c.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..600&family=Inter+Tight:wght@500..700&family=Geist+Mono:wght@400..500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#08090a;--bg-1:#0e0f11;--bg-2:#131417;--bg-3:#191a1e;--line:rgba(255,255,255,.07);--line-2:rgba(255,255,255,.11);--line-3:rgba(255,255,255,.16);
+--text:#f4f5f6;--text-2:#c9ccd1;--muted:#8a8f98;--faint:#5f636b;--ember:#ff5a36;--amber:#ffb03f;--magenta:#ff3d86;--warm:#ff9a62;
+--h-date:#ffb547;--h-money:#ff5fa8;--h-file:#45d3ff;--h-agent:#a98bff;--ok:#5fd3a0;--danger:#ff7b6b;
+--font-text:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--font-display:"Inter Tight","Inter",system-ui,sans-serif;--font-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+--radius:10px;--radius-lg:16px;--gutter:32px}
+@media(max-width:720px){:root{--gutter:16px}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.6 var(--font-text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+main{overflow-x:clip;position:relative}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(255,154,98,.32)}
+:focus-visible{outline:2px solid var(--warm);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.025em;margin:0;line-height:1.1}
+p{margin:0}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--font-mono)}
+.num{font-variant-numeric:tabular-nums lining-nums}
+.hue-date{--hue:var(--h-date)}.hue-money{--hue:var(--h-money)}.hue-file{--hue:var(--h-file)}.hue-agent{--hue:var(--h-agent)}.hue-warm{--hue:var(--warm)}
+/* header */
+.site-head{position:sticky;top:0;z-index:50;padding:10px var(--gutter) 8px}
+.nav-row{display:flex;align-items:center;gap:8px;height:60px;max-width:1180px;margin:0 auto;padding:0 10px 0 22px;border-radius:999px;background:rgba(20,21,25,.82);-webkit-backdrop-filter:saturate(160%) blur(16px);backdrop-filter:saturate(160%) blur(16px);border:1px solid rgba(255,255,255,.12);box-shadow:0 16px 40px -18px rgba(0,0,0,.8)}
+.logo{display:inline-flex;align-items:center;gap:10px;font:650 20px/1 var(--font-display);letter-spacing:-.025em}
+.logo-mark{width:26px;height:26px;display:block}
+.head-nav{display:flex;gap:2px;margin-left:22px}
+.head-nav a{display:inline-flex;align-items:center;gap:6px;height:42px;padding:0 14px;border-radius:999px;font-size:16px;font-weight:500;color:#d6d9de}
+.head-nav a:hover,.head-nav a[aria-current]{color:#fff;background:rgba(255,255,255,.07)}
+.nav-search{margin-left:auto;display:flex;align-items:center;gap:10px;height:42px;width:300px;padding:0 8px 0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:var(--muted);font-size:15px}
+.nav-search .ph{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+kbd{font:500 12px/1 var(--font-mono);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:5px 7px;color:var(--muted)}
+.nav-cta{display:flex;align-items:center;gap:16px;margin-left:14px;font-size:16px;font-weight:500}
+.nav-cta>a:first-child{color:#d6d9de}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 14.5px/1.2 var(--font-text);padding:0 18px;min-height:42px;border-radius:999px;background:#f4f5f6;color:#0b0c0e;border:1px solid transparent;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#fff;box-shadow:0 8px 30px -8px rgba(255,120,60,.35)}
+.btn-quiet{background:rgba(255,255,255,.04);border-color:var(--line-2);color:var(--text)}
+.btn-quiet:hover{background:rgba(255,255,255,.08);box-shadow:none}
+.nav-menu{display:none;width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.14);align-items:center;justify-content:center;color:var(--text-2)}
+@media(max-width:1060px){.nav-search{width:auto}.nav-search .ph,.nav-search kbd{display:none}}
+@media(max-width:820px){.head-nav,.nav-cta>a:first-child{display:none}.nav-menu{display:inline-flex}.nav-cta{gap:8px;margin-left:8px}.nav-cta .btn{min-height:40px;padding:0 14px;font-size:14px}.nav-row{padding:0 8px 0 16px}.nav-search{width:42px;padding:0;justify-content:center}}
+@media(max-width:420px){.nav-cta .btn{display:none}}
+/* backdrop */
+.glow{position:absolute;left:50%;top:-300px;width:1200px;height:620px;transform:translateX(-50%);z-index:-2;pointer-events:none;border-radius:50%;filter:blur(60px);background:radial-gradient(closest-side,rgba(255,84,48,.2),rgba(255,61,134,.07) 55%,transparent)}
+.gridbg{position:absolute;inset:0 0 auto 0;height:760px;z-index:-3;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 75%)}
+/* type */
+.crumbs{list-style:none;display:flex;flex-wrap:wrap;gap:4px 0;margin:0 0 18px;padding:0;font:400 12.5px/1.5 var(--font-mono);color:var(--faint)}
+.crumbs li+li::before{content:"/";margin:0 10px}
+.crumbs a{color:var(--muted)}.crumbs a:hover{color:var(--text)}
+.crumbs [aria-current]{color:var(--text-2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;font:500 12px/1 var(--font-mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--hue,var(--warm));box-shadow:0 0 10px color-mix(in srgb,var(--hue,var(--warm)) 70%,transparent)}
+.h1{font-size:clamp(40px,5.6vw,72px);letter-spacing:-.045em;line-height:1;background:linear-gradient(180deg,#fff 30%,#b9bcc3 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.h1 .dim{color:#6e727b;-webkit-text-fill-color:#6e727b}
+.h2{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.035em;line-height:1.05}
+.lede{font-size:17px;line-height:1.55;color:var(--muted);max-width:40rem}
+.sec{padding:96px 0 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:28px}
+.sec-head p{color:var(--muted);max-width:44ch;font-size:15px}
+.kicker{font:500 11.5px/1 var(--font-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+/* glow card, from home.css */
+.gcard{position:relative;border-radius:var(--radius-lg);overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#111215,#0c0d0f) padding-box,linear-gradient(160deg,color-mix(in srgb,var(--hue,var(--warm)) 55%,transparent),rgba(255,255,255,.07) 35%,rgba(255,255,255,.045) 70%,color-mix(in srgb,var(--hue,var(--warm)) 28%,transparent)) border-box;border:1px solid transparent;transition:box-shadow .3s ease,transform .3s ease}
+.gcard::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),color-mix(in srgb,var(--hue,var(--warm)) 14%,transparent),transparent 45%)}
+.gcard:hover::before{opacity:1}
+a.gcard:hover,.gcard.lift:hover{box-shadow:0 20px 60px -24px color-mix(in srgb,var(--hue,var(--warm)) 45%,transparent)}
+.halo{position:absolute;right:-70px;top:-70px;width:200px;height:200px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--hue) 40%,transparent),transparent);filter:blur(22px);opacity:.45}
+.tag{display:inline-flex;align-items:center;gap:8px;font:500 11.5px/1 var(--font-mono);color:var(--muted);letter-spacing:.02em}
+.tag i{width:6px;height:6px;border-radius:50%;background:var(--hue);box-shadow:0 0 10px var(--hue)}
+.chip{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);font-size:13.5px;color:var(--text-2);background:rgba(255,255,255,.02);cursor:pointer;font-family:inherit;transition:border-color .15s,color .15s,background .15s}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--hue);box-shadow:0 0 10px var(--hue)}
+.chip:hover{color:var(--text);border-color:color-mix(in srgb,var(--hue,#fff) 45%,transparent)}
+.chip[aria-pressed=true]{color:#fff;background:rgba(255,255,255,.08);border-color:var(--line-3)}
+/* expander */
+details.more{border-top:1px solid var(--line);margin-top:18px}
+details.more>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:14px 0;font:500 12.5px/1.2 var(--font-mono);color:var(--text-2);letter-spacing:.02em}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"";width:18px;height:18px;flex:none;border-radius:6px;border:1px solid var(--line-3);background:linear-gradient(var(--text-2),var(--text-2)) center/8px 1.5px no-repeat,linear-gradient(var(--text-2),var(--text-2)) center/1.5px 8px no-repeat}
+details.more[open]>summary::before{background:linear-gradient(var(--warm),var(--warm)) center/8px 1.5px no-repeat}
+details.more>summary:hover{color:#fff}
+details.more .body{padding:0 0 18px 28px;color:var(--muted);font-size:14.5px;line-height:1.65}
+details.more .body p+p{margin-top:10px}
+details.more .body b{color:var(--text-2);font-weight:500}
+.go{display:inline-flex;align-items:center;gap:6px;font:500 13px/1 var(--font-text);color:var(--text-2)}
+.go svg{transition:transform .2s}
+a:hover .go svg,.go:hover svg{transform:translateX(3px)}
+/* footer */
+.cta-band{margin-top:120px;padding:56px;border-radius:24px;text-align:center}
+.cta-band .h2{max-width:20ch;margin:0 auto}
+.cta-band p{color:var(--muted);margin:14px auto 26px;max-width:46ch}
+.cta-band .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.site-foot{border-top:1px solid var(--line);margin-top:96px;padding:56px 0 32px;font-size:14px;background:#060708}
+.foot{display:grid;grid-template-columns:minmax(0,3fr) repeat(4,minmax(0,2fr));gap:28px}
+.foot-h{font-size:12.5px;font-weight:500;margin:0 0 12px}
+.foot ul{list-style:none;margin:0;padding:0}.foot li{margin:0 0 9px}.foot li a{color:var(--muted)}.foot li a:hover{color:var(--text)}
+.foot .about{color:var(--muted);max-width:30ch;margin:14px 0 0;font-size:13.5px}
+.foot-legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-size:13px}
+.preview-note{background:#1e1712;border-top:1px solid rgba(255,176,63,.18);color:#e8d6c2;font-size:13px;text-align:center;padding:9px 16px}
+@media(max-width:900px){.foot{grid-template-columns:1fr 1fr;gap:28px 16px}.foot-brand{grid-column:1/-1}.cta-band{padding:40px 20px;margin-top:88px}.sec{padding-top:72px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.ix{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}@media(max-width:720px){.ix{grid-template-columns:1fr}}</style></head><body>
+<header class="site-head"><div class="nav-row">
+<a class="logo" href="https://krishnachagti-sudo.github.io/toll-preview/"><svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a>
+<nav class="head-nav" aria-label="Main"><a href="https://krishnachagti-sudo.github.io/toll-preview/tools/">Tools <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></a><a href="https://krishnachagti-sudo.github.io/toll-preview/pricing/">Pricing</a><a href="https://krishnachagti-sudo.github.io/toll-preview/developers/">Developers</a></nav>
+<a class="nav-search" href="https://krishnachagti-sudo.github.io/toll-preview/tools/" aria-label="Search tools and answers"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+<div class="nav-cta"><a href="https://krishnachagti-sudo.github.io/toll-preview/account">Sign in</a><a class="btn" href="https://krishnachagti-sudo.github.io/toll-preview/account">Get started</a><span class="nav-menu" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h12M3 12h12"/></svg></span></div>
+</div></header>
+<main><div class="glow"></div><section style="padding:56px 0 40px"><div class="wrap"><p class="eyebrow">Option c</p><h1 class="h1">Bold and visual-first</h1><p class="lede" style="margin-top:16px">Every page leads with a large visual built from its own data. Text is cut to the essentials; the rest sits behind expanders. Same dark theme, tokens and type as the live site.</p><div class="ix"><a class="gcard hue-money" href="tools-hub.html" style="display:block;padding:28px"><span class="halo"></span><p class="mono" style="font-size:12px;color:var(--muted)">tools-hub.html</p><h2 style="font-size:24px;margin-top:10px">Tools hub</h2><p style="color:var(--muted);margin-top:10px">A mosaic of live-looking result tiles, one real worked example per tool, filterable by kind.</p><span class="go" style="margin-top:18px">Open <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard hue-agent" href="guides-hub.html" style="display:block;padding:28px"><span class="halo"></span><p class="mono" style="font-size:12px;color:var(--muted)">guides-hub.html</p><h2 style="font-size:24px;margin-top:10px">Guides hub</h2><p style="color:var(--muted);margin-top:10px">A connection map hero and an illustrated scene per guide, built from SVG shapes in the brand colors.</p><span class="go" style="margin-top:18px">Open <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard hue-date" href="tool-full.html" style="display:block;padding:28px"><span class="halo"></span><p class="mono" style="font-size:12px;color:var(--muted)">tool-full.html</p><h2 style="font-size:24px;margin-top:10px">Business days, full page</h2><p style="color:var(--muted);margin-top:10px">A full-year 2026 calendar with every holiday marked for three regions, then the calculator, rule diagrams, year ribbons and month bars.</p><span class="go" style="margin-top:18px">Open <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a><a class="gcard hue-file" href="overview.html" style="display:block;padding:28px"><span class="halo"></span><p class="mono" style="font-size:12px;color:var(--muted)">overview.html</p><h2 style="font-size:24px;margin-top:10px">Reduce an image to a size in KB</h2><p style="color:var(--muted);margin-top:10px">An interactive chart of limit against pixels and quality for four test photos, frames drawn to scale.</p><span class="go" style="margin-top:18px">Open <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></a></div></div></section></main>
+<footer class="site-foot"><div class="wrap"><div class="foot">
+<div class="foot-brand"><a class="logo" href="https://krishnachagti-sudo.github.io/toll-preview/"><svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a><p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p></div>
+<div><p class="foot-h">Product</p><ul><li><a href="https://krishnachagti-sudo.github.io/toll-preview/tools/">All tools</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/pricing/">Pricing</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/how-it-works/">How it works</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/calendars/">Holiday calendars</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/data/">Data downloads</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/compare/">Compare</a></li></ul></div>
+<div><p class="foot-h">Developers</p><ul><li><a href="https://krishnachagti-sudo.github.io/toll-preview/developers/">REST API</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/">MCP for agents</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/docs">Docs</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/api/v1/openapi.json">OpenAPI</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/status/">Status</a></li></ul></div>
+<div><p class="foot-h">Company</p><ul><li><a href="https://krishnachagti-sudo.github.io/toll-preview/about/">About</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/why-exact/">Why exact</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/guides/">Guides</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/sources/">Sources</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/methodology/">Methodology</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/accuracy-promise/">Accuracy promise</a></li></ul></div>
+<div><p class="foot-h">Legal</p><ul><li><a href="https://krishnachagti-sudo.github.io/toll-preview/terms/">Terms</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/privacy">Privacy</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/refunds/">Refunds</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/acceptable-use/">Acceptable use</a></li><li><a href="https://krishnachagti-sudo.github.io/toll-preview/security/">Security</a></li></ul></div>
+</div><div class="foot-legal"><p>Endwise is a Conyso product. &copy; 2026 Conyso.</p><p>No ad or analytics trackers.</p></div></div></footer>
+<div class="preview-note">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+<script>
+document.querySelectorAll('.gcard').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+
+</script>
+</body></html>

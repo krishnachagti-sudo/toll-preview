@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Option b: guided sections | Endwise</title><meta name="description" content="Design option b for Endwise hubs and deep pages."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>
+:root{color-scheme:dark;--bg:#08090a;--bg-1:#0e0f11;--bg-2:#131417;--bg-3:#191a1e;--line:rgba(255,255,255,.07);--line-2:rgba(255,255,255,.11);--line-3:rgba(255,255,255,.16);
+--text:#f4f5f6;--text-2:#c9ccd1;--muted:#8a8f98;--faint:#5f636b;--ember:#ff5a36;--amber:#ffb03f;--magenta:#ff3d86;--warm:#ff9a62;
+--h-date:#ffb547;--h-money:#ff5fa8;--h-file:#45d3ff;--h-agent:#a98bff;--ok:#5fd3a0;
+--font-text:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--font-display:"Inter Tight","Inter",system-ui,sans-serif;--font-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+--measure:1200px;--gutter:32px;--radius:10px;--radius-lg:16px;--toc:216px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:100px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.6 var(--font-text);-webkit-font-smoothing:antialiased}
+main{overflow-x:clip}
+a{color:var(--text);text-decoration:none}
+:focus-visible{outline:2px solid var(--warm);outline-offset:2px;border-radius:4px}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.025em;margin:0;line-height:1.12}
+p{margin:0}
+code{font-family:var(--font-mono);font-size:.9em}
+.num{font-variant-numeric:tabular-nums}
+.wrap{width:100%;max-width:var(--measure);margin-inline:auto;padding-inline:var(--gutter)}
+@media(max-width:720px){:root{--gutter:16px}}
+.glow{position:absolute;left:50%;top:-300px;width:1200px;max-width:160vw;height:600px;transform:translateX(-50%);z-index:-1;pointer-events:none;border-radius:50%;filter:blur(60px);background:radial-gradient(closest-side,rgba(255,84,48,.16),rgba(255,61,134,.05) 55%,transparent)}
+/* header */
+.site-head{position:sticky;top:0;z-index:50;padding:10px var(--gutter) 8px}
+.nav-row{display:flex;align-items:center;gap:8px;height:60px;max-width:1180px;margin:0 auto;padding:0 10px 0 22px;border-radius:999px;background:rgba(20,21,25,.82);-webkit-backdrop-filter:saturate(160%) blur(16px);backdrop-filter:saturate(160%) blur(16px);border:1px solid rgba(255,255,255,.12);box-shadow:0 16px 40px -18px rgba(0,0,0,.8)}
+.logo{display:inline-flex;align-items:center;gap:10px;font:650 20px/1 var(--font-display);letter-spacing:-.025em}
+.logo svg{width:26px;height:26px}
+.hn{display:flex;gap:2px;margin-left:22px}
+.hn a{padding:8px 13px;border-radius:999px;color:var(--text-2);font-size:15px}
+.hn a:hover,.hn a[aria-current]{color:var(--text);background:rgba(255,255,255,.06)}
+.search{margin-left:auto;display:flex;align-items:center;gap:10px;height:40px;width:280px;padding:0 8px 0 14px;border-radius:999px;border:1px solid var(--line-2);color:var(--muted);font-size:14px;background:rgba(255,255,255,.02)}
+.search kbd{margin-left:auto;font:12px var(--font-mono);border:1px solid var(--line-2);border-radius:6px;padding:1px 6px}
+.search svg,.ib svg{width:16px;height:16px}
+.signin{padding:8px 12px;color:var(--text-2);font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 14.5px/1.2 var(--font-text);padding:0 18px;min-height:40px;border-radius:999px;border:1px solid transparent;background:#f4f5f6;color:#0b0c0e;white-space:nowrap;cursor:pointer;transition:box-shadow .2s,background .15s}
+.btn:hover{background:#fff;box-shadow:0 8px 30px -8px rgba(255,120,60,.35)}
+.btn-q{background:rgba(255,255,255,.04);border-color:var(--line-2);color:var(--text)}
+.btn-q:hover{background:rgba(255,255,255,.08);box-shadow:none}
+.ib{display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);align-items:center;justify-content:center;color:var(--text-2);background:none}
+@media(max-width:900px){.hn,.search,.signin{display:none}.ib{display:inline-flex}.ib.first{margin-left:auto}.nav-row{padding-left:16px;height:54px}.nav-row .btn{min-height:36px;padding:0 14px;font-size:14px}}
+@media(max-width:420px){.nav-row .btn{display:none}}
+/* page head */
+.ph{position:relative;padding:56px 0 8px}
+.crumbs{list-style:none;display:flex;flex-wrap:wrap;gap:4px 0;margin:0 0 22px;padding:0;font:400 12.5px/1.5 var(--font-mono);color:var(--faint)}
+.crumbs li+li::before{content:"/";margin:0 10px}
+.crumbs a{color:var(--muted)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;font:500 12px/1 var(--font-mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--hue,var(--warm));box-shadow:0 0 10px var(--hue,var(--warm))}
+.h1{font-size:clamp(36px,5vw,60px);letter-spacing:-.045em;line-height:1.03;max-width:21ch;background:linear-gradient(180deg,#fff 30%,#b9bcc3 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{margin-top:18px;font-size:17px;line-height:1.55;max-width:44rem;color:var(--muted)}
+.lede b{color:var(--text-2);font-weight:500}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pill{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line-2);font-size:13px;color:var(--text-2);background:rgba(255,255,255,.02)}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--hue,var(--warm));box-shadow:0 0 8px var(--hue,var(--warm))}
+/* layout: sticky table of contents + sections */
+.layout{display:grid;grid-template-columns:var(--toc) minmax(0,1fr);gap:56px;padding:40px 0 96px;align-items:start}
+.toc{position:sticky;top:96px;max-height:calc(100vh - 120px);overflow:auto}
+.toc-k{font:500 11.5px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:0 0 12px 12px}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line-2)}
+.toc a{position:relative;display:flex;align-items:center;gap:10px;padding:7px 12px;margin-left:-1px;border-left:1px solid transparent;color:var(--muted);font-size:14px;line-height:1.35}
+.toc a svg{flex:none;width:16px;height:16px;opacity:.7}
+.toc a:hover{color:var(--text)}
+.toc a.on{color:var(--text);border-left-color:var(--hue,var(--warm))}
+.toc a.on svg{opacity:1;color:var(--hue,var(--warm))}
+.toc .toc-foot{margin:22px 0 0 12px;font-size:13px;color:var(--faint);line-height:1.5}
+.toc .toc-foot a{display:inline;padding:0;border:0;margin:0;color:var(--muted);text-decoration:underline;text-decoration-color:var(--line-3);text-underline-offset:3px}
+.content{min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:88px}
+.chipbar{display:none}
+@media(max-width:900px){
+ .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:12px}
+ .toc{display:none}
+ .chipbar{display:flex;position:sticky;top:70px;z-index:40;gap:6px;overflow-x:auto;scrollbar-width:none;padding:10px var(--gutter);margin:0 calc(var(--gutter)*-1);background:linear-gradient(180deg,rgba(8,9,10,.96) 70%,rgba(8,9,10,0));}
+ .chipbar::-webkit-scrollbar{display:none}
+ .chipbar a{flex:none;display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--line-2);font-size:13.5px;color:var(--text-2);background:var(--bg-1)}
+ .chipbar a svg{width:14px;height:14px}
+ .chipbar a.on{color:#0b0c0e;background:#f4f5f6;border-color:#f4f5f6}
+ .content{gap:64px;padding-top:24px}
+}
+/* sections */
+.sec{scroll-margin-top:100px}
+.sec-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:32px;align-items:center;margin-bottom:24px}
+.sec-top.solo{grid-template-columns:minmax(0,1fr)}
+.sec-k{font:500 12px/1 var(--font-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--hue,var(--warm));margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.sec-k svg{width:14px;height:14px;flex:none}
+.sec-h{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.035em}
+.sec-p{margin-top:12px;color:var(--muted);font-size:15.5px;line-height:1.55;max-width:46ch}
+.viz{position:relative;border-radius:var(--radius-lg);border:1px solid var(--line-2);background:linear-gradient(180deg,#111215,#0c0d0f);padding:20px;overflow:hidden;isolation:isolate}
+.viz::after{content:"";position:absolute;right:-90px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--hue,var(--warm)) 18%,transparent),transparent);z-index:-1;pointer-events:none}
+.viz svg{display:block;width:100%;height:auto}
+.viz-cap{margin-top:10px;font:400 11.5px/1.5 var(--font-mono);color:var(--faint)}
+@media(max-width:900px){.sec-top{grid-template-columns:minmax(0,1fr);gap:20px}}
+/* group header band (hubs) */
+.band{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr);gap:28px;align-items:center;padding:28px;border-radius:20px;border:1px solid transparent;
+ background:linear-gradient(180deg,#111215,#0c0d0f) padding-box,linear-gradient(160deg,color-mix(in srgb,var(--hue) 55%,transparent),rgba(255,255,255,.07) 35%,rgba(255,255,255,.045) 70%,color-mix(in srgb,var(--hue) 25%,transparent)) border-box;position:relative;overflow:hidden;isolation:isolate}
+.band::before{content:"";position:absolute;left:-120px;bottom:-160px;width:420px;height:320px;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--hue) 14%,transparent),transparent);z-index:-1}
+.band .viz{background:rgba(255,255,255,.015);border-color:var(--line)}
+@media(max-width:900px){.band{grid-template-columns:minmax(0,1fr);padding:18px 14px;gap:18px}.viz{padding:12px}}
+/* compact rows */
+.rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin-top:8px}
+.rows.one{grid-template-columns:minmax(0,1fr)}
+.row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line);min-height:72px;transition:background .15s}
+.row:hover{background:rgba(255,255,255,.025)}
+.row .ic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;color:var(--hue,var(--warm));background:color-mix(in srgb,var(--hue,var(--warm)) 10%,transparent);border:1px solid color-mix(in srgb,var(--hue,var(--warm)) 22%,transparent)}
+.row .ic svg{width:20px;height:20px}
+.row .t{font-weight:550;font-size:15px;line-height:1.3;color:var(--text);letter-spacing:-.01em}
+.row .a{display:block;margin-top:3px;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.row .r{display:flex;align-items:center;gap:12px;font:400 12.5px/1 var(--font-mono);color:var(--text-2);white-space:nowrap}
+.row .r .free{color:var(--ok)}
+.row .arr{width:16px;height:16px;color:var(--faint);transition:transform .15s,color .15s}
+.row:hover .arr{transform:translateX(3px);color:var(--text)}
+@media(max-width:900px){.rows{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:520px){.row .r{font-size:11px;gap:6px}.row .r .pr{min-width:0}.row{gap:12px;grid-template-columns:40px minmax(0,1fr) auto}}
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;border:1px solid var(--line-2);background:var(--bg-1);width:max-content;max-width:100%}
+.tabs button{appearance:none;border:0;background:none;color:var(--muted);font:500 13.5px/1 var(--font-text);height:32px;padding:0 14px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.tabs button svg{width:14px;height:14px}
+.tabs button[aria-selected=true]{background:rgba(255,255,255,.09);color:var(--text)}
+.tabs button:hover{color:var(--text)}
+.panel[hidden]{display:none}
+.bar-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+/* folds */
+.fold{border-top:1px solid var(--line)}
+.fold:last-child{border-bottom:1px solid var(--line)}
+.fold summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:12px;min-height:54px;font-weight:550;font-size:15px;color:var(--text)}
+.fold summary::-webkit-details-marker{display:none}
+.fold summary .fi{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line-2);color:var(--muted);flex:none}
+.fold summary .fi svg{width:15px;height:15px}
+.fold summary small{font:400 13px var(--font-text);color:var(--muted);margin-left:auto;padding-left:10px;text-align:right}
+.fold summary::after{content:"+";flex:none;width:18px;text-align:center;font:400 20px/1 var(--font-mono);color:var(--muted);transition:transform .2s}
+.fold[open] summary::after{transform:rotate(45deg)}
+.fold .fb{padding:0 0 20px 40px;color:var(--text-2);font-size:14.5px;line-height:1.65;max-width:72ch}
+.fold .fb p+p{margin-top:10px}
+@media(max-width:520px){.fold summary small{display:none}.fold .fb{padding-left:0}}
+/* cards and misc */
+.card{border:1px solid var(--line-2);border-radius:var(--radius-lg);background:var(--bg-1);padding:20px}
+.k{font:500 11.5px/1 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--font-mono)}
+.foot-note{margin-top:14px;font-size:13px;color:var(--faint)}
+.foot-note a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line-3);text-underline-offset:3px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl thead th{font:500 11.5px/1.3 var(--font-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--bg-2)}
+.tbl tbody th{font-weight:550;color:var(--text);white-space:nowrap}
+.tbl td{color:var(--text-2)}
+.tbl-box{border:1px solid var(--line-2);border-radius:var(--radius-lg);overflow:auto;background:var(--bg-1)}
+.cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
+/* footer */
+.site-foot{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--muted);font-size:13.5px}
+.sf{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between}
+.sf nav{display:flex;flex-wrap:wrap;gap:6px 20px}
+.sf nav a{color:var(--muted)}
+.sf nav a:hover{color:var(--text)}
+.preview-bar{padding:8px 16px;text-align:center;font-size:13px;color:var(--text-2);background:#2a1d14;border-top:1px solid rgba(255,154,98,.25)}
+</style></head><body>
+<header class="site-head"><div class="nav-row"><a class="logo" href="https://krishnachagti-sudo.github.io/toll-preview/"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a><nav class="hn" aria-label="Main"><a href="https://krishnachagti-sudo.github.io/toll-preview/tools/">Tools</a><a href="https://krishnachagti-sudo.github.io/toll-preview/pricing/">Pricing</a><a href="https://krishnachagti-sudo.github.io/toll-preview/developers/">Developers</a></nav>
+<a class="search" href="https://krishnachagti-sudo.github.io/toll-preview/tools/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>Search tools and answers<kbd>/</kbd></a><a class="signin" href="https://krishnachagti-sudo.github.io/toll-preview/account.html">Sign in</a><a class="btn" href="https://krishnachagti-sudo.github.io/toll-preview/account.html">Get started</a>
+<button class="ib first" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></button><button class="ib" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header><main><div class="wrap" style="position:relative"><div class="glow"></div><header class="ph"><p class="eyebrow">Option b</p><h1 class="h1">Guided sections, like good docs</h1><p class="lede">A sticky table of contents on desktop, a chip bar on phones. Every section opens with a visual and two lines; detail sits in tabs and folds. Hubs are grouped by job.</p></header>
+<div style="max-width:760px;padding:40px 0 96px"><div class="rows one"><a class="row" href="tools-hub.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg></span><span><span class="t">Tools hub</span><span class="a">Organised by job, a visual header per group, compact rows.</span></span><span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arr"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="row" href="guides-hub.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 5c2.5-1 5-1 7.5.5 2.5-1.5 5-1.5 7.5-.5v14c-2.5-1-5-1-7.5.5-2.5-1.5-5-1.5-7.5-.5zM12 5.5v14"/></svg></span><span><span class="t">Guides hub</span><span class="a">The same pattern for guides: connect, spreadsheet, automate, trust, decide.</span></span><span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arr"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="row" href="tool-full.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span><span class="t">Business days, full page</span><span class="a">Sticky contents, each section opens with a visual, detail in tabs and folds.</span></span><span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arr"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="row" href="overview.html"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="9.5" r="1.7"/><path d="m3.5 17 5-4.5 4 3.5 3-2.5 5 4"/></svg></span><span><span class="t">Reduce an image to a size in KB</span><span class="a">Live preview, chart and table toggle, flow diagram, test photo cards.</span></span><span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arr"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></div></main><footer class="site-foot"><div class="wrap sf"><a class="logo" href="https://krishnachagti-sudo.github.io/toll-preview/" style="font-size:17px"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></svg>Endwise</a><nav aria-label="Footer"><a href="https://krishnachagti-sudo.github.io/toll-preview/tools/">All tools</a><a href="https://krishnachagti-sudo.github.io/toll-preview/pricing/">Pricing</a><a href="https://krishnachagti-sudo.github.io/toll-preview/how-it-works/">How it works</a><a href="https://krishnachagti-sudo.github.io/toll-preview/guides/">Guides</a><a href="https://krishnachagti-sudo.github.io/toll-preview/docs.html">Docs</a><a href="https://krishnachagti-sudo.github.io/toll-preview/sources/">Sources</a><a href="https://krishnachagti-sudo.github.io/toll-preview/about/">About</a><a href="https://krishnachagti-sudo.github.io/toll-preview/contact.html">Contact</a><a href="https://krishnachagti-sudo.github.io/toll-preview/terms.html">Terms</a><a href="https://krishnachagti-sudo.github.io/toll-preview/privacy.html">Privacy</a></nav></div></footer>
+<div class="preview-bar">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+<script>
+/* tabs */
+document.querySelectorAll('[role=tablist]').forEach(function(tl){var bs=[].slice.call(tl.querySelectorAll('[role=tab]'));bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){var on=x===b;x.setAttribute('aria-selected',on);var p=document.getElementById(x.getAttribute('aria-controls'));if(p)p.hidden=!on;});});});});
+/* scroll spy for the table of contents and the chip bar */
+(function(){var links=[].slice.call(document.querySelectorAll('.toc a[href^="#"],.chipbar a[href^="#"]'));var ids=[];links.forEach(function(a){var i=a.getAttribute('href').slice(1);if(ids.indexOf(i)<0)ids.push(i)});
+var secs=ids.map(function(i){return document.getElementById(i)}).filter(Boolean);
+function spy(){var cur=secs[0];secs.forEach(function(s){if(s.getBoundingClientRect().top<160)cur=s});links.forEach(function(a){var on=a.getAttribute('href')==='#'+cur.id;a.classList.toggle('on',on);if(on&&a.parentNode.classList.contains('chipbar')){var bar=a.parentNode;var l=a.offsetLeft-bar.clientWidth/2+a.clientWidth/2;bar.scrollTo({left:l})}})}
+if(secs.length){addEventListener('scroll',spy,{passive:true});spy()}})();
+</script></body></html>
