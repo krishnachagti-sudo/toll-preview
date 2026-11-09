@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endwise, option A: the conversation</title>
+<meta name="description" content="Positioning option A for the Endwise home page: an agent asks, Endwise answers with its source.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="../../../assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../assets/fonts.css">
+<link rel="stylesheet" href="../../../assets/base.css">
+<link rel="stylesheet" href="../../../assets/home.css">
+<link rel="stylesheet" href="../../../assets/motion.css">
+<link rel="stylesheet" href="../shared.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<script src="../../../assets/nav.js" defer></script>
+<style>
+.chat{position:relative;background:linear-gradient(180deg,var(--bg-2),var(--bg-1));border:1px solid var(--line-2);border-radius:18px;box-shadow:0 40px 120px -40px rgba(255,90,54,.25),0 0 0 1px rgba(255,255,255,.02) inset;overflow:hidden;text-align:left}
+.chat-top{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font:400 12px/1 var(--font-mono);color:var(--muted)}
+.chat-top i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+.chat-top .r{margin-left:auto;color:var(--faint)}
+.chat-body{padding:18px 18px 8px;display:grid;gap:12px}
+.m{max-width:92%;font-size:14.5px;line-height:1.55;opacity:1;transform:none}
+.m.u{justify-self:end;background:#22242a;border:1px solid var(--line-2);color:var(--text);padding:10px 14px;border-radius:14px 14px 4px 14px}
+.m.a{justify-self:start;color:var(--text-2);padding:2px 2px}
+.m.a b{color:var(--text);font-weight:600}
+.m.a .who{display:block;font:500 11px/1 var(--font-mono);color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.call{justify-self:stretch;max-width:100%;border:1px solid rgba(255,154,98,.28);background:rgba(255,154,98,.05);border-radius:12px;font:400 12px/1.55 var(--font-mono);color:var(--text-2);overflow:hidden}
+.call-h{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(255,154,98,.18);color:var(--warm)}
+.call-h img{width:14px;height:14px}
+.call-h .p{margin-left:auto;color:var(--muted)}
+.call pre{margin:0;padding:8px 12px;white-space:pre-wrap;word-break:break-word;font:inherit}
+.call .res{border-top:1px dashed rgba(255,255,255,.08);color:var(--text-2)}
+.call .k{color:var(--muted)}
+.call .no{color:#ffb547}
+.call .ok{color:var(--ok)}
+.srcline{display:block;margin-top:8px;padding:8px 10px;border-left:2px solid var(--ok);background:rgba(95,211,160,.06);border-radius:0 8px 8px 0;font-size:13px;color:var(--text-2)}
+.srcline q{font-style:italic}
+.chat-in{display:flex;align-items:center;gap:10px;margin:8px 14px 14px;padding:10px 14px;border:1px solid var(--line-2);border-radius:12px;color:var(--faint);font-size:13.5px}
+.chat-cap{margin:14px 2px 0;font-size:12.5px;color:var(--muted);text-align:left}
+.chat-cap a{color:var(--text-2)}
+html.motion .chat .step{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+html.motion .chat .step.on{opacity:1;transform:none}
+.typing{display:inline-flex;gap:4px;padding:6px 2px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:tb 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tb{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.p-hero.a .p-left{padding-top:8px}
+@media (max-width:640px){.chat-top .r{display:none}.chat-body{padding:14px 12px 6px}.m{max-width:100%;font-size:14px}}
+</style>
+</head>
+<body class="home">
+
+
+<!-- icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></symbol>
+    <symbol id="i-fx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 5.5h9.5l-2.5-2.5M13 10.5H3.5L6 13"/></symbol>
+    <symbol id="i-img" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><circle cx="6" cy="6" r="1.2"/><path d="M13.5 10.5l-3-3-6.5 6"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="12" height="9" rx="2"/><path d="M11 8.5h.01M2 6.5h12"/></symbol>
+    <symbol id="i-key" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="5.5" cy="10.5" r="2.5"/><path d="M7.3 8.7L13 3M11 5l1.5 1.5"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 11.5a5.5 5.5 0 1111 0"/><path d="M8 11.5l2.5-3"/></symbol>
+    <symbol id="i-list" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5.5 4.5h8M5.5 8h8M5.5 11.5h8M2.5 4.5h.01M2.5 8h.01M2.5 11.5h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3.5A1.5 1.5 0 014.5 2H13v10H4.5A1.5 1.5 0 003 13.5zM3 13.5A1.5 1.5 0 004.5 15H13"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4.5 6.5L8 10l3.5-3.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M8 7.2V11M8 5h.01"/></symbol>
+    <symbol id="i-search" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3v10M3 8h10"/></symbol>
+    <symbol id="i-up" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 11V3M4.5 6.5L8 3l3.5 3.5M3 13h10"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2.5v3h3"/></symbol>
+    <symbol id="i-mark" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></symbol>
+  </defs>
+</svg>
+
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+
+<section class="p-hero a" aria-labelledby="hero-h">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap p-split">
+    <div class="p-left">
+      <a href="#how" class="pill"><span><b>For firms and ops teams.</b> AI does the work, Endwise does the numbers.</span><span class="k">How</span></a>
+      <h1 class="p-h1" id="hero-h">Let your AI do the work.<br class="br-d"> <span class="dim">Let Endwise do the numbers.</span></h1>
+      <p class="hero-lede">AI assistants and agents are fluent, but they guess at the exact parts of the job: a final-pay deadline, a 1099 line, a rate on a date. Endwise is the opposite of a guess. Each tool is fixed and dated, shows its working and names its official source. <strong>Your agent calls it over MCP or the API. Your people still use it on the page, free to try.</strong></p>
+      <div class="hero-actions"><a href="#connect" class="btn btn-light btn-lg">Connect your agent <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="#who" class="btn btn-ghost btn-lg">For firms and ops teams</a></div>
+      <p class="hero-meta">For bookkeeping, payroll, property, construction, trucking and seller firms, and for ops teams</p>
+      <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    </div>
+    <div class="p-right rv in">
+  <div class="chat" id="chat" role="group" aria-label="An AI assistant calling the Endwise final paycheck deadline tool">
+    <div class="chat-top"><i></i>Your assistant &middot; Endwise connected over MCP<span class="r">final-paycheck-deadline</span></div>
+    <div class="chat-body">
+      <div class="m u step">What's the final-pay deadline for a fired employee in California?</div>
+      <div class="call step"><div class="call-h"><img src="../../../assets/mark.svg" alt="">Called Endwise: final-paycheck-deadline<span class="p">MCP</span></div>
+<pre>{ "op": "deadline", "state": "CA",
+  "separation": "discharge", "separatedAt": "2026-11-09" }</pre>
+<pre class="res"><span class="k">covered:</span> <span class="no">false</span>
+<span class="k">answer:</span> "California is not covered: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts."</pre></div>
+      <div class="m a step"><span class="who">Assistant</span>Endwise has <b>no California rule on file</b>. It could not read California's own statute and labor department sites on November 8, 2026, so it shows no rule instead of copying someone else's chart. I won't give you a deadline from memory. Please check California's rule at the source before you set the date.</div>
+      <div class="m u step">OK. And someone fired in Vermont on Friday, December 4 at 3:30 pm?</div>
+      <div class="call step"><div class="call-h"><img src="../../../assets/mark.svg" alt="">Called Endwise: final-paycheck-deadline<span class="p">$0.01</span></div>
+<pre>{ "op": "deadline", "state": "VT", "separation": "discharge",
+  "separatedAt": "2026-12-04T15:30" }</pre>
+<pre class="res"><span class="k">covered:</span> <span class="ok">true</span>
+<span class="k">due:</span> "3:30 pm on Monday, December 7, 2026"
+<span class="k">rule:</span> "within 72 hours of the discharge"  <span class="k">cite:</span> "21 V.S.A. 342(c)"</pre></div>
+      <div class="m a step"><span class="who">Assistant</span>Pay the final check <b>by 3:30 pm on Monday, December 7, 2026</b>, 72 hours after the discharge.
+        <span class="srcline">Source: Vermont Department of Labor, WH-13 (21 V.S.A. 342), read 2026-11-08: <q>If the employer discharges an employee, the employee must be paid within 72 hours from the time of discharge.</q></span></div>
+    </div>
+    <div class="chat-in" aria-hidden="true">Ask your assistant&hellip;</div>
+  </div>
+  <p class="chat-cap">Both tool results above are the real output of Endwise's final paycheck deadline tool. When a state's own site could not be read, the tool says so instead of guessing. <a href="/toll-preview/final-paycheck-deadline/">Run it yourself</a></p>
+</div>
+  </div>
+  <div class="p-trustline" aria-label="What every answer comes with">
+  <ul>
+    <li>Same input, same answer. No model sits inside the tool.</li>
+    <li>Official sources, dated on every answer</li>
+    <li>Shows its working, line by line</li>
+    <li>Inputs not stored</li>
+    <li>Failed calls refunded</li>
+  </ul>
+  <p>The tools inform. They are not legal or tax advice.</p>
+</div>
+</section>
+<section class="sec" id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Why AI guesses</span>
+      <h2 class="h2" id="why-h">A model writes the likely answer.<br class="br-d"> <span class="dim">Some jobs have only one right one.</span></h2>
+    </div>
+    <div class="p-grid3">
+      <div class="p-card rv"><span class="n">01</span><h3>It predicts text. It does not run the rule.</h3><p>A deadline or a business-day count needs every weekend and holiday checked in turn. A model can write a tidy answer without doing that check.</p></div>
+      <div class="p-card rv"><span class="n">02</span><h3>Its knowledge stops at a cutoff.</h3><p>A rate, threshold or deadline that changed after that date may not be in the model at all, and the model will not always tell you so.</p></div>
+      <div class="p-card rv"><span class="n">03</span><h3>It may not show its working.</h3><p>A single number with no rule, no date and no named source gives you nothing to check, and a wrong guess here costs money.</p></div>
+    </div>
+    <ul class="p-cases rv" aria-label="Where a guess goes wrong">
+      <li><b>1099-NEC line</b><span>For 2026 payments the line is <em>$2,000</em>; for 2025 payments it was $600, from the IRS instructions. A model whose knowledge predates the change would give $600 for a 2026 payment.</span></li>
+      <li><b>IRS mileage rate</b><span>A business trip on June 30, 2026 is <em>72.5 cents a mile</em>, and <em>76 cents</em> from July 1. One rate for the whole year is wrong for half of it.</span></li>
+      <li><b>IFTA due date</b><span>The third quarter 2026 IFTA return is due <em>November 2, 2026</em>, not October 31, because the statutory date falls on a weekend.</span></li>
+    </ul>
+    <p class="p-src rv">Cases from the tools themselves. Each exact answer is the tool's own output. From the guide <a class="ul" href="/toll-preview/guides/why-ai-gets-numbers-wrong/">Why AI assistants get dates and numbers wrong</a>.</p>
+  </div>
+</section>
+<section class="sec" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">How an agent calls it</span>
+      <h2 class="h2" id="how-h">The model decides what to ask.<br class="br-d"> <span class="dim">Endwise answers it exactly.</span></h2>
+    </div>
+    <ol class="p-flow p-flowwrap rv">
+      <li><span class="k">1 &middot; Person</span><h4>Someone asks</h4><p>A client, a manager or a colleague asks the assistant a question with an exact answer.</p></li>
+      <li><span class="k">2 &middot; Agent</span><h4>The agent picks a tool</h4><p>It does the reading and the writing, and hands the exact part to Endwise.</p></li>
+      <li class="us"><span class="k">3 &middot; Endwise</span><h4>The tool runs the rule</h4><p>Same input, same answer, from an official source with the date it was read.</p></li>
+      <li><span class="k">4 &middot; Agent</span><h4>The answer comes back sourced</h4><p>The agent replies with the figure, the working and the source line, so a person can check it.</p></li>
+    </ol>
+    <div class="p-connect" id="connect">
+      <div class="rv">
+        <span class="eyebrow">Connect your agent</span>
+        <h3 style="margin-top:16px">Three steps. Same tools and same prices as the API.</h3>
+        <p>Endwise runs an MCP server over Streamable HTTP. Apps that support MCP sign-in connect with just the address. Other clients use an API key.</p>
+        <p class="p-rest">Building your own agent? The same tools are on the REST API: <code>POST /api/v1/tools/&lt;tool&gt;</code>, with the <a class="ul" href="/toll-preview/api/v1/openapi.json">OpenAPI document</a>.</p>
+        <p style="margin-top:18px"><a class="lnk" href="/toll-preview/developers/mcp/">The full MCP guide <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <ol class="p-steps rv">
+        <li><span class="n">01</span><div><h4>Add the address</h4><p>In the Claude apps, add it as a custom connector. In ChatGPT, add it as a custom MCP server.</p><div class="p-addr"><code><span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/mcp</code><button type="button" class="p-copy">Copy</button></div></div></li>
+        <li><span class="n">02</span><div><h4>Sign in with OAuth, or use a key</h4><p>Sign-in opens an Endwise page where you approve the app and set its monthly limit. Other clients send an API key as a Bearer token.</p></div></li>
+        <li><span class="n">03</span><div><h4>List, then call</h4><p>Listing tools needs nothing. Each call is priced and limited exactly like an API call, and a call that fails is refunded.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="sec" id="who" aria-labelledby="who-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Who uses it</span>
+      <h2 class="h2" id="who-h">Firms that run the same exact jobs for many clients.<br class="br-d"> <span class="dim">Ops teams that need answers they can audit.</span></h2>
+    </div>
+    <div class="p-label rv" id="firms"><h3>For firms</h3><p>The same exact job at volume, often through an AI assistant now.</p></div>
+    <div class="p-grid3">
+      <article class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Bookkeeping and accounting firms</h3><p>1099 lines and 1099-K reconciliation, tax set-aside, MACRS, mileage, and a rate on a date.</p><ul class="p-links"><li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li><li><a href="/toll-preview/1099-k-reconciliation/">1099-K reconciliation</a></li><li><a href="/toll-preview/macrs-depreciation/">MACRS depreciation</a></li><li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li></ul></article>
+      <article class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>Payroll bureaus and HR outsourcers</h3><p>Final paycheck, PTO and sick leave, overtime, minimum wage, garnishment, FMLA and WARN.</p><ul class="p-links"><li><a href="/toll-preview/final-paycheck-deadline/">Final paycheck deadline</a></li><li><a href="/toll-preview/pto-accrual/">PTO and sick leave accrual</a></li><li><a href="/toll-preview/overtime-auditor/">Overtime auditor</a></li><li><a href="/toll-preview/garnishment-calculator/">Garnishment calculator</a></li></ul></article>
+      <article class="p-card hue-agent rv"><h3><span class="hue-dot" aria-hidden="true"></span>Property managers</h3><p>Rent caps, late fees and security deposit letters.</p><ul class="p-links"><li><a href="/toll-preview/rent-increase-cap/">Rent increase cap</a></li><li><a href="/toll-preview/late-fee-checker/">Rent late fee checker</a></li><li><a href="/toll-preview/security-deposit-letter/">Security deposit letter</a></li></ul></article>
+      <article class="p-card hue-file rv"><h3><span class="hue-dot" aria-hidden="true"></span>Construction back offices</h3><p>Lien deadlines, lien waivers, pay applications and retainage.</p><ul class="p-links"><li><a href="/toll-preview/lien-deadline/">Lien deadline calculator</a></li><li><a href="/toll-preview/lien-waiver/">Lien waivers</a></li><li><a href="/toll-preview/pay-application/">Pay application and retainage</a></li></ul></article>
+      <article class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>Trucking compliance services and fleets</h3><p>Quarterly IFTA returns and per diem worksheets, at the rate in force each day.</p><ul class="p-links"><li><a href="/toll-preview/ifta-calculator/">IFTA return</a></li><li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li></ul></article>
+      <article class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Amazon and e-commerce seller agencies</h3><p>Fees, settlements, FBA claims and GPSR listing checks.</p><ul class="p-links"><li><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement reconciliation</a></li><li><a href="/toll-preview/fba-refund-not-returned/">FBA refunded, not returned</a></li><li><a href="/toll-preview/inbound-placement-fee-calculator/">Inbound placement fee</a></li><li><a href="/toll-preview/gpsr-listing-checker/">GPSR listing checker</a></li></ul></article>
+    </div>
+    <div class="p-label rv" id="ops"><h3>For ops teams</h3><p>Teams of roughly 50 to 1,000 people building internal agents. Every answer carries its working and its dated source.</p></div>
+    <div class="p-grid3">
+      <article class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>AP/AR and finance ops</h3><p>Payment schedules, late payment interest, reconciliations and XRechnung invoices.</p><ul class="p-links"><li><a href="/toll-preview/payment-schedule/">Payment schedule</a></li><li><a href="/toll-preview/late-payment-interest/">Late payment interest</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/">Bank reconciliation difference</a></li><li><a href="/toll-preview/xrechnung-viewer/">XRechnung viewer</a></li></ul></article>
+      <article class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>People ops</h3><p>The payroll and leave rules: final pay, PTO and sick leave, FMLA with state leave, WARN.</p><ul class="p-links"><li><a href="/toll-preview/final-paycheck-deadline/">Final paycheck deadline</a></li><li><a href="/toll-preview/fmla-state-leave-overlay/">State leave and FMLA</a></li><li><a href="/toll-preview/warn-act-checker/">WARN Act checker</a></li></ul></article>
+      <article class="p-card hue-file rv"><h3><span class="hue-dot" aria-hidden="true"></span>E-commerce finance</h3><p>Payouts split into sales, refunds, fees and tax; settlements; 1099-K against the books.</p><ul class="p-links"><li><a href="/toll-preview/payout-reconciliation/">Payout reconciliation</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement reconciliation</a></li><li><a href="/toll-preview/1099-k-reconciliation/">1099-K reconciliation</a></li></ul></article>
+    </div>
+  </div>
+</section>
+<section class="sec" id="tools" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">The tools</span>
+      <h2 class="h2" id="tools-h">One job per tool.<br class="br-d"> <span class="dim">Each one shows its work.</span></h2>
+    </div>
+    <div class="p-tools">
+      <div class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Tax and bookkeeping</h3><ul><li><a href="/toll-preview/1099-threshold/">1099 threshold tracker<span>from $0.10</span></a></li><li><a href="/toll-preview/1099-k-reconciliation/">1099-K reconciliation<span>from $0.05</span></a></li><li><a href="/toll-preview/tax-set-aside/">Tax set-aside<span>from $0.10</span></a></li><li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement<span>from $0.001</span></a></li><li><a href="/toll-preview/fx-on-date/">Exchange rate on a date<span>$0.001</span></a></li></ul></div><div class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>Payroll and leave</h3><ul><li><a href="/toll-preview/final-paycheck-deadline/">Final paycheck deadline<span>from $0.005</span></a></li><li><a href="/toll-preview/pto-accrual/">PTO and sick leave<span>from $0.01</span></a></li><li><a href="/toll-preview/minimum-wage-lookup/">Minimum wage lookup<span>from $0.002</span></a></li><li><a href="/toll-preview/fmla-eligibility-checker/">FMLA eligibility<span>from $0.01</span></a></li><li><a href="/toll-preview/warn-act-checker/">WARN Act checker<span>from $0.01</span></a></li></ul></div><div class="p-card hue-agent rv"><h3><span class="hue-dot" aria-hidden="true"></span>Property and construction</h3><ul><li><a href="/toll-preview/rent-increase-cap/">Rent increase cap<span>from $0.02</span></a></li><li><a href="/toll-preview/late-fee-checker/">Rent late fee checker<span>from $0.01</span></a></li><li><a href="/toll-preview/lien-deadline/">Lien deadline calculator<span>from $0.01</span></a></li><li><a href="/toll-preview/lien-waiver/">Lien waivers<span>from $1.50</span></a></li><li><a href="/toll-preview/pay-application/">Pay application<span>from $0.002</span></a></li></ul></div><div class="p-card hue-file rv"><h3><span class="hue-dot" aria-hidden="true"></span>Trucking and sellers</h3><ul><li><a href="/toll-preview/ifta-calculator/">IFTA return<span>from $0.01</span></a></li><li><a href="/toll-preview/trucker-per-diem/">Trucker per diem<span>from $0.02</span></a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement<span>from $1.00</span></a></li><li><a href="/toll-preview/fba-refund-not-returned/">FBA refunded, not returned<span>from $0.25</span></a></li><li><a href="/toll-preview/gpsr-listing-checker/">GPSR listing checker<span>from $0.01</span></a></li></ul></div><div class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Finance ops and dates</h3><ul><li><a href="/toll-preview/payment-schedule/">Payment schedule<span>from $0.01</span></a></li><li><a href="/toll-preview/late-payment-interest/">Late payment interest<span>from $0.02</span></a></li><li><a href="/toll-preview/xrechnung-viewer/">XRechnung viewer<span>from $0.01</span></a></li><li><a href="/toll-preview/business-days/">Business days<span>$0.0005</span></a></li><li><a href="/toll-preview/payout-reconciliation/">Payout reconciliation<span>from $0.10</span></a></li></ul></div>
+    </div>
+    <p class="p-more rv"><a class="lnk" href="/toll-preview/tools/">All tools, side by side <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+  </div>
+</section>
+<section class="sec" id="pricing" aria-labelledby="price-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="h2" id="price-h">Pay per use, with hard limits.<br class="br-d"> <span class="dim">Or one invoice for the team.</span></h2>
+    </div>
+    <div class="p-price">
+      <div class="p-card rv">
+        <span class="tag">For agents and code</span>
+        <div class="big">From $10<small>credit, used per call</small></div>
+        <div class="p-packs" aria-label="Credit packs"><span>$10</span><span>$25 <b>+$1</b></span><span>$50 <b>+$5</b></span><span>$100 <b>+$15</b></span><span>$250 <b>+$50</b></span></div>
+        <ul class="ticks">
+          <li>Each call takes its listed price, often a fraction of a cent</li>
+          <li>A hard monthly limit on the account and on each key. A call past it is refused, not billed.</li>
+          <li>A call that fails is refunded automatically</li>
+        </ul>
+        <div class="p-eg">
+          <div><span>Final paycheck deadline, over the API or MCP</span><b>$0.01 a lookup</b></div>
+          <div><span>1099 year-end scan, first 500 each year</span><b>$0.10 a payee-year</b></div>
+          <div><span>1099-K reconciliation, over the API or MCP</span><b>$0.05</b></div>
+        </div>
+      </div>
+      <div class="p-card rv">
+        <span class="tag">For companies</span>
+        <div class="big">$290<small>a year, Team plan</small></div>
+        <ul class="ticks">
+          <li>$350 of use across every tool, the web, the API and MCP</li>
+          <li>Up to 5 people on one balance</li>
+          <li>A spending limit on every key</li>
+          <li>Billed once a year. Nothing renews by itself.</li>
+          <li>Pay by invoice or check, with your PO number</li>
+        </ul>
+        <a class="btn btn-light btn-lg" href="/toll-preview/contact/">Ask for a Team plan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="p-passes rv"><span>For people on the web, passes that never renew:</span><span><b>Season Pass $19</b>, 4 months</span><span><b>Year Pass $49</b></span><span><b>Practice Pass $149</b>, for bookkeepers working for many clients</span><a class="lnk" href="/toll-preview/pricing/">Every price <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+<section class="sec" id="free" aria-labelledby="free-h">
+  <div class="wrap">
+    <div class="p-free">
+      <div class="rv">
+        <span class="eyebrow">People use it too</span>
+        <h2 class="h2" id="free-h">Every tool has its own page.<br class="br-d"> <span class="dim">Free single answers for anyone.</span></h2>
+        <p class="sec-lede">The person checking the agent's work can run the same question on the page and get the same answer, with the same source.</p>
+        <div class="hero-actions" style="justify-content:flex-start"><a class="btn btn-light btn-lg" href="/toll-preview/final-paycheck-deadline/">Try the final paycheck deadline <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-ghost btn-lg" href="/toll-preview/tools/">All tools</a></div>
+      </div>
+      <dl class="rv">
+        <div><dt>Without an account</dt><dd>5 free runs a day</dd></div>
+        <div><dt>With an account, spent first</dt><dd>$0.25 free each month</dd></div>
+        <div><dt>Final paycheck deadline on its page</dt><dd>Free</dd></div>
+        <div><dt>1099 single-payee check</dt><dd>Free</dd></div>
+        <div><dt>Subscription</dt><dd>None</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+<section class="closing" aria-labelledby="close-h">
+  <div class="cglow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap rv">
+    <h2 id="close-h">Let your AI do the work.<br class="br-d"> Let Endwise do the numbers.</h2>
+    <p class="sec-lede">Connect your agent with one address, or try any tool on its page first.</p>
+    <div class="hero-actions">
+      <a href="#connect" class="btn btn-light btn-lg">Connect your agent <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="/toll-preview/contact/" class="btn btn-ghost btn-lg">Ask for a Team plan</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="../../../assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+
+<script>
+(function () {
+  var o = document.querySelectorAll('.js-origin');
+  for (var i = 0; i < o.length; i++) if (/^https?:/.test(location.origin)) o[i].textContent = location.origin;
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.p-copy'); if (!b) return;
+    var t = b.parentNode.querySelector('code').textContent;
+    try { navigator.clipboard.writeText(t); b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); } catch (x) {}
+  });
+  var els = document.querySelectorAll('.rv');
+  var reduce = false; try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (x) {}
+  if (reduce || !('IntersectionObserver' in window)) { for (var j = 0; j < els.length; j++) els[j].classList.add('in'); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  for (var k = 0; k < els.length; k++) io.observe(els[k]);
+})();
+</script>
+<script>
+(function () {
+  if (!document.documentElement.classList.contains('motion')) return;
+  var steps = document.querySelectorAll('#chat .step'); var i = 0;
+  function next() { if (i >= steps.length) return; steps[i].classList.add('on'); i++; setTimeout(next, i % 3 === 0 ? 1100 : 750); }
+  setTimeout(next, 400);
+})();
+</script>
+
+</body>
+</html>

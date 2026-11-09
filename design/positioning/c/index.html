@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endwise, option C: the January run</title>
+<meta name="description" content="Positioning option C for the Endwise home page: a scroll story of a bookkeeping firm's January 1099 run, with an agent calling Endwise.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="../../../assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../assets/fonts.css">
+<link rel="stylesheet" href="../../../assets/base.css">
+<link rel="stylesheet" href="../../../assets/home.css">
+<link rel="stylesheet" href="../../../assets/motion.css">
+<link rel="stylesheet" href="../shared.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<script src="../../../assets/nav.js" defer></script>
+<style>
+.c-hero{position:relative;min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;padding:72px 0 48px;text-align:center;isolation:isolate;overflow:hidden}
+.c-hero .wrap{position:relative;z-index:2}
+.c-hero .kick{font:500 12.5px/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--warm)}
+.c-h1{font-size:clamp(44px,7.2vw,108px);line-height:.98;letter-spacing:-.055em;margin:26px auto 0;max-width:16ch;background:none;color:var(--text);-webkit-text-fill-color:currentColor}
+.c-h1 .w{display:inline-block;color:var(--text)}
+.c-h1 .dim .w{color:#6e727b}
+.c-h1 .dim{color:#6e727b}
+.c-hero .hero-lede{max-width:640px}
+.c-sky{position:absolute;inset:0;z-index:0;pointer-events:none}
+.c-sky i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55}
+.c-sky .s1{width:620px;height:620px;left:-140px;top:-160px;background:radial-gradient(circle,rgba(255,90,54,.55),transparent 65%)}
+.c-sky .s2{width:560px;height:560px;right:-160px;top:120px;background:radial-gradient(circle,rgba(169,139,255,.45),transparent 65%)}
+.c-sky .s3{width:720px;height:420px;left:30%;bottom:-260px;background:radial-gradient(circle,rgba(255,176,63,.35),transparent 65%)}
+.c-cue{margin-top:44px;display:inline-flex;flex-direction:column;align-items:center;gap:10px;font:400 12px/1 var(--font-mono);color:var(--muted)}
+.c-cue span{width:1px;height:46px;background:linear-gradient(var(--warm),transparent)}
+
+.story{position:relative;margin-top:40px}
+.c-bar{position:sticky;top:64px;z-index:20;background:rgba(8,9,10,.86);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.c-bar .wrap{display:flex;align-items:center;gap:18px;height:48px;font:400 12px/1 var(--font-mono);color:var(--muted)}
+.c-bar b{color:var(--text);font-weight:500}
+.c-track{flex:1;height:2px;background:var(--line-2);border-radius:2px;overflow:hidden}
+.c-fill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ember),var(--amber))}
+.c-step-n{white-space:nowrap}
+.scene{min-height:100vh;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:center;padding:64px 0;border-bottom:1px solid var(--line)}
+.scene .txt .n{font:500 12.5px/1 var(--font-mono);color:var(--warm);letter-spacing:.08em}
+.scene .txt h2{font-size:clamp(30px,3.6vw,48px);letter-spacing:-.04em;line-height:1.05;margin:16px 0 0}
+.scene .txt p{color:var(--muted);font-size:16.5px;margin:18px 0 0;max-width:440px}
+.scene .txt p b{color:var(--text-2);font-weight:500}
+.pnl{position:relative;background:linear-gradient(180deg,var(--bg-2),var(--bg-1));border:1px solid var(--line-2);border-radius:18px;padding:20px;box-shadow:0 50px 140px -60px rgba(255,90,54,.35)}
+.pnl-h{display:flex;align-items:center;gap:10px;margin:-4px 0 14px;font:400 12px/1 var(--font-mono);color:var(--muted)}
+.pnl-h img{width:14px;height:14px}
+.pnl-h .r{margin-left:auto;color:var(--faint)}
+.lg{width:100%;border-collapse:collapse;font:400 12.5px/1.3 var(--font-mono);color:var(--text-2)}
+.lg th{text-align:left;font-weight:500;color:var(--faint);padding:6px 8px;border-bottom:1px solid var(--line-2)}
+.lg td{padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.lg td.amt,.lg th.amt{text-align:right}
+.lg tr.old td{color:var(--faint)}
+.lg tr.hl td{color:var(--text);background:rgba(255,176,63,.06)}
+.code{font:400 13px/1.65 var(--font-mono);color:var(--text-2);white-space:pre-wrap;margin:0}
+.code .k{color:#a98bff}.code .s{color:#ffb547}.code .c{color:var(--faint)}
+.pill2{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,154,98,.35);background:rgba(255,154,98,.06);font:400 12px/1 var(--font-mono);color:var(--warm)}
+.merge{display:grid;gap:10px}
+.mrow{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid var(--line-2);border-radius:12px;font:400 13px/1.3 var(--font-mono);color:var(--text-2)}
+.mres{padding:16px;border:1px solid rgba(95,211,160,.4);background:rgba(95,211,160,.06);border-radius:12px}
+.mres .big{font:600 40px/1 var(--font-display);letter-spacing:-.03em;color:var(--text)}
+.mres p{margin:8px 0 0;font-size:13.5px;color:var(--text-2)}
+.vd{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.vd li{display:grid;grid-template-columns:150px 70px minmax(0,1fr);gap:12px;align-items:start;padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid var(--line);font-size:12.5px;color:var(--text-2)}
+.vd li b{font-weight:500;color:var(--text)}
+.tag2{display:inline-block;font:500 10.5px/1 var(--font-mono);padding:5px 7px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em;text-align:center}
+.tag2.file{background:rgba(95,211,160,.12);color:var(--ok)}
+.tag2.near{background:rgba(255,176,63,.12);color:#ffb547}
+.tag2.out{background:rgba(255,255,255,.05);color:var(--muted)}
+.ans{margin:0 0 12px;padding:12px 14px;border-left:2px solid var(--ok);background:rgba(95,211,160,.06);border-radius:0 10px 10px 0;font-size:14px;color:var(--text)}
+.dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dd div{padding:14px;border:1px solid var(--line-2);border-radius:12px;background:rgba(255,255,255,.02)}
+.dd .d{font:600 22px/1.1 var(--font-display);letter-spacing:-.02em;color:var(--text)}
+.dd .l{margin-top:6px;font-size:12.5px;color:var(--muted)}
+.files{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.files span{font:400 12px/1 var(--font-mono);padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;color:var(--text-2)}
+.srcl{margin-top:12px;font-size:12.5px;color:var(--muted)}
+.wf{display:grid;gap:6px}
+.wf .r{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:12px;align-items:center;font-size:13px;color:var(--text-2)}
+.wf .bar{height:22px;border-radius:5px;background:linear-gradient(90deg,rgba(255,95,168,.75),rgba(255,95,168,.35));transform-origin:left center}
+.wf .r.neg .bar{background:rgba(255,123,107,.35)}
+.wf .r.sub .bar{background:linear-gradient(90deg,rgba(255,176,63,.85),rgba(255,176,63,.35))}
+.wf .r.tot .bar{background:linear-gradient(90deg,rgba(95,211,160,.9),rgba(95,211,160,.4))}
+.wf .lab{display:grid;gap:3px}
+.wf .lab small{color:var(--faint);font-size:11.5px}
+.wf .v{font:500 13px/1 var(--font-mono);text-align:right;color:var(--text)}
+.wf .r.neg .v{color:#ff9a8c}
+.wf .track{position:relative;height:22px}
+.wf .track .bar{position:absolute;top:0;height:22px}
+.chk{list-style:none;margin:14px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:grid;gap:6px;font-size:12.5px;color:var(--text-2)}
+.chk li::before{content:"ok";font:500 10.5px/1 var(--font-mono);color:var(--ok);margin-right:8px}
+.chk li.w::before{content:"note";color:#ffb547}
+.sign{display:grid;gap:10px}
+.sign div{display:flex;gap:12px;align-items:center;padding:14px;border:1px solid var(--line-2);border-radius:12px;font-size:14px;color:var(--text-2)}
+.sign i{flex:none;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--ok);display:grid;place-items:center;color:var(--ok);font-style:normal;font-size:13px}
+.scene .txt p.note{margin-top:12px;font-size:12.5px;color:var(--faint)}
+@media (max-width:900px){
+  .scene{grid-template-columns:1fr;gap:28px;min-height:0;padding:72px 0}
+  .c-hero{min-height:0;padding:72px 0 40px}
+}
+@media (max-width:640px){
+  .pnl{padding:14px;border-radius:14px}
+  .lg{font-size:11px}.lg td,.lg th{padding:5px 4px}
+  .lg .hide-s{display:none}
+  .vd li{grid-template-columns:1fr auto;gap:6px}
+  .vd li .why{grid-column:1/-1}
+  .dd{grid-template-columns:1fr}
+  .wf .r{grid-template-columns:minmax(0,1fr) 92px}
+  .c-bar .wrap{gap:10px;font-size:11px}
+  .c-bar .lbl{display:none}
+  .c-hero .hero-actions .btn{flex:1 1 100%}
+}
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body class="home">
+
+
+<!-- icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="3.5" width="11" height="10" rx="2"/><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"/></symbol>
+    <symbol id="i-fx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 5.5h9.5l-2.5-2.5M13 10.5H3.5L6 13"/></symbol>
+    <symbol id="i-img" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><circle cx="6" cy="6" r="1.2"/><path d="M13.5 10.5l-3-3-6.5 6"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="4" width="12" height="9" rx="2"/><path d="M11 8.5h.01M2 6.5h12"/></symbol>
+    <symbol id="i-key" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="5.5" cy="10.5" r="2.5"/><path d="M7.3 8.7L13 3M11 5l1.5 1.5"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2.5 11.5a5.5 5.5 0 1111 0"/><path d="M8 11.5l2.5-3"/></symbol>
+    <symbol id="i-list" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5.5 4.5h8M5.5 8h8M5.5 11.5h8M2.5 4.5h.01M2.5 8h.01M2.5 11.5h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3.5A1.5 1.5 0 014.5 2H13v10H4.5A1.5 1.5 0 003 13.5zM3 13.5A1.5 1.5 0 004.5 15H13"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4.5 6.5L8 10l3.5-3.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M8 7.2V11M8 5h.01"/></symbol>
+    <symbol id="i-search" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3v10M3 8h10"/></symbol>
+    <symbol id="i-up" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 11V3M4.5 6.5L8 3l3.5 3.5M3 13h10"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4M2.5 2.5v3h3"/></symbol>
+    <symbol id="i-mark" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6.5" fill="#f4f5f6"/><path d="M6 12h7.2" stroke="#0b0c0e" stroke-width="2.4" stroke-linecap="round"/><circle cx="17.4" cy="12" r="1.9" fill="#ff5a36"/></symbol>
+  </defs>
+</svg>
+
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+
+<main id="main">
+
+<section class="c-hero" aria-labelledby="hero-h">
+  <div class="c-sky" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="kick c-up">For firms and ops teams</span>
+    <h1 class="c-h1" id="hero-h"><span class="w">Let</span> <span class="w">your</span> <span class="w">AI</span> <span class="w">do</span> <span class="w">the</span> <span class="w">work.</span> <span class="dim"><span class="w">Let</span> <span class="w">Endwise</span> <span class="w">do</span> <span class="w">the</span> <span class="w">numbers.</span></span></h1>
+    <p class="hero-lede c-up">AI assistants and agents are fluent, but they guess at the exact parts of the job: a final-pay deadline, a 1099 line, a rate on a date. Endwise is the opposite of a guess. Each tool is fixed and dated, shows its working and names its official source. <strong>Your agent calls it over MCP or the API. Your people still use it on the page, free to try.</strong></p>
+    <div class="c-up"><div class="hero-actions"><a href="#connect" class="btn btn-light btn-lg">Connect your agent <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a href="#who" class="btn btn-ghost btn-lg">For firms and ops teams</a></div></div>
+    <div class="c-cue c-up" aria-hidden="true">Scroll: one firm's January 1099 run<span></span></div>
+  </div>
+</section>
+<div class="p-trustline" aria-label="What every answer comes with">
+  <ul>
+    <li>Same input, same answer. No model sits inside the tool.</li>
+    <li>Official sources, dated on every answer</li>
+    <li>Shows its working, line by line</li>
+    <li>Inputs not stored</li>
+    <li>Failed calls refunded</li>
+  </ul>
+  <p>The tools inform. They are not legal or tax advice.</p>
+</div>
+<section class="sec" id="why" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Why AI guesses</span>
+      <h2 class="h2" id="why-h">A model writes the likely answer.<br class="br-d"> <span class="dim">Some jobs have only one right one.</span></h2>
+    </div>
+    <div class="p-grid3">
+      <div class="p-card rv"><span class="n">01</span><h3>It predicts text. It does not run the rule.</h3><p>A deadline or a business-day count needs every weekend and holiday checked in turn. A model can write a tidy answer without doing that check.</p></div>
+      <div class="p-card rv"><span class="n">02</span><h3>Its knowledge stops at a cutoff.</h3><p>A rate, threshold or deadline that changed after that date may not be in the model at all, and the model will not always tell you so.</p></div>
+      <div class="p-card rv"><span class="n">03</span><h3>It may not show its working.</h3><p>A single number with no rule, no date and no named source gives you nothing to check, and a wrong guess here costs money.</p></div>
+    </div>
+    <ul class="p-cases rv" aria-label="Where a guess goes wrong">
+      <li><b>1099-NEC line</b><span>For 2026 payments the line is <em>$2,000</em>; for 2025 payments it was $600, from the IRS instructions. A model whose knowledge predates the change would give $600 for a 2026 payment.</span></li>
+      <li><b>IRS mileage rate</b><span>A business trip on June 30, 2026 is <em>72.5 cents a mile</em>, and <em>76 cents</em> from July 1. One rate for the whole year is wrong for half of it.</span></li>
+      <li><b>IFTA due date</b><span>The third quarter 2026 IFTA return is due <em>November 2, 2026</em>, not October 31, because the statutory date falls on a weekend.</span></li>
+    </ul>
+    <p class="p-src rv">Cases from the tools themselves. Each exact answer is the tool's own output. From the guide <a class="ul" href="/toll-preview/guides/why-ai-gets-numbers-wrong/">Why AI assistants get dates and numbers wrong</a>.</p>
+  </div>
+</section>
+<section class="story" id="story" aria-label="A bookkeeping firm's January 1099 run, with an agent calling Endwise">
+  <div class="c-bar" aria-hidden="true"><div class="wrap"><span class="lbl"><b>January 1099 run</b></span><span class="c-track"><span class="c-fill"></span></span><span class="c-step-n">01 / 07</span></div></div>
+  <div class="wrap">
+    <div class="scene" id="sc1" data-step="1">
+      <div class="txt c-in"><span class="n">01 / 07</span><h2>January. A client's 2026 payments arrive.</h2><p>Thirteen rows. The same contractor under two spellings, a payment by card, a corporation, a rent, a royalty, and one row from December 2025.</p><p class="note">The client and payees are the 1099 threshold tracker's own worked example.</p></div>
+      <div class="c-pnl"><div class="pnl"><div class="pnl-h">harbor-remodeling-payments-2026.csv<span class="r">13 rows</span></div>
+<table class="lg c-rows"><thead><tr><th>payee</th><th class="hide-s">date</th><th class="amt">amount</th><th>type</th><th class="hide-s">method</th></tr></thead><tbody><tr class="hl"><td>Rivera Electric</td><td class="hide-s">2026-02-10</td><td class="amt">1,800.00</td><td>services</td><td class="hide-s">check</td></tr><tr class="hl"><td>Rivera Electric LLC</td><td class="hide-s">2026-06-14</td><td class="amt">2,450.00</td><td>services</td><td class="hide-s">ach</td></tr><tr class=""><td>Dana Whitfield</td><td class="hide-s">2026-03-02</td><td class="amt">1,200.00</td><td>services</td><td class="hide-s">ach</td></tr><tr class=""><td>Dana Whitfield</td><td class="hide-s">2026-09-18</td><td class="amt">350.00</td><td>services</td><td class="hide-s">check</td></tr><tr class=""><td>Summit Staffing Inc</td><td class="hide-s">2026-04-01</td><td class="amt">9,600.00</td><td>services</td><td class="hide-s">ach</td></tr><tr class=""><td>Okafor &amp; Lin LLP</td><td class="hide-s">2026-05-20</td><td class="amt">2,400.00</td><td>legal-fees</td><td class="hide-s">check</td></tr><tr class=""><td>Okafor &amp; Lin LLP</td><td class="hide-s">2026-08-03</td><td class="amt">900.00</td><td>attorney proceeds</td><td class="hide-s">check</td></tr><tr class=""><td>Bayview Properties</td><td class="hide-s">2026-01-05</td><td class="amt">1,250.00</td><td>rents</td><td class="hide-s">ach</td></tr><tr class=""><td>Bayview Properties</td><td class="hide-s">2026-02-05</td><td class="amt">1,250.00</td><td>rents</td><td class="hide-s">ach</td></tr><tr class=""><td>Lumen Web Studio</td><td class="hide-s">2026-07-07</td><td class="amt">3,100.00</td><td>services</td><td class="hide-s">card</td></tr><tr class=""><td>Coastal Supply Co</td><td class="hide-s">2026-03-15</td><td class="amt">5,400.00</td><td>merchandise</td><td class="hide-s">check</td></tr><tr class=""><td>Maya Chen</td><td class="hide-s">2026-11-30</td><td class="amt">45.00</td><td>royalties</td><td class="hide-s">check</td></tr><tr class="old"><td>Dana Whitfield</td><td class="hide-s">2025-12-29</td><td class="amt">600.00</td><td>services</td><td class="hide-s">check</td></tr></tbody></table></div></div>
+    </div><div class="scene" id="sc2" data-step="2">
+      <div class="txt c-in"><span class="n">02 / 07</span><h2>The agent reads it. Endwise does the 1099 rules.</h2><p>The assistant handles the file and the client notes. <b>The exact part, who needs a form and why, goes to one tool call.</b></p></div>
+      <div class="c-pnl"><div class="pnl"><div class="pnl-h"><img src="../../../assets/mark.svg" alt="">Agent calls Endwise over MCP<span class="r">1099-threshold</span></div>
+<pre class="code c-type">{
+  <span class="k">"op"</span>: <span class="s">"scan"</span>,
+  <span class="k">"paymentYear"</span>: 2026,
+  <span class="k">"payer"</span>: { <span class="k">"name"</span>: <span class="s">"Harbor Remodeling LLC"</span>, <span class="c">...</span> },
+  <span class="k">"payments"</span>: [ <span class="c">13 rows from the ledger</span> ],
+  <span class="k">"exports"</span>: [ <span class="s">"csv"</span>, <span class="s">"iris"</span> ]
+}</pre>
+<span class="pill2">Year-end scan: $0.10 a payee-year, first 500 each year</span></div></div>
+    </div><div class="scene" id="sc3" data-step="3">
+      <div class="txt c-in"><span class="n">03 / 07</span><h2>Two names, one payee.</h2><p>Rows are merged by TIN, so two small payments become one that crosses the line, with the date it crossed.</p></div>
+      <div class="c-pnl"><div class="pnl"><div class="pnl-h">Payees merged by TIN<span class="r">TIN ending 5678</span></div>
+<div class="merge c-rows"><div class="mrow"><span>Rivera Electric &middot; Feb 10</span><span>$1,800.00</span></div><div class="mrow"><span>Rivera Electric LLC &middot; Jun 14</span><span>$2,450.00</span></div>
+<div class="mres"><div class="big c-count" data-to="4250">$4,250.00</div><p>Nonemployee compensation reaches the $2,000 line, crossed on June 14, 2026: 1099-NEC box 1a. Rows merged under one TIN: Rivera Electric; Rivera Electric LLC.</p></div></div></div></div>
+    </div><div class="scene" id="sc4" data-step="4">
+      <div class="txt c-in"><span class="n">04 / 07</span><h2>A verdict for every payee, with its reason.</h2><p>Four to file, one close to the line, three left out: merchandise, a card payment that the processor reports on a 1099-K, and a corporation.</p></div>
+      <div class="c-pnl"><div class="pnl"><div class="pnl-h"><img src="../../../assets/mark.svg" alt="">Endwise answer<span class="r">lineStatus: official</span></div>
+<p class="ans">Of 8 payees paid in 2026, 4 need a form (2 Form 1099-NEC, 3 Form 1099-MISC) at the $2,000 line; 4 do not.</p>
+<ul class="vd c-rows"><li><b>Rivera Electric</b><span><span class="tag2 file">file</span></span><span class="why">Nonemployee compensation: $4,250.00 reaches the $2,000 line (crossed on June 14, 2026): report it in 1099-NEC box 1a.</span></li><li><b>Okafor &amp; Lin LLP</b><span><span class="tag2 file">file</span></span><span class="why">Nonemployee compensation: $2,400.00 reaches the $2,000 line. Gross proceeds paid to an attorney: $900.00 reaches the $600 line: 1099-MISC box 10.</span></li><li><b>Bayview Properties</b><span><span class="tag2 file">file</span></span><span class="why">Rents: $2,500.00 reaches the $2,000 line (crossed on February 5, 2026): report it in 1099-MISC box 1.</span></li><li><b>Maya Chen</b><span><span class="tag2 file">file</span></span><span class="why">Royalties: $45.00 reaches the $10 line (crossed on November 30, 2026): report it in 1099-MISC box 2.</span></li><li><b>Dana Whitfield</b><span><span class="tag2 near">near</span></span><span class="why">Nonemployee compensation: $1,550.00 is under the $2,000 line for 1099-NEC box 1a.</span></li><li><b>Coastal Supply Co</b><span><span class="tag2 out">left out</span></span><span class="why">$5,400.00 left out. Payments for merchandise are not reported on Form 1099-NEC or 1099-MISC.</span></li><li><b>Lumen Web Studio</b><span><span class="tag2 out">left out</span></span><span class="why">$3,100.00 left out. Paid by card: the processor reports it on Form 1099-K.</span></li><li><b>Summit Staffing Inc</b><span><span class="tag2 out">left out</span></span><span class="why">$9,600.00 left out. Paid to a corporation: not reported, except legal fees and the other listed cases.</span></li></ul></div></div>
+    </div><div class="scene" id="sc5" data-step="5">
+      <div class="txt c-in"><span class="n">05 / 07</span><h2>Dates to plan around. Files ready to upload.</h2><p>The due dates come from the IRS instructions, and the IRIS upload files come with the answer.</p></div>
+      <div class="c-pnl"><div class="pnl"><div class="pnl-h">Due dates for 2026 forms<span class="r">filing year 2027</span></div>
+<div class="dd c-rows"><div><div class="d">Feb 1, 2027</div><div class="l">1099-NEC: file and furnish</div></div><div><div class="d">Feb 1, 2027</div><div class="l">1099-MISC: furnish (Feb 16 for box 8 or 10)</div></div><div><div class="d">Mar 1, 2027</div><div class="l">1099-MISC: file on paper</div></div><div><div class="d">Mar 31, 2027</div><div class="l">1099-MISC: file electronically</div></div></div>
+<div class="files c-rows"><span>1099-verdicts-2026.csv</span><span>iris-1099-nec-2026.csv</span><span>iris-1099-misc-2026.csv</span></div>
+<p class="srcl">Source: IRS, Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), Filing dates, read 2026-10-31. E-filing is required at 10 or more information returns in total for the year; this client files 5.</p></div></div>
+    </div><div class="scene" id="sc6" data-step="6">
+      <div class="txt c-in"><span class="n">06 / 07</span><h2>Next client: a seller's 1099-K.</h2><p>The form says $48,000. The books say $45,140. <b>The tool walks one down to the other, line by line,</b> and says where each amount goes on Schedule C.</p><p class="note">The 1099-K reconciliation tool's own worked example.</p></div>
+      <div class="c-pnl"><div class="pnl"><div class="pnl-h"><img src="../../../assets/mark.svg" alt="">1099-k-reconciliation<span class="r">tax year 2025, sole proprietor</span></div>
+<div class="wf c-rows"><div class="r start"><div class="lab"><span>Box 1a gross</span><small>Form 1099-K, Shopify Payments</small><div class="track"><span class="bar c-bar-g" style="left:0.00%;width:100.00%"></span></div></div><span class="v">$48,000.00</span></div><div class="r neg"><div class="lab"><span>Sales tax collected and paid over</span><small>Not gross receipts</small><div class="track"><span class="bar c-bar-g" style="left:94.04%;width:5.96%"></span></div></div><span class="v">-$2,860.00</span></div><div class="r sub"><div class="lab"><span>Business gross receipts</span><small>Schedule C line 1</small><div class="track"><span class="bar c-bar-g" style="left:0.00%;width:94.04%"></span></div></div><span class="v">$45,140.00</span></div><div class="r neg"><div class="lab"><span>Refunds and chargebacks</span><small>Schedule C line 2</small><div class="track"><span class="bar c-bar-g" style="left:88.94%;width:5.10%"></span></div></div><span class="v">-$2,450.00</span></div><div class="r sub"><div class="lab"><span>Net sales</span><small>Schedule C line 3</small><div class="track"><span class="bar c-bar-g" style="left:0.00%;width:88.94%"></span></div></div><span class="v">$42,690.00</span></div><div class="r neg"><div class="lab"><span>Fees, labels and postage</span><small>Line 10 and expenses</small><div class="track"><span class="bar c-bar-g" style="left:83.52%;width:5.42%"></span></div></div><span class="v">-$2,602.40</span></div><div class="r tot"><div class="lab"><span>What you kept from these sales</span><small>Close to what the platform paid out</small><div class="track"><span class="bar c-bar-g" style="left:0.00%;width:83.52%"></span></div></div><span class="v">$40,087.60</span></div></div>
+<ul class="chk"><li>Your books' gross receipts of $45,140.00 tie to the walkdown exactly.</li><li class="w">2 months differ from your books: January by -$50.00, December by $50.00. Platforms date payments in UTC or by when funds are processed.</li></ul>
+<span class="pill2">Reconcile over the API or MCP: $0.05</span></div></div>
+    </div><div class="scene" id="sc7" data-step="7">
+      <div class="txt c-in"><span class="n">07 / 07</span><h2>A person signs off.</h2><p>Your staff check each figure against its working and source, then send. AI did the work. Endwise did the numbers.</p></div>
+      <div class="c-pnl"><div class="pnl"><div class="pnl-h">Before anything is sent<span class="r">a person checks</span></div>
+<div class="sign c-rows"><div><i>&#10003;</i>4 payees to file, each with the rule that put them over the line</div><div><i>&#10003;</i>1 W-9 to collect now: Dana Whitfield, within 25% of the line</div><div><i>&#10003;</i>3 payees left out, each with the reason</div><div><i>&#10003;</i>The 1099-K ties to the books; 2 months differ by $50 each</div><div><i>&#10003;</i>Every figure carries its IRS source and the date it was read</div></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">How an agent calls it</span>
+      <h2 class="h2" id="how-h">That was one agent and two tool calls.<br class="br-d"> <span class="dim">Yours connects the same way.</span></h2>
+    </div>
+    <ol class="p-flow p-flowwrap rv">
+      <li><span class="k">1 &middot; Person</span><h4>Someone asks</h4><p>A client, a manager or a colleague asks the assistant a question with an exact answer.</p></li>
+      <li><span class="k">2 &middot; Agent</span><h4>The agent picks a tool</h4><p>It does the reading and the writing, and hands the exact part to Endwise.</p></li>
+      <li class="us"><span class="k">3 &middot; Endwise</span><h4>The tool runs the rule</h4><p>Same input, same answer, from an official source with the date it was read.</p></li>
+      <li><span class="k">4 &middot; Agent</span><h4>The answer comes back sourced</h4><p>The agent replies with the figure, the working and the source line, so a person can check it.</p></li>
+    </ol>
+    <div class="p-connect" id="connect">
+      <div class="rv">
+        <span class="eyebrow">Connect your agent</span>
+        <h3 style="margin-top:16px">Three steps. Same tools and same prices as the API.</h3>
+        <p>Endwise runs an MCP server over Streamable HTTP. Apps that support MCP sign-in connect with just the address. Other clients use an API key.</p>
+        <p class="p-rest">Building your own agent? The same tools are on the REST API: <code>POST /api/v1/tools/&lt;tool&gt;</code>, with the <a class="ul" href="/toll-preview/api/v1/openapi.json">OpenAPI document</a>.</p>
+        <p style="margin-top:18px"><a class="lnk" href="/toll-preview/developers/mcp/">The full MCP guide <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <ol class="p-steps rv">
+        <li><span class="n">01</span><div><h4>Add the address</h4><p>In the Claude apps, add it as a custom connector. In ChatGPT, add it as a custom MCP server.</p><div class="p-addr"><code><span class="js-origin">https://krishnachagti-sudo.github.io</span>/toll-preview/mcp</code><button type="button" class="p-copy">Copy</button></div></div></li>
+        <li><span class="n">02</span><div><h4>Sign in with OAuth, or use a key</h4><p>Sign-in opens an Endwise page where you approve the app and set its monthly limit. Other clients send an API key as a Bearer token.</p></div></li>
+        <li><span class="n">03</span><div><h4>List, then call</h4><p>Listing tools needs nothing. Each call is priced and limited exactly like an API call, and a call that fails is refunded.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="sec" id="who" aria-labelledby="who-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Who uses it</span>
+      <h2 class="h2" id="who-h">Firms that run the same exact jobs for many clients.<br class="br-d"> <span class="dim">Ops teams that need answers they can audit.</span></h2>
+    </div>
+    <div class="p-label rv" id="firms"><h3>For firms</h3><p>The same exact job at volume, often through an AI assistant now.</p></div>
+    <div class="p-grid3">
+      <article class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Bookkeeping and accounting firms</h3><p>1099 lines and 1099-K reconciliation, tax set-aside, MACRS, mileage, and a rate on a date.</p><ul class="p-links"><li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li><li><a href="/toll-preview/1099-k-reconciliation/">1099-K reconciliation</a></li><li><a href="/toll-preview/macrs-depreciation/">MACRS depreciation</a></li><li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li></ul></article>
+      <article class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>Payroll bureaus and HR outsourcers</h3><p>Final paycheck, PTO and sick leave, overtime, minimum wage, garnishment, FMLA and WARN.</p><ul class="p-links"><li><a href="/toll-preview/final-paycheck-deadline/">Final paycheck deadline</a></li><li><a href="/toll-preview/pto-accrual/">PTO and sick leave accrual</a></li><li><a href="/toll-preview/overtime-auditor/">Overtime auditor</a></li><li><a href="/toll-preview/garnishment-calculator/">Garnishment calculator</a></li></ul></article>
+      <article class="p-card hue-agent rv"><h3><span class="hue-dot" aria-hidden="true"></span>Property managers</h3><p>Rent caps, late fees and security deposit letters.</p><ul class="p-links"><li><a href="/toll-preview/rent-increase-cap/">Rent increase cap</a></li><li><a href="/toll-preview/late-fee-checker/">Rent late fee checker</a></li><li><a href="/toll-preview/security-deposit-letter/">Security deposit letter</a></li></ul></article>
+      <article class="p-card hue-file rv"><h3><span class="hue-dot" aria-hidden="true"></span>Construction back offices</h3><p>Lien deadlines, lien waivers, pay applications and retainage.</p><ul class="p-links"><li><a href="/toll-preview/lien-deadline/">Lien deadline calculator</a></li><li><a href="/toll-preview/lien-waiver/">Lien waivers</a></li><li><a href="/toll-preview/pay-application/">Pay application and retainage</a></li></ul></article>
+      <article class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>Trucking compliance services and fleets</h3><p>Quarterly IFTA returns and per diem worksheets, at the rate in force each day.</p><ul class="p-links"><li><a href="/toll-preview/ifta-calculator/">IFTA return</a></li><li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li></ul></article>
+      <article class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Amazon and e-commerce seller agencies</h3><p>Fees, settlements, FBA claims and GPSR listing checks.</p><ul class="p-links"><li><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement reconciliation</a></li><li><a href="/toll-preview/fba-refund-not-returned/">FBA refunded, not returned</a></li><li><a href="/toll-preview/inbound-placement-fee-calculator/">Inbound placement fee</a></li><li><a href="/toll-preview/gpsr-listing-checker/">GPSR listing checker</a></li></ul></article>
+    </div>
+    <div class="p-label rv" id="ops"><h3>For ops teams</h3><p>Teams of roughly 50 to 1,000 people building internal agents. Every answer carries its working and its dated source.</p></div>
+    <div class="p-grid3">
+      <article class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>AP/AR and finance ops</h3><p>Payment schedules, late payment interest, reconciliations and XRechnung invoices.</p><ul class="p-links"><li><a href="/toll-preview/payment-schedule/">Payment schedule</a></li><li><a href="/toll-preview/late-payment-interest/">Late payment interest</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/">Bank reconciliation difference</a></li><li><a href="/toll-preview/xrechnung-viewer/">XRechnung viewer</a></li></ul></article>
+      <article class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>People ops</h3><p>The payroll and leave rules: final pay, PTO and sick leave, FMLA with state leave, WARN.</p><ul class="p-links"><li><a href="/toll-preview/final-paycheck-deadline/">Final paycheck deadline</a></li><li><a href="/toll-preview/fmla-state-leave-overlay/">State leave and FMLA</a></li><li><a href="/toll-preview/warn-act-checker/">WARN Act checker</a></li></ul></article>
+      <article class="p-card hue-file rv"><h3><span class="hue-dot" aria-hidden="true"></span>E-commerce finance</h3><p>Payouts split into sales, refunds, fees and tax; settlements; 1099-K against the books.</p><ul class="p-links"><li><a href="/toll-preview/payout-reconciliation/">Payout reconciliation</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement reconciliation</a></li><li><a href="/toll-preview/1099-k-reconciliation/">1099-K reconciliation</a></li></ul></article>
+    </div>
+  </div>
+</section>
+<section class="sec" id="tools" aria-labelledby="tools-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">The tools</span>
+      <h2 class="h2" id="tools-h">One job per tool.<br class="br-d"> <span class="dim">Each one shows its work.</span></h2>
+    </div>
+    <div class="p-tools">
+      <div class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Tax and bookkeeping</h3><ul><li><a href="/toll-preview/1099-threshold/">1099 threshold tracker<span>from $0.10</span></a></li><li><a href="/toll-preview/1099-k-reconciliation/">1099-K reconciliation<span>from $0.05</span></a></li><li><a href="/toll-preview/tax-set-aside/">Tax set-aside<span>from $0.10</span></a></li><li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement<span>from $0.001</span></a></li><li><a href="/toll-preview/fx-on-date/">Exchange rate on a date<span>$0.001</span></a></li></ul></div><div class="p-card hue-date rv"><h3><span class="hue-dot" aria-hidden="true"></span>Payroll and leave</h3><ul><li><a href="/toll-preview/final-paycheck-deadline/">Final paycheck deadline<span>from $0.005</span></a></li><li><a href="/toll-preview/pto-accrual/">PTO and sick leave<span>from $0.01</span></a></li><li><a href="/toll-preview/minimum-wage-lookup/">Minimum wage lookup<span>from $0.002</span></a></li><li><a href="/toll-preview/fmla-eligibility-checker/">FMLA eligibility<span>from $0.01</span></a></li><li><a href="/toll-preview/warn-act-checker/">WARN Act checker<span>from $0.01</span></a></li></ul></div><div class="p-card hue-agent rv"><h3><span class="hue-dot" aria-hidden="true"></span>Property and construction</h3><ul><li><a href="/toll-preview/rent-increase-cap/">Rent increase cap<span>from $0.02</span></a></li><li><a href="/toll-preview/late-fee-checker/">Rent late fee checker<span>from $0.01</span></a></li><li><a href="/toll-preview/lien-deadline/">Lien deadline calculator<span>from $0.01</span></a></li><li><a href="/toll-preview/lien-waiver/">Lien waivers<span>from $1.50</span></a></li><li><a href="/toll-preview/pay-application/">Pay application<span>from $0.002</span></a></li></ul></div><div class="p-card hue-file rv"><h3><span class="hue-dot" aria-hidden="true"></span>Trucking and sellers</h3><ul><li><a href="/toll-preview/ifta-calculator/">IFTA return<span>from $0.01</span></a></li><li><a href="/toll-preview/trucker-per-diem/">Trucker per diem<span>from $0.02</span></a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement<span>from $1.00</span></a></li><li><a href="/toll-preview/fba-refund-not-returned/">FBA refunded, not returned<span>from $0.25</span></a></li><li><a href="/toll-preview/gpsr-listing-checker/">GPSR listing checker<span>from $0.01</span></a></li></ul></div><div class="p-card hue-money rv"><h3><span class="hue-dot" aria-hidden="true"></span>Finance ops and dates</h3><ul><li><a href="/toll-preview/payment-schedule/">Payment schedule<span>from $0.01</span></a></li><li><a href="/toll-preview/late-payment-interest/">Late payment interest<span>from $0.02</span></a></li><li><a href="/toll-preview/xrechnung-viewer/">XRechnung viewer<span>from $0.01</span></a></li><li><a href="/toll-preview/business-days/">Business days<span>$0.0005</span></a></li><li><a href="/toll-preview/payout-reconciliation/">Payout reconciliation<span>from $0.10</span></a></li></ul></div>
+    </div>
+    <p class="p-more rv"><a class="lnk" href="/toll-preview/tools/">All tools, side by side <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+  </div>
+</section>
+<section class="sec" id="pricing" aria-labelledby="price-h">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="h2" id="price-h">Pay per use, with hard limits.<br class="br-d"> <span class="dim">Or one invoice for the team.</span></h2>
+    </div>
+    <div class="p-price">
+      <div class="p-card rv">
+        <span class="tag">For agents and code</span>
+        <div class="big">From $10<small>credit, used per call</small></div>
+        <div class="p-packs" aria-label="Credit packs"><span>$10</span><span>$25 <b>+$1</b></span><span>$50 <b>+$5</b></span><span>$100 <b>+$15</b></span><span>$250 <b>+$50</b></span></div>
+        <ul class="ticks">
+          <li>Each call takes its listed price, often a fraction of a cent</li>
+          <li>A hard monthly limit on the account and on each key. A call past it is refused, not billed.</li>
+          <li>A call that fails is refunded automatically</li>
+        </ul>
+        <div class="p-eg">
+          <div><span>Final paycheck deadline, over the API or MCP</span><b>$0.01 a lookup</b></div>
+          <div><span>1099 year-end scan, first 500 each year</span><b>$0.10 a payee-year</b></div>
+          <div><span>1099-K reconciliation, over the API or MCP</span><b>$0.05</b></div>
+        </div>
+      </div>
+      <div class="p-card rv">
+        <span class="tag">For companies</span>
+        <div class="big">$290<small>a year, Team plan</small></div>
+        <ul class="ticks">
+          <li>$350 of use across every tool, the web, the API and MCP</li>
+          <li>Up to 5 people on one balance</li>
+          <li>A spending limit on every key</li>
+          <li>Billed once a year. Nothing renews by itself.</li>
+          <li>Pay by invoice or check, with your PO number</li>
+        </ul>
+        <a class="btn btn-light btn-lg" href="/toll-preview/contact/">Ask for a Team plan <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="p-passes rv"><span>For people on the web, passes that never renew:</span><span><b>Season Pass $19</b>, 4 months</span><span><b>Year Pass $49</b></span><span><b>Practice Pass $149</b>, for bookkeepers working for many clients</span><a class="lnk" href="/toll-preview/pricing/">Every price <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  </div>
+</section>
+<section class="sec" id="free" aria-labelledby="free-h">
+  <div class="wrap">
+    <div class="p-free">
+      <div class="rv">
+        <span class="eyebrow">People use it too</span>
+        <h2 class="h2" id="free-h">Every tool has its own page.<br class="br-d"> <span class="dim">Free single answers for anyone.</span></h2>
+        <p class="sec-lede">The person checking the agent's work can run the same question on the page and get the same answer, with the same source.</p>
+        <div class="hero-actions" style="justify-content:flex-start"><a class="btn btn-light btn-lg" href="/toll-preview/final-paycheck-deadline/">Try the final paycheck deadline <svg aria-hidden="true"><use href="#i-arrow"/></svg></a><a class="btn btn-ghost btn-lg" href="/toll-preview/tools/">All tools</a></div>
+      </div>
+      <dl class="rv">
+        <div><dt>Without an account</dt><dd>5 free runs a day</dd></div>
+        <div><dt>With an account, spent first</dt><dd>$0.25 free each month</dd></div>
+        <div><dt>Final paycheck deadline on its page</dt><dd>Free</dd></div>
+        <div><dt>1099 single-payee check</dt><dd>Free</dd></div>
+        <div><dt>Subscription</dt><dd>None</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+<section class="closing" aria-labelledby="close-h">
+  <div class="cglow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="wrap rv">
+    <h2 id="close-h">Let your AI do the work.<br class="br-d"> Let Endwise do the numbers.</h2>
+    <p class="sec-lede">Connect your agent with one address, or try any tool on its page first.</p>
+    <div class="hero-actions">
+      <a href="#connect" class="btn btn-light btn-lg">Connect your agent <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="/toll-preview/contact/" class="btn btn-ghost btn-lg">Ask for a Team plan</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="../../../assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+
+<script>
+(function () {
+  var o = document.querySelectorAll('.js-origin');
+  for (var i = 0; i < o.length; i++) if (/^https?:/.test(location.origin)) o[i].textContent = location.origin;
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('.p-copy'); if (!b) return;
+    var t = b.parentNode.querySelector('code').textContent;
+    try { navigator.clipboard.writeText(t); b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); } catch (x) {}
+  });
+  var els = document.querySelectorAll('.rv');
+  var reduce = false; try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (x) {}
+  if (reduce || !('IntersectionObserver' in window)) { for (var j = 0; j < els.length; j++) els[j].classList.add('in'); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  for (var k = 0; k < els.length; k++) io.observe(els[k]);
+})();
+</script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  var root = document.documentElement;
+  if (!root.classList.contains('motion') || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.c-h1 .w', { yPercent: 60, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.06 });
+  gsap.from('.c-up', { y: 18, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.12, delay: 0.5 });
+  gsap.to('.c-sky .s1', { xPercent: 30, yPercent: 20, ease: 'none', scrollTrigger: { trigger: '.c-hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.c-sky .s2', { xPercent: -30, yPercent: 40, ease: 'none', scrollTrigger: { trigger: '.c-hero', start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.to('.c-hero .wrap', { y: -80, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '.c-hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  var fill = document.querySelector('.c-fill'), num = document.querySelector('.c-step-n');
+  ScrollTrigger.create({ trigger: '#story', start: 'top 64px', end: 'bottom bottom', onUpdate: function (s) { fill.style.width = (s.progress * 100).toFixed(1) + '%'; } });
+
+  gsap.utils.toArray('.scene').forEach(function (sc) {
+    var n = sc.getAttribute('data-step');
+    ScrollTrigger.create({ trigger: sc, start: 'top 55%', end: 'bottom 55%', onToggle: function (s) { if (s.isActive) num.textContent = ('0' + n).slice(-2) + ' / 07'; } });
+    var tl = gsap.timeline({ scrollTrigger: { trigger: sc, start: 'top 75%', toggleActions: 'play none none reverse' } });
+    tl.from(sc.querySelector('.txt'), { x: -40, opacity: 0, duration: 0.8, ease: 'power3.out' })
+      .from(sc.querySelector('.pnl'), { y: 60, scale: 0.96, rotateX: 8, opacity: 0, duration: 1, ease: 'power3.out', transformPerspective: 900 }, '<0.1');
+    var rows = sc.querySelectorAll('.c-rows > *, .c-rows tbody tr');
+    if (rows.length) tl.from(rows, { y: 14, opacity: 0, duration: 0.5, stagger: 0.06, ease: 'power2.out' }, '<0.35');
+    var bars = sc.querySelectorAll('.c-bar-g');
+    if (bars.length) tl.from(bars, { scaleX: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out' }, '<0.2');
+    var cnt = sc.querySelector('.c-count');
+    if (cnt) { var o = { v: 0 }; tl.to(o, { v: 4250, duration: 1.1, ease: 'power2.out', onUpdate: function () { cnt.textContent = '$' + o.v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } }, '<0.2'); }
+    gsap.to(sc.querySelector('.pnl'), { y: -30, ease: 'none', scrollTrigger: { trigger: sc, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+});
+</script>
+
+</body>
+</html>
