@@ -111,6 +111,9 @@ const STR = {
     priceAccount: (price) => `हर रन का खर्च ${price} है, आपके बैलेंस से कटता है।`,
     priceFree: (price) => `हर रन का खर्च ${price} है। खाते के बिना रोज़ 5 मुफ़्त रन मिलते हैं।`,
     runNoteFree: 'रोज़ 5 मुफ़्त रन, खाता ज़रूरी नहीं।',
+    partRun: (price) => `${price} प्रति रन`,
+    partBalance: 'आपके बैलेंस से कटता है',
+    partFree: 'खाते के बिना रोज़ 5 मुफ़्त रन',
     linkedNote: (btn) => `यह आपके खोले लिंक से इसी पेज पर निकाला गया है। असली रन के लिए "${btn}" दबाएं।`,
     exampleNote: 'यह इसी पेज पर निकाला गया उदाहरण है। असली रन के लिए "कार्य दिवस गिनें" दबाएं।',
     inNote: 'दिल्ली और नई दिल्ली के केंद्र सरकार के प्रशासनिक कार्यालयों की राजपत्रित (बंद) छुट्टियां, कार्मिक एवं प्रशिक्षण विभाग (DoPT) के सालाना कार्यालय ज्ञापन से। इसमें प्रतिबंधित (वैकल्पिक) छुट्टियां, किसी राज्य की सूची और बैंक की छुट्टियां शामिल नहीं हैं: राज्यों और बैंकों की छुट्टियां अलग होती हैं। सप्ताहांत शनिवार और रविवार है (5 दिन का सप्ताह)।',
@@ -546,14 +549,14 @@ function showPrice() {
   Promise.all([T.api(`/api/v1/tools/${SLUG}`), T.me()]).then(([json, account]) => {
     const price = json.tool.price.display;
     const el = $('bd-price');
-    // The English page's price line is three short parts; the Hindi page's one sentence.
-    const parts = L === 'hi' ? null : el.querySelectorAll('span');
+    // The price line is three short parts, in the page's language.
+    const parts = el.querySelectorAll('span');
     if (account) {
-      if (parts?.length) { parts[0].textContent = `${T.money(price)} a run`; parts[1].textContent = 'taken from your balance'; }
+      if (parts?.length) { parts[0].textContent = say('partRun', `${T.money(price)} a run`, T.money(price)); parts[1].textContent = say('partBalance', 'taken from your balance'); }
       else el.textContent = say('priceAccount', `Each run costs ${T.money(price)}, taken from your balance.`, T.money(price));
       $('bd-run-note').textContent = '';
     } else {
-      if (parts?.length) { parts[0].textContent = `${T.money(price)} a run`; parts[1].textContent = '5 free runs a day, no card needed'; }
+      if (parts?.length) { parts[0].textContent = say('partRun', `${T.money(price)} a run`, T.money(price)); parts[1].textContent = say('partFree', '5 free runs a day, no card needed'); }
       else el.textContent = say('priceFree', `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`, T.money(price));
       $('bd-run-note').textContent = L === 'hi' ? say('runNoteFree', '5 free runs a day, no account needed.') : '';
     }

@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Your employee's levy</h2><p class="muted">Enter take-home pay and the filing status and dependents from the employee's statement.</p><form method="get" action="/toll-preview/garnishment-calculator/" class="cp-tool-form"><input type="hidden" name="order" value="levy"><input type="hidden" name="fs" value="single"><input type="hidden" name="freq" value="weekly"><div class="field"><label for="tf-deps">Dependents</label><input type="number" id="tf-deps" name="deps" value="3"></div><div class="field"><label for="tf-take">Take-home pay ($)</label><input type="number" id="tf-take" name="take" value="800"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work out the levy</button></form><p class="small"><a href="/toll-preview/garnishment-calculator/?order=levy&amp;fs=single&amp;freq=weekly&amp;deps=3&amp;take=800">Open these figures in the calculator</a></p></aside>
 <section>
 <h2 id="table">Exempt take-home pay, 2026</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Publication 1494 Table 1: the amount for the filing status plus the amount for each dependent claimed on the statement.</caption><thead><tr><th scope="col">Filing status</th><th scope="col">Paid</th><th scope="col" class="r num">0 dependents</th><th scope="col" class="r num">1</th><th scope="col" class="r num">2</th><th scope="col" class="r num">3</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Publication 1494 Table 1: the amount for the filing status plus the amount for each dependent claimed on the statement.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Filing status</th><th scope="col">Paid</th><th scope="col" class="r num">0 dependents</th><th scope="col" class="r num">1</th><th scope="col" class="r num">2</th><th scope="col" class="r num">3</th></tr></thead><tbody>
 <tr><th scope="row">Single</th><td>daily</td><td class="r num">$61.92</td><td class="r num">$82.30</td><td class="r num">$102.68</td><td class="r num">$123.06</td></tr>
 <tr><th scope="row">Single</th><td>weekly</td><td class="r num">$309.62</td><td class="r num">$411.54</td><td class="r num">$513.46</td><td class="r num">$615.38</td></tr>
 <tr><th scope="row">Single</th><td>biweekly</td><td class="r num">$619.23</td><td class="r num">$823.08</td><td class="r num">$1,026.93</td><td class="r num">$1,230.78</td></tr>
@@ -98,7 +99,7 @@
 <tr><th scope="row">Head of household</th><td>biweekly</td><td class="r num">$928.85</td><td class="r num">$1,132.70</td><td class="r num">$1,336.55</td><td class="r num">$1,540.40</td></tr>
 <tr><th scope="row">Head of household</th><td>semimonthly</td><td class="r num">$1,006.25</td><td class="r num">$1,227.08</td><td class="r num">$1,447.91</td><td class="r num">$1,668.74</td></tr>
 <tr><th scope="row">Head of household</th><td>monthly</td><td class="r num">$2,012.50</td><td class="r num">$2,454.17</td><td class="r num">$2,895.84</td><td class="r num">$3,337.51</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="examples">The examples in Publication 1494</h2>
@@ -107,7 +108,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.irs.gov/pub/irs-pdf/p1494.pdf">IRS Publication 1494 (Rev. 12-2025), exempt amounts for 2026 (read November 8, 2026)</a></li><li><a href="https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapII.htm">15 U.S.C. 1672 to 1677, U.S. Code on govinfo.gov (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.irs.gov/pub/irs-pdf/p1494.pdf">IRS Publication 1494 (Rev. 12-2025), exempt amounts for 2026 (read November 8, 2026)</a><span class="src-m">irs.gov</span></li><li><a href="https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapII.htm">15 U.S.C. 1672 to 1677, U.S. Code on govinfo.gov (read November 8, 2026)</a><span class="src-m">govinfo.gov</span></li></ul>
 <p class="cp-note">Not legal advice. Follow the order you were served: where it sets a lower amount, the order controls. Ask the court or agency that issued it, or a lawyer, about anything it does not answer.</p>
 </section>
 

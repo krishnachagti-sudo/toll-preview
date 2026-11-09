@@ -4,7 +4,11 @@ Yes, in 3 steps: in ChatGPT on the web, add Endwise as a custom MCP server with 
 
 ## Can ChatGPT connect to the Endwise MCP server?
 
-Yes. ChatGPT can add a custom **MCP server** (MCP, the Model Context Protocol, is the standard way an AI app finds and calls outside tools). OpenAI lists three ways to sign in to one: **OAuth**, **no authentication**, and a mix of the two. Endwise offers OAuth sign-in, so you choose **OAuth** and sign in to Endwise when ChatGPT asks.
+Yes. ChatGPT can add a custom **MCP server** (MCP, the Model Context Protocol, is the standard way an AI app finds and calls outside tools).
+
+**Read the rest: Can ChatGPT connect to the Endwise MCP server?**
+
+OpenAI lists three ways to sign in to one: **OAuth**, **no authentication**, and a mix of the two. Endwise offers OAuth sign-in, so you choose **OAuth** and sign in to Endwise when ChatGPT asks.
 
 OpenAI's page says custom MCP servers are added in ChatGPT on the web, and that workspace permissions and security settings apply. If you do not see the option in a work or school workspace, ask its admin.
 
@@ -21,6 +25,8 @@ Set authentication to **OAuth**. ChatGPT reads Endwise's sign-in details from th
 ## What does the sign-in look like?
 
 ChatGPT opens a Endwise page. If you are not signed in, you sign in or create an account first and come straight back. The page names the app asking (chatgpt.com), says what it will be able to do, and where you go back to after you approve.
+
+**Read the rest: What does the sign-in look like?**
 
 - It can list the tools and their prices, run tools and pay for each run from your balance, and ask what a run would cost.
 - It cannot see your password, add money, change your account or make API keys.
@@ -61,7 +67,9 @@ That call costs $0.0005, taken from your balance. See the [Business days](https:
 
 ## What about custom GPTs?
 
-You do not need one. OpenAI's help center has a custom GPT retirement and migration FAQ. It gives 11 December 2026 as the scheduled date when custom GPTs stop running, says timing can vary by account and workspace, and says existing GPT Actions do not carry over automatically. They have to be rebuilt as an app or a custom MCP server, which is the route above.
+You do not need one. OpenAI's help center has a custom GPT retirement and migration FAQ. It gives 11 December 2026 as the scheduled date when custom GPTs stop running, says timing can vary by account and workspace, and says existing GPT Actions do not carry over automatically.
+
+They have to be rebuilt as an app or a custom MCP server, which is the route above.
 
 ## Can I use Endwise with the OpenAI API?
 
@@ -92,6 +100,8 @@ By default OpenAI asks for your approval before data goes to a remote MCP server
 ## What does OpenAI hold?
 
 With sign-in, ChatGPT holds a token that works only for the Endwise MCP server and only for that connection. It lasts an hour, and ChatGPT can renew it with a refresh token until you disconnect. No password or API key is given to OpenAI, and disconnecting on your account page ends the token at once.
+
+**Read the rest: What does OpenAI hold?**
 
 With the API, your code sends the key to OpenAI in the request. OpenAI's MCP guide says the Responses API does not store the value of its `authorization` field. It does not say the same about `headers`, so assume a key placed there reaches OpenAI. Make a key for that one use, set a low monthly limit, and revoke it when you are done.
 

@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Your pay stub</h2><p class="muted">Enter gross pay and the deductions the law requires; the calculator gives disposable earnings and the limits.</p><form method="get" action="/toll-preview/garnishment-calculator/" class="cp-tool-form"><input type="hidden" name="state" value="TX"><input type="hidden" name="freq" value="biweekly"><div class="field"><label for="tf-gross">Gross pay this period ($)</label><input type="number" id="tf-gross" name="gross" value="1850"></div><div class="field"><label for="tf-req">Deductions required by law ($)</label><input type="number" id="tf-req" name="req" value="368.28"></div><div class="field"><label for="tf-support">Child support already withheld ($)</label><input type="number" id="tf-support" name="support" value="0"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work out this paycheck</button></form><p class="small"><a href="/toll-preview/garnishment-calculator/?state=TX&amp;freq=biweekly&amp;gross=1850&amp;req=368.28&amp;support=0">Open these figures in the calculator</a></p></aside>
 <section>
 <h2 id="stub">The worked stub</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Biweekly pay. Required means required by law to be withheld (15 U.S.C. 1672(b)).</caption><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th><th scope="col">Comes off?</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Biweekly pay. Required means required by law to be withheld (15 U.S.C. 1672(b)).</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th><th scope="col">Comes off?</th></tr></thead><tbody>
 <tr><th scope="row">Gross earnings</th><td class="r num">$1,850.00</td><td></td></tr>
 <tr><th scope="row">Federal income tax withholding</th><td class="r num">$162.00</td><td>Yes, required by law</td></tr>
 <tr><th scope="row">State income tax withholding</th><td class="r num">$64.75</td><td>Yes, required by law</td></tr>
@@ -88,12 +89,12 @@
 <tr><th scope="row">Union dues</th><td class="r num">$25.00</td><td>No, voluntary</td></tr>
 <tr><th scope="row">Disposable earnings</th><td class="r num">$1,481.72</td><td></td></tr>
 <tr><th scope="row">Take-home pay (for comparison)</th><td class="r num">$1,276.22</td><td>Not the base</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>On this stub the federal limit is $370.43: the lesser of 25% ($370.43) and the amount above $435.00 ($1,046.72).</p>
 </section>
 <section>
 <h2 id="types">Deductions the calculator knows</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>How each kind of deduction is treated under the federal definition.</caption><thead><tr><th scope="col">Deduction</th><th scope="col">Required by law?</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">How each kind of deduction is treated under the federal definition.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Deduction</th><th scope="col">Required by law?</th></tr></thead><tbody>
 <tr><th scope="row">Federal income tax withholding</th><td>Yes: subtract</td></tr>
 <tr><th scope="row">State income tax withholding</th><td>Yes: subtract</td></tr>
 <tr><th scope="row">Local income tax withholding</th><td>Yes: subtract</td></tr>
@@ -107,11 +108,11 @@
 <tr><th scope="row">401(k), 403(b) or other voluntary retirement</th><td>No: leave in</td></tr>
 <tr><th scope="row">Union dues</th><td>No: leave in</td></tr>
 <tr><th scope="row">Other voluntary deduction</th><td>No: leave in</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapII.htm">15 U.S.C. 1672 to 1677, U.S. Code on govinfo.gov (read November 8, 2026)</a></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/30-cppa">U.S. Department of Labor: Fact Sheet #30, Wage Garnishment Protections of the CCPA (revised December 2024, read November 8, 2026)</a></li><li><a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gcl&amp;section=15-601.1">Maryland: Md. Code, Com. Law 15-601.1 (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapII.htm">15 U.S.C. 1672 to 1677, U.S. Code on govinfo.gov (read November 8, 2026)</a><span class="src-m">govinfo.gov</span></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/30-cppa">U.S. Department of Labor: Fact Sheet #30, Wage Garnishment Protections of the CCPA (revised December 2024, read November 8, 2026)</a><span class="src-m">dol.gov</span></li><li><a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gcl&amp;section=15-601.1">Maryland: Md. Code, Com. Law 15-601.1 (read November 8, 2026)</a><span class="src-m">mgaleg.maryland.gov</span></li></ul>
 <p class="cp-note">Not legal advice. Follow the order you were served: where it sets a lower amount, the order controls. Ask the court or agency that issued it, or a lawyer, about anything it does not answer.</p>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Start from gross.</strong> Take gross earnings for the pay period: wages, salary, commission and bonus paid in it.</li><li><strong>Subtract required deductions.</strong> Subtract only amounts the law requires to be withheld: federal, state and local income tax, Social Security, Medicare, and state-mandated items such as state disability insurance.</li><li><strong>Leave voluntary deductions in.</strong> Do not subtract health premiums, 401(k) contributions, union dues or other voluntary items (Maryland exempts medical insurance; check your state page).</li><li><strong>Apply the limit.</strong> Apply the lesser of the federal and state limits to the result.</li></ol></section>

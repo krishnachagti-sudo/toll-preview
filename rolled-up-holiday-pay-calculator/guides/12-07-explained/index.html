@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Try it</h2><p class="muted">Total pay for the period and the hours worked.</p><form method="get" action="/toll-preview/rolled-up-holiday-pay-calculator/" class="cp-tool-form"><div class="field"><label for="tf-pay">Total pay this period (£)</label><input type="text" id="tf-pay" name="pay" value="1000"></div><div class="field"><label for="tf-hours">Hours worked</label><input type="text" id="tf-hours" name="hours" value="68"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work out the holiday pay</button></form><p class="small"><a href="/toll-preview/rolled-up-holiday-pay-calculator/?pay=1000&amp;hours=68">Open this in the calculator</a></p></aside>
 <section>
 <h2 id="formula">The formula</h2>
@@ -82,11 +83,11 @@
 </section>
 <section>
 <h2 id="pay">Pay: the holiday pay line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Rolled-up holiday pay at 12.07%, exact to the penny and by GOV.UK's worked-example steps.</caption><thead><tr><th scope="col">Example</th><th scope="col" class="r num">Total pay</th><th scope="col" class="r num">12.07%, nearest penny</th><th scope="col" class="r num">GOV.UK steps</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Rolled-up holiday pay at 12.07%, exact to the penny and by GOV.UK's worked-example steps.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Example</th><th scope="col" class="r num">Total pay</th><th scope="col" class="r num">12.07%, nearest penny</th><th scope="col" class="r num">GOV.UK steps</th></tr></thead><tbody>
 <tr><th scope="row">£1,000 in a month</th><td class="r num">£1,000.00</td><td class="r num">£120.70</td><td class="r num">£120.70</td></tr>
 <tr><th scope="row">Hana: 35 hours at £10.42</th><td class="r num">£364.70</td><td class="r num">£44.02</td><td class="r num">£44.06</td></tr>
 <tr><th scope="row">Mark: 20 hours at £11, 20 at £12</th><td class="r num">£460.00</td><td class="r num">£55.52</td><td class="r num">£55.52</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>GOV.UK's tables divide the pay by 100 and round to the penny before multiplying by 12.07, which can move the answer a few pence either way. The calculator's default is 12.07% of the whole pay to the nearest penny; it can round up instead, or follow GOV.UK's steps.</p>
 </section>
 <section>
@@ -96,7 +97,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024">GOV.UK (Department for Business and Trade), Holiday pay and entitlement reforms from 1 January 2024 (updated 1 April 2024, read 8 November 2026)</a></li><li><a href="https://www.gov.uk/holiday-entitlement-rights/calculate-leave-entitlement">GOV.UK, Holiday entitlement: Calculate leave entitlement (updated 5 November 2026, read 8 November 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024">GOV.UK (Department for Business and Trade), Holiday pay and entitlement reforms from 1 January 2024 (updated 1 April 2024</a><span class="src-m">gov.uk · read 8 November 2026)</span></li><li><a href="https://www.gov.uk/holiday-entitlement-rights/calculate-leave-entitlement">GOV.UK, Holiday entitlement: Calculate leave entitlement (updated 5 November 2026</a><span class="src-m">gov.uk · read 8 November 2026)</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Where does 12.07% come from?</h3></summary><div class="xp-in"><p>It is 5.6 weeks of statutory leave divided by 46.4 working weeks (52 minus 5.6). GOV.UK: &quot;12.07% of 46.4 is 5.6.&quot;</p></div></details><details class="xpand"><summary><h3>Why does GOV.UK's example give £44.06 when 12.07% of £364.70 is £44.02?</h3></summary><div class="xp-in"><p>GOV.UK's table rounds the pay ÷ 100 step to the penny first (£3.65), then multiplies by 12.07: £44.0555, so £44.06. Multiplying the whole pay by 12.07% gives £44.01929, so £44.02. The calculator shows both.</p></div></details></section>

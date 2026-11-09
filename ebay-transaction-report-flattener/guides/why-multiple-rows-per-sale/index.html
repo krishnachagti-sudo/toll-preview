@@ -74,18 +74,19 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the flattener</h2><p class="muted">The made-up report opens in the flattener and is previewed in your browser, free. Swap in your own transaction report there.</p><form method="get" action="/toll-preview/ebay-transaction-report-flattener/" class="cp-tool-form"><input type="hidden" name="sample" value="us"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this report in the flattener</button></form><p class="small"><a href="/toll-preview/ebay-transaction-report-flattener/?sample=us">Open this example in the flattener</a></p></aside>
 <section>
 <h2 id="rows">The rows of one sale</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Order 04-44444-00004 as eBay's report lists it (made-up values)</caption><thead><tr><th scope="col">Line</th><th scope="col">Transaction date</th><th scope="col">Type</th><th scope="col">Gross transaction amount</th><th scope="col">Net amount</th><th scope="col">Description</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Order 04-44444-00004 as eBay's report lists it (made-up values)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Line</th><th scope="col">Transaction date</th><th scope="col">Type</th><th scope="col">Gross transaction amount</th><th scope="col">Net amount</th><th scope="col">Description</th></tr></thead><tbody>
 <tr><th scope="row">11</th><td>2026-10-12</td><td>Order</td><td>120.00</td><td>101.72</td><td></td></tr>
 <tr><th scope="row">12</th><td>2026-10-12</td><td>Shipping label</td><td>--</td><td>-9.40</td><td>USPS Priority Mail</td></tr>
 <tr><th scope="row">13</th><td>2026-10-20</td><td>Refund</td><td>-20.00</td><td>-20.00</td><td>Partial refund</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="types">The row types, in eBay's words</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Row types and what the flattener does</caption><thead><tr><th scope="col">Row</th><th scope="col">eBay's help</th><th scope="col">Flattener</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Row types and what the flattener does</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Row</th><th scope="col">eBay's help</th><th scope="col">Flattener</th></tr></thead><tbody>
 <tr><th scope="row">Order</th><td>For an order with a single item, you'll find the order and the item details on a single row of your transaction report.</td><td>Opens the sale</td></tr>
 <tr><th scope="row">Shipping label</th><td>Charges or credits related to shipping label purchases and refunds</td><td>Folded into its sale; with no order number, listed apart</td></tr>
 <tr><th scope="row">Other fee</th><td>eBay fees that are not part of the final value fees from a sale, for example, subscription fees, listing upgrades, ad fees</td><td>Folded into its sale; with no order number, listed apart</td></tr>
@@ -95,7 +96,7 @@
 <tr><th scope="row">Hold</th><td>Funds that are unavailable while we resolve an issue with an order or an account</td><td>Money moved: left out of sales</td></tr>
 <tr><th scope="row">Charge</th><td>Amounts recouped from your on-file payment methods for fees and other selling costs owed to eBay</td><td>Money moved: left out of sales</td></tr>
 <tr><th scope="row">Payout, transfer</th><td>The Payments tab lists sales, refunds, claims, disputes, holds, shipping labels, transfers (funds transferring in or out from your on-file payment method), and payouts</td><td>Money moved: left out of sales</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="check">Check the total</h2>
@@ -103,7 +104,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.ebay.com/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847">eBay Help (US): Reconciling your eBay sales transactions (read November 8, 2026)</a></li><li><a href="https://www.ebay.com/help/fees-billing/payouts-payments-paid/seller-hub-payouts-tab?id=4798">eBay Help (US): Using the Payments tab in Seller Hub (read November 8, 2026)</a></li><li><a href="https://community.ebay.com/t5/Selling/Why-is-there-no-way-to-get-all-the-sales-info-fees-for-specific/td-p/33329855">eBay Community: Why is there no way to get all the sales info &amp; fees for specific items?, a seller's description of the layout (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.ebay.com/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847">eBay Help (US): Reconciling your eBay sales transactions (read November 8, 2026)</a><span class="src-m">ebay.com</span></li><li><a href="https://www.ebay.com/help/fees-billing/payouts-payments-paid/seller-hub-payouts-tab?id=4798">eBay Help (US): Using the Payments tab in Seller Hub (read November 8, 2026)</a><span class="src-m">ebay.com</span></li><li><a href="https://community.ebay.com/t5/Selling/Why-is-there-no-way-to-get-all-the-sales-info-fees-for-specific/td-p/33329855">eBay Community: Why is there no way to get all the sales info &amp; fees for specific items?, a seller's description of the layout (read November 8, 2026)</a><span class="src-m">community.ebay.com</span></li></ul>
 <p class="cp-note">Not tax or accounting advice: this is arithmetic on eBay's own transaction report. The sample reports are made up; their headings are the names eBay's help uses for these details, and your own report's headings may differ (the tool shows how it found each column).</p>
 </section>
 

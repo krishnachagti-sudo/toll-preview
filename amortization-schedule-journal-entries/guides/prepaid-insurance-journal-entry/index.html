@@ -74,33 +74,34 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the tool</h2><p class="muted">The worked schedules open in the tool and are previewed in your browser, free. Edit them or paste your own there.</p><form method="get" action="/toll-preview/amortization-schedule-journal-entries/" class="cp-tool-form"><input type="hidden" name="csv" value="Item,Type,Amount,Start,Months,End,Method,Paid on,Balance account,PL account,Cash account,Name,Rate,Payment,First payment,Day count,Cancel on,Refund
 Annual liability policy,Prepaid,1200.00,2026-11-01,12,,,,Prepaid Insurance,Insurance Expense,,,,,,,,
 Umbrella policy,Prepaid,1000.00,2026-11-01,12,,,,Prepaid Insurance,Insurance Expense,,,,,,,,
 "><input type="hidden" name="period" value="2026-11"><input type="hidden" name="from" value="2026-11"><input type="hidden" name="to" value="2027-10"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/amortization-schedule-journal-entries/?csv=Item%2CType%2CAmount%2CStart%2CMonths%2CEnd%2CMethod%2CPaid+on%2CBalance+account%2CPL+account%2CCash+account%2CName%2CRate%2CPayment%2CFirst+payment%2CDay+count%2CCancel+on%2CRefund%0D%0AAnnual+liability+policy%2CPrepaid%2C1200.00%2C2026-11-01%2C12%2C%2C%2C%2CPrepaid+Insurance%2CInsurance+Expense%2C%2C%2C%2C%2C%2C%2C%2C%0D%0AUmbrella+policy%2CPrepaid%2C1000.00%2C2026-11-01%2C12%2C%2C%2C%2CPrepaid+Insurance%2CInsurance+Expense%2C%2C%2C%2C%2C%2C%2C%2C%0D%0A&amp;period=2026-11&amp;from=2026-11&amp;to=2027-10">Open this example in the tool</a></p></aside>
 <section>
 <h2 id="entries">The two entries</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Premium paid, November 1, 2026</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Premium paid, November 1, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Prepaid Insurance</th><td class="r num">$1,200.00</td><td class="r num"></td></tr>
 <tr><th scope="row">Checking</th><td class="r num"></td><td class="r num">$1,200.00</td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>Each month end</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">Each month end</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Insurance Expense</th><td class="r num">$100.00</td><td class="r num"></td></tr>
 <tr><th scope="row">Prepaid Insurance</th><td class="r num"></td><td class="r num">$100.00</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="mid-month">A policy that starts on the 17th</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>$1,200.00 from November 17, 2026, by convention</caption><thead><tr><th scope="col">Convention</th><th scope="col" class="r num">November 2026</th><th scope="col" class="r num">December 2026</th><th scope="col" class="r num">Last month</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">$1,200.00 from November 17, 2026, by convention</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Convention</th><th scope="col" class="r num">November 2026</th><th scope="col" class="r num">December 2026</th><th scope="col" class="r num">Last month</th></tr></thead><tbody>
 <tr><th scope="row">equal months (the start month counts in full)</th><td class="r num">$100.00</td><td class="r num">$100.00</td><td class="r num">$100.00 (October 2027)</td></tr>
 <tr><th scope="row">half-month (half a month in the first and last month)</th><td class="r num">$50.00</td><td class="r num">$100.00</td><td class="r num">$50.00 (November 2027)</td></tr>
 <tr><th scope="row">actual days in each month</th><td class="r num">$46.03</td><td class="r num">$101.92</td><td class="r num">$52.59 (November 2027)</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="plug">The rounding cent</h2>
 <p>$1,000.00 / 12 is $83.33 and a third of a cent. Eleven months of $83.33 leave $83.37 for the last month, so the asset ends at $0.00, not at a stray cent.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>The umbrella policy</caption><thead><tr><th scope="col">Month</th><th scope="col" class="r num">Amortized</th><th scope="col" class="r num">Balance at month end</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The umbrella policy</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Month</th><th scope="col" class="r num">Amortized</th><th scope="col" class="r num">Balance at month end</th></tr></thead><tbody>
 <tr><th scope="row">November 2026</th><td class="r num">$83.33</td><td class="r num">$916.67</td></tr>
 <tr><th scope="row">December 2026</th><td class="r num">$83.33</td><td class="r num">$833.34</td></tr>
 <tr><th scope="row">January 2027</th><td class="r num">$83.33</td><td class="r num">$750.01</td></tr>
@@ -113,7 +114,7 @@ Umbrella policy,Prepaid,1000.00,2026-11-01,12,,,,Prepaid Insurance,Insurance Exp
 <tr><th scope="row">August 2027</th><td class="r num">$83.33</td><td class="r num">$166.70</td></tr>
 <tr><th scope="row">September 2027</th><td class="r num">$83.33</td><td class="r num">$83.37</td></tr>
 <tr><th scope="row">October 2027</th><td class="r num">$83.37</td><td class="r num">$0.00</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="tie">Tie it out each month end</h2>
@@ -122,7 +123,7 @@ Umbrella policy,Prepaid,1000.00,2026-11-01,12,,,,Prepaid Insurance,Insurance Exp
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/expense-accounting/prepaid-expenses-amortization/L0aBbAeMQ_US_en_US">Intuit QuickBooks: Prepaid expenses and amortization, updated August 3, 2026 (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/expense-accounting/prepaid-expenses-amortization/L0aBbAeMQ_US_en_US">Intuit QuickBooks: Prepaid expenses and amortization, updated August 3, 2026 (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>What is the journal entry for a 12-month prepaid?</h3></summary><div class="xp-in"><p>Debit Prepaid Insurance and credit Cash when paid; each month debit Insurance Expense and credit Prepaid Insurance for a twelfth: $100.00 a month on $1,200.00.</p></div></details><details class="xpand"><summary><h3>How do you amortize insurance?</h3></summary><div class="xp-in"><p>Evenly over the coverage. Intuit's own example: &quot;you amortize the insurance evenly as you consume the coverage&quot;.</p></div></details></section>

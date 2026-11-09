@@ -13,6 +13,8 @@ One pregnancy: weeks by length of disability
 
 At 100 employees the FMLA's 12 weeks are used up during the disability when it lasts 12 weeks or more; CFRA's 12 weeks are untouched by PDL, so bonding is protected either way. Four months is converted at 52 / 12 weeks a month (17 1/3 weeks) for a full-time schedule.
 
+**Read the law's own words (5 quotations)**
+
 - "I have a pregnancy-related disability and my employer has 5+ employees." [California Civil Rights Department, Leave for Pregnancy Disability and Child Bonding: Quick Reference Guide](https://calcivilrights.ca.gov/employment/pdl-bonding-guide/)
 - "Up to 4 months, based on hours worked per week and duration of disability. PDL will run at the same time as FMLA." [California Civil Rights Department, Leave for Pregnancy Disability and Child Bonding: Quick Reference Guide](https://calcivilrights.ca.gov/employment/pdl-bonding-guide/)
 - "Up to 12 weeks within one year of the child's birth, adoption, or start of foster care. CFRA leave will run after PDL. CFRA leave will run at the same time as FMLA." [California Civil Rights Department, Leave for Pregnancy Disability and Child Bonding: Quick Reference Guide](https://calcivilrights.ca.gov/employment/pdl-bonding-guide/)

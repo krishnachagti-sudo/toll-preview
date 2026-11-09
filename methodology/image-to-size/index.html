@@ -69,60 +69,60 @@
 <header class="cp-head">
 <p class="eyebrow">Guide</p>
 <h1>How Image to size shrinks a photo to a KB limit</h1>
-<p class="cp-answer">The search tries the original size at quality 0.92 first, then shrinks the scale by 15% at a time and binary-searches JPEG quality in 7 steps, and keeps the highest quality at the largest scale that fits. A KB here is 1000 bytes, so a result that fits also fits a form that counts in 1,024s.</p>
+<p class="cp-answer">The search tries the original size at quality 0.92 first, then shrinks the scale by 15% at a time and binary-searches JPEG quality in 7 steps, and keeps the highest quality at the largest scale that fits.<span class="ans-more"> A KB here is 1000 bytes, so a result that fits also fits a form that counts in 1,024s.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>If the photo is already a JPEG no larger than the limit, it is returned untouched.</span></li><li><span>Otherwise the original dimensions are encoded at the top quality (0.92). If that fits, nothing more is changed.</span></li><li><span>If not, the scale is multiplied by 0.85 at a time, from 1 down to a floor of 0.1. At each scale the lowest quality (0.35) is tried first.</span></li><li><span>At the first scale where the lowest quality fits, the quality range from 0.35 to 0.92 is halved 7 times, keeping the highest quality that fits.</span></li><li><span>The search does not know what an image is.</span></li></ol>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>If the photo cannot get under the limit even at a tenth of its size, the tool says so and suggests a larger limit.</li><li>Browsers refuse canvases past roughly 16 million pixels, so very large photos may fail.</li><li>The result is a JPEG. Transparency is not kept.</li><li>There is no official example to compare with. It does not know any form's other rules, such as pixel dimensions.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 2 sources</h3><div class="tc-b"><p class="tc-a">It uses no outside data, so there is nothing to go out of date.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 1 check in its test suite</h3><div class="tc-b"><p class="tc-a">The tests check that the result fits the target size, never drops below the minimum quality, gives the same answer for the same input, stops its search at a limit, and that the page has no upload code.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<ul class="cp-sources cp-src"><li><a href="https://html.spec.whatwg.org/multipage/canvas.html#dom-canvas-toblob">WHATWG HTML Standard: HTMLCanvasElement toBlob()</a><span class="src-m">html.spec.whatwg.org</span></li><li><a href="https://physics.nist.gov/cuu/Units/binary.html">NIST: Prefixes for binary multiples</a><span class="src-m">physics.nist.gov</span></li></ul>
+<p class="cp-note">Uses no outside data. The photo is shrunk in your browser and never leaves your device, so there is no source to read and nothing to go out of date.</p>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the image to size compute?</h2>
 <p>The tool shrinks a photo to fit under a size limit such as 50 KB or 200 KB for upload forms. It runs in the browser: the photo is decoded, drawn to a canvas and re-encoded on your device, and nothing is sent anywhere.</p>
-<p>Inputs:</p>
+<details class="xpand"><summary>In detail: inputs and outputs</summary><div class="xp-in"><p>Inputs:</p>
 <ul><li><code>photo</code>: A JPEG, PNG or WebP file.</li><li><code>limit</code>: The target size in KB, from the presets 20, 50, 100, 200, 500 and 1,000 or your own number.</li></ul>
 <p>Outputs:</p>
-<ul><li>a JPEG at the least-shrunk setting that fits</li><li>its size, dimensions and quality</li><li>a message when it cannot fit</li></ul>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>If the photo is already a JPEG no larger than the limit, it is returned untouched.</li><li>Otherwise the original dimensions are encoded at the top quality (0.92). If that fits, nothing more is changed.</li><li>If not, the scale is multiplied by 0.85 at a time, from 1 down to a floor of 0.1. At each scale the lowest quality (0.35) is tried first. If even that is too big, the picture is shrunk again.</li><li>At the first scale where the lowest quality fits, the quality range from 0.35 to 0.92 is halved 7 times, keeping the highest quality that fits.</li><li>The search does not know what an image is. It is handed an encode function that returns a size in bytes, so the same code is tested in Node and run in the browser.</li></ol>
+<ul><li>a JPEG at the least-shrunk setting that fits</li><li>its size, dimensions and quality</li><li>a message when it cannot fit</li></ul></div></details>
+<details class="xpand"><summary>Every step in full (5)</summary><div class="xp-in"><ol><li>If the photo is already a JPEG no larger than the limit, it is returned untouched.</li><li>Otherwise the original dimensions are encoded at the top quality (0.92). If that fits, nothing more is changed.</li><li>If not, the scale is multiplied by 0.85 at a time, from 1 down to a floor of 0.1. At each scale the lowest quality (0.35) is tried first. If even that is too big, the picture is shrunk again.</li><li>At the first scale where the lowest quality fits, the quality range from 0.35 to 0.92 is halved 7 times, keeping the highest quality that fits.</li><li>The search does not know what an image is. It is handed an encode function that returns a size in bytes, so the same code is tested in Node and run in the browser.</li></ol></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>A JPEG already under the limit is the best copy and is not re-encoded.</li><li>A PNG or WebP always goes through the encoder, since forms usually want a JPEG.</li><li>Bad options (a zero limit, a scale step outside 0 to 1) are refused before the search starts.</li><li>The search is bounded: it stops at the scale floor and at 7 quality steps.</li></ul>
+<details class="xpand"><summary>The edge cases (4)</summary><div class="xp-in"><ul><li>A JPEG already under the limit is the best copy and is not re-encoded.</li><li>A PNG or WebP always goes through the encoder, since forms usually want a JPEG.</li><li>Bad options (a zero limit, a scale step outside 0 to 1) are refused before the search starts.</li><li>The search is bounded: it stops at the scale floor and at 7 quality steps.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>The search on a stand-in encoder</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;targetKb&quot;: 200,
-  &quot;encoder&quot;: &quot;size = 2,000,000 x scale x scale x quality bytes (made up, to show the steps)&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>The search on a stand-in encoder</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The search on a stand-in encoder</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">target</th><td>200 KB = 200,000 bytes</td></tr>
 <tr><th scope="row">original at quality 0.92</th><td>1,840,000 bytes, too big</td></tr>
 <tr><th scope="row">encoder calls</th><td>13</td></tr>
 <tr><th scope="row">chosen scale</th><td>0.5220</td></tr>
 <tr><th scope="row">chosen quality</th><td>0.363</td></tr>
 <tr><th scope="row">size</th><td>198,024 bytes</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>If the photo cannot get under the limit even at a tenth of its size, the tool says so and suggests a larger limit.</li><li>Browsers refuse canvases past roughly 16 million pixels, so very large photos may fail.</li><li>The result is a JPEG. Transparency is not kept.</li><li>There is no official example to compare with. It does not know any form's other rules, such as pixel dimensions.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>It uses no outside data, so there is nothing to go out of date.</p>
-<ul class="cp-sources"><li><a href="https://html.spec.whatwg.org/multipage/canvas.html#dom-canvas-toblob">WHATWG HTML Standard: HTMLCanvasElement toBlob()</a></li><li><a href="https://physics.nist.gov/cuu/Units/binary.html">NIST: Prefixes for binary multiples</a></li></ul>
-<p>Uses no outside data. The photo is shrunk in your browser and never leaves your device, so there is no source to read and nothing to go out of date.</p>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;targetKb&quot;: 200,
+  &quot;encoder&quot;: &quot;size = 2,000,000 x scale x scale x quality bytes (made up, to show the steps)&quot;
+&#125;</code></pre></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>The tests check that the result fits the target size, never drops below the minimum quality, gives the same answer for the same input, stops its search at a limit, and that the page has no upload code.</p>
-<p>What its test suite asserts:</p>
-<ul><li>There is no official example to compare with. The tests check that the result fits the target size, never drops below the minimum quality, gives the same answer for the same input, stops its search at a limit, and that the page has no upload code.</li></ul>
+<details class="xpand"><summary>What its test suite asserts (1)</summary><div class="xp-in"><ul><li>There is no official example to compare with. The tests check that the result fits the target size, never drops below the minimum quality, gives the same answer for the same input, stops its search at a limit, and that the page has no upload code.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/image-to-size/">Open the Image to size tool</a>.</p>
 </section>

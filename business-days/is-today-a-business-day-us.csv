@@ -1,5 +1,4 @@
 date,weekday,business_day,federal_reserve_banks_open,holiday
-2026-11-08,Sunday,no,no,
 2026-11-09,Monday,yes,yes,
 2026-11-10,Tuesday,yes,yes,
 2026-11-11,Wednesday,no,no,Veterans Day
@@ -13,3 +12,4 @@ date,weekday,business_day,federal_reserve_banks_open,holiday
 2026-11-19,Thursday,yes,yes,
 2026-11-20,Friday,yes,yes,
 2026-11-21,Saturday,no,no,
+2026-11-22,Sunday,no,no,

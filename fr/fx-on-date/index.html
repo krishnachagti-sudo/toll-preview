@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
 <link rel="stylesheet" href="/toll-preview/fx-on-date/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fx-on-date"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -70,109 +72,138 @@
   </div>
 </header>
 
-<main id="main" class="fx">
-  <section class="wrap fx-intro">
+<main id="main" class="fx hue-money tf-plain">
+  <section class="wrap fx-intro tf-intro">
     <p class="eyebrow">Données de référence, à chaque requête</p>
     <h1>Taux de change à une date</h1>
     <p class="lede">Le taux officiel d’une paire de devises à une date donnée : le taux de référence de la Banque centrale européenne (BCE) pour chaque jour depuis janvier 1999, ou le taux du Trésor américain, la moyenne annuelle de l’IRS ou le taux mensuel de la HMRC britannique. Si la BCE n’a rien publié ce jour-là, vous obtenez le dernier taux avant cette date, et la page vous dit lequel.</p>
-    <p class="fx-price" id="fx-price">Chaque recherche coûte $0.001. Sans compte, vous avez 5 recherches gratuites par jour.</p>
+<ul class="trust" aria-label="À propos de ce site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Fait par <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, sans IA</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Sources officielles, datées</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Les fichiers que vous envoyez ne sont pas conservés</a></span></li><li class="tl2"><a href="/toll-preview/security/">Sécurité</a><a href="/toll-preview/terms/">Conditions</a></li></ul>
+    <p class="fx-price pline" id="fx-price">$0.001 la recherche · 5 recherches gratuites par jour sans compte · aussi par API</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/fx-on-date/" hreflang="en">Voir en anglais</a></p>
   </section>
 
-  <section class="wrap fx-desk" aria-label="Recherche de taux">
-    <form class="fx-form" id="fx-form" novalidate>
-      <div class="field">
-        <label for="fx-source">Source du taux</label>
-        <select id="fx-source" aria-describedby="fx-source-hint">
-          <option value="ecb">Taux de référence BCE (par défaut)</option>
-          <option value="treasury">Taux de change du Trésor américain</option>
-          <option value="irs">Moyenne annuelle IRS</option>
-          <option value="hmrc">Taux mensuel HMRC</option>
-        </select>
-        <p class="hint" id="fx-source-hint">Le taux de change de référence quotidien de l’euro, publié par la Banque centrale européenne. <a href="#fx-which">Quel taux choisir</a></p>
-      </div>
+  <section class="wrap fx-desk tf-calc" aria-label="Recherche de taux">
+    <form class="fx-form tf-card tf-form" id="fx-form" novalidate="">
+<div class="field">
+<label for="fx-source">Source du taux</label>
+<select aria-describedby="fx-source-hint" id="fx-source">
+<option value="ecb">Taux de référence BCE (par défaut)</option>
+<option value="treasury">Taux de change du Trésor américain</option>
+<option value="irs">Moyenne annuelle IRS</option>
+<option value="hmrc">Taux mensuel HMRC</option>
+</select>
 
-      <div class="fx-pair">
-        <div class="field">
-          <label for="fx-base">De</label>
-          <select id="fx-base" aria-describedby="fx-base-err"></select>
-          <p class="field-error" id="fx-base-err"></p>
-        </div>
-        <button type="button" class="fx-swap" id="fx-swap" aria-label="Inverser les deux devises" title="Inverser les deux devises">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="field">
-          <label for="fx-quote">Vers</label>
-          <select id="fx-quote" aria-describedby="fx-quote-err"></select>
-          <p class="field-error" id="fx-quote-err"></p>
-        </div>
-      </div>
+</div>
+<div class="fx-pair">
+<div class="field">
+<label for="fx-base">De</label>
+<select aria-describedby="fx-base-err" id="fx-base"></select>
+<p class="field-error" id="fx-base-err"></p>
+</div>
+<button aria-label="Inverser les deux devises" class="fx-swap" id="fx-swap" title="Inverser les deux devises" type="button">
+<svg aria-hidden="true" focusable="false" height="20" viewbox="0 0 24 24" width="20"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</button>
+<div class="field">
+<label for="fx-quote">Vers</label>
+<select aria-describedby="fx-quote-err" id="fx-quote"></select>
+<p class="field-error" id="fx-quote-err"></p>
+</div>
+</div>
+<div class="field">
+<label for="fx-date">Date</label>
+<input aria-describedby="fx-date-hint fx-date-err" id="fx-date" min="1999-01-04" type="date"/>
 
-      <div class="field">
-        <label for="fx-date">Date</label>
-        <input type="date" id="fx-date" min="1999-01-04" aria-describedby="fx-date-hint fx-date-err">
-        <p class="hint" id="fx-date-hint">À partir du 4 janvier 1999. Un week-end ou un jour férié, le dernier taux publié avant est utilisé.</p>
-        <p class="field-error" id="fx-date-err"></p>
-      </div>
+<p class="field-error" id="fx-date-err"></p>
+</div>
 
-      <div class="fx-quick">
-        <p class="fx-quick-label" id="fx-quick-label">Paires courantes</p>
-        <div class="fx-quick-row" role="group" aria-labelledby="fx-quick-label" id="fx-quick"></div>
-      </div>
+<p class="form-error" id="fx-error" role="alert"></p>
+<button class="btn" id="fx-run" type="submit">Obtenir le taux</button>
+<p class="hint fx-run-note" id="fx-run-note"></p>
 
-      <p class="form-error" id="fx-error" role="alert"></p>
-      <button class="btn" type="submit" id="fx-run">Obtenir le taux</button>
-      <p class="hint fx-run-note" id="fx-run-note"></p>
-    </form>
+<details class="xpand">
+<summary>Paires courantes, le taux et la date</summary>
+<div class="xp-in">
+<div class="fx-quick">
+<p class="fx-quick-label" id="fx-quick-label">Paires courantes</p>
+<div aria-labelledby="fx-quick-label" class="fx-quick-row" id="fx-quick" role="group"></div>
+</div>
+<p class="hint" id="fx-source-hint">Le taux de change de référence quotidien de l’euro, publié par la Banque centrale européenne. <a href="#fx-which">Quel taux choisir</a></p>
+<p class="hint" id="fx-date-hint">À partir du 4 janvier 1999. Un week-end ou un jour férié, le dernier taux publié avant est utilisé.</p>
+</div>
+</details>
+</form>
 
-    <div class="fx-board" id="fx-board" aria-live="polite" aria-busy="false">
-      <p class="muted">Chargement de l’exemple calculé.</p>
-    </div>
+    <div aria-busy="false" aria-live="polite" class="fx-board" id="fx-board">
+<p class="muted">Chargement de l’exemple calculé.</p>
+</div>
   </section>
 
-  <section class="wrap fx-about" data-jump="La source" aria-labelledby="fx-about-title">
-    <h2 id="fx-about-title">D’où vient le chiffre</h2>
-    <div class="fx-about-cols">
+  <section class="wrap fx-about tf-sec" data-jump="La source" aria-labelledby="fx-about-title">
+    <div class="tf-rules-top">
       <div>
-        <h3>Un taux par jour</h3>
+        <h2 id="fx-about-title">D’où vient le chiffre</h2>
         <p>La BCE fixe des taux de référence pour une trentaine de devises face à l’euro, chaque jour ouvrable TARGET vers 16 h, heure d’Europe centrale. La réponse par défaut est le taux du tableau publié par la BCE pour ce jour.</p>
       </div>
-      <div>
-        <h3>Paires sans l’euro</h3>
-        <p>Pour deux autres devises, la page divise un taux en euro par l’autre, issus du même fixing, puis arrondit à 6 décimales. L’arrondi est exact, les demis étant arrondis à l’écart de zéro, et l’inverse est calculé à partir du taux non arrondi.</p>
-      </div>
-      <div>
-        <h3>Jours sans taux</h3>
-        <p>Les week-ends et les jours fériés TARGET n’ont pas de fixing. L’outil prend le dernier taux des 7 jours précédant votre date. S’il n’y en a pas, ou si la date précède le 4 janvier 1999, il vous le dit et rien n’est facturé.</p>
-        <p>Un jour ouvrable pour lequel la BCE n’a encore rien publié, par exemple aujourd’hui avant 16 h, n’obtient pas de taux, plutôt qu’un taux plus ancien. Réessayez après la publication. Cette recherche est gratuite aussi.</p>
-      </div>
+      <aside class="tf-card tf-not" aria-label="Ce qui n’est pas couvert">
+        <h3>Ce qui n’est pas couvert</h3>
+        <ul>
+          <li>Le taux auquel une banque ou une carte change votre argent : ce sont des taux de référence, le relevé du jour.</li>
+          <li>Les modifications hebdomadaires de la HMRC, absentes de ses fichiers mensuels.</li>
+          <li>Un jour ouvré avant la publication de 16 h : il n’obtient aucun taux plutôt qu’un taux plus ancien.</li>
+        </ul>
+      </aside>
     </div>
-    <p class="muted small">Source : taux de change de référence de l’euro de la Banque centrale européenne (titre d’origine en anglais : European Central Bank euro foreign exchange reference rates). La BCE les publie à titre d’information uniquement : ils consignent le taux du jour, mais ce n’est pas un prix auquel une banque change. Si votre administration fiscale ou votre comptabilité impose son propre taux, choisissez la source correspondante ci-dessus. Les devises que la BCE ne publie plus, comme la kuna croate, peuvent être demandées via l’API pour les dates où elle existait.</p>
-  </section>
-
-  <section class="wrap fx-about" id="fx-which" data-jump="Quel taux choisir" aria-labelledby="fx-which-title">
-    <h2 id="fx-which-title">Quel taux choisir</h2>
-    <p>Utilisez le taux que demande l’organisme auquel vous déclarez. Chaque réponse indique la publication et la période utilisées. Ce que chaque organisme dit de ses propres taux (reformulé) :</p>
+    <details class="xpand">
+      <summary>Lire comment le taux est obtenu</summary>
+      <div class="xp-in">
     <div class="fx-about-cols">
-      <div>
-        <h3>Taux de référence BCE (par défaut)</h3>
-        <p>Taux quotidiens face à l’euro depuis 1999. La BCE indique qu’ils sont publiés à titre d’information uniquement.</p>
+<div>
+<h3>Un taux par jour</h3>
+<p>La BCE fixe des taux de référence pour une trentaine de devises face à l’euro, chaque jour ouvrable TARGET vers 16 h, heure d’Europe centrale. La réponse par défaut est le taux du tableau publié par la BCE pour ce jour.</p>
+</div>
+<div>
+<h3>Paires sans l’euro</h3>
+<p>Pour deux autres devises, la page divise un taux en euro par l’autre, issus du même fixing, puis arrondit à 6 décimales. L’arrondi est exact, les demis étant arrondis à l’écart de zéro, et l’inverse est calculé à partir du taux non arrondi.</p>
+</div>
+<div>
+<h3>Jours sans taux</h3>
+<p>Les week-ends et les jours fériés TARGET n’ont pas de fixing. L’outil prend le dernier taux des 7 jours précédant votre date. S’il n’y en a pas, ou si la date précède le 4 janvier 1999, il vous le dit et rien n’est facturé.</p>
+<p>Un jour ouvrable pour lequel la BCE n’a encore rien publié, par exemple aujourd’hui avant 16 h, n’obtient pas de taux, plutôt qu’un taux plus ancien. Réessayez après la publication. Cette recherche est gratuite aussi.</p>
+</div>
+</div>
+    <p class="muted small">Source : taux de change de référence de l’euro de la Banque centrale européenne (titre d’origine en anglais : European Central Bank euro foreign exchange reference rates). La BCE les publie à titre d’information uniquement : ils consignent le taux du jour, mais ce n’est pas un prix auquel une banque change. Si votre administration fiscale ou votre comptabilité impose son propre taux, choisissez la source correspondante ci-dessus. Les devises que la BCE ne publie plus, comme la kuna croate, peuvent être demandées via l’API pour les dates où elle existait.</p>
       </div>
-      <div>
-        <h3>Taux de change du Trésor américain</h3>
-        <p>Taux trimestriels en unités par dollar américain, que les agences fédérales américaines utilisent pour convertir à la date du rapport et pour les trois mois suivants. Si le taux courant s’écarte de 10 % ou plus d’un taux publié, le Trésor publie un amendement avec une nouvelle date d’effet, que l’outil applique à partir de cette date. Pour le FBAR, FinCEN renvoie au taux du 31 décembre. La paire doit contenir l’USD.</p>
+    </details>
+    <details class="xpand" id="fx-which">
+      <summary>Quel taux choisir</summary>
+      <div class="xp-in">
+    <h3 id="fx-which-title">Quel taux choisir</h3>
+    <p>Utilisez le taux que demande l’organisme auquel vous déclarez. Chaque réponse indique la publication et la période utilisées. Ce que chaque organisme dit de ses propres taux (reformulé) :</p>
+<div class="fx-about-cols">
+<div>
+<h3>Taux de référence BCE (par défaut)</h3>
+<p>Taux quotidiens face à l’euro depuis 1999. La BCE indique qu’ils sont publiés à titre d’information uniquement.</p>
+</div>
+<div>
+<h3>Taux de change du Trésor américain</h3>
+<p>Taux trimestriels en unités par dollar américain, que les agences fédérales américaines utilisent pour convertir à la date du rapport et pour les trois mois suivants. Si le taux courant s’écarte de 10 % ou plus d’un taux publié, le Trésor publie un amendement avec une nouvelle date d’effet, que l’outil applique à partir de cette date. Pour le FBAR, FinCEN renvoie au taux du 31 décembre. La paire doit contenir l’USD.</p>
+</div>
+<div>
+<h3>Moyenne annuelle IRS</h3>
+<p>Un taux par devise et par an, en unités par dollar américain, pour l’année de votre date. L’IRS indique qu’il n’a pas de taux de change officiel et qu’il accepte tout taux publié utilisé de façon constante. En général, c’est le taux du jour où vous recevez, payez ou comptabilisez l’élément. La paire doit contenir l’USD.</p>
+</div>
+<div>
+<h3>Taux mensuel HMRC</h3>
+<p>Taux mensuels en unités par livre, depuis janvier 2021, valables du premier au dernier jour du mois civil suivant. Si le taux du marché s’écarte de plus de 5 %, la HMRC met à jour ce taux la semaine suivante ; ces amendements hebdomadaires ne figurent pas dans les fichiers mensuels que lit cet outil. La paire doit contenir le GBP.</p>
+</div>
+</div>
       </div>
-      <div>
-        <h3>Moyenne annuelle IRS</h3>
-        <p>Un taux par devise et par an, en unités par dollar américain, pour l’année de votre date. L’IRS indique qu’il n’a pas de taux de change officiel et qu’il accepte tout taux publié utilisé de façon constante. En général, c’est le taux du jour où vous recevez, payez ou comptabilisez l’élément. La paire doit contenir l’USD.</p>
-      </div>
-      <div>
-        <h3>Taux mensuel HMRC</h3>
-        <p>Taux mensuels en unités par livre, depuis janvier 2021, valables du premier au dernier jour du mois civil suivant. Si le taux du marché s’écarte de plus de 5 %, la HMRC met à jour ce taux la semaine suivante ; ces amendements hebdomadaires ne figurent pas dans les fichiers mensuels que lit cet outil. La paire doit contenir le GBP.</p>
-      </div>
-    </div>
+    </details>
   </section>
 
-  <section class="wrap fx-code" aria-label="Utiliser depuis du code">
+
+
+  <section class="wrap fx-code tf-sec" data-jump="Code" aria-label="Utiliser depuis du code">
     <div id="fx-code"></div>
   </section>
   <noscript><div class="wrap"><p>Cette page a besoin de JavaScript. Vous pouvez aussi appeler l’outil depuis du code : voir <a href="/toll-preview/docs">la documentation (en anglais)</a>.</p></div></noscript>

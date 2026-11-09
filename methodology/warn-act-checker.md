@@ -2,9 +2,49 @@
 
 Federal WARN covers an employer with 100 or more full-time employees; a plant closing is 50 or more full-time losses at a site in 30 days, and a mass layoff is 50 or more that are at least 33% of the site, or 500 or more, in 30 days or added up over 90. Each group gets 60 days' notice before its own date.
 
+## How does it work?
+
+1. Every count is split three ways: full-time (20 or more hours a week and 6 of the last 12 months), part-time (under 20 hours) and short-service (fewer than 6 of the 12 months).
+2. The employer test is run at the scope each law uses: the company for federal WARN (100 full-time, or 100 working 4,000 hours a week in all), the state or the site for the state laws.
+3. Losses on the same day at a site are one group. A window starts at each group's date in turn, 30 days long counting both ends; the first window whose losses meet the trigger is the one shown, and every group inside a triggering window is owed notice.
+4. Where 30 days do not trigger, groups are added up over 90 days (20 CFR 639.5(a)), as in the DOL Employer's Guide example; some states use 3 months or the whole list instead.
+5. A plant closing counts full-time losses at a site that is shutting; a mass layoff needs at least 50 that are at least 33% of the site's active full-time employees, or 500 regardless of share.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/warn-act-checker/#what) below.
+
+## What does it not cover?
+
+- It does not decide whether locations are one single site of employment, whether an exception applies (faltering company, unforeseeable business circumstances, natural disaster) or who the employer is.
+- Only the state laws read are covered; in the other 40 jurisdictions only federal WARN is checked, and the answer names the state.
+- Your counts and dates are yours; the tool cannot check them.
+- It is not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 13 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): 20 CFR Part 639 was read through the eCFR, up to date as of 2026-11-05; the DOL Employer's Guide and each state's statute or labor department page were read on 2026-11-08. The rules change only by hand, with the tests that pin the data file and the engine together.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check the federal employer test, the mass layoff tiers, plant closings, the 30-day window counting both ends, the DOL Employer's Guide 90-day example, notice against each group, each state law with its own numbers, the employee list classing, and back pay with the federal 60-day cap and each state's caps and severance.
+
+- [20 CFR Part 639, Worker Adjustment and Retraining Notification (eCFR versioner API)](https://www.ecfr.gov/current/title-20/chapter-V/part-639), up to date as of 2026-11-05, read 2026-11-08
+- [U.S. DOL ETA, Employer's Guide to Advance Notice of Closings and Layoffs (July 2003)](https://www.dol.gov/sites/dolgov/files/ETA/Layoff/pdfs/_EmployerWARN2003.pdf), July 2003, read 2026-11-08
+- [Cal-WARN: Cal. Labor Code 1400 to 1408 (1400.5, 1401, 1403)](https://edd.ca.gov/en/jobs_and_training/Layoff_Services_WARN/), see the document, read 2026-11-08
+- [NY WARN: N.Y. Labor Law Article 25-A (860 et seq.); 12 NYCRR Part 921](https://dol.ny.gov/warn-regulations), see the document, read 2026-11-08
+- [NJ WARN: N.J.S.A. 34:21-1 et seq., as amended effective April 10, 2023](https://business.nj.gov/updates/important-updates-to-employee-rights-under-new-jersey-warn-law), see the document, read 2026-11-08
+- [Illinois WARN: 820 ILCS 65; 56 Ill. Adm. Code 230](https://dceo.illinois.gov/workforcedevelopment/warn.html), see the document, read 2026-11-08
+- [Iowa WARN: Iowa Code chapter 84C](https://www.legis.iowa.gov/docs/code/84C.pdf), see the document, read 2026-11-08
+- [Maine 625-B: 26 M.R.S. 625-B](https://legislature.maine.gov/statutes/26/title26sec625-B.html), see the document, read 2026-11-08
+- [Maryland ESA: Md. Code Ann., Lab. & Empl. 11-301 et seq.](https://labor.maryland.gov/employment/dwdal-esa-frequently-asked-questions.shtml), see the document, read 2026-11-08
+- [Delaware WARN: 19 Del. C. 1901 to 1911](https://delcode.delaware.gov/title19/c019/index.html), see the document, read 2026-11-08
+- [Washington WARN: RCW 49.45 (2025 c 277; 2026 c 86)](https://app.leg.wa.gov/RCW/default.aspx?cite=49.45&full=true), see the document, read 2026-11-08
+- [Tennessee 50-1-601: Tenn. Code Ann. 50-1-601 to 50-1-604](https://www.tn.gov/content/dam/tn/workforce/documents/employers/WARN_Technical_Assistance_Guide.pdf), see the document, read 2026-11-08
+- [Connecticut: Connecticut Department of Labor, WARN](https://portal.ct.gov/dol/divisions/rapid-response/warn), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the warn act checker compute?
 
 Given each site with its state, headcount and dated employment losses (or a whole employee list), the tool checks the layoff site by site against the federal WARN Act (20 CFR Part 639) and the state laws of Cal-WARN, NY WARN, NJ WARN, Illinois WARN, Iowa WARN, Maine 625-B, Maryland ESA, Delaware WARN, Washington WARN and Tennessee 50-1-601: whether the employer is covered, whether a plant closing or mass layoff is triggered in a rolling window, who must get notice, and the last day to send it for each separation date. It also works out the back pay, and New Jersey or Maine severance, if notice is short.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -29,7 +69,7 @@ Outputs:
 - employees, classes and csv (list only)
 - violationDays, backPay, severance, total and penaltyCeiling (exposure only)
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. Every count is split three ways: full-time (20 or more hours a week and 6 of the last 12 months), part-time (under 20 hours) and short-service (fewer than 6 of the 12 months). Federal law excludes the last two from every threshold (20 CFR 639.3(h)); some states count them.
 2. The employer test is run at the scope each law uses: the company for federal WARN (100 full-time, or 100 working 4,000 hours a week in all), the state or the site for the state laws.
@@ -50,6 +90,8 @@ Each state law comes from that state's own statute or labor department site, rea
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - Losses on day 30 count in the same window as day 1; a loss on day 31 falls to the 90-day test.
 - Four small rounds of 30, 29, 6 and 5 at a 180-person site add up to a mass layoff over 90 days, as in the DOL Employer's Guide.
 - Part-time employees do not count toward the federal thresholds but are still owed notice.
@@ -62,6 +104,17 @@ Each state law comes from that state's own statute or labor department site, rea
 > Every figure below is the output of the tool's engine, not typed in.
 
 **Three sites in three states**
+
+Three sites in three states
+
+| Result | Value |
+| --- | --- |
+| answer | Your list triggers federal WARN at 1 of 3 sites (Fresno plant: 55 full-time employees lost of 160, 34.3%, a mass layoff); 60 days' notice is due by November 16, 2026; Cal-WARN is triggered at Fresno plant, where 60 days' notice is due by November 16, 2026; NY WARN is triggered at Albany office, where 90 days' notice is due by October 31, 2026. The earliest deadline is October 31, 2026 at Albany office. State law in Texas is not covered by this tool. |
+| Fresno plant | federal WARN, notice by November 16, 2026 |
+| Albany office | NY WARN, notice by October 31, 2026 |
+| Dallas warehouse | no notice triggered |
+
+**The input**
 
 ```json
 {
@@ -116,16 +169,21 @@ Each state law comes from that state's own statute or labor department site, rea
 }
 ```
 
-Three sites in three states
+**More worked examples (3)**
+
+**The DOL Employer's Guide 90-day example**
+
+The DOL Employer's Guide 90-day example
 
 | Result | Value |
 | --- | --- |
-| answer | Your list triggers federal WARN at 1 of 3 sites (Fresno plant: 55 full-time employees lost of 160, 34.3%, a mass layoff); 60 days' notice is due by November 16, 2026; Cal-WARN is triggered at Fresno plant, where 60 days' notice is due by November 16, 2026; NY WARN is triggered at Albany office, where 90 days' notice is due by October 31, 2026. The earliest deadline is October 31, 2026 at Albany office. State law in Texas is not covered by this tool. |
-| Fresno plant | federal WARN, notice by November 16, 2026 |
-| Albany office | NY WARN, notice by October 31, 2026 |
-| Dallas warehouse | no notice triggered |
+| answer | Your list triggers federal WARN at 1 of 1 site (Plant: 70 full-time employees lost of 180, 38.8%, a mass layoff added up over 90 days); 60 days' notice is due by November 3, 2026. State law in Ohio is not covered by this tool. |
+| 30 on January 2, 2027 | notice by November 3, 2026 |
+| 29 on January 31, 2027 | notice by December 2, 2026 |
+| 6 on March 1, 2027 | notice by December 31, 2026 |
+| 5 on March 31, 2027 | notice by January 30, 2027 |
 
-**The DOL Employer's Guide 90-day example**
+**The input**
 
 ```json
 {
@@ -161,17 +219,17 @@ Three sites in three states
 }
 ```
 
-The DOL Employer's Guide 90-day example
+**Back pay for a New York employee given 45 days' notice instead of 90**
+
+Back pay for a New York employee given 45 days' notice instead of 90
 
 | Result | Value |
 | --- | --- |
-| answer | Your list triggers federal WARN at 1 of 1 site (Plant: 70 full-time employees lost of 180, 38.8%, a mass layoff added up over 90 days); 60 days' notice is due by November 3, 2026. State law in Ohio is not covered by this tool. |
-| 30 on January 2, 2027 | notice by November 3, 2026 |
-| 29 on January 31, 2027 | notice by December 2, 2026 |
-| 6 on March 1, 2027 | notice by December 31, 2026 |
-| 5 on March 31, 2027 | notice by January 30, 2027 |
+| answer | With 45 days of notice the exposure under NY WARN (and federal WARN where it applies) is 45 days of back pay and benefits, $12,060.00, for this employee. |
+| step 1 | 45 days of notice given against 90 required: 45 days short. |
+| step 2 | Back pay and benefits: 45 days x $268.00 = $12,060.00. |
 
-**Back pay for a New York employee given 45 days' notice instead of 90**
+**The input**
 
 ```json
 {
@@ -185,15 +243,16 @@ The DOL Employer's Guide 90-day example
 }
 ```
 
-Back pay for a New York employee given 45 days' notice instead of 90
+**New Jersey: severance for each full year of service**
+
+New Jersey: severance for each full year of service
 
 | Result | Value |
 | --- | --- |
-| answer | With 45 days of notice the exposure under NY WARN (and federal WARN where it applies) is 45 days of back pay and benefits, $12,060.00, for this employee. |
-| step 1 | 45 days of notice given against 90 required: 45 days short. |
-| step 2 | Back pay and benefits: 45 days x $268.00 = $12,060.00. |
+| answer | With 75 days of notice there is no back-pay exposure under NJ WARN (and federal WARN where it applies); the $8,400.00 of NJ WARN severance is still owed. |
+| severance | 7 full years of service: 7 weeks of pay. |
 
-**New Jersey: severance for each full year of service**
+**The input**
 
 ```json
 {
@@ -208,65 +267,9 @@ Back pay for a New York employee given 45 days' notice instead of 90
 }
 ```
 
-New Jersey: severance for each full year of service
-
-| Result | Value |
-| --- | --- |
-| answer | With 75 days of notice there is no back-pay exposure under NJ WARN (and federal WARN where it applies); the $8,400.00 of NJ WARN severance is still owed. |
-| severance | 7 full years of service: 7 weeks of pay. |
-
-## What does it not do?
-
-- It does not decide whether locations are one single site of employment, whether an exception applies (faltering company, unforeseeable business circumstances, natural disaster) or who the employer is.
-- Only the state laws read are covered; in the other 40 jurisdictions only federal WARN is checked, and the answer names the state.
-- Your counts and dates are yours; the tool cannot check them.
-- It is not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-20 CFR Part 639 was read through the eCFR, up to date as of 2026-11-05; the DOL Employer's Guide and each state's statute or labor department page were read on 2026-11-08. The rules change only by hand, with the tests that pin the data file and the engine together.
-
-- [20 CFR Part 639, Worker Adjustment and Retraining Notification (eCFR versioner API)](https://www.ecfr.gov/current/title-20/chapter-V/part-639)
-- [U.S. DOL ETA, Employer's Guide to Advance Notice of Closings and Layoffs (July 2003)](https://www.dol.gov/sites/dolgov/files/ETA/Layoff/pdfs/_EmployerWARN2003.pdf)
-- [Cal-WARN: Cal. Labor Code 1400 to 1408 (1400.5, 1401, 1403)](https://edd.ca.gov/en/jobs_and_training/Layoff_Services_WARN/)
-- [NY WARN: N.Y. Labor Law Article 25-A (860 et seq.); 12 NYCRR Part 921](https://dol.ny.gov/warn-regulations)
-- [NJ WARN: N.J.S.A. 34:21-1 et seq., as amended effective April 10, 2023](https://business.nj.gov/updates/important-updates-to-employee-rights-under-new-jersey-warn-law)
-- [Illinois WARN: 820 ILCS 65; 56 Ill. Adm. Code 230](https://dceo.illinois.gov/workforcedevelopment/warn.html)
-- [Iowa WARN: Iowa Code chapter 84C](https://www.legis.iowa.gov/docs/code/84C.pdf)
-- [Maine 625-B: 26 M.R.S. 625-B](https://legislature.maine.gov/statutes/26/title26sec625-B.html)
-- [Maryland ESA: Md. Code Ann., Lab. & Empl. 11-301 et seq.](https://labor.maryland.gov/employment/dwdal-esa-frequently-asked-questions.shtml)
-- [Delaware WARN: 19 Del. C. 1901 to 1911](https://delcode.delaware.gov/title19/c019/index.html)
-- [Washington WARN: RCW 49.45 (2025 c 277; 2026 c 86)](https://app.leg.wa.gov/RCW/default.aspx?cite=49.45&full=true)
-- [Tennessee 50-1-601: Tenn. Code Ann. 50-1-601 to 50-1-604](https://www.tn.gov/content/dam/tn/workforce/documents/employers/WARN_Technical_Assistance_Guide.pdf)
-- [Connecticut: Connecticut Department of Labor, WARN](https://portal.ct.gov/dol/divisions/rapid-response/warn)
-
-20 CFR Part 639 was read through the eCFR, up to date as of 2026-11-05; the DOL Employer's Guide and each state's statute or labor department page were read on 2026-11-08. The rules change only by hand, with the tests that pin the data file and the engine together.
-
-WARN Act checker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [20 CFR Part 639, Worker Adjustment and Retraining Notification (eCFR versioner API)](https://www.ecfr.gov/current/title-20/chapter-V/part-639) | up to date as of 2026-11-05 | 2026-11-08 |
-| [U.S. DOL ETA, Employer's Guide to Advance Notice of Closings and Layoffs (July 2003)](https://www.dol.gov/sites/dolgov/files/ETA/Layoff/pdfs/_EmployerWARN2003.pdf) | July 2003 | 2026-11-08 |
-| [Cal-WARN: Cal. Labor Code 1400 to 1408 (1400.5, 1401, 1403)](https://edd.ca.gov/en/jobs_and_training/Layoff_Services_WARN/) | see the document | 2026-11-08 |
-| [NY WARN: N.Y. Labor Law Article 25-A (860 et seq.); 12 NYCRR Part 921](https://dol.ny.gov/warn-regulations) | see the document | 2026-11-08 |
-| [NJ WARN: N.J.S.A. 34:21-1 et seq., as amended effective April 10, 2023](https://business.nj.gov/updates/important-updates-to-employee-rights-under-new-jersey-warn-law) | see the document | 2026-11-08 |
-| [Illinois WARN: 820 ILCS 65; 56 Ill. Adm. Code 230](https://dceo.illinois.gov/workforcedevelopment/warn.html) | see the document | 2026-11-08 |
-| [Iowa WARN: Iowa Code chapter 84C](https://www.legis.iowa.gov/docs/code/84C.pdf) | see the document | 2026-11-08 |
-| [Maine 625-B: 26 M.R.S. 625-B](https://legislature.maine.gov/statutes/26/title26sec625-B.html) | see the document | 2026-11-08 |
-| [Maryland ESA: Md. Code Ann., Lab. & Empl. 11-301 et seq.](https://labor.maryland.gov/employment/dwdal-esa-frequently-asked-questions.shtml) | see the document | 2026-11-08 |
-| [Delaware WARN: 19 Del. C. 1901 to 1911](https://delcode.delaware.gov/title19/c019/index.html) | see the document | 2026-11-08 |
-| [Washington WARN: RCW 49.45 (2025 c 277; 2026 c 86)](https://app.leg.wa.gov/RCW/default.aspx?cite=49.45&full=true) | see the document | 2026-11-08 |
-| [Tennessee 50-1-601: Tenn. Code Ann. 50-1-601 to 50-1-604](https://www.tn.gov/content/dam/tn/workforce/documents/employers/WARN_Technical_Assistance_Guide.pdf) | see the document | 2026-11-08 |
-| [Connecticut: Connecticut Department of Labor, WARN](https://portal.ct.gov/dol/divisions/rapid-response/warn) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests check the federal employer test, the mass layoff tiers, plant closings, the 30-day window counting both ends, the DOL Employer's Guide 90-day example, notice against each group, each state law with its own numbers, the employee list classing, and back pay with the federal 60-day cap and each state's caps and severance.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The federal thresholds, windows and the DOL Employer's Guide 90-day example are checked against 20 CFR Part 639 as of 2026-11-05.
 - Each state law read (Cal-WARN, NY WARN, NJ WARN, Illinois WARN, Iowa WARN, Maine 625-B, Maryland ESA, Delaware WARN, Washington WARN and Tennessee 50-1-601) is checked with its own numbers; states not read are reported as not covered.

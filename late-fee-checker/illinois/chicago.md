@@ -12,6 +12,10 @@ In Chicago a landlord may charge a rent late fee of at most $10 a month on the f
 
 ## What the statute says
 
+**In short:** $10 a month on the first $500 of rent plus 5% a month of the rent above $500; no waiting period (Chicago Municipal Code § 5-12-140(h) (RLTO)).
+
+**The statute's words (2 passages)**
+
 Chicago Municipal Code § 5-12-140(h) (RLTO): "If the tenant fails to pay rent on time, the landlord may charge a late fee of $10.00 per month on rents under $500 plus 5% per month on that part of the rent that exceeds $500.00"
 
 Chicago Municipal Code § 5-12-140(h) (RLTO): "Units in owner occupied buildings with six or fewer units."

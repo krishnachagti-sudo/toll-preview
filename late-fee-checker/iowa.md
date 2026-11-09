@@ -12,6 +12,10 @@ In Iowa a landlord may charge a rent late fee of at most rent up to $700 a month
 
 ## What the statute says
 
+**In short:** Rent up to $700 a month: $12 a day, $60 a month at most; rent above $700: $20 a day, $100 a month at most; no waiting period (Iowa Code § 562A.9(4)).
+
+**The statute's words (1 passage)**
+
 Iowa Code § 562A.9(4) (in figures; the statute writes the amounts in words, see the source): Rent up to $700 a month: $12 a day, $60 a month at most; rent above $700: $20 a day, $100 a month at most.
 
 ## The limit on sample rents

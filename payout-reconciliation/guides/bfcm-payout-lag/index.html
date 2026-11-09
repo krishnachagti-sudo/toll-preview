@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-money)">
 <p class="eyebrow">BFCM</p>
 <h1>Reconciling Black Friday and Cyber Monday payouts</h1>
-<p class="cp-answer">Cyber Monday 2026 falls on Monday, November 30, 2026, the last day of the month, so its sales are paid out in December; book them to November and let the clearing account carry them across. Black Friday is November 27, 2026; in 2027 the pair falls on November 26, 2027 and November 29, 2027.</p>
+<p class="cp-answer">Cyber Monday 2026 falls on Monday, November 30, 2026, the last day of the month, so its sales are paid out in December; book them to November and let the clearing account carry them across.<span class="ans-more"> Black Friday is November 27, 2026; in 2027 the pair falls on November 26, 2027 and November 29, 2027.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the splitter</h2><p class="muted">The made-up file below opens in the splitter and is split in your browser, free. Swap in your own export there.</p><form method="get" action="/toll-preview/payout-reconciliation/" class="cp-tool-form"><input type="hidden" name="sample" value="stripe"><input type="hidden" name="ledger" value="quickbooks-online"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this payout in the splitter</button></form><p class="small"><a href="/toll-preview/payout-reconciliation/?sample=stripe&amp;ledger=quickbooks-online">Open this example in the splitter</a></p></aside>
 <section>
 <h2 id="dates">The dates</h2>
@@ -88,12 +89,12 @@
 <section>
 <h2 id="lag">Payouts across the month end</h2>
 <p>Stripe groups a payout by its estimated arrival date, and Shopify says a payout typically takes 1 to 3 business days to arrive after it is sent. Sales on November 28 to 30 therefore reach the bank in December. The sample below shows the pattern: payout po_SAMPLE1102 on November 2, 2026 holds activity from 2026-10 and 2026-11.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Payout po_SAMPLE1102, November 2, 2026</caption><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Payout po_SAMPLE1102, November 2, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
 <tr><th scope="row">Sales</th><td class="r num">$269.99</td></tr>
 <tr><th scope="row">Refunds</th><td class="r num">-$19.99</td></tr>
 <tr><th scope="row">Processing fees</th><td class="r num">-$10.43</td></tr>
 <tr><th scope="row"><strong>Net (the payout)</strong></th><td class="r num"><strong>$239.57</strong></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="disputes">Disputes come later</h2>
@@ -105,7 +106,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://docs.stripe.com/reports/payout-reconciliation">Stripe Docs: Payout reconciliation report (read November 8, 2026)</a></li><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details">Shopify Help Center: Viewing and exporting your Shopify Payments payout details (read November 8, 2026)</a></li><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/reserves">Shopify Help Center: Overview of reserves in Shopify Payments (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://docs.stripe.com/reports/payout-reconciliation">Stripe Docs: Payout reconciliation report (read November 8, 2026)</a><span class="src-m">docs.stripe.com</span></li><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details">Shopify Help Center: Viewing and exporting your Shopify Payments payout details (read November 8, 2026)</a><span class="src-m">help.shopify.com</span></li><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/reserves">Shopify Help Center: Overview of reserves in Shopify Payments (read November 8, 2026)</a><span class="src-m">help.shopify.com</span></li></ul>
 <p class="cp-note">Not accounting or tax advice: this is arithmetic on the processor's own file, placed by the categories the processor documents. The sample files are made up.</p>
 </section>
 

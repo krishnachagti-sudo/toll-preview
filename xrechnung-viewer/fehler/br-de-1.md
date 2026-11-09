@@ -1,6 +1,6 @@
 # BR-DE-1: Zahlungsangaben (BG-16) fehlen
 
-BR-DE-1 bedeutet: Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Fügen Sie die Gruppe PAYMENT INSTRUCTIONS ein (in UBL cac:PaymentMeans, in CII ram:SpecifiedTradeSettlementPaymentMeans) mit Zahlungsart, zum Beispiel 58 für SEPA-Überweisung, und der IBAN des Verkäufers.
+BR-DE-1 bedeutet: Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Die Rechnung enthält keine Zahlungsanweisungen. Eine XRechnung muss sagen, wie 
 
 ## So beheben Sie den Fehler
 
-Fügen Sie die Gruppe PAYMENT INSTRUCTIONS ein (in UBL cac:PaymentMeans, in CII ram:SpecifiedTradeSettlementPaymentMeans) mit Zahlungsart, zum Beispiel 58 für SEPA-Überweisung, und der IBAN des Verkäufers.
+Fügen Sie die Gruppe PAYMENT INSTRUCTIONS ein (in UBL `cac:PaymentMeans`, in CII `ram:SpecifiedTradeSettlementPaymentMeans`) mit Zahlungsart, zum Beispiel 58 für SEPA-Überweisung, und der IBAN des Verkäufers.
 
 ## Geprüftes Beispiel
 

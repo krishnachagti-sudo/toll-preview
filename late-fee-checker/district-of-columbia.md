@@ -12,6 +12,10 @@ In the District of Columbia a landlord may charge a rent late fee of at most 5% 
 
 ## What the statute says
 
+**In short:** 5% of the full amount of rent due; from day 6 after the due date (D.C. Code § 42-3505.31).
+
+**The statute's words (3 passages)**
+
 D.C. Code § 42-3505.31: "Pursuant to subsection (b) of this section, a housing provider may charge a late fee of no more than 5% of the full amount of rent due by a tenant."
 
 D.C. Code § 42-3505.31: "A housing provider may only charge a late fee: (1) If the written lease agreement between the housing provider and the tenant informs the tenant of the maximum amount of the late fee that may be charged pursuant to this section; and (2) If the tenant has not paid the full amount of rent within 5 days, or any longer grace period that may be provided in the lease, after the day the rent payment is due."

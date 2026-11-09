@@ -1,6 +1,8 @@
 # District of Columbia lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in District of Columbia, no preliminary notice applies to you here, the notice of intent (the lien) must be recorded by May 27, 2027 and the suit to enforce it must be filed by November 23, 2027 (if recorded on the last day, May 27, 2027) (D.C. Code 40-301.02(a)(1); 40-303.01; D.C. Code 40-303.13(a)).
+In District of Columbia, a subcontractor records the lien during construction or within 90 days after the earlier of the completion or the termination of the project (D.C. Code 40-301.02(a)(1); 40-303.01).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=DC&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in District of Columbia, no preliminary notice applies to you here, the notice of intent (the lien) must be recorded by May 27, 2027 and the suit to enforce it must be filed by November 23, 2027 (if recorded on the last day, May 27, 2027) (D.C. Code 40-301.02(a)(1); 40-303.01; D.C. Code 40-303.13(a)).
 
 ## Work out your District of Columbia dates
 
@@ -38,6 +40,8 @@ Weekends and holidays: the District of Columbia text we read does not move a dea
 - Business days for the 5-day copy skip weekends and US federal holidays; District holidays we have not read.
 
 ## District of Columbia in its own words
+
+**Read the statute's words (4 quotations)**
 
 - "The notice of intent shall be recorded during the construction or within 90 days after the earlier of the completion or termination of the project." [D.C. Code 40-301.02, Notice of intent](https://code.dccouncil.gov/us/dc/council/code/sections/40-301.02)
 - "Any person directly employed by a contractor described by § 40-301.01 (any such contractor also referred to herein as original contractor), whether the person is a subcontractor, materialman, or laborer, to furnish work or materials for the completion of the project, shall be entitled to the same rights and subject to the same obligations as the original contractor under this chapter" [D.C. Code 40-303.01, Subcontractors, materialmen and laborers](https://code.dccouncil.gov/us/dc/council/code/sections/40-303.01)

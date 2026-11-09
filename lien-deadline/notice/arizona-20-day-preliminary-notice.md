@@ -1,6 +1,8 @@
 # Arizona 20-day preliminary notice
 
-Your Arizona preliminary twenty day notice is due not later than 20 days after you first furnish labor, services, materials or equipment to the jobsite: if you first furnished on November 2, 2026, send it by Sunday, November 22, 2026 (the text we read does not move a weekend date, so Friday, November 20, 2026 is the safe day) (A.R.S. 33-992.01(B), (C)). The form below is the statute's; the PDF fills it in with your job and adds a proof-of-service log.
+Your Arizona preliminary twenty day notice is due not later than 20 days after you first furnish labor, services, materials or equipment to the jobsite (A.R.S. 33-992.01(B), (C)). The form below is the statute's; the PDF fills it in with your job and adds a proof-of-service log.
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=AZ&role=sub&project=commercial&first=2026-11-02): If you first furnished on November 2, 2026, send it by Sunday, November 22, 2026 (the text we read does not move a weekend date, so Friday, November 20, 2026 is the safe day) (A.R.S. 33-992.01(B), (C)).
 
 ## Work out your 20-day notice date
 
@@ -49,6 +51,8 @@ A.R.S. 33-992.01(D): substantially the following form. Blanks are shown as lines
 The filled PDF is $2.90 per notice (a correction or re-download of the same notice is free for 30 days), with a service record page: the last day to serve it, who must get it, how, and a log for the dates and tracking numbers.
 
 ## The statute's words on timing
+
+**Read the statute's words (3 quotations)**
 
 - "Except for a person performing actual labor for wages, every person who furnishes labor, professional services, materials, machinery, fixtures or tools for which a lien otherwise may be claimed under this article shall, as a necessary prerequisite to the validity of any claim of lien, serve the owner or reputed owner, the original contractor or reputed contractor, the construction lender, if any, or reputed construction lender, if any, and the person with whom the claimant has contracted for the purchase of those items with a written preliminary twenty day notice as prescribed by this section." [A.R.S. 33-992.01, Preliminary twenty day notice](https://www.azleg.gov/ars/33/00992-01.htm)
 - "shall be given not later than twenty days after the claimant has first furnished labor, professional services, materials, machinery, fixtures or tools to the jobsite" [A.R.S. 33-992.01, Preliminary twenty day notice](https://www.azleg.gov/ars/33/00992-01.htm)

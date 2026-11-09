@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
 <link rel="stylesheet" href="/toll-preview/fx-on-date/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fx-on-date"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -70,109 +72,138 @@
   </div>
 </header>
 
-<main id="main" class="fx">
-  <section class="wrap fx-intro">
+<main id="main" class="fx hue-money tf-plain">
+  <section class="wrap fx-intro tf-intro">
     <p class="eyebrow">Referenzdaten, pro Abruf</p>
     <h1>Wechselkurs an einem Datum</h1>
     <p class="lede">Der offizielle Kurs für ein Währungspaar an einem Stichtag: der Referenzkurs der Europäischen Zentralbank (EZB) für jeden Tag seit Januar 1999, oder der Umrechnungskurs des US-Finanzministeriums, der IRS-Jahresdurchschnitt oder der monatliche Kurs der britischen HMRC. Hat die EZB an dem Tag nichts veröffentlicht, bekommen Sie den letzten Kurs davor, und die Seite nennt Ihnen den Tag.</p>
-    <p class="fx-price" id="fx-price">Jeder Abruf kostet $0.001. Ohne Konto erhalten Sie 5 kostenlose Abrufe pro Tag.</p>
+<ul class="trust" aria-label="Über diese Website"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Gemacht von <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exakt, ohne KI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Amtliche Quellen, mit Datum</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Dateien, die Sie hochladen, werden nicht gespeichert</a></span></li><li class="tl2"><a href="/toll-preview/security/">Sicherheit</a><a href="/toll-preview/terms/">Bedingungen</a></li></ul>
+    <p class="fx-price pline" id="fx-price">$0.001 pro Abruf · 5 kostenlose Abrufe pro Tag ohne Konto · auch per API</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/fx-on-date/" hreflang="en">Auf Englisch ansehen</a></p>
   </section>
 
-  <section class="wrap fx-desk" aria-label="Kursabfrage">
-    <form class="fx-form" id="fx-form" novalidate>
-      <div class="field">
-        <label for="fx-source">Kursquelle</label>
-        <select id="fx-source" aria-describedby="fx-source-hint">
-          <option value="ecb">EZB-Referenzkurs (Standard)</option>
-          <option value="treasury">Umrechnungskurs des US-Finanzministeriums</option>
-          <option value="irs">IRS-Jahresdurchschnitt</option>
-          <option value="hmrc">HMRC-Monatskurs</option>
-        </select>
-        <p class="hint" id="fx-source-hint">Der tägliche Euro-Referenzkurs der Europäischen Zentralbank. <a href="#fx-which">Welcher Kurs passt</a></p>
-      </div>
+  <section class="wrap fx-desk tf-calc" aria-label="Kursabfrage">
+    <form class="fx-form tf-card tf-form" id="fx-form" novalidate="">
+<div class="field">
+<label for="fx-source">Kursquelle</label>
+<select aria-describedby="fx-source-hint" id="fx-source">
+<option value="ecb">EZB-Referenzkurs (Standard)</option>
+<option value="treasury">Umrechnungskurs des US-Finanzministeriums</option>
+<option value="irs">IRS-Jahresdurchschnitt</option>
+<option value="hmrc">HMRC-Monatskurs</option>
+</select>
 
-      <div class="fx-pair">
-        <div class="field">
-          <label for="fx-base">Von</label>
-          <select id="fx-base" aria-describedby="fx-base-err"></select>
-          <p class="field-error" id="fx-base-err"></p>
-        </div>
-        <button type="button" class="fx-swap" id="fx-swap" aria-label="Die beiden Währungen tauschen" title="Die beiden Währungen tauschen">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="field">
-          <label for="fx-quote">In</label>
-          <select id="fx-quote" aria-describedby="fx-quote-err"></select>
-          <p class="field-error" id="fx-quote-err"></p>
-        </div>
-      </div>
+</div>
+<div class="fx-pair">
+<div class="field">
+<label for="fx-base">Von</label>
+<select aria-describedby="fx-base-err" id="fx-base"></select>
+<p class="field-error" id="fx-base-err"></p>
+</div>
+<button aria-label="Die beiden Währungen tauschen" class="fx-swap" id="fx-swap" title="Die beiden Währungen tauschen" type="button">
+<svg aria-hidden="true" focusable="false" height="20" viewbox="0 0 24 24" width="20"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</button>
+<div class="field">
+<label for="fx-quote">In</label>
+<select aria-describedby="fx-quote-err" id="fx-quote"></select>
+<p class="field-error" id="fx-quote-err"></p>
+</div>
+</div>
+<div class="field">
+<label for="fx-date">Datum</label>
+<input aria-describedby="fx-date-hint fx-date-err" id="fx-date" min="1999-01-04" type="date"/>
 
-      <div class="field">
-        <label for="fx-date">Datum</label>
-        <input type="date" id="fx-date" min="1999-01-04" aria-describedby="fx-date-hint fx-date-err">
-        <p class="hint" id="fx-date-hint">Ab 4. Januar 1999. An Wochenenden und Feiertagen gilt der letzte Kurs davor.</p>
-        <p class="field-error" id="fx-date-err"></p>
-      </div>
+<p class="field-error" id="fx-date-err"></p>
+</div>
 
-      <div class="fx-quick">
-        <p class="fx-quick-label" id="fx-quick-label">Häufige Paare</p>
-        <div class="fx-quick-row" role="group" aria-labelledby="fx-quick-label" id="fx-quick"></div>
-      </div>
+<p class="form-error" id="fx-error" role="alert"></p>
+<button class="btn" id="fx-run" type="submit">Kurs abrufen</button>
+<p class="hint fx-run-note" id="fx-run-note"></p>
 
-      <p class="form-error" id="fx-error" role="alert"></p>
-      <button class="btn" type="submit" id="fx-run">Kurs abrufen</button>
-      <p class="hint fx-run-note" id="fx-run-note"></p>
-    </form>
+<details class="xpand">
+<summary>Häufige Paare, zu Kurs und Datum</summary>
+<div class="xp-in">
+<div class="fx-quick">
+<p class="fx-quick-label" id="fx-quick-label">Häufige Paare</p>
+<div aria-labelledby="fx-quick-label" class="fx-quick-row" id="fx-quick" role="group"></div>
+</div>
+<p class="hint" id="fx-source-hint">Der tägliche Euro-Referenzkurs der Europäischen Zentralbank. <a href="#fx-which">Welcher Kurs passt</a></p>
+<p class="hint" id="fx-date-hint">Ab 4. Januar 1999. An Wochenenden und Feiertagen gilt der letzte Kurs davor.</p>
+</div>
+</details>
+</form>
 
-    <div class="fx-board" id="fx-board" aria-live="polite" aria-busy="false">
-      <p class="muted">Das Rechenbeispiel wird geladen.</p>
-    </div>
+    <div aria-busy="false" aria-live="polite" class="fx-board" id="fx-board">
+<p class="muted">Das Rechenbeispiel wird geladen.</p>
+</div>
   </section>
 
-  <section class="wrap fx-about" data-jump="Die Quelle" aria-labelledby="fx-about-title">
-    <h2 id="fx-about-title">Woher die Zahl kommt</h2>
-    <div class="fx-about-cols">
+  <section class="wrap fx-about tf-sec" data-jump="Die Quelle" aria-labelledby="fx-about-title">
+    <div class="tf-rules-top">
       <div>
-        <h3>Ein Kurs pro Tag</h3>
+        <h2 id="fx-about-title">Woher die Zahl kommt</h2>
         <p>Die EZB legt für rund 30 Währungen gegen den Euro Referenzkurse fest, an jedem TARGET-Arbeitstag um etwa 16:00 Uhr mitteleuropäischer Zeit. Die Standardantwort ist der Kurs aus der veröffentlichten Tabelle der EZB für diesen Tag.</p>
       </div>
-      <div>
-        <h3>Paare ohne Euro</h3>
-        <p>Für zwei andere Währungen teilt die Seite den einen Euro-Kurs durch den anderen, jeweils vom Kurs desselben Tages, und rundet auf 6 Nachkommastellen. Gerundet wird exakt, ab 5 wird aufgerundet, und der Kehrwert wird aus dem ungerundeten Kurs berechnet.</p>
-      </div>
-      <div>
-        <h3>Tage ohne Kurs</h3>
-        <p>An Wochenenden und TARGET-Feiertagen gibt es keinen Kurs. Das Werkzeug nimmt den letzten Kurs aus den 7 Tagen vor Ihrem Datum. Gibt es in diesem Zeitraum keinen oder liegt das Datum vor dem 4. Januar 1999, sagt es das, und Sie zahlen nichts.</p>
-        <p>Ein Arbeitstag, an dem die EZB noch nichts veröffentlicht hat, zum Beispiel heute vor 16:00 Uhr, bekommt keinen Kurs statt eines älteren. Fragen Sie nach der Veröffentlichung noch einmal. Auch dieser Abruf ist kostenlos.</p>
-      </div>
+      <aside class="tf-card tf-not" aria-label="Was es nicht abdeckt">
+        <h3>Was es nicht abdeckt</h3>
+        <ul>
+          <li>Den Kurs, zu dem eine Bank oder Karte tauscht: Dies sind Referenzkurse, die den Kurs des Tages festhalten.</li>
+          <li>Die wöchentlichen Änderungen der HMRC, die nicht in ihren Monatsdateien stehen.</li>
+          <li>Einen Arbeitstag vor der Veröffentlichung um 16:00 Uhr: Er bekommt keinen Kurs statt eines älteren.</li>
+        </ul>
+      </aside>
     </div>
-    <p class="muted small">Quelle: Referenzkurse der Europäischen Zentralbank für den Euro (englischer Originaltitel: European Central Bank euro foreign exchange reference rates). Die EZB veröffentlicht sie nur zur Information: Sie halten den Kurs des Tages fest, sind aber kein Preis, zu dem eine Bank tauscht. Verlangt Ihr Finanzamt oder Ihre Buchhaltung einen eigenen Kurs, wählen Sie oben die passende Quelle. Währungen, die die EZB nicht mehr veröffentlicht, etwa die kroatische Kuna, können über die API für Tage abgefragt werden, an denen es sie gab.</p>
-  </section>
-
-  <section class="wrap fx-about" id="fx-which" data-jump="Welcher Kurs passt" aria-labelledby="fx-which-title">
-    <h2 id="fx-which-title">Welcher Kurs passt</h2>
-    <p>Nehmen Sie den Kurs, den die Stelle verlangt, bei der Sie melden. Jede Antwort nennt die Veröffentlichung und den Zeitraum, der verwendet wurde. Was die Stellen selbst zu ihren Kursen sagen (sinngemäß wiedergegeben):</p>
+    <details class="xpand">
+      <summary>So wird der Kurs ermittelt</summary>
+      <div class="xp-in">
     <div class="fx-about-cols">
-      <div>
-        <h3>EZB-Referenzkurs (Standard)</h3>
-        <p>Tageskurse gegen den Euro seit 1999. Die EZB schreibt, sie würden nur zur Information veröffentlicht.</p>
+<div>
+<h3>Ein Kurs pro Tag</h3>
+<p>Die EZB legt für rund 30 Währungen gegen den Euro Referenzkurse fest, an jedem TARGET-Arbeitstag um etwa 16:00 Uhr mitteleuropäischer Zeit. Die Standardantwort ist der Kurs aus der veröffentlichten Tabelle der EZB für diesen Tag.</p>
+</div>
+<div>
+<h3>Paare ohne Euro</h3>
+<p>Für zwei andere Währungen teilt die Seite den einen Euro-Kurs durch den anderen, jeweils vom Kurs desselben Tages, und rundet auf 6 Nachkommastellen. Gerundet wird exakt, ab 5 wird aufgerundet, und der Kehrwert wird aus dem ungerundeten Kurs berechnet.</p>
+</div>
+<div>
+<h3>Tage ohne Kurs</h3>
+<p>An Wochenenden und TARGET-Feiertagen gibt es keinen Kurs. Das Werkzeug nimmt den letzten Kurs aus den 7 Tagen vor Ihrem Datum. Gibt es in diesem Zeitraum keinen oder liegt das Datum vor dem 4. Januar 1999, sagt es das, und Sie zahlen nichts.</p>
+<p>Ein Arbeitstag, an dem die EZB noch nichts veröffentlicht hat, zum Beispiel heute vor 16:00 Uhr, bekommt keinen Kurs statt eines älteren. Fragen Sie nach der Veröffentlichung noch einmal. Auch dieser Abruf ist kostenlos.</p>
+</div>
+</div>
+    <p class="muted small">Quelle: Referenzkurse der Europäischen Zentralbank für den Euro (englischer Originaltitel: European Central Bank euro foreign exchange reference rates). Die EZB veröffentlicht sie nur zur Information: Sie halten den Kurs des Tages fest, sind aber kein Preis, zu dem eine Bank tauscht. Verlangt Ihr Finanzamt oder Ihre Buchhaltung einen eigenen Kurs, wählen Sie oben die passende Quelle. Währungen, die die EZB nicht mehr veröffentlicht, etwa die kroatische Kuna, können über die API für Tage abgefragt werden, an denen es sie gab.</p>
       </div>
-      <div>
-        <h3>Umrechnungskurs des US-Finanzministeriums</h3>
-        <p>Quartalskurse in Einheiten pro US-Dollar, die US-Bundesbehörden zur Umrechnung für den Berichtstag und die folgenden drei Monate nutzen. Weicht der aktuelle Kurs um 10 % oder mehr ab, gibt das Ministerium eine Änderung mit neuem Gültigkeitsdatum heraus; das Werkzeug nutzt sie ab diesem Datum. Für den FBAR verweist FinCEN auf den Kurs zum 31. Dezember. Ein Paar muss USD enthalten.</p>
+    </details>
+    <details class="xpand" id="fx-which">
+      <summary>Welcher Kurs passt</summary>
+      <div class="xp-in">
+    <h3 id="fx-which-title">Welcher Kurs passt</h3>
+    <p>Nehmen Sie den Kurs, den die Stelle verlangt, bei der Sie melden. Jede Antwort nennt die Veröffentlichung und den Zeitraum, der verwendet wurde. Was die Stellen selbst zu ihren Kursen sagen (sinngemäß wiedergegeben):</p>
+<div class="fx-about-cols">
+<div>
+<h3>EZB-Referenzkurs (Standard)</h3>
+<p>Tageskurse gegen den Euro seit 1999. Die EZB schreibt, sie würden nur zur Information veröffentlicht.</p>
+</div>
+<div>
+<h3>Umrechnungskurs des US-Finanzministeriums</h3>
+<p>Quartalskurse in Einheiten pro US-Dollar, die US-Bundesbehörden zur Umrechnung für den Berichtstag und die folgenden drei Monate nutzen. Weicht der aktuelle Kurs um 10 % oder mehr ab, gibt das Ministerium eine Änderung mit neuem Gültigkeitsdatum heraus; das Werkzeug nutzt sie ab diesem Datum. Für den FBAR verweist FinCEN auf den Kurs zum 31. Dezember. Ein Paar muss USD enthalten.</p>
+</div>
+<div>
+<h3>IRS-Jahresdurchschnitt</h3>
+<p>Ein Kurs pro Währung und Jahr, in Einheiten pro US-Dollar, für das Jahr Ihres Datums. Der IRS schreibt, er habe keinen amtlichen Wechselkurs und akzeptiere jeden veröffentlichten Kurs, der konsequent verwendet wird. Grundsätzlich gilt der Tageskurs bei Zufluss, Zahlung oder Verbuchung. Ein Paar muss USD enthalten.</p>
+</div>
+<div>
+<h3>HMRC-Monatskurs</h3>
+<p>Monatskurse in Einheiten pro Pfund, ab Januar 2021, gültig vom ersten bis zum letzten Tag des folgenden Kalendermonats. Weicht der Marktkurs um mehr als 5 % ab, aktualisiert die HMRC den Kurs in der Folgewoche; diese wöchentlichen Änderungen stehen nicht in den Monatsdateien, die dieses Werkzeug liest. Ein Paar muss GBP enthalten.</p>
+</div>
+</div>
       </div>
-      <div>
-        <h3>IRS-Jahresdurchschnitt</h3>
-        <p>Ein Kurs pro Währung und Jahr, in Einheiten pro US-Dollar, für das Jahr Ihres Datums. Der IRS schreibt, er habe keinen amtlichen Wechselkurs und akzeptiere jeden veröffentlichten Kurs, der konsequent verwendet wird. Grundsätzlich gilt der Tageskurs bei Zufluss, Zahlung oder Verbuchung. Ein Paar muss USD enthalten.</p>
-      </div>
-      <div>
-        <h3>HMRC-Monatskurs</h3>
-        <p>Monatskurse in Einheiten pro Pfund, ab Januar 2021, gültig vom ersten bis zum letzten Tag des folgenden Kalendermonats. Weicht der Marktkurs um mehr als 5 % ab, aktualisiert die HMRC den Kurs in der Folgewoche; diese wöchentlichen Änderungen stehen nicht in den Monatsdateien, die dieses Werkzeug liest. Ein Paar muss GBP enthalten.</p>
-      </div>
-    </div>
+    </details>
   </section>
 
-  <section class="wrap fx-code" aria-label="Per Code nutzen">
+
+
+  <section class="wrap fx-code tf-sec" data-jump="Code" aria-label="Per Code nutzen">
     <div id="fx-code"></div>
   </section>
   <noscript><div class="wrap"><p>Diese Seite braucht JavaScript. Sie können das Werkzeug auch aus dem Code aufrufen: siehe <a href="/toll-preview/docs">die Dokumentation (englisch)</a>.</p></div></noscript>

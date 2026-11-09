@@ -12,6 +12,8 @@ State disability insurance we read
 | Rhode Island | TDI | not covered: the state's site refused our reads | not covered |
 | Hawaii | TDI | not covered: the state's site refused our reads | not covered |
 
+**Read the law's own words (5 quotations)**
+
 - "If eligible, you can get benefit payments for up to 52 weeks." [California EDD, Am I Eligible for Disability Insurance Benefits?](https://edd.ca.gov/en/disability/Am_I_Eligible_for_DI_Benefits/)
 - "Earned at least $300 with State Disability Insurance (SDI) deducted from your paycheck." [California EDD, Am I Eligible for Disability Insurance Benefits?](https://edd.ca.gov/en/disability/Am_I_Eligible_for_DI_Benefits/)
 - "Your job is now protected by TDI/FLI law during your leave if you receive TDI/FLI benefits from the State or a private plan, and your leave is not already covered under the NJ Family Leave Act." [New Jersey Department of Labor, NJ Expands Job-Protected Leave for Workers](https://nj.gov/labor/myleavebenefits/worker/job-protection-information/more-protections.shtml)

@@ -6,26 +6,48 @@ Sick leave rules quoted from each place's own site (read November 8, 2026); the 
 
 | Place | Rule | Wait | Payout at separation | Law |
 | --- | --- | --- | --- | --- |
-| [Alaska](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/) | 1 hour per 30 hours worked; up to 56 hours earned a year; use may be limited to 56 hours a year; or 56 hours front-loaded each year (15 or more employees (FTEs); other sizes on the page) |  | Not required | AS 23.10.067 |
-| [Arizona](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; or 40 hours front-loaded each year (15 or more employees; other sizes on the page) | 90 days | Not required | A.R.S. 23-372 |
+| [Alaska](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/) | 1 hour per 30 hours worked… |  | Not required | AS 23.10.067 |
+| [Arizona](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/) | 1 hour per 30 hours worked… | 90 days | Not required | A.R.S. 23-372 |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/colorado/) | 1 hour per 30 hours worked; up to 48 hours earned a year |  | Not stated | C.R.S. 8-13.3-403 |
-| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/) | 1 hour per 37 hours worked; up to 7 days a year (56 hours at 8 hours a day) (100 or more employees; other sizes on the page) | 90 days | Not stated | D.C. Code 32-531.02 |
-| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/) | 1 hour per 40 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; or 40 hours front-loaded each year | 90 days | Not required | 820 ILCS 192 |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/) | 1 hour per 37 hours worked… | 90 days | Not stated | D.C. Code 32-531.02 |
+| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/) | 1 hour per 40 hours worked… | 90 days | Not required | 820 ILCS 192 |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maine/) | 1 hour per 40 hours worked; up to 40 hours earned a year | 120 days | Not stated | 26 M.R.S. 637 |
-| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 64 hours a year; balance may be capped at 64 hours; carryover may be limited to 40 hours; or 40 hours front-loaded each year (15 or more employees: paid; other sizes on the page) | 106 days | Not required | Md. Lab. & Empl. 3-1304 |
-| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/) | 1 hour per 30 hours worked; up to 48 hours earned a year; balance may be capped at 80 hours; or 80 hours front-loaded each year |  | Not required | Minn. Stat. 181.9446 |
-| [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; carryover may be limited to 40 hours; or 40 hours front-loaded each year |  | Not stated | N.J.S.A. 34:11D-2 |
-| [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/oregon/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; balance may be capped at 80 hours; carryover may be limited to 40 hours; or 40 hours front-loaded each year (10 or more employees in Oregon (6 or more with a Portland location): paid; other sizes on the page) | 90 days | Not required | ORS 653.606 |
+| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/) | 1 hour per 30 hours worked… | 106 days | Not required | Md. Lab. & Empl. 3-1304 |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/) | 1 hour per 30 hours worked… |  | Not required | Minn. Stat. 181.9446 |
+| [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/) | 1 hour per 30 hours worked… |  | Not stated | N.J.S.A. 34:11D-2 |
+| [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/oregon/) | 1 hour per 30 hours worked… | 90 days | Not required | ORS 653.606 |
 | [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/vermont/) | 1 hour per 52 hours worked; use may be limited to 40 hours a year | 365 days | Not stated | 21 V.S.A. 482 |
-| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year |  | Not stated | Va. Code 40.1-33.4 |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/) | 1 hour per 30 hours worked… |  | Not stated | Va. Code 40.1-33.4 |
 | [Washington](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/washington/) | 1 hour per 40 hours worked; carryover may be limited to 40 hours | 90 days | Not required | RCW 49.46.210 |
 | [Chicago, IL](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/chicago/) | 1 hour per 35 hours worked |  | Not stated | Chicago Mun. Code ch. 6-130 |
-| [Los Angeles, CA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/los-angeles/) | 1 hour per 30 hours worked; use may be limited to 48 hours a year; balance may be capped at 72 hours; or 48 hours front-loaded each year | 90 days | Not required | LAMC 187.04 |
-| [Montgomery County, MD](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/montgomery-county-md/) | 1 hour per 30 hours worked; up to 56 hours earned a year; use may be limited to 80 hours a year (5 or more employees; other sizes on the page) |  | Not stated | Montgomery County Code ch. 27, art. XIII |
-| [New York City, NY](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/new-york-city/) | 1 hour per 30 hours worked; up to 56 hours earned a year (100 or more employees; other sizes on the page) |  | Not stated | N.Y.C. Admin. Code 20-911 et seq. |
-| [Philadelphia, PA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/philadelphia/) | 1 hour per 40 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; or 40 hours front-loaded each year (10 or more employees: paid; other sizes on the page) | 90 days | Not stated | Phila. Code 9-4100 |
-| [Saint Paul, MN](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/saint-paul/) | 1 hour per 30 hours worked; up to 48 hours earned a year; balance may be capped at 80 hours |  | Not required | Saint Paul Leg. Code ch. 233 |
-| [Seattle, WA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/seattle/) | 1 hour per 30 hours worked; carryover may be limited to 72 hours (Tier 3: 250 or more FTEs worldwide; other sizes on the page) |  | Not stated | SMC 14.16 |
+| [Los Angeles, CA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/los-angeles/) | 1 hour per 30 hours worked… | 90 days | Not required | LAMC 187.04 |
+| [Montgomery County, MD](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/montgomery-county-md/) | 1 hour per 30 hours worked… |  | Not stated | Montgomery County Code ch. 27, art. XIII |
+| [New York City, NY](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/new-york-city/) | 1 hour per 30 hours worked… |  | Not stated | N.Y.C. Admin. Code 20-911 et seq. |
+| [Philadelphia, PA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/philadelphia/) | 1 hour per 40 hours worked… | 90 days | Not stated | Phila. Code 9-4100 |
+| [Saint Paul, MN](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/saint-paul/) | 1 hour per 30 hours worked… |  | Not required | Saint Paul Leg. Code ch. 233 |
+| [Seattle, WA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/seattle/) | 1 hour per 30 hours worked… |  | Not stated | SMC 14.16 |
+
+**The long rules in full (15)**
+
+Sick leave rules quoted from each place's own site (read November 8, 2026); the limits are the most an employer may apply: full wording
+
+| Place | Rule |
+| --- | --- |
+| [Alaska](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/) | 1 hour per 30 hours worked; up to 56 hours earned a year; use may be limited to 56 hours a year; or 56 hours front-loaded each year (15 or more employees (FTEs); other sizes on the page) |
+| [Arizona](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; or 40 hours front-loaded each year (15 or more employees; other sizes on the page) |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/) | 1 hour per 37 hours worked; up to 7 days a year (56 hours at 8 hours a day) (100 or more employees; other sizes on the page) |
+| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/) | 1 hour per 40 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; or 40 hours front-loaded each year |
+| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 64 hours a year; balance may be capped at 64 hours; carryover may be limited to 40 hours; or 40 hours front-loaded each year (15 or more employees: paid; other sizes on the page) |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/) | 1 hour per 30 hours worked; up to 48 hours earned a year; balance may be capped at 80 hours; or 80 hours front-loaded each year |
+| [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; carryover may be limited to 40 hours; or 40 hours front-loaded each year |
+| [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/oregon/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; balance may be capped at 80 hours; carryover may be limited to 40 hours; or 40 hours front-loaded each year (10 or more employees in Oregon (6 or more with a Portland location): paid; other sizes on the page) |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/) | 1 hour per 30 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year |
+| [Los Angeles, CA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/los-angeles/) | 1 hour per 30 hours worked; use may be limited to 48 hours a year; balance may be capped at 72 hours; or 48 hours front-loaded each year |
+| [Montgomery County, MD](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/montgomery-county-md/) | 1 hour per 30 hours worked; up to 56 hours earned a year; use may be limited to 80 hours a year (5 or more employees; other sizes on the page) |
+| [New York City, NY](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/new-york-city/) | 1 hour per 30 hours worked; up to 56 hours earned a year (100 or more employees; other sizes on the page) |
+| [Philadelphia, PA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/philadelphia/) | 1 hour per 40 hours worked; up to 40 hours earned a year; use may be limited to 40 hours a year; or 40 hours front-loaded each year (10 or more employees: paid; other sizes on the page) |
+| [Saint Paul, MN](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/saint-paul/) | 1 hour per 30 hours worked; up to 48 hours earned a year; balance may be capped at 80 hours |
+| [Seattle, WA](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/seattle/) | 1 hour per 30 hours worked; carryover may be limited to 72 hours (Tier 3: 250 or more FTEs worldwide; other sizes on the page) |
 
 ## Not covered
 

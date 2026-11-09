@@ -1,6 +1,8 @@
 # Washington lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a sub-subcontractor on a commercial project in Washington, your notice to owner covers your first day if given by December 31, 2026, the lien must be recorded by April 29, 2027 and the suit to enforce it must be filed by December 29, 2027 (if recorded on the last day, April 29, 2027) (RCW 60.04.031(1); RCW 60.04.091; RCW 60.04.141).
+In Washington, a sub-subcontractor records the lien not later than 90 days after you stopped furnishing labor, services, materials or equipment (RCW 60.04.091).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=WA&role=sub-sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a sub-subcontractor on a commercial project in Washington, your notice to owner covers your first day if given by December 31, 2026, the lien must be recorded by April 29, 2027 and the suit to enforce it must be filed by December 29, 2027 (if recorded on the last day, April 29, 2027) (RCW 60.04.031(1); RCW 60.04.091; RCW 60.04.141).
 
 ## Work out your Washington dates
 
@@ -52,6 +54,8 @@ Weekends and holidays: the Washington text we read does not move a deadline that
 The statutory form, filled in as a PDF: [Washington notice to owner](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/notice/washington-notice-to-owner/).
 
 ## Washington in its own words
+
+**Read the statute's words (7 quotations)**
 
 - "The notice may be given at any time but only protects the right to claim a lien for professional services, materials, or equipment supplied after the date which is sixty days before:" [RCW 60.04.031, Notices](https://app.leg.wa.gov/RCW/default.aspx?cite=60.04.031)
 - "In the case of new construction of a single-family residence, the notice of a right to claim a lien may be given at any time but only protects the right to claim a lien for professional services, materials, or equipment supplied after a date which is ten days before the notice is given as described in this subsection." [RCW 60.04.031, Notices](https://app.leg.wa.gov/RCW/default.aspx?cite=60.04.031)

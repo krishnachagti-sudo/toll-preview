@@ -2,6 +2,8 @@
 
 Not by force during state-paid weeks: the DOL says the FMLA substitution rule does not apply to leave a state program pays, so of a 12-week FMLA leave with 8 weeks of state benefits, PTO can be required only for the 4 weeks the state does not pay, and then only where state law allows it.
 
+**Read the law's own words (2 quotations)**
+
 - "Because the substitution provision does not apply, neither the employee nor the employer may use the FMLA substitution provision to unilaterally require the concurrent use of employer-provided paid leave during the portion of the leave that is compensated by the state or local program." [U.S. Department of Labor, Wage and Hour Division, Opinion Letter FMLA2025-01-A (January 14, 2025)](https://www.dol.gov/sites/dolgov/files/WHD/opinion-letters/FMLA/2025_1_14_1_FMLA.pdf)
 - "the employer and the employee may agree, where state law permits, to use the employee's employer-provided accrued paid leave to supplement the payments under a state or local leave program." [U.S. Department of Labor, Wage and Hour Division, Opinion Letter FMLA2025-01-A (January 14, 2025)](https://www.dol.gov/sites/dolgov/files/WHD/opinion-letters/FMLA/2025_1_14_1_FMLA.pdf)
 
@@ -13,6 +15,8 @@ State rules on PTO during state leave, as read
 | Colorado | Employers cannot require accrued vacation, sick leave or other PTO before or while the employee receives FAMLI. |
 | Connecticut | An employer may require (or allow) accrued PTO with CT Paid Leave as long as total pay stays at or below the regular rate; during CT FMLA it must let the employee keep at least two weeks of PTO. |
 | Federal (all states) | For unpaid FMLA weeks, the employer may require substitution of accrued paid leave (29 CFR 825.207(a)). |
+
+**Read the law's own words (3 quotations)**
 
 - "Employers can't require employees to use accrued vacation, sick leave, or other paid time off before or while receiving FAMLI." [Colorado FAMLI Division, FAMLI and FMLA](https://famli.colorado.gov/individuals-and-families/how-famli-works/famli-and-fmla)
 - "provided that the employer must allow the employee to retain at least two work weeks of accrued PTO or equivalent paid time off." [Connecticut Paid Leave Authority, CT Paid Leave and FMLA](https://www.ctpaidleave.org/how-ct-paid-leave-works/ct-paid-leave-and-fmla)

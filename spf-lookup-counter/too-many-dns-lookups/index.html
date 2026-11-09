@@ -74,12 +74,13 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Count your record</h2><p class="muted">The counter numbers every lookup and names the one that goes over.</p><form method="get" action="/toll-preview/spf-lookup-counter/" class="cp-tool-form"><div class="field"><label for="tf-domain">Your domain</label><input type="text" id="tf-domain" name="domain" value="example.com"><p class="hint">The domain in your MAIL FROM (envelope sender) address.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Count my lookups</button></form><p class="small"><a href="/toll-preview/spf-lookup-counter/?domain=example.com">Open this in the full counter</a></p></aside>
 <section>
 <h2 id="example">A real record, counted</h2>
 <p>github.com's record on November 7, 2026:</p>
 <pre><code>v=spf1 ip4:192.30.252.0/22 include:spf.protection.outlook.com include:_netblocks.google.com include:_netblocks2.google.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net include:mktomail.com include:sendgrid.net ip4:62.253.227.114 ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ~all</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Top-level terms by cost</caption><thead><tr><th scope="col">Term</th><th scope="col" class="r num">Lookups</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Top-level terms by cost</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Term</th><th scope="col" class="r num">Lookups</th></tr></thead><tbody>
 <tr><th scope="row"><code>include:_spf.salesforce.com</code></th><td class="r num">2</td></tr>
 <tr><th scope="row"><code>include:sendgrid.net</code></th><td class="r num">2</td></tr>
 <tr><th scope="row"><code>include:spf.protection.outlook.com</code></th><td class="r num">1</td></tr>
@@ -88,13 +89,13 @@
 <tr><th scope="row"><code>include:mail.zendesk.com</code></th><td class="r num">1</td></tr>
 <tr><th scope="row"><code>include:servers.mcsv.net</code></th><td class="r num">1</td></tr>
 <tr><th scope="row"><code>include:mktomail.com</code></th><td class="r num">1</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Total: 10 of 10, so adding any include, a, mx or exists would push it over.</p>
 </section>
 <section>
 <h2 id="fixes">Fixes, by lookups saved</h2>
 <ul><li>Remove includes for services you no longer send from: saves the whole include cost.</li><li>Remove terms that find nothing: saves 1 lookup and 1 void lookup each.</li><li>Replace a and mx with ip4/ip6 for servers you run: saves 1 each.</li><li>Move a bulk sender to a subdomain with its own record: saves that include's cost on the main domain.</li><li>Flatten (replace an include with the ranges it lists) only for providers with stable, documented ranges: it breaks silently when they change.</li></ul>
-<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc7208">IETF RFC 7208: Sender Policy Framework (SPF), read 2026-11-07</a></li><li><a href="https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure">Microsoft Learn: Set up SPF for Microsoft 365 (reduce DNS lookups), read 2026-11-07</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.rfc-editor.org/rfc/rfc7208">IETF RFC 7208: Sender Policy Framework (SPF)</a><span class="src-m">rfc-editor.org · read 2026-11-07</span></li><li><a href="https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure">Microsoft Learn: Set up SPF for Microsoft 365 (reduce DNS lookups)</a><span class="src-m">learn.microsoft.com · read 2026-11-07</span></li></ul>
 <p class="cp-note">Counts follow RFC 7208 at the time and through the resolver shown; receivers may differ on SHOULD rules such as the void lookup limit. SPF is one of several checks a receiver makes, so passing it does not guarantee delivery.</p>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Count.</strong> Run the counter on your domain. It numbers every DNS-querying term, nested ones too, and names the 11th.</li><li><strong>Find the dearest include.</strong> Sort the top-level terms by cost: an include costs 1 plus everything inside it.</li><li><strong>Remove what you no longer use.</strong> Drop includes for services you stopped using, and any include, a or mx that finds nothing (it also spends a void lookup).</li><li><strong>Replace a and mx with ip4/ip6.</strong> Your own servers rarely change address; ip4 and ip6 cost no lookups. Update them if the servers move.</li><li><strong>Move a sender to a subdomain.</strong> Send newsletters from news.yourdomain with its own record: it gets its own 10 lookups.</li><li><strong>Count the draft before you publish.</strong> Paste the new record (or add and remove terms) in the counter and check it is under 10 before you change DNS.</li></ol></section>

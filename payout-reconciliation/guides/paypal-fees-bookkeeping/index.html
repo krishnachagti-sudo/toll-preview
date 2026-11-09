@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-money)">
 <p class="eyebrow">PayPal</p>
 <h1>PayPal fees and payouts in your books</h1>
-<p class="cp-answer">Book a PayPal sale at its gross and the fee as an expense: at PayPal Checkout's US rate of 3.49% + $0.49, the fees on this sample month's 3 sales are $7.95, exactly the $7.95 in the file. The month's activity, $179.00 sales + $7.00 sales tax - $25.00 refunds - $27.95 fees, is $133.05, and the $150.00 withdrawal is a transfer to the bank, not income.</p>
+<p class="cp-answer">Book a PayPal sale at its gross and the fee as an expense: at PayPal Checkout's US rate of 3.49% + $0.49, the fees on this sample month's 3 sales are $7.95, exactly the $7.95 in the file.<span class="ans-more"> The month's activity, $179.00 sales + $7.00 sales tax - $25.00 refunds - $27.95 fees, is $133.05, and the $150.00 withdrawal is a transfer to the bank, not income.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the splitter</h2><p class="muted">The made-up file below opens in the splitter and is split in your browser, free. Swap in your own export there.</p><form method="get" action="/toll-preview/payout-reconciliation/" class="cp-tool-form"><input type="hidden" name="sample" value="paypal"><input type="hidden" name="ledger" value="quickbooks-online"><input type="hidden" name="rate" value="paypal-checkout"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this payout in the splitter</button></form><p class="small"><a href="/toll-preview/payout-reconciliation/?sample=paypal&amp;ledger=quickbooks-online&amp;rate=paypal-checkout">Open this example in the splitter</a></p></aside>
 <section>
 <h2 id="sales">Each sale, gross, fee and net</h2>
@@ -86,14 +87,14 @@
 </section>
 <section>
 <h2 id="journal">The month's journal</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>PayPal USD 2026-10-15 to 2026-10-20, October 20, 2026</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">PayPal USD 2026-10-15 to 2026-10-20, October 20, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Sales</th><td class="r num"></td><td class="r num">$179.00</td></tr>
 <tr><th scope="row">Sales tax payable</th><td class="r num"></td><td class="r num">$7.00</td></tr>
 <tr><th scope="row">Refunds</th><td class="r num">$25.00</td><td class="r num"></td></tr>
 <tr><th scope="row">Merchant fees</th><td class="r num">$27.95</td><td class="r num"></td></tr>
 <tr><th scope="row">PayPal</th><td class="r num">$133.05</td><td class="r num"></td></tr>
 <tr><th scope="row"><strong>Total</strong></th><td class="r num"><strong>$186.00</strong></td><td class="r num"><strong>$186.00</strong></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="balance">Withdrawals and the balance</h2>
@@ -109,7 +110,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.paypal.com/us/business/paypal-business-fees">PayPal merchant fees (United States) (read November 8, 2026)</a></li><li><a href="https://developer.paypal.com/reports/activity-download">PayPal Developer: Activity Download report (read November 8, 2026)</a></li><li><a href="https://developer.paypal.com/reports/reference/t-codes">PayPal Developer: Transaction event code (T-code) reference (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.paypal.com/us/business/paypal-business-fees">PayPal merchant fees (United States) (read November 8, 2026)</a><span class="src-m">paypal.com</span></li><li><a href="https://developer.paypal.com/reports/activity-download">PayPal Developer: Activity Download report (read November 8, 2026)</a><span class="src-m">developer.paypal.com</span></li><li><a href="https://developer.paypal.com/reports/reference/t-codes">PayPal Developer: Transaction event code (T-code) reference (read November 8, 2026)</a><span class="src-m">developer.paypal.com</span></li></ul>
 <p class="cp-note">Not accounting or tax advice: this is arithmetic on the processor's own file, placed by the categories the processor documents. The sample files are made up.</p>
 </section>
 

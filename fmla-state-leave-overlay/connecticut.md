@@ -37,6 +37,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## Connecticut in its own words
 
+**Read the law's own words (8 quotations)**
+
 - "Almost all employers who have 1 or more people working in CT" [Connecticut Paid Leave Authority, CT Paid Leave and FMLA](https://www.ctpaidleave.org/how-ct-paid-leave-works/ct-paid-leave-and-fmla)
 - "They have been employed by the company for at least the 3 months immediately preceding the leave." [Connecticut Paid Leave Authority, CT Paid Leave and FMLA](https://www.ctpaidleave.org/how-ct-paid-leave-works/ct-paid-leave-and-fmla)
 - "No hours worked requirement." [Connecticut Paid Leave Authority, CT Paid Leave and FMLA](https://www.ctpaidleave.org/how-ct-paid-leave-works/ct-paid-leave-and-fmla)

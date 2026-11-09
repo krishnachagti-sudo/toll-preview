@@ -2,9 +2,41 @@
 
 Each stage's share is an exact fraction of the total, rounded half up to the cent; the cents the rounding leaves go to one stage (the last by default), so the stages add up to the total exactly. Presets include 50-50, 50-25-25, 30-30-40, 40-30-30, or give your own.
 
+## How does it work?
+
+1. Money is read exactly into whole minor units and worked as BigInt, never floats; a share is an exact fraction (50% is a half, a third is 1/3).
+2. Each share is rounded half up to the cent; the leftover cents go to the last stage (or the first) and the answer says so.
+3. The deposit is invoiced at the start; the other stages are spread over the weeks, or set by offsets in days, weeks, months or business days.
+4. Each due date is the invoice date plus the terms, moved to the next (or previous) business day when it falls on a weekend or a holiday of the chosen region; holidays come from the business days engine and are named.
+5. Tax is rounded on each invoice; the last takes the cent so the taxes equal tax on the total.
+
+> Step 6, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/payment-schedule/#what) below.
+
+## What does it not cover?
+
+- Stages that do not add up, a date out of range or an overpayment are refused with the field.
+- It sends nothing: the invoices are lines to paste or import and the calendar file is for your own calendar.
+- Deposit rules are held only for the states named; not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 4 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The state deposit rules were read on each state's official page on 2026-11-08, with a dated snapshot each quote is checked against. The pages are checked daily for changes. Holidays come from the business days tool's data.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check that every preset adds up to the total to the cent, the rounding rule, custom stages, dates and due dates moved off weekends and holidays, tax on each invoice, that each state quote is word for word in its dated snapshot, the pack and the final invoice.
+
+- [CSLB, Learn About Home Improvement Contracts (California down payment limit)](https://www.cslb.ca.gov/Consumers/Hire_A_Contractor/Home_Improvement_Contracts/What_Is_A_Contract.aspx), see the document, read 2026-11-08
+- [Md. Code, Business Regulation 8-617 (home improvement deposits)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&section=8-617&enactments=false), see the document, read 2026-11-08
+- [10 M.R.S. 1487, Home construction contracts](https://legislature.maine.gov/statutes/10/title10sec1487.html), see the document, read 2026-11-08
+- [Fla. Stat. 489.126, Moneys received by contractors](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0400-0499/0489/Sections/0489.126.html), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the deposit and milestone payment schedule compute?
 
-Give the total fee, the start date, the split and the length of the project and the tool works out each stage's amount to the cent, its invoice date and its due date (moved off weekends and holidays), the invoice-ready lines for every stage with the last one netting off what was paid, a calendar file and a CSV. For home improvement work it checks the deposit against the state's limit where it was read (CA, MD, ME, FL).
+Give the total fee, the start date, the split and the length of the project and the tool works out each stage's amount to the cent, its invoice date and its due date (moved off weekends and holidays), the invoice-ready lines for every stage with the last one netting off what was paid, a calendar file and a CSV.
+
+**In detail: operations, inputs and outputs**
+
+For home improvement work it checks the deposit against the state's limit where it was read (CA, MD, ME, FL).
 
 Operations (the op field):
 
@@ -27,7 +59,7 @@ Outputs:
 - check: the stages add up to the total; warnings; wording for the contract
 - pack: invoices, the .ics file and the CSV; final: the balance due
 
-## How is it calculated, step by step?
+**Every step in full (6) and the rules**
 
 1. Money is read exactly into whole minor units and worked as BigInt, never floats; a share is an exact fraction (50% is a half, a third is 1/3).
 2. Each share is rounded half up to the cent; the leftover cents go to the last stage (or the first) and the answer says so.
@@ -42,6 +74,8 @@ California (CSLB: $1,000 or 10%, whichever is less), Maryland and Maine (one-thi
 
 ## Which edge cases does it handle?
 
+**The edge cases (4)**
+
 - Custom stages that do not add up to the total are refused.
 - A due date on a holiday names the holiday it moved for.
 - Currencies without cents, such as JPY, are rounded to the whole unit.
@@ -52,6 +86,16 @@ California (CSLB: $1,000 or 10%, whichever is less), Maryland and Maine (one-thi
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A $6,000 website split 50/25/25 over 8 weeks, net 7**
+
+A $6,000 website split 50/25/25 over 8 weeks, net 7
+
+| Result | Value |
+| --- | --- |
+| Deposit (50%) | $3,000.00, invoiced 2026-12-01, due 2026-12-08 |
+| Midpoint milestone (25%) | $1,500.00, invoiced 2026-12-29, due 2027-01-05 |
+| Final delivery (25%) | $1,500.00, invoiced 2027-01-26, due 2027-02-02 |
+
+**The input**
 
 ```json
 {
@@ -64,15 +108,17 @@ California (CSLB: $1,000 or 10%, whichever is less), Maryland and Maine (one-thi
 }
 ```
 
-A $6,000 website split 50/25/25 over 8 weeks, net 7
+**More worked examples (1)**
+
+**The final invoice after a $2,000 deposit on a $6,000 project**
+
+The final invoice after a $2,000 deposit on a $6,000 project
 
 | Result | Value |
 | --- | --- |
-| Deposit (50%) | $3,000.00, invoiced 2026-12-01, due 2026-12-08 |
-| Midpoint milestone (25%) | $1,500.00, invoiced 2026-12-29, due 2027-01-05 |
-| Final delivery (25%) | $1,500.00, invoiced 2027-01-26, due 2027-02-02 |
+| answer | Bill the total of $6,000.00, subtract the $2,000.00 already received, and the balance due is $4,000.00. |
 
-**The final invoice after a $2,000 deposit on a $6,000 project**
+**The input**
 
 ```json
 {
@@ -92,45 +138,9 @@ A $6,000 website split 50/25/25 over 8 weeks, net 7
 }
 ```
 
-The final invoice after a $2,000 deposit on a $6,000 project
-
-| Result | Value |
-| --- | --- |
-| answer | Bill the total of $6,000.00, subtract the $2,000.00 already received, and the balance due is $4,000.00. |
-
-## What does it not do?
-
-- Stages that do not add up, a date out of range or an overpayment are refused with the field.
-- It sends nothing: the invoices are lines to paste or import and the calendar file is for your own calendar.
-- Deposit rules are held only for the states named; not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The state deposit rules were read on each state's official page on 2026-11-08, with a dated snapshot each quote is checked against. The pages are checked daily for changes. Holidays come from the business days tool's data.
-
-- [CSLB, Learn About Home Improvement Contracts (California down payment limit)](https://www.cslb.ca.gov/Consumers/Hire_A_Contractor/Home_Improvement_Contracts/What_Is_A_Contract.aspx)
-- [Md. Code, Business Regulation 8-617 (home improvement deposits)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&section=8-617&enactments=false)
-- [10 M.R.S. 1487, Home construction contracts](https://legislature.maine.gov/statutes/10/title10sec1487.html)
-- [Fla. Stat. 489.126, Moneys received by contractors](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0400-0499/0489/Sections/0489.126.html)
-
-The state deposit rules were read on each state's official page on 2026-11-08, with a dated snapshot each quote is checked against. The pages are checked daily for changes. Holidays come from the business days tool's data.
-
-Deposit and milestone payment schedule: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [CSLB, Learn About Home Improvement Contracts (California down payment limit)](https://www.cslb.ca.gov/Consumers/Hire_A_Contractor/Home_Improvement_Contracts/What_Is_A_Contract.aspx) | see the document | 2026-11-08 |
-| [Md. Code, Business Regulation 8-617 (home improvement deposits)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&section=8-617&enactments=false) | see the document | 2026-11-08 |
-| [10 M.R.S. 1487, Home construction contracts](https://legislature.maine.gov/statutes/10/title10sec1487.html) | see the document | 2026-11-08 |
-| [Fla. Stat. 489.126, Moneys received by contractors](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0400-0499/0489/Sections/0489.126.html) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests check that every preset adds up to the total to the cent, the rounding rule, custom stages, dates and due dates moved off weekends and holidays, tax on each invoice, that each state quote is word for word in its dated snapshot, the pack and the final invoice.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every preset adds up to the total exactly, with the leftover cent on one stage.
 - Each state deposit quote is word for word in the dated snapshot of its official page, read on 2026-11-08.

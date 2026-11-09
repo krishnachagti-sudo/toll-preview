@@ -71,9 +71,10 @@
 <h1>JPEGを画質を落とさずKB制限に収める方法</h1>
 <p class="cp-answer">JPEGを決まったサイズに、まったく劣化させずに収めることはできません。必ず何かが失われます。ツールはその損失を小さくします。1,000KBでは、12メガピクセルのテスト写真はすべてのピクセルを保ち（画質81%）、100KBでは2,476 × 1,857 px（画質40%）になりました。</p>
 
-
+<ul class="trust" aria-label="このサイトについて"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> が制作</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>正確、AI不使用</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">公的な出典、日付つき</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">アップロードしたファイルは保存されません</a></span></li><li class="tl2"><a href="/toll-preview/security/">セキュリティ</a><a href="/toll-preview/terms/">利用規約</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="lossless">画質をまったく落とさずにできる？</h2>
 <p>写真がすでに上限以下の場合だけです。その場合、ツールはJPEGをそのまま返します。それ以外は、画像をJPEGで保存し直すことになり、そのたびに少し劣化します。ツールは、上限に収まるいちばん高い画質（最大92%）を探します。</p>
@@ -85,14 +86,14 @@
 <section>
 <h2 id="results">1枚のテスト写真、6つの上限</h2>
 <p>同じ12メガピクセルの横向き写真（4,032 × 3,024 px）を、6つの上限で圧縮した結果です。</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>1枚の写真を6つの上限で圧縮した結果</caption><thead><tr><th scope="col">上限</th><th scope="col" class="r num">新しいサイズ</th><th scope="col" class="r num">ピクセル数</th><th scope="col" class="r num">残ったピクセル</th><th scope="col" class="r num">JPEG画質</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">1枚の写真を6つの上限で圧縮した結果</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">上限</th><th scope="col" class="r num">新しいサイズ</th><th scope="col" class="r num">ピクセル数</th><th scope="col" class="r num">残ったピクセル</th><th scope="col" class="r num">JPEG画質</th></tr></thead><tbody>
 <tr><th scope="row">1,000KB</th><td class="r num">916.5KB</td><td class="r num">4,032 × 3,024 px</td><td class="r num">100%</td><td class="r num">81%</td></tr>
 <tr><th scope="row">500KB</th><td class="r num">497.3KB</td><td class="r num">4,032 × 3,024 px</td><td class="r num">100%</td><td class="r num">65%</td></tr>
 <tr><th scope="row">200KB</th><td class="r num">199.1KB</td><td class="r num">3,427 × 2,570 px</td><td class="r num">72%</td><td class="r num">48%</td></tr>
 <tr><th scope="row">100KB</th><td class="r num">99.0KB</td><td class="r num">2,476 × 1,857 px</td><td class="r num">38%</td><td class="r num">40%</td></tr>
 <tr><th scope="row">50KB</th><td class="r num">49.0KB</td><td class="r num">1,521 × 1,141 px</td><td class="r num">14%</td><td class="r num">40%</td></tr>
 <tr><th scope="row">20KB</th><td class="r num">19.7KB</td><td class="r num">794 × 595 px</td><td class="r num">4%</td><td class="r num">38%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Chromium 149.0.7827.55でツールを動かして2026年10月31日に測定しました。ブラウザごとにJPEGの圧縮方式が違うため、結果は数パーセント変わることがありますが、上限は超えません。</p>
 </section>
 <section>
@@ -107,7 +108,7 @@
 <section>
 <h2 id="sources">出典</h2>
 <p>テスト用の写真はNASAのもので、パブリックドメインです。結果はツール自身が出したもので、上記のテスト環境で測りました。</p>
-<ul class="cp-sources"><li><a href="https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021">NASA, KSC-20210111-PH-JBS01_0021 パブリックドメイン</a></li><li><a href="https://images.nasa.gov/details/jsc2025e068207_alt">NASA, jsc2025e068207_alt パブリックドメイン</a></li><li><a href="https://images.nasa.gov/details/KSC-08pd4102">NASA, KSC-08pd4102 パブリックドメイン</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021">NASA, KSC-20210111-PH-JBS01_0021 パブリックドメイン</a><span class="src-m">images.nasa.gov</span></li><li><a href="https://images.nasa.gov/details/jsc2025e068207_alt">NASA, jsc2025e068207_alt パブリックドメイン</a><span class="src-m">images.nasa.gov</span></li><li><a href="https://images.nasa.gov/details/KSC-08pd4102">NASA, KSC-08pd4102 パブリックドメイン</a><span class="src-m">images.nasa.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">よくある質問</h2><details class="xpand"><summary><h3>JPEGを100KBにしても違いは分かりませんか？</h3></summary><div class="xp-in"><p>写真によります。100KBでは、テストの12メガピクセルの写真はピクセル数がかなり減りました。500KBでは減りませんでした。上限が大きいほど、違いは目立ちません。</p></div></details><details class="xpand"><summary><h3>JPEGの画質はどこまで下がりますか？</h3></summary><div class="xp-in"><p>35%より下にはなりません。画質をそれ以上下げるより、画像を小さくするほうを選びます。</p></div></details><details class="xpand"><summary><h3>すでに上限以下の写真は変わりますか？</h3></summary><div class="xp-in"><p>上限以下のJPEGは、そのまま返されます。PNGやWebPは、必ずJPEGで保存されます。</p></div></details></section>

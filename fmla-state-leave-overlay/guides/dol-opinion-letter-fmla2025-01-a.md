@@ -4,6 +4,8 @@ If leave under a state paid leave program also qualifies under the FMLA, it must
 
 ## What the letter says
 
+**Read the law's own words (3 quotations)**
+
 - "First, where an employee takes leave under a state or local paid family or medical leave program, if the leave is covered by the FMLA, it must be designated as FMLA leave and the employee must be given notice of the designation, which should include the amount of leave to be counted against the employee's FMLA leave entitlement." [U.S. Department of Labor, Wage and Hour Division, Opinion Letter FMLA2025-01-A (January 14, 2025)](https://www.dol.gov/sites/dolgov/files/WHD/opinion-letters/FMLA/2025_1_14_1_FMLA.pdf)
 - "Because the substitution provision does not apply, neither the employee nor the employer may use the FMLA substitution provision to unilaterally require the concurrent use of employer-provided paid leave during the portion of the leave that is compensated by the state or local program." [U.S. Department of Labor, Wage and Hour Division, Opinion Letter FMLA2025-01-A (January 14, 2025)](https://www.dol.gov/sites/dolgov/files/WHD/opinion-letters/FMLA/2025_1_14_1_FMLA.pdf)
 - "the employer and the employee may agree, where state law permits, to use the employee's employer-provided accrued paid leave to supplement the payments under a state or local leave program." [U.S. Department of Labor, Wage and Hour Division, Opinion Letter FMLA2025-01-A (January 14, 2025)](https://www.dol.gov/sites/dolgov/files/WHD/opinion-letters/FMLA/2025_1_14_1_FMLA.pdf)

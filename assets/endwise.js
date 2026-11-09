@@ -494,26 +494,374 @@
       if (c && !c.hasAttribute('colspan')) { c.classList.add('tl-col'); litCells.push(c); }
     });
   }
-  // Long tables below the fold come in row by row, once.
+  // Tables below the fold bring their first rows in one by one, once. Rows are never left invisible:
+  // only the first ANIMATED rows move, and a table already on screen when the page loads, any table
+  // after a jump to a #link, and every table while the tab is hidden show at once.
+  var ANIMATED = 12;
   var rowObserver = null;
-  function rows(scope) {
+  var rowTables = [];
+  function showRows(t) {
+    if (t.classList.contains('tl-shown')) return;
+    t.classList.add('tl-shown');
+    if (rowObserver) rowObserver.unobserve(t);
+  }
+  // A table inside a reveal block (.rv, motion.js) waits for the block's "in". The block's own
+  // observer needs 8% of it on screen, which a tall table never reaches, so the table says when.
+  var rvTables = [], rvObserver = null;
+  function rvIn(t, now) {
+    var rv = t.closest('.rv');
+    if (rv && now === true && !rv.classList.contains('in')) rv.classList.add('tl-now');
+    if (rv) rv.classList.add('in');
+    if (rvObserver) rvObserver.unobserve(t);
+  }
+  function watchRv(t) {
+    if (!t.closest('.rv')) return;
+    rvTables.push(t);
+    if (!('IntersectionObserver' in window) || inView(t) || document.hidden) { rvIn(t, true); return; }
+    if (!rvObserver) {
+      rvObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) rvIn(e.target); });
+      });
+    }
+    rvObserver.observe(t);
+  }
+  function showAllRows(now) {
+    rowTables.forEach(function (t) {
+      if (now) t.classList.add('tl-now');
+      showRows(t);
+    });
+    rvTables.forEach(function (t) { rvIn(t, now); });
+  }
+  function inView(el) {
+    var r = el.getBoundingClientRect();
+    return r.bottom > 0 && r.top < (window.innerHeight || document.documentElement.clientHeight);
+  }
+  function rows(scope, onLoad) {
     if (reduced || !('IntersectionObserver' in window)) return;
+    // A page opened at a #link, or in a background tab: nothing waits to fade in.
+    if (onLoad && (document.hidden || (location.hash && location.hash.length > 1))) return;
     if (!rowObserver) {
       rowObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          e.target.classList.add('tl-shown');
-          rowObserver.unobserve(e.target);
-        });
+        entries.forEach(function (e) { if (e.isIntersecting) showRows(e.target); });
       }, { rootMargin: '0px 0px -8% 0px' });
     }
     [].forEach.call((scope || document).querySelectorAll('main table'), function (t) {
       if (t.tlRows || !t.tBodies[0] || t.tBodies[0].rows.length < 3) return;
       t.tlRows = true;
-      [].forEach.call(t.tBodies[0].rows, function (r, i) { r.style.setProperty('--i', Math.min(i, 24)); });
+      if (t.closest('.rv')) return; // its block brings its rows in (motion.css)
+      if (onLoad && inView(t)) return; // already on screen: it simply shows
+      [].forEach.call(t.tBodies[0].rows, function (r, i) { if (i < ANIMATED) r.style.setProperty('--i', i); });
       t.classList.add('tl-rows');
+      rowTables.push(t);
       rowObserver.observe(t);
     });
+  }
+
+  // ---------- tables: long ones fold, narrow ones stack on phones, wide ones say they scroll ----------
+  // Done here once for every page (content, tool and brand pages). Every row stays in the HTML and,
+  // without JavaScript, every row shows. A long table shows its first SHOWN rows inside its frame,
+  // which clips the rest (overflow hidden, not display none), so the browser's find, a #link to a
+  // row and Tab still reach every row: when one of them scrolls the frame to a clipped row, the
+  // table opens in full, with that row kept where the browser put it.
+  var LONG = 15, SHOWN = 12, STACK_COLS = 4;
+  var STATES = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+    'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+    'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
+    'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio',
+    'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah',
+    'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+  var stateNames = {};
+  STATES.forEach(function (s) { stateNames[s.toLowerCase()] = s; });
+  function stateOf(text) {
+    var name = String(text).replace(/[([*†].*$/, '').replace(/[^A-Za-z ]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+    return stateNames[name] || null;
+  }
+  var longTables = [];
+  var tableSeq = 0;
+  function bodyRows(t) { return t.tBodies[0] ? [].slice.call(t.tBodies[0].rows) : []; }
+  function headLabels(t) {
+    var head = t.tHead && t.tHead.rows[0];
+    return head ? [].map.call(head.cells, function (c) { return c.textContent.replace(/\s+/g, ' ').trim(); }) : [];
+  }
+  function spans(t) { return !!t.querySelector('tbody [rowspan]:not([rowspan="1"]), tbody [colspan]:not([colspan="1"])'); }
+  function editable(t) { return !!t.querySelector('input, select, textarea, button'); }
+  // The element that scrolls the table sideways, or a new one around it.
+  function frameOf(t) {
+    var p = t.parentElement;
+    if (p && p.tagName === 'DIV' && (p.children.length === 1 || /\b(table-scroll|tbl)\b/.test(p.className))) {
+      var cs = getComputedStyle(p);
+      if (cs.overflowX !== 'visible' || cs.overflowY !== 'visible') return p;
+    }
+    var f = h('div', { class: 'tl-frame-own' });
+    t.parentNode.insertBefore(f, t);
+    f.appendChild(t);
+    return f;
+  }
+  // Momentum scrolling (motion.js) caches the page's height; a table that just opened changed it.
+  function lenis() {
+    var l = window.__lenis;
+    if (l && l.resize) l.resize();
+    return l;
+  }
+  function jumpBy(dy) {
+    if (!dy) return;
+    if (lenis()) window.__lenis.scrollTo(window.pageYOffset + dy, { immediate: true, force: true });
+    else window.scrollBy(0, dy);
+  }
+  function jumpTo(el, instant) {
+    var now = instant || reduced;
+    var y = window.pageYOffset + el.getBoundingClientRect().top - Math.round((window.innerHeight || 800) / 3);
+    if (lenis()) window.__lenis.scrollTo(y, { immediate: now, duration: now ? 0 : 0.8, force: true });
+    else window.scrollTo({ top: y, behavior: now ? 'auto' : 'smooth' });
+  }
+
+  // Narrow tables (STACK_COLS columns or fewer) become one card per row under 640px; each cell
+  // names its column. Tables with their own phone layout (.tbl, the docs) keep it.
+  function stack(t) {
+    if (!(t.classList.contains('cp-table') || t.className === 'rules' || t.className === 'rules tl-rows')) return;
+    if (t.closest('.tbl, .docs-body') || spans(t) || editable(t)) return;
+    var labels = headLabels(t);
+    if (labels.length < 2 || labels.length > STACK_COLS) { wrap(t); return; }
+    bodyRows(t).forEach(function (r) {
+      [].forEach.call(r.cells, function (c, i) { if (i > 0 && labels[i] && !c.hasAttribute('data-label')) c.setAttribute('data-label', labels[i]); });
+    });
+    t.tlStack = labels.length === 2 ? 'tl-stack2' : 'tl-stack3';
+    restack(t);
+  }
+  // Cards only where the table would not fit: a table that fits its width stays a table.
+  var phone = window.matchMedia ? window.matchMedia('(max-width: 640px)') : null;
+  // A content table that runs past its frame lets its sentences wrap (figures stay on one line).
+  function wrap(t) {
+    var f = t.parentElement;
+    if (t.classList.contains('cp-table') && f && f.scrollWidth > f.clientWidth + 2) t.classList.add('tl-wrap');
+  }
+  function restack(t) {
+    wrap(t);
+    if (!t.tlStack) return;
+    t.classList.remove('tl-stack', t.tlStack);
+    var f = t.parentElement;
+    if (!phone || !phone.matches || !f || f.scrollWidth <= f.clientWidth + 2) return;
+    t.classList.add('tl-stack', t.tlStack);
+  }
+
+  // The caption of a table that scrolls sideways goes above its frame, so it is never cut off.
+  function liftCaption(t, frame) {
+    var cap = t.caption;
+    if (!cap || cap.classList.contains('visually-hidden') || !cap.textContent.trim()) return;
+    var p = h('p', { class: 'tl-cap', 'aria-hidden': 'true' }, cap.textContent.trim());
+    frame.parentNode.insertBefore(p, frame);
+    cap.classList.add('visually-hidden');
+  }
+
+  // A wide table names the columns past the edge and fades its right side until scrolled to the end.
+  function cueOf(st) {
+    if (!st.cue) {
+      st.cue = h('p', { class: 'tl-cue', 'aria-hidden': 'true', hidden: true }, 'Scroll sideways for more columns');
+      st.frame.parentNode.insertBefore(st.cue, st.frame);
+      st.frame.addEventListener('scroll', function () { edge(st); }, { passive: true });
+    }
+    return st.cue;
+  }
+  function edge(st) {
+    var f = st.frame;
+    var wide = f.scrollWidth > f.clientWidth + 2;
+    if (wide || st.cue) cueOf(st).hidden = !wide;
+    f.classList.toggle('tl-wide', wide);
+    f.classList.toggle('tl-more', wide && f.scrollLeft + f.clientWidth < f.scrollWidth - 2);
+    // The frame scrolled down to a clipped row (find in page, a #link, Tab): open the table there.
+    if (st.clipped && f.scrollTop > 0) {
+      var dy = f.scrollTop;
+      setOpen(st, true);
+      jumpBy(dy);
+    }
+  }
+
+  // ----- long tables -----
+  function clip(st) {
+    if (!st.clipped) return;
+    var f = st.frame, next = st.rows[SHOWN];
+    if (!next || !f.offsetParent && getComputedStyle(f).position !== 'fixed') return; // not on screen yet (a closed fold or tab)
+    var top = f.getBoundingClientRect().top;
+    // The row after the last shown one peeks in under the fade.
+    var hgt = Math.ceil(next.getBoundingClientRect().top - top + Math.min(36, next.offsetHeight * 0.6));
+    if (hgt > 40 && st.height !== hgt) { st.height = hgt; f.style.maxHeight = hgt + 'px'; }
+  }
+  function setClipped(st, on) {
+    st.clipped = on;
+    st.frame.classList.toggle('tl-clipped', on);
+    if (!on) { st.frame.style.maxHeight = ''; st.height = 0; st.frame.scrollTop = 0; }
+    else clip(st);
+  }
+  function label(st) {
+    var n = st.rows.length;
+    st.all.textContent = st.open ? 'Show the first ' + SHOWN + ' rows' : 'Show all ' + n.toLocaleString(locale) + ' rows';
+    st.all.setAttribute('aria-expanded', st.open ? 'true' : 'false');
+    st.all.hidden = !!st.query;
+  }
+  function setOpen(st, on) {
+    st.open = on;
+    setClipped(st, !on && !st.query);
+    label(st);
+  }
+  function filter(st, q) {
+    q = q.replace(/\s+/g, ' ').trim().toLowerCase();
+    st.query = q;
+    var hits = 0;
+    st.rows.forEach(function (r) {
+      var miss = q && (r.tlText || (r.tlText = r.textContent.replace(/\s+/g, ' ').toLowerCase())).indexOf(q) === -1;
+      r.classList.toggle('tl-miss', !!miss);
+      if (!miss) hits++;
+    });
+    setClipped(st, !q && !st.open);
+    label(st);
+    st.count.textContent = !q ? '' : hits === 0 ? 'No rows match.' : hits === 1 ? '1 row matches.' : hits.toLocaleString(locale) + ' rows match.';
+    edge(st);
+  }
+  function hit(st, row) {
+    if (st.lit) st.lit.classList.remove('tl-hit');
+    st.lit = row;
+    row.classList.add('tl-hit');
+  }
+  // Show one row: clear a filter that hides it, open the table, light the row and bring it on screen.
+  function showRow(row, scroll, instant) {
+    var st = row.tlLong;
+    if (!st) return false;
+    if (st.query && row.classList.contains('tl-miss')) { st.find.value = ''; filter(st, ''); }
+    if (st.clipped && st.rows.indexOf(row) >= SHOWN) setOpen(st, true);
+    hit(st, row);
+    showAllRows(true);
+    if (scroll) jumpTo(row, instant);
+    return true;
+  }
+  function foldLong(t, frame, st) {
+    var list = st.rows;
+    var n = list.length;
+    var id = t.id || ('tl-t' + (++tableSeq));
+    t.id = id;
+    var noun = n.toLocaleString(locale);
+    var tools = h('div', { class: 'tl-tools' });
+    // A filter, unless merged cells would lose their values when rows hide.
+    if (!spans(t)) {
+      st.find = h('input', { type: 'search', class: 'tl-find', placeholder: 'Filter ' + noun + ' rows', 'aria-controls': id, autocomplete: 'off', spellcheck: 'false' });
+      tools.appendChild(h('label', { class: 'tl-field' }, [h('span', { class: 'visually-hidden' }, 'Filter the rows of this table'), st.find]));
+      var wait = 0;
+      st.find.addEventListener('input', function () {
+        clearTimeout(wait);
+        wait = setTimeout(function () { filter(st, st.find.value); }, n > 400 ? 120 : 0);
+      });
+    }
+    // A table of states gets a picker that jumps to the state's row.
+    var states = list.map(function (r) { return r.cells[0] ? stateOf(r.cells[0].textContent) : null; });
+    var named = states.filter(Boolean).length;
+    if (t.getAttribute('data-pick') === 'state' || named >= 0.8 * n) {
+      var pick = h('select', { class: 'tl-pick', 'aria-controls': id }, h('option', { value: '' }, 'Pick a state'));
+      list.forEach(function (r, i) {
+        if (!states[i]) return;
+        if (!r.id) {
+          var want = 'state-' + states[i].toLowerCase().replace(/ /g, '-'), rid = want;
+          for (var k = 2; document.getElementById(rid); k++) rid = want + '-' + k;
+          r.id = rid;
+        }
+        pick.appendChild(h('option', { value: r.id }, r.cells[0].textContent.replace(/\s+/g, ' ').trim()));
+      });
+      pick.addEventListener('change', function () {
+        var row = pick.value && document.getElementById(pick.value);
+        if (!row) return;
+        showRow(row, true);
+        try { history.replaceState(history.state, '', '#' + row.id); } catch (e) { /* the jump still happens */ }
+      });
+      tools.appendChild(h('label', { class: 'tl-field tl-field-pick' }, [h('span', { class: 'visually-hidden' }, 'Jump to a state'), pick]));
+    }
+    st.count = h('p', { class: 'tl-count', role: 'status', 'aria-live': 'polite' });
+    tools.appendChild(st.count);
+    frame.parentNode.insertBefore(tools, frame);
+    st.all = h('button', { type: 'button', class: 'btn btn-quiet btn-small tl-all', 'aria-controls': id });
+    var foot = h('div', { class: 'tl-foot' }, st.all);
+    frame.parentNode.insertBefore(foot, frame.nextSibling);
+    st.all.addEventListener('click', function () {
+      var closing = st.open;
+      setOpen(st, !st.open);
+      // Folding a long table back: keep its top in view rather than leave the reader far below it.
+      if (closing && frame.getBoundingClientRect().top < 0) jumpTo(frame);
+    });
+    list.forEach(function (r) { r.tlLong = st; });
+    longTables.push(st);
+    setOpen(st, false);
+  }
+
+  function tables(scope) {
+    [].forEach.call((scope || document).querySelectorAll('main table'), function (t) {
+      if (t.tlTable || !t.tBodies[0] || t.closest('[id$="-out"], [id$="-board"]')) return;
+      t.tlTable = true;
+      if (editable(t)) return;
+      var frame = frameOf(t);
+      stack(t);
+      var st = { table: t, frame: frame, rows: bodyRows(t), open: false, clipped: false, query: '' };
+      frame.classList.add('tl-frame');
+      liftCaption(t, frame);
+      if (st.rows.length > LONG) foldLong(t, frame, st);
+      t.tlState = st;
+      watchRv(t);
+      edge(st);
+      if (window.ResizeObserver) {
+        var lastW = 0;
+        new ResizeObserver(function () {
+          var w = st.frame.clientWidth;
+          if (w !== lastW) { lastW = w; if (t.tlStack) restack(t); else wrap(t); }
+          clip(st); edge(st);
+        }).observe(t);
+      }
+    });
+  }
+  function remeasure() { longTables.forEach(clip); }
+  // A #link to a row (on arrival or later) opens its table at that row.
+  function toHash(scroll) {
+    var id = location.hash.length > 1 ? decodeURIComponent(location.hash.slice(1)) : '';
+    var el = id && document.getElementById(id);
+    var row = el && el.closest && el.closest('tr');
+    if (row && row.tlLong) showRow(row, scroll, true);
+  }
+  function tablesBoot() {
+    tables(document);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) showAllRows(true); });
+    window.addEventListener('hashchange', function () { showAllRows(true); });
+    window.addEventListener('beforeprint', function () { showAllRows(true); });
+    if (document.hidden || location.hash.length > 1) showAllRows(true);
+    window.addEventListener('hashchange', function () { toHash(true); });
+    window.addEventListener('load', function () { remeasure(); toHash(true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure, function () {});
+    document.addEventListener('toggle', remeasure, true);
+    // An in-page link to a clipped row: open the table before the page scrolls to it.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a) return;
+      var url = new URL(a.href, location.href);
+      if (url.pathname !== location.pathname || url.hash.length < 2) return;
+      var el = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+      var row = el && el.closest && el.closest('tr');
+      showAllRows(true);
+      if (row && row.tlLong) showRow(row, false);
+    }, true);
+    // Text selected inside a clipped row (the browser's find selects its match when closed, and
+    // window.find does at once): open the table there.
+    document.addEventListener('selectionchange', function () {
+      if (!longTables.length) return;
+      var sel = window.getSelection && window.getSelection();
+      var node = sel && sel.rangeCount ? sel.anchorNode : null;
+      var el = node && (node.nodeType === 1 ? node : node.parentElement);
+      var row = el && el.closest && el.closest('tr');
+      var st = row && row.tlLong;
+      if (!st || !st.clipped || st.rows.indexOf(row) < SHOWN) return;
+      var before = row.getBoundingClientRect().top;
+      setOpen(st, true);
+      // A match the browser had already scrolled to stays where it was; one below the clip comes up.
+      var after = row.getBoundingClientRect().top;
+      if (before >= 0 && before < (window.innerHeight || 800)) jumpBy(after - before);
+      else jumpTo(row, true);
+    });
+    window.addEventListener('beforeprint', function () { longTables.forEach(function (st) { setClipped(st, false); }); });
+    window.addEventListener('afterprint', function () { longTables.forEach(function (st) { setClipped(st, !st.open && !st.query); }); });
+    toHash(true);
   }
   function micro() {
     document.addEventListener('pointerover', function (e) {
@@ -526,7 +874,7 @@
       var a = e.target.closest && e.target.closest('a[download], a[href$=".pdf"], a[href$=".csv"], a[href$=".zip"]');
       if (a) toast('Downloading');
     });
-    rows(document);
+    rows(document, true);
   }
 
   // What started the run: the form submitted or button pressed last (a tool may disable its button
@@ -635,6 +983,7 @@
     [].forEach.call(document.querySelectorAll('[data-endwise-code]'), function (el) {
       mountCodePanel(el, el.getAttribute('data-endwise-code') || tool);
     });
+    tablesBoot();
     micro();
     track('page_view');
   }

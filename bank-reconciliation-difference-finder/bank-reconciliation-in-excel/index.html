@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the difference finder</h2><p class="muted">The worked files open in the tool and are previewed in your browser, free. Swap in your own exports there.</p><form method="get" action="/toll-preview/bank-reconciliation-difference-finder/" class="cp-tool-form"><input type="hidden" name="statement" value="Date,Description,Amount,Balance
 10/01/2026,HARBOR PROPERTIES RENT,&quot;-2,400.00&quot;,&quot;10,442.10&quot;
 10/02/2026,SQUARE INC DEP,&quot;1,245.90&quot;,&quot;11,688.00&quot;
@@ -121,17 +122,17 @@ Total for Business Checking,,,,,,,$73.88,
 </section>
 <section>
 <h2 id="worked">What the formulas give on the worked month</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Statement lines with a 0 in column D</caption><thead><tr><th scope="col">Date</th><th scope="col">Description</th><th scope="col" class="r num">Amount</th><th scope="col">What it really is</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Statement lines with a 0 in column D</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Date</th><th scope="col">Description</th><th scope="col" class="r num">Amount</th><th scope="col">What it really is</th></tr></thead><tbody>
 <tr><th scope="row">2026-10-05</th><td>MONTHLY SERVICE FEE</td><td class="r num">-$15.00</td><td>a bank fee missing from the books</td></tr>
 <tr><th scope="row">2026-10-06</th><td>SYSCO FOOD SVC</td><td class="r num">-$540.00</td><td>a transposition: books has $450.00</td></tr>
 <tr><th scope="row">2026-10-12</th><td>CHECK 1049</td><td class="r num">-$275.00</td><td>check cleared 9 days after it was written</td></tr>
 <tr><th scope="row">2026-10-21</th><td>DEPOSIT</td><td class="r num">$1,245.90</td><td>a split deposit: $745.90 + $500.00 in the books</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Each zero needs a different answer, and the formulas cannot say which. The finder runs the same matching with check numbers, splits and the error tests, and dates the break.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929">Microsoft Support: XLOOKUP function (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://support.microsoft.com/en-us/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929">Microsoft Support: XLOOKUP function (read November 8, 2026)</a><span class="src-m">support.microsoft.com</span></li></ul>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Two sheets.</strong> Paste the statement on a sheet named Statement and the ledger on one named Ledger, each with Date in column A, Description in B and a signed Amount in C.</li><li><strong>Count matches.</strong> In Statement!D2: =COUNTIFS(Ledger!$C:$C,C2,Ledger!$A:$A,&quot;&gt;=&quot;&amp;(A2-7),Ledger!$A:$A,&quot;&lt;=&quot;&amp;(A2+7)), filled down. 0 means no books line of that amount within 7 days.</li><li><strong>Repeat the other way.</strong> The same formula on the Ledger sheet against the Statement sheet lists books lines with no bank match: outstanding items, or errors.</li><li><strong>Look at the zeros.</strong> Sort each sheet by column D. Every 0 is a line to explain; a 2 or more is an amount that appears twice and needs a closer look.</li></ol></section>
 

@@ -1,17 +1,17 @@
 # Served today: the earliest increase
 
-Served today, November 8, 2026, by hand or in the mail box, an N1 allows an increase on February 6, 2027 at the earliest; mailed today, on February 11, 2027, at the 2027 guideline of 1.9%, if 12 months have passed since the last increase.
+Served today, November 9, 2026, by hand or in the mail box, an N1 allows an increase on February 7, 2027 at the earliest; mailed today, on February 12, 2027, at the 2027 guideline of 1.9%, if 12 months have passed since the last increase.
 
-- By hand or mail box: February 6, 2027
-- By mail: February 11, 2027
+- By hand or mail box: February 7, 2027
+- By mail: February 12, 2027
 
-Served on November 8, 2026
+Served on November 9, 2026
 
 | Method | Counts as given | Earliest increase |
 | --- | --- | --- |
-| Handed to the tenant or an adult in the unit | November 8, 2026 | Saturday, February 6, 2027 |
-| Left in the mail box | November 8, 2026 | Saturday, February 6, 2027 |
-| Mailed | November 13, 2026 | Thursday, February 11, 2027 |
+| Handed to the tenant or an adult in the unit | November 9, 2026 | Sunday, February 7, 2027 |
+| Left in the mail box | November 9, 2026 | Sunday, February 7, 2027 |
+| Mailed | November 14, 2026 | Friday, February 12, 2027 |
 
 Most leases put the increase on the first of a month. Any later date works too; the increase must also wait 12 months from the last one (RTA s.119).
 
@@ -32,4 +32,4 @@ Most leases put the increase on the first of a month. Any later date works too; 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/ontario-rent-increase/n1-served-today/  
-Worked out for: 2026-11-08
+Worked out for: 2026-11-09

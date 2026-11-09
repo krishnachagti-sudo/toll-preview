@@ -1,6 +1,8 @@
 # Virginia lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Virginia, your written notice of the claim goes with the lien (no separate day), the memorandum of lien must be filed by May 1, 2027 and the suit to enforce it must be filed by November 1, 2027 (if recorded on the last day, May 1, 2027) (Va. Code 43-4; Va. Code 43-17).
+In Virginia, a subcontractor records the lien not later than 90 days from the last day of the month in which you last performed labor or furnished material, and in no event later than 90 days after the building is completed or the work otherwise ends (Va. Code 43-4).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=VA&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Virginia, your written notice of the claim goes with the lien (no separate day), the memorandum of lien must be filed by May 1, 2027 and the suit to enforce it must be filed by November 1, 2027 (if recorded on the last day, May 1, 2027) (Va. Code 43-4; Va. Code 43-17).
 
 ## Work out your Virginia dates
 
@@ -38,6 +40,8 @@ Weekends and holidays: the Virginia text we read does not move a deadline that f
 - Not modeled here: 43-4.01 (the mechanics' lien agent named on a building permit for a one- or two-family home, and its notice). If the permit names a lien agent, read 43-4.01 before relying on these dates.
 
 ## Virginia in its own words
+
+**Read the statute's words (4 quotations)**
 
 - "Any subcontractor, in order to perfect the lien given him by § 43-3 shall comply with § 43-4, and in addition give notice in writing to the owner of the property or his agent of the amount and character of his claim." [Code of Virginia 43-7, Perfection of lien by subcontractor](https://law.lis.virginia.gov/vacode/title43/chapter1/section43-7/)
 - "Any person performing labor or furnishing materials for a subcontractor, in order to perfect the lien given him by § 43-3, shall comply with the provisions of § 43-4, and in addition thereto give notice in writing to the owner of the property, or his agent, and to the general contractor, or his agent, of the amount and character of his claim." [Code of Virginia 43-9, Perfection of lien by person furnishing for a subcontractor](https://law.lis.virginia.gov/vacode/title43/chapter1/section43-9/)

@@ -40,6 +40,8 @@ Add a year-end check of 20 payees on the [1099 threshold tracker](https://krishn
 
 When you use the service every working day. At that point the fixed fee is spread over many uses and each one costs less than its list price.
 
+**Read the rest: When does a pass or a subscription win?**
+
 Year Pass costs $49 once and lasts 12 months. Each month it covers up to $25 of web runs at list prices. It never renews. Spread over the year, $49 is about $4.08 a month, so it pays off if your web runs would otherwise cost more than that each month. Season Pass ($19, 4 months) fits a busy few months. Practice Pass ($149, 12 months) is for bookkeepers and accountants who work for many clients.
 
 > A pass covers use on the tools' web pages. Calls from your own code or an AI assistant (the API and MCP) are paid from your balance, not from the pass.
@@ -50,7 +52,11 @@ Every tool runs 5 times a day on its page without an account. With an account, t
 
 ## How does paying per use work here?
 
-You add money to one balance, from undefined (the smallest pack is $10), and each use is taken from it at the price on the tool's page. Money you add stays until you spend it. Nothing renews. You can set a monthly limit on your account and on each API key, and a call that would pass a limit is refused, not billed. See [pricing](https://krishnachagti-sudo.github.io/toll-preview/pricing/) for every price and pack.
+You add money to one balance, from undefined (the smallest pack is $10), and each use is taken from it at the price on the tool's page. Money you add stays until you spend it. Nothing renews.
+
+**Read the rest: How does paying per use work here?**
+
+You can set a monthly limit on your account and on each API key, and a call that would pass a limit is refused, not billed. See [pricing](https://krishnachagti-sudo.github.io/toll-preview/pricing/) for every price and pack.
 
 If you are connecting an assistant, the [setup guide for Claude](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/) covers the connection. A free quote\_price tool over MCP says what a call would cost before you run it.
 

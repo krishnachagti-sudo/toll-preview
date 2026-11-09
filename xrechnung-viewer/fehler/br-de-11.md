@@ -1,6 +1,6 @@
 # BR-DE-11: Postleitzahl der Lieferanschrift (BT-78) fehlt
 
-BR-DE-11 bedeutet: Das Element "Deliver to post code" (BT-78) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Vervollständigen Sie die Lieferanschrift um die Postleitzahl.
+BR-DE-11 bedeutet: Das Element "Deliver to post code" (BT-78) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

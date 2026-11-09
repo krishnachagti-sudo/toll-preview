@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up North Dakota ZIP codes</h2><p class="muted">Paste your own list: every county, FIPS code and share, as a CSV.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="56744"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=56744">Open 56744 in the lookup</a></p></aside>
 <section>
 <h2 id="counties">North Dakota counties and their FIPS codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</caption><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
 <tr><th scope="row">Adams County</th><td>38001</td><td class="r num">6</td><td></td></tr>
 <tr><th scope="row">Barnes County</th><td>38003</td><td class="r num">20</td><td></td></tr>
 <tr><th scope="row">Benson County</th><td>38005</td><td class="r num">18</td><td></td></tr>
@@ -131,11 +132,11 @@
 <tr><th scope="row">Ward County</th><td>38101</td><td class="r num">24</td><td>Minot, ND</td></tr>
 <tr><th scope="row">Wells County</th><td>38103</td><td class="r num">12</td><td></td></tr>
 <tr><th scope="row">Williams County</th><td>38105</td><td class="r num">10</td><td>Williston, ND</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="split">North Dakota ZIP codes that cross a county line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The 120 split across the most counties, of 197; the CSV has them all.</caption><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The 120 split across the most counties, of 197; the CSV has them all.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
 <tr><th scope="row">57638</th><td>Perkins County, SD (46105) 60.18%; Adams County, ND (38001) 25.33%; Grant County, ND (38037) 5.13%; Sioux County, ND (38085) 4.69%; Corson County, SD (46031) 4.68%</td></tr>
 <tr><th scope="row">58638</th><td>Morton County, ND (38059) 42.65%; Mercer County, ND (38057) 30.18%; Stark County, ND (38089) 16.44%; Grant County, ND (38037) 6.66%; Dunn County, ND (38025) 4.07%</td></tr>
 <tr><th scope="row">58649</th><td>Adams County, ND (38001) 72.68%; Hettinger County, ND (38041) 11.09%; Harding County, SD (46063) 9.45%; Bowman County, ND (38011) 4.71%; Slope County, ND (38087) 2.08%</td></tr>
@@ -256,12 +257,12 @@
 <tr><th scope="row">58433</th><td>LaMoure County, ND (38045) 80.25%; Dickey County, ND (38021) 19.75%</td></tr>
 <tr><th scope="row">58436</th><td>Dickey County, ND (38021) 95.43%; Brown County, SD (46013) 4.57%</td></tr>
 <tr><th scope="row">58440</th><td>Logan County, ND (38047) 54.2%; McIntosh County, ND (38051) 45.8%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How many ZIP codes are in North Dakota?</h3></summary><div class="xp-in"><p>400 ZCTAs have land in North Dakota in the Census 2020 ZCTA-county file. PO-box-only ZIP codes have no ZCTA and are not counted.</p></div></details><details class="xpand"><summary><h3>How many North Dakota ZIP codes cross a county line?</h3></summary><div class="xp-in"><p>197 of 400 (49.3%), such as 56744, 57255, 57430.</p></div></details><details class="xpand"><summary><h3>Which North Dakota county has the most ZIP codes?</h3></summary><div class="xp-in"><p>Cass County, ND (38017), with land in 30 ZCTAs.</p></div></details></section>

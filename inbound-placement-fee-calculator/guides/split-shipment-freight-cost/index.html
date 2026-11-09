@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this shipment in the calculator</h2><p class="muted">The calculator opens with these numbers. Swap in your own units, weight and freight quotes, and the fee Send to Amazon shows if you have it.</p><form method="get" action="/toll-preview/inbound-placement-fee-calculator/" class="cp-tool-form"><input type="hidden" name="units" value="1000"><input type="hidden" name="tier" value="large-standard"><input type="hidden" name="weight" value="2"><input type="hidden" name="min" value="420"><input type="hidden" name="opt" value="690"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Compare the options</button></form><p class="small"><a href="/toll-preview/inbound-placement-fee-calculator/?units=1000&amp;tier=large-standard&amp;weight=2&amp;min=420&amp;opt=690">Open this shipment in the calculator</a></p></aside>
 <section>
 <h2 id="table">The most extra freight, by row and shipment size</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Minimal-split fee saved (Amazon's range) = the most extra freight splitting can add</caption><thead><tr><th scope="col">Size tier and weight</th><th scope="col" class="r num">100 units</th><th scope="col" class="r num">500 units</th><th scope="col" class="r num">1,000 units</th><th scope="col" class="r num">5,000 units</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Minimal-split fee saved (Amazon's range) = the most extra freight splitting can add</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Size tier and weight</th><th scope="col" class="r num">100 units</th><th scope="col" class="r num">500 units</th><th scope="col" class="r num">1,000 units</th><th scope="col" class="r num">5,000 units</th></tr></thead><tbody>
 <tr><th scope="row">Small standard, 8 oz or less</th><td class="r num">$14.00 to $32.00</td><td class="r num">$70.00 to $160.00</td><td class="r num">$140.00 to $320.00</td><td class="r num">$700.00 to $1,600.00</td></tr>
 <tr><th scope="row">Small standard, 8+ oz to 16 oz</th><td class="r num">$16.00 to $32.00</td><td class="r num">$80.00 to $160.00</td><td class="r num">$160.00 to $320.00</td><td class="r num">$800.00 to $1,600.00</td></tr>
 <tr><th scope="row">Large standard, 12 oz or less</th><td class="r num">$20.00 to $40.00</td><td class="r num">$100.00 to $200.00</td><td class="r num">$200.00 to $400.00</td><td class="r num">$1,000.00 to $2,000.00</td></tr>
@@ -98,7 +99,7 @@
 <tr><th scope="row">Large/Extra Large Bulky, 12+ lb to 28 lb</th><td class="r num">$340.00 to $410.00</td><td class="r num">$1,700.00 to $2,050.00</td><td class="r num">$3,400.00 to $4,100.00</td><td class="r num">$17,000.00 to $20,500.00</td></tr>
 <tr><th scope="row">Large/Extra Large Bulky, 28+ lb to 42 lb</th><td class="r num">$470.00 to $560.00</td><td class="r num">$2,350.00 to $2,800.00</td><td class="r num">$4,700.00 to $5,600.00</td><td class="r num">$23,500.00 to $28,000.00</td></tr>
 <tr><th scope="row">Large/Extra Large Bulky, 42+ lb to 50 lb</th><td class="r num">$550.00 to $650.00</td><td class="r num">$2,750.00 to $3,250.00</td><td class="r num">$5,500.00 to $6,500.00</td><td class="r num">$27,500.00 to $32,500.00</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="formula">The formula</h2>
@@ -108,7 +109,7 @@ split when: extra freight &lt; units x placement fee per unit</code></pre>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z">Amazon: FBA inbound placement service fee (United States, read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z">Amazon: FBA inbound placement service fee (United States, read November 8, 2026)</a><span class="src-m">sellercentral.amazon.com</span></li></ul>
 <p class="cp-note">Not affiliated with Amazon. Fee ranges are Amazon's US Seller Central table, read November 8, 2026; the fee Send to Amazon shows for your plan is the one charged. Freight figures in the examples are made up for the example; use your own quotes.</p>
 </section>
 

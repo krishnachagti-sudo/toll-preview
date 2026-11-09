@@ -226,8 +226,8 @@ html.motion .gcard.moment.rv.in:active{--ty:-1px}
 
 /* ---------- rows arrive one after another: pricing, comparison, sources, account feed ---------- */
 @media (prefers-reduced-motion:no-preference){
-  html.motion .rv:not(.in) tbody tr,html.motion .rv:not(.in) .crow,html.motion .sources.rv:not(.in) li,html.motion .terms.rv:not(.in) .row{opacity:0}
-  html.motion .rv.in tbody tr,html.motion .rv.in .crow,html.motion .sources.rv.in li,html.motion .terms.rv.in .row{animation:mx-row .8s var(--mx-out) backwards}
+  html.motion .rv:not(.in) tbody tr:nth-child(-n+12),html.motion .rv:not(.in) .crow,html.motion .sources.rv:not(.in) li,html.motion .terms.rv:not(.in) .row{opacity:0}
+  html.motion .rv.in tbody tr:nth-child(-n+12),html.motion .rv.in .crow,html.motion .sources.rv.in li,html.motion .terms.rv.in .row{animation:mx-row .8s var(--mx-out) backwards}
   html.motion .rv.in tbody tr:nth-child(2),html.motion .rv.in .crow:nth-child(2),html.motion .sources.rv.in li:nth-child(2),html.motion .terms.rv.in .row:nth-child(2){animation-delay:.09s}
   html.motion .rv.in tbody tr:nth-child(3),html.motion .rv.in .crow:nth-child(3),html.motion .sources.rv.in li:nth-child(3),html.motion .terms.rv.in .row:nth-child(3){animation-delay:.18s}
   html.motion .rv.in .crow:nth-child(4),html.motion .terms.rv.in .row:nth-child(4){animation-delay:.27s}
@@ -236,6 +236,9 @@ html.motion .gcard.moment.rv.in:active{--ty:-1px}
   html.motion .terms.rv.in .row:nth-child(7){animation-delay:.54s}
 }
 @keyframes mx-row{from{opacity:0;transform:translateY(12px)}}
+/* Shown at once (endwise.js: on screen at load, after a #link jump, in a hidden tab). */
+html.motion.js .rv.tl-now,html.js .rv.tl-now{transition:none!important}
+html.motion .rv.tl-now tbody tr{animation:none!important}
 /* The Endwise column in the comparison gets a soft band that draws down behind it. */
 .compare{position:relative}
 .mx-band{position:absolute;top:0;bottom:0;pointer-events:none;z-index:0;border-radius:10px;transform-origin:50% 0;
@@ -289,7 +292,7 @@ html.mx-vt-local::view-transition-old(*),html.mx-vt-local::view-transition-new(*
   .mx-steps li .n,.mx-steps li h3,.mx-steps li p{opacity:1;translate:none;color:revert-layer}
 }
 @media print{
-  .rv,.split .w,.rv tbody tr,.rv .crow{opacity:1 !important;transform:none !important;filter:none !important}
+  .rv,.split .w,.rv tbody tr,.rv .crow,main table.tl-rows tbody tr{opacity:1 !important;transform:none !important;filter:none !important}
   .mx-field{display:none}
 }
 
@@ -340,8 +343,10 @@ main table tbody tr:hover{background:rgba(255,255,255,.05)}
 main table tbody tr:hover>:first-child{background-size:2px 62%;text-indent:10px}
 main table .tl-col{background-color:rgba(255,154,98,.06)}
 main table th.tl-col{color:var(--text)}
-html.js main table.tl-rows tbody tr{opacity:0;transform:translateY(6px)}
-html.js main table.tl-rows.tl-shown tbody tr{opacity:1;transform:none;transition:opacity .5s var(--mx-out),transform .6s var(--mx-out),background .2s;transition-delay:calc(var(--i,0) * 35ms),calc(var(--i,0) * 35ms),0s}
+/* Only a table's first 12 rows ever wait to fade in; the rest always show. endwise.js shows them at
+   once (tl-now) after a #link jump, in a hidden tab and for print. */
+html.js main table.tl-rows:not(.tl-shown) tbody tr:nth-child(-n+12){opacity:0;transform:translateY(6px)}
+html.js main table.tl-rows.tl-shown:not(.tl-now) tbody tr:nth-child(-n+12){transition:opacity .5s var(--mx-out),transform .6s var(--mx-out),background .2s;transition-delay:calc(var(--i,0) * 35ms),calc(var(--i,0) * 35ms),0s}
 
 /* Links in text: the underline warms to ember. Chips lift a little. */
 main a:not(.btn):not(.lnk){transition:text-decoration-color .25s,color .2s}
@@ -373,7 +378,7 @@ input[type=checkbox]:checked,input[type=radio]:checked{animation:tl-pop .35s var
   .btn,.btn.tl-done::after,.btn::before,.tl-land,.tl-land>*,.tl-charged,.tl-toast.show,.choice span,[role=alert].tl-say,.btn.tl-err,input:checked{animation:none!important;transition:none!important}
   .btn.tl-busy::before{width:90%}
   .tl-toast.show{opacity:1;transform:translate(-50%,0)}
-  html.js main table.tl-rows tbody tr{opacity:1;transform:none}
+  html.js main table.tl-rows tbody tr{opacity:1!important;transform:none!important}
 }
 
 /* ---------- a page's parts attach to the bar (nav.js: hp-docked, hp-slim-on, hp-wide) ----------

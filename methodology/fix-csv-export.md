@@ -2,9 +2,43 @@
 
 A date is read as DD/MM only when its first part is above 12, and as MM/DD only when its second part is; a column proven one way reads its other dates that way, and a date with both parts 12 or below is otherwise listed and left as written. ZIP codes go back to 5 or 9 digits, and one call takes a file of up to 2,000,000 bytes.
 
+## How does it work?
+
+1. The bytes are decoded. A byte order mark comes first (EF BB BF for UTF-8, FF FE and FE FF for UTF-16), then UTF-16 without a BOM when most bytes in odd or even places are zero, then strict UTF-8 (overlong forms, surrogates and code points above U+10FFFF are invalid).
+2. Text that was UTF-8 read as Windows-1252 (CafÃ© for Café) is turned back field by field, only where turning it back gives valid UTF-8 with a non-ASCII character in it.
+3. The delimiter is found from the first 50 records: of comma, semicolon, tab and pipe, the one that splits the most records into the same number of fields (more than one); a tie goes to more fields, then in that order.
+4. Each column is analysed. It is a date column when at least 90% of its filled values read as dates; a first part above 12 proves DD/MM, a second part above 12 proves MM/DD, and both in one column make it mixed.
+5. A column headed ZIP, postal or postcode with at least 90% ZIP-shaped values is a ZIP column.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/fix-csv-export/#what) below.
+
+## What does it not cover?
+
+- One call takes one file of at most 2,000,000 bytes (2 MB), 100,000 rows and 300 columns. An empty file, or one holding null bytes (an .xlsx, a PDF or UTF-16 read the wrong way), is refused.
+- Digits Excel already cut to 15, and zeros already stripped from codes with no known width, are not in the file any more. They are flagged, never invented.
+- It does not check the file against a schema, rename headings or remove rows.
+- Files are processed in memory and not kept; a recipe holds settings only, never the file's values.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 5 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The Windows-1252 table is the WHATWG index dated 2024-09-18, read on 2026-11-08. The Microsoft and Unicode facts were read on 2026-11-08, and the Microsoft pages are checked for changes once a day. The rules change only with the code (engine fix-csv-export-1); nothing is fetched when a file is fixed.
+- [Tested: 5 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin the Windows-1252 table to the WHATWG index and the facts to their read date, then check decoding (BOMs, strict UTF-8, Windows-1252), encoding with and without a BOM, garbled-accent repair, RFC 4180 parsing and writing, delimiter detection, what each date proves, the 2029 rule, ZIP codes and amounts, mixed and unproven date columns, codes and widths, long IDs, recipes applied to next month's file with drift, limits and refusals, and that the same file and recipe give the same bytes. The worked examples equal run().
+
+- [IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005)](https://www.rfc-editor.org/rfc/rfc4180.txt), see the document, not recorded
+- [WHATWG Encoding Standard: index-windows-1252 (dated 2024-09-18)](https://encoding.spec.whatwg.org/index-windows-1252.txt), index dated 2024-09-18, read 2026-11-08
+- [Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM](https://www.unicode.org/faq/utf_bom.html), see the document, read 2026-11-08
+- [Microsoft Learn: How Excel works with two-digit year numbers](https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers), page updated 2026-07-22, read 2026-11-08
+- [Microsoft Support: Keeping leading zeros and large numbers](https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the fix a csv export (leading zeros, dates, encoding) with a saved recipe compute?
 
-The tool takes the bytes of a CSV export and works out its encoding, its delimiter and what each column holds: dates and which order they are written in, ZIP codes and codes that lost their leading zeros, IDs of 16 or more digits, values Excel already damaged, amounts with currency signs and accents garbled by the wrong encoding. A scan reports it all, with the first 20 rows fixed and a suggested recipe. A fix returns the whole file fixed, a change report and the recipe, which holds settings only and applies the same fix to next month's export.
+The tool takes the bytes of a CSV export and works out its encoding, its delimiter and what each column holds: dates and which order they are written in, ZIP codes and codes that lost their leading zeros, IDs of 16 or more digits, values Excel already damaged, amounts with currency signs and accents garbled by the wrong encoding.
+
+**In detail: operations, inputs and outputs**
+
+A scan reports it all, with the first 20 rows fixed and a suggested recipe. A fix returns the whole file fixed, a change report and the recipe, which holds settings only and applies the same fix to next month's export.
 
 Operations (the op field):
 
@@ -27,7 +61,7 @@ Outputs:
 - drift: headings missing, added or moved since the recipe
 - recipe: the settings that fix the file, never its values; and for fix, the fixed file and the change report CSV
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The bytes are decoded. A byte order mark comes first (EF BB BF for UTF-8, FF FE and FE FF for UTF-16), then UTF-16 without a BOM when most bytes in odd or even places are zero, then strict UTF-8 (overlong forms, surrogates and code points above U+10FFFF are invalid). A file that is not valid UTF-8 is read as Windows-1252, and the first bad byte and its offset are named.
 2. Text that was UTF-8 read as Windows-1252 (CafÃ© for Café) is turned back field by field, only where turning it back gives valid UTF-8 with a non-ASCII character in it.
@@ -56,6 +90,8 @@ Nothing is guessed. A date with both parts 12 or below is settled only by its co
 
 ## Which edge cases does it handle?
 
+**The edge cases (7)**
+
 - A column that mixes DD/MM and MM/DD rewrites each provable date its own way and leaves the ambiguous ones as written, unless the recipe says how to read them.
 - A date column with no proof either way asks for the order instead of guessing.
 - ZIP+4 written with a space is written back with a hyphen, and 6 to 9 digits with no hyphen are padded to 9 digits.
@@ -69,14 +105,6 @@ Nothing is guessed. A date with both parts 12 or below is settled only by its co
 > Every figure below is the output of the tool's engine, not typed in.
 
 **Scan a monthly export: encoding, ZIP codes, the date order and its proof, damaged IDs**
-
-```json
-{
-  "op": "scan",
-  "text": "Account,Customer,ZIP,Posted,Amount,Order ID\r\n0010,CafÃ© Rio,2134,13/03/2026,\"$1,200.50\",4000123412341234\r\n0200,ZoÃ« Park,90210,03/04/2026,(45.00),4000123412349876\r\n3000,Ann Lee,501,05/05/2026,12.00,1.23457E+15\r\n0040,Ã‰lise Roy,7030,28/02/2026,\"$2,050.00\",4000555566667777\r\n",
-  "name": "bank-export-march.csv"
-}
-```
 
 Scan a monthly export: encoding, ZIP codes, the date order and its proof, damaged IDs
 
@@ -92,14 +120,19 @@ Scan a monthly export: encoding, ZIP codes, the date order and its proof, damage
 | Amount | number; rule keep |
 | Order ID | long-id; rule code |
 
-**Fix it with a saved recipe: ZIP codes restored, dates as YYYY-MM-DD, amounts plain**
+**The input**
 
 ```json
-op: "fix"
-text: "Account,Customer,ZIP,Posted,Amount,Order ID\r\n0010,CafÃ© Rio,2134,13/03/2026,\"$1,200.50\",4000123412341234\r\n0200,ZoÃ« Park,90210,03/04/2026,(45.00),4000123412349876\r\n3000,Ann Lee,501,05/05/2026,12.00,1.23457E+15\r\n0040,Ã‰lise Roy,7030,28/02/2026,\"$2,050.00\",4000555566667777\r\n"
-name: "bank-export-march.csv"
-recipe: {...}
+{
+  "op": "scan",
+  "text": "Account,Customer,ZIP,Posted,Amount,Order ID\r\n0010,CafÃ© Rio,2134,13/03/2026,\"$1,200.50\",4000123412341234\r\n0200,ZoÃ« Park,90210,03/04/2026,(45.00),4000123412349876\r\n3000,Ann Lee,501,05/05/2026,12.00,1.23457E+15\r\n0040,Ã‰lise Roy,7030,28/02/2026,\"$2,050.00\",4000555566667777\r\n",
+  "name": "bank-export-march.csv"
+}
 ```
+
+**More worked examples (1)**
+
+**Fix it with a saved recipe: ZIP codes restored, dates as YYYY-MM-DD, amounts plain**
 
 Fix it with a saved recipe: ZIP codes restored, dates as YYYY-MM-DD, amounts plain
 
@@ -115,42 +148,18 @@ Fix it with a saved recipe: ZIP codes restored, dates as YYYY-MM-DD, amounts pla
 | changes: mojibake | 3 |
 | changes listed | 13 |
 
-## What does it not do?
+**The input**
 
-- One call takes one file of at most 2,000,000 bytes (2 MB), 100,000 rows and 300 columns. An empty file, or one holding null bytes (an .xlsx, a PDF or UTF-16 read the wrong way), is refused.
-- Digits Excel already cut to 15, and zeros already stripped from codes with no known width, are not in the file any more. They are flagged, never invented.
-- It does not check the file against a schema, rename headings or remove rows.
-- Files are processed in memory and not kept; a recipe holds settings only, never the file's values.
-
-## Where does the data come from, and how fresh is it?
-
-The Windows-1252 table is the WHATWG index dated 2024-09-18, read on 2026-11-08. The Microsoft and Unicode facts were read on 2026-11-08, and the Microsoft pages are checked for changes once a day. The rules change only with the code (engine fix-csv-export-1); nothing is fetched when a file is fixed.
-
-- [IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005)](https://www.rfc-editor.org/rfc/rfc4180.txt)
-- [WHATWG Encoding Standard: index-windows-1252 (dated 2024-09-18)](https://encoding.spec.whatwg.org/index-windows-1252.txt)
-- [Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM](https://www.unicode.org/faq/utf_bom.html)
-- [Microsoft Learn: How Excel works with two-digit year numbers](https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers)
-- [Microsoft Support: Keeping leading zeros and large numbers](https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers)
-
-The Windows-1252 table is the WHATWG index dated 2024-09-18, read on 2026-11-08. The Microsoft and Unicode facts were read on 2026-11-08, and the Microsoft pages are checked for changes once a day. The rules change only with the code (engine fix-csv-export-1); nothing is fetched when a file is fixed.
-
-Fix a CSV export (leading zeros, dates, encoding) with a saved recipe: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005)](https://www.rfc-editor.org/rfc/rfc4180.txt) | see the document | not recorded |
-| [WHATWG Encoding Standard: index-windows-1252 (dated 2024-09-18)](https://encoding.spec.whatwg.org/index-windows-1252.txt) | index dated 2024-09-18 | 2026-11-08 |
-| [Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM](https://www.unicode.org/faq/utf_bom.html) | see the document | 2026-11-08 |
-| [Microsoft Learn: How Excel works with two-digit year numbers](https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers) | page updated 2026-07-22 | 2026-11-08 |
-| [Microsoft Support: Keeping leading zeros and large numbers](https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+op: "fix"
+text: "Account,Customer,ZIP,Posted,Amount,Order ID\r\n0010,CafÃ© Rio,2134,13/03/2026,\"$1,200.50\",4000123412341234\r\n0200,ZoÃ« Park,90210,03/04/2026,(45.00),4000123412349876\r\n3000,Ann Lee,501,05/05/2026,12.00,1.23457E+15\r\n0040,Ã‰lise Roy,7030,28/02/2026,\"$2,050.00\",4000555566667777\r\n"
+name: "bank-export-march.csv"
+recipe: {...}
+```
 
 ## How is it tested?
 
-The tests pin the Windows-1252 table to the WHATWG index and the facts to their read date, then check decoding (BOMs, strict UTF-8, Windows-1252), encoding with and without a BOM, garbled-accent repair, RFC 4180 parsing and writing, delimiter detection, what each date proves, the 2029 rule, ZIP codes and amounts, mixed and unproven date columns, codes and widths, long IDs, recipes applied to next month's file with drift, limits and refusals, and that the same file and recipe give the same bytes. The worked examples equal run().
-
-What its test suite asserts:
+**What its test suite asserts (5)**
 
 - The Windows-1252 table in the engine equals the WHATWG index dated 2024-09-18, and the quoted facts are dated 2026-11-08.
 - Decoding, encoding with and without a BOM, garbled-accent repair, RFC 4180 parsing and writing, and delimiter detection are each checked.

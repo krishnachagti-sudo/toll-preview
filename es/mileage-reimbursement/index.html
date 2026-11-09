@@ -67,81 +67,89 @@
   </div>
 </header>
 
-<main id="main" class="mr">
-  <section class="wrap mr-intro">
+<main id="main" class="mr tf hue-money">
+  <section class="wrap tf-open">
     <p class="eyebrow">Tarifas estándares por milla del IRS, por fecha del viaje</p>
     <h1>Calculadora de reembolso de millaje</h1>
     <p class="lede">El IRS cambió la tarifa de 2026 a mitad de año: 72.5 centavos por milla de negocios hasta el 30 de junio y 76 centavos desde el 1 de julio. Esta calculadora aplica a cada viaje la tarifa vigente en su fecha, mantiene en la tarifa anterior una asignación pagada antes del 1 de julio, como dice el Anuncio 2026-11, y muestra la fuente de cada tarifa.</p>
-    <p class="mr-price" id="mr-price">Los cálculos son gratis en esta página. Los archivos de viajes cuestan $0.001 por fila de viaje (como mínimo $0.25 por archivo), y el PDF del registro de un vehículo para el año cuesta $4.</p>
-    <p class="mr-sample" id="mr-sample">Vea primero un registro de muestra, hecho por esta herramienta con viajes inventados de 2026 para una camioneta: <span id="mr-sample-links">los archivos de muestra se cargan con la página.</span></p>
-    <p class="hint"><a href="/toll-preview/mileage-reimbursement/" hreflang="en" lang="en">Use this calculator in English</a></p>
+<ul class="trust" aria-label="Sobre este sitio"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Hecho por <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exacto, sin IA</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Fuentes oficiales, con fecha</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Los archivos que sube no se guardan</a></span></li><li class="tl2"><a href="/toll-preview/security/">Seguridad</a><a href="/toll-preview/terms/">Términos</a></li></ul>
+    <p data-prices class="tf-price" id="mr-price"><span class="price">Gratis en esta página</span><span>Archivos de viajes: $0.001 por fila (mínimo $0.25 por archivo)</span><span>PDF del registro: $4</span><span>5 ejecuciones gratis al día sin cuenta</span></p>
+    <p class="mr-sample" id="mr-sample">Vea primero un registro de muestra, hecho por esta herramienta con viajes inventados de 2026 para una camioneta: <span id="mr-sample-links">los archivos de muestra se cargan con la página.</span> <span class="mr-lang">· <a class="ul" href="/toll-preview/mileage-reimbursement/" hreflang="en">Ver en inglés</a></span></p>
   </section>
 
-  <section class="wrap mr-desk" aria-label="Calculadora">
-    <form class="mr-form" id="mr-form" novalidate>
+  <section class="wrap tf-calc mr-desk" data-jump="Calculadora" aria-label="Calculadora">
+    <form class="tf-panel tf-form mr-form" id="mr-form" novalidate>
       <fieldset class="field">
-        <legend>¿Cómo tiene sus millas?</legend>
+        <legend class="visually-hidden">¿Cómo tiene sus millas?</legend>
         <div class="choice-row">
           <label class="choice"><input type="radio" name="mode" value="split" checked><span>Millas por período de tarifa</span></label>
           <label class="choice"><input type="radio" name="mode" value="trips"><span>Una lista de viajes</span></label>
         </div>
       </fieldset>
 
-      <div class="field">
-        <label for="mr-purpose">Uso</label>
-        <select id="mr-purpose">
-          <option value="business" selected>Negocios (trabajo por cuenta propia, o una asignación del empleador)</option>
-          <option value="medical">Médico</option>
-          <option value="moving">Mudanza (militares en servicio activo, ciertas mudanzas de la comunidad de inteligencia)</option>
-          <option value="charity">Organizaciones caritativas (manejar como voluntario)</option>
-          <option value="gsa-car">Viaje federal, auto propio (GSA)</option>
-          <option value="gsa-car-gov-available">Viaje federal, auto propio cuando había un auto del gobierno disponible (GSA)</option>
-          <option value="gsa-motorcycle">Viaje federal, motocicleta (GSA)</option>
-          <option value="gsa-airplane">Viaje federal, avión (GSA, millas terrestres)</option>
-        </select>
-      </div>
 
-      <div data-mode="split">
+      <div class="tf-two">
         <div class="field">
+          <label for="mr-purpose">Uso</label>
+          <select id="mr-purpose">
+            <option value="business" selected>Negocios (trabajo por cuenta propia, o una asignación del empleador)</option>
+            <option value="medical">Médico</option>
+            <option value="moving">Mudanza (militares en servicio activo, ciertas mudanzas de la comunidad de inteligencia)</option>
+            <option value="charity">Organizaciones caritativas (manejar como voluntario)</option>
+            <option value="gsa-car">Viaje federal, auto propio (GSA)</option>
+            <option value="gsa-car-gov-available">Viaje federal, auto propio cuando había un auto del gobierno disponible (GSA)</option>
+            <option value="gsa-motorcycle">Viaje federal, motocicleta (GSA)</option>
+            <option value="gsa-airplane">Viaje federal, avión (GSA, millas terrestres)</option>
+          </select>
+        </div>
+        <div class="field" data-mode="split">
           <label for="mr-year">Año</label>
           <select id="mr-year"></select>
         </div>
-        <div id="mr-periods"></div>
+      </div>
+
+      <div data-mode="split">
+        <div id="mr-periods" class="mr-periods"></div>
         <p class="field-error" id="mr-periods-err"></p>
       </div>
 
       <div class="field" data-mode="trips" hidden>
         <label for="mr-trips">Viajes, uno por línea</label>
-        <textarea id="mr-trips" rows="6" spellcheck="false" aria-describedby="mr-trips-hint mr-trips-err">2026-06-28, 120, paid 2026-07-05
+        <textarea id="mr-trips" rows="4" spellcheck="false" aria-describedby="mr-trips-hint mr-trips-err">2026-06-28, 120, paid 2026-07-05
 2026-07-02, 85, paid 2026-07-10
 2026-07-14, 340</textarea>
         <p class="hint" id="mr-trips-hint">Fecha, millas y, si un empleador pagó la asignación, la fecha en que la pagó (después de "paid"). Hasta 25 viajes; una lista más larga va en el archivo de viajes de abajo.</p>
         <p class="field-error" id="mr-trips-err"></p>
       </div>
 
-      <div class="field">
-        <label for="mr-extra">Estacionamiento y peajes de negocios (opcional)</label>
-        <input type="text" id="mr-extra" inputmode="decimal" placeholder="0.00" aria-describedby="mr-extra-hint mr-extra-err">
-        <p class="hint" id="mr-extra-hint">Se suman a su costo, además del monto por millaje, como lo permite la Publicación 463. Estacionar en su lugar habitual de trabajo es ir y venir del trabajo.</p>
-        <p class="field-error" id="mr-extra-err"></p>
-      </div>
-
       <p class="form-error" id="mr-error" role="alert"></p>
-      <button class="btn" type="submit" id="mr-run">Calcular</button>
-      <p class="hint mr-run-note" id="mr-run-note">Gratis en esta página. Sin cuenta, usa una de sus 5 ejecuciones gratis al día.</p>
+      <button class="btn tf-go" type="submit" id="mr-run">Calcular</button>
+      <p class="hint tf-run-note mr-run-note" id="mr-run-note">Gratis en esta página. Sin cuenta, usa una de sus 5 ejecuciones gratis al día.</p>
+      <details class="xpand" id="mr-extra-fold">
+        <summary>Estacionamiento y peajes de negocios (opcional)</summary>
+        <div class="xp-in">
+          <div class="field">
+            <label for="mr-extra" class="visually-hidden">Estacionamiento y peajes de negocios</label>
+            <input type="text" id="mr-extra" inputmode="decimal" placeholder="0.00" aria-describedby="mr-extra-hint mr-extra-err">
+            <p class="hint" id="mr-extra-hint">Se suman a su costo, además del monto por millaje, como lo permite la Publicación 463. Estacionar en su lugar habitual de trabajo es ir y venir del trabajo.</p>
+            <p class="field-error" id="mr-extra-err"></p>
+          </div>
+        </div>
+      </details>
       <p class="visually-hidden" id="mr-status" role="status"></p>
     </form>
 
-    <div class="mr-out" id="mr-out">
+    <div class="tf-panel tf-result mr-out" id="mr-out">
       <p class="muted">Cargando el ejemplo resuelto.</p>
     </div>
   </section>
 
-  <section class="wrap mr-file" data-jump="Hoja de viajes o registro" id="mr-file" aria-labelledby="mr-file-title">
+  <section class="wrap tf-sec mr-file" data-jump="Archivos" id="mr-file" aria-labelledby="mr-file-title">
+    <p class="eyebrow">Archivos de viajes</p>
     <h2 id="mr-file-title">Una hoja de viajes para nómina o el registro del año</h2>
-    <p class="mr-file-lede">Abra la hoja de cálculo que ya le envían sus conductores, o los viajes que exportó una aplicación de millaje. Los totales de abajo se calculan en su navegador y el archivo no sale de esta página. Solo paga para descargar el archivo de resultados o el PDF del registro; esos viajes se envían una vez, se usan para esa respuesta y no se guardan.</p>
+    <p class="tf-p mr-file-lede">Abra la hoja de cálculo que ya le envían sus conductores, o los viajes que exportó una aplicación de millaje. Los totales de abajo se calculan en su navegador y el archivo no sale de esta página. Solo paga para descargar el archivo de resultados o el PDF del registro; esos viajes se envían una vez, se usan para esa respuesta y no se guardan.</p>
     <div class="mr-file-grid">
-      <div class="mr-file-in">
+      <div class="tf-panel tf-form mr-file-in">
         <div class="field">
           <label for="mr-upload">Archivo de viajes (CSV, TSV o Excel .xlsx)</label>
           <input type="file" id="mr-upload" accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
@@ -150,14 +158,14 @@
           <label for="mr-paste">O péguelo aquí</label>
           <textarea id="mr-paste" rows="7" spellcheck="false" aria-describedby="mr-paste-hint mr-file-err"></textarea>
           <p class="hint" id="mr-paste-hint">Una línea de encabezados y luego un viaje por línea. Reconoce columnas en inglés como Date, Miles, Employee, Vehicle, Destination, Business purpose, Purpose, Parking, Tolls, Paid amount, Paid date y Recorded on. <a href="#" id="mr-template">Descargar una plantilla en blanco</a>.</p>
-          <details class="mr-format">
+          <details class="xpand mr-format">
             <summary>Lo que necesita el archivo, y las exportaciones de aplicaciones</summary>
             <p>Una línea de encabezados y un viaje por línea, separados por comas, tabulaciones o punto y coma, o la primera hoja de un archivo de Excel. Se necesitan dos columnas: una con el encabezado Date (o Trip date, Day, Travel date, Start date) y otra con el encabezado Miles (o Mileage, Distance, Business miles, Miles driven, Total miles, Mi). Las fechas pueden escribirse 2026-07-14, 7/14/2026 o 7/14/26. Las demás columnas se leen cuando su encabezado es uno de los nombres de arriba; la página lista las otras como no usadas.</p>
             <p>Si viene de MileIQ, Gridwise, Stride u otra aplicación de millaje, abra aquí su exportación. Si la vista previa dice que necesita una columna de fecha y una de millas, cambie esos dos encabezados a Date y Miles, y las columnas de lugar y motivo a Destination y Business purpose, y vuelva a abrirlo aquí.</p>
           </details>
           <p class="field-error" id="mr-file-err"></p>
         </div>
-        <details class="mr-options">
+        <details class="xpand mr-options">
           <summary>Opciones</summary>
           <div class="field">
             <label for="mr-employer">Su tarifa por milla, si no es la del IRS (centavos)</label>
@@ -171,13 +179,13 @@
           </div>
         </details>
       </div>
-      <div class="mr-file-out">
+      <div class="tf-panel tf-result mr-file-out">
         <div class="mr-buy" id="mr-file-buy" hidden><p class="mr-heading">Archivo de resultados</p></div>
         <div id="mr-file-out"><p class="muted">Se calcula aquí cuando abre un archivo.</p></div>
       </div>
     </div>
 
-    <div class="mr-log" id="mr-log" hidden>
+    <div class="tf-panel mr-log" id="mr-log" hidden>
       <h3>El registro del IRS para un vehículo</h3>
       <div class="mr-log-grid">
         <div class="field"><label for="mr-vehicle">Vehículo</label><input type="text" id="mr-vehicle" maxlength="80" placeholder="2022 Ford Transit" list="mr-vehicles"><datalist id="mr-vehicles"></datalist></div>
@@ -192,43 +200,80 @@
     </div>
   </section>
 
-  <section class="wrap mr-rules" data-jump="Las reglas" aria-labelledby="mr-rules-title">
-    <h2 id="mr-rules-title">Dos fechas, no una</h2>
-    <div class="mr-rule-cols">
+  <section class="wrap tf-sec mr-rules" data-jump="Reglas" aria-labelledby="mr-rules-title">
+    <div class="tf-top">
       <div>
-        <h3>La fecha del viaje</h3>
-        <p>El IRS fija sus tarifas estándares por milla opcionales por período. Para 2026: 72.5 centavos por milla de negocios, 20.5 centavos para fines médicos o de mudanza y 14 centavos para organizaciones caritativas del 1 de enero al 30 de junio (Aviso 2026-10, IR-2025-128); 76, 23.5 y 14 centavos del 1 de julio al 31 de diciembre (Anuncio 2026-11, IR-2026-29). Cada milla toma la tarifa del día en que se manejó, así que un viaje que pasa del 1 de julio se ingresa como dos tramos. La tarifa para organizaciones caritativas está fijada en 14 centavos por ley (IRC 170(i)).</p>
+        <p class="eyebrow">Las reglas</p>
+        <h2 id="mr-rules-title">Dos fechas, no una: <span class="dim">el viaje y el pago.</span></h2>
+        <p class="tf-p">Las tarifas vienen de la tabla de tarifas estándares por milla del IRS y del Anuncio 2026-11 (y de la GSA para viajes federales), citadas en cada línea. Fuentes consultadas el 31 de octubre de 2026.</p>
       </div>
-      <div>
-        <h3>La fecha en que se paga una asignación</h3>
-        <p>El Anuncio 2026-11 aplica las tarifas nuevas a las asignaciones de millaje del empleador solo cuando se pagan el 1 de julio de 2026 o después, por millas manejadas el 1 de julio o después. Un viaje del 28 de junio reembolsado el 5 de julio se queda en 72.5 centavos; también un adelanto pagado en junio por millas de julio. Los cambios a mitad de año de 2011 y 2022 tuvieron la misma regla, y también se les aplica. Indique una fecha de pago y la línea dice qué fecha fijó su tarifa.</p>
-      </div>
-      <div>
-        <h3>Por encima de la tarifa federal</h3>
-        <p>Publicación 463: cuando una asignación es mayor que la tarifa federal, el empleador declara el monto hasta la tarifa federal en la casilla 12 del W-2 con el código L (no tributable) y el excedente en la casilla 1 como salario. El archivo de viajes muestra ambos por empleado. La mayoría de los empleados con W-2 no pueden deducir el millaje no reembolsado; el Formulario 2106 es solo para reservistas de las Fuerzas Armadas, artistas escénicos que reúnen los requisitos, funcionarios estatales o locales pagados por honorarios y gastos de trabajo relacionados con una discapacidad.</p>
-      </div>
-    </div>
-    <div class="mr-later">
-      <h3>¿Cuenta un registro que reconstruyo después?</h3>
-      <p>El IRS pide registros hechos en el momento o cerca del momento. La Publicación 463 dice que debe anotar cada uso de negocios en el momento o cerca del momento, y que un registro llevado a tiempo vale más que una declaración preparada después, cuando por lo general ya no se recuerda con exactitud. Un registro que se lleva cada semana cuenta como oportuno. Si sus registros están incompletos, la Publicación 463 dice que debe probar cada dato que falte con su propia declaración detallada, escrita u oral, más otras pruebas, como recibos o facturas pagadas.</p>
-      <p>El PDF muestra los viajes que usted ingresó, calculados por fecha, y su revisión de que esté completo lista los vacíos que puede ver. No puede convertir un registro reconstruido de memoria en un registro oportuno, y no dice si el IRS lo aceptará. Si su archivo tiene una columna Recorded on, la revisión marca cualquier viaje anotado más de 7 días después de hacerlo.</p>
-    </div>
-    <ul class="mr-notes small muted">
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="mr-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="mr-limits-title">Lo que no incluye</h3>
+          <p>Qué viajes son de negocios, si un registro es adecuado, los límites del Anexo A, los gastos reales y las tarifas de 2027 antes de que el IRS las fije.</p>
+          <details class="xpand"><summary>Leer las notas completas</summary><div class="xp-in">
+            <ul class="mr-notes">
       <li>Las tarifas vienen de la tabla de tarifas estándares por milla del IRS y del Anuncio 2026-11 (y de la GSA para viajes federales), citadas en cada línea. La tarifa estándar es opcional: puede usar los gastos reales en su lugar, y no puede usarla con cinco o más vehículos usados para negocios al mismo tiempo, ni para un auto arrendado en el que antes usó gastos reales (Publicación 463).</li>
       <li>Esta herramienta calcula montos a partir de los viajes que usted ingresa. No decide qué viajes son de negocios, médicos o para organizaciones caritativas, ni si un registro es adecuado; su revisión de que esté completo lista solo vacíos objetivos. Un registro vale lo que valen los registros detrás de él: el IRS espera registros hechos en el momento o cerca del momento, y considera oportuno un registro semanal (Publicación 463).</li>
       <li>Los montos médicos y para organizaciones caritativas son datos para el Anexo A; no se aplican los límites de deducción. Las tarifas de 2027 se agregan solo cuando el IRS las anuncie.</li>
       <li>No es asesoría tributaria ni legal. Fuentes (en inglés), consultadas el 31 de octubre de 2026: <a href="https://www.irs.gov/tax-professionals/standard-mileage-rates">IRS standard mileage rates</a> (actualizada el 28 de julio de 2026), <a href="https://www.irs.gov/irb/2026-29_IRB">Announcement 2026-11</a>, <a href="https://www.irs.gov/irb/2026-04_IRB">Notice 2026-10</a>, <a href="https://www.irs.gov/publications/p463">Publication 463 (2025)</a>, <a href="https://www.gsa.gov/travel/plan-a-trip/transportation-airfare-rates-pov-rates-etc/privately-owned-vehicle-pov-mileage-reimbursement">GSA POV rates</a> (actualizada el 23 de octubre de 2026). En español: <a href="https://www.irs.gov/es/tax-professionals/standard-mileage-rates">Tarifas estándares por milla</a>.</li>
     </ul>
-    <div class="mr-prices">
+          </div></details>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6.5h14v13H5zM5 10h14M9 4v4M15 4v4"/></svg></span>
+        <div>
+          <h3>La fecha del viaje</h3>
+          <p>Cada milla toma la tarifa del día en que se manejó: 72.5 centavos hasta el 30 de junio de 2026, 76 centavos desde el 1 de julio.</p>
+          <details class="xpand"><summary>Leer la regla completa</summary><div class="xp-in"><p>El IRS fija sus tarifas estándares por milla opcionales por período. Para 2026: 72.5 centavos por milla de negocios, 20.5 centavos para fines médicos o de mudanza y 14 centavos para organizaciones caritativas del 1 de enero al 30 de junio (Aviso 2026-10, IR-2025-128); 76, 23.5 y 14 centavos del 1 de julio al 31 de diciembre (Anuncio 2026-11, IR-2026-29). Cada milla toma la tarifa del día en que se manejó, así que un viaje que pasa del 1 de julio se ingresa como dos tramos. La tarifa para organizaciones caritativas está fijada en 14 centavos por ley (IRC 170(i)).</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17zM12 7.5V12l3 2"/></svg></span>
+        <div>
+          <h3>La fecha en que se paga una asignación</h3>
+          <p>Una asignación pagada antes del 1 de julio de 2026 se queda en la tarifa anterior, incluso por millas de julio.</p>
+          <details class="xpand"><summary>Leer la regla completa</summary><div class="xp-in"><p>El Anuncio 2026-11 aplica las tarifas nuevas a las asignaciones de millaje del empleador solo cuando se pagan el 1 de julio de 2026 o después, por millas manejadas el 1 de julio o después. Un viaje del 28 de junio reembolsado el 5 de julio se queda en 72.5 centavos; también un adelanto pagado en junio por millas de julio. Los cambios a mitad de año de 2011 y 2022 tuvieron la misma regla, y también se les aplica. Indique una fecha de pago y la línea dice qué fecha fijó su tarifa.</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg></span>
+        <div>
+          <h3>Por encima de la tarifa federal</h3>
+          <p>Hasta la tarifa federal va en la casilla 12 del W-2 con el código L; el excedente es salario en la casilla 1.</p>
+          <details class="xpand"><summary>Leer la regla completa</summary><div class="xp-in"><p>Publicación 463: cuando una asignación es mayor que la tarifa federal, el empleador declara el monto hasta la tarifa federal en la casilla 12 del W-2 con el código L (no tributable) y el excedente en la casilla 1 como salario. El archivo de viajes muestra ambos por empleado. La mayoría de los empleados con W-2 no pueden deducir el millaje no reembolsado; el Formulario 2106 es solo para reservistas de las Fuerzas Armadas, artistas escénicos que reúnen los requisitos, funcionarios estatales o locales pagados por honorarios y gastos de trabajo relacionados con una discapacidad.</p></div></details>
+        </div>
+      </article>
+    </div>
+
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok mr-later">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg></span>
+        <div>
+          <h3>¿Cuenta un registro que reconstruyo después?</h3>
+          <p>El IRS pide registros hechos en el momento o cerca del momento; un registro que se lleva cada semana cuenta como oportuno.</p>
+          <details class="xpand"><summary>Leer la respuesta completa</summary><div class="xp-in">
+            <p>El IRS pide registros hechos en el momento o cerca del momento. La Publicación 463 dice que debe anotar cada uso de negocios en el momento o cerca del momento, y que un registro llevado a tiempo vale más que una declaración preparada después, cuando por lo general ya no se recuerda con exactitud. Un registro que se lleva cada semana cuenta como oportuno. Si sus registros están incompletos, la Publicación 463 dice que debe probar cada dato que falte con su propia declaración detallada, escrita u oral, más otras pruebas, como recibos o facturas pagadas.</p>
+            <p>El PDF muestra los viajes que usted ingresó, calculados por fecha, y su revisión de que esté completo lista los vacíos que puede ver. No puede convertir un registro reconstruido de memoria en un registro oportuno, y no dice si el IRS lo aceptará. Si su archivo tiene una columna Recorded on, la revisión marca cualquier viaje anotado más de 7 días después de hacerlo.</p>
+          </div></details>
+        </div>
+      </article>
+      <div class="tf-panel mr-prices">
       <h3>Precios</h3>
       <ul class="endwise-prices"><li><strong>Consulta de tarifa o cálculo en esta página</strong>: gratis.</li><li><strong>Consulta de tarifa o cálculo por la API o MCP</strong>: $0.002 por llamada.</li><li><strong>Archivo de viajes (totales por empleado, ajuste, división del W-2, CSV de resultados)</strong>: $0.001 por fila de viaje, como mínimo $0.25 por archivo.</li><li><strong>PDF del registro del vehículo para el año, con la revisión de que esté completo</strong>: $4.00 por registro de un vehículo y año; repetirlo para el mismo vehículo y año tributario es gratis durante 30 días.</li></ul>
       <p class="small muted">Los $0.25 gratis cada mes en una cuenta con sesión iniciada cubren un archivo de hasta 250 viajes.</p>
+    </div>
     </div>
   </section>
 
 
 
-  <section class="wrap mr-code" aria-label="Úselo desde código">
+  <section class="wrap tf-code mr-code" data-jump="Código" aria-label="Úselo desde código">
     <div id="mr-code"></div>
   </section>
   <noscript><div class="wrap"><p>Esta calculadora necesita JavaScript. También puede usarla desde código: vea <a href="/toll-preview/docs" hreflang="en">la documentación</a> (en inglés).</p></div></noscript>

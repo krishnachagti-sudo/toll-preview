@@ -1,15 +1,15 @@
 # What date is 30 days from today?
 
-30 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Tuesday, December 8, 2026. Counted from tomorrow it is Wednesday, December 9, 2026.
+30 days from today, Monday, November 9, 2026 (today's date in New York, US Eastern time), is Wednesday, December 9, 2026. Counted from tomorrow it is Thursday, December 10, 2026.
 
-- Date: December 8, 2026
-- Weekday: Tuesday
+- Date: December 9, 2026
+- Weekday: Wednesday
 - ISO week: 2026-W50
 - US business days between: 20
 
 ## 30 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-09&region=US)
 
 ## 30 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 30 days after | US business days |
 | --- | --- | ---: |
-| [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-08) | Tue, Dec 8, 2026 | 20 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-09) | Wed, Dec 9, 2026 | 20 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-10) | Thu, Dec 10, 2026 | 20 |
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-11) | Fri, Dec 11, 2026 | 21 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-19) | Sat, Dec 19, 2026 | 20 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-20) | Sun, Dec 20, 2026 | 19 |
 | [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-21) | Mon, Dec 21, 2026 | 20 |
+| [Sun, Nov 22, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=30+days+from+today&ref=2026-11-22) | Tue, Dec 22, 2026 | 21 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 30 days from today: the same as 31 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/30-days-from-today/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/30-days-from-today.csv

@@ -2,9 +2,51 @@
 
 The return follows Oregon DOT Form 735-9740: fleet MPG is total miles divided by total gallons, taxable gallons in each jurisdiction are its taxable miles divided by that MPG, and tax is net taxable gallons times the quarter's rate. Final matrix rates are held for 4th Quarter 2025 to 3rd Quarter 2026.
 
+## How does it work?
+
+1. Miles and gallons are rounded to whole numbers (525.5 becomes 526).
+2. Fleet MPG for a fuel type is total miles (IFTA plus non-IFTA) divided by total gallons, carried to three decimals (cut, not rounded) and then rounded half up to two decimals (6.155 becomes 6.16).
+3. Taxable gallons in a jurisdiction are its taxable miles divided by that MPG, rounded to a whole number.
+4. Net taxable gallons are taxable gallons minus the tax-paid gallons bought there. Tax is net taxable gallons times the quarter's rate, in dollars and cents.
+5. A surcharge (the Indiana, Kentucky and Virginia rows of the matrix) is taxable gallons times the surcharge rate, with no credit for fuel bought there.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/ifta-calculator/#what) below.
+
+## What does it not cover?
+
+- Rates are final rates only, by quarter, from 4th Quarter 2025 to 3rd Quarter 2026. A quarter that is not on file is refused, not guessed.
+- Only fuels with a computed method are accepted. LNG, CNG, electricity, hydrogen and hythane are refused with the reason: the matrix copies give a rate but not the unit it applies to.
+- Rounding follows Oregon DOT Form 9740. Your base jurisdiction may compute or round differently, and its return governs.
+- It is a calculation, not tax or legal advice. Diesel exhaust fluid and fuel for a separate reefer tank are not IFTA fuel.
+- Due dates move only for weekends: the four statutory dates are never US federal holidays.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 12 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Rates are held by quarter, 4th Quarter 2025 to 3rd Quarter 2026, all final, read 2026-11-02. Rules were read 2026-11-02.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Each of the four quarters on file is final, from the Oregon DOT copy with the New York State Tax cross-check. A two-state return is worked out by hand in the test and compared with the engine. Due dates for 2026 are compared with the Oregon DOT calendar, and the late-interest example from the Idaho State Tax Commission ($100 over 3 months late is $1.25) is reproduced.
+
+- [Oregon DOT copy of the IFTA matrix, 4Q2025 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/4Q2025FuelRates.pdf), 4th Quarter 2025, read 2026-11-02
+- [NY Tax IFTA-105 (12/25) rate sheet, PDF](https://www.tax.ny.gov/pdf/2025/motor/ifta105_1225.pdf), 4th Quarter 2025 (cross-check), read 2026-11-02
+- [Oregon DOT copy of the IFTA matrix, 1Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/1Q2026FuelRates.pdf), 1st Quarter 2026, read 2026-11-02
+- [NY Tax IFTA-105 (3/26) rate sheet, PDF](https://www.tax.ny.gov/pdf/2026/motor/ifta105_326.pdf), 1st Quarter 2026 (cross-check), read 2026-11-02
+- [Oregon DOT copy of the IFTA matrix, 2Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/2Q2026FuelRates.pdf), 2nd Quarter 2026, read 2026-11-02
+- [NY Tax IFTA-105 (2nd Quarter 2026), HTML table](https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-626.htm), 2nd Quarter 2026 (cross-check), read 2026-11-02
+- [Oregon DOT copy of the IFTA matrix, 3Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/3Q2026FuelRates.pdf), 3rd Quarter 2026, read 2026-11-02
+- [NY Tax IFTA-105 (3rd Quarter 2026), HTML table](https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-926.htm), 3rd Quarter 2026 (cross-check), read 2026-11-02
+- [Oregon DOT, IFTA Tax Return Form 735-9740 and its filing instructions (03-26)](https://www.oregon.gov/odot/forms/motcarr/9740.pdf), rules, read 2026-11-02
+- [Virginia DMV, IFTA tax returns](https://www.dmv.virginia.gov/businesses/motor-carriers/ifta/tax), rules, read 2026-11-02
+- [Idaho State Tax Commission, IFTA reporting step 6 (interest)](https://tax.idaho.gov/taxes/product-excise-taxes/fuels-taxes-and-fees/consumer-fuels/ifta-licenses/ifta-reporting/idaho-ifta-reporting-step-6/), rules, read 2026-11-02
+- [Idaho State Tax Commission, IFTA licenses: records (IVDR)](https://tax.idaho.gov/?p=1239), rules, read 2026-11-02
+
+> Rates are held by quarter, final rates only: 4th Quarter 2025 to 3rd Quarter 2026, read 2026-11-02. A quarter that is not on file is refused, not guessed.
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the ifta quarterly return calculator compute?
 
 The tool works out an IFTA quarterly return, from totals by jurisdiction or from trip sheets and fuel receipts. It reconciles odometer readings, checks each record against the IFTA distance and fuel record elements, and works out due dates, interest and the late penalty.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -30,7 +72,7 @@ Outputs:
 - dueDate with the statutory date and the date it moves to
 - reconciliation and recordCheck for trip sheets
 
-## How is it calculated, step by step?
+**Every step in full (8)**
 
 1. Miles and gallons are rounded to whole numbers (525.5 becomes 526).
 2. Fleet MPG for a fuel type is total miles (IFTA plus non-IFTA) divided by total gallons, carried to three decimals (cut, not rounded) and then rounded half up to two decimals (6.155 becomes 6.16).
@@ -42,6 +84,8 @@ Outputs:
 8. Interest on a late return is the tax due on each line times the monthly rate for each month or part of a month late, never on credits. The penalty is the greater of $50 or 10% of the net tax.
 
 ## Which edge cases does it handle?
+
+**The edge cases (6)**
 
 - Weekend due dates: 31 October 2026 is a Saturday, so the third quarter 2026 return is due Monday, 2 November 2026. 31 January 2027 is a Sunday, so the fourth quarter is due Monday, 1 February 2027.
 - Part of a month is a month: a return filed one day late is one month late for interest.
@@ -55,6 +99,18 @@ Outputs:
 > Every figure below is the output of the tool's engine, not typed in.
 
 **Third quarter 2026, diesel, from totals by state**
+
+Third quarter 2026, diesel, from totals by state
+
+| Result | Value |
+| --- | --- |
+| fleet MPG | 6.30 |
+| Kentucky | 380 miles, 60 taxable gallons, tax $13.20, surcharge $6.30 |
+| Illinois | 41 taxable gallons less 160 paid is -119, tax -$87.82 |
+| net | -$28.73 |
+| due | 2026-11-02 |
+
+**The input**
 
 ```json
 {
@@ -109,24 +165,9 @@ Outputs:
 }
 ```
 
-Third quarter 2026, diesel, from totals by state
-
-| Result | Value |
-| --- | --- |
-| fleet MPG | 6.30 |
-| Kentucky | 380 miles, 60 taxable gallons, tax $13.20, surcharge $6.30 |
-| Illinois | 41 taxable gallons less 160 paid is -119, tax -$87.82 |
-| net | -$28.73 |
-| due | 2026-11-02 |
+**More worked examples (2)**
 
 **Due dates for 2026**
-
-```json
-{
-  "op": "due-dates",
-  "year": 2026
-}
-```
 
 Due dates for 2026
 
@@ -137,7 +178,28 @@ Due dates for 2026
 | 2026Q3 | 2026-10-31 moved to 2026-11-02 |
 | 2026Q4 | 2027-01-31 moved to 2027-02-01 |
 
+**The input**
+
+```json
+{
+  "op": "due-dates",
+  "year": 2026
+}
+```
+
 **A second quarter 2026 return filed September 15, 2026**
+
+A second quarter 2026 return filed September 15, 2026
+
+| Result | Value |
+| --- | --- |
+| months late | 2 |
+| net tax | $154.35 |
+| interest | $2.77 |
+| penalty | $50.00 |
+| total | $52.77 |
+
+**The input**
 
 ```json
 {
@@ -161,60 +223,9 @@ Due dates for 2026
 }
 ```
 
-A second quarter 2026 return filed September 15, 2026
-
-| Result | Value |
-| --- | --- |
-| months late | 2 |
-| net tax | $154.35 |
-| interest | $2.77 |
-| penalty | $50.00 |
-| total | $52.77 |
-
-## What does it not do?
-
-- Rates are final rates only, by quarter, from 4th Quarter 2025 to 3rd Quarter 2026. A quarter that is not on file is refused, not guessed.
-- Only fuels with a computed method are accepted. LNG, CNG, electricity, hydrogen and hythane are refused with the reason: the matrix copies give a rate but not the unit it applies to.
-- Rounding follows Oregon DOT Form 9740. Your base jurisdiction may compute or round differently, and its return governs.
-- It is a calculation, not tax or legal advice. Diesel exhaust fluid and fuel for a separate reefer tank are not IFTA fuel.
-- Due dates move only for weekends: the four statutory dates are never US federal holidays.
-
-## Where does the data come from, and how fresh is it?
-
-Rates are held by quarter, 4th Quarter 2025 to 3rd Quarter 2026, all final, read 2026-11-02. Rules were read 2026-11-02.
-
-- [Oregon DOT, IFTA Tax Return Form 735-9740 and its filing instructions (03-26)](https://www.oregon.gov/odot/forms/motcarr/9740.pdf)
-- [Virginia DMV, IFTA tax returns](https://www.dmv.virginia.gov/businesses/motor-carriers/ifta/tax)
-- [Idaho State Tax Commission, IFTA reporting step 6 (interest)](https://tax.idaho.gov/taxes/product-excise-taxes/fuels-taxes-and-fees/consumer-fuels/ifta-licenses/ifta-reporting/idaho-ifta-reporting-step-6/)
-- [Idaho State Tax Commission, IFTA licenses: records (IVDR)](https://tax.idaho.gov/?p=1239)
-- [Oregon DOT copy of the IFTA matrix, 3Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/3Q2026FuelRates.pdf)
-
-Rates are held by quarter, final rates only: 4th Quarter 2025 to 3rd Quarter 2026, read 2026-11-02. A quarter that is not on file is refused, not guessed.
-
-IFTA quarterly return calculator: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Oregon DOT copy of the IFTA matrix, 4Q2025 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/4Q2025FuelRates.pdf) | 4th Quarter 2025 | 2026-11-02 |
-| [NY Tax IFTA-105 (12/25) rate sheet, PDF](https://www.tax.ny.gov/pdf/2025/motor/ifta105_1225.pdf) | 4th Quarter 2025 (cross-check) | 2026-11-02 |
-| [Oregon DOT copy of the IFTA matrix, 1Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/1Q2026FuelRates.pdf) | 1st Quarter 2026 | 2026-11-02 |
-| [NY Tax IFTA-105 (3/26) rate sheet, PDF](https://www.tax.ny.gov/pdf/2026/motor/ifta105_326.pdf) | 1st Quarter 2026 (cross-check) | 2026-11-02 |
-| [Oregon DOT copy of the IFTA matrix, 2Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/2Q2026FuelRates.pdf) | 2nd Quarter 2026 | 2026-11-02 |
-| [NY Tax IFTA-105 (2nd Quarter 2026), HTML table](https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-626.htm) | 2nd Quarter 2026 (cross-check) | 2026-11-02 |
-| [Oregon DOT copy of the IFTA matrix, 3Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/3Q2026FuelRates.pdf) | 3rd Quarter 2026 | 2026-11-02 |
-| [NY Tax IFTA-105 (3rd Quarter 2026), HTML table](https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-926.htm) | 3rd Quarter 2026 (cross-check) | 2026-11-02 |
-| [Oregon DOT, IFTA Tax Return Form 735-9740 and its filing instructions (03-26)](https://www.oregon.gov/odot/forms/motcarr/9740.pdf) | rules | 2026-11-02 |
-| [Virginia DMV, IFTA tax returns](https://www.dmv.virginia.gov/businesses/motor-carriers/ifta/tax) | rules | 2026-11-02 |
-| [Idaho State Tax Commission, IFTA reporting step 6 (interest)](https://tax.idaho.gov/taxes/product-excise-taxes/fuels-taxes-and-fees/consumer-fuels/ifta-licenses/ifta-reporting/idaho-ifta-reporting-step-6/) | rules | 2026-11-02 |
-| [Idaho State Tax Commission, IFTA licenses: records (IVDR)](https://tax.idaho.gov/?p=1239) | rules | 2026-11-02 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-Each of the four quarters on file is final, from the Oregon DOT copy with the New York State Tax cross-check. A two-state return is worked out by hand in the test and compared with the engine. Due dates for 2026 are compared with the Oregon DOT calendar, and the late-interest example from the Idaho State Tax Commission ($100 over 3 months late is $1.25) is reproduced.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Each of the four quarters on file is final, from the Oregon DOT copy with the New York State Tax cross-check. Florida for the 1st quarter of 2026 is held back where the copies disagree.
 - A two-state return is worked out by hand in the test and compared with the engine, with miles-per-gallon rounding and surcharges checked.

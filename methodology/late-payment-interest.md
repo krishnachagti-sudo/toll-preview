@@ -2,9 +2,57 @@
 
 Under the UK Act, interest is 8% over the Bank Rate on the reference date (December 31 or June 30) before the day interest starts, fixed for the debt, simple, on a 365-day year, plus £40 for a debt up to £999.99, £70 for £1,000 to £9,999.99 and £100 for £10,000 or more, once for each payment. Ireland, Germany and the EU minimum use their reference rate for each half-year of the delay; US federal agencies compound every 30 days on a 360-day year.
 
+## How does it work?
+
+1. The due date is the one given, or the invoice date plus the terms days (30 by default).
+2. UK: the reference date is December 31 for interest that starts January 1 to June 30, and June 30 for July 1 to December 31.
+3. UK compensation: £40 for a debt up to £999.99, £70 for £1,000 to £9,999.99 and £100 for £10,000 or more, once for each payment.
+4. Ireland and the EU minimum: the ECB main refinancing rate on January 1 or July 1 plus 8 points. Germany: the Basiszinssatz plus 9 points.
+5. US federal: the Prompt Payment rate in effect the day after the due date, on a 360-day year, compounded every 30 days, for at most 365 days: amount x (1 + r/12)^months x (1 + r/360 x the days left) - amount.
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/late-payment-interest/#what) below.
+
+## What does it not cover?
+
+- Business-to-business debts only: a consumer debt or a disputed invoice is refused for the statutory laws.
+- It does not work out the reasonable recovery costs the UK Act also allows beyond the fixed sum, or court interest after a judgment.
+- US public-body rules apply only to payments by those bodies; it does not apply a state usury or late-fee limit to your own terms.
+- It is computed from the official rules and rates quoted, read on the date shown. It is not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 21 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The rules and rate tables were read on November 8, 2026: the Bank of England Bank Rate history (latest decision November 5, 2026, next December 17, 2026), the ECB key rates, the Bundesbank Basiszinssatz, the Treasury's Prompt Payment rates and the Texas Comptroller's rate, with GOV.UK, the Irish Statute Book, EUR-Lex, the eCFR and the Texas and Florida statutes for the rules. They change only by hand, with the tests that pin them.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check the rate tables against the official figures as read, the Bundesbank rate against § 247 BGB, the UK reference date and fixed rate, GOV.UK's worked example (0.5% base rate, £1,000, 50 days), the £40, £70 and £100 bands with VAT included, the 6-year limit, every UK half-year from 2003, the half-year split for Ireland, Germany and the EU, the Treasury formula with its one-year limit, the Texas and Florida formulas, your own terms, batches from a CSV and the claim letter.
+
+- [GOV.UK: Late commercial payments, interest on late commercial payments](https://www.gov.uk/late-commercial-payments-interest-debt-recovery/charging-interest-commercial-debt), see the document, read 2026-11-08
+- [GOV.UK: Claim debt recovery costs on late payments](https://www.gov.uk/late-commercial-payments-interest-debt-recovery/claim-debt-recovery-costs), see the document, read 2026-11-08
+- [GOV.UK: When a payment becomes late](https://www.gov.uk/late-commercial-payments-interest-debt-recovery), see the document, read 2026-11-08
+- [GOV.UK (BIS, October 2014): A users' guide to the recast Late Payment Directive](https://assets.publishing.service.gov.uk/media/5a7d8d41ed915d3fb9594718/bis-14-1116-a-users-guide-to-the-recast-late-payment-directive.pdf), see the document, read 2026-11-08
+- [Office of the Small Business Commissioner: Interest Calculator Guidance](https://www.smallbusinesscommissioner.gov.uk/interest-calculator-guidance-page/), see the document, read 2026-11-08
+- [Bank of England: Official Bank Rate history](https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp), see the document, read 2026-11-08
+- [Irish Statute Book: S.I. No. 580/2012](https://www.irishstatutebook.ie/eli/2012/si/580/made/en/print), see the document, read 2026-11-08
+- [European Central Bank: Key ECB interest rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html), see the document, read 2026-11-08
+- [gesetze-im-internet.de: § 288 BGB Verzugszinsen und sonstiger Verzugsschaden](https://www.gesetze-im-internet.de/bgb/__288.html), see the document, read 2026-11-08
+- [gesetze-im-internet.de: § 247 BGB Basiszinssatz](https://www.gesetze-im-internet.de/bgb/__247.html), see the document, read 2026-11-08
+- [Deutsche Bundesbank: Basiszinssatz nach § 247 BGB](https://www.bundesbank.de/de/bundesbank/organisation/agb-und-regelungen/basiszinssatz-607820), see the document, read 2026-11-08
+- [EUR-Lex: Directive 2011/7/EU of 16 February 2011](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32011L0007), see the document, read 2026-11-08
+- [Bureau of the Fiscal Service: Prompt Payment interest rates](https://fiscal.treasury.gov/payments-from-government/prompt-payment/rates), see the document, read 2026-11-08
+- [Bureau of the Fiscal Service: Monthly compounding interest calculator](https://fiscal.treasury.gov/payments-from-government/prompt-payment/monthly-interest), see the document, read 2026-11-08
+- [eCFR: 5 CFR 1315.10 Late payment interest penalties](https://www.ecfr.gov/current/title-5/chapter-III/subchapter-B/part-1315/section-1315.10), see the document, read 2026-11-08
+- [Texas Constitution and Statutes: Government Code chapter 2251](https://tcss.legis.texas.gov/resources/GV/htm/GV.2251.htm), see the document, read 2026-11-08
+- [Texas Comptroller, eXpendit: Interest Rate](https://fmx.cpa.texas.gov/fm/pubs/purchase/prompt_pay/?section=overview&page=rate), see the document, read 2026-11-08
+- [Texas Comptroller, eXpendit: How to Calculate Interest](https://fmx.cpa.texas.gov/fm/pubs/purchase/prompt_pay/index.php?section=overview&page=calculate), see the document, read 2026-11-08
+- [Florida Statutes 2026: section 218.74](http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0218/Sections/0218.74.html), see the document, read 2026-11-08
+- [Florida Statutes 2026: section 218.735](http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0218/Sections/0218.735.html), see the document, read 2026-11-08
+- [Bank of England: Interest rates and Bank Rate, our latest decision](https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the late payment interest calculator and claim letter compute?
 
 Given an invoice total, its due date (or the invoice date and terms) and the day it was paid or the day to work out to, the tool applies the law you choose and returns the interest, the fixed compensation, the total claim, the daily amount and each period with its rate and reference date. It covers the UK Late Payment Act, Ireland (S.I. 580/2012), Germany (§ 288 BGB), the EU directive minimum, the US federal Prompt Payment Act, Texas and Florida public bodies, or a rate from your own terms. It also writes a claim letter and interest invoice PDF, and works out many invoices at once from a CSV.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -33,7 +81,7 @@ Outputs:
 - title, claimNumber, paras, method and the PDF (notice); rows, totals and the CSV (batch)
 - sources with their read dates, and disclaimers
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. The due date is the one given, or the invoice date plus the terms days (30 by default). Interest starts the day after the due date and runs to the day paid, or to the as-of date when unpaid. Paid on or before the due date is not late.
 2. UK: the reference date is December 31 for interest that starts January 1 to June 30, and June 30 for July 1 to December 31. The rate is 8% plus the Bank Rate in force on that date, fixed for the whole debt. Interest is amount x rate x days / 365, simple, for at most 6 years.
@@ -61,6 +109,8 @@ Prompt Payment Act (31 U.S.C. 3901-3907), 5 CFR 1315.10; Texas Prompt Payment Ac
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A UK debt is charged interest for at most 6 years from the day after the terms end, and the answer says where it stopped.
 - A delay that crosses June 30 or December 31 is worked out in two parts at two rates under Irish, German and EU law; under the UK Act the rate stays fixed.
 - A federal interest penalty under $1 is noted as one that need not be paid, and interest stops after one year.
@@ -74,16 +124,6 @@ Prompt Payment Act (31 U.S.C. 3901-3907), 5 CFR 1315.10; Texas Prompt Payment Ac
 
 **UK: £4,800 due August 31, 2026, paid November 2**
 
-```json
-{
-  "op": "calculate",
-  "jurisdiction": "uk",
-  "amount": 4800,
-  "dueDate": "2026-08-31",
-  "paidDate": "2026-11-02"
-}
-```
-
 UK: £4,800 due August 31, 2026, paid November 2
 
 | Result | Value |
@@ -95,7 +135,31 @@ UK: £4,800 due August 31, 2026, paid November 2
 | compensation | £70 |
 | total | £167.35 |
 
+**The input**
+
+```json
+{
+  "op": "calculate",
+  "jurisdiction": "uk",
+  "amount": 4800,
+  "dueDate": "2026-08-31",
+  "paidDate": "2026-11-02"
+}
+```
+
+**More worked examples (3)**
+
 **Ireland: €5,000 due May 15, 2026, paid September 30, across two half-years**
+
+Ireland: €5,000 due May 15, 2026, paid September 30, across two half-years
+
+| Result | Value |
+| --- | --- |
+| answer | On a €5,000.00 invoice due May 15, 2026 and paid September 30, 2026 (138 days late), you can claim €195.03 statutory interest at 10.15%, then 10.4% by half-year and €70 fixed compensation: €265.03 in all. |
+| 2026-05-16 to 2026-06-30 | 46 days at 10.15% |
+| 2026-07-01 to 2026-09-30 | 92 days at 10.4% |
+
+**The input**
 
 ```json
 {
@@ -107,15 +171,18 @@ UK: £4,800 due August 31, 2026, paid November 2
 }
 ```
 
-Ireland: €5,000 due May 15, 2026, paid September 30, across two half-years
+**A federal agency pays a $1,500 invoice 76 days late**
+
+A federal agency pays a $1,500 invoice 76 days late
 
 | Result | Value |
 | --- | --- |
-| answer | On a €5,000.00 invoice due May 15, 2026 and paid September 30, 2026 (138 days late), you can claim €195.03 statutory interest at 10.15%, then 10.4% by half-year and €70 fixed compensation: €265.03 in all. |
-| 2026-05-16 to 2026-06-30 | 46 days at 10.15% |
-| 2026-07-01 to 2026-09-30 | 92 days at 10.4% |
+| answer | A federal agency paying a $1,500.00 invoice due July 1, 2026 on September 15, 2026 (76 days of interest) owes $15.09 Prompt Payment interest at 4.75%, compounded every 30 days. |
+| months compounded | 2 |
+| days left over | 16 |
+| interest | $15.09 |
 
-**A federal agency pays a $1,500 invoice 76 days late**
+**The input**
 
 ```json
 {
@@ -127,25 +194,7 @@ Ireland: €5,000 due May 15, 2026, paid September 30, across two half-years
 }
 ```
 
-A federal agency pays a $1,500 invoice 76 days late
-
-| Result | Value |
-| --- | --- |
-| answer | A federal agency paying a $1,500.00 invoice due July 1, 2026 on September 15, 2026 (76 days of interest) owes $15.09 Prompt Payment interest at 4.75%, compounded every 30 days. |
-| months compounded | 2 |
-| days left over | 16 |
-| interest | $15.09 |
-
 **Three overdue invoices from one customer, as a CSV**
-
-```json
-{
-  "op": "batch",
-  "jurisdiction": "uk",
-  "asOf": "2026-11-08",
-  "csv": "invoice,amount,invoice date,terms\r\nINV-1001,800,2026-07-01,30\r\nINV-1007,\"5,000.00\",2026-08-15,30\r\nINV-1013,12000,2026-09-01,14\r\n"
-}
-```
 
 Three overdue invoices from one customer, as a CSV
 
@@ -156,74 +205,20 @@ Three overdue invoices from one customer, as a CSV
 | INV-1013 | due 2026-09-15, 54 days: £308.60 |
 | total claim | £532.88 |
 
-## What does it not do?
+**The input**
 
-- Business-to-business debts only: a consumer debt or a disputed invoice is refused for the statutory laws.
-- It does not work out the reasonable recovery costs the UK Act also allows beyond the fixed sum, or court interest after a judgment.
-- US public-body rules apply only to payments by those bodies; it does not apply a state usury or late-fee limit to your own terms.
-- It is computed from the official rules and rates quoted, read on the date shown. It is not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The rules and rate tables were read on November 8, 2026: the Bank of England Bank Rate history (latest decision November 5, 2026, next December 17, 2026), the ECB key rates, the Bundesbank Basiszinssatz, the Treasury's Prompt Payment rates and the Texas Comptroller's rate, with GOV.UK, the Irish Statute Book, EUR-Lex, the eCFR and the Texas and Florida statutes for the rules. They change only by hand, with the tests that pin them.
-
-- [GOV.UK: Late commercial payments, interest on late commercial payments](https://www.gov.uk/late-commercial-payments-interest-debt-recovery/charging-interest-commercial-debt)
-- [GOV.UK: Claim debt recovery costs on late payments](https://www.gov.uk/late-commercial-payments-interest-debt-recovery/claim-debt-recovery-costs)
-- [GOV.UK: When a payment becomes late](https://www.gov.uk/late-commercial-payments-interest-debt-recovery)
-- [GOV.UK (BIS, October 2014): A users' guide to the recast Late Payment Directive](https://assets.publishing.service.gov.uk/media/5a7d8d41ed915d3fb9594718/bis-14-1116-a-users-guide-to-the-recast-late-payment-directive.pdf)
-- [Office of the Small Business Commissioner: Interest Calculator Guidance](https://www.smallbusinesscommissioner.gov.uk/interest-calculator-guidance-page/)
-- [Bank of England: Official Bank Rate history](https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp)
-- [Irish Statute Book: S.I. No. 580/2012](https://www.irishstatutebook.ie/eli/2012/si/580/made/en/print)
-- [European Central Bank: Key ECB interest rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html)
-- [gesetze-im-internet.de: § 288 BGB Verzugszinsen und sonstiger Verzugsschaden](https://www.gesetze-im-internet.de/bgb/__288.html)
-- [gesetze-im-internet.de: § 247 BGB Basiszinssatz](https://www.gesetze-im-internet.de/bgb/__247.html)
-- [Deutsche Bundesbank: Basiszinssatz nach § 247 BGB](https://www.bundesbank.de/de/bundesbank/organisation/agb-und-regelungen/basiszinssatz-607820)
-- [EUR-Lex: Directive 2011/7/EU of 16 February 2011](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32011L0007)
-- [Bureau of the Fiscal Service: Prompt Payment interest rates](https://fiscal.treasury.gov/payments-from-government/prompt-payment/rates)
-- [Bureau of the Fiscal Service: Monthly compounding interest calculator](https://fiscal.treasury.gov/payments-from-government/prompt-payment/monthly-interest)
-- [eCFR: 5 CFR 1315.10 Late payment interest penalties](https://www.ecfr.gov/current/title-5/chapter-III/subchapter-B/part-1315/section-1315.10)
-- [Texas Constitution and Statutes: Government Code chapter 2251](https://tcss.legis.texas.gov/resources/GV/htm/GV.2251.htm)
-- [Texas Comptroller, eXpendit: Interest Rate](https://fmx.cpa.texas.gov/fm/pubs/purchase/prompt_pay/?section=overview&page=rate)
-- [Texas Comptroller, eXpendit: How to Calculate Interest](https://fmx.cpa.texas.gov/fm/pubs/purchase/prompt_pay/index.php?section=overview&page=calculate)
-- [Florida Statutes 2026: section 218.74](http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0218/Sections/0218.74.html)
-- [Florida Statutes 2026: section 218.735](http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0218/Sections/0218.735.html)
-- [Bank of England: Interest rates and Bank Rate, our latest decision](https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate)
-
-The rules and rate tables were read on November 8, 2026: the Bank of England Bank Rate history (latest decision November 5, 2026, next December 17, 2026), the ECB key rates, the Bundesbank Basiszinssatz, the Treasury's Prompt Payment rates and the Texas Comptroller's rate, with GOV.UK, the Irish Statute Book, EUR-Lex, the eCFR and the Texas and Florida statutes for the rules. They change only by hand, with the tests that pin them.
-
-Late payment interest calculator and claim letter: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [GOV.UK: Late commercial payments, interest on late commercial payments](https://www.gov.uk/late-commercial-payments-interest-debt-recovery/charging-interest-commercial-debt) | see the document | 2026-11-08 |
-| [GOV.UK: Claim debt recovery costs on late payments](https://www.gov.uk/late-commercial-payments-interest-debt-recovery/claim-debt-recovery-costs) | see the document | 2026-11-08 |
-| [GOV.UK: When a payment becomes late](https://www.gov.uk/late-commercial-payments-interest-debt-recovery) | see the document | 2026-11-08 |
-| [GOV.UK (BIS, October 2014): A users' guide to the recast Late Payment Directive](https://assets.publishing.service.gov.uk/media/5a7d8d41ed915d3fb9594718/bis-14-1116-a-users-guide-to-the-recast-late-payment-directive.pdf) | see the document | 2026-11-08 |
-| [Office of the Small Business Commissioner: Interest Calculator Guidance](https://www.smallbusinesscommissioner.gov.uk/interest-calculator-guidance-page/) | see the document | 2026-11-08 |
-| [Bank of England: Official Bank Rate history](https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp) | see the document | 2026-11-08 |
-| [Irish Statute Book: S.I. No. 580/2012](https://www.irishstatutebook.ie/eli/2012/si/580/made/en/print) | see the document | 2026-11-08 |
-| [European Central Bank: Key ECB interest rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html) | see the document | 2026-11-08 |
-| [gesetze-im-internet.de: § 288 BGB Verzugszinsen und sonstiger Verzugsschaden](https://www.gesetze-im-internet.de/bgb/__288.html) | see the document | 2026-11-08 |
-| [gesetze-im-internet.de: § 247 BGB Basiszinssatz](https://www.gesetze-im-internet.de/bgb/__247.html) | see the document | 2026-11-08 |
-| [Deutsche Bundesbank: Basiszinssatz nach § 247 BGB](https://www.bundesbank.de/de/bundesbank/organisation/agb-und-regelungen/basiszinssatz-607820) | see the document | 2026-11-08 |
-| [EUR-Lex: Directive 2011/7/EU of 16 February 2011](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32011L0007) | see the document | 2026-11-08 |
-| [Bureau of the Fiscal Service: Prompt Payment interest rates](https://fiscal.treasury.gov/payments-from-government/prompt-payment/rates) | see the document | 2026-11-08 |
-| [Bureau of the Fiscal Service: Monthly compounding interest calculator](https://fiscal.treasury.gov/payments-from-government/prompt-payment/monthly-interest) | see the document | 2026-11-08 |
-| [eCFR: 5 CFR 1315.10 Late payment interest penalties](https://www.ecfr.gov/current/title-5/chapter-III/subchapter-B/part-1315/section-1315.10) | see the document | 2026-11-08 |
-| [Texas Constitution and Statutes: Government Code chapter 2251](https://tcss.legis.texas.gov/resources/GV/htm/GV.2251.htm) | see the document | 2026-11-08 |
-| [Texas Comptroller, eXpendit: Interest Rate](https://fmx.cpa.texas.gov/fm/pubs/purchase/prompt_pay/?section=overview&page=rate) | see the document | 2026-11-08 |
-| [Texas Comptroller, eXpendit: How to Calculate Interest](https://fmx.cpa.texas.gov/fm/pubs/purchase/prompt_pay/index.php?section=overview&page=calculate) | see the document | 2026-11-08 |
-| [Florida Statutes 2026: section 218.74](http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0218/Sections/0218.74.html) | see the document | 2026-11-08 |
-| [Florida Statutes 2026: section 218.735](http://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0218/Sections/0218.735.html) | see the document | 2026-11-08 |
-| [Bank of England: Interest rates and Bank Rate, our latest decision](https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "batch",
+  "jurisdiction": "uk",
+  "asOf": "2026-11-08",
+  "csv": "invoice,amount,invoice date,terms\r\nINV-1001,800,2026-07-01,30\r\nINV-1007,\"5,000.00\",2026-08-15,30\r\nINV-1013,12000,2026-09-01,14\r\n"
+}
+```
 
 ## How is it tested?
 
-The tests check the rate tables against the official figures as read, the Bundesbank rate against § 247 BGB, the UK reference date and fixed rate, GOV.UK's worked example (0.5% base rate, £1,000, 50 days), the £40, £70 and £100 bands with VAT included, the 6-year limit, every UK half-year from 2003, the half-year split for Ireland, Germany and the EU, the Treasury formula with its one-year limit, the Texas and Florida formulas, your own terms, batches from a CSV and the claim letter.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The rate tables are pinned to the official figures as read on November 8, 2026, and the Basiszinssatz follows § 247 BGB from the ECB rate.
 - GOV.UK's worked example is reproduced, with the reference date, the fixed rate, the compensation bands and the 6-year limit.

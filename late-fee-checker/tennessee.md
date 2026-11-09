@@ -12,6 +12,10 @@ In Tennessee a landlord may charge a rent late fee of at most 10% of the amount 
 
 ## What the statute says
 
+**In short:** 10% of the amount of rent past due; after a 5-day grace period that counts the due date (Tenn. Code Ann. § 66-28-201(d)).
+
+**The statute's words (1 passage)**
+
 Tenn. Code Ann. § 66-28-201(d): "There shall be a five-day grace period beginning the day the rent was due to the day a fee for the late payment of rent may be charged. The date the rent was due shall be included in the calculation of the five-day grace period. If the last day of the five-day grace period occurs on a Sunday or legal holiday, as defined in § 15-1-101, the landlord shall not impose any charge or fee for the late payment of rent; provided, that the rent is paid on the next business day. Any charge or fee, however described, which is charged by the landlord for the late payment of rent, shall not exceed ten percent (10%) of the amount of rent past due."
 
 ## The limit on sample rents

@@ -74,53 +74,64 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>Each line is read as a URL, or as an old URL and its expected target. Credentials, other schemes and unreadable lines are refused and listed by line number.</span></li><li><span>Before every hop the address is checked: private, loopback, link-local (cloud metadata), CGNAT and reserved addresses are never fetched, and only ports 80, 443, 8080 and 8443 are used.</span></li><li><span>Each URL is requested with the chosen user agent. A 3xx answer (other than 304) with a Location is followed to the next URL; a 2xx answer is followed too when it carries a Refresh header or a meta refresh in the first 64 kB of the page.</span></li><li><span>The walk stops when a URL repeats (a loop), after 20 redirects, on a missing or unreadable Location, on a refused address or on a failed request.</span></li><li><span>Each redirect is classed by Google's table: 301 and 308 permanent, 302, 303 and 307 temporary, a 0-second refresh permanent and a delayed one temporary.</span></li></ol>
+<p class="cp-note">Steps 6 to 7, each rule and the edge cases are in <a href="/toll-preview/methodology/redirect-chain-checker/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>JavaScript redirects are not followed: only HTTP redirects, the Refresh header and meta refresh tags.</li><li>A check is one request per hop from our server in the United States. Servers can answer differently for other user agents, countries, cookies or logins, and some block automated requests.</li><li>Nothing here promises a ranking effect. What Google does with redirects is quoted from Google with the date it was read.</li><li>Private, local and reserved addresses are never fetched, on any hop.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 5 sources</h3><div class="tc-b"><p class="tc-a">Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 4 checks in its test suite</h3><div class="tc-b"><p class="tc-a">Every verdict is checked against a fake web, with no network: one hop, chains, Google's codes, loops and their patterns, hop limits, plain HTTP, meta refresh, errors and refusals, and expected targets.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<ul class="cp-sources cp-src"><li><a href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">Google Search Central: Redirects and Google Search</a><span class="src-m">developers.google.com · page updated 2026-04-14 · read 2026-11-07</span></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors">Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search</a><span class="src-m">developers.google.com · page updated 2026-02-04 · read 2026-11-07</span></li><li><a href="https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/">Cloudflare: ERR_TOO_MANY_REDIRECTS</a><span class="src-m">developers.cloudflare.com · page updated 2026-09-01 · read 2026-11-07</span></li><li><a href="https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/">Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain</a><span class="src-m">searchenginejournal.com · see the document · read 2026-11-07</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110#section-15.4">RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx)</a><span class="src-m">rfc-editor.org · see the document · read 2026-11-07</span></li></ul>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the bulk redirect chain checker compute?</h2>
-<p>The tool takes a list of up to 1,000 URLs, or an old-to-new redirect map, and requests each URL from our server, following every redirect. For each URL it gives every hop with its status code, the final URL and status, and verdicts such as a loop, a chain, a temporary redirect, a plain-HTTP hop or a wrong target, graded ok, review or fix, with a CSV. It can also judge pasted curl output without making any request, and it lists Google's redirect status codes.</p>
-<details class="xpand"><summary>Read the rest: What does the bulk redirect chain checker compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<p>The tool takes a list of up to 1,000 URLs, or an old-to-new redirect map, and requests each URL from our server, following every redirect.</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>For each URL it gives every hop with its status code, the final URL and status, and verdicts such as a loop, a chain, a temporary redirect, a plain-HTTP hop or a wrong target, graded ok, review or fix, with a CSV. It can also judge pasted curl output without making any request, and it lists Google's redirect status codes.</p>
+<p>Operations (the op field):</p>
 <ul><li><code>check</code>: Fetches each URL in list (text, one per line or &quot;old,new&quot; per line) or urls (a list, or { url, expected } rows) and follows its redirects. The answer has a summary line, counts, one row per URL with every hop and its verdicts, and a CSV. Options: userAgent (endwise, googlebot or chrome), maxHops (at most 20), followMetaRefresh and issuesOnly.</li><li><code>analyse</code>: Judges one chain from pasted curl -sIL output, or from a list of { status, location } answers, exactly as a live run is judged, without any request. Free.</li><li><code>codes</code>: Returns Google's table of redirect status codes (permanent or temporary, and whether the method may change), the meta refresh rule, the facts quoted in the verdicts, the limits and the sources. Free.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>list or urls</code>: The URLs, or a redirect map with the expected target per row. A bare host is read as http://. A header line and comments are skipped. At most 1,000 different URLs per call, each at most 2,048 characters.</li><li><code>expected</code>: Where a URL should land: a full URL, or a path such as /new-page, read on the site the chain ends on when that is the same site (www and scheme aside), else on the old URL's site over https.</li><li><code>userAgent, maxHops, followMetaRefresh, issuesOnly</code>: Who the requests are sent as, the redirects to follow before stopping (default 20), whether meta refresh and the Refresh header are followed (default yes), and whether only rows to fix or review are returned.</li><li><code>url and curl or hops</code>: For analyse: the URL the output starts from, and the pasted output or the answers in order.</li></ul>
 <p>Outputs:</p>
 <ul><li>rows: per URL, the hops (status, kind, next URL, what changed), redirects, finalUrl, finalStatus, verdicts, severity, a one-line summary and notes</li><li>summary: counts of chains, loops, temporary redirects, plain HTTP, broken endings and map results</li><li>csv: the rows as a spreadsheet, with formula-like cells defused</li><li>billedUrls: the different URLs actually fetched</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>Each line is read as a URL, or as an old URL and its expected target. Credentials, other schemes and unreadable lines are refused and listed by line number. A URL given twice is fetched once.</li><li>Before every hop the address is checked: private, loopback, link-local (cloud metadata), CGNAT and reserved addresses are never fetched, and only ports 80, 443, 8080 and 8443 are used.</li><li>Each URL is requested with the chosen user agent. A 3xx answer (other than 304) with a Location is followed to the next URL; a 2xx answer is followed too when it carries a Refresh header or a meta refresh in the first 64 kB of the page. Anything else ends the chain.</li><li>The walk stops when a URL repeats (a loop), after 20 redirects, on a missing or unreadable Location, on a refused address or on a failed request. At most 2 requests go to one host at a time and 16 overall, and URLs not reached within 40 seconds are returned as not checked.</li><li>Each redirect is classed by Google's table: 301 and 308 permanent, 302, 303 and 307 temporary, a 0-second refresh permanent and a delayed one temporary.</li><li>The verdicts are set: loop, too many hops, broken (ends on 4xx or 5xx), more than 10 redirects (past Google's default), a downgrade from https to http, ending on http, a plain-HTTP URL after the first hop, a temporary redirect, a long chain (5 or more), a chain (2 or more), meta refresh and, against the map, a match, a match through a chain, a trailing-slash difference, a wrong target, or a redirect to the homepage.</li><li>Each row is graded fix (a loop, an error, a broken ending, a downgrade, a wrong target and the other severe verdicts), review (any other verdict) or ok, and given a one-line summary and notes on how to fix it.</li></ol>
+<details class="xpand"><summary>Every step in full (7) and the rules</summary><div class="xp-in"><ol><li>Each line is read as a URL, or as an old URL and its expected target. Credentials, other schemes and unreadable lines are refused and listed by line number. A URL given twice is fetched once.</li><li>Before every hop the address is checked: private, loopback, link-local (cloud metadata), CGNAT and reserved addresses are never fetched, and only ports 80, 443, 8080 and 8443 are used.</li><li>Each URL is requested with the chosen user agent. A 3xx answer (other than 304) with a Location is followed to the next URL; a 2xx answer is followed too when it carries a Refresh header or a meta refresh in the first 64 kB of the page. Anything else ends the chain.</li><li>The walk stops when a URL repeats (a loop), after 20 redirects, on a missing or unreadable Location, on a refused address or on a failed request. At most 2 requests go to one host at a time and 16 overall, and URLs not reached within 40 seconds are returned as not checked.</li><li>Each redirect is classed by Google's table: 301 and 308 permanent, 302, 303 and 307 temporary, a 0-second refresh permanent and a delayed one temporary.</li><li>The verdicts are set: loop, too many hops, broken (ends on 4xx or 5xx), more than 10 redirects (past Google's default), a downgrade from https to http, ending on http, a plain-HTTP URL after the first hop, a temporary redirect, a long chain (5 or more), a chain (2 or more), meta refresh and, against the map, a match, a match through a chain, a trailing-slash difference, a wrong target, or a redirect to the homepage.</li><li>Each row is graded fix (a loop, an error, a broken ending, a downgrade, a wrong target and the other severe verdicts), review (any other verdict) or ok, and given a one-line summary and notes on how to fix it.</li></ol>
 <p><strong>Google Search Central.</strong></p>
 <p>The permanent and temporary codes, the meta refresh rule and the 10-hop default come from Google's pages on redirects and on HTTP status codes, with the dates they were updated and read.</p>
 <p><strong>RFC 9110.</strong></p>
 <p>The method column of the status code table is from RFC 9110 section 15.4: 307 and 308 keep the method, 303 becomes a GET, and clients may turn a POST into a GET on 301 and 302.</p>
 <p><strong>Our own rules.</strong></p>
-<p>A plain http:// URL reached by a redirect is flagged; the address you typed is not, since a visitor who types http:// is expected to take one hop to https. A redirect from a page to the root of a site is flagged as sent to the homepage unless the root is the expected target.</p>
+<p>A plain http:// URL reached by a redirect is flagged; the address you typed is not, since a visitor who types http:// is expected to take one hop to https. A redirect from a page to the root of a site is flagged as sent to the homepage unless the root is the expected target.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>Loops are reported with the hop they start at and the cycle, and the http and https, www and bare host, trailing slash and Cloudflare self-loop patterns get their own note.</li><li>A relative Location is read against the URL that sent it, and an empty or unreadable Location is a bad-location verdict.</li><li>A Refresh header and a meta refresh are hops when followMetaRefresh is on; a refresh with no URL is not a redirect.</li><li>A redirect to a private address in the middle of a chain stops the chain there, and the URL is still counted as checked.</li><li>An expected path is read on the right site, so /new-page matches on www or the bare host alike.</li></ul>
+<details class="xpand"><summary>The edge cases (5)</summary><div class="xp-in"><ul><li>Loops are reported with the hop they start at and the cycle, and the http and https, www and bare host, trailing slash and Cloudflare self-loop patterns get their own note.</li><li>A relative Location is read against the URL that sent it, and an empty or unreadable Location is a bad-location verdict.</li><li>A Refresh header and a meta refresh are hops when followMetaRefresh is on; a refresh with no URL is not a redirect.</li><li>A redirect to a private address in the middle of a chain stops the chain there, and the URL is still counted as checked.</li><li>An expected path is read on the right site, so /new-page matches on www or the bare host alike.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>Judging pasted curl -sIL output against an expected target (no request made)</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;analyse&quot;,
-  &quot;url&quot;: &quot;http://example.com/old-page&quot;,
-  &quot;curl&quot;: &quot;HTTP/1.1 301 Moved Permanently\nLocation: https://example.com/old-page\n\nHTTP/2 302\nlocation: /new-page\n\nHTTP/2 200\ncontent-type: text/html; charset=UTF-8\n&quot;,
-  &quot;expected&quot;: &quot;/new-page&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Judging pasted curl -sIL output against an expected target (no request made)</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Judging pasted curl -sIL output against an expected target (no request made)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">summary</th><td>http://example.com/old-page reaches https://example.com/new-page (200) in 2 redirects, with a temporary redirect.</td></tr>
 <tr><th scope="row">chain</th><td>301 http://example.com/old-page &gt; 302 https://example.com/old-page &gt; 200 https://example.com/new-page</td></tr>
 <tr><th scope="row">redirects</th><td>2</td></tr>
 <tr><th scope="row">verdicts</th><td>temporary, chain, via-chain</td></tr>
 <tr><th scope="row">expected target</th><td>via-chain</td></tr>
 <tr><th scope="row">severity</th><td>review</td></tr>
-</tbody></table></div>
-<p><strong>Google's redirect codes and limits</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;codes&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Google's redirect codes and limits</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;analyse&quot;,
+  &quot;url&quot;: &quot;http://example.com/old-page&quot;,
+  &quot;curl&quot;: &quot;HTTP/1.1 301 Moved Permanently\nLocation: https://example.com/old-page\n\nHTTP/2 302\nlocation: /new-page\n\nHTTP/2 200\ncontent-type: text/html; charset=UTF-8\n&quot;,
+  &quot;expected&quot;: &quot;/new-page&quot;
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (1)</summary><div class="xp-in"><p><strong>Google's redirect codes and limits</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">Google's redirect codes and limits</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">301</th><td>Moved Permanently: permanent</td></tr>
 <tr><th scope="row">302</th><td>Found: temporary</td></tr>
 <tr><th scope="row">303</th><td>See Other: temporary</td></tr>
@@ -128,31 +139,15 @@
 <tr><th scope="row">308</th><td>Permanent Redirect: permanent</td></tr>
 <tr><th scope="row">Google hop limit</th><td>10</td></tr>
 <tr><th scope="row">long chain from</th><td>5</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>JavaScript redirects are not followed: only HTTP redirects, the Refresh header and meta refresh tags.</li><li>A check is one request per hop from our server in the United States. Servers can answer differently for other user agents, countries, cookies or logins, and some block automated requests.</li><li>Nothing here promises a ranking effect. What Google does with redirects is quoted from Google with the date it was read.</li><li>Private, local and reserved addresses are never fetched, on any hop.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.</p>
-<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc9110#section-15.4">RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx) (read 2026-11-07)</a></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">Google Search Central: Redirects and Google Search (read 2026-11-07)</a></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors">Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search (read 2026-11-07)</a></li><li><a href="https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/">Cloudflare: ERR_TOO_MANY_REDIRECTS (read 2026-11-07)</a></li><li><a href="https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/">Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain (read 2026-11-07)</a></li></ul>
-<p>Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Bulk redirect chain checker: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">Google Search Central: Redirects and Google Search</a></th><td>page updated 2026-04-14</td><td rowspan="5">2026-11-07</td></tr>
-<tr><th scope="row"><a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors">Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search</a></th><td>page updated 2026-02-04</td></tr>
-<tr><th scope="row"><a href="https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/">Cloudflare: ERR_TOO_MANY_REDIRECTS</a></th><td>page updated 2026-09-01</td></tr>
-<tr><th scope="row"><a href="https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/">Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain</a></th><td rowspan="2">see the document</td></tr>
-<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc9110#section-15.4">RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx)</a></th></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;codes&quot;
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>Every verdict is checked against a fake web, with no network: one hop, chains, Google's codes, loops and their patterns, hop limits, plain HTTP, meta refresh, errors and refusals, and expected targets. Pasted curl output is judged like a live run, the worked examples equal run(), and blocked address forms are checked one by one.</p>
-<p>What its test suite asserts:</p>
-<ul><li>Google's redirect table and facts are checked as read on 2026-11-07, as the verdicts use them.</li><li>Every verdict is checked against a fake web: one hop, chains, loops and their patterns, hop limits, plain HTTP, meta refresh, errors, refusals and expected targets.</li><li>Pasted curl output is judged like a live run, and the worked examples equal what run() returns.</li><li>Private, loopback, link-local, metadata, CGNAT, reserved and IPv6 address forms are refused.</li></ul>
+<p>Pasted curl output is judged like a live run, the worked examples equal run(), and blocked address forms are checked one by one.</p>
+<details class="xpand"><summary>What its test suite asserts (4)</summary><div class="xp-in"><ul><li>Google's redirect table and facts are checked as read on 2026-11-07, as the verdicts use them.</li><li>Every verdict is checked against a fake web: one hop, chains, loops and their patterns, hop limits, plain HTTP, meta refresh, errors, refusals and expected targets.</li><li>Pasted curl output is judged like a live run, and the worked examples equal what run() returns.</li><li>Private, loopback, link-local, metadata, CGNAT, reserved and IPv6 address forms are refused.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/redirect-chain-checker/">Open the Bulk redirect chain checker tool</a>.</p>
 </section>

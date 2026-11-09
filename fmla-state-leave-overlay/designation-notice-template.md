@@ -14,6 +14,8 @@ The formal FMLA designation notice is DOL form WH-382; give it in writing within
 
 ## What the FMLA requires of the notice
 
+**Read the law's own words (3 quotations)**
+
 - "the employer must notify the employee whether the leave will be designated and will be counted as FMLA leave within five business days absent extenuating circumstances." [29 CFR 825.300, Employer notice requirements (eCFR)](https://www.ecfr.gov/current/title-29/section-825.300)
 - "The designation notice must be in writing." [29 CFR 825.300, Employer notice requirements (eCFR)](https://www.ecfr.gov/current/title-29/section-825.300)
 - "the employer must notify the employee of the number of hours, days, or weeks that will be counted against the employee's FMLA leave entitlement in the designation notice." [29 CFR 825.300, Employer notice requirements (eCFR)](https://www.ecfr.gov/current/title-29/section-825.300)

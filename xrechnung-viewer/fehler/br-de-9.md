@@ -1,6 +1,6 @@
 # BR-DE-9: Postleitzahl des Käufers (BT-53) fehlt
 
-BR-DE-9 bedeutet: Das Element "Buyer post code" (BT-53) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die Postleitzahl des Käufers im eigenen Feld an.
+BR-DE-9 bedeutet: Das Element "Buyer post code" (BT-53) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

@@ -1,6 +1,6 @@
 # BR-DE-26: Korrigierte Rechnung (384) ohne Bezug auf die ursprüngliche Rechnung
 
-BR-DE-26 bedeutet: Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die Nummer der ursprünglichen Rechnung (BT-25) und möglichst ihr Datum (BT-26) an: UBL cac:BillingReference/cac:InvoiceDocumentReference, CII ram:InvoiceReferencedDocument.
+BR-DE-26 bedeutet: Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -22,7 +22,7 @@ Die Rechnungsart ist 384 (korrigierte Rechnung), aber die Rechnung nennt nicht d
 
 ## So beheben Sie den Fehler
 
-Geben Sie die Nummer der ursprünglichen Rechnung (BT-25) und möglichst ihr Datum (BT-26) an: UBL cac:BillingReference/cac:InvoiceDocumentReference, CII ram:InvoiceReferencedDocument.
+Geben Sie die Nummer der ursprünglichen Rechnung (BT-25) und möglichst ihr Datum (BT-26) an: UBL `cac:BillingReference/cac:InvoiceDocumentReference`, CII `ram:InvoiceReferencedDocument`.
 
 ## Geprüftes Beispiel
 

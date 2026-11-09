@@ -2,9 +2,41 @@
 
 Hours are square feet divided by your production rate, or a count times your minutes each. Each hour is priced at the wage plus payroll costs (7.65% employer FICA and 0.6% FUTA, or 29.96% from BLS ECEC), supplies and overhead, divided by one less the margin. A janitorial month is 52/12 weeks of visits.
 
+## How does it work?
+
+1. Each line has exactly one way to find its hours: square feet divided by the production rate, a count times the minutes each divided by 60, or the hours given.
+2. The wage is the one given, or the BLS May 2025 figure for the state, occupation and statistic chosen (janitors and median by default).
+3. The burden is a percent of wages. Itemized adds employer social security and Medicare (6.2% + 1.45%), FUTA at 0.6% after the 5.4% credit, and your state unemployment, workers' compensation and benefits rates.
+4. The billed rate per labor hour is the wage times one plus the burden, times one plus supplies, times one plus overhead, divided by one less the margin.
+5. Each line is priced at its hours times the billed rate, rounded to whole cents once, so the lines add up to the total.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/cleaning-bid-calculator/#what) below.
+
+## What does it not cover?
+
+- State unemployment, workers' compensation and local minimum wages vary and are your inputs; city and county minimums are not in the table.
+- It supplies no industry production rates or market prices; check the bid against your own timed rates and costs.
+- A bid is a business decision. It is not legal, tax or accounting advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 4 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The figures were read on 2026-11-08: BLS OEWS May 2025 (released 2026-05-15), IRS Publication 15 (2026), BLS ECEC for 2026-06 (released 2026-09-09) and the DOL state minimum wage table (updated 2026-11-05). They change only by hand, with the tests that pin them.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The BLS wages, the IRS rates and quotes, the ECEC figures and the DOL table are pinned.
+
+- [U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025 estimates](https://www.bls.gov/oes/), May 2025 estimates, released 2026-05-15, read 2026-11-08
+- [IRS Publication 15 (2026), (Circular E), Employer's Tax Guide](https://www.irs.gov/publications/p15), 2026 edition, read 2026-11-08
+- [BLS Employer Costs for Employee Compensation, June 2026 (USDL-26-1494), Table 4, private industry workers, service occupations](https://www.bls.gov/news.release/ecec.t04.htm), released 2026-09-09, read 2026-11-08
+- [U.S. Department of Labor, Wage and Hour Division: State Minimum Wage Laws (basic minimum rate, non-farm employment)](https://www.dol.gov/agencies/whd/minimum-wage/state), updated 2026-11-05, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the cleaning bid calculator (commercial and post-construction) compute?
 
-The tool turns a walk-through into a bid: area tasks at the contractor's own production rates, restroom fixtures and glass panes at their own minutes each, and fixed-time tasks become labor hours by line. A loaded hourly cost is built from the wage (the contractor's own, or a BLS May 2025 figure) and payroll costs, then supplies, overhead and margin are added. It prices a janitorial contract per visit, month and year, or a post-construction job per rough, final and touch-up phase, with a dollars per square foot check and a proposal PDF. Production rates, minutes per fixture or pane, extras and the target range are the figures you enter; this tool supplies no industry production rates or market prices.
+The tool turns a walk-through into a bid: area tasks at the contractor's own production rates, restroom fixtures and glass panes at their own minutes each, and fixed-time tasks become labor hours by line. A loaded hourly cost is built from the wage (the contractor's own, or a BLS May 2025 figure) and payroll costs, then supplies, overhead and margin are added.
+
+**In detail: operations, inputs and outputs**
+
+It prices a janitorial contract per visit, month and year, or a post-construction job per rough, final and touch-up phase, with a dollars per square foot check and a proposal PDF. Production rates, minutes per fixture or pane, extras and the target range are the figures you enter; this tool supplies no industry production rates or market prices.
 
 Operations (the op field):
 
@@ -34,7 +66,7 @@ Outputs:
 - perSqft and check: dollars per square foot, and where the price sits against your target, with the break-even
 - flags, and pdf and csv for proposal
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. Each line has exactly one way to find its hours: square feet divided by the production rate, a count times the minutes each divided by 60, or the hours given. A rate line with no square feet of its own uses the building's.
 2. The wage is the one given, or the BLS May 2025 figure for the state, occupation and statistic chosen (janitors and median by default).
@@ -55,6 +87,8 @@ The margin is a share of the price, not a markup on cost, so a 20% margin is a 2
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - FUTA stops once a worker has earned $7,000 in a year; charging it on every hour is the most it can be, and the bid says so.
 - A line with both a rate and minutes, or with a count and no minutes, is refused, naming the line.
 - A visit priced under the minimum charge is raised to it and flagged.
@@ -66,6 +100,22 @@ The margin is a share of the price, not a markup on cost, so a 20% margin is a 2
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A 25,000 sq ft office cleaned 5 nights a week, from sample production rates**
+
+A 25,000 sq ft office cleaned 5 nights a week, from sample production rates
+
+| Result | Value |
+| --- | --- |
+| answer | At your production rates, 25,000 sq ft, 16 restroom fixtures and 6 glass panes is 10.27 labor hours a visit; at $20.36 an hour loaded and a 15% margin the bid is $299.74 a visit, $6,494.37 a month at 5 visits a week ($0.260 per sq ft a month, $0.012 a visit). |
+| hours a visit | 10.27 |
+| wage | $17.71 (BLS May 2025 median hourly wage, janitors and cleaners, United States) |
+| burden | 14.95% |
+| billed rate an hour | $29.20 |
+| a visit | $299.74 |
+| a month | $6,494.37 |
+| a year | $77,932.40 |
+| per sq ft a month | $0.260 |
+
+**The input**
 
 ```json
 {
@@ -121,21 +171,23 @@ The margin is a share of the price, not a markup on cost, so a 20% margin is a 2
 }
 ```
 
-A 25,000 sq ft office cleaned 5 nights a week, from sample production rates
+**More worked examples (3)**
+
+**A 12,000 sq ft new build priced in rough, final and touch-up phases**
+
+A 12,000 sq ft new build priced in rough, final and touch-up phases
 
 | Result | Value |
 | --- | --- |
-| answer | At your production rates, 25,000 sq ft, 16 restroom fixtures and 6 glass panes is 10.27 labor hours a visit; at $20.36 an hour loaded and a 15% margin the bid is $299.74 a visit, $6,494.37 a month at 5 visits a week ($0.260 per sq ft a month, $0.012 a visit). |
-| hours a visit | 10.27 |
-| wage | $17.71 (BLS May 2025 median hourly wage, janitors and cleaners, United States) |
-| burden | 14.95% |
-| billed rate an hour | $29.20 |
-| a visit | $299.74 |
-| a month | $6,494.37 |
-| a year | $77,932.40 |
-| per sq ft a month | $0.260 |
+| answer | A 12,000 sq ft post-construction job is 27.93 labor hours at your production rates and prices at rough $519.57, final $676.04 and touch-up $101.74: $1,297.35 in all ($0.108 per sq ft), glass $162.79 for 48 panes ($3.39 a pane, inside the final clean). |
+| burden (BLS ECEC) | 29.96% |
+| Rough clean | $519.57, 5.00 hours |
+| Final clean | $676.04, 19.93 hours |
+| Touch-up clean | $101.74, 3.00 hours |
+| job | $1,297.35 |
+| per sq ft | $0.108 |
 
-**A 12,000 sq ft new build priced in rough, final and touch-up phases**
+**The input**
 
 ```json
 op: "bid"
@@ -150,19 +202,15 @@ overheadPercent: 12
 marginPercent: 20
 ```
 
-A 12,000 sq ft new build priced in rough, final and touch-up phases
+**A production rate from a timing: 1,500 sq ft vacuumed in 25 minutes**
+
+A production rate from a timing: 1,500 sq ft vacuumed in 25 minutes
 
 | Result | Value |
 | --- | --- |
-| answer | A 12,000 sq ft post-construction job is 27.93 labor hours at your production rates and prices at rough $519.57, final $676.04 and touch-up $101.74: $1,297.35 in all ($0.108 per sq ft), glass $162.79 for 48 panes ($3.39 a pane, inside the final clean). |
-| burden (BLS ECEC) | 29.96% |
-| Rough clean | $519.57, 5.00 hours |
-| Final clean | $676.04, 19.93 hours |
-| Touch-up clean | $101.74, 3.00 hours |
-| job | $1,297.35 |
-| per sq ft | $0.108 |
+| answer | 1,500 sq ft in 25 minutes is 3,600 sq ft an hour (16.67 minutes per 1,000 sq ft). |
 
-**A production rate from a timing: 1,500 sq ft vacuumed in 25 minutes**
+**The input**
 
 ```json
 {
@@ -172,13 +220,15 @@ A 12,000 sq ft new build priced in rough, final and touch-up phases
 }
 ```
 
-A production rate from a timing: 1,500 sq ft vacuumed in 25 minutes
+**BLS May 2025 wages for janitors and cleaners in Ohio**
+
+BLS May 2025 wages for janitors and cleaners in Ohio
 
 | Result | Value |
 | --- | --- |
-| answer | 1,500 sq ft in 25 minutes is 3,600 sq ft an hour (16.67 minutes per 1,000 sq ft). |
+| answer | BLS May 2025: janitors and cleaners in Ohio earned a median $17.26 an hour (mean $18.06); maids and housekeeping cleaners a median $15.47. Ohio's minimum wage is $11.00 (DOL, updated 2026-11-05). Employers with annual gross receipts of $405,000 or more; $7.25 for smaller employers. |
 
-**BLS May 2025 wages for janitors and cleaners in Ohio**
+**The input**
 
 ```json
 {
@@ -187,45 +237,11 @@ A production rate from a timing: 1,500 sq ft vacuumed in 25 minutes
 }
 ```
 
-BLS May 2025 wages for janitors and cleaners in Ohio
-
-| Result | Value |
-| --- | --- |
-| answer | BLS May 2025: janitors and cleaners in Ohio earned a median $17.26 an hour (mean $18.06); maids and housekeeping cleaners a median $15.47. Ohio's minimum wage is $11.00 (DOL, updated 2026-11-05). Employers with annual gross receipts of $405,000 or more; $7.25 for smaller employers. |
-
-## What does it not do?
-
-- State unemployment, workers' compensation and local minimum wages vary and are your inputs; city and county minimums are not in the table.
-- It supplies no industry production rates or market prices; check the bid against your own timed rates and costs.
-- A bid is a business decision. It is not legal, tax or accounting advice.
-
-## Where does the data come from, and how fresh is it?
-
-The figures were read on 2026-11-08: BLS OEWS May 2025 (released 2026-05-15), IRS Publication 15 (2026), BLS ECEC for 2026-06 (released 2026-09-09) and the DOL state minimum wage table (updated 2026-11-05). They change only by hand, with the tests that pin them.
-
-- [U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025 estimates (released 2026-05-15, read 2026-11-08)](https://www.bls.gov/oes/)
-- [IRS Publication 15 (2026), (Circular E), Employer's Tax Guide (read 2026-11-08)](https://www.irs.gov/publications/p15)
-- [BLS Employer Costs for Employee Compensation, June 2026 (USDL-26-1494), Table 4, private industry workers, service occupations (released 2026-09-09)](https://www.bls.gov/news.release/ecec.t04.htm)
-- [U.S. Department of Labor, Wage and Hour Division: State Minimum Wage Laws (basic minimum rate, non-farm employment) (updated 2026-11-05, read 2026-11-08)](https://www.dol.gov/agencies/whd/minimum-wage/state)
-
-The figures were read on 2026-11-08: BLS OEWS May 2025 (released 2026-05-15), IRS Publication 15 (2026), BLS ECEC for 2026-06 (released 2026-09-09) and the DOL state minimum wage table (updated 2026-11-05). They change only by hand, with the tests that pin them.
-
-Cleaning bid calculator (commercial and post-construction): sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025 estimates](https://www.bls.gov/oes/) | May 2025 estimates, released 2026-05-15 | 2026-11-08 |
-| [IRS Publication 15 (2026), (Circular E), Employer's Tax Guide](https://www.irs.gov/publications/p15) | 2026 edition | 2026-11-08 |
-| [BLS Employer Costs for Employee Compensation, June 2026 (USDL-26-1494), Table 4, private industry workers, service occupations](https://www.bls.gov/news.release/ecec.t04.htm) | released 2026-09-09 | 2026-11-08 |
-| [U.S. Department of Labor, Wage and Hour Division: State Minimum Wage Laws (basic minimum rate, non-farm employment)](https://www.dol.gov/agencies/whd/minimum-wage/state) | updated 2026-11-05 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The BLS wages, the IRS rates and quotes, the ECEC figures and the DOL table are pinned. The tests work the sample office and new build line by line, each burden mode, margin against overhead, the monthly figure, the minimum charge, the target check, the minimum wage flags, the CSV, and that the proposal PDF is the same bytes every time.
+The tests work the sample office and new build line by line, each burden mode, margin against overhead, the monthly figure, the minimum charge, the target check, the minimum wage flags, the CSV, and that the proposal PDF is the same bytes every time.
 
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The BLS May 2025 wages, the IRS Publication 15 (2026) rates, the BLS ECEC figures and the DOL minimum wage table are pinned as read on 2026-11-08.
 - The sample office and new build are checked line by line: hours, the loaded rate, each burden mode, margin against overhead, the monthly figure and the minimum charge.

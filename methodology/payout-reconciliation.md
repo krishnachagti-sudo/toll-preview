@@ -2,9 +2,51 @@
 
 Each row of a Stripe, Shopify Payments, PayPal or Square export is placed in one of 17 lines by the category or type the processor documents, the rows of each payout are added in whole cents, and the total is checked against the deposit. The journal credits sales and debits refunds, fees and the rest against a clearing account, so debits equal credits.
 
+## How does it work?
+
+1. The processor is found from the headings it documents: Stripe's balance\_transaction\_id and reporting\_category, Shopify's Transaction Date, Type and Payout Date, PayPal's Gross, Fee, Net and Type with Balance Impact, Transaction ID or TimeZone, and JSON for Square.
+2. Amounts are read exactly into the currency's smallest unit, with its decimal places taken from ISO 4217 (two for USD, none for JPY). "(12.00)", "-3.20", "1.234,56" and "$5" are read; a value that is not an amount is refused with its line.
+3. Each row goes to one line by the processor's own label: Stripe's reporting\_category, Shopify's transaction type (exact names, then families such as reserved\_funds or shipping\_), PayPal's Type text by T-code family, Square's activity type.
+4. Inside a row, PayPal's Sales Tax column is split out of the gross, Stripe's withheld\_tax (already inside the fee) goes to tax on fees, and the fee goes to fees.
+5. Rows are grouped by payout id and currency. Shopify rows still pending are kept apart from paid payouts.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/payout-reconciliation/#what) below.
+
+## What does it not cover?
+
+- Stripe, Shopify Payments and Square payout files carry no sales tax collected; book it from the store's sales report.
+- Stripe's report covers automatic payouts only: Stripe cannot say which transactions are in an instant payout.
+- Check the account names against your chart of accounts, and skip the transfer journal when the bank feed already records the deposit.
+- It is arithmetic on your processor's own file, not accounting or tax advice. Files are processed in memory and not kept.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 13 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every report format, category list, fee rate and import format was read on the processor's or ledger's own page on 2026-11-08. The pages are checked daily for changes, and the mappings change only by hand, with the tests that pin them.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Every Stripe reporting category and Square activity type is pinned to a known line, and the rate presets to the published rates.
+
+- [Stripe Docs: Payout reconciliation report](https://docs.stripe.com/reports/payout-reconciliation), see the document, read 2026-11-08
+- [Stripe Docs: Reporting categories](https://docs.stripe.com/reports/reporting-categories), see the document, read 2026-11-08
+- [Stripe pricing (United States)](https://stripe.com/us/pricing), see the document, read 2026-11-08
+- [Shopify Help Center: Viewing and exporting your Shopify Payments payout details](https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details), see the document, read 2026-11-08
+- [Shopify Admin API: ShopifyPaymentsTransactionType](https://shopify.dev/docs/api/admin-graphql/latest/enums/ShopifyPaymentsTransactionType), see the document, read 2026-11-08
+- [Shopify Help Center: Overview of reserves in Shopify Payments](https://help.shopify.com/en/manual/payments/shopify-payments/payouts/reserves), see the document, read 2026-11-08
+- [PayPal Developer: Activity Download report](https://developer.paypal.com/reports/activity-download), see the document, read 2026-11-08
+- [PayPal Developer: Transaction event code (T-code) reference](https://developer.paypal.com/reports/reference/t-codes), see the document, read 2026-11-08
+- [PayPal merchant fees (United States)](https://www.paypal.com/us/business/paypal-business-fees), see the document, read 2026-11-08
+- [Square Developer: Payouts API, ListPayoutEntries and PayoutEntry](https://developer.squareup.com/reference/square/payouts-api/list-payout-entries), see the document, read 2026-11-08
+- [Square pricing (United States)](https://squareup.com/us/en/pricing), see the document, read 2026-11-08
+- [QuickBooks Online: Import journal entries](https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US), see the document, read 2026-11-08
+- [Xero Accounting API (OpenAPI): ManualJournalLine](https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the payout reconciliation: split a payout into sales, refunds, fees and tax compute?
 
-Upload the payout export your processor gives you and the tool reads it as the processor documents it, places every row in a line of the split (sales, sales tax, refunds, chargebacks, fees, tax on fees, reserves, loans, transfers and the rest), adds them per payout and per currency, and proves the total against the money that reached the bank. It can check the fees charged on sales against a published standard rate, and it builds a balanced journal for each payout with an import file for QuickBooks Online or Xero. Nothing is guessed: what the file does not say is reported.
+Upload the payout export your processor gives you and the tool reads it as the processor documents it, places every row in a line of the split (sales, sales tax, refunds, chargebacks, fees, tax on fees, reserves, loans, transfers and the rest), adds them per payout and per currency, and proves the total against the money that reached the bank.
+
+**In detail: operations, inputs and outputs**
+
+It can check the fees charged on sales against a published standard rate, and it builds a balanced journal for each payout with an import file for QuickBooks Online or Xero. Nothing is guessed: what the file does not say is reported.
 
 Operations (the op field):
 
@@ -28,7 +70,7 @@ Outputs:
 - feeCheck: per payout, the fees charged on sales, the fees the rate would charge, and the difference
 - journals, accounts and files (journal only)
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The processor is found from the headings it documents: Stripe's balance\_transaction\_id and reporting\_category, Shopify's Transaction Date, Type and Payout Date, PayPal's Gross, Fee, Net and Type with Balance Impact, Transaction ID or TimeZone, and JSON for Square. A file named as one processor but headed as another is refused.
 2. Amounts are read exactly into the currency's smallest unit, with its decimal places taken from ISO 4217 (two for USD, none for JPY). "(12.00)", "-3.20", "1.234,56" and "$5" are read; a value that is not an amount is refused with its line.
@@ -53,6 +95,8 @@ The QuickBooks Online columns follow Intuit's "Import journal entries" help page
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A Stripe partial capture reversal reduces the sale rather than counting as a refund, because Stripe says the two transactions together are the captured part.
 - A Shopify payout of refunds larger than its sales is negative, and the answer says the processor takes it from the bank or later payouts.
 - PayPal memo rows, such as an authorization, and rows with a pending, denied or voided status are left out and listed.
@@ -66,12 +110,6 @@ The QuickBooks Online columns follow Intuit's "Import journal entries" help page
 
 **Two Stripe payouts split, with the fee check against 2.9% + 30¢**
 
-```json
-op: "split"
-text: "automatic_payout_id,automatic_payout_effective_at,balance_transaction_id,created,available_on,currency,gross,fee,net,reporting_category,description\npo_SAMPLE1014,2026-10-14,txn_S01,2026-10-10 14:02:11,2026-10-12,usd,120.00,3.78,116.22,charge,Order 1041\npo_SAMPLE1014,2026-10-14,txn_S02,2026-10-10 16:40:05,2026-10-12,usd,45.00,1.61,43.39,charge,Order 1042\npo_SAMPLE1014,2026-10-14,txn_S03,2026-10-11 09:15:44,2026-10-13,usd,89.99,2.91,87.08,charge,Order 1043\npo_SAMPLE1014,2026-10-14,txn_S04,2026-10-11 11:20:00,2026-10-13,usd,-30.00,0.00,-30.00,refund,Refund for order 1038\npo_SAMPLE1014,2026-10-14,txn_S05,2026-10-12 08:00:00,2026-10-12,usd,-45.00,15.00,-60.00,dispute,Chargeback on order 1022\npo_SAMPLE1102,2026-11-02,txn_S06,2026-10-30 13:05:09,2026-11-01,usd,250.00,7.55,242.45,charge,Order 1050\npo_SAMPLE1102,2026-11-02,txn_S07,2026-10-31 19:44:31,2026-11-02,usd,19.99,0.88,19.11,charge,Order 1051\npo_SAMPLE1102,2026-11-02,txn_S08,2026-11-01 10:12:00,2026-11-01,usd,-19.99,0.00,-19.99,refund,Refund for order 1051\npo_SAMPLE1102,2026-11-02,txn_S09,2026-11-01 00:00:00,2026-11-01,usd,-2.00,0.00,-2.00,fee,Billing - usage fee\n"
-rate: "stripe-card"
-```
-
 Two Stripe payouts split, with the fee check against 2.9% + 30¢
 
 | Result | Value |
@@ -83,13 +121,17 @@ Two Stripe payouts split, with the fee check against 2.9% + 30¢
 | fee check po\_SAMPLE1102 | charged $8.43, rate gives $8.43 |
 | warning 1 | Payout po\_SAMPLE1102 holds activity from 2026-10 and 2026-11: it spans a month end. |
 
-**A Shopify Payments payout with a chargeback and reserved funds, as Xero journal lines**
+**The input**
 
 ```json
-op: "journal"
-text: "Transaction Date,Type,Order,Card Brand,Card Source,Payout Status,Payout Date,Available On,Amount,Fee,Net\n2026-10-12 10:14:03 -0400,charge,#1001,visa,online,paid,2026-10-14,2026-10-14,64.00,2.16,61.84\n2026-10-12 12:30:41 -0400,charge,#1002,master,online,paid,2026-10-14,2026-10-14,128.50,4.03,124.47\n2026-10-12 15:02:19 -0400,charge,#1003,amex,online,paid,2026-10-14,2026-10-14,37.25,1.38,35.87\n2026-10-13 09:41:00 -0400,refund,#0998,visa,online,paid,2026-10-14,2026-10-14,-22.00,0.00,-22.00\n2026-10-13 11:00:00 -0400,dispute,#0975,visa,online,paid,2026-10-14,2026-10-14,-49.00,15.00,-64.00\n2026-10-13 11:00:00 -0400,reserved_funds,,,,paid,2026-10-14,2026-10-14,-10.00,0.00,-10.00\n"
-ledger: "xero"
+op: "split"
+text: "automatic_payout_id,automatic_payout_effective_at,balance_transaction_id,created,available_on,currency,gross,fee,net,reporting_category,description\npo_SAMPLE1014,2026-10-14,txn_S01,2026-10-10 14:02:11,2026-10-12,usd,120.00,3.78,116.22,charge,Order 1041\npo_SAMPLE1014,2026-10-14,txn_S02,2026-10-10 16:40:05,2026-10-12,usd,45.00,1.61,43.39,charge,Order 1042\npo_SAMPLE1014,2026-10-14,txn_S03,2026-10-11 09:15:44,2026-10-13,usd,89.99,2.91,87.08,charge,Order 1043\npo_SAMPLE1014,2026-10-14,txn_S04,2026-10-11 11:20:00,2026-10-13,usd,-30.00,0.00,-30.00,refund,Refund for order 1038\npo_SAMPLE1014,2026-10-14,txn_S05,2026-10-12 08:00:00,2026-10-12,usd,-45.00,15.00,-60.00,dispute,Chargeback on order 1022\npo_SAMPLE1102,2026-11-02,txn_S06,2026-10-30 13:05:09,2026-11-01,usd,250.00,7.55,242.45,charge,Order 1050\npo_SAMPLE1102,2026-11-02,txn_S07,2026-10-31 19:44:31,2026-11-02,usd,19.99,0.88,19.11,charge,Order 1051\npo_SAMPLE1102,2026-11-02,txn_S08,2026-11-01 10:12:00,2026-11-01,usd,-19.99,0.00,-19.99,refund,Refund for order 1051\npo_SAMPLE1102,2026-11-02,txn_S09,2026-11-01 00:00:00,2026-11-01,usd,-2.00,0.00,-2.00,fee,Billing - usage fee\n"
+rate: "stripe-card"
 ```
+
+**More worked examples (2)**
+
+**A Shopify Payments payout with a chargeback and reserved funds, as Xero journal lines**
 
 A Shopify Payments payout with a chargeback and reserved funds, as Xero journal lines
 
@@ -104,12 +146,15 @@ A Shopify Payments payout with a chargeback and reserved funds, as Xero journal 
 | Shopify Payments clearing | debit $126.18 |
 | import file | shopify-payouts-xero.csv |
 
-**A PayPal Activity Download with sales tax, a refund, a chargeback fee and a withdrawal**
+**The input**
 
 ```json
-op: "split"
-text: "Date,Time,TimeZone,Name,Type,Status,Currency,Gross,Fee,Net,Transaction ID,Reference Txn ID,Balance,Sales Tax,Balance Impact\n10/20/2026,16:05:00,PDT,,General Withdrawal,Completed,USD,-150.00,0.00,-150.00,8SAMPLE0000000007,,57.78,0.00,Debit\n10/19/2026,09:30:12,PDT,,Chargeback Fee,Completed,USD,-20.00,0.00,-20.00,8SAMPLE0000000006,8SAMPLE0000000005,207.78,0.00,Debit\n10/18/2026,14:22:51,PDT,Sample Buyer C,Payment Refund,Completed,USD,-25.00,0.00,-25.00,8SAMPLE0000000005,8SAMPLE0000000002,227.78,0.00,Debit\n10/17/2026,11:02:33,PDT,Sample Buyer C,Express Checkout Payment,Completed,USD,25.00,-1.36,23.64,8SAMPLE0000000004,,252.78,0.00,Credit\n10/16/2026,18:45:09,PDT,Sample Buyer B,Express Checkout Payment,Completed,USD,54.00,-2.37,51.63,8SAMPLE0000000003,,229.14,0.00,Credit\n10/16/2026,18:45:09,PDT,Sample Buyer B,Authorization,Pending,USD,54.00,0.00,54.00,8SAMPLE0000000009,,,0.00,Memo\n10/15/2026,10:10:10,PDT,Sample Buyer A,Express Checkout Payment,Completed,USD,107.00,-4.22,102.78,8SAMPLE0000000002,,177.51,7.00,Credit\n"
+op: "journal"
+text: "Transaction Date,Type,Order,Card Brand,Card Source,Payout Status,Payout Date,Available On,Amount,Fee,Net\n2026-10-12 10:14:03 -0400,charge,#1001,visa,online,paid,2026-10-14,2026-10-14,64.00,2.16,61.84\n2026-10-12 12:30:41 -0400,charge,#1002,master,online,paid,2026-10-14,2026-10-14,128.50,4.03,124.47\n2026-10-12 15:02:19 -0400,charge,#1003,amex,online,paid,2026-10-14,2026-10-14,37.25,1.38,35.87\n2026-10-13 09:41:00 -0400,refund,#0998,visa,online,paid,2026-10-14,2026-10-14,-22.00,0.00,-22.00\n2026-10-13 11:00:00 -0400,dispute,#0975,visa,online,paid,2026-10-14,2026-10-14,-49.00,15.00,-64.00\n2026-10-13 11:00:00 -0400,reserved_funds,,,,paid,2026-10-14,2026-10-14,-10.00,0.00,-10.00\n"
+ledger: "xero"
 ```
+
+**A PayPal Activity Download with sales tax, a refund, a chargeback fee and a withdrawal**
 
 A PayPal Activity Download with sales tax, a refund, a chargeback fee and a withdrawal
 
@@ -120,58 +165,18 @@ A PayPal Activity Download with sales tax, a refund, a chargeback fee and a with
 | balance | $74.73 to $57.78, ties |
 | rows skipped | 1 |
 
-## What does it not do?
+**The input**
 
-- Stripe, Shopify Payments and Square payout files carry no sales tax collected; book it from the store's sales report.
-- Stripe's report covers automatic payouts only: Stripe cannot say which transactions are in an instant payout.
-- Check the account names against your chart of accounts, and skip the transfer journal when the bank feed already records the deposit.
-- It is arithmetic on your processor's own file, not accounting or tax advice. Files are processed in memory and not kept.
-
-## Where does the data come from, and how fresh is it?
-
-Every report format, category list, fee rate and import format was read on the processor's or ledger's own page on 2026-11-08. The pages are checked daily for changes, and the mappings change only by hand, with the tests that pin them.
-
-- [Stripe Docs: Payout reconciliation report](https://docs.stripe.com/reports/payout-reconciliation)
-- [Stripe Docs: Reporting categories](https://docs.stripe.com/reports/reporting-categories)
-- [Stripe pricing (United States)](https://stripe.com/us/pricing)
-- [Shopify Help Center: Viewing and exporting your Shopify Payments payout details](https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details)
-- [Shopify Admin API: ShopifyPaymentsTransactionType](https://shopify.dev/docs/api/admin-graphql/latest/enums/ShopifyPaymentsTransactionType)
-- [Shopify Help Center: Overview of reserves in Shopify Payments](https://help.shopify.com/en/manual/payments/shopify-payments/payouts/reserves)
-- [PayPal Developer: Activity Download report](https://developer.paypal.com/reports/activity-download)
-- [PayPal Developer: Transaction event code (T-code) reference](https://developer.paypal.com/reports/reference/t-codes)
-- [PayPal merchant fees (United States)](https://www.paypal.com/us/business/paypal-business-fees)
-- [Square Developer: Payouts API, ListPayoutEntries and PayoutEntry](https://developer.squareup.com/reference/square/payouts-api/list-payout-entries)
-- [Square pricing (United States)](https://squareup.com/us/en/pricing)
-- [QuickBooks Online: Import journal entries](https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US)
-- [Xero Accounting API (OpenAPI): ManualJournalLine](https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml)
-
-Every report format, category list, fee rate and import format was read on the processor's or ledger's own page on 2026-11-08. The pages are checked daily for changes, and the mappings change only by hand, with the tests that pin them.
-
-Payout reconciliation: split a payout into sales, refunds, fees and tax: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Stripe Docs: Payout reconciliation report](https://docs.stripe.com/reports/payout-reconciliation) | see the document | 2026-11-08 |
-| [Stripe Docs: Reporting categories](https://docs.stripe.com/reports/reporting-categories) | see the document | 2026-11-08 |
-| [Stripe pricing (United States)](https://stripe.com/us/pricing) | see the document | 2026-11-08 |
-| [Shopify Help Center: Viewing and exporting your Shopify Payments payout details](https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details) | see the document | 2026-11-08 |
-| [Shopify Admin API: ShopifyPaymentsTransactionType](https://shopify.dev/docs/api/admin-graphql/latest/enums/ShopifyPaymentsTransactionType) | see the document | 2026-11-08 |
-| [Shopify Help Center: Overview of reserves in Shopify Payments](https://help.shopify.com/en/manual/payments/shopify-payments/payouts/reserves) | see the document | 2026-11-08 |
-| [PayPal Developer: Activity Download report](https://developer.paypal.com/reports/activity-download) | see the document | 2026-11-08 |
-| [PayPal Developer: Transaction event code (T-code) reference](https://developer.paypal.com/reports/reference/t-codes) | see the document | 2026-11-08 |
-| [PayPal merchant fees (United States)](https://www.paypal.com/us/business/paypal-business-fees) | see the document | 2026-11-08 |
-| [Square Developer: Payouts API, ListPayoutEntries and PayoutEntry](https://developer.squareup.com/reference/square/payouts-api/list-payout-entries) | see the document | 2026-11-08 |
-| [Square pricing (United States)](https://squareup.com/us/en/pricing) | see the document | 2026-11-08 |
-| [QuickBooks Online: Import journal entries](https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US) | see the document | 2026-11-08 |
-| [Xero Accounting API (OpenAPI): ManualJournalLine](https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+op: "split"
+text: "Date,Time,TimeZone,Name,Type,Status,Currency,Gross,Fee,Net,Transaction ID,Reference Txn ID,Balance,Sales Tax,Balance Impact\n10/20/2026,16:05:00,PDT,,General Withdrawal,Completed,USD,-150.00,0.00,-150.00,8SAMPLE0000000007,,57.78,0.00,Debit\n10/19/2026,09:30:12,PDT,,Chargeback Fee,Completed,USD,-20.00,0.00,-20.00,8SAMPLE0000000006,8SAMPLE0000000005,207.78,0.00,Debit\n10/18/2026,14:22:51,PDT,Sample Buyer C,Payment Refund,Completed,USD,-25.00,0.00,-25.00,8SAMPLE0000000005,8SAMPLE0000000002,227.78,0.00,Debit\n10/17/2026,11:02:33,PDT,Sample Buyer C,Express Checkout Payment,Completed,USD,25.00,-1.36,23.64,8SAMPLE0000000004,,252.78,0.00,Credit\n10/16/2026,18:45:09,PDT,Sample Buyer B,Express Checkout Payment,Completed,USD,54.00,-2.37,51.63,8SAMPLE0000000003,,229.14,0.00,Credit\n10/16/2026,18:45:09,PDT,Sample Buyer B,Authorization,Pending,USD,54.00,0.00,54.00,8SAMPLE0000000009,,,0.00,Memo\n10/15/2026,10:10:10,PDT,Sample Buyer A,Express Checkout Payment,Completed,USD,107.00,-4.22,102.78,8SAMPLE0000000002,,177.51,7.00,Credit\n"
+```
 
 ## How is it tested?
 
-Every Stripe reporting category and Square activity type is pinned to a known line, and the rate presets to the published rates. The tests check CSV quoting, every written amount form, date orders, processor detection, each processor's sample file to the cent, deposits and unknown types, that every journal balances, and the import file columns and bytes.
+The tests check CSV quoting, every written amount form, date orders, processor detection, each processor's sample file to the cent, deposits and unknown types, that every journal balances, and the import file columns and bytes.
 
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every fact is dated and read on the processor's own page on 2026-11-08, and the fee presets match the published rates.
 - Every Stripe reporting category and Square activity type lands in a known line; each processor's sample file splits to the cent.

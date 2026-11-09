@@ -11,6 +11,10 @@ In Arizona the statute read sets no dollar or percent limit on a rent late fee, 
 
 ## What the statute says
 
+**In short:** A "reasonable" fee set out in the written lease, no number; no waiting period (Ariz. Rev. Stat. § 33-1368(B)).
+
+**The statute's words (1 passage)**
+
 Ariz. Rev. Stat. § 33-1368(B): "Before the filing of a special detainer action the rental agreement shall be reinstated if the tenant tenders all past due and unpaid periodic rent and a reasonable late fee set forth in a written rental agreement."
 
 ## The first day a fee may be charged

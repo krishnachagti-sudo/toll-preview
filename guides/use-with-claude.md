@@ -4,7 +4,11 @@ Yes, in 3 steps: in claude.ai or Claude Desktop, add Endwise as a custom connect
 
 ## Can Claude connect to Endwise?
 
-Yes. Endwise is a remote MCP server (MCP is a standard way for an AI app to call outside tools) at `https://krishnachagti-sudo.github.io/toll-preview/mcp`. Claude can list its tools without signing in. To run one, Claude asks you to sign in to Endwise and approve it, the usual OAuth sign-in. Claude then shows up on your [account page](https://krishnachagti-sudo.github.io/toll-preview/account) under Connected apps, with its own monthly limit, like an API key.
+Yes. Endwise is a remote MCP server (MCP is a standard way for an AI app to call outside tools) at `https://krishnachagti-sudo.github.io/toll-preview/mcp`. Claude can list its tools without signing in.
+
+**Read the rest: Can Claude connect to Endwise?**
+
+To run one, Claude asks you to sign in to Endwise and approve it, the usual OAuth sign-in. Claude then shows up on your [account page](https://krishnachagti-sudo.github.io/toll-preview/account) under Connected apps, with its own monthly limit, like an API key.
 
 This page is current as of November 2026. Claude's features change, so the sources at the bottom are the final word.
 
@@ -23,6 +27,8 @@ On a Team or Enterprise plan, an Owner adds it for the organization at **Organiz
 ## What does the sign-in look like?
 
 Claude opens a Endwise page. If you are not signed in, you sign in or create an account first and come straight back. The page then says which app is asking (for Claude, claude.ai), what it will be able to do, and where you go back to after you approve.
+
+**Read the rest: What does the sign-in look like?**
 
 - It can list the tools and their prices, run tools and pay for each run from your balance, and ask what a run would cost.
 - It cannot see your password, add money, change your account or make API keys.

@@ -1,6 +1,6 @@
 # BR-DE-CVD-05: Unzulässiger Wert für cva in einer CVD-Rechnung
 
-BR-DE-CVD-05 bedeutet: Wenn innerhalb von ... ITEM ATTRIBUTES (BG-32) der ... "Item attribute name" (BT-160) den Wert 'cva' hat, muss der ... "Item attribute value" (BT-161) einen der zulässigen Werte enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Verwenden Sie genau einen der Werte clean, zero-emission oder other.
+BR-DE-CVD-05 bedeutet: Wenn innerhalb von ... ITEM ATTRIBUTES (BG-32) der ... "Item attribute name" (BT-160) den Wert 'cva' hat, muss der ... "Item attribute value" (BT-161) einen der zulässigen Werte enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

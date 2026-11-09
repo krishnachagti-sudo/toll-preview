@@ -8,21 +8,40 @@ Deposit $2,000, $800 kept for repairs. The maximum is the statute's formula, nev
 
 | State | What the statute provides | Formula | Maximum |
 | --- | --- | --- | ---: |
-| [California](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/california/) | up to twice the deposit in statutory damages, plus actual damages, for bad-faith retention; a bad-faith failure to comply forfeits any claim to the deposit (§ 1950.5(h)(7), (m)) | 2 x $2,000.00 deposit | $4,000.00 |
-| [Texas](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/texas/) | for bad-faith retention, $100 plus three times the amount wrongfully withheld, plus the tenant's attorney's fees; bad faith is presumed after the 30th day; a bad-faith failure to itemize forfeits the right to withhold (§ 92.109) | $100 + 3 x $800.00 kept | $2,500.00 |
-| [Florida](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/florida/) | a late notice forfeits the right to impose a claim on the deposit (a separate suit for damages stays open); the winner of a deposit suit recovers court costs and attorney's fees (§ 83.49(3)(a), (c)) | No multiple | Not computed |
-| [New York](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/new-york/) | missing the 14 days forfeits any right to keep part of the deposit; a willful violation adds punitive damages of up to twice the deposit; the landlord bears the burden of proof (§ 7-108(1-a)(e) to (g)) | 2 x $2,000.00 deposit | $4,000.00 |
-| [Pennsylvania](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/pennsylvania/) | a late list forfeits the right to withhold for damages; failing to pay the balance in 30 days makes the landlord liable for double the amount by which the deposit exceeds the damages a court finds (at most twice the deposit when it finds none) (sec. 512(b), (c)) | 2 x $2,000.00 deposit | $4,000.00 |
-| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/illinois/) | on a court finding that the statement was refused or given in bad faith and the deposit not returned on time, twice the deposit due, plus court costs and attorney's fees (710/1(c)) | 2 x $2,000.00 deposit | $4,000.00 |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/california/) | up to twice the deposit in statutory damages, plus actual… | 2 x $2,000.00 deposit | $4,000.00 |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/texas/) | for bad-faith retention, $100 plus three times the amount wrongfully… | $100 + 3 x $800.00 kept | $2,500.00 |
+| [Florida](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/florida/) | a late notice forfeits the right to impose a claim… | No multiple | Not computed |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/new-york/) | missing the 14 days forfeits any right to keep part of the deposit… | 2 x $2,000.00 deposit | $4,000.00 |
+| [Pennsylvania](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/pennsylvania/) | a late list forfeits the right to withhold for damages… | 2 x $2,000.00 deposit | $4,000.00 |
+| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/illinois/) | on a court finding that the statement was refused or… | 2 x $2,000.00 deposit | $4,000.00 |
 | [Ohio](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/ohio/) | the amount wrongfully withheld again as damages, plus reasonable attorney's fees (§ 5321.16(C)) | 1 x $800.00 kept | $800.00 |
-| [Georgia](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/georgia/) | three times the sum improperly withheld plus attorney's fees (only the sum itself for a proven bona fide error); missing the deadline forfeits the right to withhold for damages (§ 44-7-35(b), (c)) | 3 x $800.00 kept | $2,400.00 |
+| [Georgia](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/georgia/) | three times the sum improperly withheld plus attorney's fees (only… | 3 x $800.00 kept | $2,400.00 |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/north-carolina/) | not loaded: the remedies section (G.S. 42-55) was not read | No multiple | Not computed |
-| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/michigan/) | failing to comply with section 13 waives all claimed damages and makes the landlord liable for double the amount retained; a late notice of damages is an agreement that no damages are due (§§ 554.610, 554.613(2)) | 2 x $800.00 kept | $1,600.00 |
-| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/virginia/) | for a willful failure, the court orders the deposit returned with actual damages and reasonable attorney fees (§ 55.1-1226(E)) | No multiple | Not computed |
-| [Washington](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/washington/) | a late or incomplete statement makes the landlord liable for the full deposit and bars defenses; up to twice the deposit for an intentional refusal; the winner recovers costs and attorney's fees (RCW 59.18.280(2)) | 2 x $2,000.00 deposit | $4,000.00 |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/michigan/) | failing to comply with section 13 waives all claimed damages… | 2 x $800.00 kept | $1,600.00 |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/virginia/) | for a willful failure, the court orders the deposit returned… | No multiple | Not computed |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/washington/) | a late or incomplete statement makes the landlord liable for… | 2 x $2,000.00 deposit | $4,000.00 |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/arizona/) | twice the amount wrongfully withheld, on top of the money due (A.R.S. § 33-1321(E)) | 2 x $800.00 kept | $1,600.00 |
 
+**What each statute provides, in full (10)**
+
+Deposit $2,000, $800 kept for repairs. The maximum is the statute's formula, never a prediction of an award.: full wording
+
+| State | What the statute provides |
+| --- | --- |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/california/) | up to twice the deposit in statutory damages, plus actual damages, for bad-faith retention; a bad-faith failure to comply forfeits any claim to the deposit (§ 1950.5(h)(7), (m)) |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/texas/) | for bad-faith retention, $100 plus three times the amount wrongfully withheld, plus the tenant's attorney's fees; bad faith is presumed after the 30th day; a bad-faith failure to itemize forfeits the right to withhold (§ 92.109) |
+| [Florida](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/florida/) | a late notice forfeits the right to impose a claim on the deposit (a separate suit for damages stays open); the winner of a deposit suit recovers court costs and attorney's fees (§ 83.49(3)(a), (c)) |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/new-york/) | missing the 14 days forfeits any right to keep part of the deposit; a willful violation adds punitive damages of up to twice the deposit; the landlord bears the burden of proof (§ 7-108(1-a)(e) to (g)) |
+| [Pennsylvania](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/pennsylvania/) | a late list forfeits the right to withhold for damages; failing to pay the balance in 30 days makes the landlord liable for double the amount by which the deposit exceeds the damages a court finds (at most twice the deposit when it finds none) (sec. 512(b), (c)) |
+| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/illinois/) | on a court finding that the statement was refused or given in bad faith and the deposit not returned on time, twice the deposit due, plus court costs and attorney's fees (710/1(c)) |
+| [Georgia](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/georgia/) | three times the sum improperly withheld plus attorney's fees (only the sum itself for a proven bona fide error); missing the deadline forfeits the right to withhold for damages (§ 44-7-35(b), (c)) |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/michigan/) | failing to comply with section 13 waives all claimed damages and makes the landlord liable for double the amount retained; a late notice of damages is an agreement that no damages are due (§§ 554.610, 554.613(2)) |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/virginia/) | for a willful failure, the court orders the deposit returned with actual damages and reasonable attorney fees (§ 55.1-1226(E)) |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/washington/) | a late or incomplete statement makes the landlord liable for the full deposit and bars defenses; up to twice the deposit for an intentional refusal; the winner recovers costs and attorney's fees (RCW 59.18.280(2)) |
+
 ## What the statutes say
+
+**Four statutes in their own words**
 
 - **Texas**: "A landlord who fails either to return a security deposit or to provide a written description and itemization of deductions on or before the 30th day after the date the tenant surrenders possession is presumed to have acted in bad faith."
 - **Georgia**: "The failure of a landlord to provide the lists and written statements within the time periods specified in Code Section 44-7-34 shall work a forfeiture of all the landlord's rights to withhold any portion of the security deposit or to bring an action against the tenant for damages to the premises."

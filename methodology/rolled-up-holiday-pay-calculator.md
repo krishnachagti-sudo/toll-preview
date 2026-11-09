@@ -2,9 +2,43 @@
 
 Rolled-up holiday pay is 12.07% of the worker's total pay in the pay period, shown as its own payslip line, because 5.6 weeks of leave over 46.4 working weeks is 12.07%. Holiday hours accrue at 12.07% of hours worked, rounded to the nearest hour with 30 minutes rounding up: GOV.UK's 68 hours accrue 8.
 
+## How does it work?
+
+1. Money is whole pence and the rate is hundredths of a percent (12.07% is 1207), so every answer is integer arithmetic and the same input gives the same pence.
+2. The rate is entitlement weeks ÷ (52 - entitlement weeks) x 100, to two decimal places, half up: 5.6 ÷ 46.4 is 12.07%, and GOV.UK's 6 weeks give 13.04%.
+3. The pay line is total pay x rate. nearest rounds to the nearest penny (half a penny up), up rounds up to the next penny, and govuk-steps follows GOV.UK's worked tables: pay ÷ 100 to the nearest penny, then x 12.07, to the nearest penny (Hana: £44.06).
+4. Premium-rate hours and overtime are part of total pay: GOV.UK applies the rate to total pay in the period regardless of differing hourly rates.
+5. Hours accrued are hours worked x rate. hour rounds to the nearest hour, 30 minutes or more up and less down (to zero when under 30 minutes); half-hour-up rounds up to the next half hour, GOV.UK's note for workers on 4 hours a week or less; none keeps four decimal places.
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/rolled-up-holiday-pay-calculator/#what) below.
+
+## What does it not cover?
+
+- Great Britain only. Northern Ireland has its own rules and is not covered.
+- Whether a worker is irregular-hours or part-year depends on the contract; the tool applies your answer, and the pay figures are yours.
+- On a 6 or 7-day week the 28-day cap on statutory leave applies and GOV.UK gives no percentage, so it is refused.
+- It is not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 5 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The guidance was read on GOV.UK on 2026-11-08: the reforms guidance (updated 2024-04-01) and the holiday entitlement guide (updated 2026-11-05). The rules and quotes are copied into the tool's data file and change only by hand, with the tests that pin them.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The quoted rules and their read date are pinned to GOV.UK. The tests reproduce GOV.UK's own figures: Hana £44.06, Mark £55.52, Jill 8 hours, 6 weeks at 13.04%, Table 9 £231.54, Harriet 107 and Sharon 41 hours; and check the 30-minute boundary, the 1 April 2024 start, the 104-week cap and the payroll CSV.
+
+- [Department for Business and Trade, GOV.UK: Holiday pay and entitlement reforms from 1 January 2024](https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024), updated 2024-04-01, read 2026-11-08
+- [GOV.UK: Holiday entitlement](https://www.gov.uk/holiday-entitlement-rights), updated 2026-11-05, read 2026-11-08
+- [GOV.UK: Holiday entitlement: Holiday pay](https://www.gov.uk/holiday-entitlement-rights/holiday-pay), updated 2026-11-05, read 2026-11-08
+- [GOV.UK: Holiday entitlement: Calculate leave entitlement](https://www.gov.uk/holiday-entitlement-rights/calculate-leave-entitlement), updated 2026-11-05, read 2026-11-08
+- [Security Industry Authority, GOV.UK: SIA approved contractors and rolled-up holiday pay](https://www.gov.uk/guidance/sia-approved-contractors-and-rolled-up-holiday-pay), updated 2026-06-24, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the rolled-up holiday pay calculator (uk, 12.07%) compute?
 
-For irregular-hours and part-year workers in Great Britain, the tool works out the rolled-up holiday pay line for a pay period and the holiday hours accrued, for one worker or a payroll CSV of up to 5,000 rows. It also gives the accrual percentage for a larger entitlement, applies the two contract definitions and the 1 April 2024 leave-year start, averages a week's pay over the last 52 paid weeks, and works out the hours accrued during sick or statutory leave, each as GOV.UK's guidance sets it out.
+For irregular-hours and part-year workers in Great Britain, the tool works out the rolled-up holiday pay line for a pay period and the holiday hours accrued, for one worker or a payroll CSV of up to 5,000 rows.
+
+**In detail: operations, inputs and outputs**
+
+It also gives the accrual percentage for a larger entitlement, applies the two contract definitions and the 1 April 2024 leave-year start, averages a week's pay over the last 52 paid weeks, and works out the hours accrued during sick or statutory leave, each as GOV.UK's guidance sets it out.
 
 Operations (the op field):
 
@@ -35,7 +69,7 @@ Outputs:
 - accrual: hours accrued, the exact figure and the working; eligibility: the kind of worker and the reasons
 - batch: rows with status and note, totals, the pay columns used and the CSV
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. Money is whole pence and the rate is hundredths of a percent (12.07% is 1207), so every answer is integer arithmetic and the same input gives the same pence.
 2. The rate is entitlement weeks ÷ (52 - entitlement weeks) x 100, to two decimal places, half up: 5.6 ÷ 46.4 is 12.07%, and GOV.UK's 6 weeks give 13.04%. Days are turned into weeks on a 1 to 5-day week. Less than 5.6 weeks is refused as below the statutory minimum, and more than 10 weeks is not supported.
@@ -61,6 +95,8 @@ The regulations themselves were not read: legislation.gov.uk answered automated 
 
 ## Which edge cases does it handle?
 
+**The edge cases (7)**
+
 - GOV.UK's Hana: 364.70 by GOV.UK's steps is £44.06, while the exact 12.07% to the nearest penny is £44.02.
 - GOV.UK's Jill: 68 hours x 12.07% is 8.2076 hours, which rounds to 8; exactly 30 minutes over an hour rounds up.
 - A worker whose contract alternates two fixed weekly patterns is regular-hours, so the line is refused.
@@ -74,6 +110,19 @@ The regulations themselves were not read: legislation.gov.uk answered automated 
 > Every figure below is the output of the tool's engine, not typed in.
 
 **One week for a zero-hours bar worker with premium hours**
+
+One week for a zero-hours bar worker with premium hours
+
+| Result | Value |
+| --- | --- |
+| answer | On total pay of £452.20 this pay period, rolled-up holiday pay is £54.58 (12.07%), shown as a separate payslip line; the worker also accrues 4 hours of holiday. |
+| total pay | £452.20 |
+| holiday pay (nearest) | £54.58 |
+| holiday pay (up) | £54.59 |
+| holiday pay (GOV.UK steps) | £54.56 |
+| hours accrued | 35 x 12.07% = 4.2245 hours (4 hours 13 minutes), to the nearest hour: 4 |
+
+**The input**
 
 ```json
 {
@@ -96,25 +145,9 @@ The regulations themselves were not read: legislation.gov.uk answered automated 
 }
 ```
 
-One week for a zero-hours bar worker with premium hours
-
-| Result | Value |
-| --- | --- |
-| answer | On total pay of £452.20 this pay period, rolled-up holiday pay is £54.58 (12.07%), shown as a separate payslip line; the worker also accrues 4 hours of holiday. |
-| total pay | £452.20 |
-| holiday pay (nearest) | £54.58 |
-| holiday pay (up) | £54.59 |
-| holiday pay (GOV.UK steps) | £54.56 |
-| hours accrued | 35 x 12.07% = 4.2245 hours (4 hours 13 minutes), to the nearest hour: 4 |
+**More worked examples (4)**
 
 **A small payroll CSV with one regular-hours row refused**
-
-```json
-{
-  "op": "batch",
-  "csv": "worker,period_end,worker_type,hours,basic,overtime\nSample A,2026-11-06,zero-hours,22,281.60,\nSample B,2026-11-06,zero-hours,35.5,454.40,55.20\nSample C,2026-11-06,term-time,30,384.00,\nSample D,2026-11-06,regular,37.5,480.00,\nSample E,2026-11-06,casual,6.25,80.00,\n"
-}
-```
 
 A small payroll CSV with one regular-hours row refused
 
@@ -127,15 +160,16 @@ A small payroll CSV with one regular-hours row refused
 | Sample D | Regular-hours worker: rolled-up pay not allowed; pay holiday when taken. |
 | Sample E | Rolled-up holiday pay (12.07%) £9.66, 1 hour |
 
-**GOV.UK's Hana by GOV.UK's worked steps**
+**The input**
 
 ```json
 {
-  "op": "calculate",
-  "pay": "364.70",
-  "rounding": "govuk-steps"
+  "op": "batch",
+  "csv": "worker,period_end,worker_type,hours,basic,overtime\nSample A,2026-11-06,zero-hours,22,281.60,\nSample B,2026-11-06,zero-hours,35.5,454.40,55.20\nSample C,2026-11-06,term-time,30,384.00,\nSample D,2026-11-06,regular,37.5,480.00,\nSample E,2026-11-06,casual,6.25,80.00,\n"
 }
 ```
+
+**GOV.UK's Hana by GOV.UK's worked steps**
 
 GOV.UK's Hana by GOV.UK's worked steps
 
@@ -145,7 +179,25 @@ GOV.UK's Hana by GOV.UK's worked steps
 | working | £364.70 ÷ 100 = £3.65; £3.65 x 12.07 = £44.0555, to the nearest penny £44.06 |
 | exact | £44.01929 |
 
+**The input**
+
+```json
+{
+  "op": "calculate",
+  "pay": "364.70",
+  "rounding": "govuk-steps"
+}
+```
+
 **The rate for 33 days on a 5-day week**
+
+The rate for 33 days on a 5-day week
+
+| Result | Value |
+| --- | --- |
+| answer | With 33 days on a 5-day week = 6.6 weeks of holiday, the accrual rate is 6.6 ÷ (52 - 6.6) = 6.6 ÷ 45.4 = 14.54%. |
+
+**The input**
 
 ```json
 {
@@ -155,21 +207,7 @@ GOV.UK's Hana by GOV.UK's worked steps
 }
 ```
 
-The rate for 33 days on a 5-day week
-
-| Result | Value |
-| --- | --- |
-| answer | With 33 days on a 5-day week = 6.6 weeks of holiday, the accrual rate is 6.6 ÷ (52 - 6.6) = 6.6 ÷ 45.4 = 14.54%. |
-
 **GOV.UK's Harriet: 40 weeks of maternity leave**
-
-```json
-{
-  "op": "leave-accrual",
-  "hours": "1032",
-  "weeksOff": "40"
-}
-```
 
 GOV.UK's Harriet: 40 weeks of maternity leave
 
@@ -180,42 +218,19 @@ GOV.UK's Harriet: 40 weeks of maternity leave
 | step 3 | 2.684 x 40 weeks = 107.36 |
 | step 4 | to the nearest hour: 107 |
 
-## What does it not do?
+**The input**
 
-- Great Britain only. Northern Ireland has its own rules and is not covered.
-- Whether a worker is irregular-hours or part-year depends on the contract; the tool applies your answer, and the pay figures are yours.
-- On a 6 or 7-day week the 28-day cap on statutory leave applies and GOV.UK gives no percentage, so it is refused.
-- It is not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The guidance was read on GOV.UK on 2026-11-08: the reforms guidance (updated 2024-04-01) and the holiday entitlement guide (updated 2026-11-05). The rules and quotes are copied into the tool's data file and change only by hand, with the tests that pin them.
-
-- [Department for Business and Trade, GOV.UK: Holiday pay and entitlement reforms from 1 January 2024](https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024)
-- [GOV.UK: Holiday entitlement](https://www.gov.uk/holiday-entitlement-rights)
-- [GOV.UK: Holiday entitlement: Holiday pay](https://www.gov.uk/holiday-entitlement-rights/holiday-pay)
-- [GOV.UK: Holiday entitlement: Calculate leave entitlement](https://www.gov.uk/holiday-entitlement-rights/calculate-leave-entitlement)
-- [Security Industry Authority, GOV.UK: SIA approved contractors and rolled-up holiday pay](https://www.gov.uk/guidance/sia-approved-contractors-and-rolled-up-holiday-pay)
-
-The guidance was read on GOV.UK on 2026-11-08: the reforms guidance (updated 2024-04-01) and the holiday entitlement guide (updated 2026-11-05). The rules and quotes are copied into the tool's data file and change only by hand, with the tests that pin them.
-
-Rolled-up holiday pay calculator (UK, 12.07%): sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Department for Business and Trade, GOV.UK: Holiday pay and entitlement reforms from 1 January 2024](https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024) | updated 2024-04-01 | 2026-11-08 |
-| [GOV.UK: Holiday entitlement](https://www.gov.uk/holiday-entitlement-rights) | updated 2026-11-05 | 2026-11-08 |
-| [GOV.UK: Holiday entitlement: Holiday pay](https://www.gov.uk/holiday-entitlement-rights/holiday-pay) | updated 2026-11-05 | 2026-11-08 |
-| [GOV.UK: Holiday entitlement: Calculate leave entitlement](https://www.gov.uk/holiday-entitlement-rights/calculate-leave-entitlement) | updated 2026-11-05 | 2026-11-08 |
-| [Security Industry Authority, GOV.UK: SIA approved contractors and rolled-up holiday pay](https://www.gov.uk/guidance/sia-approved-contractors-and-rolled-up-holiday-pay) | updated 2026-06-24 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "leave-accrual",
+  "hours": "1032",
+  "weeksOff": "40"
+}
+```
 
 ## How is it tested?
 
-The quoted rules and their read date are pinned to GOV.UK. The tests reproduce GOV.UK's own figures: Hana £44.06, Mark £55.52, Jill 8 hours, 6 weeks at 13.04%, Table 9 £231.54, Harriet 107 and Sharon 41 hours; and check the 30-minute boundary, the 1 April 2024 start, the 104-week cap and the payroll CSV.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The quoted GOV.UK rules are pinned with their read date, 2026-11-08.
 - GOV.UK's worked figures are reproduced: Hana £44.06, Mark £55.52, Jill 8 hours, 13.04% for 6 weeks, Table 9 £231.54, Harriet 107 hours.

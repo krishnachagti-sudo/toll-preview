@@ -1,5 +1,4 @@
 start,start_weekday,date_before,weekday,us_business_days_between
-2026-11-08,Sunday,2026-10-09,Friday,19
 2026-11-09,Monday,2026-10-10,Saturday,20
 2026-11-10,Tuesday,2026-10-11,Sunday,21
 2026-11-11,Wednesday,2026-10-12,Monday,21
@@ -13,3 +12,4 @@ start,start_weekday,date_before,weekday,us_business_days_between
 2026-11-19,Thursday,2026-10-20,Tuesday,21
 2026-11-20,Friday,2026-10-21,Wednesday,21
 2026-11-21,Saturday,2026-10-22,Thursday,20
+2026-11-22,Sunday,2026-10-23,Friday,19

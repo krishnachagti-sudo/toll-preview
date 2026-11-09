@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up Ohio ZIP codes</h2><p class="muted">Paste your own list: every county, FIPS code and share, as a CSV.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="43003"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=43003">Open 43003 in the lookup</a></p></aside>
 <section>
 <h2 id="counties">Ohio counties and their FIPS codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</caption><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
 <tr><th scope="row">Adams County</th><td>39001</td><td class="r num">13</td><td></td></tr>
 <tr><th scope="row">Allen County</th><td>39003</td><td class="r num">20</td><td>Lima, OH</td></tr>
 <tr><th scope="row">Ashland County</th><td>39005</td><td class="r num">19</td><td>Ashland, OH</td></tr>
@@ -166,11 +167,11 @@
 <tr><th scope="row">Williams County</th><td>39171</td><td class="r num">12</td><td></td></tr>
 <tr><th scope="row">Wood County</th><td>39173</td><td class="r num">34</td><td>Toledo, OH</td></tr>
 <tr><th scope="row">Wyandot County</th><td>39175</td><td class="r num">13</td><td></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="split">Ohio ZIP codes that cross a county line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The 120 split across the most counties, of 464; the CSV has them all.</caption><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The 120 split across the most counties, of 464; the CSV has them all.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
 <tr><th scope="row">43011</th><td>Knox County, OH (39083) 51.68%; Licking County, OH (39089) 19.36%; Morrow County, OH (39117) 15.35%; Delaware County, OH (39041) 13.62%</td></tr>
 <tr><th scope="row">43135</th><td>Hocking County, OH (39073) 79.15%; Pickaway County, OH (39129) 12.2%; Ross County, OH (39141) 7.91%; Vinton County, OH (39163) 0.74%</td></tr>
 <tr><th scope="row">43153</th><td>Madison County, OH (39097) 74.64%; Clark County, OH (39023) 13.9%; Fayette County, OH (39047) 9.02%; Greene County, OH (39057) 2.44%</td></tr>
@@ -291,12 +292,12 @@
 <tr><th scope="row">45697</th><td>Adams County, OH (39001) 51.32%; Brown County, OH (39015) 34.3%; Highland County, OH (39071) 14.38%</td></tr>
 <tr><th scope="row">45710</th><td>Meigs County, OH (39105) 45.96%; Athens County, OH (39009) 35.7%; Vinton County, OH (39163) 18.34%</td></tr>
 <tr><th scope="row">45711</th><td>Athens County, OH (39009) 81.66%; Morgan County, OH (39115) 11.39%; Washington County, OH (39167) 6.95%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How many ZIP codes are in Ohio?</h3></summary><div class="xp-in"><p>1,233 ZCTAs have land in Ohio in the Census 2020 ZCTA-county file. PO-box-only ZIP codes have no ZCTA and are not counted.</p></div></details><details class="xpand"><summary><h3>How many Ohio ZIP codes cross a county line?</h3></summary><div class="xp-in"><p>464 of 1,233 (37.6%), such as 43003, 43006, 43011.</p></div></details><details class="xpand"><summary><h3>Which Ohio county has the most ZIP codes?</h3></summary><div class="xp-in"><p>Hamilton County, OH (39061), with land in 58 ZCTAs.</p></div></details></section>

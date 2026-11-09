@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="one-return">One license, one return, two decals a truck</h2>
 <p>Your base jurisdiction issues one IFTA license for the carrier and two decals for each qualified vehicle (R605). The quarterly return covers the whole fleet: Total Distance is every mile of every qualified vehicle (R266), and the fleet MPG is worked out once for each fuel type.</p>
@@ -81,10 +82,10 @@
 <section>
 <h2 id="example">Worked example: the two-truck sample fleet</h2>
 <p>The calculator's made-up fleet for the 3rd quarter 2026: two diesel trucks, four trips, five receipts. The answer: 3rd quarter 2026 return for Sample Carrier LLC (made-up trips) (base MO): a $28.16 credit across 1 fuel type, due November 2, 2026. Reconciliation passed; 1 record field is missing.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Per truck, from the trip sheets and the odometer chain.</caption><thead><tr><th scope="col">Unit</th><th scope="col" class="r num">Trips</th><th scope="col" class="r num">Odometer miles</th><th scope="col" class="r num">Logged miles</th><th scope="col" class="r num">Not on a trip sheet</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Per truck, from the trip sheets and the odometer chain.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Unit</th><th scope="col" class="r num">Trips</th><th scope="col" class="r num">Odometer miles</th><th scope="col" class="r num">Logged miles</th><th scope="col" class="r num">Not on a trip sheet</th></tr></thead><tbody>
 <tr><th scope="row">101</th><td class="r num">2</td><td class="r num">2,200</td><td class="r num">2,200</td><td class="r num">0</td></tr>
 <tr><th scope="row">102</th><td class="r num">2</td><td class="r num">910</td><td class="r num">860</td><td class="r num">50</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Combined: 3,060 miles on 490 gallons, 6.24 MPG, for one return line per jurisdiction. The check also notes what an auditor would ask about: Unit 102: 50 odometer miles between trip T3 and trip T4 are on no trip sheet. Log them (personal or bobtail miles still count) or explain them.</p>
 </section>
 <section>
@@ -106,7 +107,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.iftach.org/manuals/2026/AA/Articles%20of%20Agreement%20-%2008-26-26.pdf">IFTA Articles of Agreement, revised August 26, 2026 (R266, R345, R410, R605, R610, R625, R630, R930, R940, R960, R1220, R1230, R1260, R1270) (read November 6, 2026)</a></li><li><a href="https://tax.idaho.gov/?p=1239">Idaho State Tax Commission, IFTA licenses: records (IVDR) (read November 2, 2026)</a></li><li><a href="https://www.oregon.gov/odot/forms/motcarr/9740.pdf">Oregon DOT, IFTA Tax Return Form 735-9740 and its filing instructions (03-26) (read November 2, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.iftach.org/manuals/2026/AA/Articles%20of%20Agreement%20-%2008-26-26.pdf">IFTA Articles of Agreement, revised August 26, 2026 (R266, R345, R410, R605, R610, R625, R630, R930, R940, R960, R1220, R1230, R1260, R1270) (read November 6, 2026)</a><span class="src-m">iftach.org</span></li><li><a href="https://tax.idaho.gov/?p=1239">Idaho State Tax Commission, IFTA licenses: records (IVDR) (read November 2, 2026)</a><span class="src-m">tax.idaho.gov</span></li><li><a href="https://www.oregon.gov/odot/forms/motcarr/9740.pdf">Oregon DOT, IFTA Tax Return Form 735-9740 and its filing instructions (03-26) (read November 2, 2026)</a><span class="src-m">oregon.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Do I file one IFTA return per truck?</h3></summary><div class="xp-in"><p>No. One license covers every qualified vehicle in the fleet, with two decals per vehicle (R605), and one quarterly return covers them all. Total Distance is all miles &quot;by every qualified vehicle in the licensee's fleet&quot; (R266).</p></div></details><details class="xpand"><summary><h3>Is the MPG per truck or per fleet?</h3></summary><div class="xp-in"><p>Per fleet, for each fuel type: all miles of the vehicles on that fuel divided by all their gallons. In the sample, 3,060 miles / 490 gallons = 6.24.</p></div></details><details class="xpand"><summary><h3>Do I still need records for each truck?</h3></summary><div class="xp-in"><p>Yes. Trip sheets and fuel receipts must carry the vehicle unit or identification number (Idaho State Tax Commission), and an auditor checks each truck's odometer chain.</p></div></details></section>

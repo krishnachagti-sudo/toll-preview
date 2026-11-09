@@ -1,6 +1,6 @@
 # BR-DE-25: Lastschrift ohne Mandatsangaben (BG-19)
 
-BR-DE-25 bedeutet: Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie bei Code 59 die Mandatsreferenz (BT-89), die Gläubiger-ID (BT-90) und das belastete Konto (BT-91) an und entfernen Sie die Überweisungsangaben.
+BR-DE-25 bedeutet: Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

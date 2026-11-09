@@ -31,6 +31,7 @@ const MONTHS = {
 };
 const TX = {
   de: {
+    'tf.example': 'Beispiel', 'tf.yours': 'Ihr Ergebnis', 'tf.src': 'in Ihrem Browser erstellt, kostenlos',
     'type.url': 'Website-Link', 'type.text': 'Einfacher Text', 'type.wifi': 'WLAN-Zugang', 'type.vcard': 'Kontaktkarte (vCard 3.0)', 'type.email': 'E-Mail', 'type.sms': 'Textnachricht (SMS)', 'type.phone': 'Anruf', 'type.location': 'Standort auf der Karte',
     'f.url.url': 'Internetadresse', 'ph.text': 'Beliebiger Text', 'f.text.text': 'Text',
     'f.wifi.ssid': 'Netzwerkname (SSID)', 'f.wifi.password': 'Passwort', 'f.wifi.security': 'Verschlüsselung', 'f.wifi.hidden': 'Verstecktes Netzwerk', 'f.wifi.eapMethod': 'EAP-Methode (Unternehmen)', 'f.wifi.identity': 'Identität (Unternehmen)', 'f.wifi.anonymousIdentity': 'Anonyme Identität (Unternehmen)', 'f.wifi.phase2': 'Phase 2 (Unternehmen)',
@@ -61,6 +62,7 @@ const TX = {
     'bulk.signin': 'Melden Sie sich an, um die Dateien zu erstellen; die Zeilen oben bleiben auf dieser Seite.', 'bulk.signinLink': ' Anmelden', 'bulk.isOpen': '{0} ist geöffnet.',
   },
   es: {
+    'tf.example': 'Ejemplo', 'tf.yours': 'Su resultado', 'tf.src': 'hecho en su navegador, gratis',
     'type.url': 'Enlace a un sitio web', 'type.text': 'Texto sin formato', 'type.wifi': 'Acceso WiFi', 'type.vcard': 'Tarjeta de contacto (vCard 3.0)', 'type.email': 'Correo electrónico', 'type.sms': 'Mensaje de texto (SMS)', 'type.phone': 'Llamada telefónica', 'type.location': 'Ubicación en el mapa',
     'f.url.url': 'Dirección web', 'ph.text': 'Cualquier texto', 'f.text.text': 'Texto',
     'f.wifi.ssid': 'Nombre de la red (SSID)', 'f.wifi.password': 'Contraseña', 'f.wifi.security': 'Seguridad', 'f.wifi.hidden': 'Red oculta', 'f.wifi.eapMethod': 'Método EAP (empresas)', 'f.wifi.identity': 'Identidad (empresas)', 'f.wifi.anonymousIdentity': 'Identidad anónima (empresas)', 'f.wifi.phase2': 'Fase 2 (empresas)',
@@ -91,6 +93,7 @@ const TX = {
     'bulk.signin': 'Inicie sesión para crear los archivos; las filas de arriba se quedan en esta página.', 'bulk.signinLink': ' Iniciar sesión', 'bulk.isOpen': '{0} está abierto.',
   },
   fr: {
+    'tf.example': 'Exemple', 'tf.yours': 'Votre résultat', 'tf.src': 'créé dans votre navigateur, gratuit',
     'type.url': 'Lien vers un site web', 'type.text': 'Texte brut', 'type.wifi': 'Connexion Wi-Fi', 'type.vcard': 'Carte de contact (vCard 3.0)', 'type.email': 'E-mail', 'type.sms': 'SMS', 'type.phone': 'Appel téléphonique', 'type.location': 'Position sur la carte',
     'f.url.url': 'Adresse web', 'ph.text': 'Un texte quelconque', 'f.text.text': 'Texte',
     'f.wifi.ssid': 'Nom du réseau (SSID)', 'f.wifi.password': 'Mot de passe', 'f.wifi.security': 'Sécurité', 'f.wifi.hidden': 'Réseau masqué', 'f.wifi.eapMethod': 'Méthode EAP (entreprise)', 'f.wifi.identity': 'Identité (entreprise)', 'f.wifi.anonymousIdentity': 'Identité anonyme (entreprise)', 'f.wifi.phase2': 'Phase 2 (entreprise)',
@@ -121,6 +124,7 @@ const TX = {
     'bulk.signin': 'Connectez-vous pour créer les fichiers ; les lignes ci-dessus restent sur cette page.', 'bulk.signinLink': ' Se connecter', 'bulk.isOpen': '{0} est ouvert.',
   },
   pt: {
+    'tf.example': 'Exemplo', 'tf.yours': 'Seu resultado', 'tf.src': 'gerado no seu navegador, grátis',
     'type.url': 'Link de site', 'type.text': 'Texto simples', 'type.wifi': 'Acesso ao Wi-Fi', 'type.vcard': 'Cartão de contato (vCard 3.0)', 'type.email': 'E-mail', 'type.sms': 'Mensagem de texto (SMS)', 'type.phone': 'Ligação telefônica', 'type.location': 'Localização no mapa',
     'f.url.url': 'Endereço do site', 'ph.text': 'Qualquer texto', 'f.text.text': 'Texto',
     'f.wifi.ssid': 'Nome da rede (SSID)', 'f.wifi.password': 'Senha', 'f.wifi.security': 'Segurança', 'f.wifi.hidden': 'Rede oculta', 'f.wifi.eapMethod': 'Método EAP (corporativo)', 'f.wifi.identity': 'Identidade (corporativo)', 'f.wifi.anonymousIdentity': 'Identidade anônima (corporativo)', 'f.wifi.phase2': 'Fase 2 (corporativo)',
@@ -151,6 +155,7 @@ const TX = {
     'bulk.signin': 'Entre na sua conta para gerar os arquivos; as linhas acima ficam nesta página.', 'bulk.signinLink': ' Entrar', 'bulk.isOpen': '{0} está aberto.',
   },
   hi: {
+    'tf.example': 'उदाहरण', 'tf.yours': 'आपका नतीजा', 'tf.src': 'आपके ब्राउज़र में बना, मुफ्त',
     'type.url': 'वेबसाइट लिंक', 'type.text': 'सादा टेक्स्ट', 'type.wifi': 'WiFi लॉगिन', 'type.vcard': 'संपर्क कार्ड (vCard 3.0)', 'type.email': 'ईमेल', 'type.sms': 'टेक्स्ट मैसेज (SMS)', 'type.phone': 'फोन कॉल', 'type.location': 'मैप लोकेशन',
     'f.url.url': 'वेब एड्रेस', 'ph.text': 'कोई भी टेक्स्ट', 'f.text.text': 'टेक्स्ट',
     'f.wifi.ssid': 'नेटवर्क का नाम (SSID)', 'f.wifi.password': 'पासवर्ड', 'f.wifi.security': 'सिक्योरिटी', 'f.wifi.hidden': 'छिपा हुआ नेटवर्क', 'f.wifi.eapMethod': 'EAP मेथड (एंटरप्राइज़)', 'f.wifi.identity': 'आइडेंटिटी (एंटरप्राइज़)', 'f.wifi.anonymousIdentity': 'अनाम आइडेंटिटी (एंटरप्राइज़)', 'f.wifi.phase2': 'फेज़ 2 (एंटरप्राइज़)',
@@ -181,6 +186,7 @@ const TX = {
     'bulk.signin': 'फाइलें बनाने के लिए साइन इन करें; ऊपर की पंक्तियाँ इसी पेज पर रहती हैं।', 'bulk.signinLink': ' साइन इन', 'bulk.isOpen': '{0} खुली है।',
   },
   ja: {
+    'tf.example': '例', 'tf.yours': 'あなたの結果', 'tf.src': 'ブラウザー内で作成、無料',
     'type.url': 'ウェブサイトのリンク', 'type.text': 'テキスト', 'type.wifi': 'Wi-Fi接続', 'type.vcard': '連絡先カード（vCard 3.0）', 'type.email': 'メール', 'type.sms': 'ショートメッセージ（SMS）', 'type.phone': '電話', 'type.location': '地図の位置',
     'f.url.url': 'URL', 'ph.text': '任意のテキスト', 'f.text.text': 'テキスト',
     'f.wifi.ssid': 'ネットワーク名（SSID）', 'f.wifi.password': 'パスワード', 'f.wifi.security': 'セキュリティ', 'f.wifi.hidden': 'ステルスネットワーク（SSIDを隠している）', 'f.wifi.eapMethod': 'EAP方式（企業向け）', 'f.wifi.identity': 'ID（企業向け）', 'f.wifi.anonymousIdentity': '匿名ID（企業向け）', 'f.wifi.phase2': 'フェーズ2（企業向け）',
@@ -410,8 +416,8 @@ function make() {
     // The English page's tool-full layout: the Example tag and the inputs line above the code.
     const tf = out.classList.contains('tf-result');
     const ex = tf && type === 'url' && payload === START.url;
-    if (tf) out.append(h('div', { class: 'tf-rh' }, [h('span', { class: ex ? 'tf-tag' : 'tf-tag run' }, ex ? 'Example' : 'Your result'), h('span', { class: 'tf-src' }, 'made in your browser, free')]),
-      h('p', { class: 'tf-exin' }, `${ex ? 'Example: ' : ''}${TYPE_NAMES[type]}, ${payload.length > 60 ? `${payload.slice(0, 59)}…` : payload}, level ${qr.ecc}, ${widthMm} mm wide`));
+    if (tf) out.append(h('div', { class: 'tf-rh' }, [h('span', { class: ex ? 'tf-tag' : 'tf-tag run' }, ex ? t('tf.example', 'Example') : t('tf.yours', 'Your result')), h('span', { class: 'tf-src' }, t('tf.src', 'made in your browser, free'))]));
+    if (tf && LANG === 'en') out.append(h('p', { class: 'tf-exin' }, `${ex ? 'Example: ' : ''}${TYPE_NAMES[type]}, ${payload.length > 60 ? `${payload.slice(0, 59)}…` : payload}, level ${qr.ecc}, ${widthMm} mm wide`));
     const preview = h('div', { class: 'qr-preview' });
     preview.innerHTML = svg; // svgOf writes only numbers, colours and the logo's data URL
     out.appendChild(preview);

@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <p>““Qualified tips” are voluntary cash or charged tips received from customers including shared tips.”</p>
 <p>“Qualified tips are cash tips, which include voluntary cash or charged tips received from customers or, in the case of employees, through tip-sharing arrangements. Mandatory service charges added to the bill are not qualified tips.”</p>
 <p>“Maximum annual deduction is $25,000.”</p>
@@ -81,7 +82,7 @@
 <p>“For tax years beginning after 2024 and ending before 2029, P.L. 119-21 allows certain employees and self-employed individuals to deduct up to $25,000 of qualified tips received in occupations that are listed by the IRS as having customarily and regularly received tips on or before December 31, 2024, on their income tax return.”</p>
 <section>
 <h2 id="codes">Codes for the roles in a pool</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Treasury Tipped Occupation Codes from the IRS list, for the roles this calculator knows.</caption><thead><tr><th scope="col">Role</th><th scope="col">TTOC</th><th scope="col">IRS title</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Treasury Tipped Occupation Codes from the IRS list, for the roles this calculator knows.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Role</th><th scope="col">TTOC</th><th scope="col">IRS title</th></tr></thead><tbody>
 <tr><th scope="row">Server</th><td>102</td><td>Wait staff</td></tr>
 <tr><th scope="row">Bartender</th><td>101</td><td>Bartenders</td></tr>
 <tr><th scope="row">Busser</th><td>104</td><td>Dining room and cafeteria attendants and bartender helpers</td></tr>
@@ -96,12 +97,12 @@
 <tr><th scope="row">Cook</th><td>105</td><td>Chefs and cooks</td></tr>
 <tr><th scope="row">Dishwasher</th><td>108</td><td>Dishwashers</td></tr>
 <tr><th scope="row">Prep cook</th><td>106</td><td>Food preparation workers</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>The pay-run record puts the code for each person's role in its irs_ttoc column. Roles with no code shown (bellhop, food runner, manager, owner, other) were not matched to the list here: look them up on the IRS page.</p>
 </section>
 <section>
 <h2 id="worked">A night's shares</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The night's shares: each is a tip of the person who keeps it.</caption><thead><tr><th scope="col">Name</th><th scope="col">Role</th><th scope="col" class="r num">Hours</th><th scope="col" class="r num">Points</th><th scope="col" class="r num">Share</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The night's shares: each is a tip of the person who keeps it.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Name</th><th scope="col">Role</th><th scope="col" class="r num">Hours</th><th scope="col" class="r num">Points</th><th scope="col" class="r num">Share</th></tr></thead><tbody>
 <tr><th scope="row">Ana</th><td>Server</td><td class="r num">7.5</td><td class="r num">10</td><td class="r num">$193.75</td></tr>
 <tr><th scope="row">Ben</th><td>Server</td><td class="r num">6</td><td class="r num">10</td><td class="r num">$155.00</td></tr>
 <tr><th scope="row">Carla</th><td>Server</td><td class="r num">5.25</td><td class="r num">10</td><td class="r num">$135.62</td></tr>
@@ -110,14 +111,14 @@
 <tr><th scope="row">Ezra</th><td>Busser</td><td class="r num">4</td><td class="r num">5</td><td class="r num">$103.33</td></tr>
 <tr><th scope="row">Fay</th><td>Host</td><td class="r num">5</td><td class="r num">3</td><td class="r num">$129.17 *</td></tr>
 <tr><th scope="row">Gus</th><td>Food runner</td><td class="r num">5.75</td><td class="r num">4</td><td class="r num">$148.54</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>It is an income tax deduction for the employee. Tips are still reported and withheld on as before:</p>
 <p>“Tips are generally subject to federal income tax withholding and both the employer share and employee share of social security tax and Medicare tax if the tips received are $20 or more per month.”</p>
 <p class="cp-note">Not legal or tax advice. Shares are arithmetic on the hours, points and roles shown; the check applies the quoted rules to those facts. Whether someone is a manager or supervisor, or customarily tipped, depends on their duties. State rules are shown only for states whose own site was read; city rules are not covered.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.irs.gov/newsroom/what-the-no-tax-on-tips-deduction-means-for-you">IRS, What the &quot;No Tax on Tips&quot; deduction means for you (updated September 21, 2026; read November 8, 2026)</a></li><li><a href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024">IRS, Occupations that customarily and regularly received tips on or before Dec. 31, 2024 (updated June 28, 2026; read November 8, 2026)</a></li><li><a href="https://www.irs.gov/instructions/iw2w3">IRS, General Instructions for Forms W-2 and W-3 (2026) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.irs.gov/newsroom/what-the-no-tax-on-tips-deduction-means-for-you">IRS, What the &quot;No Tax on Tips&quot; deduction means for you (updated September 21, 2026; read November 8, 2026)</a><span class="src-m">irs.gov</span></li><li><a href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024">IRS, Occupations that customarily and regularly received tips on or before Dec. 31, 2024 (updated June 28, 2026; read November 8, 2026)</a><span class="src-m">irs.gov</span></li><li><a href="https://www.irs.gov/instructions/iw2w3">IRS, General Instructions for Forms W-2 and W-3 (2026) (read November 8, 2026)</a><span class="src-m">irs.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Do tip-pool payouts count as qualified tips for the no tax on tips deduction?</h3></summary><div class="xp-in"><p>Yes. The IRS says qualified tips include voluntary cash or charged tips received from customers or, for employees, through tip-sharing arrangements; the deduction is capped at $25,000 a year and phases out above $150,000 of modified AGI ($300,000 joint).</p></div></details></section>

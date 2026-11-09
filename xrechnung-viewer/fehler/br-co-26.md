@@ -1,6 +1,6 @@
 # BR-CO-26: Keine Kennung des Verkäufers (BT-29, BT-30 oder BT-31)
 
-BR-CO-26 bedeutet: In order for the buyer to automatically identify a supplier, the Seller identifier (BT-29), the Seller legal registration identifier (BT-30) and/or the Seller VAT identifier (BT-31) shall be present. (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Geben Sie die USt-IdNr. (BT-31) oder die Handelsregisternummer (BT-30) an; Kleinunternehmer ohne USt-IdNr. können eine Kennung wie die Lieferantennummer beim Kunden (BT-29) verwenden.
+BR-CO-26 bedeutet: In order for the buyer to automatically identify a supplier, the Seller identifier (BT-29), the Seller legal registration identifier (BT-30) and/or the Seller VAT identifier (BT-31) shall be present. (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

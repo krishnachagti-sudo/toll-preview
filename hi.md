@@ -4,10 +4,10 @@
 
 ## टूल
 
-- [Business days](https://krishnachagti-sudo.github.io/toll-preview/hi/business-days/)
-- [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/hi/fx-on-date/)
-- [Image to size](https://krishnachagti-sudo.github.io/toll-preview/hi/image-to-size/)
-- [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/hi/qr-code-generator/)
+- [कार्य दिवस (वर्किंग डेज़) कैलकुलेटर](https://krishnachagti-sudo.github.io/toll-preview/hi/business-days/): दो तारीखों के बीच के कार्य दिवस गिनें, या किसी तारीख में कार्य दिवस जोड़ें। केंद्र सरकार की छुट्टियों (दिल्ली, 2025 से 2027) और शनिवार-रविवार को नाम के साथ छोड़ा जाता है।
+- [किसी तारीख़ का एक्सचेंज रेट](https://krishnachagti-sudo.github.io/toll-preview/hi/fx-on-date/): किसी भी करेंसी जोड़ी का 1999 से किसी भी तारीख़ का आधिकारिक ECB रेफरेंस रेट, और असल में इस्तेमाल हुई तारीख़ के साथ। या अमेरिकी ट्रेज़री, IRS, HMRC का रेट।
+- [फोटो का साइज़ KB में कम करें](https://krishnachagti-sudo.github.io/toll-preview/hi/image-to-size/): फोटो का साइज़ KB में तय सीमा के अंदर करें, जैसे 20 KB, 50 KB या 200 KB। मुफ़्त है और ब्राउज़र में ही चलता है, आपकी फोटो आपके डिवाइस से बाहर नहीं जाती।
+- [QR कोड जनरेटर](https://krishnachagti-sudo.github.io/toll-preview/hi/qr-code-generator/): मुफ्त QR कोड बनाएँ, बिना साइन-अप: लिंक, WiFi, संपर्क, ईमेल, SMS, कॉल या लोकेशन। छपे हुए कोड की जाँच करें कि वह किसी वेंडर के रीडायरेक्ट पर तो नहीं टिका।
 
 ## गाइड
 

@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check your cartons</h2><p class="muted">One carton a line, like &quot;SKU-A: 24, SKU-B: 6&quot;; start with &quot;5 x&quot; for five packed the same. The check runs free on the page.</p><form method="get" action="/toll-preview/inbound-placement-fee-calculator/" class="cp-tool-form"><input type="hidden" name="mode" value="eligibility"><input type="hidden" name="ecartons" value="5 x SKU-A: 24|[Extra] SKU-A: 10"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the cartons</button></form><p class="small"><a href="/toll-preview/inbound-placement-fee-calculator/?mode=eligibility&amp;ecartons=5+x+SKU-A%3A+24%7C%5BExtra%5D+SKU-A%3A+10">Open this carton plan in the checker</a></p></aside>
 <section>
 <h2 id="rule">Amazon's rule</h2>
@@ -81,11 +82,11 @@
 </section>
 <section>
 <h2 id="examples">Amazon's three examples, checked</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Each plan has five cartons; items 1 and 2</caption><thead><tr><th scope="col">Plan</th><th scope="col">Carton 5</th><th scope="col">Amazon</th><th scope="col">This checker</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Each plan has five cartons; items 1 and 2</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Plan</th><th scope="col">Carton 5</th><th scope="col">Amazon</th><th scope="col">This checker</th></tr></thead><tbody>
 <tr><th scope="row">1</th><td>100 of item 1, 20 of item 2</td><td>Eligible</td><td>Eligible</td></tr>
 <tr><th scope="row">2</th><td>100 of item 1, 0 of item 2</td><td>Ineligible</td><td>Ineligible: 1 is in 5 cartons, but they are not identical: Carton 5 is packed differently from the other 4 (100 x 1 + 20 x 2).</td></tr>
 <tr><th scope="row">3</th><td>50 of item 1, 20 of item 2</td><td>Ineligible</td><td>Ineligible: 1 is in 5 cartons, but they are not identical: Carton 5 is packed differently from the other 4 (100 x 1 + 20 x 2).</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Plan 1: &quot;All cartons include items 1 and 2, and the quantity for each item is the same across all cartons, so this plan is eligible for an Amazon-optimized option.&quot; Plan 2: &quot;All cartons except for carton 5 have items 1 and 2, so this plan is not eligible for an Amazon-optimized option.&quot; Plan 3: &quot;All cartons include items 1 and 2 but carton 5 has a different quantity of item 1, so this plan is not eligible for an Amazon-optimized option.&quot;</p>
 </section>
 <section>
@@ -95,11 +96,11 @@
 <section>
 <h2 id="mixed">A mixed plan</h2>
 <p>Amazon-optimized splits: not eligible. 1 of 3 products blocks it: SKU-C. Repack SKU-C's 120 units as 5 identical cartons of 24.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Six cartons of SKU-A with SKU-B, three of SKU-C</caption><thead><tr><th scope="col">Product</th><th scope="col" class="r num">Cartons</th><th scope="col" class="r num">Identical</th><th scope="col">Result</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Six cartons of SKU-A with SKU-B, three of SKU-C</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Product</th><th scope="col" class="r num">Cartons</th><th scope="col" class="r num">Identical</th><th scope="col">Result</th></tr></thead><tbody>
 <tr><th scope="row">SKU-A</th><td class="r num">6</td><td class="r num">6</td><td>Qualifies</td></tr>
 <tr><th scope="row">SKU-B</th><td class="r num">6</td><td class="r num">6</td><td>Qualifies</td></tr>
 <tr><th scope="row">SKU-C</th><td class="r num">3</td><td class="r num">3</td><td>Repack SKU-C's 120 units as 5 identical cartons of 24.</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="more">More options in Send to Amazon</h2>
@@ -107,7 +108,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z">Amazon: FBA inbound placement service fee (United States, read November 8, 2026)</a></li><li><a href="https://sellercentral-europe.amazon.com/seller-forums/discussions/t/7724a081-fb95-48db-97fe-aaa0a6567100">Amazon Seller Forums: &quot;5 identical boxes + 1 additional box does not work&quot; (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z">Amazon: FBA inbound placement service fee (United States, read November 8, 2026)</a><span class="src-m">sellercentral.amazon.com</span></li><li><a href="https://sellercentral-europe.amazon.com/seller-forums/discussions/t/7724a081-fb95-48db-97fe-aaa0a6567100">Amazon Seller Forums: &quot;5 identical boxes + 1 additional box does not work&quot; (read November 8, 2026)</a><span class="src-m">sellercentral-europe.amazon.com</span></li></ul>
 <p class="cp-note">Not affiliated with Amazon. Fee ranges are Amazon's US Seller Central table, read November 8, 2026; the fee Send to Amazon shows for your plan is the one charged. Freight figures in the examples are made up for the example; use your own quotes.</p>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>List the cartons.</strong> One carton or pallet a line, with each product and its units.</li><li><strong>Group by product.</strong> For each product, take every carton that holds it.</li><li><strong>Compare the packing.</strong> All of those cartons must hold the same products in the same quantities.</li><li><strong>Count.</strong> There must be at least five of them. Any product that fails blocks Amazon-optimized splits for the plan.</li></ol></section>

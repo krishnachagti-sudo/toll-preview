@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the cleanup tool</h2><p class="muted">The worked file opens in the tool and is previewed in your browser, free. Swap in your own export there.</p><form method="get" action="/toll-preview/clearing-account-cleanup/" class="cp-tool-form"><input type="hidden" name="ledger" value="Harbor Lane Studio (made-up sample)
 Transaction Detail by Account
 &quot;January 1, 2025 - October 31, 2026&quot;
@@ -110,27 +111,27 @@ Total for Undeposited Funds,,,,,,,&quot;$7,072.74&quot;,
 <section>
 <h2 id="should">What the balance should be</h2>
 <p>Intuit describes the account as &quot;a temporary account that holds payments you plan to deposit later at the bank&quot;. Once every bank deposit has been recorded, only payments not yet taken to the bank should be left, so the balance should be small and recent. Xenett, a review app, puts a working rule in its own words: &quot;Any transaction older than 30 days needs investigation.&quot; That is a practitioner's rule, not an Intuit one.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>The worked export, as of October 30, 2026</caption><thead><tr><th scope="col">Age</th><th scope="col" class="r num">Items</th><th scope="col" class="r num">Total</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The worked export, as of October 30, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Age</th><th scope="col" class="r num">Items</th><th scope="col" class="r num">Total</th></tr></thead><tbody>
 <tr><th scope="row">0 to 30 days</th><td class="r num">7</td><td class="r num">$3,549.99</td></tr>
 <tr><th scope="row">31 to 60 days</th><td class="r num">4</td><td class="r num">$1,787.75</td></tr>
 <tr><th scope="row">61 to 90 days</th><td class="r num">1</td><td class="r num">$450.00</td></tr>
 <tr><th scope="row">Over 90 days</th><td class="r num">2</td><td class="r num">$1,285.00</td></tr>
 <tr><th scope="row">All open items</th><td class="r num">14</td><td class="r num">$7,072.74</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="why">Why it grows: what the worked export shows</h2>
 <ul><li><strong>Deposits never recorded.</strong> The bank shows 4 deposits in September and October; none was recorded as a Bank Deposit, so the payments in them are still open.</li><li><strong>Payments entered twice.</strong> Two $320.00 payments with the same date, name and number #2320. If both stay, the balance is $320.00 too high.</li><li><strong>Fees taken before the money arrived.</strong> The $1,019.25 deposit matches no set exactly; a $1,050.00 payment fits after a fee.</li><li><strong>Deposits matched in the bank feed instead.</strong> An Intuit Community Manager warns that &quot;if a bank feed deposit is then also matched separately, you could end up with a double deposit on the bank account side&quot;. The payment then stays in Undeposited Funds while the bank shows the money.</li></ul>
-<div class="table-scroll"><table class="rules cp-table"><caption>The worked export against its bank statement</caption><thead><tr><th scope="col">Bank deposit</th><th scope="col">Result</th><th scope="col">The sets</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The worked export against its bank statement</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Bank deposit</th><th scope="col">Result</th><th scope="col">The sets</th></tr></thead><tbody>
 <tr><th scope="row">2026-09-14: $963.25</th><td>one set fits</td><td>Oak &amp; Co #2280 $275.50 (2026-09-05) + Rivera Plumbing #2290 $687.75 (2026-09-12)</td></tr>
 <tr><th scope="row">2026-09-22: $412.25</th><td>several sets fit (2)</td><td>Set 1: Pine Street Gym #2297 $412.25 (2026-09-18); Set 2: Lumen Dental #2283 $412.25 (2026-09-09)</td></tr>
 <tr><th scope="row">2026-10-16: $1,500.00</th><td>one set fits</td><td>Birch Cafe #2305 $960.00 (2026-10-02) + Lumen Dental #2311 $540.00 (2026-10-06)</td></tr>
 <tr><th scope="row">2026-10-29: $1,019.25</th><td>fits only after a fee</td><td>Pine Street Gym #2334 $1,050.00 (2026-10-27) = $1,050.00, fee $30.75 (2.93%)</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-setup/deposit-payments-undeposited-funds-account-online/L1td0m8Z2_US_en_US">Intuit QuickBooks: Deposit payments into the Undeposited Funds account in QuickBooks Online, updated August 24, 2026 (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/community/payments-3/how-do-i-clear-old-quickbooks-payments-from-undeposited-funds-when-merchant-statements-are-no-longer-available-19748">QuickBooks Community: How do I clear old QuickBooks Payments from Undeposited Funds when merchant statements are no longer available? (read November 8, 2026)</a></li><li><a href="https://pulse.xenett.com/blog/undeposited-funds-in-quickbooks">Xenett Pulse: Undeposited Funds in QuickBooks (Nick Shah, August 18, 2026) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-setup/deposit-payments-undeposited-funds-account-online/L1td0m8Z2_US_en_US">Intuit QuickBooks: Deposit payments into the Undeposited Funds account in QuickBooks Online, updated August 24, 2026 (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li><li><a href="https://quickbooks.intuit.com/community/payments-3/how-do-i-clear-old-quickbooks-payments-from-undeposited-funds-when-merchant-statements-are-no-longer-available-19748">QuickBooks Community: How do I clear old QuickBooks Payments from Undeposited Funds when merchant statements are no longer available? (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li><li><a href="https://pulse.xenett.com/blog/undeposited-funds-in-quickbooks">Xenett Pulse: Undeposited Funds in QuickBooks (Nick Shah, August 18, 2026) (read November 8, 2026)</a><span class="src-m">pulse.xenett.com</span></li></ul>
 </section>
 
 

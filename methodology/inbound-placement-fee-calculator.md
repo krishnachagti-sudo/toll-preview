@@ -2,9 +2,49 @@
 
 Each product's placement fee comes from Amazon's US table by size tier and shipping weight, as a range per unit on minimal splits (for example $0.34 to $0.60 for large standard at 1.5+ lb to 3 lb) and none on Amazon-optimized splits; your freight for each option is added, and the cheapest is named only when it wins across the whole range. The fee is charged 45 days after Amazon receives the shipment.
 
+## How does it work?
+
+1. Each product's size tier is the one given, or is worked out from the packaged sides and unit weight with Amazon's size tier tables (the 2026 table, or the 2027 table for a plan dated January 15, 2027 or later).
+2. The weight picks the fee row and band in Amazon's table; a band's top edge is inclusive.
+3. Minimal and partial splits are priced at the low and high ends of Amazon's published range times the units, unless you give the fee Send to Amazon shows, which is then exact.
+4. Partial splits are not offered for a plan with standard-size items.
+5. Each option's total is the fee less credits, plus freight and other costs, at both ends of the range.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/inbound-placement-fee-calculator/#what) below.
+
+## What does it not cover?
+
+- Amazon publishes the placement fee as a range per unit that varies with the inbound location and capacity. The fee Send to Amazon shows for your plan is the one you are charged; enter it for an exact answer.
+- Freight figures are your own quotes. The cheapest pick is only as good as them.
+- Freight into AWD is not included in the AWD cost. US marketplace only.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 12 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Amazon's placement fee table and the pages around it were read on November 8, 2026 on Amazon's US Seller Central. They change only by hand, with the tests that pin the table row by row.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin Amazon's placement fee table row by row as read, and check exact money and weights, inclusive band edges, size tiers from dimensions against Amazon's own examples (with the 2-inch minimum and the 2027 table), totals per option, the cheapest and how sure, the break-even, options Amazon does not offer, credits, refusals, Amazon's carton plan examples, rates and AWD.
+
+- [FBA inbound placement service fee](https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z), Amazon page, United States, read 2026-11-08
+- [2027 US Referral and Fulfillment by Amazon fees](https://amazon.com/selling-fee-changes), Amazon page, United States, read 2026-11-08
+- [Product size tiers](https://sellercentral.amazon.com/help/hub/reference/external/G5KW835AHDJCH8W), Amazon page, United States, read 2026-11-08
+- [Dimensional weight](https://sellercentral.amazon.com/help/hub/reference/external/G53Z9EKF8VVZVH29), Amazon page, United States, read 2026-11-08
+- [Inbound defect fees](https://sellercentral.amazon.com/help/hub/reference/external/GL5XA3MNXAJKJE8E), Amazon page, United States, read 2026-11-08
+- [Amazon Warehousing and Distribution fees](https://sellercentral.amazon.com/help/hub/reference/external/GAYG62Q3MPE6STFS), Amazon page, United States, read 2026-11-08
+- [Amazon Warehousing and Distribution](https://sell.amazon.com/programs/warehousing), Amazon page, United States, read 2026-11-08
+- [New Seller Incentives](https://sellercentral.amazon.com/help/hub/reference/external/GXMJ38VA95GUN5XU), Amazon page, United States, read 2026-11-08
+- [Small-parcel delivery to Amazon](https://sellercentral.amazon.com/help/hub/reference/external/200280260), Amazon page, United States, read 2026-11-08
+- [Truckload delivery to Amazon](https://sellercentral.amazon.com/help/hub/reference/external/200280270), Amazon page, United States, read 2026-11-08
+- [Shipping and routing requirements](https://sellercentral.amazon.com/help/hub/reference/external/G200141510), Amazon page, United States, read 2026-11-08
+- [2026 Updates to US Referral and Fulfillment by Amazon Fees (Amazon's announcement in Seller Forums)](https://sellercentral.amazon.com/seller-forums/discussions/t/f3fa3211-820b-4e2e-a023-158a9cf55f99), Amazon page, United States, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the inbound placement fee calculator compute?
 
-Given the products in a shipping plan (size tier and weight, or the packaged sides and unit weight) and your freight quote for each placement option, the tool prices minimal, partial and Amazon-optimized splits with Amazon's published fee range (or the exact fee Send to Amazon shows you), names the cheapest and how sure that is, and gives the most the fee can be before the free option wins. It also checks a carton plan against the five-identical-cartons rule, looks up Amazon's fee row, and prices Amazon Warehousing and Distribution (AWD) against the fee. Not affiliated with Amazon. The fee table is Amazon's US Seller Central page, read on the date shown.
+Given the products in a shipping plan (size tier and weight, or the packaged sides and unit weight) and your freight quote for each placement option, the tool prices minimal, partial and Amazon-optimized splits with Amazon's published fee range (or the exact fee Send to Amazon shows you), names the cheapest and how sure that is, and gives the most the fee can be before the free option wins.
+
+**In detail: operations, inputs and outputs**
+
+It also checks a carton plan against the five-identical-cartons rule, looks up Amazon's fee row, and prices Amazon Warehousing and Distribution (AWD) against the fee. Not affiliated with Amazon. The fee table is Amazon's US Seller Central page, read on the date shown.
 
 Operations (the op field):
 
@@ -32,7 +72,7 @@ Outputs:
 - eligibility: each item's cartons, how many are identical, why it blocks and the fix
 - rates: the matched row and the table; awd: the cost per unit and per carton, its parts and the break-even months
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. Each product's size tier is the one given, or is worked out from the packaged sides and unit weight with Amazon's size tier tables (the 2026 table, or the 2027 table for a plan dated January 15, 2027 or later). Shipping weight is the unit weight for small standard and the larger of unit and dimensional weight otherwise; dimensional weight is the volume divided by 139, with sides of at least 2 inches for bulky items.
 2. The weight picks the fee row and band in Amazon's table; a band's top edge is inclusive. Weights and money are read exactly, so a figure on an edge lands in the right band.
@@ -49,6 +89,8 @@ The fee table, the option rules, the size tiers, dimensional weight, the inbound
 
 ## Which edge cases does it handle?
 
+**The edge cases (4)**
+
 - A fee you give outside Amazon's published range for the items is flagged, with the range.
 - A plan whose items pay no placement fee says partial splits are not for it.
 - A plan dated January 15, 2027 or later uses Amazon's 2027 size tiers, including medium bulky, extra-large bulky and oversize.
@@ -59,6 +101,18 @@ The fee table, the option rules, the size tiers, dimensional weight, the inbound
 > Every figure below is the output of the tool's engine, not typed in.
 
 **1,000 large standard units at 2 lb: minimal splits with $420 freight against Amazon-optimized with $690**
+
+1,000 large standard units at 2 lb: minimal splits with $420 freight against Amazon-optimized with $690
+
+| Result | Value |
+| --- | --- |
+| answer | For 1,000 large standard units at 2 lb, minimal splits cost $340.00 to $600.00 in placement fees (Amazon's range) plus $420.00 freight = $760.00 to $1,020.00; Amazon-optimized splits cost $690.00 in freight, no placement fee; cheapest: Amazon-optimized splits, by $70.00 to $330.00 wherever the fee falls in Amazon's range. |
+| size table | 2026 |
+| MUG-2LB: fee row | Large standard, 1.5+ lb to 3 lb, $0.34 to $0.60 a unit on minimal splits |
+| Minimal shipment splits | $340.00 to $600.00 (Amazon's published range) + $420.00 freight = $760.00 to $1,020.00 |
+| Amazon-optimized shipment splits | $0.00 (No placement fee) + $690.00 freight = $690.00 |
+
+**The input**
 
 ```json
 {
@@ -84,17 +138,22 @@ The fee table, the option rules, the size tiers, dimensional weight, the inbound
 }
 ```
 
-1,000 large standard units at 2 lb: minimal splits with $420 freight against Amazon-optimized with $690
+**More worked examples (3)**
+
+**An exact fee from Send to Amazon: $108.80 plus $130.36 LTL against $274.06 of parcel freight**
+
+An exact fee from Send to Amazon: $108.80 plus $130.36 LTL against $274.06 of parcel freight
 
 | Result | Value |
 | --- | --- |
-| answer | For 1,000 large standard units at 2 lb, minimal splits cost $340.00 to $600.00 in placement fees (Amazon's range) plus $420.00 freight = $760.00 to $1,020.00; Amazon-optimized splits cost $690.00 in freight, no placement fee; cheapest: Amazon-optimized splits, by $70.00 to $330.00 wherever the fee falls in Amazon's range. |
+| answer | For 272 large standard units at 1 lb, minimal splits cost $108.80 in placement fees plus $130.36 freight = $239.16; Amazon-optimized splits cost $274.06 in freight, no placement fee; cheapest: minimal splits, by $34.90. |
 | size table | 2026 |
-| MUG-2LB: fee row | Large standard, 1.5+ lb to 3 lb, $0.34 to $0.60 a unit on minimal splits |
-| Minimal shipment splits | $340.00 to $600.00 (Amazon's published range) + $420.00 freight = $760.00 to $1,020.00 |
-| Amazon-optimized shipment splits | $0.00 (No placement fee) + $690.00 freight = $690.00 |
+| FORUM: fee row | Large standard, 12+ oz to 1.5 lb, $0.24 to $0.50 a unit on minimal splits |
+| Minimal shipment splits | $108.80 (The fee you entered) + $130.36 freight = $239.16 |
+| Amazon-optimized shipment splits | $0.00 (No placement fee) + $274.06 freight = $274.06 |
+| break-even | Minimal splits are cheaper while their placement fee stays under $143.70 ($0.52 a unit across 272 units); above it, Amazon-optimized splits are cheaper. |
 
-**An exact fee from Send to Amazon: $108.80 plus $130.36 LTL against $274.06 of parcel freight**
+**The input**
 
 ```json
 {
@@ -120,18 +179,15 @@ The fee table, the option rules, the size tiers, dimensional weight, the inbound
 }
 ```
 
-An exact fee from Send to Amazon: $108.80 plus $130.36 LTL against $274.06 of parcel freight
+**Five identical cartons and one odd carton**
+
+Five identical cartons and one odd carton
 
 | Result | Value |
 | --- | --- |
-| answer | For 272 large standard units at 1 lb, minimal splits cost $108.80 in placement fees plus $130.36 freight = $239.16; Amazon-optimized splits cost $274.06 in freight, no placement fee; cheapest: minimal splits, by $34.90. |
-| size table | 2026 |
-| FORUM: fee row | Large standard, 12+ oz to 1.5 lb, $0.24 to $0.50 a unit on minimal splits |
-| Minimal shipment splits | $108.80 (The fee you entered) + $130.36 freight = $239.16 |
-| Amazon-optimized shipment splits | $0.00 (No placement fee) + $274.06 freight = $274.06 |
-| break-even | Minimal splits are cheaper while their placement fee stays under $143.70 ($0.52 a unit across 272 units); above it, Amazon-optimized splits are cheaper. |
+| answer | Amazon-optimized splits: not eligible. 1 of 1 product blocks it: SKU-A. Pack Extra the same as the others (24 x SKU-A), so all 6 match, or move it to another shipment; the other 5 cartons qualify. |
 
-**Five identical cartons and one odd carton**
+**The input**
 
 ```json
 {
@@ -153,13 +209,17 @@ An exact fee from Send to Amazon: $108.80 plus $130.36 LTL against $274.06 of pa
 }
 ```
 
-Five identical cartons and one odd carton
+**AWD for a 1.5 cubic foot carton of 24 held three months**
+
+AWD for a 1.5 cubic foot carton of 24 held three months
 
 | Result | Value |
 | --- | --- |
-| answer | Amazon-optimized splits: not eligible. 1 of 1 product blocks it: SKU-A. Pack Extra the same as the others (24 x SKU-A), so all 6 match, or move it to another shipment; the other 5 cartons qualify. |
+| answer | AWD costs $0.29 a unit for a carton of 24 at 1.5 cu ft held 3 months ($0.20 of it processing and transport to FBA), against a minimal-split placement fee of $0.34 to $0.60 a unit; AWD is cheaper across that range. Freight into AWD is not included. |
+| per carton | $7.06 |
+| fees used | AWD fees until January 31, 2027 |
 
-**AWD for a 1.5 cubic foot carton of 24 held three months**
+**The input**
 
 ```json
 {
@@ -173,63 +233,9 @@ Five identical cartons and one odd carton
 }
 ```
 
-AWD for a 1.5 cubic foot carton of 24 held three months
-
-| Result | Value |
-| --- | --- |
-| answer | AWD costs $0.29 a unit for a carton of 24 at 1.5 cu ft held 3 months ($0.20 of it processing and transport to FBA), against a minimal-split placement fee of $0.34 to $0.60 a unit; AWD is cheaper across that range. Freight into AWD is not included. |
-| per carton | $7.06 |
-| fees used | AWD fees until January 31, 2027 |
-
-## What does it not do?
-
-- Amazon publishes the placement fee as a range per unit that varies with the inbound location and capacity. The fee Send to Amazon shows for your plan is the one you are charged; enter it for an exact answer.
-- Freight figures are your own quotes. The cheapest pick is only as good as them.
-- Freight into AWD is not included in the AWD cost. US marketplace only.
-
-## Where does the data come from, and how fresh is it?
-
-Amazon's placement fee table and the pages around it were read on November 8, 2026 on Amazon's US Seller Central. They change only by hand, with the tests that pin the table row by row.
-
-- [FBA inbound placement service fee (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z)
-- [2027 US Referral and Fulfillment by Amazon fees (read November 8, 2026)](https://amazon.com/selling-fee-changes)
-- [Product size tiers (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/G5KW835AHDJCH8W)
-- [Dimensional weight (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/G53Z9EKF8VVZVH29)
-- [Inbound defect fees (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GL5XA3MNXAJKJE8E)
-- [Amazon Warehousing and Distribution fees (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GAYG62Q3MPE6STFS)
-- [Amazon Warehousing and Distribution (read November 8, 2026)](https://sell.amazon.com/programs/warehousing)
-- [New Seller Incentives (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GXMJ38VA95GUN5XU)
-- [Small-parcel delivery to Amazon (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/200280260)
-- [Truckload delivery to Amazon (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/200280270)
-- [Shipping and routing requirements (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/G200141510)
-- [2026 Updates to US Referral and Fulfillment by Amazon Fees (Amazon's announcement in Seller Forums) (read November 8, 2026)](https://sellercentral.amazon.com/seller-forums/discussions/t/f3fa3211-820b-4e2e-a023-158a9cf55f99)
-
-Amazon's placement fee table and the pages around it were read on November 8, 2026 on Amazon's US Seller Central. They change only by hand, with the tests that pin the table row by row.
-
-Inbound placement fee calculator: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [FBA inbound placement service fee](https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z) | Amazon page, United States | 2026-11-08 |
-| [2027 US Referral and Fulfillment by Amazon fees](https://amazon.com/selling-fee-changes) | Amazon page, United States | 2026-11-08 |
-| [Product size tiers](https://sellercentral.amazon.com/help/hub/reference/external/G5KW835AHDJCH8W) | Amazon page, United States | 2026-11-08 |
-| [Dimensional weight](https://sellercentral.amazon.com/help/hub/reference/external/G53Z9EKF8VVZVH29) | Amazon page, United States | 2026-11-08 |
-| [Inbound defect fees](https://sellercentral.amazon.com/help/hub/reference/external/GL5XA3MNXAJKJE8E) | Amazon page, United States | 2026-11-08 |
-| [Amazon Warehousing and Distribution fees](https://sellercentral.amazon.com/help/hub/reference/external/GAYG62Q3MPE6STFS) | Amazon page, United States | 2026-11-08 |
-| [Amazon Warehousing and Distribution](https://sell.amazon.com/programs/warehousing) | Amazon page, United States | 2026-11-08 |
-| [New Seller Incentives](https://sellercentral.amazon.com/help/hub/reference/external/GXMJ38VA95GUN5XU) | Amazon page, United States | 2026-11-08 |
-| [Small-parcel delivery to Amazon](https://sellercentral.amazon.com/help/hub/reference/external/200280260) | Amazon page, United States | 2026-11-08 |
-| [Truckload delivery to Amazon](https://sellercentral.amazon.com/help/hub/reference/external/200280270) | Amazon page, United States | 2026-11-08 |
-| [Shipping and routing requirements](https://sellercentral.amazon.com/help/hub/reference/external/G200141510) | Amazon page, United States | 2026-11-08 |
-| [2026 Updates to US Referral and Fulfillment by Amazon Fees (Amazon's announcement in Seller Forums)](https://sellercentral.amazon.com/seller-forums/discussions/t/f3fa3211-820b-4e2e-a023-158a9cf55f99) | Amazon page, United States | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests pin Amazon's placement fee table row by row as read, and check exact money and weights, inclusive band edges, size tiers from dimensions against Amazon's own examples (with the 2-inch minimum and the 2027 table), totals per option, the cheapest and how sure, the break-even, options Amazon does not offer, credits, refusals, Amazon's carton plan examples, rates and AWD.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Amazon's placement fee table is pinned row by row as read on 2026-11-08, with band edges inclusive at the top and the size tiers from dimensions checked against Amazon's own examples.
 - Totals per option, the cheapest and how sure, the break-even fee, options Amazon does not offer, mixed plans, credits and dates are checked, and inputs it cannot price are refused naming the field.

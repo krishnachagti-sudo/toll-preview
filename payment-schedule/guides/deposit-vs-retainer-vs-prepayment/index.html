@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Work out a deposit and its milestones</h2><p class="muted">The schedule shows what the deposit leaves to pay.</p><form method="get" action="/toll-preview/payment-schedule/" class="cp-tool-form"><div class="field"><label for="tf-total">Project fee</label><input type="text" id="tf-total" name="total" value="9000"></div><div class="field"><label for="tf-start">Start (contract signed)</label><input type="date" id="tf-start" name="start" value="2027-01-04"></div><input type="hidden" name="split" value="30-30-40"><div class="field"><label for="tf-weeks">Project length (weeks)</label><input type="number" id="tf-weeks" name="weeks" value="12"></div><input type="hidden" name="net" value="7"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Make the schedule</button></form><p class="small"><a href="/toll-preview/payment-schedule/?total=9000&amp;start=2027-01-04&amp;split=30-30-40&amp;weeks=12&amp;net=7">Open this schedule in the tool</a></p></aside>
 <section>
 <h2 id="compare">The three side by side</h2>
@@ -86,11 +87,11 @@
 </section>
 <section>
 <h2 id="example">The deposit, worked out</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>30/30/40 on $9,000 over 12 weeks from January 4, 2027, net 7</caption><thead><tr><th scope="col">Stage</th><th scope="col">Share</th><th scope="col" class="r num">Amount</th><th scope="col">Invoice date</th><th scope="col">Terms</th><th scope="col">Due date</th><th scope="col" class="r num">Balance after</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">30/30/40 on $9,000 over 12 weeks from January 4, 2027, net 7</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Stage</th><th scope="col">Share</th><th scope="col" class="r num">Amount</th><th scope="col">Invoice date</th><th scope="col">Terms</th><th scope="col">Due date</th><th scope="col" class="r num">Balance after</th></tr></thead><tbody>
 <tr><th scope="row">1. Deposit</th><td>30%</td><td class="r num">$2,700.00</td><td>January 4, 2027</td><td>Net 7</td><td>January 11, 2027</td><td class="r num">$6,300.00</td></tr>
 <tr><th scope="row">2. Midpoint milestone</th><td>30%</td><td class="r num">$2,700.00</td><td>February 15, 2027</td><td>Net 7</td><td>February 22, 2027</td><td class="r num">$3,600.00</td></tr>
 <tr><th scope="row">3. Final delivery</th><td>40%</td><td class="r num">$3,600.00</td><td>March 29, 2027</td><td>Net 7</td><td>April 5, 2027</td><td class="r num">$0.00</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="say">Say which one it is</h2>

@@ -1,6 +1,8 @@
 # Florida lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Florida, your notice to owner is due December 17, 2026, the lien must be recorded by April 29, 2027 and the suit to enforce it must be filed by April 29, 2028 (if recorded on the last day, April 29, 2027) (Fla. Stat. 713.06(2)(a); Fla. Stat. 713.08(5); Fla. Stat. 713.22(1), (2)).
+In Florida, a subcontractor records the lien not later than 90 days after your final furnishing of labor, services or materials (Fla. Stat. 713.08(5)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=FL&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Florida, your notice to owner is due December 17, 2026, the lien must be recorded by April 29, 2027 and the suit to enforce it must be filed by April 29, 2028 (if recorded on the last day, April 29, 2027) (Fla. Stat. 713.06(2)(a); Fla. Stat. 713.08(5); Fla. Stat. 713.22(1), (2)).
 
 ## Work out your Florida dates
 
@@ -42,6 +44,8 @@ The statutory form, filled in as a PDF: [Florida notice to owner](https://krishn
 Once you are paid: [Florida lien waivers](https://krishnachagti-sudo.github.io/toll-preview/lien-waiver/florida/).
 
 ## Florida in its own words
+
+**Read the statute's words (7 quotations)**
 
 - "All lienors under this section, except laborers, as a prerequisite to perfecting a lien under this chapter and recording a claim of lien, must serve a notice on the owner setting forth the lienor’s name and address, a description sufficient for identification of the real property, and the nature of the services or materials furnished or to be furnished." [Fla. Stat. 713.06, Liens of persons not in privity](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0713/Sections/0713.06.html)
 - "The notice must be served before commencing, or not later than 45 days after commencing, to furnish his or her labor, services, or materials, but, in any event, before the date of the owner’s disbursement of the final payment after the contractor has furnished the affidavit under subparagraph (3)(d)1." [Fla. Stat. 713.06, Liens of persons not in privity](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0713/Sections/0713.06.html)

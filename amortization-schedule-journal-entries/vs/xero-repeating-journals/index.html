@@ -74,19 +74,20 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the tool</h2><p class="muted">The worked schedules open in the tool and are previewed in your browser, free. Edit them or paste your own there.</p><form method="get" action="/toll-preview/amortization-schedule-journal-entries/" class="cp-tool-form"><input type="hidden" name="csv" value="Item,Type,Amount,Start,Months,End,Method,Paid on,Balance account,PL account,Cash account,Name,Rate,Payment,First payment,Day count,Cancel on,Refund
 Office lease prepayment,Prepaid,6000.00,2026-11-01,12,,,,620,469,,,,,,,,
 Insurance from the 20th,Prepaid,2190.00,2026-11-20,,2027-11-19,daily,,620,433,,,,,,,,
 "><input type="hidden" name="period" value="2026-11"><input type="hidden" name="from" value="2026-11"><input type="hidden" name="to" value="2027-11"><input type="hidden" name="format" value="xero"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/amortization-schedule-journal-entries/?csv=Item%2CType%2CAmount%2CStart%2CMonths%2CEnd%2CMethod%2CPaid+on%2CBalance+account%2CPL+account%2CCash+account%2CName%2CRate%2CPayment%2CFirst+payment%2CDay+count%2CCancel+on%2CRefund%0D%0AOffice+lease+prepayment%2CPrepaid%2C6000.00%2C2026-11-01%2C12%2C%2C%2C%2C620%2C469%2C%2C%2C%2C%2C%2C%2C%2C%0D%0AInsurance+from+the+20th%2CPrepaid%2C2190.00%2C2026-11-20%2C%2C2027-11-19%2Cdaily%2C%2C620%2C433%2C%2C%2C%2C%2C%2C%2C%2C%0D%0A&amp;period=2026-11&amp;from=2026-11&amp;to=2027-11&amp;format=xero">Open this example in the tool</a></p></aside>
 <section>
 <h2 id="table">Side by side</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Xero's side from Xero Central, read November 8, 2026</caption><thead><tr><th scope="col"></th><th scope="col">Xero repeating journal</th><th scope="col">This tool</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Xero's side from Xero Central, read November 8, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col"></th><th scope="col">Xero repeating journal</th><th scope="col">This tool</th></tr></thead><tbody>
 <tr><th scope="row">What it does</th><td>automatically create journals in a weekly or monthly series, for a specified period</td><td>Every month's entries for many schedules, as import files</td></tr>
 <tr><th scope="row">Amounts that change</th><td>Edited by hand; Xero: if the journal will be the same each time it's recorded, set the repeating journal to Post.</td><td>Computed per month (actual days, half-month, loans)</td></tr>
 <tr><th scope="row">Month ends</th><td>If you choose a month-end date, Xero records the journals at the end of each month.</td><td>Dated at each month end (loan payments on their dates)</td></tr>
 <tr><th scope="row">Mistakes</th><td>If repeating journals are set to Post, they can't be voided in bulk.</td><td>Nothing is posted until you import; fix the rows and run again free</td></tr>
 <tr><th scope="row">Cost</th><td>Included in Xero</td><td>$0.50 per schedule</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="better">When repeating journals are better</h2>
@@ -98,7 +99,7 @@ Insurance from the 20th,Prepaid,2190.00,2026-11-20,,2027-11-19,daily,,620,433,,,
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://central.xero.com/s/article/Set-up-a-repeating-journal">Xero Central: Set up a repeating journal (read November 8, 2026)</a></li><li><a href="https://central.xero.com/s/article/Add-import-and-post-manual-journals-US">Xero Central: Add, import and post manual journals (US) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://central.xero.com/s/article/Set-up-a-repeating-journal">Xero Central: Set up a repeating journal (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li><li><a href="https://central.xero.com/s/article/Add-import-and-post-manual-journals-US">Xero Central: Add, import and post manual journals (US) (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li></ul>
 </section>
 
 

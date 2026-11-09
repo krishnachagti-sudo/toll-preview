@@ -69,11 +69,12 @@
 <header class="cp-head">
 <p class="eyebrow">DMM 223.1.4</p>
 <h1>Priority Mail dimensional weight calculator</h1>
-<p class="cp-answer">For Priority Mail, a 22.5 x 15.25 x 9.75 in rectangular parcel is billed at no less than 27 lb: sides rounded up to 23 x 16 x 10 in = 3,680 cubic inches, divided by 139. A nonrectangular parcel of the same size is 17 lb (rounded off, x 0.785, divided by 166).</p>
+<p class="cp-answer">For Priority Mail, a 22.5 x 15.25 x 9.75 in rectangular parcel is billed at no less than 27 lb: sides rounded up to 23 x 16 x 10 in = 3,680 cubic inches, divided by 139.<span class="ans-more"> A nonrectangular parcel of the same size is 17 lb (rounded off, x 0.785, divided by 166).</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Work out the dimensional weight</h2><p class="muted">Enter the parcel: the calculator applies the Priority Mail rule (DMM 223.1.4).</p><form method="get" action="/toll-preview/usps-adjustment-dispute/" class="cp-tool-form"><input type="hidden" name="op" value="dim"><input type="hidden" name="service" value="priority-mail"><input type="hidden" name="shape" value="rectangular"><div class="field"><label for="tf-length">Length (in)</label><input type="number" id="tf-length" name="length" value="22.5"></div><div class="field"><label for="tf-width">Width (in)</label><input type="number" id="tf-width" name="width" value="15.25"></div><div class="field"><label for="tf-height">Height (in)</label><input type="number" id="tf-height" name="height" value="9.75"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work it out</button></form><p class="small"><a href="/toll-preview/usps-adjustment-dispute/?op=dim&amp;service=priority-mail&amp;shape=rectangular&amp;length=22.5&amp;width=15.25&amp;height=9.75">Open the calculator with these sizes</a></p></aside>
 <section>
 <h2 id="rule">The rule</h2>
@@ -82,7 +83,7 @@
 </section>
 <section>
 <h2 id="boxes">Box table</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Priority Mail: dimensional weight in pounds (&quot;none&quot; = not over 1,728 cubic inches)</caption><thead><tr><th scope="col">Box (in)</th><th scope="col">Rounded (in)</th><th scope="col" class="r num">Cubic inches</th><th scope="col" class="r num">Dim weight now</th><th scope="col" class="r num">Nonrectangular now</th><th scope="col" class="r num">Before Jul 12, 2026</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Priority Mail: dimensional weight in pounds (&quot;none&quot; = not over 1,728 cubic inches)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Box (in)</th><th scope="col">Rounded (in)</th><th scope="col" class="r num">Cubic inches</th><th scope="col" class="r num">Dim weight now</th><th scope="col" class="r num">Nonrectangular now</th><th scope="col" class="r num">Before Jul 12, 2026</th></tr></thead><tbody>
 <tr><th scope="row">12 x 12 x 12</th><td>12 x 12 x 12</td><td class="r num">1,728</td><td class="r num">none</td><td class="r num">none</td><td class="r num">none</td></tr>
 <tr><th scope="row">12.1 x 12 x 12</th><td>13 x 12 x 12</td><td class="r num">1,872</td><td class="r num">14 lb</td><td class="r num">none</td><td class="r num">none</td></tr>
 <tr><th scope="row">13 x 11 x 11</th><td>13 x 11 x 11</td><td class="r num">1,573</td><td class="r num">none</td><td class="r num">none</td><td class="r num">none</td></tr>
@@ -103,22 +104,22 @@
 <tr><th scope="row">24 x 16 x 12</th><td>24 x 16 x 12</td><td class="r num">4,608</td><td class="r num">34 lb</td><td class="r num">22 lb</td><td class="r num">28 lb</td></tr>
 <tr><th scope="row">24 x 18 x 12</th><td>24 x 18 x 12</td><td class="r num">5,184</td><td class="r num">38 lb</td><td class="r num">25 lb</td><td class="r num">32 lb</td></tr>
 <tr><th scope="row">24 x 24 x 18</th><td>24 x 24 x 18</td><td class="r num">10,368</td><td class="r num">70 lb</td><td class="r num">50 lb</td><td class="r num">63 lb</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="fees">Nonstandard fees</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Notice 123, Time-limited prices, October 4, 2026 to January 17, 2027</caption><thead><tr><th scope="col">Fee</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Notice 123, Time-limited prices, October 4, 2026 to January 17, 2027</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Fee</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
 <tr><th scope="row">Over 22 up to 30 inches long</th><td class="r num">$4.50</td></tr>
 <tr><th scope="row">Over 30 inches long</th><td class="r num">$21.00</td></tr>
 <tr><th scope="row">Over 2 cubic feet (3,456 cubic inches)</th><td class="r num">$35.00</td></tr>
 <tr><th scope="row">Nonstandard characteristics</th><td class="r num">$4.50</td></tr>
 <tr><th scope="row">Dimension Noncompliance Fee</th><td class="r num">$3.00</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Length and characteristics fees: only the higher one. The volume fee is added to either. The volume test rounds each side off, not up.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://pe.usps.com/text/dmm300/223.htm">USPS DMM 223 Priority Mail Commercial Prices and Eligibility, sections 1.1 to 1.10 (read November 8, 2026)</a></li><li><a href="https://pe.usps.com/Archive/NHTML/DMMArchive20260406/223.htm">USPS DMM archive, issue of April 6, 2026: 223 section 1.4 (the rule before July 12, 2026) (read November 8, 2026)</a></li><li><a href="https://pe.usps.com/text/dmm300/604.htm">USPS DMM 604.7.0 Computing Postage (round off, round up, round down) (read November 8, 2026)</a></li><li><a href="https://pe.usps.com/text/dmm300/Notice123.htm">USPS Notice 123 Price List, effective October 4, 2026 (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://pe.usps.com/text/dmm300/223.htm">USPS DMM 223 Priority Mail Commercial Prices and Eligibility, sections 1.1 to 1.10 (read November 8, 2026)</a><span class="src-m">pe.usps.com</span></li><li><a href="https://pe.usps.com/Archive/NHTML/DMMArchive20260406/223.htm">USPS DMM archive, issue of April 6, 2026: 223 section 1.4 (the rule before July 12, 2026) (read November 8, 2026)</a><span class="src-m">pe.usps.com</span></li><li><a href="https://pe.usps.com/text/dmm300/604.htm">USPS DMM 604.7.0 Computing Postage (round off, round up, round down) (read November 8, 2026)</a><span class="src-m">pe.usps.com</span></li><li><a href="https://pe.usps.com/text/dmm300/Notice123.htm">USPS Notice 123 Price List, effective October 4, 2026 (read November 8, 2026)</a><span class="src-m">pe.usps.com</span></li></ul>
 </section>
 <section>
 <h2 id="please-read">Please read</h2>

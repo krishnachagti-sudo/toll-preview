@@ -74,17 +74,18 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check your independent contractor</h2><p class="muted">Change the amount, or open the tracker to set the payee type and payment.</p><form method="get" action="/toll-preview/1099-threshold/" class="cp-tool-form"><input type="hidden" name="year" value="2026"><input type="hidden" name="type" value="services"><input type="hidden" name="payee" value="individual"><input type="hidden" name="method" value="check"><div class="field"><label for="tf-amount">Total paid in 2026 (dollars)</label><input type="text" id="tf-amount" name="amount" value="2200"><p class="hint">Everything paid to this payee in the year, by check, cash or bank transfer.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check this payee</button></form><p class="small"><a href="/toll-preview/1099-threshold/?year=2026&amp;type=services&amp;payee=individual&amp;method=check&amp;amount=2200">Open this payee in the full tracker</a></p></aside>
 <section>
 <h2 id="cases">Worked cases</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Payments made in 2026, by check unless it says otherwise. Each answer is the tracker's own.</caption><thead><tr><th scope="col">Paid in 2026</th><th scope="col" class="r num">Amount</th><th scope="col">1099?</th><th scope="col">Box</th><th scope="col">Why</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Payments made in 2026, by check unless it says otherwise. Each answer is the tracker's own.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Paid in 2026</th><th scope="col" class="r num">Amount</th><th scope="col">1099?</th><th scope="col">Box</th><th scope="col">Why</th></tr></thead><tbody>
 <tr><th scope="row">A contractor, $2,000 in the year</th><td class="r num">$2,000</td><td>Yes</td><td>1099-NEC box 1a</td><td>File Form 1099-NEC and report $2,000.00 in box 1a.</td></tr>
 <tr><th scope="row">A contractor, $1,999.99 in the year</th><td class="r num">$1,999.99</td><td>No</td><td>None</td><td>$1,999.99 is under the $2,000 line for 1099-NEC box 1a. It is within 25% of the line, so collect a Form W-9 now in case more payments follow.</td></tr>
 <tr><th scope="row">A contractor paid $1,500 and later $700 ($2,200)</th><td class="r num">$2,200</td><td>Yes</td><td>1099-NEC box 1a</td><td>File Form 1099-NEC and report $2,200.00 in box 1a.</td></tr>
 <tr><th scope="row">A contractor paid by credit card</th><td class="r num">$4,000</td><td>No</td><td>None</td><td>Paid by card or through a payment app: the processor reports it on Form 1099-K, so it is left out here.</td></tr>
 <tr><th scope="row">A contractor paid through a payment app</th><td class="r num">$4,000</td><td>No</td><td>None</td><td>Paid by card or through a payment app: the processor reports it on Form 1099-K, so it is left out here.</td></tr>
 <tr><th scope="row">A contractor with no TIN, $100 paid, $24 withheld</th><td class="r num">$100</td><td>Yes</td><td>1099-NEC box 1a</td><td>File Form 1099-NEC.</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="rule">The rule</h2>
@@ -94,7 +95,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), read October 31, 2026</a></li><li><a href="https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. April 2025), read October 31, 2026</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), read October 31, 2026</a><span class="src-m">irs.gov</span></li><li><a href="https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. April 2025), read October 31, 2026</a><span class="src-m">irs.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Do I need to issue a 1099 to an independent contractor?</h3></summary><div class="xp-in"><p>Yes, if you paid the contractor $2,000 or more in 2026 for services in the course of your business, by check, cash or bank transfer: file Form 1099-NEC, box 1a. Under $2,000, or paid by card or a payment app, no form.</p></div></details></section>

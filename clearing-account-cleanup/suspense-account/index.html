@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the cleanup tool</h2><p class="muted">The worked file opens in the tool and is previewed in your browser, free. Swap in your own export there.</p><form method="get" action="/toll-preview/clearing-account-cleanup/" class="cp-tool-form"><input type="hidden" name="ledger" value="Account Transactions
 Cedar &amp; Pine Ltd (made-up sample)
 For the period 1 March 2026 to 30 September 2026
@@ -95,7 +96,7 @@ Total Suspense,,,,&quot;1,697.40&quot;,&quot;4,440.00&quot;,,
 <section>
 <h2 id="worked">The worked file (Xero layout)</h2>
 <p>Xero's Account Transactions report lists each account's lines with the oldest at the top. The worked file has its Debit, Credit, Running Balance and Related account columns; Xero says the running balance needs the Debit and Credit columns, and the Related account column &quot;Shows where each transaction in the report was categorised to – the other side of the ledger. It's sometimes called the Split column&quot;.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Open suspense items, oldest first, as of September 30, 2026 (credits are negative)</caption><thead><tr><th scope="col">Date</th><th scope="col" class="r num">Age (days)</th><th scope="col">Name</th><th scope="col">Num</th><th scope="col" class="r num">Amount</th><th scope="col">Notes</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Open suspense items, oldest first, as of September 30, 2026 (credits are negative)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Date</th><th scope="col" class="r num">Age (days)</th><th scope="col">Name</th><th scope="col">Num</th><th scope="col" class="r num">Amount</th><th scope="col">Notes</th></tr></thead><tbody>
 <tr><th scope="row">2026-03-17</th><td class="r num">197</td><td>Spend Money</td><td></td><td class="r num">$82.40</td><td>clearing line with no match</td></tr>
 <tr><th scope="row">2026-04-02</th><td class="r num">181</td><td>Receive Money</td><td></td><td class="r num">-$1,250.00</td><td></td></tr>
 <tr><th scope="row">2026-06-28</th><td class="r num">94</td><td>Receive Money</td><td></td><td class="r num">-$340.00</td><td></td></tr>
@@ -104,23 +105,23 @@ Total Suspense,,,,&quot;1,697.40&quot;,&quot;4,440.00&quot;,,
 <tr><th scope="row">2026-08-20</th><td class="r num">41</td><td>Receive Money</td><td></td><td class="r num">-$340.00</td><td></td></tr>
 <tr><th scope="row">2026-09-02</th><td class="r num">28</td><td>Manual Journal</td><td>MJ-11</td><td class="r num">$1,100.00</td><td>clearing line with no match</td></tr>
 <tr><th scope="row">2026-09-30</th><td class="r num">0</td><td>Receive Money</td><td></td><td class="r num">-$1,250.00</td><td></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="netted">What nets off, and what is left open</h2>
 <ul><li>MJ-7 ($500.00 to Sales) clears the $500.00 deposit of March 3, one for one.</li><li>MJ-11 ($1,100.00 to Sales) equals $760.00 + $340.00, and there are two $340.00 deposits (June 28 and August 20). Both sets are listed; the journal stays open until someone says which deposit it was.</li><li>The card charge and the bank charge are on the other side of the account with nothing to clear them, so they are flagged as clearing lines with no match.</li></ul>
-<div class="table-scroll"><table class="rules cp-table"><caption>Suspense by age (credits are negative)</caption><thead><tr><th scope="col">Age</th><th scope="col" class="r num">Items</th><th scope="col" class="r num">Total</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Suspense by age (credits are negative)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Age</th><th scope="col" class="r num">Items</th><th scope="col" class="r num">Total</th></tr></thead><tbody>
 <tr><th scope="row">0 to 30 days</th><td class="r num">2</td><td class="r num">-$150.00</td></tr>
 <tr><th scope="row">31 to 60 days</th><td class="r num">2</td><td class="r num">-$1,100.00</td></tr>
 <tr><th scope="row">61 to 90 days</th><td class="r num">0</td><td class="r num">$0.00</td></tr>
 <tr><th scope="row">Over 90 days</th><td class="r num">4</td><td class="r num">-$1,492.60</td></tr>
 <tr><th scope="row">All open items</th><td class="r num">8</td><td class="r num">-$2,742.60</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>The same method works for any account that should return to zero; a processor clearing account is on <a href="/toll-preview/clearing-account-cleanup/clearing-account/">its own page</a>.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://central.xero.com/s/article/Account-Transactions-report-New">Xero Central: Account Transactions report (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://central.xero.com/s/article/Account-Transactions-report-New">Xero Central: Account Transactions report (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is a suspense account a debit or a credit?</h3></summary><div class="xp-in"><p>Either: it takes whatever side the unknown items fall on. In the worked file the unidentified deposits put it at a credit balance of $2,742.60, with two small debits (an unknown card charge and a bank charge) on the other side.</p></div></details></section>

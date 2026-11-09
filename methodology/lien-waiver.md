@@ -2,9 +2,45 @@
 
 The waiver is picked from the state, the stage (progress or final) and the payment status: not paid or a check not cleared gives the conditional form, cleared gives the unconditional one. Forms are made for Arizona, California, Florida, Texas and Wyoming (15 statutory forms, copied word for word); an unconditional waiver before the money clears is refused unless you confirm it.
 
+## How does it work?
+
+1. The state is looked up. A state without a statutory form here is answered with the reason and no form is made.
+2. The type follows the payment status: cleared gives the unconditional waiver, a check not cleared or no payment gives the conditional one.
+3. For Texas, the original contract date picks the version: before January 1, 2022 the same 53.284 forms must be signed and notarized (H.B. 2237).
+4. An unconditional waiver for a payment not cleared is blocked: it states you were paid and is effective when signed. In Texas, Property Code 53.283 says no one may require one before payment in good funds. signBeforeCleared overrides the block with a warning.
+5. A final waiver while more money is expected is refused unless the form has a space for the disputed amount and it is given; otherwise use a progress waiver.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/lien-waiver/#what) below.
+
+## What does it not cover?
+
+- States other than Arizona, California, Florida, Texas and Wyoming are refused, with the reason, rather than guessed at.
+- It does not notarize, does not check whether your contract requires its own form, and is not legal advice.
+- Each form is current as of the date its source was read, shown with the source.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 8 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every statutory form and rule was read from the official source on November 2, 2026, with a dated snapshot of each page kept with the tool. A watcher reads each source daily and alerts the owner when one changes; the forms change only by hand, after the statute is read again.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Each form line is checked word for word against its dated snapshot. The tests cover the choice of type for every payment status, the Texas versions either side of January 1, 2022, the block on unconditional waivers before payment, the free matching unconditional for the same payment, and that every worked example is what the tool returns.
+
+- [Arizona Revised Statutes 33-1008 (Arizona State Legislature)](https://www.azleg.gov/ars/33/01008.htm), see the document, read 2026-11-02
+- [California Civil Code 8132, 8134, 8136 and 8138 (Contractors State License Board)](https://www.cslb.ca.gov/consumers/legal_issues_for_consumers/Mechanics_Lien/Conditional_And_Unconditional_Waiver_Release_Form.aspx), see the document, read 2026-11-02
+- [Florida Statutes 713.20 (Florida Legislature)](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0713/Sections/0713.20.html), see the document, read 2026-11-02
+- [Texas Property Code 53.281 to 53.287 (Texas Legislative Council)](https://statutes.capitol.texas.gov/Docs/PR/htm/PR.53.htm), see the document, read 2026-11-02
+- [H.B. 2237 (87th Leg., 2021), secs. 35, 37 and 38 (Texas waiver form versions)](https://capitol.texas.gov/tlodocs/87R/billtext/html/HB02237F.htm), see the document, read 2026-11-02
+- [Tex. Civ. Prac. & Rem. Code 121.008(b) (Texas certificate of acknowledgment forms)](https://statutes.capitol.texas.gov/Docs/CP/htm/CP.121.htm), see the document, read 2026-11-02
+- [Wyoming Statutes 29-10-101(b) (Wyoming Legislature)](https://wyoleg.gov/statutes/compress/title29.pdf), see the document, read 2026-11-02
+- [AIA Contract Documents, Types of lien waivers (list of states that require a specific form)](https://learn.aiacontracts.com/types-of-lien-waivers/), see the document, read 2026-11-02
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the lien waiver generator by state compute?
 
-Given the state the property is in, whether the payment is a progress or final payment and whether it has been paid, the tool says which waiver to sign, fills in that state's statutory form in the statute's own words with your job details, and returns a PDF with a record of the source, the form version and a SHA-256 hash of the filled text. Once the payment clears, the matching unconditional waiver for the same payment is made at no new charge.
+Given the state the property is in, whether the payment is a progress or final payment and whether it has been paid, the tool says which waiver to sign, fills in that state's statutory form in the statute's own words with your job details, and returns a PDF with a record of the source, the form version and a SHA-256 hash of the filled text.
+
+**In detail: operations, inputs and outputs**
+
+Once the payment clears, the matching unconditional waiver for the same payment is made at no new charge.
 
 Operations (the op field):
 
@@ -32,7 +68,7 @@ Outputs:
 - paymentId and documentHash (SHA-256 of the filled form text)
 - pdf: the filled form with its record page, and the sources with the date each was read
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. The state is looked up. A state without a statutory form here is answered with the reason and no form is made.
 2. The type follows the payment status: cleared gives the unconditional waiver, a check not cleared or no payment gives the conditional one. Florida and Wyoming have one form per stage, which says the payment was received.
@@ -56,6 +92,8 @@ Georgia, Massachusetts, Michigan, Mississippi, Missouri, Nevada and Utah are on 
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - A check received but not cleared gets the conditional waiver: it takes effect only when the bank pays the check.
 - Florida's forms have no conditional wording, so the tool says to sign once the payment has cleared rather than add words to the statutory form.
 - Wyoming's form ends with a notary acknowledgment, so the notary flag is set; the tool does not notarize.
@@ -68,6 +106,16 @@ Georgia, Massachusetts, Michigan, Mississippi, Missouri, Nevada and Utah are on 
 
 **Texas, a progress check not cleared, original contract signed in 2021**
 
+Texas, a progress check not cleared, original contract signed in 2021
+
+| Result | Value |
+| --- | --- |
+| explanation | You hold a check that has not cleared, so the conditional waiver is the one that matches: it takes effect only when the bank pays the check. Texas: conditional waiver and release on progress payment (Tex. Prop. Code 53.284(b)). |
+| form | Conditional waiver and release on progress payment |
+| notary required | yes |
+
+**The input**
+
 ```json
 {
   "op": "decide",
@@ -78,15 +126,18 @@ Georgia, Massachusetts, Michigan, Mississippi, Missouri, Nevada and Utah are on 
 }
 ```
 
-Texas, a progress check not cleared, original contract signed in 2021
+**More worked examples (1)**
+
+**Florida, final payment not received yet**
+
+Florida, final payment not received yet
 
 | Result | Value |
 | --- | --- |
-| explanation | You hold a check that has not cleared, so the conditional waiver is the one that matches: it takes effect only when the bank pays the check. Texas: conditional waiver and release on progress payment (Tex. Prop. Code 53.284(b)). |
-| form | Conditional waiver and release on progress payment |
-| notary required | yes |
+| explanation | Florida: waiver and release of lien upon final payment (Fla. Stat. 713.20(5)). The form says the payment has been received, so sign it only after the payment clears. |
+| blocked | yes, until the payment clears |
 
-**Florida, final payment not received yet**
+**The input**
 
 ```json
 {
@@ -97,54 +148,9 @@ Texas, a progress check not cleared, original contract signed in 2021
 }
 ```
 
-Florida, final payment not received yet
-
-| Result | Value |
-| --- | --- |
-| explanation | Florida: waiver and release of lien upon final payment (Fla. Stat. 713.20(5)). The form says the payment has been received, so sign it only after the payment clears. |
-| blocked | yes, until the payment clears |
-
-## What does it not do?
-
-- States other than Arizona, California, Florida, Texas and Wyoming are refused, with the reason, rather than guessed at.
-- It does not notarize, does not check whether your contract requires its own form, and is not legal advice.
-- Each form is current as of the date its source was read, shown with the source.
-
-## Where does the data come from, and how fresh is it?
-
-Every statutory form and rule was read from the official source on November 2, 2026, with a dated snapshot of each page kept with the tool. A watcher reads each source daily and alerts the owner when one changes; the forms change only by hand, after the statute is read again.
-
-- [Arizona Revised Statutes 33-1008 (Arizona State Legislature)](https://www.azleg.gov/ars/33/01008.htm)
-- [California Civil Code 8132, 8134, 8136 and 8138 (Contractors State License Board)](https://www.cslb.ca.gov/consumers/legal_issues_for_consumers/Mechanics_Lien/Conditional_And_Unconditional_Waiver_Release_Form.aspx)
-- [Florida Statutes 713.20 (Florida Legislature)](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0713/Sections/0713.20.html)
-- [Texas Property Code 53.281 to 53.287 (Texas Legislative Council)](https://statutes.capitol.texas.gov/Docs/PR/htm/PR.53.htm)
-- [H.B. 2237 (87th Leg., 2021), secs. 35, 37 and 38 (Texas waiver form versions)](https://capitol.texas.gov/tlodocs/87R/billtext/html/HB02237F.htm)
-- [Tex. Civ. Prac. & Rem. Code 121.008(b) (Texas certificate of acknowledgment forms)](https://statutes.capitol.texas.gov/Docs/CP/htm/CP.121.htm)
-- [Wyoming Statutes 29-10-101(b) (Wyoming Legislature)](https://wyoleg.gov/statutes/compress/title29.pdf)
-- [AIA Contract Documents, Types of lien waivers (list of states that require a specific form)](https://learn.aiacontracts.com/types-of-lien-waivers/)
-
-Every statutory form and rule was read from the official source on November 2, 2026, with a dated snapshot of each page kept with the tool. A watcher reads each source daily and alerts the owner when one changes; the forms change only by hand, after the statute is read again.
-
-Lien waiver generator by state: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Arizona Revised Statutes 33-1008 (Arizona State Legislature)](https://www.azleg.gov/ars/33/01008.htm) | see the document | 2026-11-02 |
-| [California Civil Code 8132, 8134, 8136 and 8138 (Contractors State License Board)](https://www.cslb.ca.gov/consumers/legal_issues_for_consumers/Mechanics_Lien/Conditional_And_Unconditional_Waiver_Release_Form.aspx) | see the document | 2026-11-02 |
-| [Florida Statutes 713.20 (Florida Legislature)](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0713/Sections/0713.20.html) | see the document | 2026-11-02 |
-| [Texas Property Code 53.281 to 53.287 (Texas Legislative Council)](https://statutes.capitol.texas.gov/Docs/PR/htm/PR.53.htm) | see the document | 2026-11-02 |
-| [H.B. 2237 (87th Leg., 2021), secs. 35, 37 and 38 (Texas waiver form versions)](https://capitol.texas.gov/tlodocs/87R/billtext/html/HB02237F.htm) | see the document | 2026-11-02 |
-| [Tex. Civ. Prac. & Rem. Code 121.008(b) (Texas certificate of acknowledgment forms)](https://statutes.capitol.texas.gov/Docs/CP/htm/CP.121.htm) | see the document | 2026-11-02 |
-| [Wyoming Statutes 29-10-101(b) (Wyoming Legislature)](https://wyoleg.gov/statutes/compress/title29.pdf) | see the document | 2026-11-02 |
-| [AIA Contract Documents, Types of lien waivers (list of states that require a specific form)](https://learn.aiacontracts.com/types-of-lien-waivers/) | see the document | 2026-11-02 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-Each form line is checked word for word against its dated snapshot. The tests cover the choice of type for every payment status, the Texas versions either side of January 1, 2022, the block on unconditional waivers before payment, the free matching unconditional for the same payment, and that every worked example is what the tool returns.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every line of the 15 statutory forms is checked word for word against its dated snapshot, read on November 2, 2026.
 - The type for each payment status, the Texas versions and the block on unconditional waivers before payment are tested.

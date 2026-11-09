@@ -14,6 +14,8 @@
 .cp-answer { font-size: 19px; line-height: 1.55; color: var(--text); max-width: 46rem; margin: 0 0 24px; padding: 18px 22px; border-radius: var(--radius-lg); border: 1px solid color-mix(in srgb, var(--hue, var(--warm)) 30%, var(--line-2)); border-left: 3px solid var(--hue, var(--warm)); background: linear-gradient(90deg, color-mix(in srgb, var(--hue, var(--warm)) 8%, var(--bg-1)), var(--bg-1)); }
 .cp-head .trust { margin: 0 0 32px; }
 @media (max-width: 720px) { .cp-answer { font-size: 17px; padding: 14px 16px; } }
+/* A long answer keeps its first sentence or two as the statement; the rest drops below a rule. */
+.cp-answer > .ans-more { display: block; margin-top: 12px; padding-top: 10px; border-top: 1px solid color-mix(in srgb, var(--hue, var(--warm)) 18%, var(--line)); color: var(--text-2); font-size: 15px; line-height: 1.55; }
 
 .cp-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 0 0 40px; max-width: 46rem; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--bg-1); overflow: hidden; }
 .cp-facts > div { padding: 14px 18px; border-top: 1px solid var(--line); }
@@ -64,10 +66,45 @@ table.cp-table .r { padding-right: 24px; }
 .cp-body .tgrid, .cp-body .acards, .cp-body .mcal-set, .cp-body .yr-row { margin: 0 0 18px; }
 .cp-body .cp-rows { max-width: none; }
 .cp-sources, .cp-related ul { padding-left: 1.2em; }
+/* Sources as compact lines: the name, then publisher, edition and read date. Past six they fold. */
+.cp-body ul.cp-src { list-style: none; padding: 0; margin: 0 0 18px; max-width: 56rem; }
+.cp-src li { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px; margin: 0; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.45; }
+.cp-src li:first-child { border-top: 0; }
+.cp-src li > a, .cp-src .src-n { flex: 1 1 18rem; min-width: 0; overflow-wrap: anywhere; }
+.cp-src .src-m { flex: 0 1 auto; font: 400 12.5px/1.45 var(--font-mono); color: var(--muted); }
+.cp-body details.cp-src-fold .xp-in ul.cp-src { margin-bottom: 0; }
+/* How it works: a few numbered steps in one card. */
+.cp-body ol.cp-howto { list-style: none; counter-reset: hw; margin: 0 0 18px; padding: 18px 20px; display: grid; gap: 12px; max-width: 46rem; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--bg-1); }
+.cp-howto li { counter-increment: hw; display: flex; gap: 12px; align-items: flex-start; margin: 0; color: var(--text); line-height: 1.5; }
+.cp-howto li::before { content: counter(hw); flex: none; width: 24px; height: 24px; margin-top: 1px; border-radius: 50%; display: grid; place-items: center; font: 600 12.5px/1 var(--font-mono); color: #0b0c0e; background: var(--hue, var(--warm)); }
+.cp-howto li > span { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 720px) { .cp-body ol.cp-howto { padding: 14px 14px; } }
 .cp-formats { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line); max-width: 56rem; }
 .cp-formats a { color: var(--muted); }
 /* Inline code (a feed address, a long path) wraps instead of pushing the page sideways on a phone. */
 .cp-answer code, .cp-body p code, .cp-body li code, .cp-body td code { overflow-wrap: anywhere; }
+
+/* A row of chips to the page's parts, under the answer. */
+.cp-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; max-width: 56rem; }
+.cp-jump .chip { height: 34px; }
+
+/* Prompt cards (/prompts/): the prompt with a copy button, the tool's answer folded under it. */
+.pcards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0 0 18px; }
+.pcard { display: flex; flex-direction: column; min-width: 0; padding: 16px 16px 14px; border-radius: var(--radius-lg); border: 1px solid var(--line-2); background: var(--bg-1); }
+.pc-h { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin: 0 0 10px; }
+.cp-body .pcard .pc-t { font-size: 16.5px; line-height: 1.35; margin: 4px 0 0; letter-spacing: -0.01em; }
+/* The prompt is a sentence to paste, so it reads in the text face, not the code face. */
+.cp-body pre.pc-code { margin: 0; padding: 12px 14px; border-radius: var(--radius); border-left: 2px solid color-mix(in srgb, var(--hue, var(--warm)) 55%, var(--line-2)); white-space: pre-wrap; overflow-wrap: anywhere; }
+.cp-body pre.pc-code code { font: 400 14px/1.55 var(--font-text); color: var(--text); }
+.pc-copy { flex: none; min-height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-3); background: var(--bg-2); color: var(--text); font: 500 13px/1 var(--font-text); cursor: pointer; }
+.pc-copy:hover { border-color: var(--hue, var(--warm)); }
+.pcard details.xpand { margin-top: 10px; padding-top: 8px; }
+.pcard details.xpand .xp-in { margin-top: 6px; }
+.pcard details.xpand .xp-in p { margin: 0; color: var(--text); font-size: 14.5px; }
+.cp-body .pcard .pc-f { margin: auto 0 0; padding-top: 8px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+.cp-body .pcard .pc-f a { color: var(--text-2); }
+.cp-body .pcards + details.xpand { margin: 0 0 18px; }
+@media print { .pc-copy { display: none !important; } }
 
 /* ---------- Print ----------
    A content page prints as a plain reference sheet: no header, footer, menus or tool forms; black on
@@ -79,7 +116,7 @@ table.cp-table .r { padding-right: 24px; }
   details.xpand > .xp-in { display: block !important; }
   .trust, .skip, .site-head, .site-foot, .nav-pal, .mx-field, .tl-toast, .cp-crumbs, .cp-tool, .cp-formats, .cp-related, .cp-eyebrow { display: none !important; }
   .wrap, .cp, main { max-width: none !important; width: auto !important; padding: 0 !important; margin: 0 !important; }
-  .cp-head h1, .cp-answer, .cp-body, .cp-body p, .cp-body li, .cp-note { color: #000 !important; max-width: none; }
+  .cp-head h1, .cp-answer, .cp-answer > span, .cp-body, .cp-body p, .cp-body li, .cp-note { color: #000 !important; max-width: none; }
   .cp-answer { font-size: 12pt; }
   .cp-facts { background: #fff; border: 1px solid #666; break-inside: avoid; }
   .cp-facts dd, .cp-facts dt { color: #000; }
@@ -102,3 +139,23 @@ table.cp-table .r { padding-right: 24px; }
 .cp-body .hub-group-h h2 { border: 0; padding: 0; margin: 0; }
 .cp-body .tcard .tc-t { margin: 0; }
 .cp-body .tcard p { max-width: none; }
+
+/* ---------- Worked examples, checklists and callouts (tool deep pages) ----------
+   A lone card is a worked example: full width up to the reading measure, its preview only as tall
+   as its figure. The list under a "what to show" heading reads as a checklist, the list under
+   "watch for" as a callout; both stay plain lists in the HTML and the Markdown mirror. */
+.cp-body .tgrid > .tcard:only-child { grid-column: 1 / -1; max-width: 46rem; }
+.cp-body .tgrid > .tcard:only-child .tc-pv { height: auto; padding-bottom: 18px; }
+.cp-body .tgrid > .tcard:only-child .tc-pv .pv-big { margin-top: 2px; }
+.cp-body h2#what-to-show + ul, .cp-body h2#watch-for + ul {
+  --hue: var(--ok);
+  list-style: none; display: grid; gap: 12px; max-width: 46rem; margin: 0 0 18px; padding: 18px 20px; border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--hue) 30%, var(--line-2)); background: linear-gradient(180deg, color-mix(in srgb, var(--hue) 6%, #111215), #0c0d0f);
+}
+.cp-body h2#watch-for + ul { --hue: var(--amber); border-left: 3px solid var(--hue); }
+.cp-body h2#what-to-show + ul > li, .cp-body h2#watch-for + ul > li { position: relative; margin: 0; padding-left: 32px; color: var(--text); }
+.cp-body h2#what-to-show + ul > li::before, .cp-body h2#watch-for + ul > li::before {
+  content: "\2713"; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 5px;
+  font: 600 12px/1 var(--font-mono); color: var(--hue); background: color-mix(in srgb, var(--hue) 16%, transparent); border: 1px solid color-mix(in srgb, var(--hue) 55%, transparent);
+}
+.cp-body h2#watch-for + ul > li::before { content: "!"; border-radius: 50%; }

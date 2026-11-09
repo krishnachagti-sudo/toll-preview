@@ -1,15 +1,15 @@
 # What date is 12 weeks from today?
 
-12 weeks (84 days) from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Sunday, January 31, 2027. Counted from tomorrow it is Monday, February 1, 2027.
+12 weeks (84 days) from today, Monday, November 9, 2026 (today's date in New York, US Eastern time), is Monday, February 1, 2027. Counted from tomorrow it is Tuesday, February 2, 2027.
 
-- Date: January 31, 2027
-- Weekday: Sunday
-- ISO week: 2027-W04
+- Date: February 1, 2027
+- Weekday: Monday
+- ISO week: 2027-W05
 - US business days between: 55
 
 ## 12 weeks from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-09&region=US)
 
 ## 12 weeks from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 12 weeks after | US business days |
 | --- | --- | ---: |
-| [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-08) | Sun, Jan 31, 2027 | 55 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-09) | Mon, Feb 1, 2027 | 55 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-10) | Tue, Feb 2, 2027 | 55 |
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-11) | Wed, Feb 3, 2027 | 56 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-19) | Thu, Feb 11, 2027 | 56 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-20) | Fri, Feb 12, 2027 | 56 |
 | [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-21) | Sat, Feb 13, 2027 | 56 |
+| [Sun, Nov 22, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=12+weeks+from+today&ref=2026-11-22) | Sun, Feb 14, 2027 | 56 |
 
 ## How it is counted
 
@@ -74,5 +74,5 @@ One day later than 12 weeks from today: the same as 85 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/12-weeks-from-today/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/12-weeks-from-today.csv

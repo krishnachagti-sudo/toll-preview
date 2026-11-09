@@ -4,7 +4,11 @@ A spreadsheet is enough for a simple one-off count, and Endwise is better when t
 
 ## What is the real difference between a spreadsheet and a tool?
 
-A spreadsheet does the arithmetic. It does not know the rule. For these jobs the hard part is the rule or the rate for a particular date: which days are holidays, what the rate was on that day, which period a mileage trip falls in. In a spreadsheet you keep that table up to date yourself. In a tool the table is kept for you, from a named source.
+A spreadsheet does the arithmetic. It does not know the rule.
+
+**Read the rest: What is the real difference between a spreadsheet and a tool?**
+
+For these jobs the hard part is the rule or the rate for a particular date: which days are holidays, what the rate was on that day, which period a mileage trip falls in. In a spreadsheet you keep that table up to date yourself. In a tool the table is kept for you, from a named source.
 
 That does not make a spreadsheet the wrong choice. Below, each job says what the spreadsheet route needs from you, what the tool gives, and when the spreadsheet is the better pick.
 
@@ -12,13 +16,19 @@ That does not make a spreadsheet the wrong choice. Below, each job says what the
 
 NETWORKDAYS counts working days between two dates and WORKDAY adds them. Both take an optional list of holiday dates, which you supply as a range of cells; weekends are excluded. Microsoft and Google document both (see sources). For other weekend patterns there are the `INTL` versions.
 
+**Read the rest: Business days: when do NETWORKDAYS and WORKDAY do the job?**
+
 What you must keep up to date: the holiday list, with observed days already moved (when a holiday falls on a weekend, the day off moves). Leave the list out and the count is wrong. From July 1, 2026 to July 8, 2026 in the US, the weekdays after the start number 5. Business days gives 4, because it skips Independence Day (observed) on July 3, 2026. Also note that NETWORKDAYS counts the start date itself when it is a business day, and the tool does not, so the two differ by one unless you adjust.
 
 [Business days](https://krishnachagti-sudo.github.io/toll-preview/business-days/) gives the count with the holidays it skipped, for a region, at $0.0005 per call. The spreadsheet is the better choice for a one-off count in a year where you already have a holiday list, for offline work, and for a long column of dates in a model you already have. How-to guides: [Excel NETWORKDAYS](https://krishnachagti-sudo.github.io/toll-preview/business-days/excel-networkdays/), [Excel WORKDAY](https://krishnachagti-sudo.github.io/toll-preview/business-days/excel-workday/) and [Google Sheets](https://krishnachagti-sudo.github.io/toll-preview/business-days/google-sheets-networkdays/).
 
 ## Exchange rate on a date: where does a spreadsheet get the rate?
 
-A spreadsheet has no rates of its own. In Google Sheets, `GOOGLEFINANCE` can fetch currency data. Google says quotes are not sourced from all markets and may be delayed up to 20 minutes, that data is provided "as is" for information only, that historical data comes back as an expanded array with headers, and that historical data cannot be downloaded or accessed through the Sheets API or Apps Script. In Excel, or anywhere else, you paste a table of rates from a source you choose.
+A spreadsheet has no rates of its own. In Google Sheets, `GOOGLEFINANCE` can fetch currency data. Google says quotes are not sourced from all markets and may be delayed up to 20 minutes, that data is provided "as is" for information only, that historical data comes back as an expanded array with headers, and that historical data cannot be downloaded or accessed through the Sheets API or Apps Script.
+
+**Read the rest: Exchange rate on a date: where does a spreadsheet get the rate?**
+
+In Excel, or anywhere else, you paste a table of rates from a source you choose.
 
 What you must keep up to date: the rate table, and a rule for dates with no rate. November 7, 2026 was a Saturday. The European Central Bank publishes no reference rate that day, so Exchange rate on a date uses the fixing of November 6, 2026, 1 EUR = 1.1165 USD, and says so. In a sheet you have to write that fallback yourself, or the lookup fails or returns a wrong day.
 
@@ -26,13 +36,21 @@ What you must keep up to date: the rate table, and a rule for dates with no rate
 
 ## Mileage: what changes when the IRS rate changes?
 
-The IRS business mileage rate is set by period, and in 2026 it changed mid-year: 72.5 cents a mile from January 1 and 76 cents from July 1. A mileage sheet therefore needs a rate lookup by trip date, not one rate cell. The same 1,000 miles is $725.00 in June and $760.00 in July, so a year-long total at one rate is wrong for one half of the year. Mileage allowances paid by an employer can follow a paid-date rule on top of that.
+The IRS business mileage rate is set by period, and in 2026 it changed mid-year: 72.5 cents a mile from January 1 and 76 cents from July 1.
+
+**Read the rest: Mileage: what changes when the IRS rate changes?**
+
+A mileage sheet therefore needs a rate lookup by trip date, not one rate cell. The same 1,000 miles is $725.00 in June and $760.00 in July, so a year-long total at one rate is wrong for one half of the year. Mileage allowances paid by an employer can follow a paid-date rule on top of that.
 
 [Mileage reimbursement and IRS mileage log](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/) applies the rate of each trip's period from the IRS table, and makes the log, at from $0.001. The spreadsheet is the better choice if you drive all year in one rate period and just need a running total, or if you want a log you format your own way.
 
 ## Per diem: how often do the rates change?
 
-The IRS sets the special meals and incidental expenses rate for the transportation industry by notice, each for October 1 to September 30. The continental US rate was $66 a day under Notice 2020-71, $69 under Notice 2021-52 (from October 1, 2021) and $80 under Notice 2024-68 (from October 1, 2024). For 30 days away that is $1,980, $2,070 and $2,400.
+The IRS sets the special meals and incidental expenses rate for the transportation industry by notice, each for October 1 to September 30.
+
+**Read the rest: Per diem: how often do the rates change?**
+
+The continental US rate was $66 a day under Notice 2020-71, $69 under Notice 2021-52 (from October 1, 2021) and $80 under Notice 2024-68 (from October 1, 2024). For 30 days away that is $1,980, $2,070 and $2,400.
 
 What you must keep up to date: the rate for each travel date, every year, and the rule for a partial day. A sheet with one rate cell is right for one year at a time, and you have to notice when the new notice comes out.
 

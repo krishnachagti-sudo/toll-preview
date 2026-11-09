@@ -2,9 +2,42 @@
 
 An employee is eligible when the employer is covered and, as of the day leave starts, has employed them for 12 months, they worked 1,250 hours in the 12 months before, and 50 employees work within 75 surface miles of their worksite (29 CFR 825.110). The eligibility notice is due within 5 business days.
 
+## How does it work?
+
+1. Coverage: a public agency or a school is covered at any size. A private employer is covered with 50 or more employees in undefined or more workweeks of the current or preceding calendar year (825.104, 825.105(e)); when the workweeks are not given, coverage is assumed and the answer says so.
+2. 12 months (825.110(b)): one continuous job is measured in calendar months and passes on the 12-month anniversary of the hire date (a February 29 hire reaches it on February 28).
+3. Breaks: service before a break of 7 years or more is dropped, unless the break was USERRA-covered service (which itself counts as employment), a written rehire agreement covers it, or the employer counts such service for everyone (825.110(b)(1), (2) and (4)).
+4. 1,250 hours (825.110(c)): the hours are counted from the same date a year before the leave starts to the day before it.
+5. 50 within 75 miles (825.111): the employees of every site at 75 surface miles or less from the worksite are added, the worksite itself counting at 0 miles, and sites outside the United States are left out.
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/fmla-eligibility-checker/#what) below.
+
+## What does it not cover?
+
+- It does not decide whether a reason for leave qualifies, or whether employers are joint or integrated employers.
+- State family and medical leave laws are not covered: none was read on a state's own site.
+- The airline flight crew hours rule of 825.801 is not worked out.
+- The headcount, worksite, distances and hours are the facts entered; the tool cannot check them. It is not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 4 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.
+- [Tested: 4 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The thresholds and quoted sections are pinned to eCFR and dol.gov with their read date. Each test is checked at its boundary: the anniversary and the day before, 51 and 52 weeks, seven years and a day less, 1,250 hours and 1,249.75, 75 and 75.1 miles, 19 and 20 workweeks.
+
+- [29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)](https://www.ecfr.gov/current/title-29/part-825), eCFR current to 2026-11-02, read 2026-11-08
+- [DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act](https://www.dol.gov/agencies/whd/fact-sheets/28-fmla), revised March 2025, read 2026-11-08
+- [DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act](https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf), dated 2023-02-09, read 2026-11-08
+- [DOL: FMLA forms](https://www.dol.gov/agencies/whd/fmla/forms), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the fmla eligibility checker compute?
 
-The tool takes the facts an employer has about one employee and one leave: the dates employed, the hours worked, the headcount near the worksite and the employer. It runs the three eligibility tests of 29 CFR 825.110 and the employer coverage test, gives the reason the eligibility notice must state when an employee is not eligible, and the day that notice is due. It also turns 12 or 26 workweeks into hours for a schedule, and keeps a leave balance under each of the four 12-month methods of 825.200(b), with the days leave comes back under the rolling method.
+The tool takes the facts an employer has about one employee and one leave: the dates employed, the hours worked, the headcount near the worksite and the employer. It runs the three eligibility tests of 29 CFR 825.110 and the employer coverage test, gives the reason the eligibility notice must state when an employee is not eligible, and the day that notice is due.
+
+**In detail: operations, inputs and outputs**
+
+It also turns 12 or 26 workweeks into hours for a schedule, and keeps a leave balance under each of the four 12-month methods of 825.200(b), with the days leave comes back under the rolling method.
 
 Operations (the op field):
 
@@ -33,7 +66,7 @@ Outputs:
 - balance: hours used and remaining, the period, restore dates or the reset date, and protected and unprotected hours per day
 - record: the ledger CSV, the comparison of methods and the eligibility notice fields
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. Coverage: a public agency or a school is covered at any size. A private employer is covered with 50 or more employees in undefined or more workweeks of the current or preceding calendar year (825.104, 825.105(e)); when the workweeks are not given, coverage is assumed and the answer says so.
 2. 12 months (825.110(b)): one continuous job is measured in calendar months and passes on the 12-month anniversary of the hire date (a February 29 hire reaches it on February 28). Separate periods are added up in Sunday-to-Saturday weeks, where any part of a week on the payroll counts as a week, and 52 weeks equal 12 months. Service is counted to the day before the leave starts.
@@ -59,6 +92,8 @@ A teleworker's worksite for FMLA eligibility is the office they report to or get
 
 ## Which edge cases does it handle?
 
+**The edge cases (7)**
+
 - A rehire after a break of seven years or more starts the 12 months again; exactly seven years counts as seven years or more, and a day less does not.
 - Seasonal periods are added up in weeks, so a period that touches a Saturday and the next Sunday counts two weeks.
 - When the 12-month test fails, the answer gives the first leave date on which it would be met if the employee stays employed.
@@ -72,6 +107,20 @@ A teleworker's worksite for FMLA eligibility is the office they report to or get
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A teleworker who reports to headquarters: the 50 are counted around that office**
+
+A teleworker who reports to headquarters: the 50 are counted around that office
+
+| Result | Value |
+| --- | --- |
+| eligible | yes |
+| months of service | 32 |
+| hours in the 12 months before leave | 1,612 |
+| employees within 75 miles of the worksite | 300 |
+| worksite | Headquarters |
+| notice due | November 13, 2026 |
+| holidays skipped | Veterans Day |
+
+**The input**
 
 ```json
 {
@@ -105,19 +154,23 @@ A teleworker's worksite for FMLA eligibility is the office they report to or get
 }
 ```
 
-A teleworker who reports to headquarters: the 50 are counted around that office
+**More worked examples (3)**
+
+**A rehire after a break of more than seven years: the old service does not count**
+
+A rehire after a break of more than seven years: the old service does not count
 
 | Result | Value |
 | --- | --- |
-| eligible | yes |
-| months of service | 32 |
-| hours in the 12 months before leave | 1,612 |
-| employees within 75 miles of the worksite | 300 |
-| worksite | Headquarters |
-| notice due | November 13, 2026 |
-| holidays skipped | Veterans Day |
+| eligible | no |
+| service dropped before | March 2, 2026 |
+| months of service | 8 |
+| 12 months met on | March 2, 2027 |
+| reason 1 | You have been employed by the employer for 8 months as of November 16, 2026, less than 12 months. |
+| reason 2 | You have worked 1,104 hours of service with the employer in the 12 months before November 16, 2026 (November 16, 2025 to November 15, 2026), fewer than 1,250. |
+| notice due | November 17, 2026 |
 
-**A rehire after a break of more than seven years: the old service does not count**
+**The input**
 
 ```json
 {
@@ -138,29 +191,7 @@ A teleworker who reports to headquarters: the 50 are counted around that office
 }
 ```
 
-A rehire after a break of more than seven years: the old service does not count
-
-| Result | Value |
-| --- | --- |
-| eligible | no |
-| service dropped before | March 2, 2026 |
-| months of service | 8 |
-| 12 months met on | March 2, 2027 |
-| reason 1 | You have been employed by the employer for 8 months as of November 16, 2026, less than 12 months. |
-| reason 2 | You have worked 1,104 hours of service with the employer in the 12 months before November 16, 2026 (November 16, 2025 to November 15, 2026), fewer than 1,250. |
-| notice due | November 17, 2026 |
-
 **Rolling 12 months: hours left, the day leave comes back, and two requested weeks**
-
-```json
-op: "balance"
-method: "rolling"
-weeklyHours: 40
-asOf: "2026-11-10"
-used: 50 items
-requested: 10 items
-compare: true
-```
 
 Rolling 12 months: hours left, the day leave comes back, and two requested weeks
 
@@ -174,7 +205,27 @@ Rolling 12 months: hours left, the day leave comes back, and two requested weeks
 | Calendar year | 128 hours left (most beneficial) |
 | 12 months measured forward from the first leave | 88 hours left |
 
+**The input**
+
+```json
+op: "balance"
+method: "rolling"
+weeklyHours: 40
+asOf: "2026-11-10"
+used: 50 items
+requested: 10 items
+compare: true
+```
+
 **12 weeks of FMLA in hours on a 36-hour week**
+
+12 weeks of FMLA in hours on a 36-hour week
+
+| Result | Value |
+| --- | --- |
+| answer | 12 workweeks at 36 hours a week is 432 hours of FMLA leave (12 x 36). |
+
+**The input**
 
 ```json
 {
@@ -183,46 +234,11 @@ Rolling 12 months: hours left, the day leave comes back, and two requested weeks
 }
 ```
 
-12 weeks of FMLA in hours on a 36-hour week
-
-| Result | Value |
-| --- | --- |
-| answer | 12 workweeks at 36 hours a week is 432 hours of FMLA leave (12 x 36). |
-
-## What does it not do?
-
-- It does not decide whether a reason for leave qualifies, or whether employers are joint or integrated employers.
-- State family and medical leave laws are not covered: none was read on a state's own site.
-- The airline flight crew hours rule of 825.801 is not worked out.
-- The headcount, worksite, distances and hours are the facts entered; the tool cannot check them. It is not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.
-
-- [29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)](https://www.ecfr.gov/current/title-29/part-825)
-- [DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act](https://www.dol.gov/agencies/whd/fact-sheets/28-fmla)
-- [DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act](https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf)
-- [DOL: FMLA forms](https://www.dol.gov/agencies/whd/fmla/forms)
-
-The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.
-
-FMLA eligibility checker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)](https://www.ecfr.gov/current/title-29/part-825) | eCFR current to 2026-11-02 | 2026-11-08 |
-| [DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act](https://www.dol.gov/agencies/whd/fact-sheets/28-fmla) | revised March 2025 | 2026-11-08 |
-| [DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act](https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf) | dated 2023-02-09 | 2026-11-08 |
-| [DOL: FMLA forms](https://www.dol.gov/agencies/whd/fmla/forms) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The thresholds and quoted sections are pinned to eCFR and dol.gov with their read date. Each test is checked at its boundary: the anniversary and the day before, 51 and 52 weeks, seven years and a day less, 1,250 hours and 1,249.75, 75 and 75.1 miles, 19 and 20 workweeks. The rolling balance reproduces the regulation's own example in 825.200(c).
+The rolling balance reproduces the regulation's own example in 825.200(c).
 
-What its test suite asserts:
+**What its test suite asserts (4)**
 
 - The thresholds (12 months or 52 weeks, 1,250 hours, 50 employees within 75 miles, 7 years, 20 workweeks, 5 business days) and the quoted sections of Part 825 are pinned to eCFR and dol.gov as read on 2026-11-08.
 - The 12-month test is checked on the anniversary and the day before, a leap-day hire, seasonal periods in weeks, 51 and 52 weeks, and breaks of seven years kept by USERRA, an agreement or the employer.

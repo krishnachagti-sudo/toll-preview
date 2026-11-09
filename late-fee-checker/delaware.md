@@ -12,6 +12,10 @@ In Delaware a landlord may charge a rent late fee of at most 5% of the monthly r
 
 ## What the statute says
 
+**In short:** 5% of the monthly rent; from day 6 after the due date (25 Del. C. § 5501(d)).
+
+**The statute's words (1 passage)**
+
 25 Del. C. § 5501(d): "Where the rental agreement provides for a late charge payable to the landlord for rent not paid at the agreed time, such late charge shall not exceed 5 percent of the monthly rent. A late charge is considered as additional rent for the purposes of this Code. The late charge shall not be imposed within 5 days of the agreed time for payment of rent. The landlord shall, in the county in which the rental unit is located, maintain an office or other permanent place for receipt of payments, where rent may be timely paid. Failure to maintain such an office, or other permanent place of payment where rent may be timely paid, shall extend the agreed on time for payment of rent by 3 days beyond the due date."
 
 ## The limit on sample rents

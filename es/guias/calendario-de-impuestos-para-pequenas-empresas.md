@@ -1,10 +1,10 @@
 # Fechas límite de impuestos para pequeños negocios
 
-La próxima fecha límite de impuestos para pequeños negocios es el viernes, 15 de enero de 2027, dentro de 68 días: Pago 4 de 4 de impuestos estimados de 2026 (Formulario 1040-ES). La lista de abajo llega hasta el 18 de abril de 2028, y el calendario en `https://krishnachagti-sudo.github.io/toll-preview/calendars/small-business-tax-deadlines.ics` es gratis.
+La próxima fecha límite de impuestos para pequeños negocios es el viernes, 15 de enero de 2027, dentro de 67 días: Pago 4 de 4 de impuestos estimados de 2026 (Formulario 1040-ES). La lista de abajo llega hasta el 18 de abril de 2028, y el calendario en `https://krishnachagti-sudo.github.io/toll-preview/calendars/small-business-tax-deadlines.ics` es gratis.
 
 ## ¿Cuáles son las próximas fechas límite de impuestos para pequeños negocios?
 
-Las fechas son para Estados Unidos y van desde hoy, 8 de noviembre de 2026, para el año tributario en curso y el siguiente. Una fecha que se trasladó está marcada, y la siguiente sección explica por qué.
+Las fechas son para Estados Unidos y van desde hoy, 9 de noviembre de 2026, para el año tributario en curso y el siguiente. Una fecha que se trasladó está marcada, y la siguiente sección explica por qué.
 
 Fechas límite de impuestos para pequeños negocios en EE. UU. a partir de hoy
 
@@ -114,4 +114,4 @@ No. Enumera las fechas límite que publican las fuentes. Las suyas pueden ser di
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/es/guias/calendario-de-impuestos-para-pequenas-empresas/  
-Calculado para: 2026-11-08
+Calculado para: 2026-11-09

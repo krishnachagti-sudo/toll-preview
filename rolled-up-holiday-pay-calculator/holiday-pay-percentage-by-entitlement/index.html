@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Your entitlement</h2><p class="muted">Weeks (6) or days (33 days, or 30 days 4 for a 4-day week).</p><form method="get" action="/toll-preview/rolled-up-holiday-pay-calculator/" class="cp-tool-form"><div class="field"><label for="tf-ent">Holiday a year</label><input type="text" id="tf-ent" name="ent" value="33 days"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work out the rate</button></form><p class="small"><a href="/toll-preview/rolled-up-holiday-pay-calculator/?ent=33+days">Open the rate calculator</a></p></aside>
 <section>
 <h2 id="formula">The formula</h2>
@@ -82,7 +83,7 @@
 </section>
 <section>
 <h2 id="five-day">5-day week</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Days of holiday a year on a 5-day week.</caption><thead><tr><th scope="col" class="r num">Days</th><th scope="col" class="r num">Weeks</th><th scope="col" class="r num">Working weeks</th><th scope="col" class="r num">Percentage</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Days of holiday a year on a 5-day week.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col" class="r num">Days</th><th scope="col" class="r num">Weeks</th><th scope="col" class="r num">Working weeks</th><th scope="col" class="r num">Percentage</th></tr></thead><tbody>
 <tr><th scope="row">28</th><td class="r num">5.6</td><td class="r num">46.4</td><td class="r num">12.07%</td></tr>
 <tr><th scope="row">29</th><td class="r num">5.8</td><td class="r num">46.2</td><td class="r num">12.55%</td></tr>
 <tr><th scope="row">30</th><td class="r num">6</td><td class="r num">46</td><td class="r num">13.04%</td></tr>
@@ -96,11 +97,11 @@
 <tr><th scope="row">38</th><td class="r num">7.6</td><td class="r num">44.4</td><td class="r num">17.12%</td></tr>
 <tr><th scope="row">39</th><td class="r num">7.8</td><td class="r num">44.2</td><td class="r num">17.65%</td></tr>
 <tr><th scope="row">40</th><td class="r num">8</td><td class="r num">44</td><td class="r num">18.18%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="four-day">4-day week</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Days of holiday a year on a 4-day week (5.6 weeks is 22.4 days).</caption><thead><tr><th scope="col" class="r num">Days</th><th scope="col" class="r num">Weeks</th><th scope="col" class="r num">Working weeks</th><th scope="col" class="r num">Percentage</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Days of holiday a year on a 4-day week (5.6 weeks is 22.4 days).</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col" class="r num">Days</th><th scope="col" class="r num">Weeks</th><th scope="col" class="r num">Working weeks</th><th scope="col" class="r num">Percentage</th></tr></thead><tbody>
 <tr><th scope="row">22.4</th><td class="r num">5.6</td><td class="r num">46.4</td><td class="r num">12.07%</td></tr>
 <tr><th scope="row">23</th><td class="r num">5.75</td><td class="r num">46.25</td><td class="r num">12.43%</td></tr>
 <tr><th scope="row">24</th><td class="r num">6</td><td class="r num">46</td><td class="r num">13.04%</td></tr>
@@ -112,14 +113,14 @@
 <tr><th scope="row">30</th><td class="r num">7.5</td><td class="r num">44.5</td><td class="r num">16.85%</td></tr>
 <tr><th scope="row">31</th><td class="r num">7.75</td><td class="r num">44.25</td><td class="r num">17.51%</td></tr>
 <tr><th scope="row">32</th><td class="r num">8</td><td class="r num">44</td><td class="r num">18.18%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">A 6 or 7-day week is not in the table: Statutory paid holiday entitlement is limited to 28 days. GOV.UK gives no percentage for that case, so the calculator does not guess one.</p>
 <p>The same rate applies to the rolled-up pound amount and to the hours accrued. Try it on a pay figure in <a href="/toll-preview/rolled-up-holiday-pay-calculator/">the calculator</a>.</p>
 <p class="cp-note">Worked out under GOV.UK's guidance for Great Britain; Northern Ireland has its own rules and is not covered. Whether a worker is an irregular-hours or part-year worker depends on the contract. Not legal advice.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024">GOV.UK (Department for Business and Trade), Holiday pay and entitlement reforms from 1 January 2024 (updated 1 April 2024, read 8 November 2026)</a></li><li><a href="https://www.gov.uk/holiday-entitlement-rights">GOV.UK, Holiday entitlement (updated 5 November 2026, read 8 November 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024">GOV.UK (Department for Business and Trade), Holiday pay and entitlement reforms from 1 January 2024 (updated 1 April 2024</a><span class="src-m">gov.uk · read 8 November 2026)</span></li><li><a href="https://www.gov.uk/holiday-entitlement-rights">GOV.UK, Holiday entitlement (updated 5 November 2026</a><span class="src-m">gov.uk · read 8 November 2026)</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>What percentage is holiday pay if they get 33 days?</h3></summary><div class="xp-in"><p>On a 5-day week 33 days is 6.6 weeks: 6.6 ÷ 45.4 = 14.54%.</p></div></details><details class="xpand"><summary><h3>What percentage is 30 days of holiday?</h3></summary><div class="xp-in"><p>13.04%: 30 days on a 5-day week is 6 weeks, and 6 ÷ 46 = 0.1304 (GOV.UK's own example).</p></div></details><details class="xpand"><summary><h3>Why is 35 days not 8 weeks?</h3></summary><div class="xp-in"><p>On a 5-day week 35 days is 7 weeks, so the rate is 7 ÷ 45 = 15.56%.</p></div></details></section>

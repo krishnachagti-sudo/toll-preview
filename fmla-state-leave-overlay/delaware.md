@@ -35,6 +35,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA, 
 
 ## Delaware in its own words
 
+**Read the law's own words (7 quotations)**
+
 - "Delaware Paid Leave offers paid leave to employees who have been employed for at least one year and have worked at least 1,250 hours with a single employer." [Delaware Department of Labor, Delaware Paid Leave](https://labor.delaware.gov/delaware-paid-leave/)
 - "Care for a new child (up to 12 weeks per year)." [Delaware Department of Labor, Delaware Paid Leave](https://labor.delaware.gov/delaware-paid-leave/)
 - "Care for a family member with a serious health condition (up to six weeks every 24 months)." [Delaware Department of Labor, Delaware Paid Leave](https://labor.delaware.gov/delaware-paid-leave/)

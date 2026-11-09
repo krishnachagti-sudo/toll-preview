@@ -1,6 +1,6 @@
 # BR-DE-7: E-Mail des Verkäufers (BT-43) fehlt
 
-BR-DE-7 bedeutet: Das Element "Seller contact email address" (BT-43) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie im Kontakt eine E-Mail-Adresse an (UBL cac:Contact/cbc:ElectronicMail, CII ram:EmailURIUniversalCommunication/ram:URIID).
+BR-DE-7 bedeutet: Das Element "Seller contact email address" (BT-43) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Der Kontakt des Verkäufers hat keine E-Mail-Adresse.
 
 ## So beheben Sie den Fehler
 
-Geben Sie im Kontakt eine E-Mail-Adresse an (UBL cac:Contact/cbc:ElectronicMail, CII ram:EmailURIUniversalCommunication/ram:URIID).
+Geben Sie im Kontakt eine E-Mail-Adresse an (UBL `cac:Contact/cbc:ElectronicMail`, CII `ram:EmailURIUniversalCommunication/ram:URIID`).
 
 ## Geprüftes Beispiel
 

@@ -21,6 +21,8 @@ FMLA and each state program we read
 
 ## The federal rule for the overlap
 
+**Read the law's own words (2 quotations)**
+
 - "If leave qualifies for FMLA leave and leave under State law, the leave used counts against the employee's entitlement under both laws." [29 CFR 825.701, Interaction with State laws (eCFR)](https://www.ecfr.gov/current/title-29/section-825.701)
 - "First, where an employee takes leave under a state or local paid family or medical leave program, if the leave is covered by the FMLA, it must be designated as FMLA leave and the employee must be given notice of the designation, which should include the amount of leave to be counted against the employee's FMLA leave entitlement." [U.S. Department of Labor, Wage and Hour Division, Opinion Letter FMLA2025-01-A (January 14, 2025)](https://www.dol.gov/sites/dolgov/files/WHD/opinion-letters/FMLA/2025_1_14_1_FMLA.pdf)
 

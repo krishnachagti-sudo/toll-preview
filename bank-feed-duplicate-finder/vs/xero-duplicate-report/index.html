@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the duplicate finder</h2><p class="muted">The worked files open in the tool and are previewed in your browser, free. Swap in your own exports there.</p><form method="get" action="/toll-preview/bank-feed-duplicate-finder/" class="cp-tool-form"><input type="hidden" name="feed" value="Date,Amount,Payee,Description,Reference,Source
 3 Oct 2026,-45.99,SOFTWARE CO,MONTHLY PLAN,SUB-88,Bank Feed
 6 Oct 2026,520.10,STRIPE,STRIPE PAYOUT,PO-1006,Bank Feed
@@ -85,17 +86,17 @@
 "><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/bank-feed-duplicate-finder/?feed=Date%2CAmount%2CPayee%2CDescription%2CReference%2CSource%0D%0A3+Oct+2026%2C-45.99%2CSOFTWARE+CO%2CMONTHLY+PLAN%2CSUB-88%2CBank+Feed%0D%0A6+Oct+2026%2C520.10%2CSTRIPE%2CSTRIPE+PAYOUT%2CPO-1006%2CBank+Feed%0D%0A6+Oct+2026%2C520.10%2CSTRIPE%2CSTRIPE+PAYOUT%2CPO-1006%2CBank+Feed%0D%0A9+Oct+2026%2C-128.75%2COFFICE+MART%2CPOS+PURCHASE+4471%2C%2CBank+Feed%0D%0A10+Oct+2026%2C-128.75%2COffice+Mart%2CCard+purchase%2C%2CImported%0D%0A14+Oct+2026%2C-33.00%2CCAFE+NORTE%2CPOS+PURCHASE%2C%2CBank+Feed%0D%0A20+Oct+2026%2C477.25%2CSTRIPE%2CSTRIPE+PAYOUT%2CPO-1020%2CBank+Feed%0D%0A">Open this example in the tool</a></p></aside>
 <section>
 <h2 id="table">Side by side</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Xero's side from Xero Central, read November 8, 2026</caption><thead><tr><th scope="col"></th><th scope="col">Xero Duplicate Statement Lines report</th><th scope="col">This tool</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Xero's side from Xero Central, read November 8, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col"></th><th scope="col">Xero Duplicate Statement Lines report</th><th scope="col">This tool</th></tr></thead><tbody>
 <tr><th scope="row">Compares</th><td>This report compares the date and amounts of the statement lines in a particular bank account and identifies any that are potential duplicates.</td><td>Equal amounts within 0 to 31 days, scored on date, payee words and reference</td></tr>
 <tr><th scope="row">Near-duplicates</th><td>It doesn't show any partial matches</td><td>Listed with a confidence</td></tr>
 <tr><th scope="row">What it looks at</th><td>Statement lines</td><td>Statement lines, account transactions, or both together</td></tr>
 <tr><th scope="row">Which copy to keep</th><td>You choose</td><td>Stated: reconciled first, then the Bank Feed line over an Imported one</td></tr>
 <tr><th scope="row">Cost</th><td>Included in Xero</td><td>Preview free; $3.00 for the full list per account check</td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>The worked account</caption><thead><tr><th scope="col">#</th><th scope="col">Confidence</th><th scope="col" class="r num">Amount</th><th scope="col">Act on</th><th scope="col">Keep</th><th scope="col">Action</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">The worked account</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">#</th><th scope="col">Confidence</th><th scope="col" class="r num">Amount</th><th scope="col">Act on</th><th scope="col">Keep</th><th scope="col">Action</th></tr></thead><tbody>
 <tr><th scope="row">1</th><td>high</td><td class="r num">$520.10</td><td>feed line 4: 2026-10-06, STRIPE STRIPE PAYOUT (bank feed)</td><td>feed line 3: 2026-10-06, STRIPE STRIPE PAYOUT (bank feed)</td><td>Delete this statement line (Bank Statements, Statement lines)</td></tr>
 <tr><th scope="row">2</th><td>medium</td><td class="r num">-$128.75</td><td>feed line 6: 2026-10-10, Office Mart Card purchase (imported)</td><td>feed line 5: 2026-10-09, OFFICE MART POS PURCHASE 4471 (bank feed)</td><td>Delete this statement line (Bank Statements, Statement lines)</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="better">When Xero's report is better</h2>
@@ -107,7 +108,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://central.xero.com/s/article/Find-and-remove-duplicate-bank-statement-lines">Xero Central: Find and remove duplicate bank statement lines (read November 8, 2026)</a></li><li><a href="https://productideas.xero.com/forums/967136-banking-chart-of-accounts/suggestions/45978244-bank-reconciliation-automatically-recognise-and-r">Xero Product Ideas: Automatically recognise and remove duplicate statement lines (Xero reply, June 16, 2025) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://central.xero.com/s/article/Find-and-remove-duplicate-bank-statement-lines">Xero Central: Find and remove duplicate bank statement lines (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li><li><a href="https://productideas.xero.com/forums/967136-banking-chart-of-accounts/suggestions/45978244-bank-reconciliation-automatically-recognise-and-r">Xero Product Ideas: Automatically recognise and remove duplicate statement lines (Xero reply, June 16, 2025) (read November 8, 2026)</a><span class="src-m">productideas.xero.com</span></li></ul>
 </section>
 
 

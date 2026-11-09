@@ -1,6 +1,8 @@
 # Minnesota lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Minnesota, your pre-lien notice to owner is due December 17, 2026, the lien must be recorded by May 29, 2027 and the suit to enforce it must be filed by January 29, 2028 (Minn. Stat. 514.011, subd. 2(a); Minn. Stat. 514.08, subd. 1; Minn. Stat. 514.12, subd. 3).
+In Minnesota, a subcontractor records the lien within 120 days after doing the last of the work or furnishing the last item: record it with the county recorder (or registrar of titles) and serve a copy on the owner (Minn. Stat. 514.08, subd. 1); the notice comes first, not later than 45 days after you first furnish labor, skill or materials for the improvement (Minn. Stat. 514.011, subd. 2(a)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=MN&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Minnesota, your pre-lien notice to owner is due December 17, 2026, the lien must be recorded by May 29, 2027 and the suit to enforce it must be filed by January 29, 2028 (Minn. Stat. 514.011, subd. 2(a); Minn. Stat. 514.08, subd. 1; Minn. Stat. 514.12, subd. 3).
 
 ## Work out your Minnesota dates
 
@@ -35,6 +37,8 @@ Minnesota lien law, read November 8, 2026
 Weekends and holidays: the Minnesota text we read does not move a deadline that falls on a weekend or holiday, so the calculator keeps the statute's date and flags it with the business day before.
 
 ## Minnesota in its own words
+
+**Read the statute's words (5 quotations)**
 
 - "If no written contract for the improvement is entered into, the notice must be prepared separately and delivered personally or by certified mail to the owner or the owner's authorized agent within ten days after the work of improvement is agreed upon." [Minn. Stat. 514.011, Notices](https://www.revisor.mn.gov/statutes/cite/514.011)
 - "A person who fails to provide the notice shall not have the lien and remedy provided by this chapter." [Minn. Stat. 514.011, Notices](https://www.revisor.mn.gov/statutes/cite/514.011)

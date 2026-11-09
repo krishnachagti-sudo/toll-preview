@@ -2,9 +2,58 @@
 
 The duty is the HTS base rate plus each Section 301 layer for the origin, all on the customs value, as of November 8, 2026 under the 2026 HTS Revision 22. A cotton T-shirt (HTS 6109.10.00.12) from Vietnam worth $12.00 pays 16.5% base plus 12.5% (heading 9903.05.84): $3.48. A line a layer we have not read applies to is refused, not guessed.
 
+## How does it work?
+
+1. The HTS number is read as its digits (spaces, dots and hyphens dropped). It must be 8 or 10 digits and on a line of the revision; a 6-digit HS code, a chapter 98 or 99 number, or a number not in the revision makes the row incomplete, with the reason.
+2. The base rate is the line's column 1 general rate.
+3. Goods of North Korea, Belarus, Russia and Cuba take the column 2 rate (General Note 3).
+4. Section 301 on goods of China (U.S. notes 20 and 31): lists 2 and 3 at 25%, list 4A at 7.5%, and the four-year-review increases in force on November 8, 2026.
+5. Section 301 on 60 economies (U.S. note 52, read November 8, 2026): 17 at 10% and 38 at 12.5% on top of the base.
+
+> Steps 6 to 10, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/hts-duty-estimator/#what) below.
+
+## What does it not cover?
+
+- It refuses, rather than estimates, any line that Section 232, a safeguard, a quota, the section 338 duties on Canada or the Russia note reach, and it never includes antidumping or countervailing duties.
+- It does not classify goods: the HTS number is yours, and only CBP decides the classification at entry.
+- Product exclusions, conditional exemptions and the MPF exemptions for goods under some trade agreements are named but not applied; a special rate is used only when you claim it, and the goods must meet the agreement's rules of origin.
+- Rates are as of November 8, 2026. A Federal Register action published later is not in the answer until the data is rebuilt. Estimate, not a customs ruling: U.S. Customs and Border Protection decides the classification, value, origin and duty at entry, and the importer is responsible for them. This is not legal or customs advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 20 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The 2026 HTS Revision 22 (effective 10/30/2026) and the 14 Federal Register documents were read on November 8, 2026. The USITC release list and the newest Federal Register documents from USTR, the President and CBP are checked once a day for changes; a new revision or action is read by a person and the data rebuilt, with the tests that pin it.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The data is pinned to the 2026 HTS Revision 22, its read date and the SHA-256 hash of each source, and the counts of each Chapter 99 list are pinned (17 economies at 10%, 38 at 12.5%, 5 topped up).
+
+- [USITC: Harmonized Tariff Schedule, JSON export](https://hts.usitc.gov/reststop/exportList?from=0101&to=9999.99.99&format=JSON&styles=false), 2026 HTS Revision 22, effective 10/30/2026, read 2026-11-08
+- [USITC: HTS release list](https://hts.usitc.gov/reststop/releaseList), 2026 HTS Revision 22, effective 10/30/2026, read 2026-11-08
+- [USITC: HTS Chapter 99 (U.S. notes and headings), current revision](https://hts.usitc.gov/reststop/file?release=currentRelease&filename=Chapter%2099), 2026 HTS Revision 22, effective 10/30/2026, read 2026-11-08
+- [USITC: HTS General Notes, current revision](https://hts.usitc.gov/reststop/file?release=currentRelease&filename=General%20Notes), 2026 HTS Revision 22, effective 10/30/2026, read 2026-11-08
+- [eCFR: 19 CFR 24.24, harbor maintenance fee](https://www.ecfr.gov/current/title-19/chapter-I/part-24/section-24.24), eCFR, current text, read 2026-11-08
+- [eCFR: 19 CFR 143.21, merchandise eligible for informal entry](https://www.ecfr.gov/current/title-19/chapter-I/part-143/subpart-C/section-143.21), eCFR, current text, read 2026-11-08
+- [Federal Register: Executive Order 14389: Ending Certain Tariff Actions](https://www.federalregister.gov/d/2026-03832), 91 FR 9437, published 2026-02-25, read 2026-11-08
+- [Federal Register: Proclamation: Imposing a Temporary Import Surcharge To Address Fundamental International Payments Problems (section 122)](https://www.federalregister.gov/d/2026-03824), 91 FR 9339, published 2026-02-25, read 2026-11-08
+- [Federal Register: Memorandum of July 23, 2026: Actions in the Section 301 investigations of 60 economies (forced labor)](https://www.federalregister.gov/d/2026-15274), 91 FR 47717, published 2026-07-28, read 2026-11-08
+- [Federal Register: USTR: Notice of Actions in Section 301 Investigations of Various Economies (forced labor)](https://www.federalregister.gov/d/2026-15181), 91 FR 47318, published 2026-07-28, read 2026-11-08
+- [Federal Register: Memorandum: Action in the Section 301 investigation of Brazil](https://www.federalregister.gov/d/2026-14654), 91 FR 45619, published 2026-07-20, read 2026-11-08
+- [Federal Register: USTR: Notice of Action: Brazil](https://www.federalregister.gov/d/2026-14542), 91 FR 45516, published 2026-07-20, read 2026-11-08
+- [Federal Register: USTR: Continuation of Actions: China (technology transfer, intellectual property)](https://www.federalregister.gov/d/2026-20510), 91 FR 64212, published 2026-10-07, read 2026-11-08
+- [Federal Register: USTR: Notice of Action: Nicaragua](https://www.federalregister.gov/d/2025-22690), 90 FR (Dec. 12, 2025), published 2025-12-12, read 2026-11-08
+- [Federal Register: Proclamation: Adjusting Imports of Polysilicon and Its Derivatives (section 232)](https://www.federalregister.gov/d/2026-16400), 91 FR 51975, published 2026-08-11, read 2026-11-08
+- [Federal Register: Proclamation: Temporary Suspension of Additional Duties To Offset Canadian Discrimination (section 338)](https://www.federalregister.gov/d/2026-17294), 91 FR 54789, published 2026-08-24, read 2026-11-08
+- [Federal Register: Proclamation: Further Modifying the Scope of Products of Canada Subject to the Additional Duties (section 338)](https://www.federalregister.gov/d/2026-22292), 91 FR 68861, published 2026-10-30, read 2026-11-08
+- [Federal Register: CBP: Customs User Fees To Be Adjusted for Inflation in Fiscal Year 2027](https://www.federalregister.gov/d/2026-15530), 91 FR (July 31, 2026), published 2026-07-31, read 2026-11-08
+- [Federal Register: CBP: Indefinite Suspension of the De Minimis Exemption for Mail Shipments and New Postal Informal Entry Process](https://www.federalregister.gov/d/2026-12669), 91 FR 37801, published 2026-06-24, read 2026-11-08
+- [Federal Register: CBP: Indefinite Suspension of the De Minimis Exemption for Merchandise Arriving Through All Modes Other Than the International Postal Network](https://www.federalregister.gov/d/2026-12670), 91 FR 37789, published 2026-06-24, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the us import duty estimator by hts code compute?
 
-Given a product's HTS number, country of origin and customs value, the tool returns the US duty, layer by layer: the base rate from the USITC Harmonized Tariff Schedule (2026 HTS Revision 22, effective 10/30/2026), then each Section 301 duty that applies to that origin, each with its Chapter 99 heading, legal source and read date. It takes one SKU or a whole product list (up to 5,000 rows, or a CSV export from Shopify, Etsy or any store), adds the merchandise processing fee (MPF) and harbor maintenance fee (HMF) for one shipment, and returns the results as CSV. A free check lists which products are missing an HTS code, origin, weight or value. It uses the HTS code table of the industry code checker, so both tools read the same revision. Estimate, not a customs ruling: U.S. Customs and Border Protection decides the classification, value, origin and duty at entry, and the importer is responsible for them. This is not legal or customs advice.
+Given a product's HTS number, country of origin and customs value, the tool returns the US duty, layer by layer: the base rate from the USITC Harmonized Tariff Schedule (2026 HTS Revision 22, effective 10/30/2026), then each Section 301 duty that applies to that origin, each with its Chapter 99 heading, legal source and read date.
+
+**In detail: operations, inputs and outputs**
+
+It takes one SKU or a whole product list (up to 5,000 rows, or a CSV export from Shopify, Etsy or any store), adds the merchandise processing fee (MPF) and harbor maintenance fee (HMF) for one shipment, and returns the results as CSV. A free check lists which products are missing an HTS code, origin, weight or value. It uses the HTS code table of the industry code checker, so both tools read the same revision. Estimate, not a customs ruling: U.S. Customs and Border Protection decides the classification, value, origin and duty at entry, and the importer is responsible for them. This is not legal or customs advice.
 
 Operations (the op field):
 
@@ -30,7 +79,7 @@ Outputs:
 - csv: one line per row, with the layers, the duty, the reason and the revision
 - audit: the columns read, the counts missing each field, and each row's missing list
 
-## How is it calculated, step by step?
+**Every step in full (10) and the rules**
 
 1. The HTS number is read as its digits (spaces, dots and hyphens dropped). It must be 8 or 10 digits and on a line of the revision; a 6-digit HS code, a chapter 98 or 99 number, or a number not in the revision makes the row incomplete, with the reason. The origin is a two-letter ISO code or a country name; US-origin goods (chapter 98) are not covered. A row without a value is incomplete.
 2. The base rate is the line's column 1 general rate. Rate text is read as Free, a percentage, or cents or dollars per kg, liter, each, pair, dozen, gross or metric ton, and sums of those; anything else (such as a rate on drained weight or per proof liter) is refused. A per-kg term uses weightKg; other units use quantity; a missing one refuses the row and names the field.
@@ -53,6 +102,8 @@ Built by the tool's build script from the USITC JSON export, Chapter 99 and Gene
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - An 8-digit number that has 10-digit lines under it is estimated at the 8-digit rate, with a note to give the 10 digits on the entry.
 - A four-year-review increase that starts after November 8, 2026 (such as 100% from November 10, 2026, heading 9903.91.14) is a note, not a layer.
 - Goods of the EU, Japan, Korea, Switzerland and Taiwan with a general rate above the cap show the note 52 layer at 0%; a free line from Taiwan pays 10% in all.
@@ -65,6 +116,18 @@ Built by the tool's build script from the USITC JSON export, Chapter 99 and Gene
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A cotton T-shirt from Vietnam worth $12**
+
+A cotton T-shirt from Vietnam worth $12
+
+| Result | Value |
+| --- | --- |
+| answer | HTS 6109.10.00.12 from Vietnam, $12.00: $3.48 US duty (29% of value) as of November 8, 2026 under the 2026 HTS Revision 22: 16.5% base (column 1 general) + 12.5% Section 301 (forced labor), 60 economies (9903.05.84). |
+| HTS line | 6109.10.00.12: T-shirts, singlets, tank tops and similar garments, knitted or crocheted: Of cotton: Men's or boys': Other T-shirts: Men's (338) |
+| base | 16.5% (column 1 general): $1.98 |
+| Section 301 (forced labor), 60 economies (9903.05.84) | 12.5%: $1.50 |
+| duty | $3.48 |
+
+**The input**
 
 ```json
 {
@@ -79,17 +142,21 @@ Built by the tool's build script from the USITC JSON export, Chapter 99 and Gene
 }
 ```
 
-A cotton T-shirt from Vietnam worth $12
+**More worked examples (4)**
+
+**A soy candle from China worth $18: list 4A and the 60-economy duty together**
+
+A soy candle from China worth $18: list 4A and the 60-economy duty together
 
 | Result | Value |
 | --- | --- |
-| answer | HTS 6109.10.00.12 from Vietnam, $12.00: $3.48 US duty (29% of value) as of November 8, 2026 under the 2026 HTS Revision 22: 16.5% base (column 1 general) + 12.5% Section 301 (forced labor), 60 economies (9903.05.84). |
-| HTS line | 6109.10.00.12: T-shirts, singlets, tank tops and similar garments, knitted or crocheted: Of cotton: Men's or boys': Other T-shirts: Men's (338) |
-| base | 16.5% (column 1 general): $1.98 |
-| Section 301 (forced labor), 60 economies (9903.05.84) | 12.5%: $1.50 |
-| duty | $3.48 |
+| answer | HTS 3406.00.00 from China, $18.00: $3.60 US duty (20% of value) as of November 8, 2026 under the 2026 HTS Revision 22: free base (column 1 general) + 7.5% Section 301 China (list 4A) (9903.88.15) + 12.5% Section 301 (forced labor), 60 economies (9903.05.31). |
+| base | Free (column 1 general) |
+| Section 301 China (list 4A) (9903.88.15) | 7.5%: $1.35 |
+| Section 301 (forced labor), 60 economies (9903.05.31) | 12.5%: $2.25 |
+| duty | $3.60 |
 
-**A soy candle from China worth $18: list 4A and the 60-economy duty together**
+**The input**
 
 ```json
 {
@@ -104,24 +171,7 @@ A cotton T-shirt from Vietnam worth $12
 }
 ```
 
-A soy candle from China worth $18: list 4A and the 60-economy duty together
-
-| Result | Value |
-| --- | --- |
-| answer | HTS 3406.00.00 from China, $18.00: $3.60 US duty (20% of value) as of November 8, 2026 under the 2026 HTS Revision 22: free base (column 1 general) + 7.5% Section 301 China (list 4A) (9903.88.15) + 12.5% Section 301 (forced labor), 60 economies (9903.05.31). |
-| base | Free (column 1 general) |
-| Section 301 China (list 4A) (9903.88.15) | 7.5%: $1.35 |
-| Section 301 (forced labor), 60 economies (9903.05.31) | 12.5%: $2.25 |
-| duty | $3.60 |
-
 **A product CSV of six rows: three estimated, one refused, two incomplete**
-
-```json
-{
-  "op": "estimate",
-  "csv": "SKU,Title,HS Code,COO,Weight (kg),Customs value\nTEE-WHT-M,Cotton T-shirt,6109.10.00.12,VN,0.18,6.40\nCND-SOY-8,Soy candle 8 oz,3406.00.00,IN,0.35,4.10\nMUG-CER-12,Ceramic mug,,CN,0.42,2.25\nHAT-KNT-01,Knit beanie,6505.00.20,,0.09,3.80\nBTL-STL-20,Steel water bottle,7323.93.00,CN,0.31,3.15\nBK-PRNT-01,Printed book,4901.99.00.92,GB,0.6,5.00"
-}
-```
 
 A product CSV of six rows: three estimated, one refused, two incomplete
 
@@ -135,7 +185,30 @@ A product CSV of six rows: three estimated, one refused, two incomplete
 | BTL-STL-20 | refused: Section 232: aluminum, steel and copper articles and derivatives: this line is named in U.S. note 16 to subchapter III of Chapter 99, which this estimator does not compute |
 | BK-PRNT-01 | $0.00 duty on $5.00 |
 
+**The input**
+
+```json
+{
+  "op": "estimate",
+  "csv": "SKU,Title,HS Code,COO,Weight (kg),Customs value\nTEE-WHT-M,Cotton T-shirt,6109.10.00.12,VN,0.18,6.40\nCND-SOY-8,Soy candle 8 oz,3406.00.00,IN,0.35,4.10\nMUG-CER-12,Ceramic mug,,CN,0.42,2.25\nHAT-KNT-01,Knit beanie,6505.00.20,,0.09,3.80\nBTL-STL-20,Steel water bottle,7323.93.00,CN,0.31,3.15\nBK-PRNT-01,Printed book,4901.99.00.92,GB,0.6,5.00"
+}
+```
+
 **One ocean shipment from Japan: green tea, towels and toys, with MPF and HMF**
+
+One ocean shipment from Japan: green tea, towels and toys, with MPF and HMF
+
+| Result | Value |
+| --- | --- |
+| answer | Of 3 rows, 3 have an estimate totalling $379.10 in US duty on $3,350.00 of goods (as of November 8, 2026, 2026 HTS Revision 22). With formal entry fees (MPF $34.58, HMF $4.19) the shipment pays $417.87. |
+| TEA-02 | $41.60 (9903.05.86 exempt) |
+| TOW-03 | $112.50 (9903.05.49 at 3.4%) |
+| TOY-04 | $225.00 (9903.05.49 at 12.5%) |
+| entry | formal: the shipment is worth more than $2,500 |
+| MPF | $34.58: 0.3464% of value, at least $34.58 and at most $670.86 (fiscal year 2027) |
+| HMF | $4.19 |
+
+**The input**
 
 ```json
 {
@@ -166,26 +239,7 @@ A product CSV of six rows: three estimated, one refused, two incomplete
 }
 ```
 
-One ocean shipment from Japan: green tea, towels and toys, with MPF and HMF
-
-| Result | Value |
-| --- | --- |
-| answer | Of 3 rows, 3 have an estimate totalling $379.10 in US duty on $3,350.00 of goods (as of November 8, 2026, 2026 HTS Revision 22). With formal entry fees (MPF $34.58, HMF $4.19) the shipment pays $417.87. |
-| TEA-02 | $41.60 (9903.05.86 exempt) |
-| TOW-03 | $112.50 (9903.05.49 at 3.4%) |
-| TOY-04 | $225.00 (9903.05.49 at 12.5%) |
-| entry | formal: the shipment is worth more than $2,500 |
-| MPF | $34.58: 0.3464% of value, at least $34.58 and at most $670.86 (fiscal year 2027) |
-| HMF | $4.19 |
-
 **Which rows of the same CSV are missing an HTS code, origin or weight**
-
-```json
-{
-  "op": "audit",
-  "csv": "SKU,Title,HS Code,COO,Weight (kg),Customs value\nTEE-WHT-M,Cotton T-shirt,6109.10.00.12,VN,0.18,6.40\nCND-SOY-8,Soy candle 8 oz,3406.00.00,IN,0.35,4.10\nMUG-CER-12,Ceramic mug,,CN,0.42,2.25\nHAT-KNT-01,Knit beanie,6505.00.20,,0.09,3.80\nBTL-STL-20,Steel water bottle,7323.93.00,CN,0.31,3.15\nBK-PRNT-01,Printed book,4901.99.00.92,GB,0.6,5.00"
-}
-```
 
 Which rows of the same CSV are missing an HTS code, origin or weight
 
@@ -195,72 +249,20 @@ Which rows of the same CSV are missing an HTS code, origin or weight
 | MUG-CER-12 | missing HTS code |
 | HAT-KNT-01 | missing country of origin |
 
-## What does it not do?
+**The input**
 
-- It refuses, rather than estimates, any line that Section 232, a safeguard, a quota, the section 338 duties on Canada or the Russia note reach, and it never includes antidumping or countervailing duties.
-- It does not classify goods: the HTS number is yours, and only CBP decides the classification at entry.
-- Product exclusions, conditional exemptions and the MPF exemptions for goods under some trade agreements are named but not applied; a special rate is used only when you claim it, and the goods must meet the agreement's rules of origin.
-- Rates are as of November 8, 2026. A Federal Register action published later is not in the answer until the data is rebuilt. Estimate, not a customs ruling: U.S. Customs and Border Protection decides the classification, value, origin and duty at entry, and the importer is responsible for them. This is not legal or customs advice.
-
-## Where does the data come from, and how fresh is it?
-
-The 2026 HTS Revision 22 (effective 10/30/2026) and the 14 Federal Register documents were read on November 8, 2026. The USITC release list and the newest Federal Register documents from USTR, the President and CBP are checked once a day for changes; a new revision or action is read by a person and the data rebuilt, with the tests that pin it.
-
-- [USITC: Harmonized Tariff Schedule, JSON export (2026 HTS Revision 22, effective 10/30/2026, read November 8, 2026)](https://hts.usitc.gov/reststop/exportList?from=0101&to=9999.99.99&format=JSON&styles=false)
-- [USITC: HTS release list (2026 HTS Revision 22, effective 10/30/2026, read November 8, 2026)](https://hts.usitc.gov/reststop/releaseList)
-- [USITC: HTS Chapter 99 (U.S. notes and headings), current revision (2026 HTS Revision 22, effective 10/30/2026, read November 8, 2026)](https://hts.usitc.gov/reststop/file?release=currentRelease&filename=Chapter%2099)
-- [USITC: HTS General Notes, current revision (2026 HTS Revision 22, effective 10/30/2026, read November 8, 2026)](https://hts.usitc.gov/reststop/file?release=currentRelease&filename=General%20Notes)
-- [eCFR: 19 CFR 24.24, harbor maintenance fee (read November 8, 2026)](https://www.ecfr.gov/current/title-19/chapter-I/part-24/section-24.24)
-- [eCFR: 19 CFR 143.21, merchandise eligible for informal entry (read November 8, 2026)](https://www.ecfr.gov/current/title-19/chapter-I/part-143/subpart-C/section-143.21)
-- [Federal Register 91 FR 9437 (February 25, 2026): Executive Order 14389: Ending Certain Tariff Actions](https://www.federalregister.gov/d/2026-03832)
-- [Federal Register 91 FR 9339 (February 25, 2026): Proclamation: Imposing a Temporary Import Surcharge To Address Fundamental International Payments Problems (section 122)](https://www.federalregister.gov/d/2026-03824)
-- [Federal Register 91 FR 47717 (July 28, 2026): Memorandum of July 23, 2026: Actions in the Section 301 investigations of 60 economies (forced labor)](https://www.federalregister.gov/d/2026-15274)
-- [Federal Register 91 FR 47318 (July 28, 2026): USTR: Notice of Actions in Section 301 Investigations of Various Economies (forced labor)](https://www.federalregister.gov/d/2026-15181)
-- [Federal Register 91 FR 45619 (July 20, 2026): Memorandum: Action in the Section 301 investigation of Brazil](https://www.federalregister.gov/d/2026-14654)
-- [Federal Register 91 FR 45516 (July 20, 2026): USTR: Notice of Action: Brazil](https://www.federalregister.gov/d/2026-14542)
-- [Federal Register 91 FR 64212 (October 7, 2026): USTR: Continuation of Actions: China (technology transfer, intellectual property)](https://www.federalregister.gov/d/2026-20510)
-- [Federal Register 90 FR (Dec. 12, 2025) (December 12, 2025): USTR: Notice of Action: Nicaragua](https://www.federalregister.gov/d/2025-22690)
-- [Federal Register 91 FR 51975 (August 11, 2026): Proclamation: Adjusting Imports of Polysilicon and Its Derivatives (section 232)](https://www.federalregister.gov/d/2026-16400)
-- [Federal Register 91 FR 54789 (August 24, 2026): Proclamation: Temporary Suspension of Additional Duties To Offset Canadian Discrimination (section 338)](https://www.federalregister.gov/d/2026-17294)
-- [Federal Register 91 FR 68861 (October 30, 2026): Proclamation: Further Modifying the Scope of Products of Canada Subject to the Additional Duties (section 338)](https://www.federalregister.gov/d/2026-22292)
-- [Federal Register 91 FR (July 31, 2026) (July 31, 2026): CBP: Customs User Fees To Be Adjusted for Inflation in Fiscal Year 2027](https://www.federalregister.gov/d/2026-15530)
-- [Federal Register 91 FR 37801 (June 24, 2026): CBP: Indefinite Suspension of the De Minimis Exemption for Mail Shipments and New Postal Informal Entry Process](https://www.federalregister.gov/d/2026-12669)
-- [Federal Register 91 FR 37789 (June 24, 2026): CBP: Indefinite Suspension of the De Minimis Exemption for Merchandise Arriving Through All Modes Other Than the International Postal Network](https://www.federalregister.gov/d/2026-12670)
-
-The 2026 HTS Revision 22 (effective 10/30/2026) and the 14 Federal Register documents were read on November 8, 2026. The USITC release list and the newest Federal Register documents from USTR, the President and CBP are checked once a day for changes; a new revision or action is read by a person and the data rebuilt, with the tests that pin it.
-
-US import duty estimator by HTS code: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [USITC: Harmonized Tariff Schedule, JSON export](https://hts.usitc.gov/reststop/exportList?from=0101&to=9999.99.99&format=JSON&styles=false) | 2026 HTS Revision 22, effective 10/30/2026 | 2026-11-08 |
-| [USITC: HTS release list](https://hts.usitc.gov/reststop/releaseList) | 2026 HTS Revision 22, effective 10/30/2026 | 2026-11-08 |
-| [USITC: HTS Chapter 99 (U.S. notes and headings), current revision](https://hts.usitc.gov/reststop/file?release=currentRelease&filename=Chapter%2099) | 2026 HTS Revision 22, effective 10/30/2026 | 2026-11-08 |
-| [USITC: HTS General Notes, current revision](https://hts.usitc.gov/reststop/file?release=currentRelease&filename=General%20Notes) | 2026 HTS Revision 22, effective 10/30/2026 | 2026-11-08 |
-| [eCFR: 19 CFR 24.24, harbor maintenance fee](https://www.ecfr.gov/current/title-19/chapter-I/part-24/section-24.24) | eCFR, current text | 2026-11-08 |
-| [eCFR: 19 CFR 143.21, merchandise eligible for informal entry](https://www.ecfr.gov/current/title-19/chapter-I/part-143/subpart-C/section-143.21) | eCFR, current text | 2026-11-08 |
-| [Federal Register: Executive Order 14389: Ending Certain Tariff Actions](https://www.federalregister.gov/d/2026-03832) | 91 FR 9437, published 2026-02-25 | 2026-11-08 |
-| [Federal Register: Proclamation: Imposing a Temporary Import Surcharge To Address Fundamental International Payments Problems (section 122)](https://www.federalregister.gov/d/2026-03824) | 91 FR 9339, published 2026-02-25 | 2026-11-08 |
-| [Federal Register: Memorandum of July 23, 2026: Actions in the Section 301 investigations of 60 economies (forced labor)](https://www.federalregister.gov/d/2026-15274) | 91 FR 47717, published 2026-07-28 | 2026-11-08 |
-| [Federal Register: USTR: Notice of Actions in Section 301 Investigations of Various Economies (forced labor)](https://www.federalregister.gov/d/2026-15181) | 91 FR 47318, published 2026-07-28 | 2026-11-08 |
-| [Federal Register: Memorandum: Action in the Section 301 investigation of Brazil](https://www.federalregister.gov/d/2026-14654) | 91 FR 45619, published 2026-07-20 | 2026-11-08 |
-| [Federal Register: USTR: Notice of Action: Brazil](https://www.federalregister.gov/d/2026-14542) | 91 FR 45516, published 2026-07-20 | 2026-11-08 |
-| [Federal Register: USTR: Continuation of Actions: China (technology transfer, intellectual property)](https://www.federalregister.gov/d/2026-20510) | 91 FR 64212, published 2026-10-07 | 2026-11-08 |
-| [Federal Register: USTR: Notice of Action: Nicaragua](https://www.federalregister.gov/d/2025-22690) | 90 FR (Dec. 12, 2025), published 2025-12-12 | 2026-11-08 |
-| [Federal Register: Proclamation: Adjusting Imports of Polysilicon and Its Derivatives (section 232)](https://www.federalregister.gov/d/2026-16400) | 91 FR 51975, published 2026-08-11 | 2026-11-08 |
-| [Federal Register: Proclamation: Temporary Suspension of Additional Duties To Offset Canadian Discrimination (section 338)](https://www.federalregister.gov/d/2026-17294) | 91 FR 54789, published 2026-08-24 | 2026-11-08 |
-| [Federal Register: Proclamation: Further Modifying the Scope of Products of Canada Subject to the Additional Duties (section 338)](https://www.federalregister.gov/d/2026-22292) | 91 FR 68861, published 2026-10-30 | 2026-11-08 |
-| [Federal Register: CBP: Customs User Fees To Be Adjusted for Inflation in Fiscal Year 2027](https://www.federalregister.gov/d/2026-15530) | 91 FR (July 31, 2026), published 2026-07-31 | 2026-11-08 |
-| [Federal Register: CBP: Indefinite Suspension of the De Minimis Exemption for Mail Shipments and New Postal Informal Entry Process](https://www.federalregister.gov/d/2026-12669) | 91 FR 37801, published 2026-06-24 | 2026-11-08 |
-| [Federal Register: CBP: Indefinite Suspension of the De Minimis Exemption for Merchandise Arriving Through All Modes Other Than the International Postal Network](https://www.federalregister.gov/d/2026-12670) | 91 FR 37789, published 2026-06-24 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "audit",
+  "csv": "SKU,Title,HS Code,COO,Weight (kg),Customs value\nTEE-WHT-M,Cotton T-shirt,6109.10.00.12,VN,0.18,6.40\nCND-SOY-8,Soy candle 8 oz,3406.00.00,IN,0.35,4.10\nMUG-CER-12,Ceramic mug,,CN,0.42,2.25\nHAT-KNT-01,Knit beanie,6505.00.20,,0.09,3.80\nBTL-STL-20,Steel water bottle,7323.93.00,CN,0.31,3.15\nBK-PRNT-01,Printed book,4901.99.00.92,GB,0.6,5.00"
+}
+```
 
 ## How is it tested?
 
-The data is pinned to the 2026 HTS Revision 22, its read date and the SHA-256 hash of each source, and the counts of each Chapter 99 list are pinned (17 economies at 10%, 38 at 12.5%, 5 topped up). The tests check rate text, each layer by origin, the exemptions, trade programs, column 2, every refusal, incomplete rows, MPF and HMF, the CSV readers and the results CSV.
+The tests check rate text, each layer by origin, the exemptions, trade programs, column 2, every refusal, incomplete rows, MPF and HMF, the CSV readers and the results CSV.
 
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The data is pinned to the 2026 HTS Revision 22 (effective 10/30/2026), the read date 2026-11-08, the same HTS export as the code checker, and the SHA-256 hash of every Federal Register document.
 - The Chapter 99 counts are pinned (17 economies at 10%, 38 at 12.5%, 5 topped up, the China lists, Brazil at 25%, the CBP fiscal year 2027 fees), and each layer, exemption, trade program and refusal is checked by origin.

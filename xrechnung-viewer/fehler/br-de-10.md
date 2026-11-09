@@ -1,6 +1,6 @@
 # BR-DE-10: Ort der Lieferanschrift (BT-77) fehlt
 
-BR-DE-10 bedeutet: Das Element "Deliver to city" (BT-77) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Vervollständigen Sie die Lieferanschrift um den Ort, oder lassen Sie die Lieferanschrift ganz weg, wenn sie nicht gebraucht wird.
+BR-DE-10 bedeutet: Das Element "Deliver to city" (BT-77) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

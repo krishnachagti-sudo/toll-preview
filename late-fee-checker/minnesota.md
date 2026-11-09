@@ -12,6 +12,10 @@ In Minnesota a landlord may charge a rent late fee of at most 8% of the overdue 
 
 ## What the statute says
 
+**In short:** 8% of the overdue rent payment; no waiting period (Minn. Stat. § 504B.177).
+
+**The statute's words (2 passages)**
+
 Minn. Stat. § 504B.177: "A landlord of a residential building may not charge a late fee if the rent is paid after the due date, unless the tenant and landlord have agreed in writing that a late fee may be imposed. The agreement must specify when the late fee will be imposed. In no case may the late fee exceed eight percent of the overdue rent payment."
 
 Minn. Stat. § 504B.177: "A late fee charged by a landlord who has entered into a housing assistance payments contract with the federal, state, or local government must be calculated and assessed only on the portion of rent payable by the tenant."

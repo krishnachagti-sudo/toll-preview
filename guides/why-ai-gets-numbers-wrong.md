@@ -6,6 +6,8 @@ An AI assistant predicts likely text. It does not look up a rule or a published 
 
 A language model writes the most likely next words. That works well for prose. It is a poor fit for a question that has one right answer defined by a rule or a published table, such as "how many business days between these dates" or "what was the euro rate on that Saturday".
 
+**Read the rest: Why does an AI assistant get dates and numbers wrong?**
+
 Three things go wrong, and they stack.
 
 - **It predicts text, it does not run the rule.** A business-day count needs each day checked against weekends and every holiday, including the ones moved to a Friday or a Monday. A model can write a tidy answer without doing that check.
@@ -22,6 +24,8 @@ The ones where a small rule decides the answer. Here are cases worked out by the
 
 **Exact answer:** 4 business days. Skipped: Independence Day (observed) (July 3, 2026).
 
+**Read the rest: Example: US business days from July 1 to July 8, 2026**
+
 **Why it is easy to get wrong:** July 4, 2026 is a Saturday, so the federal holiday is observed on Friday, July 3. Skip only the 4th, a weekend day anyway, and you count 5.
 
 Source: 5 U.S.C. 6103, OPM observed-day rules. [Run it yourself in Business days](https://krishnachagti-sudo.github.io/toll-preview/business-days/).
@@ -29,6 +33,8 @@ Source: 5 U.S.C. 6103, OPM observed-day rules. [Run it yourself in Business days
 ## Example: One working day after December 24, 2026, in England and Wales
 
 **Exact answer:** December 29, 2026. Skipped: Christmas Day (December 25, 2026); Boxing Day (substitute day) (December 28, 2026).
+
+**Read the rest: Example: One working day after December 24, 2026, in England and Wales**
 
 **Why it is easy to get wrong:** Christmas Day is a Friday and Boxing Day falls on a Saturday, so its bank holiday moves to Monday, December 28. One working day on is Tuesday, not Monday.
 
@@ -38,6 +44,8 @@ Source: GOV.UK bank holidays for England and Wales. [Run it yourself in Business
 
 **Exact answer:** 1 USD = 0.893416 EUR, from the fixing of October 23, 2026.
 
+**Read the rest: Example: US dollar to euro on Saturday, October 24, 2026**
+
 **Why it is easy to get wrong:** The ECB publishes no reference rates at weekends. The answer uses the last fixing before the date and names it, rather than giving a rate for a day that has none.
 
 Source: European Central Bank reference rates. [Run it yourself in Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/).
@@ -45,6 +53,8 @@ Source: European Central Bank reference rates. [Run it yourself in Exchange rate
 ## Example: Pound to yen on Christmas Day 2024
 
 **Exact answer:** 1 GBP = 197.149931 JPY, from the fixing of December 24, 2024.
+
+**Read the rest: Example: Pound to yen on Christmas Day 2024**
 
 **Why it is easy to get wrong:** The ECB did not publish on December 25, 2024, and it has no direct pound to yen rate. The tool takes both rates against the euro from the last fixing and works out the cross rate.
 
@@ -54,13 +64,19 @@ Source: European Central Bank reference rates. [Run it yourself in Exchange rate
 
 **Exact answer:** An order placed Wednesday, November 25, 2026 at 4:30 pm CST with a 12:00 pm cutoff and 1 processing day ships Monday, November 30, 2026 and, by Priority Mail, arrives between Wednesday, December 2 and Thursday, December 3, 2026.
 
+**Read the rest: Example: An order placed at 4:30 pm Central the day before Thanksgiving 2026, by USPS Priority Mail**
+
 **Why it is easy to get wrong:** The order misses the noon cutoff, and the next day is Thanksgiving, a federal holiday the store does not ship on. So it is received on Friday, and with a weekend after it, handed over on Monday.
 
 Source: USPS service standards and postal holidays. [Run it yourself in Delivery date and holiday order-by calculator](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/).
 
 ## What about tax rates and deadlines?
 
-The same problem is worse where figures change every year. A threshold or a mileage rate can differ between one year and the next, and some change in the middle of a year. A model whose knowledge ends before the change will quote the old figure in a confident sentence. Due dates also move: a deadline on a weekend rolls to the next business day, and that is a rule to apply, not a sentence to recall.
+The same problem is worse where figures change every year. A threshold or a mileage rate can differ between one year and the next, and some change in the middle of a year.
+
+**Read the rest: What about tax rates and deadlines?**
+
+A model whose knowledge ends before the change will quote the old figure in a confident sentence. Due dates also move: a deadline on a weekend rolls to the next business day, and that is a rule to apply, not a sentence to recall.
 
 - [1099 threshold tracker](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/): the Form 1099-NEC reporting line is $2,000 for 2026 payments and $600 for 2025 payments, from the IRS instructions. A model whose knowledge predates the change would give $600 for a 2026 payment.
 - [Mileage reimbursement and IRS mileage log](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/): the IRS business rate for a trip on June 30, 2026 is 72.5 cents a mile, and 76 cents a mile from July 1. One rate for the whole year is wrong for half of it.
@@ -69,6 +85,8 @@ The same problem is worse where figures change every year. A threshold or a mile
 ## How do you fix it?
 
 Give the assistant a tool for the exact part, and keep the model for the rest. The model decides which tool to call and explains the result. The tool applies the rule and returns the figure, with its source.
+
+**Read the rest: How do you fix it?**
 
 The tools here work that way. They run over a standard connector called MCP (Model Context Protocol, a common way for an AI assistant to call outside tools), and over a plain REST API. There is no AI in the answers: the same input gives the same answer. Setup guides: [Claude](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-claude/), [ChatGPT](https://krishnachagti-sudo.github.io/toll-preview/guides/use-with-chatgpt/) and [Cursor and VS Code](https://krishnachagti-sudo.github.io/toll-preview/guides/use-in-cursor-and-vs-code/). For your own code, see [building an agent](https://krishnachagti-sudo.github.io/toll-preview/guides/build-an-agent/).
 

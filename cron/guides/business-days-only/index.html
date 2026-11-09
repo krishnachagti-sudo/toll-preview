@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check the weekday schedule</h2><p class="muted">Set your time zone.</p><form method="get" action="/toll-preview/cron/" class="cp-tool-form"><div class="field"><label for="tf-expr">Cron expression</label><input type="text" id="tf-expr" name="expr" value="0 9 * * 1-5"></div><input type="hidden" name="dialect" value="vixie"><div class="field"><label for="tf-tz">Time zone (IANA name)</label><input type="text" id="tf-tz" name="tz" value="America/New_York"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the next runs</button></form><p class="small"><a href="/toll-preview/cron/?expr=0+9+*+*+1-5&amp;dialect=vixie&amp;tz=America%2FNew_York">Open this schedule in the checker</a></p></aside>
 <section>
 <h2 id="holidays">US federal holidays on weekdays in 2027</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Observed dates; a 0 9 * * 1-5 job runs on each unless the job checks.</caption><thead><tr><th scope="col">Date</th><th scope="col">Holiday</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Observed dates; a 0 9 * * 1-5 job runs on each unless the job checks.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Date</th><th scope="col">Holiday</th></tr></thead><tbody>
 <tr><th scope="row">Friday, January 1, 2027</th><td>New Year's Day</td></tr>
 <tr><th scope="row">Monday, January 18, 2027</th><td>Birthday of Martin Luther King Jr.</td></tr>
 <tr><th scope="row">Monday, February 15, 2027</th><td>Washington's Birthday</td></tr>
@@ -90,7 +91,7 @@
 <tr><th scope="row">Thursday, November 25, 2027</th><td>Thanksgiving Day</td></tr>
 <tr><th scope="row">Friday, December 24, 2027</th><td>Christmas Day (observed)</td></tr>
 <tr><th scope="row">Friday, December 31, 2027</th><td>New Year's Day (observed)</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="check">The check, in a crontab line</h2>
@@ -100,7 +101,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron) (read November 8, 2026)</a></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103 (Cornell LII)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron) (read November 8, 2026)</a><span class="src-m">manpages.debian.org</span></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a><span class="src-m">opm.gov</span></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103 (Cornell LII)</a><span class="src-m">law.cornell.edu</span></li></ul>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Fire on weekdays.</strong> Use 0 9 * * 1-5 (crontab, GitHub, Kubernetes, n8n), or 0 0 9 ? * 2-6 in Quartz.</li><li><strong>Check the date first.</strong> The first step of the job asks whether today is a holiday in your calendar and stops if it is.</li><li><strong>Take holidays from a source.</strong> For US federal holidays the observed dates follow 5 U.S.C. 6103 and OPM; the business days tool on this site lists them.</li><li><strong>Test across a holiday.</strong> For example Friday, January 1, 2027, New Year's Day: the cron fires, the check stops the job.</li></ol></section>
 

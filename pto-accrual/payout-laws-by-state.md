@@ -6,21 +6,43 @@ Vacation at separation, quoted from each state's own site (read November 8, 2026
 
 | State | Rule | Law |
 | --- | --- | --- |
-| [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/connecticut/) | Owed only as the written policy or agreement says. Owed in the form of wages if the employer policy or union contract provides payment of accrued fringe benefits on termination. | C.G.S. 31-76k |
-| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/illinois/) | Must be paid, as earned vacation counts as wages. Earned vacation is final compensation, paid by the next regular payday; a policy may not forfeit earned vacation at separation. | 820 ILCS 115/5; 56 Ill. Adm. Code 300.520 |
-| [Iowa](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/iowa/) | Owed only as the written policy or agreement says. Owed only where an agreement or policy provides it; pro rata if the policy accrues pro rata. | Iowa Code 91A.4 |
-| [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maine/) | Must be paid, as earned vacation counts as wages. Unused paid vacation accrued on and after January 1, 2023 is paid at separation, unless the employer has 10 or fewer employees or is public (a union contract can override). | 26 M.R.S. 626 |
-| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maryland/) | Must be paid unless a written policy says otherwise. Accrued leave is paid at termination unless a written policy limits it, the employee was told of the leave benefits, and the policy denies payment. | Md. Lab. & Empl. 3-505(b) |
-| [North Dakota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/north-dakota/) | Must be paid, with narrow written exceptions. Accrued PTO is paid at separation; on a voluntary quit a private employer may withhold it only with written notice at hiring, under one year of service and under five days' notice. | N.D. Cent. Code 34-14-09.2 |
-| [Oklahoma](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oklahoma/) | Owed only as the written policy or agreement says. A written policy promising payout makes vacation wages. | Oklahoma DOL |
-| [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oregon/) | Owed only as the written policy or agreement says. No legal requirement; an established policy or agreement on accrued vacation must be honored at termination. | Oregon BOLI |
-| [South Carolina](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-carolina/) | Owed only as the written policy or agreement says. Wages include vacation, holiday and sick leave payments due under an employer policy or contract. | S.C. Code 41-10-10(2) (2019 copy) |
-| [South Dakota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-dakota/) | Owed only as the written policy or agreement says. No law requires paid leave; it is a matter of employer policy. | South Dakota DLR |
-| [Tennessee](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/tennessee/) | Owed only as the written policy or agreement says. Only if the employer's policy or labor agreement requires it. | Tenn. Code Ann. 50-2-103 (TDLWD) |
-| [Texas](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/texas/) | Owed only as the written policy or agreement says. Vacation and sick leave pay are wages only when owed under a written agreement or written policy. | Tex. Lab. Code 61.001(7) |
-| [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/vermont/) | Owed only as the written policy or agreement says. Not required, but written agreements (a handbook counts) providing vacation make the employer liable for it. | Vermont DOL WH-13 (2019) |
-| [West Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/west-virginia/) | Owed only as the written policy or agreement says. Fringe benefits payable under a written policy are part of final wages unless the policy sets a later date. | W. Va. Code 21-5 (Fact Sheet 6) |
-| [Wyoming](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/wyoming/) | Must be paid unless a written policy says otherwise. Payout can be denied only if a written policy clearly says so and the employee acknowledged it. | Wyoming DWS employer FAQ |
+| [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/connecticut/) | Owed only as the written policy or agreement says… | C.G.S. 31-76k |
+| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/illinois/) | Must be paid, as earned vacation counts as wages… | 820 ILCS 115/5; 56 Ill. Adm. Code 300.520 |
+| [Iowa](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/iowa/) | Owed only as the written policy or agreement says… | Iowa Code 91A.4 |
+| [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maine/) | Must be paid, as earned vacation counts as wages… | 26 M.R.S. 626 |
+| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maryland/) | Must be paid unless a written policy says otherwise… | Md. Lab. & Empl. 3-505(b) |
+| [North Dakota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/north-dakota/) | Must be paid, with narrow written exceptions… | N.D. Cent. Code 34-14-09.2 |
+| [Oklahoma](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oklahoma/) | Owed only as the written policy or agreement says… | Oklahoma DOL |
+| [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oregon/) | Owed only as the written policy or agreement says… | Oregon BOLI |
+| [South Carolina](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-carolina/) | Owed only as the written policy or agreement says… | S.C. Code 41-10-10(2) (2019 copy) |
+| [South Dakota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-dakota/) | Owed only as the written policy or agreement says… | South Dakota DLR |
+| [Tennessee](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/tennessee/) | Owed only as the written policy or agreement says… | Tenn. Code Ann. 50-2-103 (TDLWD) |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/texas/) | Owed only as the written policy or agreement says… | Tex. Lab. Code 61.001(7) |
+| [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/vermont/) | Owed only as the written policy or agreement says… | Vermont DOL WH-13 (2019) |
+| [West Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/west-virginia/) | Owed only as the written policy or agreement says… | W. Va. Code 21-5 (Fact Sheet 6) |
+| [Wyoming](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/wyoming/) | Must be paid unless a written policy says otherwise… | Wyoming DWS employer FAQ |
+
+**The long rules in full (15)**
+
+Vacation at separation, quoted from each state's own site (read November 8, 2026): full wording
+
+| State | Rule |
+| --- | --- |
+| [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/connecticut/) | Owed only as the written policy or agreement says. Owed in the form of wages if the employer policy or union contract provides payment of accrued fringe benefits on termination. |
+| [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/illinois/) | Must be paid, as earned vacation counts as wages. Earned vacation is final compensation, paid by the next regular payday; a policy may not forfeit earned vacation at separation. |
+| [Iowa](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/iowa/) | Owed only as the written policy or agreement says. Owed only where an agreement or policy provides it; pro rata if the policy accrues pro rata. |
+| [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maine/) | Must be paid, as earned vacation counts as wages. Unused paid vacation accrued on and after January 1, 2023 is paid at separation, unless the employer has 10 or fewer employees or is public (a union contract can override). |
+| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maryland/) | Must be paid unless a written policy says otherwise. Accrued leave is paid at termination unless a written policy limits it, the employee was told of the leave benefits, and the policy denies payment. |
+| [North Dakota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/north-dakota/) | Must be paid, with narrow written exceptions. Accrued PTO is paid at separation; on a voluntary quit a private employer may withhold it only with written notice at hiring, under one year of service and under five days' notice. |
+| [Oklahoma](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oklahoma/) | Owed only as the written policy or agreement says. A written policy promising payout makes vacation wages. |
+| [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oregon/) | Owed only as the written policy or agreement says. No legal requirement; an established policy or agreement on accrued vacation must be honored at termination. |
+| [South Carolina](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-carolina/) | Owed only as the written policy or agreement says. Wages include vacation, holiday and sick leave payments due under an employer policy or contract. |
+| [South Dakota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-dakota/) | Owed only as the written policy or agreement says. No law requires paid leave; it is a matter of employer policy. |
+| [Tennessee](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/tennessee/) | Owed only as the written policy or agreement says. Only if the employer's policy or labor agreement requires it. |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/texas/) | Owed only as the written policy or agreement says. Vacation and sick leave pay are wages only when owed under a written agreement or written policy. |
+| [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/vermont/) | Owed only as the written policy or agreement says. Not required, but written agreements (a handbook counts) providing vacation make the employer liable for it. |
+| [West Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/west-virginia/) | Owed only as the written policy or agreement says. Fringe benefits payable under a written policy are part of final wages unless the policy sets a later date. |
+| [Wyoming](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/wyoming/) | Must be paid unless a written policy says otherwise. Payout can be denied only if a written policy clearly says so and the employee acknowledged it. |
 
 ## States not read
 

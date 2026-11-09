@@ -38,6 +38,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## California in its own words
 
+**Read the law's own words (9 quotations)**
+
 - "I have a pregnancy-related disability and my employer has 5+ employees." [California Civil Rights Department, Leave for Pregnancy Disability and Child Bonding: Quick Reference Guide](https://calcivilrights.ca.gov/employment/pdl-bonding-guide/)
 - "Up to 4 months, based on hours worked per week and duration of disability. PDL will run at the same time as FMLA." [California Civil Rights Department, Leave for Pregnancy Disability and Child Bonding: Quick Reference Guide](https://calcivilrights.ca.gov/employment/pdl-bonding-guide/)
 - "I have or a family member has a serious health condition, I have worked for my employer for 1+ year, I have 1250 hours of service in the past year, and my employer has 5+ employees." [California Civil Rights Department, Family Care and Medical Leave: Quick Reference Guide](https://calcivilrights.ca.gov/employment/family-care-medical-leave-guide/)

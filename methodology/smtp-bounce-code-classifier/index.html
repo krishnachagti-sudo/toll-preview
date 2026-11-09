@@ -74,19 +74,33 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>Reading: line endings are evened out. In a DSN (RFC 3464), folded lines are joined and the Status, Action, Final-Recipient (or Original-Recipient), Remote-MTA and Diagnostic-Code fields are read.</span></li><li><span>The first reply code and enhanced code written together (such as 550 5.1.1) are taken, and the repeated prefixes of a multi-line reply are dropped.</span></li><li><span>Provider: the one given, or the first whose mail hosts appear in the remote host or the text (such as gsmtp or protection.outlook.com).</span></li><li><span>A 2xx reply or 2.X.X status is delivered.</span></li><li><span>Rule 1, provider text: the bounce text is matched (lowercase, as a substring) against the phrases from Gmail, Microsoft, Yahoo and Postfix pages (Gmail 79, Microsoft 87, Yahoo 3, Postfix 2).</span></li></ol>
+<p class="cp-note">Steps 6 to 12, each rule and the edge cases are in <a href="/toll-preview/methodology/smtp-bounce-code-classifier/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>A line with no SMTP status code and no known provider text is answered as unknown: nothing is decided.</li><li>Provider texts are read only from Gmail, Microsoft, Yahoo, Postfix; other receivers are decided by the codes.</li><li>The verdicts are the tool's rules, not the provider's; a provider can change its text or reuse a code.</li><li>It does not send mail, test an address or look up a mailbox: it reads only the bounce given.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 11 sources</h3><div class="tc-b"><p class="tc-a">The data was read on 2026-11-08: the IANA registry (updated 2024-12-06), RFC 5321, RFC 7504 and RFC 4954, Gmail's page (updated 2026-10-26), Microsoft's pages (updated 2026-08-24), Yahoo's Sender Hub and Postfix postconf(5). Each page is checked daily for changes, and the rules change only by hand, with the tests that pin them.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 3 checks in its test suite</h3><div class="tc-b"><p class="tc-a">The tests parse a multi-line reply, a DSN and a Postfix line; check that provider text decides before the code and that the IANA detail, subject, reply code and class are tried in that order; check that a 4xx is never hard and the warnings fire; pin the IANA registry (81 detail codes), the 26 reply codes and the provider texts; and check a batch's rows, totals and suppress list.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<details class="xpand cp-src-fold"><summary>Sources (11)</summary><div class="xp-in"><ul class="cp-sources cp-src"><li><a href="https://www.iana.org/assignments/smtp-enhanced-status-codes/smtp-enhanced-status-codes.xml">IANA Simple Mail Transfer Protocol (SMTP) Enhanced Status Codes Registry</a><span class="src-m">iana.org · registry updated 2024-12-06 · read 2026-11-08</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc3463">RFC 3463: Enhanced Mail System Status Codes</a><span class="src-m">rfc-editor.org · see the document · read 2026-11-08</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc5321.txt">RFC 5321</a><span class="src-m">rfc-editor.org · see the document · read 2026-11-08</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc7504.txt">RFC 7504</a><span class="src-m">rfc-editor.org · see the document · read 2026-11-08</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc4954.txt">RFC 4954</a><span class="src-m">rfc-editor.org · see the document · read 2026-11-08</span></li><li><a href="https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en">Gmail: Gmail SMTP errors and codes</a><span class="src-m">knowledge.workspace.google.com · page updated 2026-10-26 · read 2026-11-08</span></li><li><a href="https://learn.microsoft.com/en-us/troubleshoot/exchange/email-delivery/ndr/non-delivery-reports-in-exchange-online">Microsoft: Email non-delivery reports and SMTP errors in Exchange Online</a><span class="src-m">learn.microsoft.com · page updated 2026-08-24 · read 2026-11-08</span></li><li><a href="https://senders.yahooinc.com/smtp-error-codes/">Yahoo: Yahoo Sender Hub: SMTP error codes</a><span class="src-m">senders.yahooinc.com · see the document · read 2026-11-08</span></li><li><a href="https://www.postfix.org/postconf.5.html">Postfix: Postfix configuration parameters, postconf(5)</a><span class="src-m">postfix.org · see the document · read 2026-11-08</span></li><li><a href="https://learn.microsoft.com/en-us/exchange/security-and-compliance/enhance-mail-flow-using-strict-transport-security">Microsoft: Enhancing mail flow with MTA-STS</a><span class="src-m">learn.microsoft.com · page updated 2026-07-21 · read 2026-11-08</span></li><li><a href="https://techcommunity.microsoft.com/blog/microsoftdefenderforoffice365blog/strengthening-email-ecosystem-outlook%E2%80%99s-new-requirements-for-high%E2%80%90volume-senders/4399730">Microsoft: Outlook's new requirements for high-volume senders</a><span class="src-m">techcommunity.microsoft.com · page updated 2025-04-30 · read 2026-11-08</span></li></ul></div></details>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the smtp bounce classifier compute?</h2>
-<p>The tool reads a bounce in any of three forms (a raw SMTP reply, a delivery status notification or a Postfix log line), finds its reply code, enhanced status code, recipient and text, and gives one verdict with the rule that decided it, what the code means, whether to retry and whether to suppress the address. A batch does up to 500 lines and lists the addresses to suppress. The code lookup explains a status code on its own, with every provider text published with it.</p>
-<details class="xpand"><summary>Read the rest: What does the smtp bounce classifier compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<p>The tool reads a bounce in any of three forms (a raw SMTP reply, a delivery status notification or a Postfix log line), finds its reply code, enhanced status code, recipient and text, and gives one verdict with the rule that decided it, what the code means, whether to retry and whether to suppress the address. A batch does up to 500 lines and lists the addresses to suppress.</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>The code lookup explains a status code on its own, with every provider text published with it.</p>
+<p>Operations (the op field):</p>
 <ul><li><code>classify</code>: Classifies one bounce. The answer has the verdict, label, temporary, retry, suppress, the action to take, the reason, the rule that matched (its id, kind, provider, the phrase matched and its source page), the confidence, the reply code and enhanced code with their official meanings, the provider, what was parsed and any warnings.</li><li><code>batch</code>: Classifies up to 500 lines, one row each, with totals by verdict, the number classified (every line but the unknown ones) and the list of addresses to suppress now.</li><li><code>code</code>: Explains a status code such as &quot;550 5.1.1&quot;, &quot;5.7.26&quot; or &quot;421&quot;: its meaning and default verdict, plus every provider text published with that code and the verdicts they get.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>text</code>: For classify: the bounce, up to 20,000 characters. A multi-line reply, a whole DSN or a Postfix log line can be pasted as it is.</li><li><code>lines</code>: For batch: a list of 1 to 500 bounces, each up to 4,000 characters.</li><li><code>provider</code>: For classify and batch, optional: gmail, microsoft, yahoo, postfix, to say which receiver sent the bounce when the text does not show it.</li><li><code>code</code>: For code: a 3-digit reply code, an enhanced code, or both, such as &quot;550 5.1.1&quot;.</li></ul>
 <p>Outputs:</p>
 <ul><li>verdict and label: hard, soft, block or policy, or delivered for a 2xx or 2.X.X status and unknown when no code or known text is found</li><li>temporary, retry and suppress: whether the reply is 4xx, whether to retry (no, yes, later or after a fix) and whether to suppress the address (now, after repeated failures, or no)</li><li>action and reason: what to do, and why, from the rule that matched</li><li>rule: its id and kind (provider-text, enhanced-code, enhanced-subject, reply-code, class, log-status or dsn-action), and for a provider text the phrase matched and the page it comes from</li><li>basic and enhanced: the reply code's RFC meaning and class, and the enhanced code's class, subject and IANA detail with its description and references</li><li>parsed: the form read (text, dsn or postfix), recipient, DSN action, Postfix status, remote host and the SMTP command</li><li>warnings and confidence, and for batch the totals, the classified count and the suppress list</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>Reading: line endings are evened out. In a DSN (RFC 3464), folded lines are joined and the Status, Action, Final-Recipient (or Original-Recipient), Remote-MTA and Diagnostic-Code fields are read. In a Postfix line, status=, dsn=, to=&lt;...&gt;, relay= and the text after &quot;said:&quot; with the command it replied to are read.</li><li>The first reply code and enhanced code written together (such as 550 5.1.1) are taken, and the repeated prefixes of a multi-line reply are dropped. Otherwise a reply code and an enhanced code are found separately. A DSN Status or Postfix dsn= value comes before an enhanced code in the text. With no recipient field, the first &lt;name@domain&gt; in the bounce is the recipient.</li><li>Provider: the one given, or the first whose mail hosts appear in the remote host or the text (such as gsmtp or protection.outlook.com).</li><li>A 2xx reply or 2.X.X status is delivered.</li><li>Rule 1, provider text: the bounce text is matched (lowercase, as a substring) against the phrases from Gmail, Microsoft, Yahoo and Postfix pages (Gmail 79, Microsoft 87, Yahoo 3, Postfix 2). A rule tied to an enhanced code applies only to that code, the same detail in the other class, or its listed range; a rule tied to a reply code applies only with that reply code. The best match is the one with the exact enhanced code, then the same detail, then the same reply code, then the provider detected, then the longest phrase.</li><li>Rule 2, the enhanced code's detail: each of the 81 IANA detail codes has a verdict for class 5 and one for class 4. X.7.0 with an SMTP AUTH reply (530, 534, 535, 538, 454 or 432, RFC 4954) is policy.</li><li>Rule 3, the subject: when the detail is not in the IANA registry (a provider's own code such as 5.7.708), the subject decides: X.1 hard in class 5, X.2, X.3 and X.4 soft, X.5 and X.6 policy, X.7 block.</li><li>Rule 4, the reply code alone: 26 reply codes have a verdict, such as 550 hard, 552 soft (mailbox full) and 554 block.</li><li>Rule 5, the class digit: any other 4xx or 5xx reply is soft. Then a Postfix status=deferred or a DSN Action of delayed is soft, and sent, delivered, relayed or expanded is delivered. Anything else is unknown.</li><li>A 4xx reply or 4.X.X status is temporary, and a temporary bounce is never hard: a hard verdict becomes soft. A temporary block or policy bounce can be retried; a soft verdict on a permanent reply is retried later.</li><li>Warnings are added when the reply code and enhanced code disagree on the class (the reply code wins), when a provider uses a registered code for something else, when the code is not in the IANA registry, when X.4.6 comes with class 5, and when a bare 550 or 554 is decided by the reply code alone.</li><li>Confidence: high for a provider text and most IANA details, medium for X.0.0, X.7.0 and X.7.1, low for a subject, reply code or class, none for unknown.</li></ol>
+<details class="xpand"><summary>Every step in full (12) and the rules</summary><div class="xp-in"><ol><li>Reading: line endings are evened out. In a DSN (RFC 3464), folded lines are joined and the Status, Action, Final-Recipient (or Original-Recipient), Remote-MTA and Diagnostic-Code fields are read. In a Postfix line, status=, dsn=, to=&lt;...&gt;, relay= and the text after &quot;said:&quot; with the command it replied to are read.</li><li>The first reply code and enhanced code written together (such as 550 5.1.1) are taken, and the repeated prefixes of a multi-line reply are dropped. Otherwise a reply code and an enhanced code are found separately. A DSN Status or Postfix dsn= value comes before an enhanced code in the text. With no recipient field, the first &lt;name@domain&gt; in the bounce is the recipient.</li><li>Provider: the one given, or the first whose mail hosts appear in the remote host or the text (such as gsmtp or protection.outlook.com).</li><li>A 2xx reply or 2.X.X status is delivered.</li><li>Rule 1, provider text: the bounce text is matched (lowercase, as a substring) against the phrases from Gmail, Microsoft, Yahoo and Postfix pages (Gmail 79, Microsoft 87, Yahoo 3, Postfix 2). A rule tied to an enhanced code applies only to that code, the same detail in the other class, or its listed range; a rule tied to a reply code applies only with that reply code. The best match is the one with the exact enhanced code, then the same detail, then the same reply code, then the provider detected, then the longest phrase.</li><li>Rule 2, the enhanced code's detail: each of the 81 IANA detail codes has a verdict for class 5 and one for class 4. X.7.0 with an SMTP AUTH reply (530, 534, 535, 538, 454 or 432, RFC 4954) is policy.</li><li>Rule 3, the subject: when the detail is not in the IANA registry (a provider's own code such as 5.7.708), the subject decides: X.1 hard in class 5, X.2, X.3 and X.4 soft, X.5 and X.6 policy, X.7 block.</li><li>Rule 4, the reply code alone: 26 reply codes have a verdict, such as 550 hard, 552 soft (mailbox full) and 554 block.</li><li>Rule 5, the class digit: any other 4xx or 5xx reply is soft. Then a Postfix status=deferred or a DSN Action of delayed is soft, and sent, delivered, relayed or expanded is delivered. Anything else is unknown.</li><li>A 4xx reply or 4.X.X status is temporary, and a temporary bounce is never hard: a hard verdict becomes soft. A temporary block or policy bounce can be retried; a soft verdict on a permanent reply is retried later.</li><li>Warnings are added when the reply code and enhanced code disagree on the class (the reply code wins), when a provider uses a registered code for something else, when the code is not in the IANA registry, when X.4.6 comes with class 5, and when a bare 550 or 554 is decided by the reply code alone.</li><li>Confidence: high for a provider text and most IANA details, medium for X.0.0, X.7.0 and X.7.1, low for a subject, reply code or class, none for unknown.</li></ol>
 <p><strong>The four verdicts.</strong></p>
 <p>Hard bounce: Suppress the address now; it does not exist or will never accept mail.</p>
 <p>Soft bounce: Retry with backoff; suppress the address only if it keeps failing over several days.</p>
@@ -97,21 +111,17 @@
 <p><strong>Provider texts.</strong></p>
 <p>Each provider rule is a short phrase from the provider's own page, with the codes listed beside it; meanings are paraphrased. Gmail's page was last updated 2026-10-26 and Microsoft's 2026-08-24; all were read on 2026-11-08.</p>
 <p><strong>Sending platforms.</strong></p>
-<p>The guide pages map the bounce labels of 8 sending platforms (such as Twilio SendGrid, Amazon SES, Postmark) to these verdicts, read from each platform's documentation on 2026-11-08. Those labels are not used to classify a bounce.</p>
+<p>The guide pages map the bounce labels of 8 sending platforms (such as Twilio SendGrid, Amazon SES, Postmark) to these verdicts, read from each platform's documentation on 2026-11-08. Those labels are not used to classify a bounce.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>A Gmail reply that repeats &quot;550-5.1.1&quot; on every line is read once, and the text after the prefixes is matched.</li><li>4.1.1 (a mailbox that does not exist, sent as temporary) is soft, not hard.</li><li>5.7.708 is not in the IANA registry: Microsoft's published text for it decides when present, otherwise subject X.7 makes it a block, and either way the answer warns that the code is a provider's own.</li><li>A bare 550 with no enhanced code and no known text is hard by default, with a warning that 550 is ambiguous.</li><li>&quot;421 5.7.0&quot; is treated as temporary because the reply code is class 4, with a warning that the classes disagree.</li><li>A Postfix line with status=deferred and no code is soft.</li><li>An out-of-office reply has no status code or known text, so it is unknown and nothing is decided.</li><li>In a batch, the same address bouncing hard twice is listed once to suppress, lowercased.</li></ul>
+<details class="xpand"><summary>The edge cases (8)</summary><div class="xp-in"><ul><li>A Gmail reply that repeats &quot;550-5.1.1&quot; on every line is read once, and the text after the prefixes is matched.</li><li>4.1.1 (a mailbox that does not exist, sent as temporary) is soft, not hard.</li><li>5.7.708 is not in the IANA registry: Microsoft's published text for it decides when present, otherwise subject X.7 makes it a block, and either way the answer warns that the code is a provider's own.</li><li>A bare 550 with no enhanced code and no known text is hard by default, with a warning that 550 is ambiguous.</li><li>&quot;421 5.7.0&quot; is treated as temporary because the reply code is class 4, with a warning that the classes disagree.</li><li>A Postfix line with status=deferred and no code is soft.</li><li>An out-of-office reply has no status code or known text, so it is unknown and nothing is decided.</li><li>In a batch, the same address bouncing hard twice is listed once to suppress, lowercased.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>Gmail: the account does not exist (multi-line reply)</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;classify&quot;,
-  &quot;text&quot;: &quot;550-5.1.1 The email account that you tried to reach does not exist. Please try\n550-5.1.1 double-checking the recipient's email address for typos or\n550 5.1.1 unnecessary spaces. For more information, go to Fix bounced or rejected emails. - gsmtp&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Gmail: the account does not exist (multi-line reply)</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Gmail: the account does not exist (multi-line reply)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">verdict</th><td>Hard bounce</td></tr>
 <tr><th scope="row">rule</th><td>gmail-550-5-1-1</td></tr>
 <tr><th scope="row">text matched</th><td>email account that you tried to reach does not exist</td></tr>
@@ -119,13 +129,13 @@
 <tr><th scope="row">retry</th><td>no</td></tr>
 <tr><th scope="row">IANA detail</th><td>X.1.1 Bad destination mailbox address</td></tr>
 <tr><th scope="row">confidence</th><td>high</td></tr>
-</tbody></table></div>
-<p><strong>A Postfix log line: relay access denied</strong></p>
-<pre><code class="language-json">&#123;
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;classify&quot;,
-  &quot;text&quot;: &quot;Nov  8 10:12:01 mx postfix/smtp[1234]: 4F3A21C0: to=&lt;jane@example.org&gt;, relay=mx.example.org[192.0.2.25]:25, delay=1.2, delays=0.1/0/0.5/0.6, dsn=5.7.1, status=bounced (host mx.example.org[192.0.2.25] said: 554 5.7.1 &lt;jane@example.org&gt;: Relay access denied (in reply to RCPT TO command))&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A Postfix log line: relay access denied</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+  &quot;text&quot;: &quot;550-5.1.1 The email account that you tried to reach does not exist. Please try\n550-5.1.1 double-checking the recipient's email address for typos or\n550 5.1.1 unnecessary spaces. For more information, go to Fix bounced or rejected emails. - gsmtp&quot;
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (4)</summary><div class="xp-in"><p><strong>A Postfix log line: relay access denied</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">A Postfix log line: relay access denied</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">form read</th><td>postfix</td></tr>
 <tr><th scope="row">recipient</th><td>jane@example.org</td></tr>
 <tr><th scope="row">remote host</th><td>mx.example.org</td></tr>
@@ -134,13 +144,13 @@
 <tr><th scope="row">verdict</th><td>Policy</td></tr>
 <tr><th scope="row">rule</th><td>microsoft-x-5-4-1-2</td></tr>
 <tr><th scope="row">action</th><td>Check the recipient domain's MX and your relay settings; do not suppress.</td></tr>
-</tbody></table></div>
-<p><strong>A DSN from Gmail: 550 5.7.26, the sender is unauthenticated</strong></p>
-<pre><code class="language-json">&#123;
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;classify&quot;,
-  &quot;text&quot;: &quot;Final-Recipient: rfc822; sam@gmail.com\nAction: failed\nStatus: 5.7.26\nRemote-MTA: dns; gmail-smtp-in.l.google.com\nDiagnostic-Code: smtp; 550-5.7.26 This email has been blocked because the sender is\n unauthenticated. Gmail requires all senders to authenticate with either SPF or DKIM.&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A DSN from Gmail: 550 5.7.26, the sender is unauthenticated</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+  &quot;text&quot;: &quot;Nov  8 10:12:01 mx postfix/smtp[1234]: 4F3A21C0: to=&lt;jane@example.org&gt;, relay=mx.example.org[192.0.2.25]:25, delay=1.2, delays=0.1/0/0.5/0.6, dsn=5.7.1, status=bounced (host mx.example.org[192.0.2.25] said: 554 5.7.1 &lt;jane@example.org&gt;: Relay access denied (in reply to RCPT TO command))&quot;
+&#125;</code></pre></div></details>
+<p><strong>A DSN from Gmail: 550 5.7.26, the sender is unauthenticated</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">A DSN from Gmail: 550 5.7.26, the sender is unauthenticated</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">form read</th><td>dsn</td></tr>
 <tr><th scope="row">recipient</th><td>sam@gmail.com</td></tr>
 <tr><th scope="row">DSN action</th><td>failed</td></tr>
@@ -148,19 +158,13 @@
 <tr><th scope="row">text matched</th><td>sender is unauthenticated</td></tr>
 <tr><th scope="row">suppress</th><td>no</td></tr>
 <tr><th scope="row">answer</th><td>550 5.7.26 is a policy rejection: Gmail's published text &quot;sender is unauthenticated&quot; means: the message passed neither SPF nor DKIM, and Gmail requires one of them; set up SPF or DKIM for the sending domain; do not suppress the recipient.</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;classify&quot;,
+  &quot;text&quot;: &quot;Final-Recipient: rfc822; sam@gmail.com\nAction: failed\nStatus: 5.7.26\nRemote-MTA: dns; gmail-smtp-in.l.google.com\nDiagnostic-Code: smtp; 550-5.7.26 This email has been blocked because the sender is\n unauthenticated. Gmail requires all senders to authenticate with either SPF or DKIM.&quot;
+&#125;</code></pre></div></details>
 <p><strong>A batch of five lines: one of each verdict and one that is not a bounce</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;batch&quot;,
-  &quot;lines&quot;: [
-    &quot;550 5.1.1 &lt;ann@example.com&gt;: Recipient address rejected: User unknown&quot;,
-    &quot;452 4.2.2 The recipient's inbox is out of storage space. Please direct the recipient to Manage files in your Google Drive storage.&quot;,
-    &quot;550 5.7.708 Access denied, traffic not accepted from this IP&quot;,
-    &quot;550 5.7.515 Access denied, sending domain [example.com] does not meet the required authentication level.&quot;,
-    &quot;Thanks for your message, I am out of the office&quot;
-  ]
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A batch of five lines: one of each verdict and one that is not a bounce</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">A batch of five lines: one of each verdict and one that is not a bounce</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">classified</th><td>4 of 5</td></tr>
 <tr><th scope="row">totals</th><td>hard 1, soft 1, block 1, policy 1, unknown 1</td></tr>
 <tr><th scope="row">suppress now</th><td>ann@example.com</td></tr>
@@ -169,48 +173,32 @@
 <tr><th scope="row">line 3</th><td>block (microsoft-x-5-7-708)</td></tr>
 <tr><th scope="row">line 4</th><td>policy (microsoft-550-5-7-515)</td></tr>
 <tr><th scope="row">line 5</th><td>unknown (none)</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;batch&quot;,
+  &quot;lines&quot;: [
+    &quot;550 5.1.1 &lt;ann@example.com&gt;: Recipient address rejected: User unknown&quot;,
+    &quot;452 4.2.2 The recipient's inbox is out of storage space. Please direct the recipient to Manage files in your Google Drive storage.&quot;,
+    &quot;550 5.7.708 Access denied, traffic not accepted from this IP&quot;,
+    &quot;550 5.7.515 Access denied, sending domain [example.com] does not meet the required authentication level.&quot;,
+    &quot;Thanks for your message, I am out of the office&quot;
+  ]
+&#125;</code></pre></div></details>
 <p><strong>Look up a code: 421 4.7.0</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;code&quot;,
-  &quot;code&quot;: &quot;421 4.7.0&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Look up a code: 421 4.7.0</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Look up a code: 421 4.7.0</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">answer</th><td>421 4.7.0 is a block: IANA defines X.7.0 as &quot;Other or undefined security status&quot;; retry later at a lower rate and do not suppress the address; fix the sender's reputation, content or volume. Gmail publishes 8 texts with it, classed soft, block, policy: classify the full reply.</td></tr>
 <tr><th scope="row">temporary</th><td>yes</td></tr>
 <tr><th scope="row">confidence</th><td>medium</td></tr>
 <tr><th scope="row">provider texts with this code</th><td>8</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>A line with no SMTP status code and no known provider text is answered as unknown: nothing is decided.</li><li>Provider texts are read only from Gmail, Microsoft, Yahoo, Postfix; other receivers are decided by the codes.</li><li>The verdicts are the tool's rules, not the provider's; a provider can change its text or reuse a code.</li><li>It does not send mail, test an address or look up a mailbox: it reads only the bounce given.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>The data was read on 2026-11-08: the IANA registry (updated 2024-12-06), RFC 5321, RFC 7504 and RFC 4954, Gmail's page (updated 2026-10-26), Microsoft's pages (updated 2026-08-24), Yahoo's Sender Hub and Postfix postconf(5). Each page is checked daily for changes, and the rules change only by hand, with the tests that pin them.</p>
-<ul class="cp-sources"><li><a href="https://www.iana.org/assignments/smtp-enhanced-status-codes/smtp-enhanced-status-codes.xml">IANA Simple Mail Transfer Protocol (SMTP) Enhanced Status Codes Registry (updated 2024-12-06)</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3463">RFC 3463: Enhanced Mail System Status Codes</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc5321.txt">RFC 5321</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7504.txt">RFC 7504</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc4954.txt">RFC 4954</a></li><li><a href="https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en">Gmail: Gmail SMTP errors and codes</a></li><li><a href="https://learn.microsoft.com/en-us/troubleshoot/exchange/email-delivery/ndr/non-delivery-reports-in-exchange-online">Microsoft: Email non-delivery reports and SMTP errors in Exchange Online</a></li><li><a href="https://senders.yahooinc.com/smtp-error-codes/">Yahoo: Yahoo Sender Hub: SMTP error codes</a></li><li><a href="https://www.postfix.org/postconf.5.html">Postfix: Postfix configuration parameters, postconf(5)</a></li><li><a href="https://learn.microsoft.com/en-us/exchange/security-and-compliance/enhance-mail-flow-using-strict-transport-security">Microsoft: Enhancing mail flow with MTA-STS</a></li><li><a href="https://techcommunity.microsoft.com/blog/microsoftdefenderforoffice365blog/strengthening-email-ecosystem-outlook%E2%80%99s-new-requirements-for-high%E2%80%90volume-senders/4399730">Microsoft: Outlook's new requirements for high-volume senders</a></li></ul>
-<p>The data was read on 2026-11-08: the IANA registry (updated 2024-12-06), RFC 5321, RFC 7504 and RFC 4954, Gmail's page (updated 2026-10-26), Microsoft's pages (updated 2026-08-24), Yahoo's Sender Hub and Postfix postconf(5). Each page is checked daily for changes, and the rules change only by hand, with the tests that pin them.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>SMTP bounce classifier: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://www.iana.org/assignments/smtp-enhanced-status-codes/smtp-enhanced-status-codes.xml">IANA Simple Mail Transfer Protocol (SMTP) Enhanced Status Codes Registry</a></th><td>registry updated 2024-12-06</td><td rowspan="11">2026-11-08</td></tr>
-<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc3463">RFC 3463: Enhanced Mail System Status Codes</a></th><td rowspan="4">see the document</td></tr>
-<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc5321.txt">RFC 5321</a></th></tr>
-<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc7504.txt">RFC 7504</a></th></tr>
-<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc4954.txt">RFC 4954</a></th></tr>
-<tr><th scope="row"><a href="https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en">Gmail: Gmail SMTP errors and codes</a></th><td>page updated 2026-10-26</td></tr>
-<tr><th scope="row"><a href="https://learn.microsoft.com/en-us/troubleshoot/exchange/email-delivery/ndr/non-delivery-reports-in-exchange-online">Microsoft: Email non-delivery reports and SMTP errors in Exchange Online</a></th><td>page updated 2026-08-24</td></tr>
-<tr><th scope="row"><a href="https://senders.yahooinc.com/smtp-error-codes/">Yahoo: Yahoo Sender Hub: SMTP error codes</a></th><td rowspan="2">see the document</td></tr>
-<tr><th scope="row"><a href="https://www.postfix.org/postconf.5.html">Postfix: Postfix configuration parameters, postconf(5)</a></th></tr>
-<tr><th scope="row"><a href="https://learn.microsoft.com/en-us/exchange/security-and-compliance/enhance-mail-flow-using-strict-transport-security">Microsoft: Enhancing mail flow with MTA-STS</a></th><td>page updated 2026-07-21</td></tr>
-<tr><th scope="row"><a href="https://techcommunity.microsoft.com/blog/microsoftdefenderforoffice365blog/strengthening-email-ecosystem-outlook%E2%80%99s-new-requirements-for-high%E2%80%90volume-senders/4399730">Microsoft: Outlook's new requirements for high-volume senders</a></th><td>page updated 2025-04-30</td></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;code&quot;,
+  &quot;code&quot;: &quot;421 4.7.0&quot;
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>The tests parse a multi-line reply, a DSN and a Postfix line; check that provider text decides before the code and that the IANA detail, subject, reply code and class are tried in that order; check that a 4xx is never hard and the warnings fire; pin the IANA registry (81 detail codes), the 26 reply codes and the provider texts; and check a batch's rows, totals and suppress list.</p>
-<p>What its test suite asserts:</p>
-<ul><li>The IANA registry (81 detail codes, updated 2024-12-06), the 26 RFC reply codes and the 171 provider text rules are pinned, with their sources and read date.</li><li>A multi-line reply, a DSN and a Postfix line are parsed to the same parts; provider text decides before the IANA detail, then the subject, the reply code and the class.</li><li>A 4xx reply is never hard; the class-mismatch, provider-differs and unregistered-code warnings fire; the code lookup lists every published text; a batch gives its rows, totals and suppress list.</li></ul>
+<details class="xpand"><summary>What its test suite asserts (3)</summary><div class="xp-in"><ul><li>The IANA registry (81 detail codes, updated 2024-12-06), the 26 RFC reply codes and the 171 provider text rules are pinned, with their sources and read date.</li><li>A multi-line reply, a DSN and a Postfix line are parsed to the same parts; provider text decides before the IANA detail, then the subject, the reply code and the class.</li><li>A 4xx reply is never hard; the class-mismatch, provider-differs and unregistered-code warnings fire; the code lookup lists every published text; a batch gives its rows, totals and suppress list.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/smtp-bounce-code-classifier/">Open the SMTP bounce classifier tool</a>.</p>
 </section>

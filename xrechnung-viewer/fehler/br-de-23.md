@@ -1,6 +1,6 @@
 # BR-DE-23: Überweisung ohne Kontoangaben (BG-17), oder mit Karte oder Lastschrift gemischt
 
-BR-DE-23 bedeutet: Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie bei Code 30 oder 58 die IBAN in BT-84 an (UBL cac:PayeeFinancialAccount/cbc:ID, CII ram:PayeePartyCreditorFinancialAccount/ram:IBANID) und entfernen Sie Karten- und Mandatsangaben.
+BR-DE-23 bedeutet: Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -25,7 +25,7 @@ Die Zahlungsart ist Überweisung (Code 30 oder 58). Dann muss die Gruppe CREDIT 
 
 ## So beheben Sie den Fehler
 
-Geben Sie bei Code 30 oder 58 die IBAN in BT-84 an (UBL cac:PayeeFinancialAccount/cbc:ID, CII ram:PayeePartyCreditorFinancialAccount/ram:IBANID) und entfernen Sie Karten- und Mandatsangaben.
+Geben Sie bei Code 30 oder 58 die IBAN in BT-84 an (UBL `cac:PayeeFinancialAccount/cbc:ID`, CII `ram:PayeePartyCreditorFinancialAccount/ram:IBANID`) und entfernen Sie Karten- und Mandatsangaben.
 
 ## Geprüftes Beispiel
 

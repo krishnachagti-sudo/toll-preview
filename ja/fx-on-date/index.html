@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
 <link rel="stylesheet" href="/toll-preview/fx-on-date/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fx-on-date"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -70,109 +72,138 @@
   </div>
 </header>
 
-<main id="main" class="fx">
-  <section class="wrap fx-intro">
+<main id="main" class="fx hue-money tf-plain">
+  <section class="wrap fx-intro tf-intro">
     <p class="eyebrow">参照データ、1回ごとの従量課金</p>
     <h1>日付指定の為替レート</h1>
     <p class="lede">指定した日の通貨ペアの公式レートを調べます。1999年1月以降の毎日の欧州中央銀行(ECB)参照レート、または米国財務省の報告レート、IRSの年間平均レート、英国HMRCの月次レートです。その日にECBの公表がない場合は、その前の最後のレートを返し、どの日のレートかをページに表示します。</p>
-    <p class="fx-price" id="fx-price">1回の実行は$0.001です。アカウントなしでも1日5回まで無料で使えます。</p>
+<ul class="trust" aria-label="このサイトについて"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> が制作</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>正確、AI不使用</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">公的な出典、日付つき</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">アップロードしたファイルは保存されません</a></span></li><li class="tl2"><a href="/toll-preview/security/">セキュリティ</a><a href="/toll-preview/terms/">利用規約</a></li></ul>
+    <p class="fx-price pline" id="fx-price">1回$0.001 · アカウントなしで1日5回まで無料 · APIでも利用可</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/fx-on-date/" hreflang="en">英語版を見る</a></p>
   </section>
 
-  <section class="wrap fx-desk" aria-label="レート検索">
-    <form class="fx-form" id="fx-form" novalidate>
-      <div class="field">
-        <label for="fx-source">レートの出典</label>
-        <select id="fx-source" aria-describedby="fx-source-hint">
-          <option value="ecb">ECB参照レート(標準)</option>
-          <option value="treasury">米国財務省の報告レート</option>
-          <option value="irs">IRS年間平均レート</option>
-          <option value="hmrc">HMRC月次レート</option>
-        </select>
-        <p class="hint" id="fx-source-hint">欧州中央銀行(ECB)が毎日公表するユーロの参照レートです。 <a href="#fx-which">どのレートを使うか</a></p>
-      </div>
+  <section class="wrap fx-desk tf-calc" aria-label="レート検索">
+    <form class="fx-form tf-card tf-form" id="fx-form" novalidate="">
+<div class="field">
+<label for="fx-source">レートの出典</label>
+<select aria-describedby="fx-source-hint" id="fx-source">
+<option value="ecb">ECB参照レート(標準)</option>
+<option value="treasury">米国財務省の報告レート</option>
+<option value="irs">IRS年間平均レート</option>
+<option value="hmrc">HMRC月次レート</option>
+</select>
 
-      <div class="fx-pair">
-        <div class="field">
-          <label for="fx-base">換算元</label>
-          <select id="fx-base" aria-describedby="fx-base-err"></select>
-          <p class="field-error" id="fx-base-err"></p>
-        </div>
-        <button type="button" class="fx-swap" id="fx-swap" aria-label="2つの通貨を入れ替える" title="2つの通貨を入れ替える">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="field">
-          <label for="fx-quote">換算先</label>
-          <select id="fx-quote" aria-describedby="fx-quote-err"></select>
-          <p class="field-error" id="fx-quote-err"></p>
-        </div>
-      </div>
+</div>
+<div class="fx-pair">
+<div class="field">
+<label for="fx-base">換算元</label>
+<select aria-describedby="fx-base-err" id="fx-base"></select>
+<p class="field-error" id="fx-base-err"></p>
+</div>
+<button aria-label="2つの通貨を入れ替える" class="fx-swap" id="fx-swap" title="2つの通貨を入れ替える" type="button">
+<svg aria-hidden="true" focusable="false" height="20" viewbox="0 0 24 24" width="20"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</button>
+<div class="field">
+<label for="fx-quote">換算先</label>
+<select aria-describedby="fx-quote-err" id="fx-quote"></select>
+<p class="field-error" id="fx-quote-err"></p>
+</div>
+</div>
+<div class="field">
+<label for="fx-date">日付</label>
+<input aria-describedby="fx-date-hint fx-date-err" id="fx-date" min="1999-01-04" type="date"/>
 
-      <div class="field">
-        <label for="fx-date">日付</label>
-        <input type="date" id="fx-date" min="1999-01-04" aria-describedby="fx-date-hint fx-date-err">
-        <p class="hint" id="fx-date-hint">1999年1月4日から。土日・祝日は、その前の最後のレートを使います。</p>
-        <p class="field-error" id="fx-date-err"></p>
-      </div>
+<p class="field-error" id="fx-date-err"></p>
+</div>
 
-      <div class="fx-quick">
-        <p class="fx-quick-label" id="fx-quick-label">よく使う通貨ペア</p>
-        <div class="fx-quick-row" role="group" aria-labelledby="fx-quick-label" id="fx-quick"></div>
-      </div>
+<p class="form-error" id="fx-error" role="alert"></p>
+<button class="btn" id="fx-run" type="submit">レートを調べる</button>
+<p class="hint fx-run-note" id="fx-run-note"></p>
 
-      <p class="form-error" id="fx-error" role="alert"></p>
-      <button class="btn" type="submit" id="fx-run">レートを調べる</button>
-      <p class="hint fx-run-note" id="fx-run-note"></p>
-    </form>
+<details class="xpand">
+<summary>よく使うペアと、レート・日付について</summary>
+<div class="xp-in">
+<div class="fx-quick">
+<p class="fx-quick-label" id="fx-quick-label">よく使う通貨ペア</p>
+<div aria-labelledby="fx-quick-label" class="fx-quick-row" id="fx-quick" role="group"></div>
+</div>
+<p class="hint" id="fx-source-hint">欧州中央銀行(ECB)が毎日公表するユーロの参照レートです。 <a href="#fx-which">どのレートを使うか</a></p>
+<p class="hint" id="fx-date-hint">1999年1月4日から。土日・祝日は、その前の最後のレートを使います。</p>
+</div>
+</details>
+</form>
 
-    <div class="fx-board" id="fx-board" aria-live="polite" aria-busy="false">
-      <p class="muted">計算例を読み込んでいます。</p>
-    </div>
+    <div aria-busy="false" aria-live="polite" class="fx-board" id="fx-board">
+<p class="muted">計算例を読み込んでいます。</p>
+</div>
   </section>
 
-  <section class="wrap fx-about" data-jump="出典" aria-labelledby="fx-about-title">
-    <h2 id="fx-about-title">数字の出どころ</h2>
-    <div class="fx-about-cols">
+  <section class="wrap fx-about tf-sec" data-jump="出典" aria-labelledby="fx-about-title">
+    <div class="tf-rules-top">
       <div>
-        <h3>1日1回の公表</h3>
+        <h2 id="fx-about-title">数字の出どころ</h2>
         <p>ECBは、約30通貨のユーロに対する参照レートを、TARGETの営業日ごとに中央ヨーロッパ時間の16時ごろ設定します。標準の回答は、ECBが公表したその日の表のレートです。</p>
       </div>
-      <div>
-        <h3>ユーロを含まないペア</h3>
-        <p>ユーロ以外の2通貨の場合は、同じ日のレート同士で一方のユーロレートを他方で割り、小数第6位まで丸めます。丸めは正確で、ちょうど半分は0から遠い方へ丸め、逆数は丸める前のレートから計算します。</p>
-      </div>
-      <div>
-        <h3>公表のない日</h3>
-        <p>土日とTARGETの休日にはレートの公表がありません。このツールは、指定日より前7日以内で最後のレートを使います。その範囲にない場合や、1999年1月4日より前の日付の場合は、その旨を表示し、料金はかかりません。</p>
-        <p>ECBがまだ公表していない営業日(たとえば16時前の本日)は、古いレートではなく「レートなし」になります。公表後にもう一度お試しください。この実行も無料です。</p>
-      </div>
+      <aside class="tf-card tf-not" aria-label="対象外のこと">
+        <h3>対象外のこと</h3>
+        <ul>
+          <li>銀行やカードが実際に両替するレート：これらは参照レートで、その日の記録です。</li>
+          <li>HMRCの週次の改定（月次ファイルには含まれません）。</li>
+          <li>16:00の公表前の営業日：古いレートではなく、レートなしになります。</li>
+        </ul>
+      </aside>
     </div>
-    <p class="muted small">出典:欧州中央銀行のユーロ参照為替レート(原題は英語で European Central Bank euro foreign exchange reference rates)。ECBは参考情報としてのみ公表しており、その日のレートの記録であって、銀行が両替する価格ではありません。税務署や経理で別のレートが指定されている場合は、上で該当する出典を選んでください。クロアチア・クーナなど、ECBが現在は公表していない通貨も、公表していた日付についてはAPIで取得できます。</p>
-  </section>
-
-  <section class="wrap fx-about" id="fx-which" data-jump="どのレートを使うか" aria-labelledby="fx-which-title">
-    <h2 id="fx-which-title">どのレートを使うか</h2>
-    <p>報告先の機関が求めるレートを使ってください。どの回答にも、使った資料と期間が表示されます。各機関が自分のレートについて述べていること(要約)は次のとおりです。</p>
+    <details class="xpand">
+      <summary>レートの求め方を読む</summary>
+      <div class="xp-in">
     <div class="fx-about-cols">
-      <div>
-        <h3>ECB参照レート(標準)</h3>
-        <p>1999年以降の、ユーロに対する毎日のレートです。ECBは、情報提供のみを目的に公表していると述べています。</p>
+<div>
+<h3>1日1回の公表</h3>
+<p>ECBは、約30通貨のユーロに対する参照レートを、TARGETの営業日ごとに中央ヨーロッパ時間の16時ごろ設定します。標準の回答は、ECBが公表したその日の表のレートです。</p>
+</div>
+<div>
+<h3>ユーロを含まないペア</h3>
+<p>ユーロ以外の2通貨の場合は、同じ日のレート同士で一方のユーロレートを他方で割り、小数第6位まで丸めます。丸めは正確で、ちょうど半分は0から遠い方へ丸め、逆数は丸める前のレートから計算します。</p>
+</div>
+<div>
+<h3>公表のない日</h3>
+<p>土日とTARGETの休日にはレートの公表がありません。このツールは、指定日より前7日以内で最後のレートを使います。その範囲にない場合や、1999年1月4日より前の日付の場合は、その旨を表示し、料金はかかりません。</p>
+<p>ECBがまだ公表していない営業日(たとえば16時前の本日)は、古いレートではなく「レートなし」になります。公表後にもう一度お試しください。この実行も無料です。</p>
+</div>
+</div>
+    <p class="muted small">出典:欧州中央銀行のユーロ参照為替レート(原題は英語で European Central Bank euro foreign exchange reference rates)。ECBは参考情報としてのみ公表しており、その日のレートの記録であって、銀行が両替する価格ではありません。税務署や経理で別のレートが指定されている場合は、上で該当する出典を選んでください。クロアチア・クーナなど、ECBが現在は公表していない通貨も、公表していた日付についてはAPIで取得できます。</p>
       </div>
-      <div>
-        <h3>米国財務省の報告レート</h3>
-        <p>米ドル1ドルあたりの通貨単位で示される四半期レートで、米国の政府機関が、報告日とその後3か月の換算に使います。現在のレートが公表レートと10%以上離れると、財務省は新しい発効日を付けた改定を出し、このツールはその日から改定レートを使います。FBARについては、FinCENが12月31日のレートを案内しています。ペアにはUSDが必要です。</p>
+    </details>
+    <details class="xpand" id="fx-which">
+      <summary>どのレートを使うか</summary>
+      <div class="xp-in">
+    <h3 id="fx-which-title">どのレートを使うか</h3>
+    <p>報告先の機関が求めるレートを使ってください。どの回答にも、使った資料と期間が表示されます。各機関が自分のレートについて述べていること(要約)は次のとおりです。</p>
+<div class="fx-about-cols">
+<div>
+<h3>ECB参照レート(標準)</h3>
+<p>1999年以降の、ユーロに対する毎日のレートです。ECBは、情報提供のみを目的に公表していると述べています。</p>
+</div>
+<div>
+<h3>米国財務省の報告レート</h3>
+<p>米ドル1ドルあたりの通貨単位で示される四半期レートで、米国の政府機関が、報告日とその後3か月の換算に使います。現在のレートが公表レートと10%以上離れると、財務省は新しい発効日を付けた改定を出し、このツールはその日から改定レートを使います。FBARについては、FinCENが12月31日のレートを案内しています。ペアにはUSDが必要です。</p>
+</div>
+<div>
+<h3>IRS年間平均レート</h3>
+<p>通貨ごとに年1つのレートで、米ドル1ドルあたりの通貨単位、日付の年のものです。IRSは、公式の為替レートはなく、一貫して使われていれば公表されたどの為替レートも認めると述べています。原則として、受取・支払・計上の時点のスポットレートを使います。ペアにはUSDが必要です。</p>
+</div>
+<div>
+<h3>HMRC月次レート</h3>
+<p>1ポンドあたりの通貨単位で示される月次レートで、2021年1月から対応しています。翌暦月の初日から末日まで有効です。市場レートが5%を超えて離れた場合、HMRCは翌週にそのレートを更新しますが、この週次の改定は、このツールが読む月次ファイルには含まれません。ペアにはGBPが必要です。</p>
+</div>
+</div>
       </div>
-      <div>
-        <h3>IRS年間平均レート</h3>
-        <p>通貨ごとに年1つのレートで、米ドル1ドルあたりの通貨単位、日付の年のものです。IRSは、公式の為替レートはなく、一貫して使われていれば公表されたどの為替レートも認めると述べています。原則として、受取・支払・計上の時点のスポットレートを使います。ペアにはUSDが必要です。</p>
-      </div>
-      <div>
-        <h3>HMRC月次レート</h3>
-        <p>1ポンドあたりの通貨単位で示される月次レートで、2021年1月から対応しています。翌暦月の初日から末日まで有効です。市場レートが5%を超えて離れた場合、HMRCは翌週にそのレートを更新しますが、この週次の改定は、このツールが読む月次ファイルには含まれません。ペアにはGBPが必要です。</p>
-      </div>
-    </div>
+    </details>
   </section>
 
-  <section class="wrap fx-code" aria-label="コードから使う">
+
+
+  <section class="wrap fx-code tf-sec" data-jump="コード" aria-label="コードから使う">
     <div id="fx-code"></div>
   </section>
   <noscript><div class="wrap"><p>このページにはJavaScriptが必要です。コードからツールを呼び出すこともできます。 <a href="/toll-preview/docs">ドキュメント(英語)</a>。</p></div></noscript>

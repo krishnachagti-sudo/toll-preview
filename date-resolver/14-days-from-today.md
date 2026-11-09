@@ -1,15 +1,15 @@
 # What date is 14 days from today?
 
-14 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Sunday, November 22, 2026. Counted from tomorrow it is Monday, November 23, 2026.
+14 days from today, Monday, November 9, 2026 (today's date in New York, US Eastern time), is Monday, November 23, 2026. Counted from tomorrow it is Tuesday, November 24, 2026.
 
-- Date: November 22, 2026
-- Weekday: Sunday
-- ISO week: 2026-W47
+- Date: November 23, 2026
+- Weekday: Monday
+- ISO week: 2026-W48
 - US business days between: 9
 
 ## 14 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-09&region=US)
 
 ## 14 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 14 days after | US business days |
 | --- | --- | ---: |
-| [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-08) | Sun, Nov 22, 2026 | 9 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-09) | Mon, Nov 23, 2026 | 9 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-10) | Tue, Nov 24, 2026 | 9 |
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-11) | Wed, Nov 25, 2026 | 10 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-19) | Thu, Dec 3, 2026 | 9 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-20) | Fri, Dec 4, 2026 | 9 |
 | [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-21) | Sat, Dec 5, 2026 | 9 |
+| [Sun, Nov 22, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+from+today&ref=2026-11-22) | Sun, Dec 6, 2026 | 9 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 14 days from today: the same as 15 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-from-today/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-from-today.csv

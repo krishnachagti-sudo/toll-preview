@@ -74,24 +74,25 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the tool</h2><p class="muted">The worked schedules open in the tool and are previewed in your browser, free. Edit them or paste your own there.</p><form method="get" action="/toll-preview/amortization-schedule-journal-entries/" class="cp-tool-form"><input type="hidden" name="csv" value="Item,Type,Amount,Start,Months,End,Method,Paid on,Balance account,PL account,Cash account,Name,Rate,Payment,First payment,Day count,Cancel on,Refund
 Term loan,Loan,250000.00,2026-11-01,120,,,,Loan Payable,Interest Expense,Checking,,7.25,,,,,
 "><input type="hidden" name="period" value="2026-12"><input type="hidden" name="from" value="2026-12"><input type="hidden" name="to" value="2027-11"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/amortization-schedule-journal-entries/?csv=Item%2CType%2CAmount%2CStart%2CMonths%2CEnd%2CMethod%2CPaid+on%2CBalance+account%2CPL+account%2CCash+account%2CName%2CRate%2CPayment%2CFirst+payment%2CDay+count%2CCancel+on%2CRefund%0D%0ATerm+loan%2CLoan%2C250000.00%2C2026-11-01%2C120%2C%2C%2C%2CLoan+Payable%2CInterest+Expense%2CChecking%2C%2C7.25%2C%2C%2C%2C%2C%0D%0A&amp;period=2026-12&amp;from=2026-12&amp;to=2027-11">Open this example in the tool</a></p></aside>
 <section>
 <h2 id="entries">The entries</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>When the loan is received, November 1, 2026</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">When the loan is received, November 1, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Checking</th><td class="r num">$250,000.00</td><td class="r num"></td></tr>
 <tr><th scope="row">Loan Payable</th><td class="r num"></td><td class="r num">$250,000.00</td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>Payment 1, December 1, 2026</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">Payment 1, December 1, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Loan Payable</th><td class="r num">$1,424.61</td><td class="r num"></td></tr>
 <tr><th scope="row">Interest Expense</th><td class="r num">$1,510.42</td><td class="r num"></td></tr>
 <tr><th scope="row">Checking</th><td class="r num"></td><td class="r num">$2,935.03</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="schedule">The first year</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Payments 1 to 12</caption><thead><tr><th scope="col">#</th><th scope="col">Date</th><th scope="col" class="r num">Payment</th><th scope="col" class="r num">Interest</th><th scope="col" class="r num">Principal</th><th scope="col" class="r num">Balance</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Payments 1 to 12</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">#</th><th scope="col">Date</th><th scope="col" class="r num">Payment</th><th scope="col" class="r num">Interest</th><th scope="col" class="r num">Principal</th><th scope="col" class="r num">Balance</th></tr></thead><tbody>
 <tr><th scope="row">1</th><td>December 1, 2026</td><td class="r num">$2,935.03</td><td class="r num">$1,510.42</td><td class="r num">$1,424.61</td><td class="r num">$248,575.39</td></tr>
 <tr><th scope="row">2</th><td>January 1, 2027</td><td class="r num">$2,935.03</td><td class="r num">$1,501.81</td><td class="r num">$1,433.22</td><td class="r num">$247,142.17</td></tr>
 <tr><th scope="row">3</th><td>February 1, 2027</td><td class="r num">$2,935.03</td><td class="r num">$1,493.15</td><td class="r num">$1,441.88</td><td class="r num">$245,700.29</td></tr>
@@ -104,7 +105,7 @@ Term loan,Loan,250000.00,2026-11-01,120,,,,Loan Payable,Interest Expense,Checkin
 <tr><th scope="row">10</th><td>September 1, 2027</td><td class="r num">$2,935.03</td><td class="r num">$1,431.05</td><td class="r num">$1,503.98</td><td class="r num">$235,360.25</td></tr>
 <tr><th scope="row">11</th><td>October 1, 2027</td><td class="r num">$2,935.03</td><td class="r num">$1,421.97</td><td class="r num">$1,513.06</td><td class="r num">$233,847.19</td></tr>
 <tr><th scope="row">12</th><td>November 1, 2027</td><td class="r num">$2,935.03</td><td class="r num">$1,412.83</td><td class="r num">$1,522.20</td><td class="r num">$232,324.99</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>In the first 12 payments, $17,545.35 goes to interest and $17,675.01 to principal. Over all 120 payments, interest totals $102,202.97; payment 120 is $2,934.40 and clears the balance.</p>
 </section>
 <section>
@@ -114,7 +115,7 @@ Term loan,Loan,250000.00,2026-11-01,120,,,,Loan Payable,Interest Expense,Checkin
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/journal-entries/does-quickbooks-online-have-an-amortization-schedule/00/185786">Intuit QuickBooks: Does QuickBooks Online have an amortization schedule?, updated August 5, 2026 (read November 8, 2026)</a></li><li><a href="https://support.microsoft.com/en-us/excel/functions/pmt-function">Microsoft Support: PMT function (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/journal-entries/does-quickbooks-online-have-an-amortization-schedule/00/185786">Intuit QuickBooks: Does QuickBooks Online have an amortization schedule?, updated August 5, 2026 (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li><li><a href="https://support.microsoft.com/en-us/excel/functions/pmt-function">Microsoft Support: PMT function (read November 8, 2026)</a><span class="src-m">support.microsoft.com</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>What is the journal entry when a loan is received?</h3></summary><div class="xp-in"><p>Debit the bank and credit the loan liability for the amount received: $250,000.00 to Checking and Loan Payable here.</p></div></details><details class="xpand"><summary><h3>Why does the interest go down each month?</h3></summary><div class="xp-in"><p>Interest is worked out on the balance still owed, and every payment lowers it: payment 1 has $1,510.42 of interest, payment 12 has $1,412.83.</p></div></details></section>

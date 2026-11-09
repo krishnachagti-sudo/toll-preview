@@ -369,6 +369,7 @@ fieldset { border: 0; padding: 0; margin: 0 0 16px; min-width: 0; }
 
 /* ---------- sections and tables ---------- */
 .page-head { padding-block: 64px 0; }
+.page-head .trust { margin-bottom: 20px; }
 .ledger-section { border-top: 1px solid var(--line-2); padding-top: 28px; margin-top: 56px; }
 .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .section-head h2 { margin-bottom: 0.4em; }
@@ -384,6 +385,66 @@ table.rules th button { all: unset; cursor: pointer; font: inherit; text-transfo
 table.rules th button:hover { color: var(--text); }
 table.rules th button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 @media (min-width: 600px) { table.rules .when { width: 13rem; } }
+
+/* ---------- tables, site-wide (endwise.js adds the classes; without it every row simply shows) ----------
+   A long table shows its first rows in its frame and clips the rest (the frame scrolls, so find in
+   page and #links still reach them); a fade says more follow. A wide one says it scrolls sideways
+   and fades its right edge. A narrow one turns into a card per row on phones. */
+.cp-tbl { margin: 0 0 18px; }
+figure.cp-tbl > .table-scroll { margin: 0; }
+.tl-frame + .tl-foot { margin-top: -8px; }
+figure.cp-tbl > .tl-frame + .tl-foot { margin-top: 10px; }
+.cp-cap, .tl-cap { margin: 0 0 10px; font-size: 13.5px; line-height: 1.5; color: var(--muted); text-align: left; }
+.tl-frame-own { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tl-frame { --tl-mb: linear-gradient(#000, #000); --tl-mr: linear-gradient(#000, #000); }
+.tl-frame.tl-clipped { overflow-y: hidden !important; --tl-mb: linear-gradient(to bottom, #000 calc(100% - 64px), transparent); }
+.tl-frame.tl-more { --tl-mr: linear-gradient(to left, transparent, #000 44px); }
+.tl-frame.tl-clipped, .tl-frame.tl-more {
+  -webkit-mask-image: var(--tl-mb), var(--tl-mr); mask-image: var(--tl-mb), var(--tl-mr);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+.tl-cue { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font: 500 11.5px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.tl-cue::after { content: ""; width: 22px; height: 1px; background: currentColor; box-shadow: 4px 0 0 -0.5px var(--ember); }
+.tl-cue[hidden] { display: none; }
+.tl-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 10px; }
+.tl-field { flex: 1 1 13rem; max-width: 20rem; margin: 0; }
+.tl-field-pick { flex: 0 1 13rem; }
+.tl-tools input.tl-find, .tl-tools select.tl-pick {
+  font: inherit; font-size: 14px; color: var(--text); background: var(--bg-2); width: 100%;
+  border: 1px solid var(--line-2); border-radius: 999px; min-height: 38px; padding: 6px 14px;
+}
+.tl-tools input.tl-find::placeholder { color: var(--faint); }
+.tl-tools input.tl-find:focus-visible, .tl-tools select.tl-pick:focus-visible { outline: none; border-color: rgba(255, 176, 63, 0.55); box-shadow: 0 0 0 3px rgba(255, 176, 63, 0.14); }
+.tl-count { flex: 1 0 100%; margin: 0; font-size: 13px; color: var(--muted); }
+.tl-count:empty { display: none; }
+.tl-foot { margin: 10px 0 18px; }
+.tl-foot .tl-all[hidden] { display: none; }
+.cp-tbl .tl-foot { margin-bottom: 0; }
+/* A table wider than its frame: sentences wrap in a column of their own width instead of running
+   the table thousands of pixels wide; figures and dates keep one line. */
+table.cp-table.tl-wrap td:not(.num):not(:last-child) { white-space: normal; min-width: 11rem; }
+table tbody tr.tl-miss { display: none !important; }
+main table tbody tr.tl-hit { background: var(--accent-wash); }
+main table tbody tr.tl-hit > :first-child { background-size: 2px 62%; }
+main table tbody tr:target { scroll-margin-top: 120px; }
+@media (max-width: 640px) {
+  .tl-field, .tl-field-pick { flex: 1 1 100%; max-width: none; }
+  table.cp-table:not(.tl-stack) th[scope="row"] { min-width: 7.5rem; }
+  /* A card per row: the row's name on its own line, then each value after its column's name. */
+  table.tl-stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  table.tl-stack, table.tl-stack > tbody { display: block; width: 100%; }
+  table.tl-stack > tbody > tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+  table.tl-stack > tbody > tr:last-child { border-bottom: 0; }
+  table.tl-stack > tbody > tr > * { display: block; min-width: 0 !important; width: auto; border: 0 !important; padding: 0 !important; white-space: normal !important; text-align: left !important; }
+  table.tl-stack > tbody > tr > :first-child { flex: 1 1 100%; font-weight: 500; color: var(--text); }
+  table.tl-stack > tbody > tr > td[data-label]::before { content: attr(data-label); margin-right: 8px; font: 500 10.5px/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); }
+  table.tl-stack2 > tbody > tr > td[data-label] { flex: 1 1 100%; }
+  table.tl-stack2 > tbody > tr > td[data-label]::before { content: none; }
+}
+@media print {
+  .tl-frame.tl-clipped { max-height: none !important; -webkit-mask-image: none; mask-image: none; }
+  .tl-tools, .tl-foot, .tl-cue { display: none !important; }
+}
 
 /* ---------- account ---------- */
 .signed-out-grid { display: grid; gap: 24px; margin-top: 8px; }

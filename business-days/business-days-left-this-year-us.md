@@ -1,15 +1,15 @@
 # Business days left this year, US
 
-There are 36 business days left in 2026 in the US after today, Sunday, November 8, 2026 (the date in Washington, DC), up to and including Thursday, December 31, 2026.
+There are 35 business days left in 2026 in the US after today, Monday, November 9, 2026 (the date in Washington, DC), up to and including Thursday, December 31, 2026. Counting today, 36.
 
-- Left after today: 36
+- Left after today: 35
 - Business days in 2026: 250
 - Before today: 214
 - Holidays to come: 3
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2026-12-31)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-09&end=2026-12-31)
 
 ## Month by month, 2026
 
@@ -25,9 +25,9 @@ There are 36 business days left in 2026 in the US after today, Sunday, November 
 | [August](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-august-2026/) | 21 | 0 |  |
 | [September](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-september-2026/) | 21 | 0 |  |
 | [October](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-october-2026/) | 21 | 0 |  |
-| [November](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-november-2026/) | 19 | 14 | Nov 11: Veterans Day; Nov 26: Thanksgiving Day |
+| [November](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-november-2026/) | 19 | 13 | Nov 11: Veterans Day; Nov 26: Thanksgiving Day |
 | [December](https://krishnachagti-sudo.github.io/toll-preview/business-days/us-business-days-december-2026/) | 22 | 22 | Dec 25: Christmas Day |
-| **All of 2026** | 250 | 36 |  |
+| **All of 2026** | 250 | 35 |  |
 
 Still to come on a weekday: Veterans Day (Wednesday, November 11, 2026), Thanksgiving Day (Thursday, November 26, 2026) and Christmas Day (Friday, December 25, 2026).
 
@@ -52,5 +52,5 @@ Today is not counted, so on a business day the figure "counting today" is one mo
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us.csv

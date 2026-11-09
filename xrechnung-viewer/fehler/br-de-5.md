@@ -1,6 +1,6 @@
 # BR-DE-5: Name des Ansprechpartners (BT-41) fehlt
 
-BR-DE-5 bedeutet: Das Element "Seller contact point" (BT-41) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Füllen Sie BT-41 (UBL cac:Contact/cbc:Name, CII ram:DefinedTradeContact/ram:PersonName oder ram:DepartmentName).
+BR-DE-5 bedeutet: Das Element "Seller contact point" (BT-41) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Der Kontakt des Verkäufers hat keinen Namen. XRechnung verlangt einen Ansprechp
 
 ## So beheben Sie den Fehler
 
-Füllen Sie BT-41 (UBL cac:Contact/cbc:Name, CII ram:DefinedTradeContact/ram:PersonName oder ram:DepartmentName).
+Füllen Sie BT-41 (UBL `cac:Contact/cbc:Name`, CII `ram:DefinedTradeContact/ram:PersonName` oder `ram:DepartmentName`).
 
 ## Geprüftes Beispiel
 

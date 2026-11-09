@@ -12,6 +12,10 @@ In Maryland a landlord may charge a rent late fee of at most 5% of the unpaid re
 
 ## What the statute says
 
+**In short:** 5% of the unpaid rent due for the rental period; no waiting period (Md. Code, Real Prop. § 8-208(d)(3)).
+
+**The statute's words (1 passage)**
+
 Md. Code, Real Prop. § 8-208(d)(3): "Provides for a penalty for the late payment of rent in excess of 5% of the amount of unpaid rent due for the rental period for which the payment was delinquent; or (ii) In the case of leases under which the rent is paid in weekly rental installments, provides for a late penalty of more than $3 per week or a total of no more than $12 per month;"
 
 ## The limit on sample rents

@@ -2,9 +2,61 @@
 
 Each share is the pool times that person's hours, points or role share, rounded down to the cent; the cents left over go one each to the largest remainders, so the shares always add up to the pool. With a tip credit, the federal cash wage is at least $2.13 an hour and the credit at most $5.12 against the $7.25 minimum wage, and only customarily tipped staff may share.
 
+## How does it work?
+
+1. Every amount is read as whole cents and every hour or point as whole hundredths, so the arithmetic is exact. "$1,240.50", "1240.5" and 1240.5 all work.
+2. Where card tips and a fee percentage are given, the fee is the card tips times the percentage, rounded half up to the cent, and comes off the pool.
+3. Each person's weight is their hours, their points, hours times points, or 1 for equal shares.
+4. With role percentages, the pool is first split between the roles that worked (a role with nobody on shift has its percentage shared among the others in proportion), then each role's amount is split by hours inside the role, or equally when hours are missing, by the same largest-remainder rule.
+5. In the US, managers and supervisors are never allowed in the pool, and owners are not either (29 CFR 531.52(b)(2), 531.54).
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/tip-pool-calculator/#what) below.
+
+## What does it not cover?
+
+- Whether someone is a manager or supervisor, or customarily and regularly tipped, depends on their duties; the tool applies your answer.
+- State pool rules are covered only for the states whose own site was read; others get the federal rules and the DOL wage row. City rules and provinces other than Ontario are not covered.
+- The split is arithmetic on the hours, points and roles you enter; the tool cannot check them.
+- It is not legal or tax advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 25 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The eCFR text was read as of 2026-11-04; the DOL tipped wage table (revised November 5, 2026), Fact Sheet #15, the state sites, the UK code of practice, Ontario's ESA guide and the IRS tipped occupation list were read on 2026-11-08. The rules change only by hand, with the tests that pin them.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin the federal numbers and the DOL table read date, check that shares always add up and leftover cents go to the largest remainders, every split method, card fees (half up, and refused where the state forbids them), the federal, state, UK and Ontario rules, tip-outs, the UK deadline across leap years, and that the payroll CSV is formula-safe.
+
+- [29 CFR Part 531, Subpart D: Tipped Employees (eCFR)](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-A/part-531/subpart-D), as of 2026-11-04, read 2026-11-08
+- [DOL Wage and Hour Division, Fact Sheet #15: Tipped Employees Under the Fair Labor Standards Act (FLSA)](https://www.dol.gov/agencies/whd/fact-sheets/15-tipped-employees-flsa), see the document, read 2026-11-08
+- [U.S. Department of Labor, Wage and Hour Division: Minimum Wages for Tipped Employees (table of minimum hourly wages for tipped employees, by state)](https://www.dol.gov/agencies/whd/state/minimum-wage/tipped), revised 2026-11-05, read 2026-11-08
+- [Code of practice on fair and transparent distribution of tips (GOV.UK; published 29 July 2024, in effect from 1 October 2024)](https://www.gov.uk/government/publications/distributing-tips-fairly-statutory-code-of-practice/code-of-practice-on-fair-and-transparent-distribution-of-tips-html-version), published 2024-07-29, read 2026-11-08
+- [Ontario Ministry of Labour, Immigration, Training and Skills Development: Your guide to the Employment Standards Act, Tips or other gratuities (updated July 08, 2024)](https://www.ontario.ca/document/your-guide-employment-standards-act-0/tips-and-other-gratuities), updated 2024-07-08, read 2026-11-08
+- [IRS: What the “No Tax on Tips” deduction means for you (IRS Tax Tip, March 5, 2026; page updated 21-Sep-2026)](https://www.irs.gov/newsroom/what-the-no-tax-on-tips-deduction-means-for-you), updated 2026-09-21, read 2026-11-08
+- [IRS: Occupations that customarily and regularly received tips on or before Dec. 31, 2024 (updated 28-Jun-2026)](https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024), updated 2026-06-28, read 2026-11-08
+- [IRS: General Instructions for Forms W-2 and W-3 (2026)](https://www.irs.gov/instructions/iw2w3), see the document, read 2026-11-08
+- [Washington: Washington Department of Labor & Industries: Tips and Service Charges](https://www.lni.wa.gov/workers-rights/wages/tips-and-service-charges), see the document, read 2026-11-08
+- [Washington: Washington Department of Labor & Industries: Minimum Wage](https://lni.wa.gov/workers-rights/wages/minimum-wage/), see the document, read 2026-11-08
+- [Minnesota: Minnesota Statutes 2025, section 177.24 (Office of the Revisor of Statutes)](https://www.revisor.mn.gov/statutes/cite/177.24), see the document, read 2026-11-08
+- [Massachusetts: Massachusetts General Laws chapter 149, section 152A (mass.gov, amended by St.2020, c.358, effective January 14, 2021)](https://www.mass.gov/info-details/mass-general-laws-c149-ss-152a), see the document, read 2026-11-08
+- [Massachusetts: Massachusetts Attorney General, Advisory 3/2004 on tips (revised 9/2026)](https://www.mass.gov/doc/attorney-generals-advisory-on-tips/download), see the document, read 2026-11-08
+- [New York: New York State Department of Labor, Hospitality Industry Wage Order, 12 NYCRR Part 146 (as amended effective December 31, 2016)](https://forms.labor.ny.gov/WP/CR146.pdf), see the document, read 2026-11-08
+- [Maine: Maine Revised Statutes, Title 26, section 664 (Maine Legislature)](https://legislature.maine.gov/statutes/26/title26sec664.html), see the document, read 2026-11-08
+- [Delaware: Delaware Code, Title 19, Chapter 9, section 902 (Delaware Code Online)](https://delcode.delaware.gov/title19/c009/index.html), see the document, read 2026-11-08
+- [Maryland: Maryland Code, Labor and Employment, section 3-419 (Maryland General Assembly)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-419&enactments=false), see the document, read 2026-11-08
+- [District of Columbia: D.C. Code section 32-1003 (Council of the District of Columbia, D.C. Code)](https://code.dccouncil.gov/us/dc/council/code/sections/32-1003), see the document, read 2026-11-08
+- [Montana: Montana Code Annotated 39-3-409 (Montana Legislature)](https://leg.mt.gov/bills/mca/title_0390/chapter_0030/part_0040/section_0090/0390-0030-0040-0090.html), see the document, read 2026-11-08
+- [Virginia: Code of Virginia 40.1-28.9 (Virginia Law, Legislative Information System)](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-28.9/), see the document, read 2026-11-08
+- [Virginia: Code of Virginia 40.1-28.10 (Virginia Law, Legislative Information System)](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-28.10/), see the document, read 2026-11-08
+- [Florida: Florida Statutes 448.110, Florida Minimum Wage Act (Online Sunshine, Florida Legislature)](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0400-0499/0448/Sections/0448.110.html), see the document, read 2026-11-08
+- [Arizona: Arizona Revised Statutes 23-363 (Arizona State Legislature)](https://www.azleg.gov/ars/23/00363.htm), see the document, read 2026-11-08
+- [South Dakota: South Dakota Department of Labor and Regulation: Minimum Wage](https://dlr.sd.gov/employment_laws/minimum_wage.aspx), see the document, read 2026-11-08
+- [Kansas: Kansas Statutes 44-1203 (Kansas Office of Revisor of Statutes)](https://www.ksrevisor.gov/statutes/chapters/ch44/044_012_0003.html), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the tip pool calculator compute?
 
 Given a pool and up to 200 people with their roles and hours or points, the tool splits the pool by hours worked, points, hours x points, role percentages and equal shares, to the cent, and checks who may be in it: managers, supervisors and owners, back of house with or without a tip credit, and card fee deductions, under 29 CFR Part 531 and DOL Fact Sheet #15, the state rules read on the state's own site, the UK code of practice on tips or Ontario's ESA guide. It also works out a server's tip-outs and gives a payroll CSV with the IRS tipped occupation code for each person.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -34,7 +86,7 @@ Outputs:
 - jurisdiction: the DOL tipped wage row for a state, and the sources and read date of its pool rules
 - csv, sheet and filename (record only)
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. Every amount is read as whole cents and every hour or point as whole hundredths, so the arithmetic is exact. "$1,240.50", "1240.5" and 1240.5 all work.
 2. Where card tips and a fee percentage are given, the fee is the card tips times the percentage, rounded half up to the cent, and comes off the pool. It is not taken off in the UK, or in a state whose rule says the fee may not come out of card tips; the finding says so.
@@ -60,6 +112,8 @@ State rules come only from the state's own statute or labor agency site, quoted 
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - Hours that do not divide the pool evenly give leftover cents, each named in the rows.
 - Two people with the same remainder: the leftover cent goes to the one listed first.
 - A role in the percentages with nobody on shift has its share passed to the roles that worked, and the answer lists it as dropped.
@@ -72,6 +126,21 @@ State rules come only from the state's own statute or labor agency site, quoted 
 > Every figure below is the output of the tool's engine, not typed in.
 
 **Split $800 between five people by hours under the federal rules, no tip credit**
+
+Split $800 between five people by hours under the federal rules, no tip credit
+
+| Result | Value |
+| --- | --- |
+| answer | Your $800.00 pool over 31 hours pays about $25.81 an hour: Ana $206.45, Ben $167.74, Cleo $180.65, Dev $129.03 and Eli $116.13 (to the cent, adding up to $800.00). No rule is broken on these facts. |
+| rate | about $25.81 an hour |
+| Ana (Server, 8 hours) | $206.45 |
+| Ben (Server, 6.5 hours) | $167.74 |
+| Cleo (Bartender, 7 hours) | $180.65 |
+| Dev (Busser, 5 hours) | $129.03 |
+| Eli (Cook, 4.5 hours) | $116.13 |
+| people with a leftover cent | 2 |
+
+**The input**
 
 ```json
 {
@@ -110,20 +179,21 @@ State rules come only from the state's own statute or labor agency site, quoted 
 }
 ```
 
-Split $800 between five people by hours under the federal rules, no tip credit
+**More worked examples (3)**
+
+**New York, tip credit, hours times points, with a cook and a manager in the pool**
+
+New York, tip credit, hours times points, with a cook and a manager in the pool
 
 | Result | Value |
 | --- | --- |
-| answer | Your $800.00 pool over 31 hours pays about $25.81 an hour: Ana $206.45, Ben $167.74, Cleo $180.65, Dev $129.03 and Eli $116.13 (to the cent, adding up to $800.00). No rule is broken on these facts. |
-| rate | about $25.81 an hour |
-| Ana (Server, 8 hours) | $206.45 |
-| Ben (Server, 6.5 hours) | $167.74 |
-| Cleo (Bartender, 7 hours) | $180.65 |
-| Dev (Busser, 5 hours) | $129.03 |
-| Eli (Cook, 4.5 hours) | $116.13 |
-| people with a leftover cent | 2 |
+| answer | Your $1,240.00 pool over 261 point-hours pays about $4.75 a point-hour: Ana $285.06, Ben $237.55, Cleo $228.04, Dev $142.53, Fay $57.01, Gus $99.77 and Hal $190.04 (to the cent, adding up to $1,240.00). The check found 3 problems and 1 point to check: Hal: a manager or supervisor may not receive tips from the pool, whether or not you take a tip credit. They may keep tips customers give them directly for service they alone provide. |
+| verdict | fail |
+| problem 1 | Hal: a manager or supervisor may not receive tips from the pool, whether or not you take a tip credit. They may keep tips customers give them directly for service they alone provide. |
+| problem 2 | Gus: with a tip credit, the pool may include only employees who customarily and regularly receive tips, so this role is not allowed. Pay everyone in the pool at least the full minimum wage in cash to include them. |
+| problem 3 | New York: Gus may not share in the pool there (cook), whether or not you take a tip credit. |
 
-**New York, tip credit, hours times points, with a cook and a manager in the pool**
+**The input**
 
 ```json
 {
@@ -179,17 +249,18 @@ Split $800 between five people by hours under the federal rules, no tip credit
 }
 ```
 
-New York, tip credit, hours times points, with a cook and a manager in the pool
+**A server's tip-out on $2,000 of sales**
+
+A server's tip-out on $2,000 of sales
 
 | Result | Value |
 | --- | --- |
-| answer | Your $1,240.00 pool over 261 point-hours pays about $4.75 a point-hour: Ana $285.06, Ben $237.55, Cleo $228.04, Dev $142.53, Fay $57.01, Gus $99.77 and Hal $190.04 (to the cent, adding up to $1,240.00). The check found 3 problems and 1 point to check: Hal: a manager or supervisor may not receive tips from the pool, whether or not you take a tip credit. They may keep tips customers give them directly for service they alone provide. |
-| verdict | fail |
-| problem 1 | Hal: a manager or supervisor may not receive tips from the pool, whether or not you take a tip credit. They may keep tips customers give them directly for service they alone provide. |
-| problem 2 | Gus: with a tip credit, the pool may include only employees who customarily and regularly receive tips, so this role is not allowed. Pay everyone in the pool at least the full minimum wage in cash to include them. |
-| problem 3 | New York: Gus may not share in the pool there (cook), whether or not you take a tip credit. |
+| answer | On $2,000.00 in sales, the bartender tip-out at 2% is $40.00 and the busser tip-out at 1.5% is $30.00, $70.00 in all; the server keeps $290.00 of $360.00 in tips. No rule is broken on these facts. |
+| Bartender at 2% | $40.00 |
+| Busser at 1.5% | $30.00 |
+| server keeps | $290.00 |
 
-**A server's tip-out on $2,000 of sales**
+**The input**
 
 ```json
 {
@@ -211,16 +282,21 @@ New York, tip credit, hours times points, with a cook and a manager in the pool
 }
 ```
 
-A server's tip-out on $2,000 of sales
+**The payroll record for one pay run**
+
+The payroll record for one pay run
 
 | Result | Value |
 | --- | --- |
-| answer | On $2,000.00 in sales, the bartender tip-out at 2% is $40.00 and the busser tip-out at 1.5% is $30.00, $70.00 in all; the server keeps $290.00 of $360.00 in tips. No rule is broken on these facts. |
-| Bartender at 2% | $40.00 |
-| Busser at 1.5% | $30.00 |
-| server keeps | $290.00 |
+| file | tip-pool-main-street-2026-11-15.csv |
+| CSV columns | location,period\_end,name,role,hours,points,share,currency,got\_leftover\_cent,irs\_ttoc,check |
+| Ana | $206.45, IRS code 102 |
+| Ben | $167.74, IRS code 102 |
+| Cleo | $180.65, IRS code 101 |
+| Dev | $129.03, IRS code 104 |
+| Eli | $116.13, IRS code 105 |
 
-**The payroll record for one pay run**
+**The input**
 
 ```json
 {
@@ -261,92 +337,9 @@ A server's tip-out on $2,000 of sales
 }
 ```
 
-The payroll record for one pay run
-
-| Result | Value |
-| --- | --- |
-| file | tip-pool-main-street-2026-11-15.csv |
-| CSV columns | location,period\_end,name,role,hours,points,share,currency,got\_leftover\_cent,irs\_ttoc,check |
-| Ana | $206.45, IRS code 102 |
-| Ben | $167.74, IRS code 102 |
-| Cleo | $180.65, IRS code 101 |
-| Dev | $129.03, IRS code 104 |
-| Eli | $116.13, IRS code 105 |
-
-## What does it not do?
-
-- Whether someone is a manager or supervisor, or customarily and regularly tipped, depends on their duties; the tool applies your answer.
-- State pool rules are covered only for the states whose own site was read; others get the federal rules and the DOL wage row. City rules and provinces other than Ontario are not covered.
-- The split is arithmetic on the hours, points and roles you enter; the tool cannot check them.
-- It is not legal or tax advice.
-
-## Where does the data come from, and how fresh is it?
-
-The eCFR text was read as of 2026-11-04; the DOL tipped wage table (revised November 5, 2026), Fact Sheet #15, the state sites, the UK code of practice, Ontario's ESA guide and the IRS tipped occupation list were read on 2026-11-08. The rules change only by hand, with the tests that pin them.
-
-- [29 CFR Part 531, Subpart D: Tipped Employees (eCFR)](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-A/part-531/subpart-D)
-- [DOL Wage and Hour Division, Fact Sheet #15: Tipped Employees Under the Fair Labor Standards Act (FLSA)](https://www.dol.gov/agencies/whd/fact-sheets/15-tipped-employees-flsa)
-- [U.S. Department of Labor, Wage and Hour Division: Minimum Wages for Tipped Employees (table of minimum hourly wages for tipped employees, by state)](https://www.dol.gov/agencies/whd/state/minimum-wage/tipped)
-- [Code of practice on fair and transparent distribution of tips (GOV.UK; published 29 July 2024, in effect from 1 October 2024)](https://www.gov.uk/government/publications/distributing-tips-fairly-statutory-code-of-practice/code-of-practice-on-fair-and-transparent-distribution-of-tips-html-version)
-- [Ontario Ministry of Labour, Immigration, Training and Skills Development: Your guide to the Employment Standards Act, Tips or other gratuities (updated July 08, 2024)](https://www.ontario.ca/document/your-guide-employment-standards-act-0/tips-and-other-gratuities)
-- [IRS: Occupations that customarily and regularly received tips on or before Dec. 31, 2024 (updated 28-Jun-2026)](https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024)
-- [Washington: Washington Department of Labor & Industries: Tips and Service Charges](https://www.lni.wa.gov/workers-rights/wages/tips-and-service-charges)
-- [Washington: Washington Department of Labor & Industries: Minimum Wage](https://lni.wa.gov/workers-rights/wages/minimum-wage/)
-- [Minnesota: Minnesota Statutes 2025, section 177.24 (Office of the Revisor of Statutes)](https://www.revisor.mn.gov/statutes/cite/177.24)
-- [Massachusetts: Massachusetts General Laws chapter 149, section 152A (mass.gov, amended by St.2020, c.358, effective January 14, 2021)](https://www.mass.gov/info-details/mass-general-laws-c149-ss-152a)
-- [Massachusetts: Massachusetts Attorney General, Advisory 3/2004 on tips (revised 9/2026)](https://www.mass.gov/doc/attorney-generals-advisory-on-tips/download)
-- [New York: New York State Department of Labor, Hospitality Industry Wage Order, 12 NYCRR Part 146 (as amended effective December 31, 2016)](https://forms.labor.ny.gov/WP/CR146.pdf)
-- [Maine: Maine Revised Statutes, Title 26, section 664 (Maine Legislature)](https://legislature.maine.gov/statutes/26/title26sec664.html)
-- [Delaware: Delaware Code, Title 19, Chapter 9, section 902 (Delaware Code Online)](https://delcode.delaware.gov/title19/c009/index.html)
-- [Maryland: Maryland Code, Labor and Employment, section 3-419 (Maryland General Assembly)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-419&enactments=false)
-- [District of Columbia: D.C. Code section 32-1003 (Council of the District of Columbia, D.C. Code)](https://code.dccouncil.gov/us/dc/council/code/sections/32-1003)
-- [Montana: Montana Code Annotated 39-3-409 (Montana Legislature)](https://leg.mt.gov/bills/mca/title_0390/chapter_0030/part_0040/section_0090/0390-0030-0040-0090.html)
-- [Virginia: Code of Virginia 40.1-28.9 (Virginia Law, Legislative Information System)](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-28.9/)
-- [Virginia: Code of Virginia 40.1-28.10 (Virginia Law, Legislative Information System)](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-28.10/)
-- [Florida: Florida Statutes 448.110, Florida Minimum Wage Act (Online Sunshine, Florida Legislature)](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0400-0499/0448/Sections/0448.110.html)
-- [Arizona: Arizona Revised Statutes 23-363 (Arizona State Legislature)](https://www.azleg.gov/ars/23/00363.htm)
-- [South Dakota: South Dakota Department of Labor and Regulation: Minimum Wage](https://dlr.sd.gov/employment_laws/minimum_wage.aspx)
-- [Kansas: Kansas Statutes 44-1203 (Kansas Office of Revisor of Statutes)](https://www.ksrevisor.gov/statutes/chapters/ch44/044_012_0003.html)
-
-The eCFR text was read as of 2026-11-04; the DOL tipped wage table (revised November 5, 2026), Fact Sheet #15, the state sites, the UK code of practice, Ontario's ESA guide and the IRS tipped occupation list were read on 2026-11-08. The rules change only by hand, with the tests that pin them.
-
-Tip pool calculator: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [29 CFR Part 531, Subpart D: Tipped Employees (eCFR)](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-A/part-531/subpart-D) | as of 2026-11-04 | 2026-11-08 |
-| [DOL Wage and Hour Division, Fact Sheet #15: Tipped Employees Under the Fair Labor Standards Act (FLSA)](https://www.dol.gov/agencies/whd/fact-sheets/15-tipped-employees-flsa) | see the document | 2026-11-08 |
-| [U.S. Department of Labor, Wage and Hour Division: Minimum Wages for Tipped Employees (table of minimum hourly wages for tipped employees, by state)](https://www.dol.gov/agencies/whd/state/minimum-wage/tipped) | revised 2026-11-05 | 2026-11-08 |
-| [Code of practice on fair and transparent distribution of tips (GOV.UK; published 29 July 2024, in effect from 1 October 2024)](https://www.gov.uk/government/publications/distributing-tips-fairly-statutory-code-of-practice/code-of-practice-on-fair-and-transparent-distribution-of-tips-html-version) | published 2024-07-29 | 2026-11-08 |
-| [Ontario Ministry of Labour, Immigration, Training and Skills Development: Your guide to the Employment Standards Act, Tips or other gratuities (updated July 08, 2024)](https://www.ontario.ca/document/your-guide-employment-standards-act-0/tips-and-other-gratuities) | updated 2024-07-08 | 2026-11-08 |
-| [IRS: What the “No Tax on Tips” deduction means for you (IRS Tax Tip, March 5, 2026; page updated 21-Sep-2026)](https://www.irs.gov/newsroom/what-the-no-tax-on-tips-deduction-means-for-you) | updated 2026-09-21 | 2026-11-08 |
-| [IRS: Occupations that customarily and regularly received tips on or before Dec. 31, 2024 (updated 28-Jun-2026)](https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024) | updated 2026-06-28 | 2026-11-08 |
-| [IRS: General Instructions for Forms W-2 and W-3 (2026)](https://www.irs.gov/instructions/iw2w3) | see the document | 2026-11-08 |
-| [Washington: Washington Department of Labor & Industries: Tips and Service Charges](https://www.lni.wa.gov/workers-rights/wages/tips-and-service-charges) | see the document | 2026-11-08 |
-| [Washington: Washington Department of Labor & Industries: Minimum Wage](https://lni.wa.gov/workers-rights/wages/minimum-wage/) | see the document | 2026-11-08 |
-| [Minnesota: Minnesota Statutes 2025, section 177.24 (Office of the Revisor of Statutes)](https://www.revisor.mn.gov/statutes/cite/177.24) | see the document | 2026-11-08 |
-| [Massachusetts: Massachusetts General Laws chapter 149, section 152A (mass.gov, amended by St.2020, c.358, effective January 14, 2021)](https://www.mass.gov/info-details/mass-general-laws-c149-ss-152a) | see the document | 2026-11-08 |
-| [Massachusetts: Massachusetts Attorney General, Advisory 3/2004 on tips (revised 9/2026)](https://www.mass.gov/doc/attorney-generals-advisory-on-tips/download) | see the document | 2026-11-08 |
-| [New York: New York State Department of Labor, Hospitality Industry Wage Order, 12 NYCRR Part 146 (as amended effective December 31, 2016)](https://forms.labor.ny.gov/WP/CR146.pdf) | see the document | 2026-11-08 |
-| [Maine: Maine Revised Statutes, Title 26, section 664 (Maine Legislature)](https://legislature.maine.gov/statutes/26/title26sec664.html) | see the document | 2026-11-08 |
-| [Delaware: Delaware Code, Title 19, Chapter 9, section 902 (Delaware Code Online)](https://delcode.delaware.gov/title19/c009/index.html) | see the document | 2026-11-08 |
-| [Maryland: Maryland Code, Labor and Employment, section 3-419 (Maryland General Assembly)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-419&enactments=false) | see the document | 2026-11-08 |
-| [District of Columbia: D.C. Code section 32-1003 (Council of the District of Columbia, D.C. Code)](https://code.dccouncil.gov/us/dc/council/code/sections/32-1003) | see the document | 2026-11-08 |
-| [Montana: Montana Code Annotated 39-3-409 (Montana Legislature)](https://leg.mt.gov/bills/mca/title_0390/chapter_0030/part_0040/section_0090/0390-0030-0040-0090.html) | see the document | 2026-11-08 |
-| [Virginia: Code of Virginia 40.1-28.9 (Virginia Law, Legislative Information System)](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-28.9/) | see the document | 2026-11-08 |
-| [Virginia: Code of Virginia 40.1-28.10 (Virginia Law, Legislative Information System)](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-28.10/) | see the document | 2026-11-08 |
-| [Florida: Florida Statutes 448.110, Florida Minimum Wage Act (Online Sunshine, Florida Legislature)](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0400-0499/0448/Sections/0448.110.html) | see the document | 2026-11-08 |
-| [Arizona: Arizona Revised Statutes 23-363 (Arizona State Legislature)](https://www.azleg.gov/ars/23/00363.htm) | see the document | 2026-11-08 |
-| [South Dakota: South Dakota Department of Labor and Regulation: Minimum Wage](https://dlr.sd.gov/employment_laws/minimum_wage.aspx) | see the document | 2026-11-08 |
-| [Kansas: Kansas Statutes 44-1203 (Kansas Office of Revisor of Statutes)](https://www.ksrevisor.gov/statutes/chapters/ch44/044_012_0003.html) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests pin the federal numbers and the DOL table read date, check that shares always add up and leftover cents go to the largest remainders, every split method, card fees (half up, and refused where the state forbids them), the federal, state, UK and Ontario rules, tip-outs, the UK deadline across leap years, and that the payroll CSV is formula-safe.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The federal numbers ($2.13 cash wage, $5.12 credit, $7.25 minimum wage) and the DOL tipped wage table revised 2026-11-05 are pinned with their read date, 2026-11-08.
 - Shares always add up to the pool, with leftover cents to the largest remainders and ties to the first listed, for every split method.

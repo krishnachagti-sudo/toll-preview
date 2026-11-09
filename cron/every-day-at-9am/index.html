@@ -69,26 +69,27 @@
 <header class="cp-head" style="--hue: var(--h-agent)">
 <p class="eyebrow">Cron schedule</p>
 <h1>Cron every day at 9 am</h1>
-<p class="cp-answer">The cron expression for every day at 9 am is 0 9 * * *; from midnight UTC on Monday, November 9, 2026 it runs at 09:00, 09:00 on November 10, 2026 and 09:00 on November 11, 2026 UTC. In Quartz it is 0 0 9 * * ?, and in AWS EventBridge cron(0 9 * * ? *).</p>
+<p class="cp-answer">The cron expression for every day at 9 am is 0 9 * * *; from midnight UTC on Monday, November 9, 2026 it runs at 09:00, 09:00 on November 10, 2026 and 09:00 on November 11, 2026 UTC.<span class="ans-more"> In Quartz it is 0 0 9 * * ?, and in AWS EventBridge cron(0 9 * * ? *).</span></p>
 <dl class="cp-facts"><div><dt>Crontab</dt><dd class="num">0 9 * * *</dd></div><div><dt>Quartz</dt><dd class="num">0 0 9 * * ?</dd></div><div><dt>Reads as</dt><dd class="num">At 09:00.</dd></div></dl>
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check every day at 9 am in your time zone</h2><p class="muted">Change the time zone or the expression; the checker lists the runs and what happens when the clocks change.</p><form method="get" action="/toll-preview/cron/" class="cp-tool-form"><div class="field"><label for="tf-expr">Cron expression</label><input type="text" id="tf-expr" name="expr" value="0 9 * * *"></div><input type="hidden" name="dialect" value="vixie"><div class="field"><label for="tf-tz">Time zone (IANA name)</label><input type="text" id="tf-tz" name="tz" value="America/New_York"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the next runs</button></form><p class="small"><a href="/toll-preview/cron/?expr=0+9+*+*+*&amp;dialect=vixie&amp;tz=America%2FNew_York">Open this schedule in the checker</a></p></aside>
 <section>
 <h2 id="next-runs">The next runs</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>From midnight on Monday, November 9, 2026, worked out the day this page is read.</caption><thead><tr><th scope="col">UTC</th><th scope="col">New York (from its own midnight)</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">From midnight on Monday, November 9, 2026, worked out the day this page is read.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">UTC</th><th scope="col">New York (from its own midnight)</th></tr></thead><tbody>
 <tr><th scope="row">Mon 2026-11-09 09:00</th><td>Mon 2026-11-09 09:00 EST</td></tr>
 <tr><th scope="row">Tue 2026-11-10 09:00</th><td>Tue 2026-11-10 09:00 EST</td></tr>
 <tr><th scope="row">Wed 2026-11-11 09:00</th><td>Wed 2026-11-11 09:00 EST</td></tr>
 <tr><th scope="row">Thu 2026-11-12 09:00</th><td>Thu 2026-11-12 09:00 EST</td></tr>
 <tr><th scope="row">Fri 2026-11-13 09:00</th><td>Fri 2026-11-13 09:00 EST</td></tr>
 <tr><th scope="row">Sat 2026-11-14 09:00</th><td>Sat 2026-11-14 09:00 EST</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="schedulers">The same schedule for each scheduler</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Written from the meaning: Sunday is 0 in crontab and 1 in Quartz, UiPath and AWS; Quartz and AWS put ? in the day field they do not use.</caption><thead><tr><th scope="col">Scheduler</th><th scope="col">Expression</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Written from the meaning: Sunday is 0 in crontab and 1 in Quartz, UiPath and AWS; Quartz and AWS put ? in the day field they do not use.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Scheduler</th><th scope="col">Expression</th></tr></thead><tbody>
 <tr><th scope="row">Linux crontab (Vixie cron)</th><td><code>0 9 * * *</code></td></tr>
 <tr><th scope="row">GitHub Actions</th><td><code>0 9 * * *</code></td></tr>
 <tr><th scope="row">Kubernetes CronJob</th><td><code>0 9 * * *</code></td></tr>
@@ -98,7 +99,7 @@
 <tr><th scope="row">Spring @Scheduled</th><td><code>0 0 9 * * *</code></td></tr>
 <tr><th scope="row">UiPath Orchestrator time trigger</th><td><code>0 0 9 * * ?</code></td></tr>
 <tr><th scope="row">Amazon EventBridge Scheduler</th><td><code>cron(0 9 * * ? *)</code></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="fields">Field by field</h2>
@@ -106,7 +107,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron) (read November 8, 2026)</a></li><li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz 2.3 tutorial: CronTrigger (read November 8, 2026)</a></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron) (read November 8, 2026)</a><span class="src-m">manpages.debian.org</span></li><li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz 2.3 tutorial: CronTrigger (read November 8, 2026)</a><span class="src-m">quartz-scheduler.org</span></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a><span class="src-m">docs.github.com</span></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types (read November 8, 2026)</a><span class="src-m">docs.aws.amazon.com</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Which time zone does it run in?</h3></summary><div class="xp-in"><p>The scheduler's: crontab uses the cron daemon's time zone, GitHub Actions UTC unless the schedule sets timezone, Kubernetes the controller manager's unless .spec.timeZone is set, Vercel always UTC, and AWS EventBridge Scheduler UTC unless the schedule sets one.</p></div></details></section>

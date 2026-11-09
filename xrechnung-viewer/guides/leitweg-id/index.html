@@ -71,9 +71,10 @@
 <h1>Leitweg-ID</h1>
 <p class="cp-answer">Die Leitweg-ID ist die Adresse eines öffentlichen Auftraggebers für E-Rechnungen; sie steht in der XRechnung im Feld Käuferreferenz (BT-10) und fehlt sie, meldet die Prüfung BR-DE-15: Das Element &quot;Buyer reference&quot; (BT-10) muss übermittelt werden.</p>
 
-
+<ul class="trust" aria-label="Über diese Website"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Gemacht von <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exakt, ohne KI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Amtliche Quellen, mit Datum</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Dateien, die Sie hochladen, werden nicht gespeichert</a></span></li><li class="tl2"><a href="/toll-preview/security/">Sicherheit</a><a href="/toll-preview/terms/">Bedingungen</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="feld">Wo sie steht</h2>
 <pre><code class="language-xml">&lt;cbc:BuyerReference&gt;04011000-12345-03&lt;/cbc:BuyerReference&gt;</code></pre>
@@ -91,7 +92,7 @@
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Beispiel ohne Leitweg-ID prüfen</h2><p class="muted">Öffnet den Viewer mit einer erfundenen Beispielrechnung. Ihre eigene Datei legen Sie dort ab; angezeigt wird sie in Ihrem Browser, ohne Upload.</p><form method="get" action="/toll-preview/de/xrechnung-viewer/" class="cp-tool-form"><input type="hidden" name="sample" value="fehler"><input type="hidden" name="job" value="validate"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Beispiel im Viewer prüfen</button></form><p class="small"><a href="/toll-preview/de/xrechnung-viewer/?sample=fehler&amp;job=validate">Beispiel im Viewer öffnen</a></p></aside>
 <section>
 <h2 id="quellen">Quellen</h2>
-<ul class="cp-sources"><li><a href="https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/v2.6.0">XRechnung Schematron 2.6.0 for XRechnung 3.0.2 (gelesen am 8. November 2026)</a></li><li><a href="https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2025-10-15-einfuehrung-obligatorische-e-rechnung.html">BMF-Schreiben vom 15.10.2025, III C 2 - S 7287-a/00019/007/243, Einführung der obligatorischen E-Rechnung (Rn. 6a, 6b, 22, 35a, Profile MINIMUM und BASIC WL) (gelesen am 8. November 2026)</a></li><li><a href="https://github.com/itplr-kosit/xrechnung-testsuite/releases/tag/v2026-08-31">XRechnung Testsuite 2026-08-31 (sample 02.01a-cvd_INVOICE_ubl.xml bundled, line endings made LF) (gelesen am 8. November 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/v2.6.0">XRechnung Schematron 2.6.0 for XRechnung 3.0.2 (gelesen am 8. November 2026)</a><span class="src-m">github.com</span></li><li><a href="https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2025-10-15-einfuehrung-obligatorische-e-rechnung.html">BMF-Schreiben vom 15.10.2025, III C 2 - S 7287-a/00019/007/243, Einführung der obligatorischen E-Rechnung (Rn. 6a, 6b, 22, 35a, Profile MINIMUM und BASIC WL) (gelesen am 8. November 2026)</a><span class="src-m">bundesfinanzministerium.de</span></li><li><a href="https://github.com/itplr-kosit/xrechnung-testsuite/releases/tag/v2026-08-31">XRechnung Testsuite 2026-08-31 (sample 02.01a-cvd_INVOICE_ubl.xml bundled, line endings made LF) (gelesen am 8. November 2026)</a><span class="src-m">github.com</span></li></ul>
 </section>
 
 

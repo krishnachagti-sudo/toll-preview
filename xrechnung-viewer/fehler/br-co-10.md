@@ -1,6 +1,6 @@
 # BR-CO-10: Summe der Positionen (BT-106) stimmt nicht mit den Positionen überein
 
-BR-CO-10 bedeutet: Sum of Invoice line net amount (BT-106) = Σ Invoice line net amount (BT-131). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Runden Sie jeden Positionsbetrag auf zwei Nachkommastellen und bilden Sie BT-106 als Summe dieser gerundeten Beträge. Nachlässe auf Dokumentebene gehören nicht in BT-106, sondern in BT-107.
+BR-CO-10 bedeutet: Sum of Invoice line net amount (BT-106) = Σ Invoice line net amount (BT-131). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

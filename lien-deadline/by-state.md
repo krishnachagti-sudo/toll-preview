@@ -1,6 +1,8 @@
 # Mechanics lien deadlines by state
 
-For a subcontractor on a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027, the lien deadline in the 10 jurisdictions we have read on their own statute sites runs from April 29, 2027 to July 28, 2027; District of Columbia, Florida, Montana, Virginia, Washington count 90 days. 41 states are not covered because their own sites could not be read or have not been read yet.
+Of the 10 jurisdictions we have read on their own statute sites, District of Columbia, Florida, Montana, Virginia, Washington give a subcontractor 90 days to file the lien. 41 states are not covered because their own sites could not be read or have not been read yet.
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=AZ&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a subcontractor on a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027, the lien deadline in the 10 jurisdictions we have read runs from April 29, 2027 to July 28, 2027.
 
 ## Work out your own job
 
@@ -14,16 +16,30 @@ Lien deadlines for one job, quoted from each state's statute, read November 8, 2
 
 | State | Notice by | Lien by | Suit by | Lien rule | Law |
 | --- | --- | --- | --- | --- | --- |
-| [Arizona](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/arizona/) | November 22, 2026 | June 26, 2027 | December 26, 2027 | Within 120 days after completion of the work, or within 60 days after a notice of completion is recorded | A.R.S. 33-993(A) |
-| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/district-of-columbia/) | none | May 27, 2027 | November 23, 2027 | During construction or within 90 days after the earlier of the completion or the termination of the project | D.C. Code 40-301.02(a)(1); 40-303.01 |
+| [Arizona](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/arizona/) | November 22, 2026 | June 26, 2027 | December 26, 2027 | Within 120 days after completion of the work, or within… | A.R.S. 33-993(A) |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/district-of-columbia/) | none | May 27, 2027 | November 23, 2027 | During construction or within 90 days after the earlier of… | D.C. Code 40-301.02(a)(1); 40-303.01 |
 | [Florida](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/florida/) | December 17, 2026 | April 29, 2027 | April 29, 2028 | Not later than 90 days after your final furnishing of labor, services or materials | Fla. Stat. 713.08(5) |
-| [Kansas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/kansas/) | none | April 29, 2027 | April 29, 2028 | Within three months after you last furnished supplies, material or equipment or last performed labor (five months on property other than residential property, if you file a notice of extension within the three months) | K.S.A. 60-1103(a)(1), (e) |
+| [Kansas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/kansas/) | none | April 29, 2027 | April 29, 2028 | Within three months after you last furnished supplies, material or… | K.S.A. 60-1103(a)(1), (e) |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/maryland/) | May 29, 2027 | July 28, 2027 | July 28, 2028 | Within 180 days after the work has been finished or the materials furnished | Md. Code, Real Prop. 9-105(a) |
-| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/minnesota/) | December 17, 2026 | May 29, 2027 | January 29, 2028 | Within 120 days after doing the last of the work or furnishing the last item: record it with the county recorder (or registrar of titles) and serve a copy on the owner | Minn. Stat. 514.08, subd. 1 |
-| [Montana](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/montana/) | none | April 29, 2027 | April 29, 2029 | Not later than 90 days after your final furnishing of services or materials, or after the owner files a notice of completion (we show the earlier date when you enter one) | Mont. Code 71-3-535(1) |
-| [Texas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/) | February 16, 2027 | May 17, 2027 | May 15, 2028 | By the 15th day of the fourth month after the month you last provided labor or materials | Tex. Prop. Code 53.052(b) |
-| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/virginia/) | with the lien | May 1, 2027 | November 1, 2027 | Not later than 90 days from the last day of the month in which you last performed labor or furnished material, and in no event later than 90 days after the building is completed or the work otherwise ends | Va. Code 43-4 |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/minnesota/) | December 17, 2026 | May 29, 2027 | January 29, 2028 | Within 120 days after doing the last of the work… | Minn. Stat. 514.08, subd. 1 |
+| [Montana](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/montana/) | none | April 29, 2027 | April 29, 2029 | Not later than 90 days after your final furnishing of… | Mont. Code 71-3-535(1) |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/) | February 16, 2027 | May 17, 2027 | May 15, 2028 | By the 15th day of the fourth month after the… | Tex. Prop. Code 53.052(b) |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/virginia/) | with the lien | May 1, 2027 | November 1, 2027 | Not later than 90 days from the last day of… | Va. Code 43-4 |
 | [Washington](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/washington/) | none | April 29, 2027 | December 29, 2027 | Not later than 90 days after you stopped furnishing labor, services, materials or equipment | RCW 60.04.091 |
+
+**Each lien rule in full (7)**
+
+Lien deadlines for one job, quoted from each state's statute, read November 8, 2026: full wording
+
+| State | Lien rule |
+| --- | --- |
+| [Arizona](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/arizona/) | Within 120 days after completion of the work, or within 60 days after a notice of completion is recorded |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/district-of-columbia/) | During construction or within 90 days after the earlier of the completion or the termination of the project |
+| [Kansas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/kansas/) | Within three months after you last furnished supplies, material or equipment or last performed labor (five months on property other than residential property, if you file a notice of extension within the three months) |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/minnesota/) | Within 120 days after doing the last of the work or furnishing the last item: record it with the county recorder (or registrar of titles) and serve a copy on the owner |
+| [Montana](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/montana/) | Not later than 90 days after your final furnishing of services or materials, or after the owner files a notice of completion (we show the earlier date when you enter one) |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/) | By the 15th day of the fourth month after the month you last provided labor or materials |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/virginia/) | Not later than 90 days from the last day of the month in which you last performed labor or furnished material, and in no event later than 90 days after the building is completed or the work otherwise ends |
 
 Federal projects: [the Miller Act bond claim](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/miller-act/).
 

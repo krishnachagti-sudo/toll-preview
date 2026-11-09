@@ -1,6 +1,6 @@
 # BR-DE-CVD-04: Unzulässige Fahrzeugkategorie in einer CVD-Rechnung
 
-BR-DE-CVD-04 bedeutet: Ein ... "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Verwenden Sie eine der Kategorien M1, M2, M3, N1, N2 oder N3.
+BR-DE-CVD-04 bedeutet: Ein ... "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

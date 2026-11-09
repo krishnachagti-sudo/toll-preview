@@ -1,15 +1,15 @@
 # What date is 6 weeks from today?
 
-6 weeks (42 days) from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Sunday, December 20, 2026. Counted from tomorrow it is Monday, December 21, 2026.
+6 weeks (42 days) from today, Monday, November 9, 2026 (today's date in New York, US Eastern time), is Monday, December 21, 2026. Counted from tomorrow it is Tuesday, December 22, 2026.
 
-- Date: December 20, 2026
-- Weekday: Sunday
-- ISO week: 2026-W51
+- Date: December 21, 2026
+- Weekday: Monday
+- ISO week: 2026-W52
 - US business days between: 28
 
 ## 6 weeks from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-09&region=US)
 
 ## 6 weeks from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 6 weeks after | US business days |
 | --- | --- | ---: |
-| [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-08) | Sun, Dec 20, 2026 | 28 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-09) | Mon, Dec 21, 2026 | 28 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-10) | Tue, Dec 22, 2026 | 28 |
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-11) | Wed, Dec 23, 2026 | 29 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-19) | Thu, Dec 31, 2026 | 28 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-20) | Fri, Jan 1, 2027 | 27 |
 | [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-21) | Sat, Jan 2, 2027 | 27 |
+| [Sun, Nov 22, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=6+weeks+from+today&ref=2026-11-22) | Sun, Jan 3, 2027 | 27 |
 
 ## How it is counted
 
@@ -74,5 +74,5 @@ One day later than 6 weeks from today: the same as 43 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/6-weeks-from-today/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/6-weeks-from-today.csv

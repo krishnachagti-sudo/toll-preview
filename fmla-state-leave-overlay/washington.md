@@ -36,6 +36,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## Washington in its own words
 
+**Read the law's own words (9 quotations)**
+
 - "Up to 12 weeks of medical leave or family leave." [Washington Paid Family and Medical Leave (ESD), Find out how Paid Leave works](https://paidleave.wa.gov/find-out-how-paid-leave-works/)
 - "Up to 16 weeks of combined medical and family leave if you have more than one qualifying event in the same claim year." [Washington Paid Family and Medical Leave (ESD), Find out how Paid Leave works](https://paidleave.wa.gov/find-out-how-paid-leave-works/)
 - "Up to 18 weeks of combined medical and family leave if you experience a condition in pregnancy that results in incapacity, like being put on bed rest or having a C-section." [Washington Paid Family and Medical Leave (ESD), Find out how Paid Leave works](https://paidleave.wa.gov/find-out-how-paid-leave-works/)

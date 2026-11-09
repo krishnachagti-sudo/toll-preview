@@ -12,6 +12,10 @@ In Oregon a landlord may charge a rent late fee of at most 5% of the periodic re
 
 ## What the statute says
 
+**In short:** 5% of the periodic rent for each five-day period (or part) the rent is delinquent, from the fifth day of the rental period to its end; from day 5 of the rental period (Or. Rev. Stat. § 90.260).
+
+**The statute's words (3 passages)**
+
 Or. Rev. Stat. § 90.260: "A landlord may impose a late charge or fee, however designated, only if: (a) The rent payment is not received by the fourth day of the weekly or monthly rental period for which rent is payable; and (b) There exists a written rental agreement that specifies: (A) The tenant's obligation to pay a late charge on delinquent rent payments; (B) The type and amount of the late charge, as described in subsection (2) of this section; and (C) The date on which rent payments are due and the date or day on which late charges become due."
 
 Or. Rev. Stat. § 90.260: "The amount of any late charge may not exceed: (a) A reasonable flat amount, charged once per rental period. "Reasonable amount" means the customary amount charged by landlords for that rental market; (b) A reasonable amount, charged on a per-day basis, beginning on the fifth day of the rental period for which rent is delinquent. This daily charge may accrue every day thereafter until the rent, not including any late charge, is paid in full, through that rental period only. The per-day charge may not exceed six percent of the amount described in paragraph (a) of this subsection; or (c) Five percent of the periodic rent payment amount, charged once for each succeeding five-day period, or portion thereof, for which the rent payment is delinquent, beginning on the fifth day of that rental period and continuing and accumulating until that rent payment, not including any late charge, is paid in full, through that rental period only."

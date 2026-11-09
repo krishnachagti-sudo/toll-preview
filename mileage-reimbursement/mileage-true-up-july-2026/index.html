@@ -74,18 +74,19 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="example">A worked trip file</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Trips and amounts paid at the old rate, as a payroll export would show them.</caption><thead><tr><th scope="col">Employee</th><th scope="col">Trip date</th><th scope="col" class="r num">Miles</th><th scope="col" class="r num">Paid</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Trips and amounts paid at the old rate, as a payroll export would show them.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Employee</th><th scope="col">Trip date</th><th scope="col" class="r num">Miles</th><th scope="col" class="r num">Paid</th></tr></thead><tbody>
 <tr><th scope="row">A. Rivera</th><td>June 22, 2026</td><td class="r num">120</td><td class="r num">$87.00</td></tr>
 <tr><th scope="row">A. Rivera</th><td>July 14, 2026</td><td class="r num">300</td><td class="r num">$217.50</td></tr>
 <tr><th scope="row">B. Chen</th><td>August 3, 2026</td><td class="r num">450</td><td class="r num">$326.25</td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>Worked out by the calculator's trip file: the IRS amount for each trip date, what was paid and the difference.</caption><thead><tr><th scope="col">Employee</th><th scope="col" class="r num">Miles</th><th scope="col" class="r num">At the IRS rate</th><th scope="col" class="r num">Paid</th><th scope="col" class="r num">Owed</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">Worked out by the calculator's trip file: the IRS amount for each trip date, what was paid and the difference.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Employee</th><th scope="col" class="r num">Miles</th><th scope="col" class="r num">At the IRS rate</th><th scope="col" class="r num">Paid</th><th scope="col" class="r num">Owed</th></tr></thead><tbody>
 <tr><th scope="row">A. Rivera</th><td class="r num">420</td><td class="r num">$315.00</td><td class="r num">$304.50</td><td class="r num">$10.50</td></tr>
 <tr><th scope="row">B. Chen</th><td class="r num">450</td><td class="r num">$342.00</td><td class="r num">$326.25</td><td class="r num">$15.75</td></tr>
 <tr><th scope="row">Total</th><td class="r num">870</td><td class="r num">$657.00</td><td class="r num">$630.75</td><td class="r num">$26.25</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>The June 22 trip was paid correctly at 72.5 cents. The July and August trips needed 76 cents.</p>
 </section>
 <section>
@@ -100,7 +101,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.irs.gov/irb/2026-29_IRB">IRS: Internal Revenue Bulletin 2026-29, Announcement 2026-11 (July 13, 2026)</a></li><li><a href="https://www.irs.gov/publications/p463">IRS: Publication 463 (2025), Travel, Gift, and Car Expenses (read November 6, 2026)</a></li><li><a href="https://www.irs.gov/tax-professionals/standard-mileage-rates">IRS: Standard mileage rates, all years (updated July 28, 2026, read November 6, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.irs.gov/irb/2026-29_IRB">IRS: Internal Revenue Bulletin 2026-29, Announcement 2026-11 (July 13, 2026)</a><span class="src-m">irs.gov</span></li><li><a href="https://www.irs.gov/publications/p463">IRS: Publication 463 (2025), Travel, Gift, and Car Expenses (read November 6, 2026)</a><span class="src-m">irs.gov</span></li><li><a href="https://www.irs.gov/tax-professionals/standard-mileage-rates">IRS: Standard mileage rates, all years (updated July 28, 2026, read November 6, 2026)</a><span class="src-m">irs.gov</span></li></ul>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Export the trip sheet.</strong> One row per trip: employee, trip date, miles, and the amount already paid for it. Add the date paid where an allowance was paid before July 1.</li><li><strong>Price each trip at the IRS rate for its date.</strong> $0.725 a mile through June 30, 2026, $0.76 from July 1, with the paid-date rule for allowances.</li><li><strong>Compare with what was paid, per employee.</strong> The difference is the true-up owed, or the overpayment.</li><li><strong>Pay the difference.</strong> Pay what is owed in the next run. Anything paid above the federal rate goes in W-2 box 1 as wages, with the amount up to the federal rate under code L in box 12 (Pub 463).</li></ol></section>
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How much is owed for July 2026 miles paid at 72.5 cents?</h3></summary><div class="xp-in"><p>3.5 cents a mile: 76 minus 72.5. 300 miles is $10.50.</p></div></details><details class="xpand"><summary><h3>What if we paid more than the IRS rate?</h3></summary><div class="xp-in"><p>Pub 463: &quot;If your allowance is more than the federal rate, your employer must include the allowance amount up to the federal rate under code L in box 12 of your Form W-2. This amount isn’t taxable. However, the excess allowance will be included in box 1 of your Form W-2.&quot;</p></div></details></section>

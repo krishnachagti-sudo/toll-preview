@@ -79,9 +79,10 @@
 <h1>Wi-Fi用QRコード:コードの中に入るテキスト</h1>
 <p class="cp-answer">Wi-Fi用QRコードには、WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;; のようなテキストが1行入っています。Tがセキュリティ(WPA、WEP、WPA2-EAP、nopass)、Sがネットワーク名、Pがパスワードで、\ ; , &quot; : の前にはバックスラッシュが付きます。この例は、レベルMでバージョン3(29 x 29モジュール)です。</p>
 
-
+<ul class="trust" aria-label="このサイトについて"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> が制作</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>正確、AI不使用</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">公的な出典、日付つき</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">アップロードしたファイルは保存されません</a></span></li><li class="tl2"><a href="/toll-preview/security/">セキュリティ</a><a href="/toll-preview/terms/">利用規約</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="shoshiki">Wi-Fi用QRコードには、どんなテキストが入っていますか?</h2>
 <pre><code>WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;
@@ -107,7 +108,7 @@ WIFI:T:nopass;S:Lobby;;</code></pre>
 </section>
 <section>
 <h2 id="shuten">出典</h2>
-<ul class="cp-sources"><li><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard), 2026年11月2日確認</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard), 2026年11月2日確認</a><span class="src-m">github.com</span></li></ul>
 </section>
 <section><h2 id="steps">手順</h2><ol class="cp-steps"><li><strong>WIFI:で始める.</strong> 続けて項目を書きます。各項目の末尾にセミコロンを付け、順序は自由です。</li><li><strong>セキュリティ.</strong> WPA、WPA2、WPA3のパーソナルならT:WPA、T:WEP、企業向けならT:WPA2-EAP、パスワードなしのオープンならT:nopass。</li><li><strong>ネットワーク名とパスワード.</strong> S:にネットワーク名、P:にパスワード。\ ; , &quot; : の前にはバックスラッシュを付けます。16進数として読めてしまう名前やパスワードは、二重引用符で囲みます。</li><li><strong>終わり.</strong> ステルスネットワークならH:trueを足し、最後にもう1つセミコロンを付けて終えます。</li></ol></section>
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">よくある質問</h2><details class="xpand"><summary><h3>Wi-Fi用QRコードには、どんなテキストが入っていますか?</h3></summary><div class="xp-in"><p>WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;; のような1行です。Tがセキュリティ、Sがネットワーク名、Pがパスワードで、\ ; , &quot; : の前にはバックスラッシュが付きます。</p></div></details><details class="xpand"><summary><h3>パスワードなしのWi-Fiには、どう作りますか?</h3></summary><div class="xp-in"><p>T:nopassにして、パスワードを入れません。例:WIFI:T:nopass;S:Lobby;;</p></div></details><details class="xpand"><summary><h3>すべてのスマートフォンで使えますか?</h3></summary><div class="xp-in"><p>保証はできません。対応状況は機種によって異なり、特に企業向け(WPA2-EAP)の項目で差が出ます。ゲストが使う機種で試してください。</p></div></details></section>

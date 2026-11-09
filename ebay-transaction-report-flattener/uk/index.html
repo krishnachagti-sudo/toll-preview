@@ -74,14 +74,15 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the flattener</h2><p class="muted">The made-up report opens in the flattener and is previewed in your browser, free. Swap in your own transaction report there.</p><form method="get" action="/toll-preview/ebay-transaction-report-flattener/" class="cp-tool-form"><input type="hidden" name="sample" value="uk"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this report in the flattener</button></form><p class="small"><a href="/toll-preview/ebay-transaction-report-flattener/?sample=uk">Open this example in the flattener</a></p></aside>
 <section>
 <h2 id="sales">The sales</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The UK sample, one row per sale</caption><thead><tr><th scope="col">Order</th><th scope="col">Date</th><th scope="col">Items</th><th scope="col" class="r num">Gross</th><th scope="col" class="r num">Fees</th><th scope="col" class="r num">Labels</th><th scope="col" class="r num">Ad and other fees</th><th scope="col" class="r num">Refunds and claims</th><th scope="col" class="r num">Kept</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The UK sample, one row per sale</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Order</th><th scope="col">Date</th><th scope="col">Items</th><th scope="col" class="r num">Gross</th><th scope="col" class="r num">Fees</th><th scope="col" class="r num">Labels</th><th scope="col" class="r num">Ad and other fees</th><th scope="col" class="r num">Refunds and claims</th><th scope="col" class="r num">Kept</th></tr></thead><tbody>
 <tr><th scope="row">11-00001-00001</th><td>October 8, 2026</td><td>Wool scarf</td><td class="r num">£25.95</td><td class="r num">£3.72</td><td class="r num">£3.20</td><td class="r num">£0.00</td><td class="r num">£0.00</td><td class="r num">£19.03</td></tr>
 <tr><th scope="row">11-00002-00002</th><td>October 14, 2026</td><td>Paperback set (5)</td><td class="r num">£16.50</td><td class="r num">£2.47</td><td class="r num">£0.00</td><td class="r num">£0.99</td><td class="r num">£0.00</td><td class="r num">£13.04</td></tr>
 <tr><th scope="row">11-00003-00003</th><td>October 21, 2026</td><td>Ceramic vase</td><td class="r num">£40.00</td><td class="r num">£5.56</td><td class="r num">£0.00</td><td class="r num">£0.00</td><td class="r num">£0.00</td><td class="r num">£34.44</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Fee columns found: Final value fee - fixed, Final value fee - variable, Regulatory operating fee. Dates such as &quot;8 Oct 2026&quot; and amounts with a £ sign are read as written; the currency comes from the payout currency column (GBP).</p>
 </section>
 <section>
@@ -94,7 +95,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.ebay.co.uk/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847">eBay Help (UK): Reconciling your eBay sales transactions (read November 8, 2026)</a></li><li><a href="https://www.gov.uk/guidance/reporting-rules-for-digital-platforms">GOV.UK: Reporting rules for digital platforms (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.ebay.co.uk/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847">eBay Help (UK): Reconciling your eBay sales transactions (read November 8, 2026)</a><span class="src-m">ebay.co.uk</span></li><li><a href="https://www.gov.uk/guidance/reporting-rules-for-digital-platforms">GOV.UK: Reporting rules for digital platforms (read November 8, 2026)</a><span class="src-m">gov.uk</span></li></ul>
 <p class="cp-note">Not tax or accounting advice: this is arithmetic on eBay's own transaction report. The sample reports are made up; their headings are the names eBay's help uses for these details, and your own report's headings may differ (the tool shows how it found each column).</p>
 </section>
 

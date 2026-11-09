@@ -12,6 +12,10 @@ In Nevada a landlord may charge a rent late fee of at most 5% of the periodic re
 
 ## What the statute says
 
+**In short:** 5% of the periodic rent; no waiting period (Nev. Rev. Stat. § 118A.210(4)).
+
+**The statute's words (1 passage)**
+
 Nev. Rev. Stat. § 118A.210(4): "A landlord may charge a reasonable late fee for the late payment of rent as set forth in the rental agreement, but: (a) Such a late fee must not exceed 5 percent of the amount of the periodic rent; and (b) The maximum amount of the late fee must not be increased based upon a late fee that was previously imposed."
 
 ## The limit on sample rents

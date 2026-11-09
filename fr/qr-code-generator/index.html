@@ -9,6 +9,7 @@
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <link rel="stylesheet" href="/toll-preview/qr-code-generator/files/page.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"qr-code-generator"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
@@ -71,168 +72,216 @@
   </div>
 </header>
 
-<main id="main" class="qr">
-  <section class="wrap qr-intro">
+<main id="main" class="qr tf hue-file">
+  <section class="wrap tf-open">
     <p class="eyebrow">Codes statiques, sans inscription</p>
     <h1>Générateur de QR code</h1>
     <p class="lede">Un code statique contient lui-même votre lien ou vos coordonnées : rien d’intermédiaire ne peut donc le désactiver. Cette page le crée dans votre navigateur, montre le texte exact qu’il contient et relit le fichier avant que vous le téléchargiez.</p>
-    <p data-prices class="qr-price">Créer un code sur cette page est gratuit et ne demande aucun compte ; rien de ce que vous saisissez ne quitte votre appareil. Vérifier un code imprimé est aussi gratuit ici. Les codes issus d’un tableur coûtent $0.002 pièce.</p>
-    <p class="hint"><a href="/toll-preview/qr-code-generator/" hreflang="en" lang="en">Use this tool in English</a></p>
+<ul class="trust" aria-label="À propos de ce site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Fait par <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, sans IA</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Sources officielles, datées</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Les fichiers que vous envoyez ne sont pas conservés</a></span></li><li class="tl2"><a href="/toll-preview/security/">Sécurité</a><a href="/toll-preview/terms/">Conditions</a></li></ul>
+    <p data-prices class="tf-price" id="qr-price"><span class="price">Gratuit sur cette page</span><span>Sans compte ; rien ne quitte votre appareil</span><span>Codes issus d’un tableur : $0.002 pièce</span></p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/qr-code-generator/" hreflang="en">Voir en anglais</a></p>
   </section>
 
-  <section class="wrap qr-desk" data-jump="Créer un code" aria-label="Créer un code">
-    <form class="qr-form" id="qr-form" novalidate>
+  <section class="wrap tf-calc qr-desk" data-jump="Outil" aria-label="Créer un code">
+    <form class="tf-panel tf-form qr-form" id="qr-form" novalidate>
       <div class="field">
-        <label for="qr-type">Ce que le code ouvre</label>
-        <select id="qr-type">
-          <option value="url" selected>Lien vers un site web</option>
-          <option value="text">Texte brut</option>
-          <option value="wifi">Connexion Wi-Fi</option>
-          <option value="vcard">Carte de contact (vCard 3.0)</option>
-          <option value="email">E-mail</option>
-          <option value="sms">SMS</option>
-          <option value="phone">Appel téléphonique</option>
-          <option value="location">Position sur la carte</option>
-        </select>
-      </div>
+<label for="qr-type">Ce que le code ouvre</label>
+<select id="qr-type">
+<option selected="" value="url">Lien vers un site web</option>
+<option value="text">Texte brut</option>
+<option value="wifi">Connexion Wi-Fi</option>
+<option value="vcard">Carte de contact (vCard 3.0)</option>
+<option value="email">E-mail</option>
+<option value="sms">SMS</option>
+<option value="phone">Appel téléphonique</option>
+<option value="location">Position sur la carte</option>
+</select>
+</div>
       <div id="qr-fields"></div>
-      <details class="qr-options" id="qr-options">
-        <summary>Apparence et taille d’impression</summary>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-ecc">Correction d’erreurs</label>
-            <select id="qr-ecc"><option value="L">L, environ 7 %</option><option value="M" selected>M, environ 15 %</option><option value="Q">Q, environ 25 %</option><option value="H">H, environ 30 %</option></select></div>
-          <div class="field"><label for="qr-margin">Zone de silence (modules)</label><input type="number" id="qr-margin" min="0" max="20" value="4"></div>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-fg">Couleur du code</label><input type="color" id="qr-fg" value="#000000"></div>
-          <div class="field"><label for="qr-bg">Fond</label><input type="color" id="qr-bg" value="#ffffff"></div>
-        </div>
-        <label class="check"><input type="checkbox" id="qr-transparent"><span>Fond transparent (PNG et SVG)</span></label>
-        <div class="field">
-          <label for="qr-logo">Logo au centre (facultatif)</label>
-          <input type="file" id="qr-logo" accept="image/png,image/jpeg,image/svg+xml,image/webp">
-          <p class="hint">Un logo masque des modules : le code s’appuie alors sur la correction d’erreurs, choisissez Q ou H. Le fichier est relu pour s’assurer qu’il se décode encore.</p>
-          <label for="qr-logo-share">Largeur du logo : <span id="qr-logo-share-out">20%</span></label>
-          <input type="range" id="qr-logo-share" min="5" max="30" value="20">
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-width">Largeur imprimée (mm)</label><input type="text" id="qr-width" inputmode="decimal" value="30"></div>
-          <div class="field"><label for="qr-dpi">Imprimante (ppp)</label><input type="text" id="qr-dpi" inputmode="numeric" value="300"></div>
-        </div>
-        <div class="field"><label for="qr-px">Taille du PNG (pixels)</label><input type="text" id="qr-px" inputmode="numeric" value="1000"></div>
-      </details>
       <p class="form-error" id="qr-error" role="alert"></p>
-      <p class="hint">Gratuit, dans votre navigateur. Sans compte, sans traçage, sans expiration.</p>
+      <button class="btn tf-go" type="submit" id="qr-run">Créer le code</button>
+      <p class="hint tf-run-note">Gratuit, dans votre navigateur. Sans compte, sans traçage, sans expiration.</p>
+      <details class="xpand qr-options" id="qr-options">
+        <summary>Apparence et taille d’impression</summary>
+        <div class="xp-in">
+        <div class="qr-pair">
+<div class="field"><label for="qr-ecc">Correction d’erreurs</label>
+<select id="qr-ecc"><option value="L">L, environ 7 %</option><option selected="" value="M">M, environ 15 %</option><option value="Q">Q, environ 25 %</option><option value="H">H, environ 30 %</option></select></div>
+<div class="field"><label for="qr-margin">Zone de silence (modules)</label><input id="qr-margin" max="20" min="0" type="number" value="4"/></div>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-fg">Couleur du code</label><input id="qr-fg" type="color" value="#000000"/></div>
+<div class="field"><label for="qr-bg">Fond</label><input id="qr-bg" type="color" value="#ffffff"/></div>
+</div>
+<label class="check"><input id="qr-transparent" type="checkbox"/><span>Fond transparent (PNG et SVG)</span></label>
+<div class="field">
+<label for="qr-logo">Logo au centre (facultatif)</label>
+<input accept="image/png,image/jpeg,image/svg+xml,image/webp" id="qr-logo" type="file"/>
+<p class="hint">Un logo masque des modules : le code s’appuie alors sur la correction d’erreurs, choisissez Q ou H. Le fichier est relu pour s’assurer qu’il se décode encore.</p>
+<label for="qr-logo-share">Largeur du logo : <span id="qr-logo-share-out">20%</span></label>
+<input id="qr-logo-share" max="30" min="5" type="range" value="20"/>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-width">Largeur imprimée (mm)</label><input id="qr-width" inputmode="decimal" type="text" value="30"/></div>
+<div class="field"><label for="qr-dpi">Imprimante (ppp)</label><input id="qr-dpi" inputmode="numeric" type="text" value="300"/></div>
+</div>
+<div class="field"><label for="qr-px">Taille du PNG (pixels)</label><input id="qr-px" inputmode="numeric" type="text" value="1000"/></div>
+      </div>
+      </details>
     </form>
 
-    <div class="qr-out" id="qr-out" aria-live="polite">
+    <div class="tf-panel tf-result qr-out" id="qr-out" aria-live="polite">
       <p class="muted">Chargement.</p>
     </div>
   </section>
 
-  <section class="wrap qr-check" data-jump="Mon code va-t-il cesser de fonctionner ?" id="qr-check" aria-labelledby="qr-check-title">
+  <section class="wrap tf-sec qr-check" data-jump="Vérifier" id="qr-check" aria-labelledby="qr-check-title">
+    <div class="tf-top solo"><div>
     <h2 id="qr-check-title">Un code que j’ai déjà imprimé va-t-il cesser de fonctionner ?</h2>
-    <p class="qr-lede">Beaucoup de générateurs créent des codes dynamiques : le code contient un lien court sur le domaine du prestataire, qui ne transmet les scans vers votre page que tant que le prestataire le garde actif. Donnez une image du code, ou ce qu’il contient, et cet outil suit le lien comme le ferait un téléphone.</p>
-    <div class="qr-check-grid">
-      <form id="qr-check-form" novalidate>
+    <p class="tf-p">Beaucoup de générateurs créent des codes dynamiques : le code contient un lien court sur le domaine du prestataire, qui ne transmet les scans vers votre page que tant que le prestataire le garde actif. Donnez une image du code, ou ce qu’il contient, et cet outil suit le lien comme le ferait un téléphone.</p>
+    </div></div>
+    <div class="tf-calc">
+      <form class="tf-panel tf-form" id="qr-check-form" novalidate>
         <div class="field">
-          <label for="qr-check-image">Une image du code</label>
-          <input type="file" id="qr-check-image" accept="image/*">
-          <p class="hint">Une capture d’écran ou un scan se lit le mieux. Une photo prise au téléphone est lue avec le lecteur de codes intégré à votre navigateur, s’il en a un.</p>
-        </div>
-        <div class="field">
-          <label for="qr-check-text">Ou ce que dit le code</label>
-          <input type="text" id="qr-check-text" placeholder="https://..." spellcheck="false">
-        </div>
-        <div class="field">
-          <label for="qr-check-mine">Domaines qui vous appartiennent (facultatif)</label>
-          <input type="text" id="qr-check-mine" placeholder="example.com" spellcheck="false">
-        </div>
-        <p class="form-error" id="qr-check-error" role="alert"></p>
-        <button class="btn" type="submit" id="qr-check-run">Vérifier</button>
-        <p class="hint qr-run-note">Gratuit sur cette page. Sans compte, cela compte comme l’une de vos exécutions gratuites du jour. Le lien est visité depuis notre serveur, qui n’ouvre jamais d’adresses privées ou locales.</p>
+<label for="qr-check-image">Une image du code</label>
+<input accept="image/*" id="qr-check-image" type="file"/>
+<p class="hint">Une capture d’écran ou un scan se lit le mieux. Une photo prise au téléphone est lue avec le lecteur de codes intégré à votre navigateur, s’il en a un.</p>
+</div>
+<div class="field">
+<label for="qr-check-text">Ou ce que dit le code</label>
+<input id="qr-check-text" placeholder="https://..." spellcheck="false" type="text"/>
+</div>
+<div class="field">
+<label for="qr-check-mine">Domaines qui vous appartiennent (facultatif)</label>
+<input id="qr-check-mine" placeholder="example.com" spellcheck="false" type="text"/>
+</div>
+<p class="form-error" id="qr-check-error" role="alert"></p>
+<button class="btn" id="qr-check-run" type="submit">Vérifier</button>
+<p class="hint qr-run-note">Gratuit sur cette page. Sans compte, cela compte comme l’une de vos exécutions gratuites du jour. Le lien est visité depuis notre serveur, qui n’ouvre jamais d’adresses privées ou locales.</p>
       </form>
-      <div id="qr-check-out"><p class="muted">Le verdict s’affiche ici.</p></div>
+      <div class="tf-panel tf-result" id="qr-check-out"><p class="muted">Le verdict s’affiche ici.</p></div>
     </div>
   </section>
 
-  <section class="wrap qr-bulk" data-jump="Beaucoup de codes" id="qr-bulk" aria-labelledby="qr-bulk-title">
+  <section class="wrap tf-sec qr-bulk" data-jump="Lot" id="qr-bulk" aria-labelledby="qr-bulk-title">
+    <div class="tf-top solo"><div>
     <h2 id="qr-bulk-title">Un lot de codes à partir d’un tableur</h2>
-    <p class="qr-lede">Un code par ligne, en fichiers PNG ou SVG dans un ZIP avec un manifeste, et une planche d’étiquettes à imprimer. Les lignes sont d’abord vérifiées ici ; vous ne payez que les codes créés, et chaque fichier est relu par rapport à sa ligne.</p>
-    <div class="qr-check-grid">
-      <div>
+    <p class="tf-p">Un code par ligne, en fichiers PNG ou SVG dans un ZIP avec un manifeste, et une planche d’étiquettes à imprimer. Les lignes sont d’abord vérifiées ici ; vous ne payez que les codes créés, et chaque fichier est relu par rapport à sa ligne.</p>
+    </div></div>
+    <div class="tf-calc">
+      <div class="tf-panel tf-form">
         <div class="field">
-          <label for="qr-bulk-file">Tableur (CSV, TSV ou Excel .xlsx)</label>
-          <input type="file" id="qr-bulk-file" accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-        </div>
-        <div class="field">
-          <label for="qr-bulk-paste">Ou collez-le ici</label>
-          <textarea id="qr-bulk-paste" rows="6" spellcheck="false">url,label
+<label for="qr-bulk-file">Tableur (CSV, TSV ou Excel .xlsx)</label>
+<input accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="qr-bulk-file" type="file"/>
+</div>
+<div class="field">
+<label for="qr-bulk-paste">Ou collez-le ici</label>
+<textarea id="qr-bulk-paste" rows="6" spellcheck="false">url,label
 https://example.com/menu/table-1,Table 1
 https://example.com/menu/table-2,Table 2</textarea>
-          <details class="qr-format">
-            <summary>Les colonnes lues</summary>
-            <p>Une ligne d’en-tête, puis un code par ligne. Nommez la colonne du contenu d’après son champ : url, text, ssid et password (Wi-Fi), firstName, lastName, phone, email (carte de contact), to et subject (e-mail), phone et message (SMS), latitude et longitude (lieu). Une colonne type peut fixer le type de chaque ligne. Jusqu’à trois colonnes d’étiquette (label, label2, label3) s’impriment à côté du code sur la planche. Les cellules texte d’Excel gardent leurs zéros initiaux, et les longs numéros de série sont écrits en entier.</p>
-          </details>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-bulk-type">Type de chaque ligne</label><select id="qr-bulk-type"></select></div>
-          <div class="field"><label for="qr-bulk-name">Noms des fichiers</label><input type="text" id="qr-bulk-name" value="qr-{row}" spellcheck="false"></div>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-bulk-format">Fichiers</label><select id="qr-bulk-format"><option value="png" selected>PNG</option><option value="svg">SVG</option><option value="none">Aucun fichier image</option></select></div>
-          <div class="field"><label for="qr-bulk-sheet">Planche d’étiquettes</label><select id="qr-bulk-sheet"><option value="">Aucune</option></select></div>
-        </div>
-        <p class="hint">La correction d’erreurs et les couleurs ci-dessus s’appliquent aussi ici. {row} dans un nom de fichier est la ligne du tableur ; {N’importe quel en-tête} est cette colonne.</p>
+<details class="xpand qr-format">
+<summary>Les colonnes lues</summary>
+<div class="xp-in"><p>Une ligne d’en-tête, puis un code par ligne. Nommez la colonne du contenu d’après son champ : url, text, ssid et password (Wi-Fi), firstName, lastName, phone, email (carte de contact), to et subject (e-mail), phone et message (SMS), latitude et longitude (lieu). Une colonne type peut fixer le type de chaque ligne. Jusqu’à trois colonnes d’étiquette (label, label2, label3) s’impriment à côté du code sur la planche. Les cellules texte d’Excel gardent leurs zéros initiaux, et les longs numéros de série sont écrits en entier.</p></div>
+</details>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-bulk-type">Type de chaque ligne</label><select id="qr-bulk-type"></select></div>
+<div class="field"><label for="qr-bulk-name">Noms des fichiers</label><input id="qr-bulk-name" spellcheck="false" type="text" value="qr-{row}"/></div>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-bulk-format">Fichiers</label><select id="qr-bulk-format"><option selected="" value="png">PNG</option><option value="svg">SVG</option><option value="none">Aucun fichier image</option></select></div>
+<div class="field"><label for="qr-bulk-sheet">Planche d’étiquettes</label><select id="qr-bulk-sheet"><option value="">Aucune</option></select></div>
+</div>
+<p class="hint">La correction d’erreurs et les couleurs ci-dessus s’appliquent aussi ici. {row} dans un nom de fichier est la ligne du tableur ; {N’importe quel en-tête} est cette colonne.</p>
       </div>
-      <div>
+      <div class="tf-panel tf-result">
         <div id="qr-bulk-out"><p class="muted">Vérifié ici dès qu’un tableur est ouvert.</p></div>
-        <p class="form-error" id="qr-bulk-error" role="alert"></p>
-        <button class="btn" type="button" id="qr-bulk-run" hidden>Créer les fichiers</button>
-        <p data-prices class="hint qr-run-note" id="qr-bulk-note" hidden>Demande un compte connecté avec un solde ; l’allocation gratuite de $0.25 par mois compte.</p>
-        <div id="qr-bulk-files"></div>
+<p class="form-error" id="qr-bulk-error" role="alert"></p>
+<button class="btn" hidden="" id="qr-bulk-run" type="button">Créer les fichiers</button>
+<p class="hint qr-run-note" data-prices="" hidden="" id="qr-bulk-note">Demande un compte connecté avec un solde ; l’allocation gratuite de $0.25 par mois compte.</p>
+<div id="qr-bulk-files"></div>
       </div>
     </div>
   </section>
 
-  <section class="wrap qr-rules" data-jump="Comment ça marche" aria-labelledby="qr-rules-title">
-    <h2 id="qr-rules-title">Statique, dynamique et ce qui peut expirer</h2>
-    <div class="qr-rule-cols">
+  <section class="wrap tf-sec qr-rules" data-jump="Règles" aria-labelledby="qr-rules-title">
+    <div class="tf-top">
       <div>
-        <h3>Statique</h3>
-        <p>Les modules du code écrivent votre lien, votre accès Wi-Fi ou votre carte de contact. Un téléphone le lit directement sur l’impression. Aucun service ne s’interpose, donc rien ne peut expirer ; un lien statique cesse tout de même de fonctionner si le site web derrière disparaît.</p>
+        <p class="eyebrow">Comment ça marche</p>
+        <h2 id="qr-rules-title">Statique, dynamique et ce qui peut expirer</h2>
       </div>
-      <div>
-        <h3>Dynamique</h3>
-        <p>Le code écrit un lien court sur le domaine d’un prestataire, et le prestataire transmet chaque scan vers votre page. Vous pouvez changer la page plus tard, mais le code imprimé ne fonctionne que tant que le prestataire le transmet. Les pages des prestataires décrivent ce qui se passe à la fin d’un abonnement ; la vérification ci-dessus les cite avec la date de lecture.</p>
-      </div>
-      <div>
-        <h3>Une preuve pour chaque fichier</h3>
-        <p>Chaque téléchargement montre le texte exact qu’il contient, sa version (taille), son niveau de correction d’erreurs et son masque, et un décodeur indépendant relit le fichier avant que vous le receviez. Si un logo masque trop de choses, la page vous le dit au lieu de vous remettre un code qui ne se scanne peut-être pas.</p>
-      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="qr-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="qr-limits-title">Ce qui n’est pas couvert</h3>
+          <p>Non couvert : les codes dynamiques (modifiables), la lecture de codes sur des épreuves PDF, les fichiers EPS, les événements de calendrier et les codes de paiement. QR Code is registered trademark of DENSO WAVE INCORPORATED.</p>
+          <details class="xpand"><summary>Lire les notes et les sources</summary><div class="xp-in">
+            <ul class="qr-notes" id="qr-notes">
+<li>L’encodeur suit la norme ISO/IEC 18004 (QR Code Model 2) : modes numérique, alphanumérique et octets, versions 1 à 40 (de 21 x 21 à 177 x 177 modules), correction d’erreurs L, M, Q et H, et les huit motifs de masque choisis selon les règles de pénalité de la norme. Sa sortie est testée contre un encodeur open source indépendant à chaque version et chaque niveau.</li>
+<li>DENSO WAVE, l’inventeur du QR code, demande une zone de silence de quatre modules de chaque côté et recommande 4 points d’imprimante ou plus par module ; les contrôles d’impression utilisent les deux. Niveau le plus utilisé : M, environ 15 % restituables.</li>
+<li>Formats de contenu : Wi-Fi, SMS, téléphone, lieu et e-mail tels que les lisent les applications d’appareil photo (ZXing « Barcode Contents ») ; cartes de contact en vCard 3.0 (RFC 2426) ; liens e-mail selon la RFC 6068. Les codes SMS n’ont pas de norme officielle.</li>
+<li>La vérification ne suit que les redirections HTTP (10 au plus), depuis notre serveur, et ne nomme un prestataire que si son domaine figure sur notre liste vérifiée ; elle ne voit pas votre compte et ne peut rien promettre sur ce que fera un prestataire. Nous ne sommes affiliés à aucun des prestataires nommés.</li>
+<li>Non couvert : les codes dynamiques (modifiables), la lecture de codes sur des épreuves PDF, les fichiers EPS, les événements de calendrier et les codes de paiement. QR Code is registered trademark of DENSO WAVE INCORPORATED.</li>
+<li>Sources, lues le 2 novembre 2026 (pages en anglais) : <a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE : zone de silence</a>, <a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE : taille du module</a>, <a href="https://www.qrcode.com/en/about/version.html">DENSO WAVE : versions</a>, <a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE : correction d’erreurs</a>, <a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ</a>, <a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing Barcode Contents</a>, <a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426</a>, <a href="https://www.rfc-editor.org/rfc/rfc6068">RFC 6068</a>, <a href="https://www.avery.com/templates/5160">Avery 5160</a>, <a href="https://www.avery.com/templates/22816">Avery 22816</a>. Les pages des prestataires sont indiquées avec chaque résultat de vérification.</li>
+</ul>
+          </div></details>
+        </div>
+      </aside>
     </div>
-    <ul class="qr-notes small muted" id="qr-notes">
-      <li>L’encodeur suit la norme ISO/IEC 18004 (QR Code Model 2) : modes numérique, alphanumérique et octets, versions 1 à 40 (de 21 x 21 à 177 x 177 modules), correction d’erreurs L, M, Q et H, et les huit motifs de masque choisis selon les règles de pénalité de la norme. Sa sortie est testée contre un encodeur open source indépendant à chaque version et chaque niveau.</li>
-      <li>DENSO WAVE, l’inventeur du QR code, demande une zone de silence de quatre modules de chaque côté et recommande 4 points d’imprimante ou plus par module ; les contrôles d’impression utilisent les deux. Niveau le plus utilisé : M, environ 15 % restituables.</li>
-      <li>Formats de contenu : Wi-Fi, SMS, téléphone, lieu et e-mail tels que les lisent les applications d’appareil photo (ZXing « Barcode Contents ») ; cartes de contact en vCard 3.0 (RFC 2426) ; liens e-mail selon la RFC 6068. Les codes SMS n’ont pas de norme officielle.</li>
-      <li>La vérification ne suit que les redirections HTTP (10 au plus), depuis notre serveur, et ne nomme un prestataire que si son domaine figure sur notre liste vérifiée ; elle ne voit pas votre compte et ne peut rien promettre sur ce que fera un prestataire. Nous ne sommes affiliés à aucun des prestataires nommés.</li>
-      <li>Non couvert : les codes dynamiques (modifiables), la lecture de codes sur des épreuves PDF, les fichiers EPS, les événements de calendrier et les codes de paiement. QR Code is registered trademark of DENSO WAVE INCORPORATED.</li>
-      <li>Sources, lues le 2 novembre 2026 (pages en anglais) : <a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE : zone de silence</a>, <a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE : taille du module</a>, <a href="https://www.qrcode.com/en/about/version.html">DENSO WAVE : versions</a>, <a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE : correction d’erreurs</a>, <a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ</a>, <a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing Barcode Contents</a>, <a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426</a>, <a href="https://www.rfc-editor.org/rfc/rfc6068">RFC 6068</a>, <a href="https://www.avery.com/templates/5160">Avery 5160</a>, <a href="https://www.avery.com/templates/22816">Avery 22816</a>. Les pages des prestataires sont indiquées avec chaque résultat de vérification.</li>
-    </ul>
-    <div class="qr-prices">
-      <h3>Tarifs</h3>
-      <ul>
-        <li>Créer un code sur cette page et vérifier un code imprimé sur cette page : gratuit.</li>
-        <li>Par API ou MCP : créer un code $0.002, lire un code depuis un PNG $0.002, vérification d’expiration $0.005.</li>
-        <li>Codes issus d’un tableur : $0.002 par code créé, 10 au minimum par commande ; au-delà de 5 000 codes dans un mois civil, le prix par code baisse.</li>
-      </ul>
-      <p class="small muted">Les lignes qui ne peuvent pas devenir un code ne sont jamais facturées.</p>
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r1">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h3v3H8zM13 13h3v3h-3z"/></svg></span>
+        <div>
+          <h3 id="qr-r1">Statique</h3>
+          <p>Les modules du code écrivent votre lien, votre accès Wi-Fi ou votre carte de contact.</p>
+          <details class="xpand"><summary>Lire les règles complètes</summary><div class="xp-in">
+            <p>Les modules du code écrivent votre lien, votre accès Wi-Fi ou votre carte de contact. Un téléphone le lit directement sur l’impression. Aucun service ne s’interpose, donc rien ne peut expirer ; un lien statique cesse tout de même de fonctionner si le site web derrière disparaît.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r2">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h10M12 7l5 5-5 5"/></svg></span>
+        <div>
+          <h3 id="qr-r2">Dynamique</h3>
+          <p>Le code écrit un lien court sur le domaine d’un prestataire, et le prestataire transmet chaque scan vers votre page.</p>
+          <details class="xpand"><summary>Lire les règles complètes</summary><div class="xp-in">
+            <p>Le code écrit un lien court sur le domaine d’un prestataire, et le prestataire transmet chaque scan vers votre page. Vous pouvez changer la page plus tard, mais le code imprimé ne fonctionne que tant que le prestataire le transmet. Les pages des prestataires décrivent ce qui se passe à la fin d’un abonnement ; la vérification ci-dessus les cite avec la date de lecture.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r3">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <div>
+          <h3 id="qr-r3">Une preuve pour chaque fichier</h3>
+          <p>Chaque téléchargement montre le texte exact qu’il contient, sa version (taille), son niveau de correction d’erreurs et son masque, et un décodeur indépendant relit le fichier avant que vous le receviez.</p>
+          <details class="xpand"><summary>Lire les règles complètes</summary><div class="xp-in">
+            <p>Chaque téléchargement montre le texte exact qu’il contient, sa version (taille), son niveau de correction d’erreurs et son masque, et un décodeur indépendant relit le fichier avant que vous le receviez. Si un logo masque trop de choses, la page vous le dit au lieu de vous remettre un code qui ne se scanne peut-être pas.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v17M16 7.5c-.8-1.2-2.2-1.8-4-1.8-2.3 0-4 1.1-4 3s1.7 2.6 4 3.1 4 1.3 4 3.2-1.7 3.1-4 3.1c-1.9 0-3.4-.7-4.2-2"/></svg></span>
+        <div>
+          <h3 id="qr-prices-title">Tarifs</h3>
+          <p>Créer un code sur cette page et vérifier un code imprimé sur cette page : gratuit.</p>
+          <details class="xpand"><summary>Voir tous les tarifs</summary><div class="xp-in">
+            <ul>
+<li>Créer un code sur cette page et vérifier un code imprimé sur cette page : gratuit.</li>
+<li>Par API ou MCP : créer un code $0.002, lire un code depuis un PNG $0.002, vérification d’expiration $0.005.</li>
+<li>Codes issus d’un tableur : $0.002 par code créé, 10 au minimum par commande ; au-delà de 5 000 codes dans un mois civil, le prix par code baisse.</li>
+</ul>
+<p class="small muted">Les lignes qui ne peuvent pas devenir un code ne sont jamais facturées.</p>
+          </div></details>
+        </div>
+      </article>
     </div>
   </section>
 
 
 
-  <section class="wrap qr-code" aria-label="Utiliser depuis du code">
+  <section class="wrap tf-code qr-code" data-jump="Code" aria-label="Utiliser depuis du code">
     <div id="qr-code"></div>
   </section>
   <noscript><div class="wrap"><p>Cette page a besoin de JavaScript pour créer des codes dans votre navigateur. Vous pouvez aussi l’appeler depuis du code : voir <a href="/toll-preview/docs">la documentation</a> (en anglais).</p></div></noscript>

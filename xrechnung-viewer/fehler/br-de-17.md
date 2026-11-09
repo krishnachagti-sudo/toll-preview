@@ -1,6 +1,6 @@
 # BR-DE-17: Rechnungsart (BT-3) außerhalb der in XRechnung vorgesehenen Codes
 
-BR-DE-17 bedeutet: Mit dem Element "Invoice type code" (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 übermittelt werden: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice) und 381 (Credit note),875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice). (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Verwenden Sie für eine normale Rechnung 380, für eine Gutschrift (Rechnungskorrektur) 381, für eine korrigierte Rechnung 384, für eine Teilrechnung 326 und für eine Gutschrift im Gutschriftsverfahren 389.
+BR-DE-17 bedeutet: Mit dem Element "Invoice type code" (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 übermittelt werden: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice) und 381 (Credit note),875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice). (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

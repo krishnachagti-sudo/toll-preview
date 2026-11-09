@@ -74,12 +74,13 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check a message against Gmail's rules</h2><p class="muted">Paste one message you sent: each Gmail rule below gets pass or fail, with the fix.</p><form method="get" action="/toll-preview/bulk-sender-check/" class="cp-tool-form"><input type="hidden" name="example" value="not-aligned"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Show this worked example</button></form><p class="small"><a href="/toll-preview/bulk-sender-check/?example=not-aligned">Open the checker with this example</a></p></aside>
 <p>Scope: Personal Gmail accounts (addresses ending in @gmail.com or @googlemail.com). Google's FAQ: the guidelines do not apply to mail sent to Google Workspace accounts.</p>
 <section>
 <h2 id="bulk">5,000 or more messages a day</h2>
 <p>The guidelines page says senders who send more than 5,000 messages per day to Gmail accounts; the FAQ defines a bulk sender as one that sends close to 5,000 messages or more to personal Gmail accounts within 24 hours, counted per primary domain, and the status is permanent.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Gmail: 5,000 or more messages a day, since February 1, 2024</caption><thead><tr><th scope="col">Rule</th><th scope="col">In the provider's words</th><th scope="col">What the checker looks at</th><th scope="col">Bounce code</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Gmail: 5,000 or more messages a day, since February 1, 2024</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Rule</th><th scope="col">In the provider's words</th><th scope="col">What the checker looks at</th><th scope="col">Bounce code</th></tr></thead><tbody>
 <tr><th scope="row">SPF passes</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Set up SPF and DKIM email authentication for your domain.&quot;</a></td><td>the receiver's SPF result, re-checked for the sending IP</td><td>421 4.7.27, 550 5.7.27</td></tr>
 <tr><th scope="row">DKIM passes</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Set up SPF and DKIM email authentication for your domain.&quot;</a></td><td>every DKIM signature, verified with its key</td><td>421 4.7.30, 550 5.7.30</td></tr>
 <tr><th scope="row">DKIM key of 1024 bits or longer</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Sending to personal Gmail accounts requires a DKIM key of 1024 bits or longer.&quot;</a></td><td>the key length in DNS</td><td>none listed</td></tr>
@@ -93,11 +94,11 @@
 <tr><th scope="row">Visible unsubscribe link in the body of marketing mail (marketing mail)</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Marketing messages and subscribed messages must support one-click unsubscribe, and include a clearly visible unsubscribe link in the message body.&quot;</a></td><td>an unsubscribe link in the text or HTML body</td><td>none listed</td></tr>
 <tr><th scope="row">Spam rate below 0.3% in Postmaster Tools</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Keep spam rates reported in Postmaster Tools below 0.30%.&quot;</a></td><td>not checkable from one message</td><td>none listed</td></tr>
 <tr><th scope="row">Unsubscribes honored within 48 hours</th><td><a href="https://support.google.com/a/answer/14229414?hl=en">&quot;we recommend that you fulfill unsubscribe requests within 48 hours&quot;</a></td><td>not checkable from one message</td><td>none listed</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="all">All senders</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Gmail: All senders, since February 1, 2024</caption><thead><tr><th scope="col">Rule</th><th scope="col">In the provider's words</th><th scope="col">What the checker looks at</th><th scope="col">Bounce code</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Gmail: All senders, since February 1, 2024</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Rule</th><th scope="col">In the provider's words</th><th scope="col">What the checker looks at</th><th scope="col">Bounce code</th></tr></thead><tbody>
 <tr><th scope="row">SPF or DKIM</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Set up SPF or DKIM email authentication for your sending domains.&quot;</a></td><td>SPF or DKIM passing</td><td>550 5.7.26</td></tr>
 <tr><th scope="row">DKIM key of 1024 bits or longer</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Sending to personal Gmail accounts requires a DKIM key of 1024 bits or longer.&quot;</a></td><td>the key length in DNS</td><td>none listed</td></tr>
 <tr><th scope="row">Valid forward and reverse DNS (PTR)</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Ensure that sending domains or IPs have valid forward and reverse DNS records, also referred to as PTR records.&quot;</a></td><td>PTR of the sending IP and its forward lookup</td><td>451 4.7.23, 550 5.7.25</td></tr>
@@ -105,11 +106,11 @@
 <tr><th scope="row">Spam rate below 0.3% in Postmaster Tools</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Keep spam rates reported in Postmaster Tools below 0.3%.&quot;</a></td><td>not checkable from one message</td><td>none listed</td></tr>
 <tr><th scope="row">RFC 5322 format</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Format messages according to the Internet Message Format standard, RFC 5322.&quot;</a></td><td>single From:, Date:, Message-ID:, no repeated headers</td><td>550 5.7.1, 554 5.6.0</td></tr>
 <tr><th scope="row">No impersonated Gmail From:</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Don’t impersonate Gmail From: headers.&quot;</a></td><td>a @gmail.com From: not signed by gmail.com</td><td>none listed</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="codes">The bounce code for each rule</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>From Gmail's SMTP errors and codes page (4.x.x is a temporary rate limit, 5.x.x a block)</caption><thead><tr><th scope="col">Rule</th><th scope="col">Codes</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">From Gmail's SMTP errors and codes page (4.x.x is a temporary rate limit, 5.x.x a block)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Rule</th><th scope="col">Codes</th></tr></thead><tbody>
 <tr><th scope="row">SPF passes</th><td>421 4.7.27, 550 5.7.27</td></tr>
 <tr><th scope="row">DKIM passes</th><td>421 4.7.30, 550 5.7.30</td></tr>
 <tr><th scope="row">DMARC record (p=none is enough)</th><td>421 4.7.40, 550 5.7.40</td></tr>
@@ -117,17 +118,17 @@
 <tr><th scope="row">Valid forward and reverse DNS (PTR)</th><td>451 4.7.23, 550 5.7.25</td></tr>
 <tr><th scope="row">TLS connection</th><td>421 4.7.29, 550 5.7.29</td></tr>
 <tr><th scope="row">RFC 5322 format</th><td>550 5.7.1, 554 5.6.0</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Code by code, with the classifier's verdict: <a href="/toll-preview/smtp-bounce-code-classifier/provider/gmail/550-5-7-26/">550 5.7.26</a>, <a href="/toll-preview/smtp-bounce-code-classifier/provider/gmail/550-5-7-40/">550 5.7.40</a>, <a href="/toll-preview/smtp-bounce-code-classifier/provider/gmail/421-4-7-28/">421 4.7.28</a>, <a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-1/">550 5.7.1</a>.</p>
 </section>
 <section>
 <h2 id="example">One message, checked</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The three worked examples, checked by the engine</caption><thead><tr><th scope="col">Example</th><th scope="col" class="r num">Gmail 5,000+/day</th><th scope="col" class="r num">Yahoo bulk</th><th scope="col" class="r num">Microsoft 5,000+/day</th><th scope="col">First failing check</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The three worked examples, checked by the engine</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Example</th><th scope="col" class="r num">Gmail 5,000+/day</th><th scope="col" class="r num">Yahoo bulk</th><th scope="col" class="r num">Microsoft 5,000+/day</th><th scope="col">First failing check</th></tr></thead><tbody>
 <tr><th scope="row">A compliant newsletter received by Gmail</th><td class="r num">11 of 11</td><td class="r num">8 of 8</td><td class="r num">3 of 3</td><td>none</td></tr>
 <tr><th scope="row">A promotion received by Outlook.com with no one-click unsubscribe</th><td class="r num">10 of 11</td><td class="r num">7 of 8</td><td class="r num">3 of 3</td><td>one-click unsubscribe</td></tr>
 <tr><th scope="row">SPF and DKIM pass but DMARC fails (Gmail)</th><td class="r num">7 of 11</td><td class="r num">4 of 8</td><td class="r num">2 of 3</td><td>DMARC alignment</td></tr>
-</tbody></table></div>
-<ul class="cp-sources"><li><a href="https://support.google.com/a/answer/81126?hl=en">Google: Email sender guidelines, read November 8, 2026</a></li><li><a href="https://support.google.com/a/answer/14229414?hl=en">Google: Email sender guidelines FAQ, read November 8, 2026</a></li><li><a href="https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en">Google Workspace: Gmail SMTP errors and codes (last updated 2026-10-26), read November 8, 2026</a></li></ul>
+</tbody></table></div></figure>
+<ul class="cp-sources cp-src"><li><a href="https://support.google.com/a/answer/81126?hl=en">Google: Email sender guidelines, read November 8, 2026</a><span class="src-m">support.google.com</span></li><li><a href="https://support.google.com/a/answer/14229414?hl=en">Google: Email sender guidelines FAQ, read November 8, 2026</a><span class="src-m">support.google.com</span></li><li><a href="https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en">Google Workspace: Gmail SMTP errors and codes (last updated 2026-10-26), read November 8, 2026</a><span class="src-m">knowledge.workspace.google.com</span></li></ul>
 <p class="cp-note">Rules as published by Google, Yahoo and Microsoft and read on November 8, 2026. Providers also judge reputation and content, so meeting every rule does not guarantee the inbox. Spam rate, volume and unsubscribe handling cannot be judged from one message.</p>
 </section>
 

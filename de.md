@@ -4,10 +4,10 @@
 
 ## Werkzeuge
 
-- [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/de/fx-on-date/)
-- [Image to size](https://krishnachagti-sudo.github.io/toll-preview/de/image-to-size/)
-- [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/de/qr-code-generator/)
-- [XRechnung and ZUGFeRD viewer and validator](https://krishnachagti-sudo.github.io/toll-preview/de/xrechnung-viewer/)
+- [Wechselkurs an einem Datum](https://krishnachagti-sudo.github.io/toll-preview/de/fx-on-date/): Der offizielle EZB-Referenzkurs für ein Währungspaar an jedem Tag seit 1999, mit dem tatsächlich verwendeten Kursdatum. Auch US-Finanzministerium, IRS und HMRC.
+- [Bild auf Dateigröße verkleinern](https://krishnachagti-sudo.github.io/toll-preview/de/image-to-size/): Foto auf eine exakte Dateigröße in KB verkleinern, zum Beispiel 50 KB oder 200 KB. Kostenlos und direkt im Browser: Ihr Foto verlässt Ihr Gerät nicht.
+- [QR-Code-Generator](https://krishnachagti-sudo.github.io/toll-preview/de/qr-code-generator/): QR-Code kostenlos erstellen, ohne Anmeldung: Link, WLAN, Kontakt, E-Mail, SMS, Anruf oder Standort. Gedruckte Codes auf Anbieter-Weiterleitungen prüfen.
+- [XRechnung und ZUGFeRD öffnen und prüfen](https://krishnachagti-sudo.github.io/toll-preview/de/xrechnung-viewer/): XRechnung (XML) oder ZUGFeRD-PDF öffnen und lesbar anzeigen, im Browser ohne Upload. Prüfung nach den offiziellen KoSIT- und EN-16931-Regeln (Konfiguration 2026-08-31), jeder Fehlercode erklärt.
 
 ## Anleitungen
 

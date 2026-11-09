@@ -69,45 +69,52 @@
 <header class="cp-head">
 <p class="eyebrow">Guide</p>
 <h1>How cron expressions are checked: dialects and next runs</h1>
-<p class="cp-answer">An expression is read by the rules of one of 9 schedulers (Linux crontab (Vixie cron), GitHub Actions, Kubernetes CronJob, Vercel Cron Jobs, n8n Schedule Trigger (Custom cron), Quartz Scheduler, Spring @Scheduled, UiPath Orchestrator time trigger, Amazon EventBridge Scheduler), described in plain English, and its next runs (up to 50) are listed in an IANA time zone. A run in a skipped or repeated hour follows that scheduler's documented rule, read on 2026-11-08.</p>
+<p class="cp-answer">An expression is read by the rules of one of 9 schedulers (Linux crontab (Vixie cron), GitHub Actions, Kubernetes CronJob, Vercel Cron Jobs, n8n Schedule Trigger (Custom cron), Quartz Scheduler, Spring @Scheduled, UiPath Orchestrator time trigger, Amazon EventBridge Scheduler), described in plain English, and its next runs (up to 50) are listed in an IANA time zone.<span class="ans-more"> A run in a skipped or repeated hour follows that scheduler's documented rule, read on 2026-11-08.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>Spaces are evened out. For AWS EventBridge, cron(...) is unwrapped, and rate(...) and at(...) schedules are refused. CRON_TZ= or TZ= at the start is refused, since the zone goes in its own field. An @ string is replaced by the dialect's own meaning (such as @daily as 0 0 * * *), and @reboot is refused because it has no schedule to list.</span></li><li><span>The fields are counted: 5 for crontab, GitHub Actions, Kubernetes and Vercel; 5 or 6 for n8n (seconds first, 0 when left out); 6 for Spring and AWS EventBridge (AWS has a year last); 6 or 7 for Quartz and UiPath (seconds first, an optional year last).</span></li><li><span>Each field is read as a list of values, ranges and steps. Weekdays run Sunday = 0 to 6 (7 is also Sunday in crontab and Spring) or Sunday = 1 to 7 in Quartz, UiPath and AWS.</span></li><li><span>The two day fields: in Quartz and AWS exactly one must be &quot;?&quot;; in Vercel one of them must be *. Debian crontab runs on days matching either field when both are set, but a field that starts with * (such as */2) counts as unset, so both must match; a warning says so.</span></li><li><span>Platform warnings: GitHub Actions runs a schedule at most once every 5 minutes and says the top of the hour is busy; Vercel Hobby allows one run a day.</span></li></ol>
+<p class="cp-note">Steps 6 to 11, each rule and the edge cases are in <a href="/toll-preview/methodology/cron/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>It refuses rate(...) and at(...) schedules, @reboot, and any expression the chosen scheduler's docs do not allow, with the reason.</li><li>It cannot know how late a platform starts a run: GitHub, for one, says scheduled runs can be delayed or dropped at busy times.</li><li>Where a scheduler's docs do not say what happens at a clock change, the run is flagged, not decided.</li><li>Time zone rules are those of the runtime's tz database; a zone changed by a government after that release is not reflected.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 14 sources</h3><div class="tc-b"><p class="tc-a">Each scheduler's documentation was read on 2026-11-08, and the pages are checked daily for changes. Time zone rules come from the runtime's tz database (tzdata 2025c on the server). The dialect rules change only by hand, with the tests that pin them.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 3 checks in its test suite</h3><div class="tc-b"><p class="tc-a">Each of the 9 dialects is tested on its fields, names, weekday numbering, macros, ? and L, W and # rules, and the day-field rule, with Debian's leading-* exception.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<details class="xpand cp-src-fold"><summary>Sources (14)</summary><div class="xp-in"><ul class="cp-sources cp-src"><li><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron)</a><span class="src-m">manpages.debian.org · see the document · read 2026-11-08</span></li><li><a href="https://manpages.debian.org/bookworm/cron/cron.8.en.html">Debian cron(8): clock changes</a><span class="src-m">manpages.debian.org · see the document · read 2026-11-08</span></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule</a><span class="src-m">docs.github.com · see the document · read 2026-11-08</span></li><li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/">Kubernetes docs: CronJob</a><span class="src-m">kubernetes.io · see the document · read 2026-11-08</span></li><li><a href="https://vercel.com/docs/cron-jobs">Vercel docs: Cron Jobs</a><span class="src-m">vercel.com · see the document · read 2026-11-08</span></li><li><a href="https://vercel.com/docs/cron-jobs/usage-and-pricing">Vercel docs: Cron Jobs usage and pricing</a><span class="src-m">vercel.com · see the document · read 2026-11-08</span></li><li><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/">n8n docs: Schedule Trigger node</a><span class="src-m">docs.n8n.io · see the document · read 2026-11-08</span></li><li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz 2.3 tutorial: CronTrigger</a><span class="src-m">quartz-scheduler.org · see the document · read 2026-11-08</span></li><li><a href="https://www.quartz-scheduler.org/api/2.3.0/org/quartz/CronExpression.html">Quartz 2.3 API: CronExpression</a><span class="src-m">quartz-scheduler.org · see the document · read 2026-11-08</span></li><li><a href="https://docs.spring.io/spring-framework/reference/integration/scheduling.html">Spring Framework reference: Task execution and scheduling, cron expressions</a><span class="src-m">docs.spring.io · see the document · read 2026-11-08</span></li><li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/support/CronExpression.html">Spring Framework API: CronExpression</a><span class="src-m">docs.spring.io · see the document · read 2026-11-08</span></li><li><a href="https://docs.uipath.com/orchestrator/automation-cloud/latest/user-guide/using-cron-expressions">UiPath Orchestrator: Using cron expressions</a><span class="src-m">docs.uipath.com · see the document · read 2026-11-08</span></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types</a><span class="src-m">docs.aws.amazon.com · see the document · read 2026-11-08</span></li><li><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html">Amazon EventBridge: Schedule patterns for scheduled rules (legacy)</a><span class="src-m">docs.aws.amazon.com · see the document · read 2026-11-08</span></li></ul></div></details>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the cron expression checker and next run times compute?</h2>
-<p>The tool takes a cron expression and the scheduler it is for, checks it against that scheduler's documented syntax, says what it means in plain English and lists its next run times in a time zone, marking each run that a daylight saving change skips, moves or repeats. It writes the same schedule for every other scheduler, or says why one cannot express it. It also builds an expression from a simple schedule and lists the clock changes of a time zone in a year.</p>
-<details class="xpand"><summary>Read the rest: What does the cron expression checker and next run times compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<p>The tool takes a cron expression and the scheduler it is for, checks it against that scheduler's documented syntax, says what it means in plain English and lists its next run times in a time zone, marking each run that a daylight saving change skips, moves or repeats.</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>It writes the same schedule for every other scheduler, or says why one cannot express it. It also builds an expression from a simple schedule and lists the clock changes of a time zone in a year.</p>
+<p>Operations (the op field):</p>
 <ul><li><code>explain</code>: Checks an expression in a dialect and returns its plain-English description, the fields and their values, how the day fields combine, the time zone and its rule, the next runs (10 by default, up to 50), the clock-change rule, warnings, the same schedule for each other scheduler with a config snippet, and the sources.</li><li><code>build</code>: Writes an expression from a pattern (seconds, minutes, hours, daily, weekly, monthly, last-day) with its interval, times, days, day of month and months, and returns it with its description, next runs, warnings and the version for every scheduler.</li><li><code>dst</code>: Lists the clock changes of an IANA time zone in a year: the date, the UTC instant, forward or back, by how many minutes, the offsets and abbreviations before and after, and the clock times skipped or repeated.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>expression</code>: For explain: the cron expression, at most 200 characters, such as */5 * * * *, an @ string where the dialect has them, or cron(...) for AWS EventBridge.</li><li><code>dialect</code>: vixie, github, kubernetes, vercel, n8n, quartz, spring, uipath, aws. For explain the default is vixie (Linux crontab); for build, the default is crontab, or n8n when the schedule has seconds, or Quartz for the last day of the month.</li><li><code>timeZone</code>: An IANA time zone such as America/New_York. Without one the runs are shown in UTC. Required for dst.</li><li><code>from, count</code>: The instant to list runs after, written like 2026-11-08T09:00:00Z with Z or an offset (the current time when not given), and how many runs to list, 1 to 50.</li><li><code>pattern, every, at, days, day, months, minute</code>: For build: the pattern; every (1 to 59) for seconds, minutes or hours; one time or up to 6 times a day as 09:30; weekdays as numbers, 0 = Sunday; the day of the month (1 to 31); months as 1 to 12; and the minute past the hour for hours.</li><li><code>year</code>: For dst: a year from 1970 to 2100.</li></ul>
 <p>Outputs:</p>
 <ul><li>description: the schedule in plain English</li><li>fields: each field's text and the values it allows; days: how the day-of-month and day-of-week fields combine</li><li>timeZone and zoneRule: the zone the runs are shown in and how the scheduler picks its zone</li><li>nextRuns: each run's UTC instant, local time, weekday, offset and abbreviation, with a note when a clock change skips, moves or repeats it</li><li>dstRule and warnings: the scheduler's clock-change rule in words, and what to check (platform limits, day-field rules, wrapping ranges)</li><li>conversions: for each scheduler, the expression or expressions, a note, a config snippet, or the reason it cannot be written</li><li>for build, the expression and the dialect it is written for; for dst, the list of changes</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>Spaces are evened out. For AWS EventBridge, cron(...) is unwrapped, and rate(...) and at(...) schedules are refused. CRON_TZ= or TZ= at the start is refused, since the zone goes in its own field. An @ string is replaced by the dialect's own meaning (such as @daily as 0 0 * * *), and @reboot is refused because it has no schedule to list.</li><li>The fields are counted: 5 for crontab, GitHub Actions, Kubernetes and Vercel; 5 or 6 for n8n (seconds first, 0 when left out); 6 for Spring and AWS EventBridge (AWS has a year last); 6 or 7 for Quartz and UiPath (seconds first, an optional year last). A wrong count is refused with a hint when it looks like another dialect's line.</li><li>Each field is read as a list of values, ranges and steps. Weekdays run Sunday = 0 to 6 (7 is also Sunday in crontab and Spring) or Sunday = 1 to 7 in Quartz, UiPath and AWS. Names (JAN, MON) are allowed where the docs allow them. &quot;?&quot; is allowed only in the day fields of Quartz, Kubernetes, Spring, UiPath and AWS. L, L-n, W, LW, nL and # are allowed only where that dialect's docs list them, and # takes 1 to 5. A value out of range, a backwards range or a step larger than the field is refused, except that Quartz wraps a range like 22-2, with a warning.</li><li>The two day fields: in Quartz and AWS exactly one must be &quot;?&quot;; in Vercel one of them must be *. Debian crontab runs on days matching either field when both are set, but a field that starts with * (such as */2) counts as unset, so both must match; a warning says so. The other dialects follow the POSIX rule: both must match when either is * or ?, otherwise either may match, and Spring and UiPath are flagged because their docs do not say.</li><li>Platform warnings: GitHub Actions runs a schedule at most once every 5 minutes and says the top of the hour is busy; Vercel Hobby allows one run a day.</li><li>The time zone is the one given, by its canonical IANA name, or UTC. Vercel always runs in UTC, so its runs are shown in UTC with a note; a dialect whose default is not UTC gets a note when no zone is given.</li><li>Next runs: the days from the day before the start are checked one by one, up to 30 years ahead or the last year in the year field. Each matching wall-clock time is turned into instants with the runtime's time zone rules: none in a spring-forward gap, two in a repeated hour.</li><li>Clock changes follow each scheduler's docs. Debian cron (cron(8)): a job at a fixed time in the skipped hour runs soon after the change, and runs once in the repeated hour; a job with * in the minute or hour field runs on the new time, so it has no run in the gap and runs twice in the repeat. GitHub: a run in the skipped hour moves to the next valid time; the repeat is not documented and is flagged. AWS EventBridge Scheduler: a run in the gap is skipped and listed as skipped, and a repeated time runs once. Vercel runs in UTC, which has no changes. For the other schedulers the docs are silent, so those runs are flagged.</li><li>Conversion: the meaning is written in each other dialect, renumbering weekdays, adding &quot;?&quot; where required, adding or dropping the seconds and year fields and wrapping AWS in cron(...). It is refused with the reason when the target has no seconds, no year, no L, W or #, or cannot run only on days matching both fields; when a scheduler cannot match a day of month or a day of week in one expression, two schedules are given.</li><li>Build: the pattern becomes six fields with seconds, is checked as Spring would read it, and is then written for the chosen dialect. A step that does not divide 60 or 24 is warned about, a monthly day after the 28th warns that shorter months are skipped, and several times a day must share the same minute.</li><li>Clock changes of a year: the zone's UTC offset is compared every 6 hours across the year, and each change is found to the minute.</li></ol>
+<details class="xpand"><summary>Every step in full (11) and the rules</summary><div class="xp-in"><ol><li>Spaces are evened out. For AWS EventBridge, cron(...) is unwrapped, and rate(...) and at(...) schedules are refused. CRON_TZ= or TZ= at the start is refused, since the zone goes in its own field. An @ string is replaced by the dialect's own meaning (such as @daily as 0 0 * * *), and @reboot is refused because it has no schedule to list.</li><li>The fields are counted: 5 for crontab, GitHub Actions, Kubernetes and Vercel; 5 or 6 for n8n (seconds first, 0 when left out); 6 for Spring and AWS EventBridge (AWS has a year last); 6 or 7 for Quartz and UiPath (seconds first, an optional year last). A wrong count is refused with a hint when it looks like another dialect's line.</li><li>Each field is read as a list of values, ranges and steps. Weekdays run Sunday = 0 to 6 (7 is also Sunday in crontab and Spring) or Sunday = 1 to 7 in Quartz, UiPath and AWS. Names (JAN, MON) are allowed where the docs allow them. &quot;?&quot; is allowed only in the day fields of Quartz, Kubernetes, Spring, UiPath and AWS. L, L-n, W, LW, nL and # are allowed only where that dialect's docs list them, and # takes 1 to 5. A value out of range, a backwards range or a step larger than the field is refused, except that Quartz wraps a range like 22-2, with a warning.</li><li>The two day fields: in Quartz and AWS exactly one must be &quot;?&quot;; in Vercel one of them must be *. Debian crontab runs on days matching either field when both are set, but a field that starts with * (such as */2) counts as unset, so both must match; a warning says so. The other dialects follow the POSIX rule: both must match when either is * or ?, otherwise either may match, and Spring and UiPath are flagged because their docs do not say.</li><li>Platform warnings: GitHub Actions runs a schedule at most once every 5 minutes and says the top of the hour is busy; Vercel Hobby allows one run a day.</li><li>The time zone is the one given, by its canonical IANA name, or UTC. Vercel always runs in UTC, so its runs are shown in UTC with a note; a dialect whose default is not UTC gets a note when no zone is given.</li><li>Next runs: the days from the day before the start are checked one by one, up to 30 years ahead or the last year in the year field. Each matching wall-clock time is turned into instants with the runtime's time zone rules: none in a spring-forward gap, two in a repeated hour.</li><li>Clock changes follow each scheduler's docs. Debian cron (cron(8)): a job at a fixed time in the skipped hour runs soon after the change, and runs once in the repeated hour; a job with * in the minute or hour field runs on the new time, so it has no run in the gap and runs twice in the repeat. GitHub: a run in the skipped hour moves to the next valid time; the repeat is not documented and is flagged. AWS EventBridge Scheduler: a run in the gap is skipped and listed as skipped, and a repeated time runs once. Vercel runs in UTC, which has no changes. For the other schedulers the docs are silent, so those runs are flagged.</li><li>Conversion: the meaning is written in each other dialect, renumbering weekdays, adding &quot;?&quot; where required, adding or dropping the seconds and year fields and wrapping AWS in cron(...). It is refused with the reason when the target has no seconds, no year, no L, W or #, or cannot run only on days matching both fields; when a scheduler cannot match a day of month or a day of week in one expression, two schedules are given.</li><li>Build: the pattern becomes six fields with seconds, is checked as Spring would read it, and is then written for the chosen dialect. A step that does not divide 60 or 24 is warned about, a monthly day after the 28th warns that shorter months are skipped, and several times a day must share the same minute.</li><li>Clock changes of a year: the zone's UTC offset is compared every 6 hours across the year, and each change is found to the minute.</li></ol>
 <p><strong>Each scheduler's documentation.</strong></p>
 <p>The dialect rules (fields, weekday numbering, names, ?, L, W, #, the @ strings, the day-field rule, the time zone and the clock-change rule) were read from each project's own documentation on 2026-11-08. Where a page says nothing, the answer says so instead of guessing.</p>
 <p><strong>Time zones.</strong></p>
-<p>Offsets and clock changes come from the IANA time zone rules in the runtime's Intl support (tzdata 2025c on the server); the page uses the browser's copy.</p>
+<p>Offsets and clock changes come from the IANA time zone rules in the runtime's Intl support (tzdata 2025c on the server); the page uses the browser's copy.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>A 2:30 am job in Los Angeles on AWS EventBridge is listed as skipped on March 14, 2027, when the clocks go from 2:00 to 3:00.</li><li>In crontab, 5-7 in the day-of-week field is Friday to Sunday, because 7 is Sunday too.</li><li>0 9 1 * MON runs on the 1st and on every Monday under POSIX, but 0 9 */2 * MON in Debian cron runs only on Mondays that are odd days, with a warning.</li><li>Quartz 6L is the last Friday of the month; the same schedule in Spring is 5L, and crontab, GitHub, Kubernetes, Vercel and n8n refuse it with the reason.</li><li>Quartz years run to 2099 and AWS years to 2199; a schedule whose years are over says there is no next run.</li><li>Kubernetes refuses CRON_TZ inside the schedule; set .spec.timeZone instead.</li><li>A step such as */7 minutes restarts each hour, so the gap across the hour is shorter; build warns about it.</li></ul>
+<details class="xpand"><summary>The edge cases (7)</summary><div class="xp-in"><ul><li>A 2:30 am job in Los Angeles on AWS EventBridge is listed as skipped on March 14, 2027, when the clocks go from 2:00 to 3:00.</li><li>In crontab, 5-7 in the day-of-week field is Friday to Sunday, because 7 is Sunday too.</li><li>0 9 1 * MON runs on the 1st and on every Monday under POSIX, but 0 9 */2 * MON in Debian cron runs only on Mondays that are odd days, with a warning.</li><li>Quartz 6L is the last Friday of the month; the same schedule in Spring is 5L, and crontab, GitHub, Kubernetes, Vercel and n8n refuse it with the reason.</li><li>Quartz years run to 2099 and AWS years to 2199; a schedule whose years are over says there is no next run.</li><li>Kubernetes refuses CRON_TZ inside the schedule; set .spec.timeZone instead.</li><li>A step such as */7 minutes restarts each hour, so the gap across the hour is shorter; build warns about it.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>Every weekday at 9:00 am in New York on GitHub Actions, and the same schedule elsewhere</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;explain&quot;,
-  &quot;expression&quot;: &quot;0 9 * * 1-5&quot;,
-  &quot;dialect&quot;: &quot;github&quot;,
-  &quot;timeZone&quot;: &quot;America/New_York&quot;,
-  &quot;count&quot;: 5
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Every weekday at 9:00 am in New York on GitHub Actions, and the same schedule elsewhere</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Every weekday at 9:00 am in New York on GitHub Actions, and the same schedule elsewhere</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">description</th><td>At 09:00, on weekdays (Monday to Friday).</td></tr>
 <tr><th scope="row">day fields</th><td>both day fields must match</td></tr>
 <tr><th scope="row">time zone</th><td>America/New_York</td></tr>
@@ -115,17 +122,16 @@
 <tr><th scope="row">Quartz</th><td>0 0 9 ? * 2-6</td></tr>
 <tr><th scope="row">Spring</th><td>0 0 9 * * 1-5</td></tr>
 <tr><th scope="row">AWS EventBridge</th><td>cron(0 9 ? * 2-6 *)</td></tr>
-</tbody></table></div>
-<p><strong>A 2:30 am job in Los Angeles on AWS EventBridge across the March 14, 2027 clock change</strong></p>
-<pre><code class="language-json">&#123;
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;explain&quot;,
-  &quot;expression&quot;: &quot;cron(30 2 * * ? *)&quot;,
-  &quot;dialect&quot;: &quot;aws&quot;,
-  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
-  &quot;from&quot;: &quot;2027-03-12T00:00:00Z&quot;,
-  &quot;count&quot;: 4
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A 2:30 am job in Los Angeles on AWS EventBridge across the March 14, 2027 clock change</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+  &quot;expression&quot;: &quot;0 9 * * 1-5&quot;,
+  &quot;dialect&quot;: &quot;github&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;,
+  &quot;count&quot;: 5
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (4)</summary><div class="xp-in"><p><strong>A 2:30 am job in Los Angeles on AWS EventBridge across the March 14, 2027 clock change</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">A 2:30 am job in Los Angeles on AWS EventBridge across the March 14, 2027 clock change</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">description</th><td>At 02:30.</td></tr>
 <tr><th scope="row">2027-03-12 02:30</th><td>2027-03-12T10:30:00Z (Friday, PST)</td></tr>
 <tr><th scope="row">2027-03-13 02:30</th><td>2027-03-13T10:30:00Z (Saturday, PST)</td></tr>
@@ -133,79 +139,59 @@
 <tr><th scope="row">2027-03-15 02:30</th><td>2027-03-15T09:30:00Z (Monday, PDT)</td></tr>
 <tr><th scope="row">2027-03-16 02:30</th><td>2027-03-16T09:30:00Z (Tuesday, PDT)</td></tr>
 <tr><th scope="row">clock-change rule</th><td>EventBridge Scheduler: a run at a time that does not exist when the clocks go forward is skipped; when they go back, it runs only once.</td></tr>
-</tbody></table></div>
-<p><strong>Quartz: 10:15 am on the last Friday of every month</strong></p>
-<pre><code class="language-json">&#123;
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;explain&quot;,
-  &quot;expression&quot;: &quot;0 15 10 ? * 6L&quot;,
-  &quot;dialect&quot;: &quot;quartz&quot;,
-  &quot;timeZone&quot;: &quot;Europe/London&quot;,
+  &quot;expression&quot;: &quot;cron(30 2 * * ? *)&quot;,
+  &quot;dialect&quot;: &quot;aws&quot;,
+  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+  &quot;from&quot;: &quot;2027-03-12T00:00:00Z&quot;,
   &quot;count&quot;: 4
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Quartz: 10:15 am on the last Friday of every month</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+&#125;</code></pre></div></details>
+<p><strong>Quartz: 10:15 am on the last Friday of every month</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">Quartz: 10:15 am on the last Friday of every month</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">description</th><td>At 10:15, on the last Friday of the month.</td></tr>
 <tr><th scope="row">day fields</th><td>day of week only</td></tr>
 <tr><th scope="row">Spring</th><td>0 15 10 * * 5L</td></tr>
 <tr><th scope="row">AWS EventBridge</th><td>cron(15 10 ? * 6L *)</td></tr>
 <tr><th scope="row">crontab</th><td>Linux crontab (Vixie cron) has no L or # in the day of week.</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;explain&quot;,
+  &quot;expression&quot;: &quot;0 15 10 ? * 6L&quot;,
+  &quot;dialect&quot;: &quot;quartz&quot;,
+  &quot;timeZone&quot;: &quot;Europe/London&quot;,
+  &quot;count&quot;: 4
+&#125;</code></pre></div></details>
 <p><strong>Build: every 15 minutes, written for crontab</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;build&quot;,
-  &quot;pattern&quot;: &quot;minutes&quot;,
-  &quot;every&quot;: 15,
-  &quot;count&quot;: 3
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Build: every 15 minutes, written for crontab</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Build: every 15 minutes, written for crontab</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">expression</th><td>*/15 * * * *</td></tr>
 <tr><th scope="row">written for</th><td>vixie</td></tr>
 <tr><th scope="row">description</th><td>Every 15 minutes.</td></tr>
 <tr><th scope="row">Quartz</th><td>0 */15 * * * ?</td></tr>
 <tr><th scope="row">AWS EventBridge</th><td>cron(0/15 * * * ? *)</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;build&quot;,
+  &quot;pattern&quot;: &quot;minutes&quot;,
+  &quot;every&quot;: 15,
+  &quot;count&quot;: 3
+&#125;</code></pre></div></details>
 <p><strong>The clock changes in London in 2027</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">The clock changes in London in 2027</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">2027-03-28 (Sunday)</th><td>clocks forward: 01:00 becomes 02:00, GMT to GMT+1, at 2027-03-28T01:00:00Z</td></tr>
+<tr><th scope="row">2027-10-31 (Sunday)</th><td>clocks back: 02:00 becomes 01:00, GMT+1 to GMT, at 2027-10-31T01:00:00Z</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;dst&quot;,
   &quot;timeZone&quot;: &quot;Europe/London&quot;,
   &quot;year&quot;: 2027
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>The clock changes in London in 2027</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">2027-03-28 (Sunday)</th><td>clocks forward: 01:00 becomes 02:00, GMT to GMT+1, at 2027-03-28T01:00:00Z</td></tr>
-<tr><th scope="row">2027-10-31 (Sunday)</th><td>clocks back: 02:00 becomes 01:00, GMT+1 to GMT, at 2027-10-31T01:00:00Z</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>It refuses rate(...) and at(...) schedules, @reboot, and any expression the chosen scheduler's docs do not allow, with the reason.</li><li>It cannot know how late a platform starts a run: GitHub, for one, says scheduled runs can be delayed or dropped at busy times.</li><li>Where a scheduler's docs do not say what happens at a clock change, the run is flagged, not decided.</li><li>Time zone rules are those of the runtime's tz database; a zone changed by a government after that release is not reflected.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>Each scheduler's documentation was read on 2026-11-08, and the pages are checked daily for changes. Time zone rules come from the runtime's tz database (tzdata 2025c on the server). The dialect rules change only by hand, with the tests that pin them.</p>
-<ul class="cp-sources"><li><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron)</a></li><li><a href="https://manpages.debian.org/bookworm/cron/cron.8.en.html">Debian cron(8): clock changes</a></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule</a></li><li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/">Kubernetes docs: CronJob</a></li><li><a href="https://vercel.com/docs/cron-jobs">Vercel docs: Cron Jobs</a></li><li><a href="https://vercel.com/docs/cron-jobs/usage-and-pricing">Vercel docs: Cron Jobs usage and pricing</a></li><li><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/">n8n docs: Schedule Trigger node</a></li><li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz 2.3 tutorial: CronTrigger</a></li><li><a href="https://www.quartz-scheduler.org/api/2.3.0/org/quartz/CronExpression.html">Quartz 2.3 API: CronExpression</a></li><li><a href="https://docs.spring.io/spring-framework/reference/integration/scheduling.html">Spring Framework reference: Task execution and scheduling, cron expressions</a></li><li><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/support/CronExpression.html">Spring Framework API: CronExpression</a></li><li><a href="https://docs.uipath.com/orchestrator/automation-cloud/latest/user-guide/using-cron-expressions">UiPath Orchestrator: Using cron expressions</a></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types</a></li><li><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html">Amazon EventBridge: Schedule patterns for scheduled rules (legacy)</a></li></ul>
-<p>Each scheduler's documentation was read on 2026-11-08, and the pages are checked daily for changes. Time zone rules come from the runtime's tz database (tzdata 2025c on the server). The dialect rules change only by hand, with the tests that pin them.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Cron expression checker and next run times: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron)</a></th><td rowspan="14">see the document</td><td rowspan="14">2026-11-08</td></tr>
-<tr><th scope="row"><a href="https://manpages.debian.org/bookworm/cron/cron.8.en.html">Debian cron(8): clock changes</a></th></tr>
-<tr><th scope="row"><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule</a></th></tr>
-<tr><th scope="row"><a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/">Kubernetes docs: CronJob</a></th></tr>
-<tr><th scope="row"><a href="https://vercel.com/docs/cron-jobs">Vercel docs: Cron Jobs</a></th></tr>
-<tr><th scope="row"><a href="https://vercel.com/docs/cron-jobs/usage-and-pricing">Vercel docs: Cron Jobs usage and pricing</a></th></tr>
-<tr><th scope="row"><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/">n8n docs: Schedule Trigger node</a></th></tr>
-<tr><th scope="row"><a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz 2.3 tutorial: CronTrigger</a></th></tr>
-<tr><th scope="row"><a href="https://www.quartz-scheduler.org/api/2.3.0/org/quartz/CronExpression.html">Quartz 2.3 API: CronExpression</a></th></tr>
-<tr><th scope="row"><a href="https://docs.spring.io/spring-framework/reference/integration/scheduling.html">Spring Framework reference: Task execution and scheduling, cron expressions</a></th></tr>
-<tr><th scope="row"><a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/support/CronExpression.html">Spring Framework API: CronExpression</a></th></tr>
-<tr><th scope="row"><a href="https://docs.uipath.com/orchestrator/automation-cloud/latest/user-guide/using-cron-expressions">UiPath Orchestrator: Using cron expressions</a></th></tr>
-<tr><th scope="row"><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types</a></th></tr>
-<tr><th scope="row"><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-scheduled-rule-pattern.html">Amazon EventBridge: Schedule patterns for scheduled rules (legacy)</a></th></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>Each of the 9 dialects is tested on its fields, names, weekday numbering, macros, ? and L, W and # rules, and the day-field rule, with Debian's leading-* exception. The clock changes are checked against the IANA rules, each scheduler's clock-change rule is checked in a gap and a repeated hour, and conversion and build are checked, including the refusals with reasons.</p>
-<p>What its test suite asserts:</p>
-<ul><li>Each of the 9 dialects is pinned to its documentation as read on 2026-11-08: fields, weekday numbering, names, @ strings, ?, L, W and #, and the day-field rule with Debian's leading-* exception.</li><li>Time zone gaps and repeated hours, the clock changes of a year and each scheduler's clock-change rule are checked, with silent docs flagged.</li><li>The plain-English description, conversion to every scheduler with reasons when one cannot express a schedule, and build are checked against fixed answers.</li></ul>
+<p>The clock changes are checked against the IANA rules, each scheduler's clock-change rule is checked in a gap and a repeated hour, and conversion and build are checked, including the refusals with reasons.</p>
+<details class="xpand"><summary>What its test suite asserts (3)</summary><div class="xp-in"><ul><li>Each of the 9 dialects is pinned to its documentation as read on 2026-11-08: fields, weekday numbering, names, @ strings, ?, L, W and #, and the day-field rule with Debian's leading-* exception.</li><li>Time zone gaps and repeated hours, the clock changes of a year and each scheduler's clock-change rule are checked, with silent docs flagged.</li><li>The plain-English description, conversion to every scheduler with reasons when one cannot express a schedule, and build are checked against fixed answers.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/cron/">Open the Cron expression checker and next run times tool</a>.</p>
 </section>

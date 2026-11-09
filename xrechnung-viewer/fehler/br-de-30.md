@@ -1,6 +1,6 @@
 # BR-DE-30: Lastschrift ohne Gläubiger-Identifikationsnummer (BT-90)
 
-BR-DE-30 bedeutet: Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Bank assigned creditor identifier" BT-90 übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die Gläubiger-ID an: in UBL als cac:PartyIdentification/cbc:ID mit schemeID="SEPA" beim Verkäufer oder Zahlungsempfänger, in CII als ram:CreditorReferenceID.
+BR-DE-30 bedeutet: Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Bank assigned creditor identifier" BT-90 übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Die Rechnung enthält ein Lastschriftmandat (BG-19), aber keine Gläubiger-ID de
 
 ## So beheben Sie den Fehler
 
-Geben Sie die Gläubiger-ID an: in UBL als cac:PartyIdentification/cbc:ID mit schemeID="SEPA" beim Verkäufer oder Zahlungsempfänger, in CII als ram:CreditorReferenceID.
+Geben Sie die Gläubiger-ID an: in UBL als `cac:PartyIdentification/cbc:ID` mit schemeID="SEPA" beim Verkäufer oder Zahlungsempfänger, in CII als `ram:CreditorReferenceID`.
 
 ## Geprüftes Beispiel
 

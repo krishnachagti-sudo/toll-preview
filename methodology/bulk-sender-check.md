@@ -2,9 +2,48 @@
 
 The message is checked 14 ways (SPF, DKIM, DKIM key length, DMARC record, alignment and result, reverse DNS, TLS, RFC 5322 format, one-click unsubscribe and more), and each of 3 providers' rules takes the worst result of the checks it maps to. Gmail requires a DKIM key of at least 1024 bits, and spam rate and unsubscribe time cannot be judged from one message.
 
+## How does it work?
+
+1. The message is split into headers and body; line endings become CRLF, folded headers are joined, and an mbox "From " separator line is skipped. More than 600 header fields, or none, is refused.
+2. The topmost Authentication-Results header is taken as the receiver's, since each receiving server adds its own above the message.
+3. With DNS on, the first 5 DKIM signatures have their keys looked up at selector.\_domainkey.domain, DMARC is looked up under \_dmarc for the From domain and then for its organizational domain, the sending IP's PTR names are looked up and up to 3 are checked to resolve back to it, and SPF is re-run for the MAIL FROM domain and the sending IP with the SPF lookup counter's engine. One message may make at most 30 queries in 10 seconds, on public resolvers; private and internal names are never queried.
+4. SPF passes when the receiver recorded spf=pass, or, with no receiver result, when the re-check passes.
+5. Each DKIM signature is verified under RFC 6376: the tags are checked (v=1, a known algorithm, From signed, i= inside d=), the key record is read, and the signature and body hash are checked with rsa-sha256, rsa-sha1 or ed25519-sha256, simple or relaxed.
+
+> Steps 6 to 11, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/bulk-sender-check/#what) below.
+
+## What does it not cover?
+
+- Spam rate and how fast unsubscribes are handled cannot be seen in one message, so those rules are marked not checkable.
+- Providers also judge reputation and content, so a message that meets every rule may still not reach the inbox.
+- It never calls the unsubscribe URL: a POST to it would unsubscribe the recipient.
+- The body link is found only by the English words unsubscribe, opt out and manage preferences.
+- The message is processed in memory and not stored.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 11 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The provider rules and the RFCs were read on 2026-11-08, and the Public Suffix List is version 2026-11-06. The provider pages are checked once a day for changes, and the rules change only by hand, with the tests that pin them. DNS answers are read live for each check unless DNS is turned off.
+- [Tested: 4 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests sign real messages and check them on a recorded DNS zone: the three worked examples with their verdicts pinned, header parsing, Gmail, Outlook.com and Yahoo Authentication-Results, organizational domains and alignment, RSA and Ed25519 DKIM with changed headers and bodies, key length, PTR and TLS, DNS turned off, no query for internal names, RFC 8058 one-click, the body link, RFC 5322 format, Gmail From:, and that every rule is sourced, dated and maps to a check the engine runs.
+
+- [Google: Email sender guidelines](https://support.google.com/a/answer/81126?hl=en), see the document, read 2026-11-08
+- [Google: Email sender guidelines FAQ](https://support.google.com/a/answer/14229414?hl=en), see the document, read 2026-11-08
+- [Google Workspace: Gmail SMTP errors and codes (last updated 2026-10-26)](https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en), see the document, read 2026-11-08
+- [Yahoo Sender Hub: Sender Requirements & Recommendations](https://senders.yahooinc.com/best-practices/), see the document, read 2026-11-08
+- [Outlook.com Postmaster: Policies, Practices, and Guidelines](https://substrate.office.com/ip-domain-management-snds/postmaster/Policies), see the document, read 2026-11-08
+- [Microsoft: Outlook's new requirements for high-volume senders (updated Apr 30, 2025)](https://techcommunity.microsoft.com/blog/microsoftdefenderforoffice365blog/strengthening-email-ecosystem-outlook%E2%80%99s-new-requirements-for-high%E2%80%90volume-senders/4399730), see the document, read 2026-11-08
+- [RFC 5322: Internet Message Format](https://www.rfc-editor.org/rfc/rfc5322), see the document, read 2026-11-08
+- [RFC 6376: DomainKeys Identified Mail (DKIM) Signatures](https://www.rfc-editor.org/rfc/rfc6376), see the document, read 2026-11-08
+- [RFC 7489: Domain-based Message Authentication, Reporting, and Conformance (DMARC)](https://www.rfc-editor.org/rfc/rfc7489), see the document, read 2026-11-08
+- [RFC 8058: Signaling One-Click Functionality for List Email Headers](https://www.rfc-editor.org/rfc/rfc8058), see the document, read 2026-11-08
+- [Public Suffix List (Mozilla Public License 2.0)](https://publicsuffix.org/list/public_suffix_list.dat), version 2026-11-06, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the bulk sender check compute?
 
 Given one raw message (an .eml file or the headers and body pasted as text), the tool reads the receiver's Authentication-Results, verifies each DKIM signature itself, looks up the DKIM keys, the DMARC record and the sending IP's reverse DNS, and re-checks SPF. It turns these into 16 checks, each with a status, a reason and a fix, and grades them against the rules Gmail, Yahoo and Microsoft Outlook.com publish for all senders and for bulk senders (Gmail 7 for all senders and 13 for bulk senders, Yahoo 5 for all senders and 10 for bulk senders, Microsoft (Outlook.com) 2 for all senders and 4 for bulk senders). Every rule is quoted from the provider's page with its source and the date it was read.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -27,7 +66,7 @@ Outputs:
 - message: the From and MAIL FROM domains, the organizational domain, the sending IP and where it was found, the receiver's results and the delivery hop
 - notes, dns (the resolver, the number of queries and when) and rulesReadOn
 
-## How is it calculated, step by step?
+**Every step in full (11) and the rules**
 
 1. The message is split into headers and body; line endings become CRLF, folded headers are joined, and an mbox "From " separator line is skipped. More than 600 header fields, or none, is refused.
 2. The topmost Authentication-Results header is taken as the receiver's, since each receiving server adds its own above the message. The sending IP is the Received-SPF client-ip, then the IP in the receiver's results, then the first public IP in a Received header; the delivery hop is the Received header with that IP. The envelope sender (MAIL FROM) is the receiver's smtp.mailfrom, else Return-Path.
@@ -55,6 +94,8 @@ The organizational domain is the public suffix plus one label, by the Public Suf
 
 ## Which edge cases does it handle?
 
+**The edge cases (7)**
+
 - A copy with no Authentication-Results (from a Sent folder, or before delivery) is checked with our own DKIM verification and today's DNS, and a note says so.
 - When the receiver verified a DKIM signature but our check of the pasted copy fails, the receiver's result is used and the summary says the copy was probably changed after delivery.
 - A DMARC record found at the organizational domain covers a subdomain From: and is reported as found there.
@@ -69,13 +110,6 @@ The organizational domain is the public suffix plus one label, by the Public Suf
 
 **A compliant newsletter received by Gmail**
 
-```json
-{
-  "op": "sample",
-  "id": "compliant"
-}
-```
-
 A compliant newsletter received by Gmail
 
 | Result | Value |
@@ -87,14 +121,18 @@ A compliant newsletter received by Gmail
 | DKIM key | 2048 bits |
 | DNS | example zone (documentation domains), recorded 2026-11-08, 5 queries |
 
-**A promotion received by Outlook.com with no one-click unsubscribe**
+**The input**
 
 ```json
 {
   "op": "sample",
-  "id": "one-click-missing"
+  "id": "compliant"
 }
 ```
+
+**More worked examples (2)**
+
+**A promotion received by Outlook.com with no one-click unsubscribe**
 
 A promotion received by Outlook.com with no one-click unsubscribe
 
@@ -107,14 +145,16 @@ A promotion received by Outlook.com with no one-click unsubscribe
 | DKIM key | 1024 bits |
 | DNS | example zone (documentation domains), recorded 2026-11-08, 5 queries |
 
-**SPF and DKIM pass but DMARC fails because nothing aligns with the From: domain**
+**The input**
 
 ```json
 {
   "op": "sample",
-  "id": "not-aligned"
+  "id": "one-click-missing"
 }
 ```
+
+**SPF and DKIM pass but DMARC fails because nothing aligns with the From: domain**
 
 SPF and DKIM pass but DMARC fails because nothing aligns with the From: domain
 
@@ -127,55 +167,18 @@ SPF and DKIM pass but DMARC fails because nothing aligns with the From: domain
 | DKIM key | 2048 bits |
 | DNS | example zone (documentation domains), recorded 2026-11-08, 6 queries |
 
-## What does it not do?
+**The input**
 
-- Spam rate and how fast unsubscribes are handled cannot be seen in one message, so those rules are marked not checkable.
-- Providers also judge reputation and content, so a message that meets every rule may still not reach the inbox.
-- It never calls the unsubscribe URL: a POST to it would unsubscribe the recipient.
-- The body link is found only by the English words unsubscribe, opt out and manage preferences.
-- The message is processed in memory and not stored.
-
-## Where does the data come from, and how fresh is it?
-
-The provider rules and the RFCs were read on 2026-11-08, and the Public Suffix List is version 2026-11-06. The provider pages are checked once a day for changes, and the rules change only by hand, with the tests that pin them. DNS answers are read live for each check unless DNS is turned off.
-
-- [Google: Email sender guidelines](https://support.google.com/a/answer/81126?hl=en)
-- [Google: Email sender guidelines FAQ](https://support.google.com/a/answer/14229414?hl=en)
-- [Google Workspace: Gmail SMTP errors and codes (last updated 2026-10-26)](https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en)
-- [Yahoo Sender Hub: Sender Requirements & Recommendations](https://senders.yahooinc.com/best-practices/)
-- [Outlook.com Postmaster: Policies, Practices, and Guidelines](https://substrate.office.com/ip-domain-management-snds/postmaster/Policies)
-- [Microsoft: Outlook's new requirements for high-volume senders (updated Apr 30, 2025)](https://techcommunity.microsoft.com/blog/microsoftdefenderforoffice365blog/strengthening-email-ecosystem-outlook%E2%80%99s-new-requirements-for-high%E2%80%90volume-senders/4399730)
-- [RFC 5322: Internet Message Format](https://www.rfc-editor.org/rfc/rfc5322)
-- [RFC 6376: DomainKeys Identified Mail (DKIM) Signatures](https://www.rfc-editor.org/rfc/rfc6376)
-- [RFC 7489: Domain-based Message Authentication, Reporting, and Conformance (DMARC)](https://www.rfc-editor.org/rfc/rfc7489)
-- [RFC 8058: Signaling One-Click Functionality for List Email Headers](https://www.rfc-editor.org/rfc/rfc8058)
-- [Public Suffix List (Mozilla Public License 2.0)](https://publicsuffix.org/list/public_suffix_list.dat)
-
-The provider rules and the RFCs were read on 2026-11-08, and the Public Suffix List is version 2026-11-06. The provider pages are checked once a day for changes, and the rules change only by hand, with the tests that pin them. DNS answers are read live for each check unless DNS is turned off.
-
-Bulk sender check: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Google: Email sender guidelines](https://support.google.com/a/answer/81126?hl=en) | see the document | 2026-11-08 |
-| [Google: Email sender guidelines FAQ](https://support.google.com/a/answer/14229414?hl=en) | see the document | 2026-11-08 |
-| [Google Workspace: Gmail SMTP errors and codes (last updated 2026-10-26)](https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en) | see the document | 2026-11-08 |
-| [Yahoo Sender Hub: Sender Requirements & Recommendations](https://senders.yahooinc.com/best-practices/) | see the document | 2026-11-08 |
-| [Outlook.com Postmaster: Policies, Practices, and Guidelines](https://substrate.office.com/ip-domain-management-snds/postmaster/Policies) | see the document | 2026-11-08 |
-| [Microsoft: Outlook's new requirements for high-volume senders (updated Apr 30, 2025)](https://techcommunity.microsoft.com/blog/microsoftdefenderforoffice365blog/strengthening-email-ecosystem-outlook%E2%80%99s-new-requirements-for-high%E2%80%90volume-senders/4399730) | see the document | 2026-11-08 |
-| [RFC 5322: Internet Message Format](https://www.rfc-editor.org/rfc/rfc5322) | see the document | 2026-11-08 |
-| [RFC 6376: DomainKeys Identified Mail (DKIM) Signatures](https://www.rfc-editor.org/rfc/rfc6376) | see the document | 2026-11-08 |
-| [RFC 7489: Domain-based Message Authentication, Reporting, and Conformance (DMARC)](https://www.rfc-editor.org/rfc/rfc7489) | see the document | 2026-11-08 |
-| [RFC 8058: Signaling One-Click Functionality for List Email Headers](https://www.rfc-editor.org/rfc/rfc8058) | see the document | 2026-11-08 |
-| [Public Suffix List (Mozilla Public License 2.0)](https://publicsuffix.org/list/public_suffix_list.dat) | version 2026-11-06 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "sample",
+  "id": "not-aligned"
+}
+```
 
 ## How is it tested?
 
-The tests sign real messages and check them on a recorded DNS zone: the three worked examples with their verdicts pinned, header parsing, Gmail, Outlook.com and Yahoo Authentication-Results, organizational domains and alignment, RSA and Ed25519 DKIM with changed headers and bodies, key length, PTR and TLS, DNS turned off, no query for internal names, RFC 8058 one-click, the body link, RFC 5322 format, Gmail From:, and that every rule is sourced, dated and maps to a check the engine runs.
-
-What its test suite asserts:
+**What its test suite asserts (4)**
 
 - The three worked examples are real DKIM-signed messages checked on a recorded DNS zone, with their answers and verdicts pinned.
 - RSA and Ed25519 DKIM verify, and a changed header or body fails; key length, RFC 7489 alignment with organizational domains from the Public Suffix List, PTR, TLS, RFC 5322 format and Gmail From: impersonation are checked.

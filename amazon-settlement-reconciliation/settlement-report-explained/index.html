@@ -74,11 +74,12 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the reconciler</h2><p class="muted">The made-up report below opens in the reconciler and is checked in your browser, free. Swap in your own settlement report there.</p><form method="get" action="/toll-preview/amazon-settlement-reconciliation/" class="cp-tool-form"><input type="hidden" name="sample" value="us"><input type="hidden" name="ledger" value="quickbooks-online"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this settlement in the reconciler</button></form><p class="small"><a href="/toll-preview/amazon-settlement-reconciliation/?sample=us&amp;ledger=quickbooks-online">Open this example in the reconciler</a></p></aside>
 <section>
 <h2 id="columns">The 24 columns</h2>
 <p>The column names and their order are Amazon's (GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2, a tab-delimited flat file). Amazon does not describe each column, so the table shows what each holds in the made-up sample and what the reconciler does with it.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Flat File V2 settlement report columns, with the sample's values</caption><thead><tr><th scope="col">Column</th><th scope="col" class="r num">#</th><th scope="col">Summary row</th><th scope="col">An order row</th><th scope="col">Used for</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Flat File V2 settlement report columns, with the sample's values</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Column</th><th scope="col" class="r num">#</th><th scope="col">Summary row</th><th scope="col">An order row</th><th scope="col">Used for</th></tr></thead><tbody>
 <tr><th scope="row">settlement-id</th><td class="r num">1</td><td>24816093571</td><td>24816093571</td><td>Groups the rows into settlements</td></tr>
 <tr><th scope="row">settlement-start-date</th><td class="r num">2</td><td>2026-10-24 07:00:00 UTC</td><td>(blank)</td><td>The period, shown with the answer</td></tr>
 <tr><th scope="row">settlement-end-date</th><td class="r num">3</td><td>2026-11-07 07:00:00 UTC</td><td>(blank)</td><td>The last part's journal date</td></tr>
@@ -103,7 +104,7 @@
 <tr><th scope="row">sku</th><td class="r num">22</td><td>(blank)</td><td>MUG-BLUE</td><td>Shown in the row file</td></tr>
 <tr><th scope="row">quantity-purchased</th><td class="r num">23</td><td>(blank)</td><td>1</td><td>Kept as written</td></tr>
 <tr><th scope="row">promotion-id</th><td class="r num">24</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="rows">How the rows work</h2>
@@ -111,7 +112,7 @@
 </section>
 <section>
 <h2 id="values">The sample, by line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Every amount-type and amount-description in the sample</caption><thead><tr><th scope="col">Amount type / description</th><th scope="col">Transaction type</th><th scope="col" class="r num">Rows</th><th scope="col" class="r num">Total</th><th scope="col">Booked to</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Every amount-type and amount-description in the sample</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Amount type / description</th><th scope="col">Transaction type</th><th scope="col" class="r num">Rows</th><th scope="col" class="r num">Total</th><th scope="col">Booked to</th></tr></thead><tbody>
 <tr><th scope="row">ItemPrice / Principal</th><td>Order</td><td class="r num">5</td><td class="r num">$354.94</td><td>Product sales</td></tr>
 <tr><th scope="row">Promotion / Principal</th><td>Order</td><td class="r num">1</td><td class="r num">-$5.00</td><td>Promotions</td></tr>
 <tr><th scope="row">ItemPrice / Principal</th><td>Refund</td><td class="r num">1</td><td class="r num">-$39.99</td><td>Refunds</td></tr>
@@ -128,7 +129,7 @@
 <tr><th scope="row">FBA Inventory Reimbursement / WAREHOUSE_DAMAGE</th><td>other-transaction</td><td class="r num">1</td><td class="r num">$18.50</td><td>Reimbursements</td></tr>
 <tr><th scope="row">other-transaction / Previous Reserve Amount Balance</th><td>other-transaction</td><td class="r num">1</td><td class="r num">$120.00</td><td>Reserve held and released</td></tr>
 <tr><th scope="row">other-transaction / Current Reserve Amount</th><td>other-transaction</td><td class="r num">1</td><td class="r num">-$95.00</td><td>Reserve held and released</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="download">Getting the report</h2>
@@ -136,7 +137,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://developer-docs.amazon.com/sp-api/docs/report-type-values-settlement">Amazon SP-API: Settlement Reports (read November 8, 2026)</a></li><li><a href="https://developer-docs.amazon.com/sp-api/changelog/update-deprecation-of-two-payment-settlement-report-types">Amazon SP-API changelog: Deprecation of two payment settlement report types (read November 8, 2026)</a></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/sp-api-deprecations">Amazon SP-API: SP-API Deprecation Schedule (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G14921">Seller Central Help: How do I read my Payments report? (read November 8, 2026)</a></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/get-latest-transactions">Amazon SP-API: Get the latest transactions (breakdownType) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://developer-docs.amazon.com/sp-api/docs/report-type-values-settlement">Amazon SP-API: Settlement Reports (read November 8, 2026)</a><span class="src-m">developer-docs.amazon.com</span></li><li><a href="https://developer-docs.amazon.com/sp-api/changelog/update-deprecation-of-two-payment-settlement-report-types">Amazon SP-API changelog: Deprecation of two payment settlement report types (read November 8, 2026)</a><span class="src-m">developer-docs.amazon.com</span></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/sp-api-deprecations">Amazon SP-API: SP-API Deprecation Schedule (read November 8, 2026)</a><span class="src-m">developer-docs.amazon.com</span></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G14921">Seller Central Help: How do I read my Payments report? (read November 8, 2026)</a><span class="src-m">sellercentral.amazon.com</span></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/get-latest-transactions">Amazon SP-API: Get the latest transactions (breakdownType) (read November 8, 2026)</a><span class="src-m">developer-docs.amazon.com</span></li></ul>
 <p class="cp-note">Not accounting or tax advice: this is arithmetic on Amazon's own settlement file. The sample reports are made up; their amount-type and amount-description values are illustrative, and your file's own values are read as written.</p>
 </section>
 

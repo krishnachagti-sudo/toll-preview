@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Character</th><th scope="col">Name</th><th scope="col">Write</th></tr></thead><tbody>
 <tr><th scope="row"><code>&amp;</code></th><td>Ampersand</td><td><code>&amp;amp;</code></td></tr>
 <tr><th scope="row"><code>'</code></th><td>Single quote</td><td><code>&amp;apos;</code></td></tr>
@@ -81,7 +82,7 @@
 <tr><th scope="row"><code>&gt;</code></th><td>Greater than</td><td><code>&amp;gt;</code></td></tr>
 <tr><th scope="row"><code>&lt;</code></th><td>Less than</td><td><code>&amp;lt;</code></td></tr>
 </tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>URLs as typed, and as they belong inside &lt;loc&gt;</caption><thead><tr><th scope="col">As typed</th><th scope="col">Inside &lt;loc&gt;</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">URLs as typed, and as they belong inside &lt;loc&gt;</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">As typed</th><th scope="col">Inside &lt;loc&gt;</th></tr></thead><tbody>
 <tr><th scope="row"><code>https://www.example.com/products?item=12&amp;desc=vacation</code></th><td><code>https://www.example.com/products?item=12&amp;amp;desc=vacation</code></td></tr>
 <tr><th scope="row"><code>https://www.example.com/ümlat.php&amp;q=name</code></th><td><code>https://www.example.com/%C3%BCmlat.php&amp;amp;q=name</code></td></tr>
 <tr><th scope="row"><code>https://www.example.com/red shoes/</code></th><td><code>https://www.example.com/red%20shoes/</code></td></tr>
@@ -89,10 +90,10 @@
 <tr><th scope="row"><code>https://www.example.com/search?q=&quot;tea&quot;</code></th><td><code>https://www.example.com/search?q=%22tea%22</code></td></tr>
 <tr><th scope="row"><code>https://www.example.com/a?b=1&amp;c=2&amp;d=3</code></th><td><code>https://www.example.com/a?b=1&amp;amp;c=2&amp;amp;d=3</code></td></tr>
 <tr><th scope="row"><code>https://www.example.com/日本/</code></th><td><code>https://www.example.com/%E6%97%A5%E6%9C%AC/</code></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Worked out by the validator: percent-encoding as a browser does it, then the five entities.</p>
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check the escaping in your sitemap</h2><p class="muted">Bare &amp; and unknown entities are reported with line numbers.</p><form method="get" action="/toll-preview/sitemap-validator/" class="cp-tool-form"><div class="field"><label for="tf-url">Sitemap address</label><input type="url" id="tf-url" name="url" value="https://www.example.com/sitemap.xml"></div><input type="hidden" name="live" value="10"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Validate this sitemap</button></form><p class="small"><a href="/toll-preview/sitemap-validator/?url=https%3A%2F%2Fwww.example.com%2Fsitemap.xml&amp;live=10">Open the validator with this address</a></p></aside>
-<ul class="cp-sources"><li><a href="https://www.sitemaps.org/protocol.html">sitemaps.org: Sitemaps XML format (protocol) (updated November 21, 2016), read November 8, 2026</a></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">Google Search Central: Build and submit a sitemap (updated July 8, 2026), read November 8, 2026</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.sitemaps.org/protocol.html">sitemaps.org: Sitemaps XML format (protocol) (updated November 21, 2016), read November 8, 2026</a><span class="src-m">sitemaps.org</span></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">Google Search Central: Build and submit a sitemap (updated July 8, 2026), read November 8, 2026</a><span class="src-m">developers.google.com</span></li></ul>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Should &amp; in a sitemap URL be &amp;amp;?</h3></summary><div class="xp-in"><p>Yes. Inside the XML, &amp; is written &amp;amp;. The URL itself is unchanged: a crawler reads &amp;amp; back as &amp;.</p></div></details><details class="xpand"><summary><h3>What encoding must a sitemap use?</h3></summary><div class="xp-in"><p>UTF-8 (sitemaps.org; Google).</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/sitemap-validator/sitemap-parsing-error/">Sitemap parsing error</a></li></ul></section>

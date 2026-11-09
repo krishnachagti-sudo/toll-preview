@@ -15,6 +15,13 @@ Changes to tool data and rules
 | November 3, 2026 | [MACRS depreciation schedule](https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/) | Added the MACRS percentage tables from IRS Publication 946 (2025), Appendix A, and the 2026 Section 179 limits: $2,560,000 expensing limit, phase-out from $4,090,000, $32,000 cap for heavy SUVs. | [IRS Rev. Proc. 2025-32](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf) |
 | November 3, 2026 | [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/) | Added the print checks and format rules from DENSO WAVE (quiet zone of four modules, module size, versions, error correction) and the WiFi, vCard and mailto payload formats. | [DENSO WAVE: Points for using QR Code](https://www.qrcode.com/en/howto/code.html) |
 | November 2, 2026 | [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/) | Added three more official sources beside the ECB default: the US Treasury reporting rates of exchange, the IRS yearly average rates and the HMRC monthly rates. | [U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) |
+
+**Earlier changes, October 30, 2026 to November 1, 2026**
+
+Changes to tool data and rules, earlier
+
+| Date | Tool | What changed | Source |
+| --- | --- | --- | --- |
 | November 1, 2026 | [Trucker per diem worksheet](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/) | Added the IRS transportation industry per diem rates from Notice 2018-77 through Notice 2026-60 (from October 1, 2026: $80 a day in the continental US, $86 outside it), and the 100% meals deduction for 2021 and 2022. | [IRS Notice 2026-60](https://www.irs.gov/pub/irs-drop/n-26-60.pdf) |
 | November 1, 2026 | [Mileage reimbursement and IRS mileage log](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/) | Added the IRS standard mileage rates by year, including the 2026 change (72.5 cents a mile to June 30, 76 cents from July 1), and the GSA rates for privately owned vehicles. | [IRS Announcement 2026-11](https://www.irs.gov/irb/2026-29_IRB) |
 | November 1, 2026 | [1099 threshold tracker](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/) | Added the Form 1099-NEC and 1099-MISC reporting lines for 2025 payments ($600) and 2026 payments ($2,000), the information return penalty amounts, the Combined Federal/State Filing states, California's own rules and the IRIS CSV layout. | [IRS: Instructions for Forms 1099-MISC and 1099-NEC](https://www.irs.gov/instructions/i1099mec) |

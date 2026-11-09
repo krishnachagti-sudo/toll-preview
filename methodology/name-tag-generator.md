@@ -2,9 +2,44 @@
 
 Each badge is placed at the label outline measured from the blank PDF template on its avery.com page, for 6 templates (5395, 5895, 5390, 5392, 5146, 5147) and the numbers Avery lists as compatible. The name is set at the largest size that fits inside a 0.12 in margin, and the sheets needed are the labels used divided by the labels per sheet, rounded up.
 
+## How does it work?
+
+1. The product number is looked up among the templates, then among the numbers Avery lists as compatible.
+2. The CSV is read with its delimiter found from the heading line (tab, semicolon or comma), quotes and a byte order mark handled, and line numbers kept.
+3. Each guest is tidied: spaces collapsed, a full name split into first and last, "Last, First" reversed, and a name typed all in capitals or all in lower case put in title case (McDonald, O'Neil, Mary-Jane, van and de kept lower).
+4. Repeats are found by first name, last name and organization with case ignored, and listed or removed.
+5. Sheets: the labels used are the start label less one, plus the guests, plus the spares; the sheets are that divided by the labels per sheet, rounded up, and the rest of the last sheet is blank.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/name-tag-generator/#what) below.
+
+## What does it not cover?
+
+- It prints only the 6 badge templates listed (5395, 5895, 5390, 5392, 5146, 5147) and the numbers Avery lists as compatible with them.
+- It uses the standard PDF fonts, so scripts outside Windows-1252, such as Chinese or Polish Ł, are printed with "?" or without the accent and flagged.
+- It cannot correct a printer that scales the page; print at 100% and use the alignment test.
+- Guest lists are used to make the badges and are not kept.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 6 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every template was read from its avery.com page, and its label outlines measured from the blank PDF template that page offers, on 2026-11-08. The data changes only by hand, with the tests that pin each template.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Each template is pinned to its avery.com page and blank PDF template: size, count, first and last label positions and compatible numbers. The tests check that every line of every badge stays 0.12 in inside the label in every style, the sheet maths at its boundaries, name case fixing, CSV reading, and that the PDFs are valid and the same bytes every time.
+
+- [Avery template 5395: Adhesive Name Badges](https://www.avery.com/templates/5395), blank PDF template U-0121-01, read 2026-11-08
+- [Avery template 5895: Adhesive Name Badges](https://www.avery.com/templates/5895), blank PDF template U-0086-01, read 2026-11-08
+- [Avery template 5390: Name Badge Inserts](https://www.avery.com/templates/5390), blank PDF template U-0119-01, read 2026-11-08
+- [Avery template 5392: Name Badges Insert Refills](https://www.avery.com/templates/5392), blank PDF template U-0114-01, read 2026-11-08
+- [Avery template 5146: Print or Write Name Badge Labels](https://www.avery.com/templates/5146), blank PDF template U-0236-01, read 2026-11-08
+- [Avery template 5147: Print or Write Name Badge Labels](https://www.avery.com/templates/5147), blank PDF template U-0237-01, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the name tag generator compute?
 
-Given a guest list as CSV or rows and an Avery product number, the tool finds the badge template, reads the names, tidies them and lays out one badge per guest at that template's exact label positions, each line as large as it fits. It says how many sheets the list needs and what is left blank, and returns a badge PDF and a check-in list for the door. It also prints single walk-in badges on a part-used sheet and a free alignment test page.
+Given a guest list as CSV or rows and an Avery product number, the tool finds the badge template, reads the names, tidies them and lays out one badge per guest at that template's exact label positions, each line as large as it fits.
+
+**In detail: operations, inputs and outputs**
+
+It says how many sheets the list needs and what is left blank, and returns a badge PDF and a check-in list for the door. It also prints single walk-in badges on a part-used sheet and a free alignment test page.
 
 Operations (the op field):
 
@@ -33,7 +68,7 @@ Outputs:
 - flagged, duplicates, skipped, columnsUsed, columnsIgnored: what to check before printing
 - pdf and checkIn (batch and walkin), or the alignment test pdf (test)
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The product number is looked up among the templates, then among the numbers Avery lists as compatible. A number not found is refused with the list of templates.
 2. The CSV is read with its delimiter found from the heading line (tab, semicolon or comma), quotes and a byte order mark handled, and line numbers kept. Headings are matched to fields with case, spaces and punctuation ignored (First name, Surname, Company, Job title, Pronouns, Ticket type and many more). A list with no name column is refused.
@@ -54,6 +89,8 @@ Badges land on the labels only when printed at 100% (Actual size). The alignment
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A start label past the labels on a sheet is refused: Avery 5392 has 6 labels, so startAt is 1 to 6.
 - Walk-ins that would run off the sheet are refused with the last label they could start at.
 - A very long first name shrinks, then wraps, then is cut, and the badge is flagged so it can be checked.
@@ -67,15 +104,6 @@ Badges land on the labels only when printed at 100% (Actual size). The alignment
 
 **Ten RSVP lines on Avery 5395: sheets, a duplicate and a long name fitted**
 
-```json
-{
-  "op": "plan",
-  "product": "5395",
-  "event": "Spring Volunteer Social",
-  "csv": "First Name,Last Name,Company,Job Title,Pronouns,Ticket Type\r\nAna,Ruiz,Lakeside Clinic,Practice Manager,she/her,Speaker\r\nBEN,OKAFOR,Northgate Depot,Operations Lead,,Attendee\r\nChloé,Dubois,Riverside Bank,Analyst,,Attendee\r\nMaximiliana,Featherstonehaugh-Worthington,Acme Supply,Regional Director of Partnerships,,Sponsor\r\ndev,patel,,Volunteer,he/him,Volunteer\r\n,,,,,\r\nGrace,O'Neil,County Library,Librarian,,Attendee\r\nAna,Ruiz,Lakeside Clinic,Practice Manager,she/her,Speaker\r\nSean,McDonald,Acme Supply,Buyer,,Attendee\r\nLi,Wei,Northgate Depot,Engineer,,Attendee"
-}
-```
-
 Ten RSVP lines on Avery 5395: sheets, a duplicate and a long name fitted
 
 | Result | Value |
@@ -88,7 +116,32 @@ Ten RSVP lines on Avery 5395: sheets, a duplicate and a long name fitted
 | duplicates | row 9 repeats row 2 |
 | first badge | Chloé Dubois, sheet 1, label 1 |
 
+**The input**
+
+```json
+{
+  "op": "plan",
+  "product": "5395",
+  "event": "Spring Volunteer Social",
+  "csv": "First Name,Last Name,Company,Job Title,Pronouns,Ticket Type\r\nAna,Ruiz,Lakeside Clinic,Practice Manager,she/her,Speaker\r\nBEN,OKAFOR,Northgate Depot,Operations Lead,,Attendee\r\nChloé,Dubois,Riverside Bank,Analyst,,Attendee\r\nMaximiliana,Featherstonehaugh-Worthington,Acme Supply,Regional Director of Partnerships,,Sponsor\r\ndev,patel,,Volunteer,he/him,Volunteer\r\n,,,,,\r\nGrace,O'Neil,County Library,Librarian,,Attendee\r\nAna,Ruiz,Lakeside Clinic,Practice Manager,she/her,Speaker\r\nSean,McDonald,Acme Supply,Buyer,,Attendee\r\nLi,Wei,Northgate Depot,Engineer,,Attendee"
+}
+```
+
+**More worked examples (3)**
+
 **The same list on Avery 8395 from label 3 of a used sheet, duplicates removed**
+
+The same list on Avery 8395 from label 3 of a used sheet, duplicates removed
+
+| Result | Value |
+| --- | --- |
+| answer | 8 guests fit on 2 sheets of Avery 8395 (template 5395, 8 per sheet, starting at label 3); the last sheet has 6 blank labels for walk-ins. |
+| template | 5395 |
+| guests | 8 |
+| badge PDF | name-tags-spring-volunteer-social-avery-5395.pdf |
+| check-in list | check-in-spring-volunteer-social.pdf |
+
+**The input**
 
 ```json
 {
@@ -101,17 +154,16 @@ Ten RSVP lines on Avery 5395: sheets, a duplicate and a long name fitted
 }
 ```
 
-The same list on Avery 8395 from label 3 of a used sheet, duplicates removed
+**One walk-in badge on label 7 of a part-used sheet**
+
+One walk-in badge on label 7 of a part-used sheet
 
 | Result | Value |
 | --- | --- |
-| answer | 8 guests fit on 2 sheets of Avery 8395 (template 5395, 8 per sheet, starting at label 3); the last sheet has 6 blank labels for walk-ins. |
-| template | 5395 |
-| guests | 8 |
-| badge PDF | name-tags-spring-volunteer-social-avery-5395.pdf |
-| check-in list | check-in-spring-volunteer-social.pdf |
+| answer | Rosa Delgado: printed on label 7 of one Avery 5395 sheet; feed a sheet with label 7 still on it and leave the rest blank. |
+| name size | 50.25 pt |
 
-**One walk-in badge on label 7 of a part-used sheet**
+**The input**
 
 ```json
 {
@@ -129,21 +181,7 @@ The same list on Avery 8395 from label 3 of a used sheet, duplicates removed
 }
 ```
 
-One walk-in badge on label 7 of a part-used sheet
-
-| Result | Value |
-| --- | --- |
-| answer | Rosa Delgado: printed on label 7 of one Avery 5395 sheet; feed a sheet with label 7 still on it and leave the rest blank. |
-| name size | 50.25 pt |
-
 **The alignment test page for Avery 5392**
-
-```json
-{
-  "op": "test",
-  "product": "5392"
-}
-```
 
 The alignment test page for Avery 5392
 
@@ -153,44 +191,18 @@ The alignment test page for Avery 5392
 | labels outlined | 6 |
 | label size | 4 in x 3 in |
 
-## What does it not do?
+**The input**
 
-- It prints only the 6 badge templates listed (5395, 5895, 5390, 5392, 5146, 5147) and the numbers Avery lists as compatible with them.
-- It uses the standard PDF fonts, so scripts outside Windows-1252, such as Chinese or Polish Ł, are printed with "?" or without the accent and flagged.
-- It cannot correct a printer that scales the page; print at 100% and use the alignment test.
-- Guest lists are used to make the badges and are not kept.
-
-## Where does the data come from, and how fresh is it?
-
-Every template was read from its avery.com page, and its label outlines measured from the blank PDF template that page offers, on 2026-11-08. The data changes only by hand, with the tests that pin each template.
-
-- [Avery template 5395: Adhesive Name Badges (read 2026-11-08)](https://www.avery.com/templates/5395)
-- [Avery template 5895: Adhesive Name Badges (read 2026-11-08)](https://www.avery.com/templates/5895)
-- [Avery template 5390: Name Badge Inserts (read 2026-11-08)](https://www.avery.com/templates/5390)
-- [Avery template 5392: Name Badges Insert Refills (read 2026-11-08)](https://www.avery.com/templates/5392)
-- [Avery template 5146: Print or Write Name Badge Labels (read 2026-11-08)](https://www.avery.com/templates/5146)
-- [Avery template 5147: Print or Write Name Badge Labels (read 2026-11-08)](https://www.avery.com/templates/5147)
-
-Every template was read from its avery.com page, and its label outlines measured from the blank PDF template that page offers, on 2026-11-08. The data changes only by hand, with the tests that pin each template.
-
-Name tag generator: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Avery template 5395: Adhesive Name Badges](https://www.avery.com/templates/5395) | blank PDF template U-0121-01 | 2026-11-08 |
-| [Avery template 5895: Adhesive Name Badges](https://www.avery.com/templates/5895) | blank PDF template U-0086-01 | 2026-11-08 |
-| [Avery template 5390: Name Badge Inserts](https://www.avery.com/templates/5390) | blank PDF template U-0119-01 | 2026-11-08 |
-| [Avery template 5392: Name Badges Insert Refills](https://www.avery.com/templates/5392) | blank PDF template U-0114-01 | 2026-11-08 |
-| [Avery template 5146: Print or Write Name Badge Labels](https://www.avery.com/templates/5146) | blank PDF template U-0236-01 | 2026-11-08 |
-| [Avery template 5147: Print or Write Name Badge Labels](https://www.avery.com/templates/5147) | blank PDF template U-0237-01 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "test",
+  "product": "5392"
+}
+```
 
 ## How is it tested?
 
-Each template is pinned to its avery.com page and blank PDF template: size, count, first and last label positions and compatible numbers. The tests check that every line of every badge stays 0.12 in inside the label in every style, the sheet maths at its boundaries, name case fixing, CSV reading, and that the PDFs are valid and the same bytes every time.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Each of the 6 templates is pinned to its avery.com page and blank PDF template: size as sold, labels per sheet, sheet and label size, first and last label position, and compatible numbers.
 - Every line of every badge stays 0.12 inch inside its label in every style, names shrink, wrap and are cut only in that order, and the sheet maths is checked at its boundaries.

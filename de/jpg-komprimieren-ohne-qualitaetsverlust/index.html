@@ -71,9 +71,10 @@
 <h1>JPG komprimieren ohne Qualitätsverlust auf ein KB-Limit</h1>
 <p class="cp-answer">Ein JPG lässt sich nicht verlustfrei auf eine feste Größe bringen, etwas geht immer verloren. Das Werkzeug hält den Verlust klein: Bei 1.000 KB behielt unser 12-Megapixel-Foto alle Pixel (Qualität 81 %), bei 100 KB blieben 2.476 × 1.857 px bei Qualität 40 %.</p>
 
-
+<ul class="trust" aria-label="Über diese Website"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Gemacht von <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exakt, ohne KI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Amtliche Quellen, mit Datum</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Dateien, die Sie hochladen, werden nicht gespeichert</a></span></li><li class="tl2"><a href="/toll-preview/security/">Sicherheit</a><a href="/toll-preview/terms/">Bedingungen</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="lossless">Geht das ganz ohne Qualitätsverlust?</h2>
 <p>Nur wenn das Foto schon unter dem Limit liegt. Dann gibt das Werkzeug ein JPEG unverändert zurück. Sonst wird das Bild neu als JPEG gespeichert, und das verliert immer etwas. Das Werkzeug sucht dabei die höchste Qualität (höchstens 92 %), die noch unter Ihr Limit passt.</p>
@@ -85,14 +86,14 @@
 <section>
 <h2 id="results">Ein Testfoto bei sechs Limits</h2>
 <p>Dasselbe 12-Megapixel-Querformat-Foto (4.032 × 3.024 px) bei sechs Limits:</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Ergebnis des Werkzeugs für ein Foto bei sechs Limits</caption><thead><tr><th scope="col">Limit</th><th scope="col" class="r num">Neue Größe</th><th scope="col" class="r num">Pixel</th><th scope="col" class="r num">Pixel behalten</th><th scope="col" class="r num">JPEG-Qualität</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Ergebnis des Werkzeugs für ein Foto bei sechs Limits</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Limit</th><th scope="col" class="r num">Neue Größe</th><th scope="col" class="r num">Pixel</th><th scope="col" class="r num">Pixel behalten</th><th scope="col" class="r num">JPEG-Qualität</th></tr></thead><tbody>
 <tr><th scope="row">1.000 KB</th><td class="r num">916,5 KB</td><td class="r num">4.032 × 3.024 px</td><td class="r num">100 %</td><td class="r num">81 %</td></tr>
 <tr><th scope="row">500 KB</th><td class="r num">497,3 KB</td><td class="r num">4.032 × 3.024 px</td><td class="r num">100 %</td><td class="r num">65 %</td></tr>
 <tr><th scope="row">200 KB</th><td class="r num">199,1 KB</td><td class="r num">3.427 × 2.570 px</td><td class="r num">72 %</td><td class="r num">48 %</td></tr>
 <tr><th scope="row">100 KB</th><td class="r num">99,0 KB</td><td class="r num">2.476 × 1.857 px</td><td class="r num">38 %</td><td class="r num">40 %</td></tr>
 <tr><th scope="row">50 KB</th><td class="r num">49,0 KB</td><td class="r num">1.521 × 1.141 px</td><td class="r num">14 %</td><td class="r num">40 %</td></tr>
 <tr><th scope="row">20 KB</th><td class="r num">19,7 KB</td><td class="r num">794 × 595 px</td><td class="r num">4 %</td><td class="r num">38 %</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Gemessen mit dem Werkzeug in Chromium 149.0.7827.55 am 31.10.2026. Andere Browser haben eigene JPEG-Encoder, das Ergebnis kann dort um einige Prozent abweichen; es bleibt unter dem Limit.</p>
 </section>
 <section>
@@ -107,7 +108,7 @@
 <section>
 <h2 id="sources">Quellen</h2>
 <p>Die Testfotos stammen von der NASA und sind gemeinfrei. Die Ergebnisse stammen vom Werkzeug selbst, in der Testumgebung unten genannt.</p>
-<ul class="cp-sources"><li><a href="https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021">NASA, KSC-20210111-PH-JBS01_0021 gemeinfrei</a></li><li><a href="https://images.nasa.gov/details/jsc2025e068207_alt">NASA, jsc2025e068207_alt gemeinfrei</a></li><li><a href="https://images.nasa.gov/details/KSC-08pd4102">NASA, KSC-08pd4102 gemeinfrei</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021">NASA, KSC-20210111-PH-JBS01_0021 gemeinfrei</a><span class="src-m">images.nasa.gov</span></li><li><a href="https://images.nasa.gov/details/jsc2025e068207_alt">NASA, jsc2025e068207_alt gemeinfrei</a><span class="src-m">images.nasa.gov</span></li><li><a href="https://images.nasa.gov/details/KSC-08pd4102">NASA, KSC-08pd4102 gemeinfrei</a><span class="src-m">images.nasa.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Fragen</h2><details class="xpand"><summary><h3>Kann ich ein JPG auf 100 KB bringen, ohne dass man den Unterschied sieht?</h3></summary><div class="xp-in"><p>Das hängt vom Foto ab. Bei 100 KB wurde unser 12-Megapixel-Foto deutlich kleiner in Pixeln; bei 500 KB nicht. Je höher das Limit, desto weniger sichtbar.</p></div></details><details class="xpand"><summary><h3>Wie niedrig geht die JPEG-Qualität?</h3></summary><div class="xp-in"><p>Nie unter 35 %. Lieber verkleinert das Werkzeug das Bild, als schlechtere Qualität zu speichern.</p></div></details><details class="xpand"><summary><h3>Ändert sich ein Foto, das schon unter dem Limit liegt?</h3></summary><div class="xp-in"><p>Ein JPEG darunter wird unverändert zurückgegeben. Ein PNG oder WebP wird immer als JPEG gespeichert.</p></div></details></section>

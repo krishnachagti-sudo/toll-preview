@@ -4,7 +4,9 @@ Yes, with Power Query in 4 parts: `Web.Contents` sends a POST, a `Headers` recor
 
 ## Can Excel call the Endwise API?
 
-Yes, through Power Query, the data tool built into Excel (the Get Data button on the Data tab). Its `Web.Contents` function sends a `POST` with headers and a body, which is what the Endwise API needs: an `Authorization: Bearer` header and a JSON body. This page is current as of November 2026. Each call is billed to your balance, the free monthly allowance ($0.25) first.
+Yes, through Power Query, the data tool built into Excel (the Get Data button on the Data tab). Its `Web.Contents` function sends a `POST` with headers and a body, which is what the Endwise API needs: an `Authorization: Bearer` header and a JSON body. This page is current as of November 2026.
+
+Each call is billed to your balance, the free monthly allowance ($0.25) first.
 
 ## Why not use the WEBSERVICE function?
 
@@ -139,6 +141,8 @@ Each row is one call. The Idempotency-Key is built from the row's own values, so
 ## How do I avoid paying again on every refresh?
 
 A refresh runs every query in the workbook again, and each run sends its calls again. Excel can also refresh when the file opens or on a timer, if you turn those on in the connection properties. Three habits keep this cheap:
+
+**Read the rest: How do I avoid paying again on every refresh?**
 
 - **Keep the Idempotency-Key line.** If the key was already answered for the same tool, the API returns the stored answer, marks it `Idempotent-Replay: true` and charges nothing more. The same key with different input is refused with `idempotency_mismatch`, so build the key from the input, as the code does. The documentation does not say how long stored answers are kept, so use it as a safety net.
 - **Turn off automatic refresh.** Open the query's Connection Properties, go to the Usage tab, and clear "Refresh data when opening the file" and "Refresh every n minutes".

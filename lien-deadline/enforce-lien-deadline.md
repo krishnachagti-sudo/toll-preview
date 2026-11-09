@@ -1,6 +1,8 @@
 # The suit to enforce the lien
 
-A recorded lien expires unless you sue in time: 6 months after recording in Arizona and Virginia (or 60 days after completion in Virginia, if later), 8 calendar months in Washington (for a lien recorded on April 29, 2027, by December 29, 2027), 180 days in the District of Columbia, one year in Florida, Kansas and Maryland, and 2 years in Montana (A.R.S. 33-998(A); RCW 60.04.141; D.C. Code 40-303.13(a); Fla. Stat. 713.22(1); Mont. Code 71-3-562).
+A recorded lien expires unless you sue in time: 6 months after recording in Arizona and Virginia (or 60 days after completion in Virginia, if later), 8 calendar months in Washington, 180 days in the District of Columbia, one year in Florida, Kansas and Maryland, and 2 years in Montana (A.R.S. 33-998(A); RCW 60.04.141; D.C. Code 40-303.13(a); Fla. Stat. 713.22(1); Mont. Code 71-3-562).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=WA&role=sub-sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): In Washington, for a lien recorded on April 29, 2027, the suit is due by December 29, 2027.
 
 ## By state
 
@@ -11,15 +13,28 @@ The suit deadline, read November 8, 2026
 | State | Rule | Suit by | Law |
 | --- | --- | --- | --- |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/arizona/) | Within six months after the lien is recorded | December 26, 2027 | A.R.S. 33-998(A) |
-| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/district-of-columbia/) | Within 180 days after the notice of intent is recorded, and record a notice of pendency of action within 10 days of filing suit | November 23, 2027 | D.C. Code 40-303.13(a) |
-| [Florida](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/florida/) | Within 1 year after the claim of lien is recorded (60 days after service, if the owner records a notice of contest) | April 29, 2028 | Fla. Stat. 713.22(1), (2) |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/district-of-columbia/) | Within 180 days after the notice of intent is recorded… | November 23, 2027 | D.C. Code 40-303.13(a) |
+| [Florida](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/florida/) | Within 1 year after the claim of lien is recorded… | April 29, 2028 | Fla. Stat. 713.22(1), (2) |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/kansas/) | Within one year from filing the lien statement | April 29, 2028 | K.S.A. 60-1105(a) |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/maryland/) | Within one year from the day the petition to establish the lien was first filed | July 28, 2028 | Md. Code, Real Prop. 9-109 |
-| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/minnesota/) | Within one year after the date of the last item of the claim as set forth in the recorded lien statement | January 29, 2028 | Minn. Stat. 514.12, subd. 3 |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/minnesota/) | Within one year after the date of the last item… | January 29, 2028 | Minn. Stat. 514.12, subd. 3 |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/montana/) | Within 2 years from the date the lien is filed | April 29, 2029 | Mont. Code 71-3-562 |
-| [Texas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/) | Not later than the first anniversary of the last day you could file the lien affidavit (extendable to two years after filing by a recorded written agreement with the owner) | May 15, 2028 | Tex. Prop. Code 53.158(a) |
-| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/virginia/) | Within six months after the memorandum is recorded or 60 days after the building is completed or the work otherwise ends, whichever is later | November 1, 2027 | Va. Code 43-17 |
-| [Washington](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/washington/) | Within eight calendar months after the claim of lien is recorded, and serve the owner within 90 days of filing the action | December 29, 2027 | RCW 60.04.141 |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/) | Not later than the first anniversary of the last day… | May 15, 2028 | Tex. Prop. Code 53.158(a) |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/virginia/) | Within six months after the memorandum is recorded or 60… | November 1, 2027 | Va. Code 43-17 |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/washington/) | Within eight calendar months after the claim of lien is… | December 29, 2027 | RCW 60.04.141 |
+
+**Each rule in full (6)**
+
+The suit deadline, read November 8, 2026: full wording
+
+| State | Rule |
+| --- | --- |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/district-of-columbia/) | Within 180 days after the notice of intent is recorded, and record a notice of pendency of action within 10 days of filing suit |
+| [Florida](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/florida/) | Within 1 year after the claim of lien is recorded (60 days after service, if the owner records a notice of contest) |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/minnesota/) | Within one year after the date of the last item of the claim as set forth in the recorded lien statement |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/) | Not later than the first anniversary of the last day you could file the lien affidavit (extendable to two years after filing by a recorded written agreement with the owner) |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/virginia/) | Within six months after the memorandum is recorded or 60 days after the building is completed or the work otherwise ends, whichever is later |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/washington/) | Within eight calendar months after the claim of lien is recorded, and serve the owner within 90 days of filing the action |
 
 - Florida: an owner can cut the year to 60 days by recording a notice of contest (713.22(2)).
 - Texas: the year runs from the last day you could file the affidavit, and can be extended to two years by a recorded written agreement with the owner (53.158).

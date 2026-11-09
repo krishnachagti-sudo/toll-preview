@@ -12,6 +12,10 @@ In North Carolina a landlord may charge a rent late fee of at most the greater o
 
 ## What the statute says
 
+**In short:** The greater of $15 or 5% of the monthly rent; from day 5 after the due date (N.C. Gen. Stat. § 42-46).
+
+**The statute's words (3 passages)**
+
 N.C. Gen. Stat. § 42-46: "In all residential rental agreements in which a definite time for the payment of the rent is fixed, the parties may agree to a late fee not inconsistent with the provisions of this subsection, to be chargeable only if any rental payment is five calendar days or more late, with the first day being the day after the rent was due. If the rent: (1) Is due in monthly installments, a landlord may charge a late fee not to exceed fifteen dollars ($15.00) or five percent (5%) of the monthly rent, whichever is greater. (2) Is due in weekly installments, a landlord may charge a late fee not to exceed four dollars ($4.00) or five percent (5%) of the weekly rent, whichever is greater."
 
 N.C. Gen. Stat. § 42-46: "A late fee under subsection (a) of this section may be imposed only one time for each late rental payment. A late fee for a specific late rental payment may not be deducted from a subsequent rental payment so as to cause the subsequent rental payment to be in default."

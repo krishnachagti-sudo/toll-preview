@@ -74,41 +74,58 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>The CSV is read with its delimiter from the heading line; documented headings of each tracker are found by name.</span></li><li><span>Durations are read as h:mm:ss, h:mm, decimal hours or &quot;1h 30m&quot; to the whole second; start and end times alone give the time, across midnight.</span></li><li><span>Dates are ISO, or slash dates month first by default, day first when a value proves it; a file where every date is ambiguous is flagged.</span></li><li><span>Entries are filtered (non-billable left out unless kept, dates, client or project) and each gets its rate in the order task, tag, project, client, person.</span></li><li><span>Rounding uses the hours calculator's rule, at the chosen level; a line's hours are hundredths of an hour (36 seconds each) worked out from the seconds.</span></li></ol>
+<p class="cp-note">Step 6, each rule and the edge cases are in <a href="/toll-preview/methodology/time-export-to-invoice/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>A file with nothing left after the filters is refused with the reason.</li><li>It writes the invoice lines and files; it does not send invoices or change your tracker.</li><li>Not tax or legal advice.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 12 sources</h3><div class="tc-b"><p class="tc-a">Uses no rates of its own: the rates are yours. The tracker facts were read on each tracker's own pages on 2026-11-08, and the pages are checked daily for changes.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 3 checks in its test suite</h3><div class="tc-b"><p class="tc-a">The tests check CSV reading, every duration and date form, the documented headings, rounding at each level, a sample month to the cent, Clockify's mismatch example, Harvest decimal hours, the rate order, grouping, filters, the retainer, discount, cap and tax, and that the files are the same each time.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<details class="xpand cp-src-fold"><summary>Sources (12)</summary><div class="xp-in"><ul class="cp-sources cp-src"><li><a href="https://support.toggl.com/creating-invoices-in-toggl-track">Toggl Track: Creating invoices</a><span class="src-m">support.toggl.com · see the document · read 2026-11-08</span></li><li><a href="https://support.toggl.com/detailed-report">Toggl Track: Detailed report</a><span class="src-m">support.toggl.com · see the document · read 2026-11-08</span></li><li><a href="https://support.toggl.com/rounding">Toggl Track: Rounding</a><span class="src-m">support.toggl.com · see the document · read 2026-11-08</span></li><li><a href="https://support.toggl.com/en/articles/2216070-editing-and-uploading-a-csv-file">Toggl Track: Editing and uploading a CSV file</a><span class="src-m">support.toggl.com · see the document · read 2026-11-08</span></li><li><a href="https://clockify.me/help/projects/invoicing-tracked-time-expenses">Clockify: Invoicing tracked time and expenses</a><span class="src-m">clockify.me · see the document · read 2026-11-08</span></li><li><a href="https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match">Clockify: Invoices and reports don't match</a><span class="src-m">clockify.me · see the document · read 2026-11-08</span></li><li><a href="https://clockify.me/help/track-time-and-expenses/time-rounding">Clockify: Time rounding</a><span class="src-m">clockify.me · see the document · read 2026-11-08</span></li><li><a href="https://clockify.me/pricing">Clockify: Pricing</a><span class="src-m">clockify.me · see the document · read 2026-11-08</span></li><li><a href="https://toggl.com/track/pricing/">Toggl Track: Pricing</a><span class="src-m">toggl.com · see the document · read 2026-11-08</span></li><li><a href="https://www.getharvest.com/pricing">Harvest: Pricing</a><span class="src-m">getharvest.com · see the document · read 2026-11-08</span></li><li><a href="https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/">Harvest API v2: Time entries</a><span class="src-m">help.getharvest.com · see the document · read 2026-11-08</span></li><li><a href="https://everhour.com/pricing">Everhour: Pricing</a><span class="src-m">everhour.com · see the document · read 2026-11-08</span></li></ul></div></details>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the time export to invoice lines compute?</h2>
-<p>Upload the CSV export of Toggl Track, Clockify, Harvest, Everhour (or any sheet with a date and a duration) and the tool reads every entry, filters it, prices it from your rate card, rounds it the way your contract says and groups it into invoice lines, with a reconciliation of raw, rounded and billed time. The invoice adds a PDF and CSVs.</p>
-<details class="xpand"><summary>Read the rest: What does the time export to invoice lines compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<p>Upload the CSV export of Toggl Track, Clockify, Harvest, Everhour (or any sheet with a date and a duration) and the tool reads every entry, filters it, prices it from your rate card, rounds it the way your contract says and groups it into invoice lines, with a reconciliation of raw, rounded and billed time.</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>The invoice adds a PDF and CSVs.</p>
+<p>Operations (the op field):</p>
 <ul><li><code>preview</code>: Returns the answer, the totals, the reconciliation and the first three lines, without the entries.</li><li><code>invoice</code>: Returns every line, the totals, the reconciliation, every entry, the lines and entries CSVs and an invoice PDF. Corrections to the same invoice are free.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>csv, source</code>: The export as text (up to 5,000 rows), and which tracker it comes from when the headings do not say.</li><li><code>columns, dateOrder</code>: The headings to use when the file's are not the documented ones, and the slash date order.</li><li><code>rates</code>: Rates by task, tag, project, client or person; the most specific one wins in that order.</li><li><code>rounding</code>: The increment (1, 5, 6, 10, 12, 15, 30, 60 minutes), the direction (up, nearest, down) and the level (each entry or each line).</li><li><code>groupBy, filters</code>: Lines by project, task, day, client, person, tag, description, entry or one line; non-billable entries, the dates, one client or project.</li><li><code>retainer, discount, cap, tax, client</code>: A prepaid block used line by line in date order, a discount, a not-to-exceed cap and tax, in that order, and the invoice details.</li></ul>
 <p>Outputs:</p>
 <ul><li>answer: entries, raw time, lines, rounding rule, billed hours and total</li><li>lines with dates, hours, rates and amounts; totals; reconciliation; flags</li><li>invoice: entries, two CSVs and the PDF</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>The CSV is read with its delimiter from the heading line; documented headings of each tracker are found by name.</li><li>Durations are read as h:mm:ss, h:mm, decimal hours or &quot;1h 30m&quot; to the whole second; start and end times alone give the time, across midnight.</li><li>Dates are ISO, or slash dates month first by default, day first when a value proves it; a file where every date is ambiguous is flagged.</li><li>Entries are filtered (non-billable left out unless kept, dates, client or project) and each gets its rate in the order task, tag, project, client, person.</li><li>Rounding uses the hours calculator's rule, at the chosen level; a line's hours are hundredths of an hour (36 seconds each) worked out from the seconds.</li><li>Lines are grouped and priced to the cent; then the retainer, the discount, the cap and the tax are applied in that order.</li></ol>
+<details class="xpand"><summary>Every step in full (6) and the rules</summary><div class="xp-in"><ol><li>The CSV is read with its delimiter from the heading line; documented headings of each tracker are found by name.</li><li>Durations are read as h:mm:ss, h:mm, decimal hours or &quot;1h 30m&quot; to the whole second; start and end times alone give the time, across midnight.</li><li>Dates are ISO, or slash dates month first by default, day first when a value proves it; a file where every date is ambiguous is flagged.</li><li>Entries are filtered (non-billable left out unless kept, dates, client or project) and each gets its rate in the order task, tag, project, client, person.</li><li>Rounding uses the hours calculator's rule, at the chosen level; a line's hours are hundredths of an hour (36 seconds each) worked out from the seconds.</li><li>Lines are grouped and priced to the cent; then the retainer, the discount, the cap and the tax are applied in that order.</li></ol>
 <p><strong>Tracker formats.</strong></p>
-<p>Each tracker's export headings, rounding options and invoicing behavior are read on its own help pages on 2026-11-08.</p>
+<p>Each tracker's export headings, rounding options and invoicing behavior are read on its own help pages on 2026-11-08.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>Clockify's own mismatch example: rounding each entry to two decimals bills more than the exact time, and the reconciliation shows both.</li><li>Rows that cannot be read are skipped and named; zero-length entries are flagged.</li><li>More than 500 lines are refused with the way out (group more broadly).</li><li>The PDF is the same bytes each time for the same input.</li></ul>
+<details class="xpand"><summary>The edge cases (4)</summary><div class="xp-in"><ul><li>Clockify's own mismatch example: rounding each entry to two decimals bills more than the exact time, and the reconciliation shows both.</li><li>Rows that cannot be read are skipped and named; zero-length entries are flagged.</li><li>More than 500 lines are refused with the way out (group more broadly).</li><li>The PDF is the same bytes each time for the same input.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>A month of Toggl entries at three rates, each entry rounded up to 15 minutes</strong></p>
-<pre><code class="language-json">op: &quot;preview&quot;
+<figure class="cp-tbl"><figcaption class="cp-cap">A month of Toggl entries at three rates, each entry rounded up to 15 minutes</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Your 13 entries (24:41:35, 24.6931 h) become 3 invoice lines grouped by project and task, each entry rounded up to the next 15 minutes, billing 26.75 h and totalling $2,760.00.</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">op: &quot;preview&quot;
 source: &quot;toggl&quot;
 csv: &quot;User,Email,Client,Project,Task,Description,Billable,Start date,Start time,End date,End time,Duration,Tags\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Design,Homepage wireframes,Yes,2026-11-02,09:05:00,2026-11-02,11:12:30,02:07:30,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Meetings,Kickoff call,Yes,2026-11-02,13:00:00,2026-11-02,13:52:10,00:52:10,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Development,Theme setup,Yes,2026-11-03,09:30:00,2026-11-03,12:47:15,03:17:15,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Design,Product page mockups,Yes,2026-11-04,10:00:00,2026-11-04,12:31:40,02:31:40,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Development,Checkout fixes,Yes,2026-11-05,14:10:00,2026-11-05,18:02:05,03:52:05,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Meetings,Weekly check-in,Yes,2026-11-06,15:00:00,2026-11-06,15:21:00,00:21:00,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Development,Launch deploy,Yes,2026-11-09,22:40:00,2026-11-10,00:55:20,02:15:20,urgent\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Admin,Invoicing and email,No,2026-11-10,09:00:00,2026-11-10,09:40:00,00:40:00,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Design,Icon set,Yes,2026-11-12,09:15:00,2026-11-12,10:58:45,01:43:45,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Meetings,Review with client,Yes,2026-11-13,11:00:00,2026-11-13,11:47:30,00:47:30,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Development,Performance pass,Yes,2026-11-17,13:05:00,2026-11-17,16:44:50,03:39:50,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Design,Email templates,Yes,2026-11-19,09:00:00,2026-11-19,10:34:20,01:34:20,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Development,Bug fixes,Yes,2026-11-24,10:00:00,2026-11-24,11:06:10,01:06:10,\r\nSam Lee,sam@example.com,Acme Co,Website redesign,Meetings,Handover call,Yes,2026-11-25,16:00:00,2026-11-25,16:33:00,00:33:00,&quot;
 groupBy: &quot;task&quot;
 rounding: &#123;...&#125;
-rates: &#123;...&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A month of Toggl entries at three rates, each entry rounded up to 15 minutes</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">answer</th><td>Your 13 entries (24:41:35, 24.6931 h) become 3 invoice lines grouped by project and task, each entry rounded up to the next 15 minutes, billing 26.75 h and totalling $2,760.00.</td></tr>
-</tbody></table></div>
-<p><strong>Clockify's own mismatch example</strong></p>
-<pre><code class="language-json">&#123;
+rates: &#123;...&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (1)</summary><div class="xp-in"><p><strong>Clockify's own mismatch example</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">Clockify's own mismatch example</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Your 3 entries (5:01:05, 5.0181 h) become 3 invoice lines grouped by time entry (one line each), not rounded, billing 5.02 h and totalling $502.00.</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;preview&quot;,
   &quot;source&quot;: &quot;clockify&quot;,
   &quot;csv&quot;: &quot;Project,Description,Start date,Start time,Duration,Billable\r\nClient work,Entry 1,2026-11-02,09:00,1:15:45,Yes\r\nClient work,Entry 2,2026-11-03,09:00,2:45:30,Yes\r\nClient work,Entry 3,2026-11-04,09:00,0:59:50,Yes\r\n&quot;,
@@ -116,41 +133,11 @@ rates: &#123;...&#125;</code></pre>
   &quot;rates&quot;: &#123;
     &quot;default&quot;: &quot;100&quot;
   &#125;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Clockify's own mismatch example</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">answer</th><td>Your 3 entries (5:01:05, 5.0181 h) become 3 invoice lines grouped by time entry (one line each), not rounded, billing 5.02 h and totalling $502.00.</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>A file with nothing left after the filters is refused with the reason.</li><li>It writes the invoice lines and files; it does not send invoices or change your tracker.</li><li>Not tax or legal advice.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>Uses no rates of its own: the rates are yours. The tracker facts were read on each tracker's own pages on 2026-11-08, and the pages are checked daily for changes.</p>
-<ul class="cp-sources"><li><a href="https://support.toggl.com/creating-invoices-in-toggl-track">Toggl Track: Creating invoices</a></li><li><a href="https://support.toggl.com/detailed-report">Toggl Track: Detailed report</a></li><li><a href="https://support.toggl.com/rounding">Toggl Track: Rounding</a></li><li><a href="https://support.toggl.com/en/articles/2216070-editing-and-uploading-a-csv-file">Toggl Track: Editing and uploading a CSV file</a></li><li><a href="https://clockify.me/help/projects/invoicing-tracked-time-expenses">Clockify: Invoicing tracked time and expenses</a></li><li><a href="https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match">Clockify: Invoices and reports don't match</a></li><li><a href="https://clockify.me/help/track-time-and-expenses/time-rounding">Clockify: Time rounding</a></li><li><a href="https://clockify.me/pricing">Clockify: Pricing</a></li><li><a href="https://toggl.com/track/pricing/">Toggl Track: Pricing</a></li><li><a href="https://www.getharvest.com/pricing">Harvest: Pricing</a></li><li><a href="https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/">Harvest API v2: Time entries</a></li><li><a href="https://everhour.com/pricing">Everhour: Pricing</a></li></ul>
-<p>Uses no rates of its own: the rates are yours. The tracker facts were read on each tracker's own pages on 2026-11-08, and the pages are checked daily for changes.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Time export to invoice lines: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://support.toggl.com/creating-invoices-in-toggl-track">Toggl Track: Creating invoices</a></th><td rowspan="12">see the document</td><td rowspan="12">2026-11-08</td></tr>
-<tr><th scope="row"><a href="https://support.toggl.com/detailed-report">Toggl Track: Detailed report</a></th></tr>
-<tr><th scope="row"><a href="https://support.toggl.com/rounding">Toggl Track: Rounding</a></th></tr>
-<tr><th scope="row"><a href="https://support.toggl.com/en/articles/2216070-editing-and-uploading-a-csv-file">Toggl Track: Editing and uploading a CSV file</a></th></tr>
-<tr><th scope="row"><a href="https://clockify.me/help/projects/invoicing-tracked-time-expenses">Clockify: Invoicing tracked time and expenses</a></th></tr>
-<tr><th scope="row"><a href="https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match">Clockify: Invoices and reports don't match</a></th></tr>
-<tr><th scope="row"><a href="https://clockify.me/help/track-time-and-expenses/time-rounding">Clockify: Time rounding</a></th></tr>
-<tr><th scope="row"><a href="https://clockify.me/pricing">Clockify: Pricing</a></th></tr>
-<tr><th scope="row"><a href="https://toggl.com/track/pricing/">Toggl Track: Pricing</a></th></tr>
-<tr><th scope="row"><a href="https://www.getharvest.com/pricing">Harvest: Pricing</a></th></tr>
-<tr><th scope="row"><a href="https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/">Harvest API v2: Time entries</a></th></tr>
-<tr><th scope="row"><a href="https://everhour.com/pricing">Everhour: Pricing</a></th></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>The tests check CSV reading, every duration and date form, the documented headings, rounding at each level, a sample month to the cent, Clockify's mismatch example, Harvest decimal hours, the rate order, grouping, filters, the retainer, discount, cap and tax, and that the files are the same each time.</p>
-<p>What its test suite asserts:</p>
-<ul><li>Tracker facts are as read on their own pages on 2026-11-08.</li><li>Every duration and date form is read to the second; rounding per entry, per line and on the total are shown side by side.</li><li>The sample month, Clockify's mismatch example and Harvest decimal hours are reproduced to the cent.</li></ul>
+<details class="xpand"><summary>What its test suite asserts (3)</summary><div class="xp-in"><ul><li>Tracker facts are as read on their own pages on 2026-11-08.</li><li>Every duration and date form is read to the second; rounding per entry, per line and on the total are shown side by side.</li><li>The sample month, Clockify's mismatch example and Harvest decimal hours are reproduced to the cent.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/time-export-to-invoice/">Open the Time export to invoice lines tool</a>.</p>
 </section>

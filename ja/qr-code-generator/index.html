@@ -9,6 +9,7 @@
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <link rel="stylesheet" href="/toll-preview/qr-code-generator/files/page.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"qr-code-generator"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
@@ -71,168 +72,216 @@
   </div>
 </header>
 
-<main id="main" class="qr">
-  <section class="wrap qr-intro">
+<main id="main" class="qr tf hue-file">
+  <section class="wrap tf-open">
     <p class="eyebrow">スタティックコード、登録不要</p>
     <h1>QRコード作成</h1>
     <p class="lede">スタティックコードは、リンクや情報そのものをコードの中に持っています。間に入るものがないので、途中で止められることがありません。このページはブラウザー上でコードを作り、中に入っているテキストをそのまま表示し、ダウンロードの前にファイルを読み取り直して確認します。</p>
-    <p data-prices class="qr-price">このページでのコード作成は無料で、アカウントも不要です。入力した内容が端末の外に出ることはありません。印刷済みコードの確認もここでは無料です。スプレッドシートからのコード作成は1コードあたり$0.002です。</p>
-    <p class="hint"><a href="/toll-preview/qr-code-generator/" hreflang="en" lang="en">Use this tool in English</a></p>
+<ul class="trust" aria-label="このサイトについて"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> が制作</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>正確、AI不使用</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">公的な出典、日付つき</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">アップロードしたファイルは保存されません</a></span></li><li class="tl2"><a href="/toll-preview/security/">セキュリティ</a><a href="/toll-preview/terms/">利用規約</a></li></ul>
+    <p data-prices class="tf-price" id="qr-price"><span class="price">このページでは無料</span><span>アカウント不要、入力内容は端末の外に出ません</span><span>スプレッドシートから作成：1コードあたり$0.002</span></p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/qr-code-generator/" hreflang="en">英語版を見る</a></p>
   </section>
 
-  <section class="wrap qr-desk" data-jump="コードを作る" aria-label="コードを作る">
-    <form class="qr-form" id="qr-form" novalidate>
+  <section class="wrap tf-calc qr-desk" data-jump="ツール" aria-label="コードを作る">
+    <form class="tf-panel tf-form qr-form" id="qr-form" novalidate>
       <div class="field">
-        <label for="qr-type">コードで開く内容</label>
-        <select id="qr-type">
-          <option value="url" selected>ウェブサイトのリンク</option>
-          <option value="text">テキスト</option>
-          <option value="wifi">Wi-Fi接続</option>
-          <option value="vcard">連絡先カード（vCard 3.0）</option>
-          <option value="email">メール</option>
-          <option value="sms">ショートメッセージ（SMS）</option>
-          <option value="phone">電話</option>
-          <option value="location">地図の位置</option>
-        </select>
-      </div>
+<label for="qr-type">コードで開く内容</label>
+<select id="qr-type">
+<option selected="" value="url">ウェブサイトのリンク</option>
+<option value="text">テキスト</option>
+<option value="wifi">Wi-Fi接続</option>
+<option value="vcard">連絡先カード（vCard 3.0）</option>
+<option value="email">メール</option>
+<option value="sms">ショートメッセージ（SMS）</option>
+<option value="phone">電話</option>
+<option value="location">地図の位置</option>
+</select>
+</div>
       <div id="qr-fields"></div>
-      <details class="qr-options" id="qr-options">
-        <summary>見た目と印刷サイズ</summary>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-ecc">誤り訂正</label>
-            <select id="qr-ecc"><option value="L">L、約7%</option><option value="M" selected>M、約15%</option><option value="Q">Q、約25%</option><option value="H">H、約30%</option></select></div>
-          <div class="field"><label for="qr-margin">クワイエットゾーン（余白、モジュール数）</label><input type="number" id="qr-margin" min="0" max="20" value="4"></div>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-fg">コードの色</label><input type="color" id="qr-fg" value="#000000"></div>
-          <div class="field"><label for="qr-bg">背景色</label><input type="color" id="qr-bg" value="#ffffff"></div>
-        </div>
-        <label class="check"><input type="checkbox" id="qr-transparent"><span>背景を透明にする（PNGとSVG）</span></label>
-        <div class="field">
-          <label for="qr-logo">中央にロゴを入れる（任意）</label>
-          <input type="file" id="qr-logo" accept="image/png,image/jpeg,image/svg+xml,image/webp">
-          <p class="hint">ロゴはモジュールの一部を隠すため、誤り訂正に頼ることになります。QまたはHを選んでください。ファイルは読み取り直して、まだ読めることを確認します。</p>
-          <label for="qr-logo-share">ロゴの幅： <span id="qr-logo-share-out">20%</span></label>
-          <input type="range" id="qr-logo-share" min="5" max="30" value="20">
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-width">印刷幅（mm）</label><input type="text" id="qr-width" inputmode="decimal" value="30"></div>
-          <div class="field"><label for="qr-dpi">プリンター（dpi）</label><input type="text" id="qr-dpi" inputmode="numeric" value="300"></div>
-        </div>
-        <div class="field"><label for="qr-px">PNGのサイズ（ピクセル）</label><input type="text" id="qr-px" inputmode="numeric" value="1000"></div>
-      </details>
       <p class="form-error" id="qr-error" role="alert"></p>
-      <p class="hint">無料、ブラウザー上で動作。アカウント不要、追跡なし、有効期限なし。</p>
+      <button class="btn tf-go" type="submit" id="qr-run">コードを作成</button>
+      <p class="hint tf-run-note">無料、ブラウザー上で動作。アカウント不要、追跡なし、有効期限なし。</p>
+      <details class="xpand qr-options" id="qr-options">
+        <summary>見た目と印刷サイズ</summary>
+        <div class="xp-in">
+        <div class="qr-pair">
+<div class="field"><label for="qr-ecc">誤り訂正</label>
+<select id="qr-ecc"><option value="L">L、約7%</option><option selected="" value="M">M、約15%</option><option value="Q">Q、約25%</option><option value="H">H、約30%</option></select></div>
+<div class="field"><label for="qr-margin">クワイエットゾーン（余白、モジュール数）</label><input id="qr-margin" max="20" min="0" type="number" value="4"/></div>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-fg">コードの色</label><input id="qr-fg" type="color" value="#000000"/></div>
+<div class="field"><label for="qr-bg">背景色</label><input id="qr-bg" type="color" value="#ffffff"/></div>
+</div>
+<label class="check"><input id="qr-transparent" type="checkbox"/><span>背景を透明にする（PNGとSVG）</span></label>
+<div class="field">
+<label for="qr-logo">中央にロゴを入れる（任意）</label>
+<input accept="image/png,image/jpeg,image/svg+xml,image/webp" id="qr-logo" type="file"/>
+<p class="hint">ロゴはモジュールの一部を隠すため、誤り訂正に頼ることになります。QまたはHを選んでください。ファイルは読み取り直して、まだ読めることを確認します。</p>
+<label for="qr-logo-share">ロゴの幅： <span id="qr-logo-share-out">20%</span></label>
+<input id="qr-logo-share" max="30" min="5" type="range" value="20"/>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-width">印刷幅（mm）</label><input id="qr-width" inputmode="decimal" type="text" value="30"/></div>
+<div class="field"><label for="qr-dpi">プリンター（dpi）</label><input id="qr-dpi" inputmode="numeric" type="text" value="300"/></div>
+</div>
+<div class="field"><label for="qr-px">PNGのサイズ（ピクセル）</label><input id="qr-px" inputmode="numeric" type="text" value="1000"/></div>
+      </div>
+      </details>
     </form>
 
-    <div class="qr-out" id="qr-out" aria-live="polite">
+    <div class="tf-panel tf-result qr-out" id="qr-out" aria-live="polite">
       <p class="muted">読み込み中です。</p>
     </div>
   </section>
 
-  <section class="wrap qr-check" data-jump="印刷したコードは使えなくなる?" id="qr-check" aria-labelledby="qr-check-title">
+  <section class="wrap tf-sec qr-check" data-jump="確認" id="qr-check" aria-labelledby="qr-check-title">
+    <div class="tf-top solo"><div>
     <h2 id="qr-check-title">すでに印刷したコードは、使えなくなりますか?</h2>
-    <p class="qr-lede">多くのQRコード作成サービスはダイナミックコードを作ります。コードにはベンダーのドメインの短縮リンクが入っていて、ベンダーが有効にしている間だけ、スキャンがあなたのページに転送されます。コードの画像か、コードの内容を入力すると、スマートフォンと同じようにリンクをたどって確認します。</p>
-    <div class="qr-check-grid">
-      <form id="qr-check-form" novalidate>
+    <p class="tf-p">多くのQRコード作成サービスはダイナミックコードを作ります。コードにはベンダーのドメインの短縮リンクが入っていて、ベンダーが有効にしている間だけ、スキャンがあなたのページに転送されます。コードの画像か、コードの内容を入力すると、スマートフォンと同じようにリンクをたどって確認します。</p>
+    </div></div>
+    <div class="tf-calc">
+      <form class="tf-panel tf-form" id="qr-check-form" novalidate>
         <div class="field">
-          <label for="qr-check-image">コードの画像</label>
-          <input type="file" id="qr-check-image" accept="image/*">
-          <p class="hint">スクリーンショットやスキャン画像が最も読み取りやすくなります。スマートフォンで撮った写真は、ブラウザーに内蔵のコードリーダーがあればそれで読み取ります。</p>
-        </div>
-        <div class="field">
-          <label for="qr-check-text">またはコードの内容</label>
-          <input type="text" id="qr-check-text" placeholder="https://..." spellcheck="false">
-        </div>
-        <div class="field">
-          <label for="qr-check-mine">自分が所有するドメイン（任意）</label>
-          <input type="text" id="qr-check-mine" placeholder="example.com" spellcheck="false">
-        </div>
-        <p class="form-error" id="qr-check-error" role="alert"></p>
-        <button class="btn" type="submit" id="qr-check-run">確認する</button>
-        <p class="hint qr-run-note">このページでは無料です。アカウントがない場合は、1日の無料実行回数のうち1回を使います。リンクは当社のサーバーから開きます。サーバーは、プライベートアドレスやローカルアドレスには接続しません。</p>
+<label for="qr-check-image">コードの画像</label>
+<input accept="image/*" id="qr-check-image" type="file"/>
+<p class="hint">スクリーンショットやスキャン画像が最も読み取りやすくなります。スマートフォンで撮った写真は、ブラウザーに内蔵のコードリーダーがあればそれで読み取ります。</p>
+</div>
+<div class="field">
+<label for="qr-check-text">またはコードの内容</label>
+<input id="qr-check-text" placeholder="https://..." spellcheck="false" type="text"/>
+</div>
+<div class="field">
+<label for="qr-check-mine">自分が所有するドメイン（任意）</label>
+<input id="qr-check-mine" placeholder="example.com" spellcheck="false" type="text"/>
+</div>
+<p class="form-error" id="qr-check-error" role="alert"></p>
+<button class="btn" id="qr-check-run" type="submit">確認する</button>
+<p class="hint qr-run-note">このページでは無料です。アカウントがない場合は、1日の無料実行回数のうち1回を使います。リンクは当社のサーバーから開きます。サーバーは、プライベートアドレスやローカルアドレスには接続しません。</p>
       </form>
-      <div id="qr-check-out"><p class="muted">結果がここに表示されます。</p></div>
+      <div class="tf-panel tf-result" id="qr-check-out"><p class="muted">結果がここに表示されます。</p></div>
     </div>
   </section>
 
-  <section class="wrap qr-bulk" data-jump="まとめて作る" id="qr-bulk" aria-labelledby="qr-bulk-title">
+  <section class="wrap tf-sec qr-bulk" data-jump="一括" id="qr-bulk" aria-labelledby="qr-bulk-title">
+    <div class="tf-top solo"><div>
     <h2 id="qr-bulk-title">スプレッドシートからまとめて作成</h2>
-    <p class="qr-lede">1行につき1コード。PNGまたはSVGのファイルを、マニフェストと一緒にZIPにまとめ、印刷用のラベルシートも作れます。行はまずここで確認し、料金は実際に作成されたコード分だけです。各ファイルは、対応する行の内容と照らして読み取り確認します。</p>
-    <div class="qr-check-grid">
-      <div>
+    <p class="tf-p">1行につき1コード。PNGまたはSVGのファイルを、マニフェストと一緒にZIPにまとめ、印刷用のラベルシートも作れます。行はまずここで確認し、料金は実際に作成されたコード分だけです。各ファイルは、対応する行の内容と照らして読み取り確認します。</p>
+    </div></div>
+    <div class="tf-calc">
+      <div class="tf-panel tf-form">
         <div class="field">
-          <label for="qr-bulk-file">スプレッドシート（CSV、TSV、Excelの.xlsx）</label>
-          <input type="file" id="qr-bulk-file" accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-        </div>
-        <div class="field">
-          <label for="qr-bulk-paste">または貼り付け</label>
-          <textarea id="qr-bulk-paste" rows="6" spellcheck="false">url,label
+<label for="qr-bulk-file">スプレッドシート（CSV、TSV、Excelの.xlsx）</label>
+<input accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="qr-bulk-file" type="file"/>
+</div>
+<div class="field">
+<label for="qr-bulk-paste">または貼り付け</label>
+<textarea id="qr-bulk-paste" rows="6" spellcheck="false">url,label
 https://example.com/menu/table-1,テーブル1
 https://example.com/menu/table-2,テーブル2</textarea>
-          <details class="qr-format">
-            <summary>読み取る列</summary>
-            <p>1行目に見出し、2行目以降に1行につき1コードを入れます。内容の列の見出しはフィールド名にしてください：url、text、ssidとpassword(Wi-Fi)、firstName、lastName、phone、email（連絡先カード）、toとsubject（メール）、phoneとmessage(SMS)、latitudeとlongitude（地図の位置）。type列で行ごとの種類を指定できます。ラベル列（label、label2、label3）は最大3つまで、シート上でコードの横に印刷されます。Excelの文字列セルは先頭のゼロを保ち、長いシリアル番号は省略せずに書き出されます。</p>
-          </details>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-bulk-type">各行の種類</label><select id="qr-bulk-type"></select></div>
-          <div class="field"><label for="qr-bulk-name">ファイル名</label><input type="text" id="qr-bulk-name" value="qr-{row}" spellcheck="false"></div>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-bulk-format">ファイル</label><select id="qr-bulk-format"><option value="png" selected>PNG</option><option value="svg">SVG</option><option value="none">画像ファイルなし</option></select></div>
-          <div class="field"><label for="qr-bulk-sheet">ラベルシート</label><select id="qr-bulk-sheet"><option value="">なし</option></select></div>
-        </div>
-        <p class="hint">上の誤り訂正と色の設定は、ここにも適用されます。ファイル名の{row}はシートの行番号、{任意の見出し}はその列の値です。</p>
+<details class="xpand qr-format">
+<summary>読み取る列</summary>
+<div class="xp-in"><p>1行目に見出し、2行目以降に1行につき1コードを入れます。内容の列の見出しはフィールド名にしてください：url、text、ssidとpassword(Wi-Fi)、firstName、lastName、phone、email（連絡先カード）、toとsubject（メール）、phoneとmessage(SMS)、latitudeとlongitude（地図の位置）。type列で行ごとの種類を指定できます。ラベル列（label、label2、label3）は最大3つまで、シート上でコードの横に印刷されます。Excelの文字列セルは先頭のゼロを保ち、長いシリアル番号は省略せずに書き出されます。</p></div>
+</details>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-bulk-type">各行の種類</label><select id="qr-bulk-type"></select></div>
+<div class="field"><label for="qr-bulk-name">ファイル名</label><input id="qr-bulk-name" spellcheck="false" type="text" value="qr-{row}"/></div>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-bulk-format">ファイル</label><select id="qr-bulk-format"><option selected="" value="png">PNG</option><option value="svg">SVG</option><option value="none">画像ファイルなし</option></select></div>
+<div class="field"><label for="qr-bulk-sheet">ラベルシート</label><select id="qr-bulk-sheet"><option value="">なし</option></select></div>
+</div>
+<p class="hint">上の誤り訂正と色の設定は、ここにも適用されます。ファイル名の{row}はシートの行番号、{任意の見出し}はその列の値です。</p>
       </div>
-      <div>
+      <div class="tf-panel tf-result">
         <div id="qr-bulk-out"><p class="muted">スプレッドシートを開くと、ここで確認できます。</p></div>
-        <p class="form-error" id="qr-bulk-error" role="alert"></p>
-        <button class="btn" type="button" id="qr-bulk-run" hidden>ファイルを作成</button>
-        <p data-prices class="hint qr-run-note" id="qr-bulk-note" hidden>ログイン済みで残高のあるアカウントが必要です。毎月の無料枠$0.25も使われます。</p>
-        <div id="qr-bulk-files"></div>
+<p class="form-error" id="qr-bulk-error" role="alert"></p>
+<button class="btn" hidden="" id="qr-bulk-run" type="button">ファイルを作成</button>
+<p class="hint qr-run-note" data-prices="" hidden="" id="qr-bulk-note">ログイン済みで残高のあるアカウントが必要です。毎月の無料枠$0.25も使われます。</p>
+<div id="qr-bulk-files"></div>
       </div>
     </div>
   </section>
 
-  <section class="wrap qr-rules" data-jump="仕組み" aria-labelledby="qr-rules-title">
-    <h2 id="qr-rules-title">スタティックとダイナミック、期限切れになるもの</h2>
-    <div class="qr-rule-cols">
+  <section class="wrap tf-sec qr-rules" data-jump="ルール" aria-labelledby="qr-rules-title">
+    <div class="tf-top">
       <div>
-        <h3>スタティック</h3>
-        <p>コードのモジュールが、リンクやWi-Fiの接続情報、連絡先カードをそのまま表しています。スマートフォンは印刷物から直接読み取ります。間に入るサービスがないので、期限切れになることはありません。ただし、リンク先のウェブサイトがなくなれば、スタティックなリンクも開けなくなります。</p>
+        <p class="eyebrow">仕組み</p>
+        <h2 id="qr-rules-title">スタティックとダイナミック、期限切れになるもの</h2>
       </div>
-      <div>
-        <h3>ダイナミック</h3>
-        <p>コードはベンダーのドメインの短縮リンクを表していて、ベンダーが各スキャンをあなたのページに転送します。後からページを変えられますが、印刷したコードは、ベンダーが転送している間だけ使えます。プランが終わったときの扱いはベンダー各社のページに書かれていて、上の確認機能は、その文言を確認日付きで引用します。</p>
-      </div>
-      <div>
-        <h3>すべてのファイルに確認つき</h3>
-        <p>ダウンロードごとに、中に入っているテキストそのもの、バージョン（サイズ）、誤り訂正レベル、マスクが表示され、ファイルはお渡しする前に独立したデコーダーで読み取り直されます。ロゴが大きすぎる場合は、読み取れないかもしれないコードを渡すのではなく、ページがそう知らせます。</p>
-      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="qr-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="qr-limits-title">対象外のこと</h3>
+          <p>対象外：ダイナミック（編集できる）コード、PDFの校正刷りからのコード読み取り、EPSファイル、カレンダー予定、決済用のコード。QRコードは株式会社デンソーウェーブの登録商標です。</p>
+          <details class="xpand"><summary>注記と出典を読む</summary><div class="xp-in">
+            <ul class="qr-notes" id="qr-notes">
+<li>エンコーダーはISO/IEC 18004（QRコード モデル2）に従います。数字、英数字、バイトの各モード、バージョン1から40（21 x 21から177 x 177モジュール）、誤り訂正L・M・Q・H、規格のペナルティ規則で選ぶ8種類のマスクパターンに対応します。出力は、すべてのバージョンとレベルで、独立したオープンソースのエンコーダーと照合してテストしています。</li>
+<li>QRコードの考案元であるDENSO WAVEは、四方に4モジュール分のクワイエットゾーンを求め、1モジュールあたり4ドット以上の印刷を推奨しています。印刷チェックはその両方を使います。最もよく選ばれるレベルはMで、約15%を復元できます。</li>
+<li>内容の形式：Wi-Fi、SMS、電話、地図の位置、メールは、スマートフォンのカメラアプリが読み取る形式（ZXing「Barcode Contents」）。連絡先カードはvCard 3.0(RFC 2426)、メールのリンクはRFC 6068に従います。SMSのコードには公式の標準がありません。</li>
+<li>確認機能は、当社のサーバーからHTTPの転送だけを（最大10回まで）たどり、ベンダーのドメインが当社の確認済み一覧にある場合にだけそのベンダー名を示します。あなたのアカウントの状態は見られず、ベンダーが今後どうするかを約束することもできません。挙げているベンダーとは提携していません。</li>
+<li>対象外：ダイナミック（編集できる）コード、PDFの校正刷りからのコード読み取り、EPSファイル、カレンダー予定、決済用のコード。QRコードは株式会社デンソーウェーブの登録商標です。</li>
+<li>出典、2026年11月2日確認（ページは英語）： <a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE:クワイエットゾーン</a>, <a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE:モジュールの大きさ</a>, <a href="https://www.qrcode.com/en/about/version.html">DENSO WAVE:バージョン</a>, <a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE:誤り訂正</a>, <a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ</a>, <a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing Barcode Contents</a>, <a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426</a>, <a href="https://www.rfc-editor.org/rfc/rfc6068">RFC 6068</a>, <a href="https://www.avery.com/templates/5160">Avery 5160</a>, <a href="https://www.avery.com/templates/22816">Avery 22816</a>. ベンダーのページは、確認結果ごとに表示されます。</li>
+</ul>
+          </div></details>
+        </div>
+      </aside>
     </div>
-    <ul class="qr-notes small muted" id="qr-notes">
-      <li>エンコーダーはISO/IEC 18004（QRコード モデル2）に従います。数字、英数字、バイトの各モード、バージョン1から40（21 x 21から177 x 177モジュール）、誤り訂正L・M・Q・H、規格のペナルティ規則で選ぶ8種類のマスクパターンに対応します。出力は、すべてのバージョンとレベルで、独立したオープンソースのエンコーダーと照合してテストしています。</li>
-      <li>QRコードの考案元であるDENSO WAVEは、四方に4モジュール分のクワイエットゾーンを求め、1モジュールあたり4ドット以上の印刷を推奨しています。印刷チェックはその両方を使います。最もよく選ばれるレベルはMで、約15%を復元できます。</li>
-      <li>内容の形式：Wi-Fi、SMS、電話、地図の位置、メールは、スマートフォンのカメラアプリが読み取る形式（ZXing「Barcode Contents」）。連絡先カードはvCard 3.0(RFC 2426)、メールのリンクはRFC 6068に従います。SMSのコードには公式の標準がありません。</li>
-      <li>確認機能は、当社のサーバーからHTTPの転送だけを（最大10回まで）たどり、ベンダーのドメインが当社の確認済み一覧にある場合にだけそのベンダー名を示します。あなたのアカウントの状態は見られず、ベンダーが今後どうするかを約束することもできません。挙げているベンダーとは提携していません。</li>
-      <li>対象外：ダイナミック（編集できる）コード、PDFの校正刷りからのコード読み取り、EPSファイル、カレンダー予定、決済用のコード。QRコードは株式会社デンソーウェーブの登録商標です。</li>
-      <li>出典、2026年11月2日確認（ページは英語）： <a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE:クワイエットゾーン</a>, <a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE:モジュールの大きさ</a>, <a href="https://www.qrcode.com/en/about/version.html">DENSO WAVE:バージョン</a>, <a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE:誤り訂正</a>, <a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ</a>, <a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing Barcode Contents</a>, <a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426</a>, <a href="https://www.rfc-editor.org/rfc/rfc6068">RFC 6068</a>, <a href="https://www.avery.com/templates/5160">Avery 5160</a>, <a href="https://www.avery.com/templates/22816">Avery 22816</a>. ベンダーのページは、確認結果ごとに表示されます。</li>
-    </ul>
-    <div class="qr-prices">
-      <h3>料金</h3>
-      <ul>
-        <li>このページでのコード作成と、印刷済みコードの確認：無料。</li>
-        <li>API・MCP経由：コード作成 $0.002、PNGからのコード読み取り $0.002、有効期限の確認 $0.005。</li>
-        <li>スプレッドシートからのコード：作成されたコード1個につき $0.002、1回の依頼につき最低10コード。暦月で5,000を超えるコードは、1個あたりの料金が下がります。</li>
-      </ul>
-      <p class="small muted">コードにできない行には、料金はかかりません。</p>
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r1">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h3v3H8zM13 13h3v3h-3z"/></svg></span>
+        <div>
+          <h3 id="qr-r1">スタティック</h3>
+          <p>コードのモジュールが、リンクやWi-Fiの接続情報、連絡先カードをそのまま表しています。</p>
+          <details class="xpand"><summary>詳しいルールを読む</summary><div class="xp-in">
+            <p>コードのモジュールが、リンクやWi-Fiの接続情報、連絡先カードをそのまま表しています。スマートフォンは印刷物から直接読み取ります。間に入るサービスがないので、期限切れになることはありません。ただし、リンク先のウェブサイトがなくなれば、スタティックなリンクも開けなくなります。</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r2">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h10M12 7l5 5-5 5"/></svg></span>
+        <div>
+          <h3 id="qr-r2">ダイナミック</h3>
+          <p>コードはベンダーのドメインの短縮リンクを表していて、ベンダーが各スキャンをあなたのページに転送します。</p>
+          <details class="xpand"><summary>詳しいルールを読む</summary><div class="xp-in">
+            <p>コードはベンダーのドメインの短縮リンクを表していて、ベンダーが各スキャンをあなたのページに転送します。後からページを変えられますが、印刷したコードは、ベンダーが転送している間だけ使えます。プランが終わったときの扱いはベンダー各社のページに書かれていて、上の確認機能は、その文言を確認日付きで引用します。</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r3">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <div>
+          <h3 id="qr-r3">すべてのファイルに確認つき</h3>
+          <p>ダウンロードごとに、中に入っているテキストそのもの、バージョン（サイズ）、誤り訂正レベル、マスクが表示され、ファイルはお渡しする前に独立したデコーダーで読み取り直されます。</p>
+          <details class="xpand"><summary>詳しいルールを読む</summary><div class="xp-in">
+            <p>ダウンロードごとに、中に入っているテキストそのもの、バージョン（サイズ）、誤り訂正レベル、マスクが表示され、ファイルはお渡しする前に独立したデコーダーで読み取り直されます。ロゴが大きすぎる場合は、読み取れないかもしれないコードを渡すのではなく、ページがそう知らせます。</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v17M16 7.5c-.8-1.2-2.2-1.8-4-1.8-2.3 0-4 1.1-4 3s1.7 2.6 4 3.1 4 1.3 4 3.2-1.7 3.1-4 3.1c-1.9 0-3.4-.7-4.2-2"/></svg></span>
+        <div>
+          <h3 id="qr-prices-title">料金</h3>
+          <p>このページでのコード作成と、印刷済みコードの確認：無料。</p>
+          <details class="xpand"><summary>料金の詳細を見る</summary><div class="xp-in">
+            <ul>
+<li>このページでのコード作成と、印刷済みコードの確認：無料。</li>
+<li>API・MCP経由：コード作成 $0.002、PNGからのコード読み取り $0.002、有効期限の確認 $0.005。</li>
+<li>スプレッドシートからのコード：作成されたコード1個につき $0.002、1回の依頼につき最低10コード。暦月で5,000を超えるコードは、1個あたりの料金が下がります。</li>
+</ul>
+<p class="small muted">コードにできない行には、料金はかかりません。</p>
+          </div></details>
+        </div>
+      </article>
     </div>
   </section>
 
 
 
-  <section class="wrap qr-code" aria-label="コードから使う">
+  <section class="wrap tf-code qr-code" data-jump="コード" aria-label="コードから使う">
     <div id="qr-code"></div>
   </section>
   <noscript><div class="wrap"><p>ブラウザー上でコードを作るには、このページにJavaScriptが必要です。コードから呼び出すこともできます。<a href="/toll-preview/docs">ドキュメント</a>（英語）をご覧ください。</p></div></noscript>

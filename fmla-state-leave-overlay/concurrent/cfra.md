@@ -2,6 +2,8 @@
 
 Yes: CFRA leave runs at the same time as the FMLA, so a California employee at a 100-person employer gets 12 weeks of protected leave for their own serious health condition, not 24; at a 20-person employer only CFRA applies and still gives 12 weeks.
 
+**Read the law's own words (3 quotations)**
+
 - "I have or a family member has a serious health condition, I have worked for my employer for 1+ year, I have 1250 hours of service in the past year, and my employer has 5+ employees." [California Civil Rights Department, Family Care and Medical Leave: Quick Reference Guide](https://calcivilrights.ca.gov/employment/family-care-medical-leave-guide/)
 - "Up to 12 weeks per year for all CFRA purposes." [California Civil Rights Department, Family Care and Medical Leave: Quick Reference Guide](https://calcivilrights.ca.gov/employment/family-care-medical-leave-guide/)
 - "Up to 12 weeks within one year of the child's birth, adoption, or start of foster care. CFRA leave will run after PDL. CFRA leave will run at the same time as FMLA." [California Civil Rights Department, Leave for Pregnancy Disability and Child Bonding: Quick Reference Guide](https://calcivilrights.ca.gov/employment/pdl-bonding-guide/)

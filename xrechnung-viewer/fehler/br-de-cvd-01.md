@@ -1,6 +1,6 @@
 # BR-DE-CVD-01: CVD-Rechnung ohne Vertragsnummer (BT-12)
 
-BR-DE-CVD-01 bedeutet: Das Element ... "Contract reference" (BT-12) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die Vertragsnummer in BT-12 an (UBL cac:ContractDocumentReference/cbc:ID, CII ram:ContractReferencedDocument/ram:IssuerAssignedID).
+BR-DE-CVD-01 bedeutet: Das Element ... "Contract reference" (BT-12) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Eine Rechnung nach XRechnung CVD (saubere Straßenfahrzeuge) muss die Vertragsnu
 
 ## So beheben Sie den Fehler
 
-Geben Sie die Vertragsnummer in BT-12 an (UBL cac:ContractDocumentReference/cbc:ID, CII ram:ContractReferencedDocument/ram:IssuerAssignedID).
+Geben Sie die Vertragsnummer in BT-12 an (UBL `cac:ContractDocumentReference/cbc:ID`, CII `ram:ContractReferencedDocument/ram:IssuerAssignedID`).
 
 ## Geprüftes Beispiel
 

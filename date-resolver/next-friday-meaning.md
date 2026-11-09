@@ -1,13 +1,13 @@
 # What does "next Friday" mean?
 
-Said today, Sunday, November 8, 2026 (the date in New York, US Eastern time), "next Friday" is Friday, November 13, 2026 on both readings: the nearest Friday after today is also the Friday of next week.
+Said today, Monday, November 9, 2026 (the date in New York, US Eastern time), "next Friday" is Friday, November 13, 2026 if it means the nearest Friday, or Friday, November 20, 2026 if it means the Friday of next week.
 
 - Nearest Friday: November 13, 2026
-- Friday of next week: November 13, 2026
+- Friday of next week: November 20, 2026
 
 ## Resolve any weekday phrase
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=next+Friday&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=next+Friday&ref=2026-11-09&region=US)
 
 ## Two readings, both in use
 
@@ -65,4 +65,4 @@ Write the date with its weekday ("Friday, November 13"). A tool that resolves ph
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/next-friday-meaning/  
-Worked out for: 2026-11-08
+Worked out for: 2026-11-09

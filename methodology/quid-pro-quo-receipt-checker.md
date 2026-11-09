@@ -2,9 +2,51 @@
 
 A payment is split into the value of what the donor received (your organization's good faith estimate) and the rest, which is deductible. When the payment is over $75 and something was received, the receipt must state the deductible amount and the estimate; a missed disclosure risks $10 a contribution, at most $5,000 an event.
 
+## How does it work?
+
+1. The payment and each benefit are read into whole cents; more than two decimals or a negative amount is refused.
+2. Raffle tickets are not contributions (IRS Publication 526): nothing is deductible and the receipt must not call it deductible.
+3. Benefits that are disregarded are set aside: items worth no more than 2% of the payment or the year's cap, whichever is less; logo items whose total cost to the organization is within the year's low-cost article limit when the payment is at least the year's minimum gift; annual membership privileges for a payment of $75 or less; intangible religious benefits from a religious organization; and a sponsor's name or logo shown.
+4. What is left is the value received.
+5. Otherwise the deductible amount is the payment less the value received. It is a quid pro quo contribution when something was received; the disclosure is required when the payment is over $75 (not at $75), even when the deductible part is smaller.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/quid-pro-quo-receipt-checker/#what) below.
+
+## What does it not cover?
+
+- A year outside 2020 to 2027 is refused: no limits are held for it.
+- It never estimates what a dinner, a stay or an auction item is worth: the value is the organization's good faith estimate.
+- Federal rules only: state raffle and charitable solicitation rules are not covered. Not tax or legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 14 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every limit, threshold and quote was read on irs.gov on 2026-11-08. Publication 1771's rules are read from the giving statements tool's own rules file, never copied. Each year's limits come from a new revenue procedure, added by hand each autumn.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Every limit and quote is pinned to irs.gov. The tests check the $75 line (over, not at), each exception year by year, the receipt text checks and the fix, the batch penalty at $10 each and $5,000 at most, the raffle prize thresholds, and that the browser engine agrees with the server.
+
+- [IRS Publication 1771 (Rev. 11-2023), token, membership and religious exceptions](https://www.irs.gov/pub/irs-pdf/p1771.pdf), Rev. 11-2023, read 2026-11-08
+- [IRS: Charitable contributions, quid pro quo contributions](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-quid-pro-quo-contributions), see the document, read 2026-11-08
+- [IRS Publication 526 (2025), Charitable Contributions](https://www.irs.gov/publications/p526), see the document, read 2026-11-08
+- [IRS: Advertising or qualified sponsorship payments?](https://www.irs.gov/charities-non-profits/advertising-or-qualified-sponsorship-payments), see the document, read 2026-11-08
+- [IRS: Instructions for Forms W-2G and 5754 (01/2026)](https://www.irs.gov/instructions/iw2g), 01/2026, read 2026-11-08
+- [IRS Publication 3079 (Rev. 10-2018), Tax-Exempt Organizations and Gaming](https://www.irs.gov/pub/irs-pdf/p3079.pdf), Rev. 10-2018, read 2026-11-08
+- [Rev. Proc. 2019-44, section 3.34](https://www.irs.gov/pub/irs-drop/rp-19-44.pdf), see the document, read 2026-11-08
+- [Rev. Proc. 2020-45, section 3.34](https://www.irs.gov/pub/irs-drop/rp-20-45.pdf), see the document, read 2026-11-08
+- [Rev. Proc. 2021-45, section 3.34](https://www.irs.gov/pub/irs-drop/rp-21-45.pdf), see the document, read 2026-11-08
+- [Rev. Proc. 2022-38, section 3.34](https://www.irs.gov/pub/irs-drop/rp-22-38.pdf), see the document, read 2026-11-08
+- [Rev. Proc. 2023-34, section 3.34](https://www.irs.gov/pub/irs-drop/rp-23-34.pdf), see the document, read 2026-11-08
+- [Rev. Proc. 2024-40, section 2.34](https://www.irs.gov/pub/irs-drop/rp-24-40.pdf), see the document, read 2026-11-08
+- [Rev. Proc. 2025-32, section 4.33](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf), see the document, read 2026-11-08
+- [Rev. Proc. 2026-35, section 3.35](https://www.irs.gov/pub/irs-drop/rp-26-35.pdf), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the quid pro quo receipt checker compute?
 
-Given a payment (a gala ticket, auction bid, raffle ticket, sponsorship, membership or a gift with a premium) and what came back with it, the tool works out the deductible amount, whether it is a quid pro quo contribution, whether the disclosure is required and whether a $250 acknowledgment is needed, applying the token, membership and religious exceptions with each year's limits from 2020 to 2027. It can check your own receipt text line by line, write the receipt and invitation wording for every ticket level of an event, and check a list of payments with the penalty exposure.
+Given a payment (a gala ticket, auction bid, raffle ticket, sponsorship, membership or a gift with a premium) and what came back with it, the tool works out the deductible amount, whether it is a quid pro quo contribution, whether the disclosure is required and whether a $250 acknowledgment is needed, applying the token, membership and religious exceptions with each year's limits from 2020 to 2027.
+
+**In detail: operations, inputs and outputs**
+
+It can check your own receipt text line by line, write the receipt and invitation wording for every ticket level of an event, and check a list of payments with the penalty exposure.
 
 Operations (the op field):
 
@@ -29,7 +71,7 @@ Outputs:
 - wording: the receipt sentence and, for an event, the invitation line and a correction letter
 - checks on your receipt text, and for batch the totals, the events with penalty exposure and a CSV
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The payment and each benefit are read into whole cents; more than two decimals or a negative amount is refused.
 2. Raffle tickets are not contributions (IRS Publication 526): nothing is deductible and the receipt must not call it deductible.
@@ -50,6 +92,8 @@ With a prize and a wager, the check applies the Form W-2G test: winnings less th
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - A payment of exactly $75 with a benefit needs no disclosure; $75.01 does.
 - A deductible part under $75 still needs the disclosure when the payment is over $75.
 - An auction bid at or below the item's value is not a contribution at all.
@@ -61,6 +105,17 @@ With a prize and a wager, the check applies the Form W-2G test: winnings less th
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A $150 gala ticket with a $60 dinner, and a receipt that says "100% tax deductible"**
+
+A $150 gala ticket with a $60 dinner, and a receipt that says "100% tax deductible"
+
+| Result | Value |
+| --- | --- |
+| answer | A $150.00 payment with $60.00 of goods or services is a quid pro quo contribution over $75: the receipt must state the $90.00 deductible amount and the $60.00 good faith estimate. |
+| deductible | $90.00 |
+| value received | $60.00 |
+| disclosure required | yes |
+
+**The input**
 
 ```json
 {
@@ -84,16 +139,19 @@ With a prize and a wager, the check applies the Form W-2G test: winnings less th
 }
 ```
 
-A $150 gala ticket with a $60 dinner, and a receipt that says "100% tax deductible"
+**More worked examples (1)**
+
+**Seven gala payments checked at once, with the penalty exposure**
+
+Seven gala payments checked at once, with the penalty exposure
 
 | Result | Value |
 | --- | --- |
-| answer | A $150.00 payment with $60.00 of goods or services is a quid pro quo contribution over $75: the receipt must state the $90.00 deductible amount and the $60.00 good faith estimate. |
-| deductible | $90.00 |
-| value received | $60.00 |
-| disclosure required | yes |
+| answer | 7 payments checked: 4 need the quid pro quo disclosure, 2 marked as sent without it (penalty exposure $20.00, at $10 each and at most $5,000 an event); $1,775.00 deductible of $3,445.00 paid. |
+| need the disclosure | 4 |
+| penalty exposure | $20.00 |
 
-**Seven gala payments checked at once, with the penalty exposure**
+**The input**
 
 ```json
 {
@@ -106,67 +164,9 @@ A $150 gala ticket with a $60 dinner, and a receipt that says "100% tax deductib
 }
 ```
 
-Seven gala payments checked at once, with the penalty exposure
-
-| Result | Value |
-| --- | --- |
-| answer | 7 payments checked: 4 need the quid pro quo disclosure, 2 marked as sent without it (penalty exposure $20.00, at $10 each and at most $5,000 an event); $1,775.00 deductible of $3,445.00 paid. |
-| need the disclosure | 4 |
-| penalty exposure | $20.00 |
-
-## What does it not do?
-
-- A year outside 2020 to 2027 is refused: no limits are held for it.
-- It never estimates what a dinner, a stay or an auction item is worth: the value is the organization's good faith estimate.
-- Federal rules only: state raffle and charitable solicitation rules are not covered. Not tax or legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-Every limit, threshold and quote was read on irs.gov on 2026-11-08. Publication 1771's rules are read from the giving statements tool's own rules file, never copied. Each year's limits come from a new revenue procedure, added by hand each autumn.
-
-- [IRS Publication 1771 (Rev. 11-2023), token, membership and religious exceptions](https://www.irs.gov/pub/irs-pdf/p1771.pdf)
-- [IRS: Charitable contributions, quid pro quo contributions](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-quid-pro-quo-contributions)
-- [IRS Publication 526 (2025), Charitable Contributions](https://www.irs.gov/publications/p526)
-- [IRS: Advertising or qualified sponsorship payments?](https://www.irs.gov/charities-non-profits/advertising-or-qualified-sponsorship-payments)
-- [IRS: Instructions for Forms W-2G and 5754 (01/2026)](https://www.irs.gov/instructions/iw2g)
-- [IRS Publication 3079 (Rev. 10-2018), Tax-Exempt Organizations and Gaming](https://www.irs.gov/pub/irs-pdf/p3079.pdf)
-- [Rev. Proc. 2019-44, section 3.34](https://www.irs.gov/pub/irs-drop/rp-19-44.pdf)
-- [Rev. Proc. 2020-45, section 3.34](https://www.irs.gov/pub/irs-drop/rp-20-45.pdf)
-- [Rev. Proc. 2021-45, section 3.34](https://www.irs.gov/pub/irs-drop/rp-21-45.pdf)
-- [Rev. Proc. 2022-38, section 3.34](https://www.irs.gov/pub/irs-drop/rp-22-38.pdf)
-- [Rev. Proc. 2023-34, section 3.34](https://www.irs.gov/pub/irs-drop/rp-23-34.pdf)
-- [Rev. Proc. 2024-40, section 2.34](https://www.irs.gov/pub/irs-drop/rp-24-40.pdf)
-- [Rev. Proc. 2025-32, section 4.33](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf)
-- [Rev. Proc. 2026-35, section 3.35](https://www.irs.gov/pub/irs-drop/rp-26-35.pdf)
-
-Every limit, threshold and quote was read on irs.gov on 2026-11-08. Publication 1771's rules are read from the giving statements tool's own rules file, never copied. Each year's limits come from a new revenue procedure, added by hand each autumn.
-
-Quid pro quo receipt checker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [IRS Publication 1771 (Rev. 11-2023), token, membership and religious exceptions](https://www.irs.gov/pub/irs-pdf/p1771.pdf) | Rev. 11-2023 | 2026-11-08 |
-| [IRS: Charitable contributions, quid pro quo contributions](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-quid-pro-quo-contributions) | see the document | 2026-11-08 |
-| [IRS Publication 526 (2025), Charitable Contributions](https://www.irs.gov/publications/p526) | see the document | 2026-11-08 |
-| [IRS: Advertising or qualified sponsorship payments?](https://www.irs.gov/charities-non-profits/advertising-or-qualified-sponsorship-payments) | see the document | 2026-11-08 |
-| [IRS: Instructions for Forms W-2G and 5754 (01/2026)](https://www.irs.gov/instructions/iw2g) | 01/2026 | 2026-11-08 |
-| [IRS Publication 3079 (Rev. 10-2018), Tax-Exempt Organizations and Gaming](https://www.irs.gov/pub/irs-pdf/p3079.pdf) | Rev. 10-2018 | 2026-11-08 |
-| [Rev. Proc. 2019-44, section 3.34](https://www.irs.gov/pub/irs-drop/rp-19-44.pdf) | see the document | 2026-11-08 |
-| [Rev. Proc. 2020-45, section 3.34](https://www.irs.gov/pub/irs-drop/rp-20-45.pdf) | see the document | 2026-11-08 |
-| [Rev. Proc. 2021-45, section 3.34](https://www.irs.gov/pub/irs-drop/rp-21-45.pdf) | see the document | 2026-11-08 |
-| [Rev. Proc. 2022-38, section 3.34](https://www.irs.gov/pub/irs-drop/rp-22-38.pdf) | see the document | 2026-11-08 |
-| [Rev. Proc. 2023-34, section 3.34](https://www.irs.gov/pub/irs-drop/rp-23-34.pdf) | see the document | 2026-11-08 |
-| [Rev. Proc. 2024-40, section 2.34](https://www.irs.gov/pub/irs-drop/rp-24-40.pdf) | see the document | 2026-11-08 |
-| [Rev. Proc. 2025-32, section 4.33](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf) | see the document | 2026-11-08 |
-| [Rev. Proc. 2026-35, section 3.35](https://www.irs.gov/pub/irs-drop/rp-26-35.pdf) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-Every limit and quote is pinned to irs.gov. The tests check the $75 line (over, not at), each exception year by year, the receipt text checks and the fix, the batch penalty at $10 each and $5,000 at most, the raffle prize thresholds, and that the browser engine agrees with the server.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every limit and quote is pinned to irs.gov as read on 2026-11-08; the disclosure applies over $75 and not at it.
 - The token, membership, religious, sponsorship and raffle rules are checked year by year, and receipt text checks find a missing estimate and "100% deductible".

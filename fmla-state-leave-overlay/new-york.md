@@ -36,6 +36,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA, 
 
 ## New York in its own words
 
+**Read the law's own words (7 quotations)**
+
 - "If you are eligible and have a qualifying event, you can take up to 12 weeks of job-protected, paid time off." [New York State Paid Family Leave, Benefits (read through WebFetch: curl got 403)](https://paidfamilyleave.ny.gov/benefits)
 - "Employees who work a regular schedule of 20 or more hours per week are eligible after 26 consecutive weeks of employment." [New York State Paid Family Leave, Eligibility (read through WebFetch: curl got 403)](https://paidfamilyleave.ny.gov/eligibility)
 - "Employees who work a regular schedule of less than 20 hours per week are eligible after working 175 days" [New York State Paid Family Leave, Eligibility (read through WebFetch: curl got 403)](https://paidfamilyleave.ny.gov/eligibility)

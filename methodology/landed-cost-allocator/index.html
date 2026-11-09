@@ -74,29 +74,46 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>Amounts are read exactly into integers: product cost in ten-thousandths of a unit (unit prices may have four decimals), charges in cents.</span></li><li><span>Each charge's basis is what you choose; the default by kind is freight by volume, duty by value, brokerage by value, insurance by value, fees by value, discount by value, other by value.</span></li><li><span>Each line's weight in the basis is its share of the total; the charge in cents times each weight is divided by the total weight, the whole cents are given out, and the cents left over go to the lines with the largest remainders (ties to the larger weight, then line order).</span></li><li><span>A mixed charge is split into its parts by percent first, each part by its own basis. A discount is a negative charge.</span></li><li><span>The landed cost per unit is the line's product cost plus its shares, divided by its units, shown to four decimals.</span></li></ol>
+<p class="cp-note">Step 6, each rule and the edge cases are in <a href="/toll-preview/methodology/landed-cost-allocator/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>A line or charge the basis cannot be applied to is refused with the line and field.</li><li>Every freight, duty and fee amount is yours: it uses no rates. For US duty use the broker's entry summary.</li><li>How you book a late invoice is for you and your accountant. Not tax, accounting or customs advice.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 9 sources</h3><div class="tc-b"><p class="tc-a">The engine uses no rates or outside data. The facts the pages quote were read on 2026-11-08 on the publishers' own pages, which are checked daily for changes.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 3 checks in its test suite</h3><div class="tc-b"><p class="tc-a">The tests check that largest remainder shares add back exactly with ties broken by weight then order, a worked shipment to the cent, every basis, refusals, late invoices, the CSV and formula workbook, the Shopify round trip, and the price of $1.50 per 50 lines with 3 lines free.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<details class="xpand cp-src-fold"><summary>Sources (9)</summary><div class="xp-in"><ul class="cp-sources cp-src"><li><a href="https://help.shopify.com/en/manual/inventory-and-locations/transitioning-from-stocky">Shopify Help: Transitioning from Stocky</a><span class="src-m">help.shopify.com · see the document · read 2026-11-08</span></li><li><a href="https://help.shopify.com/en/manual/products/import-export/using-csv">Shopify Help: Using CSV files to import and export products</a><span class="src-m">help.shopify.com · see the document · read 2026-11-08</span></li><li><a href="https://www.irs.gov/publications/p538">IRS Publication 538, Accounting Periods and Methods</a><span class="src-m">irs.gov · see the document · read 2026-11-08</span></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/set-inventory-lists/calculate-landed-cost-quickbooks-enterprise/L4D21nWRC_US_en_US">Intuit: Calculate landed cost in QuickBooks Desktop Enterprise</a><span class="src-m">quickbooks.intuit.com · see the document · read 2026-11-08</span></li><li><a href="https://apps.shopify.com/stock-room">Stockroom app listing</a><span class="src-m">apps.shopify.com · see the document · read 2026-11-08</span></li><li><a href="https://apps.shopify.com/landed-cost-receiving">Landed Cost Receiving app listing</a><span class="src-m">apps.shopify.com · see the document · read 2026-11-08</span></li><li><a href="https://apps.shopify.com/landedwise">Landrio app listing</a><span class="src-m">apps.shopify.com · see the document · read 2026-11-08</span></li><li><a href="https://www.sku.io/pricing">SKU.io pricing</a><span class="src-m">sku.io · see the document · read 2026-11-08</span></li><li><a href="https://www.prediko.io/pricing">Prediko pricing</a><span class="src-m">prediko.io · see the document · read 2026-11-08</span></li></ul></div></details>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the landed cost allocator compute?</h2>
-<p>Enter a shipment's PO lines (SKU, quantity, unit cost and, where a basis needs them, weight, volume or dimensions) and its invoices, and the tool spreads each invoice over the lines, gives the landed cost per unit of every SKU and adds every invoice back exactly. A late invoice can be split between units still on hand and units already sold. It writes a CSV, a spreadsheet with live formulas and, from your Shopify product export, the same file back with only Cost per item changed.</p>
-<details class="xpand"><summary>Read the rest: What does the landed cost allocator compute?</summary><div class="xp-in"><p>Inputs:</p>
+<p>Enter a shipment's PO lines (SKU, quantity, unit cost and, where a basis needs them, weight, volume or dimensions) and its invoices, and the tool spreads each invoice over the lines, gives the landed cost per unit of every SKU and adds every invoice back exactly.</p>
+<details class="xpand"><summary>In detail: inputs and outputs</summary><div class="xp-in"><p>A late invoice can be split between units still on hand and units already sold. It writes a CSV, a spreadsheet with live formulas and, from your Shopify product export, the same file back with only Cost per item changed.</p>
+<p>Inputs:</p>
 <ul><li><code>lines or linesCsv</code>: Up to 2,000 PO lines: sku, title, qty, unitCost (up to four decimals), and optionally value, weight (kg or lb, per unit or per line), CBM, dimensions in cm, and units on hand.</li><li><code>charges</code>: Up to 40 invoices, each with a kind (freight, duty, brokerage, insurance, fees, discount, other), an amount and a basis (value, weight, volume, quantity, equal, specific, mixed), a mix of bases by percent, amounts per SKU, the lines it applies to, and whether it is late.</li><li><code>shipment</code>: A PO or container reference, needed over 3 lines: re-runs for the same shipment are free.</li><li><code>latePolicy, currency, shopifyExport</code>: For a late invoice, split by units on hand (onhand) or across all units (split); the currency code; and a Shopify product export to fill.</li></ul>
 <p>Outputs:</p>
 <ul><li>answer: the landed cost per unit of each SKU, the charges on the goods and their share</li><li>rows: per SKU the product cost, each charge's share and the landed cost per unit; charges: each invoice with its split</li><li>late (when a late invoice is given): what goes to stock on hand and what goes to cost of goods sold</li><li>compare: each charge under the other bases, and the files</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>Amounts are read exactly into integers: product cost in ten-thousandths of a unit (unit prices may have four decimals), charges in cents. More decimals than allowed are refused, never rounded.</li><li>Each charge's basis is what you choose; the default by kind is freight by volume, duty by value, brokerage by value, insurance by value, fees by value, discount by value, other by value. Volume comes from CBM or from the dimensions in cm; weight from kg or lb, per unit or per line.</li><li>Each line's weight in the basis is its share of the total; the charge in cents times each weight is divided by the total weight, the whole cents are given out, and the cents left over go to the lines with the largest remainders (ties to the larger weight, then line order). The shares add back to the invoice exactly.</li><li>A mixed charge is split into its parts by percent first, each part by its own basis. A discount is a negative charge.</li><li>The landed cost per unit is the line's product cost plus its shares, divided by its units, shown to four decimals.</li><li>A late invoice is split between units on hand and units sold: the on-hand part re-costs the stock, and the sold part is reported as a cost of goods sold variance.</li></ol>
+<details class="xpand"><summary>Every step in full (6) and the rules</summary><div class="xp-in"><ol><li>Amounts are read exactly into integers: product cost in ten-thousandths of a unit (unit prices may have four decimals), charges in cents. More decimals than allowed are refused, never rounded.</li><li>Each charge's basis is what you choose; the default by kind is freight by volume, duty by value, brokerage by value, insurance by value, fees by value, discount by value, other by value. Volume comes from CBM or from the dimensions in cm; weight from kg or lb, per unit or per line.</li><li>Each line's weight in the basis is its share of the total; the charge in cents times each weight is divided by the total weight, the whole cents are given out, and the cents left over go to the lines with the largest remainders (ties to the larger weight, then line order). The shares add back to the invoice exactly.</li><li>A mixed charge is split into its parts by percent first, each part by its own basis. A discount is a negative charge.</li><li>The landed cost per unit is the line's product cost plus its shares, divided by its units, shown to four decimals.</li><li>A late invoice is split between units on hand and units sold: the on-hand part re-costs the stock, and the sold part is reported as a cost of goods sold variance.</li></ol>
 <p><strong>What landed cost includes.</strong></p>
-<p>IRS Publication 538 says the cost of merchandise purchased is the invoice price less appropriate discounts plus transportation or other charges incurred in acquiring the goods (read 2026-11-08).</p>
+<p>IRS Publication 538 says the cost of merchandise purchased is the invoice price less appropriate discounts plus transportation or other charges incurred in acquiring the goods (read 2026-11-08).</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>A charge on a basis a line lacks (no weight given) names the line instead of guessing.</li><li>Ties in the remainder go to the larger weight, then to line order, so the same input splits the same way.</li><li>A Shopify export comes back with only Cost per item changed, for whole products only.</li><li>Cells that a spreadsheet would read as a formula are made plain text.</li></ul>
+<details class="xpand"><summary>The edge cases (4)</summary><div class="xp-in"><ul><li>A charge on a basis a line lacks (no weight given) names the line instead of guessing.</li><li>Ties in the remainder go to the larger weight, then to line order, so the same input splits the same way.</li><li>A Shopify export comes back with only Cost per item changed, for whole products only.</li><li>Cells that a spreadsheet would read as a formula are made plain text.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>A 3-SKU ocean shipment: freight by CBM, duty by value, the broker fee per line</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">A 3-SKU ocean shipment: freight by CBM, duty by value, the broker fee per line</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Landed cost per unit is $3.8374 for MUG-12, $5.1997 for TEE-M, $6.0885 for CANDLE-8: $3,337.47 of charges on $7,640.00 of goods (43.7%), every charge split to the cent and added back to its invoice.</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;shipment&quot;: &quot;PO-1042&quot;,
   &quot;lines&quot;: [
     &#123;
@@ -144,45 +161,18 @@
       &quot;basis&quot;: &quot;equal&quot;
     &#125;
   ]
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A 3-SKU ocean shipment: freight by CBM, duty by value, the broker fee per line</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">answer</th><td>Landed cost per unit is $3.8374 for MUG-12, $5.1997 for TEE-M, $6.0885 for CANDLE-8: $3,337.47 of charges on $7,640.00 of goods (43.7%), every charge split to the cent and added back to its invoice.</td></tr>
-</tbody></table></div>
-<p><strong>A late drayage invoice on the same shipment</strong></p>
-<pre><code class="language-json">shipment: &quot;PO-1042&quot;
-lines: 3 items
-charges: 4 items</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A late drayage invoice on the same shipment</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (1)</summary><div class="xp-in"><p><strong>A late drayage invoice on the same shipment</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">A late drayage invoice on the same shipment</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">answer</th><td>Landed cost per unit is $4.1226 for MUG-12, $5.3219 for TEE-M, $6.3261 for CANDLE-8: $3,750.27 of charges on $7,640.00 of goods (49.1%), every charge split to the cent and added back to its invoice. The late $412.80 adds $238.85 to the 1,540 units still on hand and $173.95 to cost of goods sold for units already sold.</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>A line or charge the basis cannot be applied to is refused with the line and field.</li><li>Every freight, duty and fee amount is yours: it uses no rates. For US duty use the broker's entry summary.</li><li>How you book a late invoice is for you and your accountant. Not tax, accounting or customs advice.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>The engine uses no rates or outside data. The facts the pages quote were read on 2026-11-08 on the publishers' own pages, which are checked daily for changes.</p>
-<ul class="cp-sources"><li><a href="https://help.shopify.com/en/manual/inventory-and-locations/transitioning-from-stocky">Shopify Help: Transitioning from Stocky</a></li><li><a href="https://help.shopify.com/en/manual/products/import-export/using-csv">Shopify Help: Using CSV files to import and export products</a></li><li><a href="https://www.irs.gov/publications/p538">IRS Publication 538, Accounting Periods and Methods</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/set-inventory-lists/calculate-landed-cost-quickbooks-enterprise/L4D21nWRC_US_en_US">Intuit: Calculate landed cost in QuickBooks Desktop Enterprise</a></li><li><a href="https://apps.shopify.com/stock-room">Stockroom app listing</a></li><li><a href="https://apps.shopify.com/landed-cost-receiving">Landed Cost Receiving app listing</a></li><li><a href="https://apps.shopify.com/landedwise">Landrio app listing</a></li><li><a href="https://www.sku.io/pricing">SKU.io pricing</a></li><li><a href="https://www.prediko.io/pricing">Prediko pricing</a></li></ul>
-<p>The engine uses no rates or outside data. The facts the pages quote were read on 2026-11-08 on the publishers' own pages, which are checked daily for changes.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Landed cost allocator: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://help.shopify.com/en/manual/inventory-and-locations/transitioning-from-stocky">Shopify Help: Transitioning from Stocky</a></th><td rowspan="9">see the document</td><td rowspan="9">2026-11-08</td></tr>
-<tr><th scope="row"><a href="https://help.shopify.com/en/manual/products/import-export/using-csv">Shopify Help: Using CSV files to import and export products</a></th></tr>
-<tr><th scope="row"><a href="https://www.irs.gov/publications/p538">IRS Publication 538, Accounting Periods and Methods</a></th></tr>
-<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/set-inventory-lists/calculate-landed-cost-quickbooks-enterprise/L4D21nWRC_US_en_US">Intuit: Calculate landed cost in QuickBooks Desktop Enterprise</a></th></tr>
-<tr><th scope="row"><a href="https://apps.shopify.com/stock-room">Stockroom app listing</a></th></tr>
-<tr><th scope="row"><a href="https://apps.shopify.com/landed-cost-receiving">Landed Cost Receiving app listing</a></th></tr>
-<tr><th scope="row"><a href="https://apps.shopify.com/landedwise">Landrio app listing</a></th></tr>
-<tr><th scope="row"><a href="https://www.sku.io/pricing">SKU.io pricing</a></th></tr>
-<tr><th scope="row"><a href="https://www.prediko.io/pricing">Prediko pricing</a></th></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">shipment: &quot;PO-1042&quot;
+lines: 3 items
+charges: 4 items</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>The tests check that largest remainder shares add back exactly with ties broken by weight then order, a worked shipment to the cent, every basis, refusals, late invoices, the CSV and formula workbook, the Shopify round trip, and the price of $1.50 per 50 lines with 3 lines free.</p>
-<p>What its test suite asserts:</p>
-<ul><li>Largest remainder shares add back to each invoice exactly, with ties broken by weight then line order.</li><li>A worked shipment is checked to the cent on every basis, and late invoices split between stock on hand and cost of goods sold.</li><li>The CSV adds up and is formula-safe; a Shopify export comes back with only Cost per item changed.</li></ul>
+<details class="xpand"><summary>What its test suite asserts (3)</summary><div class="xp-in"><ul><li>Largest remainder shares add back to each invoice exactly, with ties broken by weight then line order.</li><li>A worked shipment is checked to the cent on every basis, and late invoices split between stock on hand and cost of goods sold.</li><li>The CSV adds up and is formula-safe; a Shopify export comes back with only Cost per item changed.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/landed-cost-allocator/">Open the Landed cost allocator tool</a>.</p>
 </section>

@@ -74,33 +74,34 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the reconciler</h2><p class="muted">The made-up report below opens in the reconciler and is checked in your browser, free. Swap in your own settlement report there.</p><form method="get" action="/toll-preview/amazon-settlement-reconciliation/" class="cp-tool-form"><input type="hidden" name="sample" value="eu"><input type="hidden" name="ledger" value="xero"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this settlement in the reconciler</button></form><p class="small"><a href="/toll-preview/amazon-settlement-reconciliation/?sample=eu&amp;ledger=xero">Open this example in the reconciler</a></p></aside>
 <section>
 <h2 id="split">The settlement by month</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Settlement 13572468024</caption><thead><tr><th scope="col">Period</th><th scope="col">Posted</th><th scope="col" class="r num">Rows</th><th scope="col" class="r num">Product sales</th><th scope="col" class="r num">Selling fees</th><th scope="col" class="r num">FBA fees</th><th scope="col" class="r num">Subscription</th><th scope="col" class="r num">Reserve held and released</th><th scope="col" class="r num">Net</th><th scope="col" class="r num">Share</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Settlement 13572468024</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Period</th><th scope="col">Posted</th><th scope="col" class="r num">Rows</th><th scope="col" class="r num">Product sales</th><th scope="col" class="r num">Selling fees</th><th scope="col" class="r num">FBA fees</th><th scope="col" class="r num">Subscription</th><th scope="col" class="r num">Reserve held and released</th><th scope="col" class="r num">Net</th><th scope="col" class="r num">Share</th></tr></thead><tbody>
 <tr><th scope="row">October 2026</th><td>October 23, 2026 to October 31, 2026</td><td class="r num">7</td><td class="r num">€218.50</td><td class="r num">-€32.78</td><td class="r num">-€10.25</td><td class="r num">-€39.00</td><td class="r num"></td><td class="r num">€136.47</td><td class="r num">92.4%</td></tr>
 <tr><th scope="row">November 2026</th><td>November 2, 2026 to November 5, 2026</td><td class="r num">4</td><td class="r num">€47.50</td><td class="r num">-€7.13</td><td class="r num">-€4.10</td><td class="r num"></td><td class="r num">-€25.00</td><td class="r num">€11.27</td><td class="r num">7.6%</td></tr>
 <tr><th scope="row"><strong>Settlement</strong></th><td></td><td class="r num">11</td><td class="r num">€266.00</td><td class="r num">-€39.91</td><td class="r num">-€14.35</td><td class="r num">-€39.00</td><td class="r num">-€25.00</td><td class="r num"><strong>€147.74</strong></td><td class="r num"></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="journals">The journals</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Amazon settlement 13572468024, October 2026, October 31, 2026</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Amazon settlement 13572468024, October 2026, October 31, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Amazon sales</th><td class="r num"></td><td class="r num">€218.50</td></tr>
 <tr><th scope="row">Amazon selling fees</th><td class="r num">€32.78</td><td class="r num"></td></tr>
 <tr><th scope="row">Amazon FBA fees</th><td class="r num">€10.25</td><td class="r num"></td></tr>
 <tr><th scope="row">Amazon subscription fee</th><td class="r num">€39.00</td><td class="r num"></td></tr>
 <tr><th scope="row">Amazon clearing</th><td class="r num">€136.47</td><td class="r num"></td></tr>
 <tr><th scope="row"><strong>Total</strong></th><td class="r num"><strong>€218.50</strong></td><td class="r num"><strong>€218.50</strong></td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>Amazon settlement 13572468024, November 2026, November 5, 2026</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">Amazon settlement 13572468024, November 2026, November 5, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Amazon sales</th><td class="r num"></td><td class="r num">€47.50</td></tr>
 <tr><th scope="row">Amazon selling fees</th><td class="r num">€7.13</td><td class="r num"></td></tr>
 <tr><th scope="row">Amazon FBA fees</th><td class="r num">€4.10</td><td class="r num"></td></tr>
 <tr><th scope="row">Amazon reserve</th><td class="r num">€25.00</td><td class="r num"></td></tr>
 <tr><th scope="row">Amazon clearing</th><td class="r num">€11.27</td><td class="r num"></td></tr>
 <tr><th scope="row"><strong>Total</strong></th><td class="r num"><strong>€47.50</strong></td><td class="r num"><strong>€47.50</strong></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="file">The manual journal lines</h2>
@@ -118,7 +119,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml">Xero Accounting API (OpenAPI): ManualJournalLine (read November 8, 2026)</a></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/report-type-values-settlement">Amazon SP-API: Settlement Reports (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml">Xero Accounting API (OpenAPI): ManualJournalLine (read November 8, 2026)</a><span class="src-m">github.com</span></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/report-type-values-settlement">Amazon SP-API: Settlement Reports (read November 8, 2026)</a><span class="src-m">developer-docs.amazon.com</span></li></ul>
 <p class="cp-note">Not accounting or tax advice: this is arithmetic on Amazon's own settlement file. The sample reports are made up; their amount-type and amount-description values are illustrative, and your file's own values are read as written.</p>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Create the accounts.</strong> Add Amazon clearing and Amazon reserve (balance sheet) and the income and expense accounts the journal uses: Amazon sales, Amazon selling fees, Amazon FBA fees and the others in the file.</li><li><strong>Check and split the settlement.</strong> Run the settlement through the reconciler: the rows must add up to total-amount (€147.74 here), and each month gets its own journal.</li><li><strong>Enter the manual journals.</strong> LineAmount: total for line. Debits are positive, credits are negative value: paste the lines into Xero's manual journal import template, or enter them by hand, one journal per month.</li><li><strong>Reconcile the deposit.</strong> When the deposit shows in the bank feed, reconcile it as a transfer from Amazon clearing. Amazon clearing goes back to zero.</li></ol></section>

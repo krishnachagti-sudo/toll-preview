@@ -9,6 +9,7 @@
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <link rel="stylesheet" href="/toll-preview/qr-code-generator/files/page.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"qr-code-generator"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
@@ -71,168 +72,216 @@
   </div>
 </header>
 
-<main id="main" class="qr">
-  <section class="wrap qr-intro">
+<main id="main" class="qr tf hue-file">
+  <section class="wrap tf-open">
     <p class="eyebrow">स्टैटिक कोड, बिना साइन-अप</p>
     <h1>QR कोड जनरेटर</h1>
     <p class="lede">स्टैटिक कोड आपका लिंक या जानकारी अपने अंदर ही रखता है, इसलिए बीच में कोई उसे बंद नहीं कर सकता। यह पेज उसे आपके ब्राउज़र में बनाता है, अंदर का सही टेक्स्ट दिखाता है, और डाउनलोड से पहले फाइल को वापस पढ़कर जाँचता है।</p>
-    <p data-prices class="qr-price">इस पेज पर कोड बनाना मुफ्त है और इसके लिए अकाउंट नहीं चाहिए; आप जो लिखते हैं वह आपके डिवाइस से बाहर नहीं जाता। छपे हुए कोड की जाँच भी यहाँ मुफ्त है। स्प्रेडशीट से बनने वाले कोड $0.002 प्रति कोड के हैं।</p>
-    <p class="hint"><a href="/toll-preview/qr-code-generator/" hreflang="en" lang="en">Use this tool in English</a></p>
+<ul class="trust" aria-label="इस साइट के बारे में"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> द्वारा बनाया गया</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>सटीक, AI के बिना</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">आधिकारिक स्रोत, तारीख के साथ</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">आपकी अपलोड की गई फ़ाइलें रखी नहीं जातीं</a></span></li><li class="tl2"><a href="/toll-preview/security/">सुरक्षा</a><a href="/toll-preview/terms/">शर्तें</a></li></ul>
+    <p data-prices class="tf-price" id="qr-price"><span class="price">इस पेज पर मुफ्त</span><span>अकाउंट नहीं चाहिए; कुछ भी आपके डिवाइस से बाहर नहीं जाता</span><span>स्प्रेडशीट से कोड: $0.002 प्रति कोड</span></p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/qr-code-generator/" hreflang="en">अंग्रेज़ी में देखें</a></p>
   </section>
 
-  <section class="wrap qr-desk" data-jump="कोड बनाएँ" aria-label="कोड बनाएँ">
-    <form class="qr-form" id="qr-form" novalidate>
+  <section class="wrap tf-calc qr-desk" data-jump="टूल" aria-label="कोड बनाएँ">
+    <form class="tf-panel tf-form qr-form" id="qr-form" novalidate>
       <div class="field">
-        <label for="qr-type">कोड क्या खोलेगा</label>
-        <select id="qr-type">
-          <option value="url" selected>वेबसाइट लिंक</option>
-          <option value="text">सादा टेक्स्ट</option>
-          <option value="wifi">WiFi लॉगिन</option>
-          <option value="vcard">संपर्क कार्ड (vCard 3.0)</option>
-          <option value="email">ईमेल</option>
-          <option value="sms">टेक्स्ट मैसेज (SMS)</option>
-          <option value="phone">फोन कॉल</option>
-          <option value="location">मैप लोकेशन</option>
-        </select>
-      </div>
+<label for="qr-type">कोड क्या खोलेगा</label>
+<select id="qr-type">
+<option selected="" value="url">वेबसाइट लिंक</option>
+<option value="text">सादा टेक्स्ट</option>
+<option value="wifi">WiFi लॉगिन</option>
+<option value="vcard">संपर्क कार्ड (vCard 3.0)</option>
+<option value="email">ईमेल</option>
+<option value="sms">टेक्स्ट मैसेज (SMS)</option>
+<option value="phone">फोन कॉल</option>
+<option value="location">मैप लोकेशन</option>
+</select>
+</div>
       <div id="qr-fields"></div>
-      <details class="qr-options" id="qr-options">
-        <summary>रूप और छपाई का साइज़</summary>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-ecc">एरर करेक्शन</label>
-            <select id="qr-ecc"><option value="L">L, लगभग 7%</option><option value="M" selected>M, लगभग 15%</option><option value="Q">Q, लगभग 25%</option><option value="H">H, लगभग 30%</option></select></div>
-          <div class="field"><label for="qr-margin">क्वाइट ज़ोन / खाली किनारा (मॉड्यूल)</label><input type="number" id="qr-margin" min="0" max="20" value="4"></div>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-fg">कोड का रंग</label><input type="color" id="qr-fg" value="#000000"></div>
-          <div class="field"><label for="qr-bg">बैकग्राउंड</label><input type="color" id="qr-bg" value="#ffffff"></div>
-        </div>
-        <label class="check"><input type="checkbox" id="qr-transparent"><span>पारदर्शी बैकग्राउंड (PNG और SVG)</span></label>
-        <div class="field">
-          <label for="qr-logo">बीच में लोगो (वैकल्पिक)</label>
-          <input type="file" id="qr-logo" accept="image/png,image/jpeg,image/svg+xml,image/webp">
-          <p class="hint">लोगो कुछ मॉड्यूल ढक देता है, इसलिए कोड एरर करेक्शन पर टिकता है; Q या H चुनें। फाइल को वापस पढ़कर जाँचा जाता है कि वह अब भी स्कैन होती है।</p>
-          <label for="qr-logo-share">लोगो की चौड़ाई: <span id="qr-logo-share-out">20%</span></label>
-          <input type="range" id="qr-logo-share" min="5" max="30" value="20">
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-width">छपाई की चौड़ाई (mm)</label><input type="text" id="qr-width" inputmode="decimal" value="30"></div>
-          <div class="field"><label for="qr-dpi">प्रिंटर (dpi)</label><input type="text" id="qr-dpi" inputmode="numeric" value="300"></div>
-        </div>
-        <div class="field"><label for="qr-px">PNG का साइज़ (पिक्सल)</label><input type="text" id="qr-px" inputmode="numeric" value="1000"></div>
-      </details>
       <p class="form-error" id="qr-error" role="alert"></p>
-      <p class="hint">मुफ्त, आपके ब्राउज़र में। न अकाउंट, न ट्रैकिंग, न एक्सपायरी।</p>
+      <button class="btn tf-go" type="submit" id="qr-run">कोड बनाएँ</button>
+      <p class="hint tf-run-note">मुफ्त, आपके ब्राउज़र में। न अकाउंट, न ट्रैकिंग, न एक्सपायरी।</p>
+      <details class="xpand qr-options" id="qr-options">
+        <summary>रूप और छपाई का साइज़</summary>
+        <div class="xp-in">
+        <div class="qr-pair">
+<div class="field"><label for="qr-ecc">एरर करेक्शन</label>
+<select id="qr-ecc"><option value="L">L, लगभग 7%</option><option selected="" value="M">M, लगभग 15%</option><option value="Q">Q, लगभग 25%</option><option value="H">H, लगभग 30%</option></select></div>
+<div class="field"><label for="qr-margin">क्वाइट ज़ोन / खाली किनारा (मॉड्यूल)</label><input id="qr-margin" max="20" min="0" type="number" value="4"/></div>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-fg">कोड का रंग</label><input id="qr-fg" type="color" value="#000000"/></div>
+<div class="field"><label for="qr-bg">बैकग्राउंड</label><input id="qr-bg" type="color" value="#ffffff"/></div>
+</div>
+<label class="check"><input id="qr-transparent" type="checkbox"/><span>पारदर्शी बैकग्राउंड (PNG और SVG)</span></label>
+<div class="field">
+<label for="qr-logo">बीच में लोगो (वैकल्पिक)</label>
+<input accept="image/png,image/jpeg,image/svg+xml,image/webp" id="qr-logo" type="file"/>
+<p class="hint">लोगो कुछ मॉड्यूल ढक देता है, इसलिए कोड एरर करेक्शन पर टिकता है; Q या H चुनें। फाइल को वापस पढ़कर जाँचा जाता है कि वह अब भी स्कैन होती है।</p>
+<label for="qr-logo-share">लोगो की चौड़ाई: <span id="qr-logo-share-out">20%</span></label>
+<input id="qr-logo-share" max="30" min="5" type="range" value="20"/>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-width">छपाई की चौड़ाई (mm)</label><input id="qr-width" inputmode="decimal" type="text" value="30"/></div>
+<div class="field"><label for="qr-dpi">प्रिंटर (dpi)</label><input id="qr-dpi" inputmode="numeric" type="text" value="300"/></div>
+</div>
+<div class="field"><label for="qr-px">PNG का साइज़ (पिक्सल)</label><input id="qr-px" inputmode="numeric" type="text" value="1000"/></div>
+      </div>
+      </details>
     </form>
 
-    <div class="qr-out" id="qr-out" aria-live="polite">
+    <div class="tf-panel tf-result qr-out" id="qr-out" aria-live="polite">
       <p class="muted">लोड हो रहा है।</p>
     </div>
   </section>
 
-  <section class="wrap qr-check" data-jump="क्या मेरा कोड बंद हो जाएगा?" id="qr-check" aria-labelledby="qr-check-title">
+  <section class="wrap tf-sec qr-check" data-jump="जाँचें" id="qr-check" aria-labelledby="qr-check-title">
+    <div class="tf-top solo"><div>
     <h2 id="qr-check-title">क्या मेरा पहले से छपा कोड बंद हो जाएगा?</h2>
-    <p class="qr-lede">कई जनरेटर डायनामिक कोड बनाते हैं: कोड में वेंडर के डोमेन का छोटा लिंक होता है, जो स्कैन को आपके पेज तक तभी भेजता है जब तक वेंडर उसे चालू रखता है। कोड की तस्वीर दें, या उसमें जो लिखा है वह लिखें, और यह टूल लिंक को वैसे ही फॉलो करता है जैसे फोन करता।</p>
-    <div class="qr-check-grid">
-      <form id="qr-check-form" novalidate>
+    <p class="tf-p">कई जनरेटर डायनामिक कोड बनाते हैं: कोड में वेंडर के डोमेन का छोटा लिंक होता है, जो स्कैन को आपके पेज तक तभी भेजता है जब तक वेंडर उसे चालू रखता है। कोड की तस्वीर दें, या उसमें जो लिखा है वह लिखें, और यह टूल लिंक को वैसे ही फॉलो करता है जैसे फोन करता।</p>
+    </div></div>
+    <div class="tf-calc">
+      <form class="tf-panel tf-form" id="qr-check-form" novalidate>
         <div class="field">
-          <label for="qr-check-image">कोड की तस्वीर</label>
-          <input type="file" id="qr-check-image" accept="image/*">
-          <p class="hint">स्क्रीनशॉट या स्कैन सबसे अच्छा पढ़ा जाता है। फोन से खींची फोटो को आपके ब्राउज़र का बिल्ट-इन कोड रीडर पढ़ता है, अगर उसमें हो।</p>
-        </div>
-        <div class="field">
-          <label for="qr-check-text">या कोड में जो लिखा है</label>
-          <input type="text" id="qr-check-text" placeholder="https://..." spellcheck="false">
-        </div>
-        <div class="field">
-          <label for="qr-check-mine">आपके अपने डोमेन (वैकल्पिक)</label>
-          <input type="text" id="qr-check-mine" placeholder="example.com" spellcheck="false">
-        </div>
-        <p class="form-error" id="qr-check-error" role="alert"></p>
-        <button class="btn" type="submit" id="qr-check-run">जाँचें</button>
-        <p class="hint qr-run-note">इस पेज पर मुफ्त। बिना अकाउंट के यह आपके रोज़ के मुफ्त रनों में से एक गिना जाता है। लिंक हमारे सर्वर से खोला जाता है, जो कभी निजी या लोकल एड्रेस नहीं खोलता।</p>
+<label for="qr-check-image">कोड की तस्वीर</label>
+<input accept="image/*" id="qr-check-image" type="file"/>
+<p class="hint">स्क्रीनशॉट या स्कैन सबसे अच्छा पढ़ा जाता है। फोन से खींची फोटो को आपके ब्राउज़र का बिल्ट-इन कोड रीडर पढ़ता है, अगर उसमें हो।</p>
+</div>
+<div class="field">
+<label for="qr-check-text">या कोड में जो लिखा है</label>
+<input id="qr-check-text" placeholder="https://..." spellcheck="false" type="text"/>
+</div>
+<div class="field">
+<label for="qr-check-mine">आपके अपने डोमेन (वैकल्पिक)</label>
+<input id="qr-check-mine" placeholder="example.com" spellcheck="false" type="text"/>
+</div>
+<p class="form-error" id="qr-check-error" role="alert"></p>
+<button class="btn" id="qr-check-run" type="submit">जाँचें</button>
+<p class="hint qr-run-note">इस पेज पर मुफ्त। बिना अकाउंट के यह आपके रोज़ के मुफ्त रनों में से एक गिना जाता है। लिंक हमारे सर्वर से खोला जाता है, जो कभी निजी या लोकल एड्रेस नहीं खोलता।</p>
       </form>
-      <div id="qr-check-out"><p class="muted">नतीजा यहाँ दिखेगा।</p></div>
+      <div class="tf-panel tf-result" id="qr-check-out"><p class="muted">नतीजा यहाँ दिखेगा।</p></div>
     </div>
   </section>
 
-  <section class="wrap qr-bulk" data-jump="बहुत सारे कोड" id="qr-bulk" aria-labelledby="qr-bulk-title">
+  <section class="wrap tf-sec qr-bulk" data-jump="बैच" id="qr-bulk" aria-labelledby="qr-bulk-title">
+    <div class="tf-top solo"><div>
     <h2 id="qr-bulk-title">स्प्रेडशीट से कोडों का एक बैच</h2>
-    <p class="qr-lede">हर पंक्ति पर एक कोड, PNG या SVG फाइलों के रूप में, एक ZIP में मैनिफेस्ट के साथ, और छापने के लिए एक लेबल शीट। पंक्तियाँ पहले यहीं जाँची जाती हैं; आप सिर्फ बने हुए कोडों का भुगतान करते हैं, और हर फाइल को उसकी पंक्ति से मिलाकर वापस पढ़ा जाता है।</p>
-    <div class="qr-check-grid">
-      <div>
+    <p class="tf-p">हर पंक्ति पर एक कोड, PNG या SVG फाइलों के रूप में, एक ZIP में मैनिफेस्ट के साथ, और छापने के लिए एक लेबल शीट। पंक्तियाँ पहले यहीं जाँची जाती हैं; आप सिर्फ बने हुए कोडों का भुगतान करते हैं, और हर फाइल को उसकी पंक्ति से मिलाकर वापस पढ़ा जाता है।</p>
+    </div></div>
+    <div class="tf-calc">
+      <div class="tf-panel tf-form">
         <div class="field">
-          <label for="qr-bulk-file">स्प्रेडशीट (CSV, TSV या Excel .xlsx)</label>
-          <input type="file" id="qr-bulk-file" accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-        </div>
-        <div class="field">
-          <label for="qr-bulk-paste">या यहाँ पेस्ट करें</label>
-          <textarea id="qr-bulk-paste" rows="6" spellcheck="false">url,label
+<label for="qr-bulk-file">स्प्रेडशीट (CSV, TSV या Excel .xlsx)</label>
+<input accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" id="qr-bulk-file" type="file"/>
+</div>
+<div class="field">
+<label for="qr-bulk-paste">या यहाँ पेस्ट करें</label>
+<textarea id="qr-bulk-paste" rows="6" spellcheck="false">url,label
 https://example.com/menu/table-1,टेबल 1
 https://example.com/menu/table-2,टेबल 2</textarea>
-          <details class="qr-format">
-            <summary>यह कौन से कॉलम पढ़ता है</summary>
-            <p>पहली पंक्ति हेडिंग की, फिर हर पंक्ति पर एक कोड। सामग्री वाले कॉलम का नाम उसके फील्ड के नाम पर रखें: url, text, ssid और password (WiFi), firstName, lastName, phone, email (संपर्क कार्ड), to और subject (ईमेल), phone और message (SMS), latitude और longitude (लोकेशन)। type कॉलम हर पंक्ति का प्रकार तय कर सकता है। तीन तक लेबल कॉलम (label, label2, label3) शीट पर कोड के बगल में छपते हैं। Excel के टेक्स्ट सेल शुरुआती शून्य बनाए रखते हैं, और लंबे सीरियल नंबर पूरे लिखे जाते हैं।</p>
-          </details>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-bulk-type">हर पंक्ति का प्रकार</label><select id="qr-bulk-type"></select></div>
-          <div class="field"><label for="qr-bulk-name">फाइल के नाम</label><input type="text" id="qr-bulk-name" value="qr-{row}" spellcheck="false"></div>
-        </div>
-        <div class="qr-pair">
-          <div class="field"><label for="qr-bulk-format">फाइलें</label><select id="qr-bulk-format"><option value="png" selected>PNG</option><option value="svg">SVG</option><option value="none">कोई इमेज फाइल नहीं</option></select></div>
-          <div class="field"><label for="qr-bulk-sheet">लेबल शीट</label><select id="qr-bulk-sheet"><option value="">कोई नहीं</option></select></div>
-        </div>
-        <p class="hint">ऊपर का एरर करेक्शन और रंग यहाँ भी लागू होते हैं। फाइल के नाम में {row} स्प्रेडशीट की पंक्ति है; {कोई भी हेडिंग} उसी कॉलम की सामग्री है।</p>
+<details class="xpand qr-format">
+<summary>यह कौन से कॉलम पढ़ता है</summary>
+<div class="xp-in"><p>पहली पंक्ति हेडिंग की, फिर हर पंक्ति पर एक कोड। सामग्री वाले कॉलम का नाम उसके फील्ड के नाम पर रखें: url, text, ssid और password (WiFi), firstName, lastName, phone, email (संपर्क कार्ड), to और subject (ईमेल), phone और message (SMS), latitude और longitude (लोकेशन)। type कॉलम हर पंक्ति का प्रकार तय कर सकता है। तीन तक लेबल कॉलम (label, label2, label3) शीट पर कोड के बगल में छपते हैं। Excel के टेक्स्ट सेल शुरुआती शून्य बनाए रखते हैं, और लंबे सीरियल नंबर पूरे लिखे जाते हैं।</p></div>
+</details>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-bulk-type">हर पंक्ति का प्रकार</label><select id="qr-bulk-type"></select></div>
+<div class="field"><label for="qr-bulk-name">फाइल के नाम</label><input id="qr-bulk-name" spellcheck="false" type="text" value="qr-{row}"/></div>
+</div>
+<div class="qr-pair">
+<div class="field"><label for="qr-bulk-format">फाइलें</label><select id="qr-bulk-format"><option selected="" value="png">PNG</option><option value="svg">SVG</option><option value="none">कोई इमेज फाइल नहीं</option></select></div>
+<div class="field"><label for="qr-bulk-sheet">लेबल शीट</label><select id="qr-bulk-sheet"><option value="">कोई नहीं</option></select></div>
+</div>
+<p class="hint">ऊपर का एरर करेक्शन और रंग यहाँ भी लागू होते हैं। फाइल के नाम में {row} स्प्रेडशीट की पंक्ति है; {कोई भी हेडिंग} उसी कॉलम की सामग्री है।</p>
       </div>
-      <div>
+      <div class="tf-panel tf-result">
         <div id="qr-bulk-out"><p class="muted">स्प्रेडशीट खुलते ही यहाँ जाँच दिखेगी।</p></div>
-        <p class="form-error" id="qr-bulk-error" role="alert"></p>
-        <button class="btn" type="button" id="qr-bulk-run" hidden>फाइलें बनाएँ</button>
-        <p data-prices class="hint qr-run-note" id="qr-bulk-note" hidden>साइन-इन किया हुआ अकाउंट चाहिए, जिसमें बैलेंस हो; हर महीने का मुफ्त $0.25 भी गिना जाता है।</p>
-        <div id="qr-bulk-files"></div>
+<p class="form-error" id="qr-bulk-error" role="alert"></p>
+<button class="btn" hidden="" id="qr-bulk-run" type="button">फाइलें बनाएँ</button>
+<p class="hint qr-run-note" data-prices="" hidden="" id="qr-bulk-note">साइन-इन किया हुआ अकाउंट चाहिए, जिसमें बैलेंस हो; हर महीने का मुफ्त $0.25 भी गिना जाता है।</p>
+<div id="qr-bulk-files"></div>
       </div>
     </div>
   </section>
 
-  <section class="wrap qr-rules" data-jump="यह कैसे काम करता है" aria-labelledby="qr-rules-title">
-    <h2 id="qr-rules-title">स्टैटिक, डायनामिक, और क्या एक्सपायर हो सकता है</h2>
-    <div class="qr-rule-cols">
+  <section class="wrap tf-sec qr-rules" data-jump="नियम" aria-labelledby="qr-rules-title">
+    <div class="tf-top">
       <div>
-        <h3>स्टैटिक</h3>
-        <p>कोड के मॉड्यूल आपका लिंक, WiFi लॉगिन या संपर्क कार्ड सीधे लिख देते हैं। फोन उसे सीधे छपाई से पढ़ लेता है। बीच में कोई सेवा नहीं है, इसलिए कुछ बंद नहीं हो सकता; हाँ, अगर उसके पीछे की वेबसाइट चली जाए तो स्टैटिक लिंक भी नहीं खुलेगा।</p>
+        <p class="eyebrow">यह कैसे काम करता है</p>
+        <h2 id="qr-rules-title">स्टैटिक, डायनामिक, और क्या एक्सपायर हो सकता है</h2>
       </div>
-      <div>
-        <h3>डायनामिक</h3>
-        <p>कोड किसी वेंडर के डोमेन का छोटा लिंक लिखता है, और वेंडर हर स्कैन को आपके पेज तक भेजता है। आप पेज बाद में बदल सकते हैं, पर छपा हुआ कोड तभी तक चलता है जब तक वेंडर उसे आगे भेजता रहे। प्लान खत्म होने पर क्या होता है, यह वेंडरों के अपने पेज बताते हैं; ऊपर की जाँच उन्हें पढ़ने की तारीख के साथ दिखाती है।</p>
-      </div>
-      <div>
-        <h3>हर फाइल पर प्रमाण</h3>
-        <p>हर डाउनलोड में अंदर का सही टेक्स्ट, उसका वर्शन (साइज़), एरर करेक्शन लेवल और मास्क दिखता है, और फाइल मिलने से पहले एक स्वतंत्र डिकोडर उसे वापस पढ़ता है। अगर लोगो बहुत ज़्यादा ढक दे, तो पेज बता देता है, ऐसा कोड नहीं थमाता जो शायद स्कैन न हो।</p>
-      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="qr-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="qr-limits-title">इसमें क्या शामिल नहीं है</h3>
+          <p>शामिल नहीं: डायनामिक (बदले जा सकने वाले) कोड, PDF प्रूफ से कोड पढ़ना, EPS फाइलें, कैलेंडर इवेंट और पेमेंट कोड। QR Code is registered trademark of DENSO WAVE INCORPORATED.</p>
+          <details class="xpand"><summary>नोट्स और स्रोत पढ़ें</summary><div class="xp-in">
+            <ul class="qr-notes" id="qr-notes">
+<li>एनकोडर ISO/IEC 18004 (QR Code Model 2) का पालन करता है: न्यूमेरिक, अल्फान्यूमेरिक और बाइट मोड, वर्शन 1 से 40 (21 x 21 से 177 x 177 मॉड्यूल), एरर करेक्शन L, M, Q और H, और मानक के पेनल्टी नियमों से चुने गए आठ मास्क पैटर्न। इसके आउटपुट को हर वर्शन और लेवल पर एक स्वतंत्र ओपन-सोर्स एनकोडर से मिलाकर परखा जाता है।</li>
+<li>QR कोड बनाने वाली कंपनी DENSO WAVE हर तरफ चार मॉड्यूल का क्वाइट ज़ोन माँगती है और हर मॉड्यूल पर 4 या ज़्यादा प्रिंटर डॉट सुझाती है; छपाई की जाँचें दोनों का इस्तेमाल करती हैं। सबसे ज़्यादा चुना जाने वाला लेवल: M, लगभग 15% वापस मिलने लायक।</li>
+<li>सामग्री के फॉर्मेट: WiFi, SMS, फोन, लोकेशन और ईमेल वैसे जैसे फोन के कैमरा ऐप पढ़ते हैं (ZXing "Barcode Contents"); संपर्क कार्ड vCard 3.0 (RFC 2426) के रूप में; ईमेल लिंक RFC 6068 के अनुसार। SMS कोड के लिए कोई आधिकारिक मानक नहीं है।</li>
+<li>जाँच सिर्फ HTTP रीडायरेक्ट (ज़्यादा से ज़्यादा 10) फॉलो करती है, हमारे सर्वर से, और किसी वेंडर का नाम तभी लेती है जब उसका डोमेन हमारी जाँची हुई सूची में हो; वह आपका अकाउंट नहीं देख सकती और वेंडर आगे क्या करेगा इसका वादा नहीं कर सकती। जिन वेंडरों के नाम आते हैं, उनसे हमारा कोई संबंध नहीं है।</li>
+<li>शामिल नहीं: डायनामिक (बदले जा सकने वाले) कोड, PDF प्रूफ से कोड पढ़ना, EPS फाइलें, कैलेंडर इवेंट और पेमेंट कोड। QR Code is registered trademark of DENSO WAVE INCORPORATED.</li>
+<li>स्रोत, 2 नवंबर 2026 को पढ़े गए (पेज अंग्रेज़ी में): <a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE: क्वाइट ज़ोन</a>, <a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE: मॉड्यूल साइज़</a>, <a href="https://www.qrcode.com/en/about/version.html">DENSO WAVE: वर्शन</a>, <a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE: एरर करेक्शन</a>, <a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ</a>, <a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing Barcode Contents</a>, <a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426</a>, <a href="https://www.rfc-editor.org/rfc/rfc6068">RFC 6068</a>, <a href="https://www.avery.com/templates/5160">Avery 5160</a>, <a href="https://www.avery.com/templates/22816">Avery 22816</a>. वेंडरों के पेज हर जाँच के नतीजे के साथ दिए जाते हैं।</li>
+</ul>
+          </div></details>
+        </div>
+      </aside>
     </div>
-    <ul class="qr-notes small muted" id="qr-notes">
-      <li>एनकोडर ISO/IEC 18004 (QR Code Model 2) का पालन करता है: न्यूमेरिक, अल्फान्यूमेरिक और बाइट मोड, वर्शन 1 से 40 (21 x 21 से 177 x 177 मॉड्यूल), एरर करेक्शन L, M, Q और H, और मानक के पेनल्टी नियमों से चुने गए आठ मास्क पैटर्न। इसके आउटपुट को हर वर्शन और लेवल पर एक स्वतंत्र ओपन-सोर्स एनकोडर से मिलाकर परखा जाता है।</li>
-      <li>QR कोड बनाने वाली कंपनी DENSO WAVE हर तरफ चार मॉड्यूल का क्वाइट ज़ोन माँगती है और हर मॉड्यूल पर 4 या ज़्यादा प्रिंटर डॉट सुझाती है; छपाई की जाँचें दोनों का इस्तेमाल करती हैं। सबसे ज़्यादा चुना जाने वाला लेवल: M, लगभग 15% वापस मिलने लायक।</li>
-      <li>सामग्री के फॉर्मेट: WiFi, SMS, फोन, लोकेशन और ईमेल वैसे जैसे फोन के कैमरा ऐप पढ़ते हैं (ZXing "Barcode Contents"); संपर्क कार्ड vCard 3.0 (RFC 2426) के रूप में; ईमेल लिंक RFC 6068 के अनुसार। SMS कोड के लिए कोई आधिकारिक मानक नहीं है।</li>
-      <li>जाँच सिर्फ HTTP रीडायरेक्ट (ज़्यादा से ज़्यादा 10) फॉलो करती है, हमारे सर्वर से, और किसी वेंडर का नाम तभी लेती है जब उसका डोमेन हमारी जाँची हुई सूची में हो; वह आपका अकाउंट नहीं देख सकती और वेंडर आगे क्या करेगा इसका वादा नहीं कर सकती। जिन वेंडरों के नाम आते हैं, उनसे हमारा कोई संबंध नहीं है।</li>
-      <li>शामिल नहीं: डायनामिक (बदले जा सकने वाले) कोड, PDF प्रूफ से कोड पढ़ना, EPS फाइलें, कैलेंडर इवेंट और पेमेंट कोड। QR Code is registered trademark of DENSO WAVE INCORPORATED.</li>
-      <li>स्रोत, 2 नवंबर 2026 को पढ़े गए (पेज अंग्रेज़ी में): <a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE: क्वाइट ज़ोन</a>, <a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE: मॉड्यूल साइज़</a>, <a href="https://www.qrcode.com/en/about/version.html">DENSO WAVE: वर्शन</a>, <a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE: एरर करेक्शन</a>, <a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ</a>, <a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing Barcode Contents</a>, <a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426</a>, <a href="https://www.rfc-editor.org/rfc/rfc6068">RFC 6068</a>, <a href="https://www.avery.com/templates/5160">Avery 5160</a>, <a href="https://www.avery.com/templates/22816">Avery 22816</a>. वेंडरों के पेज हर जाँच के नतीजे के साथ दिए जाते हैं।</li>
-    </ul>
-    <div class="qr-prices">
-      <h3>कीमतें</h3>
-      <ul>
-        <li>इस पेज पर कोड बनाना और छपे हुए कोड की जाँच: मुफ्त।</li>
-        <li>API या MCP से: कोड बनाना $0.002, PNG से कोड पढ़ना $0.002, एक्सपायरी जाँच $0.005।</li>
-        <li>स्प्रेडशीट से कोड: बने हुए हर कोड के $0.002, एक काम में कम से कम 10; एक कैलेंडर महीने में 5,000 से ऊपर के कोड सस्ते पड़ते हैं।</li>
-      </ul>
-      <p class="small muted">जिन पंक्तियों से कोड नहीं बन सकता, उनका कभी शुल्क नहीं लगता।</p>
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r1">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h3v3H8zM13 13h3v3h-3z"/></svg></span>
+        <div>
+          <h3 id="qr-r1">स्टैटिक</h3>
+          <p>कोड के मॉड्यूल आपका लिंक, WiFi लॉगिन या संपर्क कार्ड सीधे लिख देते हैं।</p>
+          <details class="xpand"><summary>पूरे नियम पढ़ें</summary><div class="xp-in">
+            <p>कोड के मॉड्यूल आपका लिंक, WiFi लॉगिन या संपर्क कार्ड सीधे लिख देते हैं। फोन उसे सीधे छपाई से पढ़ लेता है। बीच में कोई सेवा नहीं है, इसलिए कुछ बंद नहीं हो सकता; हाँ, अगर उसके पीछे की वेबसाइट चली जाए तो स्टैटिक लिंक भी नहीं खुलेगा।</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r2">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h10M12 7l5 5-5 5"/></svg></span>
+        <div>
+          <h3 id="qr-r2">डायनामिक</h3>
+          <p>कोड किसी वेंडर के डोमेन का छोटा लिंक लिखता है, और वेंडर हर स्कैन को आपके पेज तक भेजता है।</p>
+          <details class="xpand"><summary>पूरे नियम पढ़ें</summary><div class="xp-in">
+            <p>कोड किसी वेंडर के डोमेन का छोटा लिंक लिखता है, और वेंडर हर स्कैन को आपके पेज तक भेजता है। आप पेज बाद में बदल सकते हैं, पर छपा हुआ कोड तभी तक चलता है जब तक वेंडर उसे आगे भेजता रहे। प्लान खत्म होने पर क्या होता है, यह वेंडरों के अपने पेज बताते हैं; ऊपर की जाँच उन्हें पढ़ने की तारीख के साथ दिखाती है।</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-r3">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <div>
+          <h3 id="qr-r3">हर फाइल पर प्रमाण</h3>
+          <p>हर डाउनलोड में अंदर का सही टेक्स्ट, उसका वर्शन (साइज़), एरर करेक्शन लेवल और मास्क दिखता है, और फाइल मिलने से पहले एक स्वतंत्र डिकोडर उसे वापस पढ़ता है।</p>
+          <details class="xpand"><summary>पूरे नियम पढ़ें</summary><div class="xp-in">
+            <p>हर डाउनलोड में अंदर का सही टेक्स्ट, उसका वर्शन (साइज़), एरर करेक्शन लेवल और मास्क दिखता है, और फाइल मिलने से पहले एक स्वतंत्र डिकोडर उसे वापस पढ़ता है। अगर लोगो बहुत ज़्यादा ढक दे, तो पेज बता देता है, ऐसा कोड नहीं थमाता जो शायद स्कैन न हो।</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="qr-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v17M16 7.5c-.8-1.2-2.2-1.8-4-1.8-2.3 0-4 1.1-4 3s1.7 2.6 4 3.1 4 1.3 4 3.2-1.7 3.1-4 3.1c-1.9 0-3.4-.7-4.2-2"/></svg></span>
+        <div>
+          <h3 id="qr-prices-title">कीमतें</h3>
+          <p>इस पेज पर कोड बनाना और छपे हुए कोड की जाँच: मुफ्त।</p>
+          <details class="xpand"><summary>सभी कीमतें देखें</summary><div class="xp-in">
+            <ul>
+<li>इस पेज पर कोड बनाना और छपे हुए कोड की जाँच: मुफ्त।</li>
+<li>API या MCP से: कोड बनाना $0.002, PNG से कोड पढ़ना $0.002, एक्सपायरी जाँच $0.005।</li>
+<li>स्प्रेडशीट से कोड: बने हुए हर कोड के $0.002, एक काम में कम से कम 10; एक कैलेंडर महीने में 5,000 से ऊपर के कोड सस्ते पड़ते हैं।</li>
+</ul>
+<p class="small muted">जिन पंक्तियों से कोड नहीं बन सकता, उनका कभी शुल्क नहीं लगता।</p>
+          </div></details>
+        </div>
+      </article>
     </div>
   </section>
 
 
 
-  <section class="wrap qr-code" aria-label="कोड से इस्तेमाल करें">
+  <section class="wrap tf-code qr-code" data-jump="कोड" aria-label="कोड से इस्तेमाल करें">
     <div id="qr-code"></div>
   </section>
   <noscript><div class="wrap"><p>आपके ब्राउज़र में कोड बनाने के लिए इस पेज को JavaScript चाहिए। आप इसे कोड से भी चला सकते हैं: <a href="/toll-preview/docs">डॉक्स</a> देखें (अंग्रेज़ी में)।</p></div></noscript>

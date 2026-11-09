@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Cost your own pour</h2><p class="muted">Opens the pour cost calculator with this bottle.</p><form method="get" action="/toll-preview/recipe-cost-calculator/" class="cp-tool-form"><input type="hidden" name="calc" value="pour"><div class="field"><label for="tf-bottle">Bottle size (ml)</label><input type="text" id="tf-bottle" name="bottle" value="750"></div><input type="hidden" name="bunit" value="ml"><div class="field"><label for="tf-bprice">Bottle price ($)</label><input type="text" id="tf-bprice" name="bprice" value="28.00"></div><div class="field"><label for="tf-pour">Pour (fl oz)</label><input type="text" id="tf-pour" name="pour" value="1.5"></div><input type="hidden" name="punit" value="fl oz"><div class="field"><label for="tf-drink">Drink price ($)</label><input type="text" id="tf-drink" name="drink" value="9.00"></div><div class="field"><label for="tf-target">Target pour cost %</label><input type="text" id="tf-target" name="target" value="20"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work it out</button></form><p class="small"><a href="/toll-preview/recipe-cost-calculator/?calc=pour&amp;bottle=750&amp;bunit=ml&amp;bprice=28.00&amp;pour=1.5&amp;punit=fl+oz&amp;drink=9.00&amp;target=20">Open this in the full calculator</a></p></aside>
 <section>
 <h2 id="table">Cost per pour from a 750 ml bottle</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>No spill or loss counted; add a loss % in the calculator for what your bar loses</caption><thead><tr><th scope="col">Bottle price</th><th scope="col" class="r num">1 oz</th><th scope="col" class="r num">1.25 oz</th><th scope="col" class="r num">1.5 oz</th><th scope="col" class="r num">2 oz</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">No spill or loss counted; add a loss % in the calculator for what your bar loses</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Bottle price</th><th scope="col" class="r num">1 oz</th><th scope="col" class="r num">1.25 oz</th><th scope="col" class="r num">1.5 oz</th><th scope="col" class="r num">2 oz</th></tr></thead><tbody>
 <tr><th scope="row">$15.00</th><td class="r num">$0.59</td><td class="r num">$0.74</td><td class="r num">$0.89</td><td class="r num">$1.18</td></tr>
 <tr><th scope="row">$20.00</th><td class="r num">$0.79</td><td class="r num">$0.99</td><td class="r num">$1.18</td><td class="r num">$1.58</td></tr>
 <tr><th scope="row">$25.00</th><td class="r num">$0.99</td><td class="r num">$1.23</td><td class="r num">$1.48</td><td class="r num">$1.97</td></tr>
@@ -85,13 +86,13 @@
 <tr><th scope="row">$35.00</th><td class="r num">$1.38</td><td class="r num">$1.73</td><td class="r num">$2.07</td><td class="r num">$2.76</td></tr>
 <tr><th scope="row">$45.00</th><td class="r num">$1.77</td><td class="r num">$2.22</td><td class="r num">$2.66</td><td class="r num">$3.55</td></tr>
 <tr><th scope="row">$60.00</th><td class="r num">$2.37</td><td class="r num">$2.96</td><td class="r num">$3.55</td><td class="r num">$4.73</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>A 750 ml bottle is 25.3605 US fluid ounces: NIST Handbook 44 defines the US gallon as 231 cubic inches and 128 fluid ounces, so 1 fl oz is 29.5735295625 ml exactly.</p>
 <p class="cp-note">A target pour cost % is your choice, not a standard.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.nist.gov/document/2026-nist-handbook-44-appendix-c">NIST Handbook 44 (2026), Appendix C: General Tables of Units of Measurement (read 2026-11-08)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.nist.gov/document/2026-nist-handbook-44-appendix-c">NIST Handbook 44 (2026), Appendix C: General Tables of Units of Measurement (read 2026-11-08)</a><span class="src-m">nist.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How many 1.5 oz pours are in a 750 ml bottle?</h3></summary><div class="xp-in"><p>16.9: 750 ml is 25.3605 US fluid ounces (1 fl oz = 29.5735295625 ml exactly), before any spill or loss.</p></div></details><details class="xpand"><summary><h3>What is the pour cost formula?</h3></summary><div class="xp-in"><p>Pour cost % = cost of the pour / drink price x 100, where the cost of the pour is the bottle price / pours per bottle.</p></div></details></section>

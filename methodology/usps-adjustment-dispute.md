@@ -2,9 +2,53 @@
 
 The label and USPS's measurements are both priced at USPS Notice 123 commercial prices for the label's ship date, and the adjustment should be the difference, plus the $3.00 Dimension Noncompliance Fee where it applies. Since July 12, 2026, dimensional weight rounds each side up to the whole inch and divides by 139 over 1,728 cubic inches. A dispute must be filed within 60 days of the notice.
 
+## How does it work?
+
+1. The price list is chosen by the ship date: July 12, 2026 prices (July 12, 2026 to October 3, 2026) and Time-limited prices, October 4, 2026 to January 17, 2027 (October 4, 2026 to January 16, 2027).
+2. Measurements are worked in hundredths of an inch and weights in ten-thousandths of a pound, so no rounding depends on floating point. Dimensional weight (DMM 213.1.4, 223.1.4, 253.1.2, 283.1.4): from July 12, 2026, each side is rounded up to the whole inch, multiplied, and over 1,728 cubic inches divided by 139 and rounded up, at most 70 lb.
+3. The weight row: Ground Advantage under 1 lb uses the 4, 8, 12 and 15.999 oz rows; Priority Mail and Priority Mail Express have a 0.5 lb row; otherwise the weight is rounded up to the next pound.
+4. Cubic prices (DMM 223.1.3 and 283.1.3): each side is rounded down to the quarter inch and the volume put in tenth-of-a-cubic-foot tiers, up to 0.5 cubic feet for Priority Mail and 1.0 for Ground Advantage.
+5. Fees from Notice 123: a nonstandard length fee over 22 and over 30 inches or a nonstandard characteristics fee, whichever is higher, plus a volume fee over 2 cubic feet.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/usps-adjustment-dispute/#what) below.
+
+## What does it not cover?
+
+- It refuses labels with no loaded price list: before July 12, 2026, or from January 17, 2027 until the new Notice 123 is loaded.
+- It does not read your account or USPS's scan data: the zone and USPS's measurements come from your notice.
+- It does not file the dispute; USPS decides every one, and a packet does not guarantee a refund.
+- Photos are processed to build the PDF and are not kept. It is not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 15 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): USPS's rules and the Notice 123 prices were read on November 8, 2026, the prices transcribed from USPS's own price files. USPS changes prices next on January 17, 2027: Postal Explorer listed only postage statement redlines (revised 11/06/2026) on November 8, 2026; no Notice 123 for January 17, 2027 yet.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin Notice 123 prices and fees to USPS's own files, dimensional weight under the rule in force and the rule before July 12, 2026, the weight rows, cubic tiers and soft packs, the nonstandard and noncompliance fees, refusals outside the loaded price lists, the sample adjustment with the $3 fee, the 60-day deadline, the dispute text, and that the packet PDF is the same bytes every time.
+
+- [USPS: Postage Verification (Automated Package Verification)](https://www.usps.com/business/verify-postage.htm), see the document, read 2026-11-08
+- [USPS FAQ: Automated Package Verification Program](https://faq.usps.com/articles/Knowledge/Automated-Package-Verification-Program), see the document, read 2026-11-08
+- [USPS Industry Alert: Automated Package Verification (APV) Dispute Process, updated October 25, 2024 (PostalPro)](https://postalpro.usps.com/node/13550), see the document, read 2026-11-08
+- [USPS DMM 213 Priority Mail Express Commercial Prices and Eligibility, section 1.4](https://pe.usps.com/text/dmm300/213.htm), see the document, read 2026-11-08
+- [USPS DMM 223 Priority Mail Commercial Prices and Eligibility, sections 1.1 to 1.10](https://pe.usps.com/text/dmm300/223.htm), see the document, read 2026-11-08
+- [USPS DMM 253 Parcel Select Prices and Eligibility, sections 1.2 and 1.7 to 1.8](https://pe.usps.com/text/dmm300/253.htm), see the document, read 2026-11-08
+- [USPS DMM 283 USPS Ground Advantage Commercial Prices and Eligibility, sections 1.1 to 1.8](https://pe.usps.com/text/dmm300/283.htm), see the document, read 2026-11-08
+- [USPS DMM 604.7.0 Computing Postage (round off, round up, round down)](https://pe.usps.com/text/dmm300/604.htm), see the document, read 2026-11-08
+- [USPS DMM archive, issue of April 6, 2026: 223 section 1.4 (the rule before July 12, 2026)](https://pe.usps.com/Archive/NHTML/DMMArchive20260406/223.htm), see the document, read 2026-11-08
+- [USPS Notice 123 Price List, effective October 4, 2026](https://pe.usps.com/text/dmm300/Notice123.htm), see the document, read 2026-11-08
+- [USPS Postal Explorer: Price Change (Time-Limited 2026 and January 2027)](https://pe.usps.com/PriceChange/Index), see the document, read 2026-11-08
+- [USPS Postal Explorer, Price and SKU File Archive: price files effective July 12, 2026 (CSV)](https://pe.usps.com/PriceFile_Archive/CSV/PriceFile_Archive_20260712/Price%20Files%20-%20CSV.zip), July 12, 2026 prices, read 2026-11-08
+- [USPS Postal Explorer, Price and SKU File Archive](https://pe.usps.com/Archive/PriceFile), July 12, 2026 prices, read 2026-11-08
+- [USPS Notice 123 Price List, effective October 4, 2026 (Postal Explorer)](https://pe.usps.com/text/dmm300/Notice123.htm), Time-limited prices, October 4, 2026 to January 17, 2027, read 2026-11-08
+- [USPS Postal Explorer, Time-Limited 2026 Price Change: Notice 123 (final, revised 09/18/2026)](https://pe.usps.com/PriceChange/Index), Time-limited prices, October 4, 2026 to January 17, 2027, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the usps adjustment dispute checker compute?
 
-For a Priority Mail, Priority Mail Express, Ground Advantage or Parcel Select label that USPS adjusted under Automated Package Verification, the tool prices what was entered on the label, what USPS measured and, if given, your own measurements, using the Domestic Mail Manual rules and the Notice 123 commercial price list in force on the ship date. It says what the adjustment should be, whether the charge matches, how much to dispute, and the last day to file. The packet adds the text for USPS's dispute webform and a PDF with the worksheet and your photos.
+For a Priority Mail, Priority Mail Express, Ground Advantage or Parcel Select label that USPS adjusted under Automated Package Verification, the tool prices what was entered on the label, what USPS measured and, if given, your own measurements, using the Domestic Mail Manual rules and the Notice 123 commercial price list in force on the ship date.
+
+**In detail: operations, inputs and outputs**
+
+It says what the adjustment should be, whether the charge matches, how much to dispute, and the last day to file. The packet adds the text for USPS's dispute webform and a PDF with the worksheet and your photos.
 
 Operations (the op field):
 
@@ -32,7 +76,7 @@ Outputs:
 - deadline: the notice date, the last day and the days left
 - packet: the dispute text, the fields for the webform, the steps and the PDF (packet op)
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The price list is chosen by the ship date: July 12, 2026 prices (July 12, 2026 to October 3, 2026) and Time-limited prices, October 4, 2026 to January 17, 2027 (October 4, 2026 to January 16, 2027). A label from before the first or from January 17, 2027 on is refused, since those prices are not loaded.
 2. Measurements are worked in hundredths of an inch and weights in ten-thousandths of a pound, so no rounding depends on floating point. Dimensional weight (DMM 213.1.4, 223.1.4, 253.1.2, 283.1.4): from July 12, 2026, each side is rounded up to the whole inch, multiplied, and over 1,728 cubic inches divided by 139 and rounded up, at most 70 lb. A nonrectangular parcel is multiplied by 0.785 first, and nonrectangular Priority Mail still rounds each side off and divides by 166. Before that date every service rounded off and divided by 166.
@@ -53,6 +97,8 @@ Parcel Select prices depend on the entry facility and are not priced; its dimens
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - A parcel of exactly 1,728 cubic inches has no dimensional weight; it is priced on its actual weight.
 - A box measured 12 x 10 x 8 in by you and 14 x 12 x 11 in by USPS: at your measurements nothing extra is owed, so the whole charge is disputed.
 - A nonrectangular parcel with a nonstandard characteristic is not eligible for cubic prices.
@@ -64,6 +110,19 @@ Parcel Select prices depend on the entry facility and are not priced; its dimens
 > Every figure below is the output of the tool's engine, not typed in.
 
 **Ground Advantage, zone 5: label 12 x 10 x 8 in, USPS says 14 x 12 x 11 in, $13.01 charged**
+
+Ground Advantage, zone 5: label 12 x 10 x 8 in, USPS says 14 x 12 x 11 in, $13.01 charged
+
+| Result | Value |
+| --- | --- |
+| label | 3 lb, $12.12 |
+| at USPS's measurements | 14 lb, $22.13 |
+| the adjustment should be | $10.01, or $13.01 with the $3.00 Dimension Noncompliance Fee |
+| to dispute | $13.01 |
+| reasons | Dimensions |
+| file by | December 27, 2026 |
+
+**The input**
 
 ```json
 {
@@ -92,18 +151,18 @@ Parcel Select prices depend on the entry facility and are not priced; its dimens
 }
 ```
 
-Ground Advantage, zone 5: label 12 x 10 x 8 in, USPS says 14 x 12 x 11 in, $13.01 charged
+**More worked examples (1)**
+
+**Dimensional weight: 21.06 x 15.55 x 9.61 in box, 8 lb, Ground Advantage**
+
+Dimensional weight: 21.06 x 15.55 x 9.61 in box, 8 lb, Ground Advantage
 
 | Result | Value |
 | --- | --- |
-| label | 3 lb, $12.12 |
-| at USPS's measurements | 14 lb, $22.13 |
-| the adjustment should be | $10.01, or $13.01 with the $3.00 Dimension Noncompliance Fee |
-| to dispute | $13.01 |
-| reasons | Dimensions |
-| file by | December 27, 2026 |
+| answer | A 21.06 x 15.55 x 9.61 in rectangular parcel rounds up to 22 x 16 x 10 in = 3,520 cubic inches; over 1,728, so its Ground Advantage dimensional weight is 26 lb (divided by 139, rounded up) and USPS bills 26 lb. |
+| before July 12, 2026 | 21 x 16 x 10 in, 21 lb (divided by 166) |
 
-**Dimensional weight: 21.06 x 15.55 x 9.61 in box, 8 lb, Ground Advantage**
+**The input**
 
 ```json
 {
@@ -116,61 +175,9 @@ Ground Advantage, zone 5: label 12 x 10 x 8 in, USPS says 14 x 12 x 11 in, $13.0
 }
 ```
 
-Dimensional weight: 21.06 x 15.55 x 9.61 in box, 8 lb, Ground Advantage
-
-| Result | Value |
-| --- | --- |
-| answer | A 21.06 x 15.55 x 9.61 in rectangular parcel rounds up to 22 x 16 x 10 in = 3,520 cubic inches; over 1,728, so its Ground Advantage dimensional weight is 26 lb (divided by 139, rounded up) and USPS bills 26 lb. |
-| before July 12, 2026 | 21 x 16 x 10 in, 21 lb (divided by 166) |
-
-## What does it not do?
-
-- It refuses labels with no loaded price list: before July 12, 2026, or from January 17, 2027 until the new Notice 123 is loaded.
-- It does not read your account or USPS's scan data: the zone and USPS's measurements come from your notice.
-- It does not file the dispute; USPS decides every one, and a packet does not guarantee a refund.
-- Photos are processed to build the PDF and are not kept. It is not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-USPS's rules and the Notice 123 prices were read on November 8, 2026, the prices transcribed from USPS's own price files. USPS changes prices next on January 17, 2027: Postal Explorer listed only postage statement redlines (revised 11/06/2026) on November 8, 2026; no Notice 123 for January 17, 2027 yet.
-
-- [USPS: Postage Verification (Automated Package Verification)](https://www.usps.com/business/verify-postage.htm)
-- [USPS FAQ: Automated Package Verification Program](https://faq.usps.com/articles/Knowledge/Automated-Package-Verification-Program)
-- [USPS Industry Alert: Automated Package Verification (APV) Dispute Process, updated October 25, 2024 (PostalPro)](https://postalpro.usps.com/node/13550)
-- [USPS DMM 223 Priority Mail Commercial Prices and Eligibility, sections 1.1 to 1.10](https://pe.usps.com/text/dmm300/223.htm)
-- [USPS DMM 283 USPS Ground Advantage Commercial Prices and Eligibility, sections 1.1 to 1.8](https://pe.usps.com/text/dmm300/283.htm)
-- [USPS DMM 604.7.0 Computing Postage (round off, round up, round down)](https://pe.usps.com/text/dmm300/604.htm)
-- [USPS Notice 123 Price List, effective October 4, 2026](https://pe.usps.com/text/dmm300/Notice123.htm)
-
-USPS's rules and the Notice 123 prices were read on November 8, 2026, the prices transcribed from USPS's own price files. USPS changes prices next on January 17, 2027: Postal Explorer listed only postage statement redlines (revised 11/06/2026) on November 8, 2026; no Notice 123 for January 17, 2027 yet.
-
-USPS adjustment dispute checker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [USPS: Postage Verification (Automated Package Verification)](https://www.usps.com/business/verify-postage.htm) | see the document | 2026-11-08 |
-| [USPS FAQ: Automated Package Verification Program](https://faq.usps.com/articles/Knowledge/Automated-Package-Verification-Program) | see the document | 2026-11-08 |
-| [USPS Industry Alert: Automated Package Verification (APV) Dispute Process, updated October 25, 2024 (PostalPro)](https://postalpro.usps.com/node/13550) | see the document | 2026-11-08 |
-| [USPS DMM 213 Priority Mail Express Commercial Prices and Eligibility, section 1.4](https://pe.usps.com/text/dmm300/213.htm) | see the document | 2026-11-08 |
-| [USPS DMM 223 Priority Mail Commercial Prices and Eligibility, sections 1.1 to 1.10](https://pe.usps.com/text/dmm300/223.htm) | see the document | 2026-11-08 |
-| [USPS DMM 253 Parcel Select Prices and Eligibility, sections 1.2 and 1.7 to 1.8](https://pe.usps.com/text/dmm300/253.htm) | see the document | 2026-11-08 |
-| [USPS DMM 283 USPS Ground Advantage Commercial Prices and Eligibility, sections 1.1 to 1.8](https://pe.usps.com/text/dmm300/283.htm) | see the document | 2026-11-08 |
-| [USPS DMM 604.7.0 Computing Postage (round off, round up, round down)](https://pe.usps.com/text/dmm300/604.htm) | see the document | 2026-11-08 |
-| [USPS DMM archive, issue of April 6, 2026: 223 section 1.4 (the rule before July 12, 2026)](https://pe.usps.com/Archive/NHTML/DMMArchive20260406/223.htm) | see the document | 2026-11-08 |
-| [USPS Notice 123 Price List, effective October 4, 2026](https://pe.usps.com/text/dmm300/Notice123.htm) | see the document | 2026-11-08 |
-| [USPS Postal Explorer: Price Change (Time-Limited 2026 and January 2027)](https://pe.usps.com/PriceChange/Index) | see the document | 2026-11-08 |
-| [USPS Postal Explorer, Price and SKU File Archive: price files effective July 12, 2026 (CSV)](https://pe.usps.com/PriceFile_Archive/CSV/PriceFile_Archive_20260712/Price%20Files%20-%20CSV.zip) | July 12, 2026 prices | 2026-11-08 |
-| [USPS Postal Explorer, Price and SKU File Archive](https://pe.usps.com/Archive/PriceFile) | July 12, 2026 prices | 2026-11-08 |
-| [USPS Notice 123 Price List, effective October 4, 2026 (Postal Explorer)](https://pe.usps.com/text/dmm300/Notice123.htm) | Time-limited prices, October 4, 2026 to January 17, 2027 | 2026-11-08 |
-| [USPS Postal Explorer, Time-Limited 2026 Price Change: Notice 123 (final, revised 09/18/2026)](https://pe.usps.com/PriceChange/Index) | Time-limited prices, October 4, 2026 to January 17, 2027 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests pin Notice 123 prices and fees to USPS's own files, dimensional weight under the rule in force and the rule before July 12, 2026, the weight rows, cubic tiers and soft packs, the nonstandard and noncompliance fees, refusals outside the loaded price lists, the sample adjustment with the $3 fee, the 60-day deadline, the dispute text, and that the packet PDF is the same bytes every time.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Notice 123 prices and fees are pinned to USPS's own price files for both price lists, read November 8, 2026.
 - Dimensional weight rounds up and divides by 139 since July 12, 2026 (nonrectangular Priority Mail still rounds off and divides by 166), and the weight rows, cubic tiers, soft packs and fees are checked.

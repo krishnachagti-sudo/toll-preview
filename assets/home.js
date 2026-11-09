@@ -317,7 +317,9 @@
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    // Its top a little way into the screen, whatever its height (a share of a block taller than the
+    // screen never came, and the block stayed blank).
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
     [].forEach.call(els, function (el) { io.observe(el); });
   }
 

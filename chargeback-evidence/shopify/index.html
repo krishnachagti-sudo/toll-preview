@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-money)">
 <p class="eyebrow">Shopify Payments</p>
 <h1>Shopify Payments chargeback evidence: limits, deadlines and fees</h1>
-<p class="cp-answer">Shopify Payments gives you usually 7 to 21 days; each evidence file must be under 2 MB and all of them under 4 MB, PDF, JPEG or PNG, one file per evidence type. The US chargeback fee is $15 and comes back if you win; the decision can take up to 75 days.</p>
+<p class="cp-answer">Shopify Payments gives you usually 7 to 21 days; each evidence file must be under 2 MB and all of them under 4 MB, PDF, JPEG or PNG, one file per evidence type.<span class="ans-more"> The US chargeback fee is $15 and comes back if you win; the decision can take up to 75 days.</span></p>
 <dl class="cp-facts"><div><dt>Each file</dt><dd class="num">2 MB</dd></div><div><dt>All files</dt><dd class="num">4 MB</dd></div><div><dt>Chargeback fee (US)</dt><dd class="num">$15</dd></div></dl>
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Build the evidence for your dispute</h2><p class="muted">Pick the reason code on your Shopify Payments dispute: the page lists the evidence and the Shopify Payments slot for each piece, and builds the packet.</p><form method="get" action="/toll-preview/chargeback-evidence/" class="cp-tool-form"><input type="hidden" name="platform" value="shopify"><input type="hidden" name="network" value="visa"><input type="hidden" name="productType" value="physical"><div class="field"><label for="tf-code">Reason code</label><input type="text" id="tf-code" name="code" value="13.1"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Show the evidence</button></form><p class="small"><a href="/toll-preview/chargeback-evidence/?platform=shopify&amp;network=visa&amp;productType=physical&amp;code=13.1">Open this dispute in the packet builder</a></p></aside>
 <section>
 <h2 id="limits">Upload limits</h2>
@@ -90,25 +91,25 @@
 </section>
 <section>
 <h2 id="fees">Fees</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>US accounts, in dollars</caption><thead><tr><th scope="col">Fee</th><th scope="col" class="r num">Amount</th><th scope="col">Returned?</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">US accounts, in dollars</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Fee</th><th scope="col" class="r num">Amount</th><th scope="col">Returned?</th></tr></thead><tbody>
 <tr><th scope="row">Chargeback fee (United States)</th><td class="r num">$15.00</td><td>Yes, if you win</td></tr>
 <tr><th scope="row">Submitting evidence</th><td class="r num">$0.00</td><td>No fee</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="break-even">When fighting pays</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The chance of winning above which countering costs less than accepting (your time not counted)</caption><thead><tr><th scope="col" class="r num">Disputed amount</th><th scope="col" class="r num">Extra cost to fight</th><th scope="col" class="r num">Fight above</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The chance of winning above which countering costs less than accepting (your time not counted)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col" class="r num">Disputed amount</th><th scope="col" class="r num">Extra cost to fight</th><th scope="col" class="r num">Fight above</th></tr></thead><tbody>
 <tr><th scope="row">$25.00</th><td class="r num">$0.00</td><td class="r num">0%</td></tr>
 <tr><th scope="row">$40.00</th><td class="r num">$0.00</td><td class="r num">0%</td></tr>
 <tr><th scope="row">$75.00</th><td class="r num">$0.00</td><td class="r num">0%</td></tr>
 <tr><th scope="row">$100.00</th><td class="r num">$0.00</td><td class="r num">0%</td></tr>
 <tr><th scope="row">$250.00</th><td class="r num">$0.00</td><td class="r num">0%</td></tr>
 <tr><th scope="row">$500.00</th><td class="r num">$0.00</td><td class="r num">0%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="reasons">Chargeback reasons and the evidence first in line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Shopify names eight chargeback reasons; the evidence order is from the Stripe category guidelines, physical products</caption><thead><tr><th scope="col">Reason</th><th scope="col">Lead with</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Shopify names eight chargeback reasons; the evidence order is from the Stripe category guidelines, physical products</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Reason</th><th scope="col">Lead with</th></tr></thead><tbody>
 <tr><th scope="row">Fraudulent</th><td>Proof of delivery, shipping details and signature or ID at pickup or delivery</td></tr>
 <tr><th scope="row">Unrecognized</th><td>Proof of delivery, shipping details and signature or ID at pickup or delivery</td></tr>
 <tr><th scope="row">Duplicate</th><td>Records showing the two charges are separate, proof of delivery and messages with the customer</td></tr>
@@ -117,12 +118,12 @@
 <tr><th scope="row">Product unacceptable</th><td>How the product was described, messages with the customer and refund or return policy, and where it was shown</td></tr>
 <tr><th scope="row">Credit not processed</th><td>Proof a refund or credit was already issued, refund or return policy, and where it was shown and why no refund (or no further refund) is due</td></tr>
 <tr><th scope="row">General</th><td>Receipt or order confirmation, messages with the customer and proof of delivery</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Shopify sends whatever evidence is saved on the due date, even if you add nothing yourself; Submit now sends it early and locks it. It also adds Shopify-generated insights unless you untick that box.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-process">Shopify Help Center: Responding to chargebacks and inquiries (read November 8, 2026)</a></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargebacks-in-admin">Shopify Help Center: Managing chargebacks in the Shopify admin (read November 8, 2026)</a></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/resolve-chargeback">Shopify Help Center: Resolving a chargeback or inquiry (read November 8, 2026)</a></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-reasons">Shopify Help Center: Reasons for a chargeback or inquiry (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-process">Shopify Help Center: Responding to chargebacks and inquiries (read November 8, 2026)</a><span class="src-m">help.shopify.com</span></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargebacks-in-admin">Shopify Help Center: Managing chargebacks in the Shopify admin (read November 8, 2026)</a><span class="src-m">help.shopify.com</span></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/resolve-chargeback">Shopify Help Center: Resolving a chargeback or inquiry (read November 8, 2026)</a><span class="src-m">help.shopify.com</span></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-reasons">Shopify Help Center: Reasons for a chargeback or inquiry (read November 8, 2026)</a><span class="src-m">help.shopify.com</span></li></ul>
 <p class="cp-note">Not legal advice. The card issuer decides each dispute; this page shows what the networks and platforms publish, as read on the date shown.</p>
 </section>
 <section>

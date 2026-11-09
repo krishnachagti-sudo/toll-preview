@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the duplicate finder</h2><p class="muted">The worked files open in the tool and are previewed in your browser, free. Swap in your own exports there.</p><form method="get" action="/toll-preview/bank-feed-duplicate-finder/" class="cp-tool-form"><input type="hidden" name="books" value="Lakeside Print Co (made-up sample)
 Transaction Detail by Account
 &quot;September 1-30, 2026&quot;
@@ -169,12 +170,12 @@ Total for Business Card,,,,,,,&quot;-$21,857.20&quot;,
 <section>
 <h2 id="worked">The worked account</h2>
 <p>A made-up print shop's Business Card for September 2026: 80 entries, every purchase in twice (once added from the feed, once from a receipt app, with the payee in capitals).</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>What the check found</caption><thead><tr><th scope="col">Kind</th><th scope="col" class="r num">Pairs</th><th scope="col" class="r num">Total of the copies</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">What the check found</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Kind</th><th scope="col" class="r num">Pairs</th><th scope="col" class="r num">Total of the copies</th></tr></thead><tbody>
 <tr><th scope="row">In the feed twice</th><td class="r num">0</td><td class="r num">$0.00</td></tr>
 <tr><th scope="row">Feed line already in the books</th><td class="r num">0</td><td class="r num">$0.00</td></tr>
 <tr><th scope="row">In the books twice</th><td class="r num">40</td><td class="r num">$10,928.60</td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>The first 10 pairs</caption><thead><tr><th scope="col">#</th><th scope="col">Confidence</th><th scope="col" class="r num">Amount</th><th scope="col">Act on</th><th scope="col">Keep</th><th scope="col">Action</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">The first 10 pairs</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">#</th><th scope="col">Confidence</th><th scope="col" class="r num">Amount</th><th scope="col">Act on</th><th scope="col">Keep</th><th scope="col">Action</th></tr></thead><tbody>
 <tr><th scope="row">1</th><td>high</td><td class="r num">-$12.50</td><td>books line 8: 2026-09-01, OFFICE MART</td><td>books line 7: 2026-09-01, Office Mart</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
 <tr><th scope="row">2</th><td>high</td><td class="r num">-$25.87</td><td>books line 10: 2026-09-01, SHELL</td><td>books line 9: 2026-09-01, Shell</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
 <tr><th scope="row">3</th><td>high</td><td class="r num">-$39.24</td><td>books line 12: 2026-09-02, HOME DEPOT</td><td>books line 11: 2026-09-02, Home Depot</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
@@ -185,7 +186,7 @@ Total for Business Card,,,,,,,&quot;-$21,857.20&quot;,
 <tr><th scope="row">8</th><td>high</td><td class="r num">-$106.09</td><td>books line 22: 2026-09-06, HOME DEPOT</td><td>books line 21: 2026-09-06, Home Depot</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
 <tr><th scope="row">9</th><td>high</td><td class="r num">-$119.46</td><td>books line 24: 2026-09-07, STAPLES</td><td>books line 23: 2026-09-07, Staples</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
 <tr><th scope="row">10</th><td>high</td><td class="r num">-$132.83</td><td>books line 26: 2026-09-07, ULINE</td><td>books line 25: 2026-09-07, Uline</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="filing">Before filing</h2>
@@ -194,7 +195,7 @@ Total for Business Card,,,,,,,&quot;-$21,857.20&quot;,
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/duplicate-transactions/fix-duplicate-transactions-quickbooks-online-bank-feeds/L1fjxl88f_US_en_US">Intuit QuickBooks: Fix duplicate transactions in QuickBooks Online bank feeds (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/duplicate-transactions/fix-duplicate-transactions-quickbooks-online-bank-feeds/L1fjxl88f_US_en_US">Intuit QuickBooks: Fix duplicate transactions in QuickBooks Online bank feeds (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li></ul>
 </section>
 
 

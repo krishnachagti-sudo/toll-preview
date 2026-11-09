@@ -72,70 +72,74 @@
 </header>
 
 <main id="main" class="its">
-  <section class="wrap its-intro">
+  <section class="wrap its-intro t-intro">
     <p class="eyebrow">मुफ़्त, आपके ब्राउज़र में</p>
     <h1>फोटो का साइज़ KB में कम करें</h1>
     <p class="lede">अपलोड फ़ॉर्म में अक्सर लिखा होता है "फोटो 50 KB से कम होनी चाहिए"। सीमा चुनें, अपनी फोटो डालें और ऐसी कॉपी पाएँ जो सीमा में आए, और सीमा जितनी अनुमति दे उतनी बड़ी और साफ़ रहे।</p>
-    <p class="hint"><a href="/toll-preview/image-to-size/" hreflang="en" lang="en">Use this tool in English</a></p>
-    <p class="its-promise"><strong>आपकी फोटो आपके डिवाइस से बाहर नहीं जाती।</strong> वह इसी पेज में छोटी होती है, कुछ अपलोड नहीं होता, और टूल मुफ़्त है।</p>
+<ul class="trust" aria-label="इस साइट के बारे में"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> द्वारा बनाया गया</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>सटीक, AI के बिना</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">आधिकारिक स्रोत, तारीख के साथ</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">आपकी अपलोड की गई फ़ाइलें रखी नहीं जातीं</a></span></li><li class="tl2"><a href="/toll-preview/security/">सुरक्षा</a><a href="/toll-preview/terms/">शर्तें</a></li></ul>
+    <p class="its-promise t-price"><strong>आपकी फोटो आपके डिवाइस से बाहर नहीं जाती।</strong> वह इसी पेज में छोटी होती है, कुछ अपलोड नहीं होता, और टूल मुफ़्त है।</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/image-to-size/" hreflang="en">अंग्रेज़ी में देखें</a></p>
   </section>
 
-  <section class="wrap its-desk" aria-label="फोटो छोटी करने का टूल">
-    <form class="its-form" id="its-form" novalidate>
-      <div class="field">
-        <span class="its-step" id="its-photo-label">1. आपकी फोटो</span>
-        <label class="its-drop" id="its-drop" for="its-file">
-          <input type="file" id="its-file" accept="image/jpeg,image/png,image/webp" aria-describedby="its-photo-label its-file-note">
-          <span class="its-drop-icon" aria-hidden="true"></span>
-          <span class="its-drop-text" id="its-drop-text">फोटो चुनें या यहाँ छोड़ें</span>
-          <span class="its-drop-note" id="its-file-note">JPEG, PNG या WebP</span>
-        </label>
-        <p class="field-error" id="its-file-err" role="alert"></p>
-      </div>
+  <section class="wrap its-desk t-desk" aria-label="फोटो छोटी करने का टूल" data-jump="टूल">
+    <form class="its-form t-panel" id="its-form" novalidate="">
+<div class="field">
+<span class="its-step" id="its-photo-label">1. आपकी फोटो</span>
+<label class="its-drop" for="its-file" id="its-drop">
+<input accept="image/jpeg,image/png,image/webp" aria-describedby="its-photo-label its-file-note" id="its-file" type="file"/>
+<span aria-hidden="true" class="its-drop-icon"></span>
+<span class="its-drop-text" id="its-drop-text">फोटो चुनें या यहाँ छोड़ें</span>
+<span class="its-drop-note" id="its-file-note">JPEG, PNG या WebP</span>
+</label>
+<p class="field-error" id="its-file-err" role="alert"></p>
+</div>
+<div class="field">
+<span class="its-step" id="its-target-label">2. वह साइज़ जिसके अंदर फोटो रहनी चाहिए</span>
+<div aria-labelledby="its-target-label" class="its-chips" id="its-chips" role="group"></div>
+<label class="its-custom" for="its-kb">
+<span>या अपनी सीमा लिखें</span>
+<span class="its-kb-box">
+<input aria-describedby="its-kb-hint its-kb-err" id="its-kb" inputmode="numeric" max="100000" min="1" step="1" type="number" value="50"/>
+<span aria-hidden="true" class="its-kb-unit">KB</span>
+</span>
+</label>
 
-      <div class="field">
-        <span class="its-step" id="its-target-label">2. वह साइज़ जिसके अंदर फोटो रहनी चाहिए</span>
-        <div class="its-chips" id="its-chips" role="group" aria-labelledby="its-target-label"></div>
-        <label class="its-custom" for="its-kb">
-          <span>या अपनी सीमा लिखें</span>
-          <span class="its-kb-box">
-            <input type="number" id="its-kb" inputmode="numeric" min="1" max="100000" step="1" value="50" aria-describedby="its-kb-hint its-kb-err">
-            <span class="its-kb-unit" aria-hidden="true">KB</span>
-          </span>
-        </label>
-        <p class="hint" id="its-kb-hint">यहाँ 1 KB का मतलब 1,000 बाइट है, इसलिए जो फोटो सीमा में आती है वह 1,024 के हिसाब से गिनने वाले फ़ॉर्म में भी आती है।</p>
-        <p class="field-error" id="its-kb-err"></p>
-      </div>
+<p class="field-error" id="its-kb-err"></p>
+</div>
+<button class="btn t-run" disabled="" id="its-go" type="submit">फोटो छोटी करें</button><p class="hint" id="its-kb-hint">यहाँ 1 KB का मतलब 1,000 बाइट है, इसलिए जो फोटो सीमा में आती है वह 1,024 के हिसाब से गिनने वाले फ़ॉर्म में भी आती है।</p>
+<p class="visually-hidden" id="its-status" role="status"></p>
+</form>
 
-      <button class="btn" type="submit" id="its-go" disabled>फोटो छोटी करें</button>
-      <p class="visually-hidden" id="its-status" role="status"></p>
-    </form>
-
-    <div class="its-out" id="its-out" aria-live="polite">
-      <div class="its-idle">
-        <div class="its-gauge" aria-hidden="true">
-          <div class="its-gauge-track"><span class="its-gauge-needle" style="left:0"></span></div>
-        </div>
-        <p class="muted">आपका नतीजा यहाँ दिखेगा: नया साइज़, वह आपकी सीमा के कितने पास है, और डाउनलोड का बटन।</p>
-      </div>
-    </div>
+    <div aria-live="polite" class="its-out t-panel t-result" id="its-out">
+<div class="its-idle">
+<div aria-hidden="true" class="its-gauge">
+<div class="its-gauge-track"><span class="its-gauge-needle" style="left:0"></span></div>
+</div>
+<p class="muted">आपका नतीजा यहाँ दिखेगा: नया साइज़, वह आपकी सीमा के कितने पास है, और डाउनलोड का बटन।</p>
+</div>
+</div>
   </section>
 
-  <section class="wrap its-notes" aria-labelledby="its-notes-title">
+  <section class="wrap its-notes t-sec" aria-labelledby="its-notes-title" data-jump="तरीका">
     <h2 id="its-notes-title">फोटो कैसे सीमा में लाई जाती है</h2>
-    <div class="its-note-cols">
+    <div class="t-sum">
       <div>
-        <h3>पहले क्वालिटी, फिर साइज़</h3>
         <p>टूल आपकी फोटो को पूरे साइज़ पर आज़माता है और क्वालिटी के स्तर जाँचता है, जब तक सबसे साफ़ वह स्तर न मिल जाए जो सीमा में आए। सबसे कम क्वालिटी पर भी फोटो बड़ी रहे तभी वह तस्वीर को छोटे-छोटे कदमों में छोटा करके फिर कोशिश करता है।</p>
+        <details class="xpand">
+          <summary>क्या बदलता है</summary>
+          <div class="xp-in">
+            <p>नतीजा हमेशा JPEG होता है। पारदर्शी हिस्सों वाली PNG को सफ़ेद बैकग्राउंड मिलता है। फोन से आड़ी खींची गई फोटो सीधी कर दी जाती है। फोटो छोटी होने पर कैमरे की जानकारी, जैसे लोकेशन, नई फ़ाइल में कॉपी नहीं होती। जो JPEG पहले से आपकी सीमा के अंदर है, वह जैसी है वैसी ही लौटा दी जाती है और उसकी कैमरा जानकारी बनी रहती है।</p>
+          </div>
+        </details>
       </div>
-      <div>
-        <h3>क्या बदलता है</h3>
-        <p>नतीजा हमेशा JPEG होता है। पारदर्शी हिस्सों वाली PNG को सफ़ेद बैकग्राउंड मिलता है। फोन से आड़ी खींची गई फोटो सीधी कर दी जाती है। फोटो छोटी होने पर कैमरे की जानकारी, जैसे लोकेशन, नई फ़ाइल में कॉपी नहीं होती। जो JPEG पहले से आपकी सीमा के अंदर है, वह जैसी है वैसी ही लौटा दी जाती है और उसकी कैमरा जानकारी बनी रहती है।</p>
-      </div>
-      <div>
-        <h3>यह क्या नहीं करेगा</h3>
-        <p>यह तस्वीर को उसके साइज़ के दसवें हिस्से से ज़्यादा छोटा नहीं करता। अगर आपकी सीमा इसके लिए बहुत छोटी है तो यह बता देता है, और आप बड़ी सीमा आज़मा सकते हैं।</p>
-      </div>
+      <aside class="t-nocover" aria-labelledby="its-nocover-title">
+        <h3 id="its-nocover-title">यह क्या नहीं करेगा</h3>
+        <ul>
+          <li>यह तस्वीर को उसके साइज़ के दसवें हिस्से से ज़्यादा छोटा नहीं करता। अगर आपकी सीमा इसके लिए बहुत छोटी है तो यह बता देता है, और आप बड़ी सीमा आज़मा सकते हैं।</li>
+          <li>यह फोटो को क्रॉप नहीं करता, और न ही फॉर्म में माँगे गए नाप के हिसाब से उसका आकार बदलता है।</li>
+          <li>नतीजा हमेशा JPEG होता है; यह PNG या WebP फाइल नहीं बनाता।</li>
+        </ul>
+      </aside>
     </div>
   </section>
   

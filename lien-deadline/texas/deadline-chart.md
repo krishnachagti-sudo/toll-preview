@@ -4,11 +4,11 @@ For work in October 2026, a Texas subcontractor or supplier on a commercial job 
 
 ## Work out your Texas job
 
-[Work out my dates](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=TX&role=sub&project=commercial&first=2026-10-01&last=2026-11-08)
+[Work out my dates](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=TX&role=sub&project=commercial&first=2026-10-01&last=2026-11-09)
 
 ## By month of work
 
-Texas deadlines by month of work, as of November 8, 2026
+Texas deadlines by month of work, as of November 9, 2026
 
 | Work in | Notice (commercial) | Notice (residential) | Lien affidavit if your last month (commercial) | Lien affidavit (residential) |
 | --- | --- | --- | --- | --- |
@@ -47,5 +47,5 @@ Texas deadlines by month of work, as of November 8, 2026
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/deadline-chart/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/deadline-chart.csv

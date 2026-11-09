@@ -69,40 +69,49 @@
 <header class="cp-head">
 <p class="eyebrow">Guide</p>
 <h1>How the statistical tables are computed from definitions</h1>
-<p class="cp-answer">No value is typed in from a printed table: d2 and d3 come from numerical integration of the range of n normal values, c4 from its gamma-function formula, and critical values from inverting the normal, t, chi-square and F distributions by bisection. Every printed cell of the NIST/SEMATECH e-Handbook tables, read 2026-11-08, is checked.</p>
+<p class="cp-answer">No value is typed in from a printed table: d2 and d3 come from numerical integration of the range of n normal values, c4 from its gamma-function formula, and critical values from inverting the normal, t, chi-square and F distributions by bisection.<span class="ans-more"> Every printed cell of the NIST/SEMATECH e-Handbook tables, read 2026-11-08, is checked.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>Log-gamma uses the Lanczos approximation (g = 7).</span></li><li><span>The tails of each distribution come from those functions: z and chi-square from the incomplete gamma, t and F from the incomplete beta. A critical value is found by bisection on the tail until the bracket cannot shrink, so it is as exact as the tail. Values are returned to 10 significant digits.</span></li><li><span>Two-sided z and t values put alpha/2 in each tail and give plus and minus one value; two-sided chi-square and F give the lower and upper alpha/2 points.</span></li><li><span>d2 and d3, the mean and standard deviation of the range of n standard normal values, come from integrating the range's distribution on a grid of step 0.01 (the trapezoid rule across x, Simpson's rule across the range). c4 is sqrt(2/(n-1)) Gamma(n/2) / Gamma((n-1)/2).</span></li><li><span>Control limits use those constants: X-double-bar plus or minus A2 R-bar (or A3 s-bar), the range chart from D3 and D4 R-bar, the s chart from B3 and B4 s-bar, and the individuals chart from X-bar plus or minus 3 MR-bar / d2 with moving ranges of 2.</span></li></ol>
+<p class="cp-note">Steps 6 to 8, each rule and the edge cases are in <a href="/toll-preview/methodology/stats-tables/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>It assumes normal data from a stable process for capability and sigma level.</li><li>Subgroups of unequal size are not charted.</li><li>It covers single sampling plans only, not double or sequential plans, and no published sampling standard tables.</li><li>It is computed from the definitions; it does not judge whether a chart or test is the right one for your data.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 8 sources</h3><div class="tc-b"><p class="tc-a">Nothing is read from a data file at run time: every value is computed. The NIST/SEMATECH e-Handbook tables the tests compare with were read on 2026-11-08 and are stored with each page's hash.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 3 checks in its test suite</h3><div class="tc-b"><p class="tc-a">The tests check log-gamma and the distributions against exact formulas, every printed cell of the NIST normal, t, chi-square and F tables (with the cells where NIST's last printed digit is off named and bounded), d2 and d3 against their exact values for n = 2 and 3, c4 against NIST, NIST's printed A2, D3 and D4, the NIST individuals and capability examples, sigma level with and without the shift, and binomial and hypergeometric OC curves.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<details class="xpand cp-src-fold"><summary>Sources (8)</summary><div class="xp-in"><ul class="cp-sources cp-src"><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3671.htm">NIST/SEMATECH e-Handbook 1.3.6.7.1: Cumulative distribution function of the standard normal distribution</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3672.htm">NIST/SEMATECH e-Handbook 1.3.6.7.2: Critical values of the Student's t distribution</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm">NIST/SEMATECH e-Handbook 1.3.6.7.4: Critical values of the chi-square distribution</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3673.htm">NIST/SEMATECH e-Handbook 1.3.6.7.3: Upper critical values of the F distribution</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm">NIST/SEMATECH e-Handbook 6.3.2: What are variables control charts? (the c4 formula</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc321.htm">NIST/SEMATECH e-Handbook 6.3.2.1: Shewhart X-bar and R and S control charts (A2, D3, D4 for n = 2 to 10</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm">NIST/SEMATECH e-Handbook 6.3.2.2: Individuals control charts</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm">NIST/SEMATECH e-Handbook 6.1.6: What is process capability?</a><span class="src-m">itl.nist.gov · see the document · read 2026-11-08</span></li></ul></div></details>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the statistical tables: control chart constants and critical values compute?</h2>
 <p>The tool gives the control chart constants (d2, d3, c4, c5, A, A2, A3, D1, D2, D3, D4, B3, B4, B5, B6, E2, d2inv, c4inv) for any subgroup size from 2 to 100; critical values and p-values for the z, t, chi-square, f distributions at any degrees of freedom up to 100,000; printed-style tables; control limits for xbar-r, xbar-s, i-mr charts from data or summaries; Cp, Cpk, Pp and Ppk; sigma level from DPMO, yield or counts; and the operating characteristic curve of a single sampling plan. Every value is computed, so any n, df or alpha works, not only the rows a printed table has.</p>
-<details class="xpand"><summary>Read the rest: What does the statistical tables: control chart constants and critical values compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>constants</code>: Returns every constant for one subgroup size n, or a row for each n from one size to another (2 to 25 by default).</li><li><code>critical</code>: Returns the critical value for a distribution, alpha and tail (upper, lower or two-sided, the default), with what it means in words.</li><li><code>probability</code>: Returns the lower, upper and two-sided tail probabilities (p-values) of a statistic x.</li><li><code>table</code>: Returns a printed-style table: cumulative z by row and column; t or chi-square upper critical values by df and alpha; or F upper critical values by df1 and df2 for one alpha. At most 200 rows and 2,500 values.</li><li><code>limits</code>: Returns the center line and control limits of an X-bar and R, X-bar and s, or individuals and moving range chart, from the data or from summaries, with the constants used, the within sigma and, from data, the points outside the limits.</li><li><code>capability</code>: Returns Cp, Cpk, Cpu, Cpl from the within-subgroup sigma and Pp, Ppk, Ppu, Ppl from the overall standard deviation, with the expected parts per million outside each limit.</li><li><code>sigma</code>: Returns DPMO, yield and the short-term and long-term sigma level from any one of them, or from defects, units and opportunities per unit.</li><li><code>oc</code>: Returns the probability of accepting a lot at each percent defective for a plan of sample size n and acceptance number c, the percent defective at 95%, 50% and 10% acceptance, and, for a finite lot, the average outgoing quality, total inspection and AOQL.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>n, from, to</code>: Subgroup size, or a range of sizes, from 2 to 100.</li><li><code>dist, alpha, tail, df, df1, df2, x</code>: The distribution (z, t, chi-square, f), the significance level between 0 and 1, the tail, the degrees of freedom (above 0, at most 100,000), and the statistic for probability.</li><li><code>alphas, df1s</code>: For table: up to 12 alphas as columns (t and chi-square), or up to 20 df1 columns (F).</li><li><code>chart, subgroups, values</code>: The chart (xbar-r, xbar-s, i-mr); equal-size subgroups (at most 1,000) or individual values (3 to 10,000).</li><li><code>grandMean, rBar, sBar, mean, mrBar</code>: Summaries instead of data, for limits.</li><li><code>lsl, usl, method, sigmaWithin, sigmaOverall</code>: For capability: the specification limits (one or both), rbar or sbar for the within sigma from subgroups, or the sigmas given directly.</li><li><code>dpmo, yield, sigma, defects, units, opportunities, shift</code>: For sigma: one way in, and the shift (1.5 by default, 0 to 3).</li><li><code>n, c, lotSize, points</code>: For oc: the sample size, the acceptance number, the lot size for the hypergeometric model, and up to 101 percent-defective points.</li></ul>
 <p>Outputs:</p>
 <ul><li>constants: rows of every constant by n</li><li>critical: value (or lower and upper) and meaning; probability: lower, upper and twoSided</li><li>table: meaning, columns and rows</li><li>limits: the center lines and limits of both charts, sigmaWithin, the constants and formulas, and signals from data</li><li>capability: mean, sigmas, the method, the indices and expected ppm; sigma: dpmo, yieldPercent, sigmaShortTerm and sigmaLongTerm</li><li>oc: the model, the percent defective at 95%, 50% and 10% acceptance, the rows and, for a lot, the AOQL</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>Log-gamma uses the Lanczos approximation (g = 7). The regularized incomplete gamma uses its series or continued fraction, and the regularized incomplete beta its continued fraction.</li><li>The tails of each distribution come from those functions: z and chi-square from the incomplete gamma, t and F from the incomplete beta. A critical value is found by bisection on the tail until the bracket cannot shrink, so it is as exact as the tail. Values are returned to 10 significant digits.</li><li>Two-sided z and t values put alpha/2 in each tail and give plus and minus one value; two-sided chi-square and F give the lower and upper alpha/2 points.</li><li>d2 and d3, the mean and standard deviation of the range of n standard normal values, come from integrating the range's distribution on a grid of step 0.01 (the trapezoid rule across x, Simpson's rule across the range). c4 is sqrt(2/(n-1)) Gamma(n/2) / Gamma((n-1)/2). Every other constant follows from d2, d3 and c4 by its formula, for example A2 = 3 / (d2 sqrt(n)), D4 = 1 + 3 d3 / d2 and B4 = 1 + 3 c5 / c4.</li><li>Control limits use those constants: X-double-bar plus or minus A2 R-bar (or A3 s-bar), the range chart from D3 and D4 R-bar, the s chart from B3 and B4 s-bar, and the individuals chart from X-bar plus or minus 3 MR-bar / d2 with moving ranges of 2. From data, every point outside a limit is listed.</li><li>Capability takes the within sigma from R-bar / d2, s-bar / c4 or MR-bar / d2, and the overall sigma as the sample standard deviation. Cp is (USL - LSL) / 6 sigma and Cpk the smaller of the two one-sided indices; Pp and Ppk do the same with the overall sigma.</li><li>Sigma level is the normal z value of the defect rate (long term) plus the shift, 1.5 by default (short term). 3.4 DPMO is 6 sigma only with the 1.5 shift.</li><li>The OC curve is the binomial probability of at most c defectives in n, or the hypergeometric for a finite lot, and the 95%, 50% and 10% points are found by bisection.</li></ol>
+<details class="xpand"><summary>Every step in full (8) and the rules</summary><div class="xp-in"><ol><li>Log-gamma uses the Lanczos approximation (g = 7). The regularized incomplete gamma uses its series or continued fraction, and the regularized incomplete beta its continued fraction.</li><li>The tails of each distribution come from those functions: z and chi-square from the incomplete gamma, t and F from the incomplete beta. A critical value is found by bisection on the tail until the bracket cannot shrink, so it is as exact as the tail. Values are returned to 10 significant digits.</li><li>Two-sided z and t values put alpha/2 in each tail and give plus and minus one value; two-sided chi-square and F give the lower and upper alpha/2 points.</li><li>d2 and d3, the mean and standard deviation of the range of n standard normal values, come from integrating the range's distribution on a grid of step 0.01 (the trapezoid rule across x, Simpson's rule across the range). c4 is sqrt(2/(n-1)) Gamma(n/2) / Gamma((n-1)/2). Every other constant follows from d2, d3 and c4 by its formula, for example A2 = 3 / (d2 sqrt(n)), D4 = 1 + 3 d3 / d2 and B4 = 1 + 3 c5 / c4.</li><li>Control limits use those constants: X-double-bar plus or minus A2 R-bar (or A3 s-bar), the range chart from D3 and D4 R-bar, the s chart from B3 and B4 s-bar, and the individuals chart from X-bar plus or minus 3 MR-bar / d2 with moving ranges of 2. From data, every point outside a limit is listed.</li><li>Capability takes the within sigma from R-bar / d2, s-bar / c4 or MR-bar / d2, and the overall sigma as the sample standard deviation. Cp is (USL - LSL) / 6 sigma and Cpk the smaller of the two one-sided indices; Pp and Ppk do the same with the overall sigma.</li><li>Sigma level is the normal z value of the defect rate (long term) plus the shift, 1.5 by default (short term). 3.4 DPMO is 6 sigma only with the 1.5 shift.</li><li>The OC curve is the binomial probability of at most c defectives in n, or the hypergeometric for a finite lot, and the 95%, 50% and 10% points are found by bisection.</li></ol>
 <p><strong>NIST/SEMATECH e-Handbook of Statistical Methods.</strong></p>
-<p>The c4 formula (6.3.2), the X-bar, R and s charts with their printed A2, D3 and D4 for n = 2 to 10 (6.3.2.1), the individuals chart example (6.3.2.2), the capability example (6.1.6) and the normal, t, chi-square and F tables (1.3.6.7.1 to 1.3.6.7.4) are the reference, read on 2026-11-08.</p>
+<p>The c4 formula (6.3.2), the X-bar, R and s charts with their printed A2, D3 and D4 for n = 2 to 10 (6.3.2.1), the individuals chart example (6.3.2.2), the capability example (6.1.6) and the normal, t, chi-square and F tables (1.3.6.7.1 to 1.3.6.7.4) are the reference, read on 2026-11-08.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>Any subgroup size from 2 to 100 and any degrees of freedom up to 100,000 work, not only the printed rows.</li><li>D3 is 0 below n = 7 and B3 is 0 below n = 6, as the formulas give.</li><li>Subgroups of unequal size are refused: they need limits per subgroup.</li><li>For subgroups larger than about 10, the X-bar and R answer notes that the s chart uses the data better.</li><li>Capability with only one specification limit gives the one-sided indices and no Cp or Pp.</li><li>Data with no spread is refused, since capability is not defined.</li></ul>
+<details class="xpand"><summary>The edge cases (6)</summary><div class="xp-in"><ul><li>Any subgroup size from 2 to 100 and any degrees of freedom up to 100,000 work, not only the printed rows.</li><li>D3 is 0 below n = 7 and B3 is 0 below n = 6, as the formulas give.</li><li>Subgroups of unequal size are refused: they need limits per subgroup.</li><li>For subgroups larger than about 10, the X-bar and R answer notes that the s chart uses the data better.</li><li>Capability with only one specification limit gives the one-sided indices and no Cp or Pp.</li><li>Data with no spread is refused, since capability is not defined.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>Control chart constants for a subgroup of 5</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;constants&quot;,
-  &quot;n&quot;: 5
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Control chart constants for a subgroup of 5</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Control chart constants for a subgroup of 5</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">d2</th><td>2.3259289</td></tr>
 <tr><th scope="row">d3</th><td>0.86408194</td></tr>
 <tr><th scope="row">c4</th><td>0.939985603</td></tr>
@@ -112,21 +121,32 @@
 <tr><th scope="row">D4</th><td>2.1144991</td></tr>
 <tr><th scope="row">B3</th><td>0</td></tr>
 <tr><th scope="row">B4</th><td>2.0889979</td></tr>
-</tbody></table></div>
-<p><strong>Critical t, two-tailed, alpha 0.05, 12 degrees of freedom</strong></p>
-<pre><code class="language-json">&#123;
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;constants&quot;,
+  &quot;n&quot;: 5
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (3)</summary><div class="xp-in"><p><strong>Critical t, two-tailed, alpha 0.05, 12 degrees of freedom</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">Critical t, two-tailed, alpha 0.05, 12 degrees of freedom</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">value</th><td>2.17881283</td></tr>
+<tr><th scope="row">meaning</th><td>P(|X| &gt; 2.1788) = 0.05 for the Student's t distribution with df = 12: reject a two-sided test when |statistic| &gt; 2.1788.</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;critical&quot;,
   &quot;dist&quot;: &quot;t&quot;,
   &quot;alpha&quot;: 0.05,
   &quot;tail&quot;: &quot;two&quot;,
   &quot;df&quot;: 12
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Critical t, two-tailed, alpha 0.05, 12 degrees of freedom</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">value</th><td>2.17881283</td></tr>
-<tr><th scope="row">meaning</th><td>P(|X| &gt; 2.1788) = 0.05 for the Student's t distribution with df = 12: reject a two-sided test when |statistic| &gt; 2.1788.</td></tr>
-</tbody></table></div>
+&#125;</code></pre></div></details>
 <p><strong>Individuals and moving range limits for the NIST flow-rate example</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">Individuals and moving range limits for the NIST flow-rate example</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">individuals LCL</th><td>45.81758847</td></tr>
+<tr><th scope="row">center</th><td>50.81</td></tr>
+<tr><th scope="row">individuals UCL</th><td>55.80241153</td></tr>
+<tr><th scope="row">moving range UCL</th><td>6.133821012</td></tr>
+<tr><th scope="row">sigma within</th><td>1.664137178</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;limits&quot;,
   &quot;chart&quot;: &quot;i-mr&quot;,
   &quot;values&quot;: [
@@ -141,51 +161,21 @@
     53.6,
     52.1
   ]
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Individuals and moving range limits for the NIST flow-rate example</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">individuals LCL</th><td>45.81758847</td></tr>
-<tr><th scope="row">center</th><td>50.81</td></tr>
-<tr><th scope="row">individuals UCL</th><td>55.80241153</td></tr>
-<tr><th scope="row">moving range UCL</th><td>6.133821012</td></tr>
-<tr><th scope="row">sigma within</th><td>1.664137178</td></tr>
-</tbody></table></div>
+&#125;</code></pre></div></details>
 <p><strong>Sigma level for 3.4 defects per million opportunities</strong></p>
-<pre><code class="language-json">&#123;
-  &quot;op&quot;: &quot;sigma&quot;,
-  &quot;dpmo&quot;: 3.4
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Sigma level for 3.4 defects per million opportunities</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Sigma level for 3.4 defects per million opportunities</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">yield</th><td>99.99966%</td></tr>
 <tr><th scope="row">sigma short term</th><td>5.99985447</td></tr>
 <tr><th scope="row">sigma long term</th><td>4.49985447</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>It assumes normal data from a stable process for capability and sigma level.</li><li>Subgroups of unequal size are not charted.</li><li>It covers single sampling plans only, not double or sequential plans, and no published sampling standard tables.</li><li>It is computed from the definitions; it does not judge whether a chart or test is the right one for your data.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>Nothing is read from a data file at run time: every value is computed. The NIST/SEMATECH e-Handbook tables the tests compare with were read on 2026-11-08 and are stored with each page's hash.</p>
-<ul class="cp-sources"><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3671.htm">NIST/SEMATECH e-Handbook 1.3.6.7.1: Cumulative distribution function of the standard normal distribution (read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3672.htm">NIST/SEMATECH e-Handbook 1.3.6.7.2: Critical values of the Student's t distribution (read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm">NIST/SEMATECH e-Handbook 1.3.6.7.4: Critical values of the chi-square distribution (read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3673.htm">NIST/SEMATECH e-Handbook 1.3.6.7.3: Upper critical values of the F distribution (read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm">NIST/SEMATECH e-Handbook 6.3.2: What are variables control charts? (the c4 formula; read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc321.htm">NIST/SEMATECH e-Handbook 6.3.2.1: Shewhart X-bar and R and S control charts (A2, D3, D4 for n = 2 to 10; read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm">NIST/SEMATECH e-Handbook 6.3.2.2: Individuals control charts (read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm">NIST/SEMATECH e-Handbook 6.1.6: What is process capability? (read November 8, 2026)</a></li></ul>
-<p>Nothing is read from a data file at run time: every value is computed. The NIST/SEMATECH e-Handbook tables the tests compare with were read on 2026-11-08 and are stored with each page's hash.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Statistical tables: control chart constants and critical values: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3671.htm">NIST/SEMATECH e-Handbook 1.3.6.7.1: Cumulative distribution function of the standard normal distribution</a></th><td rowspan="8">see the document</td><td rowspan="8">2026-11-08</td></tr>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3672.htm">NIST/SEMATECH e-Handbook 1.3.6.7.2: Critical values of the Student's t distribution</a></th></tr>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm">NIST/SEMATECH e-Handbook 1.3.6.7.4: Critical values of the chi-square distribution</a></th></tr>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3673.htm">NIST/SEMATECH e-Handbook 1.3.6.7.3: Upper critical values of the F distribution</a></th></tr>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm">NIST/SEMATECH e-Handbook 6.3.2: What are variables control charts? (the c4 formula</a></th></tr>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc321.htm">NIST/SEMATECH e-Handbook 6.3.2.1: Shewhart X-bar and R and S control charts (A2, D3, D4 for n = 2 to 10</a></th></tr>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc322.htm">NIST/SEMATECH e-Handbook 6.3.2.2: Individuals control charts</a></th></tr>
-<tr><th scope="row"><a href="https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm">NIST/SEMATECH e-Handbook 6.1.6: What is process capability?</a></th></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;sigma&quot;,
+  &quot;dpmo&quot;: 3.4
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>The tests check log-gamma and the distributions against exact formulas, every printed cell of the NIST normal, t, chi-square and F tables (with the cells where NIST's last printed digit is off named and bounded), d2 and d3 against their exact values for n = 2 and 3, c4 against NIST, NIST's printed A2, D3 and D4, the NIST individuals and capability examples, sigma level with and without the shift, and binomial and hypergeometric OC curves.</p>
-<p>What its test suite asserts:</p>
-<ul><li>Every printed cell of the NIST e-Handbook normal, t, chi-square and F tables is reproduced; the cells where the printed last digit differs are named and bounded.</li><li>d2 and d3 match their exact values for n = 2 and 3, c4 matches NIST, and NIST's printed A2, D3 and D4 for n = 2 to 10 are reproduced.</li><li>The NIST individuals chart and capability examples are reproduced, and 3.4 DPMO is 6 sigma only with the 1.5 shift.</li></ul>
+<details class="xpand"><summary>What its test suite asserts (3)</summary><div class="xp-in"><ul><li>Every printed cell of the NIST e-Handbook normal, t, chi-square and F tables is reproduced; the cells where the printed last digit differs are named and bounded.</li><li>d2 and d3 match their exact values for n = 2 and 3, c4 matches NIST, and NIST's printed A2, D3 and D4 for n = 2 to 10 are reproduced.</li><li>The NIST individuals chart and capability examples are reproduced, and 3.4 DPMO is 6 sigma only with the 1.5 shift.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/stats-tables/">Open the Statistical tables: control chart constants and critical values tool</a>.</p>
 </section>

@@ -2,9 +2,41 @@
 
 Each ingredient's cost per gram, milliliter or piece is its pack price divided by its pack size and by its yield %. Each recipe line is converted into the pack's unit with NIST Handbook 44's exact factors (1 lb = 453.59237 g, 1 gal = 3785.411784 ml), and a portion costs the batch total divided by the portions. Food cost % is portion cost / menu price x 100, and the price that meets a target is portion cost / target, rounded up.
 
+## How does it work?
+
+1. Each ingredient is read: a name used once, a pack unit among g, kg, oz, lb, ml, l, tsp, tbsp, fl oz, cup, pt, qt, gal, each, dozen, a pack size above 0, a price of 0 or more and a yield % above 0 and at most 100.
+2. Its edible portion cost per gram, milliliter or piece is the pack price divided by the pack size in that base unit and by the yield (pack price / base quantity / (yield % / 100)).
+3. Each recipe line is either an ingredient or another recipe.
+4. A sub-recipe line counts portions: by portion, by batch (times its portions), or by weight or volume against what one batch makes. Sub-recipes may nest up to 12 deep, and a circle of sub-recipes is refused, naming it.
+5. The batch cost is the sum of the lines plus the extra cost per portion times the portions, and the portion cost is the batch cost divided by the portions.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/recipe-cost-calculator/#what) below.
+
+## What does it not cover?
+
+- Costs are only as current as the prices entered and only as true as the yields given.
+- A menu re-cost counts ingredients and any extra cost per portion; labor and overhead enter only the cake and bakery calculation.
+- USDA household weights are averages; for exact costs, weigh your own and give grams per cup or grams each.
+- It reads no supplier price feeds or inventory systems: the price list is what you give it.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 3 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The unit factors are NIST Handbook 44 (2026 edition), Appendix C, read on 2026-11-08. The household weights are USDA FoodData Central's SR Legacy release (April 2018), read on 2026-11-08. Both are read once when the server starts and change only with a deploy. Prices are yours and are used as given at the moment of the call.
+- [Tested: 5 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The NIST factors are checked to be exact against each other and the USDA weights against the published figures.
+
+- [NIST Handbook 44 (2026 edition), Appendix C: General Tables of Units of Measurement](https://www.nist.gov/document/2026-nist-handbook-44-appendix-c), 2026 edition, Appendix C, read 2026-11-08
+- [USDA FoodData Central, SR Legacy (April 2018), food\_portion.csv](https://fdc.nal.usda.gov/download-datasets), 35 household weights, read 2026-11-08
+- [Recipe and Menu Costing, Introduction to Food Production and Service (Beth Egan, LibreTexts)](https://workforce.libretexts.org/Bookshelves/Food_Production_Service_and_Culinary_Arts/Introduction_to_Food_Production_and_Service_%28Egan%29/02%3A_Menus_and_Recipes/2.04%3A_Recipe_and_Menu_Costing), yield and edible portion cost formulas, not recorded
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the recipe cost calculator and menu re-coster compute?
 
-From one price list (each ingredient with its pack size, unit, price and yield %), the tool costs every recipe and every sub-recipe used inside another. For each recipe it gives the batch and portion cost, the cost of each line, the food cost % against the menu price, the price that meets your target and a rounded suggested price. If the list carries last time's prices it also says how far each dish moved. The same engine answers single calculations (menu price, food cost %, pour cost, cake and bakery pricing, catering per guest, yield, unit conversion and actual food cost) and builds an Excel workbook with live formulas.
+From one price list (each ingredient with its pack size, unit, price and yield %), the tool costs every recipe and every sub-recipe used inside another.
+
+**In detail: operations, inputs and outputs**
+
+For each recipe it gives the batch and portion cost, the cost of each line, the food cost % against the menu price, the price that meets your target and a rounded suggested price. If the list carries last time's prices it also says how far each dish moved. The same engine answers single calculations (menu price, food cost %, pour cost, cake and bakery pricing, catering per guest, yield, unit conversion and actual food cost) and builds an Excel workbook with live formulas.
 
 Operations (the op field):
 
@@ -38,7 +70,7 @@ Outputs:
 - csv: one row per recipe, with formula-like cells written as text
 - file: for workbook and template, the .xlsx file
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. Each ingredient is read: a name used once, a pack unit among g, kg, oz, lb, ml, l, tsp, tbsp, fl oz, cup, pt, qt, gal, each, dozen, a pack size above 0, a price of 0 or more and a yield % above 0 and at most 100.
 2. Its edible portion cost per gram, milliliter or piece is the pack price divided by the pack size in that base unit and by the yield (pack price / base quantity / (yield % / 100)). With a previous price the same is worked out for the old price.
@@ -67,6 +99,8 @@ A suggested price is always rounded up, since a price rounded down would land ab
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A price change ripples through a sub-recipe into every dish that uses it, and a dish that does not use it keeps its cost.
 - With no previous prices, no drift is claimed.
 - The same name on the price list twice, or as both a recipe and an ingredient, is refused.
@@ -79,13 +113,6 @@ A suggested price is always rounded up, since a price rounded down would land ab
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A six-recipe menu with two sauces after butter, cream and salmon went up, against a 30% target**
-
-```json
-op: "recost"
-targetPct: 30
-ingredients: 13 items
-recipes: 6 items
-```
 
 A six-recipe menu with two sauces after butter, cream and salmon went up, against a 30% target
 
@@ -102,16 +129,18 @@ A six-recipe menu with two sauces after butter, cream and salmon went up, agains
 | to reprice | Pan-seared salmon to $20.31; Lemon chicken plate to $12.63 |
 | moved more than 1 point | Pan-seared salmon (5 points); Shortbread cookies (4.4 points) |
 
-**Menu price for a $6.00 plate at a 30% food cost, rounded to .95**
+**The input**
 
 ```json
-{
-  "op": "menu-price",
-  "cost": 6,
-  "targetPct": 30,
-  "ending": ".95"
-}
+op: "recost"
+targetPct: 30
+ingredients: 13 items
+recipes: 6 items
 ```
+
+**More worked examples (3)**
+
+**Menu price for a $6.00 plate at a 30% food cost, rounded to .95**
 
 Menu price for a $6.00 plate at a 30% food cost, rounded to .95
 
@@ -122,7 +151,30 @@ Menu price for a $6.00 plate at a 30% food cost, rounded to .95
 | food cost at that price | 28.6% |
 | gross profit | $14.95 |
 
+**The input**
+
+```json
+{
+  "op": "menu-price",
+  "cost": 6,
+  "targetPct": 30,
+  "ending": ".95"
+}
+```
+
 **Pour cost of a 1.5 oz pour from a $28, 750 ml bottle sold at $9**
+
+Pour cost of a 1.5 oz pour from a $28, 750 ml bottle sold at $9
+
+| Result | Value |
+| --- | --- |
+| bottle | 25.3605 fl oz |
+| pours a bottle | 16.9 |
+| cost per pour | $1.66 |
+| pour cost | 18.4% |
+| price at 20% | $8.28 |
+
+**The input**
 
 ```json
 {
@@ -137,17 +189,16 @@ Menu price for a $6.00 plate at a 30% food cost, rounded to .95
 }
 ```
 
-Pour cost of a 1.5 oz pour from a $28, 750 ml bottle sold at $9
+**Edible portion cost of salmon at $11 per pound with a 64% yield**
+
+Edible portion cost of salmon at $11 per pound with a 64% yield
 
 | Result | Value |
 | --- | --- |
-| bottle | 25.3605 fl oz |
-| pours a bottle | 16.9 |
-| cost per pour | $1.66 |
-| pour cost | 18.4% |
-| price at 20% | $8.28 |
+| yield | 64.0% |
+| edible portion price | $17.19 per lb |
 
-**Edible portion cost of salmon at $11 per pound with a 64% yield**
+**The input**
 
 ```json
 {
@@ -158,45 +209,11 @@ Pour cost of a 1.5 oz pour from a $28, 750 ml bottle sold at $9
 }
 ```
 
-Edible portion cost of salmon at $11 per pound with a 64% yield
-
-| Result | Value |
-| --- | --- |
-| yield | 64.0% |
-| edible portion price | $17.19 per lb |
-
-## What does it not do?
-
-- Costs are only as current as the prices entered and only as true as the yields given.
-- A menu re-cost counts ingredients and any extra cost per portion; labor and overhead enter only the cake and bakery calculation.
-- USDA household weights are averages; for exact costs, weigh your own and give grams per cup or grams each.
-- It reads no supplier price feeds or inventory systems: the price list is what you give it.
-
-## Where does the data come from, and how fresh is it?
-
-The unit factors are NIST Handbook 44 (2026 edition), Appendix C, read on 2026-11-08. The household weights are USDA FoodData Central's SR Legacy release (April 2018), read on 2026-11-08. Both are read once when the server starts and change only with a deploy. Prices are yours and are used as given at the moment of the call.
-
-- [NIST Handbook 44 (2026 edition), Appendix C: General Tables of Units of Measurement (read 2026-11-08)](https://www.nist.gov/document/2026-nist-handbook-44-appendix-c)
-- [USDA FoodData Central, SR Legacy (April 2018), food\_portion.csv (read 2026-11-08)](https://fdc.nal.usda.gov/download-datasets)
-- [Recipe and Menu Costing, Introduction to Food Production and Service (Beth Egan, LibreTexts, CC BY 4.0)](https://workforce.libretexts.org/Bookshelves/Food_Production_Service_and_Culinary_Arts/Introduction_to_Food_Production_and_Service_%28Egan%29/02%3A_Menus_and_Recipes/2.04%3A_Recipe_and_Menu_Costing)
-
-The unit factors are NIST Handbook 44 (2026 edition), Appendix C, read on 2026-11-08. The household weights are USDA FoodData Central's SR Legacy release (April 2018), read on 2026-11-08. Both are read once when the server starts and change only with a deploy. Prices are yours and are used as given at the moment of the call.
-
-Recipe cost calculator and menu re-coster: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [NIST Handbook 44 (2026 edition), Appendix C: General Tables of Units of Measurement](https://www.nist.gov/document/2026-nist-handbook-44-appendix-c) | 2026 edition, Appendix C | 2026-11-08 |
-| [USDA FoodData Central, SR Legacy (April 2018), food\_portion.csv](https://fdc.nal.usda.gov/download-datasets) | 35 household weights | 2026-11-08 |
-| [Recipe and Menu Costing, Introduction to Food Production and Service (Beth Egan, LibreTexts)](https://workforce.libretexts.org/Bookshelves/Food_Production_Service_and_Culinary_Arts/Introduction_to_Food_Production_and_Service_%28Egan%29/02%3A_Menus_and_Recipes/2.04%3A_Recipe_and_Menu_Costing) | yield and edible portion cost formulas | not recorded |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The NIST factors are checked to be exact against each other and the USDA weights against the published figures. Unit aliases and conversions, the sample menu with its sub-recipes, yields and USDA cups, a price change rippling through a sub-recipe, refused input, rounding up to each ending, every single calculation, CSV reading and writing, and the workbook's sheets and formulas are each tested, and the worked examples equal run().
+Unit aliases and conversions, the sample menu with its sub-recipes, yields and USDA cups, a price change rippling through a sub-recipe, refused input, rounding up to each ending, every single calculation, CSV reading and writing, and the workbook's sheets and formulas are each tested, and the worked examples equal run().
 
-What its test suite asserts:
+**What its test suite asserts (5)**
 
 - The NIST Handbook 44 factors are checked exact against each other, and the USDA household weights against the figures as read on 2026-11-08.
 - Unit aliases and conversions, and volume to weight only with a weight, are checked.

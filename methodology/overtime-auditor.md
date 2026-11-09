@@ -2,9 +2,57 @@
 
 Each employee's hours are put in fixed 7-day workweeks. The daily and seventh-day rules of California, Alaska, Colorado and Kentucky go first, then the straight-time hours left over 40 in the week are overtime at 1.5x (29 CFR 778.101), so no hour is paid twice. Every other state gets the federal weekly rule only. The rules were read on 2026-11-08.
 
+## How does it work?
+
+1. The CSV's separator is the one of comma, semicolon or tab that splits the heading line most; quotes and a byte order mark are handled, and headings are matched by their export names (Employee name, Clock in, Hourly rate, Paid OT hours and so on). Dates are written 2026-11-02 or 11/2/2026, and hours as 8.5 or 8:30.
+2. Each employee's rows are made into days. In and out times go through the hours calculator's engine: an overnight shift belongs to the day it starts, up to 6 pairs a day, the unpaid break comes off the first pair, and with a time zone a clock change is counted.
+3. California (Labor Code 510(a)): over 8 hours in a workday at 1.5x and over 12 at 2x.
+4. Alaska (AS 23.10.060(b)): over 8 hours a day at 1.5x, unless alaskaSmallEmployer is set.
+5. Weekly overtime is the straight-time hours left over 40, taken from the week's latest days, so daily, seventh-day and weekly overtime are never paid on the same hour.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/overtime-auditor/#what) below.
+
+## What does it not cover?
+
+- It applies state law only for California, Alaska, Colorado and Kentucky; every other state, Nevada included, gets the federal weekly rule only.
+- It refuses files over 3 MB, 20,000 rows or 10,000 employee-weeks.
+- It does not count pay that is not in the file, or California's own regular-rate and meal or rest premium rules.
+- Timesheets are used to make the result and are not kept. It is not legal, tax or payroll advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 19 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every rule is quoted from its official text, read on 2026-11-08: 29 CFR 778 on eCFR, IRS FS-2026-13, California Labor Code 510 and 511, Alaska AS 23.10.060, Colorado COMPS Order #40 and Kentucky KRS 337.050 and 337.285. They change only by hand, with the tests that pin them.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check that every rule is quoted from its official text with the date read, that the punch arithmetic is the hours calculator's engine, California daily, double time, seventh day and alternative workweek, Alaska, Colorado's consecutive hours across midnight, Kentucky's seventh day, the federal rule elsewhere, 29 CFR 778.110(b)'s own regular-rate example, IRS FS-2026-13 Q16's code TT example, CSV reading and refusals, and the sample audit.
+
+- [29 CFR 778.101 Maximum nonovertime hours](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-B/section-778.101), see the document, read 2026-11-08
+- [29 CFR 778.104 Each workweek stands alone](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-B/section-778.104), see the document, read 2026-11-08
+- [29 CFR 778.105 Determining the workweek](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-B/section-778.105), see the document, read 2026-11-08
+- [29 CFR 778.109 The regular rate is an hourly rate](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.109), see the document, read 2026-11-08
+- [29 CFR 778.110 Hourly rate employee](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.110), see the document, read 2026-11-08
+- [29 CFR 778.115 Employees working at two or more rates](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.115), see the document, read 2026-11-08
+- [29 CFR 778.5 Relation to other laws generally](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-A/section-778.5), see the document, read 2026-11-08
+- [IRS Fact Sheet FS-2026-13, Updates to questions and answers about the new deduction for qualified overtime compensation (August 2026)](https://www.irs.gov/pub/taxpros/fs-2026-13.pdf), see the document, read 2026-11-08
+- [IRS: One Big Beautiful Bill Act: tax deductions for working Americans and seniors](https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors), see the document, read 2026-11-08
+- [California Labor Code section 510(a)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=510), see the document, read 2026-11-08
+- [California Labor Code section 511(a)-(b)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=511), see the document, read 2026-11-08
+- [California Labor Code section 500(a)-(c)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=500), see the document, read 2026-11-08
+- [California Labor Code section 552](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=552), see the document, read 2026-11-08
+- [Alaska Statutes AS 23.10.060(b), as printed in Alaska DOLWD Wage and Hour Pamphlet 100 (October 2025)](https://labor.alaska.gov/lss/forms/pam100.pdf), see the document, read 2026-11-08
+- [Alaska DOLWD, Summary of Alaska Wage and Hour Act (revised January 2026)](https://labor.alaska.gov/lss/forms/Summary_of_Alaska_Wage_and_Hour_Act-01-2025.pdf), see the document, read 2026-11-08
+- [Colorado Overtime and Minimum Pay Standards Order (COMPS Order) #40, 7 CCR 1103-1, Rule 4 (effective February 1, 2026)](https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2509), see the document, read 2026-11-08
+- [CDLE COMPS Order Poster and Notice, effective 1/1/2026](https://cdle.colorado.gov/sites/cdle/files/2026_comps_order_poster_english_%5Baccessible%5D.pdf), see the document, read 2026-11-08
+- [Kentucky Revised Statutes 337.050](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=32049), see the document, read 2026-11-08
+- [Kentucky Revised Statutes 337.285(1)](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=54508), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the overtime auditor for timesheet csvs compute?
 
-Given a timesheet CSV (employees, dates, hours or in and out times, state, rate and what payroll paid), the tool works out for every employee-week the regular, overtime and double-time hours owed, the rule behind each hour, the FLSA regular rate and the pay owed, the shortfall against what was paid, and the FLSA-only overtime premium that goes on Form W-2 in box 12 with code TT. It applies the federal weekly rule everywhere and the state rules of California, Alaska, Colorado and Kentucky.
+Given a timesheet CSV (employees, dates, hours or in and out times, state, rate and what payroll paid), the tool works out for every employee-week the regular, overtime and double-time hours owed, the rule behind each hour, the FLSA regular rate and the pay owed, the shortfall against what was paid, and the FLSA-only overtime premium that goes on Form W-2 in box 12 with code TT.
+
+**In detail: operations, inputs and outputs**
+
+It applies the federal weekly rule everywhere and the state rules of California, Alaska, Colorado and Kentucky.
 
 Operations (the op field):
 
@@ -29,7 +77,7 @@ Outputs:
 - weeks: per employee-week, the days with the rule for each hour, the regular rate, owed, premium, paid, shortfall and its basis, code TT and flags
 - employees, flags, columnsUsed, columnsIgnored, csv and rules (audit)
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The CSV's separator is the one of comma, semicolon or tab that splits the heading line most; quotes and a byte order mark are handled, and headings are matched by their export names (Employee name, Clock in, Hourly rate, Paid OT hours and so on). Dates are written 2026-11-02 or 11/2/2026, and hours as 8.5 or 8:30. Every refusal names its line.
 2. Each employee's rows are made into days. In and out times go through the hours calculator's engine: an overnight shift belongs to the day it starts, up to 6 pairs a day, the unpaid break comes off the first pair, and with a time zone a clock change is counted. A day in two states, or mixing hours and punches, is refused. Days are put in fixed 7-day workweeks from workweekStart (29 CFR 778.105).
@@ -52,6 +100,8 @@ Nevada has a daily overtime rule in NRS 608.018, but the Legislature's site (leg
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A California week of 10, 10, 13, 8, 8, 9 and 6 hours worked all seven days: 40 regular, 23 overtime and 1 double time.
 - A California seventh day counts only when all seven days of one workweek are worked, not seven days in a row across two weeks.
 - Colorado: 7.5 hours to 11:30 pm and 6.5 hours from midnight are one 14-hour run, so 2 hours are overtime; a gap over an hour starts a new run.
@@ -64,6 +114,21 @@ Nevada has a daily overtime rule in NRS 608.018, but the Legislature's site (leg
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A California week worked all seven days at $22: daily, weekly, double time and the seventh day**
+
+A California week worked all seven days at $22: daily, weekly, double time and the seventh day
+
+| Result | Value |
+| --- | --- |
+| answer | For Sun 10.00, Mon 10.00, Tue 13.00, Wed 8.00, Thu 8.00, Fri 9.00, Sat 6.00 at $22.00/hour in California the hours are 40.00 regular, 23.00 overtime (1.5x) and 1.00 double time (2x): $1,683.00. |
+| Sunday 2026-11-01 | 2.00 overtime (ca-daily) |
+| Monday 2026-11-02 | 2.00 overtime (ca-daily) |
+| Tuesday 2026-11-03 | 4.00 overtime (ca-daily), 1.00 double time (ca-double) |
+| Friday 2026-11-06 | 1.00 overtime (ca-daily), 8.00 overtime (weekly) |
+| Saturday 2026-11-07 | 6.00 overtime (ca-7th) |
+| FLSA overtime hours | 24.00 |
+| code TT | $264.00 |
+
+**The input**
 
 ```json
 {
@@ -103,26 +168,9 @@ Nevada has a daily overtime rule in NRS 608.018, but the Legislature's site (leg
 }
 ```
 
-A California week worked all seven days at $22: daily, weekly, double time and the seventh day
-
-| Result | Value |
-| --- | --- |
-| answer | For Sun 10.00, Mon 10.00, Tue 13.00, Wed 8.00, Thu 8.00, Fri 9.00, Sat 6.00 at $22.00/hour in California the hours are 40.00 regular, 23.00 overtime (1.5x) and 1.00 double time (2x): $1,683.00. |
-| Sunday 2026-11-01 | 2.00 overtime (ca-daily) |
-| Monday 2026-11-02 | 2.00 overtime (ca-daily) |
-| Tuesday 2026-11-03 | 4.00 overtime (ca-daily), 1.00 double time (ca-double) |
-| Friday 2026-11-06 | 1.00 overtime (ca-daily), 8.00 overtime (weekly) |
-| Saturday 2026-11-07 | 6.00 overtime (ca-7th) |
-| FLSA overtime hours | 24.00 |
-| code TT | $264.00 |
+**More worked examples (1)**
 
 **A timesheet export for three employees in California, Colorado and Kentucky, against what payroll paid**
-
-```json
-op: "audit"
-csv: "employee,date,state,in,out,break minutes,rate,paid regular hours,paid overtime hours,paid double time hours\r\nAna Ruiz,2026-11-01,CA,7:00,17:30,30,24.00,8,2,0\r\nAna Ruiz,2026-11-02,CA,7:00,20:30,30,24.00,8,5,0\r\nAna Ruiz,2026-11-03,CA,7:00,15:30,30,24.00,8,0,0\r\nAna Ruiz,2026-11-04,CA,7:00,15:30,30,24.00,8,0,0\r\nAna Ruiz,2026-11-05,CA,7:00,15:30,30,24.00,8,0,0\r\nAna Ruiz,2026-11-06,CA,7:00,15:30,30,24.00,0,8,0\r\nAna Ruiz,2026-11-07,CA,8:00,14:30,30,24.00,0,6,0\r\nBen Okafor,2026-11-02,CO,16:00,23:30,0,21.50,7.5,0,0\r\nBen Okafor,2026-11-03,CO,0:00,6:30,0,21.50,6.5,0,0\r\nBen Okafor,2026-11-04,CO,8:00,16:30,30,21.50,8,0,0\r\nBen Okafor,2026-11-05,CO,8:00,16:30,30,21.50,8,0,0\r\nBen Okafor,2026-11-06,CO,8:00,16:30,30,21.50,8,0,0\r\nCara Bell,2026-11-01,KY,8:00,13:00,0,19.00,5,0,0\r\nCara Bell,2026-11-02,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-03,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-04,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-05,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-06,KY,8:00,16:30,30,19.00,3,5,0\r\nCara Bell,2026-11-07,KY,8:00,14:00,0,19.00,0,6,0\r\n"
-workweekStart: "sunday"
-```
 
 A timesheet export for three employees in California, Colorado and Kentucky, against what payroll paid
 
@@ -135,59 +183,17 @@ A timesheet export for three employees in California, Colorado and Kentucky, aga
 | Cara Bell | 11.00 overtime, 0.00 double time, shortfall $0.00 |
 | code TT | $356.50 |
 
-## What does it not do?
+**The input**
 
-- It applies state law only for California, Alaska, Colorado and Kentucky; every other state, Nevada included, gets the federal weekly rule only.
-- It refuses files over 3 MB, 20,000 rows or 10,000 employee-weeks.
-- It does not count pay that is not in the file, or California's own regular-rate and meal or rest premium rules.
-- Timesheets are used to make the result and are not kept. It is not legal, tax or payroll advice.
-
-## Where does the data come from, and how fresh is it?
-
-Every rule is quoted from its official text, read on 2026-11-08: 29 CFR 778 on eCFR, IRS FS-2026-13, California Labor Code 510 and 511, Alaska AS 23.10.060, Colorado COMPS Order #40 and Kentucky KRS 337.050 and 337.285. They change only by hand, with the tests that pin them.
-
-- [29 CFR 778.101 Maximum nonovertime hours](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-B/section-778.101)
-- [29 CFR 778.109 The regular rate is an hourly rate](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.109)
-- [29 CFR 778.115 Employees working at two or more rates](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.115)
-- [IRS Fact Sheet FS-2026-13, Updates to questions and answers about the new deduction for qualified overtime compensation (August 2026)](https://www.irs.gov/pub/taxpros/fs-2026-13.pdf)
-- [California Labor Code section 510(a)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=510)
-- [Alaska Statutes AS 23.10.060(b), as printed in Alaska DOLWD Wage and Hour Pamphlet 100 (October 2025)](https://labor.alaska.gov/lss/forms/pam100.pdf)
-- [Colorado Overtime and Minimum Pay Standards Order (COMPS Order) #40, 7 CCR 1103-1, Rule 4 (effective February 1, 2026)](https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2509)
-- [Kentucky Revised Statutes 337.050](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=32049)
-
-Every rule is quoted from its official text, read on 2026-11-08: 29 CFR 778 on eCFR, IRS FS-2026-13, California Labor Code 510 and 511, Alaska AS 23.10.060, Colorado COMPS Order #40 and Kentucky KRS 337.050 and 337.285. They change only by hand, with the tests that pin them.
-
-Overtime auditor for timesheet CSVs: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [29 CFR 778.101 Maximum nonovertime hours](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-B/section-778.101) | see the document | 2026-11-08 |
-| [29 CFR 778.104 Each workweek stands alone](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-B/section-778.104) | see the document | 2026-11-08 |
-| [29 CFR 778.105 Determining the workweek](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-B/section-778.105) | see the document | 2026-11-08 |
-| [29 CFR 778.109 The regular rate is an hourly rate](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.109) | see the document | 2026-11-08 |
-| [29 CFR 778.110 Hourly rate employee](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.110) | see the document | 2026-11-08 |
-| [29 CFR 778.115 Employees working at two or more rates](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-C/section-778.115) | see the document | 2026-11-08 |
-| [29 CFR 778.5 Relation to other laws generally](https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778/subpart-A/section-778.5) | see the document | 2026-11-08 |
-| [IRS Fact Sheet FS-2026-13, Updates to questions and answers about the new deduction for qualified overtime compensation (August 2026)](https://www.irs.gov/pub/taxpros/fs-2026-13.pdf) | see the document | 2026-11-08 |
-| [IRS: One Big Beautiful Bill Act: tax deductions for working Americans and seniors](https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors) | see the document | 2026-11-08 |
-| [California Labor Code section 510(a)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=510) | see the document | 2026-11-08 |
-| [California Labor Code section 511(a)-(b)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=511) | see the document | 2026-11-08 |
-| [California Labor Code section 500(a)-(c)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=500) | see the document | 2026-11-08 |
-| [California Labor Code section 552](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=552) | see the document | 2026-11-08 |
-| [Alaska Statutes AS 23.10.060(b), as printed in Alaska DOLWD Wage and Hour Pamphlet 100 (October 2025)](https://labor.alaska.gov/lss/forms/pam100.pdf) | see the document | 2026-11-08 |
-| [Alaska DOLWD, Summary of Alaska Wage and Hour Act (revised January 2026)](https://labor.alaska.gov/lss/forms/Summary_of_Alaska_Wage_and_Hour_Act-01-2025.pdf) | see the document | 2026-11-08 |
-| [Colorado Overtime and Minimum Pay Standards Order (COMPS Order) #40, 7 CCR 1103-1, Rule 4 (effective February 1, 2026)](https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&ruleId=2509) | see the document | 2026-11-08 |
-| [CDLE COMPS Order Poster and Notice, effective 1/1/2026](https://cdle.colorado.gov/sites/cdle/files/2026_comps_order_poster_english_%5Baccessible%5D.pdf) | see the document | 2026-11-08 |
-| [Kentucky Revised Statutes 337.050](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=32049) | see the document | 2026-11-08 |
-| [Kentucky Revised Statutes 337.285(1)](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=54508) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+op: "audit"
+csv: "employee,date,state,in,out,break minutes,rate,paid regular hours,paid overtime hours,paid double time hours\r\nAna Ruiz,2026-11-01,CA,7:00,17:30,30,24.00,8,2,0\r\nAna Ruiz,2026-11-02,CA,7:00,20:30,30,24.00,8,5,0\r\nAna Ruiz,2026-11-03,CA,7:00,15:30,30,24.00,8,0,0\r\nAna Ruiz,2026-11-04,CA,7:00,15:30,30,24.00,8,0,0\r\nAna Ruiz,2026-11-05,CA,7:00,15:30,30,24.00,8,0,0\r\nAna Ruiz,2026-11-06,CA,7:00,15:30,30,24.00,0,8,0\r\nAna Ruiz,2026-11-07,CA,8:00,14:30,30,24.00,0,6,0\r\nBen Okafor,2026-11-02,CO,16:00,23:30,0,21.50,7.5,0,0\r\nBen Okafor,2026-11-03,CO,0:00,6:30,0,21.50,6.5,0,0\r\nBen Okafor,2026-11-04,CO,8:00,16:30,30,21.50,8,0,0\r\nBen Okafor,2026-11-05,CO,8:00,16:30,30,21.50,8,0,0\r\nBen Okafor,2026-11-06,CO,8:00,16:30,30,21.50,8,0,0\r\nCara Bell,2026-11-01,KY,8:00,13:00,0,19.00,5,0,0\r\nCara Bell,2026-11-02,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-03,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-04,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-05,KY,8:00,16:30,30,19.00,8,0,0\r\nCara Bell,2026-11-06,KY,8:00,16:30,30,19.00,3,5,0\r\nCara Bell,2026-11-07,KY,8:00,14:00,0,19.00,0,6,0\r\n"
+workweekStart: "sunday"
+```
 
 ## How is it tested?
 
-The tests check that every rule is quoted from its official text with the date read, that the punch arithmetic is the hours calculator's engine, California daily, double time, seventh day and alternative workweek, Alaska, Colorado's consecutive hours across midnight, Kentucky's seventh day, the federal rule elsewhere, 29 CFR 778.110(b)'s own regular-rate example, IRS FS-2026-13 Q16's code TT example, CSV reading and refusals, and the sample audit.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every rule is quoted from its official text, read 2026-11-08, and the punch arithmetic is the hours calculator's engine, imported read-only.
 - California daily, double time, seventh day and alternative workweek, Alaska, Colorado's 12 consecutive hours across midnight, Kentucky's seventh day and the federal rule in every other state are checked.

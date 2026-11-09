@@ -1,6 +1,6 @@
 # BR-DE-16: USt-IdNr. oder Steuernummer des Verkäufers fehlt
 
-BR-DE-16 bedeutet: Wenn in einer Rechnung die Steuercodes S, Z, E, AE, K, G, L oder M verwendet werden, muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32) oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die USt-IdNr. als BT-31 (UBL cac:PartyTaxScheme mit TaxScheme VAT, CII ram:SpecifiedTaxRegistration/ram:ID schemeID="VA") oder die Steuernummer als BT-32 (CII schemeID="FC") an.
+BR-DE-16 bedeutet: Wenn in einer Rechnung die Steuercodes S, Z, E, AE, K, G, L oder M verwendet werden, muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32) oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Die Rechnung enthält steuerpflichtige oder steuerbefreite Positionen (Kategorie
 
 ## So beheben Sie den Fehler
 
-Geben Sie die USt-IdNr. als BT-31 (UBL cac:PartyTaxScheme mit TaxScheme VAT, CII ram:SpecifiedTaxRegistration/ram:ID schemeID="VA") oder die Steuernummer als BT-32 (CII schemeID="FC") an.
+Geben Sie die USt-IdNr. als BT-31 (UBL `cac:PartyTaxScheme` mit TaxScheme VAT, CII `ram:SpecifiedTaxRegistration/ram:ID` schemeID="VA") oder die Steuernummer als BT-32 (CII schemeID="FC") an.
 
 ## Geprüftes Beispiel
 

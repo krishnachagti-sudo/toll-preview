@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the splitter</h2><p class="muted">The made-up file below opens in the splitter and is split in your browser, free. Swap in your own export there.</p><form method="get" action="/toll-preview/payout-reconciliation/" class="cp-tool-form"><input type="hidden" name="sample" value="stripe"><input type="hidden" name="ledger" value="quickbooks-online"><input type="hidden" name="rate" value="stripe-card"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this payout in the splitter</button></form><p class="small"><a href="/toll-preview/payout-reconciliation/?sample=stripe&amp;ledger=quickbooks-online&amp;rate=stripe-card">Open this example in the splitter</a></p></aside>
 <section>
 <h2 id="columns">The default columns</h2>
@@ -138,7 +139,7 @@
 </section>
 <section>
 <h2 id="sample">A sample file</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Made-up itemized payout reconciliation rows</caption><thead><tr><th scope="col">automatic_payout_id</th><th scope="col">automatic_payout_effective_at</th><th scope="col">balance_transaction_id</th><th scope="col">created</th><th scope="col">available_on</th><th scope="col">currency</th><th scope="col">gross</th><th scope="col">fee</th><th scope="col">net</th><th scope="col">reporting_category</th><th scope="col">description</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Made-up itemized payout reconciliation rows</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">automatic_payout_id</th><th scope="col">automatic_payout_effective_at</th><th scope="col">balance_transaction_id</th><th scope="col">created</th><th scope="col">available_on</th><th scope="col">currency</th><th scope="col">gross</th><th scope="col">fee</th><th scope="col">net</th><th scope="col">reporting_category</th><th scope="col">description</th></tr></thead><tbody>
 <tr><th scope="row">po_SAMPLE1014</th><td>2026-10-14</td><td>txn_S01</td><td>2026-10-10 14:02:11</td><td>2026-10-12</td><td>usd</td><td>120.00</td><td>3.78</td><td>116.22</td><td>charge</td><td>Order 1041</td></tr>
 <tr><th scope="row">po_SAMPLE1014</th><td>2026-10-14</td><td>txn_S02</td><td>2026-10-10 16:40:05</td><td>2026-10-12</td><td>usd</td><td>45.00</td><td>1.61</td><td>43.39</td><td>charge</td><td>Order 1042</td></tr>
 <tr><th scope="row">po_SAMPLE1014</th><td>2026-10-14</td><td>txn_S03</td><td>2026-10-11 09:15:44</td><td>2026-10-13</td><td>usd</td><td>89.99</td><td>2.91</td><td>87.08</td><td>charge</td><td>Order 1043</td></tr>
@@ -148,20 +149,20 @@
 <tr><th scope="row">po_SAMPLE1102</th><td>2026-11-02</td><td>txn_S07</td><td>2026-10-31 19:44:31</td><td>2026-11-02</td><td>usd</td><td>19.99</td><td>0.88</td><td>19.11</td><td>charge</td><td>Order 1051</td></tr>
 <tr><th scope="row">po_SAMPLE1102</th><td>2026-11-02</td><td>txn_S08</td><td>2026-11-01 10:12:00</td><td>2026-11-01</td><td>usd</td><td>-19.99</td><td>0.00</td><td>-19.99</td><td>refund</td><td>Refund for order 1051</td></tr>
 <tr><th scope="row">po_SAMPLE1102</th><td>2026-11-02</td><td>txn_S09</td><td>2026-11-01 00:00:00</td><td>2026-11-01</td><td>usd</td><td>-2.00</td><td>0.00</td><td>-2.00</td><td>fee</td><td>Billing - usage fee</td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>Payout po_SAMPLE1014, October 14, 2026</caption><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">Payout po_SAMPLE1014, October 14, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
 <tr><th scope="row">Sales</th><td class="r num">$254.99</td></tr>
 <tr><th scope="row">Refunds</th><td class="r num">-$30.00</td></tr>
 <tr><th scope="row">Chargebacks and disputes</th><td class="r num">-$45.00</td></tr>
 <tr><th scope="row">Processing fees</th><td class="r num">-$23.30</td></tr>
 <tr><th scope="row"><strong>Net (the payout)</strong></th><td class="r num"><strong>$156.69</strong></td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>Payout po_SAMPLE1102, November 2, 2026</caption><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">Payout po_SAMPLE1102, November 2, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
 <tr><th scope="row">Sales</th><td class="r num">$269.99</td></tr>
 <tr><th scope="row">Refunds</th><td class="r num">-$19.99</td></tr>
 <tr><th scope="row">Processing fees</th><td class="r num">-$10.43</td></tr>
 <tr><th scope="row"><strong>Net (the payout)</strong></th><td class="r num"><strong>$239.57</strong></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="limits">Before you download</h2>
@@ -173,7 +174,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://docs.stripe.com/reports/payout-reconciliation">Stripe Docs: Payout reconciliation report (read November 8, 2026)</a></li><li><a href="https://docs.stripe.com/reports/reporting-categories">Stripe Docs: Reporting categories (read November 8, 2026)</a></li><li><a href="https://stripe.com/us/pricing">Stripe pricing (United States) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://docs.stripe.com/reports/payout-reconciliation">Stripe Docs: Payout reconciliation report (read November 8, 2026)</a><span class="src-m">docs.stripe.com</span></li><li><a href="https://docs.stripe.com/reports/reporting-categories">Stripe Docs: Reporting categories (read November 8, 2026)</a><span class="src-m">docs.stripe.com</span></li><li><a href="https://stripe.com/us/pricing">Stripe pricing (United States) (read November 8, 2026)</a><span class="src-m">stripe.com</span></li></ul>
 <p class="cp-note">Not accounting or tax advice: this is arithmetic on the processor's own file, placed by the categories the processor documents. The sample files are made up.</p>
 </section>
 

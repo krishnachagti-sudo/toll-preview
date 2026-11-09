@@ -12,6 +12,10 @@ In Colorado a landlord may charge a rent late fee of at most the greater of $50 
 
 ## What the statute says
 
+**In short:** The greater of $50 or 5% of the past-due rent payment; from day 7 after the due date (Colo. Rev. Stat. § 38-12-105).
+
+**The statute's words (8 passages)**
+
 Colo. Rev. Stat. § 38-12-105: "Charge a tenant or home owner a late fee unless a rent payment is late by at least seven calendar days;"
 
 Colo. Rev. Stat. § 38-12-105: "Charge a tenant or home owner a late fee in an amount that exceeds the greater of: (I) Fifty dollars; or (II) Five percent of the amount of the past due rent payment;"

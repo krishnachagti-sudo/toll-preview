@@ -2,9 +2,53 @@
 
 Each code is read as digits, must be 12, 13 or 14 long, must have the right GS1 check digit (weights 3 and 1 from the right), must sit in a GS1 Prefix used for trade items and inside the company prefix you give, and the brand you list is compared with the GS1 licensee name in 6 levels, from identical to different names. A file holds at most 5,000 codes.
 
+## How does it work?
+
+1. Rows are read from the list or the CSV. The CSV's separator is the one of comma, semicolon or tab most used in the heading line. Headings are matched with case, underscores and dots ignored (gtin, upc, ean, barcode or external\_product\_id for the code; brand\_name; gs1 licensee or legal entity; company prefix; sku).
+2. Each cell is read: spaces, hyphens and a leading apostrophe are removed and a trailing .0 is dropped with a review note.
+3. The length must be 12 (UPC), 13 (EAN or JAN) or 14 (GTIN-14), the lengths Amazon's help lists.
+4. The check digit is worked out by GS1's method: from the right, the digits are multiplied alternately by 3 and 1, added, and the check digit is what is left from the sum to the nearest equal or higher multiple of ten.
+5. The GS1 Prefix is read from the 13-digit form (a 12-digit code has an implied leading zero; a GTIN-14 drops its indicator digit), by the longest match among 20 ranges.
+
+> Steps 6 to 10, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/amazon-error-8572-checker/#what) below.
+
+## What does it not cover?
+
+- It does not look up GS1 records: it compares the licensee name and company prefix you give it, from your GS1 certificate or your own Verified by GS1 search, with the brand you list.
+- Amazon decides which listings it accepts and does not publish how it matches names, so a pass here is not Amazon's approval.
+- Prefixes of GS1 Member Organisations outside the US are not looked up or named.
+- Amazon rules are from Amazon's Seller Central help for the United States. Not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 17 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Amazon's help pages, gs1.org and gs1us.org were read on 2026-11-08. Each page is checked once a day for changes, and the rules change only by hand, with the tests that pin them. This checker does not look up GS1 records. It compares the licensee name and company prefix you give it (from your GS1 certificate or your own Verified by GS1 search) with the brand you list.
+- [Tested: 4 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check GS1's own check digit example (sum 57, check digit 3) and every wrong last digit, reading cells with spaces, apostrophes, decimals and scientific notation, lengths and the lost zero, every special GS1 Prefix range and the implied zero, company prefixes in both forms, each level of the name comparison, verdicts and duplicates, CSV headings and defaults, the documents by role, the letter's five components and refusals, and the exact cheapest GS1 US mix.
+
+- [Amazon Seller Central help: Error 8572](https://sellercentral.amazon.com/help/hub/reference/external/GUBJ9DCQUDLG9YGQ), see the document, read 2026-11-08
+- [Amazon Seller Central help: Valid UPCs](https://sellercentral.amazon.com/help/hub/reference/external/GLE2KYT2UVPMTYGS), see the document, read 2026-11-08
+- [Amazon Seller Central help: Find your product ID (GTIN)](https://sellercentral.amazon.com/help/hub/reference/external/G200211450), see the document, read 2026-11-08
+- [Amazon Seller Central help: List products that do not have a product ID (UPC, EAN, JAN, or ISBN)](https://sellercentral.amazon.com/help/hub/reference/external/G200426310), see the document, read 2026-11-08
+- [Amazon Seller Central help: Product ID (GTIN) requirements by category](https://sellercentral.amazon.com/help/hub/reference/external/G200317520), see the document, read 2026-11-08
+- [Amazon Seller Central help: Guidelines for UPC and GTIN](https://sellercentral.amazon.com/help/hub/reference/external/G5JQC6VY6BVYWDPT), see the document, read 2026-11-08
+- [Amazon Seller Central help: Amazon Brand Name policy](https://sellercentral.amazon.com/help/hub/reference/external/G2N3GKE5SGSHWYRZ), see the document, read 2026-11-08
+- [GS1: How to calculate a check digit manually](https://www.gs1.org/how-calculate-check-digit-manually), see the document, read 2026-11-08
+- [GS1: Check digit calculator](https://www.gs1.org/services/check-digit-calculator), see the document, read 2026-11-08
+- [GS1: GS1 Company Prefix (the GS1 Prefixes)](https://www.gs1.org/standards/id-keys/company-prefix), see the document, read 2026-11-08
+- [GS1: Verified by GS1](https://www.gs1.org/services/verified-by-gs1), see the document, read 2026-11-08
+- [GS1: Terms of use (gs1.org)](https://www.gs1.org/terms-use), see the document, read 2026-11-08
+- [GS1 US: Get Authentic U.P.C. Barcodes (GS1 Company Prefix pricing)](https://www.gs1us.org/upcs-barcodes-prefixes/how-to-get-a-upc-barcode/get-upc-barcodes), see the document, read 2026-11-08
+- [GS1 US: Barcodes for Amazon](https://www.gs1us.org/upcs-barcodes-prefixes/amazon/barcodes-for-amazon), see the document, read 2026-11-08
+- [GS1 US FAQ: GS1 Company Prefix, barcodes and identification](https://www.gs1us.org/faqs/gs1-company-prefix-barcodes-and-indentification), see the document, read 2026-11-08
+- [GS1 US FAQ: Update prefix registration (identifier transfer, M&A, company name change)](https://www.gs1us.org/faqs/update-prefix-registration), see the document, read 2026-11-08
+- [GS1 US: What is a GS1 Company Prefix?](https://www.gs1us.org/upcs-barcodes-prefixes/what-is-a-prefix), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the amazon error 8572 checker compute?
 
 Given codes as rows or a CSV (such as an Amazon flat file), each with the brand you list and the GS1 licensee name and company prefix from your GS1 certificate, the tool says which codes will likely hit Error 8572 or another product ID error and why, which to review, and the fix for each, with the documents Amazon's Error 8572 help asks for by your role and a fix list CSV. It also writes a letter of affiliation built to the five components Amazon's help checks, and finds the cheapest mix of GS1 US single GTINs and prefixes for a number of products and years. It does not look up GS1 records.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -30,7 +74,7 @@ Outputs:
 - fixCsv: one row per code with its verdict, findings and fixes
 - letter: text, gtins, the five component checks, formats and documents to attach; cost: best, options, tiers and a note
 
-## How is it calculated, step by step?
+**Every step in full (10) and the rules**
 
 1. Rows are read from the list or the CSV. The CSV's separator is the one of comma, semicolon or tab most used in the heading line. Headings are matched with case, underscores and dots ignored (gtin, upc, ean, barcode or external\_product\_id for the code; brand\_name; gs1 licensee or legal entity; company prefix; sku). A file with no barcode column is refused. Defaults fill blank cells.
 2. Each cell is read: spaces, hyphens and a leading apostrophe are removed and a trailing .0 is dropped with a review note. A number in scientific notation (6.14141E+11), a 10-character ISBN ending in X, and anything with letters fail, since the digits are lost or it is not a GTIN.
@@ -55,6 +99,8 @@ The cost planner uses the GS1 US prices read on 2026-11-08: one GTIN $30 with no
 
 ## Which edge cases does it handle?
 
+**The edge cases (7)**
+
 - A code a spreadsheet turned into 6.14141E+11 fails: the last digits are gone and must be copied again from the label or the GS1 record.
 - An 11-digit code fails as a lost leading zero; when 0 plus the code has a valid check digit, the fix names that 12-digit code.
 - A 12-digit code beginning 614 has GS1 Prefix 061, not 614, because of the implied leading zero.
@@ -69,17 +115,6 @@ The cost planner uses the GS1 US prices read on 2026-11-08: one GTIN $30 with no
 
 **A seven-code upload file checked against the brand's own GS1 prefix**
 
-```json
-{
-  "op": "check",
-  "csv": "sku,external_product_id,brand_name,gs1 licensee\r\nMUG-01,614141000012,Harbor & Pine,Harbor & Pine LLC\r\nMUG-02,614141000029,Harbor and Pine,Harbor & Pine LLC\r\nMUG-03,614141000036,HarborPine Home,Harbor & Pine LLC\r\nBOWL-01,6.14141E+11,Harbor & Pine,Harbor & Pine LLC\r\nBOWL-02,614142000004,Harbor & Pine,Harbor & Pine LLC\r\nBOWL-03,614141000047,Harbor & Pine,Harbor & Pine LLC\r\nBOWL-04,614141000050,Harbor & Pine,Harbor & Pine",
-  "defaults": {
-    "companyPrefix": "0614141"
-  },
-  "role": "brand-owner"
-}
-```
-
 A seven-code upload file checked against the brand's own GS1 prefix
 
 | Result | Value |
@@ -93,7 +128,32 @@ A seven-code upload file checked against the brand's own GS1 prefix
 | BOWL-03 (614141000047) | fail: check-digit, name-legal-form |
 | BOWL-04 (614141000050) | pass: no findings |
 
+**The input**
+
+```json
+{
+  "op": "check",
+  "csv": "sku,external_product_id,brand_name,gs1 licensee\r\nMUG-01,614141000012,Harbor & Pine,Harbor & Pine LLC\r\nMUG-02,614141000029,Harbor and Pine,Harbor & Pine LLC\r\nMUG-03,614141000036,HarborPine Home,Harbor & Pine LLC\r\nBOWL-01,6.14141E+11,Harbor & Pine,Harbor & Pine LLC\r\nBOWL-02,614142000004,Harbor & Pine,Harbor & Pine LLC\r\nBOWL-03,614141000047,Harbor & Pine,Harbor & Pine LLC\r\nBOWL-04,614141000050,Harbor & Pine,Harbor & Pine",
+  "defaults": {
+    "companyPrefix": "0614141"
+  },
+  "role": "brand-owner"
+}
+```
+
+**More worked examples (2)**
+
 **One UPC: the brand typed in Amazon against the company on the GS1 certificate**
+
+One UPC: the brand typed in Amazon against the company on the GS1 certificate
+
+| Result | Value |
+| --- | --- |
+| answer | 614141000012: check digit valid; GS1 Prefix 061 (GS1 US); inside your company prefix 0614141; brand "Harbor & Pine" vs GS1 licensee "Harbor & Pine LLC": the same name apart from the legal form. Verdict: check the points below before you list. |
+| check digit | 2, expected 2 |
+| company prefix | 0614141, room for 100,000 codes |
+
+**The input**
 
 ```json
 {
@@ -109,23 +169,7 @@ A seven-code upload file checked against the brand's own GS1 prefix
 }
 ```
 
-One UPC: the brand typed in Amazon against the company on the GS1 certificate
-
-| Result | Value |
-| --- | --- |
-| answer | 614141000012: check digit valid; GS1 Prefix 061 (GS1 US); inside your company prefix 0614141; brand "Harbor & Pine" vs GS1 licensee "Harbor & Pine LLC": the same name apart from the legal form. Verdict: check the points below before you list. |
-| check digit | 2, expected 2 |
-| company prefix | 0614141, room for 100,000 codes |
-
 **GS1 US: the cheapest way to barcode 12 products for one year**
-
-```json
-{
-  "op": "cost",
-  "items": 12,
-  "years": 1
-}
-```
 
 GS1 US: the cheapest way to barcode 12 products for one year
 
@@ -139,66 +183,19 @@ GS1 US: the cheapest way to barcode 12 products for one year
 | 10,000-item prefix | $6,500 |
 | 100,000-item prefix | $10,500 |
 
-## What does it not do?
+**The input**
 
-- It does not look up GS1 records: it compares the licensee name and company prefix you give it, from your GS1 certificate or your own Verified by GS1 search, with the brand you list.
-- Amazon decides which listings it accepts and does not publish how it matches names, so a pass here is not Amazon's approval.
-- Prefixes of GS1 Member Organisations outside the US are not looked up or named.
-- Amazon rules are from Amazon's Seller Central help for the United States. Not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-Amazon's help pages, gs1.org and gs1us.org were read on 2026-11-08. Each page is checked once a day for changes, and the rules change only by hand, with the tests that pin them. This checker does not look up GS1 records. It compares the licensee name and company prefix you give it (from your GS1 certificate or your own Verified by GS1 search) with the brand you list.
-
-- [Amazon Seller Central help: Error 8572](https://sellercentral.amazon.com/help/hub/reference/external/GUBJ9DCQUDLG9YGQ)
-- [Amazon Seller Central help: Valid UPCs](https://sellercentral.amazon.com/help/hub/reference/external/GLE2KYT2UVPMTYGS)
-- [Amazon Seller Central help: Find your product ID (GTIN)](https://sellercentral.amazon.com/help/hub/reference/external/G200211450)
-- [Amazon Seller Central help: List products that do not have a product ID (UPC, EAN, JAN, or ISBN)](https://sellercentral.amazon.com/help/hub/reference/external/G200426310)
-- [Amazon Seller Central help: Product ID (GTIN) requirements by category](https://sellercentral.amazon.com/help/hub/reference/external/G200317520)
-- [Amazon Seller Central help: Guidelines for UPC and GTIN](https://sellercentral.amazon.com/help/hub/reference/external/G5JQC6VY6BVYWDPT)
-- [Amazon Seller Central help: Amazon Brand Name policy](https://sellercentral.amazon.com/help/hub/reference/external/G2N3GKE5SGSHWYRZ)
-- [GS1: How to calculate a check digit manually](https://www.gs1.org/how-calculate-check-digit-manually)
-- [GS1: Check digit calculator](https://www.gs1.org/services/check-digit-calculator)
-- [GS1: GS1 Company Prefix (the GS1 Prefixes)](https://www.gs1.org/standards/id-keys/company-prefix)
-- [GS1: Verified by GS1](https://www.gs1.org/services/verified-by-gs1)
-- [GS1: Terms of use (gs1.org)](https://www.gs1.org/terms-use)
-- [GS1 US: Get Authentic U.P.C. Barcodes (GS1 Company Prefix pricing)](https://www.gs1us.org/upcs-barcodes-prefixes/how-to-get-a-upc-barcode/get-upc-barcodes)
-- [GS1 US: Barcodes for Amazon](https://www.gs1us.org/upcs-barcodes-prefixes/amazon/barcodes-for-amazon)
-- [GS1 US FAQ: GS1 Company Prefix, barcodes and identification](https://www.gs1us.org/faqs/gs1-company-prefix-barcodes-and-indentification)
-- [GS1 US FAQ: Update prefix registration (identifier transfer, M&A, company name change)](https://www.gs1us.org/faqs/update-prefix-registration)
-- [GS1 US: What is a GS1 Company Prefix?](https://www.gs1us.org/upcs-barcodes-prefixes/what-is-a-prefix)
-
-Amazon's help pages, gs1.org and gs1us.org were read on 2026-11-08. Each page is checked once a day for changes, and the rules change only by hand, with the tests that pin them. This checker does not look up GS1 records. It compares the licensee name and company prefix you give it (from your GS1 certificate or your own Verified by GS1 search) with the brand you list.
-
-Amazon Error 8572 checker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Amazon Seller Central help: Error 8572](https://sellercentral.amazon.com/help/hub/reference/external/GUBJ9DCQUDLG9YGQ) | see the document | 2026-11-08 |
-| [Amazon Seller Central help: Valid UPCs](https://sellercentral.amazon.com/help/hub/reference/external/GLE2KYT2UVPMTYGS) | see the document | 2026-11-08 |
-| [Amazon Seller Central help: Find your product ID (GTIN)](https://sellercentral.amazon.com/help/hub/reference/external/G200211450) | see the document | 2026-11-08 |
-| [Amazon Seller Central help: List products that do not have a product ID (UPC, EAN, JAN, or ISBN)](https://sellercentral.amazon.com/help/hub/reference/external/G200426310) | see the document | 2026-11-08 |
-| [Amazon Seller Central help: Product ID (GTIN) requirements by category](https://sellercentral.amazon.com/help/hub/reference/external/G200317520) | see the document | 2026-11-08 |
-| [Amazon Seller Central help: Guidelines for UPC and GTIN](https://sellercentral.amazon.com/help/hub/reference/external/G5JQC6VY6BVYWDPT) | see the document | 2026-11-08 |
-| [Amazon Seller Central help: Amazon Brand Name policy](https://sellercentral.amazon.com/help/hub/reference/external/G2N3GKE5SGSHWYRZ) | see the document | 2026-11-08 |
-| [GS1: How to calculate a check digit manually](https://www.gs1.org/how-calculate-check-digit-manually) | see the document | 2026-11-08 |
-| [GS1: Check digit calculator](https://www.gs1.org/services/check-digit-calculator) | see the document | 2026-11-08 |
-| [GS1: GS1 Company Prefix (the GS1 Prefixes)](https://www.gs1.org/standards/id-keys/company-prefix) | see the document | 2026-11-08 |
-| [GS1: Verified by GS1](https://www.gs1.org/services/verified-by-gs1) | see the document | 2026-11-08 |
-| [GS1: Terms of use (gs1.org)](https://www.gs1.org/terms-use) | see the document | 2026-11-08 |
-| [GS1 US: Get Authentic U.P.C. Barcodes (GS1 Company Prefix pricing)](https://www.gs1us.org/upcs-barcodes-prefixes/how-to-get-a-upc-barcode/get-upc-barcodes) | see the document | 2026-11-08 |
-| [GS1 US: Barcodes for Amazon](https://www.gs1us.org/upcs-barcodes-prefixes/amazon/barcodes-for-amazon) | see the document | 2026-11-08 |
-| [GS1 US FAQ: GS1 Company Prefix, barcodes and identification](https://www.gs1us.org/faqs/gs1-company-prefix-barcodes-and-indentification) | see the document | 2026-11-08 |
-| [GS1 US FAQ: Update prefix registration (identifier transfer, M&A, company name change)](https://www.gs1us.org/faqs/update-prefix-registration) | see the document | 2026-11-08 |
-| [GS1 US: What is a GS1 Company Prefix?](https://www.gs1us.org/upcs-barcodes-prefixes/what-is-a-prefix) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "cost",
+  "items": 12,
+  "years": 1
+}
+```
 
 ## How is it tested?
 
-The tests check GS1's own check digit example (sum 57, check digit 3) and every wrong last digit, reading cells with spaces, apostrophes, decimals and scientific notation, lengths and the lost zero, every special GS1 Prefix range and the implied zero, company prefixes in both forms, each level of the name comparison, verdicts and duplicates, CSV headings and defaults, the documents by role, the letter's five components and refusals, and the exact cheapest GS1 US mix.
-
-What its test suite asserts:
+**What its test suite asserts (4)**
 
 - GS1's own check digit example (629104150021: sum 57, check digit 3) and every wrong last digit are checked.
 - Spreadsheet damage (scientific notation, the lost leading zero, decimals), every special GS1 Prefix range with the implied zero, and company prefixes in GS1 and U.P.C. form are checked.

@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the tool</h2><p class="muted">The worked schedules open in the tool and are previewed in your browser, free. Edit them or paste your own there.</p><form method="get" action="/toll-preview/amortization-schedule-journal-entries/" class="cp-tool-form"><input type="hidden" name="csv" value="Item,Type,Amount,Start,Months,End,Method,Paid on,Balance account,PL account,Cash account,Name,Rate,Payment,First payment,Day count,Cancel on,Refund
 Slack annual plan,Prepaid,600.50,2026-01-01,12,,daily,,Prepaid Software,Marketing Software,,,,,,,,
 Zoom annual plan,Prepaid,997.00,2026-02-08,12,,daily,,Prepaid Software,Software Subscriptions,,,,,,,,
@@ -112,7 +113,7 @@ Hotjar annual plan,Prepaid,3713.00,2026-06-08,12,,daily,,Prepaid Software,Softwa
 </section>
 <section>
 <h2 id="matrix">The monthly total</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Expense from the 30 subscriptions, by month</caption><thead><tr><th scope="col">Month</th><th scope="col" class="r num">Expensed</th><th scope="col" class="r num">Prepaid Software at month end</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Expense from the 30 subscriptions, by month</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Month</th><th scope="col" class="r num">Expensed</th><th scope="col" class="r num">Prepaid Software at month end</th></tr></thead><tbody>
 <tr><th scope="row">November 2026</th><td class="r num">$5,969.90</td><td class="r num">$42,198.47</td></tr>
 <tr><th scope="row">December 2026</th><td class="r num">$6,444.53</td><td class="r num">$37,851.94</td></tr>
 <tr><th scope="row">January 2027</th><td class="r num">$6,268.49</td><td class="r num">$31,583.45</td></tr>
@@ -125,7 +126,7 @@ Hotjar annual plan,Prepaid,3713.00,2026-06-08,12,,daily,,Prepaid Software,Softwa
 <tr><th scope="row">August 2027</th><td class="r num">$2,513.09</td><td class="r num">$2,678.04</td></tr>
 <tr><th scope="row">September 2027</th><td class="r num">$1,357.24</td><td class="r num">$1,320.80</td></tr>
 <tr><th scope="row">October 2027</th><td class="r num">$816.58</td><td class="r num">$504.22</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="journal">One journal per month</h2>
@@ -142,7 +143,7 @@ AM-20261130,11/30/2026,Software Subscriptions,4337.11,,&quot;Amortization schedu
 <section>
 <h2 id="sources">Sources</h2>
 <p>The subscriptions are made up; vendor names only label rows. The import layout:</p>
-<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">Intuit QuickBooks: Import journal entries into QuickBooks Online, updated August 4, 2026 (read November 8, 2026)</a></li><li><a href="https://central.xero.com/s/article/Add-import-and-post-manual-journals-US">Xero Central: Add, import and post manual journals (US) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">Intuit QuickBooks: Import journal entries into QuickBooks Online, updated August 4, 2026 (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li><li><a href="https://central.xero.com/s/article/Add-import-and-post-manual-journals-US">Xero Central: Add, import and post manual journals (US) (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How do I expense an annual subscription over 12 months?</h3></summary><div class="xp-in"><p>Record the payment to a prepaid account, then each month move the month's share to the software expense account until the term ends. With actual days, a subscription starting mid-month posts part of a month first and the rest in the 13th calendar month.</p></div></details><details class="xpand"><summary><h3>What happens at renewal?</h3></summary><div class="xp-in"><p>The renewal is a new prepaid row with its own start date and amount. The old row runs out on its own, so nothing is rebuilt; a price change is simply the new row's amount.</p></div></details></section>

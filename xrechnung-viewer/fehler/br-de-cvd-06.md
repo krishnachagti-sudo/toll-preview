@@ -1,6 +1,6 @@
 # BR-DE-CVD-06: CVD-Klassifikation und cva-Attribut nicht in derselben Position
 
-BR-DE-CVD-06 bedeutet: Wenn der Scheme identifier von ... "Item classification identifier" (BT-158) mit dem Wert 'CVD' angegeben ist, muss in derselben Rechnungszeile genau ein ... "Item attribute name" (BT-160) mit dem Wert 'cva' vorhanden sein. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie in der Fahrzeugposition genau eine Klassifikation mit listID CVD und genau ein Attribut cva an.
+BR-DE-CVD-06 bedeutet: Wenn der Scheme identifier von ... "Item classification identifier" (BT-158) mit dem Wert 'CVD' angegeben ist, muss in derselben Rechnungszeile genau ein ... "Item attribute name" (BT-160) mit dem Wert 'cva' vorhanden sein. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

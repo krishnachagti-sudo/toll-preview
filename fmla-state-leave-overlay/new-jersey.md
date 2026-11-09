@@ -38,6 +38,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## New Jersey in its own words
 
+**Read the law's own words (12 quotations)**
+
 - "More workers now qualify for job protection under NJFLA. The requirements have been reduced:" [New Jersey Department of Labor, NJ Expands Job-Protected Leave for Workers](https://nj.gov/labor/myleavebenefits/worker/job-protection-information/more-protections.shtml)
 - "15+ employees worldwide or a state or local government agency, regardless of size" [New Jersey Department of Labor, NJ Expands Job-Protected Leave for Workers](https://nj.gov/labor/myleavebenefits/worker/job-protection-information/more-protections.shtml)
 - "Up to 12 weeks of job-protected leave in a 24-month period" [New Jersey Department of Labor, NJ Expands Job-Protected Leave for Workers](https://nj.gov/labor/myleavebenefits/worker/job-protection-information/more-protections.shtml)

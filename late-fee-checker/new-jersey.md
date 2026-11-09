@@ -11,6 +11,10 @@ In New Jersey the statute read sets no dollar or percent limit on a rent late fe
 
 ## What the statute says
 
+**In short:** A waiting period, no amount; after 5 business days (rent due on the 1st) (N.J. Stat. § 2A:42-6.1).
+
+**The statute's words (1 passage)**
+
 N.J. Stat. § 2A:42-6.1: "A person to whom rent is due and payable on the first of the month upon a lease or other agreement shall allow a period of five business days grace in which the rent due shall be paid. No delinquency or other late charge shall be made which includes the grace period of five business days. As used in this section, "business day" means any day other than a Saturday, Sunday or State or federal holiday."
 
 ## The first day a fee may be charged

@@ -2,9 +2,42 @@
 
 The rent can rise once 12 months have passed since the last increase or the start of the tenancy (RTA s.119), by at most the guideline for the year the increase takes effect (1.9% for 2027, 2.1% for 2026, never above 2.5%), with at least 90 days' written notice (s.116). Mail counts as given on the 5th day after mailing (s.191(3)).
 
+## How does it work?
+
+1. The 12-month date is the last increase, or the start of the tenancy, plus 12 months on the same day number, or the month's last day when it has none; a February 29 date lands on February 28 outside leap years (RTA s.119(1); Legislation Act s.89(6), (7)).
+2. With no increase date given, the earliest is the later of the 12-month date and 90 days after today (95 by mail), or the earliest a notice already served allows.
+3. The notice must be given 90 days before the increase, counting the way s.89(3) of the Legislation Act does: the day it is given is left out and the increase day is counted.
+4. The guideline is the one for the calendar year the increase takes effect, from the ontario.ca table. The increase is the rent times the guideline, rounded down to the cent, so the new rent is never above the limit. A year not yet published gives no maximum and says when it is due (by August 31 of the year before, s.120(3)).
+5. No increase can take effect in 2021, the rent freeze year (s.136.1): the rent stays the same, even for an exempt unit.
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/ontario-rent-increase/#what) below.
+
+## What does it not cover?
+
+- Courier, fax and email service depend on the Landlord and Tenant Board's Rules and are not worked out.
+- Above-guideline increases are not worked out: they need a Board order or a signed N10 agreement.
+- Only the November 15, 2018 exemption is checked; social housing, care homes and the other exemptions of ss.5 to 8 are not.
+- Holidays are not added to the counts. It is not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 4 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The rules and the guideline table were read on November 8, 2026: the Residential Tenancies Act on e-Laws, current from September 21, 2026; the Legislation Act, current from December 11, 2025; and ontario.ca's Residential rent increases, updated June 23, 2026. A new guideline is published by August 31 each year; the table changes only by hand, with the tests that pin it.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The guideline table is pinned to ontario.ca, 1991 to 2027, and ontario.ca's own example ($1,000 from June 1, 2026 is $1,019.00 on June 1, 2027) is reproduced.
+
+- [Residential Tenancies Act, 2006, S.O. 2006, c. 17](https://www.ontario.ca/laws/statute/06r17), e-Laws, current from 2026-09-21, read 2026-11-08
+- [Legislation Act, 2006, S.O. 2006, c. 21, Sched. F](https://www.ontario.ca/laws/statute/06l21), e-Laws, current from 2025-12-11, read 2026-11-08
+- [Ontario.ca: Residential rent increases](https://www.ontario.ca/page/residential-rent-increases), updated 2026-06-23, read 2026-11-08
+- [Landlord and Tenant Board: Forms (form names only)](https://tribunalsontario.ca/ltb/forms/), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the ontario rent increase calculator (n1) compute?
 
-The tool takes a tenancy's rent and dates and gives the most the rent can rise to, the earliest date it can, and the last day to serve the notice by hand, in the mail box or by mail. It checks a notice a tenant received, the November 15, 2018 exemption of RTA s.6.1, and the yearly interest and top-up on a last month's rent deposit. Every rule comes with its section of the Residential Tenancies Act, 2006, and days are counted under the Legislation Act, 2006, s.89. Computed from the Residential Tenancies Act, 2006, the Legislation Act, 2006 and ontario.ca, each cited with the date read. Not legal advice.
+The tool takes a tenancy's rent and dates and gives the most the rent can rise to, the earliest date it can, and the last day to serve the notice by hand, in the mail box or by mail. It checks a notice a tenant received, the November 15, 2018 exemption of RTA s.6.1, and the yearly interest and top-up on a last month's rent deposit.
+
+**In detail: operations, inputs and outputs**
+
+Every rule comes with its section of the Residential Tenancies Act, 2006, and days are counted under the Legislation Act, 2006, s.89. Computed from the Residential Tenancies Act, 2006, the Legislation Act, 2006 and ontario.ca, each cited with the date read. Not legal advice.
 
 Operations (the op field):
 
@@ -38,7 +71,7 @@ Outputs:
 - problems: each rule the increase breaks, in a sentence with its section
 - sheet (sheet), rows and csv (batch), rows and totals (deposit-interest), the table (guidelines)
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. The 12-month date is the last increase, or the start of the tenancy, plus 12 months on the same day number, or the month's last day when it has none; a February 29 date lands on February 28 outside leap years (RTA s.119(1); Legislation Act s.89(6), (7)).
 2. With no increase date given, the earliest is the later of the 12-month date and 90 days after today (95 by mail), or the earliest a notice already served allows.
@@ -64,6 +97,8 @@ Copied by hand from ontario.ca's Residential rent increases page (updated June 2
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A last increase on January 31 makes the 12-month date January 31 of the next year; one on February 29 makes it February 28.
 - When the last day to serve has passed, the answer says so and gives the date a notice served today allows.
 - When the last day to serve is a Sunday, the answer says to serve earlier rather than rely on an extension.
@@ -77,16 +112,6 @@ Copied by hand from ontario.ca's Residential rent increases page (updated June 2
 
 **A $2,000 rent last raised March 1, 2026, with the N1 sent by mail**
 
-```json
-{
-  "op": "check",
-  "rent": 2000,
-  "lastIncrease": "2026-03-01",
-  "method": "mail",
-  "asOf": "2026-11-08"
-}
-```
-
 A $2,000 rent last raised March 1, 2026, with the N1 sent by mail
 
 | Result | Value |
@@ -98,7 +123,35 @@ A $2,000 rent last raised March 1, 2026, with the N1 sent by mail
 | mail by | November 26, 2026 |
 | hand over by | December 1, 2026 |
 
+**The input**
+
+```json
+{
+  "op": "check",
+  "rent": 2000,
+  "lastIncrease": "2026-03-01",
+  "method": "mail",
+  "asOf": "2026-11-08"
+}
+```
+
+**More worked examples (4)**
+
 **A tenant checks an N1 mailed too late, asking more than the guideline**
+
+A tenant checks an N1 mailed too late, asking more than the guideline
+
+| Result | Value |
+| --- | --- |
+| answer | Your rent of $1,850.00 can rise to at most $1,888.85 on December 1, 2026 (2026 guideline 2.1%); the notice gives only 82 days. |
+| counts as given | September 10, 2026 |
+| days of notice | 82 |
+| earliest date this notice allows | December 9, 2026 |
+| above the limit by | $11.15 |
+| problem 1 | Served by mail on September 5, 2026, the notice counts as given on September 10, 2026: 82 days before December 1, 2026, short of 90. Without 90 days the increase is void and a new notice is needed (s.116(4)); the earliest date this notice allows is December 9, 2026. |
+| problem 2 | $1,900.00 is $11.15 above the 2.1% limit of $1,888.85. More needs an N10 agreement (at most the guideline plus 3%, s.121(3)) or a Board order (s.126). |
+
+**The input**
 
 ```json
 {
@@ -113,19 +166,21 @@ A $2,000 rent last raised March 1, 2026, with the N1 sent by mail
 }
 ```
 
-A tenant checks an N1 mailed too late, asking more than the guideline
+**A basement suite finished in 2020 in a house where the owner lives upstairs**
+
+A basement suite finished in 2020 in a house where the owner lives upstairs
 
 | Result | Value |
 | --- | --- |
-| answer | Your rent of $1,850.00 can rise to at most $1,888.85 on December 1, 2026 (2026 guideline 2.1%); the notice gives only 82 days. |
-| counts as given | September 10, 2026 |
-| days of notice | 82 |
-| earliest date this notice allows | December 9, 2026 |
-| above the limit by | $11.15 |
-| problem 1 | Served by mail on September 5, 2026, the notice counts as given on September 10, 2026: 82 days before December 1, 2026, short of 90. Without 90 days the increase is void and a new notice is needed (s.116(4)); the earliest date this notice allows is December 9, 2026. |
-| problem 2 | $1,900.00 is $11.15 above the 2.1% limit of $1,888.85. More needs an N10 agreement (at most the guideline plus 3%, s.121(3)) or a Board order (s.126). |
+| answer | The unit is exempt from the guideline (RTA 6.1(3)), so there is no percentage limit on February 6, 2027; the 12-month rule and 90 days' notice still apply: serve the notice by hand by November 8, 2026 (or mail it by November 3, 2026). |
+| exempt | yes (RTA 6.1(3)) |
+| reason 1 | Met: the house had at most two residential units on or before November 15, 2018 (para 1). |
+| reason 2 | Met: the unit has its own bathroom and kitchen, an entrance with a door that secures from inside and one that locks from outside (para 2). |
+| reason 3 | Met: it became such a unit on April 15, 2020, after November 15, 2018 (para 3). |
+| reason 4 | Met: the owner lived in another unit of the house when it was first occupied (para 4 i). |
+| reason 5 | If disputed, the landlord must prove it (6.1(6)). The 90-day notice and the 12-month rule still apply: s.6.1 does not lift ss.116 and 119. |
 
-**A basement suite finished in 2020 in a house where the owner lives upstairs**
+**The input**
 
 ```json
 {
@@ -144,19 +199,19 @@ A tenant checks an N1 mailed too late, asking more than the guideline
 }
 ```
 
-A basement suite finished in 2020 in a house where the owner lives upstairs
+**Interest on an $1,800 last month's rent deposit, the rent raised each June**
+
+Interest on an $1,800 last month's rent deposit, the rent raised each June
 
 | Result | Value |
 | --- | --- |
-| answer | The unit is exempt from the guideline (RTA 6.1(3)), so there is no percentage limit on February 6, 2027; the 12-month rule and 90 days' notice still apply: serve the notice by hand by November 8, 2026 (or mail it by November 3, 2026). |
-| exempt | yes (RTA 6.1(3)) |
-| reason 1 | Met: the house had at most two residential units on or before November 15, 2018 (para 1). |
-| reason 2 | Met: the unit has its own bathroom and kitchen, an entrance with a door that secures from inside and one that locks from outside (para 2). |
-| reason 3 | Met: it became such a unit on April 15, 2020, after November 15, 2018 (para 3). |
-| reason 4 | Met: the owner lived in another unit of the house when it was first occupied (para 4 i). |
-| reason 5 | If disputed, the landlord must prove it (6.1(6)). The 90-day notice and the 12-month rule still apply: s.6.1 does not lift ss.116 and 119. |
+| answer | On a $1,800.00 deposit paid June 1, 2023, 3 yearly interest payments came due through November 8, 2026, $130.84 in all: $130.83 kept to top the deposit up to the rent and $0.01 owed to the tenant; the deposit is now $1,930.83. |
+| June 1, 2024 at 2.5% | $45.00: $45.00 kept, $0.00 to the tenant |
+| June 1, 2025 at 2.5% | $46.13: $46.12 kept, $0.01 to the tenant |
+| June 1, 2026 at 2.1% | $39.71: $39.71 kept, $0.00 to the tenant |
+| next payment | June 1, 2027 at 1.9% |
 
-**Interest on an $1,800 last month's rent deposit, the rent raised each June**
+**The input**
 
 ```json
 {
@@ -182,23 +237,7 @@ A basement suite finished in 2020 in a house where the owner lives upstairs
 }
 ```
 
-Interest on an $1,800 last month's rent deposit, the rent raised each June
-
-| Result | Value |
-| --- | --- |
-| answer | On a $1,800.00 deposit paid June 1, 2023, 3 yearly interest payments came due through November 8, 2026, $130.84 in all: $130.83 kept to top the deposit up to the rent and $0.01 owed to the tenant; the deposit is now $1,930.83. |
-| June 1, 2024 at 2.5% | $45.00: $45.00 kept, $0.00 to the tenant |
-| June 1, 2025 at 2.5% | $46.13: $46.12 kept, $0.01 to the tenant |
-| June 1, 2026 at 2.1% | $39.71: $39.71 kept, $0.00 to the tenant |
-| next payment | June 1, 2027 at 1.9% |
-
 **Ontario's rent increase guidelines, 1991 to 2027**
-
-```json
-{
-  "op": "guidelines"
-}
-```
 
 Ontario's rent increase guidelines, 1991 to 2027
 
@@ -208,40 +247,19 @@ Ontario's rent increase guidelines, 1991 to 2027
 | years | 1991 to 2027 |
 | 2021 | 0% because of the government rent freeze during COVID-19; otherwise it would have been 1.5% (ontario.ca footnote 1; RTA s.120(3.1) and s.136.1). |
 
-## What does it not do?
+**The input**
 
-- Courier, fax and email service depend on the Landlord and Tenant Board's Rules and are not worked out.
-- Above-guideline increases are not worked out: they need a Board order or a signed N10 agreement.
-- Only the November 15, 2018 exemption is checked; social housing, care homes and the other exemptions of ss.5 to 8 are not.
-- Holidays are not added to the counts. It is not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The rules and the guideline table were read on November 8, 2026: the Residential Tenancies Act on e-Laws, current from September 21, 2026; the Legislation Act, current from December 11, 2025; and ontario.ca's Residential rent increases, updated June 23, 2026. A new guideline is published by August 31 each year; the table changes only by hand, with the tests that pin it.
-
-- [Residential Tenancies Act, 2006, S.O. 2006, c. 17, e-Laws, current from September 21, 2026](https://www.ontario.ca/laws/statute/06r17)
-- [Legislation Act, 2006, S.O. 2006, c. 21, Sched. F, e-Laws, current from December 11, 2025](https://www.ontario.ca/laws/statute/06l21)
-- [Ontario.ca: Residential rent increases, updated June 23, 2026](https://www.ontario.ca/page/residential-rent-increases)
-- [Landlord and Tenant Board: Forms (form names only)](https://tribunalsontario.ca/ltb/forms/)
-
-The rules and the guideline table were read on November 8, 2026: the Residential Tenancies Act on e-Laws, current from September 21, 2026; the Legislation Act, current from December 11, 2025; and ontario.ca's Residential rent increases, updated June 23, 2026. A new guideline is published by August 31 each year; the table changes only by hand, with the tests that pin it.
-
-Ontario rent increase calculator (N1): sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Residential Tenancies Act, 2006, S.O. 2006, c. 17](https://www.ontario.ca/laws/statute/06r17) | e-Laws, current from 2026-09-21 | 2026-11-08 |
-| [Legislation Act, 2006, S.O. 2006, c. 21, Sched. F](https://www.ontario.ca/laws/statute/06l21) | e-Laws, current from 2025-12-11 | 2026-11-08 |
-| [Ontario.ca: Residential rent increases](https://www.ontario.ca/page/residential-rent-increases) | updated 2026-06-23 | 2026-11-08 |
-| [Landlord and Tenant Board: Forms (form names only)](https://tribunalsontario.ca/ltb/forms/) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "guidelines"
+}
+```
 
 ## How is it tested?
 
-The guideline table is pinned to ontario.ca, 1991 to 2027, and ontario.ca's own example ($1,000 from June 1, 2026 is $1,019.00 on June 1, 2027) is reproduced. The tests check 90 days with the notice day left out and 95 by mail, month ends and February 29, rounding down to the cent, the 2021 freeze, each paragraph of the exemption, a late mailed notice, deposit interest year by year, and the sheet and batch outputs.
+The tests check 90 days with the notice day left out and 95 by mail, month ends and February 29, rounding down to the cent, the 2021 freeze, each paragraph of the exemption, a late mailed notice, deposit interest year by year, and the sheet and batch outputs.
 
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The guideline table, 1991 to 2027, is pinned to ontario.ca as read on 2026-11-08, and ontario.ca's own $1,000 example is reproduced.
 - Serve-by dates are checked at 90 days with the notice day left out and 95 by mail, and the 12-month date at month ends and February 29.

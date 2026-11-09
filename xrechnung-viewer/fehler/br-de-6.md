@@ -1,6 +1,6 @@
 # BR-DE-6: Telefonnummer des Verkäufers (BT-42) fehlt
 
-BR-DE-6 bedeutet: Das Element "Seller contact telephone number" (BT-42) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie eine Telefonnummer mit mindestens drei Ziffern an (sonst meldet sich BR-DE-27).
+BR-DE-6 bedeutet: Das Element "Seller contact telephone number" (BT-42) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

@@ -1,15 +1,15 @@
 # What date was 180 days ago?
 
-180 days ago, counting back from Sunday, November 8, 2026 (today's date in New York, US Eastern time), was Tuesday, May 12, 2026.
+180 days ago, counting back from Monday, November 9, 2026 (today's date in New York, US Eastern time), was Wednesday, May 13, 2026.
 
-- Date: May 12, 2026
-- Weekday: Tuesday
+- Date: May 13, 2026
+- Weekday: Wednesday
 - ISO week: 2026-W20
 - US business days between: 123
 
 ## 180 days ago, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-09&region=US)
 
 ## 180 days ago, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays from the date to the
 
 | Start | 180 days before | US business days |
 | --- | --- | ---: |
-| [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-08) | Tue, May 12, 2026 | 123 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-09) | Wed, May 13, 2026 | 123 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-10) | Thu, May 14, 2026 | 123 |
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-11) | Fri, May 15, 2026 | 122 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays from the date to the
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-19) | Sat, May 23, 2026 | 123 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-20) | Sun, May 24, 2026 | 124 |
 | [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-21) | Mon, May 25, 2026 | 124 |
+| [Sun, Nov 22, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+ago&ref=2026-11-22) | Tue, May 26, 2026 | 123 |
 
 ## How it is counted
 
@@ -77,5 +77,5 @@ No. Today is day 0, so the count goes back from yesterday as day 1, the way a sp
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-ago/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-ago.csv

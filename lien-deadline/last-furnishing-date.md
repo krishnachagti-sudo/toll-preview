@@ -1,10 +1,29 @@
 # Which date starts the clock?
 
-The lien clock starts on your last day of work or delivery in Florida, Washington, Minnesota, Maryland, Kansas and Montana, and on the project's completion in Arizona and the District of Columbia; Virginia uses whichever comes first. A Florida subcontractor whose last real work was January 29, 2027 must record by April 29, 2027; counting from a later return visit on March 30, 2027 would give June 28, 2027, a date to rely on only if that visit counts as furnishing under the statute.
+The lien clock starts on your last day of work or delivery in Florida, Washington, Minnesota, Maryland, Kansas and Montana, and on the project's completion in Arizona and the District of Columbia; Virginia uses whichever comes first. A Florida subcontractor whose last real work was January 29, 2027 must record by April 29, 2027.
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=FL&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): A Florida subcontractor whose last real work was January 29, 2027 must record by April 29, 2027; counting from a later return visit on March 30, 2027 would give June 28, 2027, a date to rely on only if that visit counts as furnishing under the statute.
 
 ## What each state counts from
 
 The date each lien deadline counts from, read November 8, 2026
+
+| State | Lien counts from | Suit counts from |
+| --- | --- | --- |
+| [Arizona](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/arizona/) | Within 120 days after completion of the work, or within… | Within six months after the lien is recorded (A.R.S. 33-998(A)) |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/district-of-columbia/) | During construction or within 90 days after the earlier of… | Within 180 days after the notice of intent is recorded… |
+| [Florida](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/florida/) | Not later than 90 days after your final furnishing of… | Within 1 year after the claim of lien is recorded… |
+| [Kansas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/kansas/) | Within four months after you last furnished material, equipment or… | Within one year from filing the lien statement (K.S.A. 60-1105(a)) |
+| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/maryland/) | Within 180 days after the work has been finished or… | Within one year from the day the petition to establish… |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/minnesota/) | Within 120 days after doing the last of the work… | Within one year after the date of the last item… |
+| [Montana](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/montana/) | Not later than 90 days after your final furnishing of… | Within 2 years from the date the lien is filed (Mont. Code 71-3-562) |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/texas/) | By the 15th day of the fourth month after the… | Not later than the first anniversary of the last day… |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/virginia/) | Not later than 90 days from the last day of… | Within six months after the memorandum is recorded or 60… |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/washington/) | Not later than 90 days after you stopped furnishing labor, services, materials or equipment (RCW 60.04.091) | Within eight calendar months after the claim of lien is… |
+
+**Each rule in full (10)**
+
+The date each lien deadline counts from, read November 8, 2026: full wording
 
 | State | Lien counts from | Suit counts from |
 | --- | --- | --- |

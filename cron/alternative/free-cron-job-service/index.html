@@ -74,17 +74,18 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
-<div class="table-scroll"><table class="rules cp-table"><caption>From each service's own page, read November 8, 2026.</caption><thead><tr><th scope="col">Service</th><th scope="col">Free tier</th><th scope="col">Shortest interval</th><th scope="col">Timeout</th><th scope="col">Note</th></tr></thead><tbody>
+
+<figure class="cp-tbl"><figcaption class="cp-cap">From each service's own page, read November 8, 2026.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Service</th><th scope="col">Free tier</th><th scope="col">Shortest interval</th><th scope="col">Timeout</th><th scope="col">Note</th></tr></thead><tbody>
 <tr><th scope="row">cron-job.org</th><td>Free; no job-count limit (fair use)</td><td>Every minute (60 runs an hour per job)</td><td>30 seconds; reads up to 64 KB</td><td>No promise on punctuality; disables a job after more than 25 failures in a row</td></tr>
 <tr><th scope="row">FastCron Free</th><td>$0: 15 cron jobs</td><td>5 minutes</td><td>15 seconds</td><td>Paid plans from $6 a month (30-second interval)</td></tr>
 <tr><th scope="row">EasyCron Free</th><td>$0: 200 executions a day, expires monthly</td><td>20 minutes</td><td>5 seconds</td><td>Paid plans from $24 a year (1-minute interval)</td></tr>
 <tr><th scope="row">GitHub Actions schedule</th><td>Part of GitHub Actions</td><td>5 minutes</td><td>The workflow's own limits</td><td>Can be delayed at high load; disabled after 60 days without activity in public repos</td></tr>
 <tr><th scope="row">Vercel Cron Jobs (Hobby)</th><td>Included: 100 cron jobs per project</td><td>Once a day</td><td>The function's limits</td><td>Runs anywhere within the hour; UTC only</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>The checker on this site works out when a schedule runs; it does not call URLs. Use it to confirm the expression before you paste it into any of these services.</p>
 <section>
 <h2 id="every-2">Every 2 minutes, written for each scheduler</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The same schedule for each cron dialect.</caption><thead><tr><th scope="col">Scheduler</th><th scope="col">Expression</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The same schedule for each cron dialect.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Scheduler</th><th scope="col">Expression</th></tr></thead><tbody>
 <tr><th scope="row">Linux crontab (Vixie cron)</th><td><code>*/2 * * * *</code></td></tr>
 <tr><th scope="row">GitHub Actions</th><td><code>*/2 * * * *</code></td></tr>
 <tr><th scope="row">Kubernetes CronJob</th><td><code>*/2 * * * *</code></td></tr>
@@ -94,7 +95,7 @@
 <tr><th scope="row">Spring @Scheduled</th><td><code>0 */2 * * * *</code></td></tr>
 <tr><th scope="row">UiPath Orchestrator time trigger</th><td><code>0 */2 * * * ?</code></td></tr>
 <tr><th scope="row">Amazon EventBridge Scheduler</th><td><code>cron(0/2 * * * ? *)</code></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="fit">When each one fits</h2>
@@ -102,7 +103,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://cron-job.org/en/faq/">cron-job.org: FAQ (read November 8, 2026)</a></li><li><a href="https://www.fastcron.com/pricing">FastCron: Pricing (read November 8, 2026)</a></li><li><a href="https://www.easycron.com/pricing">EasyCron: Plans and pricing (read November 8, 2026)</a></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a></li><li><a href="https://vercel.com/docs/cron-jobs/usage-and-pricing">Vercel docs: Cron Jobs usage and pricing (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://cron-job.org/en/faq/">cron-job.org: FAQ (read November 8, 2026)</a><span class="src-m">cron-job.org</span></li><li><a href="https://www.fastcron.com/pricing">FastCron: Pricing (read November 8, 2026)</a><span class="src-m">fastcron.com</span></li><li><a href="https://www.easycron.com/pricing">EasyCron: Plans and pricing (read November 8, 2026)</a><span class="src-m">easycron.com</span></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a><span class="src-m">docs.github.com</span></li><li><a href="https://vercel.com/docs/cron-jobs/usage-and-pricing">Vercel docs: Cron Jobs usage and pricing (read November 8, 2026)</a><span class="src-m">vercel.com</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is cron-job.org free?</h3></summary><div class="xp-in"><p>Yes. Its FAQ says the service is entirely free, with no limit on the number of jobs (fair use), up to 60 runs an hour per job and a 30-second timeout.</p></div></details><details class="xpand"><summary><h3>Which free service runs every minute?</h3></summary><div class="xp-in"><p>Of these, cron-job.org: every job can run up to 60 times an hour. FastCron Free allows every 5 minutes and EasyCron Free every 20.</p></div></details></section>

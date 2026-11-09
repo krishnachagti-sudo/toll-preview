@@ -72,47 +72,47 @@
 </header>
 
 <main id="main" class="if">
-  <section class="wrap if-intro">
+  <section class="wrap if-intro t-intro">
     <p class="eyebrow">Impuesto sobre el combustible para transportistas interestatales</p>
     <h1>Calculadora de la declaración trimestral del IFTA</h1>
-    <p class="lede">El IFTA es el Acuerdo Internacional del Impuesto sobre el Combustible (IFTA, por sus siglas en inglés): los transportistas que manejan entre estados presentan una declaración trimestral a su jurisdicción base. Ingrese las millas y el combustible por jurisdicción y obtendrá el impuesto o crédito del trimestre de cada una, con las tarifas finales de la matriz de tarifas del IFTA, recargos incluidos. A partir de una hoja de viaje, también revisa que las lecturas del odómetro cuadren de un viaje al siguiente y que cada viaje y cada recibo tenga los campos que pide un auditor.</p>
-    <p data-prices class="if-price" id="if-price">Los cálculos a partir de totales y la revisión de la hoja de viaje en esta página son gratis. La declaración preparada (PDF y CSV, con cada error y cada campo faltante) cuesta $5 para 1 a 5 vehículos, $9 para 6 a 25 y $15 para 26 o más, por titular de licencia y trimestre, y repetirla es gratis durante 90 días.</p>
-    <p class="if-price if-who">Una recarga de $20 cubre un año de declaraciones de una flota pequeña. Un preparador compra una declaración por cada titular de licencia y trimestre.</p>
-    <p class="if-sample" id="if-sample">Vea primero una muestra: la declaración de una flota inventada de dos camiones, hecha por esta herramienta. <span id="if-sample-links">Los archivos de muestra se cargan con la página.</span></p>
-    <p class="hint"><a href="/toll-preview/ifta-calculator/" hreflang="en" lang="en">Use this calculator in English</a></p>
+    <p class="lede">El IFTA es el Acuerdo Internacional del Impuesto sobre el Combustible (IFTA, por sus siglas en inglés): los transportistas que manejan entre estados presentan una declaración trimestral a su jurisdicción base. Ingrese las millas y el combustible por jurisdicción y obtendrá el impuesto o crédito del trimestre de cada una, con las tarifas finales de la matriz de tarifas del IFTA, recargos incluidos.</p>
+<ul class="trust" aria-label="Sobre este sitio"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Hecho por <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exacto, sin IA</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Fuentes oficiales, con fecha</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Los archivos que sube no se guardan</a></span></li><li class="tl2"><a href="/toll-preview/security/">Seguridad</a><a href="/toll-preview/terms/">Términos</a></li></ul>
+    <p data-prices class="if-price t-price" id="if-price">Gratis en esta página · Declaración preparada desde $5 por trimestre · Repetirla es gratis durante 90 días</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/ifta-calculator/" hreflang="en">Ver en inglés</a></p>
   </section>
 
-  <section class="wrap if-desk" aria-label="Calculadora del IFTA">
-    <form class="if-form" id="if-form" novalidate>
-      <div class="field">
-        <label for="if-quarter">Trimestre</label>
-        <select id="if-quarter"></select>
-        <p class="hint" id="if-quarter-hint"></p>
-      </div>
-
-      <fieldset class="field">
-        <legend>Lo que tiene</legend>
+  <section class="wrap if-desk t-desk" aria-label="Calculadora del IFTA" data-jump="Calculadora">
+    <form class="if-form t-panel" id="if-form" novalidate>
+      <fieldset class="field if-mode">
+        <legend class="visually-hidden">Lo que tiene</legend>
         <div class="choice-row">
           <label class="choice"><input type="radio" name="mode" value="totals" checked><span>Totales por estado</span></label>
           <label class="choice"><input type="radio" name="mode" value="sheet"><span>Hojas de viaje y recibos</span></label>
         </div>
       </fieldset>
-
-      <div data-mode="totals">
+      <div class="if-pair">
         <div class="field">
+          <label for="if-quarter">Trimestre</label>
+          <select id="if-quarter"></select>
+        </div>
+        <div class="field" data-mode="totals">
           <label for="if-fuel">Tipo de combustible</label>
           <select id="if-fuel"></select>
         </div>
+      </div>
+
+      <div data-mode="totals">
         <div class="field">
-          <label for="if-rows">Millas y galones con impuesto pagado por jurisdicción</label>
-          <textarea id="if-rows" rows="8" spellcheck="false" aria-describedby="if-rows-hint if-rows-err"></textarea>
-          <p class="hint" id="if-rows-hint">Una jurisdicción por línea: su código de dos letras, las millas y luego los galones con impuesto pagado que compró allí (en blanco o 0 si no compró). Agregue un cuarto número con las millas gravables cuando algunas millas no estuvieron gravadas. Use AK, HI, DC, YT, NT, NU o MX para las millas fuera del IFTA.</p>
+          <label for="if-rows">Millas y galones con impuesto pagado por jurisdicción (una por línea)</label>
+          <textarea id="if-rows" rows="3" spellcheck="false" aria-describedby="if-rows-err"></textarea>
           <p class="field-error" id="if-rows-err"></p>
         </div>
-        <div class="field">
-          <label for="if-gallons">Todo el combustible que echó a los tanques este trimestre (galones)</label>
-          <input type="number" id="if-gallons" min="0" step="any" inputmode="decimal">
-          <p class="hint">Donde sea que lo haya comprado, con impuesto pagado o no. Si lo deja en blanco, se usan los galones con impuesto pagado de arriba.</p>
+        <div class="if-pair">
+          <div class="field">
+            <label for="if-gallons">Todo el combustible del trimestre (gal)</label>
+            <input type="number" id="if-gallons" min="0" step="any" inputmode="decimal" placeholder="En blanco: con impuesto pagado">
+          </div>
+          <div class="if-go"><button class="btn t-run" type="submit" id="if-run">Calcular el impuesto</button></div>
         </div>
       </div>
 
@@ -144,22 +144,44 @@
           <label for="if-base">Jurisdicción base</label>
           <select id="if-base"></select>
         </div>
+        <button class="btn t-run" type="submit">Revisar la hoja de viaje</button>
       </div>
 
+      <p class="hint" id="if-quarter-hint"></p>
+      <details class="xpand" data-mode="totals">
+        <summary>Cómo escribir las líneas</summary>
+        <div class="xp-in">
+          <p class="hint" id="if-rows-hint">Una jurisdicción por línea: su código de dos letras, las millas y luego los galones con impuesto pagado que compró allí (en blanco o 0 si no compró). Agregue un cuarto número con las millas gravables cuando algunas millas no estuvieron gravadas. Use AK, HI, DC, YT, NT, NU o MX para las millas fuera del IFTA.</p>
+          <p class="hint">Todo el combustible que echó a los tanques este trimestre: donde sea que lo haya comprado, con impuesto pagado o no. Si lo deja en blanco, se usan los galones con impuesto pagado de arriba.</p>
+        </div>
+      </details>
+      <details class="xpand if-return">
+        <summary>La declaración preparada (PDF y CSV)</summary>
+        <div class="xp-in">
+          <p class="hint">Una recarga de $20 cubre un año de declaraciones de una flota pequeña. Un preparador compra una declaración por cada titular de licencia y trimestre.</p>
+          <button class="btn" type="button" id="if-get">Preparar la declaración (PDF y CSV)</button>
+          <p class="hint if-get-note" id="if-get-note">Lo que ingresa se queda en este navegador. Solo se envía cuando prepara la declaración.</p>
+          <p class="if-sample" id="if-sample">Vea primero una muestra: la declaración de una flota inventada de dos camiones, hecha por esta herramienta. <span id="if-sample-links">Los archivos de muestra se cargan con la página.</span></p>
+        </div>
+      </details>
       <p class="form-error" id="if-error" role="alert"></p>
-      <button class="btn" type="button" id="if-get">Preparar la declaración (PDF y CSV)</button>
-      <p class="hint if-get-note" id="if-get-note">Lo que ingresa se queda en este navegador. Solo se envía cuando prepara la declaración.</p>
       <p class="visually-hidden" id="if-status" role="status"></p>
     </form>
 
-    <div class="if-out" id="if-out">
+    <div class="if-out t-panel t-result" id="if-out">
       <p class="muted">Cargando el ejemplo resuelto.</p>
     </div>
   </section>
 
-  <section class="wrap if-rules" data-jump="Las reglas" aria-labelledby="if-rules-title">
+  <section class="wrap if-rules t-sec" data-jump="Reglas" aria-labelledby="if-rules-title">
     <h2 id="if-rules-title">Cómo se calcula cada línea</h2>
-    <div class="if-rule-cols">
+    <div class="t-sum">
+      <div>
+        <p>Un solo rendimiento de la flota (MPG) por combustible, con todas las millas y todo el combustible; las millas gravables de cada jurisdicción divididas entre ese rendimiento, menos los galones con impuesto pagado que compró allí, por la tarifa del trimestre. Una línea negativa es un crédito, y los recargos se deben sin crédito. A partir de una hoja de viaje, también revisa que las lecturas del odómetro cuadren de un viaje al siguiente y que cada viaje y cada recibo tenga los campos que pide un auditor.</p>
+        <details class="xpand">
+          <summary>Rendimiento, galones gravables y recargos</summary>
+          <div class="xp-in">
+        <div class="if-rule-cols">
       <div>
         <h3>Un solo rendimiento de la flota (millas por galón, MPG) por combustible</h3>
         <p>Todas las millas, dentro y fuera del IFTA, divididas entre todo el combustible que se echó a los tanques, llevado a tres decimales y redondeado a dos. Las millas y los galones se redondean primero a números enteros. Este es el método impreso en el Formulario 9740 de Oregon DOT; el formulario de su jurisdicción base puede redondear distinto.</p>
@@ -173,34 +195,34 @@
         <p>Indiana, Kentucky y Virginia imprimen filas de recargo en la matriz: en los trimestres registrados, los de Kentucky y Virginia cubren el diésel, la gasolina y la mayoría de los demás combustibles, y el de Indiana solo el propano. El recargo es los galones gravables por esa tarifa, y se debe aunque haya comprado todo su combustible allí. Las filas se leen de la matriz cada trimestre, nunca se suponen.</p>
       </div>
     </div>
-    <h3 class="if-table-title" id="if-rate-title">Tarifas del trimestre</h3>
-    <div class="table-scroll" id="if-rate-table"><p class="muted">Cargando las tarifas.</p></div>
-    <p class="muted small" id="if-rate-note"></p>
-    <h3 class="if-table-title">Fechas de vencimiento</h3>
-    <div class="table-scroll" id="if-due-table"></div>
-    <p class="muted small">Una declaración vence el último día del mes siguiente al trimestre, y se pasa al siguiente día hábil cuando ese día es fin de semana o feriado legal (Virginia DMV). La declaración vence aunque no haya recorrido millas. Si se presenta tarde: intereses sobre cada línea con impuesto adeudado por cada mes o parte de un mes (0.75% al mes para 2025 y 2026), y una multa de $50 o 10% del impuesto neto, lo que sea mayor.</p>
-  </section>
-
-  <section class="wrap if-legal" data-jump="Lea esto" aria-labelledby="if-legal-title">
-    <h2 id="if-legal-title">Lea esto</h2>
-    <ul id="if-disclaimers">
+          </div>
+        </details>
+        <details class="xpand">
+          <summary>Tarifas del trimestre, vencimientos y multas por atraso</summary>
+          <div class="xp-in">
+        <p class="if-table-title" id="if-rate-title">Tarifas del trimestre</p>
+        <div class="table-scroll" id="if-rate-table"><p class="muted">Cargando las tarifas.</p></div>
+        <p class="muted small" id="if-rate-note"></p>
+        <p class="if-table-title">Fechas de vencimiento</p>
+        <div class="table-scroll" id="if-due-table"></div>
+        <p class="muted small">Una declaración vence el último día del mes siguiente al trimestre, y se pasa al siguiente día hábil cuando ese día es fin de semana o feriado legal (Virginia DMV). La declaración vence aunque no haya recorrido millas. Si se presenta tarde: intereses sobre cada línea con impuesto adeudado por cada mes o parte de un mes (0.75% al mes para 2025 y 2026), y una multa de $50 o 10% del impuesto neto, lo que sea mayor.</p>
+          </div>
+        </details>
+        <details class="xpand">
+          <summary>Lea esto</summary>
+          <div class="xp-in">
+        <ul id="if-disclaimers">
       <li>Se calcula con las tarifas que publican las jurisdicciones miembros del IFTA en la matriz de tarifas del IFTA, tal como las copian Oregon DOT y New York State Tax (tarifas finales, fuentes abajo); no está afiliada con IFTA, Inc. Manda la declaración de su jurisdicción base.</li>
       <li>Esto es un cálculo, no asesoría tributaria ni legal; guarde sus registros de viaje y sus recibos originales durante 4 años desde la fecha de vencimiento o de presentación, la que sea posterior.</li>
       <li>Las revisiones comparan sus registros con los elementos de los registros de distancia y de combustible del IFTA; pasarlas no garantiza el resultado de una auditoría.</li>
       <li>El redondeo sigue el Formulario 9740 de Oregon DOT (millas y galones enteros, rendimiento a dos decimales); la multa y los intereses usan las reglas generales del IFTA. Su jurisdicción base puede calcular o redondear distinto.</li>
     </ul>
-    <h3>Lo que esta herramienta no cubre</h3>
-    <ul>
-      <li>Los trimestres antes del 4.º trimestre de 2025, y el 4.º trimestre de 2026 hasta que se publique su matriz: la herramienta los rechaza en lugar de adivinar.</li>
-      <li>El gas natural licuado (LNG), el gas natural comprimido (CNG), la electricidad, el hidrógeno y el hythane: las copias de la matriz no dicen a qué unidad se aplican sus tarifas, y las notas que lo dicen están en iftach.org, que no se pudo leer.</li>
-      <li>Gasolina, diésel, gasohol y biodiésel de Florida del 1.er trimestre de 2026: las copias de Oregon y de Nueva York de la matriz no coinciden, así que esas líneas se rechazan.</li>
-      <li>Los combustibles para los que una jurisdicción no muestra tarifa ("-" en la matriz), salvo Oregon, que no tiene tarifa IFTA para ningún combustible; el impuesto por peso y milla de Oregon es un informe aparte.</li>
-      <li>Presentar o pagar la declaración: eso se hace en el portal de su jurisdicción base.</li>
-    </ul>
-    <h3>Precios</h3>
-    <ul class="endwise-prices"><li><strong>Declaración, de 1 a 5 vehículos</strong>: $5.00 por declaración trimestral (todos los combustibles, PDF y CSV); repetirla para el mismo titular de licencia y trimestre es gratis durante 90 días, y una más grande paga solo la diferencia.</li><li><strong>Declaración, de 6 a 25 vehículos</strong>: $9.00 por declaración trimestral (todos los combustibles, PDF y CSV); repetirla para el mismo titular de licencia y trimestre es gratis durante 90 días, y una más grande paga solo la diferencia.</li><li><strong>Declaración, 26 vehículos o más</strong>: $15.00 por declaración trimestral (todos los combustibles, PDF y CSV); repetirla para el mismo titular de licencia y trimestre es gratis durante 90 días, y una más grande paga solo la diferencia.</li><li><strong>Cálculo a partir de totales</strong>: $0.03 por cálculo.</li><li><strong>Revisión de la hoja de viaje</strong>: $0.03 por revisión; se cuentan los errores, advertencias y campos faltantes, pero no se listan.</li><li><strong>Costo de presentarla tarde</strong>: $0.03 por cálculo.</li><li><strong>Consulta de tarifas</strong>: $0.01 por consulta.</li><li><strong>Fechas de vencimiento</strong>: $0.01 por consulta.</li></ul>
-    <h3>Fuentes (en inglés), consultadas el 2 de noviembre de 2026</h3>
-    <ul class="if-sources" id="if-sources">
+          </div>
+        </details>
+        <details class="xpand">
+          <summary>Fuentes (en inglés), consultadas el 2 de noviembre de 2026</summary>
+          <div class="xp-in">
+        <ul class="if-sources" id="if-sources">
       <li>IFTA tax rate matrix, tarifas finales, tal como las copia Oregon DOT: <a href="https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/4Q2025FuelRates.pdf">4Q2025</a>, <a href="https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/1Q2026FuelRates.pdf">1Q2026</a>, <a href="https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/2Q2026FuelRates.pdf">2Q2026</a> y <a href="https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/3Q2026FuelRates.pdf">3Q2026</a> (los 15 tipos de combustible)</li>
       <li>Tablas de tarifas IFTA-105 de New York State Tax, para comparar: <a href="https://www.tax.ny.gov/pdf/2025/motor/ifta105_1225.pdf">4Q2025</a>, <a href="https://www.tax.ny.gov/pdf/2026/motor/ifta105_326.pdf">1Q2026</a>, <a href="https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-626.htm">2Q2026</a> y <a href="https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-926.htm">3Q2026</a></li>
       <li><a href="https://www.oregon.gov/odot/forms/motcarr/9740.pdf">Oregon DOT Form 735-9740 y sus instrucciones (03-26)</a>: el método columna por columna, el redondeo, el recargo, los intereses y la multa, y los vehículos calificados</li>
@@ -209,11 +231,32 @@
       <li><a href="https://www.oregon.gov/odot/MCT/Pages/Interstate-Operations-IFTA.aspx">Oregon DOT, Interstate Operations IFTA</a>: el informe del impuesto por peso y milla de Oregon</li>
       <li>En español: <a href="https://cdtfa.ca.gov/formspubs/pub50-s.pdf">Guía del IFTA de California (Publicación 50-S)</a>, del Departamento de Impuestos y Tarifas de California (CDTFA), que explica el IFTA y la declaración trimestral</li>
     </ul>
+          </div>
+        </details>
+        <details class="xpand">
+          <summary>Precios</summary>
+          <div class="xp-in">
+            <p data-prices class="small muted">Los cálculos a partir de totales y la revisión de la hoja de viaje en esta página son gratis. La declaración preparada (PDF y CSV, con cada error y cada campo faltante) cuesta $5 para 1 a 5 vehículos, $9 para 6 a 25 y $15 para 26 o más, por titular de licencia y trimestre, y repetirla es gratis durante 90 días.</p>
+            <ul class="endwise-prices"><li><strong>Declaración, de 1 a 5 vehículos</strong>: $5.00 por declaración trimestral (todos los combustibles, PDF y CSV); repetirla para el mismo titular de licencia y trimestre es gratis durante 90 días, y una más grande paga solo la diferencia.</li><li><strong>Declaración, de 6 a 25 vehículos</strong>: $9.00 por declaración trimestral (todos los combustibles, PDF y CSV); repetirla para el mismo titular de licencia y trimestre es gratis durante 90 días, y una más grande paga solo la diferencia.</li><li><strong>Declaración, 26 vehículos o más</strong>: $15.00 por declaración trimestral (todos los combustibles, PDF y CSV); repetirla para el mismo titular de licencia y trimestre es gratis durante 90 días, y una más grande paga solo la diferencia.</li><li><strong>Cálculo a partir de totales</strong>: $0.03 por cálculo.</li><li><strong>Revisión de la hoja de viaje</strong>: $0.03 por revisión; se cuentan los errores, advertencias y campos faltantes, pero no se listan.</li><li><strong>Costo de presentarla tarde</strong>: $0.03 por cálculo.</li><li><strong>Consulta de tarifas</strong>: $0.01 por consulta.</li><li><strong>Fechas de vencimiento</strong>: $0.01 por consulta.</li></ul>
+          </div>
+        </details>
+      </div>
+      <aside class="t-nocover" aria-labelledby="if-legal-title">
+        <h3 id="if-legal-title">Lo que esta herramienta no cubre</h3>
+        <ul>
+      <li>Los trimestres antes del 4.º trimestre de 2025, y el 4.º trimestre de 2026 hasta que se publique su matriz: la herramienta los rechaza en lugar de adivinar.</li>
+      <li>El gas natural licuado (LNG), el gas natural comprimido (CNG), la electricidad, el hidrógeno y el hythane: las copias de la matriz no dicen a qué unidad se aplican sus tarifas, y las notas que lo dicen están en iftach.org, que no se pudo leer.</li>
+      <li>Gasolina, diésel, gasohol y biodiésel de Florida del 1.er trimestre de 2026: las copias de Oregon y de Nueva York de la matriz no coinciden, así que esas líneas se rechazan.</li>
+      <li>Los combustibles para los que una jurisdicción no muestra tarifa ("-" en la matriz), salvo Oregon, que no tiene tarifa IFTA para ningún combustible; el impuesto por peso y milla de Oregon es un informe aparte.</li>
+      <li>Presentar o pagar la declaración: eso se hace en el portal de su jurisdicción base.</li>
+    </ul>
+      </aside>
+    </div>
   </section>
 
 
 
-  <section class="wrap if-code" aria-label="Úselo desde código">
+  <section class="wrap if-code t-sec" data-jump="Código" aria-label="Úselo desde código">
     <div id="if-code"></div>
   </section>
   <noscript><div class="wrap"><p>Esta calculadora necesita JavaScript. También puede usarla desde código: vea <a href="/toll-preview/docs" hreflang="en">la documentación</a> (en inglés).</p></div></noscript>

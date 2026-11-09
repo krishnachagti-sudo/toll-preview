@@ -1,6 +1,8 @@
 # Montana lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a new home in Montana, your notice is due November 22, 2026, the lien must be filed by April 29, 2027 and the suit to enforce it must be filed by April 29, 2029 (if recorded on the last day, April 29, 2027) (Mont. Code 71-3-531(2), (3); Mont. Code 71-3-535(1); Mont. Code 71-3-562).
+In Montana, a subcontractor records the lien not later than 90 days after your final furnishing of services or materials, or after the owner files a notice of completion (we show the earlier date when you enter one) (Mont. Code 71-3-535(1)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=MT&role=sub&project=new-home&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a new home in Montana, your notice is due November 22, 2026, the lien must be filed by April 29, 2027 and the suit to enforce it must be filed by April 29, 2029 (if recorded on the last day, April 29, 2027) (Mont. Code 71-3-531(2), (3); Mont. Code 71-3-535(1); Mont. Code 71-3-562).
 
 ## Work out your Montana dates
 
@@ -48,6 +50,8 @@ Weekends and holidays: the Montana text we read does not move a deadline that fa
 - The copy filed with the clerk and recorder lapses after 1 year unless continued (71-3-531(6)).
 
 ## Montana in its own words
+
+**Read the statute's words (4 quotations)**
 
 - "Except as provided in subsection (4), the notice may not be given later than 20 days after the date on which the services or materials are first furnished to the contracting owner. If notice is not given within this period, a lien is enforceable only for the services or materials furnished within the 20-day period before the date on which notice is given." [Mont. Code 71-3-531, Notice of right to claim lien](https://mca.legmt.gov/bills/mca/title_0710/chapter_0030/part_0050/section_0310/0710-0030-0050-0310.html)
 - "a person who furnishes services or materials pursuant to a real estate improvement contract that relates to an improvement that is partly or wholly commercial in character." [Mont. Code 71-3-531, Notice of right to claim lien](https://mca.legmt.gov/bills/mca/title_0710/chapter_0030/part_0050/section_0310/0710-0030-0050-0310.html)

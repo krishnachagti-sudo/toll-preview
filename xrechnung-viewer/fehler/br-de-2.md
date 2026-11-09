@@ -1,6 +1,6 @@
 # BR-DE-2: Kontaktdaten des Verkäufers (BG-6) fehlen
 
-BR-DE-2 bedeutet: Die Gruppe "SELLER CONTACT" (BG-6) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Ergänzen Sie den Kontakt des Verkäufers (UBL cac:Contact, CII ram:DefinedTradeContact) mit Name (BT-41), Telefon (BT-42) und E-Mail (BT-43). Fehlt nur eines der drei Felder, melden sich BR-DE-5, BR-DE-6 oder BR-DE-7.
+BR-DE-2 bedeutet: Die Gruppe "SELLER CONTACT" (BG-6) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ In einer XRechnung muss der Verkäufer einen Ansprechpartner mit Namen, Telefon 
 
 ## So beheben Sie den Fehler
 
-Ergänzen Sie den Kontakt des Verkäufers (UBL cac:Contact, CII ram:DefinedTradeContact) mit Name (BT-41), Telefon (BT-42) und E-Mail (BT-43). Fehlt nur eines der drei Felder, melden sich BR-DE-5, BR-DE-6 oder BR-DE-7.
+Ergänzen Sie den Kontakt des Verkäufers (UBL `cac:Contact`, CII `ram:DefinedTradeContact`) mit Name (BT-41), Telefon (BT-42) und E-Mail (BT-43). Fehlt nur eines der drei Felder, melden sich BR-DE-5, BR-DE-6 oder BR-DE-7.
 
 ## Geprüftes Beispiel
 

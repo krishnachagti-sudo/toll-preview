@@ -36,6 +36,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## Colorado in its own words
 
+**Read the law's own words (6 quotations)**
+
 - "Colorado workers can receive up to 12 weeks of paid leave per year to:" [Colorado FAMLI Division, home page](https://famli.colorado.gov/)
 - "birthing parents who have pregnancy complications may be eligible for an additional four weeks of medical leave as well." [Colorado FAMLI Division, home page](https://famli.colorado.gov/)
 - "FAMLI offers job protection when employed 180 days before the start of their paid leave" [Colorado FAMLI Division, FAMLI and FMLA](https://famli.colorado.gov/individuals-and-families/how-famli-works/famli-and-fmla)

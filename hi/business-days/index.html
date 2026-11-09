@@ -68,15 +68,16 @@
 </header>
 
 <main id="main" class="bd tf hue-date">
-  <section class="wrap bd-intro">
+  <section class="wrap tf-open">
     <p class="eyebrow">हर बार चलाने पर, संदर्भ डेटा</p>
     <h1>कार्य दिवस (वर्किंग डेज़) कैलकुलेटर</h1>
     <p class="lede">दो तारीखों के बीच कितने कार्य दिवस हैं, या किसी तारीख से कुछ कार्य दिवस बाद की तारीख क्या होगी, यह निकालें। सप्ताहांत, सरकारी छुट्टियां और आपकी अपनी छुट्टियां छोड़ दी जाती हैं, और छोड़े गए हर दिन का नाम दिखाया जाता है।</p>
-    <p class="bd-price" id="bd-price">हर रन का खर्च एक सेंट के भी एक अंश के बराबर है। खाते के बिना रोज़ मुफ़्त रन मिलते हैं।</p>
-    <p class="hint"><a href="/toll-preview/business-days/" hreflang="en" lang="en">Use this calculator in English</a></p>
+<ul class="trust" aria-label="इस साइट के बारे में"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> द्वारा बनाया गया</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>सटीक, AI के बिना</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">आधिकारिक स्रोत, तारीख के साथ</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">आपकी अपलोड की गई फ़ाइलें रखी नहीं जातीं</a></span></li><li class="tl2"><a href="/toll-preview/security/">सुरक्षा</a><a href="/toll-preview/terms/">शर्तें</a></li></ul>
+    <p class="tf-price" id="bd-price"><span class="price">हर रन, एक सेंट से भी कम</span><span>खाते के बिना रोज़ मुफ़्त रन</span><span>API से भी</span></p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/business-days/" hreflang="en">अंग्रेज़ी में देखें</a></p>
   </section>
 
-  <section class="wrap bd-desk tf-calc" aria-label="कैलकुलेटर">
+  <section class="wrap tf-calc bd-desk" data-jump="टूल" aria-label="कैलकुलेटर">
     <form class="bd-form tf-panel tf-form" id="bd-form" novalidate>
       <fieldset class="field">
         <legend>आप क्या करना चाहते हैं?</legend>
@@ -93,71 +94,121 @@
           <label class="choice"><input type="radio" name="region" value="US"><span>अमेरिका</span></label>
           <label class="choice"><input type="radio" name="region" value="GB-ENG"><span>इंग्लैंड और वेल्स</span></label>
         </div>
-        <p class="hint" id="bd-region-hint"></p>
+        <p class="hint tf-long" id="bd-region-hint"></p>
       </fieldset>
 
-      <div class="field">
-        <label for="bd-start" id="bd-start-label">शुरू की तारीख</label>
-        <input type="date" id="bd-start" min="1971-01-01" max="2100-12-31" value="2026-10-16" aria-describedby="bd-start-err">
-        <p class="field-error" id="bd-start-err"></p>
+      <div class="tf-two">
+        <div class="field">
+          <label for="bd-start" id="bd-start-label">शुरू की तारीख</label>
+          <input type="date" id="bd-start" min="1971-01-01" max="2100-12-31" value="2026-10-16" aria-describedby="bd-start-err">
+          <p class="field-error" id="bd-start-err"></p>
+        </div>
+        <div class="field" id="bd-end-field">
+          <label for="bd-end">आखिरी तारीख</label>
+          <input type="date" id="bd-end" min="1971-01-01" max="2100-12-31" value="2026-10-23" aria-describedby="bd-end-hint bd-end-err">
+          <p class="field-error" id="bd-end-err"></p>
+        </div>
+        <div class="field" id="bd-days-field" hidden>
+          <label for="bd-days">जोड़ने के कार्य दिवस</label>
+          <input type="number" id="bd-days" step="1" min="-3650" max="3650" inputmode="numeric" value="15" aria-describedby="bd-days-hint bd-days-err">
+          <p class="field-error" id="bd-days-err"></p>
+        </div>
       </div>
-
-      <div class="field" id="bd-end-field">
-        <label for="bd-end">आखिरी तारीख</label>
-        <input type="date" id="bd-end" min="1971-01-01" max="2100-12-31" value="2026-10-23" aria-describedby="bd-end-hint bd-end-err">
-        <p class="hint" id="bd-end-hint">शुरू की तारीख के बाद के दिन गिने जाते हैं, आखिरी तारीख समेत (शुरू का दिन नहीं गिना जाता)। आखिरी तारीख पहले की हो तो उल्टी गिनती होती है और नतीजा ऋणात्मक संख्या में आता है।</p>
-        <p class="field-error" id="bd-end-err"></p>
-      </div>
-
-      <div class="field" id="bd-days-field" hidden>
-        <label for="bd-days">जोड़ने के कार्य दिवस</label>
-        <input type="number" id="bd-days" step="1" min="-3650" max="3650" inputmode="numeric" value="15" aria-describedby="bd-days-hint bd-days-err">
-        <p class="hint" id="bd-days-hint">पीछे जाने के लिए ऋणात्मक संख्या डालें। किसी भी तरफ 3,650 तक।</p>
-        <p class="field-error" id="bd-days-err"></p>
-      </div>
-
-      <div class="field">
-        <label for="bd-off">आपकी अपनी छुट्टियां (वैकल्पिक)</label>
-        <textarea id="bd-off" rows="3" placeholder="2026-07-06&#10;2026-11-27" aria-describedby="bd-off-hint bd-off-err"></textarea>
-        <p class="hint" id="bd-off-hint">कंपनी की बंदी, राज्य या स्थानीय छुट्टियां: 2026-07-06 जैसी तारीखें, एक लाइन में एक या कॉमा से अलग। इन्हें सरकारी छुट्टियों की तरह छोड़ा जाता है और नतीजे में दिखाया जाता है।</p>
-        <p class="field-error" id="bd-off-err"></p>
-      </div>
+      <p class="hint tf-long" id="bd-end-hint">शुरू की तारीख के बाद के दिन गिने जाते हैं, आखिरी तारीख समेत (शुरू का दिन नहीं गिना जाता)। आखिरी तारीख पहले की हो तो उल्टी गिनती होती है और नतीजा ऋणात्मक संख्या में आता है।</p>
+      <p class="hint tf-long" id="bd-days-hint" hidden>पीछे जाने के लिए ऋणात्मक संख्या डालें। किसी भी तरफ 3,650 तक।</p>
 
       <p class="form-error" id="bd-error" role="alert"></p>
       <button class="btn tf-go" type="submit" id="bd-run">कार्य दिवस गिनें</button>
-      <p class="hint bd-run-note" id="bd-run-note"></p>
+      <p class="hint tf-run-note" id="bd-run-note"></p>
+      <details class="xpand" id="bd-off-fold">
+        <summary>आपकी अपनी छुट्टियां (वैकल्पिक)</summary>
+        <div class="xp-in">
+          <div class="field">
+            <label for="bd-off" class="visually-hidden">आपकी अपनी छुट्टियां, एक लाइन में एक तारीख</label>
+            <textarea id="bd-off" rows="3" placeholder="2026-07-06&#10;2026-11-27" aria-describedby="bd-off-hint bd-off-err"></textarea>
+            <p class="hint" id="bd-off-hint">कंपनी की बंदी, राज्य या स्थानीय छुट्टियां: 2026-07-06 जैसी तारीखें, एक लाइन में एक या कॉमा से अलग। इन्हें सरकारी छुट्टियों की तरह छोड़ा जाता है और नतीजे में दिखाया जाता है।</p>
+            <p class="field-error" id="bd-off-err"></p>
+          </div>
+        </div>
+      </details>
       <p class="visually-hidden" id="bd-status" role="status"></p>
     </form>
 
-    <div class="bd-out tf-panel tf-result" id="bd-out">
+    <div class="tf-panel tf-result bd-out" id="bd-out">
       <p class="muted">हल किया हुआ उदाहरण लोड हो रहा है।</p>
     </div>
   </section>
 
-  <section class="wrap bd-rules" data-jump="नियम" aria-labelledby="bd-rules-title">
-    <h2 id="bd-rules-title">यह किन नियमों से गिनता है</h2>
-    <div class="bd-rule-cols">
+  <section class="wrap tf-sec bd-rules" data-jump="नियम" aria-labelledby="bd-rules-title">
+    <div class="tf-top">
       <div>
-        <h3>भारत, केंद्र सरकार (दिल्ली)</h3>
-        <p>कार्मिक एवं प्रशिक्षण विभाग (DoPT) हर साल दिल्ली और नई दिल्ली में स्थित केंद्र सरकार के प्रशासनिक कार्यालयों के लिए जो राजपत्रित (बंद) छुट्टियां घोषित करता है, वे उस साल के कार्यालय ज्ञापन से ली गई हैं, DoPT के बाद के किसी तारीख-बदलाव समेत।</p>
-        <p>सप्ताहांत शनिवार और रविवार है: केंद्र सरकार के कार्यालयों में 1985 से 5 दिन का सप्ताह है (DoPT O.M. No. 13/4/85-JCA)। शनिवार या रविवार को पड़ने वाली छुट्टी आगे नहीं खिसकाई जाती; ज्ञापन में उसके बदले कोई दिन नहीं मिलता। शामिल साल: सिर्फ 2025 से 2027, यानी जिन सालों का ज्ञापन पढ़ा जा चुका है। बाकी साल अंदाज़े से नहीं, मना कर दिए जाते हैं।</p>
+        <p class="eyebrow">नियम</p>
+        <h2 id="bd-rules-title">यह किन नियमों से गिनता है</h2>
+        <p class="tf-p">सप्ताहांत हर जगह शनिवार और रविवार है। फर्क इस बात में है कि उस दिन पड़ी छुट्टी का क्या होता है।</p>
       </div>
-      <div>
-        <h3>अमेरिका, संघीय</h3>
-        <p>New Year's Day, Martin Luther King Jr. Day, Washington's Birthday, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving और Christmas। तय तारीख की छुट्टी शनिवार को पड़े तो शुक्रवार को और रविवार को पड़े तो सोमवार को मानी जाती है।</p>
-      </div>
-      <div>
-        <h3>इंग्लैंड और वेल्स</h3>
-        <p>New Year's Day, Good Friday, Easter Monday, Early May, Spring और Summer बैंक छुट्टियां, Christmas और Boxing Day। सप्ताहांत पर पड़ी छुट्टी अगले ऐसे कार्य दिवस पर चली जाती है जो पहले से छुट्टी न हो।</p>
-      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="bd-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="bd-limits-title">इसमें क्या शामिल नहीं है</h3>
+          <p>भारत की प्रतिबंधित और राज्य की छुट्टियां, बैंक की छुट्टियां और एक बार की बंदी।</p>
+          <details class="xpand"><summary>पूरी सूची पढ़ें</summary><div class="xp-in">
+            <p>भारत के लिए यह शामिल नहीं करता: प्रतिबंधित (वैकल्पिक) छुट्टियां, जिनमें से हर कर्मचारी दो चुनता है; दिल्ली के बाहर के केंद्र सरकार के कार्यालयों की सूचियां; किसी राज्य की छुट्टियां; बैंक की छुट्टियां (राज्यों और बैंकों में अलग होती हैं); मतदान के लिए सवेतन छुट्टी; और एक बार की बंदी, जैसे 11 सितंबर 2026 को BRICS शिखर सम्मेलन के लिए दिल्ली के कार्यालयों की बंदी। ऐसी जो भी छुट्टी आप पर लागू हो, उसे "आपकी अपनी छुट्टियां" में जोड़ दें।</p>
+          </div></details>
+        </div>
+      </aside>
     </div>
-    <p class="muted small">भारत के लिए यह शामिल नहीं करता: प्रतिबंधित (वैकल्पिक) छुट्टियां, जिनमें से हर कर्मचारी दो चुनता है; दिल्ली के बाहर के केंद्र सरकार के कार्यालयों की सूचियां; किसी राज्य की छुट्टियां; बैंक की छुट्टियां (राज्यों और बैंकों में अलग होती हैं); मतदान के लिए सवेतन छुट्टी; और एक बार की बंदी, जैसे 11 सितंबर 2026 को BRICS शिखर सम्मेलन के लिए दिल्ली के कार्यालयों की बंदी। ऐसी जो भी छुट्टी आप पर लागू हो, उसे "आपकी अपनी छुट्टियां" में जोड़ दें।</p>
-    <p class="muted small">आपकी अपनी छुट्टियां: कंपनी की छुट्टी, राज्य की छुट्टी या दफ्तर बंद रहने का कोई दिन "आपकी अपनी छुट्टियां" में लिखें (API में daysOff)। रेंज में जो भी कार्य दिवस पर पड़े, उसे सरकारी छुट्टी की तरह छोड़ा जाता है और नतीजे में "आपकी अपनी छुट्टी" के नाम से दिखाया जाता है।</p>
+
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="bd-r1">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
+        <div>
+          <h3 id="bd-r1">भारत, केंद्र सरकार (दिल्ली)</h3>
+          <p>दिल्ली के केंद्र सरकार कार्यालयों की राजपत्रित छुट्टियां (DoPT)। सप्ताहांत पर पड़ी छुट्टी आगे नहीं खिसकती।</p>
+          <details class="xpand"><summary>पूरे नियम पढ़ें</summary><div class="xp-in">
+            <p>कार्मिक एवं प्रशिक्षण विभाग (DoPT) हर साल दिल्ली और नई दिल्ली में स्थित केंद्र सरकार के प्रशासनिक कार्यालयों के लिए जो राजपत्रित (बंद) छुट्टियां घोषित करता है, वे उस साल के कार्यालय ज्ञापन से ली गई हैं, DoPT के बाद के किसी तारीख-बदलाव समेत।</p>
+            <p>सप्ताहांत शनिवार और रविवार है: केंद्र सरकार के कार्यालयों में 1985 से 5 दिन का सप्ताह है (DoPT O.M. No. 13/4/85-JCA)। शनिवार या रविवार को पड़ने वाली छुट्टी आगे नहीं खिसकाई जाती; ज्ञापन में उसके बदले कोई दिन नहीं मिलता। शामिल साल: सिर्फ 2025 से 2027, यानी जिन सालों का ज्ञापन पढ़ा जा चुका है। बाकी साल अंदाज़े से नहीं, मना कर दिए जाते हैं।</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="bd-r2">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
+        <div>
+          <h3 id="bd-r2">अमेरिका, संघीय</h3>
+          <p>11 संघीय छुट्टियां। शनिवार की छुट्टी शुक्रवार को और रविवार की सोमवार को मानी जाती है।</p>
+          <details class="xpand"><summary>पूरे नियम पढ़ें</summary><div class="xp-in">
+            <p>New Year's Day, Martin Luther King Jr. Day, Washington's Birthday, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving और Christmas। तय तारीख की छुट्टी शनिवार को पड़े तो शुक्रवार को और रविवार को पड़े तो सोमवार को मानी जाती है।</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="bd-r3">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></span>
+        <div>
+          <h3 id="bd-r3">इंग्लैंड और वेल्स</h3>
+          <p>8 बैंक छुट्टियां। सप्ताहांत पर पड़ी छुट्टी अगले खाली कार्य दिवस पर चली जाती है।</p>
+          <details class="xpand"><summary>पूरे नियम पढ़ें</summary><div class="xp-in">
+            <p>New Year's Day, Good Friday, Easter Monday, Early May, Spring और Summer बैंक छुट्टियां, Christmas और Boxing Day। सप्ताहांत पर पड़ी छुट्टी अगले ऐसे कार्य दिवस पर चली जाती है जो पहले से छुट्टी न हो।</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="bd-own-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+        <div>
+          <h3 id="bd-own-title">आपकी अपनी छुट्टियां</h3>
+          <p>कंपनी की बंदी या राज्य की छुट्टियां जोड़ें। हर एक छोड़ी जाती है और नतीजे में दिखती है।</p>
+          <details class="xpand"><summary>पूरे नियम पढ़ें</summary><div class="xp-in">
+            <p>आपकी अपनी छुट्टियां: कंपनी की छुट्टी, राज्य की छुट्टी या दफ्तर बंद रहने का कोई दिन "आपकी अपनी छुट्टियां" में लिखें (API में daysOff)। रेंज में जो भी कार्य दिवस पर पड़े, उसे सरकारी छुट्टी की तरह छोड़ा जाता है और नतीजे में "आपकी अपनी छुट्टी" के नाम से दिखाया जाता है।</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
   </section>
 
 
 
-  <section class="wrap bd-code" aria-label="कोड से इस्तेमाल करें">
+  <section class="wrap tf-code bd-code" data-jump="कोड" aria-label="कोड से इस्तेमाल करें">
     <div id="bd-code"></div>
   </section>
   <noscript><div class="wrap"><p>इस कैलकुलेटर के लिए JavaScript ज़रूरी है। आप इसे कोड से भी चला सकते हैं: <a href="/toll-preview/docs">डॉक्स</a> देखें।</p></div></noscript>

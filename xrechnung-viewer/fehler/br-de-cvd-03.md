@@ -1,6 +1,6 @@
 # BR-DE-CVD-03: CVD-Rechnung ohne Fahrzeugposition
 
-BR-DE-CVD-03 bedeutet: In einer Rechnung muss mindestens eine ... INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von ... "Item classification identifier" (BT-158) den Wert 'CVD' und der ... "Item attribute name" (BT-160) den Wert 'cva' enthält. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie in der Fahrzeugposition die Fahrzeugkategorie mit listID CVD und das Attribut cva mit einem der zulässigen Werte an.
+BR-DE-CVD-03 bedeutet: In einer Rechnung muss mindestens eine ... INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von ... "Item classification identifier" (BT-158) den Wert 'CVD' und der ... "Item attribute name" (BT-160) den Wert 'cva' enthält. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

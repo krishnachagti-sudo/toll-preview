@@ -2,9 +2,51 @@
 
 A sitemap may list up to 50,000 URLs and be up to 52,428,800 bytes (50MB) uncompressed, and an index up to 50,000 sitemaps, as sitemaps.org sets them. Each problem found is named with its Search Console error name where Google has one, and any error makes the sitemap not valid.
 
+## How does it work?
+
+1. The address is read: a bare host gets https://, the fragment is dropped, and anything other than an http or https address with a domain name is refused before any request.
+2. The host's robots.txt is fetched first (RFC 9309).
+3. The sitemap is fetched, following at most 5 redirects hop by hop (a redirect is a warning: submit the final address). A non-2xx answer is an HTTP error.
+4. The text is classed: empty, an HTML page, a text sitemap (one URL per line), or XML.
+5. The root must be \<urlset\> or \<sitemapindex\> in the namespace http://www.sitemaps.org/schemas/sitemap/0.9. RSS and Atom feeds are read as feeds.
+
+> Steps 6 to 12, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/sitemap-validator/#what) below.
+
+## What does it not cover?
+
+- Private, local, link-local (cloud metadata) and reserved addresses are never fetched, on any hop, and only ports 80, 443, 8080 and 8443 are used.
+- A check is what each server answered at that moment to one request from our server in the United States. Servers can answer Googlebot, other countries or signed-in visitors differently.
+- It cannot see Search Console's crawl schedule, crawl demand or manual actions, so a clean result does not by itself clear a Couldn't fetch status.
+- noindex and canonical are read from the HTML the server sends and from the headers; tags added by JavaScript are not seen.
+- Video sitemap entries are counted but not checked.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 12 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The rules and limits were read on 2026-11-08: the sitemaps.org protocol (page updated 2016-11-21), Google's Build and submit a sitemap page (updated 2026-07-08) and the Search Console Sitemaps report help. The pages are checked for changes once a day. A check fetches the sitemap live at the moment of the call; paste and rules make no request. Engine sitemap-validator-1.
+- [Tested: 5 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin the rules, limits and source dates as read, then check the XML reader (recoverable and structural errors with line numbers), every format and entry problem, the 50,000 URL and byte limits, URL scope, W3C dates, the lastmod heuristics, image and news extensions, nested indexes, robots.txt matching, noindex and canonical reading, every live verdict, the summary, answer line and CSV. Fetching runs against a fake web with no network: gzip, redirects, size caps, the per-host limit and the time budget, robots.txt blocking, private addresses refused and not charged. The worked examples equal run().
+
+- [sitemaps.org: Sitemaps XML format (protocol)](https://www.sitemaps.org/protocol.html), page updated 2016-11-21, read 2026-11-08
+- [sitemaps.org: sitemap.xsd and siteindex.xsd](https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd), page updated 2008-03-26, read 2026-11-08
+- [Google Search Central: Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), page updated 2026-07-08, read 2026-11-08
+- [Google Search Central: What is a sitemap (Do I need a sitemap?)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview), page updated 2025-12-10, read 2026-11-08
+- [Google Search Central: Manage your sitemaps with a sitemap index file](https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps), page updated 2025-12-10, read 2026-11-08
+- [Google Search Central: News sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap), page updated 2025-12-10, read 2026-11-08
+- [Google Search Central: Image sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps), page updated 2025-12-10, read 2026-11-08
+- [Search Console Help: Manage your sitemaps using the Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en), see the document, read 2026-11-08
+- [Google Search Central: Robots meta tag, data-nosnippet and X-Robots-Tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag), page updated 2026-03-24, read 2026-11-08
+- [Google Search Central Blog: Sitemaps ping endpoint is going away](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping), published 2023-06-26, read 2026-11-08
+- [RFC 9309: Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309), published 2022-09, read 2026-11-08
+- [Search Engine Journal: Google Explains The "Couldn't Fetch" Sitemap Errors](https://www.searchenginejournal.com/google-explains-couldnt-fetch-sitemap-errors/592040/), published 2026-10-06, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the sitemap validator compute?
 
-The tool fetches a sitemap or sitemap index from its address (.xml, .xml.gz or .txt), or takes pasted text, and judges it against the sitemaps.org protocol and Google's sitemap pages. It reports every issue with its line, its severity (error, warning or note) and, for 34 of them, the name the Search Console Sitemaps report uses. It reads up to 50 child sitemaps of an index in one call, checks every listed URL against robots.txt, and can request up to 250 listed URLs live for status, redirects, noindex and canonical. The answer comes with a verdict, advice in order and a CSV.
+The tool fetches a sitemap or sitemap index from its address (.xml, .xml.gz or .txt), or takes pasted text, and judges it against the sitemaps.org protocol and Google's sitemap pages. It reports every issue with its line, its severity (error, warning or note) and, for 34 of them, the name the Search Console Sitemaps report uses.
+
+**In detail: operations, inputs and outputs**
+
+It reads up to 50 child sitemaps of an index in one call, checks every listed URL against robots.txt, and can request up to 250 listed URLs live for status, redirects, noindex and canonical. The answer comes with a verdict, advice in order and a CSV.
 
 Operations (the op field):
 
@@ -28,7 +70,7 @@ Outputs:
 - live: per URL requested, the status, final URL, redirects, noindex, canonical, verdicts and a one-line summary
 - advice, billed (files read and URLs requested) and a CSV with formula-like cells defused
 
-## How is it calculated, step by step?
+**Every step in full (12) and the rules**
 
 1. The address is read: a bare host gets https://, the fragment is dropped, and anything other than an http or https address with a domain name is refused before any request.
 2. The host's robots.txt is fetched first (RFC 9309). A 2xx answer gives the rules for Googlebot (the groups naming it, merged, else the \* group); a 4xx means no rules; a 5xx or no answer means everything must be assumed disallowed, which is an error. A rule that blocks the sitemap itself is an error.
@@ -61,6 +103,8 @@ The lastmod sanity flags are heuristics, not Google's rules: a date more than on
 
 ## Which edge cases does it handle?
 
+**The edge cases (8)**
+
 - A byte order mark at the start is skipped; whitespace before \<?xml is a Leading whitespace warning, and text before the first tag is an XML error.
 - An attribute in curly quotes is reported as Unsupported format, and a DOCTYPE is a warning.
 - A namespace that mentions sitemaps.org/schemas/sitemap but is not exactly right is reported as a near miss, and the file is still read in it.
@@ -76,14 +120,6 @@ The lastmod sanity flags are heuristics, not Google's rules: a date more than on
 
 **Check pasted XML before it ships (nothing fetched)**
 
-```json
-{
-  "op": "paste",
-  "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://example.com/</loc><lastmod>2026-11-02</lastmod></url>\n  <url><loc>https://example.com/search?q=tea&page=2</loc><lastmod>2026-11-02T10:00:00</lastmod></url>\n</urlset>",
-  "url": "https://example.com/sitemap.xml"
-}
-```
-
 Check pasted XML before it ships (nothing fetched)
 
 | Result | Value |
@@ -93,13 +129,19 @@ Check pasted XML before it ships (nothing fetched)
 | unescaped-ampersand (Parsing error) | line 4: https://example.com/search?q=tea&page=2 |
 | invalid-date (Invalid date) | line 4: \<lastmod\>2026-11-02T10:00:00\</lastmod\>: a time without a time zone (add Z or an offset such as +00:00) |
 
-**The limits the validator applies**
+**The input**
 
 ```json
 {
-  "op": "rules"
+  "op": "paste",
+  "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://example.com/</loc><lastmod>2026-11-02</lastmod></url>\n  <url><loc>https://example.com/search?q=tea&page=2</loc><lastmod>2026-11-02T10:00:00</lastmod></url>\n</urlset>",
+  "url": "https://example.com/sitemap.xml"
 }
 ```
+
+**More worked examples (1)**
+
+**The limits the validator applies**
 
 The limits the validator applies
 
@@ -114,57 +156,17 @@ The limits the validator applies
 | child sitemaps read per call | 50 |
 | URLs checked live per call | 250 |
 
-## What does it not do?
+**The input**
 
-- Private, local, link-local (cloud metadata) and reserved addresses are never fetched, on any hop, and only ports 80, 443, 8080 and 8443 are used.
-- A check is what each server answered at that moment to one request from our server in the United States. Servers can answer Googlebot, other countries or signed-in visitors differently.
-- It cannot see Search Console's crawl schedule, crawl demand or manual actions, so a clean result does not by itself clear a Couldn't fetch status.
-- noindex and canonical are read from the HTML the server sends and from the headers; tags added by JavaScript are not seen.
-- Video sitemap entries are counted but not checked.
-
-## Where does the data come from, and how fresh is it?
-
-The rules and limits were read on 2026-11-08: the sitemaps.org protocol (page updated 2016-11-21), Google's Build and submit a sitemap page (updated 2026-07-08) and the Search Console Sitemaps report help. The pages are checked for changes once a day. A check fetches the sitemap live at the moment of the call; paste and rules make no request. Engine sitemap-validator-1.
-
-- [sitemaps.org: Sitemaps XML format (protocol) (read 2026-11-08)](https://www.sitemaps.org/protocol.html)
-- [sitemaps.org: sitemap.xsd and siteindex.xsd (read 2026-11-08)](https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd)
-- [Google Search Central: Build and submit a sitemap (read 2026-11-08)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
-- [Google Search Central: What is a sitemap (Do I need a sitemap?) (read 2026-11-08)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview)
-- [Google Search Central: Manage your sitemaps with a sitemap index file (read 2026-11-08)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps)
-- [Google Search Central: News sitemaps (read 2026-11-08)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap)
-- [Google Search Central: Image sitemaps (read 2026-11-08)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps)
-- [Search Console Help: Manage your sitemaps using the Sitemaps report (read 2026-11-08)](https://support.google.com/webmasters/answer/7451001?hl=en)
-- [Google Search Central: Robots meta tag, data-nosnippet and X-Robots-Tag (read 2026-11-08)](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)
-- [Google Search Central Blog: Sitemaps ping endpoint is going away (read 2026-11-08)](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping)
-- [RFC 9309: Robots Exclusion Protocol (read 2026-11-08)](https://www.rfc-editor.org/rfc/rfc9309)
-- [Search Engine Journal: Google Explains The "Couldn't Fetch" Sitemap Errors (read 2026-11-08)](https://www.searchenginejournal.com/google-explains-couldnt-fetch-sitemap-errors/592040/)
-
-The rules and limits were read on 2026-11-08: the sitemaps.org protocol (page updated 2016-11-21), Google's Build and submit a sitemap page (updated 2026-07-08) and the Search Console Sitemaps report help. The pages are checked for changes once a day. A check fetches the sitemap live at the moment of the call; paste and rules make no request. Engine sitemap-validator-1.
-
-Sitemap validator: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [sitemaps.org: Sitemaps XML format (protocol)](https://www.sitemaps.org/protocol.html) | page updated 2016-11-21 | 2026-11-08 |
-| [sitemaps.org: sitemap.xsd and siteindex.xsd](https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd) | page updated 2008-03-26 | 2026-11-08 |
-| [Google Search Central: Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) | page updated 2026-07-08 | 2026-11-08 |
-| [Google Search Central: What is a sitemap (Do I need a sitemap?)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview) | page updated 2025-12-10 | 2026-11-08 |
-| [Google Search Central: Manage your sitemaps with a sitemap index file](https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps) | page updated 2025-12-10 | 2026-11-08 |
-| [Google Search Central: News sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap) | page updated 2025-12-10 | 2026-11-08 |
-| [Google Search Central: Image sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps) | page updated 2025-12-10 | 2026-11-08 |
-| [Search Console Help: Manage your sitemaps using the Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en) | see the document | 2026-11-08 |
-| [Google Search Central: Robots meta tag, data-nosnippet and X-Robots-Tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag) | page updated 2026-03-24 | 2026-11-08 |
-| [Google Search Central Blog: Sitemaps ping endpoint is going away](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping) | published 2023-06-26 | 2026-11-08 |
-| [RFC 9309: Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309) | published 2022-09 | 2026-11-08 |
-| [Search Engine Journal: Google Explains The "Couldn't Fetch" Sitemap Errors](https://www.searchenginejournal.com/google-explains-couldnt-fetch-sitemap-errors/592040/) | published 2026-10-06 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "rules"
+}
+```
 
 ## How is it tested?
 
-The tests pin the rules, limits and source dates as read, then check the XML reader (recoverable and structural errors with line numbers), every format and entry problem, the 50,000 URL and byte limits, URL scope, W3C dates, the lastmod heuristics, image and news extensions, nested indexes, robots.txt matching, noindex and canonical reading, every live verdict, the summary, answer line and CSV. Fetching runs against a fake web with no network: gzip, redirects, size caps, the per-host limit and the time budget, robots.txt blocking, private addresses refused and not charged. The worked examples equal run().
-
-What its test suite asserts:
+**What its test suite asserts (5)**
 
 - The rules, limits and source dates are checked as read on 2026-11-08, and every Search Console name maps to a real issue code.
 - The XML reader, every format and entry problem, the URL and byte limits, URL scope, W3C dates, the lastmod heuristics, image and news extensions and nested indexes are each checked.

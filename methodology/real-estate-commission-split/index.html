@@ -74,31 +74,48 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>Money is whole cents and percentages thousandths of a percent, so any rate with up to three decimals is exact; each product is worked in BigInt and rounded once, half up.</span></li><li><span>Your side is price times rate, or the commission given. A referral fee is taken off your side first.</span></li><li><span>A royalty is a percent of the commission after the referral fee, off the top or from your share, up to its cap.</span></li><li><span>A team share is taken before the brokerage split (team-first) or of your share after it (brokerage-first), up to its cap.</span></li><li><span>The brokerage share is its split of what is left until the cap is reached; the deal that crosses the cap pays the brokerage only up to the cap and the rest at your post-cap share.</span></li></ol>
+<p class="cp-note">Steps 6 to 7, each rule and the edge cases are in <a href="/toll-preview/methodology/real-estate-commission-split/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>A plan or deal with a missing or impossible field is refused with the field named.</li><li>Every split, cap and fee is what you enter; published plans are only presets, each dated.</li><li>Not tax or legal advice.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 8 sources</h3><div class="tc-b"><p class="tc-a">The IRS thresholds, dates and quotes were read on irs.gov on 2026-11-08, and the published brokerage plans on each brokerage's own site with their dates. The pages are checked daily for changes.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 3 checks in its test suite</h3><div class="tc-b"><p class="tc-a">The tests check the IRS thresholds and quotes, exact cents and percentages rounded once, the crossing deal at both rates and exactly at the cap, cap periods from the anniversary and February 29, every deal step, a year across two cap years with 1099 totals, the forecast, compare and goal.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<details class="xpand cp-src-fold"><summary>Sources (8)</summary><div class="xp-in"><ul class="cp-sources cp-src"><li><a href="https://www.irs.gov/instructions/i1099mec">IRS Instructions for Forms 1099-MISC and 1099-NEC</a><span class="src-m">irs.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.irs.gov/publications/p15a">IRS Publication 15-A</a><span class="src-m">irs.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.irs.gov/pub/irs-pdf/f1040es.pdf">IRS Form 1040-ES (2026)</a><span class="src-m">irs.gov · see the document · read 2026-11-08</span></li><li><a href="https://www.law.cornell.edu/cfr/text/12/1024.14">12 CFR 1024.14 (RESPA section 8)</a><span class="src-m">law.cornell.edu · see the document · read 2026-11-08</span></li><li><a href="https://www.joinreal.com/">Real Brokerage agent plan</a><span class="src-m">joinreal.com · see the document · read 2026-11-08</span></li><li><a href="https://www.nar.realtor/the-facts/what-the-nar-settlement-means-for-home-buyers-and-sellers">NAR settlement practice changes</a><span class="src-m">nar.realtor · see the document · read 2026-11-08</span></li><li><a href="https://www.nar.realtor/the-facts/consumer-guide-to-written-buyer-agreements">NAR consumer guide to written buyer agreements</a><span class="src-m">nar.realtor · see the document · read 2026-11-08</span></li><li><a href="https://www.paperlesspipeline.com/pricing">Paperless Pipeline pricing</a><span class="src-m">paperlesspipeline.com · see the document · read 2026-11-08</span></li></ul></div></details>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the real estate commission split and cap tracker compute?</h2>
-<p>Enter your plan (split, cap and anniversary, royalty, team share and fees) and a deal, and the tool works out what you net, step by step, and how much is left to your cap. A year of deals (up to 500) is worked out in date order across anniversary caps, with the 1099 total per calendar year and a CSV. It can also compare up to 4 plans at a deal count and find the deals needed for a net goal. Every split, cap and fee is the plan you enter.</p>
-<details class="xpand"><summary>Read the rest: What does the real estate commission split and cap tracker compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<p>Enter your plan (split, cap and anniversary, royalty, team share and fees) and a deal, and the tool works out what you net, step by step, and how much is left to your cap. A year of deals (up to 500) is worked out in date order across anniversary caps, with the 1099 total per calendar year and a CSV.</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>It can also compare up to 4 plans at a deal count and find the deals needed for a net goal. Every split, cap and fee is the plan you enter.</p>
+<p>Operations (the op field):</p>
 <ul><li><code>deal</code>: Returns one deal: gross, referral fee, royalty, team share, brokerage split, fees, net, cap left and whether it crossed the cap, with the steps.</li><li><code>year</code>: Returns every deal in date order across cap years, the cap periods, the forecast of deals left to cap, the 1099 total per calendar year and a CSV.</li><li><code>compare</code>: Returns what each plan nets at a number of deals of an average commission, and the break-even between them.</li><li><code>goal</code>: Returns how many deals of an average commission reach a net goal under a plan.</li><li><code>plans</code>: Returns the published brokerage plans held as presets, each with the date it was read. Free.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>plan</code>: Your split before the cap, the cap and its anniversary, your share after the cap, a royalty with its cap and whether it comes off the top or from your share, a team share and whether it comes before or after the brokerage split, per-deal fees (always, pre-cap or post-cap), and a monthly fee.</li><li><code>deal</code>: The price and rate, or your side's commission, the closing date, and a referral fee you pay out.</li><li><code>paidSoFar</code>: What you have paid toward the cap so far this cap year.</li><li><code>deals, averageCommission, goal</code>: For year, compare and goal: the deals, or a count and an average, and a net goal.</li></ul>
 <p>Outputs:</p>
 <ul><li>answer: what you net and how much is left to your cap</li><li>gross, referral, royalty, team, brokerage, fees, net and the steps</li><li>year: periods, forecast, years with the 1099 total, CSV</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>Money is whole cents and percentages thousandths of a percent, so any rate with up to three decimals is exact; each product is worked in BigInt and rounded once, half up.</li><li>Your side is price times rate, or the commission given. A referral fee is taken off your side first.</li><li>A royalty is a percent of the commission after the referral fee, off the top or from your share, up to its cap.</li><li>A team share is taken before the brokerage split (team-first) or of your share after it (brokerage-first), up to its cap.</li><li>The brokerage share is its split of what is left until the cap is reached; the deal that crosses the cap pays the brokerage only up to the cap and the rest at your post-cap share.</li><li>Per-deal fees are taken always, only before the cap, or only after it, and may count toward the cap.</li><li>For a year, deals run in date order; the cap resets on the anniversary (February 29 is handled), and the 1099 total per calendar year is what was paid to you.</li></ol>
+<details class="xpand"><summary>Every step in full (7) and the rules</summary><div class="xp-in"><ol><li>Money is whole cents and percentages thousandths of a percent, so any rate with up to three decimals is exact; each product is worked in BigInt and rounded once, half up.</li><li>Your side is price times rate, or the commission given. A referral fee is taken off your side first.</li><li>A royalty is a percent of the commission after the referral fee, off the top or from your share, up to its cap.</li><li>A team share is taken before the brokerage split (team-first) or of your share after it (brokerage-first), up to its cap.</li><li>The brokerage share is its split of what is left until the cap is reached; the deal that crosses the cap pays the brokerage only up to the cap and the rest at your post-cap share.</li><li>Per-deal fees are taken always, only before the cap, or only after it, and may count toward the cap.</li><li>For a year, deals run in date order; the cap resets on the anniversary (February 29 is handled), and the 1099 total per calendar year is what was paid to you.</li></ol>
 <p><strong>IRS rules quoted.</strong></p>
-<p>The 1099-NEC threshold and due date, licensed agents as statutory nonemployees, and the estimated tax dates are read on irs.gov on 2026-11-08.</p>
+<p>The 1099-NEC threshold and due date, licensed agents as statutory nonemployees, and the estimated tax dates are read on irs.gov on 2026-11-08.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>A deal that lands exactly on the cap pays the brokerage to the cap and nothing more.</li><li>A cap anniversary on February 29 falls on February 28 in other years.</li><li>A pending deal is forecast, not counted as closed.</li></ul>
+<details class="xpand"><summary>The edge cases (3)</summary><div class="xp-in"><ul><li>A deal that lands exactly on the cap pays the brokerage to the cap and nothing more.</li><li>A cap anniversary on February 29 falls on February 28 in other years.</li><li>A pending deal is forecast, not counted as closed.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>A $400,000 sale at 3% on a 70/30 split with a $20,000 cap and a $300 fee</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">A $400,000 sale at 3% on a 70/30 split with a $20,000 cap and a $300 fee</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>On a $400,000 sale at 3%, your side is $12,000.00; after the $3,600.00 brokerage split and $300.00 in fees, you net $8,100.00. $16,400.00 is left to your $20,000 cap.</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;deal&quot;,
   &quot;plan&quot;: &#123;
     &quot;split&quot;: &quot;70&quot;,
@@ -115,12 +132,12 @@
     &quot;price&quot;: &quot;400000&quot;,
     &quot;rate&quot;: &quot;3&quot;
   &#125;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A $400,000 sale at 3% on a 70/30 split with a $20,000 cap and a $300 fee</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">answer</th><td>On a $400,000 sale at 3%, your side is $12,000.00; after the $3,600.00 brokerage split and $300.00 in fees, you net $8,100.00. $16,400.00 is left to your $20,000 cap.</td></tr>
-</tbody></table></div>
-<p><strong>The deal that crosses the cap</strong></p>
-<pre><code class="language-json">&#123;
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (2)</summary><div class="xp-in"><p><strong>The deal that crosses the cap</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">The deal that crosses the cap</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Your side is $10,000.00; after the $2,000.00 brokerage split and $300.00 in fees, you net $7,700.00. This deal crosses your $20,000 cap.</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;deal&quot;,
   &quot;plan&quot;: &#123;
     &quot;split&quot;: &quot;70&quot;,
@@ -139,12 +156,12 @@
   &quot;paidSoFar&quot;: &#123;
     &quot;cap&quot;: &quot;18000&quot;
   &#125;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>The deal that crosses the cap</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">answer</th><td>Your side is $10,000.00; after the $2,000.00 brokerage split and $300.00 in fees, you net $7,700.00. This deal crosses your $20,000 cap.</td></tr>
-</tbody></table></div>
+&#125;</code></pre></div></details>
 <p><strong>Two plans at 12 deals a year of $9,000</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">Two plans at 12 deals a year of $9,000</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>At 12 deals a year of $9,000.00 each, 85/15 with a $12,000 cap nets the most: $96,000.00 (70/30 with a $20,000 cap $88,000.00).</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;compare&quot;,
   &quot;deals&quot;: 12,
   &quot;averageCommission&quot;: &quot;9000&quot;,
@@ -160,37 +177,11 @@
       &quot;cap&quot;: &quot;12000&quot;
     &#125;
   ]
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Two plans at 12 deals a year of $9,000</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">answer</th><td>At 12 deals a year of $9,000.00 each, 85/15 with a $12,000 cap nets the most: $96,000.00 (70/30 with a $20,000 cap $88,000.00).</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>A plan or deal with a missing or impossible field is refused with the field named.</li><li>Every split, cap and fee is what you enter; published plans are only presets, each dated.</li><li>Not tax or legal advice.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>The IRS thresholds, dates and quotes were read on irs.gov on 2026-11-08, and the published brokerage plans on each brokerage's own site with their dates. The pages are checked daily for changes.</p>
-<ul class="cp-sources"><li><a href="https://www.irs.gov/instructions/i1099mec">IRS Instructions for Forms 1099-MISC and 1099-NEC</a></li><li><a href="https://www.irs.gov/publications/p15a">IRS Publication 15-A</a></li><li><a href="https://www.irs.gov/pub/irs-pdf/f1040es.pdf">IRS Form 1040-ES (2026)</a></li><li><a href="https://www.law.cornell.edu/cfr/text/12/1024.14">12 CFR 1024.14 (RESPA section 8)</a></li><li><a href="https://www.joinreal.com/">Real Brokerage agent plan</a></li><li><a href="https://www.nar.realtor/the-facts/what-the-nar-settlement-means-for-home-buyers-and-sellers">NAR settlement practice changes</a></li><li><a href="https://www.nar.realtor/the-facts/consumer-guide-to-written-buyer-agreements">NAR consumer guide to written buyer agreements</a></li><li><a href="https://www.paperlesspipeline.com/pricing">Paperless Pipeline pricing</a></li></ul>
-<p>The IRS thresholds, dates and quotes were read on irs.gov on 2026-11-08, and the published brokerage plans on each brokerage's own site with their dates. The pages are checked daily for changes.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Real estate commission split and cap tracker: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://www.irs.gov/instructions/i1099mec">IRS Instructions for Forms 1099-MISC and 1099-NEC</a></th><td rowspan="8">see the document</td><td rowspan="8">2026-11-08</td></tr>
-<tr><th scope="row"><a href="https://www.irs.gov/publications/p15a">IRS Publication 15-A</a></th></tr>
-<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-pdf/f1040es.pdf">IRS Form 1040-ES (2026)</a></th></tr>
-<tr><th scope="row"><a href="https://www.law.cornell.edu/cfr/text/12/1024.14">12 CFR 1024.14 (RESPA section 8)</a></th></tr>
-<tr><th scope="row"><a href="https://www.joinreal.com/">Real Brokerage agent plan</a></th></tr>
-<tr><th scope="row"><a href="https://www.nar.realtor/the-facts/what-the-nar-settlement-means-for-home-buyers-and-sellers">NAR settlement practice changes</a></th></tr>
-<tr><th scope="row"><a href="https://www.nar.realtor/the-facts/consumer-guide-to-written-buyer-agreements">NAR consumer guide to written buyer agreements</a></th></tr>
-<tr><th scope="row"><a href="https://www.paperlesspipeline.com/pricing">Paperless Pipeline pricing</a></th></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>The tests check the IRS thresholds and quotes, exact cents and percentages rounded once, the crossing deal at both rates and exactly at the cap, cap periods from the anniversary and February 29, every deal step, a year across two cap years with 1099 totals, the forecast, compare and goal.</p>
-<p>What its test suite asserts:</p>
-<ul><li>IRS thresholds, dates and quotes are as read on irs.gov on 2026-11-08.</li><li>The crossing deal is split at both rates and a deal exactly at the cap stops there.</li><li>A year across two cap years gives the 1099 total per calendar year.</li></ul>
+<details class="xpand"><summary>What its test suite asserts (3)</summary><div class="xp-in"><ul><li>IRS thresholds, dates and quotes are as read on irs.gov on 2026-11-08.</li><li>The crossing deal is split at both rates and a deal exactly at the cap stops there.</li><li>A year across two cap years gives the 1099 total per calendar year.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/real-estate-commission-split/">Open the Real estate commission split and cap tracker tool</a>.</p>
 </section>

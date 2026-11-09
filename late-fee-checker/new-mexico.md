@@ -12,6 +12,10 @@ In New Mexico a landlord may charge a rent late fee of at most 10% of the total 
 
 ## What the statute says
 
+**In short:** 10% of the total rent payment for each rental period in default; no waiting period (N.M. Stat. § 47-8-15(D)).
+
+**The statute's words (1 passage)**
+
 N.M. Stat. § 47-8-15(D): "If the rental agreement provides for the charging of a late fee, and if the resident does not pay rent in accordance with the rental agreement, the owner may charge the resident a late fee in an amount not to exceed ten percent of the total rent payment for each rental period that the resident is in default. To assess a late fee, the owner shall provide notice of the late fee charged no later than the last day of the next rental period immediately following the period in which the default occurred."
 
 ## The limit on sample rents

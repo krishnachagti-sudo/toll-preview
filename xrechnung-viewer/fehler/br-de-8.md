@@ -1,6 +1,6 @@
 # BR-DE-8: Ort des Käufers (BT-52) fehlt
 
-BR-DE-8 bedeutet: Das Element "Buyer city" (BT-52) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Tragen Sie den Ort des Käufers ins eigene Feld ein (UBL cbc:CityName, CII ram:CityName).
+BR-DE-8 bedeutet: Das Element "Buyer city" (BT-52) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ In der Anschrift des Käufers fehlt der Ort.
 
 ## So beheben Sie den Fehler
 
-Tragen Sie den Ort des Käufers ins eigene Feld ein (UBL cbc:CityName, CII ram:CityName).
+Tragen Sie den Ort des Käufers ins eigene Feld ein (UBL `cbc:CityName`, CII `ram:CityName`).
 
 ## Geprüftes Beispiel
 

@@ -2,9 +2,45 @@
 
 A delivery date is found by walking two calendars in turn: the store's shipping days for the cutoff and processing days, then the carrier's delivery days for transit. USPS delivers Monday to Saturday and closes on postal holidays, which are not the days a store observes as federal holidays, so the two calendars differ. Dates run from 2020 to 2035.
 
+## How does it work?
+
+1. The order time is read on the store's wall clock in its time zone. A time without an offset is taken as store time.
+2. The order is received on the order day if that day is a shipping day and the time is before the cutoff.
+3. Processing days are whole shipping days after the day received. 0 ships the same day. A range gives an earliest and a latest handover.
+4. The handover is the first day, from the end of processing, on which the store ships and the carrier accepts parcels.
+5. Transit days are carrier delivery days counted after the handover day.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/delivery-date-calculator/#what) below.
+
+## What does it not cover?
+
+- Published USPS data is for the 2026 season only (read 2026-10-31). UPS and FedEx tables are not included, because both pages refused automated reading; for another carrier you give the carrier's own transit days, delivery days or send-by date.
+- USPS delivery times are the ranges the carrier states for each service. The tool does not predict delays.
+- The store calendar covers weekdays, your closures and federal holidays. It does not model per-product lead times or weekend processing.
+- Dates must fall between 2020 and 2035; others are refused.
+- Defaults when you give nothing: America/New\_York, a 14:00 cutoff, shipping Monday to Friday, federal holidays observed and 1 processing day.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 4 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): USPS send-by dates, postal holidays and delivery times were read from the USPS pages on 2026-10-31. The federal holiday rules come from the business days tool, last changed 2026-10-30.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists.
+
+- [USPS: 2026 Holiday Shipping Deadlines](https://www.usps.com/holiday/holiday-shipping-dates.htm), 2026 season, read 2026-10-31
+- [USPS Newsroom: Holidays and events (postal holidays)](https://about.usps.com/newsroom/events/), 2026, read 2026-10-31
+- [USPS: Mail and shipping services](https://www.usps.com/ship/mail-shipping-services.htm), current, read 2026-10-31
+- [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
+
+> USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date.
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the delivery date and holiday order-by calculator compute?
 
-Given when an order is placed, the tool says when it is received, when it ships and when it arrives. Given a date the parcel must arrive by, it says the last moment to order. A third operation lists the carrier's closed days and published send-by dates for a year.
+Given when an order is placed, the tool says when it is received, when it ships and when it arrives. Given a date the parcel must arrive by, it says the last moment to order.
+
+**In detail: operations, inputs and outputs**
+
+A third operation lists the carrier's closed days and published send-by dates for a year.
 
 Operations (the op field):
 
@@ -26,7 +62,7 @@ Outputs:
 - skipped: each holiday or closure passed, by name and by which calendar
 - validUntil: the instant after which the order falls to the next shipping day
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. The order time is read on the store's wall clock in its time zone. A time without an offset is taken as store time. A wall-clock time skipped by a daylight-saving change is resolved to the hour before it, so a cutoff is never later than the store meant.
 2. The order is received on the order day if that day is a shipping day and the time is before the cutoff. Otherwise it is received on the next shipping day. With no cutoff, an order counts as received on its day if that is a shipping day.
@@ -44,6 +80,8 @@ USPS delivers Monday to Saturday and closes on postal holidays. Those do not fol
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - After the cutoff: an order at 3:12 pm with a 2 pm cutoff is received on the next shipping day.
 - Holidays by name: an order placed the afternoon before Thanksgiving skips Thanksgiving Day on the store calendar and says so.
 - Different weekends: a store that ships Monday to Friday and a carrier that delivers on Saturday are walked separately.
@@ -55,6 +93,17 @@ USPS delivers Monday to Saturday and closes on postal holidays. Those do not fol
 > Every figure below is the output of the tool's engine, not typed in.
 
 **An order after the cutoff**
+
+An order after the cutoff
+
+| Result | Value |
+| --- | --- |
+| received | 2026-12-14 |
+| ships | 2026-12-15 |
+| arrives | 2026-12-17 to 2026-12-21 |
+| skipped | none |
+
+**The input**
 
 ```json
 {
@@ -68,16 +117,20 @@ USPS delivers Monday to Saturday and closes on postal holidays. Those do not fol
 }
 ```
 
-An order after the cutoff
+**More worked examples (2)**
+
+**Thanksgiving skipped by name**
+
+Thanksgiving skipped by name
 
 | Result | Value |
 | --- | --- |
-| received | 2026-12-14 |
-| ships | 2026-12-15 |
-| arrives | 2026-12-17 to 2026-12-21 |
-| skipped | none |
+| received | 2026-11-27 |
+| ships | 2026-11-30 |
+| arrives | 2026-12-02 to 2026-12-03 |
+| skipped | Thanksgiving Day (2026-11-26, store calendar) |
 
-**Thanksgiving skipped by name**
+**The input**
 
 ```json
 {
@@ -91,16 +144,17 @@ An order after the cutoff
 }
 ```
 
-Thanksgiving skipped by name
+**The last order for Christmas 2026 by USPS Ground Advantage**
+
+The last order for Christmas 2026 by USPS Ground Advantage
 
 | Result | Value |
 | --- | --- |
-| received | 2026-11-27 |
-| ships | 2026-11-30 |
-| arrives | 2026-12-02 to 2026-12-03 |
-| skipped | Thanksgiving Day (2026-11-26, store calendar) |
+| carrier send-by date | 2026-12-17 |
+| last handover | 2026-12-17 |
+| last order | Wednesday, December 16, 2026, 2:00 pm EST |
 
-**The last order for Christmas 2026 by USPS Ground Advantage**
+**The input**
 
 ```json
 {
@@ -115,48 +169,11 @@ Thanksgiving skipped by name
 }
 ```
 
-The last order for Christmas 2026 by USPS Ground Advantage
-
-| Result | Value |
-| --- | --- |
-| carrier send-by date | 2026-12-17 |
-| last handover | 2026-12-17 |
-| last order | Wednesday, December 16, 2026, 2:00 pm EST |
-
-## What does it not do?
-
-- Published USPS data is for the 2026 season only (read 2026-10-31). UPS and FedEx tables are not included, because both pages refused automated reading; for another carrier you give the carrier's own transit days, delivery days or send-by date.
-- USPS delivery times are the ranges the carrier states for each service. The tool does not predict delays.
-- The store calendar covers weekdays, your closures and federal holidays. It does not model per-product lead times or weekend processing.
-- Dates must fall between 2020 and 2035; others are refused.
-- Defaults when you give nothing: America/New\_York, a 14:00 cutoff, shipping Monday to Friday, federal holidays observed and 1 processing day.
-
-## Where does the data come from, and how fresh is it?
-
-USPS send-by dates, postal holidays and delivery times were read from the USPS pages on 2026-10-31. The federal holiday rules come from the business days tool, last changed 2026-10-30.
-
-- [USPS: 2026 Holiday Shipping Deadlines](https://www.usps.com/holiday/holiday-shipping-dates.htm)
-- [USPS Newsroom: Holidays and events (postal holidays)](https://about.usps.com/newsroom/events/)
-- [USPS: Mail and shipping services](https://www.usps.com/ship/mail-shipping-services.htm)
-- [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
-
-USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date.
-
-Delivery date and holiday order-by calculator: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [USPS: 2026 Holiday Shipping Deadlines](https://www.usps.com/holiday/holiday-shipping-dates.htm) | 2026 season | 2026-10-31 |
-| [USPS Newsroom: Holidays and events (postal holidays)](https://about.usps.com/newsroom/events/) | 2026 | 2026-10-31 |
-| [USPS: Mail and shipping services](https://www.usps.com/ship/mail-shipping-services.htm) | current | 2026-10-31 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists. USPS delivery times are compared with its services page, and the missing UPS and FedEx tables are checked to be absent, with the reason recorded.
+USPS delivery times are compared with its services page, and the missing UPS and FedEx tables are checked to be absent, with the reason recorded.
 
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists.
 - USPS delivery times are compared with the USPS services page.

@@ -4,9 +4,9 @@
 
 ## ツール
 
-- [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/ja/fx-on-date/)
-- [Image to size](https://krishnachagti-sudo.github.io/toll-preview/ja/image-to-size/)
-- [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-generator/)
+- [日付指定の為替レート](https://krishnachagti-sudo.github.io/toll-preview/ja/fx-on-date/): 欧州中央銀行(ECB)の公式参照レートを、1999年以降の任意の日付で調べられます。実際に使った公表日つき。米国財務省、IRS、HMRCのレートにも対応。
+- [画像をKB指定で圧縮](https://krishnachagti-sudo.github.io/toll-preview/ja/image-to-size/): 写真を50KBや200KBなど、指定したKB以下に圧縮します。無料で、ブラウザの中だけで処理するので、写真は端末の外に出ません。
+- [QRコード作成](https://krishnachagti-sudo.github.io/toll-preview/ja/qr-code-generator/): 登録不要・無料でQRコードを作成。リンク、Wi-Fi、連絡先、メール、SMS、電話、地図に対応。すでに印刷したコードが外部サービス頼みか確認できます。
 
 ## ガイド
 

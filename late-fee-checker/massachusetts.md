@@ -11,6 +11,10 @@ In Massachusetts the statute read sets no dollar or percent limit on a rent late
 
 ## What the statute says
 
+**In short:** A waiting period, no amount; from day 30 after the due date (Mass. Gen. Laws ch. 186, § 15B(1)(c)).
+
+**The statute's words (1 passage)**
+
 Mass. Gen. Laws ch. 186, § 15B(1)(c): "No lease or other rental agreement shall impose any interest or penalty for failure to pay rent until thirty days after such rent shall have been due."
 
 ## The first day a fee may be charged

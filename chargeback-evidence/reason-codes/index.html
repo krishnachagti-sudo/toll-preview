@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Build the evidence for your dispute</h2><p class="muted">Enter the network and code on your dispute.</p><form method="get" action="/toll-preview/chargeback-evidence/" class="cp-tool-form"><input type="hidden" name="platform" value="stripe"><input type="hidden" name="network" value="visa"><input type="hidden" name="productType" value="physical"><div class="field"><label for="tf-code">Reason code</label><input type="text" id="tf-code" name="code" value="13.1"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Show the evidence</button></form><p class="small"><a href="/toll-preview/chargeback-evidence/?platform=stripe&amp;network=visa&amp;productType=physical&amp;code=13.1">Open this dispute in the packet builder</a></p></aside>
 <section>
 <h2 id="table">Codes per category</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Number of codes Stripe maps to each category, and the evidence to lead with for a physical product</caption><thead><tr><th scope="col">Category</th><th scope="col" class="r num">Visa</th><th scope="col" class="r num">Mastercard</th><th scope="col" class="r num">Amex</th><th scope="col" class="r num">Discover</th><th scope="col" class="r num">PayPal</th><th scope="col">Lead with</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Number of codes Stripe maps to each category, and the evidence to lead with for a physical product</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Category</th><th scope="col" class="r num">Visa</th><th scope="col" class="r num">Mastercard</th><th scope="col" class="r num">Amex</th><th scope="col" class="r num">Discover</th><th scope="col" class="r num">PayPal</th><th scope="col">Lead with</th></tr></thead><tbody>
 <tr><th scope="row">Product not received</th><td class="r num">2</td><td class="r num">1</td><td class="r num">3</td><td class="r num">2</td><td class="r num">1</td><td>Proof of delivery, shipping details and signature or ID at pickup or delivery</td></tr>
 <tr><th scope="row">Product unacceptable</th><td class="r num">3</td><td class="r num">14</td><td class="r num">5</td><td class="r num">0</td><td class="r num">1</td><td>How the product was described, messages with the customer and refund or return policy, and where it was shown</td></tr>
 <tr><th scope="row">Fraudulent</th><td class="r num">6</td><td class="r num">5</td><td class="r num">11</td><td class="r num">5</td><td class="r num">1</td><td>Proof of delivery, shipping details and signature or ID at pickup or delivery</td></tr>
@@ -87,7 +88,7 @@
 <tr><th scope="row">Duplicate</th><td class="r num">2</td><td class="r num">9</td><td class="r num">4</td><td class="r num">2</td><td class="r num">2</td><td>Records showing the two charges are separate, proof of delivery and messages with the customer</td></tr>
 <tr><th scope="row">General</th><td class="r num">13</td><td class="r num">24</td><td class="r num">25</td><td class="r num">13</td><td class="r num">2</td><td>Receipt or order confirmation, messages with the customer and proof of delivery</td></tr>
 <tr><th scope="row">Non-compliant</th><td class="r num">13</td><td class="r num">0</td><td class="r num">0</td><td class="r num">0</td><td class="r num">0</td><td>Authorization records, receipt or order confirmation and messages with the customer</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="claims">What each category claims</h2>
@@ -99,7 +100,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://docs.stripe.com/disputes/categories">Stripe Docs: Dispute reason code categories (read November 8, 2026)</a></li><li><a href="https://developer.paypal.com/api/customer-disputes/v1/">PayPal Customer Disputes API v1.12 (schema) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://docs.stripe.com/disputes/categories">Stripe Docs: Dispute reason code categories (read November 8, 2026)</a><span class="src-m">docs.stripe.com</span></li><li><a href="https://developer.paypal.com/api/customer-disputes/v1/">PayPal Customer Disputes API v1.12 (schema) (read November 8, 2026)</a><span class="src-m">developer.paypal.com</span></li></ul>
 <p class="cp-note">Not legal advice. The card issuer decides each dispute; this page shows what the networks and platforms publish, as read on the date shown.</p>
 </section>
 

@@ -2,9 +2,43 @@
 
 Each URL is followed hop by hop, up to 20 redirects. 301 and 308 count as permanent and 302, 303 and 307 as temporary, as Google Search Central lists them, and a chain of more than 10 redirects is flagged as past Google's default limit.
 
+## How does it work?
+
+1. Each line is read as a URL, or as an old URL and its expected target. Credentials, other schemes and unreadable lines are refused and listed by line number.
+2. Before every hop the address is checked: private, loopback, link-local (cloud metadata), CGNAT and reserved addresses are never fetched, and only ports 80, 443, 8080 and 8443 are used.
+3. Each URL is requested with the chosen user agent. A 3xx answer (other than 304) with a Location is followed to the next URL; a 2xx answer is followed too when it carries a Refresh header or a meta refresh in the first 64 kB of the page.
+4. The walk stops when a URL repeats (a loop), after 20 redirects, on a missing or unreadable Location, on a refused address or on a failed request.
+5. Each redirect is classed by Google's table: 301 and 308 permanent, 302, 303 and 307 temporary, a 0-second refresh permanent and a delayed one temporary.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/redirect-chain-checker/#what) below.
+
+## What does it not cover?
+
+- JavaScript redirects are not followed: only HTTP redirects, the Refresh header and meta refresh tags.
+- A check is one request per hop from our server in the United States. Servers can answer differently for other user agents, countries, cookies or logins, and some block automated requests.
+- Nothing here promises a ranking effect. What Google does with redirects is quoted from Google with the date it was read.
+- Private, local and reserved addresses are never fetched, on any hop.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 5 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.
+- [Tested: 4 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Every verdict is checked against a fake web, with no network: one hop, chains, Google's codes, loops and their patterns, hop limits, plain HTTP, meta refresh, errors and refusals, and expected targets.
+
+- [Google Search Central: Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects), page updated 2026-04-14, read 2026-11-07
+- [Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search](https://developers.google.com/search/docs/crawling-indexing/http-network-errors), page updated 2026-02-04, read 2026-11-07
+- [Cloudflare: ERR\_TOO\_MANY\_REDIRECTS](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/), page updated 2026-09-01, read 2026-11-07
+- [Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain](https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/), see the document, read 2026-11-07
+- [RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx)](https://www.rfc-editor.org/rfc/rfc9110#section-15.4), see the document, read 2026-11-07
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the bulk redirect chain checker compute?
 
-The tool takes a list of up to 1,000 URLs, or an old-to-new redirect map, and requests each URL from our server, following every redirect. For each URL it gives every hop with its status code, the final URL and status, and verdicts such as a loop, a chain, a temporary redirect, a plain-HTTP hop or a wrong target, graded ok, review or fix, with a CSV. It can also judge pasted curl output without making any request, and it lists Google's redirect status codes.
+The tool takes a list of up to 1,000 URLs, or an old-to-new redirect map, and requests each URL from our server, following every redirect.
+
+**In detail: operations, inputs and outputs**
+
+For each URL it gives every hop with its status code, the final URL and status, and verdicts such as a loop, a chain, a temporary redirect, a plain-HTTP hop or a wrong target, graded ok, review or fix, with a CSV. It can also judge pasted curl output without making any request, and it lists Google's redirect status codes.
 
 Operations (the op field):
 
@@ -26,7 +60,7 @@ Outputs:
 - csv: the rows as a spreadsheet, with formula-like cells defused
 - billedUrls: the different URLs actually fetched
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. Each line is read as a URL, or as an old URL and its expected target. Credentials, other schemes and unreadable lines are refused and listed by line number. A URL given twice is fetched once.
 2. Before every hop the address is checked: private, loopback, link-local (cloud metadata), CGNAT and reserved addresses are never fetched, and only ports 80, 443, 8080 and 8443 are used.
@@ -50,6 +84,8 @@ A plain http:// URL reached by a redirect is flagged; the address you typed is n
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - Loops are reported with the hop they start at and the cycle, and the http and https, www and bare host, trailing slash and Cloudflare self-loop patterns get their own note.
 - A relative Location is read against the URL that sent it, and an empty or unreadable Location is a bad-location verdict.
 - A Refresh header and a meta refresh are hops when followMetaRefresh is on; a refresh with no URL is not a redirect.
@@ -62,15 +98,6 @@ A plain http:// URL reached by a redirect is flagged; the address you typed is n
 
 **Judging pasted curl -sIL output against an expected target (no request made)**
 
-```json
-{
-  "op": "analyse",
-  "url": "http://example.com/old-page",
-  "curl": "HTTP/1.1 301 Moved Permanently\nLocation: https://example.com/old-page\n\nHTTP/2 302\nlocation: /new-page\n\nHTTP/2 200\ncontent-type: text/html; charset=UTF-8\n",
-  "expected": "/new-page"
-}
-```
-
 Judging pasted curl -sIL output against an expected target (no request made)
 
 | Result | Value |
@@ -82,13 +109,20 @@ Judging pasted curl -sIL output against an expected target (no request made)
 | expected target | via-chain |
 | severity | review |
 
-**Google's redirect codes and limits**
+**The input**
 
 ```json
 {
-  "op": "codes"
+  "op": "analyse",
+  "url": "http://example.com/old-page",
+  "curl": "HTTP/1.1 301 Moved Permanently\nLocation: https://example.com/old-page\n\nHTTP/2 302\nlocation: /new-page\n\nHTTP/2 200\ncontent-type: text/html; charset=UTF-8\n",
+  "expected": "/new-page"
 }
 ```
+
+**More worked examples (1)**
+
+**Google's redirect codes and limits**
 
 Google's redirect codes and limits
 
@@ -102,42 +136,19 @@ Google's redirect codes and limits
 | Google hop limit | 10 |
 | long chain from | 5 |
 
-## What does it not do?
+**The input**
 
-- JavaScript redirects are not followed: only HTTP redirects, the Refresh header and meta refresh tags.
-- A check is one request per hop from our server in the United States. Servers can answer differently for other user agents, countries, cookies or logins, and some block automated requests.
-- Nothing here promises a ranking effect. What Google does with redirects is quoted from Google with the date it was read.
-- Private, local and reserved addresses are never fetched, on any hop.
-
-## Where does the data come from, and how fresh is it?
-
-Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.
-
-- [RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx) (read 2026-11-07)](https://www.rfc-editor.org/rfc/rfc9110#section-15.4)
-- [Google Search Central: Redirects and Google Search (read 2026-11-07)](https://developers.google.com/search/docs/crawling-indexing/301-redirects)
-- [Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search (read 2026-11-07)](https://developers.google.com/search/docs/crawling-indexing/http-network-errors)
-- [Cloudflare: ERR\_TOO\_MANY\_REDIRECTS (read 2026-11-07)](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/)
-- [Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain (read 2026-11-07)](https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/)
-
-Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.
-
-Bulk redirect chain checker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Google Search Central: Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects) | page updated 2026-04-14 | 2026-11-07 |
-| [Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search](https://developers.google.com/search/docs/crawling-indexing/http-network-errors) | page updated 2026-02-04 | 2026-11-07 |
-| [Cloudflare: ERR\_TOO\_MANY\_REDIRECTS](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/) | page updated 2026-09-01 | 2026-11-07 |
-| [Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain](https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/) | see the document | 2026-11-07 |
-| [RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx)](https://www.rfc-editor.org/rfc/rfc9110#section-15.4) | see the document | 2026-11-07 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "codes"
+}
+```
 
 ## How is it tested?
 
-Every verdict is checked against a fake web, with no network: one hop, chains, Google's codes, loops and their patterns, hop limits, plain HTTP, meta refresh, errors and refusals, and expected targets. Pasted curl output is judged like a live run, the worked examples equal run(), and blocked address forms are checked one by one.
+Pasted curl output is judged like a live run, the worked examples equal run(), and blocked address forms are checked one by one.
 
-What its test suite asserts:
+**What its test suite asserts (4)**
 
 - Google's redirect table and facts are checked as read on 2026-11-07, as the verdicts use them.
 - Every verdict is checked against a fake web: one hop, chains, loops and their patterns, hop limits, plain HTTP, meta refresh, errors, refusals and expected targets.

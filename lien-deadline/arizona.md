@@ -1,6 +1,8 @@
 # Arizona lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Arizona, your preliminary twenty day notice is due November 22, 2026, the lien must be recorded by June 26, 2027 and the suit to enforce it must be filed by December 26, 2027 (if recorded on the last day, June 26, 2027) (A.R.S. 33-992.01(B), (C); A.R.S. 33-993(A); A.R.S. 33-998(A)).
+In Arizona, a subcontractor records the lien within 120 days after completion of the work, or within 60 days after a notice of completion is recorded (A.R.S. 33-993(A)); the notice comes first, not later than 20 days after you first furnish labor, services, materials or equipment to the jobsite (A.R.S. 33-992.01(B), (C)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=AZ&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Arizona, your preliminary twenty day notice is due November 22, 2026, the lien must be recorded by June 26, 2027 and the suit to enforce it must be filed by December 26, 2027 (if recorded on the last day, June 26, 2027) (A.R.S. 33-992.01(B), (C); A.R.S. 33-993(A); A.R.S. 33-998(A)).
 
 ## Work out your Arizona dates
 
@@ -54,6 +56,8 @@ The statutory form, filled in as a PDF: [Arizona 20-day notice](https://krishnac
 Once you are paid: [Arizona lien waivers](https://krishnachagti-sudo.github.io/toll-preview/lien-waiver/arizona/).
 
 ## Arizona in its own words
+
+**Read the statute's words (6 quotations)**
 
 - "Except for a person performing actual labor for wages, every person who furnishes labor, professional services, materials, machinery, fixtures or tools for which a lien otherwise may be claimed under this article shall, as a necessary prerequisite to the validity of any claim of lien, serve the owner or reputed owner, the original contractor or reputed contractor, the construction lender, if any, or reputed construction lender, if any, and the person with whom the claimant has contracted for the purchase of those items with a written preliminary twenty day notice as prescribed by this section." [A.R.S. 33-992.01, Preliminary twenty day notice](https://www.azleg.gov/ars/33/00992-01.htm)
 - "shall be given not later than twenty days after the claimant has first furnished labor, professional services, materials, machinery, fixtures or tools to the jobsite" [A.R.S. 33-992.01, Preliminary twenty day notice](https://www.azleg.gov/ars/33/00992-01.htm)

@@ -1,6 +1,6 @@
 # BR-CO-17: Steuerbetrag je Steuersatz (BT-117) falsch gerundet oder berechnet
 
-BR-CO-17 bedeutet: VAT category tax amount (BT-117) = VAT category taxable amount (BT-116) x (VAT category rate (BT-119) / 100), rounded to two decimals. (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Berechnen Sie die Steuer je Steuersatz auf die Summe der Bemessungsgrundlage und runden Sie einmal auf zwei Stellen (kaufmännisch).
+BR-CO-17 bedeutet: VAT category tax amount (BT-117) = VAT category taxable amount (BT-116) x (VAT category rate (BT-119) / 100), rounded to two decimals. (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

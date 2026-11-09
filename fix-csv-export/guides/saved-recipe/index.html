@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-file)">
 <p class="eyebrow">Guide</p>
 <h1>Save a recipe for a monthly export</h1>
-<p class="cp-answer">A recipe is the fix saved as settings: 5 column rules, the input and output choices, and the header row it was made from, never your data. Applied to next month's export it found 1 column missing (ZIP) and 2 new (Postal Code, Channel), gave the new ones the suggested rules, and fixed the 2 rows the same way as last month.</p>
+<p class="cp-answer">A recipe is the fix saved as settings: 5 column rules, the input and output choices, and the header row it was made from, never your data.<span class="ans-more"> Applied to next month's export it found 1 column missing (ZIP) and 2 new (Postal Code, Channel), gave the new ones the suggested rules, and fixed the 2 rows the same way as last month.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Try next month's file in the fixer</h2><p class="muted">The example file below opens in the fixer and is scanned in your browser, free. Swap in your own file there.</p><form method="get" action="/toll-preview/fix-csv-export/" class="cp-tool-form"><input type="hidden" name="text" value="Account,Customer,Postal Code,Posted,Amount,Order ID,Channel
 0010,Ann Lee,2134,14/04/2026,&quot;$5.00&quot;,4000123412340001,Web
 0200,Bo Diaz,501,02/04/2026,(12.00),4000123412340002,Phone
@@ -128,10 +129,10 @@
 </section>
 <section>
 <h2 id="next">Next month's file</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Next month: &quot;ZIP&quot; became &quot;Postal Code&quot; and &quot;Channel&quot; was added</caption><thead><tr><th scope="col">Account</th><th scope="col">Customer</th><th scope="col">Postal Code</th><th scope="col">Posted</th><th scope="col">Amount</th><th scope="col">Order ID</th><th scope="col">Channel</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Next month: &quot;ZIP&quot; became &quot;Postal Code&quot; and &quot;Channel&quot; was added</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col">Customer</th><th scope="col">Postal Code</th><th scope="col">Posted</th><th scope="col">Amount</th><th scope="col">Order ID</th><th scope="col">Channel</th></tr></thead><tbody>
 <tr><th scope="row">0010</th><td>Ann Lee</td><td>2134 → 02134</td><td>14/04/2026 → 2026-04-14</td><td>$5.00 → 5.00</td><td>4000123412340001</td><td>Web</td></tr>
 <tr><th scope="row">0200</th><td>Bo Diaz</td><td>501 → 00501</td><td>02/04/2026 → 2026-04-02</td><td>(12.00) → -12.00</td><td>4000123412340002</td><td>Phone</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>&quot;Postal Code&quot; is new to the recipe, so it got the suggested rule (it is a ZIP column by its heading). Save the recipe again after checking, and the change is remembered.</p>
 </section>
 <section>

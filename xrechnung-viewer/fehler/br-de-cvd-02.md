@@ -1,6 +1,6 @@
 # BR-DE-CVD-02: CVD-Rechnung ohne Vergabe- oder Losnummer (BT-17)
 
-BR-DE-CVD-02 bedeutet: Das Element ... "Tender or lot reference" (BT-17) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die Vergabe- oder Losnummer in BT-17 an (UBL cac:OriginatorDocumentReference/cbc:ID, CII AdditionalReferencedDocument mit TypeCode 50).
+BR-DE-CVD-02 bedeutet: Das Element ... "Tender or lot reference" (BT-17) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Eine Rechnung nach XRechnung CVD muss die Kennung der Ausschreibung oder des Los
 
 ## So beheben Sie den Fehler
 
-Geben Sie die Vergabe- oder Losnummer in BT-17 an (UBL cac:OriginatorDocumentReference/cbc:ID, CII AdditionalReferencedDocument mit TypeCode 50).
+Geben Sie die Vergabe- oder Losnummer in BT-17 an (UBL `cac:OriginatorDocumentReference/cbc:ID`, CII AdditionalReferencedDocument mit TypeCode 50).
 
 ## Geprüftes Beispiel
 

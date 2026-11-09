@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Start your own log</h2><p class="muted">The tracker keeps the log in your browser.</p><form method="get" action="/toll-preview/teacher-license-renewal-tracker/" class="cp-tool-form"><input type="hidden" name="state" value="TX"><input type="hidden" name="license" value="classroom-teacher"><div class="field"><label for="tf-start">Cycle began</label><input type="date" id="tf-start" name="start" value="2022-07-01"></div><div class="field"><label for="tf-logged">CPE hours so far</label><input type="text" id="tf-logged" name="logged" value="0"></div><input type="hidden" name="unit" value="hour"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work out my hours left</button></form><p class="small"><a href="/toll-preview/teacher-license-renewal-tracker/?state=TX&amp;license=classroom-teacher&amp;start=2022-07-01&amp;logged=0&amp;unit=hour">Open this license in the tracker</a></p></aside>
 <section>
 <h2 id="columns">The columns</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Template columns</caption><thead><tr><th scope="col">Column</th><th scope="col">What to write</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Template columns</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Column</th><th scope="col">What to write</th></tr></thead><tbody>
 <tr><th scope="row">date</th><td>The day the activity ended, like 2024-02-17</td></tr>
 <tr><th scope="row">title</th><td>Workshop, course or conference name</td></tr>
 <tr><th scope="row">provider</th><td>Who ran it (district, college, approved provider)</td></tr>
@@ -85,17 +86,17 @@
 <tr><th scope="row">amount</th><td>The number on the certificate</td></tr>
 <tr><th scope="row">unit</th><td>clock hours, semester hours, quarter hours, CEUs, PDPs, PDUs</td></tr>
 <tr><th scope="row">evidence</th><td>Certificate number, transcript, or where the file is</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="example">A worked Texas log</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Five activities, as the export writes them</caption><thead><tr><th scope="col">Date</th><th scope="col">Title</th><th scope="col">Amount</th><th scope="col" class="r num">Counted (CPE hours)</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Five activities, as the export writes them</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Date</th><th scope="col">Title</th><th scope="col">Amount</th><th scope="col" class="r num">Counted (CPE hours)</th></tr></thead><tbody>
 <tr><th scope="row">2022-10-10</th><td>District in-service: reading strategies</td><td>6 clock hours</td><td class="r num">6</td></tr>
 <tr><th scope="row">2023-06-12</th><td>EDU 5310 Assessment (graduate course)</td><td>3 semester hours</td><td class="r num">45</td></tr>
 <tr><th scope="row">2024-02-17</th><td>Dyslexia: identification and instruction</td><td>12 clock hours</td><td class="r num">12</td></tr>
 <tr><th scope="row">2024-07-22</th><td>Professional reading log</td><td>40 clock hours</td><td class="r num">40</td></tr>
 <tr><th scope="row">2025-09-20</th><td>Youth Mental Health First Aid</td><td>18 clock hours</td><td class="r num">18</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>You have 109 CPE hours of 150 for your Texas Classroom Teacher; 41 CPE hours left by August 14, 2027, about 4.5 CPE hours a month. Not counted over the caps: 10 of independent study, 2 of mental health first aid, trauma-informed care, grief-informed practices.</p>
 <pre><code class="language-csv">date,title,provider,category,amount,unit,evidence
 2022-10-10,District in-service: reading strategies,Northside ISD,,6,hour,cert-0141
@@ -108,7 +109,7 @@
 <h2 id="records">How long to keep it</h2>
 <ul><li>&quot;Instead, educators attest that they have completed the required CPE hours when renewing their certificates and must retain supporting documentation for five years, providing it to TEA only if requested as part of a certificate renewal audit.&quot; <a href="https://tea.texas.gov/educators/certification/certification-renewals/standard-certificate-renewal-and-continuing-professional-education-cpe-information">Texas Education Agency, Standard Certificate Renewal and Continuing Professional Education (CPE) Information</a></li><li>&quot;Educators must maintain personal records of completed continuing teacher and leader education (CTLE), including:&quot; <a href="https://www.nysed.gov/teaching-initiatives/continuing-teacher-and-leader-education-ctle">New York State Education Department, Continuing Teacher and Leader Education (CTLE)</a></li></ul>
 <p class="cp-note">Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts. Totals come from the activities you enter; this tool does not read PERMS, TEACH, ECOS or any state portal. States whose official pages we could not read are listed as not covered rather than guessed.</p>
-<ul class="cp-sources"><li><a href="https://tea.texas.gov/educators/certification/certification-renewals/standard-certificate-renewal-and-continuing-professional-education-cpe-information">Texas Education Agency, Standard Certificate Renewal and Continuing Professional Education (CPE) Information, read November 8, 2026</a></li><li><a href="https://www.nysed.gov/teaching-initiatives/continuing-teacher-and-leader-education-ctle">New York State Education Department, Continuing Teacher and Leader Education (CTLE), read November 8, 2026</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://tea.texas.gov/educators/certification/certification-renewals/standard-certificate-renewal-and-continuing-professional-education-cpe-information">Texas Education Agency, Standard Certificate Renewal and Continuing Professional Education (CPE) Information, read November 8, 2026</a><span class="src-m">tea.texas.gov</span></li><li><a href="https://www.nysed.gov/teaching-initiatives/continuing-teacher-and-leader-education-ctle">New York State Education Department, Continuing Teacher and Leader Education (CTLE), read November 8, 2026</a><span class="src-m">nysed.gov</span></li></ul>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Log each activity when it ends.</strong> Date, title, provider, the amount and its unit (clock hours, semester hours, CEUs, PDPs), and where the certificate or transcript is.</li><li><strong>Mark what it counts toward.</strong> A required topic (New York language acquisition, North Carolina literacy) or a capped category (Texas independent study).</li><li><strong>Total it by your state's rules.</strong> The tracker converts each line into the state's unit, applies caps, and flags lines outside the cycle or missing a record.</li><li><strong>Export before you renew.</strong> Keep the CSV and the summary with your certificates: Texas asks for five years of records, New York for eight.</li></ol></section>
 

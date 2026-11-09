@@ -2,9 +2,53 @@
 
 A reason code is looked up in Stripe's published table to one of 9 dispute categories, and the category gives the evidence that answers it, strongest first, for a physical product, a digital product or an offline service. Fighting pays when your chance of winning is above the extra cost of fighting divided by what a win gives back.
 
+## How does it work?
+
+1. The code is normalized the ways people write it (Visa "13.1" or "131", Mastercard "4853", PayPal reason names) and looked up in Stripe's published table for that network.
+2. The category sets the claim the code makes, the ways it is overturned, and the evidence list for the product type, strongest first.
+3. The fees are the platform's own, in US dollars. Stripe charges $15 when a dispute arrives, never returned, and $15 more to counter, returned on a win ($500 more for a compliance case).
+4. Break-even = extra cost of fighting / (amount + fees returned on a win). With a win chance p, the expected cost of fighting is p x the cost if won + (1 - p) x the cost if lost, and the verdict compares it with the cost of accepting.
+5. The deadline is the due date you give, in whole days from today. From an open date only: PayPal gives 10 days for a card chargeback and 20 days to settle a PayPal dispute; Stripe and Shopify give a range of 7 to 21 days, and the exact date must be read on the dispute.
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/chargeback-evidence/#what) below.
+
+## What does it not cover?
+
+- It does not read your platform account; the due date and facts are what you enter.
+- Mastercard, American Express and Discover codes are shown as Stripe publishes them; those networks' own rule books were not read.
+- It cannot tell you your chance of winning; the break-even shows the chance at which fighting pays.
+- Not legal advice. The card issuer (or PayPal, for a PayPal claim) decides every dispute; no packet guarantees a win.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 17 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The rules data (version 2026-11-08) was read on November 8, 2026 from Stripe, Shopify, PayPal and Visa pages, each listed with its date. Card networks change their rules in April and October and platforms change fees with notice; the data changes only by hand, with the tests that pin it.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check every code row against Stripe's table, each platform's limits, windows and fees, codes written the ways people write them, the Visa 13.1 checklist on Stripe, the break-even on each platform, deadlines and the calendar file, the CE 3.0 test at its day and length boundaries, a letter built only from the facts given, file typing and page counts, packets on Stripe, Shopify and PayPal with their refusals and warnings, and that each worked example is what the engine returns.
+
+- [Stripe Docs: Dispute reason code categories](https://docs.stripe.com/disputes/categories), see the document, read 2026-11-08
+- [Stripe Docs: Dispute reason codes](https://docs.stripe.com/disputes/reason-codes-defense-requirements), see the document, read 2026-11-08
+- [Stripe Docs: Respond to disputes](https://docs.stripe.com/disputes/responding), see the document, read 2026-11-08
+- [Stripe Docs: Dispute evidence best practices](https://docs.stripe.com/disputes/best-practices), see the document, read 2026-11-08
+- [Stripe Docs: Manage disputes programmatically](https://docs.stripe.com/disputes/api), see the document, read 2026-11-08
+- [Stripe API: the Dispute object (evidence fields)](https://docs.stripe.com/api/disputes/object), see the document, read 2026-11-08
+- [Stripe Support: June 2025 pricing updates for disputes](https://support.stripe.com/questions/june-2025-pricing-updates-for-disputes), see the document, read 2026-11-08
+- [Shopify Help Center: Responding to chargebacks and inquiries](https://help.shopify.com/en/manual/payments/chargebacks/chargeback-process), see the document, read 2026-11-08
+- [Shopify Help Center: Managing chargebacks in the Shopify admin](https://help.shopify.com/en/manual/payments/chargebacks/chargebacks-in-admin), see the document, read 2026-11-08
+- [Shopify Help Center: Resolving a chargeback or inquiry](https://help.shopify.com/en/manual/payments/chargebacks/resolve-chargeback), see the document, read 2026-11-08
+- [Shopify Help Center: Reasons for a chargeback or inquiry](https://help.shopify.com/en/manual/payments/chargebacks/chargeback-reasons), see the document, read 2026-11-08
+- [PayPal Merchant Fees (US), last updated November 4, 2026](https://www.paypal.com/us/business/paypal-business-fees), updated 2026-11-04, read 2026-11-08
+- [PayPal Developer: Disputes overview, last updated November 3, 2026](https://developer.paypal.com/docs/disputes/), updated 2026-11-03, read 2026-11-08
+- [PayPal Developer: Disputes and chargebacks FAQ, last updated October 14, 2026](https://developer.paypal.com/limited-release/commerce-platform/manage-risks-liabilities/disputes-chargebacks/faqs/), updated 2026-10-14, read 2026-11-08
+- [PayPal Customer Disputes API v1.12 (schema)](https://developer.paypal.com/api/customer-disputes/v1/), see the document, read 2026-11-08
+- [Visa Dispute Management Guide for Merchants, October 2026](https://usa.visa.com/dam/VCOM/global/support-legal/documents/merchants-dispute-management-guidelines.pdf), updated 2026-10, read 2026-11-08
+- [Visa Core Rules and Visa Product and Service Rules, 24 October 2026](https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf), updated 2026-10-24, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the chargeback evidence packet builder compute?
 
 For a dispute on Stripe, Shopify Payments or PayPal, the tool says what the reason code means, which evidence answers it and which upload slot each piece goes in. It builds the packet: a rebuttal letter from the facts you give (nothing is assumed) and one labelled exhibit PDF per evidence type from your screenshots and typed text, checked against the platform's size, page and file limits. It also works out the fees and the break-even win chance, the days left to the due date with a calendar file, and whether a Visa 10.4 dispute meets Compelling Evidence 3.0. The card issuer decides every dispute.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -35,7 +79,7 @@ Outputs:
 - letter, exhibits, textFields, limits, warnings, steps and files or letterPreview (packet)
 - sources with their read dates
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. The code is normalized the ways people write it (Visa "13.1" or "131", Mastercard "4853", PayPal reason names) and looked up in Stripe's published table for that network. A code not in the table is refused, and the category can be given instead.
 2. The category sets the claim the code makes, the ways it is overturned, and the evidence list for the product type, strongest first. Each item has its slot: Stripe's file field and text fields, PayPal's evidence type, or on Shopify its own file typed as that evidence.
@@ -63,6 +107,8 @@ Mastercard, American Express and Discover codes are shown as Stripe publishes th
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - Mastercard 4853 has several sub-reasons in one Stripe category; all are listed.
 - An exhibit that is not on the evidence list for the category is kept, with a warning that issuers may give it no weight.
 - Typed evidence that Stripe already takes in a text field from the facts is not repeated, and the packet says which text was not used.
@@ -76,16 +122,6 @@ Mastercard, American Express and Discover codes are shown as Stripe publishes th
 
 **Visa 13.1 (not received) on Stripe, physical product**
 
-```json
-{
-  "op": "checklist",
-  "platform": "stripe",
-  "network": "visa",
-  "code": "13.1",
-  "productType": "physical"
-}
-```
-
 Visa 13.1 (not received) on Stripe, physical product
 
 | Result | Value |
@@ -96,16 +132,21 @@ Visa 13.1 (not received) on Stripe, physical product
 | evidence 2 | Shipping details: text fields shipping\_address, shipping\_date, shipping\_carrier, shipping\_tracking\_number |
 | evidence 3 | Signature or ID at pickup or delivery: file field customer\_signature |
 
-**Is a $40 Stripe dispute worth fighting at a 25% chance?**
+**The input**
 
 ```json
 {
-  "op": "worth",
+  "op": "checklist",
   "platform": "stripe",
-  "amount": 40,
-  "winChance": 25
+  "network": "visa",
+  "code": "13.1",
+  "productType": "physical"
 }
 ```
+
+**More worked examples (3)**
+
+**Is a $40 Stripe dispute worth fighting at a 25% chance?**
 
 Is a $40 Stripe dispute worth fighting at a 25% chance?
 
@@ -117,7 +158,29 @@ Is a $40 Stripe dispute worth fighting at a 25% chance?
 | cost if accepted | $55.00 |
 | verdict | accept |
 
+**The input**
+
+```json
+{
+  "op": "worth",
+  "platform": "stripe",
+  "amount": 40,
+  "winChance": 25
+}
+```
+
 **Visa CE 3.0: two earlier payments with the same device and login**
+
+Visa CE 3.0: two earlier payments with the same device and login
+
+| Result | Value |
+| --- | --- |
+| answer | This Visa 10.4 dispute meets the Compelling Evidence 3.0 test as entered: 2 earlier undisputed payments between November 8, 2025 and July 10, 2026 match on device ID or fingerprint, IP address and account or login ID. |
+| qualifying window | November 8, 2025 to July 10, 2026 |
+| payment of 2026-03-02 | 251 days before; matches device ID or fingerprint, IP address, account or login ID |
+| payment of 2026-04-02 | 220 days before; matches device ID or fingerprint, account or login ID |
+
+**The input**
 
 ```json
 {
@@ -148,16 +211,21 @@ Is a $40 Stripe dispute worth fighting at a 25% chance?
 }
 ```
 
-Visa CE 3.0: two earlier payments with the same device and login
+**A packet preview for a made-up seller: Visa 13.1 on Stripe**
+
+A packet preview for a made-up seller: Visa 13.1 on Stripe
 
 | Result | Value |
 | --- | --- |
-| answer | This Visa 10.4 dispute meets the Compelling Evidence 3.0 test as entered: 2 earlier undisputed payments between November 8, 2025 and July 10, 2026 match on device ID or fingerprint, IP address and account or login ID. |
-| qualifying window | November 8, 2025 to July 10, 2026 |
-| payment of 2026-03-02 | 251 days before; matches device ID or fingerprint, IP address, account or login ID |
-| payment of 2026-04-02 | 220 days before; matches device ID or fingerprint, account or login ID |
+| dispute | visa 13.1, Merchandise/Services Not Received |
+| File types | PDF (limit PDF, JPEG, PNG) |
+| Combined size | 3 KB (limit 4.50 MB) |
+| Combined pages | 2 (limit under 50) |
+| One file per evidence type | yes (limit 1) |
+| Text in all fields | 1,197 characters (limit 150,000 characters) |
+| text fields | customer\_name, customer\_email\_address, billing\_address, shipping\_address, shipping\_date, shipping\_carrier, shipping\_tracking\_number, uncategorized\_text |
 
-**A packet preview for a made-up seller: Visa 13.1 on Stripe**
+**The input**
 
 ```json
 op: "packet"
@@ -176,78 +244,9 @@ exhibits: 2 items
 preview: true
 ```
 
-A packet preview for a made-up seller: Visa 13.1 on Stripe
-
-| Result | Value |
-| --- | --- |
-| dispute | visa 13.1, Merchandise/Services Not Received |
-| File types | PDF (limit PDF, JPEG, PNG) |
-| Combined size | 3 KB (limit 4.50 MB) |
-| Combined pages | 2 (limit under 50) |
-| One file per evidence type | yes (limit 1) |
-| Text in all fields | 1,197 characters (limit 150,000 characters) |
-| text fields | customer\_name, customer\_email\_address, billing\_address, shipping\_address, shipping\_date, shipping\_carrier, shipping\_tracking\_number, uncategorized\_text |
-
-## What does it not do?
-
-- It does not read your platform account; the due date and facts are what you enter.
-- Mastercard, American Express and Discover codes are shown as Stripe publishes them; those networks' own rule books were not read.
-- It cannot tell you your chance of winning; the break-even shows the chance at which fighting pays.
-- Not legal advice. The card issuer (or PayPal, for a PayPal claim) decides every dispute; no packet guarantees a win.
-
-## Where does the data come from, and how fresh is it?
-
-The rules data (version 2026-11-08) was read on November 8, 2026 from Stripe, Shopify, PayPal and Visa pages, each listed with its date. Card networks change their rules in April and October and platforms change fees with notice; the data changes only by hand, with the tests that pin it.
-
-- [Stripe Docs: Dispute reason code categories](https://docs.stripe.com/disputes/categories)
-- [Stripe Docs: Dispute reason codes](https://docs.stripe.com/disputes/reason-codes-defense-requirements)
-- [Stripe Docs: Respond to disputes](https://docs.stripe.com/disputes/responding)
-- [Stripe Docs: Dispute evidence best practices](https://docs.stripe.com/disputes/best-practices)
-- [Stripe Docs: Manage disputes programmatically](https://docs.stripe.com/disputes/api)
-- [Stripe API: the Dispute object (evidence fields)](https://docs.stripe.com/api/disputes/object)
-- [Stripe Support: June 2025 pricing updates for disputes](https://support.stripe.com/questions/june-2025-pricing-updates-for-disputes)
-- [Shopify Help Center: Responding to chargebacks and inquiries](https://help.shopify.com/en/manual/payments/chargebacks/chargeback-process)
-- [Shopify Help Center: Managing chargebacks in the Shopify admin](https://help.shopify.com/en/manual/payments/chargebacks/chargebacks-in-admin)
-- [Shopify Help Center: Resolving a chargeback or inquiry](https://help.shopify.com/en/manual/payments/chargebacks/resolve-chargeback)
-- [Shopify Help Center: Reasons for a chargeback or inquiry](https://help.shopify.com/en/manual/payments/chargebacks/chargeback-reasons)
-- [PayPal Merchant Fees (US), last updated November 4, 2026](https://www.paypal.com/us/business/paypal-business-fees)
-- [PayPal Developer: Disputes overview, last updated November 3, 2026](https://developer.paypal.com/docs/disputes/)
-- [PayPal Developer: Disputes and chargebacks FAQ, last updated October 14, 2026](https://developer.paypal.com/limited-release/commerce-platform/manage-risks-liabilities/disputes-chargebacks/faqs/)
-- [PayPal Customer Disputes API v1.12 (schema)](https://developer.paypal.com/api/customer-disputes/v1/)
-- [Visa Dispute Management Guide for Merchants, October 2026](https://usa.visa.com/dam/VCOM/global/support-legal/documents/merchants-dispute-management-guidelines.pdf)
-- [Visa Core Rules and Visa Product and Service Rules, 24 October 2026](https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf)
-
-The rules data (version 2026-11-08) was read on November 8, 2026 from Stripe, Shopify, PayPal and Visa pages, each listed with its date. Card networks change their rules in April and October and platforms change fees with notice; the data changes only by hand, with the tests that pin it.
-
-Chargeback evidence packet builder: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Stripe Docs: Dispute reason code categories](https://docs.stripe.com/disputes/categories) | see the document | 2026-11-08 |
-| [Stripe Docs: Dispute reason codes](https://docs.stripe.com/disputes/reason-codes-defense-requirements) | see the document | 2026-11-08 |
-| [Stripe Docs: Respond to disputes](https://docs.stripe.com/disputes/responding) | see the document | 2026-11-08 |
-| [Stripe Docs: Dispute evidence best practices](https://docs.stripe.com/disputes/best-practices) | see the document | 2026-11-08 |
-| [Stripe Docs: Manage disputes programmatically](https://docs.stripe.com/disputes/api) | see the document | 2026-11-08 |
-| [Stripe API: the Dispute object (evidence fields)](https://docs.stripe.com/api/disputes/object) | see the document | 2026-11-08 |
-| [Stripe Support: June 2025 pricing updates for disputes](https://support.stripe.com/questions/june-2025-pricing-updates-for-disputes) | see the document | 2026-11-08 |
-| [Shopify Help Center: Responding to chargebacks and inquiries](https://help.shopify.com/en/manual/payments/chargebacks/chargeback-process) | see the document | 2026-11-08 |
-| [Shopify Help Center: Managing chargebacks in the Shopify admin](https://help.shopify.com/en/manual/payments/chargebacks/chargebacks-in-admin) | see the document | 2026-11-08 |
-| [Shopify Help Center: Resolving a chargeback or inquiry](https://help.shopify.com/en/manual/payments/chargebacks/resolve-chargeback) | see the document | 2026-11-08 |
-| [Shopify Help Center: Reasons for a chargeback or inquiry](https://help.shopify.com/en/manual/payments/chargebacks/chargeback-reasons) | see the document | 2026-11-08 |
-| [PayPal Merchant Fees (US), last updated November 4, 2026](https://www.paypal.com/us/business/paypal-business-fees) | updated 2026-11-04 | 2026-11-08 |
-| [PayPal Developer: Disputes overview, last updated November 3, 2026](https://developer.paypal.com/docs/disputes/) | updated 2026-11-03 | 2026-11-08 |
-| [PayPal Developer: Disputes and chargebacks FAQ, last updated October 14, 2026](https://developer.paypal.com/limited-release/commerce-platform/manage-risks-liabilities/disputes-chargebacks/faqs/) | updated 2026-10-14 | 2026-11-08 |
-| [PayPal Customer Disputes API v1.12 (schema)](https://developer.paypal.com/api/customer-disputes/v1/) | see the document | 2026-11-08 |
-| [Visa Dispute Management Guide for Merchants, October 2026](https://usa.visa.com/dam/VCOM/global/support-legal/documents/merchants-dispute-management-guidelines.pdf) | updated 2026-10 | 2026-11-08 |
-| [Visa Core Rules and Visa Product and Service Rules, 24 October 2026](https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf) | updated 2026-10-24 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests check every code row against Stripe's table, each platform's limits, windows and fees, codes written the ways people write them, the Visa 13.1 checklist on Stripe, the break-even on each platform, deadlines and the calendar file, the CE 3.0 test at its day and length boundaries, a letter built only from the facts given, file typing and page counts, packets on Stripe, Shopify and PayPal with their refusals and warnings, and that each worked example is what the engine returns.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every code row matches Stripe's published table and every source is dated, as read on November 8, 2026.
 - Each platform's limits, windows and fees are pinned; the break-even is the countered fee over the amount plus that fee on Stripe, nothing on Shopify, and sunk on PayPal.

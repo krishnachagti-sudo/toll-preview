@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-file)">
 <p class="eyebrow">Comparison</p>
 <h1>Power Query vs a saved recipe</h1>
-<p class="cp-answer">Power Query detects column types from the first 200 rows of a CSV and reads dates in one locale per column, which works when a column uses one order. The fixer proves the order from every value, settles a column holding both DD/MM and MM/DD row by row, lists the ambiguous rows, and writes a file anyone can open; if your report already lives in Excel and refreshes from a folder, Power Query is the better home.</p>
+<p class="cp-answer">Power Query detects column types from the first 200 rows of a CSV and reads dates in one locale per column, which works when a column uses one order.<span class="ans-more"> The fixer proves the order from every value, settles a column holding both DD/MM and MM/DD row by row, lists the ambiguous rows, and writes a file anyone can open; if your report already lives in Excel and refreshes from a folder, Power Query is the better home.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="they">What Power Query does</h2>
 <ul><li>For CSV and text files, automatic type detection inspects the first 200 rows and adds a Changed type step; it is on by default.</li><li>Change type &gt; Using locale reads a column in a chosen locale, such as English (United Kingdom) for day/month/year.</li><li>The steps are saved in the workbook and run again on refresh.</li></ul>
@@ -94,7 +95,7 @@
 "><input type="hidden" name="dates" value="iso"><input type="hidden" name="enc" value="utf-8-bom"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this file in the fixer</button></form><p class="small"><a href="/toll-preview/fix-csv-export/?text=Account%2CCustomer%2CZIP%2CPosted%2CAmount%2COrder+ID%0A0010%2CCaf%C3%83%C2%A9+Rio%2C2134%2C13%2F03%2F2026%2C%22%241%2C200.50%22%2C4000123412341234%0A0200%2CZo%C3%83%C2%AB+Park%2C90210%2C03%2F04%2F2026%2C%2845.00%29%2C4000123412349876%0A3000%2CAnn+Lee%2C501%2C05%2F05%2F2026%2C12.00%2C1.23457E%2B15%0A0040%2C%C3%83%E2%80%B0lise+Roy%2C7030%2C28%2F02%2F2026%2C%22%242%2C050.00%22%2C4000555566667777%0A&amp;dates=iso&amp;enc=utf-8-bom">Open this example in the fixer</a></p></aside>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://learn.microsoft.com/en-us/power-query/data-types">Microsoft Learn: Data types in Power Query (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://learn.microsoft.com/en-us/power-query/data-types">Microsoft Learn: Data types in Power Query (read November 8, 2026)</a><span class="src-m">learn.microsoft.com</span></li></ul>
 </section>
 
 

@@ -1,6 +1,8 @@
 # Washington notice to owner
 
-Washington's notice to owner can be given any time, but it protects only what you supplied after the date 60 days before you mail it (10 days on a new single-family home), so for a first delivery on November 2, 2026 give it by Thursday, December 31, 2026 to cover everything (RCW 60.04.031(1)). The form below is the statute's; the PDF fills it in.
+Washington's notice to owner can be given any time, but it protects only what you supplied after the date 60 days before you mail it (10 days on a new single-family home) (RCW 60.04.031(1)). The form below is the statute's; the PDF fills it in.
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=WA&role=supplier-prime&project=commercial&first=2026-11-02): For a first delivery on November 2, 2026, give it by Thursday, December 31, 2026 to cover everything (RCW 60.04.031(1)).
 
 ## Work out your notice to owner date
 
@@ -48,6 +50,8 @@ RCW 60.04.031(4): shall substantially be in the following form, using lower-case
 The filled PDF is $2.90 per notice (a correction or re-download of the same notice is free for 30 days), with a service record page: the last day to serve it, who must get it, how, and a log for the dates and tracking numbers.
 
 ## The statute's words on timing
+
+**Read the statute's words (3 quotations)**
 
 - "The notice may be given at any time but only protects the right to claim a lien for professional services, materials, or equipment supplied after the date which is sixty days before:" [RCW 60.04.031, Notices](https://app.leg.wa.gov/RCW/default.aspx?cite=60.04.031)
 - "In the case of new construction of a single-family residence, the notice of a right to claim a lien may be given at any time but only protects the right to claim a lien for professional services, materials, or equipment supplied after a date which is ten days before the notice is given as described in this subsection." [RCW 60.04.031, Notices](https://app.leg.wa.gov/RCW/default.aspx?cite=60.04.031)

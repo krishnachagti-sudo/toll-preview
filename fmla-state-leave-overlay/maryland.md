@@ -36,6 +36,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA, 
 
 ## Maryland in its own words
 
+**Read the law's own words (4 quotations)**
+
 - "Starting January 1, 2028, eligible employees will be able to take up to 12 weeks of paid, job-protected leave." [Maryland Department of Labor, FAMLI (paid family and medical leave)](https://paidleave.maryland.gov/)
 - "an eligible employee is entitled to a total of 6 workweeks of unpaid parental leave during any 12-month period for one or more of the following:" [Md. Code, Labor and Employment 3-1202 (parental leave)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-1202&enactments=false)
 - "employs at least 15 but not more than 49 individuals in the State for each working day during each of 20 or more calendar workweeks in the current or preceding calendar year; and" [Md. Code, Labor and Employment 3-1201 (Parental Leave Act definitions)](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-1201&enactments=false)

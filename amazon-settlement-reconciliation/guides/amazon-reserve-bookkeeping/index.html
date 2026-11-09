@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the reconciler</h2><p class="muted">The made-up report below opens in the reconciler and is checked in your browser, free. Swap in your own settlement report there.</p><form method="get" action="/toll-preview/amazon-settlement-reconciliation/" class="cp-tool-form"><input type="hidden" name="sample" value="us"><input type="hidden" name="ledger" value="quickbooks-online"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this settlement in the reconciler</button></form><p class="small"><a href="/toll-preview/amazon-settlement-reconciliation/?sample=us&amp;ledger=quickbooks-online">Open this example in the reconciler</a></p></aside>
 <section>
 <h2 id="ledger">The reserve ledger</h2>
@@ -87,7 +88,7 @@
 </section>
 <section>
 <h2 id="journal">In the journal</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Amazon settlement 24816093571, October 2026, October 31, 2026</caption><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Amazon settlement 24816093571, October 2026, October 31, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Account</th><th scope="col" class="r num">Debit</th><th scope="col" class="r num">Credit</th></tr></thead><tbody>
 <tr><th scope="row">Amazon sales</th><td class="r num"></td><td class="r num">$144.96</td></tr>
 <tr><th scope="row">Amazon promotions</th><td class="r num">$5.00</td><td class="r num"></td></tr>
 <tr><th scope="row">Amazon selling fees</th><td class="r num">$21.75</td><td class="r num"></td></tr>
@@ -96,7 +97,7 @@
 <tr><th scope="row">Amazon reserve</th><td class="r num"></td><td class="r num">$120.00</td></tr>
 <tr><th scope="row">Amazon clearing</th><td class="r num">$177.77</td><td class="r num"></td></tr>
 <tr><th scope="row"><strong>Total</strong></th><td class="r num"><strong>$264.96</strong></td><td class="r num"><strong>$264.96</strong></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>The $120.00 release is a credit to Amazon reserve in the October journal; the $95.00 hold is a debit in the November one. Neither touches income or expenses.</p>
 </section>
 <section>
@@ -106,7 +107,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200136810">Seller Central Help: What is account level reserve? (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/202124090">Seller Central Help: Payments based on delivery date (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200136810">Seller Central Help: What is account level reserve? (read November 8, 2026)</a><span class="src-m">sellercentral.amazon.com</span></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/202124090">Seller Central Help: Payments based on delivery date (read November 8, 2026)</a><span class="src-m">sellercentral.amazon.com</span></li></ul>
 <p class="cp-note">Not accounting or tax advice: this is arithmetic on Amazon's own settlement file. The sample reports are made up; their amount-type and amount-description values are illustrative, and your file's own values are read as written.</p>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Open a reserve account.</strong> Create &quot;Amazon reserve&quot; as a current asset: the money is still yours, held by Amazon.</li><li><strong>Book each release.</strong> A &quot;previous reserve&quot; row is money coming back: credit the reserve account ($120.00 in the first sample).</li><li><strong>Book each new hold.</strong> A &quot;current reserve&quot; row is money held: debit the reserve account ($95.00 in the first sample).</li><li><strong>Compare with Amazon.</strong> The account's balance should equal what Amazon holds after the last settlement: $20.00 after the second sample.</li></ol></section>

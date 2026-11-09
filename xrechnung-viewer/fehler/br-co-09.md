@@ -1,6 +1,6 @@
 # BR-CO-09: USt-IdNr. ohne Länderkennung
 
-BR-CO-09 bedeutet: The Seller VAT identifier (BT-31), the Seller tax representative VAT identifier (BT-63) and the Buyer VAT identifier (BT-48) shall have a prefix in accordance with ISO code ISO 3166-1 alpha-2 by which the country of issue may be identified. Nevertheless, Greece may use the prefix ‘EL’. (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Schreiben Sie die USt-IdNr. mit Ländercode (DE123456789). Eine Steuernummer wie 12/345/67890 tragen Sie als BT-32 ein, nicht als USt-IdNr.
+BR-CO-09 bedeutet: The Seller VAT identifier (BT-31), the Seller tax representative VAT identifier (BT-63) and the Buyer VAT identifier (BT-48) shall have a prefix in accordance with ISO code ISO 3166-1 alpha-2 by which the country of issue may be identified. Nevertheless, Greece may use the prefix ‘EL’. (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

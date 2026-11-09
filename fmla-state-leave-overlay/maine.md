@@ -37,6 +37,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## Maine in its own words
 
+**Read the law's own words (7 quotations)**
+
 - "Eligible workers can take up to 12 weeks of paid time off in a benefit year." [Maine Department of Labor, Paid Family and Medical Leave](https://www.maine.gov/paidleave/)
 - "Benefits will only be paid for time out of work occurring on or after May 1, 2026." [Maine Department of Labor, Paid Family and Medical Leave](https://www.maine.gov/paidleave/)
 - "Your position, or an equivalent one, will be protected if you've been employed by your employer for at least 120 consecutive days." [Maine Paid Family and Medical Leave, Workers](https://www.maine.gov/paidleave/workers/)

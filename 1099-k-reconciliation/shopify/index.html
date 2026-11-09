@@ -74,11 +74,12 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <p>Shopify's help page says the form covers this: Only transactions processed through Shopify Payments; PayPal Express, manual payment methods and cash sales are not on it. The gross value of Shopify Payments transactions; refunds, chargebacks, processing fees and Shopify Balance bills are not deducted. The IRS defines Box 1a the same way for every platform: the gross, without regard to credits, cash equivalents, discounts, fees, refunds, shipping or any other amounts (<a href="/toll-preview/1099-k-reconciliation/what-box-1a-includes/">what Box 1a includes</a>).</p>
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Reconcile your Shopify 1099-K</h2><p class="muted">Box 1a and the totals from your platform report give the walkdown.</p><form method="get" action="/toll-preview/1099-k-reconciliation/" class="cp-tool-form"><input type="hidden" name="year" value="2025"><input type="hidden" name="type" value="sole-proprietor"><input type="hidden" name="kind" value="tpso"><input type="hidden" name="run" value="1"><div class="field"><label for="tf-filer">Filer on the form</label><input type="text" id="tf-filer" name="filer" value="Shopify Payments"></div><div class="field"><label for="tf-box1a">Box 1a ($)</label><input type="number" id="tf-box1a" name="box1a" value="48000"></div><div class="field"><label for="tf-box3">Box 3 (transactions)</label><input type="number" id="tf-box3" name="box3" value="612"></div><div class="field"><label for="tf-refunds">Refunds ($)</label><input type="number" id="tf-refunds" name="refunds" value="2150"></div><div class="field"><label for="tf-fees">Fees ($)</label><input type="number" id="tf-fees" name="fees" value="1422.4"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Reconcile my Shopify 1099-K</button></form><p class="small"><a href="/toll-preview/1099-k-reconciliation/?year=2025&amp;type=sole-proprietor&amp;kind=tpso&amp;run=1&amp;filer=Shopify+Payments&amp;box1a=48000&amp;box3=612&amp;refunds=2150&amp;fees=1422.4">Open these figures in the full reconciliation</a></p></aside>
 <section>
 <h2 id="walkdown">The walkdown, worked</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>A Shopify form for 2025 with made-up amounts, worked by the engine</caption><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th><th scope="col">Where it goes</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">A Shopify form for 2025 with made-up amounts, worked by the engine</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Line</th><th scope="col" class="r num">Amount</th><th scope="col">Where it goes</th></tr></thead><tbody>
 <tr><th scope="row">Box 1a gross</th><td class="r num">$48,000.00</td><td>Form 1099-K</td></tr>
 <tr><th scope="row">Business gross receipts from these forms</th><td class="r num">$48,000.00</td><td>Schedule C line 1, gross receipts</td></tr>
 <tr><th scope="row">Less: Refunds to customers</th><td class="r num">-$2,150.00</td><td>Schedule C line 2, returns and allowances</td></tr>
@@ -86,18 +87,18 @@
 <tr><th scope="row">Net sales after returns and allowances</th><td class="r num">$45,550.00</td><td>Schedule C line 3</td></tr>
 <tr><th scope="row">Less: Platform and processing fees</th><td class="r num">-$1,422.40</td><td>Schedule C line 10, commissions and fees</td></tr>
 <tr><th scope="row">What you kept from these sales before other costs</th><td class="r num">$44,127.60</td><td>Should be close to what the platform paid out to you</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="includes">What Shopify says is in the form</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Shopify Form 1099-K, from Shopify's help page (read November 8, 2026)</caption><thead><tr><th scope="col">Amount</th><th scope="col">In Box 1a</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Shopify Form 1099-K, from Shopify's help page (read November 8, 2026)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Amount</th><th scope="col">In Box 1a</th></tr></thead><tbody>
 <tr><th scope="row">Refunded sales</th><td>Included</td></tr>
 <tr><th scope="row">Fees (not deducted)</th><td>Included</td></tr>
 <tr><th scope="row">Sales tax</th><td>Not stated</td></tr>
 <tr><th scope="row">Tips</th><td>Not stated</td></tr>
 <tr><th scope="row">Shipping charged</th><td>Not stated</td></tr>
 <tr><th scope="row">Cash sales</th><td>Not included</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="dates">Dates and time zones</h2>
@@ -107,7 +108,7 @@
 <h2 id="download">Where to get the form and the detail</h2>
 <ul><li>Shopify admin: Finance &gt; Documents &gt; 1099-K, then the form.</li><li>The transactions on the form: Finance &gt; Payouts &gt; View transactions &gt; Export &gt; 1099-K Transactions, with the date range.</li><li>The detail to reconcile with: 1099-K Transactions CSV (Finance &gt; Payouts &gt; View transactions &gt; Export).</li></ul>
 <p>Accounts on one tax ID: Reporting is per tax ID: accounts sharing a TIN are combined for the threshold, and each account gets a form for its own volume. Corrections: Name, address or tax ID can be updated from Finance &gt; Documents &gt; 1099-K &gt; Update Details until July 15.</p>
-<ul class="cp-sources"><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries/united-states/tax-reporting">Shopify Help Center: Form 1099-K tax reporting with Shopify Payments for the United States, read November 8, 2026</a></li><li><a href="https://www.irs.gov/instructions/i1099k">IRS: Instructions for Form 1099-K (Rev. 12/2026), read November 8, 2026</a></li><li><a href="https://www.irs.gov/businesses/what-to-do-with-form-1099-k">IRS: What to do with Form 1099-K, read November 8, 2026</a></li><li><a href="https://www.irs.gov/instructions/i1040sc">IRS: Instructions for Schedule C (Form 1040) (2025), read November 8, 2026</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/supported-countries/united-states/tax-reporting">Shopify Help Center: Form 1099-K tax reporting with Shopify Payments for the United States, read November 8, 2026</a><span class="src-m">help.shopify.com</span></li><li><a href="https://www.irs.gov/instructions/i1099k">IRS: Instructions for Form 1099-K (Rev. 12/2026), read November 8, 2026</a><span class="src-m">irs.gov</span></li><li><a href="https://www.irs.gov/businesses/what-to-do-with-form-1099-k">IRS: What to do with Form 1099-K, read November 8, 2026</a><span class="src-m">irs.gov</span></li><li><a href="https://www.irs.gov/instructions/i1040sc">IRS: Instructions for Schedule C (Form 1040) (2025), read November 8, 2026</a><span class="src-m">irs.gov</span></li></ul>
 <p class="cp-note">Computed from IRS instructions and FAQs (each cited with the date read) and the amounts you enter. Not tax or legal advice. You decide which payments are business, personal or in error; the tool applies the IRS reporting text to your classification. State 1099-K thresholds are not covered: check your state revenue department.</p>
 </section>
 

@@ -72,70 +72,74 @@
 </header>
 
 <main id="main" class="its">
-  <section class="wrap its-intro">
+  <section class="wrap its-intro t-intro">
     <p class="eyebrow">Gratuit, dans votre navigateur</p>
     <h1>Réduire une photo à un poids en Ko</h1>
     <p class="lede">Les formulaires en ligne exigent souvent « photo de 50 Ko maximum ». Choisissez la limite, déposez votre photo et récupérez une copie qui passe, aussi grande et nette que la limite le permet.</p>
-    <p class="hint"><a href="/toll-preview/image-to-size/" hreflang="en" lang="en">Use this tool in English</a></p>
-    <p class="its-promise"><strong>Votre photo ne quitte pas votre appareil.</strong> Elle est réduite ici, dans cette page, rien n’est envoyé et l’outil est gratuit.</p>
+<ul class="trust" aria-label="À propos de ce site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Fait par <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, sans IA</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Sources officielles, datées</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Les fichiers que vous envoyez ne sont pas conservés</a></span></li><li class="tl2"><a href="/toll-preview/security/">Sécurité</a><a href="/toll-preview/terms/">Conditions</a></li></ul>
+    <p class="its-promise t-price"><strong>Votre photo ne quitte pas votre appareil.</strong> Elle est réduite ici, dans cette page, rien n’est envoyé et l’outil est gratuit.</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/image-to-size/" hreflang="en">Voir en anglais</a></p>
   </section>
 
-  <section class="wrap its-desk" aria-label="Réducteur de photo">
-    <form class="its-form" id="its-form" novalidate>
-      <div class="field">
-        <span class="its-step" id="its-photo-label">1. Votre photo</span>
-        <label class="its-drop" id="its-drop" for="its-file">
-          <input type="file" id="its-file" accept="image/jpeg,image/png,image/webp" aria-describedby="its-photo-label its-file-note">
-          <span class="its-drop-icon" aria-hidden="true"></span>
-          <span class="its-drop-text" id="its-drop-text">Choisissez une photo ou déposez-la ici</span>
-          <span class="its-drop-note" id="its-file-note">JPEG, PNG ou WebP</span>
-        </label>
-        <p class="field-error" id="its-file-err" role="alert"></p>
-      </div>
+  <section class="wrap its-desk t-desk" aria-label="Réducteur de photo" data-jump="Outil">
+    <form class="its-form t-panel" id="its-form" novalidate="">
+<div class="field">
+<span class="its-step" id="its-photo-label">1. Votre photo</span>
+<label class="its-drop" for="its-file" id="its-drop">
+<input accept="image/jpeg,image/png,image/webp" aria-describedby="its-photo-label its-file-note" id="its-file" type="file"/>
+<span aria-hidden="true" class="its-drop-icon"></span>
+<span class="its-drop-text" id="its-drop-text">Choisissez une photo ou déposez-la ici</span>
+<span class="its-drop-note" id="its-file-note">JPEG, PNG ou WebP</span>
+</label>
+<p class="field-error" id="its-file-err" role="alert"></p>
+</div>
+<div class="field">
+<span class="its-step" id="its-target-label">2. Le poids qu’elle ne doit pas dépasser</span>
+<div aria-labelledby="its-target-label" class="its-chips" id="its-chips" role="group"></div>
+<label class="its-custom" for="its-kb">
+<span>Ou saisissez votre propre limite</span>
+<span class="its-kb-box">
+<input aria-describedby="its-kb-hint its-kb-err" id="its-kb" inputmode="numeric" max="100000" min="1" step="1" type="number" value="50"/>
+<span aria-hidden="true" class="its-kb-unit">KB</span>
+</span>
+</label>
 
-      <div class="field">
-        <span class="its-step" id="its-target-label">2. Le poids qu’elle ne doit pas dépasser</span>
-        <div class="its-chips" id="its-chips" role="group" aria-labelledby="its-target-label"></div>
-        <label class="its-custom" for="its-kb">
-          <span>Ou saisissez votre propre limite</span>
-          <span class="its-kb-box">
-            <input type="number" id="its-kb" inputmode="numeric" min="1" max="100000" step="1" value="50" aria-describedby="its-kb-hint its-kb-err">
-            <span class="its-kb-unit" aria-hidden="true">KB</span>
-          </span>
-        </label>
-        <p class="hint" id="its-kb-hint">Ici, 1 Ko vaut 1 000 octets : une photo qui passe tient donc aussi dans les formulaires qui comptent par 1 024.</p>
-        <p class="field-error" id="its-kb-err"></p>
-      </div>
+<p class="field-error" id="its-kb-err"></p>
+</div>
+<button class="btn t-run" disabled="" id="its-go" type="submit">Réduire la photo</button><p class="hint" id="its-kb-hint">Ici, 1 Ko vaut 1 000 octets : une photo qui passe tient donc aussi dans les formulaires qui comptent par 1 024.</p>
+<p class="visually-hidden" id="its-status" role="status"></p>
+</form>
 
-      <button class="btn" type="submit" id="its-go" disabled>Réduire la photo</button>
-      <p class="visually-hidden" id="its-status" role="status"></p>
-    </form>
-
-    <div class="its-out" id="its-out" aria-live="polite">
-      <div class="its-idle">
-        <div class="its-gauge" aria-hidden="true">
-          <div class="its-gauge-track"><span class="its-gauge-needle" style="left:0"></span></div>
-        </div>
-        <p class="muted">Votre résultat apparaît ici : le nouveau poids, sa distance à votre limite et un bouton de téléchargement.</p>
-      </div>
-    </div>
+    <div aria-live="polite" class="its-out t-panel t-result" id="its-out">
+<div class="its-idle">
+<div aria-hidden="true" class="its-gauge">
+<div class="its-gauge-track"><span class="its-gauge-needle" style="left:0"></span></div>
+</div>
+<p class="muted">Votre résultat apparaît ici : le nouveau poids, sa distance à votre limite et un bouton de téléchargement.</p>
+</div>
+</div>
   </section>
 
-  <section class="wrap its-notes" aria-labelledby="its-notes-title">
+  <section class="wrap its-notes t-sec" aria-labelledby="its-notes-title" data-jump="Fonctionnement">
     <h2 id="its-notes-title">Comment la photo est ajustée</h2>
-    <div class="its-note-cols">
+    <div class="t-sum">
       <div>
-        <h3>La qualité d’abord, puis la taille</h3>
         <p>L’outil essaie votre photo à sa taille d’origine et teste des niveaux de qualité jusqu’à trouver le plus net qui passe. Ce n’est que si même la qualité la plus basse reste trop lourde qu’il réduit l’image, par petites étapes, et recommence.</p>
+        <details class="xpand">
+          <summary>Ce qui change</summary>
+          <div class="xp-in">
+            <p>Le résultat est toujours un JPEG. Un PNG avec des zones transparentes reçoit un fond blanc. Les photos prises de côté avec un téléphone sont remises à l’endroit. Quand la photo est réduite, les données de l’appareil photo, comme le lieu, ne sont pas copiées dans le nouveau fichier. Un JPEG déjà sous votre limite est rendu tel quel, avec ses données d’appareil.</p>
+          </div>
+        </details>
       </div>
-      <div>
-        <h3>Ce qui change</h3>
-        <p>Le résultat est toujours un JPEG. Un PNG avec des zones transparentes reçoit un fond blanc. Les photos prises de côté avec un téléphone sont remises à l’endroit. Quand la photo est réduite, les données de l’appareil photo, comme le lieu, ne sont pas copiées dans le nouveau fichier. Un JPEG déjà sous votre limite est rendu tel quel, avec ses données d’appareil.</p>
-      </div>
-      <div>
-        <h3>Ce qu’il ne fait pas</h3>
-        <p>Il ne réduit pas une image en dessous d’un dixième de sa taille. Si votre limite est trop petite pour cela, il vous le dit et vous pouvez essayer une limite plus haute.</p>
-      </div>
+      <aside class="t-nocover" aria-labelledby="its-nocover-title">
+        <h3 id="its-nocover-title">Ce qu’il ne fait pas</h3>
+        <ul>
+          <li>Il ne réduit pas une image en dessous d’un dixième de sa taille. Si votre limite est trop petite pour cela, il vous le dit et vous pouvez essayer une limite plus haute.</li>
+          <li>Il ne recadre pas la photo et ne change pas sa forme pour l’adapter aux dimensions demandées par un formulaire.</li>
+          <li>Le résultat est un JPEG ; il ne produit pas de fichiers PNG ni WebP.</li>
+        </ul>
+      </aside>
     </div>
   </section>
   

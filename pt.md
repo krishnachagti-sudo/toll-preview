@@ -4,9 +4,9 @@
 
 ## Ferramentas
 
-- [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/pt/fx-on-date/)
-- [Image to size](https://krishnachagti-sudo.github.io/toll-preview/pt/image-to-size/)
-- [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/pt/qr-code-generator/)
+- [Cotação de câmbio em uma data](https://krishnachagti-sudo.github.io/toll-preview/pt/fx-on-date/): A cotação de referência oficial do BCE para um par de moedas em qualquer data desde 1999, com a data realmente usada. Ou taxa do Tesouro dos EUA, do IRS e da HMRC.
+- [Reduzir foto para um tamanho em KB](https://krishnachagti-sudo.github.io/toll-preview/pt/image-to-size/): Reduza o tamanho de uma foto para ficar abaixo de um valor exato em KB, como 50 KB ou 200 KB. Grátis e no seu navegador: a foto não sai do seu dispositivo.
+- [Gerador de QR Code](https://krishnachagti-sudo.github.io/toll-preview/pt/qr-code-generator/): Gere um QR Code grátis e sem cadastro: link, Wi-Fi, contato, e-mail, SMS, ligação ou local. Confira se um código já impresso depende de um fornecedor.
 
 ## Guias
 

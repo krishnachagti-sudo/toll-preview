@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-money)">
 <p class="eyebrow">Guide</p>
 <h1>Harvest and Everhour exports to invoice lines</h1>
-<p class="cp-answer">Harvest's API names a time entry's date, client, project, task, person, notes and decimal hours; Everhour's reports carry the columns you choose, with time that may be written like &quot;1h 45m&quot;. Both map onto the same invoice line: an Everhour-style sample of 4 entries becomes 2 task lines, each entry rounded up to 6 minutes at $75, totalling $600.00.</p>
+<p class="cp-answer">Harvest's API names a time entry's date, client, project, task, person, notes and decimal hours; Everhour's reports carry the columns you choose, with time that may be written like &quot;1h 45m&quot;.<span class="ans-more"> Both map onto the same invoice line: an Everhour-style sample of 4 entries becomes 2 task lines, each entry rounded up to 6 minutes at $75, totalling $600.00.</span></p>
 <dl class="cp-facts"><div><dt>Total</dt><dd class="num">$600.00</dd></div><div><dt>Lines</dt><dd class="num">2</dd></div></dl>
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="harvest">Harvest</h2>
 <p>Harvest's API v2 names these time entry fields; hours is decimal time tracked and rounded_hours is the value used in summary reports and invoices, rounded by the Time Rounding setting in Preferences. Harvest's help center returned 403 when read, so no help-center wording is used.</p>
@@ -107,16 +108,16 @@
 <section>
 <h2 id="expenses">Rows without time</h2>
 <p>Expense rows, subtotal rows and blank rows have no time, so they are skipped and listed by row number; add expenses to the invoice yourself.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>The Everhour-style sample, one line per task at $75, each entry rounded up to 6 minutes.</caption><thead><tr><th scope="col">Line</th><th scope="col">Dates</th><th scope="col" class="r num">Hours</th><th scope="col" class="r num">Rate</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The Everhour-style sample, one line per task at $75, each entry rounded up to 6 minutes.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Line</th><th scope="col">Dates</th><th scope="col" class="r num">Hours</th><th scope="col" class="r num">Rate</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
 <tr><th scope="row">App launch: Copywriting</th><td>Nov 2 to Nov 6, 2026; 3 entries</td><td class="r num">7.10</td><td class="r num">$75.00/h</td><td class="r num">$532.50</td></tr>
 <tr><th scope="row">App launch: Research</th><td>Nov 4, 2026; 1 entry</td><td class="r num">0.90</td><td class="r num">$75.00/h</td><td class="r num">$67.50</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Open the Harvest sample</h2><p class="muted">Decimal hours, one line per task.</p><form method="get" action="/toll-preview/time-export-to-invoice/" class="cp-tool-form"><input type="hidden" name="sample" value="2"><input type="hidden" name="source" value="harvest"><input type="hidden" name="group" value="task"><input type="hidden" name="inc" value="6"><input type="hidden" name="mode" value="nearest"><input type="hidden" name="level" value="line"><input type="hidden" name="rates" value="default=85;task:Project Management=65"><input type="hidden" name="run" value="1"><input type="hidden" name="run" value="1"><button class="btn" type="submit">See the lines</button></form><p class="small"><a href="/toll-preview/time-export-to-invoice/?sample=2&amp;source=harvest&amp;group=task&amp;inc=6&amp;mode=nearest&amp;level=line&amp;rates=default%3D85%3Btask%3AProject+Management%3D65&amp;run=1">Open this example in the tool</a></p></aside>
 <p class="cp-note">Lines are worked out from the entries shown, with the grouping, rounding and rates named. Rounding for freelance work is set by your contract; check an invoice before you send it. Not affiliated with Toggl, Clockify, Harvest or Everhour. Not tax or legal advice.</p>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/">Harvest API v2: Time entries (read November 8, 2026)</a></li><li><a href="https://support.everhour.com/article/511-columns-in-reports-how-to">Everhour Help: Columns in reports (updated October 22, 2026, read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/">Harvest API v2: Time entries (read November 8, 2026)</a><span class="src-m">help.getharvest.com</span></li><li><a href="https://support.everhour.com/article/511-columns-in-reports-how-to">Everhour Help: Columns in reports (updated October 22, 2026, read November 8, 2026)</a><span class="src-m">support.everhour.com</span></li></ul>
 </section>
 
 

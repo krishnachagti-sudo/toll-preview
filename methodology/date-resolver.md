@@ -2,9 +2,43 @@
 
 A phrase is read by a small fixed grammar and worked out on whole day numbers from an explicit reference date, so the machine's time zone cannot change it. The start day is not counted, months keep the day of the month or the month's last day, weeks run Monday to Sunday, and business days skip weekends and the chosen holidays. Dates run from 1900 to 2199.
 
+## How does it work?
+
+1. The phrase is lowercased and split into words and numbers.
+2. A small hand-written grammar reads the phrase into a tree: an offset (such as 3 weeks) from or before an anchor (today, a weekday, the start or end of a period, an nth weekday of a month, or a written date).
+3. Every date is turned into a whole day number (days since 1970-01-01).
+4. Calendar days and weeks are added as whole days.
+5. Business days are added with the Business days engine for the chosen region, which skips Saturdays, Sundays and that region's holidays and names each one.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/date-resolver/#what) below.
+
+## What does it not cover?
+
+- Times of day are refused: the answer is a calendar date, never a time.
+- Only the grammar's forms are read. A phrase it does not know is refused with the forms it does know, never guessed.
+- Holidays are the US federal, England and Wales or India central government (Delhi) calendars only. State, bank, school and company calendars are not included, except your own days off.
+- The tool does not decide which reading of an ambiguous phrase you meant. It gives the default and the other one.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 3 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The grammar and counting rules are fixed in the code. The holiday rules are the Business days tool's, last changed on 2026-10-30, and the OPM federal holiday page was read on 2026-11-07.
+- [Tested: 5 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Calendar days, months, quarters and years, month-end clamping, weekdays on both readings, periods, business days, written dates, rolling and ISO weeks are each checked phrase by phrase from a fixed reference date.
+
+- [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/), federal holidays and observed days, read 2026-11-07
+- [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103), rules as of 2026-10-30, read 2026-10-30
+- [ISO 8601: Date and time format](https://www.iso.org/iso-8601-date-and-time-format.html), weeks Monday to Sunday, not recorded
+
+> The grammar and counting rules are fixed in the code. Business days use the Business days tool's holiday calendars (rules last changed 2026-10-30); the OPM federal holiday page was read on 2026-11-07.
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the natural-language date resolver compute?
 
-The tool turns a phrase such as "90 days from today", "10 business days after next Friday" or "end of next month" into one calendar date with its weekday, ISO week and day of the year. It says every step it took and every holiday it skipped. When a phrase can honestly mean two dates, such as "next Friday" said on a Monday, the answer says so and gives both.
+The tool turns a phrase such as "90 days from today", "10 business days after next Friday" or "end of next month" into one calendar date with its weekday, ISO week and day of the year.
+
+**In detail: inputs and outputs**
+
+It says every step it took and every holiday it skipped. When a phrase can honestly mean two dates, such as "next Friday" said on a Monday, the answer says so and gives both.
 
 Inputs:
 
@@ -23,7 +57,7 @@ Outputs:
 - holidaysSkipped and daysOffSkipped, each with its date and name; rolledFrom when a roll moved the date
 - steps in words, and assumptions: the reference date and where it came from, the holiday calendar, the weekday rule, the date order, the roll and the counting rules
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. The phrase is lowercased and split into words and numbers. Number words such as "twenty-one" are read as numbers, and filler such as "excluding federal holidays" is dropped, because business days always skip the chosen holidays.
 2. A small hand-written grammar reads the phrase into a tree: an offset (such as 3 weeks) from or before an anchor (today, a weekday, the start or end of a period, an nth weekday of a month, or a written date). Anything it does not know is refused with a list of the forms it does know.
@@ -55,6 +89,8 @@ The holiday calendars are the Business days tool's, imported read-only: US feder
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - A Saturday New Year's Day: the US holiday is observed on Friday, December 31, so 1 business day after Thursday, December 30, 2027 is Monday, January 3, 2028.
 - "Next Friday" said on a Saturday or Sunday is the same day on both readings, so the answer is not marked ambiguous.
 - A roll on a date that is already a business day leaves it unchanged and reports no rolledFrom.
@@ -67,14 +103,6 @@ The holiday calendars are the Business days tool's, imported read-only: US feder
 
 **"10 business days after next Friday", said on Monday, November 2, 2026**
 
-```json
-{
-  "text": "10 business days after next Friday",
-  "ref": "2026-11-02",
-  "region": "US"
-}
-```
-
 "10 business days after next Friday", said on Monday, November 2, 2026
 
 | Result | Value |
@@ -84,15 +112,19 @@ The holiday calendars are the Business days tool's, imported read-only: US feder
 | holidaysSkipped | Veterans Day (2026-11-11) |
 | other reading | 2026-11-30 |
 
-**Net 30 from Monday, October 12, 2026, rolled to the following business day**
+**The input**
 
 ```json
 {
-  "text": "net 30 from 2026-10-12",
-  "ref": "2026-10-12",
-  "roll": "following"
+  "text": "10 business days after next Friday",
+  "ref": "2026-11-02",
+  "region": "US"
 }
 ```
+
+**More worked examples (2)**
+
+**Net 30 from Monday, October 12, 2026, rolled to the following business day**
 
 Net 30 from Monday, October 12, 2026, rolled to the following business day
 
@@ -102,7 +134,27 @@ Net 30 from Monday, October 12, 2026, rolled to the following business day
 | weekday | Thursday |
 | rolledFrom | 2026-11-11 |
 
+**The input**
+
+```json
+{
+  "text": "net 30 from 2026-10-12",
+  "ref": "2026-10-12",
+  "roll": "following"
+}
+```
+
 **Three phrases in one call, said on Saturday, November 7, 2026**
+
+Three phrases in one call, said on Saturday, November 7, 2026
+
+| Result | Value |
+| --- | --- |
+| end of next month | 2026-12-31 (Thursday) |
+| first Monday of March 2027 | 2027-03-01 (Monday) |
+| last business day of this quarter | 2026-12-31 (Thursday) |
+
+**The input**
 
 ```json
 {
@@ -116,46 +168,11 @@ Net 30 from Monday, October 12, 2026, rolled to the following business day
 }
 ```
 
-Three phrases in one call, said on Saturday, November 7, 2026
-
-| Result | Value |
-| --- | --- |
-| end of next month | 2026-12-31 (Thursday) |
-| first Monday of March 2027 | 2027-03-01 (Monday) |
-| last business day of this quarter | 2026-12-31 (Thursday) |
-
-## What does it not do?
-
-- Times of day are refused: the answer is a calendar date, never a time.
-- Only the grammar's forms are read. A phrase it does not know is refused with the forms it does know, never guessed.
-- Holidays are the US federal, England and Wales or India central government (Delhi) calendars only. State, bank, school and company calendars are not included, except your own days off.
-- The tool does not decide which reading of an ambiguous phrase you meant. It gives the default and the other one.
-
-## Where does the data come from, and how fresh is it?
-
-The grammar and counting rules are fixed in the code. The holiday rules are the Business days tool's, last changed on 2026-10-30, and the OPM federal holiday page was read on 2026-11-07.
-
-- [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
-- [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103)
-- [ISO 8601: Date and time format](https://www.iso.org/iso-8601-date-and-time-format.html)
-
-The grammar and counting rules are fixed in the code. Business days use the Business days tool's holiday calendars (rules last changed 2026-10-30); the OPM federal holiday page was read on 2026-11-07.
-
-Natural-language date resolver: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/) | federal holidays and observed days | 2026-11-07 |
-| [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103) | rules as of 2026-10-30 | 2026-10-30 |
-| [ISO 8601: Date and time format](https://www.iso.org/iso-8601-date-and-time-format.html) | weeks Monday to Sunday | not recorded |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-Calendar days, months, quarters and years, month-end clamping, weekdays on both readings, periods, business days, written dates, rolling and ISO weeks are each checked phrase by phrase from a fixed reference date. Business days must equal the Business days tool's own add, and refused phrases are checked to be refused.
+Business days must equal the Business days tool's own add, and refused phrases are checked to be refused.
 
-What its test suite asserts:
+**What its test suite asserts (5)**
 
 - Calendar days, weeks, months, quarters and years are checked phrase by phrase from a fixed reference date: 90 days from Monday, November 2, 2026 is Sunday, January 31, 2027.
 - Month ends are clamped and leap years kept: 1 month after January 31, 2027 is February 28, and 1 year after February 29, 2028 is February 28, 2029.

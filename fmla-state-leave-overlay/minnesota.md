@@ -37,6 +37,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## Minnesota in its own words
 
+**Read the law's own words (6 quotations)**
+
 - "The total number of weeks that an applicant may take benefits in a single benefit year for a serious health condition is the lesser of 12 weeks, or 12 weeks minus the number of weeks within the same benefit year that the applicant received benefits for bonding, safety leave, family care, and qualifying exigency plus eight weeks." [Minn. Stat. 268B.04, Financial eligibility; benefits](https://www.revisor.mn.gov/statutes/cite/268B.04)
 - "Ninety calendar days from the date of hire, an employee has a right and is entitled to reinstatement as provided under this subdivision" [Minn. Stat. 268B.09, Employment protections](https://www.revisor.mn.gov/statutes/cite/268B.09)
 - "An employer may require leave taken under this chapter to run concurrently with leave taken for the same purpose under section 181.941 or the Family and Medical Leave Act" [Minn. Stat. 268B.27, Relationship to other leave](https://www.revisor.mn.gov/statutes/cite/268B.27)

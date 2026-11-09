@@ -1,6 +1,6 @@
 # BR-DE-15: Käuferreferenz (BT-10) fehlt, meist die Leitweg-ID
 
-BR-DE-15 bedeutet: Das Element "Buyer reference" (BT-10) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Tragen Sie die Leitweg-ID (oder bei privaten Kunden die vereinbarte Referenz) in BT-10 ein: UBL cbc:BuyerReference, CII ram:ApplicableHeaderTradeAgreement/ram:BuyerReference. Die Leitweg-ID nennt Ihnen der öffentliche Auftraggeber.
+BR-DE-15 bedeutet: Das Element "Buyer reference" (BT-10) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Die Rechnung enthält keine Käuferreferenz. Bei Rechnungen an öffentliche Auft
 
 ## So beheben Sie den Fehler
 
-Tragen Sie die Leitweg-ID (oder bei privaten Kunden die vereinbarte Referenz) in BT-10 ein: UBL cbc:BuyerReference, CII ram:ApplicableHeaderTradeAgreement/ram:BuyerReference. Die Leitweg-ID nennt Ihnen der öffentliche Auftraggeber.
+Tragen Sie die Leitweg-ID (oder bei privaten Kunden die vereinbarte Referenz) in BT-10 ein: UBL `cbc:BuyerReference`, CII `ram:ApplicableHeaderTradeAgreement/ram:BuyerReference`. Die Leitweg-ID nennt Ihnen der öffentliche Auftraggeber.
 
 ## Geprüftes Beispiel
 

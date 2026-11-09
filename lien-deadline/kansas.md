@@ -1,6 +1,8 @@
 # Kansas lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Kansas, no preliminary notice applies to you here, the lien statement must be filed by April 29, 2027 and the suit to enforce it must be filed by April 29, 2028 (if recorded on the last day, April 29, 2027) (K.S.A. 60-1103(a)(1), (e); K.S.A. 60-1105(a)).
+In Kansas, a subcontractor records the lien within three months after you last furnished supplies, material or equipment or last performed labor (five months on property other than residential property, if you file a notice of extension within the three months) (K.S.A. 60-1103(a)(1), (e)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=KS&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Kansas, no preliminary notice applies to you here, the lien statement must be filed by April 29, 2027 and the suit to enforce it must be filed by April 29, 2028 (if recorded on the last day, April 29, 2027) (K.S.A. 60-1103(a)(1), (e); K.S.A. 60-1105(a)).
 
 ## Work out your Kansas dates
 
@@ -36,6 +38,8 @@ Weekends and holidays: the Kansas text we read does not move a deadline that fal
 - Kansas has no general preliminary notice. On residential work, 60-1103 also requires the 60-1103a warning statement where it applies and, on new residential property sold to a good faith purchaser, a notice of intent to perform filed before the deed is recorded (60-1103b). We have not modeled 60-1103a.
 
 ## Kansas in its own words
+
+**Read the statute's words (5 quotations)**
 
 - "within four months after the date material, equipment or supplies, used or consumed was last furnished or last labor performed under the contract a verified statement showing:" [K.S.A. 60-1102, Lien statement](https://www.ksrevisor.gov/statutes/chapters/ch60/060_011_0002.html)
 - "a lien for the furnishing of labor, equipment, materials or supplies on property other than residential property may be claimed pursuant to this section within five months only if the claimant has filed a notice of extension within four months since last furnishing labor, equipment, materials or supplies to the job site." [K.S.A. 60-1102, Lien statement](https://www.ksrevisor.gov/statutes/chapters/ch60/060_011_0002.html)

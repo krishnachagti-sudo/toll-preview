@@ -1,15 +1,15 @@
 # What date is 8 weeks from today?
 
-8 weeks (56 days) from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Sunday, January 3, 2027. Counted from tomorrow it is Monday, January 4, 2027.
+8 weeks (56 days) from today, Monday, November 9, 2026 (today's date in New York, US Eastern time), is Monday, January 4, 2027. Counted from tomorrow it is Tuesday, January 5, 2027.
 
-- Date: January 3, 2027
-- Weekday: Sunday
-- ISO week: 2026-W53
+- Date: January 4, 2027
+- Weekday: Monday
+- ISO week: 2027-W01
 - US business days between: 36
 
 ## 8 weeks from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-09&region=US)
 
 ## 8 weeks from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 8 weeks after | US business days |
 | --- | --- | ---: |
-| [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-08) | Sun, Jan 3, 2027 | 36 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-09) | Mon, Jan 4, 2027 | 36 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-10) | Tue, Jan 5, 2027 | 36 |
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-11) | Wed, Jan 6, 2027 | 37 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-19) | Thu, Jan 14, 2027 | 37 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-20) | Fri, Jan 15, 2027 | 37 |
 | [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-21) | Sat, Jan 16, 2027 | 37 |
+| [Sun, Nov 22, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=8+weeks+from+today&ref=2026-11-22) | Sun, Jan 17, 2027 | 37 |
 
 ## How it is counted
 
@@ -74,5 +74,5 @@ One day later than 8 weeks from today: the same as 57 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/8-weeks-from-today/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/8-weeks-from-today.csv

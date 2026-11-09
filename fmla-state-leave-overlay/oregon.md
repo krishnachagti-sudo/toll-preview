@@ -38,6 +38,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## Oregon in its own words
 
+**Read the law's own words (8 quotations)**
+
 - "Employees can take up to 12 weeks paid leave in a 52-week period (starting the Sunday before the date their leave begins) for family, medical, or safe leave. If pregnant, in some situations, an employee may be able to take up to 2 more weeks for a total of 14 weeks." [Paid Leave Oregon, home page](https://paidleave.oregon.gov/)
 - "Employees who currently work in Oregon and who made at least $1,000 in Oregon in their base year before they apply for Paid Leave may be eligible for benefits." [Paid Leave Oregon, home page](https://paidleave.oregon.gov/)
 - "Your job is protected by law while you're on paid leave if you have worked at least 90 consecutive days for your employer." [Paid Leave Oregon, Overview for employees](https://paidleave.oregon.gov/employees/overview.html)

@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check your job around March 28</h2><p class="muted">The list starts the day before the change.</p><form method="get" action="/toll-preview/cron/" class="cp-tool-form"><div class="field"><label for="tf-expr">Cron expression</label><input type="text" id="tf-expr" name="expr" value="30 1 * * *"></div><input type="hidden" name="dialect" value="vixie"><div class="field"><label for="tf-tz">Time zone (IANA name)</label><input type="text" id="tf-tz" name="tz" value="Europe/London"></div><input type="hidden" name="from" value="2027-03-27T00:00"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the next runs</button></form><p class="small"><a href="/toll-preview/cron/?expr=30+1+*+*+*&amp;dialect=vixie&amp;tz=Europe%2FLondon&amp;from=2027-03-27T00%3A00">Open this schedule in the checker</a></p></aside>
 <section>
 <h2 id="forward">March 28: a 01:30 job in Europe/London</h2>
@@ -105,7 +106,7 @@
 </section>
 <section>
 <h2 id="zones">Every Europe time zone in 2027</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Worked out from the IANA time zone database.</caption><thead><tr><th scope="col">Time zone</th><th scope="col">Date</th><th scope="col">Clocks</th><th scope="col">UTC offset</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Worked out from the IANA time zone database.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Time zone</th><th scope="col">Date</th><th scope="col">Clocks</th><th scope="col">UTC offset</th></tr></thead><tbody>
 <tr><th scope="row">Europe/London</th><td>Sunday, March 28, 2027</td><td>01:00 becomes 02:00</td><td>+00:00 to +01:00</td></tr>
 <tr><th scope="row">Europe/London</th><td>Sunday, October 31, 2027</td><td>02:00 becomes 01:00</td><td>+01:00 to +00:00</td></tr>
 <tr><th scope="row">Europe/Dublin</th><td>Sunday, March 28, 2027</td><td>01:00 becomes 02:00</td><td>+00:00 to +01:00</td></tr>
@@ -126,11 +127,11 @@
 <tr><th scope="row">Europe/Athens</th><td>Sunday, October 31, 2027</td><td>04:00 becomes 03:00</td><td>+03:00 to +02:00</td></tr>
 <tr><th scope="row">Europe/Helsinki</th><td>Sunday, March 28, 2027</td><td>03:00 becomes 04:00</td><td>+02:00 to +03:00</td></tr>
 <tr><th scope="row">Europe/Helsinki</th><td>Sunday, October 31, 2027</td><td>04:00 becomes 03:00</td><td>+03:00 to +02:00</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.iana.org/time-zones">IANA: Time zone database</a></li><li><a href="https://manpages.debian.org/bookworm/cron/cron.8.en.html">Debian cron(8): clock changes (read November 8, 2026)</a></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types (read November 8, 2026)</a></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.iana.org/time-zones">IANA: Time zone database</a><span class="src-m">iana.org</span></li><li><a href="https://manpages.debian.org/bookworm/cron/cron.8.en.html">Debian cron(8): clock changes (read November 8, 2026)</a><span class="src-m">manpages.debian.org</span></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types (read November 8, 2026)</a><span class="src-m">docs.aws.amazon.com</span></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a><span class="src-m">docs.github.com</span></li></ul>
 </section>
 
 

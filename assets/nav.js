@@ -251,13 +251,24 @@
     else if (e.key === 'Escape' && panel && !panel.hidden) setPanel(false);
   });
   // ---------- a tool page's parts ----------
+  // The bar's own words, in the page's language (<html lang>); English for any other.
+  var UI = {
+    en: { readMore: 'Read more', more: 'More', calc: 'Calculator', code: 'From code', onPage: 'On this page', morePages: 'More pages', menu: 'Menu' },
+    es: { readMore: 'Leer más', more: 'Más', calc: 'Herramienta', code: 'Desde código', onPage: 'En esta página', morePages: 'Más páginas', menu: 'Menú' },
+    fr: { readMore: 'Lire la suite', more: 'Plus', calc: 'Outil', code: 'Par le code', onPage: 'Sur cette page', morePages: 'Autres pages', menu: 'Menu' },
+    pt: { readMore: 'Ler mais', more: 'Mais', calc: 'Ferramenta', code: 'Por código', onPage: 'Nesta página', morePages: 'Mais páginas', menu: 'Menu' },
+    de: { readMore: 'Weiterlesen', more: 'Mehr', calc: 'Werkzeug', code: 'Per Code', onPage: 'Auf dieser Seite', morePages: 'Weitere Seiten', menu: 'Menü' },
+    hi: { readMore: 'और पढ़ें', more: 'और', calc: 'टूल', code: 'कोड से', onPage: 'इस पेज पर', morePages: 'और पेज', menu: 'मेन्यू' },
+    ja: { readMore: '続きを読む', more: 'その他', calc: 'ツール', code: 'コードから', onPage: 'このページ', morePages: 'その他のページ', menu: 'メニュー' },
+  };
+  var ui = UI[(document.documentElement.lang || 'en').slice(0, 2).toLowerCase()] || UI.en;
   // A section's name in the bar: its data-jump, else its aria-label or heading, cut at the first
   // comma. The calculator and the code get the same words on every tool.
   function jumpName(sec, i) {
     if (sec.dataset.jump) return sec.dataset.jump;
-    if (i === 0) return 'Calculator';
+    if (i === 0) return ui.calc;
     var label = sec.getAttribute('aria-label') || ((sec.querySelector('h2') || {}).textContent || '');
-    if (/^use this from code$/i.test(label.trim())) return 'From code';
+    if (/^use this from code$/i.test(label.trim())) return ui.code;
     return shortTab(label.trim().split(/[,:]\s/)[0]);
   }
   // A long name cut down for the bar, by the same rules as the server's (lib/brand/tab-labels.js,
@@ -274,7 +285,7 @@
   function menuName(sec, label) {
     var full = sec.getAttribute('aria-label') || ((sec.querySelector('h2') || {}).textContent || '');
     full = full.trim().split(/[,:]\s/)[0];
-    if (/^more$/i.test(label)) return full && !/^more$/i.test(full) ? full : 'More pages';
+    if (/^more$/i.test(label) || label === ui.more) return full && !/^more$/i.test(full) && full !== ui.more ? full : ui.morePages;
     if (sec.classList.contains('cp-index') && full && full.length <= 34) return full;
     return label;
   }
@@ -293,7 +304,7 @@
       name = function (sec) { return sec.dataset.jump || sec.querySelector('.eyebrow').textContent.trim(); };
     } else return;
     if (!intro || secs.length < 3) return;
-    var bar = h('nav', { class: 'tool-parts', 'aria-label': 'On this page', 'data-lenis-prevent': '' });
+    var bar = h('nav', { class: 'tool-parts', 'aria-label': ui.onPage, 'data-lenis-prevent': '' });
     var row = h('div', { class: 'tp-row' });
     var parts = secs.map(function (sec, i) {
       var label = name(sec, i);
@@ -305,7 +316,7 @@
     var shown = parts.map(function () { return true; });
     if (cfg.tool && parts.length > 3) {
       var room = 3;
-      shown = parts.map(function (p) { var on = room > 0 && !/^more$/i.test(p.label); if (on) room -= 1; return on; });
+      shown = parts.map(function (p) { var on = room > 0 && !/^more$/i.test(p.label) && p.label !== ui.more; if (on) room -= 1; return on; });
     }
     parts.forEach(function (p, i) { p.shown = shown[i]; });
     var links = fillRow(row, parts);
@@ -327,7 +338,7 @@
       r.appendChild(a);
       return a;
     });
-    var more = h('button', { type: 'button', class: 'tp-more', 'aria-haspopup': 'true', 'aria-expanded': 'false' }, [h('span', { text: 'More' }), svgIcon('M5 7l4 4 4-4')]);
+    var more = h('button', { type: 'button', class: 'tp-more', 'aria-haspopup': 'true', 'aria-expanded': 'false' }, [h('span', { text: ui.more }), svgIcon('M5 7l4 4 4-4')]);
     more.style.setProperty('--i', parts.length);
     more.addEventListener('click', function (e) { e.stopPropagation(); toggleMenu(more, r, parts); });
     r.appendChild(more);
@@ -351,41 +362,41 @@
       syncMore(r);
     }
   }
-  var menu = null, menuFor = null;
+  var tpMenu = null, menuFor = null;
   function closeMenu() {
-    if (!menu || menu.hidden) return;
-    menu.hidden = true;
+    if (!tpMenu || tpMenu.hidden) return;
+    tpMenu.hidden = true;
     if (menuFor) menuFor.setAttribute('aria-expanded', 'false');
     menuFor = null;
   }
   function toggleMenu(btn, r, parts) {
     if (menuFor === btn) { closeMenu(); return; }
     closeMenu();
-    if (!menu) {
-      menu = h('div', { class: 'tp-menu', hidden: '' });
-      document.body.appendChild(menu);
-      document.addEventListener('click', function (e) { if (!menu.contains(e.target)) closeMenu(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { var b = menuFor; closeMenu(); if (b) b.focus(); } });
+    if (!tpMenu) {
+      tpMenu = h('div', { class: 'tp-menu', hidden: '' });
+      document.body.appendChild(tpMenu);
+      document.addEventListener('click', function (e) { if (!tpMenu.contains(e.target)) closeMenu(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !tpMenu.hidden) { var b = menuFor; closeMenu(); if (b) b.focus(); } });
       window.addEventListener('scroll', closeMenu, { passive: true });
       window.addEventListener('resize', closeMenu);
     }
-    menu.textContent = '';
+    tpMenu.textContent = '';
     var links = [].slice.call(r.querySelectorAll(':scope > a'));
     links.forEach(function (a, i) {
       if (!a.classList.contains('tp-off')) return;
       var item = h('a', { href: parts[i].href, text: parts[i].menu });
       if (a.hasAttribute('aria-current')) item.setAttribute('aria-current', 'location');
       item.addEventListener('click', closeMenu);
-      menu.appendChild(item);
+      tpMenu.appendChild(item);
     });
-    menu.hidden = false;
+    tpMenu.hidden = false;
     menuFor = btn;
     btn.setAttribute('aria-expanded', 'true');
     var box = btn.getBoundingClientRect();
-    var w = menu.offsetWidth;
-    menu.style.top = Math.round(box.bottom + 6) + 'px';
-    menu.style.left = Math.round(Math.max(8, Math.min(box.right - w, window.innerWidth - w - 8))) + 'px';
-    var first = menu.querySelector('a');
+    var w = tpMenu.offsetWidth;
+    tpMenu.style.top = Math.round(box.bottom + 6) + 'px';
+    tpMenu.style.left = Math.round(Math.max(8, Math.min(box.right - w, window.innerWidth - w - 8))) + 'px';
+    var first = tpMenu.querySelector('a');
     if (first && document.activeElement === btn && btn.matches(':focus-visible')) first.focus();
   }
 
@@ -413,12 +424,12 @@
       return r;
     }
     var menuBtn = h('button', { type: 'button', class: 'hp-menu', 'aria-label': 'Open the main menu', 'aria-expanded': 'false' }, [
-      svgIcon('M3 6h12M3 10h12M3 14h7'), h('span', { text: 'Menu' })]);
+      svgIcon('M3 6h12M3 10h12M3 14h7'), h('span', { text: ui.menu })]);
     var slimTabs = copyRow('hp-slim-tabs');
-    var slim = h('nav', { class: 'hp-slim', 'aria-label': 'On this page' }, [menuBtn, slimTabs]);
+    var slim = h('nav', { class: 'hp-slim', 'aria-label': ui.onPage }, [menuBtn, slimTabs]);
     mainNav.after(slim);
     var trayTabs = copyRow('hp-tray-tabs');
-    var tray = h('nav', { class: 'hp-tray', 'aria-label': 'On this page' }, [trayTabs]);
+    var tray = h('nav', { class: 'hp-tray', 'aria-label': ui.onPage }, [trayTabs]);
     head.appendChild(tray);
     var rows = [row, slimTabs, trayTabs];
     row.insertBefore(h('span', { class: 'hp-ind', 'aria-hidden': 'true' }), row.firstChild);
@@ -556,7 +567,7 @@
     if (!lede) return;
     lede.classList.add('folded');
     if (lede.scrollHeight <= lede.clientHeight + 4) { lede.classList.remove('folded'); return; }
-    var more = h('button', { type: 'button', class: 'lede-more', 'aria-expanded': 'false', text: 'Read more' });
+    var more = h('button', { type: 'button', class: 'lede-more', 'aria-expanded': 'false', text: ui.readMore });
     more.addEventListener('click', function () { lede.classList.remove('folded'); more.remove(); });
     lede.after(more);
   }
@@ -656,6 +667,21 @@
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; mark(); }); } }, { passive: true });
     mark();
   }
+  // A copy button (data-copy="<id>") copies the text of the element with that id: the prompt
+  // cards. Without JavaScript the button stays hidden and the text can be selected by hand.
+  function copyButtons() {
+    [].forEach.call(document.querySelectorAll('button[data-copy]'), function (btn) {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      if (!el) return;
+      btn.hidden = false;
+      btn.addEventListener('click', function () {
+        var text = el.textContent;
+        function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); }
+        if (window.Endwise && window.Endwise.copy) { window.Endwise.copy(text, el); done(); return; }
+        if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, function () {});
+      });
+    });
+  }
   // "Get started" brings you back to this page after signing up.
   if (window.Endwise && window.Endwise.signInHref) {
     [].forEach.call(document.querySelectorAll('.site-head a.nav-start, .site-head [data-endwise-chip] a.endwise-chip-link'), function (a) { a.href = window.Endwise.signInHref(); });
@@ -667,4 +693,5 @@
   photoCredits();
   chipScrolls();
   tabs();
+  copyButtons();
 })();

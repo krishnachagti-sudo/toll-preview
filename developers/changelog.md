@@ -15,6 +15,13 @@ Changes to the public API
 | November 4, 2026 | MCP | Each tool in the tools/list reply now carries \_meta.securitySchemes with an oauth2 scheme, which tells clients that offer sign-in (ChatGPT does) to ask for it. |
 | November 3, 2026 | OpenAPI | The OpenAPI document at /api/v1/openapi.json now has a servers entry with the site origin, so tools that import the document (a GPT Action, code generators) know the host. |
 | November 3, 2026 | REST | Prices in the tools list, in the tool descriptions and in the OpenAPI document are in US dollars only. |
+
+**Earlier changes, October 30, 2026 to October 31, 2026**
+
+Changes to the public API, earlier
+
+| Date | Area | What changed |
+| --- | --- | --- |
 | October 31, 2026 | REST | New endpoint: POST /api/v1/tools/{slug}/quote returns what an input would cost your account now, without running, charging or reserving anything. It is also in the OpenAPI document. |
 | October 31, 2026 | MCP | New free tool quote\_price: pass a tool name and the arguments you would call it with and it says what the call would cost this account, without running it. |
 | October 31, 2026 | REST | Every API tool in GET /api/v1/tools and GET /api/v1/tools/{slug} now has a pricing block that lists the price of each action in words. The MCP and OpenAPI descriptions show the same prices. |

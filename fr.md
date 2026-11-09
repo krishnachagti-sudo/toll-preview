@@ -4,9 +4,9 @@
 
 ## Outils
 
-- [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/fr/fx-on-date/)
-- [Image to size](https://krishnachagti-sudo.github.io/toll-preview/fr/image-to-size/)
-- [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/fr/qr-code-generator/)
+- [Taux de change à une date](https://krishnachagti-sudo.github.io/toll-preview/fr/fx-on-date/): Le taux de référence officiel de la BCE pour une paire de devises à n’importe quelle date depuis 1999, avec la date de fixing réellement utilisée. Ou Trésor américain, IRS, HMRC.
+- [Réduire une photo à un poids en Ko](https://krishnachagti-sudo.github.io/toll-preview/fr/image-to-size/): Réduisez le poids d’une photo sous une taille exacte en Ko, par exemple 50 Ko ou 200 Ko. Gratuit, dans votre navigateur : la photo ne quitte pas votre appareil.
+- [Générateur de QR code](https://krishnachagti-sudo.github.io/toll-preview/fr/qr-code-generator/): Créez un QR code gratuit, sans inscription : lien, Wi-Fi, contact, e-mail, SMS, appel ou lieu. Vérifiez si un code déjà imprimé dépend d’un prestataire.
 
 ## Guides
 

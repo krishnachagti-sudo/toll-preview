@@ -1,6 +1,6 @@
 # BR-DE-31: Lastschrift ohne belastetes Konto (BT-91)
 
-BR-DE-31 bedeutet: Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 체bermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die IBAN des K채ufers als belastetes Konto an: UBL cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, CII ram:PayerPartyDebtorFinancialAccount/ram:IBANID.
+BR-DE-31 bedeutet: Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 체bermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Die Rechnung enth채lt ein Lastschriftmandat (BG-19), aber nicht das Konto des K�
 
 ## So beheben Sie den Fehler
 
-Geben Sie die IBAN des K채ufers als belastetes Konto an: UBL cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, CII ram:PayerPartyDebtorFinancialAccount/ram:IBANID.
+Geben Sie die IBAN des K채ufers als belastetes Konto an: UBL `cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID`, CII `ram:PayerPartyDebtorFinancialAccount/ram:IBANID`.
 
 ## Gepr체ftes Beispiel
 

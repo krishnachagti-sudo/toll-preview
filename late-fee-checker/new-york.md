@@ -12,6 +12,10 @@ In New York a landlord may charge a rent late fee of at most the lesser of $50 o
 
 ## What the statute says
 
+**In short:** The lesser of $50 or 5% of the monthly rent; from day 6 after the due date (N.Y. Real Prop. Law § 238-a(2)).
+
+**The statute's words (1 passage)**
+
 N.Y. Real Prop. Law § 238-a(2): "No landlord, lessor, sub-lessor or grantor may demand any payment, fee, or charge for the late payment of rent unless the payment of rent has not been made within five days of the date it was due, and such payment, fee, or charge shall not exceed fifty dollars or five percent of the monthly rent, whichever is less"
 
 ## The limit on sample rents

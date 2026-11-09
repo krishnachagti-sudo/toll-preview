@@ -1,6 +1,8 @@
 # Maryland lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Maryland, your notice to owner of intention to claim a lien is due May 29, 2027, the petition to establish the lien must be filed by July 28, 2027 and the suit to enforce it must be filed by July 28, 2028 (if recorded on the last day, July 28, 2027) (Md. Code, Real Prop. 9-104(a); Md. Code, Real Prop. 9-105(a); Md. Code, Real Prop. 9-109).
+In Maryland, a subcontractor records the lien within 180 days after the work has been finished or the materials furnished (Md. Code, Real Prop. 9-105(a)); the notice comes first, within 120 days after doing the work or furnishing the materials (Md. Code, Real Prop. 9-104(a)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=MD&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Maryland, your notice to owner of intention to claim a lien is due May 29, 2027, the petition to establish the lien must be filed by July 28, 2027 and the suit to enforce it must be filed by July 28, 2028 (if recorded on the last day, July 28, 2027) (Md. Code, Real Prop. 9-104(a); Md. Code, Real Prop. 9-105(a); Md. Code, Real Prop. 9-109).
 
 ## Work out your Maryland dates
 
@@ -37,6 +39,8 @@ Weekends and holidays: the Maryland text we read does not move a deadline that f
 - On a single family dwelling being built on the owner's land for the owner's own residence, the notice must also reach the owner before the owner has paid the contractor in full, and the lien is limited to what the owner still owes (9-104(a)(2), (f)(3)).
 
 ## Maryland in its own words
+
+**Read the statute's words (4 quotations)**
 
 - "A subcontractor doing work or furnishing materials or both for or about a building other than a single family dwelling being erected on the owner’s land for his own residence is not entitled to a lien under this subtitle unless, within 120 days after doing the work or furnishing the materials, the subcontractor gives written notice of an intention to claim a lien substantially in the form specified in subsection (b) of this section." [Md. Code, Real Property 9-104, Notice by subcontractor](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=grp&section=9-104&enactments=false)
 - "“Subcontractor” means a person who has a contract with anyone except the owner or his agent." [Md. Code, Real Property 9-101, Definitions](https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=grp&section=9-101&enactments=false)

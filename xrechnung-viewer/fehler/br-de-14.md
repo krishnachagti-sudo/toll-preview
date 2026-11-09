@@ -1,6 +1,6 @@
 # BR-DE-14: Steuersatz in der Umsatzsteueraufschlüsselung (BT-119) fehlt
 
-BR-DE-14 bedeutet: Das Element "VAT category rate" (BT-119) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie in jeder Steueraufschlüsselung den Satz an (UBL cac:TaxCategory/cbc:Percent, CII ram:RateApplicablePercent), bei steuerfreien Umsätzen 0.
+BR-DE-14 bedeutet: Das Element "VAT category rate" (BT-119) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ Eine Zeile der Umsatzsteueraufschlüsselung (BG-23) nennt keinen Steuersatz. XRe
 
 ## So beheben Sie den Fehler
 
-Geben Sie in jeder Steueraufschlüsselung den Satz an (UBL cac:TaxCategory/cbc:Percent, CII ram:RateApplicablePercent), bei steuerfreien Umsätzen 0.
+Geben Sie in jeder Steueraufschlüsselung den Satz an (UBL `cac:TaxCategory/cbc:Percent`, CII `ram:RateApplicablePercent`), bei steuerfreien Umsätzen 0.
 
 ## Geprüftes Beispiel
 

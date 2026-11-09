@@ -12,6 +12,10 @@ In Maine a landlord may charge a rent late fee of at most 4% of the amount due f
 
 ## What the statute says
 
+**In short:** 4% of the amount due for one month; from day 16 after the due date (14 M.R.S. § 6028).
+
+**The statute's words (3 passages)**
+
 14 M.R.S. § 6028: "A payment of rent is late if it is not made within 15 days from the time the payment is due."
 
 14 M.R.S. § 6028: "A landlord may not assess a penalty for the late payment of rent which exceeds 4% of the amount due for one month."

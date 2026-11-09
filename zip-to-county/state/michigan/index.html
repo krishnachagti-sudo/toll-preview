@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up Michigan ZIP codes</h2><p class="muted">Paste your own list: every county, FIPS code and share, as a CSV.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="48014"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=48014">Open 48014 in the lookup</a></p></aside>
 <section>
 <h2 id="counties">Michigan counties and their FIPS codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</caption><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
 <tr><th scope="row">Alcona County</th><td>26001</td><td class="r num">13</td><td></td></tr>
 <tr><th scope="row">Alger County</th><td>26003</td><td class="r num">13</td><td></td></tr>
 <tr><th scope="row">Allegan County</th><td>26005</td><td class="r num">25</td><td>Holland, MI</td></tr>
@@ -161,11 +162,11 @@
 <tr><th scope="row">Washtenaw County</th><td>26161</td><td class="r num">27</td><td>Ann Arbor, MI</td></tr>
 <tr><th scope="row">Wayne County</th><td>26163</td><td class="r num">71</td><td>Detroit-Warren-Dearborn, MI</td></tr>
 <tr><th scope="row">Wexford County</th><td>26165</td><td class="r num">13</td><td>Cadillac, MI</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="split">Michigan ZIP codes that cross a county line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The 120 split across the most counties, of 343; the CSV has them all.</caption><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The 120 split across the most counties, of 343; the CSV has them all.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
 <tr><th scope="row">48624</th><td>Gladwin County, MI (26051) 76.5%; Roscommon County, MI (26143) 12.11%; Clare County, MI (26035) 10.32%; Ogemaw County, MI (26129) 1.07%</td></tr>
 <tr><th scope="row">48632</th><td>Clare County, MI (26035) 63.27%; Isabella County, MI (26073) 31.76%; Osceola County, MI (26133) 4.62%; Mecosta County, MI (26107) 0.36%</td></tr>
 <tr><th scope="row">48761</th><td>Ogemaw County, MI (26129) 35.61%; Alcona County, MI (26001) 30.55%; Oscoda County, MI (26135) 17.68%; Iosco County, MI (26069) 16.16%</td></tr>
@@ -286,12 +287,12 @@
 <tr><th scope="row">48451</th><td>Genesee County, MI (26049) 73.69%; Livingston County, MI (26093) 26.31%</td></tr>
 <tr><th scope="row">48456</th><td>Sanilac County, MI (26151) 79.84%; Huron County, MI (26063) 20.16%</td></tr>
 <tr><th scope="row">48457</th><td>Genesee County, MI (26049) 72.77%; Saginaw County, MI (26145) 27.23%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How many ZIP codes are in Michigan?</h3></summary><div class="xp-in"><p>993 ZCTAs have land in Michigan in the Census 2020 ZCTA-county file. PO-box-only ZIP codes have no ZCTA and are not counted.</p></div></details><details class="xpand"><summary><h3>How many Michigan ZIP codes cross a county line?</h3></summary><div class="xp-in"><p>343 of 993 (34.5%), such as 48014, 48032, 48041.</p></div></details><details class="xpand"><summary><h3>Which Michigan county has the most ZIP codes?</h3></summary><div class="xp-in"><p>Oakland County, MI (26125), with land in 71 ZCTAs.</p></div></details></section>

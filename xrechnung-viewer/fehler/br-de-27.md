@@ -1,6 +1,6 @@
 # BR-DE-27: Telefonnummer (BT-42) hat weniger als drei Ziffern
 
-BR-DE-27 bedeutet: In BT-42 sollen mindestens drei Ziffern enthalten sein. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie eine echte Telefonnummer an.
+BR-DE-27 bedeutet: In BT-42 sollen mindestens drei Ziffern enthalten sein. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

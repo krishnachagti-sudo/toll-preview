@@ -1,6 +1,8 @@
 # Texas lien deadlines
 
-For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Texas, your first open monthly notice (for November 2026) is due February 16, 2027, the lien affidavit must be filed by May 17, 2027 and the suit to enforce it must be filed by May 15, 2028 (Tex. Prop. Code 53.056(a-1)(1); Tex. Prop. Code 53.052(b); Tex. Prop. Code 53.158(a)).
+In Texas, a subcontractor records the lien by the 15th day of the fourth month after the month you last provided labor or materials (Tex. Prop. Code 53.052(b)); the notice comes first, by the 15th day of the third month after each month in which the unpaid labor or materials were provided (Tex. Prop. Code 53.056(a-1)(1)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=TX&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For a job you first furnish on Monday, November 2, 2026, last furnish on Friday, January 29, 2027, with the project complete on Friday, February 26, 2027: as a subcontractor on a commercial project in Texas, your first open monthly notice (for November 2026) is due February 16, 2027, the lien affidavit must be filed by May 17, 2027 and the suit to enforce it must be filed by May 15, 2028 (Tex. Prop. Code 53.056(a-1)(1); Tex. Prop. Code 53.052(b); Tex. Prop. Code 53.158(a)).
 
 ## Work out your Texas dates
 
@@ -60,6 +62,8 @@ The statutory form, filled in as a PDF: [Texas monthly notice of claim](https://
 Once you are paid: [Texas lien waivers](https://krishnachagti-sudo.github.io/toll-preview/lien-waiver/texas/).
 
 ## Texas in its own words
+
+**Read the statute's words (13 quotations)**
 
 - "Except as provided by Section 53.057, a claimant other than an original contractor must give the notice prescribed by Subsections (a-1) and (a-2) for the lien to be valid." [Texas Property Code chapter 53, Mechanic's, Contractor's, or Materialman's Lien](https://statutes.capitol.texas.gov/Docs/PR/htm/PR.53.htm)
 - "for projects other than residential construction projects, not later than the 15th day of the third month after the month during which:" [Texas Property Code chapter 53, Mechanic's, Contractor's, or Materialman's Lien](https://statutes.capitol.texas.gov/Docs/PR/htm/PR.53.htm)

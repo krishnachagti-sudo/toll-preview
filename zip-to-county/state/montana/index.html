@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up Montana ZIP codes</h2><p class="muted">Paste your own list: every county, FIPS code and share, as a CSV.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="57717"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=57717">Open 57717 in the lookup</a></p></aside>
 <section>
 <h2 id="counties">Montana counties and their FIPS codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</caption><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
 <tr><th scope="row">Beaverhead County</th><td>30001</td><td class="r num">10</td><td></td></tr>
 <tr><th scope="row">Big Horn County</th><td>30003</td><td class="r num">18</td><td></td></tr>
 <tr><th scope="row">Blaine County</th><td>30005</td><td class="r num">10</td><td></td></tr>
@@ -134,11 +135,11 @@
 <tr><th scope="row">Wheatland County</th><td>30107</td><td class="r num">6</td><td></td></tr>
 <tr><th scope="row">Wibaux County</th><td>30109</td><td class="r num">2</td><td></td></tr>
 <tr><th scope="row">Yellowstone County</th><td>30111</td><td class="r num">16</td><td>Billings, MT</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="split">Montana ZIP codes that cross a county line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The 120 split across the most counties, of 125; the CSV has them all.</caption><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The 120 split across the most counties, of 125; the CSV has them all.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
 <tr><th scope="row">57717</th><td>Butte County, SD (46019) 65.46%; Crook County, WY (56011) 15.18%; Carter County, MT (30011) 10.17%; Harding County, SD (46063) 8.63%; Lawrence County, SD (46081) 0.56%</td></tr>
 <tr><th scope="row">59301</th><td>Custer County, MT (30017) 81.27%; Rosebud County, MT (30087) 10.02%; Garfield County, MT (30033) 5.06%; Powder River County, MT (30075) 2.29%; Prairie County, MT (30079) 1.36%</td></tr>
 <tr><th scope="row">58621</th><td>Golden Valley County, ND (38033) 90.67%; Wibaux County, MT (30109) 4.39%; McKenzie County, ND (38053) 2.84%; Billings County, ND (38007) 2.1%</td></tr>
@@ -259,12 +260,12 @@
 <tr><th scope="row">59825</th><td>Granite County, MT (30039) 61.66%; Missoula County, MT (30063) 38.34%</td></tr>
 <tr><th scope="row">59833</th><td>Ravalli County, MT (30081) 70.22%; Missoula County, MT (30063) 29.78%</td></tr>
 <tr><th scope="row">59847</th><td>Missoula County, MT (30063) 94.83%; Idaho County, ID (16049) 5.17%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How many ZIP codes are in Montana?</h3></summary><div class="xp-in"><p>373 ZCTAs have land in Montana in the Census 2020 ZCTA-county file. PO-box-only ZIP codes have no ZCTA and are not counted.</p></div></details><details class="xpand"><summary><h3>How many Montana ZIP codes cross a county line?</h3></summary><div class="xp-in"><p>125 of 373 (33.5%), such as 57717, 57724, 58621.</p></div></details><details class="xpand"><summary><h3>Which Montana county has the most ZIP codes?</h3></summary><div class="xp-in"><p>Big Horn County, MT (30003), with land in 18 ZCTAs.</p></div></details></section>

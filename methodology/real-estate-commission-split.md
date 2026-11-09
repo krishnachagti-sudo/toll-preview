@@ -2,9 +2,45 @@
 
 Your side is the price times your rate (or the commission given); the referral fee comes off first, then the royalty and the team's share in the order your plan says, then the brokerage split until the cap is reached (the crossing deal split at both rates), then the per-deal fees. Each step is rounded once, half up, to the cent; on a 70/30 split, 30% of each deal goes to the brokerage until the cap.
 
+## How does it work?
+
+1. Money is whole cents and percentages thousandths of a percent, so any rate with up to three decimals is exact; each product is worked in BigInt and rounded once, half up.
+2. Your side is price times rate, or the commission given. A referral fee is taken off your side first.
+3. A royalty is a percent of the commission after the referral fee, off the top or from your share, up to its cap.
+4. A team share is taken before the brokerage split (team-first) or of your share after it (brokerage-first), up to its cap.
+5. The brokerage share is its split of what is left until the cap is reached; the deal that crosses the cap pays the brokerage only up to the cap and the rest at your post-cap share.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/real-estate-commission-split/#what) below.
+
+## What does it not cover?
+
+- A plan or deal with a missing or impossible field is refused with the field named.
+- Every split, cap and fee is what you enter; published plans are only presets, each dated.
+- Not tax or legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 8 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The IRS thresholds, dates and quotes were read on irs.gov on 2026-11-08, and the published brokerage plans on each brokerage's own site with their dates. The pages are checked daily for changes.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check the IRS thresholds and quotes, exact cents and percentages rounded once, the crossing deal at both rates and exactly at the cap, cap periods from the anniversary and February 29, every deal step, a year across two cap years with 1099 totals, the forecast, compare and goal.
+
+- [IRS Instructions for Forms 1099-MISC and 1099-NEC](https://www.irs.gov/instructions/i1099mec), see the document, read 2026-11-08
+- [IRS Publication 15-A](https://www.irs.gov/publications/p15a), see the document, read 2026-11-08
+- [IRS Form 1040-ES (2026)](https://www.irs.gov/pub/irs-pdf/f1040es.pdf), see the document, read 2026-11-08
+- [12 CFR 1024.14 (RESPA section 8)](https://www.law.cornell.edu/cfr/text/12/1024.14), see the document, read 2026-11-08
+- [Real Brokerage agent plan](https://www.joinreal.com/), see the document, read 2026-11-08
+- [NAR settlement practice changes](https://www.nar.realtor/the-facts/what-the-nar-settlement-means-for-home-buyers-and-sellers), see the document, read 2026-11-08
+- [NAR consumer guide to written buyer agreements](https://www.nar.realtor/the-facts/consumer-guide-to-written-buyer-agreements), see the document, read 2026-11-08
+- [Paperless Pipeline pricing](https://www.paperlesspipeline.com/pricing), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the real estate commission split and cap tracker compute?
 
-Enter your plan (split, cap and anniversary, royalty, team share and fees) and a deal, and the tool works out what you net, step by step, and how much is left to your cap. A year of deals (up to 500) is worked out in date order across anniversary caps, with the 1099 total per calendar year and a CSV. It can also compare up to 4 plans at a deal count and find the deals needed for a net goal. Every split, cap and fee is the plan you enter.
+Enter your plan (split, cap and anniversary, royalty, team share and fees) and a deal, and the tool works out what you net, step by step, and how much is left to your cap. A year of deals (up to 500) is worked out in date order across anniversary caps, with the 1099 total per calendar year and a CSV.
+
+**In detail: operations, inputs and outputs**
+
+It can also compare up to 4 plans at a deal count and find the deals needed for a net goal. Every split, cap and fee is the plan you enter.
 
 Operations (the op field):
 
@@ -27,7 +63,7 @@ Outputs:
 - gross, referral, royalty, team, brokerage, fees, net and the steps
 - year: periods, forecast, years with the 1099 total, CSV
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. Money is whole cents and percentages thousandths of a percent, so any rate with up to three decimals is exact; each product is worked in BigInt and rounded once, half up.
 2. Your side is price times rate, or the commission given. A referral fee is taken off your side first.
@@ -43,6 +79,8 @@ The 1099-NEC threshold and due date, licensed agents as statutory nonemployees, 
 
 ## Which edge cases does it handle?
 
+**The edge cases (3)**
+
 - A deal that lands exactly on the cap pays the brokerage to the cap and nothing more.
 - A cap anniversary on February 29 falls on February 28 in other years.
 - A pending deal is forecast, not counted as closed.
@@ -52,6 +90,14 @@ The 1099-NEC threshold and due date, licensed agents as statutory nonemployees, 
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A $400,000 sale at 3% on a 70/30 split with a $20,000 cap and a $300 fee**
+
+A $400,000 sale at 3% on a 70/30 split with a $20,000 cap and a $300 fee
+
+| Result | Value |
+| --- | --- |
+| answer | On a $400,000 sale at 3%, your side is $12,000.00; after the $3,600.00 brokerage split and $300.00 in fees, you net $8,100.00. $16,400.00 is left to your $20,000 cap. |
+
+**The input**
 
 ```json
 {
@@ -74,13 +120,17 @@ The 1099-NEC threshold and due date, licensed agents as statutory nonemployees, 
 }
 ```
 
-A $400,000 sale at 3% on a 70/30 split with a $20,000 cap and a $300 fee
+**More worked examples (2)**
+
+**The deal that crosses the cap**
+
+The deal that crosses the cap
 
 | Result | Value |
 | --- | --- |
-| answer | On a $400,000 sale at 3%, your side is $12,000.00; after the $3,600.00 brokerage split and $300.00 in fees, you net $8,100.00. $16,400.00 is left to your $20,000 cap. |
+| answer | Your side is $10,000.00; after the $2,000.00 brokerage split and $300.00 in fees, you net $7,700.00. This deal crosses your $20,000 cap. |
 
-**The deal that crosses the cap**
+**The input**
 
 ```json
 {
@@ -105,13 +155,15 @@ A $400,000 sale at 3% on a 70/30 split with a $20,000 cap and a $300 fee
 }
 ```
 
-The deal that crosses the cap
+**Two plans at 12 deals a year of $9,000**
+
+Two plans at 12 deals a year of $9,000
 
 | Result | Value |
 | --- | --- |
-| answer | Your side is $10,000.00; after the $2,000.00 brokerage split and $300.00 in fees, you net $7,700.00. This deal crosses your $20,000 cap. |
+| answer | At 12 deals a year of $9,000.00 each, 85/15 with a $12,000 cap nets the most: $96,000.00 (70/30 with a $20,000 cap $88,000.00). |
 
-**Two plans at 12 deals a year of $9,000**
+**The input**
 
 ```json
 {
@@ -133,53 +185,9 @@ The deal that crosses the cap
 }
 ```
 
-Two plans at 12 deals a year of $9,000
-
-| Result | Value |
-| --- | --- |
-| answer | At 12 deals a year of $9,000.00 each, 85/15 with a $12,000 cap nets the most: $96,000.00 (70/30 with a $20,000 cap $88,000.00). |
-
-## What does it not do?
-
-- A plan or deal with a missing or impossible field is refused with the field named.
-- Every split, cap and fee is what you enter; published plans are only presets, each dated.
-- Not tax or legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The IRS thresholds, dates and quotes were read on irs.gov on 2026-11-08, and the published brokerage plans on each brokerage's own site with their dates. The pages are checked daily for changes.
-
-- [IRS Instructions for Forms 1099-MISC and 1099-NEC](https://www.irs.gov/instructions/i1099mec)
-- [IRS Publication 15-A](https://www.irs.gov/publications/p15a)
-- [IRS Form 1040-ES (2026)](https://www.irs.gov/pub/irs-pdf/f1040es.pdf)
-- [12 CFR 1024.14 (RESPA section 8)](https://www.law.cornell.edu/cfr/text/12/1024.14)
-- [Real Brokerage agent plan](https://www.joinreal.com/)
-- [NAR settlement practice changes](https://www.nar.realtor/the-facts/what-the-nar-settlement-means-for-home-buyers-and-sellers)
-- [NAR consumer guide to written buyer agreements](https://www.nar.realtor/the-facts/consumer-guide-to-written-buyer-agreements)
-- [Paperless Pipeline pricing](https://www.paperlesspipeline.com/pricing)
-
-The IRS thresholds, dates and quotes were read on irs.gov on 2026-11-08, and the published brokerage plans on each brokerage's own site with their dates. The pages are checked daily for changes.
-
-Real estate commission split and cap tracker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [IRS Instructions for Forms 1099-MISC and 1099-NEC](https://www.irs.gov/instructions/i1099mec) | see the document | 2026-11-08 |
-| [IRS Publication 15-A](https://www.irs.gov/publications/p15a) | see the document | 2026-11-08 |
-| [IRS Form 1040-ES (2026)](https://www.irs.gov/pub/irs-pdf/f1040es.pdf) | see the document | 2026-11-08 |
-| [12 CFR 1024.14 (RESPA section 8)](https://www.law.cornell.edu/cfr/text/12/1024.14) | see the document | 2026-11-08 |
-| [Real Brokerage agent plan](https://www.joinreal.com/) | see the document | 2026-11-08 |
-| [NAR settlement practice changes](https://www.nar.realtor/the-facts/what-the-nar-settlement-means-for-home-buyers-and-sellers) | see the document | 2026-11-08 |
-| [NAR consumer guide to written buyer agreements](https://www.nar.realtor/the-facts/consumer-guide-to-written-buyer-agreements) | see the document | 2026-11-08 |
-| [Paperless Pipeline pricing](https://www.paperlesspipeline.com/pricing) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests check the IRS thresholds and quotes, exact cents and percentages rounded once, the crossing deal at both rates and exactly at the cap, cap periods from the anniversary and February 29, every deal step, a year across two cap years with 1099 totals, the forecast, compare and goal.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - IRS thresholds, dates and quotes are as read on irs.gov on 2026-11-08.
 - The crossing deal is split at both rates and a deal exactly at the cap stops there.

@@ -1,6 +1,6 @@
 # BR-DE-22: Dateinamen der Anhänge nicht eindeutig
 
-BR-DE-22 bedeutet: Das "filename"-Attribut aller "EmbeddedDocumentBinaryObject"-Elemente muss eindeutig sein (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Vergeben Sie für jeden Anhang einen eigenen Dateinamen, zum Beispiel mit laufender Nummer.
+BR-DE-22 bedeutet: Das "filename"-Attribut aller "EmbeddedDocumentBinaryObject"-Elemente muss eindeutig sein (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

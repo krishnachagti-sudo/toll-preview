@@ -2,9 +2,37 @@
 
 Each row with a name becomes one page of one PDF, on US Letter or A4. The name is set at the largest size, in quarter points, at which it fits the line by the standard PDF fonts' published character widths, and every line stays at least 0.5 inch inside the paper edge. A list holds at most 2,000 names.
 
+## How does it work?
+
+1. The CSV's separator is found from its heading line (tab, then semicolon when there is no comma, otherwise comma), quotes and a byte order mark are handled, and each row keeps its line number in the file.
+2. Headings are matched to fields with case, spaces and punctuation ignored: Name, Student, Recipient or Attendee for the full name, First name and Last name, Award, Hours or Course for the detail, Homeroom, Class or Team for the group, and others.
+3. Each name is tidied: spaces collapsed, "Last, First" turned round, and a full name split into first and last at its last space.
+4. A repeat is the same name, award and detail with case ignored, so one student with two awards is two certificates. Repeats are listed, or dropped when removeDuplicates is set.
+5. Each certificate is laid out from the top: the organization in capitals, the title, the presented line, the name over a rule, the award, the reason and the detail. Every line is centred within 0.5 inch of the paper edge plus 30 points.
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/bulk-certificate-generator/#what) below.
+
+## What does it not cover?
+
+- It uses the standard PDF fonts, so scripts outside Windows-1252, such as Chinese or Polish Ł, are printed with "?" or without the accent and flagged.
+- It prints only the 7 designs, on US Letter or A4; there is no upload of your own artwork or logo.
+- It cannot correct a printer that scales the page; print at 100%.
+- Lists are used to make the PDF and are not kept. It makes no claim about FERPA compliance and is not legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 1 source](https://krishnachagti-sudo.github.io/toll-preview/updates/): The designs, wording and font metrics live in the tool's own code and change only by hand, with the tests that pin them. The student privacy guidance was read on studentprivacy.ed.gov on 2026-11-08.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check CSV reading, heading matching, name tidying and case fixing, repeats and sorting, the Adobe metrics, fitting at every boundary (full size, smaller, two lines, cut), placeholders, that every item of every design, paper and orientation stays 0.5 inch inside the page, and that the PDFs are valid with one page per certificate and the same bytes every time.
+
+- [US Department of Education, Student Privacy Policy Office: FAQ on using an online tool in a course](https://studentprivacy.ed.gov/faq/i-want-use-online-tool-or-application-part-my-course-however-i-am-worried-it-violation-ferpa), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the bulk certificate generator compute?
 
 Given a list as CSV or rows and a design, the tool reads the names, tidies them, finds repeated rows and lays out one certificate per name in one PDF, with each line sized to fit. It says which certificates have a name made smaller, put on two lines or cut, which letters the fonts cannot print, and which rows were skipped. It offers 7 designs, each with wording you can change, award titles and details (such as hours) per row, up to two signature lines and a date, and a free plan and watermarked proof before the clean PDF.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -32,7 +60,7 @@ Outputs:
 - duplicates, skipped, columnsUsed, columnsIgnored and list: what to check before printing, and the print order
 - pdf: the file name, size in bytes and the PDF as base64 (sample and batch)
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The CSV's separator is found from its heading line (tab, then semicolon when there is no comma, otherwise comma), quotes and a byte order mark are handled, and each row keeps its line number in the file.
 2. Headings are matched to fields with case, spaces and punctuation ignored: Name, Student, Recipient or Attendee for the full name, First name and Last name, Award, Hours or Course for the detail, Homeroom, Class or Team for the group, and others. A column you name wins. A list with no name column is refused, except that a one-column list is read as names.
@@ -57,6 +85,8 @@ General information, not legal advice. The US Department of Education asks teach
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A very long name shrinks, then goes onto two lines, then is cut, and the certificate is flagged so it can be checked.
 - Two rows with the same name but different awards are two certificates, not a repeat.
 - A completion or participation reason that uses {detail} falls back to the design's own wording when the row has no detail.
@@ -69,6 +99,18 @@ General information, not legal advice. The US Department of Education asks teach
 > Every figure below is the output of the tool's engine, not typed in.
 
 **Plan a class of end-of-year awards: names cleaned, a repeated row found, the long name fitted**
+
+Plan a class of end-of-year awards: names cleaned, a repeated row found, the long name fitted
+
+| Result | Value |
+| --- | --- |
+| answer | 8 names made 8 end-of-year awards on US Letter landscape, one page each in one PDF; 1 long name made smaller to fit. |
+| name sizes | 50 pt largest, 33.25 pt smallest |
+| page 6 | Maximiliana Featherstonehaugh-Worthington: shrunk to 33.25 pt |
+| repeat | row 10 repeats row 2 |
+| columns used | full: Student, award: Award, group: Homeroom |
+
+**The input**
 
 ```json
 {
@@ -91,17 +133,19 @@ General information, not legal advice. The US Department of Education asks teach
 }
 ```
 
-Plan a class of end-of-year awards: names cleaned, a repeated row found, the long name fitted
+**More worked examples (2)**
+
+**Three certificates of completion with training hours, as a clean PDF on US Letter**
+
+Three certificates of completion with training hours, as a clean PDF on US Letter
 
 | Result | Value |
 | --- | --- |
-| answer | 8 names made 8 end-of-year awards on US Letter landscape, one page each in one PDF; 1 long name made smaller to fit. |
-| name sizes | 50 pt largest, 33.25 pt smallest |
-| page 6 | Maximiliana Featherstonehaugh-Worthington: shrunk to 33.25 pt |
-| repeat | row 10 repeats row 2 |
-| columns used | full: Student, award: Award, group: Homeroom |
+| answer | 3 names made 3 certificates of completion on US Letter landscape, one page each in one PDF; every name at the full 50 pt. |
+| PDF | cpr-training-march-2027.pdf |
+| pages | 3 |
 
-**Three certificates of completion with training hours, as a clean PDF on US Letter**
+**The input**
 
 ```json
 {
@@ -127,15 +171,17 @@ Plan a class of end-of-year awards: names cleaned, a repeated row found, the lon
 }
 ```
 
-Three certificates of completion with training hours, as a clean PDF on US Letter
+**A free watermarked proof of two kids' awards on A4 portrait**
+
+A free watermarked proof of two kids' awards on A4 portrait
 
 | Result | Value |
 | --- | --- |
-| answer | 3 names made 3 certificates of completion on US Letter landscape, one page each in one PDF; every name at the full 50 pt. |
-| PDF | cpr-training-march-2027.pdf |
-| pages | 3 |
+| answer | 2 names made 2 kids' awards on A4 portrait, one page each in one PDF; every name at the full 44.5 pt. |
+| page size | 595.28 x 841.89 pt |
+| proof PDF | super-star-award-proof.pdf |
 
-**A free watermarked proof of two kids' awards on A4 portrait**
+**The input**
 
 ```json
 {
@@ -154,42 +200,9 @@ Three certificates of completion with training hours, as a clean PDF on US Lette
 }
 ```
 
-A free watermarked proof of two kids' awards on A4 portrait
-
-| Result | Value |
-| --- | --- |
-| answer | 2 names made 2 kids' awards on A4 portrait, one page each in one PDF; every name at the full 44.5 pt. |
-| page size | 595.28 x 841.89 pt |
-| proof PDF | super-star-award-proof.pdf |
-
-## What does it not do?
-
-- It uses the standard PDF fonts, so scripts outside Windows-1252, such as Chinese or Polish Ł, are printed with "?" or without the accent and flagged.
-- It prints only the 7 designs, on US Letter or A4; there is no upload of your own artwork or logo.
-- It cannot correct a printer that scales the page; print at 100%.
-- Lists are used to make the PDF and are not kept. It makes no claim about FERPA compliance and is not legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The designs, wording and font metrics live in the tool's own code and change only by hand, with the tests that pin them. The student privacy guidance was read on studentprivacy.ed.gov on 2026-11-08.
-
-- [US Department of Education, Student Privacy Policy Office: "I want to use online tool or application as part of my course..." (read November 8, 2026)](https://studentprivacy.ed.gov/faq/i-want-use-online-tool-or-application-part-my-course-however-i-am-worried-it-violation-ferpa)
-
-The designs, wording and font metrics live in the tool's own code and change only by hand, with the tests that pin them. The student privacy guidance was read on studentprivacy.ed.gov on 2026-11-08.
-
-Bulk certificate generator: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [US Department of Education, Student Privacy Policy Office: FAQ on using an online tool in a course](https://studentprivacy.ed.gov/faq/i-want-use-online-tool-or-application-part-my-course-however-i-am-worried-it-violation-ferpa) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests check CSV reading, heading matching, name tidying and case fixing, repeats and sorting, the Adobe metrics, fitting at every boundary (full size, smaller, two lines, cut), placeholders, that every item of every design, paper and orientation stays 0.5 inch inside the page, and that the PDFs are valid with one page per certificate and the same bytes every time.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every item of every design, paper and orientation stays at least 0.5 inch inside the page edge.
 - Names shrink, go onto two lines and are cut only in that order, measured by the Adobe Core 14 widths of Times and Helvetica.

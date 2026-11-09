@@ -2,9 +2,49 @@
 
 Each entry is read to the second, rounded at the level you choose (each entry or each line) to 1, 5, 6, 10, 12, 15, 30, 60 minutes, up, nearest or down, priced from the most specific rate and grouped into lines; hours on a line are hundredths of an hour worked out from the seconds, and the reconciliation shows raw, rounded and billed time side by side.
 
+## How does it work?
+
+1. The CSV is read with its delimiter from the heading line; documented headings of each tracker are found by name.
+2. Durations are read as h:mm:ss, h:mm, decimal hours or "1h 30m" to the whole second; start and end times alone give the time, across midnight.
+3. Dates are ISO, or slash dates month first by default, day first when a value proves it; a file where every date is ambiguous is flagged.
+4. Entries are filtered (non-billable left out unless kept, dates, client or project) and each gets its rate in the order task, tag, project, client, person.
+5. Rounding uses the hours calculator's rule, at the chosen level; a line's hours are hundredths of an hour (36 seconds each) worked out from the seconds.
+
+> Step 6, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/time-export-to-invoice/#what) below.
+
+## What does it not cover?
+
+- A file with nothing left after the filters is refused with the reason.
+- It writes the invoice lines and files; it does not send invoices or change your tracker.
+- Not tax or legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 12 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Uses no rates of its own: the rates are yours. The tracker facts were read on each tracker's own pages on 2026-11-08, and the pages are checked daily for changes.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check CSV reading, every duration and date form, the documented headings, rounding at each level, a sample month to the cent, Clockify's mismatch example, Harvest decimal hours, the rate order, grouping, filters, the retainer, discount, cap and tax, and that the files are the same each time.
+
+- [Toggl Track: Creating invoices](https://support.toggl.com/creating-invoices-in-toggl-track), see the document, read 2026-11-08
+- [Toggl Track: Detailed report](https://support.toggl.com/detailed-report), see the document, read 2026-11-08
+- [Toggl Track: Rounding](https://support.toggl.com/rounding), see the document, read 2026-11-08
+- [Toggl Track: Editing and uploading a CSV file](https://support.toggl.com/en/articles/2216070-editing-and-uploading-a-csv-file), see the document, read 2026-11-08
+- [Clockify: Invoicing tracked time and expenses](https://clockify.me/help/projects/invoicing-tracked-time-expenses), see the document, read 2026-11-08
+- [Clockify: Invoices and reports don't match](https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match), see the document, read 2026-11-08
+- [Clockify: Time rounding](https://clockify.me/help/track-time-and-expenses/time-rounding), see the document, read 2026-11-08
+- [Clockify: Pricing](https://clockify.me/pricing), see the document, read 2026-11-08
+- [Toggl Track: Pricing](https://toggl.com/track/pricing/), see the document, read 2026-11-08
+- [Harvest: Pricing](https://www.getharvest.com/pricing), see the document, read 2026-11-08
+- [Harvest API v2: Time entries](https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/), see the document, read 2026-11-08
+- [Everhour: Pricing](https://everhour.com/pricing), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the time export to invoice lines compute?
 
-Upload the CSV export of Toggl Track, Clockify, Harvest, Everhour (or any sheet with a date and a duration) and the tool reads every entry, filters it, prices it from your rate card, rounds it the way your contract says and groups it into invoice lines, with a reconciliation of raw, rounded and billed time. The invoice adds a PDF and CSVs.
+Upload the CSV export of Toggl Track, Clockify, Harvest, Everhour (or any sheet with a date and a duration) and the tool reads every entry, filters it, prices it from your rate card, rounds it the way your contract says and groups it into invoice lines, with a reconciliation of raw, rounded and billed time.
+
+**In detail: operations, inputs and outputs**
+
+The invoice adds a PDF and CSVs.
 
 Operations (the op field):
 
@@ -26,7 +66,7 @@ Outputs:
 - lines with dates, hours, rates and amounts; totals; reconciliation; flags
 - invoice: entries, two CSVs and the PDF
 
-## How is it calculated, step by step?
+**Every step in full (6) and the rules**
 
 1. The CSV is read with its delimiter from the heading line; documented headings of each tracker are found by name.
 2. Durations are read as h:mm:ss, h:mm, decimal hours or "1h 30m" to the whole second; start and end times alone give the time, across midnight.
@@ -41,6 +81,8 @@ Each tracker's export headings, rounding options and invoicing behavior are read
 
 ## Which edge cases does it handle?
 
+**The edge cases (4)**
+
 - Clockify's own mismatch example: rounding each entry to two decimals bills more than the exact time, and the reconciliation shows both.
 - Rows that cannot be read are skipped and named; zero-length entries are flagged.
 - More than 500 lines are refused with the way out (group more broadly).
@@ -52,6 +94,14 @@ Each tracker's export headings, rounding options and invoicing behavior are read
 
 **A month of Toggl entries at three rates, each entry rounded up to 15 minutes**
 
+A month of Toggl entries at three rates, each entry rounded up to 15 minutes
+
+| Result | Value |
+| --- | --- |
+| answer | Your 13 entries (24:41:35, 24.6931 h) become 3 invoice lines grouped by project and task, each entry rounded up to the next 15 minutes, billing 26.75 h and totalling $2,760.00. |
+
+**The input**
+
 ```json
 op: "preview"
 source: "toggl"
@@ -61,13 +111,17 @@ rounding: {...}
 rates: {...}
 ```
 
-A month of Toggl entries at three rates, each entry rounded up to 15 minutes
+**More worked examples (1)**
+
+**Clockify's own mismatch example**
+
+Clockify's own mismatch example
 
 | Result | Value |
 | --- | --- |
-| answer | Your 13 entries (24:41:35, 24.6931 h) become 3 invoice lines grouped by project and task, each entry rounded up to the next 15 minutes, billing 26.75 h and totalling $2,760.00. |
+| answer | Your 3 entries (5:01:05, 5.0181 h) become 3 invoice lines grouped by time entry (one line each), not rounded, billing 5.02 h and totalling $502.00. |
 
-**Clockify's own mismatch example**
+**The input**
 
 ```json
 {
@@ -81,61 +135,9 @@ A month of Toggl entries at three rates, each entry rounded up to 15 minutes
 }
 ```
 
-Clockify's own mismatch example
-
-| Result | Value |
-| --- | --- |
-| answer | Your 3 entries (5:01:05, 5.0181 h) become 3 invoice lines grouped by time entry (one line each), not rounded, billing 5.02 h and totalling $502.00. |
-
-## What does it not do?
-
-- A file with nothing left after the filters is refused with the reason.
-- It writes the invoice lines and files; it does not send invoices or change your tracker.
-- Not tax or legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-Uses no rates of its own: the rates are yours. The tracker facts were read on each tracker's own pages on 2026-11-08, and the pages are checked daily for changes.
-
-- [Toggl Track: Creating invoices](https://support.toggl.com/creating-invoices-in-toggl-track)
-- [Toggl Track: Detailed report](https://support.toggl.com/detailed-report)
-- [Toggl Track: Rounding](https://support.toggl.com/rounding)
-- [Toggl Track: Editing and uploading a CSV file](https://support.toggl.com/en/articles/2216070-editing-and-uploading-a-csv-file)
-- [Clockify: Invoicing tracked time and expenses](https://clockify.me/help/projects/invoicing-tracked-time-expenses)
-- [Clockify: Invoices and reports don't match](https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match)
-- [Clockify: Time rounding](https://clockify.me/help/track-time-and-expenses/time-rounding)
-- [Clockify: Pricing](https://clockify.me/pricing)
-- [Toggl Track: Pricing](https://toggl.com/track/pricing/)
-- [Harvest: Pricing](https://www.getharvest.com/pricing)
-- [Harvest API v2: Time entries](https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/)
-- [Everhour: Pricing](https://everhour.com/pricing)
-
-Uses no rates of its own: the rates are yours. The tracker facts were read on each tracker's own pages on 2026-11-08, and the pages are checked daily for changes.
-
-Time export to invoice lines: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Toggl Track: Creating invoices](https://support.toggl.com/creating-invoices-in-toggl-track) | see the document | 2026-11-08 |
-| [Toggl Track: Detailed report](https://support.toggl.com/detailed-report) | see the document | 2026-11-08 |
-| [Toggl Track: Rounding](https://support.toggl.com/rounding) | see the document | 2026-11-08 |
-| [Toggl Track: Editing and uploading a CSV file](https://support.toggl.com/en/articles/2216070-editing-and-uploading-a-csv-file) | see the document | 2026-11-08 |
-| [Clockify: Invoicing tracked time and expenses](https://clockify.me/help/projects/invoicing-tracked-time-expenses) | see the document | 2026-11-08 |
-| [Clockify: Invoices and reports don't match](https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match) | see the document | 2026-11-08 |
-| [Clockify: Time rounding](https://clockify.me/help/track-time-and-expenses/time-rounding) | see the document | 2026-11-08 |
-| [Clockify: Pricing](https://clockify.me/pricing) | see the document | 2026-11-08 |
-| [Toggl Track: Pricing](https://toggl.com/track/pricing/) | see the document | 2026-11-08 |
-| [Harvest: Pricing](https://www.getharvest.com/pricing) | see the document | 2026-11-08 |
-| [Harvest API v2: Time entries](https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/) | see the document | 2026-11-08 |
-| [Everhour: Pricing](https://everhour.com/pricing) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests check CSV reading, every duration and date form, the documented headings, rounding at each level, a sample month to the cent, Clockify's mismatch example, Harvest decimal hours, the rate order, grouping, filters, the retainer, discount, cap and tax, and that the files are the same each time.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Tracker facts are as read on their own pages on 2026-11-08.
 - Every duration and date form is read to the second; rounding per entry, per line and on the total are shown side by side.

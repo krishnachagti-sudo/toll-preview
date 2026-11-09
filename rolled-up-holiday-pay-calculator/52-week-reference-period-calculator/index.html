@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Average your worker's weeks</h2><p class="muted">Weekly pay, most recent week first; 0 for a week with no pay.</p><form method="get" action="/toll-preview/rolled-up-holiday-pay-calculator/" class="cp-tool-form"><input type="hidden" name="ref" value="300|350|350|350|350|0|10|100|100|100|100|100|100|100|100|100|100|100|100|100|100|100|0|0|0|400|400|400|400|400|400|400|400|400|400|400|400|400|400|400|200|200|200|200|200|0|0|0|180|180|180|180|180|180|150|150|150|150|150"><div class="field"><label for="tf-lw">Weeks of leave</label><input type="text" id="tf-lw" name="lw" value="1"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Work out the average</button></form><p class="small"><a href="/toll-preview/rolled-up-holiday-pay-calculator/?ref=300%7C350%7C350%7C350%7C350%7C0%7C10%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C100%7C0%7C0%7C0%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C400%7C200%7C200%7C200%7C200%7C200%7C0%7C0%7C0%7C180%7C180%7C180%7C180%7C180%7C180%7C150%7C150%7C150%7C150%7C150&amp;lw=1">Open the 52-week calculator</a></p></aside>
 <section>
 <h2 id="rule">The rule</h2>
@@ -81,7 +82,7 @@
 </section>
 <section>
 <h2 id="table">GOV.UK's example, week by week</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>GOV.UK Table 9 (gross pay per week, most recent first). GOV.UK labels the £400 weeks &quot;25-40&quot;; its total counts 15 of them, so they are weeks 26 to 40 here.</caption><thead><tr><th scope="col">Weeks back</th><th scope="col" class="r num">Pay each week</th><th scope="col">Counted</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">GOV.UK Table 9 (gross pay per week, most recent first). GOV.UK labels the £400 weeks &quot;25-40&quot;; its total counts 15 of them, so they are weeks 26 to 40 here.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Weeks back</th><th scope="col" class="r num">Pay each week</th><th scope="col">Counted</th></tr></thead><tbody>
 <tr><th scope="row">1</th><td class="r num">£300.00</td><td>1 week</td></tr>
 <tr><th scope="row">2-5</th><td class="r num">£350.00</td><td>4 weeks</td></tr>
 <tr><th scope="row">6</th><td class="r num">£0.00</td><td>skipped (1)</td></tr>
@@ -93,14 +94,14 @@
 <tr><th scope="row">46-48</th><td class="r num">£0.00</td><td>skipped (3)</td></tr>
 <tr><th scope="row">49-54</th><td class="r num">£180.00</td><td>6 weeks</td></tr>
 <tr><th scope="row">55-59</th><td class="r num">£150.00</td><td>5 weeks</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>Counted: 52 weeks over 59 weeks back; total £12,040.00; £12,040.00 ÷ 52 paid weeks = £231.54 a week.</p>
 <p>Employers can use this method instead of rolling holiday pay up: <a href="/toll-preview/rolled-up-holiday-pay-calculator/rolled-up-vs-52-week-reference-period/">the two methods side by side</a>.</p>
 <p class="cp-note">Worked out under GOV.UK's guidance for Great Britain; Northern Ireland has its own rules and is not covered. Whether a worker is an irregular-hours or part-year worker depends on the contract. Not legal advice.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024">GOV.UK (Department for Business and Trade), Holiday pay and entitlement reforms from 1 January 2024 (updated 1 April 2024, read 8 November 2026)</a></li><li><a href="https://www.gov.uk/holiday-entitlement-rights/holiday-pay">GOV.UK, Holiday entitlement: Holiday pay (updated 5 November 2026, read 8 November 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024">GOV.UK (Department for Business and Trade), Holiday pay and entitlement reforms from 1 January 2024 (updated 1 April 2024</a><span class="src-m">gov.uk · read 8 November 2026)</span></li><li><a href="https://www.gov.uk/holiday-entitlement-rights/holiday-pay">GOV.UK, Holiday entitlement: Holiday pay (updated 5 November 2026</a><span class="src-m">gov.uk · read 8 November 2026)</span></li></ul>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>List the weeks.</strong> Start with the last complete week (Sunday to Saturday, or the worker's own pay week) ending on or before the first day of leave, and go back.</li><li><strong>Skip weeks.</strong> Leave out weeks with no pay and any week with sick leave or statutory leave such as maternity leave; count earlier weeks instead.</li><li><strong>Stop.</strong> Stop at 52 counted weeks, or at 104 weeks back, whichever comes first.</li><li><strong>Average.</strong> Add up the pay in the counted weeks and divide by how many there are.</li></ol></section>
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How far back does the 52-week reference period go?</h3></summary><div class="xp-in"><p>Up to 104 complete weeks before the first day of the holiday. With fewer than 52 paid weeks in that time, the average is over the paid weeks found.</p></div></details><details class="xpand"><summary><h3>What if the worker started 20 weeks ago?</h3></summary><div class="xp-in"><p>Use the complete weeks there are. On the first 20 weeks of GOV.UK's example that is £158.42 a week (£3,010.00 ÷ 19 paid weeks = £158.42 a week).</p></div></details></section>

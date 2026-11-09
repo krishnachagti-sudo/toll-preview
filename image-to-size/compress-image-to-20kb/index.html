@@ -74,15 +74,16 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Shrink your photo to 20 KB</h2><p class="muted">The tool opens with 20 KB chosen. Drop in a JPEG, PNG or WebP and download a JPEG of 20 KB or less. Free, and the photo stays on your device.</p><form method="get" action="/toll-preview/image-to-size/" class="cp-tool-form"><div class="field"><label for="tf-kb">Size limit in KB</label><input type="number" id="tf-kb" name="kb" value="20"><p class="hint">1 KB here is 1,000 bytes.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open the tool at 20 KB</button></form><p class="small"><a href="/toll-preview/image-to-size/?kb=20">Open the tool with the limit set to 20 KB</a></p></aside>
 <section>
 <h2 id="results">Four photos, made 20 KB</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>What the tool produced at a 20 KB limit (20,000 bytes)</caption><thead><tr><th scope="col">Photo</th><th scope="col">Before</th><th scope="col" class="r num">After</th><th scope="col" class="r num">Pixels</th><th scope="col" class="r num">Quality</th><th scope="col" class="r num">Pixels kept</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">What the tool produced at a 20 KB limit (20,000 bytes)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Photo</th><th scope="col">Before</th><th scope="col" class="r num">After</th><th scope="col" class="r num">Pixels</th><th scope="col" class="r num">Quality</th><th scope="col" class="r num">Pixels kept</th></tr></thead><tbody>
 <tr><th scope="row">Landscape photo, 12 megapixels</th><td>4,032 × 3,024 px, 2.08 MB</td><td class="r num">19.7 KB</td><td class="r num">794 × 595 px</td><td class="r num">38%</td><td class="r num">4%</td></tr>
 <tr><th scope="row">Head-and-shoulders portrait, 12 megapixels</th><td>3,024 × 4,032 px, 2.14 MB</td><td class="r num">19.9 KB</td><td class="r num">366 × 487 px</td><td class="r num">46%</td><td class="r num">1%</td></tr>
 <tr><th scope="row">Busy outdoor scene, 6 megapixels</th><td>3,008 × 2,000 px, 1.91 MB</td><td class="r num">19.8 KB</td><td class="r num">428 × 284 px</td><td class="r num">41%</td><td class="r num">2%</td></tr>
 <tr><th scope="row">Page of typed text, US Letter at 300 dpi</th><td>2,550 × 3,300 px, 1.11 MB</td><td class="r num">19.8 KB</td><td class="r num">363 × 469 px</td><td class="r num">44%</td><td class="r num">2%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Each result is under 20,000 bytes. Quality is the JPEG quality the tool settled on (35% to 92%).</p>
 </section>
 <section>
@@ -106,7 +107,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021">NASA, KSC-20210111-PH-JBS01_0021 (public domain)</a></li><li><a href="https://images.nasa.gov/details/jsc2025e068207_alt">NASA, jsc2025e068207_alt (public domain)</a></li><li><a href="https://images.nasa.gov/details/KSC-08pd4102">NASA, KSC-08pd4102 (public domain)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://images.nasa.gov/details/KSC-20210111-PH-JBS01_0021">NASA, KSC-20210111-PH-JBS01_0021 (public domain)</a><span class="src-m">images.nasa.gov</span></li><li><a href="https://images.nasa.gov/details/jsc2025e068207_alt">NASA, jsc2025e068207_alt (public domain)</a><span class="src-m">images.nasa.gov</span></li><li><a href="https://images.nasa.gov/details/KSC-08pd4102">NASA, KSC-08pd4102 (public domain)</a><span class="src-m">images.nasa.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Does 20 KB mean 20,000 or 20,480 bytes?</h3></summary><div class="xp-in"><p>It depends on the form. The tool keeps the file under 20,000 bytes, so it fits both readings.</p></div></details><details class="xpand"><summary><h3>Will my photo be uploaded to make it 20 KB?</h3></summary><div class="xp-in"><p>No. The page shrinks the photo inside your browser and has no code that sends it anywhere. Your browser's network panel will show no upload.</p></div></details></section>

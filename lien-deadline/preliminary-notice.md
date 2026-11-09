@@ -1,6 +1,8 @@
 # What is a preliminary notice?
 
-A preliminary notice tells the owner (and often the prime contractor and lender) that you are furnishing labor or materials to the job and may claim a lien if unpaid; it is not a lien. In Arizona it is due 20 days after you first furnish (for a first day of November 2, 2026, by November 22, 2026), in Florida 45 days, and in Texas a notice is due for each month of unpaid work (A.R.S. 33-992.01(C); Fla. Stat. 713.06(2)(a); Tex. Prop. Code 53.056(a-1)).
+A preliminary notice tells the owner (and often the prime contractor and lender) that you are furnishing labor or materials to the job and may claim a lien if unpaid; it is not a lien. It is due 20 days after you first furnish in Arizona, 45 days in Florida, and in Texas for each month of unpaid work (A.R.S. 33-992.01(C); Fla. Stat. 713.06(2)(a); Tex. Prop. Code 53.056(a-1)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=AZ&role=sub&project=commercial&first=2026-11-02): For a first day of November 2, 2026, the Arizona 20-day notice is due by November 22, 2026 (A.R.S. 33-992.01(C)).
 
 ## Work out your notice date
 

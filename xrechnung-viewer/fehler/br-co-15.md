@@ -1,6 +1,6 @@
 # BR-CO-15: Gesamtbetrag mit Umsatzsteuer (BT-112) falsch berechnet
 
-BR-CO-15 bedeutet: Invoice total amount with VAT (BT-112) = Invoice total amount without VAT (BT-109) + Invoice total VAT amount (BT-110). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Bilden Sie BT-112 als BT-109 + BT-110, beide auf zwei Stellen gerundet.
+BR-CO-15 bedeutet: Invoice total amount with VAT (BT-112) = Invoice total amount without VAT (BT-109) + Invoice total VAT amount (BT-110). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

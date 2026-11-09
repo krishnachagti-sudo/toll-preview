@@ -1,6 +1,6 @@
 # BR-DE-19: IBAN (BT-84) ungültig bei SEPA-Überweisung
 
-BR-DE-19 bedeutet: "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Prüfen Sie die IBAN in den Stammdaten. Leerzeichen sind erlaubt und werden für die Prüfung entfernt; die Prüfziffer (Stellen 3 und 4) muss stimmen.
+BR-DE-19 bedeutet: "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

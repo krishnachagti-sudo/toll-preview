@@ -20,6 +20,8 @@ MCP is the Model Context Protocol, a standard way for an AI app to find and call
 
 Make one key per agent. Keys are created on the [account page](https://krishnachagti-sudo.github.io/toll-preview/account), start with `tk_live_`, and are shown once. Each key has its own monthly spending limit, and you can set one for the whole account too. A call that would pass either limit is refused with `cap_reached` and charges nothing. Limits count from the 1st of each month (UTC).
 
+**Read the rest: Which API key should each agent use?**
+
 - Put the key in an environment variable or a secrets store on your server. Never put it in a web page, a mobile app or a public repository.
 - Give an experimental agent a small limit. Raise it once you have seen what it spends.
 - Revoke a key on the account page and the agent stops at once. Other agents are not affected.
@@ -50,7 +52,9 @@ response = client.beta.messages.create(
 print(response)
 ```
 
-Anthropic's documentation describes `authorization_token` as an OAuth token for servers that need one. A Endwise key is a bearer token too, and the MCP server reads it from an `Authorization: Bearer` header. Anthropic's page does not say whether a token that is not from an OAuth flow is accepted, so test with one cheap call and a low-limit key. If the connector refuses it, use the REST route below, which has no such question.
+Anthropic's documentation describes `authorization_token` as an OAuth token for servers that need one. A Endwise key is a bearer token too, and the MCP server reads it from an `Authorization: Bearer` header.
+
+Anthropic's page does not say whether a token that is not from an OAuth flow is accepted, so test with one cheap call and a low-limit key. If the connector refuses it, use the REST route below, which has no such question.
 
 ## How do I use an OpenAI model with a remote MCP tool?
 
@@ -159,7 +163,9 @@ Content-Type: application/json
 {"op":"between","region":"US","start":"2026-07-01","end":"2026-07-08"}
 ```
 
-Over MCP, a free `quote_price` tool does the same, with the arguments `tool` and `arguments`. It is listed when some tool prices by what you ask for, so check `tools/list` before relying on it. Most tools have one fixed price, shown on their pages. Some price per row or per document, and those are the calls worth quoting. A simple rule for an agent: quote first whenever the input has a list, a batch or a file, and refuse to go ahead if the quote is above a number you set.
+Over MCP, a free `quote_price` tool does the same, with the arguments `tool` and `arguments`. It is listed when some tool prices by what you ask for, so check `tools/list` before relying on it.
+
+Most tools have one fixed price, shown on their pages. Some price per row or per document, and those are the calls worth quoting. A simple rule for an agent: quote first whenever the input has a list, a batch or a file, and refuse to go ahead if the quote is above a number you set.
 
 ## How should my agent handle errors?
 

@@ -2,9 +2,46 @@
 
 Every term that makes a DNS query (include, a, mx, ptr, exists and the redirect modifier) is counted across the record and every record it includes, against RFC 7208's limit of 10. ip4, ip6, all and exp cost nothing. Lookups that find nothing are counted separately as void lookups, against a limit of 2.
 
+## How does it work?
+
+1. The record is read: the TXT records at the domain from public DNS (Cloudflare 1.1.1.1 and Google 8.8.8.8 by default, never the machine's own resolver), or the draft given.
+2. The record is parsed term by term. Any syntax error, such as an unknown mechanism, a bad network or a domain-spec without a top label, makes the whole record permerror (Section 4.6).
+3. The audit walks every term left to right and depth first, the way a receiver would reach them if nothing matched earlier. include, a, mx, ptr and exists each cost one lookup, and so does redirect when the record has no "all". ip4, ip6 and all cost nothing, exp is never counted, and terms after "all" are ignored.
+4. Each included record is fetched and walked the same way, sharing one budget of 10 with the record above it.
+5. A query that finds no name or no data is a void lookup. The 3rd void lookup is named.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/spf-lookup-counter/#what) below.
+
+## What does it not cover?
+
+- It does not send or receive mail and does not check DKIM or DMARC: only the SPF record and what a receiver would decide from it.
+- The count is what public DNS answered at the moment of the check. A provider can change its record at any time.
+- Private and special-use names, and private or reserved sending IPs, are refused rather than queried.
+- Some receivers do not enforce the void lookup limit; the tool reports what RFC 7208 says, not what any one receiver does.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 8 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The rules are RFC 7208's and change only with the code. Each check reads live DNS at the moment of the call, through 1.1.1.1 and 8.8.8.8. The provider include hosts were read from each provider's own setup page on 2026-11-07, and what each include costs was measured on public DNS on 2026-11-07.
+- [Tested: 4 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): Every counting rule is checked against a recorded DNS zone, with no network: which terms count, nested includes sharing one budget, exactly 10, void lookups, two records, syntax errors, redirect, mx over 10 names, loops and duplicate includes.
+
+- [RFC 7208: Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1](https://www.rfc-editor.org/rfc/rfc7208), the rules every count applies, not recorded
+- [Google Workspace: SPF setup](https://knowledge.workspace.google.com/admin/security/set-up-spf), include \_spf.google.com, read 2026-11-07
+- [Microsoft 365: SPF setup](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure), include spf.protection.outlook.com, read 2026-11-07
+- [Amazon SES (custom MAIL FROM domain): SPF setup](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html), include amazonses.com, read 2026-11-07
+- [Zendesk: SPF setup](https://support.zendesk.com/hc/en-us/articles/4408832543770), include mail.zendesk.com, read 2026-11-07
+- [HubSpot: SPF setup](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot), include shared.hubspot.com, read 2026-11-07
+- [Postmark: SPF setup](https://postmarkapp.com/support/article/1092-how-do-i-set-up-spf-for-postmark), include spf.mtasv.net, read 2026-11-07
+- [Zoho Mail: SPF setup](https://www.zoho.com/mail/help/adminconsole/spf-configuration.html), include zohomail.com, read 2026-11-07
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the spf lookup counter compute?
 
-The tool reads a domain's SPF record from public DNS, or takes a draft record, and walks every term of it and of every record it includes. It says how many of the 10 DNS lookups the record uses, which term would be the 11th, how many void lookups it finds, and what each top-level term costs. Given a sending IP, it also runs the evaluation a receiver would run and gives the result. A third operation explains an SPF macro without any DNS.
+The tool reads a domain's SPF record from public DNS, or takes a draft record, and walks every term of it and of every record it includes. It says how many of the 10 DNS lookups the record uses, which term would be the 11th, how many void lookups it finds, and what each top-level term costs.
+
+**In detail: operations, inputs and outputs**
+
+Given a sending IP, it also runs the evaluation a receiver would run and gives the result. A third operation explains an SPF macro without any DNS.
 
 Operations (the op field):
 
@@ -29,7 +66,7 @@ Outputs:
 - path: for a sending IP, the result a receiver returns and the lookups it used
 - dns: the resolver used, the number of queries and when the check ran
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. The record is read: the TXT records at the domain from public DNS (Cloudflare 1.1.1.1 and Google 8.8.8.8 by default, never the machine's own resolver), or the draft given. No v=spf1 record gives none, and two or more give permerror (Section 4.5).
 2. The record is parsed term by term. Any syntax error, such as an unknown mechanism, a bad network or a domain-spec without a top label, makes the whole record permerror (Section 4.6).
@@ -51,6 +88,8 @@ So that one call cannot become a flood of DNS queries, one check walks at most 4
 
 ## Which edge cases does it handle?
 
+**The edge cases (7)**
+
 - Nested includes share one budget: an include that itself includes three more costs four.
 - The same include written twice costs twice, and the suggestions say to include it once.
 - A record of exactly 10 lookups is fine, with a near-limit warning.
@@ -65,16 +104,6 @@ So that one call cannot become a flood of DNS queries, one check walks at most 4
 
 **Explain a macro: %{ir}.%{v}.\_spf.%{d2} for an IPv4 sender (RFC 7208 Section 7.4)**
 
-```json
-{
-  "op": "macro",
-  "macro": "%{ir}.%{v}._spf.%{d2}",
-  "domain": "email.example.com",
-  "ip": "192.0.2.3",
-  "sender": "strong-bad@email.example.com"
-}
-```
-
 Explain a macro: %{ir}.%{v}.\_spf.%{d2} for an IPv4 sender (RFC 7208 Section 7.4)
 
 | Result | Value |
@@ -85,17 +114,21 @@ Explain a macro: %{ir}.%{v}.\_spf.%{d2} for an IPv4 sender (RFC 7208 Section 7.4
 | %{d2} | email.example.com becomes example.com |
 | valid DNS name | yes |
 
-**The same macro for an IPv6 sender**
+**The input**
 
 ```json
 {
   "op": "macro",
   "macro": "%{ir}.%{v}._spf.%{d2}",
   "domain": "email.example.com",
-  "ip": "2001:db8::cb01",
+  "ip": "192.0.2.3",
   "sender": "strong-bad@email.example.com"
 }
 ```
+
+**More worked examples (1)**
+
+**The same macro for an IPv6 sender**
 
 The same macro for an IPv6 sender
 
@@ -107,48 +140,23 @@ The same macro for an IPv6 sender
 | %{d2} | email.example.com becomes example.com |
 | valid DNS name | yes |
 
-## What does it not do?
+**The input**
 
-- It does not send or receive mail and does not check DKIM or DMARC: only the SPF record and what a receiver would decide from it.
-- The count is what public DNS answered at the moment of the check. A provider can change its record at any time.
-- Private and special-use names, and private or reserved sending IPs, are refused rather than queried.
-- Some receivers do not enforce the void lookup limit; the tool reports what RFC 7208 says, not what any one receiver does.
-
-## Where does the data come from, and how fresh is it?
-
-The rules are RFC 7208's and change only with the code. Each check reads live DNS at the moment of the call, through 1.1.1.1 and 8.8.8.8. The provider include hosts were read from each provider's own setup page on 2026-11-07, and what each include costs was measured on public DNS on 2026-11-07.
-
-- [RFC 7208: Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1](https://www.rfc-editor.org/rfc/rfc7208)
-- [Google Workspace: SPF setup (read 2026-11-07)](https://knowledge.workspace.google.com/admin/security/set-up-spf)
-- [Microsoft 365: SPF setup (read 2026-11-07)](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure)
-- [Amazon SES (custom MAIL FROM domain): SPF setup (read 2026-11-07)](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html)
-- [Zendesk: SPF setup (read 2026-11-07)](https://support.zendesk.com/hc/en-us/articles/4408832543770)
-- [HubSpot: SPF setup (read 2026-11-07)](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot)
-- [Postmark: SPF setup (read 2026-11-07)](https://postmarkapp.com/support/article/1092-how-do-i-set-up-spf-for-postmark)
-- [Zoho Mail: SPF setup (read 2026-11-07)](https://www.zoho.com/mail/help/adminconsole/spf-configuration.html)
-
-The rules are RFC 7208's and change only with the code. Each check reads live DNS at the moment of the call, through 1.1.1.1 and 8.8.8.8. The provider include hosts were read from each provider's own setup page on 2026-11-07, and what each include costs was measured on public DNS on 2026-11-07.
-
-SPF lookup counter: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [RFC 7208: Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1](https://www.rfc-editor.org/rfc/rfc7208) | the rules every count applies | not recorded |
-| [Google Workspace: SPF setup](https://knowledge.workspace.google.com/admin/security/set-up-spf) | include \_spf.google.com | 2026-11-07 |
-| [Microsoft 365: SPF setup](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure) | include spf.protection.outlook.com | 2026-11-07 |
-| [Amazon SES (custom MAIL FROM domain): SPF setup](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html) | include amazonses.com | 2026-11-07 |
-| [Zendesk: SPF setup](https://support.zendesk.com/hc/en-us/articles/4408832543770) | include mail.zendesk.com | 2026-11-07 |
-| [HubSpot: SPF setup](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot) | include shared.hubspot.com | 2026-11-07 |
-| [Postmark: SPF setup](https://postmarkapp.com/support/article/1092-how-do-i-set-up-spf-for-postmark) | include spf.mtasv.net | 2026-11-07 |
-| [Zoho Mail: SPF setup](https://www.zoho.com/mail/help/adminconsole/spf-configuration.html) | include zohomail.com | 2026-11-07 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "macro",
+  "macro": "%{ir}.%{v}._spf.%{d2}",
+  "domain": "email.example.com",
+  "ip": "2001:db8::cb01",
+  "sender": "strong-bad@email.example.com"
+}
+```
 
 ## How is it tested?
 
-Every counting rule is checked against a recorded DNS zone, with no network: which terms count, nested includes sharing one budget, exactly 10, void lookups, two records, syntax errors, redirect, mx over 10 names, loops and duplicate includes. The macro expander is checked against every example in RFC 7208 Section 7.4, IPv4 and IPv6, and check\_host() for each mechanism.
+The macro expander is checked against every example in RFC 7208 Section 7.4, IPv4 and IPv6, and check\_host() for each mechanism.
 
-What its test suite asserts:
+**What its test suite asserts (4)**
 
 - Counting is checked on a recorded DNS zone: include, a, mx, ptr, exists and redirect count; ip4, ip6, all and exp do not; nested includes share one budget and the 11th term is named.
 - Void lookups, two records, no record, syntax errors, mx over 10 names, loops and duplicate includes are each checked to give the RFC 7208 result.

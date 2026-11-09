@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up Indiana ZIP codes</h2><p class="muted">Paste your own list: every county, FIPS code and share, as a CSV.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="46001"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=46001">Open 46001 in the lookup</a></p></aside>
 <section>
 <h2 id="counties">Indiana counties and their FIPS codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</caption><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
 <tr><th scope="row">Adams County</th><td>18001</td><td class="r num">8</td><td>Decatur, IN</td></tr>
 <tr><th scope="row">Allen County</th><td>18003</td><td class="r num">33</td><td>Fort Wayne, IN</td></tr>
 <tr><th scope="row">Bartholomew County</th><td>18005</td><td class="r num">15</td><td>Columbus, IN</td></tr>
@@ -170,11 +171,11 @@
 <tr><th scope="row">Wells County</th><td>18179</td><td class="r num">17</td><td>Fort Wayne, IN</td></tr>
 <tr><th scope="row">White County</th><td>18181</td><td class="r num">18</td><td>Monticello, IN</td></tr>
 <tr><th scope="row">Whitley County</th><td>18183</td><td class="r num">10</td><td>Fort Wayne, IN</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="split">Indiana ZIP codes that cross a county line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The 120 split across the most counties, of 359; the CSV has them all.</caption><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The 120 split across the most counties, of 359; the CSV has them all.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
 <tr><th scope="row">47240</th><td>Decatur County, IN (18031) 95.53%; Shelby County, IN (18145) 1.78%; Franklin County, IN (18047) 1.44%; Ripley County, IN (18137) 0.91%; Rush County, IN (18139) 0.34%</td></tr>
 <tr><th scope="row">46050</th><td>Clinton County, IN (18023) 76.5%; Boone County, IN (18011) 18.68%; Tipton County, IN (18159) 3.55%; Hamilton County, IN (18057) 1.27%</td></tr>
 <tr><th scope="row">46173</th><td>Rush County, IN (18139) 95.18%; Decatur County, IN (18031) 2.23%; Franklin County, IN (18047) 1.92%; Fayette County, IN (18041) 0.67%</td></tr>
@@ -295,12 +296,12 @@
 <tr><th scope="row">47995</th><td>White County, IN (18181) 95.86%; Benton County, IN (18007) 2.41%; Jasper County, IN (18073) 1.72%</td></tr>
 <tr><th scope="row">46001</th><td>Madison County, IN (18095) 96.52%; Delaware County, IN (18035) 3.48%</td></tr>
 <tr><th scope="row">46012</th><td>Madison County, IN (18095) 89.31%; Delaware County, IN (18035) 10.69%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How many ZIP codes are in Indiana?</h3></summary><div class="xp-in"><p>807 ZCTAs have land in Indiana in the Census 2020 ZCTA-county file. PO-box-only ZIP codes have no ZCTA and are not counted.</p></div></details><details class="xpand"><summary><h3>How many Indiana ZIP codes cross a county line?</h3></summary><div class="xp-in"><p>359 of 807 (44.5%), such as 46001, 46012, 46017.</p></div></details><details class="xpand"><summary><h3>Which Indiana county has the most ZIP codes?</h3></summary><div class="xp-in"><p>Marion County, IN (18097), with land in 41 ZCTAs.</p></div></details></section>

@@ -74,32 +74,53 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>The order time is read on the store's wall clock in its time zone. A time without an offset is taken as store time.</span></li><li><span>The order is received on the order day if that day is a shipping day and the time is before the cutoff.</span></li><li><span>Processing days are whole shipping days after the day received. 0 ships the same day. A range gives an earliest and a latest handover.</span></li><li><span>The handover is the first day, from the end of processing, on which the store ships and the carrier accepts parcels.</span></li><li><span>Transit days are carrier delivery days counted after the handover day.</span></li></ol>
+<p class="cp-note">Steps 6 to 7, each rule and the edge cases are in <a href="/toll-preview/methodology/delivery-date-calculator/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>Published USPS data is for the 2026 season only (read 2026-10-31). UPS and FedEx tables are not included, because both pages refused automated reading; for another carrier you give the carrier's own transit days, delivery days or send-by date.</li><li>USPS delivery times are the ranges the carrier states for each service. The tool does not predict delays.</li><li>The store calendar covers weekdays, your closures and federal holidays. It does not model per-product lead times or weekend processing.</li><li>Dates must fall between 2020 and 2035; others are refused.</li><li>Defaults when you give nothing: America/New_York, a 14:00 cutoff, shipping Monday to Friday, federal holidays observed and 1 processing day.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 4 sources</h3><div class="tc-b"><p class="tc-a">USPS send-by dates, postal holidays and delivery times were read from the USPS pages on 2026-10-31. The federal holiday rules come from the business days tool, last changed 2026-10-30.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 3 checks in its test suite</h3><div class="tc-b"><p class="tc-a">Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<ul class="cp-sources cp-src"><li><a href="https://www.usps.com/holiday/holiday-shipping-dates.htm">USPS: 2026 Holiday Shipping Deadlines</a><span class="src-m">usps.com · 2026 season · read 2026-10-31</span></li><li><a href="https://about.usps.com/newsroom/events/">USPS Newsroom: Holidays and events (postal holidays)</a><span class="src-m">about.usps.com · 2026 · read 2026-10-31</span></li><li><a href="https://www.usps.com/ship/mail-shipping-services.htm">USPS: Mail and shipping services</a><span class="src-m">usps.com · current · read 2026-10-31</span></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a><span class="src-m">opm.gov</span></li></ul>
+<p class="cp-note">USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date.</p>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the delivery date and holiday order-by calculator compute?</h2>
-<p>Given when an order is placed, the tool says when it is received, when it ships and when it arrives. Given a date the parcel must arrive by, it says the last moment to order. A third operation lists the carrier's closed days and published send-by dates for a year.</p>
-<details class="xpand"><summary>Read the rest: What does the delivery date and holiday order-by calculator compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<p>Given when an order is placed, the tool says when it is received, when it ships and when it arrives. Given a date the parcel must arrive by, it says the last moment to order.</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>A third operation lists the carrier's closed days and published send-by dates for a year.</p>
+<p>Operations (the op field):</p>
 <ul><li><code>delivery-date</code>: From an order time, the store's time zone, cutoff, shipping days, closures and processing days, and a carrier and service, returns received, ships (earliest and latest), arrives (earliest and latest), the days skipped by name and a plain-words list of steps.</li><li><code>order-by</code>: From a date the parcel must arrive by (deliverBy) or the carrier's own send-by date (sendBy), returns for each USPS service the last order date and the exact instant, with the steps and whether it is still possible at asOf.</li><li><code>calendar</code>: For a year (2020 to 2035) and carrier usps or federal, returns the closed days by name, and for USPS the published holiday send-by dates.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>orderAt, timeZone, cutoff</code>: The order time (a store wall-clock time like 2026-12-11T15:12, or an instant with Z or an offset), an IANA zone like America/New_York and a 24-hour cutoff like 14:00, or null for none.</li><li><code>shipDays, closures, federalHolidays</code>: The weekdays the store ships (default Monday to Friday), its own closures and whether it observes federal holidays.</li><li><code>processingDays, processingDaysMax</code>: Whole shipping days between receiving an order and handing it over (0 to 60), as a range if you give both.</li><li><code>carrier, service, transitDays</code>: usps with a service name, or other with your own delivery days, transit days and holiday rule.</li></ul>
 <p>Outputs:</p>
 <ul><li>received, ships and arrives dates</li><li>steps: each step in words</li><li>skipped: each holiday or closure passed, by name and by which calendar</li><li>validUntil: the instant after which the order falls to the next shipping day</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>The order time is read on the store's wall clock in its time zone. A time without an offset is taken as store time. A wall-clock time skipped by a daylight-saving change is resolved to the hour before it, so a cutoff is never later than the store meant.</li><li>The order is received on the order day if that day is a shipping day and the time is before the cutoff. Otherwise it is received on the next shipping day. With no cutoff, an order counts as received on its day if that is a shipping day.</li><li>Processing days are whole shipping days after the day received. 0 ships the same day. A range gives an earliest and a latest handover.</li><li>The handover is the first day, from the end of processing, on which the store ships and the carrier accepts parcels.</li><li>Transit days are carrier delivery days counted after the handover day. For USPS the minimum and maximum come from the delivery times on its services page, unless you give your own.</li><li>Every holiday or closure passed on either calendar is recorded by name in skipped, and every step is written out in steps.</li><li>For the last-order date the walk runs backward. If the target is the date USPS's holiday table says delivery is before (25 December in 2026) or the day before it, the published send-by date for the service is the limit. Otherwise the tool finds the latest handover whose slowest transit still arrives by the target. It then steps back over the longest processing time on the store calendar, and the cutoff on that day is the last moment to order.</li></ol>
+<details class="xpand"><summary>Every step in full (7) and the rules</summary><div class="xp-in"><ol><li>The order time is read on the store's wall clock in its time zone. A time without an offset is taken as store time. A wall-clock time skipped by a daylight-saving change is resolved to the hour before it, so a cutoff is never later than the store meant.</li><li>The order is received on the order day if that day is a shipping day and the time is before the cutoff. Otherwise it is received on the next shipping day. With no cutoff, an order counts as received on its day if that is a shipping day.</li><li>Processing days are whole shipping days after the day received. 0 ships the same day. A range gives an earliest and a latest handover.</li><li>The handover is the first day, from the end of processing, on which the store ships and the carrier accepts parcels.</li><li>Transit days are carrier delivery days counted after the handover day. For USPS the minimum and maximum come from the delivery times on its services page, unless you give your own.</li><li>Every holiday or closure passed on either calendar is recorded by name in skipped, and every step is written out in steps.</li><li>For the last-order date the walk runs backward. If the target is the date USPS's holiday table says delivery is before (25 December in 2026) or the day before it, the published send-by date for the service is the limit. Otherwise the tool finds the latest handover whose slowest transit still arrives by the target. It then steps back over the longest processing time on the store calendar, and the cutoff on that day is the last moment to order.</li></ol>
 <p><strong>Two calendars, never one.</strong></p>
 <p>The store ships on its chosen weekdays, not on its own closures and, if it follows them, not on the US federal holidays as OPM observes them (a Saturday holiday is a Friday off).</p>
-<p>USPS delivers Monday to Saturday and closes on postal holidays. Those do not follow OPM's observed Fridays: USPS is open with normal delivery on the Friday before a Saturday holiday and closed on the Saturday, and a Sunday holiday closes the Monday. Priority Mail Express delivers every day.</p>
+<p>USPS delivers Monday to Saturday and closes on postal holidays. Those do not follow OPM's observed Fridays: USPS is open with normal delivery on the Friday before a Saturday holiday and closed on the Saturday, and a Sunday holiday closes the Monday. Priority Mail Express delivers every day.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>After the cutoff: an order at 3:12 pm with a 2 pm cutoff is received on the next shipping day.</li><li>Holidays by name: an order placed the afternoon before Thanksgiving skips Thanksgiving Day on the store calendar and says so.</li><li>Different weekends: a store that ships Monday to Friday and a carrier that delivers on Saturday are walked separately.</li><li>A range of processing or transit days gives an earliest and a latest date rather than one guess.</li><li>If the store and the carrier share no open day in the next 400 days (or the 400 days before the target), the tool refuses and says so.</li></ul>
+<details class="xpand"><summary>The edge cases (5)</summary><div class="xp-in"><ul><li>After the cutoff: an order at 3:12 pm with a 2 pm cutoff is received on the next shipping day.</li><li>Holidays by name: an order placed the afternoon before Thanksgiving skips Thanksgiving Day on the store calendar and says so.</li><li>Different weekends: a store that ships Monday to Friday and a carrier that delivers on Saturday are walked separately.</li><li>A range of processing or transit days gives an earliest and a latest date rather than one guess.</li><li>If the store and the carrier share no open day in the next 400 days (or the 400 days before the target), the tool refuses and says so.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>An order after the cutoff</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">An order after the cutoff</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">received</th><td>2026-12-14</td></tr>
+<tr><th scope="row">ships</th><td>2026-12-15</td></tr>
+<tr><th scope="row">arrives</th><td>2026-12-17 to 2026-12-21</td></tr>
+<tr><th scope="row">skipped</th><td>none</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;delivery-date&quot;,
   &quot;orderAt&quot;: &quot;2026-12-11T15:12&quot;,
   &quot;timeZone&quot;: &quot;America/New_York&quot;,
@@ -107,15 +128,15 @@
   &quot;processingDays&quot;: 1,
   &quot;carrier&quot;: &quot;usps&quot;,
   &quot;service&quot;: &quot;ground-advantage&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>An order after the cutoff</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">received</th><td>2026-12-14</td></tr>
-<tr><th scope="row">ships</th><td>2026-12-15</td></tr>
-<tr><th scope="row">arrives</th><td>2026-12-17 to 2026-12-21</td></tr>
-<tr><th scope="row">skipped</th><td>none</td></tr>
-</tbody></table></div>
-<p><strong>Thanksgiving skipped by name</strong></p>
-<pre><code class="language-json">&#123;
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (2)</summary><div class="xp-in"><p><strong>Thanksgiving skipped by name</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">Thanksgiving skipped by name</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">received</th><td>2026-11-27</td></tr>
+<tr><th scope="row">ships</th><td>2026-11-30</td></tr>
+<tr><th scope="row">arrives</th><td>2026-12-02 to 2026-12-03</td></tr>
+<tr><th scope="row">skipped</th><td>Thanksgiving Day (2026-11-26, store calendar)</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;delivery-date&quot;,
   &quot;orderAt&quot;: &quot;2026-11-25T16:30&quot;,
   &quot;timeZone&quot;: &quot;America/Chicago&quot;,
@@ -123,15 +144,14 @@
   &quot;processingDays&quot;: 1,
   &quot;carrier&quot;: &quot;usps&quot;,
   &quot;service&quot;: &quot;priority-mail&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Thanksgiving skipped by name</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">received</th><td>2026-11-27</td></tr>
-<tr><th scope="row">ships</th><td>2026-11-30</td></tr>
-<tr><th scope="row">arrives</th><td>2026-12-02 to 2026-12-03</td></tr>
-<tr><th scope="row">skipped</th><td>Thanksgiving Day (2026-11-26, store calendar)</td></tr>
-</tbody></table></div>
+&#125;</code></pre></div></details>
 <p><strong>The last order for Christmas 2026 by USPS Ground Advantage</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">The last order for Christmas 2026 by USPS Ground Advantage</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">carrier send-by date</th><td>2026-12-17</td></tr>
+<tr><th scope="row">last handover</th><td>2026-12-17</td></tr>
+<tr><th scope="row">last order</th><td>Wednesday, December 16, 2026, 2:00 pm EST</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;order-by&quot;,
   &quot;deliverBy&quot;: &quot;2026-12-24&quot;,
   &quot;timeZone&quot;: &quot;America/New_York&quot;,
@@ -140,34 +160,12 @@
   &quot;carrier&quot;: &quot;usps&quot;,
   &quot;destination&quot;: &quot;contiguous&quot;,
   &quot;asOf&quot;: &quot;2026-11-02T09:00&quot;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>The last order for Christmas 2026 by USPS Ground Advantage</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">carrier send-by date</th><td>2026-12-17</td></tr>
-<tr><th scope="row">last handover</th><td>2026-12-17</td></tr>
-<tr><th scope="row">last order</th><td>Wednesday, December 16, 2026, 2:00 pm EST</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>Published USPS data is for the 2026 season only (read 2026-10-31). UPS and FedEx tables are not included, because both pages refused automated reading; for another carrier you give the carrier's own transit days, delivery days or send-by date.</li><li>USPS delivery times are the ranges the carrier states for each service. The tool does not predict delays.</li><li>The store calendar covers weekdays, your closures and federal holidays. It does not model per-product lead times or weekend processing.</li><li>Dates must fall between 2020 and 2035; others are refused.</li><li>Defaults when you give nothing: America/New_York, a 14:00 cutoff, shipping Monday to Friday, federal holidays observed and 1 processing day.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>USPS send-by dates, postal holidays and delivery times were read from the USPS pages on 2026-10-31. The federal holiday rules come from the business days tool, last changed 2026-10-30.</p>
-<ul class="cp-sources"><li><a href="https://www.usps.com/holiday/holiday-shipping-dates.htm">USPS: 2026 Holiday Shipping Deadlines</a></li><li><a href="https://about.usps.com/newsroom/events/">USPS Newsroom: Holidays and events (postal holidays)</a></li><li><a href="https://www.usps.com/ship/mail-shipping-services.htm">USPS: Mail and shipping services</a></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li></ul>
-<p>USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>Delivery date and holiday order-by calculator: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://www.usps.com/holiday/holiday-shipping-dates.htm">USPS: 2026 Holiday Shipping Deadlines</a></th><td>2026 season</td><td rowspan="3">2026-10-31</td></tr>
-<tr><th scope="row"><a href="https://about.usps.com/newsroom/events/">USPS Newsroom: Holidays and events (postal holidays)</a></th><td>2026</td></tr>
-<tr><th scope="row"><a href="https://www.usps.com/ship/mail-shipping-services.htm">USPS: Mail and shipping services</a></th><td>current</td></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists. USPS delivery times are compared with its services page, and the missing UPS and FedEx tables are checked to be absent, with the reason recorded.</p>
-<p>What its test suite asserts:</p>
-<ul><li>Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists.</li><li>USPS delivery times are compared with the USPS services page.</li><li>UPS and FedEx tables are checked to be absent, with the reason recorded, so the tool never invents them.</li></ul>
+<p>USPS delivery times are compared with its services page, and the missing UPS and FedEx tables are checked to be absent, with the reason recorded.</p>
+<details class="xpand"><summary>What its test suite asserts (3)</summary><div class="xp-in"><ul><li>Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists.</li><li>USPS delivery times are compared with the USPS services page.</li><li>UPS and FedEx tables are checked to be absent, with the reason recorded, so the tool never invents them.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/delivery-date-calculator/">Open the Delivery date and holiday order-by calculator tool</a>.</p>
 </section>

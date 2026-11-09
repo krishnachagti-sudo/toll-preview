@@ -6,6 +6,8 @@ The 2026 IRS business mileage rate is 72.5 cents a mile to June 30 and 76 cents 
 - 1099-NEC reporting line: $2,000
 - Section 179 limit: $2,560,000
 
+[Mileage](#mileage) · [Per diem](#per-diem) · [1099](#1099) · [Section 179](#section-179) · [Standard deduction](#standard-deduction) · [Self-employment tax](#self-employment-tax) · [Estimated tax](#estimated-tax) · [IFTA](#ifta) · [UK](#uk) · [Sources](#sources)
+
 ## What are the 2026 IRS mileage rates?
 
 The 2026 business rate is 72.5 cents a mile to June 30 and 76 cents from July 1. [The IRS rate page for 2026](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/irs-mileage-rate-2026/) works out amounts for common mileages, and [the history](https://krishnachagti-sudo.github.io/toll-preview/irs-mileage-rate-history/) goes back to 2011. Use [the mileage calculator](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/) for a split year.
@@ -19,6 +21,8 @@ IRS standard mileage rates, cents per mile.
 | Moving (active-duty military, certain intelligence-community moves) | 20.5 | 23.5 |
 | Charity (fixed by law) | 14 | 14 |
 | IRS source | IR-2025-128, Notice 2026-10 | IR-2026-29, Announcement 2026-11 |
+
+**GSA rates for federal employee travel**
 
 GSA rates for federal employee travel in a personal vehicle, dollars per mile.
 
@@ -68,6 +72,8 @@ Report a payee when payments in 2026 reach this amount. Source: IRS: Instruction
 | 1099-MISC box 12: Section 409A deferrals | $2,000 |
 | 1099-MISC box 15: Nonqualified deferred compensation | $2,000 |
 
+**Due dates in 2027**
+
 Due dates for 2026 payments. When the statutory date is a weekend or legal holiday the due date moves to the next business day (IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), Filing dates).
 
 | What is due | Statutory date | Due date |
@@ -78,6 +84,8 @@ Due dates for 2026 payments. When the statutory date is a weekend or legal holid
 | 1099-MISC copy to the payee (box 8 or 10 only) | February 15, 2027 | Tuesday, February 16, 2027 |
 | 1099-MISC to the IRS, on paper | February 28, 2027 | Monday, March 1, 2027 |
 | 1099-MISC to the IRS, electronically | March 31, 2027 | Wednesday, March 31, 2027 |
+
+**Penalties, e-filing and backup withholding**
 
 You must file electronically when you file 10 or more information returns in total. Backup withholding is 24%.
 
@@ -119,6 +127,8 @@ Standard deduction, tax year 2026.
 | Extra for age 65 or older or blind, married | $1,650 |
 | Extra for age 65 or older or blind, unmarried | $2,050 |
 
+**Income tax brackets for 2026**
+
 Federal income tax brackets, tax year 2026: taxable income in each bracket.
 
 | Rate | Single | Married filing jointly |
@@ -130,6 +140,8 @@ Federal income tax brackets, tax year 2026: taxable income in each bracket.
 | 32% | $201,775 to $256,225 | $403,550 to $512,450 |
 | 35% | $256,225 to $640,600 | $512,450 to $768,700 |
 | 37% | Over $640,600 | Over $768,700 |
+
+**QBI, tips, overtime and seniors**
 
 Deductions that depend on your situation, tax year 2026. Source: IRS Rev. Proc. 2025-32 (2026 inflation adjustments): tax rate tables, standard deduction, additional standard deduction, section 199A thresholds; IRS: Tax deductions for working Americans and seniors (tips, overtime, seniors, 2025 to 2028).
 
@@ -174,6 +186,8 @@ Federal estimated tax payments, tax year 2026. Source: IRS Form 1040-ES (2026), 
 | Payment 2 | May 31, 2026 | June 15, 2026 | Monday, June 15, 2026 |
 | Payment 3 | August 31, 2026 | September 15, 2026 | Tuesday, September 15, 2026 |
 | Payment 4 | December 31, 2026 | January 15, 2027 | Friday, January 15, 2027 |
+
+**Safe harbors and interest rates**
 
 Safe harbors and interest. Sources: IRS: Estimated tax FAQs for individuals (the $1,000 rule and safe harbors); IRS: Quarterly interest rates (individual underpayments, 2026).
 
@@ -227,6 +241,8 @@ Yes. Use your browser's print command (Ctrl+P, or Cmd+P on a Mac). The page prin
 ## Where do these numbers come from?
 
 Every figure is read from the same data the tools use, not typed into this page, so it changes when the data changes. The data on this page was last read on November 2, 2026. [Sources and how we check the answers](https://krishnachagti-sudo.github.io/toll-preview/sources/) lists the edition and read date of each source; [data updates](https://krishnachagti-sudo.github.io/toll-preview/updates/) lists each change.
+
+**Every source, with its link**
 
 - [IRS: Standard mileage rates (Mileage rates for all years) (page updated July 28, 2026)](https://www.irs.gov/tax-professionals/standard-mileage-rates)
 - [IRS: Internal Revenue Bulletin 2026-29 (July 13, 2026), Announcement 2026-11](https://www.irs.gov/irb/2026-29_IRB)

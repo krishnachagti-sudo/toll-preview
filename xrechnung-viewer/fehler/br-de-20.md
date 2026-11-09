@@ -1,6 +1,6 @@
 # BR-DE-20: Belastetes Konto (BT-91) ist keine gültige IBAN bei SEPA-Lastschrift
 
-BR-DE-20 bedeutet: "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Prüfen Sie die IBAN aus dem SEPA-Mandat des Kunden.
+BR-DE-20 bedeutet: "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

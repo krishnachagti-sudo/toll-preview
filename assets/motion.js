@@ -1010,7 +1010,9 @@
     if (reduce || !hasIO) { each('.rv', function (el) { el.classList.add('in'); }); return; }
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    // A block shows once its top is a little way into the screen. A share of the block's own height
+    // (the old threshold) never came for a block taller than the screen, which then stayed blank.
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
     [].forEach.call(els, function (el) { io.observe(el); });
   }
 

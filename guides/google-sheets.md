@@ -4,13 +4,17 @@ Yes, in 5 steps: paste a short Apps Script into the sheet, store your API key as
 
 ## Can I use Endwise in Google Sheets?
 
-Yes. Google Sheets runs short scripts written in Apps Script, and a script can call the Endwise REST API. You can wrap a tool in a custom function, which then works like any built-in formula, or run it from a menu command. Both send a `POST` to `https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/TOOL-SLUG` with your key in an `Authorization: Bearer` header. This page is current as of November 2026.
+Yes. Google Sheets runs short scripts written in Apps Script, and a script can call the Endwise REST API. You can wrap a tool in a custom function, which then works like any built-in formula, or run it from a menu command. Both send a `POST` to `https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/TOOL-SLUG` with your key in an `Authorization: Bearer` header.
+
+This page is current as of November 2026.
 
 Each call is billed to your balance, the free monthly allowance ($0.25) first. The free runs on the web pages (5 a day) do not apply to API calls, so the cost section below matters.
 
 ## What does Google allow in a custom function?
 
 From Google's documentation:
+
+**Read the rest: What does Google allow in a custom function?**
 
 - **UrlFetchApp is allowed.** Google lists it among the services a custom function can use.
 - **Properties are allowed, with one catch.** The note in Google's table is that getUserProperties() only gets the properties of the spreadsheet owner. This page uses script properties, which are shared by everyone who runs the script.
@@ -24,6 +28,8 @@ Google also says the cache works in custom functions but is "not particularly us
 ## How do I stop paying for the same call twice?
 
 A sheet can ask the same question many times: fill-down over a column, a reopened file, an edited formula that is then undone. Three layers keep each distinct question to one charge:
+
+**Read the rest: How do I stop paying for the same call twice?**
 
 - **Idempotency-Key.** The code below sends a key built from the tool and the input. The API sends back the stored answer for a repeated key, marks it `Idempotent-Replay: true`, and charges nothing more. The same key with different input is refused with `idempotency_mismatch`. The documentation does not say how long stored answers are kept, so treat this as a safety net, not storage.
 - **CacheService.** The code caches each answer for 6 hours, the longest Google allows. Cached repeats make no call at all. Google calls the expiration a suggestion, and entries may go earlier, which the Idempotency-Key covers.

@@ -2,9 +2,48 @@
 
 A US ZIP code is looked up as its ZCTA in the Census 2020 ZCTA to county file: 33,791 ZCTAs, 10,180 of them in more than one county, each county's share given by land area. A UK postcode is looked up in the ONS Postcode Directory (August 2026), which places 2,652,624 Great Britain postcodes, live and terminated, in their local authority.
 
+## How does it work?
+
+1. Each entry is read. Digits are a ZIP code: 3 or 4 digits are padded with leading zeros (a spreadsheet drops them), and ZIP+4 keeps its first five digits, each with a note.
+2. A ZIP is looked up as the ZCTA of the same number. A ZIP with no ZCTA, such as a PO-box-only ZIP or one created after 2020, is reported as not found, with the advice to use the street address.
+3. The ZCTA's land parts are listed largest first (ties by FIPS code), and each county's share is its land over the ZCTA's land, as a percentage with two decimals.
+4. Each county gets its OMB July 2023 metro or micro area and its state's Census region and division.
+5. A postcode in Northern Ireland, Guernsey, Jersey or the Isle of Man is named and not covered.
+
+> Step 6, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/zip-to-county/#what) below.
+
+## What does it not cover?
+
+- It answers for ZCTAs, not USPS delivery routes, so a new ZIP or a PO-box-only ZIP is not found. Use the street address for those.
+- Shares are by land area, not by addresses or population.
+- Northern Ireland, the Channel Islands and the Isle of Man are not covered.
+- It does not geocode street addresses or give a postcode's coordinates.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 8 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The US files are the Census 2020 ZCTA to county relationship file, Census 2020 county and state codes, the Census regions and OMB's July 2023 delineation, read on 2026-11-07. The postcode file is the ONS Postcode Directory, August 2026, read on 2026-11-07. Each file is recorded with its address and SHA-256 hash.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The counts are pinned against the files: 33,791 ZCTAs and 10,180 in more than one county, 2,652,624 postcodes decoded back to the counts the build wrote.
+
+- [Census 2020 ZCTA5 to County relationship file](https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt), 2020, read 2026-11-07
+- [Census 2020 national county codes](https://www2.census.gov/geo/docs/reference/codes2020/national_county2020.txt), 2020, read 2026-11-07
+- [Census 2020 national state codes](https://www2.census.gov/geo/docs/reference/codes2020/national_state2020.txt), 2020, read 2026-11-07
+- [Census regions and divisions](https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt), 2020, read 2026-11-07
+- [OMB July 2023 CBSA delineation (Census list 1)](https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx), July 2023, read 2026-11-07
+- [ONS Postcode Directory (August 2026), ONSPD\_AUG\_2026.zip](https://geoportal.statistics.gov.uk/), August 2026, read 2026-11-07
+- [ONS: Postcode products](https://www.ons.gov.uk/methodology/geography/geographicalproducts/postcodeproducts)
+- [ONS: Licences](https://www.ons.gov.uk/methodology/geography/licences)
+
+> US answers come from Census 2020 files and OMB's July 2023 delineation, read 2026-11-07. UK answers come from the ONS Postcode Directory, August 2026, read 2026-11-07; Northern Ireland is not covered.
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the zip code and uk postcode to county lookup compute?
 
-Given ZIP codes or UK postcodes, one or a list, the tool says for each ZIP every county it has land in, with the county FIPS code, the share of the land, the metro or micro area and the Census region, and for each postcode its local authority, county, region and nation. Given a county FIPS code, it lists every ZCTA with land in that county.
+Given ZIP codes or UK postcodes, one or a list, the tool says for each ZIP every county it has land in, with the county FIPS code, the share of the land, the metro or micro area and the Census region, and for each postcode its local authority, county, region and nation.
+
+**In detail: operations, inputs and outputs**
+
+Given a county FIPS code, it lists every ZCTA with land in that county.
 
 Operations (the op field):
 
@@ -24,7 +63,7 @@ Outputs:
 - summary: codes, found, not found, unreadable, US and GB found, and ZIPs crossing a county line
 - sources: the files used, with their vintage and read date, and the ONS attribution for postcodes
 
-## How is it calculated, step by step?
+**Every step in full (6) and the rules**
 
 1. Each entry is read. Digits are a ZIP code: 3 or 4 digits are padded with leading zeros (a spreadsheet drops them), and ZIP+4 keeps its first five digits, each with a note. Letters are a postcode, read in any case or spacing and written back as outward and inward code, such as SW1A 1AA. Anything else is reported as not readable.
 2. A ZIP is looked up as the ZCTA of the same number. A ZIP with no ZCTA, such as a PO-box-only ZIP or one created after 2020, is reported as not found, with the advice to use the street address.
@@ -49,6 +88,8 @@ The ONS Postcode Directory (August 2026) has 1,749,110 live and 903,514 terminat
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - ZIP 39573 in Mississippi has land in six counties: each is listed with its share, largest first.
 - ZIP 2134 is read as 02134, and 10463-2201 as 10463, each with a note saying so.
 - ZIP 00501 has no ZCTA in the Census 2020 file, so it is reported as not found and not charged.
@@ -62,15 +103,6 @@ The ONS Postcode Directory (August 2026) has 1,749,110 live and 903,514 terminat
 
 **ZIP 77002: one county, all of its land**
 
-```json
-{
-  "op": "lookup",
-  "codes": [
-    "77002"
-  ]
-}
-```
-
 ZIP 77002: one county, all of its land
 
 | Result | Value |
@@ -80,16 +112,20 @@ ZIP 77002: one county, all of its land
 | share of land | 100% |
 | metro area | Houston-Pasadena-The Woodlands, TX |
 
-**ZIP 39573: six counties, by share of land**
+**The input**
 
 ```json
 {
   "op": "lookup",
   "codes": [
-    "39573"
+    "77002"
   ]
 }
 ```
+
+**More worked examples (3)**
+
+**ZIP 39573: six counties, by share of land**
 
 ZIP 39573: six counties, by share of land
 
@@ -102,16 +138,18 @@ ZIP 39573: six counties, by share of land
 | Pearl River County, MS (28109) | 2.84% |
 | Harrison County, MS (28047) | 2.53% |
 
-**Postcode SW1A 1AA: a single-tier council**
+**The input**
 
 ```json
 {
   "op": "lookup",
   "codes": [
-    "SW1A 1AA"
+    "39573"
   ]
 }
 ```
+
+**Postcode SW1A 1AA: a single-tier council**
 
 Postcode SW1A 1AA: a single-tier council
 
@@ -122,7 +160,29 @@ Postcode SW1A 1AA: a single-tier council
 | region | London |
 | nation | England |
 
+**The input**
+
+```json
+{
+  "op": "lookup",
+  "codes": [
+    "SW1A 1AA"
+  ]
+}
+```
+
 **A pasted list with a lost leading zero, a ZIP+4 and a Northern Ireland postcode**
+
+A pasted list with a lost leading zero, a ZIP+4 and a Northern Ireland postcode
+
+| Result | Value |
+| --- | --- |
+| found | 4 of 6 |
+| not found | 2 |
+| ZIPs crossing a county line | 1 |
+| answer | 4 of 6 codes found; 1 ZIP crosses a county line; 2 not in the official files. |
+
+**The input**
 
 ```json
 {
@@ -138,53 +198,11 @@ Postcode SW1A 1AA: a single-tier council
 }
 ```
 
-A pasted list with a lost leading zero, a ZIP+4 and a Northern Ireland postcode
-
-| Result | Value |
-| --- | --- |
-| found | 4 of 6 |
-| not found | 2 |
-| ZIPs crossing a county line | 1 |
-| answer | 4 of 6 codes found; 1 ZIP crosses a county line; 2 not in the official files. |
-
-## What does it not do?
-
-- It answers for ZCTAs, not USPS delivery routes, so a new ZIP or a PO-box-only ZIP is not found. Use the street address for those.
-- Shares are by land area, not by addresses or population.
-- Northern Ireland, the Channel Islands and the Isle of Man are not covered.
-- It does not geocode street addresses or give a postcode's coordinates.
-
-## Where does the data come from, and how fresh is it?
-
-The US files are the Census 2020 ZCTA to county relationship file, Census 2020 county and state codes, the Census regions and OMB's July 2023 delineation, read on 2026-11-07. The postcode file is the ONS Postcode Directory, August 2026, read on 2026-11-07. Each file is recorded with its address and SHA-256 hash.
-
-- [Census 2020 ZCTA5 to County relationship file](https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt)
-- [OMB July 2023 metropolitan and micropolitan delineation (Census list 1)](https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx)
-- [Census Bureau regions and divisions](https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt)
-- [ONS Postcode Directory (August 2026)](https://geoportal.statistics.gov.uk/)
-- [ONS: Postcode products](https://www.ons.gov.uk/methodology/geography/geographicalproducts/postcodeproducts)
-- [ONS: Licences](https://www.ons.gov.uk/methodology/geography/licences)
-
-US answers come from Census 2020 files and OMB's July 2023 delineation, read 2026-11-07. UK answers come from the ONS Postcode Directory, August 2026, read 2026-11-07; Northern Ireland is not covered.
-
-ZIP code and UK postcode to county lookup: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Census 2020 ZCTA5 to County relationship file](https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt) | 2020 | 2026-11-07 |
-| [Census 2020 national county codes](https://www2.census.gov/geo/docs/reference/codes2020/national_county2020.txt) | 2020 | 2026-11-07 |
-| [Census 2020 national state codes](https://www2.census.gov/geo/docs/reference/codes2020/national_state2020.txt) | 2020 | 2026-11-07 |
-| [Census regions and divisions](https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt) | 2020 | 2026-11-07 |
-| [OMB July 2023 CBSA delineation (Census list 1)](https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx) | July 2023 | 2026-11-07 |
-| [ONS Postcode Directory (August 2026), ONSPD\_AUG\_2026.zip](https://geoportal.statistics.gov.uk/) | August 2026 | 2026-11-07 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The counts are pinned against the files: 33,791 ZCTAs and 10,180 in more than one county, 2,652,624 postcodes decoded back to the counts the build wrote. Answers are checked for one-county and six-county ZIPs, a state line, Connecticut, Puerto Rico, two-tier and single-tier councils, Scotland, Wales, London, terminated and unplaced postcodes.
+Answers are checked for one-county and six-county ZIPs, a state line, Connecticut, Puerto Rico, two-tier and single-tier councils, Scotland, Wales, London, terminated and unplaced postcodes.
 
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The file counts are pinned: 33,791 ZCTAs, 10,180 in more than one county, 3,234 counties, and 2,652,624 Great Britain postcodes decoded back to the counts the build wrote.
 - ZIP 77002 is all in Harris County, ZIP 39573 is split across six Mississippi counties with shares adding to 100, and the Bronx, Connecticut, Puerto Rico and a ZIP with no ZCTA give the noted answers.

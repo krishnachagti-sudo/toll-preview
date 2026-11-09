@@ -12,6 +12,10 @@ In Connecticut a landlord may charge a rent late fee of at most the lesser of $5
 
 ## What the statute says
 
+**In short:** The lesser of $5 a day up to $50, or 5% of the delinquent rent payment; from day 10 after the due date (Conn. Gen. Stat. § 47a-15a).
+
+**The statute's words (2 passages)**
+
 Conn. Gen. Stat. § 47a-15a: "If rent is unpaid when due and the tenant fails to pay rent within nine days thereafter or, in the case of a one-week tenancy, within four days thereafter, the landlord may terminate the rental agreement in accordance with the provisions of sections 47a-23 to 47a-23b , inclusive. For purposes of this section, "grace period" means the nine-day or four-day time periods identified in this subsection, as applicable."
 
 Conn. Gen. Stat. § 47a-15a: "If a rental agreement contains a valid written agreement to pay a late charge in accordance with subsection (a) of section 47a-4 a landlord may assess a tenant such a late charge on a rent payment made subsequent to the grace period in accordance with this section. Such late charge may not exceed the lesser of (1) five dollars per day, up to a maximum of fifty dollars, or (2) five per cent of the delinquent rent payment or, in the case of a rental agreement paid in whole or in part by a governmental or charitable entity, five per cent of the tenant's share of the delinquent rent payment. The landlord may not assess more than one late charge upon a delinquent rent payment, regardless of how long the rent remains unpaid."

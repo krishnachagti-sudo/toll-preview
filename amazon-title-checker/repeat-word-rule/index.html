@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check a title for repeats</h2><p class="muted">It lists every word used more than twice.</p><form method="get" action="/toll-preview/amazon-title-checker/" class="cp-tool-form"><div class="field"><label for="tf-title">Title</label><input type="text" id="tf-title" name="title" value="Harbor &amp; Pine Glass Set, Glass Tumblers and Glass Coasters, 6 Pieces"></div><div class="field"><label for="tf-brand">Brand name (optional)</label><input type="text" id="tf-brand" name="brand" value=""></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Count it</button></form><p class="small"><a href="/toll-preview/amazon-title-checker/?title=Harbor+%26+Pine+Glass+Set%2C+Glass+Tumblers+and+Glass+Coasters%2C+6+Pieces&amp;brand=">Open the checker with this title</a></p></aside>
 <section>
 <h2 id="rule">The rule, in Amazon's words</h2>
@@ -81,14 +82,14 @@
 </section>
 <section>
 <h2 id="worked">Worked titles</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Each checked by the engine</caption><thead><tr><th scope="col">Title</th><th scope="col">Words over twice</th><th scope="col">Result</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Each checked by the engine</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Title</th><th scope="col">Words over twice</th><th scope="col">Result</th></tr></thead><tbody>
 <tr><th scope="row">Glass Set, Glass Tumblers and Glass Coasters</th><td>&quot;glass&quot; 3 times</td><td>flagged</td></tr>
 <tr><th scope="row">Glass Set, glass Tumblers, GLASS Coasters</th><td>&quot;glass&quot; 3 times</td><td>flagged</td></tr>
 <tr><th scope="row">Glass Set, Glass Tumblers and Glasses</th><td>none</td><td>passes</td></tr>
 <tr><th scope="row">Dog Toy for Dogs and Toy Box for Toys and Dog</th><td>none</td><td>passes</td></tr>
 <tr><th scope="row">Stand for Phone, Stand for Tablet, Stand for Laptop</th><td>&quot;stand&quot; 3 times</td><td>flagged</td></tr>
 <tr><th scope="row">BPA-Free Bottle, Free Lid, Free Straw</th><td>none</td><td>passes</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="counting">How the checker counts</h2>
@@ -96,7 +97,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/b2b15728-0d43-453e-974f-59eb63f73059">Amazon Seller Forums, News_Amazon: &quot;New product title requirements effective January 21, 2025&quot; (January 3, 2025; read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/b2b15728-0d43-453e-974f-59eb63f73059">Amazon Seller Forums, News_Amazon: &quot;New product title requirements effective January 21, 2025&quot; (January 3, 2025; read November 8, 2026)</a><span class="src-m">sellercentral.amazon.com</span></li></ul>
 <p class="cp-note">This checks titles against the rules Amazon published in its Seller Forums announcements on the dates shown: 75 characters including spaces outside media (July 27, 2026), the characters ! $ ? _ { } ^ ¬ ¦ outside the brand name and no word more than twice (January 21, 2025). Amazon's help page and category style guides can add rules this check does not cover. The split is a mechanical cut at the last whole word that fits, not a rewrite. Not affiliated with Amazon.</p>
 </section>
 

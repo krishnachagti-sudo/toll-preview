@@ -2,9 +2,48 @@
 
 Box 1a is the year's gross with nothing taken off, so the tool starts there and takes out, in order, what is not business income, then refunds, chargebacks and discounts (Schedule C line 2), then fees and shipping. A payment app or marketplace had to file only when the gross was over $20,000 and the transactions over 200; card processors report any amount.
 
+## How does it work?
+
+1. Every amount is read to whole cents ("$1,234.56", "(12.00)" and 1234.5 all work) and kept as integer cents, so the lines always add up to the cent.
+2. Box 1a of every form is added together.
+3. Amounts that are not business income come off first: personal payments, duplicate amounts, sales tax, cash back. Personal items sold at a loss or break-even come off by their proceeds and are not deductible; items sold at a gain come off too, and the gain goes to Form 8949 and Schedule D. Amounts your books put in another year come off as timing.
+4. What is left is business gross receipts from these forms: Schedule C line 1 for a sole proprietor, or the form the IRS names for a partnership, corporation or personal seller.
+5. Refunds, chargebacks and discounts come off next as returns and allowances (Schedule C line 2), giving net sales; then fees, shipping come off as expenses (fees on line 10), giving what you kept before other costs.
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/1099-k-reconciliation/#what) below.
+
+## What does it not cover?
+
+- You classify each amount; the tool applies the IRS reporting text to your classification and cannot tell a gift from a sale.
+- State 1099-K thresholds are not covered: check your state revenue department.
+- Tax years 2023 to 2026 only, and only the federal threshold in force for them as the IRS states it now.
+- It is computed from IRS instructions and FAQs and the amounts you enter. It is not tax or legal advice.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 10 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The IRS pages were read on 2026-11-08: the Instructions for Form 1099-K (page updated 2026-06-01), the Form 1099-K FAQs, Fact Sheet FS-2025-08, the General Instructions for Certain Information Returns and the Instructions for Schedule C. Federal holidays for the due dates come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The threshold, boxes, due dates and source read dates are pinned to irs.gov. The tests check the worked example ($48,000.00 Box 1a to $45,140.00 of gross receipts and $40,087.60 kept, tying to the books), the threshold at its boundaries, every check, personal items with the IRS FAQ figures, the books variance both ways, export reading, the worksheet and the due dates rolled past weekends.
+
+- [IRS: Instructions for Form 1099-K (Rev. 12/2026)](https://www.irs.gov/instructions/i1099k), page updated 2026-06-01, read 2026-11-08
+- [IRS: Understanding your Form 1099-K](https://www.irs.gov/businesses/understanding-your-form-1099-k), page updated 2026-10-28, read 2026-11-08
+- [IRS: What to do with Form 1099-K](https://www.irs.gov/businesses/what-to-do-with-form-1099-k), page updated 2026-07-27, read 2026-11-08
+- [IRS: Form 1099-K FAQs, General information](https://www.irs.gov/newsroom/form-1099-k-faqs-general-information), page updated 2026-04-03, read 2026-11-08
+- [IRS: Form 1099-K FAQs, What to do if you receive a Form 1099-K](https://www.irs.gov/newsroom/form-1099-k-faqs-what-to-do-if-you-receive-a-form-1099-k), page updated 2026-06-27, read 2026-11-08
+- [IRS: Form 1099-K FAQs, Common situations](https://www.irs.gov/newsroom/form-1099-k-faqs-common-situations), page updated 2026-05-11, read 2026-11-08
+- [IRS Fact Sheet FS-2025-08, Form 1099-K FAQs (October 2025)](https://www.irs.gov/pub/taxpros/fs-2025-08.pdf), page updated 2025-10-23, read 2026-11-08
+- [IRS news release IR-2025-107 (October 23, 2025): Form 1099-K threshold reverts to $20,000](https://www.irs.gov/newsroom/irs-issues-faqs-on-form-1099-k-threshold-under-the-one-big-beautiful-bill-dollar-limit-reverts-to-20000), page updated 2025-10-23, read 2026-11-08
+- [IRS: General Instructions for Certain Information Returns (2025), Guide to Information Returns](https://www.irs.gov/instructions/i1099gi), page updated 2026-04-30, read 2026-11-08
+- [IRS: Instructions for Schedule C (Form 1040) (2025)](https://www.irs.gov/instructions/i1040sc), page updated 2026-04-30, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the 1099-k reconciliation compute?
 
-Given up to 10 Forms 1099-K for one tax year and the amounts you say are personal, duplicated, sales tax, refunds, fees and the rest, the tool walks Box 1a down to business gross receipts and to what you kept, each line with where it goes on a return and the IRS page it comes from. It checks the forms against the federal filing threshold, Boxes 5a to 5l against Box 1a and your books, and other forms for duplicates. A payment export can fill the amounts and rebuild the months. You decide which payments are which; the tool never guesses whether a payment is income.
+Given up to 10 Forms 1099-K for one tax year and the amounts you say are personal, duplicated, sales tax, refunds, fees and the rest, the tool walks Box 1a down to business gross receipts and to what you kept, each line with where it goes on a return and the IRS page it comes from.
+
+**In detail: operations, inputs and outputs**
+
+It checks the forms against the federal filing threshold, Boxes 5a to 5l against Box 1a and your books, and other forms for duplicates. A payment export can fill the amounts and rebuild the months. You decide which payments are which; the tool never guesses whether a payment is income.
 
 Operations (the op field):
 
@@ -30,7 +69,7 @@ Outputs:
 - checks: the warnings and notes, each with a code; dueDates: payee, IRS paper and IRS electronic
 - csv, markdown and correctionRequest (workpaper only)
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. Every amount is read to whole cents ("$1,234.56", "(12.00)" and 1234.5 all work) and kept as integer cents, so the lines always add up to the cent.
 2. Box 1a of every form is added together. Box 1a is the gross "without regard to any adjustments" for credits, fees, refunds, shipping or other amounts (Instructions for Form 1099-K), so nothing comes off it unless you say so.
@@ -58,6 +97,8 @@ Line 1 gross receipts, line 2 returns and allowances, line 10 commissions and fe
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A form at exactly $20,000, or with exactly 200 transactions, was not required: the rule is over both.
 - Two forms with the same Box 1a are flagged as a possible duplicate, and so are two forms with the same twelve month amounts.
 - A personal item sold for exactly what it cost counts with the losses, not the gains.
@@ -70,6 +111,20 @@ Line 1 gross receipts, line 2 returns and allowances, line 10 commissions and fe
 > Every figure below is the output of the tool's engine, not typed in.
 
 **A $48,000 Shopify Payments form against the books, with refunds, fees, labels and sales tax**
+
+A $48,000 Shopify Payments form against the books, with refunds, fees, labels and sales tax
+
+| Result | Value |
+| --- | --- |
+| answer | Your 2025 Form 1099-K Box 1a of $48,000.00 reconciles to $45,140.00 of business gross receipts after $2,860.00 of sales tax; $2,450.00 of refunds and chargebacks go on line 2 and $2,602.40 of fees and shipping are expenses, so you kept $40,087.60. It ties to your books. |
+| gross receipts (Schedule C line 1) | $45,140.00 |
+| returns and allowances (line 2) | $2,450.00 |
+| fees and shipping | $2,602.40 |
+| kept | $40,087.60 |
+| threshold | Shopify Payments: $48,000.00 in 612 transactions is over $20,000 and over 200, so the platform had to file it. |
+| payee copy due | February 2, 2026 |
+
+**The input**
 
 ```json
 {
@@ -125,19 +180,19 @@ Line 1 gross receipts, line 2 returns and allowances, line 10 commissions and fe
 }
 ```
 
-A $48,000 Shopify Payments form against the books, with refunds, fees, labels and sales tax
+**More worked examples (3)**
+
+**An eBay form and a payment-app form with personal payments in it**
+
+An eBay form and a payment-app form with personal payments in it
 
 | Result | Value |
 | --- | --- |
-| answer | Your 2025 Form 1099-K Box 1a of $48,000.00 reconciles to $45,140.00 of business gross receipts after $2,860.00 of sales tax; $2,450.00 of refunds and chargebacks go on line 2 and $2,602.40 of fees and shipping are expenses, so you kept $40,087.60. It ties to your books. |
-| gross receipts (Schedule C line 1) | $45,140.00 |
-| returns and allowances (line 2) | $2,450.00 |
-| fees and shipping | $2,602.40 |
-| kept | $40,087.60 |
-| threshold | Shopify Payments: $48,000.00 in 612 transactions is over $20,000 and over 200, so the platform had to file it. |
-| payee copy due | February 2, 2026 |
+| answer | Your two 2025 Forms 1099-K, $29,550.00 in Box 1a together, reconcile to $28,350.00 of business gross receipts after $1,200.00 of personal payments; $640.00 of refunds go on line 2 and $3,105.75 of fees are expenses, so you kept $24,604.25. |
+| eBay threshold | eBay: $23,400.00 in 241 transactions is over $20,000 and over 200, so the platform had to file it. |
+| Payment app threshold | Payment app: $6,150.00 is not over $20,000, so the federal rule did not require this form. The IRS says a platform may still send one, a state may set a lower threshold, and backup withholding makes one due. The income is reportable either way. |
 
-**An eBay form and a payment-app form with personal payments in it**
+**The input**
 
 ```json
 {
@@ -166,15 +221,19 @@ A $48,000 Shopify Payments form against the books, with refunds, fees, labels an
 }
 ```
 
-An eBay form and a payment-app form with personal payments in it
+**Personal items sold online, most at a loss and one at a gain**
+
+Personal items sold online, most at a loss and one at a gain
 
 | Result | Value |
 | --- | --- |
-| answer | Your two 2025 Forms 1099-K, $29,550.00 in Box 1a together, reconcile to $28,350.00 of business gross receipts after $1,200.00 of personal payments; $640.00 of refunds go on line 2 and $3,105.75 of fees are expenses, so you kept $24,604.25. |
-| eBay threshold | eBay: $23,400.00 in 241 transactions is over $20,000 and over 200, so the platform had to file it. |
-| Payment app threshold | Payment app: $6,150.00 is not over $20,000, so the federal rule did not require this form. The IRS says a platform may still send one, a state may set a lower threshold, and backup withholding makes one due. The income is reportable either way. |
+| answer | Your 2025 Form 1099-K Box 1a of $21,350.00 leaves $0.00 of income after $20,450.00 of personal items sold at a loss and $900.00 of personal items sold at a gain; the $400.00 gain goes on Form 8949 and Schedule D, and the losses are not deductible. |
+| Furniture, appliances and clothing | sold $19,750.00, cost $41,200.00: loss |
+| Refrigerator | sold $700.00, cost $1,000.00: loss |
+| Concert tickets | sold $900.00, cost $500.00: gain |
+| report on | Schedule 1 (Form 1040), Form 8949 and Schedule D |
 
-**Personal items sold online, most at a loss and one at a gain**
+**The input**
 
 ```json
 {
@@ -209,24 +268,7 @@ An eBay form and a payment-app form with personal payments in it
 }
 ```
 
-Personal items sold online, most at a loss and one at a gain
-
-| Result | Value |
-| --- | --- |
-| answer | Your 2025 Form 1099-K Box 1a of $21,350.00 leaves $0.00 of income after $20,450.00 of personal items sold at a loss and $900.00 of personal items sold at a gain; the $400.00 gain goes on Form 8949 and Schedule D, and the losses are not deductible. |
-| Furniture, appliances and clothing | sold $19,750.00, cost $41,200.00: loss |
-| Refrigerator | sold $700.00, cost $1,000.00: loss |
-| Concert tickets | sold $900.00, cost $500.00: gain |
-| report on | Schedule 1 (Form 1040), Form 8949 and Schedule D |
-
 **The Form 1099-K rules and the dates for 2026 forms**
-
-```json
-{
-  "op": "rules",
-  "taxYear": 2026
-}
-```
 
 The Form 1099-K rules and the dates for 2026 forms
 
@@ -237,50 +279,18 @@ The Form 1099-K rules and the dates for 2026 forms
 | IRS on paper | March 1, 2027 |
 | IRS electronically | March 31, 2027 |
 
-## What does it not do?
+**The input**
 
-- You classify each amount; the tool applies the IRS reporting text to your classification and cannot tell a gift from a sale.
-- State 1099-K thresholds are not covered: check your state revenue department.
-- Tax years 2023 to 2026 only, and only the federal threshold in force for them as the IRS states it now.
-- It is computed from IRS instructions and FAQs and the amounts you enter. It is not tax or legal advice.
-
-## Where does the data come from, and how fresh is it?
-
-The IRS pages were read on 2026-11-08: the Instructions for Form 1099-K (page updated 2026-06-01), the Form 1099-K FAQs, Fact Sheet FS-2025-08, the General Instructions for Certain Information Returns and the Instructions for Schedule C. Federal holidays for the due dates come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.
-
-- [IRS: Instructions for Form 1099-K (Rev. 12/2026)](https://www.irs.gov/instructions/i1099k)
-- [IRS: Understanding your Form 1099-K](https://www.irs.gov/businesses/understanding-your-form-1099-k)
-- [IRS: What to do with Form 1099-K](https://www.irs.gov/businesses/what-to-do-with-form-1099-k)
-- [IRS: Form 1099-K FAQs, What to do if you receive a Form 1099-K](https://www.irs.gov/newsroom/form-1099-k-faqs-what-to-do-if-you-receive-a-form-1099-k)
-- [IRS: Form 1099-K FAQs, Common situations](https://www.irs.gov/newsroom/form-1099-k-faqs-common-situations)
-- [IRS Fact Sheet FS-2025-08, Form 1099-K FAQs (October 2025)](https://www.irs.gov/pub/taxpros/fs-2025-08.pdf)
-- [IRS: General Instructions for Certain Information Returns (2025), Guide to Information Returns](https://www.irs.gov/instructions/i1099gi)
-- [IRS: Instructions for Schedule C (Form 1040) (2025)](https://www.irs.gov/instructions/i1040sc)
-
-The IRS pages were read on 2026-11-08: the Instructions for Form 1099-K (page updated 2026-06-01), the Form 1099-K FAQs, Fact Sheet FS-2025-08, the General Instructions for Certain Information Returns and the Instructions for Schedule C. Federal holidays for the due dates come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.
-
-1099-K reconciliation: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [IRS: Instructions for Form 1099-K (Rev. 12/2026)](https://www.irs.gov/instructions/i1099k) | page updated 2026-06-01 | 2026-11-08 |
-| [IRS: Understanding your Form 1099-K](https://www.irs.gov/businesses/understanding-your-form-1099-k) | page updated 2026-10-28 | 2026-11-08 |
-| [IRS: What to do with Form 1099-K](https://www.irs.gov/businesses/what-to-do-with-form-1099-k) | page updated 2026-07-27 | 2026-11-08 |
-| [IRS: Form 1099-K FAQs, General information](https://www.irs.gov/newsroom/form-1099-k-faqs-general-information) | page updated 2026-04-03 | 2026-11-08 |
-| [IRS: Form 1099-K FAQs, What to do if you receive a Form 1099-K](https://www.irs.gov/newsroom/form-1099-k-faqs-what-to-do-if-you-receive-a-form-1099-k) | page updated 2026-06-27 | 2026-11-08 |
-| [IRS: Form 1099-K FAQs, Common situations](https://www.irs.gov/newsroom/form-1099-k-faqs-common-situations) | page updated 2026-05-11 | 2026-11-08 |
-| [IRS Fact Sheet FS-2025-08, Form 1099-K FAQs (October 2025)](https://www.irs.gov/pub/taxpros/fs-2025-08.pdf) | page updated 2025-10-23 | 2026-11-08 |
-| [IRS news release IR-2025-107 (October 23, 2025): Form 1099-K threshold reverts to $20,000](https://www.irs.gov/newsroom/irs-issues-faqs-on-form-1099-k-threshold-under-the-one-big-beautiful-bill-dollar-limit-reverts-to-20000) | page updated 2025-10-23 | 2026-11-08 |
-| [IRS: General Instructions for Certain Information Returns (2025), Guide to Information Returns](https://www.irs.gov/instructions/i1099gi) | page updated 2026-04-30 | 2026-11-08 |
-| [IRS: Instructions for Schedule C (Form 1040) (2025)](https://www.irs.gov/instructions/i1040sc) | page updated 2026-04-30 | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "rules",
+  "taxYear": 2026
+}
+```
 
 ## How is it tested?
 
-The threshold, boxes, due dates and source read dates are pinned to irs.gov. The tests check the worked example ($48,000.00 Box 1a to $45,140.00 of gross receipts and $40,087.60 kept, tying to the books), the threshold at its boundaries, every check, personal items with the IRS FAQ figures, the books variance both ways, export reading, the worksheet and the due dates rolled past weekends.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The threshold (over $20,000 and over 200 transactions), the box list, the due dates and every source's read date are pinned to irs.gov as read on 2026-11-08.
 - The worked example walks $48,000.00 of Box 1a to $45,140.00 of gross receipts and $40,087.60 kept and ties to the books; due dates for 2025 forms roll to February 2, 2026, March 2, 2026 and March 31, 2026.

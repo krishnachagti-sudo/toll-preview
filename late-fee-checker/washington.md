@@ -11,6 +11,10 @@ In Washington the statute read sets no dollar or percent limit on a rent late fe
 
 ## What the statute says
 
+**In short:** A waiting period, no amount; from day 6 after the due date (Rev. Code Wash. § 59.18.170(2)).
+
+**The statute's words (1 passage)**
+
 Rev. Code Wash. § 59.18.170(2): "The landlord may not charge a late fee for rent that is paid within five days following its due date. If rent is more than five days past due, the landlord may charge late fees commencing from the first day after the due date until paid."
 
 ## The first day a fee may be charged

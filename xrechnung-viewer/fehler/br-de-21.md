@@ -1,6 +1,6 @@
 # BR-DE-21: Spezifikationskennung (BT-24) entspricht nicht XRechnung
 
-BR-DE-21 bedeutet: Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Setzen Sie BT-24 auf die Kennung der Version, nach der die Rechnung erstellt ist. In der Praxis meldet der KoSIT-Validator bei einer falschen Kennung meist gar kein passendes Prüfszenario, weil er das Szenario an genau dieser Kennung erkennt; dieser Prüfer sagt dann ebenfalls, dass kein XRechnung-Szenario passt.
+BR-DE-21 bedeutet: Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

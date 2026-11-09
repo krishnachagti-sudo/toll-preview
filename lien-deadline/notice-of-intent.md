@@ -1,6 +1,8 @@
 # Notice of intent to lien
 
-A notice of intent to lien warns the owner that a lien is coming; whether one is required, and when, depends on the state. Of the states we have read, Maryland requires a subcontractor's notice of intention to claim a lien within 120 days (for work last done on January 29, 2027, by May 29, 2027), and in the District of Columbia the "notice of intent" is the lien itself, recorded within 90 days after completion (by May 27, 2027 for a project complete on February 26, 2027) (Md. Code, Real Prop. 9-104(a); D.C. Code 40-301.02(a)(1)).
+A notice of intent to lien warns the owner that a lien is coming; whether one is required, and when, depends on the state. Of the states we have read, Maryland requires a subcontractor's notice of intention to claim a lien within 120 days, and in the District of Columbia the "notice of intent" is the lien itself, recorded within 90 days after completion (Md. Code, Real Prop. 9-104(a); D.C. Code 40-301.02(a)(1)).
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=MD&role=sub&project=commercial&first=2026-11-02&last=2027-01-29&completion=2027-02-26): For work last done on January 29, 2027, a Maryland subcontractor's notice of intention is due by May 29, 2027; in the District of Columbia, for a project complete on February 26, 2027, the notice of intent is due by May 27, 2027.
 
 ## Work out a Maryland notice date
 

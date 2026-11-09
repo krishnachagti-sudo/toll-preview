@@ -1,6 +1,6 @@
 # BR-DE-TMP-32: Liefer- oder Leistungsdatum fehlt (Hinweis)
 
-BR-DE-TMP-32 bedeutet: Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie das Liefer- oder Leistungsdatum an (UBL cac:Delivery/cbc:ActualDeliveryDate, CII ram:ActualDeliverySupplyChainEvent) oder den Abrechnungszeitraum (UBL cac:InvoicePeriod, CII ram:BillingSpecifiedPeriod).
+BR-DE-TMP-32 bedeutet: Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -22,7 +22,7 @@ Die Rechnung nennt weder ein Lieferdatum (BT-72) noch einen Abrechnungszeitraum 
 
 ## So beheben Sie den Fehler
 
-Geben Sie das Liefer- oder Leistungsdatum an (UBL cac:Delivery/cbc:ActualDeliveryDate, CII ram:ActualDeliverySupplyChainEvent) oder den Abrechnungszeitraum (UBL cac:InvoicePeriod, CII ram:BillingSpecifiedPeriod).
+Geben Sie das Liefer- oder Leistungsdatum an (UBL `cac:Delivery/cbc:ActualDeliveryDate`, CII `ram:ActualDeliverySupplyChainEvent`) oder den Abrechnungszeitraum (UBL `cac:InvoicePeriod`, CII `ram:BillingSpecifiedPeriod`).
 
 ## Geprüftes Beispiel
 

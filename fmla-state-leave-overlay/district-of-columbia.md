@@ -38,6 +38,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## District of Columbia in its own words
 
+**Read the law's own words (7 quotations)**
+
 - "An employee shall be entitled to a total of 16 workweeks of family leave during any 24-month period for:" [D.C. Code 32-502, Family leave requirement](https://code.dccouncil.gov/us/dc/council/code/sections/32-502)
 - "except that the medical leave shall not exceed 16 workweeks during any 24-month period." [D.C. Code 32-503, Medical leave requirement](https://code.dccouncil.gov/us/dc/council/code/sections/32-503)
 - "Been employed by the same employer for at least 12 consecutive or non-consecutive months" [D.C. Code 32-501, Definitions (D.C. Family and Medical Leave Act)](https://code.dccouncil.gov/us/dc/council/code/sections/32-501)

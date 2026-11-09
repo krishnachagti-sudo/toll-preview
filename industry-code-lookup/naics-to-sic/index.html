@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Convert a code</h2><p class="muted">A NAICS code gives its SIC codes; a 4-digit SIC code gives its NAICS 2022 codes.</p><form method="get" action="/toll-preview/industry-code-lookup/" class="cp-tool-form"><div class="field"><label for="tf-q">Codes</label><input type="text" id="tf-q" name="q" value="3089"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="system" value="us-sic"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Convert it</button></form><p class="small"><a href="/toll-preview/industry-code-lookup/?q=3089&amp;system=us-sic">Open 3089 in the checker</a></p></aside>
 <section>
 <h2 id="chain">How the chain works</h2>
@@ -81,7 +82,7 @@
 </section>
 <section>
 <h2 id="common">Common codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The CSV has all of them.</caption><thead><tr><th scope="col">NAICS 2022</th><th scope="col">Title</th><th scope="col">SIC 1987</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The CSV has all of them.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">NAICS 2022</th><th scope="col">Title</th><th scope="col">SIC 1987</th></tr></thead><tbody>
 <tr><th scope="row"><a href="/toll-preview/industry-code-lookup/naics/236115/">236115</a></th><td>New Single-Family Housing Construction (except For-Sale Builders)</td><td>1521 General Contractors--Single Family Houses; 8741 Management Services</td></tr>
 <tr><th scope="row"><a href="/toll-preview/industry-code-lookup/naics/238220/">238220</a></th><td>Plumbing, Heating, and Air-Conditioning Contractors</td><td>1711 Plumbing, Heating, and Air-Conditioning; 1791 Structural Steel Erection; 1796 Installation or Erection of Building Equipment, NEC; 7699 Repair Shops and Related Services, NEC</td></tr>
 <tr><th scope="row"><a href="/toll-preview/industry-code-lookup/naics/484121/">484121</a></th><td>General Freight Trucking, Long-Distance, Truckload</td><td>4213 Trucking, Except Local</td></tr>
@@ -100,12 +101,12 @@
 <tr><th scope="row"><a href="/toll-preview/industry-code-lookup/naics/722511/">722511</a></th><td>Full-Service Restaurants</td><td>5812 Eating Places</td></tr>
 <tr><th scope="row"><a href="/toll-preview/industry-code-lookup/naics/722513/">722513</a></th><td>Limited-Service Restaurants</td><td>5812 Eating Places</td></tr>
 <tr><th scope="row"><a href="/toll-preview/industry-code-lookup/naics/812112/">812112</a></th><td>Beauty Salons</td><td>7231 Beauty Shops</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Reference, not a customs ruling or tax advice: a code that exists may still be the wrong one for your goods or business. Only U.S. Customs and Border Protection (by a binding ruling) decides an import classification, and the IRS decides what goes on a return. Each answer names the official table it came from and that table's date; check the official source before you file.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.census.gov/naics/concordances/2017_to_2022_NAICS.xlsx">U.S. Census Bureau: NAICS concordances (2022 to 2017 and back to the 2002 NAICS to 1987 SIC table)</a></li><li><a href="https://www.census.gov/naics/concordances/2002_NAICS_to_1987_SIC.xls">U.S. Census Bureau: 2002 NAICS to 1987 SIC concordance (xls)</a></li><li><a href="https://www.census.gov/naics/2022NAICS/2-6%20digit_2022_Codes.xlsx">U.S. Census Bureau: 2-6 digit 2022 NAICS codes (xlsx)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.census.gov/naics/concordances/2017_to_2022_NAICS.xlsx">U.S. Census Bureau: NAICS concordances (2022 to 2017 and back to the 2002 NAICS to 1987 SIC table)</a><span class="src-m">census.gov</span></li><li><a href="https://www.census.gov/naics/concordances/2002_NAICS_to_1987_SIC.xls">U.S. Census Bureau: 2002 NAICS to 1987 SIC concordance (xls)</a><span class="src-m">census.gov</span></li><li><a href="https://www.census.gov/naics/2022NAICS/2-6%20digit_2022_Codes.xlsx">U.S. Census Bureau: 2-6 digit 2022 NAICS codes (xlsx)</a><span class="src-m">census.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there an official NAICS 2022 to SIC table?</h3></summary><div class="xp-in"><p>No: the Census Bureau's SIC table is for 2002 NAICS. This conversion follows its concordances from 2022 back to 2002, then the 2002 NAICS to 1987 SIC table.</p></div></details><details class="xpand"><summary><h3>Why does one NAICS code give several SIC codes?</h3></summary><div class="xp-in"><p>Industries were split and joined between editions, so a NAICS code can hold pieces of several SIC industries. The SIC code that fits depends on what the business does.</p></div></details><details class="xpand"><summary><h3>Is SIC still used?</h3></summary><div class="xp-in"><p>SIC 1987 is no longer revised: NAICS replaced it in 1997. Some forms, lenders and the SEC still ask for a SIC code.</p></div></details></section>

@@ -74,20 +74,21 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the tool</h2><p class="muted">The worked schedules open in the tool and are previewed in your browser, free. Edit them or paste your own there.</p><form method="get" action="/toll-preview/amortization-schedule-journal-entries/" class="cp-tool-form"><input type="hidden" name="csv" value="Item,Type,Amount,Start,Months,End,Method,Paid on,Balance account,PL account,Cash account,Name,Rate,Payment,First payment,Day count,Cancel on,Refund
 &quot;Subscription, June 16 to June 15&quot;,Prepaid,12000.00,2026-06-16,12,,half-month,,Prepaid Expenses,Software Subscriptions,,,,,,,,
 "><input type="hidden" name="period" value="2026-06"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/amortization-schedule-journal-entries/?csv=Item%2CType%2CAmount%2CStart%2CMonths%2CEnd%2CMethod%2CPaid+on%2CBalance+account%2CPL+account%2CCash+account%2CName%2CRate%2CPayment%2CFirst+payment%2CDay+count%2CCancel+on%2CRefund%0D%0A%22Subscription%2C+June+16+to+June+15%22%2CPrepaid%2C12000.00%2C2026-06-16%2C12%2C%2Chalf-month%2C%2CPrepaid+Expenses%2CSoftware+Subscriptions%2C%2C%2C%2C%2C%2C%2C%2C%0D%0A&amp;period=2026-06">Open this example in the tool</a></p></aside>
 <section>
 <h2 id="table">Side by side</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The spreadsheet's side from Ramp's guide, read November 8, 2026</caption><thead><tr><th scope="col"></th><th scope="col">Spreadsheet (Ramp's described shape)</th><th scope="col">This tool</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The spreadsheet's side from Ramp's guide, read November 8, 2026</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col"></th><th scope="col">Spreadsheet (Ramp's described shape)</th><th scope="col">This tool</th></tr></thead><tbody>
 <tr><th scope="row">Columns</th><td>Identification, Accounts, Term, Calculation</td><td>The same, plus method, paid-on date and cancellation</td></tr>
 <tr><th scope="row">Partial months</th><td>When a term starts mid-month, the first and last months are prorated under the team's policy.</td><td>Equal months, half-month or actual days, per row</td></tr>
 <tr><th scope="row">Rounding</th><td>Not addressed in the guide</td><td>Each month to the cent; the last month takes the difference</td></tr>
 <tr><th scope="row">Journal entries</th><td>Typed from the sheet</td><td>Balanced journals per date, and the import file</td></tr>
 <tr><th scope="row">Tie-out</th><td>A check cell you build</td><td>Rollforward per account against the GL balance you give</td></tr>
 <tr><th scope="row">Cost</th><td>Free</td><td>Preview free; $0.50 per schedule for the entries, free re-runs for 12 months</td></tr>
-</tbody></table></div>
-<div class="table-scroll"><table class="rules cp-table"><caption>Ramp's example, computed</caption><thead><tr><th scope="col">Month</th><th scope="col" class="r num">Amortized</th><th scope="col" class="r num">Balance at month end</th></tr></thead><tbody>
+</tbody></table></div></figure>
+<figure class="cp-tbl"><figcaption class="cp-cap">Ramp's example, computed</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Month</th><th scope="col" class="r num">Amortized</th><th scope="col" class="r num">Balance at month end</th></tr></thead><tbody>
 <tr><th scope="row">June 2026</th><td class="r num">$500.00</td><td class="r num">$11,500.00</td></tr>
 <tr><th scope="row">July 2026</th><td class="r num">$1,000.00</td><td class="r num">$10,500.00</td></tr>
 <tr><th scope="row">August 2026</th><td class="r num">$1,000.00</td><td class="r num">$9,500.00</td></tr>
@@ -101,7 +102,7 @@
 <tr><th scope="row">April 2027</th><td class="r num">$1,000.00</td><td class="r num">$1,500.00</td></tr>
 <tr><th scope="row">May 2027</th><td class="r num">$1,000.00</td><td class="r num">$500.00</td></tr>
 <tr><th scope="row">June 2027</th><td class="r num">$500.00</td><td class="r num">$0.00</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="better">When the spreadsheet is better</h2>
@@ -113,7 +114,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://ramp.com/answers/accruals-recurring-schedules/prepaid-amortization-schedule">Ramp: Prepaid amortization schedule (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://ramp.com/answers/accruals-recurring-schedules/prepaid-amortization-schedule">Ramp: Prepaid amortization schedule (read November 8, 2026)</a><span class="src-m">ramp.com</span></li></ul>
 </section>
 
 

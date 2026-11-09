@@ -2,9 +2,46 @@
 
 Each SKU is checked against the 4 items of Article 19 of Regulation (EU) 2023/988, which applies from 2024-12-13: (a) the manufacturer's name, postal and electronic address, (b) an EU responsible person when the manufacturer is outside the EU, (c) a picture, the type and an identifier, and (d) warnings in a language of each of the 27 Member States you sell into. A finding is missing or to check; the tool never says a product is safe.
 
+## How does it work?
+
+1. The file is read.
+2. Each header is matched to a field by name, compared in lower case with "#1"-style indexes and everything but letters and digits removed, so "Variant SKU" and "variant\_sku" are one header.
+3. Shop-wide defaults fill only the blank manufacturer, responsible person and warning language cells. A row marked as one of the Article 2(2) exclusions is out of scope and not checked.
+4. Item (a): the manufacturer's name is required; with no manufacturer column, a brand is used and flagged to check that it is the registered trade name or mark. The postal address is required, and flagged to check if it has no digit or fewer than two parts. The electronic address must be an email address; a web address is flagged to check (Commission guidelines, section 3.1.1), and anything else is missing.
+5. Item (b): the manufacturer's country is read from a country column, or else from the last parts of its address.
+
+> Steps 6 to 9, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/gpsr-listing-checker/#what) below.
+
+## What does it not cover?
+
+- It checks what the listing data shows against Article 19. It does not certify that a product is safe or compliant, and it cannot confirm that an address is real or that a company is established in the EU.
+- Each Member State decides the language of warnings. The check compares with that state's official EU languages; national rules can ask for more.
+- Products under other EU product laws (toys, cosmetics, electrical goods and more) can need further warnings and marks that this check does not cover.
+- How the rules apply in Norway, Iceland and Liechtenstein (the EEA Agreement) and in Northern Ireland (the Windsor Framework) is not applied; those cases are flagged with a note.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 8 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The rule texts were read on EUR-Lex on 2026-11-08, the Member State languages on european-union.europa.eu on 2026-11-08, and the channel field names on each channel's own pages on 2026-11-08. They are read once when the server starts and change only with a deploy (data version gpsr-2023-988+guidelines-c2025-6233+read-2026-11-08).
+- [Tested: 5 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The quoted rule texts, the exclusions, the 27 Member States with their languages and the channel field names are pinned to the files as read.
+
+- [EUR-Lex: Regulation (EU) 2023/988 on general product safety (GPSR), OJ L 135, 23.5.2023, p. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988), Article 19 items; applies from 2024-12-13, read 2026-11-08
+- [EUR-Lex: Commission Notice C/2025/6233: Guidelines on the application of the EU general product safety legislative framework by businesses, OJ C, 21.11.2025](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:C_202506233), sections 2.1 and 3.1.1, read 2026-11-08
+- [EUR-Lex: Regulation (EU) 2019/1020 on market surveillance and compliance of products, Article 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019R1020), who can be the responsible person, read 2026-11-08
+- [European Union: EU countries (country profiles)](https://european-union.europa.eu/principles-countries-history/eu-countries_en), 27 Member States, official EU languages, read 2026-11-08
+- [Amazon Selling Partner API changelog: attributes for GPSR in programmatic listings submissions](https://developer-docs.amazon/sp-api/changelog/developers-can-use-attributes-in-their-programmatic-listings-submissions-to-comply-with-gpsr), Amazon field names, read 2026-11-08
+- [Etsy Help: What is the General Product Safety Regulation (GPSR)?](https://help.etsy.com/hc/en-us/articles/28211364687383-What-is-the-General-Product-Safety-Regulation-GPSR), Etsy field names, read 2026-11-08
+- [eBay Help: Product safety disclosures and hazardous materials labelling](https://www.ebay.com/help/selling/selling/product-safety-disclosures-hazardous-materials-labelling?id=5407), eBay field names, read 2026-11-08
+- [Shopify Help Center: Using CSV files to import and export products](https://help.shopify.com/en/manual/products/import-export/using-csv), Shopify field names, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the gpsr listing checker compute?
 
-The tool reads a listing export from Amazon, Etsy, eBay, Shopify or any CSV, finds the columns that hold each Article 19 item, and checks every SKU. Each SKU gets a verdict (ok, check, missing or out of scope) and a list of findings, each cited to its article, with what to fix. The answer also has a fix list CSV, a checklist CSV and a label block per SKU. Two more operations say whether a manufacturer in a given country needs an EU responsible person, and return the rule set and the 27 Member States with their official EU languages.
+The tool reads a listing export from Amazon, Etsy, eBay, Shopify or any CSV, finds the columns that hold each Article 19 item, and checks every SKU.
+
+**In detail: operations, inputs and outputs**
+
+Each SKU gets a verdict (ok, check, missing or out of scope) and a list of findings, each cited to its article, with what to fix. The answer also has a fix list CSV, a checklist CSV and a label block per SKU. Two more operations say whether a manufacturer in a given country needs an EU responsible person, and return the rule set and the 27 Member States with their official EU languages.
 
 Operations (the op field):
 
@@ -29,7 +66,7 @@ Outputs:
 - fixCsv and checklistCsv: the fix list and the checklist as spreadsheets
 - columnsUsed and columnsIgnored: which header was read as which field
 
-## How is it calculated, step by step?
+**Every step in full (9) and the rules**
 
 1. The file is read. For CSV, the delimiter is whichever of comma, tab and semicolon appears most often in the first line outside quotes; quoted cells may hold the delimiter, doubled quotes and line breaks; a leading byte order mark and blank rows are dropped. A quote that is never closed is refused.
 2. Each header is matched to a field by name, compared in lower case with "#1"-style indexes and everything but letters and digits removed, so "Variant SKU" and "variant\_sku" are one header. The names cover Amazon, Etsy, eBay and Shopify exports; columns maps any other. The first header for a field wins. With platform shopify, a variant row takes the product's fields from the row above with the same handle, and a row with no SKU or barcode is an extra image row, not a SKU.
@@ -61,6 +98,8 @@ The 27 Member States and their 24 official EU languages are as each country's pa
 
 ## Which edge cases does it handle?
 
+**The edge cases (7)**
+
 - A file with no SKU, title or handle column is refused with a hint to map one with columns.
 - A brand with no manufacturer column is flagged to check, not counted as missing, and a brand used this way is still printed on the label.
 - A country is read from a code, an English name or a native name such as Deutschland; a country column wins over the address.
@@ -75,13 +114,6 @@ The 27 Member States and their 24 official EU languages are as each country's pa
 
 **Five listings for Germany and France: which SKUs miss what**
 
-```json
-op: "check"
-csv: "sku,title,manufacturer,manufacturer address,manufacturer email,responsible person,responsible person address,responsible person email,image url,type,gtin,warnings,warning language,excluded\r\nMUG-01,Stoneware mug 350 ml,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,EuroRep GmbH,\"Hauptstr. 5, 10115 Berlin, Germany\",gpsr@eurorep.example,https://cdn.example.com/mug-01.jpg,Mug,0012345678905,\"Nicht für die Mikrowelle geeignet. Ne pas utiliser au micro-ondes.\",\"de, fr\",\r\nKNIFE-02,Paring knife,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,Brit Rep Ltd,\"1 High St, London, UK\",rep@britrep.example,https://cdn.example.com/knife-02.jpg,Kitchen knife,4006381333931,Sharp blade. Keep away from children.,en,\r\nCANDLE-03,Soy candle,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",https://harborpine.example,EuroRep GmbH,\"Hauptstr. 5, 10115 Berlin, Germany\",gpsr@eurorep.example,https://cdn.example.com/candle-03.jpg,Candle,4006381333932,Kerze nie unbeaufsichtigt brennen lassen. Von Kindern fernhalten.,,\r\nTRAY-04,Serving tray,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,,,,,,,,,\r\nJAM-05,Fig jam,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,,,,,,,,,food"
-markets: 2 items
-columns: {...}
-```
-
 Five listings for Germany and France: which SKUs miss what
 
 | Result | Value |
@@ -95,15 +127,18 @@ Five listings for Germany and France: which SKUs miss what
 | line 6: JAM-05 | out-of-scope |
 | label blocks printed for | MUG-01, CANDLE-03 |
 
-**A US manufacturer with a responsible person in the United Kingdom**
+**The input**
 
 ```json
-{
-  "op": "responsible-person",
-  "manufacturerCountry": "US",
-  "rpCountry": "United Kingdom"
-}
+op: "check"
+csv: "sku,title,manufacturer,manufacturer address,manufacturer email,responsible person,responsible person address,responsible person email,image url,type,gtin,warnings,warning language,excluded\r\nMUG-01,Stoneware mug 350 ml,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,EuroRep GmbH,\"Hauptstr. 5, 10115 Berlin, Germany\",gpsr@eurorep.example,https://cdn.example.com/mug-01.jpg,Mug,0012345678905,\"Nicht für die Mikrowelle geeignet. Ne pas utiliser au micro-ondes.\",\"de, fr\",\r\nKNIFE-02,Paring knife,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,Brit Rep Ltd,\"1 High St, London, UK\",rep@britrep.example,https://cdn.example.com/knife-02.jpg,Kitchen knife,4006381333931,Sharp blade. Keep away from children.,en,\r\nCANDLE-03,Soy candle,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",https://harborpine.example,EuroRep GmbH,\"Hauptstr. 5, 10115 Berlin, Germany\",gpsr@eurorep.example,https://cdn.example.com/candle-03.jpg,Candle,4006381333932,Kerze nie unbeaufsichtigt brennen lassen. Von Kindern fernhalten.,,\r\nTRAY-04,Serving tray,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,,,,,,,,,\r\nJAM-05,Fig jam,Harbor & Pine LLC,\"412 Elm St, Portland, OR 97205, USA\",safety@harborpine.example,,,,,,,,,food"
+markets: 2 items
+columns: {...}
 ```
+
+**More worked examples (1)**
+
+**A US manufacturer with a responsible person in the United Kingdom**
 
 A US manufacturer with a responsible person in the United Kingdom
 
@@ -114,48 +149,21 @@ A US manufacturer with a responsible person in the United Kingdom
 | responsible person in the EU | no |
 | note | A responsible person in the United Kingdom is not established in the EU, so it cannot be the responsible person (Article 16(1)). |
 
-## What does it not do?
+**The input**
 
-- It checks what the listing data shows against Article 19. It does not certify that a product is safe or compliant, and it cannot confirm that an address is real or that a company is established in the EU.
-- Each Member State decides the language of warnings. The check compares with that state's official EU languages; national rules can ask for more.
-- Products under other EU product laws (toys, cosmetics, electrical goods and more) can need further warnings and marks that this check does not cover.
-- How the rules apply in Norway, Iceland and Liechtenstein (the EEA Agreement) and in Northern Ireland (the Windsor Framework) is not applied; those cases are flagged with a note.
-
-## Where does the data come from, and how fresh is it?
-
-The rule texts were read on EUR-Lex on 2026-11-08, the Member State languages on european-union.europa.eu on 2026-11-08, and the channel field names on each channel's own pages on 2026-11-08. They are read once when the server starts and change only with a deploy (data version gpsr-2023-988+guidelines-c2025-6233+read-2026-11-08).
-
-- [EUR-Lex: Regulation (EU) 2023/988 on general product safety (GPSR), OJ L 135, 23.5.2023, p. 1 (read 2026-11-08)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988)
-- [EUR-Lex: Commission Notice C/2025/6233: Guidelines on the application of the EU general product safety legislative framework by businesses, OJ C, 21.11.2025 (read 2026-11-08)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:C_202506233)
-- [EUR-Lex: Regulation (EU) 2019/1020 on market surveillance and compliance of products, Article 4 (read 2026-11-08)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019R1020)
-- [European Union: EU countries (country profiles) (read 2026-11-08)](https://european-union.europa.eu/principles-countries-history/eu-countries_en)
-- [Amazon Selling Partner API changelog: attributes for GPSR in programmatic listings submissions (read 2026-11-08)](https://developer-docs.amazon/sp-api/changelog/developers-can-use-attributes-in-their-programmatic-listings-submissions-to-comply-with-gpsr)
-- [Etsy Help: What is the General Product Safety Regulation (GPSR)? (read 2026-11-08)](https://help.etsy.com/hc/en-us/articles/28211364687383-What-is-the-General-Product-Safety-Regulation-GPSR)
-- [eBay Help: Product safety disclosures and hazardous materials labelling (read 2026-11-08)](https://www.ebay.com/help/selling/selling/product-safety-disclosures-hazardous-materials-labelling?id=5407)
-- [Shopify Help Center: Using CSV files to import and export products (read 2026-11-08)](https://help.shopify.com/en/manual/products/import-export/using-csv)
-
-The rule texts were read on EUR-Lex on 2026-11-08, the Member State languages on european-union.europa.eu on 2026-11-08, and the channel field names on each channel's own pages on 2026-11-08. They are read once when the server starts and change only with a deploy (data version gpsr-2023-988+guidelines-c2025-6233+read-2026-11-08).
-
-GPSR listing checker: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [EUR-Lex: Regulation (EU) 2023/988 on general product safety (GPSR), OJ L 135, 23.5.2023, p. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988) | Article 19 items; applies from 2024-12-13 | 2026-11-08 |
-| [EUR-Lex: Commission Notice C/2025/6233: Guidelines on the application of the EU general product safety legislative framework by businesses, OJ C, 21.11.2025](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:C_202506233) | sections 2.1 and 3.1.1 | 2026-11-08 |
-| [EUR-Lex: Regulation (EU) 2019/1020 on market surveillance and compliance of products, Article 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019R1020) | who can be the responsible person | 2026-11-08 |
-| [European Union: EU countries (country profiles)](https://european-union.europa.eu/principles-countries-history/eu-countries_en) | 27 Member States, official EU languages | 2026-11-08 |
-| [Amazon Selling Partner API changelog: attributes for GPSR in programmatic listings submissions](https://developer-docs.amazon/sp-api/changelog/developers-can-use-attributes-in-their-programmatic-listings-submissions-to-comply-with-gpsr) | Amazon field names | 2026-11-08 |
-| [Etsy Help: What is the General Product Safety Regulation (GPSR)?](https://help.etsy.com/hc/en-us/articles/28211364687383-What-is-the-General-Product-Safety-Regulation-GPSR) | Etsy field names | 2026-11-08 |
-| [eBay Help: Product safety disclosures and hazardous materials labelling](https://www.ebay.com/help/selling/selling/product-safety-disclosures-hazardous-materials-labelling?id=5407) | eBay field names | 2026-11-08 |
-| [Shopify Help Center: Using CSV files to import and export products](https://help.shopify.com/en/manual/products/import-export/using-csv) | Shopify field names | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "op": "responsible-person",
+  "manufacturerCountry": "US",
+  "rpCountry": "United Kingdom"
+}
+```
 
 ## How is it tested?
 
-The quoted rule texts, the exclusions, the 27 Member States with their languages and the channel field names are pinned to the files as read. Each check is tested on its own: CSV reading, header matching, Shopify variant rows, each Article 19 item with its edge cases, language guessing, exclusions, defaults, markets and the responsible person operation. The worked examples equal run(), and the fix list CSV writes formula-like cells as text.
+Each check is tested on its own: CSV reading, header matching, Shopify variant rows, each Article 19 item with its edge cases, language guessing, exclusions, defaults, markets and the responsible person operation. The worked examples equal run(), and the fix list CSV writes formula-like cells as text.
 
-What its test suite asserts:
+**What its test suite asserts (5)**
 
 - The quoted rule texts, the Article 2(2) exclusions and the read date 2026-11-08 are pinned to the EUR-Lex and Commission texts as read.
 - The 27 Member States carry the official EU languages europa.eu lists, and the channel field names are pinned to each channel's page.

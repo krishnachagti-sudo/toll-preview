@@ -1,15 +1,15 @@
 # What date is 100 days from today?
 
-100 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Tuesday, February 16, 2027. Counted from tomorrow it is Wednesday, February 17, 2027.
+100 days from today, Monday, November 9, 2026 (today's date in New York, US Eastern time), is Wednesday, February 17, 2027. Counted from tomorrow it is Thursday, February 18, 2027.
 
-- Date: February 16, 2027
-- Weekday: Tuesday
+- Date: February 17, 2027
+- Weekday: Wednesday
 - ISO week: 2027-W07
 - US business days between: 66
 
 ## 100 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-08&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-09&region=US)
 
 ## 100 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 100 days after | US business days |
 | --- | --- | ---: |
-| [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-08) | Tue, Feb 16, 2027 | 66 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-09) | Wed, Feb 17, 2027 | 66 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-10) | Thu, Feb 18, 2027 | 66 |
 | [Wed, Nov 11, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-11) | Fri, Feb 19, 2027 | 67 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-19) | Sat, Feb 27, 2027 | 66 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-20) | Sun, Feb 28, 2027 | 65 |
 | [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-21) | Mon, Mar 1, 2027 | 66 |
+| [Sun, Nov 22, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+from+today&ref=2026-11-22) | Tue, Mar 2, 2027 | 67 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 100 days from today: the same as 101 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-from-today/  
-Worked out for: 2026-11-08  
+Worked out for: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-from-today.csv

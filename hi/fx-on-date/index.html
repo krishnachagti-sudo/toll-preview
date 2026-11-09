@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
 <link rel="stylesheet" href="/toll-preview/fx-on-date/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fx-on-date"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -70,109 +72,138 @@
   </div>
 </header>
 
-<main id="main" class="fx">
-  <section class="wrap fx-intro">
+<main id="main" class="fx hue-money tf-plain">
+  <section class="wrap fx-intro tf-intro">
     <p class="eyebrow">रेफरेंस डेटा, हर रन पर</p>
     <h1>किसी तारीख़ का एक्सचेंज रेट</h1>
     <p class="lede">किसी तारीख़ पर करेंसी जोड़ी का आधिकारिक रेट: जनवरी 1999 से हर दिन का यूरोपीय सेंट्रल बैंक (ECB) का रेफरेंस रेट, या अमेरिकी ट्रेज़री का रिपोर्टिंग रेट, IRS का सालाना औसत या ब्रिटेन के HMRC का मासिक रेट। अगर उस दिन ECB ने कुछ जारी नहीं किया, तो उससे पहले का आख़िरी रेट मिलता है, और पेज बताता है कि वह कौन सा दिन था।</p>
-    <p class="fx-price" id="fx-price">हर रन की कीमत $0.001 है। खाते के बिना रोज़ 5 मुफ़्त रन मिलते हैं।</p>
+<ul class="trust" aria-label="इस साइट के बारे में"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span><a href="/toll-preview/about/">Conyso</a> द्वारा बनाया गया</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>सटीक, AI के बिना</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">आधिकारिक स्रोत, तारीख के साथ</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">आपकी अपलोड की गई फ़ाइलें रखी नहीं जातीं</a></span></li><li class="tl2"><a href="/toll-preview/security/">सुरक्षा</a><a href="/toll-preview/terms/">शर्तें</a></li></ul>
+    <p class="fx-price pline" id="fx-price">$0.001 प्रति रन · खाते के बिना रोज़ 5 मुफ़्त रन · API से भी</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/fx-on-date/" hreflang="en">अंग्रेज़ी में देखें</a></p>
   </section>
 
-  <section class="wrap fx-desk" aria-label="रेट खोज">
-    <form class="fx-form" id="fx-form" novalidate>
-      <div class="field">
-        <label for="fx-source">रेट का स्रोत</label>
-        <select id="fx-source" aria-describedby="fx-source-hint">
-          <option value="ecb">ECB रेफरेंस रेट (डिफ़ॉल्ट)</option>
-          <option value="treasury">अमेरिकी ट्रेज़री रिपोर्टिंग रेट</option>
-          <option value="irs">IRS सालाना औसत</option>
-          <option value="hmrc">HMRC मासिक रेट</option>
-        </select>
-        <p class="hint" id="fx-source-hint">यूरोपीय सेंट्रल बैंक (ECB) का रोज़ाना जारी होने वाला यूरो रेफरेंस रेट। <a href="#fx-which">कौन सा रेट चुनें</a></p>
-      </div>
+  <section class="wrap fx-desk tf-calc" aria-label="रेट खोज">
+    <form class="fx-form tf-card tf-form" id="fx-form" novalidate="">
+<div class="field">
+<label for="fx-source">रेट का स्रोत</label>
+<select aria-describedby="fx-source-hint" id="fx-source">
+<option value="ecb">ECB रेफरेंस रेट (डिफ़ॉल्ट)</option>
+<option value="treasury">अमेरिकी ट्रेज़री रिपोर्टिंग रेट</option>
+<option value="irs">IRS सालाना औसत</option>
+<option value="hmrc">HMRC मासिक रेट</option>
+</select>
 
-      <div class="fx-pair">
-        <div class="field">
-          <label for="fx-base">किस मुद्रा से</label>
-          <select id="fx-base" aria-describedby="fx-base-err"></select>
-          <p class="field-error" id="fx-base-err"></p>
-        </div>
-        <button type="button" class="fx-swap" id="fx-swap" aria-label="दोनों मुद्राएँ आपस में बदलें" title="दोनों मुद्राएँ आपस में बदलें">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="field">
-          <label for="fx-quote">किस मुद्रा में</label>
-          <select id="fx-quote" aria-describedby="fx-quote-err"></select>
-          <p class="field-error" id="fx-quote-err"></p>
-        </div>
-      </div>
+</div>
+<div class="fx-pair">
+<div class="field">
+<label for="fx-base">किस मुद्रा से</label>
+<select aria-describedby="fx-base-err" id="fx-base"></select>
+<p class="field-error" id="fx-base-err"></p>
+</div>
+<button aria-label="दोनों मुद्राएँ आपस में बदलें" class="fx-swap" id="fx-swap" title="दोनों मुद्राएँ आपस में बदलें" type="button">
+<svg aria-hidden="true" focusable="false" height="20" viewbox="0 0 24 24" width="20"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</button>
+<div class="field">
+<label for="fx-quote">किस मुद्रा में</label>
+<select aria-describedby="fx-quote-err" id="fx-quote"></select>
+<p class="field-error" id="fx-quote-err"></p>
+</div>
+</div>
+<div class="field">
+<label for="fx-date">तारीख़</label>
+<input aria-describedby="fx-date-hint fx-date-err" id="fx-date" min="1999-01-04" type="date"/>
 
-      <div class="field">
-        <label for="fx-date">तारीख़</label>
-        <input type="date" id="fx-date" min="1999-01-04" aria-describedby="fx-date-hint fx-date-err">
-        <p class="hint" id="fx-date-hint">4 जनवरी 1999 से। शनिवार-रविवार और छुट्टी पर उससे पहले का आख़िरी रेट इस्तेमाल होता है।</p>
-        <p class="field-error" id="fx-date-err"></p>
-      </div>
+<p class="field-error" id="fx-date-err"></p>
+</div>
 
-      <div class="fx-quick">
-        <p class="fx-quick-label" id="fx-quick-label">आम जोड़ियाँ</p>
-        <div class="fx-quick-row" role="group" aria-labelledby="fx-quick-label" id="fx-quick"></div>
-      </div>
+<p class="form-error" id="fx-error" role="alert"></p>
+<button class="btn" id="fx-run" type="submit">रेट पाएँ</button>
+<p class="hint fx-run-note" id="fx-run-note"></p>
 
-      <p class="form-error" id="fx-error" role="alert"></p>
-      <button class="btn" type="submit" id="fx-run">रेट पाएँ</button>
-      <p class="hint fx-run-note" id="fx-run-note"></p>
-    </form>
+<details class="xpand">
+<summary>आम जोड़ियाँ, रेट और तारीख के बारे में</summary>
+<div class="xp-in">
+<div class="fx-quick">
+<p class="fx-quick-label" id="fx-quick-label">आम जोड़ियाँ</p>
+<div aria-labelledby="fx-quick-label" class="fx-quick-row" id="fx-quick" role="group"></div>
+</div>
+<p class="hint" id="fx-source-hint">यूरोपीय सेंट्रल बैंक (ECB) का रोज़ाना जारी होने वाला यूरो रेफरेंस रेट। <a href="#fx-which">कौन सा रेट चुनें</a></p>
+<p class="hint" id="fx-date-hint">4 जनवरी 1999 से। शनिवार-रविवार और छुट्टी पर उससे पहले का आख़िरी रेट इस्तेमाल होता है।</p>
+</div>
+</details>
+</form>
 
-    <div class="fx-board" id="fx-board" aria-live="polite" aria-busy="false">
-      <p class="muted">हल किया हुआ उदाहरण लोड हो रहा है।</p>
-    </div>
+    <div aria-busy="false" aria-live="polite" class="fx-board" id="fx-board">
+<p class="muted">हल किया हुआ उदाहरण लोड हो रहा है।</p>
+</div>
   </section>
 
-  <section class="wrap fx-about" data-jump="स्रोत" aria-labelledby="fx-about-title">
-    <h2 id="fx-about-title">यह संख्या कहाँ से आती है</h2>
-    <div class="fx-about-cols">
+  <section class="wrap fx-about tf-sec" data-jump="स्रोत" aria-labelledby="fx-about-title">
+    <div class="tf-rules-top">
       <div>
-        <h3>रोज़ एक रेट</h3>
+        <h2 id="fx-about-title">यह संख्या कहाँ से आती है</h2>
         <p>ECB यूरो के मुकाबले लगभग 30 मुद्राओं के रेफरेंस रेट तय करता है, हर TARGET कामकाजी दिन पर सेंट्रल यूरोपीय समय के हिसाब से लगभग 16:00 बजे। डिफ़ॉल्ट जवाब उस दिन की ECB की अपनी प्रकाशित तालिका का रेट है।</p>
       </div>
-      <div>
-        <h3>यूरो के बिना जोड़ियाँ</h3>
-        <p>दो दूसरी मुद्राओं के लिए पेज एक यूरो रेट को दूसरे से भाग देता है, दोनों उसी दिन की फ़िक्सिंग के, और 6 दशमलव स्थान तक राउंड करता है। राउंडिंग सटीक है, आधे को शून्य से दूर की तरफ़ राउंड किया जाता है, और उल्टा रेट बिना राउंड किए रेट से निकाला जाता है।</p>
-      </div>
-      <div>
-        <h3>जिन दिनों रेट नहीं होता</h3>
-        <p>शनिवार-रविवार और TARGET की छुट्टियों पर फ़िक्सिंग नहीं होती। टूल आपकी तारीख़ से पहले के 7 दिनों में से आख़िरी फ़िक्सिंग लेता है। उस दायरे में कोई न मिले, या तारीख़ 4 जनवरी 1999 से पहले की हो, तो टूल यही बताता है और आपसे कुछ नहीं कटता।</p>
-        <p>ऐसा कामकाजी दिन जिसका रेट ECB ने अभी जारी नहीं किया, जैसे आज 16:00 बजे से पहले, पुराना रेट देने की जगह कोई रेट नहीं देता। प्रकाशन के बाद दोबारा पूछें। वह रन भी मुफ़्त है।</p>
-      </div>
+      <aside class="tf-card tf-not" aria-label="इसमें क्या शामिल नहीं है">
+        <h3>इसमें क्या शामिल नहीं है</h3>
+        <ul>
+          <li>वह रेट जिस पर कोई बैंक या कार्ड पैसे बदलता है: ये रेफरेंस रेट हैं, यानी उस दिन का रिकॉर्ड।</li>
+          <li>HMRC के साप्ताहिक संशोधन, जो उसकी मासिक फ़ाइलों में नहीं होते।</li>
+          <li>16:00 बजे के प्रकाशन से पहले का कार्य दिवस: उसे पुराना रेट नहीं मिलता, कोई रेट नहीं मिलता।</li>
+        </ul>
+      </aside>
     </div>
-    <p class="muted small">स्रोत: यूरोपीय सेंट्रल बैंक के यूरो रेफरेंस रेट (मूल अंग्रेज़ी नाम: European Central Bank euro foreign exchange reference rates)। ECB इन्हें सिर्फ़ जानकारी के लिए छापता है: ये उस दिन के रेट का रिकॉर्ड हैं, वह भाव नहीं जिस पर कोई बैंक करेंसी बदलता है। अगर आपका टैक्स विभाग या अकाउंटेंट कोई अलग रेट माँगे, तो ऊपर वही स्रोत चुनें। जो मुद्राएँ ECB अब नहीं छापता, जैसे क्रोएशियाई कुना, उनके लिए API से उन तारीख़ों के रेट पूछे जा सकते हैं जब वे छपती थीं।</p>
-  </section>
-
-  <section class="wrap fx-about" id="fx-which" data-jump="कौन सा रेट चुनें" aria-labelledby="fx-which-title">
-    <h2 id="fx-which-title">कौन सा रेट चुनें</h2>
-    <p>वही रेट इस्तेमाल करें जो उस संस्था ने माँगा हो जिसे आप रिपोर्ट करते हैं। हर जवाब में प्रकाशन और इस्तेमाल हुई अवधि का नाम होता है। हर संस्था अपने रेट के बारे में क्या कहती है (अपने शब्दों में):</p>
+    <details class="xpand">
+      <summary>रेट कैसे निकाला जाता है, पढ़ें</summary>
+      <div class="xp-in">
     <div class="fx-about-cols">
-      <div>
-        <h3>ECB रेफरेंस रेट (डिफ़ॉल्ट)</h3>
-        <p>1999 से यूरो के मुकाबले रोज़ाना रेट। ECB कहता है कि इन्हें सिर्फ़ जानकारी के लिए छापा जाता है।</p>
+<div>
+<h3>रोज़ एक रेट</h3>
+<p>ECB यूरो के मुकाबले लगभग 30 मुद्राओं के रेफरेंस रेट तय करता है, हर TARGET कामकाजी दिन पर सेंट्रल यूरोपीय समय के हिसाब से लगभग 16:00 बजे। डिफ़ॉल्ट जवाब उस दिन की ECB की अपनी प्रकाशित तालिका का रेट है।</p>
+</div>
+<div>
+<h3>यूरो के बिना जोड़ियाँ</h3>
+<p>दो दूसरी मुद्राओं के लिए पेज एक यूरो रेट को दूसरे से भाग देता है, दोनों उसी दिन की फ़िक्सिंग के, और 6 दशमलव स्थान तक राउंड करता है। राउंडिंग सटीक है, आधे को शून्य से दूर की तरफ़ राउंड किया जाता है, और उल्टा रेट बिना राउंड किए रेट से निकाला जाता है।</p>
+</div>
+<div>
+<h3>जिन दिनों रेट नहीं होता</h3>
+<p>शनिवार-रविवार और TARGET की छुट्टियों पर फ़िक्सिंग नहीं होती। टूल आपकी तारीख़ से पहले के 7 दिनों में से आख़िरी फ़िक्सिंग लेता है। उस दायरे में कोई न मिले, या तारीख़ 4 जनवरी 1999 से पहले की हो, तो टूल यही बताता है और आपसे कुछ नहीं कटता।</p>
+<p>ऐसा कामकाजी दिन जिसका रेट ECB ने अभी जारी नहीं किया, जैसे आज 16:00 बजे से पहले, पुराना रेट देने की जगह कोई रेट नहीं देता। प्रकाशन के बाद दोबारा पूछें। वह रन भी मुफ़्त है।</p>
+</div>
+</div>
+    <p class="muted small">स्रोत: यूरोपीय सेंट्रल बैंक के यूरो रेफरेंस रेट (मूल अंग्रेज़ी नाम: European Central Bank euro foreign exchange reference rates)। ECB इन्हें सिर्फ़ जानकारी के लिए छापता है: ये उस दिन के रेट का रिकॉर्ड हैं, वह भाव नहीं जिस पर कोई बैंक करेंसी बदलता है। अगर आपका टैक्स विभाग या अकाउंटेंट कोई अलग रेट माँगे, तो ऊपर वही स्रोत चुनें। जो मुद्राएँ ECB अब नहीं छापता, जैसे क्रोएशियाई कुना, उनके लिए API से उन तारीख़ों के रेट पूछे जा सकते हैं जब वे छपती थीं।</p>
       </div>
-      <div>
-        <h3>अमेरिकी ट्रेज़री रिपोर्टिंग रेट</h3>
-        <p>प्रति US डॉलर इकाइयों में तिमाही रेट, जिन्हें अमेरिकी सरकारी एजेंसियाँ रिपोर्ट की तारीख़ और उसके बाद के तीन महीनों के लिए रकम बदलने में इस्तेमाल करती हैं। अगर मौजूदा रेट किसी प्रकाशित रेट से 10% या ज़्यादा अलग हो जाए, तो ट्रेज़री नई लागू तारीख़ के साथ संशोधन जारी करती है, और टूल उसे उसी तारीख़ से इस्तेमाल करता है। FBAR के लिए FinCEN 31 दिसंबर का रेट बताता है। जोड़ी में USD होना चाहिए।</p>
+    </details>
+    <details class="xpand" id="fx-which">
+      <summary>कौन सा रेट चुनें</summary>
+      <div class="xp-in">
+    <h3 id="fx-which-title">कौन सा रेट चुनें</h3>
+    <p>वही रेट इस्तेमाल करें जो उस संस्था ने माँगा हो जिसे आप रिपोर्ट करते हैं। हर जवाब में प्रकाशन और इस्तेमाल हुई अवधि का नाम होता है। हर संस्था अपने रेट के बारे में क्या कहती है (अपने शब्दों में):</p>
+<div class="fx-about-cols">
+<div>
+<h3>ECB रेफरेंस रेट (डिफ़ॉल्ट)</h3>
+<p>1999 से यूरो के मुकाबले रोज़ाना रेट। ECB कहता है कि इन्हें सिर्फ़ जानकारी के लिए छापा जाता है।</p>
+</div>
+<div>
+<h3>अमेरिकी ट्रेज़री रिपोर्टिंग रेट</h3>
+<p>प्रति US डॉलर इकाइयों में तिमाही रेट, जिन्हें अमेरिकी सरकारी एजेंसियाँ रिपोर्ट की तारीख़ और उसके बाद के तीन महीनों के लिए रकम बदलने में इस्तेमाल करती हैं। अगर मौजूदा रेट किसी प्रकाशित रेट से 10% या ज़्यादा अलग हो जाए, तो ट्रेज़री नई लागू तारीख़ के साथ संशोधन जारी करती है, और टूल उसे उसी तारीख़ से इस्तेमाल करता है। FBAR के लिए FinCEN 31 दिसंबर का रेट बताता है। जोड़ी में USD होना चाहिए।</p>
+</div>
+<div>
+<h3>IRS सालाना औसत</h3>
+<p>हर मुद्रा का हर साल एक रेट, प्रति US डॉलर इकाइयों में, आपकी तारीख़ के साल के लिए। IRS कहता है कि उसके पास कोई आधिकारिक एक्सचेंज रेट नहीं है और वह लगातार एक ही तरीके से इस्तेमाल किया गया कोई भी प्रकाशित रेट मान लेता है। आम तौर पर रकम मिलने, चुकाने या दर्ज करने के दिन का स्पॉट रेट लिया जाता है। जोड़ी में USD होना चाहिए।</p>
+</div>
+<div>
+<h3>HMRC मासिक रेट</h3>
+<p>जनवरी 2021 से प्रति पाउंड इकाइयों में मासिक रेट, जो अगले कैलेंडर महीने के पहले से आख़िरी दिन तक लागू होते हैं। अगर बाज़ार का रेट 5% से ज़्यादा अलग हो, तो HMRC अगले हफ़्ते वह रेट अपडेट करता है; ये साप्ताहिक संशोधन उन मासिक फ़ाइलों में नहीं हैं जो यह टूल पढ़ता है। जोड़ी में GBP होना चाहिए।</p>
+</div>
+</div>
       </div>
-      <div>
-        <h3>IRS सालाना औसत</h3>
-        <p>हर मुद्रा का हर साल एक रेट, प्रति US डॉलर इकाइयों में, आपकी तारीख़ के साल के लिए। IRS कहता है कि उसके पास कोई आधिकारिक एक्सचेंज रेट नहीं है और वह लगातार एक ही तरीके से इस्तेमाल किया गया कोई भी प्रकाशित रेट मान लेता है। आम तौर पर रकम मिलने, चुकाने या दर्ज करने के दिन का स्पॉट रेट लिया जाता है। जोड़ी में USD होना चाहिए।</p>
-      </div>
-      <div>
-        <h3>HMRC मासिक रेट</h3>
-        <p>जनवरी 2021 से प्रति पाउंड इकाइयों में मासिक रेट, जो अगले कैलेंडर महीने के पहले से आख़िरी दिन तक लागू होते हैं। अगर बाज़ार का रेट 5% से ज़्यादा अलग हो, तो HMRC अगले हफ़्ते वह रेट अपडेट करता है; ये साप्ताहिक संशोधन उन मासिक फ़ाइलों में नहीं हैं जो यह टूल पढ़ता है। जोड़ी में GBP होना चाहिए।</p>
-      </div>
-    </div>
+    </details>
   </section>
 
-  <section class="wrap fx-code" aria-label="कोड से इस्तेमाल करें">
+
+
+  <section class="wrap fx-code tf-sec" data-jump="कोड" aria-label="कोड से इस्तेमाल करें">
     <div id="fx-code"></div>
   </section>
   <noscript><div class="wrap"><p>इस पेज के लिए JavaScript चाहिए। आप टूल को कोड से भी चला सकते हैं: <a href="/toll-preview/docs">डॉक्स देखें (अंग्रेज़ी में)</a>।</p></div></noscript>

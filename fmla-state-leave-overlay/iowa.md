@@ -35,6 +35,8 @@ The birth at 100 employees: 10 weeks of pregnancy disability protected by FMLA a
 
 ## Iowa in its own words
 
+**Read the law's own words (2 quotations)**
+
 - "Where a leave is not available or a sufficient leave is not available under any health or temporary disability insurance or sick leave plan available in connection with employment, the employer of the pregnant employee shall not refuse to grant to the employee who is disabled by the pregnancy a leave of absence if the leave of absence is for the period that the employee is disabled because of the employee's pregnancy, childbirth, or related medical conditions, or for eight weeks, whichever is less." [Iowa Code 216.6 (2026), Unfair employment practices (pregnancy)](https://www.legis.iowa.gov/docs/code/216.6.pdf)
 - "Any employer who regularly employs less than four individuals." [Iowa Code 216.6 (2026), Unfair employment practices (pregnancy)](https://www.legis.iowa.gov/docs/code/216.6.pdf)
 

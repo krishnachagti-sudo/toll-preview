@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the duplicate finder</h2><p class="muted">The worked files open in the tool and are previewed in your browser, free. Swap in your own exports there.</p><form method="get" action="/toll-preview/bank-feed-duplicate-finder/" class="cp-tool-form"><input type="hidden" name="feed" value="Date,Description,Amount
 10/04/2026,CHEVRON 0091842,-91.24
 10/12/2026,THE HOME DEPOT #6512,-742.30
@@ -100,7 +101,7 @@ Total for Business Card,,,,,,,$921.60,
 </section>
 <section>
 <h2 id="columns">Columns the check reads</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Header names recognised (any order, any title rows above)</caption><thead><tr><th scope="col">Field</th><th scope="col">Header names</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Header names recognised (any order, any title rows above)</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Field</th><th scope="col">Header names</th></tr></thead><tbody>
 <tr><th scope="row">Date (required)</th><td>Date, Transaction Date, Posting Date, Posted Date</td></tr>
 <tr><th scope="row">Amount (required)</th><td>Amount; or Debit and Credit; or Spent and Received; or Withdrawals and Deposits</td></tr>
 <tr><th scope="row">Payee</th><td>Name, Payee, Contact, Vendor, Customer</td></tr>
@@ -108,20 +109,20 @@ Total for Business Card,,,,,,,$921.60,
 <tr><th scope="row">Reference</th><td>Num, Reference, Ref, Check number</td></tr>
 <tr><th scope="row">Source</th><td>Source (Xero: Bank Feed, Imported, User)</td></tr>
 <tr><th scope="row">Status</th><td>Status, Reconciled, Clr (Reconciled or R, Cleared or C, Deleted)</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="signs">Signs</h2>
 <p>A bank file's credit is money in; a ledger report's debit is money into a bank account. Card accounts often differ: Intuit notes that for credit cards &quot;deposits may appear as negative amounts because paying your credit card reduces your balance&quot;. Xero's CSV wants income positive and expenses negative. With the default setting the tool compares both ways and keeps the one that pairs more lines, and says so.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>The worked card account, paired with the books' signs flipped</caption><thead><tr><th scope="col">#</th><th scope="col">Confidence</th><th scope="col" class="r num">Amount</th><th scope="col">Act on</th><th scope="col">Keep</th><th scope="col">Action</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The worked card account, paired with the books' signs flipped</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">#</th><th scope="col">Confidence</th><th scope="col" class="r num">Amount</th><th scope="col">Act on</th><th scope="col">Keep</th><th scope="col">Action</th></tr></thead><tbody>
 <tr><th scope="row">1</th><td>high</td><td class="r num">-$91.24</td><td>feed line 2: 2026-10-04, CHEVRON 0091842</td><td>books line 7: 2026-10-04, Chevron Truck fuel</td><td>Match this line to the entry already in the books (Find other match if it is not suggested); if that entry is already matched or reconciled, exclude this line instead</td></tr>
 <tr><th scope="row">2</th><td>medium</td><td class="r num">-$742.30</td><td>feed line 3: 2026-10-12, THE HOME DEPOT #6512</td><td>books line 8: 2026-10-11, Home Depot Stone</td><td>Match this line to the entry already in the books (Find other match if it is not suggested); if that entry is already matched or reconciled, exclude this line instead</td></tr>
 <tr><th scope="row">3</th><td>medium</td><td class="r num">-$88.06</td><td>feed line 4: 2026-10-19, CHEVRON 0091842</td><td>books line 9: 2026-10-18, Chevron Truck fuel</td><td>Match this line to the entry already in the books (Find other match if it is not suggested); if that entry is already matched or reconciled, exclude this line instead</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-articles/export-your-reports-to-excel-from-quickbooks-online/00/262097">Intuit QuickBooks: Export your reports to Excel from QuickBooks Online (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/format-csv-files-excel-bank-transactions-quickbooks/L4BjLWckq_US_en_US">Intuit QuickBooks: Format CSV files in Excel to get bank transactions into QuickBooks, updated August 24, 2026 (read November 8, 2026)</a></li><li><a href="https://central.xero.com/s/article/Export-a-list-of-uncoded-bank-statement-lines">Xero Central: Export a list of uncoded bank statement lines (read November 8, 2026)</a></li><li><a href="https://central.xero.com/s/article/Account-Transactions-report-New">Xero Central: Account Transactions report (read November 8, 2026)</a></li><li><a href="https://central.xero.com/0/article/Import-a-CSV-bank-statement-US">Xero Central: Import a bank statement in CSV format (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-articles/export-your-reports-to-excel-from-quickbooks-online/00/262097">Intuit QuickBooks: Export your reports to Excel from QuickBooks Online (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/format-csv-files-excel-bank-transactions-quickbooks/L4BjLWckq_US_en_US">Intuit QuickBooks: Format CSV files in Excel to get bank transactions into QuickBooks, updated August 24, 2026 (read November 8, 2026)</a><span class="src-m">quickbooks.intuit.com</span></li><li><a href="https://central.xero.com/s/article/Export-a-list-of-uncoded-bank-statement-lines">Xero Central: Export a list of uncoded bank statement lines (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li><li><a href="https://central.xero.com/s/article/Account-Transactions-report-New">Xero Central: Account Transactions report (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li><li><a href="https://central.xero.com/0/article/Import-a-CSV-bank-statement-US">Xero Central: Import a bank statement in CSV format (read November 8, 2026)</a><span class="src-m">central.xero.com</span></li></ul>
 </section>
 
 

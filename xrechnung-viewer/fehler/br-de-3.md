@@ -1,6 +1,6 @@
 # BR-DE-3: Ort des Verkäufers (BT-37) fehlt
 
-BR-DE-3 bedeutet: Das Element "Seller city" (BT-37) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Tragen Sie den Ort in das eigene Feld ein (UBL cbc:CityName, CII ram:CityName) und nicht in die Straßenzeile.
+BR-DE-3 bedeutet: Das Element "Seller city" (BT-37) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ In der Anschrift des Verkäufers fehlt der Ort. XRechnung verlangt ihn, auch wen
 
 ## So beheben Sie den Fehler
 
-Tragen Sie den Ort in das eigene Feld ein (UBL cbc:CityName, CII ram:CityName) und nicht in die Straßenzeile.
+Tragen Sie den Ort in das eigene Feld ein (UBL `cbc:CityName`, CII `ram:CityName`) und nicht in die Straßenzeile.
 
 ## Geprüftes Beispiel
 

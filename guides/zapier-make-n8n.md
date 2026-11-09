@@ -35,7 +35,11 @@ Each call costs **$0.0005**, taken from your balance, with the free monthly allo
 
 ## How do I stop automations paying twice?
 
-Automations retry, replay and re-run. Send an `Idempotency-Key` header (1 to 200 characters) made from the input, such as `zap-2026-07-01-2026-07-08`. If that key was already answered for the same tool, the API returns the stored answer, marks it `Idempotent-Replay: true` and charges nothing more. The same key with different input is refused with `idempotency_mismatch`, so include every input that changes the answer. The documentation does not say how long stored answers are kept.
+Automations retry, replay and re-run. Send an `Idempotency-Key` header (1 to 200 characters) made from the input, such as `zap-2026-07-01-2026-07-08`.
+
+**Read the rest: How do I stop automations paying twice?**
+
+If that key was already answered for the same tool, the API returns the stored answer, marks it `Idempotent-Replay: true` and charges nothing more. The same key with different input is refused with `idempotency_mismatch`, so include every input that changes the answer. The documentation does not say how long stored answers are kept.
 
 A run that is refused (bad input, no balance, a monthly limit) is not charged. A `409 in_progress` or `429 rate_limited` means retry in a moment with the same key.
 
@@ -64,6 +68,8 @@ Validate the JSON before you save, because Zapier does not check it. Then test t
 ## How do I do it in Make?
 
 Add the **HTTP** app and choose the **Make a request** module. Make's documentation describes these fields:
+
+**Read the rest: How do I do it in Make?**
 
 - **URL:** `https://krishnachagti-sudo.github.io/toll-preview/api/v1/tools/business-days` (it must begin with https://)
 - **Method:** `POST`
@@ -100,7 +106,9 @@ The node outputs the API's JSON. In a later node, the expression `{{ $json.resul
 
 ## What if a call fails?
 
-Every error has the same shape: `{ "ok": false, "error": { "code": "...", "message": "..." } }`. Check `ok` before you use `result`, and send failures to an alert step. Stop and tell a person on `insufficient_balance` and `cap_reached`, because retrying cannot fix them. Fix the input on `invalid_input`. The full list is in the [API documentation](https://krishnachagti-sudo.github.io/toll-preview/docs).
+Every error has the same shape: `{ "ok": false, "error": { "code": "...", "message": "..." } }`. Check `ok` before you use `result`, and send failures to an alert step.
+
+Stop and tell a person on `insufficient_balance` and `cap_reached`, because retrying cannot fix them. Fix the input on `invalid_input`. The full list is in the [API documentation](https://krishnachagti-sudo.github.io/toll-preview/docs).
 
 - [Zapier Help: Send webhooks in Zap workflows](https://help.zapier.com/hc/en-us/articles/8496326446989-Send-webhooks-in-Zap-workflows)
 - [Zapier Help: How to get started with Webhooks by Zapier](https://help.zapier.com/hc/en-us/articles/8496083355661-How-to-get-started-with-Webhooks-by-Zapier)

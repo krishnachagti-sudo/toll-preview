@@ -2,9 +2,46 @@
 
 A SKU pays only when both days-of-supply windows are under 28 days; the larger sets the band (0 to 14 days, 14 to 21 days, 21 to 28 days) and the rate per unit shipped, such as $0.36 for large standard up to 3 lb at 21 to 28 days. The 2026 rule (30- and 90-day history) runs through January 31, 2027; from February 1, 2027 the 2027 rule uses 28 days before and after the weekly check.
 
+## How does it work?
+
+1. The rule is the one in force on the date: the 2026 rule through January 31, 2027, the 2027 rule from February 1, 2027.
+2. Under the 2026 rule each window's days of supply is the average units on hand divided by the average units shipped a day, over 30 and over 90 days (or Amazon's own figure).
+3. The fee applies only when both windows are under 28 days.
+4. The rate comes from the table for the rule and the size tier (and, for large standard, the weight row). Under the 2026 rule extra-large items are not charged.
+5. Exemptions: under 20 units shipped in the past 7 days, grocery, 70% or more auto-replenished through AWD over the prior 90 days, a new Professional seller for 365 days, and the New Selection programs (180 days for the earlier program under the 2026 rule; 120 days or 200 units for the 2026 program).
+
+> Steps 6 to 8, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/amazon-low-inventory-fee-calculator/#what) below.
+
+## What does it not cover?
+
+- The reorder plan assumes the steady daily sales you give it. Amazon does not publish which day of the week it checks inventory, so dates are to the day of your own plan.
+- US marketplace only. Rules and rates read November 8, 2026. Not financial or accounting advice.
+- It estimates the fee from the figures you give; what Amazon charges is in your Seller Central reports.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 9 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Amazon's rules, rates, exemptions and dates were read on November 8, 2026 from Seller Central help (United States). They change only by hand, with the tests that pin each rate and Amazon's own examples.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin Amazon's rates, threshold, exemptions and dates as read, and reproduce Amazon's own examples for both rules. They check that both windows must be under 28 days, the band edges, no shipments, the size tiers and weights, the rule change date, each exemption, the weekly fee and the units to clear it, the planner (send-by, order-by, units, a late plan and its fee) and the CSV.
+
+- [Amazon Seller Central help: Low-inventory-level fee](https://sellercentral.amazon.com/help/hub/reference/external/GV43F6S76Y9DHYRH), Seller Central help, United States, read 2026-11-08
+- [Amazon Seller Central help: Low-inventory-level fee 2027](https://sellercentral.amazon.com/help/hub/reference/external/GFU8NTVGHP2JQLCR), Seller Central help, United States, read 2026-11-08
+- [Amazon: 2027 US Referral and Fulfillment by Amazon fees](https://amazon.com/selling-fee-changes), Seller Central help, United States, read 2026-11-08
+- [Amazon Seller Central help: Product size tiers](https://sellercentral.amazon.com/help/hub/reference/external/GG5KW835AHDJCH8W), Seller Central help, United States, read 2026-11-08
+- [Amazon Seller Central help: Unified monthly storage fee](https://sellercentral.amazon.com/help/hub/reference/external/GVZX6EAEL2KZ3SGA), Seller Central help, United States, read 2026-11-08
+- [Amazon Seller Central help: New Selection Program - 2026](https://sellercentral.amazon.com/help/hub/reference/external/GB36EVK8V94P8J5D), Seller Central help, United States, read 2026-11-08
+- [Amazon Seller Central help: FBA New Selection](https://sellercentral.amazon.com/help/hub/reference/external/GWHQRT98SAZC29VQ), Seller Central help, United States, read 2026-11-08
+- [Amazon Seller Central help: FBA inventory overview](https://sellercentral.amazon.com/help/hub/reference/external/GTMXYZN64UJL7TT6), Seller Central help, United States, read 2026-11-08
+- [Amazon Seller Forums: Low-inventory-level fee further explained (Amazon staff post)](https://sellercentral.amazon.com/seller-forums/discussions/t/aa9f98e5-fa91-4949-af8f-6cf918c86a77), Seller Central help, United States, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the amazon low-inventory-level fee and reorder planner compute?
 
-For each SKU and the date of a weekly check, the tool picks Amazon's rule in force (the 2026 rule through January 31, 2027, the 2027 rule from February 1, 2027), works out the days of supply in each window, applies the exemptions, and gives whether the low-inventory-level fee applies, the rate per unit and about how much this week's shipped units pay, and the stock that would clear it. Given daily sales and stock on hand, it also plans the next shipment: when to send it, how many units, and the fee a late shipment would cost. An estimate from the rules and rates Amazon publishes in its Seller Central help (United States). What Amazon charges is in FBA Inventory, SKU Economics and Transaction View.
+For each SKU and the date of a weekly check, the tool picks Amazon's rule in force (the 2026 rule through January 31, 2027, the 2027 rule from February 1, 2027), works out the days of supply in each window, applies the exemptions, and gives whether the low-inventory-level fee applies, the rate per unit and about how much this week's shipped units pay, and the stock that would clear it.
+
+**In detail: operations, inputs and outputs**
+
+Given daily sales and stock on hand, it also plans the next shipment: when to send it, how many units, and the fee a late shipment would cost. An estimate from the rules and rates Amazon publishes in its Seller Central help (United States). What Amazon charges is in FBA Inventory, SKU Economics and Transaction View.
 
 Operations (the op field):
 
@@ -29,7 +66,7 @@ Outputs:
 - csv: one line per SKU
 - rates: both rate tables, the exemptions, the dates and the sources
 
-## How is it calculated, step by step?
+**Every step in full (8) and the rules**
 
 1. The rule is the one in force on the date: the 2026 rule through January 31, 2027, the 2027 rule from February 1, 2027. An explicit rule wins.
 2. Under the 2026 rule each window's days of supply is the average units on hand divided by the average units shipped a day, over 30 and over 90 days (or Amazon's own figure). Under the 2027 rule it is the units at the check divided by the average sold a day in the 28 days before, and in the 28 days after.
@@ -46,6 +83,8 @@ The rates, the 28-day line, the windows, the exemptions and the dates were read 
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - Both windows must be under 28 days; one under and one over is no fee.
 - January 31, 2027 is checked under the 2026 rule and February 1, 2027 under the 2027 rule.
 - Large standard at exactly 3 lb takes the up-to-3-lb row.
@@ -57,6 +96,20 @@ The rates, the 28-day line, the windows, the exemptions and the dates were read 
 > Every figure below is the output of the tool's engine, not typed in.
 
 **One SKU this week under the 2026 rule: the fee, and when to send how many**
+
+One SKU this week under the 2026 rule: the fee, and when to send how many
+
+| Result | Value |
+| --- | --- |
+| answer | MUG-12OZ pays Amazon's low-inventory-level fee: days of supply 25.5 (30-day 20.0, 90-day 25.5), so $0.36 a unit for Large standard up to 3 lb, about $30.24 on 84 units this week; to stop it, keep the 30-day average at 336 units on hand (28 x 12 a day). |
+| rule | 2026 rule (historical days of supply, 30 and 90 days) |
+| days of supply | 25.5 (short 20.0, long 25.5) |
+| band and rate | 21 to 28 days: $0.36 a unit, Large standard up to 3 lb |
+| fee this week | $30.24 on 84 units |
+| to clear the fee | keep the 30-day average at 336 units on hand (28 x 12 a day) |
+| send | 682 units on November 9, 2026, arriving November 25, 2026 |
+
+**The input**
 
 ```json
 {
@@ -83,19 +136,22 @@ The rates, the 28-day line, the windows, the exemptions and the dates were read 
 }
 ```
 
-One SKU this week under the 2026 rule: the fee, and when to send how many
+**More worked examples (2)**
+
+**Amazon's own 2027 Example 4: large bulky, 120 units, 10 a day before, 8 after**
+
+Amazon's own 2027 Example 4: large bulky, 120 units, 10 a day before, 8 after
 
 | Result | Value |
 | --- | --- |
-| answer | MUG-12OZ pays Amazon's low-inventory-level fee: days of supply 25.5 (30-day 20.0, 90-day 25.5), so $0.36 a unit for Large standard up to 3 lb, about $30.24 on 84 units this week; to stop it, keep the 30-day average at 336 units on hand (28 x 12 a day). |
-| rule | 2026 rule (historical days of supply, 30 and 90 days) |
-| days of supply | 25.5 (short 20.0, long 25.5) |
-| band and rate | 21 to 28 days: $0.36 a unit, Large standard up to 3 lb |
-| fee this week | $30.24 on 84 units |
-| to clear the fee | keep the 30-day average at 336 units on hand (28 x 12 a day) |
-| send | 682 units on November 9, 2026, arriving November 25, 2026 |
+| answer | BULKY-1 pays Amazon's low-inventory-level fee: days of supply 15.0 (trailing 12.0, following 15.0), so $1.15 a unit for Large/Extra Large Bulky up to 50 lb, about $64.40 on 56 units this week; to stop it, have 280 units at the check (28 x 10 a day, Amazon's own advice). |
+| rule | 2027 rule (days of supply, 28 days before and after the weekly check) |
+| days of supply | 15 (trailing 12.0, following 15.0) |
+| band and rate | 14 to 21 days: $1.15 a unit, Large/Extra Large Bulky up to 50 lb |
+| fee this week | $64.40 on 56 units |
+| to clear the fee | have 280 units at the check (28 x 10 a day, Amazon's own advice) |
 
-**Amazon's own 2027 Example 4: large bulky, 120 units, 10 a day before, 8 after**
+**The input**
 
 ```json
 {
@@ -115,18 +171,19 @@ One SKU this week under the 2026 rule: the fee, and when to send how many
 }
 ```
 
-Amazon's own 2027 Example 4: large bulky, 120 units, 10 a day before, 8 after
+**A four-SKU weekly review file**
+
+A four-SKU weekly review file
 
 | Result | Value |
 | --- | --- |
-| answer | BULKY-1 pays Amazon's low-inventory-level fee: days of supply 15.0 (trailing 12.0, following 15.0), so $1.15 a unit for Large/Extra Large Bulky up to 50 lb, about $64.40 on 56 units this week; to stop it, have 280 units at the check (28 x 10 a day, Amazon's own advice). |
-| rule | 2027 rule (days of supply, 28 days before and after the weekly check) |
-| days of supply | 15 (trailing 12.0, following 15.0) |
-| band and rate | 14 to 21 days: $1.15 a unit, Large/Extra Large Bulky up to 50 lb |
-| fee this week | $64.40 on 56 units |
-| to clear the fee | have 280 units at the check (28 x 10 a day, Amazon's own advice) |
+| answer | 4 SKUs under Amazon's 2026 rule for the week of November 9, 2026: 1 pays the low-inventory-level fee (about $30.24 this week), 1 exempt, 2 not charged; 3 need a shipment sent now. |
+| MUG-12OZ | fee |
+| RUG-5X7 | no-fee |
+| CANDLE-SM | exempt |
+| LAMP-NEW | no-fee |
 
-**A four-SKU weekly review file**
+**The input**
 
 ```json
 {
@@ -140,59 +197,9 @@ Amazon's own 2027 Example 4: large bulky, 120 units, 10 a day before, 8 after
 }
 ```
 
-A four-SKU weekly review file
-
-| Result | Value |
-| --- | --- |
-| answer | 4 SKUs under Amazon's 2026 rule for the week of November 9, 2026: 1 pays the low-inventory-level fee (about $30.24 this week), 1 exempt, 2 not charged; 3 need a shipment sent now. |
-| MUG-12OZ | fee |
-| RUG-5X7 | no-fee |
-| CANDLE-SM | exempt |
-| LAMP-NEW | no-fee |
-
-## What does it not do?
-
-- The reorder plan assumes the steady daily sales you give it. Amazon does not publish which day of the week it checks inventory, so dates are to the day of your own plan.
-- US marketplace only. Rules and rates read November 8, 2026. Not financial or accounting advice.
-- It estimates the fee from the figures you give; what Amazon charges is in your Seller Central reports.
-
-## Where does the data come from, and how fresh is it?
-
-Amazon's rules, rates, exemptions and dates were read on November 8, 2026 from Seller Central help (United States). They change only by hand, with the tests that pin each rate and Amazon's own examples.
-
-- [Amazon Seller Central help: Low-inventory-level fee (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GV43F6S76Y9DHYRH)
-- [Amazon Seller Central help: Low-inventory-level fee 2027 (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GFU8NTVGHP2JQLCR)
-- [Amazon: 2027 US Referral and Fulfillment by Amazon fees (read November 8, 2026)](https://amazon.com/selling-fee-changes)
-- [Amazon Seller Central help: Product size tiers (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GG5KW835AHDJCH8W)
-- [Amazon Seller Central help: Unified monthly storage fee (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GVZX6EAEL2KZ3SGA)
-- [Amazon Seller Central help: New Selection Program - 2026 (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GB36EVK8V94P8J5D)
-- [Amazon Seller Central help: FBA New Selection (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GWHQRT98SAZC29VQ)
-- [Amazon Seller Central help: FBA inventory overview (read November 8, 2026)](https://sellercentral.amazon.com/help/hub/reference/external/GTMXYZN64UJL7TT6)
-- [Amazon Seller Forums: Low-inventory-level fee further explained (Amazon staff post) (read November 8, 2026)](https://sellercentral.amazon.com/seller-forums/discussions/t/aa9f98e5-fa91-4949-af8f-6cf918c86a77)
-
-Amazon's rules, rates, exemptions and dates were read on November 8, 2026 from Seller Central help (United States). They change only by hand, with the tests that pin each rate and Amazon's own examples.
-
-Amazon low-inventory-level fee and reorder planner: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [Amazon Seller Central help: Low-inventory-level fee](https://sellercentral.amazon.com/help/hub/reference/external/GV43F6S76Y9DHYRH) | Seller Central help, United States | 2026-11-08 |
-| [Amazon Seller Central help: Low-inventory-level fee 2027](https://sellercentral.amazon.com/help/hub/reference/external/GFU8NTVGHP2JQLCR) | Seller Central help, United States | 2026-11-08 |
-| [Amazon: 2027 US Referral and Fulfillment by Amazon fees](https://amazon.com/selling-fee-changes) | Seller Central help, United States | 2026-11-08 |
-| [Amazon Seller Central help: Product size tiers](https://sellercentral.amazon.com/help/hub/reference/external/GG5KW835AHDJCH8W) | Seller Central help, United States | 2026-11-08 |
-| [Amazon Seller Central help: Unified monthly storage fee](https://sellercentral.amazon.com/help/hub/reference/external/GVZX6EAEL2KZ3SGA) | Seller Central help, United States | 2026-11-08 |
-| [Amazon Seller Central help: New Selection Program - 2026](https://sellercentral.amazon.com/help/hub/reference/external/GB36EVK8V94P8J5D) | Seller Central help, United States | 2026-11-08 |
-| [Amazon Seller Central help: FBA New Selection](https://sellercentral.amazon.com/help/hub/reference/external/GWHQRT98SAZC29VQ) | Seller Central help, United States | 2026-11-08 |
-| [Amazon Seller Central help: FBA inventory overview](https://sellercentral.amazon.com/help/hub/reference/external/GTMXYZN64UJL7TT6) | Seller Central help, United States | 2026-11-08 |
-| [Amazon Seller Forums: Low-inventory-level fee further explained (Amazon staff post)](https://sellercentral.amazon.com/seller-forums/discussions/t/aa9f98e5-fa91-4949-af8f-6cf918c86a77) | Seller Central help, United States | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests pin Amazon's rates, threshold, exemptions and dates as read, and reproduce Amazon's own examples for both rules. They check that both windows must be under 28 days, the band edges, no shipments, the size tiers and weights, the rule change date, each exemption, the weekly fee and the units to clear it, the planner (send-by, order-by, units, a late plan and its fee) and the CSV.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Amazon's rates, the 28-day line, the exemptions and the dates are pinned as read on 2026-11-08, and Amazon's own worked examples for the 2026 and 2027 rules are reproduced.
 - Both windows must be under 28 days, the larger sets the band, the band edges are exact, the rule changes on February 1, 2027, and each exemption and size tier is checked.

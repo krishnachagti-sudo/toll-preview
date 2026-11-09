@@ -69,40 +69,63 @@
 <header class="cp-head">
 <p class="eyebrow">Guide</p>
 <h1>How FMLA eligibility is checked: 29 CFR 825 method</h1>
-<p class="cp-answer">An employee is eligible when the employer is covered and, as of the day leave starts, has employed them for 12 months, they worked 1,250 hours in the 12 months before, and 50 employees work within 75 surface miles of their worksite (29 CFR 825.110). The eligibility notice is due within 5 business days.</p>
+<p class="cp-answer">An employee is eligible when the employer is covered and, as of the day leave starts, has employed them for 12 months, they worked 1,250 hours in the 12 months before, and 50 employees work within 75 surface miles of their worksite (29 CFR 825.110).<span class="ans-more"> The eligibility notice is due within 5 business days.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
+<section>
+<h2 id="method">How does it work?</h2>
+<ol class="cp-howto"><li><span>Coverage: a public agency or a school is covered at any size. A private employer is covered with 50 or more employees in undefined or more workweeks of the current or preceding calendar year (825.104, 825.105(e)); when the workweeks are not given, coverage is assumed and the answer says so.</span></li><li><span>12 months (825.110(b)): one continuous job is measured in calendar months and passes on the 12-month anniversary of the hire date (a February 29 hire reaches it on February 28).</span></li><li><span>Breaks: service before a break of 7 years or more is dropped, unless the break was USERRA-covered service (which itself counts as employment), a written rehire agreement covers it, or the employer counts such service for everyone (825.110(b)(1), (2) and (4)).</span></li><li><span>1,250 hours (825.110(c)): the hours are counted from the same date a year before the leave starts to the day before it.</span></li><li><span>50 within 75 miles (825.111): the employees of every site at 75 surface miles or less from the worksite are added, the worksite itself counting at 0 miles, and sites outside the United States are left out.</span></li></ol>
+<p class="cp-note">Steps 6 to 9, each rule and the edge cases are in <a href="/toll-preview/methodology/fmla-eligibility-checker/#what">the full method</a> below.</p>
+</section>
+<section>
+<h2 id="limits">What does it not cover?</h2>
+<ul><li>It does not decide whether a reason for leave qualifies, or whether employers are joint or integrated employers.</li><li>State family and medical leave laws are not covered: none was read on a state's own site.</li><li>The airline flight crew hours rule of 825.801 is not worked out.</li><li>The headcount, worksite, distances and hours are the facts entered; the tool cannot check them. It is not legal advice.</li></ul>
+</section>
+<section>
+<h2 id="data">How fresh is the data?</h2>
+<div class="tgrid g2"><a class="tcard no-pv" href="/toll-preview/updates/"><h3 class="tc-t">Data as of Nov 4, 2026, from 4 sources</h3><div class="tc-b"><p class="tc-a">The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.</p><div class="tc-f"><span></span><span class="tc-open">Data updates</span></div></div></a><a class="tcard no-pv" href="/toll-preview/sources/#checks"><h3 class="tc-t">Tested: 4 checks in its test suite</h3><div class="tc-b"><p class="tc-a">The thresholds and quoted sections are pinned to eCFR and dol.gov with their read date. Each test is checked at its boundary: the anniversary and the day before, 51 and 52 weeks, seven years and a day less, 1,250 hours and 1,249.75, 75 and 75.1 miles, 19 and 20 workweeks.</p><div class="tc-f"><span></span><span class="tc-open">All checks</span></div></div></a></div>
+<ul class="cp-sources cp-src"><li><a href="https://www.ecfr.gov/current/title-29/part-825">29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)</a><span class="src-m">ecfr.gov · eCFR current to 2026-11-02 · read 2026-11-08</span></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/28-fmla">DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act</a><span class="src-m">dol.gov · revised March 2025 · read 2026-11-08</span></li><li><a href="https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf">DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act</a><span class="src-m">dol.gov · dated 2023-02-09 · read 2026-11-08</span></li><li><a href="https://www.dol.gov/agencies/whd/fmla/forms">DOL: FMLA forms</a><span class="src-m">dol.gov · see the document · read 2026-11-08</span></li></ul>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
 <section>
 <h2 id="what">What does the fmla eligibility checker compute?</h2>
-<p>The tool takes the facts an employer has about one employee and one leave: the dates employed, the hours worked, the headcount near the worksite and the employer. It runs the three eligibility tests of 29 CFR 825.110 and the employer coverage test, gives the reason the eligibility notice must state when an employee is not eligible, and the day that notice is due. It also turns 12 or 26 workweeks into hours for a schedule, and keeps a leave balance under each of the four 12-month methods of 825.200(b), with the days leave comes back under the rolling method.</p>
-<details class="xpand"><summary>Read the rest: What does the fmla eligibility checker compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<p>The tool takes the facts an employer has about one employee and one leave: the dates employed, the hours worked, the headcount near the worksite and the employer. It runs the three eligibility tests of 29 CFR 825.110 and the employer coverage test, gives the reason the eligibility notice must state when an employee is not eligible, and the day that notice is due.</p>
+<details class="xpand"><summary>In detail: operations, inputs and outputs</summary><div class="xp-in"><p>It also turns 12 or 26 workweeks into hours for a schedule, and keeps a leave balance under each of the four 12-month methods of 825.200(b), with the days leave comes back under the rolling method.</p>
+<p>Operations (the op field):</p>
 <ul><li><code>check</code>: Runs the coverage test and the three eligibility tests for a leave start date. The answer has eligible (yes, no, or null when it cannot be found ineligible), each test with its figures, the reasons for the notice, the notice due date with the holidays and closed days skipped, and notes.</li><li><code>balance</code>: Works out the leave used and left on an as-of date under one method (rolling by default), the period it is measured in, the dates leave comes back or the full amount returns, and how much of each requested day is FMLA-protected. With compare, it also gives the balance under every method and marks the one that gives the employee the most.</li><li><code>hours</code>: Turns 12 workweeks, or 26 for military caregiver leave, into hours for the normal workweek given.</li><li><code>record</code>: Returns one employee's leave record: the balance, the comparison of methods, the ledger as CSV with one line per day of leave and, with a check, the fields of the eligibility notice (form WH-381, Part A).</li></ul>
 <p>Inputs:</p>
 <ul><li><code>leaveStart, noticeDate</code>: The day the leave starts, and the day the employee asked for it or the employer learned it may qualify (the leave start when not given). Dates are written like 2026-11-10.</li><li><code>hireDate or periods</code>: The hire date, or up to 20 employment periods with a start, an end (none while still employed) and, for a break before a period, breakBefore: userra or agreement. countOldService says the employer counts service before long breaks for everyone.</li><li><code>hours or hoursLog, userraHours, recordsKept, flightCrew</code>: The hours worked in the 12 months before the leave, or a log of up to 400 dated lines; hours credited for USERRA service; whether the employer kept an accurate record of hours; and whether the employee is airline flight crew. Hours take at most two decimals.</li><li><code>employeesWithin75 or sites, reportsTo, workLocation</code>: The count within 75 miles, or up to 200 sites with their employees, surface miles from the worksite and whether they are outside the United States; the site the employee reports to; and site, home or no-fixed-site.</li><li><code>employer</code>: type (private, public-agency or school) and workweeksWith50, the workweeks with 50 or more employees in the current or preceding calendar year.</li><li><code>closedDays</code>: Up to 60 dates the employer is closed, skipped when counting business days.</li><li><code>method, leaveYearStart, weeklyHours, weeks, used, requested, asOf</code>: For balance and record: rolling, calendar, fixed (with the first day of the leave year as MM-DD) or forward; the normal workweek in hours; 12 or 26 weeks; days of leave taken and days requested, each with its hours (at most 24 a day, at most 1,000 days in one call); and the as-of date.</li><li><code>employee, check</code>: For record: the employee's name or ID as it should show, and optionally the facts for a check.</li></ul>
 <p>Outputs:</p>
 <ul><li>eligible and answer: the verdict in one sentence, with the months of service, the hours, the count near the worksite and the notice due date</li><li>tests: coverage, service (months or weeks, breaks, the date the test is met), hours (the 12-month window, hours short) and worksite (the count, the worksite, each site counted or not)</li><li>reasons: the sentences the eligibility notice must state when an employee is not eligible</li><li>notice: the due date, the federal holidays and closed days skipped, and the sentence to act on</li><li>balance: hours used and remaining, the period, restore dates or the reset date, and protected and unprotected hours per day</li><li>record: the ledger CSV, the comparison of methods and the eligibility notice fields</li></ul></div></details>
-</section>
-<section>
-<h2 id="method">How is it calculated, step by step?</h2>
-<ol><li>Coverage: a public agency or a school is covered at any size. A private employer is covered with 50 or more employees in undefined or more workweeks of the current or preceding calendar year (825.104, 825.105(e)); when the workweeks are not given, coverage is assumed and the answer says so.</li><li>12 months (825.110(b)): one continuous job is measured in calendar months and passes on the 12-month anniversary of the hire date (a February 29 hire reaches it on February 28). Separate periods are added up in Sunday-to-Saturday weeks, where any part of a week on the payroll counts as a week, and 52 weeks equal 12 months. Service is counted to the day before the leave starts.</li><li>Breaks: service before a break of 7 years or more is dropped, unless the break was USERRA-covered service (which itself counts as employment), a written rehire agreement covers it, or the employer counts such service for everyone (825.110(b)(1), (2) and (4)).</li><li>1,250 hours (825.110(c)): the hours are counted from the same date a year before the leave starts to the day before it. A log counts only the lines inside that window. USERRA hours are added. Short of 1,250 with no accurate record kept, the employee cannot be found ineligible, because the employer has the burden. Airline flight crew have their own rule, which is not worked out.</li><li>50 within 75 miles (825.111): the employees of every site at 75 surface miles or less from the worksite are added, the worksite itself counting at 0 miles, and sites outside the United States are left out. A teleworker's worksite is the office they report to or get assignments from, never their home (825.111(a)(2) and FAB 2023-1).</li><li>The verdict is not eligible when any test fails, cannot be found ineligible when the hours are short but no record was kept or the employee is flight crew, and eligible otherwise. Each failed test gives the reason sentence the notice must state (825.300(b)(2)).</li><li>The notice is due 5 business days after the notice date (825.300(b)(1)). Business days are Monday to Friday less US federal holidays and the days the employer is closed. Part 825 does not define business days; this is the reading the tool states.</li><li>Hours of leave: the normal workweek times 12 weeks, or 26 for military caregiver leave (825.205(b)). Hours are kept as whole hundredths, never rounded floats.</li><li>Balance: the days of leave are taken in date order. Each day is protected up to the hours left in its 12-month period, and the rest of it is marked not protected. Under the rolling method a day counts until the same date a year later, when its hours come back; under the calendar, fixed and forward methods the full amount returns when the period ends. Military caregiver leave is always measured forward from its first day (825.200(f)).</li></ol>
+<details class="xpand"><summary>Every step in full (9) and the rules</summary><div class="xp-in"><ol><li>Coverage: a public agency or a school is covered at any size. A private employer is covered with 50 or more employees in undefined or more workweeks of the current or preceding calendar year (825.104, 825.105(e)); when the workweeks are not given, coverage is assumed and the answer says so.</li><li>12 months (825.110(b)): one continuous job is measured in calendar months and passes on the 12-month anniversary of the hire date (a February 29 hire reaches it on February 28). Separate periods are added up in Sunday-to-Saturday weeks, where any part of a week on the payroll counts as a week, and 52 weeks equal 12 months. Service is counted to the day before the leave starts.</li><li>Breaks: service before a break of 7 years or more is dropped, unless the break was USERRA-covered service (which itself counts as employment), a written rehire agreement covers it, or the employer counts such service for everyone (825.110(b)(1), (2) and (4)).</li><li>1,250 hours (825.110(c)): the hours are counted from the same date a year before the leave starts to the day before it. A log counts only the lines inside that window. USERRA hours are added. Short of 1,250 with no accurate record kept, the employee cannot be found ineligible, because the employer has the burden. Airline flight crew have their own rule, which is not worked out.</li><li>50 within 75 miles (825.111): the employees of every site at 75 surface miles or less from the worksite are added, the worksite itself counting at 0 miles, and sites outside the United States are left out. A teleworker's worksite is the office they report to or get assignments from, never their home (825.111(a)(2) and FAB 2023-1).</li><li>The verdict is not eligible when any test fails, cannot be found ineligible when the hours are short but no record was kept or the employee is flight crew, and eligible otherwise. Each failed test gives the reason sentence the notice must state (825.300(b)(2)).</li><li>The notice is due 5 business days after the notice date (825.300(b)(1)). Business days are Monday to Friday less US federal holidays and the days the employer is closed. Part 825 does not define business days; this is the reading the tool states.</li><li>Hours of leave: the normal workweek times 12 weeks, or 26 for military caregiver leave (825.205(b)). Hours are kept as whole hundredths, never rounded floats.</li><li>Balance: the days of leave are taken in date order. Each day is protected up to the hours left in its 12-month period, and the rest of it is marked not protected. Under the rolling method a day counts until the same date a year later, when its hours come back; under the calendar, fixed and forward methods the full amount returns when the period ends. Military caregiver leave is always measured forward from its first day (825.200(f)).</li></ol>
 <p><strong>29 CFR Part 825.</strong></p>
 <p>The thresholds are the regulation's: 12 months (52 weeks), 1,250 hours, 50 employees within 75 miles, a break of 7 years, coverage at 50 employees in 20 workweeks, 12 and 26 workweeks of leave, and a notice in 5 business days. The sections applied are quoted word for word in the tool's data file, from eCFR current to 2026-11-02.</p>
 <p><strong>The four 12-month methods.</strong></p>
 <p>825.200(b) lets an employer choose one of four methods: rolling 12 months measured backward, calendar year, fixed 12-month leave year, 12 months measured forward from the first leave. Under 825.200(e), an employer that chose none uses the one most beneficial to the employee, so the comparison marks the method that leaves the most hours, counting the protected requested hours.</p>
 <p><strong>DOL Field Assistance Bulletin 2023-1.</strong></p>
-<p>A teleworker's worksite for FMLA eligibility is the office they report to or get assignments from, and that office's count includes the teleworkers assigned to it. The bulletin is guidance to Wage and Hour Division staff, not a regulation.</p>
+<p>A teleworker's worksite for FMLA eligibility is the office they report to or get assignments from, and that office's count includes the teleworkers assigned to it. The bulletin is guidance to Wage and Hour Division staff, not a regulation.</p></div></details>
 </section>
 <section>
 <h2 id="edge">Which edge cases does it handle?</h2>
-<ul><li>A rehire after a break of seven years or more starts the 12 months again; exactly seven years counts as seven years or more, and a day less does not.</li><li>Seasonal periods are added up in weeks, so a period that touches a Saturday and the next Sunday counts two weeks.</li><li>When the 12-month test fails, the answer gives the first leave date on which it would be met if the employee stays employed.</li><li>A site at exactly 75 miles is counted; one at 75.1 miles is not.</li><li>A notice date before Veterans Day or Thanksgiving moves the due date past the holiday, and a closed day moves it again.</li><li>The same day listed twice in a leave log is refused, so one day's hours sit on one line.</li><li>Leave that runs across January 1 can be protected twice over under the calendar method and only once under the rolling method.</li></ul>
+<details class="xpand"><summary>The edge cases (7)</summary><div class="xp-in"><ul><li>A rehire after a break of seven years or more starts the 12 months again; exactly seven years counts as seven years or more, and a day less does not.</li><li>Seasonal periods are added up in weeks, so a period that touches a Saturday and the next Sunday counts two weeks.</li><li>When the 12-month test fails, the answer gives the first leave date on which it would be met if the employee stays employed.</li><li>A site at exactly 75 miles is counted; one at 75.1 miles is not.</li><li>A notice date before Veterans Day or Thanksgiving moves the due date past the holiday, and a closed day moves it again.</li><li>The same day listed twice in a leave log is refused, so one day's hours sit on one line.</li><li>Leave that runs across January 1 can be protected twice over under the calendar method and only once under the rolling method.</li></ul></div></details>
 </section>
 <section>
 <h2 id="example">What does a worked example look like?</h2>
 <p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
 <p><strong>A teleworker who reports to headquarters: the 50 are counted around that office</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">A teleworker who reports to headquarters: the 50 are counted around that office</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">eligible</th><td>yes</td></tr>
+<tr><th scope="row">months of service</th><td>32</td></tr>
+<tr><th scope="row">hours in the 12 months before leave</th><td>1,612</td></tr>
+<tr><th scope="row">employees within 75 miles of the worksite</th><td>300</td></tr>
+<tr><th scope="row">worksite</th><td>Headquarters</td></tr>
+<tr><th scope="row">notice due</th><td>November 13, 2026</td></tr>
+<tr><th scope="row">holidays skipped</th><td>Veterans Day</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;check&quot;,
   &quot;leaveStart&quot;: &quot;2026-12-01&quot;,
   &quot;noticeDate&quot;: &quot;2026-11-05&quot;,
@@ -130,18 +153,18 @@
     &quot;type&quot;: &quot;private&quot;,
     &quot;workweeksWith50&quot;: 52
   &#125;
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A teleworker who reports to headquarters: the 50 are counted around that office</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">eligible</th><td>yes</td></tr>
-<tr><th scope="row">months of service</th><td>32</td></tr>
-<tr><th scope="row">hours in the 12 months before leave</th><td>1,612</td></tr>
-<tr><th scope="row">employees within 75 miles of the worksite</th><td>300</td></tr>
-<tr><th scope="row">worksite</th><td>Headquarters</td></tr>
-<tr><th scope="row">notice due</th><td>November 13, 2026</td></tr>
-<tr><th scope="row">holidays skipped</th><td>Veterans Day</td></tr>
-</tbody></table></div>
-<p><strong>A rehire after a break of more than seven years: the old service does not count</strong></p>
-<pre><code class="language-json">&#123;
+&#125;</code></pre></div></details>
+<details class="xpand"><summary>More worked examples (3)</summary><div class="xp-in"><p><strong>A rehire after a break of more than seven years: the old service does not count</strong></p>
+<figure class="cp-tbl"><figcaption class="cp-cap">A rehire after a break of more than seven years: the old service does not count</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">eligible</th><td>no</td></tr>
+<tr><th scope="row">service dropped before</th><td>March 2, 2026</td></tr>
+<tr><th scope="row">months of service</th><td>8</td></tr>
+<tr><th scope="row">12 months met on</th><td>March 2, 2027</td></tr>
+<tr><th scope="row">reason 1</th><td>You have been employed by the employer for 8 months as of November 16, 2026, less than 12 months.</td></tr>
+<tr><th scope="row">reason 2</th><td>You have worked 1,104 hours of service with the employer in the 12 months before November 16, 2026 (November 16, 2025 to November 15, 2026), fewer than 1,250.</td></tr>
+<tr><th scope="row">notice due</th><td>November 17, 2026</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;check&quot;,
   &quot;leaveStart&quot;: &quot;2026-11-16&quot;,
   &quot;noticeDate&quot;: &quot;2026-11-09&quot;,
@@ -156,25 +179,9 @@
   ],
   &quot;hours&quot;: 1104,
   &quot;employeesWithin75&quot;: 140
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>A rehire after a break of more than seven years: the old service does not count</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">eligible</th><td>no</td></tr>
-<tr><th scope="row">service dropped before</th><td>March 2, 2026</td></tr>
-<tr><th scope="row">months of service</th><td>8</td></tr>
-<tr><th scope="row">12 months met on</th><td>March 2, 2027</td></tr>
-<tr><th scope="row">reason 1</th><td>You have been employed by the employer for 8 months as of November 16, 2026, less than 12 months.</td></tr>
-<tr><th scope="row">reason 2</th><td>You have worked 1,104 hours of service with the employer in the 12 months before November 16, 2026 (November 16, 2025 to November 15, 2026), fewer than 1,250.</td></tr>
-<tr><th scope="row">notice due</th><td>November 17, 2026</td></tr>
-</tbody></table></div>
+&#125;</code></pre></div></details>
 <p><strong>Rolling 12 months: hours left, the day leave comes back, and two requested weeks</strong></p>
-<pre><code class="language-json">op: &quot;balance&quot;
-method: &quot;rolling&quot;
-weeklyHours: 40
-asOf: &quot;2026-11-10&quot;
-used: 50 items
-requested: 10 items
-compare: true</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>Rolling 12 months: hours left, the day leave comes back, and two requested weeks</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Rolling 12 months: hours left, the day leave comes back, and two requested weeks</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
 <tr><th scope="row">used</th><td>392 of 480 hours</td></tr>
 <tr><th scope="row">remaining</th><td>88 hours (2.2 weeks)</td></tr>
 <tr><th scope="row">period from</th><td>November 11, 2025</td></tr>
@@ -182,40 +189,29 @@ compare: true</code></pre>
 <tr><th scope="row">Rolling 12 months measured backward</th><td>88 hours left</td></tr>
 <tr><th scope="row">Calendar year</th><td>128 hours left (most beneficial)</td></tr>
 <tr><th scope="row">12 months measured forward from the first leave</th><td>88 hours left</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">op: &quot;balance&quot;
+method: &quot;rolling&quot;
+weeklyHours: 40
+asOf: &quot;2026-11-10&quot;
+used: 50 items
+requested: 10 items
+compare: true</code></pre></div></details>
 <p><strong>12 weeks of FMLA in hours on a 36-hour week</strong></p>
-<pre><code class="language-json">&#123;
+<figure class="cp-tbl"><figcaption class="cp-cap">12 weeks of FMLA in hours on a 36-hour week</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>12 workweeks at 36 hours a week is 432 hours of FMLA leave (12 x 36).</td></tr>
+</tbody></table></div></figure>
+<details class="xpand"><summary>The input</summary><div class="xp-in"><pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;hours&quot;,
   &quot;weeklyHours&quot;: 36
-&#125;</code></pre>
-<div class="table-scroll"><table class="rules cp-table"><caption>12 weeks of FMLA in hours on a 36-hour week</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
-<tr><th scope="row">answer</th><td>12 workweeks at 36 hours a week is 432 hours of FMLA leave (12 x 36).</td></tr>
-</tbody></table></div>
-</section>
-<section>
-<h2 id="limits">What does it not do?</h2>
-<ul><li>It does not decide whether a reason for leave qualifies, or whether employers are joint or integrated employers.</li><li>State family and medical leave laws are not covered: none was read on a state's own site.</li><li>The airline flight crew hours rule of 825.801 is not worked out.</li><li>The headcount, worksite, distances and hours are the facts entered; the tool cannot check them. It is not legal advice.</li></ul>
-</section>
-<section>
-<h2 id="data">Where does the data come from, and how fresh is it?</h2>
-<p>The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.</p>
-<ul class="cp-sources"><li><a href="https://www.ecfr.gov/current/title-29/part-825">29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)</a></li><li><a href="https://www.dol.gov/agencies/whd/fact-sheets/28-fmla">DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act</a></li><li><a href="https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf">DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act</a></li><li><a href="https://www.dol.gov/agencies/whd/fmla/forms">DOL: FMLA forms</a></li></ul>
-<p>The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.</p>
-<div class="table-scroll"><table class="rules cp-table"><caption>FMLA eligibility checker: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
-<tr><th scope="row"><a href="https://www.ecfr.gov/current/title-29/part-825">29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)</a></th><td>eCFR current to 2026-11-02</td><td rowspan="4">2026-11-08</td></tr>
-<tr><th scope="row"><a href="https://www.dol.gov/agencies/whd/fact-sheets/28-fmla">DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act</a></th><td>revised March 2025</td></tr>
-<tr><th scope="row"><a href="https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf">DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act</a></th><td>dated 2023-02-09</td></tr>
-<tr><th scope="row"><a href="https://www.dol.gov/agencies/whd/fmla/forms">DOL: FMLA forms</a></th><td>see the document</td></tr>
-</tbody></table></div>
-<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+&#125;</code></pre></div></details></div></details>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
-<p>The thresholds and quoted sections are pinned to eCFR and dol.gov with their read date. Each test is checked at its boundary: the anniversary and the day before, 51 and 52 weeks, seven years and a day less, 1,250 hours and 1,249.75, 75 and 75.1 miles, 19 and 20 workweeks. The rolling balance reproduces the regulation's own example in 825.200(c).</p>
-<details class="xpand"><summary>Read the rest: How is it tested?</summary><div class="xp-in"><p>What its test suite asserts:</p>
-<ul><li>The thresholds (12 months or 52 weeks, 1,250 hours, 50 employees within 75 miles, 7 years, 20 workweeks, 5 business days) and the quoted sections of Part 825 are pinned to eCFR and dol.gov as read on 2026-11-08.</li><li>The 12-month test is checked on the anniversary and the day before, a leap-day hire, seasonal periods in weeks, 51 and 52 weeks, and breaks of seven years kept by USERRA, an agreement or the employer.</li><li>The hours window, logs, USERRA credit, missing records and flight crew are checked, and so are 75 and 75.1 miles, staff abroad and the 300 employees of FAB 2023-1 example 5.</li><li>The notice due date skips weekends, Veterans Day, Thanksgiving and closed days; the rolling balance reproduces the 825.200(c) example; calendar, fixed, forward and military caregiver years and the ledger CSV are checked.</li></ul>
+<p>The rolling balance reproduces the regulation's own example in 825.200(c).</p>
+<details class="xpand"><summary>What its test suite asserts (4)</summary><div class="xp-in"><ul><li>The thresholds (12 months or 52 weeks, 1,250 hours, 50 employees within 75 miles, 7 years, 20 workweeks, 5 business days) and the quoted sections of Part 825 are pinned to eCFR and dol.gov as read on 2026-11-08.</li><li>The 12-month test is checked on the anniversary and the day before, a leap-day hire, seasonal periods in weeks, 51 and 52 weeks, and breaks of seven years kept by USERRA, an agreement or the employer.</li><li>The hours window, logs, USERRA credit, missing records and flight crew are checked, and so are 75 and 75.1 miles, staff abroad and the 300 employees of FAB 2023-1 example 5.</li><li>The notice due date skips weekends, Veterans Day, Thanksgiving and closed days; the rolling balance reproduces the 825.200(c) example; calendar, fixed, forward and military caregiver years and the ledger CSV are checked.</li></ul></div></details>
 <p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
-<p><a href="/toll-preview/fmla-eligibility-checker/">Open the FMLA eligibility checker tool</a>.</p></div></details>
+<p><a href="/toll-preview/fmla-eligibility-checker/">Open the FMLA eligibility checker tool</a>.</p>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the fmla eligibility checker answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the fmla eligibility checker refuse to answer?</h3></summary><div class="xp-in"><p>It does not decide whether a reason for leave qualifies, or whether employers are joint or integrated employers. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>

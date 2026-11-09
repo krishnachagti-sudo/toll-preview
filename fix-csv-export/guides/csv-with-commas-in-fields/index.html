@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-file)">
 <p class="eyebrow">Guide</p>
 <h1>Commas inside CSV fields</h1>
-<p class="cp-answer">RFC 4180 says a field holding a comma, a quote or a line break must be in double quotes, with any quote inside doubled. In this 2-row file the first row follows that, but line 3 has an unquoted comma in the address, so it splits into 4 fields instead of 3 and every column after it shifts; the scan names the line instead of guessing where the comma belonged.</p>
+<p class="cp-answer">RFC 4180 says a field holding a comma, a quote or a line break must be in double quotes, with any quote inside doubled.<span class="ans-more"> In this 2-row file the first row follows that, but line 3 has an unquoted comma in the address, so it splits into 4 fields instead of 3 and every column after it shifts; the scan names the line instead of guessing where the comma belonged.</span></p>
 
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="rules">The rules</h2>
 <ul><li>Fields containing line breaks, double quotes or commas should be in double quotes.</li><li>A double quote inside a quoted field is written twice: &quot;Said &quot;&quot;call after 5&quot;&quot;&quot;.</li><li>Each line should have the same number of fields.</li><li>Records end with CRLF; the fixed file uses CRLF unless you choose LF.</li></ul>
@@ -92,7 +93,7 @@ Bo Diaz,9 Elm St, Unit 2,Paid
 "><input type="hidden" name="dates" value="iso"><input type="hidden" name="enc" value="utf-8-bom"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this file in the fixer</button></form><p class="small"><a href="/toll-preview/fix-csv-export/?text=Name%2CAddress%2CNote%0A%22Lee%2C+Ann%22%2C%2212+Main+St%2C+Apt+4%22%2C%22Said+%22%22call+after+5%22%22%22%0ABo+Diaz%2C9+Elm+St%2C+Unit+2%2CPaid%0A&amp;dates=iso&amp;enc=utf-8-bom">Open this example in the fixer</a></p></aside>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc4180.txt">IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005) (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.rfc-editor.org/rfc/rfc4180.txt">IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005) (read November 8, 2026)</a><span class="src-m">rfc-editor.org</span></li></ul>
 </section>
 
 

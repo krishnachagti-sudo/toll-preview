@@ -2,6 +2,8 @@
 
 Where a reason qualifies under the FMLA and a state law, the leave counts against both (29 CFR 825.701(a)), so the laws run at the same time; weeks add up only when a later part of the leave is for a reason an earlier law did not cover. For a birth parent with 10 weeks of disability at a 100-person employer that gives more than the FMLA's 12 weeks in 7 of the 14 states we read (CA 22, DC 26, MN 20, NJ 22, NY 22, OR 22, WA 16).
 
+**Read the law's own words (3 quotations)**
+
 - "If leave qualifies for FMLA leave and leave under State law, the leave used counts against the employee's entitlement under both laws." [29 CFR 825.701, Interaction with State laws (eCFR)](https://www.ecfr.gov/current/title-29/section-825.701)
 - "An employer covered by one law and not the other has to comply only with the law under which it is covered. Similarly, an employee eligible under only one law must receive benefits in accordance with that law." [29 CFR 825.701, Interaction with State laws (eCFR)](https://www.ecfr.gov/current/title-29/section-825.701)
 - "If State law provides half-pay for employees temporarily disabled because of pregnancy for six weeks, the employee would be entitled to an additional six weeks of unpaid FMLA leave (or accrued paid leave)." [29 CFR 825.701, Interaction with State laws (eCFR)](https://www.ecfr.gov/current/title-29/section-825.701)

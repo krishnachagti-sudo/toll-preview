@@ -48,10 +48,10 @@ Feed address: `https://krishnachagti-sudo.github.io/toll-preview/calendars/india
 
 17 holidays in 2027. Each holiday is on the date in the government's list.
 
-- Sunday, November 8, 2026: Diwali (Deepavali)
 - Tuesday, November 24, 2026: Guru Nanak's Birthday
 - Friday, December 25, 2026: Christmas Day
 - Tuesday, January 26, 2027: Republic Day
+- Wednesday, March 10, 2027: Id-ul-Fitr
 
 Source: [DoPT O.M. F.No.12/2/2023-JCA dated 9 July 2024: holidays during 2025](https://documents.doptcirculars.nic.in/D2/D02est/List%20of%20holidays%202025KtKLw.pdf), [DoPT O.M. F.No.12/4/2020-JCA2 dated 27 March 2025: holiday on 14 April 2025](https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20on%2014th%20April%202025%20Birthday%20of%20Dr%20B%20R%20AmbedkarDHZ8b.pdf), [DoPT O.M. F.No.12/2/2023-JCA dated 3 July 2025: holidays during 2026](https://documents.doptcirculars.nic.in/D2/D02est/Holidays%20to%20be%20observed%20in%20Central%20Government%20Offices%20during%20the%20year%2020265vgBs.pdf), [DoPT O.M. F.No.12/3/2023-JCA dated 22 May 2026: Id-ul-Zuha (Bakrid) moved to 28 May 2026](https://documents.doptcirculars.nic.in/D2/D02est/Change%20in%20the%20date%20of%20holiday%20of%20Id-ul-Zuhamg709.PDF), [DoPT O.M. F.No.12/2/2023-JCA dated 16 July 2026: holidays during 2027](https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20list%202027Cj0HU.PDF)
 
@@ -121,4 +121,4 @@ From the same holiday rules the Business days tool uses, each tied to an officia
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/calendars/  
-Worked out for: 2026-11-08
+Worked out for: 2026-11-09

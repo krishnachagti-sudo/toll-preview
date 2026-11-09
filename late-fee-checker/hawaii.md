@@ -12,6 +12,10 @@ In Hawaii a landlord may charge a rent late fee of at most 8% of the amount of r
 
 ## What the statute says
 
+**In short:** 8% of the amount of rent due; no waiting period (Haw. Rev. Stat. § 521-21(f)).
+
+**The statute's words (1 passage)**
+
 Haw. Rev. Stat. § 521-21(f): "Where the rental agreement provides for a late charge payable to the landlord for rent not paid when due, the late charge shall not exceed eight per cent of the amount of rent due."
 
 ## The limit on sample rents

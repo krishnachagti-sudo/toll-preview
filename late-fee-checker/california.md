@@ -11,6 +11,10 @@ In California the statute read sets no dollar or percent limit on a rent late fe
 
 ## What the statute says
 
+**In short:** The general rule on agreed damages, no number; no waiting period (Cal. Civ. Code § 1671(c)(2), (d)).
+
+**The statute's words (2 passages)**
+
 Cal. Civ. Code § 1671(c)(2), (d): "A party to a lease of real property for use as a dwelling by the party or those dependent upon the party for support."
 
 Cal. Civ. Code § 1671(c)(2), (d): "In the cases described in subdivision (c), a provision in a contract liquidating damages for the breach of the contract is void except that the parties to such a contract may agree therein upon an amount which shall be presumed to be the amount of damage sustained by a breach thereof, when, from the nature of the case, it would be impracticable or extremely difficult to fix the actual damage."

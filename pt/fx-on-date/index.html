@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
 <link rel="stylesheet" href="/toll-preview/fx-on-date/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fx-on-date"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -70,109 +72,138 @@
   </div>
 </header>
 
-<main id="main" class="fx">
-  <section class="wrap fx-intro">
+<main id="main" class="fx hue-money tf-plain">
+  <section class="wrap fx-intro tf-intro">
     <p class="eyebrow">Dados de referência, por consulta</p>
     <h1>Cotação de câmbio em uma data</h1>
     <p class="lede">A taxa oficial de um par de moedas em uma data: a cotação de referência do Banco Central Europeu (BCE) para qualquer dia desde janeiro de 1999, ou a taxa do Tesouro dos EUA, a média anual do IRS ou a taxa mensal da HMRC do Reino Unido. Se o BCE não publicou nada naquele dia, você recebe a última cotação anterior, e a página diz qual foi o dia.</p>
-    <p class="fx-price" id="fx-price">Cada consulta custa $0.001. Sem conta, você tem 5 consultas grátis por dia.</p>
+<ul class="trust" aria-label="Sobre este site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Feito pela <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exato, sem IA</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Fontes oficiais, com data</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Os arquivos que você envia não são guardados</a></span></li><li class="tl2"><a href="/toll-preview/security/">Segurança</a><a href="/toll-preview/terms/">Termos</a></li></ul>
+    <p class="fx-price pline" id="fx-price">$0.001 por consulta · 5 consultas grátis por dia sem conta · também por API</p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/fx-on-date/" hreflang="en">Ver em inglês</a></p>
   </section>
 
-  <section class="wrap fx-desk" aria-label="Consulta de cotação">
-    <form class="fx-form" id="fx-form" novalidate>
-      <div class="field">
-        <label for="fx-source">Fonte da taxa</label>
-        <select id="fx-source" aria-describedby="fx-source-hint">
-          <option value="ecb">Cotação de referência do BCE (padrão)</option>
-          <option value="treasury">Taxa do Tesouro dos EUA</option>
-          <option value="irs">Média anual do IRS</option>
-          <option value="hmrc">Taxa mensal da HMRC</option>
-        </select>
-        <p class="hint" id="fx-source-hint">A cotação de referência diária do euro, publicada pelo Banco Central Europeu. <a href="#fx-which">Qual taxa usar</a></p>
-      </div>
+  <section class="wrap fx-desk tf-calc" aria-label="Consulta de cotação">
+    <form class="fx-form tf-card tf-form" id="fx-form" novalidate="">
+<div class="field">
+<label for="fx-source">Fonte da taxa</label>
+<select aria-describedby="fx-source-hint" id="fx-source">
+<option value="ecb">Cotação de referência do BCE (padrão)</option>
+<option value="treasury">Taxa do Tesouro dos EUA</option>
+<option value="irs">Média anual do IRS</option>
+<option value="hmrc">Taxa mensal da HMRC</option>
+</select>
 
-      <div class="fx-pair">
-        <div class="field">
-          <label for="fx-base">De</label>
-          <select id="fx-base" aria-describedby="fx-base-err"></select>
-          <p class="field-error" id="fx-base-err"></p>
-        </div>
-        <button type="button" class="fx-swap" id="fx-swap" aria-label="Trocar as duas moedas" title="Trocar as duas moedas">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="field">
-          <label for="fx-quote">Para</label>
-          <select id="fx-quote" aria-describedby="fx-quote-err"></select>
-          <p class="field-error" id="fx-quote-err"></p>
-        </div>
-      </div>
+</div>
+<div class="fx-pair">
+<div class="field">
+<label for="fx-base">De</label>
+<select aria-describedby="fx-base-err" id="fx-base"></select>
+<p class="field-error" id="fx-base-err"></p>
+</div>
+<button aria-label="Trocar as duas moedas" class="fx-swap" id="fx-swap" title="Trocar as duas moedas" type="button">
+<svg aria-hidden="true" focusable="false" height="20" viewbox="0 0 24 24" width="20"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+</button>
+<div class="field">
+<label for="fx-quote">Para</label>
+<select aria-describedby="fx-quote-err" id="fx-quote"></select>
+<p class="field-error" id="fx-quote-err"></p>
+</div>
+</div>
+<div class="field">
+<label for="fx-date">Data</label>
+<input aria-describedby="fx-date-hint fx-date-err" id="fx-date" min="1999-01-04" type="date"/>
 
-      <div class="field">
-        <label for="fx-date">Data</label>
-        <input type="date" id="fx-date" min="1999-01-04" aria-describedby="fx-date-hint fx-date-err">
-        <p class="hint" id="fx-date-hint">A partir de 4 de janeiro de 1999. Em fins de semana e feriados vale a última cotação anterior.</p>
-        <p class="field-error" id="fx-date-err"></p>
-      </div>
+<p class="field-error" id="fx-date-err"></p>
+</div>
 
-      <div class="fx-quick">
-        <p class="fx-quick-label" id="fx-quick-label">Pares comuns</p>
-        <div class="fx-quick-row" role="group" aria-labelledby="fx-quick-label" id="fx-quick"></div>
-      </div>
+<p class="form-error" id="fx-error" role="alert"></p>
+<button class="btn" id="fx-run" type="submit">Ver a cotação</button>
+<p class="hint fx-run-note" id="fx-run-note"></p>
 
-      <p class="form-error" id="fx-error" role="alert"></p>
-      <button class="btn" type="submit" id="fx-run">Ver a cotação</button>
-      <p class="hint fx-run-note" id="fx-run-note"></p>
-    </form>
+<details class="xpand">
+<summary>Pares comuns, a taxa e a data</summary>
+<div class="xp-in">
+<div class="fx-quick">
+<p class="fx-quick-label" id="fx-quick-label">Pares comuns</p>
+<div aria-labelledby="fx-quick-label" class="fx-quick-row" id="fx-quick" role="group"></div>
+</div>
+<p class="hint" id="fx-source-hint">A cotação de referência diária do euro, publicada pelo Banco Central Europeu. <a href="#fx-which">Qual taxa usar</a></p>
+<p class="hint" id="fx-date-hint">A partir de 4 de janeiro de 1999. Em fins de semana e feriados vale a última cotação anterior.</p>
+</div>
+</details>
+</form>
 
-    <div class="fx-board" id="fx-board" aria-live="polite" aria-busy="false">
-      <p class="muted">Carregando o exemplo calculado.</p>
-    </div>
+    <div aria-busy="false" aria-live="polite" class="fx-board" id="fx-board">
+<p class="muted">Carregando o exemplo calculado.</p>
+</div>
   </section>
 
-  <section class="wrap fx-about" data-jump="A fonte" aria-labelledby="fx-about-title">
-    <h2 id="fx-about-title">De onde vem o número</h2>
-    <div class="fx-about-cols">
+  <section class="wrap fx-about tf-sec" data-jump="A fonte" aria-labelledby="fx-about-title">
+    <div class="tf-rules-top">
       <div>
-        <h3>Uma cotação por dia</h3>
+        <h2 id="fx-about-title">De onde vem o número</h2>
         <p>O BCE define cotações de referência de cerca de 30 moedas em relação ao euro, em todo dia útil TARGET, por volta das 16h no horário da Europa Central. A resposta padrão é a cotação da tabela publicada pelo próprio BCE para aquele dia.</p>
       </div>
-      <div>
-        <h3>Pares sem o euro</h3>
-        <p>Para duas outras moedas, a página divide uma cotação em euro pela outra, ambas do mesmo dia, e arredonda para 6 casas decimais. O arredondamento é exato, com a metade arredondada para longe do zero, e o inverso é calculado a partir da taxa sem arredondar.</p>
-      </div>
-      <div>
-        <h3>Dias sem cotação</h3>
-        <p>Fins de semana e feriados TARGET não têm cotação. A ferramenta usa a última cotação dos 7 dias anteriores à sua data. Se não houver nenhuma nesse intervalo, ou se a data for anterior a 4 de janeiro de 1999, ela avisa e você não paga nada.</p>
-        <p>Um dia útil em que o BCE ainda não publicou, como hoje antes das 16h, fica sem cotação em vez de receber uma mais antiga. Consulte de novo depois da publicação. Essa consulta também é grátis.</p>
-      </div>
+      <aside class="tf-card tf-not" aria-label="O que não cobre">
+        <h3>O que não cobre</h3>
+        <ul>
+          <li>A taxa que um banco ou cartão usa no câmbio: estas são taxas de referência, o registro do dia.</li>
+          <li>As alterações semanais da HMRC, que não estão nos arquivos mensais dela.</li>
+          <li>Um dia útil antes da divulgação das 16:00: ele fica sem cotação em vez de receber uma mais antiga.</li>
+        </ul>
+      </aside>
     </div>
-    <p class="muted small">Fonte: cotações de referência do euro do Banco Central Europeu (título original em inglês: European Central Bank euro foreign exchange reference rates). O BCE as publica apenas para informação: elas registram a taxa do dia, mas não são o preço em que um banco troca moeda. Se o seu contador ou um órgão exigir outra taxa, escolha a fonte correspondente acima. Moedas que o BCE já não publica, como a kuna croata, ainda podem ser consultadas pela API nas datas em que existiam.</p>
-  </section>
-
-  <section class="wrap fx-about" id="fx-which" data-jump="Qual taxa usar" aria-labelledby="fx-which-title">
-    <h2 id="fx-which-title">Qual taxa usar</h2>
-    <p>Use a taxa que o órgão a que você presta contas pede. Cada resposta informa a publicação e o período usados. O que cada órgão diz sobre as próprias taxas (em paráfrase):</p>
+    <details class="xpand">
+      <summary>Ler como a cotação é obtida</summary>
+      <div class="xp-in">
     <div class="fx-about-cols">
-      <div>
-        <h3>Cotação de referência do BCE (padrão)</h3>
-        <p>Cotações diárias contra o euro desde 1999. O BCE diz que elas são publicadas apenas para informação.</p>
+<div>
+<h3>Uma cotação por dia</h3>
+<p>O BCE define cotações de referência de cerca de 30 moedas em relação ao euro, em todo dia útil TARGET, por volta das 16h no horário da Europa Central. A resposta padrão é a cotação da tabela publicada pelo próprio BCE para aquele dia.</p>
+</div>
+<div>
+<h3>Pares sem o euro</h3>
+<p>Para duas outras moedas, a página divide uma cotação em euro pela outra, ambas do mesmo dia, e arredonda para 6 casas decimais. O arredondamento é exato, com a metade arredondada para longe do zero, e o inverso é calculado a partir da taxa sem arredondar.</p>
+</div>
+<div>
+<h3>Dias sem cotação</h3>
+<p>Fins de semana e feriados TARGET não têm cotação. A ferramenta usa a última cotação dos 7 dias anteriores à sua data. Se não houver nenhuma nesse intervalo, ou se a data for anterior a 4 de janeiro de 1999, ela avisa e você não paga nada.</p>
+<p>Um dia útil em que o BCE ainda não publicou, como hoje antes das 16h, fica sem cotação em vez de receber uma mais antiga. Consulte de novo depois da publicação. Essa consulta também é grátis.</p>
+</div>
+</div>
+    <p class="muted small">Fonte: cotações de referência do euro do Banco Central Europeu (título original em inglês: European Central Bank euro foreign exchange reference rates). O BCE as publica apenas para informação: elas registram a taxa do dia, mas não são o preço em que um banco troca moeda. Se o seu contador ou um órgão exigir outra taxa, escolha a fonte correspondente acima. Moedas que o BCE já não publica, como a kuna croata, ainda podem ser consultadas pela API nas datas em que existiam.</p>
       </div>
-      <div>
-        <h3>Taxa do Tesouro dos EUA</h3>
-        <p>Taxas trimestrais em unidades por dólar americano, que agências do governo dos EUA usam para converter valores na data do relatório e nos três meses seguintes. Se a taxa atual diferir 10% ou mais de uma taxa publicada, o Tesouro emite uma emenda com nova data de vigência, e a ferramenta a usa a partir dessa data. No FBAR, o FinCEN indica a taxa de 31 de dezembro. O par precisa incluir USD.</p>
+    </details>
+    <details class="xpand" id="fx-which">
+      <summary>Qual taxa usar</summary>
+      <div class="xp-in">
+    <h3 id="fx-which-title">Qual taxa usar</h3>
+    <p>Use a taxa que o órgão a que você presta contas pede. Cada resposta informa a publicação e o período usados. O que cada órgão diz sobre as próprias taxas (em paráfrase):</p>
+<div class="fx-about-cols">
+<div>
+<h3>Cotação de referência do BCE (padrão)</h3>
+<p>Cotações diárias contra o euro desde 1999. O BCE diz que elas são publicadas apenas para informação.</p>
+</div>
+<div>
+<h3>Taxa do Tesouro dos EUA</h3>
+<p>Taxas trimestrais em unidades por dólar americano, que agências do governo dos EUA usam para converter valores na data do relatório e nos três meses seguintes. Se a taxa atual diferir 10% ou mais de uma taxa publicada, o Tesouro emite uma emenda com nova data de vigência, e a ferramenta a usa a partir dessa data. No FBAR, o FinCEN indica a taxa de 31 de dezembro. O par precisa incluir USD.</p>
+</div>
+<div>
+<h3>Média anual do IRS</h3>
+<p>Uma taxa por moeda e por ano, em unidades por dólar americano, para o ano da sua data. O IRS diz que não tem taxa de câmbio oficial e aceita qualquer taxa publicada usada de forma consistente. Em geral, vale a taxa do dia em que você recebe, paga ou contabiliza o item. O par precisa incluir USD.</p>
+</div>
+<div>
+<h3>Taxa mensal da HMRC</h3>
+<p>Taxas mensais em unidades por libra, desde janeiro de 2021, válidas do primeiro ao último dia do mês civil seguinte. Se a taxa de mercado diferir mais de 5%, a HMRC atualiza aquela taxa na semana seguinte; essas emendas semanais não estão nos arquivos mensais que esta ferramenta lê. O par precisa incluir GBP.</p>
+</div>
+</div>
       </div>
-      <div>
-        <h3>Média anual do IRS</h3>
-        <p>Uma taxa por moeda e por ano, em unidades por dólar americano, para o ano da sua data. O IRS diz que não tem taxa de câmbio oficial e aceita qualquer taxa publicada usada de forma consistente. Em geral, vale a taxa do dia em que você recebe, paga ou contabiliza o item. O par precisa incluir USD.</p>
-      </div>
-      <div>
-        <h3>Taxa mensal da HMRC</h3>
-        <p>Taxas mensais em unidades por libra, desde janeiro de 2021, válidas do primeiro ao último dia do mês civil seguinte. Se a taxa de mercado diferir mais de 5%, a HMRC atualiza aquela taxa na semana seguinte; essas emendas semanais não estão nos arquivos mensais que esta ferramenta lê. O par precisa incluir GBP.</p>
-      </div>
-    </div>
+    </details>
   </section>
 
-  <section class="wrap fx-code" aria-label="Usar pelo código">
+
+
+  <section class="wrap fx-code tf-sec" data-jump="Código" aria-label="Usar pelo código">
     <div id="fx-code"></div>
   </section>
   <noscript><div class="wrap"><p>Esta página precisa de JavaScript. Você também pode chamar a ferramenta por código: veja <a href="/toll-preview/docs">a documentação (em inglês)</a>.</p></div></noscript>

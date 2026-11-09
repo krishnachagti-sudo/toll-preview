@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Constants for another subgroup size</h2><p class="muted">Any n from 2 to 100, worked out in your browser.</p><form method="get" action="/toll-preview/stats-tables/" class="cp-tool-form"><input type="hidden" name="op" value="constants"><div class="field"><label for="tf-n">Subgroup size n</label><input type="text" id="tf-n" name="n" value="30"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Show the constants</button></form><p class="small"><a href="/toll-preview/stats-tables/?op=constants&amp;n=30">Open this in the full calculator</a></p></aside>
 <section>
 <h2 id="table">All constants for n = 30</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Control chart constants, n = 30</caption><thead><tr><th scope="col">Constant</th><th scope="col" class="r num">Value</th><th scope="col">Used for</th><th scope="col">Formula</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Control chart constants, n = 30</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Constant</th><th scope="col" class="r num">Value</th><th scope="col">Used for</th><th scope="col">Formula</th></tr></thead><tbody>
 <tr><th scope="row">d2</th><td class="r num">4.085522</td><td>Mean of the range of n normal values, in sigmas: sigma is estimated as R-bar / d2.</td><td><code>E(W), W the range of n standard normal values</code></td></tr>
 <tr><th scope="row">d3</th><td class="r num">0.692665</td><td>Standard deviation of that range, in sigmas.</td><td><code>sqrt(E(W^2) - d2^2)</code></td></tr>
 <tr><th scope="row">c4</th><td class="r num">0.991418</td><td>Mean of the sample standard deviation, in sigmas: sigma is estimated as s-bar / c4.</td><td><code>sqrt(2/(n-1)) Gamma(n/2) / Gamma((n-1)/2)</code></td></tr>
@@ -96,7 +97,7 @@
 <tr><th scope="row">E2</th><td class="r num">0.734300</td><td>Individuals chart limits from the average moving range of span n: X-bar +/- E2 MR-bar.</td><td><code>3 / d2</code></td></tr>
 <tr><th scope="row">1/d2</th><td class="r num">0.244767</td><td>1 / d2, to turn an average range into sigma.</td><td><code>1 / d2</code></td></tr>
 <tr><th scope="row">1/c4</th><td class="r num">1.008656</td><td>1 / c4, to turn an average standard deviation into sigma.</td><td><code>1 / c4</code></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="which">Which chart to use at this size</h2>
@@ -121,7 +122,7 @@
 <h2 id="how">How these are computed</h2>
 <ul><li>d2 and d3 are the mean and standard deviation of the range of n independent standard normal values. They are integrals with no closed form past n = 3, so they are computed by numerical integration of the range's distribution, P(W &lt;= w) = n times the integral of phi(x) [Phi(x + w) - Phi(x)]^(n - 1) dx, and checked against the exact values for n = 2 (2 / sqrt(pi)) and n = 3 (3 / sqrt(pi)) to better than 1e-10.</li><li>c4 is exact from the gamma function, as NIST gives it: c4 = sqrt(2 / (n - 1)) Gamma(n / 2) / Gamma((n - 1) / 2).</li><li>Every other constant is a formula of d2, d3 and c4 (the formula column), with negative lower-limit factors set to 0.</li></ul>
 <p class="cp-note">Many printed tables stop at n = 25. Minitab's help lists d3 only to n = 25 and gives an approximation past n = 50; these values are computed from the definition at every n.</p>
-<ul class="cp-sources"><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm">NIST/SEMATECH e-Handbook 6.3.2: What are variables control charts? (the c4 formula; read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc321.htm">NIST/SEMATECH e-Handbook 6.3.2.1: Shewhart X-bar and R and S control charts (A2, D3, D4 for n = 2 to 10; read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc32.htm">NIST/SEMATECH e-Handbook 6.3.2: What are variables control charts? (the c4 formula; read November 8, 2026)</a><span class="src-m">itl.nist.gov</span></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc321.htm">NIST/SEMATECH e-Handbook 6.3.2.1: Shewhart X-bar and R and S control charts (A2, D3, D4 for n = 2 to 10; read November 8, 2026)</a><span class="src-m">itl.nist.gov</span></li></ul>
 </section>
 
 

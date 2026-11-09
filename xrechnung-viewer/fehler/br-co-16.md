@@ -1,6 +1,6 @@
 # BR-CO-16: Zahlbetrag (BT-115) falsch berechnet
 
-BR-CO-16 bedeutet: Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) -Paid amount (BT-113) +Rounding amount (BT-114). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Geben Sie Anzahlungen in BT-113 an und ziehen Sie Skonto nicht vom Zahlbetrag ab; Skonto gehört in die Zahlungsbedingungen (siehe BR-DE-18).
+BR-CO-16 bedeutet: Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) -Paid amount (BT-113) +Rounding amount (BT-114). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

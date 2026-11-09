@@ -2,9 +2,45 @@
 
 The rate is the quote currency per euro divided by the base currency per euro, from the ECB reference file for that day, calculated in exact decimals and rounded half away from zero to 6 places. If the ECB published nothing on the date, the latest fixing in the 7 days before it is used and the answer says which.
 
+## How does it work?
+
+1. The ECB publishes how many units of each currency one euro buys, once per TARGET working day at about 16:00 CET.
+2. The rate from base to quote is (quote per euro) divided by (base per euro). EUR counts as 1.
+3. The division is done exactly, as a ratio of decimal numbers in BigInt, using the decimal the ECB wrote. The result is rounded half away from zero to 6 decimal places.
+4. The inverse is 1 divided by that same unrounded ratio, rounded the same way. It is never the inverse of an already-rounded rate.
+5. The fixing is the one on the requested date. If there is none, the tool looks back one day at a time, up to 7 days, and uses the first fixing found.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/fx-on-date/#what) below.
+
+## What does it not cover?
+
+- The default table is the ECB reference rate. It is a reference rate published once a day, not a rate you could trade at, and not a bank's rate.
+- A date with no fixing uses an earlier day, at most 7 days back. Beyond that the tool refuses.
+- The Treasury, IRS and HMRC options are limited to the pairs that include their anchor currency and to the years and months held in their tables.
+- The tool does not tell you which rate a tax rule requires. It gives the number from the table you name.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 5 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): ECB rates are fetched each day after the ECB publishes them. The IRS table was read 2026-10-31. Treasury and HMRC files are refreshed with the data files.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback and rounding that is exact on the decimal value.
+
+- [European Central Bank euro foreign exchange reference rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html), daily fixings from 1999-01-04, refreshed daily
+- [U.S. Treasury Reporting Rates of Exchange](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange), every report since 2001-03-31, refreshed with the data files
+- [IRS: Yearly average currency exchange rates](https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates), page updated 2026-09-17, read 2026-10-31
+- [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates), every month since 2021-01, refreshed with the data files
+- [U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange (31 December reports)](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange), 2023-12-31, 2024-12-31, 2025-12-31, read 2026-10-31
+
+> ECB rates are fetched each day after the ECB publishes them, around 16:00 CET; they start on 1999-01-04, and a date with no fixing uses the latest one in the 7 days before it and says which. Treasury rates come quarterly with amendments in between, HMRC rates monthly. The IRS table is copied by hand: 2021 to 2025, page updated 2026-09-17.
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the exchange rate on a date compute?
 
-Given a base currency, a quote currency and a date, the tool returns the rate, its inverse and the date of the fixing it used. A source option swaps the default ECB table for the US Treasury reporting rates, the IRS yearly averages or the HMRC monthly rates, which tax authorities name for specific purposes.
+Given a base currency, a quote currency and a date, the tool returns the rate, its inverse and the date of the fixing it used.
+
+**In detail: inputs and outputs**
+
+A source option swaps the default ECB table for the US Treasury reporting rates, the IRS yearly averages or the HMRC monthly rates, which tax authorities name for specific purposes.
 
 Inputs:
 
@@ -19,7 +55,7 @@ Outputs:
 - requestedDate and fixingDate
 - for the other sources: the published rate as printed, the report or period it covers and a link to the table
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. The ECB publishes how many units of each currency one euro buys, once per TARGET working day at about 16:00 CET. The file starts on 1999-01-04.
 2. The rate from base to quote is (quote per euro) divided by (base per euro). EUR counts as 1.
@@ -43,6 +79,8 @@ Units per pound, covering the first to the last day of the month of the date. HM
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - Weekends: a Saturday uses the Friday fixing (24 October 2026 uses 23 October 2026).
 - Target holidays: Christmas Day 2024 had no fixing, so the answer uses 24 December 2024 and says so in the note.
 - A same-currency pair returns 1 for rate and inverse.
@@ -56,14 +94,6 @@ Units per pound, covering the first to the last day of the month of the date. HM
 
 **A Saturday uses the Friday fixing**
 
-```json
-{
-  "base": "USD",
-  "quote": "EUR",
-  "date": "2026-10-24"
-}
-```
-
 A Saturday uses the Friday fixing
 
 | Result | Value |
@@ -73,15 +103,19 @@ A Saturday uses the Friday fixing
 | rate (EUR per USD) | 0.893416 |
 | inverse (USD per EUR) | 1.1193 |
 
-**Christmas Day 2024: no ECB fixing**
+**The input**
 
 ```json
 {
-  "base": "GBP",
-  "quote": "JPY",
-  "date": "2024-12-25"
+  "base": "USD",
+  "quote": "EUR",
+  "date": "2026-10-24"
 }
 ```
+
+**More worked examples (3)**
+
+**Christmas Day 2024: no ECB fixing**
 
 Christmas Day 2024: no ECB fixing
 
@@ -92,16 +126,17 @@ Christmas Day 2024: no ECB fixing
 | rate (JPY per GBP) | 197.149931 |
 | inverse (GBP per JPY) | 0.005072 |
 
-**HMRC monthly rate**
+**The input**
 
 ```json
 {
-  "base": "USD",
-  "quote": "GBP",
-  "date": "2025-01-15",
-  "source": "hmrc"
+  "base": "GBP",
+  "quote": "JPY",
+  "date": "2024-12-25"
 }
 ```
+
+**HMRC monthly rate**
 
 HMRC monthly rate
 
@@ -113,16 +148,18 @@ HMRC monthly rate
 | rate (GBP per USD) | 0.786968 |
 | inverse | 1.2707 |
 
-**IRS yearly average**
+**The input**
 
 ```json
 {
-  "base": "EUR",
-  "quote": "USD",
-  "date": "2023-06-15",
-  "source": "irs"
+  "base": "USD",
+  "quote": "GBP",
+  "date": "2025-01-15",
+  "source": "hmrc"
 }
 ```
+
+**IRS yearly average**
 
 IRS yearly average
 
@@ -133,41 +170,22 @@ IRS yearly average
 | rate (USD per EUR) | 1.082251 |
 | inverse | 0.924 |
 
-## What does it not do?
+**The input**
 
-- The default table is the ECB reference rate. It is a reference rate published once a day, not a rate you could trade at, and not a bank's rate.
-- A date with no fixing uses an earlier day, at most 7 days back. Beyond that the tool refuses.
-- The Treasury, IRS and HMRC options are limited to the pairs that include their anchor currency and to the years and months held in their tables.
-- The tool does not tell you which rate a tax rule requires. It gives the number from the table you name.
-
-## Where does the data come from, and how fresh is it?
-
-ECB rates are fetched each day after the ECB publishes them. The IRS table was read 2026-10-31. Treasury and HMRC files are refreshed with the data files.
-
-- [ECB: euro foreign exchange reference rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html)
-- [U.S. Treasury Reporting Rates of Exchange](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange)
-- [IRS: Yearly average currency exchange rates](https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates)
-- [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates)
-
-ECB rates are fetched each day after the ECB publishes them, around 16:00 CET; they start on 1999-01-04, and a date with no fixing uses the latest one in the 7 days before it and says which. Treasury rates come quarterly with amendments in between, HMRC rates monthly. The IRS table is copied by hand: 2021 to 2025, page updated 2026-09-17.
-
-Exchange rate on a date: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [European Central Bank euro foreign exchange reference rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html) | daily fixings from 1999-01-04 | refreshed daily |
-| [U.S. Treasury Reporting Rates of Exchange](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) | every report since 2001-03-31 | refreshed with the data files |
-| [IRS: Yearly average currency exchange rates](https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates) | page updated 2026-09-17 | 2026-10-31 |
-| [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates) | every month since 2021-01 | refreshed with the data files |
-| [U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange (31 December reports)](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) | 2023-12-31, 2024-12-31, 2025-12-31 | 2026-10-31 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+{
+  "base": "EUR",
+  "quote": "USD",
+  "date": "2023-06-15",
+  "source": "irs"
+}
+```
 
 ## How is it tested?
 
-The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback and rounding that is exact on the decimal value. Treasury and HMRC values read on 2026-11-02 are pinned against the real files, and IRS averages against the stored IRS table, including the cells the IRS prints irregularly.
+Treasury and HMRC values read on 2026-11-02 are pinned against the real files, and IRS averages against the stored IRS table, including the cells the IRS prints irregularly.
 
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback to the day, rounding that is exact on the decimal value.
 - When the real downloaded files are present, the worked examples and the currency list are compared with them. Treasury and HMRC values read on 2026-11-02 are pinned against the real files.

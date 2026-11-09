@@ -2,9 +2,39 @@
 
 A number is cleaned, read with its 2-letter prefix and checked against the format VIES lists for its state, free. A well-formed number is sent to VIES (the 27 EU states and XI) or, for GB, to HMRC; only a valid or invalid answer is charged, at $0.0025, and every answer comes with a receipt hashed with SHA-256.
 
+## How does it work?
+
+1. The number is upper-cased and stripped of spaces, dots, dashes, slashes and commas, and its prefix is read; GR becomes EL.
+2. It is matched against the pattern VIES lists for that state.
+3. GB numbers go to HMRC, not VIES.
+4. A requester number must be from the same service: an EU or XI number for VIES, a GB number for HMRC.
+5. The check is sent with a 20 second timeout, together with a read of VIES availability.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/vat-number-check/#what) below.
+
+## What does it not cover?
+
+- Only the 27 EU states, XI and GB are checked; any other prefix is refused before any call.
+- It passes on what VIES or HMRC answered and cannot correct it; a number shown as not valid must be taken up by its owner with their tax administration. Not tax or legal advice.
+- The answers are not kept: save the receipt files yourself.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 4 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The VIES facts were read on November 2, 2026 and the HMRC facts on November 2, 2026. A watcher reads the VIES API contract, the VIES site text and HMRC's pages daily and alerts the owner when one changes; the data files change only by hand.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check every state's format, the prefix and GR rules, that a wrong shape and GB while HMRC is off never call anyone, which answers are charged and which are free, the HMRC token and lookup, that a changed receipt or another key is caught, and that no worked example calls VIES.
+
+- [European Commission: VIES on-the-Web REST API contract](https://ec.europa.eu/assets/taxud/vow-information/swagger_publicVAT.yaml), see the document, read 2026-11-02
+- [European Commission: VIES site text (formats, availability windows and error wording)](https://ec.europa.eu/taxation_customs/vies/assets/i18n/en.json), see the document, read 2026-11-02
+- [HMRC Developer Hub: Check a UK VAT number API 2.0](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/vat-registered-companies-api/2.0), see the document, read 2026-11-02
+- [GOV.UK: Check a UK VAT number](https://www.gov.uk/check-uk-vat-number), see the document, read 2026-11-02
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the vat number check with receipt compute?
 
 Give a VAT number (and, for a consultation number, your own) and the tool checks it live with the EU's VIES service, or with HMRC for a GB number when that is switched on. It returns what the service answered, with the name and address where the state discloses them, and a receipt of the request and answer as JSON and PDF, hashed and, when the owner has set a key, signed with Ed25519. The receipt can be verified or printed again later.
+
+**In detail: operations, inputs and outputs**
 
 Operations (the op field):
 
@@ -32,7 +62,7 @@ Outputs:
 - matches for each trader detail given, and the notes that apply
 - receipt: the request, the raw answer, the VIES availability at the time, the outcome, the SHA-256 hash and the signature, with JSON and PDF files
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. The number is upper-cased and stripped of spaces, dots, dashes, slashes and commas, and its prefix is read; GR becomes EL.
 2. It is matched against the pattern VIES lists for that state. A number with the wrong shape is answered at once, without calling anyone, and is free; an Austrian number missing its U is pointed out.
@@ -54,6 +84,8 @@ GB numbers have been checked with HMRC, not VIES, since January 1, 2021, through
 
 ## Which edge cases does it handle?
 
+**The edge cases (5)**
+
 - Greek numbers are EL in VIES; a GR prefix is read as EL and the answer says so.
 - A number whose prefix and countryCode disagree is refused, naming both.
 - Without your own number there is no consultation number, and the receipt says why.
@@ -66,13 +98,6 @@ GB numbers have been checked with HMRC, not VIES, since January 1, 2021, through
 
 **Is this number written the way VIES expects?**
 
-```json
-{
-  "op": "format",
-  "vatNumber": "de 123.456.789"
-}
-```
-
 Is this number written the way VIES expects?
 
 | Result | Value |
@@ -82,14 +107,18 @@ Is this number written the way VIES expects?
 | checked with | VIES |
 | message | DE123456789 has the shape VIES lists for Germany. Only a check with VIES says whether it is registered. |
 
-**An Austrian number without its U**
+**The input**
 
 ```json
 {
   "op": "format",
-  "vatNumber": "AT12345678"
+  "vatNumber": "de 123.456.789"
 }
 ```
+
+**More worked examples (2)**
+
+**An Austrian number without its U**
 
 An Austrian number without its U
 
@@ -98,12 +127,16 @@ An Austrian number without its U
 | well formed | no |
 | message | AT12345678 does not have the shape VIES lists for Austria: ATU99999999. Austrian numbers keep the U after AT (ATU12345678). |
 
-**Verify the sample receipt from the VIES test service**
+**The input**
 
 ```json
-op: "verify"
-receipt: {...}
+{
+  "op": "format",
+  "vatNumber": "AT12345678"
+}
 ```
+
+**Verify the sample receipt from the VIES test service**
 
 Verify the sample receipt from the VIES test service
 
@@ -113,39 +146,16 @@ Verify the sample receipt from the VIES test service
 | signature | unsigned |
 | message | The hash matches the content. It carries no signature, so this shows only that the file agrees with its own hash, not that this tool issued it. |
 
-## What does it not do?
+**The input**
 
-- Only the 27 EU states, XI and GB are checked; any other prefix is refused before any call.
-- It passes on what VIES or HMRC answered and cannot correct it; a number shown as not valid must be taken up by its owner with their tax administration. Not tax or legal advice.
-- The answers are not kept: save the receipt files yourself.
-
-## Where does the data come from, and how fresh is it?
-
-The VIES facts were read on November 2, 2026 and the HMRC facts on November 2, 2026. A watcher reads the VIES API contract, the VIES site text and HMRC's pages daily and alerts the owner when one changes; the data files change only by hand.
-
-- [European Commission: VIES on-the-Web REST API contract](https://ec.europa.eu/assets/taxud/vow-information/swagger_publicVAT.yaml)
-- [European Commission: VIES site text (formats, availability windows and error wording)](https://ec.europa.eu/taxation_customs/vies/assets/i18n/en.json)
-- [HMRC Developer Hub: Check a UK VAT number API 2.0](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/vat-registered-companies-api/2.0)
-- [GOV.UK: Check a UK VAT number](https://www.gov.uk/check-uk-vat-number)
-
-The VIES facts were read on November 2, 2026 and the HMRC facts on November 2, 2026. A watcher reads the VIES API contract, the VIES site text and HMRC's pages daily and alerts the owner when one changes; the data files change only by hand.
-
-VAT number check with receipt: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [European Commission: VIES on-the-Web REST API contract](https://ec.europa.eu/assets/taxud/vow-information/swagger_publicVAT.yaml) | see the document | 2026-11-02 |
-| [European Commission: VIES site text (formats, availability windows and error wording)](https://ec.europa.eu/taxation_customs/vies/assets/i18n/en.json) | see the document | 2026-11-02 |
-| [HMRC Developer Hub: Check a UK VAT number API 2.0](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/vat-registered-companies-api/2.0) | see the document | 2026-11-02 |
-| [GOV.UK: Check a UK VAT number](https://www.gov.uk/check-uk-vat-number) | see the document | 2026-11-02 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+```json
+op: "verify"
+receipt: {...}
+```
 
 ## How is it tested?
 
-The tests check every state's format, the prefix and GR rules, that a wrong shape and GB while HMRC is off never call anyone, which answers are charged and which are free, the HMRC token and lookup, that a changed receipt or another key is caught, and that no worked example calls VIES.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - Every state's format and the VIES error codes are as read on November 2, 2026.
 - A wrong shape and GB while HMRC is off never call anyone; only a valid or invalid answer is charged.

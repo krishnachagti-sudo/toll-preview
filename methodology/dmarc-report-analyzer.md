@@ -2,9 +2,47 @@
 
 Each report is unpacked (.xml, .gz, .zip or .eml), read under RFC 9990 or RFC 7489, and every record's IP is named from the ranges 10 sending providers publish in their SPF records, measured 2026-11-07. Records are grouped by service, and each failing source gets a reason from the receiver's own verdicts.
 
+## How does it work?
+
+1. Each file is unpacked in memory: gzip, zip (at most 20 entries) and an .eml message (MIME parts at most 4 levels deep, at most 50 parts) are opened down to the XML.
+2. The XML is read by a small reader that refuses DOCTYPE and unknown entities, with at most 1,500,000 elements, 24 levels and 200,000 records.
+3. The metadata, the published policy and each record (source IP, count, disposition, the aligned DKIM and SPF verdicts, the identifiers and the raw DKIM and SPF results) are read.
+4. Each record's IP is named, strongest evidence first: an IP inside a range a provider publishes in its SPF record names that provider; otherwise a passing DKIM signature or SPF check for a domain the provider's own documentation names for sending names it.
+5. Records are grouped into sources: one per named service (all its IPs together), or one per IP when nothing names it.
+
+> Steps 6 to 7, each rule and the edge cases are in [the full method](https://krishnachagti-sudo.github.io/toll-preview/methodology/dmarc-report-analyzer/#what) below.
+
+## What does it not cover?
+
+- It reads aggregate (rua) reports only, not failure (ruf) reports.
+- Names are inferred from published provider data; shared infrastructure can carry several companies' mail, so check before you change DNS.
+- It does not look up your DNS records; it works only from what the report says.
+- Reports are read in memory for the answer and are not kept.
+
+## How fresh is the data?
+
+- [Data as of Nov 4, 2026, from 9 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): The RFCs and provider pages were read on 2026-11-08. Provider IP ranges are the SPF lookup counter's measurements of 2026-11-07; the AWS and Google Cloud lists were read on 2026-11-08. Each change to the data is logged with its date.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check the safe XML reader, IPv4 and IPv6 matching, naming from provider ranges, documented domains and cloud ranges, that both report formats and every reporter's shape read the same, each failure pattern's reason and fix, the worked example, combining reports and the CSV, unpacking .gz, .zip and .eml, refusing bombs and encrypted or foreign files without a charge, and the dated data.
+
+- [RFC 9990: DMARC Aggregate Reporting (May 2026)](https://www.rfc-editor.org/rfc/rfc9990.html), see the document, read 2026-11-08
+- [RFC 9989: DMARC (May 2026)](https://www.rfc-editor.org/rfc/rfc9989.html), see the document, read 2026-11-08
+- [RFC 7489: DMARC (2015, now obsolete), Appendix C schema](https://www.rfc-editor.org/rfc/rfc7489.txt), see the document, read 2026-11-08
+- [Microsoft Learn: Set up DMARC (updated July 17, 2026)](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dmarc-configure), see the document, read 2026-11-08
+- [Google Workspace Admin Help: About DMARC reports (last updated October 26, 2026)](https://knowledge.workspace.google.com/admin/security/about-dmarc-reports), see the document, read 2026-11-08
+- [Mail.ru Help: DMARC reports (in Russian)](https://help.mail.ru/developers/notes/rua/), see the document, read 2026-11-08
+- [IETF dmarc-report list archive (real reports for ietf.org)](https://mailarchive.ietf.org/arch/browse/dmarc-report/), see the document, read 2026-11-08
+- [AWS IP address ranges (ip-ranges.json, EC2)](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html), see the document, read 2026-11-08
+- [Google Cloud IP ranges (cloud.json)](https://cloud.google.com/compute/docs/faq#find_ip_range), see the document, read 2026-11-08
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+
 ## What does the dmarc report analyzer compute?
 
-Given up to 50 report files, the tool reads each DMARC aggregate report and answers which services sent mail as your domain, how many messages each sent, which failed DMARC and why, with the fix. Each service is named with the evidence for the name and how sure that is. Several reports are combined by source. It can also name the service behind a list of IP addresses. Reports are read in memory and not kept.
+Given up to 50 report files, the tool reads each DMARC aggregate report and answers which services sent mail as your domain, how many messages each sent, which failed DMARC and why, with the fix.
+
+**In detail: operations, inputs and outputs**
+
+Each service is named with the evidence for the name and how sure that is. Several reports are combined by source. It can also name the service behind a list of IP addresses. Reports are read in memory and not kept.
 
 Operations (the op field):
 
@@ -25,7 +63,7 @@ Outputs:
 - files: per file, how many reports it held and why any part was skipped; billable: the files that held a report
 - rows (identify): per IP, the name, confidence, evidence and the cloud network it sits in, if any
 
-## How is it calculated, step by step?
+**Every step in full (7) and the rules**
 
 1. Each file is unpacked in memory: gzip, zip (at most 20 entries) and an .eml message (MIME parts at most 4 levels deep, at most 50 parts) are opened down to the XML. A report decompresses to at most 32 MB, all reports in one call to 96 MB, and a file that expands more than 250 times its size is refused as a bomb.
 2. The XML is read by a small reader that refuses DOCTYPE and unknown entities, with at most 1,500,000 elements, 24 levels and 200,000 records. A root other than \<feedback\> is not a report. The namespace says the format: urn:ietf:params:xml:ns:dmarc-2.0 is RFC 9990, none (or the RFC 7489 namespace) is RFC 7489.
@@ -49,6 +87,8 @@ The report shapes of Microsoft, Google, Yahoo, Mail.ru, GMX were read from each 
 
 ## Which edge cases does it handle?
 
+**The edge cases (6)**
+
 - A file that holds no readable report is named with the reason and not charged.
 - Reports from Microsoft and Mail.ru end their period at the next midnight; the period is shown as the one UTC day it covers.
 - A source whose signing or bounce domain names one service but whose IP is inside another provider's published range is named by the IP; the evidence list shows both.
@@ -62,11 +102,6 @@ The report shapes of Microsoft, Google, Yahoo, Mail.ru, GMX were read from each 
 
 **A Google report for example.com: which service fails DMARC and why**
 
-```json
-op: "analyze"
-files: 1 items
-```
-
 A Google report for example.com: which service fails DMARC and why
 
 | Result | Value |
@@ -79,7 +114,27 @@ A Google report for example.com: which service fails DMARC and why
 | confidence | high |
 | fix | Set up the sender's custom DKIM so it signs with d=example.com (or a subdomain), or a custom MAIL FROM (return-path) under example.com. |
 
+**The input**
+
+```json
+op: "analyze"
+files: 1 items
+```
+
+**More worked examples (1)**
+
 **Name the services behind three IPs from a report**
+
+Name the services behind three IPs from a report
+
+| Result | Value |
+| --- | --- |
+| answer | 2 of 3 IPs are named from published provider ranges; 1 more is a rented server in a cloud network. |
+| 54.240.8.17 | Amazon SES: named from one provider's published range |
+| 149.72.134.20 | HubSpot: named from one provider's published range |
+| 35.174.145.124 | not named: a rented server in a cloud network; not a named service |
+
+**The input**
 
 ```json
 {
@@ -92,59 +147,9 @@ A Google report for example.com: which service fails DMARC and why
 }
 ```
 
-Name the services behind three IPs from a report
-
-| Result | Value |
-| --- | --- |
-| answer | 2 of 3 IPs are named from published provider ranges; 1 more is a rented server in a cloud network. |
-| 54.240.8.17 | Amazon SES: named from one provider's published range |
-| 149.72.134.20 | HubSpot: named from one provider's published range |
-| 35.174.145.124 | not named: a rented server in a cloud network; not a named service |
-
-## What does it not do?
-
-- It reads aggregate (rua) reports only, not failure (ruf) reports.
-- Names are inferred from published provider data; shared infrastructure can carry several companies' mail, so check before you change DNS.
-- It does not look up your DNS records; it works only from what the report says.
-- Reports are read in memory for the answer and are not kept.
-
-## Where does the data come from, and how fresh is it?
-
-The RFCs and provider pages were read on 2026-11-08. Provider IP ranges are the SPF lookup counter's measurements of 2026-11-07; the AWS and Google Cloud lists were read on 2026-11-08. Each change to the data is logged with its date.
-
-- [RFC 9990: DMARC Aggregate Reporting (May 2026), read November 8, 2026](https://www.rfc-editor.org/rfc/rfc9990.html)
-- [RFC 9989: DMARC (May 2026), read November 8, 2026](https://www.rfc-editor.org/rfc/rfc9989.html)
-- [RFC 7489: DMARC (2015, now obsolete), Appendix C schema, read November 8, 2026](https://www.rfc-editor.org/rfc/rfc7489.txt)
-- [Microsoft Learn: Set up DMARC (updated July 17, 2026), read November 8, 2026](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dmarc-configure)
-- [Google Workspace Admin Help: About DMARC reports (last updated October 26, 2026), read November 8, 2026](https://knowledge.workspace.google.com/admin/security/about-dmarc-reports)
-- [Mail.ru Help: DMARC reports (in Russian), read November 8, 2026](https://help.mail.ru/developers/notes/rua/)
-- [IETF dmarc-report list archive (real reports for ietf.org), read November 8, 2026](https://mailarchive.ietf.org/arch/browse/dmarc-report/)
-- [AWS IP address ranges (ip-ranges.json, EC2), read November 8, 2026](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html)
-- [Google Cloud IP ranges (cloud.json), read November 8, 2026](https://cloud.google.com/compute/docs/faq#find_ip_range)
-
-The RFCs and provider pages were read on 2026-11-08. Provider IP ranges are the SPF lookup counter's measurements of 2026-11-07; the AWS and Google Cloud lists were read on 2026-11-08. Each change to the data is logged with its date.
-
-DMARC report analyzer: sources
-
-| Source | Edition or date | Read on |
-| --- | --- | --- |
-| [RFC 9990: DMARC Aggregate Reporting (May 2026)](https://www.rfc-editor.org/rfc/rfc9990.html) | see the document | 2026-11-08 |
-| [RFC 9989: DMARC (May 2026)](https://www.rfc-editor.org/rfc/rfc9989.html) | see the document | 2026-11-08 |
-| [RFC 7489: DMARC (2015, now obsolete), Appendix C schema](https://www.rfc-editor.org/rfc/rfc7489.txt) | see the document | 2026-11-08 |
-| [Microsoft Learn: Set up DMARC (updated July 17, 2026)](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dmarc-configure) | see the document | 2026-11-08 |
-| [Google Workspace Admin Help: About DMARC reports (last updated October 26, 2026)](https://knowledge.workspace.google.com/admin/security/about-dmarc-reports) | see the document | 2026-11-08 |
-| [Mail.ru Help: DMARC reports (in Russian)](https://help.mail.ru/developers/notes/rua/) | see the document | 2026-11-08 |
-| [IETF dmarc-report list archive (real reports for ietf.org)](https://mailarchive.ietf.org/arch/browse/dmarc-report/) | see the document | 2026-11-08 |
-| [AWS IP address ranges (ip-ranges.json, EC2)](https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html) | see the document | 2026-11-08 |
-| [Google Cloud IP ranges (cloud.json)](https://cloud.google.com/compute/docs/faq#find_ip_range) | see the document | 2026-11-08 |
-
-[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
-
 ## How is it tested?
 
-The tests check the safe XML reader, IPv4 and IPv6 matching, naming from provider ranges, documented domains and cloud ranges, that both report formats and every reporter's shape read the same, each failure pattern's reason and fix, the worked example, combining reports and the CSV, unpacking .gz, .zip and .eml, refusing bombs and encrypted or foreign files without a charge, and the dated data.
-
-What its test suite asserts:
+**What its test suite asserts (3)**
 
 - RFC 9990 and RFC 7489 reports, and the shapes of every known reporter, read to the same totals.
 - Each failure pattern gets its own reason and fix; unnamed and cloud sources are not called spoofing.

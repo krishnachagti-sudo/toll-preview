@@ -18,55 +18,77 @@ Creditor (judgment) garnishments, pay on November 13, 2026, gross 1.25 times dis
 | --- | --- | ---: | ---: | --- |
 | Alabama | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Alaska | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| Arizona | the lesser of 10% of disposable earnings or the amount above 60 times the highest applicable minimum wage | Needs the wage | Needs the wage | A.R.S. 33-1131 |
+| Arizona | the lesser of 10% of disposable earnings or the amount… | Needs the wage | Needs the wage | A.R.S. 33-1131 |
 | Arkansas | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [California](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california/) | the lesser of 20% of disposable earnings or 40% of the amount above 48 times the applicable hourly minimum wage a week | $75.52 | $151.04 | Cal. Code Civ. Proc. 706.050, as stated on Judicial Council form WG-002 (Rev. January 1, 2026) |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california/) | the lesser of 20% of disposable earnings or 40% of… | $75.52 | $151.04 | Cal. Code Civ. Proc. 706.050, as stated on Judicial Council form WG-002 (Rev. January 1, 2026) |
 | Colorado | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Connecticut | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/delaware/) | 15% of wages (85% is exempt), if that is less than the federal limit | $187.50 | $375.00 | 10 Del. C. 4913 |
-| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia/) | 25% of the amount by which weekly disposable wages exceed 40 times the D.C. minimum wage, if that is less than the federal limit | $66.00 | $132.00 | D.C. Code 16-572 |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia/) | 25% of the amount by which weekly disposable wages exceed… | $66.00 | $132.00 | D.C. Code 16-572 |
 | [Florida](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/florida/) | nothing from a head of family without a signed waiver, and otherwise the federal limit | $250.00 | $500.00 | Fla. Stat. 222.11 |
 | Georgia | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Hawaii | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Idaho | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Illinois | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Indiana | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [Iowa](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/iowa/) | the federal limit, and no more in a calendar year for each creditor than a cap set by the employee's expected earnings | $250.00 | $500.00 | Iowa Code 642.21 |
-| [Kansas](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/kansas/) | the lesser of 25% of disposable earnings or the amount above 30 times the federal minimum wage (the federal rule), and no more than the claim | $250.00 | $500.00 | K.S.A. 60-2310 |
-| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/kentucky/) | the lesser of 25% of disposable earnings or the amount above 30 times the federal minimum wage (the federal rule) | $250.00 | $500.00 | KRS 427.010 |
+| [Iowa](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/iowa/) | the federal limit, and no more in a calendar year… | $250.00 | $500.00 | Iowa Code 642.21 |
+| [Kansas](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/kansas/) | the lesser of 25% of disposable earnings or the amount… | $250.00 | $500.00 | K.S.A. 60-2310 |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/kentucky/) | the lesser of 25% of disposable earnings or the amount… | $250.00 | $500.00 | KRS 427.010 |
 | Louisiana | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [Maine](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/maine/) | the lesser of 25% of disposable earnings or the amount above 40 times the higher of the federal and Maine minimum wage | $250.00 | $500.00 | 14 M.R.S. 3126-A(3) and 3127-B |
-| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/maryland/) | the lesser of 25% of disposable wages or the amount above 30 times the Maryland minimum wage, after medical insurance payments come off | $250.00 | $500.00 | Md. Code, Com. Law 15-601.1 |
+| [Maine](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/maine/) | the lesser of 25% of disposable earnings or the amount… | $250.00 | $500.00 | 14 M.R.S. 3126-A(3) and 3127-B |
+| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/maryland/) | the lesser of 25% of disposable wages or the amount… | $250.00 | $500.00 | Md. Code, Com. Law 15-601.1 |
 | Massachusetts | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Michigan | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/minnesota/) | 10%, 15% or 25% of disposable earnings by weekly income band, and never more than the amount above 40 times the higher of the federal and Minnesota minimum wage | $250.00 | $500.00 | Minn. Stat. 571.922 |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/minnesota/) | 10%, 15% or 25% of disposable earnings by weekly income… | $250.00 | $500.00 | Minn. Stat. 571.922 |
 | Mississippi | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Missouri | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [Montana](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/montana/) | the lesser of 25% of disposable earnings or the amount above 30 times the federal minimum wage (the federal rule) | $250.00 | $500.00 | Mont. Code Ann. 25-13-614 |
+| [Montana](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/montana/) | the lesser of 25% of disposable earnings or the amount… | $250.00 | $500.00 | Mont. Code Ann. 25-13-614 |
 | Nebraska | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Nevada | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | New Hampshire | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | New Jersey | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | New Mexico | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [New York](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/new-york/) | the least of 10% of gross pay, 25% of disposable earnings, or the amount above 30 times the New York minimum wage | $125.00 | $250.00 | N.Y. CPLR 5231(b) |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/new-york/) | the least of 10% of gross pay, 25% of disposable… | $125.00 | $250.00 | N.Y. CPLR 5231(b) |
 | North Carolina | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [North Dakota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/north-dakota/) | the lesser of 25% of disposable earnings or the amount above 40 times the federal minimum wage, less $20 a week for each dependent | $250.00 | $500.00 | N.D. Cent. Code 32-09.1-03 |
+| [North Dakota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/north-dakota/) | the lesser of 25% of disposable earnings or the amount… | $250.00 | $500.00 | N.D. Cent. Code 32-09.1-03 |
 | Ohio | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Oklahoma | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Oregon | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | [Pennsylvania](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/pennsylvania/) | nothing for ordinary debts; up to 10% of net wages for a residential lease judgment | $100.00 | $200.00 | 42 Pa.C.S. 8127 |
 | Rhode Island | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | South Carolina | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [South Dakota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/south-dakota/) | the lesser of 20% of disposable earnings or the amount above 40 times the higher of the federal and South Dakota minimum wage, less $25 a week for each dependent | $200.00 | $400.00 | S.D. Codified Laws 21-18-51 |
+| [South Dakota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/south-dakota/) | the lesser of 20% of disposable earnings or the amount… | $200.00 | $400.00 | S.D. Codified Laws 21-18-51 |
 | Tennessee | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Texas | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Utah | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Vermont | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
-| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/virginia/) | the lesser of 25% of disposable earnings or the amount above 40 times the higher of the federal and Virginia minimum wage | $250.00 | $500.00 | Va. Code 34-29 |
-| [Washington](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/washington/) | for a consumer debt, the lesser of 20% of disposable earnings or the amount above 35 times the Washington minimum wage | $200.00 | $400.00 | RCW 6.27.150 |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/virginia/) | the lesser of 25% of disposable earnings or the amount… | $250.00 | $500.00 | Va. Code 34-29 |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/washington/) | for a consumer debt, the lesser of 20% of disposable… | $200.00 | $400.00 | RCW 6.27.150 |
 | West Virginia | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Wisconsin | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Wyoming | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
+
+**The long rules in full (15)**
+
+Creditor (judgment) garnishments, pay on November 13, 2026, gross 1.25 times disposable. Iowa assumes $41,600 expected yearly earnings; Pennsylvania figures are for a residential lease judgment; Washington for a consumer debt.: full wording
+
+| State | Rule |
+| --- | --- |
+| Arizona | the lesser of 10% of disposable earnings or the amount above 60 times the highest applicable minimum wage |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california/) | the lesser of 20% of disposable earnings or 40% of the amount above 48 times the applicable hourly minimum wage a week |
+| [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia/) | 25% of the amount by which weekly disposable wages exceed 40 times the D.C. minimum wage, if that is less than the federal limit |
+| [Iowa](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/iowa/) | the federal limit, and no more in a calendar year for each creditor than a cap set by the employee's expected earnings |
+| [Kansas](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/kansas/) | the lesser of 25% of disposable earnings or the amount above 30 times the federal minimum wage (the federal rule), and no more than the claim |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/kentucky/) | the lesser of 25% of disposable earnings or the amount above 30 times the federal minimum wage (the federal rule) |
+| [Maine](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/maine/) | the lesser of 25% of disposable earnings or the amount above 40 times the higher of the federal and Maine minimum wage |
+| [Maryland](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/maryland/) | the lesser of 25% of disposable wages or the amount above 30 times the Maryland minimum wage, after medical insurance payments come off |
+| [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/minnesota/) | 10%, 15% or 25% of disposable earnings by weekly income band, and never more than the amount above 40 times the higher of the federal and Minnesota minimum wage |
+| [Montana](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/montana/) | the lesser of 25% of disposable earnings or the amount above 30 times the federal minimum wage (the federal rule) |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/new-york/) | the least of 10% of gross pay, 25% of disposable earnings, or the amount above 30 times the New York minimum wage |
+| [North Dakota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/north-dakota/) | the lesser of 25% of disposable earnings or the amount above 40 times the federal minimum wage, less $20 a week for each dependent |
+| [South Dakota](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/south-dakota/) | the lesser of 20% of disposable earnings or the amount above 40 times the higher of the federal and South Dakota minimum wage, less $25 a week for each dependent |
+| [Virginia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/virginia/) | the lesser of 25% of disposable earnings or the amount above 40 times the higher of the federal and Virginia minimum wage |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/washington/) | for a consumer debt, the lesser of 20% of disposable earnings or the amount above 35 times the Washington minimum wage |
 
 > "Not covered" means we could not read that state's statute on its own site on November 8, 2026 (the reason is in the CSV). Its row shows the federal limit only; the state may allow less, and the lower amount applies.
 

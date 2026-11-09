@@ -1,6 +1,6 @@
 # BR-CO-14: Umsatzsteuer gesamt (BT-110) stimmt nicht mit der Aufschlüsselung überein
 
-BR-CO-14 bedeutet: Invoice total VAT amount (BT-110) = Σ VAT category tax amount (BT-117). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Berechnen Sie zuerst die Steuer je Steuersatz (gerundet auf zwei Stellen) und bilden Sie BT-110 als deren Summe.
+BR-CO-14 bedeutet: Invoice total VAT amount (BT-110) = Σ VAT category tax amount (BT-117). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

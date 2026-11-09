@@ -74,10 +74,11 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up Georgia ZIP codes</h2><p class="muted">Paste your own list: every county, FIPS code and share, as a CSV.</p><form method="get" action="/toll-preview/zip-to-county/" class="cp-tool-form"><div class="field"><label for="tf-q">ZIP codes or UK postcodes</label><input type="text" id="tf-q" name="q" value="30004"><p class="hint">One is free; paste a list on the next page.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look them up</button></form><p class="small"><a href="/toll-preview/zip-to-county/?q=30004">Open 30004 in the lookup</a></p></aside>
 <section>
 <h2 id="counties">Georgia counties and their FIPS codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</caption><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">ZCTAs with any land in each; the CSV below has every ZCTA with its counties and shares.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">County</th><th scope="col">FIPS</th><th scope="col" class="r num">ZCTAs</th><th scope="col">Metro or micro area</th></tr></thead><tbody>
 <tr><th scope="row">Appling County</th><td>13001</td><td class="r num">7</td><td></td></tr>
 <tr><th scope="row">Atkinson County</th><td>13003</td><td class="r num">5</td><td>Douglas, GA</td></tr>
 <tr><th scope="row">Bacon County</th><td>13005</td><td class="r num">3</td><td></td></tr>
@@ -237,11 +238,11 @@
 <tr><th scope="row">Wilkes County</th><td>13317</td><td class="r num">5</td><td></td></tr>
 <tr><th scope="row">Wilkinson County</th><td>13319</td><td class="r num">9</td><td></td></tr>
 <tr><th scope="row">Worth County</th><td>13321</td><td class="r num">12</td><td>Albany, GA</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="split">Georgia ZIP codes that cross a county line</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>The 120 split across the most counties, of 404; the CSV has them all.</caption><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">The 120 split across the most counties, of 404; the CSV has them all.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">ZCTA</th><th scope="col">Counties and shares of land</th></tr></thead><tbody>
 <tr><th scope="row">30233</th><td>Butts County, GA (13035) 86.97%; Monroe County, GA (13207) 5.47%; Henry County, GA (13151) 4.45%; Lamar County, GA (13171) 2.99%; Newton County, GA (13217) 0.12%</td></tr>
 <tr><th scope="row">30534</th><td>Dawson County, GA (13085) 85.19%; Lumpkin County, GA (13187) 9.81%; Forsyth County, GA (13117) 3.03%; Pickens County, GA (13227) 1.29%; Cherokee County, GA (13057) 0.67%</td></tr>
 <tr><th scope="row">31061</th><td>Baldwin County, GA (13009) 80.76%; Wilkinson County, GA (13319) 14.73%; Hancock County, GA (13141) 3.44%; Putnam County, GA (13237) 1%; Jones County, GA (13169) 0.07%</td></tr>
@@ -362,12 +363,12 @@
 <tr><th scope="row">31554</th><td>Coffee County, GA (13069) 51.66%; Ware County, GA (13299) 25.11%; Bacon County, GA (13005) 23.24%</td></tr>
 <tr><th scope="row">31557</th><td>Pierce County, GA (13229) 93.52%; Brantley County, GA (13025) 3.91%; Appling County, GA (13001) 2.58%</td></tr>
 <tr><th scope="row">31566</th><td>Brantley County, GA (13025) 79.24%; Glynn County, GA (13127) 13.74%; Camden County, GA (13039) 7.02%</td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p class="cp-note">Answers come from the Census 2020 ZCTA5-county relationship file, OMB's July 2023 metro area delineation and the ONS Postcode Directory (August 2026). A ZCTA is the Census Bureau's area for a ZIP code; USPS ZIP codes are delivery routes and change. County shares are by land area, not by addresses or population.</p>
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">U.S. Census Bureau: 2020 ZCTA5 to County relationship file (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 delineation, Census list 1 (read 2026-11-07)</a><span class="src-m">www2.census.gov</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How many ZIP codes are in Georgia?</h3></summary><div class="xp-in"><p>752 ZCTAs have land in Georgia in the Census 2020 ZCTA-county file. PO-box-only ZIP codes have no ZCTA and are not counted.</p></div></details><details class="xpand"><summary><h3>How many Georgia ZIP codes cross a county line?</h3></summary><div class="xp-in"><p>404 of 752 (53.7%), such as 30004, 30005, 30011.</p></div></details><details class="xpand"><summary><h3>Which Georgia county has the most ZIP codes?</h3></summary><div class="xp-in"><p>Fulton County, GA (13121), with land in 48 ZCTAs.</p></div></details></section>

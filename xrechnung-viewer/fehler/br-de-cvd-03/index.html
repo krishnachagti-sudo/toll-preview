@@ -69,11 +69,12 @@
 <header class="cp-head" style="--hue: var(--h-file)">
 <p class="eyebrow">Fehlercode</p>
 <h1>BR-DE-CVD-03: CVD-Rechnung ohne Fahrzeugposition</h1>
-<p class="cp-answer">BR-DE-CVD-03 bedeutet: In einer Rechnung muss mindestens eine ... INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von ... &quot;Item classification identifier&quot; (BT-158) den Wert 'CVD' und der ... &quot;Item attribute name&quot; (BT-160) den Wert 'cva' enthält. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie in der Fahrzeugposition die Fahrzeugkategorie mit listID CVD und das Attribut cva mit einem der zulässigen Werte an.</p>
+<p class="cp-answer">BR-DE-CVD-03 bedeutet: In einer Rechnung muss mindestens eine ... INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von ... &quot;Item classification identifier&quot; (BT-158) den Wert 'CVD' und der ... &quot;Item attribute name&quot; (BT-160) den Wert 'cva' enthält. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).</p>
 
-
+<ul class="trust" aria-label="Über diese Website"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Gemacht von <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exakt, ohne KI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Amtliche Quellen, mit Datum</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Dateien, die Sie hochladen, werden nicht gespeichert</a></span></li><li class="tl2"><a href="/toll-preview/security/">Sicherheit</a><a href="/toll-preview/terms/">Bedingungen</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="regel">Die Regel</h2>
 <div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Angabe</th><th scope="col">Wert</th></tr></thead><tbody>
@@ -122,7 +123,7 @@
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Eigene Datei prüfen</h2><p class="muted">Der Viewer öffnet sich mit dieser Regel erklärt. Legen Sie Ihre Datei dort ab und prüfen Sie sie.</p><form method="get" action="/toll-preview/de/xrechnung-viewer/" class="cp-tool-form"><input type="hidden" name="sample" value="fehler"><input type="hidden" name="rule" value="BR-DE-CVD-03"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Viewer öffnen</button></form><p class="small"><a href="/toll-preview/de/xrechnung-viewer/?sample=fehler&amp;rule=BR-DE-CVD-03">Beispiel im Viewer öffnen</a></p></aside>
 <section>
 <h2 id="quellen">Quellen</h2>
-<ul class="cp-sources"><li><a href="https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/v2.6.0">XRechnung Schematron 2.6.0 for XRechnung 3.0.2 (gelesen am 8. November 2026)</a></li><li><a href="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/tag/v2026-08-31">KoSIT Validator Configuration XRechnung 2026-08-31 (scenarios.xml) (gelesen am 8. November 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/v2.6.0">XRechnung Schematron 2.6.0 for XRechnung 3.0.2 (gelesen am 8. November 2026)</a><span class="src-m">github.com</span></li><li><a href="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/tag/v2026-08-31">KoSIT Validator Configuration XRechnung 2026-08-31 (scenarios.xml) (gelesen am 8. November 2026)</a><span class="src-m">github.com</span></li></ul>
 <p class="cp-note">Geprüft mit KoSIT-Konfiguration 2026-08-31 (XRechnung 3.0.2), XRechnung-Schematron 2.6.0, CEN-Schematron EN 16931 1.3.16. Die XML-Schema-Prüfung (XSD) des KoSIT-Validators läuft hier nicht. Ein bestandenes Ergebnis heißt nicht, dass die Rechnung inhaltlich richtig ist. Keine Steuerberatung.</p>
 </section>
 

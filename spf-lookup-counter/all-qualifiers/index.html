@@ -74,13 +74,14 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="results">What each ending returns</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Each record checked for two sending IPs by the counter's engine, on Google's include as measured November 7, 2026.</caption><thead><tr><th scope="col">Record</th><th scope="col">74.125.1.1 (in Google's ranges)</th><th scope="col">192.0.2.10 (not listed)</th><th scope="col">RFC 7208</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Each record checked for two sending IPs by the counter's engine, on Google's include as measured November 7, 2026.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Record</th><th scope="col">74.125.1.1 (in Google's ranges)</th><th scope="col">192.0.2.10 (not listed)</th><th scope="col">RFC 7208</th></tr></thead><tbody>
 <tr><th scope="row"><code>v=spf1 include:_spf.google.com -all</code></th><td>pass</td><td>fail</td><td><a href="https://www.rfc-editor.org/rfc/rfc7208#section-8.4">RFC 7208 Section 8.4</a></td></tr>
 <tr><th scope="row"><code>v=spf1 include:_spf.google.com ~all</code></th><td>pass</td><td>softfail</td><td><a href="https://www.rfc-editor.org/rfc/rfc7208#section-8.5">RFC 7208 Section 8.5</a></td></tr>
 <tr><th scope="row"><code>v=spf1 include:_spf.google.com ?all</code></th><td>pass</td><td>neutral</td><td><a href="https://www.rfc-editor.org/rfc/rfc7208#section-8.2">RFC 7208 Section 8.2</a></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 <p>The qualifier only matters for mail that matches nothing before it. RFC 7208 reads the terms left to right and stops at the first match, so the &quot;all&quot; at the end is the default for everyone else (<a href="https://www.rfc-editor.org/rfc/rfc7208#section-5.1">RFC 7208 Section 5.1</a>).</p>
 </section>
 <section>
@@ -101,7 +102,7 @@
 <p class="cp-note">SPF is one of several checks a receiver makes, so passing it does not guarantee delivery. Receivers may differ on SHOULD rules such as the void lookup limit.</p>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc7208">IETF RFC 7208: Sender Policy Framework (SPF), read November 8, 2026</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7489">IETF RFC 7489: Domain-based Message Authentication, Reporting, and Conformance (DMARC), Informational, read November 8, 2026</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://www.rfc-editor.org/rfc/rfc7208">IETF RFC 7208: Sender Policy Framework (SPF), read November 8, 2026</a><span class="src-m">rfc-editor.org</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc7489">IETF RFC 7489: Domain-based Message Authentication, Reporting, and Conformance (DMARC), Informational, read November 8, 2026</a><span class="src-m">rfc-editor.org</span></li></ul>
 </section>
 
 <section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>What is the difference between ~all and -all?</h3></summary><div class="xp-in"><p>A sender that matches nothing else gets &quot;softfail&quot; with ~all and &quot;fail&quot; with -all (RFC 7208 Section 4.6.2). RFC 7208 says receivers SHOULD NOT reject on softfail alone; what they do with fail is local policy.</p></div></details><details class="xpand"><summary><h3>Does ~all or -all matter for DMARC?</h3></summary><div class="xp-in"><p>Not for the DMARC result itself: under RFC 7489 SPF helps DMARC only when it returns &quot;pass&quot; for a domain aligned with the From address. Softfail and fail are both not a pass.</p></div></details><details class="xpand"><summary><h3>What happens if a record has no all at the end?</h3></summary><div class="xp-in"><p>A sender that matches nothing gets &quot;neutral&quot;, as if ?all were written (RFC 7208 Section 4.7). RFC 7208 says ending the record explicitly aids debugging.</p></div></details><details class="xpand"><summary><h3>Should I ever use +all?</h3></summary><div class="xp-in"><p>No for a sending domain: RFC 7208's own example says that with &quot;v=spf1 +all&quot; any IP passes, so the record authorizes the whole internet.</p></div></details></section>

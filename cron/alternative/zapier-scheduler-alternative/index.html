@@ -74,13 +74,14 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="zapier">What Schedule by Zapier does</h2>
 <ul><li>Every Hour (with an optional offset past the hour), Every Day, Every Week, Every Month, or a custom frequency such as every 3 months.</li><li>Runs in the time zone of your Zapier account, not the Zap's; after changing it, turn the Zap off and on.</li><li>Does not count towards task usage.</li></ul>
 </section>
 <section>
 <h2 id="every-2">Every 2 minutes elsewhere</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>Every 2 minutes in each cron dialect; GitHub Actions will still run it at most every 5 minutes.</caption><thead><tr><th scope="col">Scheduler</th><th scope="col">Expression</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">Every 2 minutes in each cron dialect; GitHub Actions will still run it at most every 5 minutes.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Scheduler</th><th scope="col">Expression</th></tr></thead><tbody>
 <tr><th scope="row">Linux crontab (Vixie cron)</th><td><code>*/2 * * * *</code></td></tr>
 <tr><th scope="row">GitHub Actions</th><td><code>*/2 * * * *</code></td></tr>
 <tr><th scope="row">Kubernetes CronJob</th><td><code>*/2 * * * *</code></td></tr>
@@ -90,7 +91,7 @@
 <tr><th scope="row">Spring @Scheduled</th><td><code>0 */2 * * * *</code></td></tr>
 <tr><th scope="row">UiPath Orchestrator time trigger</th><td><code>0 */2 * * * ?</code></td></tr>
 <tr><th scope="row">Amazon EventBridge Scheduler</th><td><code>cron(0/2 * * * ? *)</code></td></tr>
-</tbody></table></div>
+</tbody></table></div></figure>
 </section>
 <section>
 <h2 id="check">Before you rely on a new schedule</h2>
@@ -98,7 +99,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://help.zapier.com/hc/en-us/articles/8496288648461-Schedule-Zaps-to-run-at-specific-intervals">Zapier Help: Schedule Zaps to run at specific intervals (read November 8, 2026)</a></li><li><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/">n8n docs: Schedule Trigger node (read November 8, 2026)</a></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a></li><li><a href="https://cron-job.org/en/faq/">cron-job.org: FAQ (read November 8, 2026)</a></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types (read November 8, 2026)</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://help.zapier.com/hc/en-us/articles/8496288648461-Schedule-Zaps-to-run-at-specific-intervals">Zapier Help: Schedule Zaps to run at specific intervals (read November 8, 2026)</a><span class="src-m">help.zapier.com</span></li><li><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.scheduletrigger/">n8n docs: Schedule Trigger node (read November 8, 2026)</a><span class="src-m">docs.n8n.io</span></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a><span class="src-m">docs.github.com</span></li><li><a href="https://cron-job.org/en/faq/">cron-job.org: FAQ (read November 8, 2026)</a><span class="src-m">cron-job.org</span></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types (read November 8, 2026)</a><span class="src-m">docs.aws.amazon.com</span></li></ul>
 </section>
 
 

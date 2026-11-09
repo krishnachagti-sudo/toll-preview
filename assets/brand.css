@@ -100,6 +100,8 @@
 @media (max-width:720px){
   .hero.sub{padding-top:64px}
   .sec.tight{padding-top:80px}
+  /* The first section right under a page's row of parts: the row already parts it from the opening */
+  .tool-parts + .sec.tight,.tool-parts + .sec{padding-top:36px}
   .dev.ref{padding:32px 0}
   .tool-groups{gap:36px}
   .tool-grid{grid-template-columns:1fr}
@@ -131,6 +133,23 @@
 .fold summary::after{content:"+";flex:none;font:400 20px/1 var(--font-mono);color:var(--muted);transition:transform .2s}
 .fold[open] summary::after{transform:rotate(45deg)}
 .fold[open]{padding-bottom:16px}
+/* A page's short answer under its opening: the ways to pay, each a card */
+.acards.quick{grid-template-columns:repeat(4,minmax(0,1fr));max-width:980px;margin:32px auto 0;text-align:left}
+.acards.quick .acard{padding:14px 16px}
+@media (max-width:900px){.acards.quick{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}.acards.quick .av{font-size:22px}}
+/* A long per-tool list folded by tool group (parts.js groupFolds): the group, then its first tools */
+.gfolds{margin:28px 0 0}
+.gfolds .gfold{margin:0;border-top:0}
+.gfolds .gfold:first-child{border-top:1px solid var(--line)}
+.gfold summary{padding:14px 0;min-height:64px}
+.gf-t{display:flex;flex-direction:column;gap:4px;min-width:0}
+.gf-l{display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#fff}
+.gf-l i{width:9px;height:9px;border-radius:50%;flex:none;background:var(--hue,var(--warm));box-shadow:0 0 12px color-mix(in srgb,var(--hue,var(--warm)) 60%,transparent)}
+.gf-h{font-size:13.5px;font-weight:400;color:var(--muted);padding-left:19px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gfold summary:hover .gf-l{color:#fff}
+.gfold summary:hover::after{color:var(--hue,var(--text))}
+.gfold > .tbl,.gfold > .plist,.gfold > .gf-in{margin-top:4px}
+.gfold[open]{padding-bottom:24px}
 /* Endpoints on a phone: name and price on one line, the endpoint under them */
 @media (max-width:720px){
   .ep-tbl thead{display:none}

@@ -1,6 +1,6 @@
 # BR-DE-24: Kartenzahlung ohne Kartenangaben (BG-18)
 
-BR-DE-24 bedeutet: Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 "PAYMENT CARD INFORMATION" übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie bei Kartenzahlung die gekürzte Kartennummer (BT-87, höchstens die ersten 6 und letzten 4 Ziffern) an und entfernen Sie die Bankverbindung.
+BR-DE-24 bedeutet: Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 "PAYMENT CARD INFORMATION" übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

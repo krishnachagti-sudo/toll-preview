@@ -69,11 +69,12 @@
 <header class="cp-head">
 <p class="eyebrow">Guide</p>
 <h1>Business days between two dates in Excel</h1>
-<p class="cp-answer"><code>=NETWORKDAYS(A2, B2, $H$2:$H$24)</code> counts the business days from the date in A2 to the date in B2, both included, skipping weekends and the holiday dates in H2:H24. From Wednesday, July 1, 2026 to Wednesday, July 8, 2026 with US federal holidays it gives 5; this tool, which does not count the start date, gives 4.</p>
+<p class="cp-answer"><code>=NETWORKDAYS(A2, B2, $H$2:$H$24)</code> counts the business days from the date in A2 to the date in B2, both included, skipping weekends and the holiday dates in H2:H24.<span class="ans-more"> From Wednesday, July 1, 2026 to Wednesday, July 8, 2026 with US federal holidays it gives 5; this tool, which does not count the start date, gives 4.</span></p>
 <dl class="cp-facts"><div><dt>NETWORKDAYS</dt><dd class="num">5</dd></div><div><dt>This tool</dt><dd class="num">4</dd></div></dl>
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <section>
 <h2 id="formula">The formula</h2>
 <pre><code class="language-excel">=NETWORKDAYS(start_date, end_date, [holidays])
@@ -139,7 +140,7 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<ul class="cp-sources"><li><a href="https://support.microsoft.com/en-us/office/networkdays-function-48e717bf-a7a3-495f-969e-5005e3eb18e7">Microsoft: NETWORKDAYS function</a></li><li><a href="https://support.microsoft.com/en-us/office/workday-function-f764a5b7-05fc-4494-9486-60d494efbf33">Microsoft: WORKDAY function</a></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li><li><a href="https://www.gov.uk/bank-holidays">GOV.UK: UK bank holidays</a></li></ul>
+<ul class="cp-sources cp-src"><li><a href="https://support.microsoft.com/en-us/office/networkdays-function-48e717bf-a7a3-495f-969e-5005e3eb18e7">Microsoft: NETWORKDAYS function</a><span class="src-m">support.microsoft.com</span></li><li><a href="https://support.microsoft.com/en-us/office/workday-function-f764a5b7-05fc-4494-9486-60d494efbf33">Microsoft: WORKDAY function</a><span class="src-m">support.microsoft.com</span></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a><span class="src-m">opm.gov</span></li><li><a href="https://www.gov.uk/bank-holidays">GOV.UK: UK bank holidays</a><span class="src-m">gov.uk</span></li></ul>
 </section>
 <section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Enter the dates.</strong> Put the start date in A2 and the end date in B2, as real dates, not text.</li><li><strong>Paste the holidays.</strong> Paste the holiday list for your region from this page into column H, starting at H2 (23 US dates or 16 England and Wales dates).</li><li><strong>Count.</strong> In C2, type =NETWORKDAYS(A2, B2, $H$2:$H$24) for the US or =NETWORKDAYS(A2, B2, $H$2:$H$17) for England and Wales. Both the start and the end date count when they are business days.</li><li><strong>Leave out the start date.</strong> To count the way this tool does (the days after the start, up to and including the end), use =NETWORKDAYS(A2+1, B2, $H$2:$H$24).</li></ol></section>
 

@@ -12,6 +12,10 @@ In Virginia a landlord may charge a rent late fee of at most the lesser of 10% o
 
 ## What the statute says
 
+**In short:** The lesser of 10% of the periodic rent or 10% of the remaining balance due; no waiting period (Va. Code § 55.1-1204(E)).
+
+**The statute's words (2 passages)**
+
 Va. Code § 55.1-1204(E): "A landlord shall not charge a tenant for late payment of rent unless such charge is provided for in the written rental agreement. No such late charge shall exceed the lesser of 10 percent of the periodic rent or 10 percent of the remaining balance due and owed by the tenant."
 
 Va. Code § 55.1-1204(E) (no written lease): "Rent payments shall be due on the first day of each month during the tenancy and shall be considered late if not paid by the fifth of the month;"

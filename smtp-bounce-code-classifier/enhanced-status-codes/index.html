@@ -74,6 +74,7 @@
 <ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
+
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Look up any code</h2><p class="muted">A code on its own, free: the meaning and every provider text published with it.</p><form method="get" action="/toll-preview/smtp-bounce-code-classifier/" class="cp-tool-form"><div class="field"><label for="tf-code">Status code</label><input type="text" id="tf-code" name="code" value="5.7.1"><p class="hint">A reply code, an enhanced code or both, such as 550 5.1.1.</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Look it up (free)</button></form><p class="small"><a href="/toll-preview/smtp-bounce-code-classifier/?code=5.7.1">Open the code lookup</a></p></aside>
 <section>
 <h2 id="classes">Classes</h2>
@@ -98,7 +99,7 @@
 </section>
 <section>
 <h2 id="details">All 81 detail codes</h2>
-<div class="table-scroll"><table class="rules cp-table"><caption>IANA registry, updated December 6, 2024; read November 8, 2026. Verdicts are this tool's rules.</caption><thead><tr><th scope="col">Code</th><th scope="col">Name</th><th scope="col">Reply codes</th><th scope="col">RFC</th><th scope="col">Class 5</th><th scope="col">Class 4</th></tr></thead><tbody>
+<figure class="cp-tbl"><figcaption class="cp-cap">IANA registry, updated December 6, 2024; read November 8, 2026. Verdicts are this tool's rules.</figcaption><div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Code</th><th scope="col">Name</th><th scope="col">Reply codes</th><th scope="col">RFC</th><th scope="col">Class 5</th><th scope="col">Class 4</th></tr></thead><tbody>
 <tr><th scope="row"><code>X.0.0</code></th><td>Other undefined Status</td><td>Any</td><td>RFC 3463</td><td>soft</td><td>soft</td></tr>
 <tr><th scope="row"><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-1-0/">X.1.0</a></th><td>Other address status</td><td>Not given</td><td>RFC 3463</td><td>hard</td><td>soft</td></tr>
 <tr><th scope="row"><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-1-1/">X.1.1</a></th><td>Bad destination mailbox address</td><td>451, 550</td><td>RFC 3463</td><td>hard</td><td>soft</td></tr>
@@ -180,8 +181,8 @@
 <tr><th scope="row"><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-28/">X.7.28</a></th><td>Mail flood detected</td><td>.</td><td>draft-levine-mailbomb-header-00</td><td>block</td><td>block</td></tr>
 <tr><th scope="row"><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-29/">X.7.29</a></th><td>ARC validation failure</td><td>550</td><td>RFC 8617</td><td>policy</td><td>policy</td></tr>
 <tr><th scope="row"><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-30/">X.7.30</a></th><td>REQUIRETLS support required</td><td>550</td><td>RFC 8689</td><td>policy</td><td>policy</td></tr>
-</tbody></table></div>
-<ul class="cp-sources"><li><a href="https://www.iana.org/assignments/smtp-enhanced-status-codes/smtp-enhanced-status-codes.xml">IANA: SMTP Enhanced Status Codes registry (updated December 6, 2024), read November 8, 2026</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc3463.txt">RFC 3463: Enhanced Mail System Status Codes, read November 8, 2026</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc5248.txt">RFC 5248: A Registry for SMTP Enhanced Mail System Status Codes, read November 8, 2026</a></li></ul>
+</tbody></table></div></figure>
+<ul class="cp-sources cp-src"><li><a href="https://www.iana.org/assignments/smtp-enhanced-status-codes/smtp-enhanced-status-codes.xml">IANA: SMTP Enhanced Status Codes registry (updated December 6, 2024), read November 8, 2026</a><span class="src-m">iana.org</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc3463.txt">RFC 3463: Enhanced Mail System Status Codes, read November 8, 2026</a><span class="src-m">rfc-editor.org</span></li><li><a href="https://www.rfc-editor.org/rfc/rfc5248.txt">RFC 5248: A Registry for SMTP Enhanced Mail System Status Codes, read November 8, 2026</a><span class="src-m">rfc-editor.org</span></li></ul>
 <p class="cp-note">Verdicts follow the RFCs, the IANA registry and each provider's published texts as read on November 8, 2026; receivers change their texts without notice. Suppression is your decision: a verdict is a rule-based recommendation, not proof that an address is valid or invalid.</p>
 </section>
 

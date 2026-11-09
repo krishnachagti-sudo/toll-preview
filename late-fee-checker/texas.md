@@ -12,6 +12,10 @@ In Texas a landlord may charge a rent late fee of at most 12% of the rent for th
 
 ## What the statute says
 
+**In short:** 12% of the rent for the period in a building of 4 or fewer units, 10% in a building of more than 4 units; after two full days (Tex. Prop. Code § 92.019).
+
+**The statute's words (4 passages)**
+
 Tex. Prop. Code § 92.019: "A landlord may not collect from a tenant a late fee for failing to pay any portion of the tenant's rent unless: (1) notice of the fee is included in a written lease; (2) the fee is reasonable; and (3) any portion of the tenant's rent has remained unpaid two full days after the date the rent was originally due."
 
 Tex. Prop. Code § 92.019: "For purposes of this section, a late fee is considered reasonable if: (1) the late fee is not more than: (A) 12 percent of the amount of rent for the rental period under the lease for a dwelling located in a structure that contains not more than four dwelling units; or (B) 10 percent of the amount of rent for the rental period under the lease for a dwelling located in a structure that contains more than four dwelling units; or (2) the late fee is more than the applicable amount under Subdivision (1), but not more than uncertain damages to the landlord related to the late payment of rent"

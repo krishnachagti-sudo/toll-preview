@@ -1,6 +1,8 @@
 # Texas notice of claim for unpaid labor or materials
 
-Your Texas notice of claim for unpaid labor or materials is due by the 15th day of the third month after each month in which the unpaid labor or materials were provided: if you first furnished on November 2, 2026, send it for work in November 2026, by Tuesday, February 16, 2027; for December 2026, by Monday, March 15, 2027; and so on, one notice for each month (Tex. Prop. Code 53.056(a-1)(1)). The form below is the statute's; the PDF fills it in with your job and adds a proof-of-service log.
+Your Texas notice of claim for unpaid labor or materials is due by the 15th day of the third month after each month in which the unpaid labor or materials were provided (Tex. Prop. Code 53.056(a-1)(1)). The form below is the statute's; the PDF fills it in with your job and adds a proof-of-service log.
+
+- [Worked example](https://krishnachagti-sudo.github.io/toll-preview/lien-deadline/?state=TX&role=sub&project=commercial&first=2026-11-02): If you first furnished on November 2, 2026, send it for work in November 2026, by Tuesday, February 16, 2027; for December 2026, by Monday, March 15, 2027; and so on, one notice for each month (Tex. Prop. Code 53.056(a-1)(1)).
 
 ## Work out your monthly notice of claim date
 

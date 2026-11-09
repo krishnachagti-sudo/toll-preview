@@ -1,6 +1,6 @@
 # BR-CO-13: Gesamtbetrag ohne Umsatzsteuer (BT-109) falsch berechnet
 
-BR-CO-13 bedeutet: Invoice total amount without VAT (BT-109) = Σ Invoice line net amount (BT-131) - Sum of allowances on document level (BT-107) + Sum of charges on document level (BT-108). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31). Geben Sie jeden Rabatt und jeden Zuschlag auf Rechnungsebene als eigene Zeile an (BG-20, BG-21) und berechnen Sie BT-109 daraus.
+BR-CO-13 bedeutet: Invoice total amount without VAT (BT-109) = Σ Invoice line net amount (BT-131) - Sum of allowances on document level (BT-107) + Sum of charges on document level (BT-108). (CEN-Schematron EN 16931 1.3.16, KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 

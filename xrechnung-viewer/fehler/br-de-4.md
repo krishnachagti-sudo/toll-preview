@@ -1,6 +1,6 @@
 # BR-DE-4: Postleitzahl des Verkäufers (BT-38) fehlt
 
-BR-DE-4 bedeutet: Das Element "Seller post code" (BT-38) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31). Geben Sie die Postleitzahl im eigenen Feld an (UBL cbc:PostalZone, CII ram:PostcodeCode).
+BR-DE-4 bedeutet: Das Element "Seller post code" (BT-38) muss übermittelt werden. (XRechnung-Schematron 2.6.0 (KoSIT), KoSIT-Konfiguration 2026-08-31).
 
 ## Die Regel
 
@@ -23,7 +23,7 @@ In der Anschrift des Verkäufers fehlt die Postleitzahl.
 
 ## So beheben Sie den Fehler
 
-Geben Sie die Postleitzahl im eigenen Feld an (UBL cbc:PostalZone, CII ram:PostcodeCode).
+Geben Sie die Postleitzahl im eigenen Feld an (UBL `cbc:PostalZone`, CII `ram:PostcodeCode`).
 
 ## Geprüftes Beispiel
 

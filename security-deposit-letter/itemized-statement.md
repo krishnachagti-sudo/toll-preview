@@ -6,6 +6,15 @@ An itemized deposit statement lists the deposit held, each deduction with what i
 
 | State | The statute |
 | --- | --- |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/california/) | "The landlord shall also include, along with and at the same time…" |
+| [Washington](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/washington/) | "With the statement required by (a) of this subsection, the landlord shall…" |
+| [Texas](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/texas/) | "If the landlord retains all or part of a security deposit under…" |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/new-york/) | "Within fourteen days after the tenant has vacated the premises, the landlord…" |
+
+**The full quotations (4)**
+
+| State | The statute |
+| --- | --- |
 | [California](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/california/) | "The landlord shall also include, along with and at the same time the itemized statement is sent, copies of documents showing charges incurred and deducted by the landlord to repair or clean the premises, as follows: If the landlord or landlord's employee did the work, the itemized statement shall reasonably describe the work performed. The itemized statement shall include the time spent and the reasonable hourly rate charged." |
 | [Washington](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/washington/) | "With the statement required by (a) of this subsection, the landlord shall include copies of estimates received or invoices paid to reasonably substantiate damage charges." |
 | [Texas](https://krishnachagti-sudo.github.io/toll-preview/security-deposit-letter/texas/) | "If the landlord retains all or part of a security deposit under this section, the landlord shall give to the tenant the balance of the security deposit, if any, together with a written description and itemized list of all deductions." |
