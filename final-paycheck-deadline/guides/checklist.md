@@ -10,7 +10,7 @@ Six steps on the day an employee leaves, starting with the work state and the de
 
 ## Sources
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Steps
 
@@ -30,4 +30,4 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/guides/checklist/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

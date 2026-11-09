@@ -68,4 +68,4 @@ By the next regular payday for the pay period, or 15 days, whichever is first (M
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

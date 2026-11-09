@@ -74,4 +74,4 @@ Liquidated damages of the lower of 10% of the unpaid wages for each day (except 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

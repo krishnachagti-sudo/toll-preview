@@ -19,7 +19,7 @@ Los Angeles, CA: sick leave rule by employer size, as quoted below
 - No compensation required at separation. (LA Office of Wage Standards)
 - Reinstated on rehire within one year. (LA Office of Wage Standards)
 
-The California state rule still applies where it gives more. 
+The California state rule still applies where it gives more. [California sick leave](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/california/).
 
 ## Worked hours
 
@@ -74,4 +74,4 @@ Use may start on the 90th day of employment. (LA Office of Wage Standards).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/los-angeles/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

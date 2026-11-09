@@ -70,4 +70,4 @@ Unused hours carry into the next year and do not reduce what can be earned that 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maine/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

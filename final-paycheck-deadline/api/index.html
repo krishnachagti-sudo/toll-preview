@@ -17,7 +17,7 @@
 <meta property="og:title" content="Final paycheck rules API and MCP tool: deadline, deductions and penalties">
 <meta property="og:description" content="Call the final paycheck deadline, deduction check and late-penalty engine from code or an AI agent: request and response examples, prices and what each field means.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/","url":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/","name":"Final paycheck rules API and MCP tool: deadline, deductions and penalties","description":"Call the final paycheck deadline, deduction check and late-penalty engine from code or an AI agent: request and response examples, prices and what each field means.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Final paycheck deadline","item":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/"},{"@type":"ListItem","position":3,"name":"Final paycheck rules over the API and MCP","item":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/","url":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/","name":"Final paycheck rules API and MCP tool: deadline, deductions and penalties","description":"Call the final paycheck deadline, deduction check and late-penalty engine from code or an AI agent: request and response examples, prices and what each field means.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Final paycheck deadline","item":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/"},{"@type":"ListItem","position":3,"name":"Final paycheck rules over the API and MCP","item":"https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/"}]}]}</script>
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"final-paycheck-deadline"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -32,6 +32,7 @@
     <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
     <nav class="head-nav" aria-label="Main">
       <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/teams/">For teams</a>
       <a href="/toll-preview/pricing/">Pricing</a>
       <a href="/toll-preview/developers/">Developers</a>
     </nav>
@@ -45,6 +46,7 @@
       <nav class="menu-panel" aria-label="Menu">
         <div class="menu-tools" data-nav-tools></div>
         <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/teams/">For teams</a>
         <a href="/toll-preview/pricing/">Pricing</a>
         <a href="/toll-preview/developers/">Developers</a>
         <a href="/toll-preview/docs">Docs</a>
@@ -104,7 +106,7 @@
 2,CT,discharge,true,2026-12-28,,by the next business day,C.G.S. 31-71c(b),
 3,VT,discharge,true,2026-12-07,15:30,within 72 hours of the discharge,21 V.S.A. 342(c),
 4,DE,layoff,true,2027-01-06,,on the later of the next regular payday and 3 business days after the last day worked,19 Del. C. 1103(a),
-5,CA,discharge,false,,,,,</code></pre>
+5,OH,discharge,false,,,,,</code></pre>
 </section>
 <section>
 <h2 id="other">Deductions and penalties</h2>
@@ -114,13 +116,13 @@
 </section>
 <section>
 <h2 id="sources">Sources</h2>
-<p>Each state's own source is linked on its page and in the <a href="/toll-preview/final-paycheck-deadline/laws-by-state/">final paycheck laws by state chart</a> (read November 8, 2026).</p>
+<p>Each state's own source is linked on its page and in the <a href="/toll-preview/final-paycheck-deadline/laws-by-state/">final paycheck laws by state chart</a> (read November 9, 2026).</p>
 </section>
 
 
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/final-paycheck-deadline/laws-by-state/">Laws by state</a></li><li><a href="/toll-preview/developers/">Developers</a></li></ul></section>
 </div>
-<p class="cp-formats small muted"><a href="/toll-preview/final-paycheck-deadline/api.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+<p class="cp-formats small muted"><a href="/toll-preview/final-paycheck-deadline/api.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-09">2026-11-09</time></p>
 </main>
 
 <footer class="site-foot">
@@ -157,6 +159,7 @@
       <nav aria-label="Who it's for">
         <p class="foot-h">Who it's for</p>
         <ul>
+          <li><a href="/toll-preview/teams/">Firms and ops teams</a></li>
           <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
           <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
           <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
@@ -210,6 +213,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/trust/">Data handling</a></li>
           <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>

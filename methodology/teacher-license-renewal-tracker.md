@@ -1,6 +1,6 @@
 # How teacher renewal hours are counted: state rule method
 
-Each activity is converted to the state's unit (in Texas, 1 semester credit is 15 CPE hours), counted only inside the cycle, and capped where the state caps a category; the hours still needed are divided over the months left. 20 states are covered from their own agency pages, read November 8, 2026.
+Each activity is converted to the state's unit (in Texas, 1 semester credit is 15 CPE hours), counted only inside the cycle, and capped where the state caps a category; the hours still needed are divided over the months left. 22 states are covered from their own agency pages, read November 8, 2026.
 
 ## How does it work?
 
@@ -20,8 +20,8 @@ Each activity is converted to the state's unit (in Texas, 1 semester credit is 1
 
 ## How fresh is the data?
 
-- [Data as of Nov 4, 2026, from 30 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every state rule was read on November 8, 2026 on the state's own agency page, with the quotes the figures rest on. The rules change only by hand, with the tests that pin each figure.
-- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin the data (51 jurisdictions, 20 covered from their own agency pages, 31 not covered with a reason) and each state's figures as it quotes them.
+- [Data as of Nov 4, 2026, from 33 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every state rule was read on November 8, 2026 on the state's own agency page, with the quotes the figures rest on. The rules change only by hand, with the tests that pin each figure.
+- [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin the data (51 jurisdictions, 22 covered from their own agency pages, 29 not covered with a reason) and each state's figures as it quotes them.
 
 - [Texas Education Agency, Standard Certificate Renewal and Continuing Professional Education (CPE) Information](https://tea.texas.gov/educators/certification/certification-renewals/standard-certificate-renewal-and-continuing-professional-education-cpe-information), state agency page, read 2026-11-08
 - [Pennsylvania Department of Education, General Act 48 FAQ](https://www.pa.gov/agencies/education/programs-and-services/educators/continuing-education-and-professional-development/act-48-and-perms/frequently-asked-questions/general-act-48-faq), state agency page, read 2026-11-08
@@ -53,6 +53,9 @@ Each activity is converted to the state's unit (in Texas, 1 semester credit is 1
 - [California Commission on Teacher Credentialing, Renew Your Document](https://www.ctc.ca.gov/credentials/renew), state agency page, read 2026-11-08
 - [South Dakota Administrative Rule 24:28:17:10, Renewal requirements for an invalid educator status](https://sdlegislature.gov/Rules/Administrative/24:28:17:10), state agency page, read 2026-11-08
 - [Utah State Board of Education, Renew an Educator License](https://www.schools.utah.gov/licensing/renew), state agency page, read 2026-11-08
+- [Michigan Department of Education, Standard Teaching Certificate Renewal](https://www.michigan.gov/mde/services/ed-serv/ed-cert/cert-guidance/teacher-recertification/standard-renewal), state agency page, read 2026-11-09
+- [Michigan Department of Education, Teacher Recertification](https://www.michigan.gov/mde/services/ed-serv/ed-cert/cert-guidance/teacher-recertification), state agency page, read 2026-11-09
+- [Florida Department of Education, Florida Educator Certification Renewal Requirements](https://www.fldoe.org/teaching/certification/renewal-requirements/), state agency page, read 2026-11-09
 
 [The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
@@ -62,7 +65,7 @@ Given a state, a license type, the cycle's start or end date and the activities 
 
 **In detail: operations, inputs and outputs**
 
-It also lists each state's rule with its quotes, sorts a staff list by how soon each license expires, and exports an audit log for one cycle. Covered: Alaska, California, Colorado, Georgia, Iowa, Maine, Massachusetts, Montana, Nebraska, New York, North Carolina, Ohio, Oregon, Pennsylvania, South Dakota, Tennessee, Texas, Utah, Vermont and Wyoming. Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts.
+It also lists each state's rule with its quotes, sorts a staff list by how soon each license expires, and exports an audit log for one cycle. Covered: Alaska, California, Colorado, Florida, Georgia, Iowa, Maine, Massachusetts, Michigan, Montana, Nebraska, New York, North Carolina, Ohio, Oregon, Pennsylvania, South Dakota, Tennessee, Texas, Utah, Vermont and Wyoming. Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts.
 
 Operations (the op field):
 
@@ -75,7 +78,7 @@ Inputs:
 
 - `state, license`: A two-letter state code and, where the state has more than one, the license type id (op rules lists them).
 - `cycleStart, cycleEnd, birthMonth`: When the license or cycle began, or the expiration date printed on it (which wins); New York needs the birth month when no end date is given. Dates are written like 2022-07-01.
-- `entries`: Up to 500 activities, each with a date, an amount, a unit (clock hour, semester hour, quarter hour, CEU, renewal credit, PDP, PDU, PDE-approved CPE credit, PLU, micro-credential), and optionally a category, title, provider and evidence.
+- `entries`: Up to 500 activities, each with a date, an amount, a unit (clock hour, semester hour, quarter hour, CEU, renewal credit, PDP, PDU, PDE-approved CPE credit, PLU, micro-credential, inservice point), and optionally a category, title, provider and evidence.
 - `carriedOver, options`: Hours carried over from the last cycle where the state allows it, and the optional English learner requirement where a state makes it optional.
 - `asOf`: The day to count from. Today by default.
 - `rows`: For staff: each educator's name, state, license, expiration date and, optionally, hours logged.
@@ -102,7 +105,7 @@ Outputs:
 
 **The state rows.**
 
-Every rule was read on November 8, 2026 on the state's own education agency or licensing board page and is quoted word for word with its source. 31 jurisdictions whose pages could not be read are listed as not covered with the reason, rather than guessed.
+Every rule was read on November 8, 2026 on the state's own education agency or licensing board page and is quoted word for word with its source. 29 jurisdictions whose pages could not be read are listed as not covered with the reason, rather than guessed.
 
 ## Which edge cases does it handle?
 
@@ -305,7 +308,7 @@ They check the cycle end for each rule, unit conversions, caps, required topics,
 
 **What its test suite asserts (3)**
 
-- The data is pinned: 51 jurisdictions, 20 covered from their own agency pages read on 2026-11-08 and 31 not covered with a reason, with each state's figures as it quotes them.
+- The data is pinned: 51 jurisdictions, 22 covered from their own agency pages read on 2026-11-08 and 29 not covered with a reason, with each state's figures as it quotes them.
 - The cycle end is checked for each rule (issue date plus the years, fixed days, the birth month, the date entered winning), with conversions, caps, required topics and the window.
 - Alternatives that do not combine, no-hour licenses, Oregon's later rule, uncovered states, the refusals, the staff table, the export and the worked examples are checked.
 

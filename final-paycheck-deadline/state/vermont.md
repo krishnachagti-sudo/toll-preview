@@ -67,4 +67,4 @@ On the regular payday, or the following Friday if there is none (21 V.S.A. 342(c
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/vermont/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

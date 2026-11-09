@@ -74,4 +74,4 @@ In a civil action, twice the full amount of the wages.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

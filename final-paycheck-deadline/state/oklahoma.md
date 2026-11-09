@@ -68,4 +68,4 @@ By the next scheduled payday (40 O.S. 165.3).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/oklahoma/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

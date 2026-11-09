@@ -3,7 +3,9 @@ AK,Alaska,15 or more employees (FTEs),1 per 30,56,56,,,56,paid,,not required,AS 
 AK,Alaska,Fewer than 15 employees (FTEs),1 per 30,40,40,,,40,paid,,not required,AS 23.10.067,https://labor.alaska.gov/lss/sick-leave-faq.html
 AZ,Arizona,15 or more employees,1 per 30,40,40,,,40,paid,90,not required,A.R.S. 23-372,https://www.azleg.gov/ars/23/00372.htm https://www.azleg.gov/ars/23/00373.htm
 AZ,Arizona,Fewer than 15 employees,1 per 30,24,24,,,24,paid,90,not required,A.R.S. 23-372,https://www.azleg.gov/ars/23/00372.htm https://www.azleg.gov/ars/23/00373.htm
+CA,California,All employers,1 per 30,,40,80,,40,paid,89,not required,Cal. Lab. Code 246,https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=246.
 CO,Colorado,All employers,1 per 30,48,,,,,paid,,,C.R.S. 8-13.3-403,https://cdle.colorado.gov/sites/cdle/files/info_%236_hfwa_summary_%26_overview_07.19.23.pdf
+CT,Connecticut,"11 or more employees in Connecticut (from January 1, 2026; 1 or more from January 1, 2027)",1 per 30,40,40,,40,40,paid,120,not required,CGS 31-57r,https://portal.ct.gov/dol/divisions/legal/connecticut-leave-programs/paid-sick-leave-faqs
 DC,District of Columbia,100 or more employees,1 per 37,7 days,,,,,paid,90,,D.C. Code 32-531.02,https://code.dccouncil.gov/us/dc/council/code/sections/32-531.02
 DC,District of Columbia,25 to 99 employees,1 per 43,5 days,,,,,paid,90,,D.C. Code 32-531.02,https://code.dccouncil.gov/us/dc/council/code/sections/32-531.02
 DC,District of Columbia,24 or fewer employees,1 per 87,3 days,,,,,paid,90,,D.C. Code 32-531.02,https://code.dccouncil.gov/us/dc/council/code/sections/32-531.02
@@ -11,8 +13,15 @@ IL,Illinois,All employers (Chicago and Cook County have their own ordinances),1 
 ME,Maine,More than 10 employees,1 per 40,40,,,,,paid,120,,26 M.R.S. 637,https://legislature.maine.gov/statutes/26/title26sec637-2.html
 MD,Maryland,15 or more employees: paid,1 per 30,40,64,64,40,40,paid,106,not required,Md. Lab. & Empl. 3-1304,https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-1304&enactments=false
 MD,Maryland,14 or fewer employees: unpaid,1 per 30,40,64,64,40,40,unpaid,106,not required,Md. Lab. & Empl. 3-1304,https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-1304&enactments=false
+MA,Massachusetts,11 or more employees: paid,1 per 30,40,40,,,,paid,,,"M.G.L. c. 149, s. 148C",https://www.mass.gov/info-details/earned-sick-time
+MA,Massachusetts,Fewer than 11 employees: unpaid,1 per 30,40,40,,,,unpaid,,,"M.G.L. c. 149, s. 148C",https://www.mass.gov/info-details/earned-sick-time
+MI,Michigan,11 or more employees,1 per 30,,72,,,,paid,,,Earned Sick Time Act,https://www.michigan.gov/leo/-/media/Project/Websites/leo/Documents/WAGE-HOUR/LEO-ESTA-FAQ-English.pdf
+MI,Michigan,"Small business, 10 or fewer employees (accrual from October 1, 2025)",1 per 30,,40,,,,paid,,,Earned Sick Time Act,https://www.michigan.gov/leo/-/media/Project/Websites/leo/Documents/WAGE-HOUR/LEO-ESTA-FAQ-English.pdf
 MN,Minnesota,All employers,1 per 30,48,,80,,80,paid,,not required,Minn. Stat. 181.9446,https://www.revisor.mn.gov/statutes/cite/181.9446 https://www.revisor.mn.gov/statutes/cite/181.9448 https://www.dli.mn.gov/sick-leave
 NJ,New Jersey,All employers,1 per 30,40,40,,40,40,paid,,,N.J.S.A. 34:11D-2,https://www.nj.gov/labor/myworkrights/leave-benefits/sick-leave/law.shtml
+NY,New York,100 or more employees: up to 56 hours paid,1 per 30,56,,,,,paid,,,N.Y. Labor Law 196-b,https://www.ny.gov/programs/new-york-paid-sick-leave
+NY,New York,5 to 99 employees: up to 40 hours paid,1 per 30,40,,,,,paid,,,N.Y. Labor Law 196-b,https://www.ny.gov/programs/new-york-paid-sick-leave
+NY,New York,Fewer than 5 employees: up to 40 hours unpaid (paid if net income is over $1 million),1 per 30,40,,,,,unpaid,,,N.Y. Labor Law 196-b,https://www.ny.gov/programs/new-york-paid-sick-leave
 OR,Oregon,10 or more employees in Oregon (6 or more with a Portland location): paid,1 per 30,40,40,80,40,40,paid,90,not required,ORS 653.606,https://www.oregon.gov/boli/workers/pages/sick-time.aspx
 OR,Oregon,"Fewer than 10 employees (fewer than 6 with a Portland location): unpaid, protected",1 per 30,40,40,80,40,40,unpaid,90,not required,ORS 653.606,https://www.oregon.gov/boli/workers/pages/sick-time.aspx
 VT,Vermont,All covered employers,1 per 52,,40,,,,paid,365,,21 V.S.A. 482,https://labor.vermont.gov/sites/labor/files/doc_library/Earned%20sick%20time%20text%20new.pdf https://labor.vermont.gov/sites/labor/files/doc_library/EarnedSickTimePoster.pdf

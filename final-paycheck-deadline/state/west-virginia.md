@@ -80,4 +80,4 @@ The unpaid amount plus two times that amount as liquidated damages.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/west-virginia/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

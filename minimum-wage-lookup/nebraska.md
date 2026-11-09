@@ -25,7 +25,7 @@ Nebraska: not covered (The Nebraska Department of Labor page did not load (timeo
 ## Not covered
 
 - Nebraska: The Nebraska Department of Labor page did not load (timeout) on 2026-11-08. Its rate in force comes from DOL's table; dated steps and announced changes are not covered.
-- Omaha: The city's site refused this network (HTTP 403) on 2026-11-08; rate not guessed.
+- Omaha: The city's site refused this network (HTTP 403) on 2026-11-08; rate not guessed. Read again in a browser on 2026-11-09: the site answered 403 Access Denied.
 - Lincoln: UC Berkeley Labor Center lists the ordinance as blocked by a temporary injunction; the state rate applies until a court says otherwise.
 
 > Not legal advice. The rate shown is the highest general minimum wage we hold for the place and date; industry, hotel, health care, youth, training and other special rates can differ. Every rate names the official page it was read from and the date we read it. Places and states whose pages we could not read are listed as not covered, never guessed. Employers covered by the federal Fair Labor Standards Act pay at least the federal $7.25; state laws differ on which employers they cover.

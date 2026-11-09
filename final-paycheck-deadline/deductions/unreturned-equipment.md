@@ -1,6 +1,6 @@
 # Unreturned equipment and the final paycheck
 
-10 of the 30 states read here have a rule for it in so many words; the rest apply their general deduction rule. In Kansas, a $900.00 deduction for unreturned equipment (laptop, phone, tools, uniform): allowed after written notice; after it, the final week pays -$300.00 for 40 hours (-$7.50 an hour), below $7.25 an hour (the federal minimum wage): at most $310.00 can come out of that week.
+10 of the 36 states read here have a rule for it in so many words; the rest apply their general deduction rule. In Kansas, a $900.00 deduction for unreturned equipment (laptop, phone, tools, uniform): allowed after written notice; after it, the final week pays -$300.00 for 40 hours (-$7.50 an hour), below $7.25 an hour (the federal minimum wage): at most $310.00 can come out of that week.
 
 ## Check a deduction
 
@@ -14,18 +14,24 @@ Deduction for unreturned equipment (laptop, phone, tools, uniform): what each co
 | --- | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | no deduction rule read | We did not read Alaska's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | the general deduction rule applies | Only if required or empowered by law, with the employee's prior written authorization, or where there is a reasonable good faith dispute over the amount due (including a set-off the employer claims). | A.R.S. 23-352 |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | no deduction rule read | We did not read California's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/) | the general deduction rule applies | CDLE allows 10 days to audit that property or money entrusted to the employee was returned; written notice and other requirements apply to deductions in that case. Other deduction rules were not read. | C.R.S. 8-4-109 |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | the general deduction rule applies | Only if required or empowered by law, or with the employee's written authorization on a form approved by the labor commissioner (plus medical deductions without financial benefit to the employer, and automatic retirement enrollment). | C.G.S. 31-71e |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | the general deduction rule applies | Only if required or empowered by law, for medical care without financial benefit to the employer, or with a signed authorization for a lawful purpose that benefits the employee. | 19 Del. C. 1107 |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | no deduction rule read | We did not read District of Columbia's deduction rule on its own sites, so only the federal floor below applies here. |  |
+| [Hawaii](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/hawaii/) | no deduction rule read | We did not read Hawaii's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Idaho](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/) | the general deduction rule applies | Only if required by law or with written authorization; even then usually not below minimum wage. A proven advance or draw can be withheld in full. | Idaho Code 45-609 |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/illinois/) | not allowed | Not allowed: an employer cannot withhold or deduct pending the return of uniforms, tools or other employer-owned equipment. | 820 ILCS 115/9; 56 Ill. Adm. Code 300 |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/) | only if assigned and acknowledged in writing | Lost or stolen property cannot be deducted unless it was equipment specifically assigned to the employee, who acknowledged receipt in writing. | Iowa Code 91A.5 |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/) | allowed after written notice | Allowed from final wages after a written notice and explanation, until the property is returned; then the withheld wages must be paid. | K.S.A. 44-319 |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kentucky/) | no deduction rule read | We did not read Kentucky's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maine/) | not a debt the employee owes | Tools of the trade and uniforms primarily for the employer's benefit are not a "debt" an employee can be made to repay from wages, and property damage cannot be set off against a wage claim. | 26 M.R.S. 626, 629 |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maryland/) | the general deduction rule applies | Only if ordered by a court, authorized expressly in writing by the employee, allowed by the Commissioner because the employee received full consideration, or made under another law. | Md. Code, Lab. & Empl. 3-503 |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/massachusetts/) | no deduction rule read | We did not read Massachusetts's deduction rule on its own sites, so only the federal floor below applies here. |  |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/michigan/) | no deduction rule read | We did not read Michigan's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/) | only with written consent after the loss | Only with the employee's voluntary written authorization given after the loss, or a court judgment. | Minn. Stat. 181.79 |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/) | the general deduction rule applies | Reasonable deductions for board, room and other incidentals that are a condition of employment, or as otherwise provided by law. When an employee is discharged over an alleged theft connected to the work, the employer may withhold the value of the theft from the final paycheck if the conditions of 39-3-205(3) are met. | Mont. Code Ann. 39-3-204, 39-3-205(3) |
+| [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-hampshire/) | no deduction rule read | We did not read New Hampshire's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/) | not on the allowed list | Not among the deductions N.J.S.A. 34:11-4.4 lists. | N.J.S.A. 34:11-4.4 |
 | [New York](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-york/) | no deduction rule read | We did not read New York's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-carolina/) | allowed with a specific signed authorization | Allowed with a signed written authorization made in advance that names the item and the dollar amount (the department's example: a $150 phone). | G.S. 95-25.8 |
@@ -54,7 +60,7 @@ A deduction for the employer's benefit may not take the final week below the min
 - [29 CFR 531.35, "Free and clear" payment (eCFR, read November 8, 2026)](https://www.ecfr.gov/current/title-29/section-531.35)
 - [U.S. Department of Labor, State Minimum Wage Laws (page updated 2026-11-05, read November 8, 2026)](https://www.dol.gov/agencies/whd/minimum-wage/state)
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -65,5 +71,5 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/deductions/unreturned-equipment/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/deductions/unreturned-equipment.csv

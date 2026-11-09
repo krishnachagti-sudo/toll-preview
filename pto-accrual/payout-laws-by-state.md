@@ -84,5 +84,5 @@ It depends on the state. Of the states read here, Illinois, Maine, Maryland, Nor
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/payout-laws-by-state/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/payout-laws-by-state.csv

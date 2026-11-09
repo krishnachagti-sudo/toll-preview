@@ -76,4 +76,4 @@ The regular wage from the time of demand to the time of payment, or for 90 worki
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

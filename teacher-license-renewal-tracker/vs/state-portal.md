@@ -15,7 +15,7 @@ The state portal is better for what the state officially counts: it is the recor
 
 ## What this tracker does
 
-- Holds the rule for 20 states, each quoted from the state agency and dated November 8, 2026; other states are listed as not covered.
+- Holds the rule for 22 states, each quoted from the state agency and dated November 8, 2026; other states are listed as not covered.
 - Converts each activity to the state's unit, applies caps and required topics, and flags activities outside the cycle.
 - Free totals on the web; the audit export is $0.99 for a whole renewal cycle.
 

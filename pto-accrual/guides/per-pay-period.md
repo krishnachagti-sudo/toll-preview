@@ -38,4 +38,4 @@ Hourly staff often accrue per hour worked: 120 / 2,080 = 0.0577 hours per hour. 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/guides/per-pay-period/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

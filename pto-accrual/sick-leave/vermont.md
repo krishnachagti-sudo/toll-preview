@@ -63,4 +63,4 @@ An employer may impose a waiting period of up to one year. (Vermont DOL notice (
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/vermont/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

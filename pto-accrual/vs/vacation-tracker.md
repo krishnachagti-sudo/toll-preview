@@ -1,6 +1,6 @@
 # A Vacation Tracker alternative for the numbers
 
-For 25 employees paid every two weeks, running every employee's PTO and sick balances each payday over the API costs 25 x 26 x $0.01 = $6.50 a year here; Vacation Tracker lists $2 per user a month with a $50 monthly minimum, $600 a year (read November 8, 2026), for a full leave tracker rather than the state-law numbers alone.
+For 25 employees paid every two weeks, running every employee's PTO and sick balances each payday over the API costs 25 x 26 x $0.01 = $6.50 a year here; Vacation Tracker lists $2 per user a month with a $50 monthly minimum, $600 a year (read November 9, 2026), for a full leave tracker rather than the state-law numbers alone.
 
 ## What Vacation Tracker's page says
 
@@ -9,7 +9,7 @@ For 25 employees paid every two weeks, running every employee's PTO and sick bal
 - A 14-day free trial with no credit card
 - A free PTO payout calculator page (before and after taxes, by state), published October 20, 2026
 
-Read on November 8, 2026: [Vacation Tracker, Pricing](https://vacationtracker.io/pricing/).
+Read on November 9, 2026: [Vacation Tracker, Pricing](https://vacationtracker.io/pricing/).
 
 ## What this tool does
 
@@ -33,4 +33,4 @@ You want employees to request leave and managers to approve it in Slack or Teams
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/vs/vacation-tracker/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

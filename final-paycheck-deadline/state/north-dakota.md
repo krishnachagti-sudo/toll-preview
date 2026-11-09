@@ -78,4 +78,4 @@ The agreed wage for each day in default, ending 30 days after the default.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-dakota/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

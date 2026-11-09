@@ -64,4 +64,4 @@ By the regular payday for the pay period in which employment ended (N.J.S.A. 34:
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

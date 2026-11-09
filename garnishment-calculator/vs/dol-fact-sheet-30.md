@@ -14,7 +14,7 @@ Fact Sheet #30 revised December 2024, read November 8, 2026.
 | --- | --- | --- |
 | Federal creditor limit | Stated, with a table for four pay periods | Computed for your paycheck, both tests shown |
 | Support limits | 50% or 60%, plus 5% in arrears | Same percentages, in dollars, and what is left for a creditor |
-| State limits | Says the law giving the smaller garnishment applies | Applies the state statute for the 18 jurisdictions read, with the citation |
+| State limits | Says the law giving the smaller garnishment applies | Applies the state statute for the 19 jurisdictions read, with the citation |
 | Priority of orders | Says the CCPA has none; state or other federal law decides | Takes amounts already withheld off the limit; does not rank orders for you |
 | Official text | Yes: it is the agency's own statement | No: it quotes the sources and dates them |
 

@@ -14,18 +14,24 @@ Final pay for a resignation on January 8, 2027: due dates by state
 | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | 2027-01-15 | the next regular payday at least 3 days after the employer received notice |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | 2027-01-15 | by the regular payday for the pay period in which the termination occurred |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | 2027-01-11 16:00 | with at least 72 hours' notice: at the time of quitting; with less: within 72 hours |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/) | 2027-01-15 | by the next regular payday |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | 2027-01-15 | by the next regular payday |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | 2027-01-15 | on the later of the next regular payday and 3 business days after the last day worked |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | 2027-01-15 | by the next regular payday or within 7 days, whichever is earlier |
+| [Hawaii](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/hawaii/) | 2027-01-15 | by the next regular payday; at the time of quitting if the employee gave at least one pay period's notice |
 | [Idaho](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/) | 2027-01-15 | by the next regular payday or within 10 days (weekends and holidays excluded), whichever is sooner; within 48 hours (weekends and holidays excluded) of a written request |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/illinois/) | 2027-01-15 | by the next regular payday |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/) | 2027-01-15 | by the next regular payday for the pay period in which the wages were earned |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/) | 2027-01-15 | by the next regular payday on which the employee would have been paid |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kentucky/) | 2027-01-22 | by the next normal pay period or 14 days after the separation, whichever is later |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maine/) | 2027-01-15 | by the next established payday |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maryland/) | 2027-01-15 | on or before the day the wages would have been paid had employment continued |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/massachusetts/) | 2027-01-15 | in full on the following regular payday, or the following Saturday if there is none |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/michigan/) | 2027-01-15 | on the regular scheduled payday for the period in which the employee quits |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/) | 2027-01-15 | by the first regular payday; if that is less than 5 days away, the second payday, but within 20 calendar days |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/) | 2027-01-15 | by the next regular payday for the pay period, or 15 days, whichever is first |
+| [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-hampshire/) | 2027-01-15 | by the next regular payday; within 72 hours if the employee gave one pay period's notice |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/) | 2027-01-15 | by the regular payday for the pay period in which employment ended |
 | [New York](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-york/) | 2027-01-15 | by the payday on which the next pay would have been due |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-carolina/) | 2027-01-15 | by the next regular payday |
@@ -47,7 +53,7 @@ Final pay for a resignation on January 8, 2027: due dates by state
 
 ## Sources
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -58,5 +64,5 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/january-2027-resignations/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/january-2027-resignations.csv

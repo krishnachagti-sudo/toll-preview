@@ -82,4 +82,4 @@ Carried over, subject to the yearly use limit; or paid out at year end with the 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

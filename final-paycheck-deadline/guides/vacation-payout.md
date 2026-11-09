@@ -58,4 +58,4 @@ It depends on the state and the policy. Of the states read here, Illinois and Ma
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/guides/vacation-payout/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

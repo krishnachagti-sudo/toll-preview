@@ -1,6 +1,6 @@
 # Wage garnishment calculator for employers: CSV downloads
 
-21 tables from the Wage garnishment calculator for employers can be downloaded here as CSV, each with the same rows as its page, a data date and a named official source.
+22 tables from the Wage garnishment calculator for employers can be downloaded here as CSV, each with the same rows as its page, a data date and a named official source.
 
 ## Which files can you download?
 
@@ -9,6 +9,7 @@ Data date 2026-11-08.
 - [California wage garnishment calculator (2026): employer withholding limit per paycheck](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california.csv))
 - [CCPA garnishment limits: 25% or 30 times minimum wage, with the pay-period table](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/ccpa-limits/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/ccpa-limits.csv))
 - [Child support garnishment calculator: 50%, 55%, 60% or 65% of disposable earnings](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/child-support/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/child-support.csv))
+- [Colorado wage garnishment calculator (2026): employer withholding limit per paycheck](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/colorado/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/colorado.csv))
 - [Delaware wage garnishment calculator (2026): employer withholding limit per paycheck](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/delaware/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/delaware.csv))
 - [District of Columbia wage garnishment calculator (2026): employer withholding limit per paycheck](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia.csv))
 - [Florida wage garnishment calculator (2026): employer withholding limit per paycheck](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/florida/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/florida.csv))

@@ -8,13 +8,18 @@ On December 31, 2026, a full-time employee who worked 40 hours a week all year a
 | --- | ---: | ---: | ---: |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/) | 56 | 56 | 0 |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/) | 40 | 40 | 0 |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/california/) | 69.33 | 69.33 | 0 |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/colorado/) | 48 | 48 | 0 |
+| [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/connecticut/) | 40 | 40 | 0 |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/) | 56 | 56 | 0 |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/) | 40 | 40 | 0 |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maine/) | 40 | 40 | 0 |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/) | 40 | 40 | 0 |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/massachusetts/) | 40 | 40 | 0 |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/michigan/) | 69.33 | 69.33 | 0 |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/) | 48 | 48 | 0 |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/) | 40 | 40 | 0 |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-york/) | 56 | 56 | 0 |
 | [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/oregon/) | 40 | 40 | 0 |
 | [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/vermont/) | 40 | 40 | 0 |
 | [Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/) | 40 | 40 | 0 |
@@ -43,4 +48,4 @@ Places with no carryover limit in the source we read carry the whole balance; a 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/year-end-carryover-2026/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

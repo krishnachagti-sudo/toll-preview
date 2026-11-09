@@ -74,4 +74,4 @@ Penalty wages of eight times the regular hourly rate for each day unpaid, up to 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/oregon/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

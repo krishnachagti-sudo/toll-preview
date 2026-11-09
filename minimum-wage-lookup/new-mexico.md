@@ -1,6 +1,6 @@
-# New Mexico Minimum Wage 2026 and 2027 (Plus 3 Local Rates)
+# New Mexico Minimum Wage 2026 and 2027 (Plus 4 Local Rates)
 
-The New Mexico minimum wage is $12.00 an hour (DOL's table updated November 5, 2026); on January 1, 2027 there is a change we could not read from the state's own page. 3 cities and counties in New Mexico set their own higher rates we have read; the tipped cash wage is $3.00 with a tip credit of up to $9.00 (DOL).
+The New Mexico minimum wage is $12.00 an hour (DOL's table updated November 5, 2026); on January 1, 2027 there is a change we could not read from the state's own page. 4 cities and counties in New Mexico set their own higher rates we have read; the tipped cash wage is $3.00 with a tip credit of up to $9.00 (DOL).
 
 ## Look up an address in New Mexico
 
@@ -27,13 +27,13 @@ Local rates on November 8, 2026 and the next change
 | Place | Rate on November 8, 2026 | Next change |
 | --- | --- | --- |
 | [Albuquerque](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-mexico/albuquerque/) | $12.00 | changes on January 1, 2027; the new rate was not published when we read the page |
+| [Las Cruces](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-mexico/las-cruces/) | $13.01 | changes on January 1, 2027; the new rate was not published when we read the page |
 | [Santa Fe](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-mexico/santa-fe/) | $15.40 | changes on January 1, 2027; the new rate was not published when we read the page |
 | [Santa Fe County (unincorporated)](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-mexico/santa-fe-county-unincorporated/) | $15.40 | changes on January 1, 2027; the new rate was not published when we read the page |
 
 ## Not covered
 
 - New Mexico: The New Mexico Department of Workforce Solutions page refused this network (HTTP 403) on 2026-11-08. Its rate in force comes from DOL's table; dated steps and announced changes are not covered.
-- Las Cruces: The city's own minimum wage page refused this network (HTTP 403) on 2026-11-08; rate not guessed.
 - Bernalillo County (unincorporated): The state rate has passed the county's ordinance rate (UC Berkeley Labor Center); the county page was not read.
 
 > Not legal advice. The rate shown is the highest general minimum wage we hold for the place and date; industry, hotel, health care, youth, training and other special rates can differ. Every rate names the official page it was read from and the date we read it. Places and states whose pages we could not read are listed as not covered, never guessed. Employers covered by the federal Fair Labor Standards Act pay at least the federal $7.25; state laws differ on which employers they cover.

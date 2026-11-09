@@ -1,6 +1,6 @@
 # Do extra hours carry over?
 
-Of the 20 states whose agency pages we read on November 8, 2026, only Pennsylvania says extra hours carry over: up to 50 hours earned in the last two years of an Act 48 period count toward the next one, so 60 extra hours carry 50 and a new period with 40 more hours stands at 90 hours of 180.
+Of the 22 states whose agency pages we read on November 8, 2026, only Pennsylvania says extra hours carry over: up to 50 hours earned in the last two years of an Act 48 period count toward the next one, so 60 extra hours carry 50 and a new period with 40 more hours stands at 90 hours of 180.
 
 ## Track a Pennsylvania period with carry-over
 
@@ -29,7 +29,7 @@ Carry-over and the counting window
 
 > Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts. Totals come from the activities you enter; this tool does not read PERMS, TEACH, ECOS or any state portal. States whose official pages we could not read are listed as not covered rather than guessed.
 
-Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026 to November 9, 2026).
 
 ## Questions
 

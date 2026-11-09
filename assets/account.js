@@ -1,5 +1,6 @@
 /* The account page: sign up and sign in, balance, top-ups, the nonprofit and invoice requests,
-   limits, API keys and the ledger.
+   limits, API keys and the ledger; for an account's owner also the team plan, members and the
+   usage report, and for a team member only what they need to use the tools (never billing).
    Every request goes through Endwise.api, so every URL is built from ENDWISE.base. */
 (function () {
   'use strict';
@@ -32,7 +33,9 @@
   };
 
   var account = null;
+  var team = null;
   var toolNames = {};
+  var isMember = function () { return !!account && account.role === 'member'; };
 
   // "12.5" or "1,000" to integer micro-units; whole units or up to two decimals. null when it is not an amount.
   // Whole units are capped at 13 digits, so the arithmetic stays far inside safe integers.
@@ -101,6 +104,7 @@
     $('signed-out').hidden = view !== 'out';
     $('signed-in').hidden = view !== 'in';
     $('reset-view').hidden = view !== 'reset';
+    $('join-view').hidden = view !== 'join';
     $('next-note').hidden = !(view === 'out' && nextPath());
     $('back-note').hidden = !(view === 'in' && nextPath());
     if (nextPath()) $('back-link').href = nextPath();
@@ -116,10 +120,15 @@
     $('welcome').hidden = true;
     ['key-list', 'app-list', 'ledger', 'buy-passes', 'buy-packs', 'buy-bundles', 'who-email', 'balance-total', 'balance-grant', 'balance-paid', 'balance-pass', 'pass-note',
       'balance-bundle', 'cap-current', 'cap-spent', 'key-error', 'cap-error', 'cap-status', 'topup-error', 'new-key-status',
-      'nonprofit-error', 'nonprofit-status', 'invoice-error', 'invoice-status', 'invoice-list', 'verify-email', 'verify-status'].forEach(function (id) {
+      'nonprofit-error', 'nonprofit-status', 'invoice-error', 'invoice-status', 'invoice-list', 'verify-email', 'verify-status',
+      'member-team', 'member-spend', 'plan-current', 'plan-offers', 'plan-error', 'plan-renew-status', 'seats', 'invite-error', 'invite-status',
+      'member-list', 'report-body'].forEach(function (id) {
       $(id).textContent = '';
     });
-    ['np-code', 'np-org', 'np-ein', 'np-email', 'inv-want', 'inv-company', 'inv-email', 'inv-po'].forEach(function (id) { $(id).value = ''; });
+    ['np-code', 'np-org', 'np-ein', 'np-email', 'inv-want', 'inv-company', 'inv-email', 'inv-po', 'inv-plan', 'invite-email'].forEach(function (id) { $(id).value = ''; });
+    $('member-note').hidden = true;
+    $('members').hidden = true;
+    team = null;
     $('bundle-row').hidden = true;
     // Without the marker, the next account rebuilds its choices even in the same currency.
     $('buy-packs').removeAttribute('data-currency');
@@ -136,8 +145,9 @@
       if (!a) { show('out'); return; }
       show('in');
       renderAccount();
-      return Promise.all([loadKeys(), loadLedger()]).then(function () {
-        if (['#top-up', '#keys', '#limits', '#nonprofit', '#invoice'].indexOf(location.hash) >= 0) {
+      var loads = isMember() ? [loadKeys()] : [loadKeys(), loadLedger(), loadTeam(), loadReport()];
+      return Promise.all(loads).then(function () {
+        if (['#top-up', '#keys', '#limits', '#nonprofit', '#invoice', '#plan', '#members', '#report'].indexOf(location.hash) >= 0) {
           var target = $(location.hash.slice(1));
           if (target) target.scrollIntoView();
         }
@@ -149,17 +159,39 @@
     });
   }
 
+  function longDate(iso) {
+    return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+  }
+
+  // Owner-only sections stay hidden for a team member, who sees the team's balance as one total,
+  // their own spend and limit, and their keys.
+  function renderMember() {
+    [].forEach.call(document.querySelectorAll('.owner-only'), function (el) { el.hidden = true; });
+    $('pots').hidden = true;
+    $('member-note').hidden = false;
+    $('member-team').textContent = 'You are a member of ' + account.teamOwner + '\'s team. What you use is paid from the team\'s balance.'
+      + (account.plan ? ' The team\'s ' + account.plan.name + ' plan runs to ' + longDate(account.plan.endsAt) + '.' : ' The team has no plan running, so you cannot spend from its balance until the owner renews it.');
+    $('member-spend').textContent = 'You spent ' + account.spentThisMonthDisplay + ' this month'
+      + (account.monthlyCapMicros === null ? '.' : ', of your monthly limit of ' + account.monthlyCapDisplay + '.') + ' Only the account owner can change limits.';
+    $('key-cap').closest('.field').hidden = true;
+    $('key-cap-hint').textContent = 'New keys get a monthly limit of ' + account.limits.defaultKeyCapDisplay + '. The account owner can change it.';
+  }
+
   function renderAccount() {
     var b = account.balance;
     $('who-email').textContent = 'Signed in as ' + account.email + '. Balance in ' + account.currency + '.';
     $('verify-note').hidden = account.emailVerified || !account.emailsOn;
     $('verify-email').textContent = account.email;
     $('balance-total').textContent = b.display;
+    [].forEach.call(document.querySelectorAll('.cur-symbol'), function (s) { s.textContent = symbolOf(account.currency); });
+    if (isMember()) { renderMember(); return; }
+    [].forEach.call(document.querySelectorAll('.owner-only'), function (el) { if (el.id !== 'members') el.hidden = false; });
+    $('pots').hidden = false;
+    $('key-cap').closest('.field').hidden = false;
     $('balance-grant').textContent = b.grantDisplay;
     $('balance-paid').textContent = b.paidDisplay;
     $('welcome-grant').textContent = b.grantDisplay;
     $('welcome').hidden = !justSignedUp;
-    [].forEach.call(document.querySelectorAll('.cur-symbol'), function (s) { s.textContent = symbolOf(account.currency); });
 
     // A pass the account holds: what is left of this month's allowance, and when the pass ends.
     var pass = account.passes[0];
@@ -224,7 +256,7 @@
   }
   var resetToken = null;
   function readEmailLink() {
-    var link = /^#(verify|reset)=([A-Za-z0-9_-]+)$/.exec(location.hash);
+    var link = /^#(verify|reset|invite)=([A-Za-z0-9_-]+)$/.exec(location.hash);
     if (link) history.replaceState(null, '', location.pathname + location.search);
     return link;
   }
@@ -276,6 +308,24 @@
       return load();
     }, function (err) {
       showError($('reset-error'), err, form);
+    }).then(function () { busy(button, false); });
+  });
+
+  var joinToken = null;
+  $('join-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var form = ev.currentTarget;
+    var button = form.querySelector('button[type="submit"]');
+    clearErrors(form);
+    $('join-error').textContent = '';
+    busy(button, true);
+    Endwise.api('/api/team/join', { body: { token: joinToken, password: $('join-password').value } }).then(function () {
+      form.reset();
+      joinToken = null;
+      flash('You joined the team and are signed in.');
+      return load();
+    }, function (err) {
+      showError($('join-error'), err, form);
     }).then(function () { busy(button, false); });
   });
 
@@ -382,7 +432,8 @@
       return h('li', { class: 'key-item' }, [
         h('strong', null, r.company),
         ' ',
-        h('span', { class: 'muted small' }, INVOICE_STATUS[r.status] + (r.amountDisplay ? ', ' + r.amountDisplay : '') + '. Asked ' + when(r.createdAt) + '.'),
+        h('span', { class: 'muted small' }, INVOICE_STATUS[r.status] + (r.amountDisplay ? ', ' + r.amountDisplay : '')
+          + (r.dueAt && r.status === 'issued' ? ', due ' + longDate(r.dueAt) : '') + '. Asked ' + when(r.createdAt) + '.'),
       ]);
     })));
   }
@@ -396,9 +447,9 @@
     $('invoice-status').textContent = '';
     busy(button, true);
     Endwise.api('/api/requests/invoice', { body: {
-      want: $('inv-want').value, company: $('inv-company').value, billingEmail: $('inv-email').value, poNumber: $('inv-po').value,
+      want: $('inv-want').value, company: $('inv-company').value, billingEmail: $('inv-email').value, poNumber: $('inv-po').value, plan: $('inv-plan').value,
     } }).then(function () {
-      ['inv-want', 'inv-company', 'inv-email', 'inv-po'].forEach(function (id) { $(id).value = ''; });
+      ['inv-want', 'inv-company', 'inv-email', 'inv-po', 'inv-plan'].forEach(function (id) { $(id).value = ''; });
       $('invoice-status').textContent = 'Received. We will email the invoice to your billing address.';
       return Endwise.me(true).then(function (a) { account = a; renderAccount(); });
     }, function (err) {
@@ -491,17 +542,17 @@
         editArea.appendChild(form);
         input.focus();
       });
-      actions.appendChild(edit);
+      if (!isMember()) actions.appendChild(edit);
       actions.appendChild(revoke);
     }
 
     return h('li', { class: 'key-item' + (revoked ? ' key-revoked' : '') }, [
       h('div', { class: 'key-top' }, [
-        h('div', null, app ? [h('strong', null, key.name)] : [
+        h('div', null, (app ? [h('strong', null, key.name)] : [
           h('strong', null, key.name),
           ' ',
           h('code', null, key.prefix + '…'),
-        ]),
+        ]).concat(key.memberEmail && !isMember() ? [' ', h('span', { class: 'muted small' }, key.memberEmail)] : [])),
         actions,
       ]),
       h('p', { class: 'key-meta money' }, revoked
@@ -531,6 +582,249 @@
   function renderKeys(keys) {
     renderKeyList('key-list', keys.filter(function (k) { return k.kind !== 'oauth'; }), 'You have no keys yet.');
     renderKeyList('app-list', keys.filter(function (k) { return k.kind === 'oauth'; }), 'No apps are connected.');
+  }
+
+  // ---------- plan and team members (the owner's) ----------
+  function loadTeam() {
+    return Endwise.api('/api/team').then(function (json) { team = json; renderTeam(); }, function (err) {
+      $('plan-current').textContent = '';
+      $('plan-current').appendChild(h('p', { class: 'form-error' }, err.message));
+    });
+  }
+
+  function renderTeam() {
+    var plan = team.plan;
+    var box = $('plan-current');
+    box.textContent = '';
+    if (plan) {
+      box.appendChild(h('p', null, [
+        h('strong', null, plan.name + ' plan'), ', ' + plan.usageDisplay + ' of use for up to ' + (plan.members === null ? 'any number of' : plan.members) + ' people. ',
+        'Runs to ' + longDate(plan.endsAt) + (plan.renew ? ', renewal on.' : ', renewal off.'),
+      ]));
+      if (team.nextPlan) box.appendChild(h('p', { class: 'muted small' }, 'The next year (' + team.nextPlan.name + ') is paid for and runs to ' + longDate(team.nextPlan.endsAt) + '.'));
+    } else {
+      box.appendChild(h('p', null, 'No plan yet. A plan is a year of use for a firm or an ops team, with team members and this usage report. It never renews by itself.'));
+    }
+    $('plan-renew-box').hidden = !plan;
+    $('plan-renew').checked = !!(plan && (team.nextPlan || plan).renew);
+
+    var offers = $('plan-offers');
+    offers.textContent = '';
+    team.offers.forEach(function (o) {
+      var button = h('button', { type: 'button', class: 'btn btn-small' }, o.byCard ? 'Pay by card' : 'Ask for an invoice');
+      button.addEventListener('click', function () { buyPlan(o, button); });
+      var also = o.byCard ? h('button', { type: 'button', class: 'link-btn' }, 'or ask for an invoice') : null;
+      if (also) also.addEventListener('click', function () { askInvoiceFor(o); });
+      offers.appendChild(h('div', { class: 'choice-card plan-card' }, [
+        h('span', { class: 'cc-name' }, o.name),
+        h('span', { class: 'cc-price' }, (o.from ? 'From ' : '') + o.priceDisplay + ' a year'),
+        h('span', { class: 'cc-note' }, o.usageDisplay + ' of use' + (o.from ? ' or more' : '') + ', ' + (o.members === null ? 'any number of people' : 'up to ' + o.members + ' people') + '. ' + o.pay),
+        h('span', null, [button, also ? ' ' : null, also]),
+      ]));
+    });
+
+    // The plan names in the invoice form.
+    var select = $('inv-plan');
+    if (select.options.length === 1) {
+      team.offers.forEach(function (o) { select.appendChild(h('option', { value: o.id }, o.name + ' plan')); });
+    }
+
+    $('members').hidden = !plan && !team.members.length && !team.invites.length;
+    $('seats').textContent = team.seats.limit === null
+      ? team.seats.used + (team.seats.used === 1 ? ' person' : ' people') + ' on the account, you included. No limit on this plan.'
+      : team.seats.used + ' of ' + team.seats.limit + ' people on the account, you included, counting open invitations.';
+    renderMembers();
+  }
+
+  function buyPlan(offer, button) {
+    $('plan-error').textContent = '';
+    if (!offer.byCard) { askInvoiceFor(offer); return; }
+    busy(button, true);
+    Endwise.api('/api/topup', { body: { product: offer.id } }).then(function (json) {
+      window.location.assign(json.url);
+    }, function (err) {
+      $('plan-error').textContent = err.message;
+      busy(button, false);
+    });
+  }
+
+  function askInvoiceFor(offer) {
+    $('inv-plan').value = offer.id;
+    if (!$('inv-want').value) $('inv-want').value = 'The ' + offer.name + ' plan for a year.';
+    $('invoice').scrollIntoView({ block: 'start' });
+    $('inv-company').focus();
+  }
+
+  $('plan-renew').addEventListener('change', function (ev) {
+    var box = ev.currentTarget;
+    $('plan-renew-status').textContent = '';
+    box.disabled = true;
+    Endwise.api('/api/team/renew', { body: { renew: box.checked } }).then(function () {
+      $('plan-renew-status').textContent = box.checked
+        ? 'Renewal is on. We email you 30 days before the end. Nothing is charged automatically.'
+        : 'Renewal is off. The plan ends on its date and nothing is charged.';
+      return loadTeam();
+    }, function (err) {
+      box.checked = !box.checked;
+      $('plan-renew-status').textContent = err.message;
+    }).then(function () { box.disabled = false; });
+  });
+
+  // A limit editor like the keys' one: saves through `path`, or removes the limit.
+  function limitEditor(label, current, path, status, done) {
+    var input = h('input', { type: 'text', inputmode: 'decimal', autocomplete: 'off', value: current === null ? '' : toAmount(current), 'aria-label': label });
+    var save = h('button', { type: 'submit', class: 'btn btn-small' }, 'Save');
+    var remove = h('button', { type: 'button', class: 'btn btn-quiet btn-small' }, 'No limit');
+    var form = h('form', { class: 'cap-edit', novalidate: true }, [
+      h('div', { class: 'money-input' }, [h('span', { 'aria-hidden': 'true' }, symbolOf(account.currency)), input]), save, remove,
+    ]);
+    var send = function (micros) {
+      save.disabled = true;
+      Endwise.api(path, { body: { monthlyCapMicros: micros } }).then(done, function (err) {
+        status.textContent = err.message;
+        save.disabled = false;
+      });
+    };
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var limit = readLimit(input.value, '50 or 50.50');
+      if (limit.error) { status.textContent = limit.error; return; }
+      send(limit.micros);
+    });
+    remove.addEventListener('click', function () { send(null); });
+    return form;
+  }
+
+  function renderMembers() {
+    var box = $('member-list');
+    box.textContent = '';
+    var rows = team.members.map(function (m) {
+      var status = h('span', { class: 'status', role: 'status' });
+      var editArea = h('div');
+      var edit = h('button', { type: 'button', class: 'link-btn' }, 'Change limit');
+      edit.addEventListener('click', function () {
+        if (editArea.children.length) { editArea.textContent = ''; return; }
+        editArea.appendChild(limitEditor('Monthly limit for ' + m.email, m.monthlyCapMicros, '/api/team/members/' + m.id + '/cap', status, function () {
+          return Promise.all([loadTeam(), loadReport()]);
+        }));
+      });
+      var remove = h('button', { type: 'button', class: 'link-btn' }, 'Remove');
+      var armed = false;
+      remove.addEventListener('click', function () {
+        if (!armed) {
+          armed = true;
+          remove.textContent = 'Click again to remove';
+          setTimeout(function () { armed = false; remove.textContent = 'Remove'; }, 5000);
+          return;
+        }
+        remove.disabled = true;
+        Endwise.api('/api/team/members/' + m.id + '/remove', { body: {} }).then(function () {
+          return Promise.all([loadTeam(), loadKeys(), loadReport()]);
+        }, function (err) {
+          status.textContent = err.message;
+          remove.disabled = false;
+        });
+      });
+      return h('li', { class: 'key-item' }, [
+        h('div', { class: 'key-top' }, [h('div', null, [h('strong', null, m.email)]), h('div', { class: 'key-actions' }, [edit, remove])]),
+        h('p', { class: 'key-meta money' }, [
+          'Limit ', h('strong', null, m.monthlyCapDisplay === null ? 'none' : m.monthlyCapDisplay + ' a month'), '. ',
+          'Spent ', h('strong', null, m.spentThisMonthDisplay), ' this month. Joined ' + when(m.joinedAt) + '.',
+        ]),
+        editArea,
+        status,
+      ]);
+    });
+    team.invites.forEach(function (i) {
+      var status = h('span', { class: 'status', role: 'status' });
+      var cancel = h('button', { type: 'button', class: 'link-btn' }, 'Cancel invitation');
+      cancel.addEventListener('click', function () {
+        cancel.disabled = true;
+        Endwise.api('/api/team/invites/' + i.id + '/cancel', { body: {} }).then(loadTeam, function (err) {
+          status.textContent = err.message;
+          cancel.disabled = false;
+        });
+      });
+      rows.push(h('li', { class: 'key-item' }, [
+        h('div', { class: 'key-top' }, [h('div', null, [h('strong', null, i.email), ' ', h('span', { class: 'muted small' }, 'invited')]), h('div', { class: 'key-actions' }, [cancel])]),
+        h('p', { class: 'key-meta' }, 'The link works until ' + when(i.expiresAt) + '.'),
+        status,
+      ]));
+    });
+    box.appendChild(rows.length ? h('ul', { class: 'key-list' }, rows) : h('p', { class: 'muted' }, 'No members yet.'));
+  }
+
+  $('invite-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var form = ev.currentTarget;
+    var button = form.querySelector('button[type="submit"]');
+    clearErrors(form);
+    $('invite-error').textContent = '';
+    $('invite-status').textContent = '';
+    busy(button, true);
+    Endwise.api('/api/team/invites', { body: { email: $('invite-email').value } }).then(function (r) {
+      $('invite-email').value = '';
+      $('invite-status').textContent = 'Sent to ' + r.invite.email + '. The link works for 7 days.';
+      return loadTeam();
+    }, function (err) {
+      showError($('invite-error'), err, form);
+    }).then(function () { busy(button, false); });
+  });
+
+  // ---------- usage report (the owner's) ----------
+  function loadReport() {
+    return Endwise.api('/api/team/report').then(function (json) { renderReport(json.report); }, function (err) {
+      $('report-body').textContent = '';
+      $('report-body').appendChild(h('p', { class: 'form-error' }, err.message));
+    });
+  }
+
+  var PAD = 'padding-left:16px';
+  function reportTable(caption, head, rows) {
+    return h('div', { class: 'table-scroll' }, h('table', { class: 'rules' }, [
+      h('caption', { class: 'muted small' }, caption),
+      h('thead', null, h('tr', null, head.map(function (c, i) { return h('th', { scope: 'col', class: i >= 1 && i <= 3 ? 'r' : null, style: i ? 'padding-left:16px' : null }, c); }))),
+      h('tbody', null, rows),
+    ]));
+  }
+
+  function renderReport(report) {
+    var box = $('report-body');
+    box.textContent = '';
+    report.months.forEach(function (m, index) {
+      box.appendChild(h('h3', null, (index === 0 ? 'This month, ' : 'Last month, ') + m.label + ': ' + m.totalDisplay));
+      box.appendChild(reportTable('By person', ['Person', 'Spent', 'Paid calls', 'Tools'], m.byMember.map(function (l) {
+        return h('tr', null, [
+          h('td', null, [l.name, ' ', h('span', { class: 'muted small' }, l.role === 'owner' ? 'owner' : l.removed ? 'removed' : 'member')]),
+          h('td', { class: 'r money', style: PAD }, l.spentDisplay), h('td', { class: 'r num', style: PAD }, String(l.calls)), h('td', { class: 'r num', style: PAD }, String(l.tools)),
+        ]);
+      })));
+      if (!m.byKey.length) { box.appendChild(h('p', { class: 'muted small' }, 'No paid calls by key, app or on the web.')); return; }
+      box.appendChild(reportTable('By API key, app or the web', ['Key', 'Spent', 'Paid calls', 'Tools', 'Monthly limit'], m.byKey.map(function (l) {
+        var limitCell = h('td', { style: PAD }, l.monthlyCapDisplay || '');
+        // This month's lines can set the key's limit in place.
+        if (index === 0 && l.keyId !== null && !l.revoked) {
+          var status = h('span', { class: 'status', role: 'status' });
+          var edit = h('button', { type: 'button', class: 'link-btn' }, 'Change');
+          var area = h('div');
+          edit.addEventListener('click', function () {
+            if (area.children.length) { area.textContent = ''; return; }
+            var form = limitEditor('Monthly limit for ' + l.name, l.monthlyCapMicros, '/api/keys/' + l.keyId + '/cap', status, function () {
+              return Promise.all([loadKeys(), loadReport()]);
+            });
+            form.removeChild(form.lastChild); // a key always has a limit
+            area.appendChild(form);
+          });
+          limitCell = h('td', { style: PAD }, [l.monthlyCapDisplay, ' ', edit, area, status]);
+        }
+        return h('tr', null, [
+          h('td', null, [l.name].concat(l.prefix ? [' ', h('code', null, l.prefix + '…')] : [],
+            l.member ? [h('br'), h('span', { class: 'muted small' }, l.member + (l.revoked ? ', revoked' : ''))] : [])),
+          h('td', { class: 'r money', style: PAD }, l.spentDisplay), h('td', { class: 'r num', style: PAD }, String(l.calls)), h('td', { class: 'r num', style: PAD }, String(l.tools)),
+          limitCell,
+        ]);
+      })));
+    });
   }
 
   $('key-form').addEventListener('submit', function (ev) {
@@ -622,6 +916,19 @@
       resetToken = link[2];
       show('reset');
       $('reset-password').focus();
+      return;
+    }
+    if (link[1] === 'invite') {
+      Endwise.api('/api/team/join/check', { body: { token: link[2] } }).then(function (r) {
+        joinToken = link[2];
+        $('join-lede').textContent = r.invite.teamEmail + ' invited you to use ' + (document.title.split(': ').pop() || 'the tools') + ' on their team. What you use is paid from the team\'s balance.';
+        $('join-email').value = r.invite.email;
+        show('join');
+        $('join-password').focus();
+      }, function (err) {
+        flash(err.message, true);
+        load();
+      });
       return;
     }
     Endwise.api('/api/account/verify', { body: { token: link[2] } }).then(function () {

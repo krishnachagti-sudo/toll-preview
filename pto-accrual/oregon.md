@@ -61,4 +61,4 @@ Yes: At least 1 hour per 30 hours worked, up to 40 hours a year, or 40 hours fro
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oregon/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

@@ -28,6 +28,7 @@ A server works 30 hours and reports $90 in tips. Cash wages at $12.14: $364.20. 
 - [Boulder](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/boulder/): $16.82 minimum, tipped cash wage $13.80
 - [Boulder County (unincorporated)](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/boulder-county-unincorporated/): $16.82 minimum, tipped cash wage $13.80
 - [Denver](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/denver/): $19.29 minimum, tipped cash wage $16.27
+- [Edgewater](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/edgewater/): $18.17 minimum, tipped cash wage $15.15
 
 Every state side by side: [tipped minimum wage by state](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/tipped-by-state/).
 

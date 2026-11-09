@@ -64,4 +64,4 @@ Up to 40 unused hours carry over; use may be limited to 40 a year; or the employ
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

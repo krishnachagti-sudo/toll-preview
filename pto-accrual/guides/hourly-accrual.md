@@ -6,7 +6,7 @@ Sick hours earned per week by rate and weekly hours (before caps)
 
 | Rate | 20 h a week | 30 h a week | 40 h a week | Used by |
 | --- | ---: | ---: | ---: | --- |
-| 1 per 30 | 0.67 | 1 | 1.33 | Alaska; Arizona; Colorado; Maryland; Minnesota; New Jersey; Oregon; Virginia; Los Angeles, CA; Montgomery County, MD; New York City, NY; Saint Paul, MN; Seattle, WA |
+| 1 per 30 | 0.67 | 1 | 1.33 | Alaska; Arizona; California; Colorado; Connecticut; Maryland; Massachusetts; Michigan; Minnesota; New Jersey; New York; Oregon; Virginia; Los Angeles, CA; Montgomery County, MD; New York City, NY; Saint Paul, MN; Seattle, WA |
 | 1 per 35 | 0.57 | 0.86 | 1.14 | Chicago, IL |
 | 1 per 37 | 0.54 | 0.81 | 1.08 | District of Columbia |
 | 1 per 40 | 0.5 | 0.75 | 1 | Illinois; Maine; Washington; Philadelphia, PA; Seattle, WA |
@@ -22,6 +22,8 @@ Work from the hours worked so far in the year, not paycheck by paycheck, so frac
 
 - Alaska: 56 hours at the start of the year (Alaska DOLWD FAQ)
 - Arizona: 40 hours at the start of the year (A.R.S. 23-372(D)(1))
+- California: 40 hours at the start of the year (Cal. Lab. Code 246(b)(1))
+- Connecticut: 40 hours at the start of the year (Connecticut DOL)
 - Illinois: 40 hours at the start of the year (IDOL PLAWA FAQ)
 - Maryland: 40 hours at the start of the year (Md. Lab. & Empl. 3-1304(d))
 - Minnesota: 80 hours at the start of the year (Minn. Stat. 181.9446(b)(2))
@@ -45,4 +47,4 @@ Work from the hours worked so far in the year, not paycheck by paycheck, so frac
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/guides/hourly-accrual/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

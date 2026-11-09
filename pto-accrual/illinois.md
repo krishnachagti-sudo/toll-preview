@@ -71,4 +71,4 @@ Yes: 1 hour per 40 hours worked, up to 40 hours in a 12-month period; or front-l
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/illinois/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

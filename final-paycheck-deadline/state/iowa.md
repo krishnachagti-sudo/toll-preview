@@ -71,4 +71,4 @@ By the next regular payday for the pay period in which the wages were earned (Io
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

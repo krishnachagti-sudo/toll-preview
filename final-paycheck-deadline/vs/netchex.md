@@ -32,7 +32,7 @@ Their row for Delaware reads: "Next regular payday". The Delaware Code says:
 
 ## When Netchex's chart is better
 
-When you want a readable summary of every state, with the penalty notes in one post, including the states this lookup does not cover yet (it lists 30 jurisdictions read on their own sites).
+When you want a readable summary of every state, with the penalty notes in one post, including the states this lookup does not cover yet (it lists 36 jurisdictions read on their own sites).
 
 > Worked out from each state's own published text, quoted with the date we read it. Not legal advice. Business days skip weekends and US federal holidays; add your state's holidays and closed days if they differ. Local ordinances, union contracts, employment contracts and industry rules can be stricter.
 
@@ -51,4 +51,4 @@ When you want a readable summary of every state, with the penalty notes in one p
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/vs/netchex/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

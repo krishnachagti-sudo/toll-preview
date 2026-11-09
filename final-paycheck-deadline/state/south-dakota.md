@@ -65,4 +65,4 @@ By the next regular payday (SDCL 60-11-11).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/south-dakota/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

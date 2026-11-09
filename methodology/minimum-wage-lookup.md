@@ -15,12 +15,12 @@ The rate is the highest of the federal $7.25 (since July 24, 2009), the state ra
 ## What does it not cover?
 
 - Not legal advice. The rate shown is the highest general minimum wage we hold for the place and date; industry, hotel, health care, youth, training and other special rates can differ.
-- 32 states and places are listed as not covered rather than filled in from another source. Employers covered by the federal FLSA pay at least $7.25; state laws differ on which employers they cover.
+- 21 states and places are listed as not covered rather than filled in from another source. Employers covered by the federal FLSA pay at least $7.25; state laws differ on which employers they cover.
 - A ZIP code that crosses a city or county line cannot be answered exactly without the street address. Not legal advice.
 
 ## How fresh is the data?
 
-- [Data as of Nov 4, 2026, from 72 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): DOL's state and tipped tables were updated November 5, 2026 and read November 8, 2026; state pages were read November 8, 2026 and city and county pages November 8, 2026. Each source page is checked once a day for changes; a change is read again by a person before a data file is edited, with the tests that pin it. Dates past a place's last known rate are answered as not covered.
+- [Data as of Nov 4, 2026, from 83 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): DOL's state and tipped tables were updated November 5, 2026 and read November 8, 2026; state pages were read November 8, 2026 and city and county pages November 8, 2026. Each source page is checked once a day for changes; a change is read again by a person before a data file is edited, with the tests that pin it. Dates past a place's last known rate are answered as not covered.
 - [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin DOL's tables as read, check that every state step and covered local rate has an official source read on 2026-11-08 with a quote (the Los Angeles, Seattle, Denver, California and New York quotes hold their rates), and pin the Census ZCTA file by its SHA-256.
 
 - [U.S. Department of Labor, Wage and Hour Division: State Minimum Wage Laws (basic minimum rate, non-farm employment)](https://www.dol.gov/agencies/whd/minimum-wage/state), updated 2026-11-05, read 2026-11-08
@@ -70,6 +70,15 @@ The rate is the highest of the federal $7.25 (since July 24, 2009), the state ra
 - [Santa Rosa, California: City of Santa Rosa: Minimum Wage](https://srcity.org/3164/Minimum-Wage), see the document, read 2026-11-08
 - [Sonoma, California: City of Sonoma: Minimum Wage](https://www.sonomacity.org/wages/), see the document, read 2026-11-08
 - [South San Francisco, California: City of South San Francisco: Local Minimum Wage](https://www.ssfca.gov/Departments/City-Manager/Local-Minimum-Wage), see the document, read 2026-11-08
+- [Belmont, California: City of Belmont: Belmont Minimum Wage Ordinance](https://www.belmont.gov/our-city/frequently-asked-questions/mmwage), see the document, read 2026-11-09
+- [Fremont, California: City of Fremont: Minimum Wage](https://www.fremont.gov/business/minimum-wage), see the document, read 2026-11-09
+- [Mountain View, California: City of Mountain View: Mountain View Minimum Wage Ordinance](https://econdev.mountainview.gov/resources/city-minimum-wage?locale=en), see the document, read 2026-11-09
+- [Novato, California: City of Novato: Novato Minimum Wage](https://www.novato.gov/business/novato-minimum-wage), see the document, read 2026-11-09
+- [Redwood City, California: City of Redwood City: Minimum Wage](https://www.redwoodcity.org/departments/city-manager/city-manager-s-initiatives/local-minimum-wage), see the document, read 2026-11-09
+- [San Jose, California: City of San José: Minimum Wage Ordinance](https://www.sanjoseca.gov/your-government/departments-offices/public-works/labor-compliance/minimum-wage-ordinance), see the document, read 2026-11-09
+- [Santa Clara, California: City of Santa Clara: Minimum Wage Ordinance](https://www.santaclaraca.gov/our-city/government/governance/city-initiatives/minimum-wage-ordinance), see the document, read 2026-11-09
+- [Sunnyvale, California: City of Sunnyvale: Minimum Wage in Sunnyvale](https://www.sunnyvale.ca.gov/business-and-development/your-business-center/minimum-wage), see the document, read 2026-11-09
+- [West Hollywood, California: City of West Hollywood: Minimum Wage](https://www.weho.org/business/operate-your-business/minimum-wage), see the document, read 2026-11-09
 - [Seattle, Washington: City of Seattle Office of Labor Standards: Minimum Wage](https://www.seattle.gov/laborstandards/ordinances/minimum-wage), see the document, read 2026-11-08
 - [Tukwila, Washington: City of Tukwila: Labor Standards, Minimum Wage Ordinance](https://www.tukwilawa.gov/departments/finance/minimum-wage-and-fair-access-to-additional-hours-of-work/), see the document, read 2026-11-08
 - [Burien, Washington: City of Burien: Minimum Wage](https://www.burienwa.gov/city_hall/laws_regulations/minimum_wage), see the document, read 2026-11-08
@@ -80,6 +89,7 @@ The rate is the highest of the federal $7.25 (since July 24, 2009), the state ra
 - [Denver, Colorado: City and County of Denver: Citywide Minimum Wage](https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Auditors-Office/Denver-Labor/Citywide-Minimum-Wage/), see the document, read 2026-11-08
 - [Boulder, Colorado: City of Boulder: Local Minimum Wage](https://bouldercolorado.gov/local-minimum-wage), see the document, read 2026-11-08
 - [Boulder County (unincorporated), Colorado: Boulder County: Local Minimum Wage](https://bouldercounty.gov/departments/commissioners/local-minimum-wage/), see the document, read 2026-11-08
+- [Edgewater, Colorado: City of Edgewater: Owning a Business in Edgewater (Minimum Wage Schedule)](https://www.edgewaterco.gov/doing-business/owning-a-business-in-edgewater), see the document, read 2026-11-09
 - [Chicago, Illinois: City of Chicago BACP: Minimum Wage Information](https://www.chicago.gov/city/en/depts/bacp/supp_info/minimumwageinformation.html), see the document, read 2026-11-08
 - [Cook County, Illinois: Cook County: Minimum Wage Ordinance and Regulations](https://www.cookcountyil.gov/service/minimum-wage-ordinance-and-regulations), see the document, read 2026-11-08
 - [Minneapolis, Minnesota: City of Minneapolis: Minimum Wage](https://minimumwage.minneapolismn.gov/), see the document, read 2026-11-08
@@ -91,6 +101,7 @@ The rate is the highest of the federal $7.25 (since July 24, 2009), the state ra
 - [Albuquerque, New Mexico: City of Albuquerque: Minimum Wage Information](https://www.cabq.gov/legal/albuquerque-minimum-wage-information), see the document, read 2026-11-08
 - [Santa Fe, New Mexico: City of Santa Fe: Living Wage in the City of Santa Fe](https://santafenm.gov/economic-development/living-wage-in-the-city-of-santa-fe), see the document, read 2026-11-08
 - [Santa Fe County (unincorporated), New Mexico: Santa Fe County: Living Wage](https://www.santafecountynm.gov/livingwage), see the document, read 2026-11-08
+- [Las Cruces, New Mexico: City of Las Cruces: Minimum Wage Notice for 2026](https://lascruces.gov/minimum-wage-notice-for-2026/), see the document, read 2026-11-09
 - [Rockland, Maine: City of Rockland: Minimum Wage](https://www.rocklandmaine.gov/m/newsflash/home/detail/115), see the document, read 2026-11-08
 - [UC Berkeley Labor Center: Inventory of US City and County Minimum Wage Ordinances](https://laborcenter.berkeley.edu/inventory-of-us-city-and-county-minimum-wage-ordinances/), updated 2026-07-23, read 2026-11-08
 - [Census 2020 ZCTA5 to Place relationship file](https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_place20_natl.txt), SHA-256 698a5dad71ed, read 2026-11-08
@@ -100,7 +111,7 @@ The rate is the highest of the federal $7.25 (since July 24, 2009), the state ra
 
 ## What does the minimum wage lookup by address compute?
 
-Given a street address, a ZIP code, or a state with an optional city or county, and a date, the tool gives the legal minimum wage and the tipped cash wage there: the highest of the federal, state, county and city rates, which government sets it, since when, and the next scheduled change, each rate with the official page it was read from and the date. It also lists every known change in a date window. Rates come from the U.S. Department of Labor's state and tipped tables, 16 state pages, and 51 city and county pages read on November 8, 2026. Not legal advice. The rate shown is the highest general minimum wage we hold for the place and date; industry, hotel, health care, youth, training and other special rates can differ.
+Given a street address, a ZIP code, or a state with an optional city or county, and a date, the tool gives the legal minimum wage and the tipped cash wage there: the highest of the federal, state, county and city rates, which government sets it, since when, and the next scheduled change, each rate with the official page it was read from and the date. It also lists every known change in a date window. Rates come from the U.S. Department of Labor's state and tipped tables, 16 state pages, and 62 city and county pages read on November 8, 2026. Not legal advice. The rate shown is the highest general minimum wage we hold for the place and date; industry, hotel, health care, youth, training and other special rates can differ.
 
 **In detail: operations, inputs and outputs**
 
@@ -148,9 +159,9 @@ Dated steps and announced changes come from 16 state pages, each read November 8
 
 **City and county rates.**
 
-51 cities and counties, each read on its own official page on November 8, 2026 with the sentence quoted. The UC Berkeley Labor Center inventory (updated July 23, 2026) was the list of places to read, not a source of rates.
+62 cities and counties, each read on its own official page on November 8, 2026 with the sentence quoted. The UC Berkeley Labor Center inventory (updated July 23, 2026) was the list of places to read, not a source of rates.
 
-19 places with an ordinance could not be read and are named with the reason: Belmont, Fremont, Mountain View, Novato, Redwood City, San Carlos, San Jose, Santa Clara, Sunnyvale, West Hollywood, Foster City, Edgewater, Las Cruces, Portland, Omaha, Lincoln, San Leandro, Bernalillo County (unincorporated) and Prince George's County.
+8 places with an ordinance could not be read and are named with the reason: San Carlos, Foster City, Portland, Omaha, Lincoln, San Leandro, Bernalillo County (unincorporated) and Prince George's County.
 
 ## Which edge cases does it handle?
 
@@ -303,8 +314,9 @@ Every California change on January 1, 2027
 
 | Result | Value |
 | --- | --- |
-| answer | 17 known minimum wage changes between January 1, 2027 and January 1, 2027 in California, from the official pages we read on November 8, 2026. |
+| answer | 24 known minimum wage changes between January 1, 2027 and January 1, 2027 in California, from the official pages we read on November 8, 2026. |
 | California | $16.90 to $17.40 |
+| Belmont | $18.95 to $19.60 |
 | Burlingame | $17.86 to $18.47 |
 | Cupertino | $18.70 to $19.25 |
 | Daly City | $17.50 to $18.10 |
@@ -313,14 +325,20 @@ Every California change on January 1, 2027
 | Hayward | $17.79 to $18.39 |
 | Los Altos | $19.25 |
 | Menlo Park | $17.55 to $18.05 |
+| Novato | $17.73 to $18.25 |
 | Palo Alto | $18.70 to $19.25 |
 | Petaluma | $18.31 to $18.93 |
+| Redwood City | $18.65 to $19.30 |
 | Richmond | $19.18 to $19.61 |
 | San Diego | $17.75 to $18.35 |
+| San Jose | $18.45 to $19.00 |
 | San Mateo | $18.60 to $19.25 |
 | San Mateo County (unincorporated) | $17.95 to $18.58 |
+| Santa Clara | $18.70 to $19.25 |
 | Santa Rosa | $18.21 to $18.83 |
 | South San Francisco | $18.75 |
+| Sunnyvale | $19.50 to $20.05 |
+| West Hollywood | $20.25 to $20.94 |
 
 **The input**
 

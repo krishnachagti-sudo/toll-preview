@@ -25,13 +25,18 @@ Combined banks and sick leave payout in each place we read
 | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/) | Not stated in the source we read | Not required |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/) | A PTO policy that gives enough leave for the same purposes and conditions satisfies the law. (A.R.S. 23-372(E)) | Not required |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/california/) | Not stated in the source we read | Not required |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/colorado/) | A PTO policy satisfies HFWA if it gives all the same rights. (CDLE INFO #6) | Not stated |
+| [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/connecticut/) | Not stated in the source we read | Not required |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/) | Not stated in the source we read | Not stated |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/) | Separate banks keep the PLAWA hours out of the final pay; a combined vacation bank is payable. (IDOL PLAWA FAQ) | Not required |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maine/) | Not stated in the source we read | Not stated |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/) | Not stated in the source we read | Not required |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/massachusetts/) | Not stated in the source we read | Not stated |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/michigan/) | Not stated in the source we read | Not stated |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/) | Not stated in the source we read | Not required |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/) | Not stated in the source we read | Not stated |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-york/) | Not stated in the source we read | Not stated |
 | [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/oregon/) | Not stated in the source we read | Not required |
 | [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/vermont/) | Not stated in the source we read | Not stated |
 | [Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/) | Not stated in the source we read | Not stated |
@@ -74,4 +79,4 @@ A state sick leave law sets a minimum for one purpose; PTO is the employer's own
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/separate-pto-and-sick-leave/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

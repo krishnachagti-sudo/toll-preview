@@ -73,4 +73,4 @@ Administrative penalties of up to $750 ($500 if paid before the department files
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

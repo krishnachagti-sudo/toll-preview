@@ -74,4 +74,4 @@ Wages unpaid 30 days after the regular payday (with no good-faith dispute): liqu
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/pennsylvania/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

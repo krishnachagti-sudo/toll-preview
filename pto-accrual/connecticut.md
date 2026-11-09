@@ -1,6 +1,6 @@
 # Connecticut PTO payout and sick leave
 
-In Connecticut, unused vacation at separation is owed only as the written policy or agreement says (C.G.S. 31-76k); under a policy that pays it out, 64 hours at $28.00 is $1,792.00. Connecticut's sick leave law is not covered here: its sites could not be read from our network on 2026-11-08: portal.ct.gov paid sick leave pages and cga.ct.gov timed out.
+In Connecticut, unused vacation at separation is owed only as the written policy or agreement says (C.G.S. 31-76k); under a policy that pays it out, 64 hours at $28.00 is $1,792.00. Connecticut's paid sick leave law is a separate bank: 1 hour per 30 hours worked, up to 40 hours a year (CGS 31-57r), and unused sick leave need not be paid out (Connecticut DOL).
 
 ## Work out a payout
 
@@ -29,7 +29,7 @@ Connecticut: gross payout by unused hours and final hourly rate
 
 ## Sick leave
 
-Connecticut's sick leave law is not covered here: its sites could not be read from our network on 2026-11-08: portal.ct.gov paid sick leave pages and cga.ct.gov timed out. 
+Connecticut's paid sick leave law is a separate bank: 1 hour per 30 hours worked, up to 40 hours a year (CGS 31-57r), and unused sick leave need not be paid out (Connecticut DOL). [Connecticut sick leave calculator](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/connecticut/).
 
 ## When the final paycheck is due
 
@@ -40,12 +40,17 @@ The payout goes in the final paycheck where it is owed; the state's final pay la
 ## Sources
 
 - [Connecticut Department of Labor, Wage Payment Laws (C.G.S. 31-71a to 31-76k), update December 2023 (dated 2023-12), read November 8, 2026](https://portal.ct.gov/dol/-/media/DOL/2022-New-Design-System/Divisions/wage-and-workplace-standards/WagePaymentLaws_Update12-2023.pdf)
+- [Connecticut Department of Labor, Paid Sick Leave FAQs (CGS 31-57r to 31-57w), read November 9, 2026](https://portal.ct.gov/dol/divisions/legal/connecticut-leave-programs/paid-sick-leave-faqs)
 
 ## Questions
 
 ### Does Connecticut require PTO payout at termination?
 
 Owed in the form of wages if the employer policy or union contract provides payment of accrued fringe benefits on termination. (C.G.S. 31-76k).
+
+### Does Connecticut require paid sick leave?
+
+Yes: 1 hour per 30 hours worked, up to 40 hours a year. (CGS 31-57r).
 
 ## Related
 
@@ -56,4 +61,4 @@ Owed in the form of wages if the employer policy or union contract provides paym
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/connecticut/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

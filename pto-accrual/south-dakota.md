@@ -60,4 +60,4 @@ No. The state labor department: "South Dakota has no law requiring paid leave. T
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-dakota/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

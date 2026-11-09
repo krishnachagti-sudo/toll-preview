@@ -1,6 +1,6 @@
 # Free data downloads
 
-1819 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
+1820 tables can be downloaded as CSV, each with the same rows as its page, a data date and a named official source.
 
 ## Which files can you download?
 
@@ -34,7 +34,7 @@ CSV downloads by tool: Money and tax
 | [Overtime auditor for timesheet CSVs](https://krishnachagti-sudo.github.io/toll-preview/data/overtime-auditor/) | 1 CSV | 2026-11-08 |
 | [Pay application and retainage (G702/G703-style)](https://krishnachagti-sudo.github.io/toll-preview/data/pay-application/) | 7 CSVs | 2026-11-08 |
 | [Payout reconciliation: split a payout into sales, refunds, fees and tax](https://krishnachagti-sudo.github.io/toll-preview/data/payout-reconciliation/) | 4 CSVs | 2026-11-08 |
-| [PTO and sick leave accrual by state](https://krishnachagti-sudo.github.io/toll-preview/data/pto-accrual/) | 2 CSVs | 2026-11-08 |
+| [PTO and sick leave accrual by state](https://krishnachagti-sudo.github.io/toll-preview/data/pto-accrual/) | 2 CSVs | 2026-11-09 |
 | [Quid pro quo receipt checker](https://krishnachagti-sudo.github.io/toll-preview/data/quid-pro-quo-receipt-checker/) | 12 CSVs | 2026-11-08 |
 | [Real estate commission split and cap tracker](https://krishnachagti-sudo.github.io/toll-preview/data/real-estate-commission-split/) | 10 CSVs | 2026-11-08 |
 | [Recipe cost calculator and menu re-coster](https://krishnachagti-sudo.github.io/toll-preview/data/recipe-cost-calculator/) | 5 CSVs | 2026-11-08 |
@@ -49,7 +49,7 @@ CSV downloads by tool: Money and tax
 | [Upwork fee calculator: what reaches your bank](https://krishnachagti-sudo.github.io/toll-preview/data/upwork-fee-calculator/) | 16 CSVs | 2026-11-08 |
 | [US import duty estimator by HTS code](https://krishnachagti-sudo.github.io/toll-preview/data/hts-duty-estimator/) | 14 CSVs | 2026-11-08 |
 | [USPS adjustment dispute checker](https://krishnachagti-sudo.github.io/toll-preview/data/usps-adjustment-dispute/) | 6 CSVs | 2026-11-08 |
-| [Wage garnishment calculator for employers](https://krishnachagti-sudo.github.io/toll-preview/data/garnishment-calculator/) | 21 CSVs | 2026-11-08 |
+| [Wage garnishment calculator for employers](https://krishnachagti-sudo.github.io/toll-preview/data/garnishment-calculator/) | 22 CSVs | 2026-11-08 |
 
 **Dates and calendars**
 
@@ -60,7 +60,7 @@ CSV downloads by tool: Dates and calendars
 | [Business days](https://krishnachagti-sudo.github.io/toll-preview/data/business-days/) | 140 CSVs | 2026-10-30 (most) |
 | [Cron expression checker and next run times](https://krishnachagti-sudo.github.io/toll-preview/data/cron/) | 52 CSVs | 2026-11-08 |
 | [Delivery date and holiday order-by calculator](https://krishnachagti-sudo.github.io/toll-preview/data/delivery-date-calculator/) | 11 CSVs | 2026-10-31 (most) |
-| [Final paycheck deadline by state](https://krishnachagti-sudo.github.io/toll-preview/data/final-paycheck-deadline/) | 11 CSVs | 2026-11-08 |
+| [Final paycheck deadline by state](https://krishnachagti-sudo.github.io/toll-preview/data/final-paycheck-deadline/) | 11 CSVs | 2026-11-09 |
 | [FMLA eligibility checker](https://krishnachagti-sudo.github.io/toll-preview/data/fmla-eligibility-checker/) | 9 CSVs | 2026-11-08 |
 | [Hours calculator and timesheet](https://krishnachagti-sudo.github.io/toll-preview/data/hours-calculator/) | 6 CSVs | 2026-11-07 |
 | [Lien deadline calculator](https://krishnachagti-sudo.github.io/toll-preview/data/lien-deadline/) | 2 CSVs | 2026-11-08 |

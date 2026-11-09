@@ -56,4 +56,4 @@ A written policy promising payout makes vacation wages. (Oklahoma DOL).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/oklahoma/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

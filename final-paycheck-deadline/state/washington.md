@@ -64,4 +64,4 @@ At the end of the established pay period (RCW 49.48.010(2)).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/washington/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

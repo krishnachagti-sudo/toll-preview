@@ -29,7 +29,7 @@ Local rates on November 8, 2026 and the next change
 
 ## Not covered
 
-- Prince George's County: Not read on the county's own site. Maryland's Department of Labor page lists a $15.30 county rate from July 1, 2026; we show county rates only from the county's own page.
+- Prince George's County: Not read on the county's own site. Maryland's Department of Labor page lists a $15.30 county rate from July 1, 2026; we show county rates only from the county's own page. The county's own site answered Access Denied in a browser on 2026-11-09.
 
 > Not legal advice. The rate shown is the highest general minimum wage we hold for the place and date; industry, hotel, health care, youth, training and other special rates can differ. Every rate names the official page it was read from and the date we read it. Places and states whose pages we could not read are listed as not covered, never guessed. Employers covered by the federal Fair Labor Standards Act pay at least the federal $7.25; state laws differ on which employers they cover.
 

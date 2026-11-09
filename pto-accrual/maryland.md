@@ -61,4 +61,4 @@ Yes: At least 1 hour per 30 hours worked. (Md. Lab. & Empl. 3-1304).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maryland/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

@@ -32,7 +32,7 @@ Their row for Delaware reads: "Whichever is latest: Next scheduled payday or 3 d
 
 ## When Paycor's chart is better
 
-When you want one printable chart of every state at a glance, including the states this lookup does not cover yet (it lists 30 jurisdictions read on their own sites).
+When you want one printable chart of every state at a glance, including the states this lookup does not cover yet (it lists 36 jurisdictions read on their own sites).
 
 > Worked out from each state's own published text, quoted with the date we read it. Not legal advice. Business days skip weekends and US federal holidays; add your state's holidays and closed days if they differ. Local ordinances, union contracts, employment contracts and industry rules can be stricter.
 
@@ -51,4 +51,4 @@ When you want one printable chart of every state at a glance, including the stat
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/vs/paycor/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

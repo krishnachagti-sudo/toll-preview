@@ -67,4 +67,4 @@ By the next regular payday (C.R.S. 8-4-109).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

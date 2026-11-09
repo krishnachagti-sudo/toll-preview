@@ -67,4 +67,4 @@ By the next regular payday (G.S. 95-25.7).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-carolina/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

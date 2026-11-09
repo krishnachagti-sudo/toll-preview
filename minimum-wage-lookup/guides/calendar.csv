@@ -2,6 +2,7 @@ date,level,jurisdiction,state,rate,previous,tiers,source
 2027-01-01,city,Flagstaff,AZ,18.95,18.35,,https://www.flagstaff.az.gov/3520/Minimum-Wage
 2027-01-01,city,Tucson,AZ,16.00,15.45,,https://www.tucsonaz.gov/Departments/Business-Services-Department/Tucson-Minimum-Wage-Act
 2027-01-01,state,California,CA,17.40,16.90,,https://www.gov.ca.gov/2026/07/31/governor-newsom-announces-california-will-raise-statewide-minimum-wage/
+2027-01-01,city,Belmont,CA,19.60,18.95,,https://www.belmont.gov/our-city/frequently-asked-questions/mmwage
 2027-01-01,city,Burlingame,CA,18.47,17.86,,https://burlingame.org/307/Minimum-Wage-Information
 2027-01-01,city,Cupertino,CA,19.25,18.70,,https://www.cupertino.org/our-city/city-news/cupertino-minimum-wage
 2027-01-01,city,Daly City,CA,18.10,17.50,,https://www.dalycity.org/388/Minimum-Wage
@@ -10,17 +11,24 @@ date,level,jurisdiction,state,rate,previous,tiers,source
 2027-01-01,city,Hayward,CA,18.39,17.79,,https://www.hayward-ca.gov/local-minimum-wage
 2027-01-01,city,Los Altos,CA,19.25,,,https://www.losaltosca.gov/511/Minimum-Wage
 2027-01-01,city,Menlo Park,CA,18.05,17.55,,https://menlopark.gov/Government/Departments/City-Managers-Office/Economic-development/Local-minimum-wage-ordinance
+2027-01-01,city,Novato,CA,18.25,17.73,Large businesses (26 to 99 employees): 17.97,https://www.novato.gov/business/novato-minimum-wage
 2027-01-01,city,Palo Alto,CA,19.25,18.70,,https://www.cityofpaloalto.org/Business/Business-Resources/Minimum-Wage
 2027-01-01,city,Petaluma,CA,18.93,18.31,,https://cityofpetaluma.org/minimum-wage/
+2027-01-01,city,Redwood City,CA,19.30,18.65,,https://www.redwoodcity.org/departments/city-manager/city-manager-s-initiatives/local-minimum-wage
 2027-01-01,city,Richmond,CA,19.61,19.18,,https://www.ci.richmond.ca.us/2615/Minimum-Wage-Ordinance
 2027-01-01,city,San Diego,CA,18.35,17.75,,https://www.sandiego.gov/olse/minimum-wage/earned-sick-leave
+2027-01-01,city,San Jose,CA,19.00,18.45,,https://www.sanjoseca.gov/your-government/departments-offices/public-works/labor-compliance/minimum-wage-ordinance
 2027-01-01,city,San Mateo,CA,19.25,18.60,,https://www.cityofsanmateo.org/3278/Minimum-Wage
 2027-01-01,county,San Mateo County (unincorporated),CA,18.58,17.95,,https://www.smcgov.org/ceo/minimum-wage-increase-unincorporated-areas
+2027-01-01,city,Santa Clara,CA,19.25,18.70,,https://www.santaclaraca.gov/our-city/government/governance/city-initiatives/minimum-wage-ordinance
 2027-01-01,city,Santa Rosa,CA,18.83,18.21,,https://srcity.org/3164/Minimum-Wage
 2027-01-01,city,South San Francisco,CA,18.75,,,https://www.ssfca.gov/Departments/City-Manager/Local-Minimum-Wage
+2027-01-01,city,Sunnyvale,CA,20.05,19.50,,https://www.sunnyvale.ca.gov/business-and-development/your-business-center/minimum-wage
+2027-01-01,city,West Hollywood,CA,20.94,20.25,,https://www.weho.org/business/operate-your-business/minimum-wage
 2027-01-01,city,Boulder,CO,18.17,16.82,,https://bouldercolorado.gov/local-minimum-wage
 2027-01-01,county,Boulder County (unincorporated),CO,17.43,16.82,,https://bouldercounty.gov/departments/commissioners/local-minimum-wage/
 2027-01-01,city,Denver,CO,19.84,19.29,,https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Auditors-Office/Denver-Labor/Citywide-Minimum-Wage/
+2027-01-01,city,Edgewater,CO,19.99,18.17,,https://www.edgewaterco.gov/doing-business/owning-a-business-in-edgewater
 2027-01-01,county,Howard County,MD,16.45,16.00,,https://www.howardcountymd.gov/finance/minimum-wage
 2027-01-01,state,Maine,ME,15.70,15.10,,https://www.maine.gov/labor/news_events/article.shtml?id=13362373
 2027-01-01,state,Michigan,MI,15.00,13.73,,https://www.dol.gov/agencies/whd/minimum-wage/state

@@ -75,4 +75,4 @@ Liquidated damages of 10% of the unpaid wages for each working day the failure c
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

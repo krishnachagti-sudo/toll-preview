@@ -79,4 +79,4 @@ Carryover may be limited to 40 hours. (Md. Lab. & Empl. 3-1304(g)(2)).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

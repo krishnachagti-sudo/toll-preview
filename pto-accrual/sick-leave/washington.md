@@ -80,4 +80,4 @@ Unused balances of 40 hours or less carry over; an employer need not carry over 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/washington/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

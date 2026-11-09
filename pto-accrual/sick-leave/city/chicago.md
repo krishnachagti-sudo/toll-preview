@@ -62,4 +62,4 @@ One hour of paid leave and one hour of paid sick leave per 35 hours worked, from
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/chicago/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

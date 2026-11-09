@@ -4,8 +4,12 @@ Sick leave follows where the employee works, not where the employer is: Oregon e
 
 ## What the agencies say about location
 
+- California: An employee who works in California for the same employer for 30 or more days within a year from the start of employment. "An employee who, on or after July 1, 2015, works in California for the same employer for 30 or more days within a year from the commencement of employment is entitled to paid sick days as specified in this section." [Cal. Labor Code 246, paid sick days (California Legislative Information)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=246.)
+- Connecticut: Employers with 11 or more employees in Connecticut from January 1, 2026; 1 or more from January 1, 2027. "January 1, 2026 - employers with 11 or more employees in CT" [Connecticut Department of Labor, Paid Sick Leave FAQs (CGS 31-57r to 31-57w)](https://portal.ct.gov/dol/divisions/legal/connecticut-leave-programs/paid-sick-leave-faqs)
 - Maine: Applies to employers with more than 10 employees for more than 120 days in a calendar year; the leave can be used for any reason under the section. "An employer that employs more than 10 employees in the usual and regular course of business for more than 120 days in any calendar year shall permit each employee to earn paid leave" [26 M.R.S. 637, Earned paid leave](https://legislature.maine.gov/statutes/26/title26sec637-2.html)
+- Michigan: Accrual began February 21, 2025 (October 1, 2025 for a small business), or at hire if later. "For a small business, October 1, 2025, or upon commencement of the employee’s employment, whichever is later." [Michigan Department of Labor and Economic Opportunity, Earned Sick Time Act: Frequently Asked Questions (FAQ)](https://www.michigan.gov/leo/-/media/Project/Websites/leo/Documents/WAGE-HOUR/LEO-ESTA-FAQ-English.pdf)
 - Minnesota: Covers employees expected to work at least 80 hours a year in Minnesota. "are anticipated to work at least 80 hours in a year for an employer in Minnesota" [Minnesota Department of Labor and Industry, Earned sick and safe time](https://www.dli.mn.gov/sick-leave)
+- New York: All private-sector employees, including part-time and overtime-exempt. "All private-sector employees in New York State are covered, regardless of industry, occupation, part-time status, and overtime exempt status." [The State of New York, New York Paid Sick Leave](https://www.ny.gov/programs/new-york-paid-sick-leave)
 - Oregon: Oregon employees earn sick time even when the employer is located in another state. "Oregon employees earn sick time even if their employer is located out of state." [Oregon Bureau of Labor and Industries, Sick time](https://www.oregon.gov/boli/workers/pages/sick-time.aspx)
 - Virginia: Only home health workers who average at least 20 hours a week or 90 hours a month. ""Employee" means a home health worker who works on average at least 20 hours per week or 90 hours per month." [Va. Code 40.1-33.3, Definitions (home health worker)](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-33.3/)
 - Washington: Where a local ordinance is more generous than state law, the ordinance applies. "If a local ordinance requires more generous paid sick leave benefits for employees than state law, those requirements will apply." [Washington Department of Labor & Industries, Paid Sick Leave](https://lni.wa.gov/workers-rights/leave/paid-sick-leave/)
@@ -32,8 +36,12 @@ Sick leave follows where the employee works, not where the employer is: Oregon e
 
 ## Sources
 
+- [Cal. Labor Code 246, paid sick days (California Legislative Information), read November 9, 2026](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=246.)
+- [Connecticut Department of Labor, Paid Sick Leave FAQs (CGS 31-57r to 31-57w), read November 9, 2026](https://portal.ct.gov/dol/divisions/legal/connecticut-leave-programs/paid-sick-leave-faqs)
 - [26 M.R.S. 637, Earned paid leave, read November 8, 2026](https://legislature.maine.gov/statutes/26/title26sec637-2.html)
+- [Michigan Department of Labor and Economic Opportunity, Earned Sick Time Act: Frequently Asked Questions (FAQ), read November 9, 2026](https://www.michigan.gov/leo/-/media/Project/Websites/leo/Documents/WAGE-HOUR/LEO-ESTA-FAQ-English.pdf)
 - [Minnesota Department of Labor and Industry, Earned sick and safe time, read November 8, 2026](https://www.dli.mn.gov/sick-leave)
+- [The State of New York, New York Paid Sick Leave, read November 9, 2026](https://www.ny.gov/programs/new-york-paid-sick-leave)
 - [Oregon Bureau of Labor and Industries, Sick time, read November 8, 2026](https://www.oregon.gov/boli/workers/pages/sick-time.aspx)
 - [Va. Code 40.1-33.3, Definitions (home health worker), read November 8, 2026](https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-33.3/)
 - [Washington Department of Labor & Industries, Paid Sick Leave, read November 8, 2026](https://lni.wa.gov/workers-rights/leave/paid-sick-leave/)
@@ -50,4 +58,4 @@ Sick leave follows where the employee works, not where the employer is: Oregon e
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/guides/multi-state/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

@@ -8,13 +8,18 @@ The most each place lets an employer limit (largest employer tier)
 | --- | --- | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/) | 56 hours | 56 hours | none stated | none stated |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/) | 40 hours | 40 hours | none stated | none stated |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/california/) | none stated | 40 hours | 80 hours | none stated |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/colorado/) | 48 hours | none stated | none stated | none stated |
+| [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/connecticut/) | 40 hours | 40 hours | none stated | 40 hours |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/) | 7 days | none stated | none stated | none stated |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/) | 40 hours | 40 hours | none stated | none stated |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maine/) | 40 hours | none stated | none stated | none stated |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/) | 40 hours | 64 hours | 64 hours | 40 hours |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/massachusetts/) | 40 hours | 40 hours | none stated | none stated |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/michigan/) | none stated | 72 hours | none stated | none stated |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/) | 48 hours | none stated | 80 hours | none stated |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/) | 40 hours | 40 hours | none stated | 40 hours |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-york/) | 56 hours | none stated | none stated | none stated |
 | [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/oregon/) | 40 hours | 40 hours | 80 hours | 40 hours |
 | [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/vermont/) | none stated | 40 hours | none stated | none stated |
 | [Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/) | 40 hours | 40 hours | none stated | none stated |
@@ -48,4 +53,4 @@ For vacation under your own policy, the state's wage rules decide: Illinois allo
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/guides/carryover-caps/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

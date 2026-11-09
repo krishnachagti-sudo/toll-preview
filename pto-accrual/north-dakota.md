@@ -56,4 +56,4 @@ Accrued PTO is paid at separation; on a voluntary quit a private employer may wi
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/north-dakota/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

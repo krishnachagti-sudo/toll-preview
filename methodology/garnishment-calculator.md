@@ -1,6 +1,6 @@
 # How the wage garnishment calculator works for employers
 
-A creditor may take the lesser of 25% of disposable earnings and the amount above 30 times the $7.25 federal minimum wage for the pay period (15 U.S.C. 1673(a)), and less where the work state's statute says so. 18 of the 51 jurisdictions (the states and DC) have their own rule read here; for the rest the federal limit is shown and the answer says the state may allow less.
+A creditor may take the lesser of 25% of disposable earnings and the amount above 30 times the $7.25 federal minimum wage for the pay period (15 U.S.C. 1673(a)), and less where the work state's statute says so. 19 of the 51 jurisdictions (the states and DC) have their own rule read here; for the rest the federal limit is shown and the answer says the state may allow less.
 
 ## How does it work?
 
@@ -14,14 +14,14 @@ A creditor may take the lesser of 25% of disposable earnings and the amount abov
 
 ## What does it not cover?
 
-- State rules are covered only for the 18 jurisdictions whose own statute or court form was read; for the others the federal limit is shown and the state may allow less.
+- State rules are covered only for the 19 jurisdictions whose own statute or court form was read; for the others the federal limit is shown and the state may allow less.
 - State support statutes were not checked for lower limits unless the notes say so.
 - Follow the order you were served: where it sets a lower amount, the order controls.
 - It is not legal advice.
 
 ## How fresh is the data?
 
-- [Data as of Nov 4, 2026, from 21 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Fact Sheet #30 and the U.S. Code were read on 2026-11-08; each covered state's statute or court form on 2026-11-08; the state minimum wages from each state's own site; Publication 1494 for 2026 on 2026-11-08. The rules change only by hand, with the tests that pin them.
+- [Data as of Nov 4, 2026, from 22 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Fact Sheet #30 and the U.S. Code were read on 2026-11-08; each covered state's statute or court form on 2026-11-08; the state minimum wages from each state's own site; Publication 1494 for 2026 on 2026-11-08. The rules change only by hand, with the tests that pin them.
 - [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests reproduce the Fact Sheet #30 thresholds for every pay period and the $2,400 biweekly example ($470), check that only required deductions come off, that support and earlier orders use up the creditor limit and never go below zero, the 50, 55, 60 and 65 percent support limits, the federal debt rule, one case per covered state worked by hand from its statute, California's court examples, the dated minimum wages, and Publication 1494's examples and table cells.
 
 - [U.S. Department of Labor, Wage and Hour Division, Fact Sheet #30: Wage Garnishment Protections of the Consumer Credit Protection Act (CCPA)](https://www.dol.gov/agencies/whd/fact-sheets/30-cppa), revised December 2024, read 2026-11-08
@@ -29,6 +29,7 @@ A creditor may take the lesser of 25% of disposable earnings and the amount abov
 - [IRS Publication 1494 (Rev. 12-2025), Tables for Figuring Amount Exempt from Levy on Wages, Salary, and Other Income (Forms 668-W(ACS) and 668-W(ICS))](https://www.irs.gov/pub/irs-pdf/p1494.pdf), for 2026, read 2026-11-08
 - [Arizona: A.R.S. 33-1131](https://www.azleg.gov/ars/33/01131.htm), see the document, read 2026-11-08
 - [California: Cal. Code Civ. Proc. 706.050, as stated on Judicial Council form WG-002 (Rev. January 1, 2026)](https://www.courts.ca.gov/documents/wg002.pdf), see the document, read 2026-11-08
+- [Colorado: Colorado Judicial Branch Form 27, Calculation of the Amount of Exempt Earnings Worksheet (C.R.S. 13-54-104)](https://www.coloradojudicial.gov/sites/default/files/2024-08/Form27.pdf), see the document, read 2026-11-09
 - [Delaware: 10 Del. C. 4913](https://delcode.delaware.gov/title10/c049/sc01/index.html), see the document, read 2026-11-08
 - [District of Columbia: D.C. Code 16-572](https://code.dccouncil.gov/us/dc/council/code/sections/16-572), see the document, read 2026-11-08
 - [Florida: Fla. Stat. 222.11](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0222/Sections/0222.11.html), see the document, read 2026-11-08
@@ -249,7 +250,7 @@ IRS levy: single, paid weekly, three dependents
 **What its test suite asserts (3)**
 
 - Fact Sheet #30's thresholds for every pay period and its $2,400 biweekly example are reproduced, read 2026-11-08.
-- One case per covered state (18 in all) is worked by hand from the statute, with California's court examples and the dated state minimum wages.
+- One case per covered state (19 in all) is worked by hand from the statute, with California's court examples and the dated state minimum wages.
 - Support, federal debt and Publication 1494 levy examples for 2026 are reproduced.
 
 [The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
@@ -264,7 +265,7 @@ No. The answer is worked out by fixed rules from the data on this page, so the s
 
 ### What will the wage garnishment calculator for employers refuse to answer?
 
-State rules are covered only for the 18 jurisdictions whose own statute or court form was read; for the others the federal limit is shown and the state may allow less. A request outside what the data covers is refused with the reason and costs nothing.
+State rules are covered only for the 19 jurisdictions whose own statute or court form was read; for the others the federal limit is shown and the state may allow less. A request outside what the data covers is refused with the reason and costs nothing.
 
 ## Related
 

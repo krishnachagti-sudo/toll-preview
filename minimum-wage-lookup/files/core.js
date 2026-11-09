@@ -140,16 +140,17 @@ function buildLocals({ local, states }) {
   return local.places.map((p) => {
     const sources = Object.fromEntries((p.sources ?? []).map((s) => [s.id, s]));
     const firstSrc = p.sources?.[0]?.id ?? null;
+    const readOn = p.sources?.[0]?.readOn ?? local.readOn;
     return {
       ...p,
       level: p.kind === 'city' ? 'city' : 'county',
       covered: p.status === 'covered',
-      steps: (p.steps ?? []).map((s) => stepOf(s, { asOf: local.readOn, src: firstSrc })).sort((a, b) => startOf(a).localeCompare(startOf(b))),
+      steps: (p.steps ?? []).map((s) => stepOf(s, { asOf: readOn, src: firstSrc })).sort((a, b) => startOf(a).localeCompare(startOf(b))),
       sources,
       noTipCredit: states.states[p.state]?.tipCredit === false,
       tipCreditMax: p.tipCreditMax ? mills(p.tipCreditMax) : null,
       notes: p.notes ?? [],
-      coveredTo: p.coveredTo ?? (p.steps?.length ? coveredToOf(p.annual, p.steps.map((x) => x.from ?? local.readOn).sort().pop()) : null),
+      coveredTo: p.coveredTo ?? (p.steps?.length ? coveredToOf(p.annual, p.steps.map((x) => x.from ?? readOn).sort().pop()) : null),
     };
   });
 }
@@ -268,7 +269,7 @@ export function makeEngine(data) {
     const region = regionOf(st, loc);
     const sStep = stepAt(st.steps, date);
     if (sStep && st.coveredTo && date > st.coveredTo) {
-      notCovered.push({ level: 'state', id: st.id, name: st.name, why: `${st.name}'s rate from ${longDate(addDays(st.coveredTo, 1))} was not on the pages we read on ${longDate(readDay)}${st.blocked ? ` (${st.blocked})` : ''}.`, url: sourceOf(st, sStep)?.url });
+      notCovered.push({ level: 'state', id: st.id, name: st.name, why: `${st.name}'s rate from ${longDate(addDays(st.coveredTo, 1))} was not on the pages we read on ${longDate(data.states.readOn ?? readDay)}${st.blocked ? ` (${st.blocked})` : ''}.`, url: sourceOf(st, sStep)?.url });
     } else if (!sStep) {
       notCovered.push({ level: 'state', id: st.id, name: st.name, why: `We hold ${st.name}'s rates from ${longDate(startOf(st.steps[0]))}; earlier dates are not covered.`, url: st.sources.dol.url });
     } else {
@@ -295,7 +296,7 @@ export function makeEngine(data) {
       }
       const step = stepAt(rule.steps, date);
       if (step && rule.coveredTo && date > rule.coveredTo) {
-        const why = `${rule.name} adjusts its rate every ${rule.annual}; the rate from ${longDate(addDays(rule.coveredTo, 1))} was not published on its page when we read it on ${longDate(readDay)}.`;
+        const why = `${rule.name} adjusts its rate every ${rule.annual}; the rate from ${longDate(addDays(rule.coveredTo, 1))} was not published on its page when we read it on ${longDate(Object.values(rule.sources ?? {})[0]?.readOn ?? readDay)}.`;
         (certain ? notCovered : possible).push({ level: rule.level, id: rule.id, name: rule.name, why, url: sourceOf(rule, step)?.url, ...(certain ? {} : { when: why }) });
         continue;
       }

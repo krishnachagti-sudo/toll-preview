@@ -1,6 +1,6 @@
 # Final pay after a firing, state by state
 
-When an employee is fired, 2 of the 30 jurisdictions read here require payment immediately, and 15 allow until the next regular payday (or the payday for the final pay period). For a firing at 4:00 pm on Wednesday, November 18, 2026 with paydays every other Friday, the earliest deadline is Colorado's, 4:00 pm on Wednesday, November 18, 2026.
+When an employee is fired, 4 of the 36 jurisdictions read here require payment immediately, and 16 allow until the next regular payday (or the payday for the final pay period). For a firing at 4:00 pm on Wednesday, November 18, 2026 with paydays every other Friday, the earliest deadline is California's, 4:00 pm on Wednesday, November 18, 2026.
 
 ## Work out a firing
 
@@ -14,11 +14,14 @@ Firing on November 18, 2026: when the final paycheck is due
 
 | State | Due | Rule | Law |
 | --- | --- | --- | --- |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | 2026-11-18 16:00 | immediately, at the time of discharge | Cal. Lab. Code 201(a) |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/) | 2026-11-18 16:00 | immediately | C.R.S. 8-4-109 |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/massachusetts/) | 2026-11-18 16:00 | in full on the day of discharge | G.L. c. 149, s. 148 |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/) | 2026-11-18 16:00 | immediately when separated for cause or laid off, unless a written personnel policy extends it to the next regular payday or 15 days, whichever is first | Mont. Code Ann. 39-3-205(2) |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/) | 2026-11-19 16:00 | immediately on the employee's written demand; in default 24 hours after it | Minn. Stat. 181.13(a) |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | 2026-11-19 | by the next business day | C.G.S. 31-71c(b) |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | 2026-11-19 | by the next working day | D.C. Code 32-1303(1) |
+| [Hawaii](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/hawaii/) | 2026-11-19 | at the time of discharge, or not later than the next working day | HRS 388-3(a) |
 | [Oregon](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/oregon/) | 2026-11-19 | by the end of the next business day | ORS 652.140(1) |
 | [Idaho](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/) | 2026-11-20 | by the next regular payday or within 10 days (weekends and holidays excluded), whichever is sooner; within 48 hours (weekends and holidays excluded) of a written request | Idaho Code 45-606 |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/illinois/) | 2026-11-20 | by the next regular payday | 820 ILCS 115/5 |
@@ -30,15 +33,18 @@ Firing on November 18, 2026: when the final paycheck is due
 | [South Carolina](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/south-carolina/) | 2026-11-20 | within 48 hours of separation or by the next regular payday, which may not be more than 30 days away | S.C. Code 41-10-50 |
 | [South Dakota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/south-dakota/) | 2026-11-20 | by the next regular payday | SDCL 60-11-10 |
 | [Wyoming](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/wyoming/) | 2026-11-20 | by the next regular payday | W.S. 27-4-104 |
+| [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-hampshire/) | 2026-11-21 16:00 | within 72 hours of the termination | RSA 275:44 |
 | [Vermont](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/vermont/) | 2026-11-21 16:00 | within 72 hours of the discharge | 21 V.S.A. 342(c) |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | 2026-11-23 | within 3 working days after the day of termination | AS 23.05.140 |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | 2026-11-23 | on the later of the next regular payday and 3 business days after the last day worked | 19 Del. C. 1103(a) |
 | [Texas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/texas/) | 2026-11-24 | by the sixth day after the discharge | Tex. Lab. Code 61.014(a) |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | 2026-11-28 | within 7 working days or by the end of the next regular pay period, whichever is sooner | A.R.S. 23-353(A) |
 | [Washington](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/washington/) | 2026-11-28 | at the end of the established pay period | RCW 49.48.010(2) |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kentucky/) | 2026-12-02 | by the next normal pay period or 14 days after the separation, whichever is later | KRS 337.055 |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/) | 2026-12-04 | by the next regular payday for the pay period in which the wages were earned | Iowa Code 91A.4 |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/) | 2026-12-04 | by the next regular payday on which the employee would have been paid | K.S.A. 44-315(a) |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maryland/) | 2026-12-04 | on or before the day the wages would have been paid had employment continued | Md. Code, Lab. & Empl. 3-505(a) |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/michigan/) | 2026-12-04 | on the regular scheduled payday for the period in which the employee is discharged | Payment of Wages and Fringe Benefits Act (1978 PA 390) |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/) | 2026-12-04 | by the regular payday for the pay period in which employment ended | N.J.S.A. 34:11-4.3 |
 | [Pennsylvania](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/pennsylvania/) | 2026-12-04 | by the next regular payday on which the wages would otherwise be due | 43 P.S. 260.5(a) |
 | [Virginia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/virginia/) | 2026-12-04 | on or before the payday the wages would have been paid had employment continued | Va. Code 40.1-29(A) |
@@ -51,7 +57,7 @@ A layoff follows the firing rule except where the state says otherwise (Connecti
 
 ## Sources
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -62,5 +68,5 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/fired/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/fired.csv

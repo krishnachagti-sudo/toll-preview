@@ -65,4 +65,4 @@ By the next regularly scheduled payday (Tex. Lab. Code 61.014(b)).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/texas/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

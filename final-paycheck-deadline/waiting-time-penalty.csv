@@ -1,6 +1,7 @@
 state,name,penalty_on_1000_paid_10_days_late,math,rule
 AK,Alaska,"$1,000.00",$200.00 a day x 5 working days (at most 90),"the regular wage from the time of demand to the time of payment, or for 90 working days, whichever is less"
 AZ,Arizona,"$2,000.00","3 x $1,000.00 recoverable in all, so $2,000.00 on top of the wages","in a civil action, treble the unpaid wages"
+CA,California,"$2,000.00",$200.00 a day x 10 days (at most 30),"if the employer willfully fails to pay, the wages continue as a penalty at the same daily rate until paid, for up to 30 days"
 CT,Connecticut,"$1,000.00","2 x $1,000.00 recoverable in all, so $1,000.00 on top of the wages","in a civil action, twice the full amount of the wages"
 DE,Delaware,$700.00,"10% x $1,000.00 x 7 days, Sundays and holidays not counted = $700.00; capped at the unpaid wages ($1,000.00)","liquidated damages of the lower of 10% of the unpaid wages for each day (except Sundays and legal holidays) the failure continues, or an amount equal to the unpaid wages"
 DC,District of Columbia,$500.00,"10% x $1,000.00 x 5 days, working days only = $500.00; capped at 3 x the unpaid wages ($3,000.00)","liquidated damages of 10% of the unpaid wages for each working day the failure continues, or treble the unpaid wages, whichever is smaller"

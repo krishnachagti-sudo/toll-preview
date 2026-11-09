@@ -8,7 +8,8 @@
        data-tool-name="<slug>"    the tool's name
        data-buys="<slug>"         calls the top-up in the enclosing data-topup pays for
    - Fills the site's own address into the code samples and the MCP URL.
-   - The hero replay, the tool group tabs, the code tabs, the request form and reveal-on-scroll.
+   - The hero chat (its steps come in one by one), the tool group tabs, the request form and
+     reveal-on-scroll. The hero window and code tabs are wired only when a page has them.
    - The mockups' inputs: home-try.js, loaded once a mockup is in view or touched. */
 (function () {
   'use strict';
@@ -130,6 +131,23 @@
       }, { threshold: 0.2 });
       seen.observe(app);
     }
+  }
+
+  // ---------- hero: the chat's steps come in one by one ----------
+  // The text is the server's (the tools' own answers); this only times when each step shows.
+  // Without motion (or JavaScript) every step is shown from the start.
+  function chatSteps() {
+    var chat = document.getElementById('chat');
+    if (!chat || !root.classList.contains('motion')) return;
+    var steps = chat.querySelectorAll('.step');
+    var i = 0;
+    function next() {
+      if (i >= steps.length) return;
+      steps[i].classList.add('on');
+      i++;
+      setTimeout(next, i % 3 === 0 ? 1100 : 750);
+    }
+    setTimeout(next, 400);
   }
 
   // ---------- code samples: tabs and a small highlighter ----------
@@ -328,6 +346,7 @@
     var base = Endwise ? Endwise.base : '';
     fillOrigin(base);
     heroWindow();
+    chatSteps();
     codePanel();
     toolTabs();
     tryOut();

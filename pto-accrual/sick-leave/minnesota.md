@@ -75,4 +75,4 @@ Unused time carries over; the balance need not exceed 80 hours. (Minn. Stat. 181
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

@@ -70,4 +70,4 @@ By the next regular payday (W.S. 27-4-104).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/wyoming/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

@@ -1,6 +1,6 @@
 # State agency pages and this lookup
 
-A state's own statute or labor department page is the legal source, and this lookup quotes it word for word: for 16 of the 30 jurisdictions covered the words come from the labor department's page, the oldest dated one being West Virginia's (2016-07); the lookup adds the computed date, the deduction floor and the other states side by side.
+A state's own statute or labor department page is the legal source, and this lookup quotes it word for word: for 20 of the 36 jurisdictions covered the words come from the labor department's page, the oldest dated one being West Virginia's (2016-07); the lookup adds the computed date, the deduction floor and the other states side by side.
 
 ## Dated agency pages we quote
 
@@ -26,7 +26,7 @@ When you need the legal source for one state, the official wording in full, or t
 
 ## Sources
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -38,4 +38,4 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/vs/state-agency/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

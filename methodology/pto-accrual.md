@@ -1,6 +1,6 @@
 # How PTO and sick leave accrual is worked out by state
 
-Sick time is earned at the law's rate on the hours worked so far in the plan year, rounded down: Washington is 1 hour per 40 hours worked, so 1,144 hours worked earn 28.6 hours. Caps, waiting periods and carryover limits are applied as the law allows. 13 states and 7 cities are covered.
+Sick time is earned at the law's rate on the hours worked so far in the plan year, rounded down: Washington is 1 hour per 40 hours worked, so 1,144 hours worked earn 28.6 hours. Caps, waiting periods and carryover limits are applied as the law allows. 18 states and 7 cities are covered.
 
 ## How does it work?
 
@@ -20,7 +20,7 @@ Sick time is earned at the law's rate on the hours worked so far in the plan yea
 
 ## How fresh is the data?
 
-- [Data as of Nov 4, 2026, from 43 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every rule was read on November 8, 2026 from the state's or city's own statute or agency page, and each quote was checked against the fetched text before it was kept. The source pages are checked once a day for changes; a change is read again by a person before the rules file is edited, with the tests that pin the quotes.
+- [Data as of Nov 4, 2026, from 48 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Every rule was read on November 9, 2026 from the state's or city's own statute or agency page, and each quote was checked against the fetched text before it was kept. The source pages are checked once a day for changes; a change is read again by a person before the rules file is edited, with the tests that pin the quotes.
 - [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests pin the covered states, cities and vacation states, every source as a government or legislature site read that day, and the key quotes. They check Washington's 1 per 40 exact over the year beside a PTO bank, caps and carryover, the Maryland short-period rule, D.C. and Seattle tiers, waiting periods and use limits, front-loading, plan years and pay schedules, the refusals, payout with the Illinois combined bank, per-paycheck figures, rules and batch rows.
 
 - [Washington Department of Labor & Industries, Paid Sick Leave](https://lni.wa.gov/workers-rights/leave/paid-sick-leave/), see the document, read 2026-11-08
@@ -66,12 +66,17 @@ Sick time is earned at the law's rate on the hours worked so far in the plan yea
 - [South Dakota Department of Labor and Regulation, What you need to know about South Dakota labor laws (rev. 01/2026)](https://dlr.sd.gov/employment_laws/publications/what_need_know_laws.pdf), see the document, read 2026-11-08
 - [Texas Labor Code 61.001, Definitions (Payment of Wages)](https://statutes.capitol.texas.gov/Docs/LA/htm/LA.61.htm), see the document, read 2026-11-08
 - [Vermont Department of Labor, A Summary of Vermont Wage and Hour Laws (WH-13, 2019)](https://labor.vermont.gov/sites/labor/files/doc_library/WH-13-Wage-and-Hour-Laws-2019%20.pdf), see the document, read 2026-11-08
+- [Cal. Labor Code 246, paid sick days (California Legislative Information)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=246.), see the document, read 2026-11-09
+- [Massachusetts Attorney General's Office, Fair Labor Division: Earned Sick Time](https://www.mass.gov/info-details/earned-sick-time), see the document, read 2026-11-09
+- [Michigan Department of Labor and Economic Opportunity, Earned Sick Time Act: Frequently Asked Questions (FAQ)](https://www.michigan.gov/leo/-/media/Project/Websites/leo/Documents/WAGE-HOUR/LEO-ESTA-FAQ-English.pdf), see the document, read 2026-11-09
+- [The State of New York, New York Paid Sick Leave](https://www.ny.gov/programs/new-york-paid-sick-leave), see the document, read 2026-11-09
+- [Connecticut Department of Labor, Paid Sick Leave FAQs (CGS 31-57r to 31-57w)](https://portal.ct.gov/dol/divisions/legal/connecticut-leave-programs/paid-sick-leave-faqs), see the document, read 2026-11-09
 
 [The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## What does the pto and sick leave accrual by state compute?
 
-The tool runs one employee's PTO policy bank and the state or city paid sick leave bank side by side, paycheck by paycheck: hours earned per hour worked or per pay period, the yearly and balance caps, the waiting period, year-end carryover and what is forfeited. It also works out the payout at separation under the state's vacation rule, the hours per paycheck for a yearly PTO amount, and each covered place's rules, quoted word for word from its own statute or agency page read on November 8, 2026. Covered sick leave laws: Alaska, Arizona, Colorado, District of Columbia, Illinois, Maryland, Maine, Minnesota, New Jersey, Oregon, Virginia, Vermont and Washington, and Chicago, IL, Los Angeles, CA, Montgomery County, MD, New York City, NY, Philadelphia, PA, Saint Paul, MN and Seattle, WA. Worked out from each state's or city's own published text, quoted with the date we read it. Not legal advice.
+The tool runs one employee's PTO policy bank and the state or city paid sick leave bank side by side, paycheck by paycheck: hours earned per hour worked or per pay period, the yearly and balance caps, the waiting period, year-end carryover and what is forfeited. It also works out the payout at separation under the state's vacation rule, the hours per paycheck for a yearly PTO amount, and each covered place's rules, quoted word for word from its own statute or agency page read on November 9, 2026. Covered sick leave laws: Alaska, Arizona, California, Colorado, Connecticut, District of Columbia, Illinois, Massachusetts, Maryland, Maine, Michigan, Minnesota, New Jersey, New York, Oregon, Virginia, Vermont and Washington, and Chicago, IL, Los Angeles, CA, Montgomery County, MD, New York City, NY, Philadelphia, PA, Saint Paul, MN and Seattle, WA. Worked out from each state's or city's own published text, quoted with the date we read it. Not legal advice.
 
 **In detail: operations, inputs and outputs**
 
@@ -119,13 +124,13 @@ Outputs:
 
 **The rules file.**
 
-Each covered place's rate, tiers, caps, carryover, front-load, low-hours and waiting rules are quoted word for word from 43 statute and agency pages, all read on November 8, 2026. A limit the source does not state is null, and the engine says so rather than guessing.
+Each covered place's rate, tiers, caps, carryover, front-load, low-hours and waiting rules are quoted word for word from 48 statute and agency pages, all read on November 9, 2026. A limit the source does not state is null, and the engine says so rather than guessing.
 
 Vacation payout rules are held for 15 states: Connecticut, Iowa, Illinois, Maryland, Maine, North Dakota, Oklahoma, Oregon, South Carolina, South Dakota, Tennessee, Texas, Vermont, West Virginia and Wyoming. Other states' payout rule was not read, and the answer says so.
 
 **Places not covered.**
 
-10 states' sick leave rules could not be read from our network and are not covered: California, Connecticut, Massachusetts, Michigan, Missouri, Nebraska, Nevada, New Mexico, New York and Rhode Island. South Dakota has no paid sick leave law; other states without a statewide rule we read get none applied.
+5 states' sick leave rules could not be read from our network and are not covered: Missouri, Nebraska, Nevada, New Mexico and Rhode Island. South Dakota has no paid sick leave law; other states without a statewide rule we read get none applied.
 
 Cities not covered: San Francisco, CA (could not be read on 2026-11-08: sf.gov and sfgov.org returned a bot check (HTTP 202), which we do not get around.); Minneapolis, MN (could not be read on 2026-11-08: the sick and safe time page did not include the rules in the page we were served.).
 
@@ -309,7 +314,7 @@ Four employees in four places in one call
 | A-101 (OR) | sick 40 hours, PTO 120 hours |
 | A-102 (seattle) | sick 32.5 hours |
 | A-103 (NJ) | sick 40 hours |
-| A-104 (refused) | California's sick leave rules are not covered: could not be read from our network on 2026-11-08: dir.ca.gov timed out; leginfo.legislature.ca.gov answered 403. Add a pto policy to work out the PTO bank alone. |
+| A-104 (refused) | Rhode Island's sick leave rules are not covered: could not be read from our network on 2026-11-08: dlt.ri.gov answered 403; webserver.rilegislature.gov timed out. Tried again in a browser on 2026-11-09: webserver.rilegislature.gov did not load and dlt.ri.gov showed a bot check. Add a pto policy to work out the PTO bank alone. |
 
 **The input**
 
@@ -348,7 +353,7 @@ Four employees in four places in one call
     },
     {
       "id": "A-104",
-      "place": "CA",
+      "place": "RI",
       "frequency": "weekly",
       "firstPeriodEnd": "2027-01-08",
       "hoursPerPeriod": 30,
@@ -362,7 +367,7 @@ Four employees in four places in one call
 
 **What its test suite asserts (3)**
 
-- The 13 state laws, 7 city laws and 15 vacation payout rules are pinned, every source must be a government or legislature site read on 2026-11-08, and the key quotes are pinned word for word.
+- The 18 state laws, 7 city laws and 15 vacation payout rules are pinned, every source must be a government or legislature site read on 2026-11-09, and the key quotes are pinned word for word.
 - Accrual is checked for Washington exact over the year beside a PTO bank, caps and carryover, the Maryland short-period rule, D.C. and Seattle tiers, waiting periods, use limits, front-loading, plan years and pay schedules.
 - Payout with the Illinois combined bank, per-paycheck figures, rules, batch rows with a refused row, input refusals and every worked example against a fresh run are checked.
 

@@ -25,6 +25,7 @@
     <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
     <nav class="head-nav" aria-label="Main">
       <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/teams/">For teams</a>
       <a href="/toll-preview/pricing/">Pricing</a>
       <a href="/toll-preview/developers/">Developers</a>
     </nav>
@@ -38,6 +39,7 @@
       <nav class="menu-panel" aria-label="Menu">
         <div class="menu-tools" data-nav-tools></div>
         <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/teams/">For teams</a>
         <a href="/toll-preview/pricing/">Pricing</a>
         <a href="/toll-preview/developers/">Developers</a>
         <a href="/toll-preview/docs">Docs</a>
@@ -138,6 +140,29 @@
     </form>
   </div>
 
+  <!-- Opened from a team invitation: #invite=<token> -->
+  <div id="join-view" hidden>
+    <div class="page-head">
+      <p class="eyebrow">Account</p>
+      <h1>Join your team</h1>
+      <p class="lede" id="join-lede"></p>
+    </div>
+    <form id="join-form" class="ledger-section" novalidate>
+      <p id="join-error" class="form-error" role="alert"></p>
+      <div class="field">
+        <label for="join-email">Email</label>
+        <input id="join-email" type="email" autocomplete="username" readonly>
+      </div>
+      <div class="field">
+        <label for="join-password">Choose a password</label>
+        <input id="join-password" name="password" type="password" autocomplete="new-password" minlength="10" maxlength="200" required aria-describedby="join-password-hint">
+        <p class="hint" id="join-password-hint">At least 10 characters. You sign in with this email and password from now on.</p>
+        <p class="field-error" data-error-for="password"></p>
+      </div>
+      <button class="btn" type="submit">Join and sign in</button>
+    </form>
+  </div>
+
   <!-- Signed in -->
   <div id="signed-in" hidden>
     <div class="page-head who">
@@ -164,11 +189,17 @@
       <p class="welcome-actions"><a class="btn btn-small" href="/toll-preview/tools/">Pick a tool</a><a class="btn btn-quiet btn-small" href="#top-up">Add money</a></p>
     </div>
 
+    <!-- A team member: whose balance they spend, and their own limit. -->
+    <div class="next-note" id="member-note" hidden>
+      <p id="member-team"></p>
+      <p id="member-spend"></p>
+    </div>
+
     <section aria-labelledby="balance-title">
       <h1 id="balance-title" class="visually-hidden">Your balance</h1>
       <p class="eyebrow">Balance</p>
       <p class="balance-total money" id="balance-total"></p>
-      <dl class="pots">
+      <dl class="pots" id="pots">
         <div>
           <dt>Free allowance</dt>
           <dd class="money" id="balance-grant"></dd>
@@ -192,7 +223,45 @@
       </dl>
     </section>
 
-    <section class="ledger-section" id="top-up" aria-labelledby="topup-title">
+    <section class="ledger-section owner-only" id="plan" aria-labelledby="plan-title">
+      <h2 id="plan-title">Plan for your team</h2>
+      <div id="plan-current"></div>
+      <div class="promise" id="plan-renew-box" hidden>
+        <p><strong>Renewal is opt-in.</strong> A plan lasts 12 months and never renews by itself. Turn renewal on and we email you 30 days before the end so you can pay for the next year. Nothing is ever charged automatically.</p>
+        <p><label><input type="checkbox" id="plan-renew"> Remind me to renew this plan</label></p>
+        <p id="plan-renew-status" class="status" role="status"></p>
+      </div>
+      <div class="choice-grid" id="plan-offers"></div>
+      <p id="plan-error" class="form-error" role="alert"></p>
+    </section>
+
+    <section class="ledger-section owner-only" id="members" aria-labelledby="members-title" hidden>
+      <h2 id="members-title">Team members</h2>
+      <p>Members sign in with their own email and password and spend from this balance, on the web and with their own API keys. They never see billing. You can set a monthly limit for each member, and remove a member at any time.</p>
+      <p class="muted small" id="seats"></p>
+      <form id="invite-form" class="inline-form" novalidate>
+        <div class="field">
+          <label for="invite-email">Invite by email</label>
+          <input id="invite-email" type="email" maxlength="254" autocomplete="off" placeholder="name@yourfirm.com">
+          <p class="field-error" data-error-for="email"></p>
+        </div>
+        <button class="btn btn-small" type="submit">Send invitation</button>
+      </form>
+      <p id="invite-error" class="form-error" role="alert"></p>
+      <p id="invite-status" class="status" role="status"></p>
+      <div id="member-list"></div>
+    </section>
+
+    <section class="ledger-section owner-only" id="report" aria-labelledby="report-title">
+      <div class="section-head">
+        <h2 id="report-title">Usage report</h2>
+        <p class="muted small"><a class="ul" id="report-csv" href="/toll-preview/api/team/report.csv" download>Download CSV</a></p>
+      </div>
+      <p>Spending this month and last month, by person and by API key or connected app. Paid calls leave out refunded ones. Set a monthly limit on each key here or under API keys.</p>
+      <div id="report-body"></div>
+    </section>
+
+    <section class="ledger-section owner-only" id="top-up" aria-labelledby="topup-title">
       <h2 id="topup-title">Get a pass or add credit</h2>
       <div class="promise">
         <p><strong>This is a one-time payment.</strong> Nothing renews and nothing tops itself up. A pass covers your use of the tools on the web; credit pays for the API, MCP and the web. <a class="ul" href="/toll-preview/pricing/">Compare them</a>.</p>
@@ -221,7 +290,7 @@
       </form>
     </section>
 
-    <section class="ledger-section" id="nonprofit" aria-labelledby="nonprofit-title">
+    <section class="ledger-section owner-only" id="nonprofit" aria-labelledby="nonprofit-title">
       <h2 id="nonprofit-title">Nonprofit price</h2>
       <p>US nonprofits recognized as tax-exempt by the IRS pay <span id="np-percent">50%</span> less for a pass. Tell us who you are. A person checks your EIN in the IRS Tax Exempt Organization Search, then emails you a code for this account's email address. Nothing is approved automatically. A code works once and expires <span id="np-days">60</span> days after we send it.</p>
       <form id="nonprofit-form" novalidate>
@@ -247,10 +316,17 @@
       </form>
     </section>
 
-    <section class="ledger-section" id="invoice" aria-labelledby="invoice-title">
+    <section class="ledger-section owner-only" id="invoice" aria-labelledby="invoice-title">
       <h2 id="invoice-title">Pay by invoice or check</h2>
-      <p>For the Team plan, or any order of <span id="invoice-min">$250</span> or more. Tell us what you want and we send an invoice; payment details come on the invoice. Your credit, pass or bundle starts when the payment arrives.</p>
+      <p>For a Team, Business or Scale plan, or any order of <span id="invoice-min">$250</span> or more. Tell us what you want and we send an invoice; payment details come on the invoice. Your credit, pass or bundle starts when the payment arrives.</p>
       <form id="invoice-form" novalidate>
+        <div class="field">
+          <label for="inv-plan">Plan (optional)</label>
+          <select id="inv-plan">
+            <option value="">Not a plan</option>
+          </select>
+          <p class="field-error" data-error-for="plan"></p>
+        </div>
         <div class="field">
           <label for="inv-want">What you want</label>
           <textarea id="inv-want" rows="3" maxlength="1000" placeholder="The Team plan, or 4 Fleet bundles of 10"></textarea>
@@ -278,7 +354,7 @@
       <div id="invoice-list"></div>
     </section>
 
-    <section class="ledger-section" id="limits" aria-labelledby="limits-title">
+    <section class="ledger-section owner-only" id="limits" aria-labelledby="limits-title">
       <h2 id="limits-title">Monthly spending limit</h2>
       <p>Limits are hard. If a call would take this month's spending past a limit, we refuse the call and charge nothing. Spending counts reset on the 1st of each month (UTC). Each API key also has its own limit, set below.</p>
       <div class="limit-line">
@@ -332,7 +408,7 @@
       <div id="app-list"></div>
     </section>
 
-    <section class="ledger-section" id="history" aria-labelledby="ledger-title">
+    <section class="ledger-section owner-only" id="history" aria-labelledby="ledger-title">
       <div class="section-head">
         <h2 id="ledger-title">Recent activity</h2>
         <p class="muted small">The last 50 lines of your ledger, newest first.</p>
@@ -376,6 +452,7 @@
       <nav aria-label="Who it's for">
         <p class="foot-h">Who it's for</p>
         <ul>
+          <li><a href="/toll-preview/teams/">Firms and ops teams</a></li>
           <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
           <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
           <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
@@ -429,6 +506,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/trust/">Data handling</a></li>
           <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>

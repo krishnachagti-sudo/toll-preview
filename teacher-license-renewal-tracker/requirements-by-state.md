@@ -1,12 +1,12 @@
 # Teacher license renewal requirements by state
 
-Across the 20 states whose own education agency pages we read on November 8, 2026, renewal ranges from 45 clock hours (Maine, Education technician) to 200 (Texas, Principal, Superintendent, Counselor, Librarian, Educational Diagnostician or Reading Specialist) per cycle where the state converts its unit to hours; Texas classroom teachers need 150 CPE hours every five years.
+Across the 22 states whose own education agency pages we read from November 8, 2026 to November 9, 2026, renewal ranges from 45 clock hours (Maine, Education technician) to 200 (Texas, Principal, Superintendent, Counselor, Librarian, Educational Diagnostician or Reading Specialist) per cycle where the state converts its unit to hours; Texas classroom teachers need 150 CPE hours every five years.
 
 ## Work out your own hours left
 
 [Work out my hours left](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/?state=TX&license=classroom-teacher&start=2022-07-01&logged=75&unit=hour)
 
-Renewal requirements, read November 8, 2026
+Renewal requirements, read November 8, 2026 to November 9, 2026
 
 | State | License | Required | Clock hours | Cycle | Source |
 | --- | --- | --- | ---: | --- | --- |
@@ -14,12 +14,14 @@ Renewal requirements, read November 8, 2026
 | [California](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/california/) | Clear teaching or services credential | No hours | 0 | 5 years from issue | [California Commission on Teacher Credentialing, Renewal and Reissuance of Credentials (CL-494)](https://www.ctc.ca.gov/credentials/leaflets/cl-494/) |
 | [California](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/california/) | Child Development Permit | 105 clock hours | 105 | 5 years from issue | [California Commission on Teacher Credentialing, Renewal and Reissuance of Credentials (CL-494)](https://www.ctc.ca.gov/credentials/leaflets/cl-494/) |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/colorado/) | Professional teacher license | 90 contact hours or 6 semester hours, or a combination | 90 | 7 years from issue | [Colorado Department of Education, Renew a Professional Teacher License](https://ed.cde.state.co.us/cdeprof/checklist-renewprofessionalteacher) |
+| [Florida](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/florida/) | Professional Certificate | 6 semester hours | not converted by the state | The dates on your license | [Florida Department of Education, Florida Educator Certification Renewal Requirements](https://www.fldoe.org/teaching/certification/renewal-requirements/) |
 | [Georgia](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/georgia/) | Standard or Performance-Based Professional certificate (not employed in a Georgia school system at renewal) | 6 semester hours, 10 PLUs, 10 CEUs or 100 clock hours (one of these) | 100 | The dates on your license | [Georgia Professional Standards Commission, Certificate Renewal](https://www.gapsc.com/CurrentEducator/takeCareYourCertificate/RenewCertificate.aspx) |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/iowa/) | Standard teaching license | 6 renewal credits | not converted by the state | 5 years from issue | [Iowa Board of Educational Examiners, Standard Teaching License](https://educate.iowa.gov/educator-licensure/licenses-authorizations/standard-teaching-license) |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/iowa/) | Master educator teaching license | 4 renewal credits | not converted by the state | 5 years from issue | [Iowa Board of Educational Examiners, More Renewal Information](https://educate.iowa.gov/educator-licensure/applyrenewconvert/more-renewal-information) |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/maine/) | Teacher, specialist or administrator certificate | 6 semester credits or 90 clock hours (one of these) | 90 | The dates on your license | [Maine Department of Education, Certification Renewals](https://www.maine.gov/doe/cert/renewals) |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/maine/) | Education technician | 3 semester credits or 45 clock hours (one of these) | 45 | The dates on your license | [Maine Department of Education, Certification Renewals](https://www.maine.gov/doe/cert/renewals) |
 | [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/massachusetts/) | Professional license | 150 PDPs | not converted by the state | 5 years from issue | [Massachusetts Department of Elementary and Secondary Education, Advance, Extend, or Renew a License](https://www.doe.mass.edu/licensure/advance-extend-renew-license.html) |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/michigan/) | Standard Teaching Certificate | 150 professional learning hours | 150 | 5 years, ending June 30 of the expiration year | [Michigan Department of Education, Teacher Recertification](https://www.michigan.gov/mde/services/ed-serv/ed-cert/cert-guidance/teacher-recertification) |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/montana/) | Class 1 license | 60 PDUs | not converted by the state | 5 years, ending June 30 of the expiration year | [Montana Office of Public Instruction, Renew, Update, Advance License](https://opi.mt.gov/Educators/Licensure/Educator-Licensure/Renew-Update-Advance-License) |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/montana/) | Class 2 license | 60 PDUs | not converted by the state | 5 years, ending June 30 of the expiration year | [Montana Office of Public Instruction, Renew, Update, Advance License](https://opi.mt.gov/Educators/Licensure/Educator-Licensure/Renew-Update-Advance-License) |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/montana/) | Class 3 license | 60 PDUs | not converted by the state | 5 years, ending June 30 of the expiration year | [Montana Office of Public Instruction, Renew, Update, Advance License](https://opi.mt.gov/Educators/Licensure/Educator-Licensure/Renew-Update-Advance-License) |
@@ -61,7 +63,6 @@ We show no figure for these states because their official pages could not be rea
 - Connecticut: the agency site could not be reached
 - Delaware: the agency site refused our reads (403)
 - District of Columbia: no hour figure on the pages we read
-- Florida: the agency site refused our reads (403)
 - Hawaii: the agency site refused our reads (403)
 - Idaho: no hour figure on the pages we read
 - Illinois: the agency site could not be reached
@@ -70,7 +71,6 @@ We show no figure for these states because their official pages could not be rea
 - Kentucky: the agency site could not be reached
 - Louisiana: the agency site refused our reads (403)
 - Maryland: the agency site refused our reads (403)
-- Michigan: the agency site refused our reads (403)
 - Minnesota: the agency site refused our reads (403)
 - Mississippi: the agency site refused our reads (403)
 - Missouri: the agency site refused our reads (403)
@@ -89,7 +89,7 @@ We show no figure for these states because their official pages could not be rea
 
 > Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts. Totals come from the activities you enter; this tool does not read PERMS, TEACH, ECOS or any state portal. States whose official pages we could not read are listed as not covered rather than guessed.
 
-Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026 to November 9, 2026).
 
 ## Related
 

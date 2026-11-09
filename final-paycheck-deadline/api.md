@@ -39,7 +39,7 @@ row,state,separation,covered,due_date,due_time,rule,cite,error
 2,CT,discharge,true,2026-12-28,,by the next business day,C.G.S. 31-71c(b),
 3,VT,discharge,true,2026-12-07,15:30,within 72 hours of the discharge,21 V.S.A. 342(c),
 4,DE,layoff,true,2027-01-06,,on the later of the next regular payday and 3 business days after the last day worked,19 Del. C. 1103(a),
-5,CA,discharge,false,,,,,
+5,OH,discharge,false,,,,,
 ```
 
 ## Deductions and penalties
@@ -52,7 +52,7 @@ Send `"op": "deductions"` with a state, a topic (equipment, advance, shortage, o
 
 ## Sources
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -62,4 +62,4 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/api/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

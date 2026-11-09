@@ -77,4 +77,4 @@ Average daily earnings for each day in default, up to 15 days.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

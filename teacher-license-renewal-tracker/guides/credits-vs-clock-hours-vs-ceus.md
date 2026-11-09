@@ -15,8 +15,10 @@ What one unit is worth in the state's renewal unit (read November 8, 2026)
 | Alaska | renewal credit | 1 renewal credit | 0.67 renewal credits | 1 renewal credit | 0.07 renewal credits |
 | California | clock hour | not stated | not stated | not stated | 1 clock hour |
 | Colorado | contact hour | 15 contact hours | 10 contact hours | 10 contact hours | 1 contact hour |
+| Florida | semester hour | 1 semester hour | not stated | not stated | not stated |
 | Iowa | renewal credit | not stated | not stated | not stated | not stated |
 | Massachusetts | PDP | not stated | not stated | not stated | not stated |
+| Michigan | professional learning hour | 25 professional learning hours | not stated | not stated | 1 professional learning hour |
 | Montana | PDU | 15 PDUs | 10 PDUs | not stated | not stated |
 | Nebraska | credit hour | 1 credit hour | not stated | not stated | not stated |
 | New York | CTLE clock hour | 15 CTLE clock hours | 10 CTLE clock hours | not stated | 1 CTLE clock hour |
@@ -62,7 +64,7 @@ You have 105 contact hours of 180 for your Ohio Five-year professional or associ
 
 > Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts. Totals come from the activities you enter; this tool does not read PERMS, TEACH, ECOS or any state portal. States whose official pages we could not read are listed as not covered rather than guessed.
 
-Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026 to November 9, 2026).
 
 ## Questions
 

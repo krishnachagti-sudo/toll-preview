@@ -61,4 +61,4 @@ Yes: 1 hour per 40 hours worked, up to 40 hours a year. (26 M.R.S. 637).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/maine/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

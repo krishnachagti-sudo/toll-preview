@@ -1,6 +1,6 @@
 # Late final paycheck penalties
 
-Final wages of $1,000.00 due on November 20, 2026 and paid 10 days late (November 30, 2026) can carry up to $2,000.00 on top in Arizona, the highest of the 14 states whose penalty we read; at $200 a day or $25 an hour, Oregon's penalty wages come to $2,000.00 and Minnesota's $2,000.00.
+Final wages of $1,000.00 due on November 20, 2026 and paid 10 days late (November 30, 2026) can carry up to $2,000.00 on top in Arizona, the highest of the 15 states whose penalty we read; at $200 a day or $25 an hour, Oregon's penalty wages come to $2,000.00 and Minnesota's $2,000.00.
 
 ## Work out your own late check
 
@@ -16,6 +16,7 @@ Penalty on $1,000 paid 10 days late
 | --- | ---: | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | $1,000.00 | $200.00 a day x 5 working days (at most 90) |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | $2,000.00 | 3 x $1,000.00 recoverable in all, so $2,000.00 on top of the wages |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | $2,000.00 | $200.00 a day x 10 days (at most 30) |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | $1,000.00 | 2 x $1,000.00 recoverable in all, so $1,000.00 on top of the wages |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | $700.00 | 10% x $1,000.00 x 7 days, Sundays and holidays not counted = $700.00; capped at the unpaid wages ($1,000.00) |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | $500.00 | 10% x $1,000.00 x 5 days, working days only = $500.00; capped at 3 x the unpaid wages ($3,000.00) |
@@ -33,7 +34,7 @@ Penalty on $1,000 paid 10 days late
 
 ## Sources
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -44,5 +45,5 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/waiting-time-penalty/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/waiting-time-penalty.csv

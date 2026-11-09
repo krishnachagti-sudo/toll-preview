@@ -56,4 +56,4 @@ Only if the employer's policy or labor agreement requires it. (Tenn. Code Ann. 5
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/tennessee/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

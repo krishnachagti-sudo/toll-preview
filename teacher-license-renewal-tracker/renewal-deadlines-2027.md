@@ -6,6 +6,7 @@ Licenses issued in 2022 (the five-year licenses with a fixed end day)
 
 | State | License | Expires | Activities count through | Needs |
 | --- | --- | --- | --- | --- |
+| Michigan | Standard Teaching Certificate | June 30, 2027 | June 30, 2027 | 150 professional learning hours |
 | Montana | Class 1 license | June 30, 2027 | August 31, 2027 | 60 PDUs |
 | Montana | Class 2 license | June 30, 2027 | August 31, 2027 | 60 PDUs |
 | Montana | Class 3 license | June 30, 2027 | August 31, 2027 | 60 PDUs |
@@ -23,7 +24,7 @@ Work out your own date in the [Teacher license renewal tracker](https://krishnac
 
 > Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts. Totals come from the activities you enter; this tool does not read PERMS, TEACH, ECOS or any state portal. States whose official pages we could not read are listed as not covered rather than guessed.
 
-Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026 to November 9, 2026).
 
 ## Related
 

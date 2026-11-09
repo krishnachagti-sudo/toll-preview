@@ -58,4 +58,4 @@ Colorado, All employers: sick hours earned in 2027 by weekly hours (weekly payro
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/colorado/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

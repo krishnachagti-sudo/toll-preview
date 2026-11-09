@@ -10,8 +10,8 @@ State minimum wages on November 8, 2026
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/alaska/) | $14.00 | July 1, 2026 | $14.00 | 0 |  |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/arizona/) | $15.15 |  | $12.15 | 2 |  |
 | [Arkansas](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/arkansas/) | $11.00 |  | $2.63 | 0 |  |
-| [California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/) | $16.90 |  | $16.90 | 29 |  |
-| [Colorado](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/) | $15.16 |  | $12.14 | 3 |  |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/) | $16.90 |  | $16.90 | 38 |  |
+| [Colorado](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/) | $15.16 |  | $12.14 | 4 |  |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/connecticut/) | $16.94 |  | $6.38 | 0 |  |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/delaware/) | $15.00 |  | $2.23 | 0 |  |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/district-of-columbia/) | $18.40 |  | $10.30 | 0 |  |
@@ -37,7 +37,7 @@ State minimum wages on November 8, 2026
 | [Nevada](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/nevada/) | $12.00 |  | $12.00 | 0 |  |
 | [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-hampshire/) | $7.25 |  | $3.27 | 0 |  |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-jersey/) | $15.92 |  | $6.05 | 0 |  |
-| [New Mexico](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-mexico/) | $12.00 |  | $3.00 | 3 |  |
+| [New Mexico](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-mexico/) | $12.00 |  | $3.00 | 4 |  |
 | [New York](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/new-york/) | $16.00 |  |  | 0 | by region |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/north-carolina/) | $7.25 |  | $2.13 | 0 |  |
 | [North Dakota](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/north-dakota/) | $7.25 |  | $4.86 | 0 |  |

@@ -1,6 +1,6 @@
 # Minimum Wage Change Calendar: January 1 and July 1, 2027
 
-43 changes we hold take effect on January 1, 2027 and 2 on July 1, 2027; places that adjust on July 1 (Los Angeles, San Francisco, Chicago, Oregon, DC and others) publish their new rates in the spring, and are marked not yet published until then.
+51 changes we hold take effect on January 1, 2027 and 2 on July 1, 2027; places that adjust on July 1 (Los Angeles, San Francisco, Chicago, Oregon, DC and others) publish their new rates in the spring, and are marked not yet published until then.
 
 Changes from November 8, 2026 to December 31, 2027
 
@@ -9,6 +9,7 @@ Changes from November 8, 2026 to December 31, 2027
 | January 1, 2027 | [Flagstaff, Arizona](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/arizona/flagstaff/) | $18.95 | $18.35 |  |
 | January 1, 2027 | [Tucson, Arizona](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/arizona/tucson/) | $16.00 | $15.45 |  |
 | January 1, 2027 | California | $17.40 | $16.90 |  |
+| January 1, 2027 | [Belmont, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/belmont/) | $19.60 | $18.95 |  |
 | January 1, 2027 | [Burlingame, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/burlingame/) | $18.47 | $17.86 |  |
 | January 1, 2027 | [Cupertino, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/cupertino/) | $19.25 | $18.70 |  |
 | January 1, 2027 | [Daly City, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/daly-city/) | $18.10 | $17.50 |  |
@@ -17,17 +18,24 @@ Changes from November 8, 2026 to December 31, 2027
 | January 1, 2027 | [Hayward, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/hayward/) | $18.39 | $17.79 |  |
 | January 1, 2027 | [Los Altos, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/los-altos/) | $19.25 |  |  |
 | January 1, 2027 | [Menlo Park, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/menlo-park/) | $18.05 | $17.55 |  |
+| January 1, 2027 | [Novato, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/novato/) | $18.25 | $17.73 | Large businesses (26 to 99 employees): $17.97 |
 | January 1, 2027 | [Palo Alto, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/palo-alto/) | $19.25 | $18.70 |  |
 | January 1, 2027 | [Petaluma, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/petaluma/) | $18.93 | $18.31 |  |
+| January 1, 2027 | [Redwood City, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/redwood-city/) | $19.30 | $18.65 |  |
 | January 1, 2027 | [Richmond, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/richmond/) | $19.61 | $19.18 |  |
 | January 1, 2027 | [San Diego, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/san-diego/) | $18.35 | $17.75 |  |
+| January 1, 2027 | [San Jose, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/san-jose/) | $19.00 | $18.45 |  |
 | January 1, 2027 | [San Mateo, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/san-mateo/) | $19.25 | $18.60 |  |
 | January 1, 2027 | [San Mateo County (unincorporated), California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/san-mateo-county-unincorporated/) | $18.58 | $17.95 |  |
+| January 1, 2027 | [Santa Clara, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/santa-clara/) | $19.25 | $18.70 |  |
 | January 1, 2027 | [Santa Rosa, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/santa-rosa/) | $18.83 | $18.21 |  |
 | January 1, 2027 | [South San Francisco, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/south-san-francisco/) | $18.75 |  |  |
+| January 1, 2027 | [Sunnyvale, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/sunnyvale/) | $20.05 | $19.50 |  |
+| January 1, 2027 | [West Hollywood, California](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/california/west-hollywood/) | $20.94 | $20.25 |  |
 | January 1, 2027 | [Boulder, Colorado](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/boulder/) | $18.17 | $16.82 |  |
 | January 1, 2027 | [Boulder County (unincorporated), Colorado](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/boulder-county-unincorporated/) | $17.43 | $16.82 |  |
 | January 1, 2027 | [Denver, Colorado](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/denver/) | $19.84 | $19.29 |  |
+| January 1, 2027 | [Edgewater, Colorado](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/edgewater/) | $19.99 | $18.17 |  |
 | January 1, 2027 | [Howard County, Maryland](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/maryland/howard-county/) | $16.45 | $16.00 |  |
 | January 1, 2027 | Maine | $15.70 | $15.10 |  |
 | January 1, 2027 | Michigan | $15.00 | $13.73 |  |

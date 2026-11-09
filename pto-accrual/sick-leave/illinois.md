@@ -77,4 +77,4 @@ Unused accrued leave carries over (not front-loaded leave); use may be limited t
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

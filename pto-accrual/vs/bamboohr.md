@@ -1,13 +1,13 @@
 # BambooHR and this tool
 
-For 25 employees paid every two weeks, running every employee's PTO and sick balances each payday over the API costs 25 x 26 x $0.01 = $6.50 a year here; BambooHR lists $10 per employee a month on Core, $3,000 a year (read November 8, 2026), for a full HR system rather than the state-law numbers alone.
+For 25 employees paid every two weeks, running every employee's PTO and sick balances each payday over the API costs 25 x 26 x $0.01 = $6.50 a year here; BambooHR lists $10 per employee a month on Core, $3,000 a year (read November 9, 2026), for a full HR system rather than the state-law numbers alone.
 
 ## What BambooHR's page says
 
 - Core: $10 per employee a month; Pro: $17 per employee a month (prices marked with an asterisk; a quote form)
 - Priced per employee per month with automatic volume discounts
 
-Read on November 8, 2026: [BambooHR, Pricing](https://www.bamboohr.com/pricing/).
+Read on November 9, 2026: [BambooHR, Pricing](https://www.bamboohr.com/pricing/).
 
 ## What this tool does
 
@@ -31,4 +31,4 @@ You want one HR system for records, onboarding, payroll and time off together, a
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/vs/bamboohr/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

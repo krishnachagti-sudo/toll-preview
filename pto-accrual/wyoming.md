@@ -56,4 +56,4 @@ Payout can be denied only if a written policy clearly says so and the employee a
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/wyoming/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

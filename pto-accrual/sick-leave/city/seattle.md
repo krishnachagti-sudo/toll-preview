@@ -60,4 +60,4 @@ Tier 1 (up to 49 FTEs) and Tier 2 (50 to 249): 1 hour per 40 hours, carryover 40
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/seattle/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

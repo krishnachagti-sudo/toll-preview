@@ -67,4 +67,4 @@ Use may start after 90 days of service. (D.C. Code 32-531.02(c)(1)).
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

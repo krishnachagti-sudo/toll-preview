@@ -7,7 +7,7 @@ const $ = (id) => document.getElementById(id);
 
 // The places (the tests check these lists against the data).
 export const STATES = { AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California', CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia', FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming' };
-export const COVERED = ['AK', 'AZ', 'CO', 'DC', 'IL', 'MD', 'ME', 'MN', 'NJ', 'OR', 'VA', 'VT', 'WA'];
+export const COVERED = ['AK', 'AZ', 'CA', 'CO', 'CT', 'DC', 'IL', 'MA', 'MD', 'ME', 'MI', 'MN', 'NJ', 'NY', 'OR', 'VA', 'VT', 'WA'];
 export const CITIES = { chicago: 'Chicago, IL', 'los-angeles': 'Los Angeles, CA', 'montgomery-county-md': 'Montgomery County, MD', 'new-york-city': 'New York City, NY', philadelphia: 'Philadelphia, PA', 'saint-paul': 'Saint Paul, MN', seattle: 'Seattle, WA' };
 export const VACATION = ['CT', 'IA', 'IL', 'MD', 'ME', 'ND', 'OK', 'OR', 'SC', 'SD', 'TN', 'TX', 'VT', 'WV', 'WY'];
 

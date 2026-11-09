@@ -4,7 +4,7 @@
 
 ## Which files can you download?
 
-Data date 2026-11-08.
+Data date 2026-11-09.
 
 - [Paid sick leave laws by state 2026: rate, caps, carryover and payout, sourced](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave-laws-by-state/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave-laws-by-state.csv))
 - [PTO payout and carryover laws by state (2026 table, quoted and dated)](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/payout-laws-by-state/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/payout-laws-by-state.csv))
@@ -28,4 +28,4 @@ Plain CSV: a header row, then one row per line of the table, with commas between
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/data/pto-accrual/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

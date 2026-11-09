@@ -70,4 +70,4 @@ Unused leave carries over and the balance may exceed the yearly limit; not when 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

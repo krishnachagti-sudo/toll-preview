@@ -58,4 +58,4 @@ Virginia, Home health workers (average 20 hours a week or 90 a month): sick hour
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

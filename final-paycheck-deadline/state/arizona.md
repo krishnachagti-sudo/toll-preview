@@ -77,4 +77,4 @@ In a civil action, treble the unpaid wages.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

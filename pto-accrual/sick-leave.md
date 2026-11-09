@@ -14,13 +14,18 @@ Part-time employee, 22 hours a week through 2027 on a weekly payroll: sick hours
 | --- | --- | ---: | ---: | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/alaska/) | 1 per 30 | 0.73 | 38.13 | not reached |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/arizona/) | 1 per 30 | 0.73 | 38.13 | not reached |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/california/) | 1 per 30 | 0.73 | 38.13 | not reached |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/colorado/) | 1 per 30 | 0.73 | 38.13 | not reached |
+| [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/connecticut/) | 1 per 30 | 0.73 | 38.13 | not reached |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/district-of-columbia/) | 1 per 37 | 0.59 | 30.92 | not reached |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/illinois/) | 1 per 40 | 0.55 | 28.6 | not reached |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maine/) | 1 per 40 | 0.55 | 28.6 | not reached |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/maryland/) | 1 per 30 | 0.73 | 37.4 | not reached |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/massachusetts/) | 1 per 30 | 0.73 | 38.13 | not reached |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/michigan/) | 1 per 30 | 0.73 | 38.13 | not reached |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/minnesota/) | 1 per 30 | 0.73 | 38.13 | not reached |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-jersey/) | 1 per 30 | 0.73 | 38.13 | not reached |
+| [New York](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-york/) | 1 per 30 | 0.73 | 38.13 | not reached |
 | [Oregon](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/oregon/) | 1 per 30 | 0.73 | 38.13 | not reached |
 | [Vermont](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/vermont/) | 1 per 52 | 0.42 | 22 | not reached |
 | [Virginia](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/virginia/) | 1 per 30 | 0.73 | 38.13 | not reached |
@@ -65,4 +70,4 @@ Multiply the hours actually worked by the place's rate (1/30 in most places), th
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

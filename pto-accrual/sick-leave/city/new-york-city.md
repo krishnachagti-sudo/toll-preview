@@ -20,7 +20,7 @@ New York City, NY: sick leave rule by employer size, as quoted below
 
 > Employers with fewer than 5 employees: whether the 40 hours are paid depends on net income (see the FAQ); the engine treats them as the 99-or-fewer tier.
 
-The New York state rule still applies where it gives more. 
+The New York state rule still applies where it gives more. [New York sick leave](https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/new-york/).
 
 ## Worked hours
 
@@ -70,4 +70,4 @@ Unused paid time carries over unless the employer front-loads the full amount an
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/new-york-city/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

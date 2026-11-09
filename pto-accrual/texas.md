@@ -56,4 +56,4 @@ Vacation and sick leave pay are wages only when owed under a written agreement o
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/texas/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

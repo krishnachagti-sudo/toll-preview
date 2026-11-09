@@ -73,4 +73,4 @@ If willful, 1% of the unpaid wages for each day (except Sundays and legal holida
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

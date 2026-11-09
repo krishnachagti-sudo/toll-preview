@@ -9,7 +9,7 @@ Clockspot's free calculator (fact-checked May 24, 2026) projects one balance at 
 - Its state list includes California, Connecticut, Massachusetts, Michigan, Nebraska, Nevada, New Mexico, New York, Rhode Island and San Francisco
 - It says three-tier ordinances (Chicago, Seattle, D.C.) and the unpaid variant for the smallest Maryland and Massachusetts employers are not modeled, and that the projection assumes no leave is used
 
-Read on November 8, 2026: [Clockspot, PTO Accrual Calculator by State](https://www.clockspot.com/tools/pto-accrual-calculator).
+Read on November 9, 2026: [Clockspot, PTO Accrual Calculator by State](https://www.clockspot.com/tools/pto-accrual-calculator).
 
 ## What this tool does
 
@@ -35,4 +35,4 @@ You need a quick projection for California, New York, Massachusetts or another p
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/vs/clockspot/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

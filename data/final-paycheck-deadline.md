@@ -4,7 +4,7 @@
 
 ## Which files can you download?
 
-Data date 2026-11-08.
+Data date 2026-11-09.
 
 - [Can you deduct negative PTO from a final paycheck? The rule in each state](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/deductions/negative-pto/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/deductions/negative-pto.csv))
 - [Final paycheck after a termination: the deadline in each state](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/fired/) ([CSV](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/fired.csv))
@@ -37,4 +37,4 @@ Plain CSV: a header row, then one row per line of the table, with commas between
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/data/final-paycheck-deadline/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

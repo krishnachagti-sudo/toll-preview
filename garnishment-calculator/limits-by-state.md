@@ -1,10 +1,10 @@
 # Wage garnishment limits by state
 
-Federal law caps creditor garnishment at the lesser of 25% of disposable earnings or the amount above $217.50 a week, which is $250.00 on $1,000.00 of weekly disposable earnings; of the 18 jurisdictions whose statutes we have read, 7 allow less on that paycheck, shown below with the dollar figure.
+Federal law caps creditor garnishment at the lesser of 25% of disposable earnings or the amount above $217.50 a week, which is $250.00 on $1,000.00 of weekly disposable earnings; of the 19 jurisdictions whose statutes we have read, 8 allow less on that paycheck, shown below with the dollar figure.
 
 - Federal limit, $1,000 a week: $250.00
-- Jurisdictions read: 18
-- Lower than federal on that paycheck: 7
+- Jurisdictions read: 19
+- Lower than federal on that paycheck: 8
 
 ## Your paycheck, your state
 
@@ -21,7 +21,7 @@ Creditor (judgment) garnishments, pay on November 13, 2026, gross 1.25 times dis
 | Arizona | the lesser of 10% of disposable earnings or the amount… | Needs the wage | Needs the wage | A.R.S. 33-1131 |
 | Arkansas | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | [California](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california/) | the lesser of 20% of disposable earnings or 40% of… | $75.52 | $151.04 | Cal. Code Civ. Proc. 706.050, as stated on Judicial Council form WG-002 (Rev. January 1, 2026) |
-| Colorado | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
+| [Colorado](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/colorado/) | the lesser of 20% of disposable earnings or the amount… | $200.00 | $400.00 | Colorado Judicial Branch Form 27, Calculation of the Amount of Exempt Earnings Worksheet (C.R.S. 13-54-104) |
 | Connecticut | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/delaware/) | 15% of wages (85% is exempt), if that is less than the federal limit | $187.50 | $375.00 | 10 Del. C. 4913 |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia/) | 25% of the amount by which weekly disposable wages exceed… | $66.00 | $132.00 | D.C. Code 16-572 |
@@ -68,7 +68,7 @@ Creditor (judgment) garnishments, pay on November 13, 2026, gross 1.25 times dis
 | Wisconsin | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 | Wyoming | Not covered: statute not read. The federal limit is shown; the state may allow less. | $250.00 (federal) | $500.00 (federal) |  |
 
-**The long rules in full (15)**
+**The long rules in full (16)**
 
 Creditor (judgment) garnishments, pay on November 13, 2026, gross 1.25 times disposable. Iowa assumes $41,600 expected yearly earnings; Pennsylvania figures are for a residential lease judgment; Washington for a consumer debt.: full wording
 
@@ -76,6 +76,7 @@ Creditor (judgment) garnishments, pay on November 13, 2026, gross 1.25 times dis
 | --- | --- |
 | Arizona | the lesser of 10% of disposable earnings or the amount above 60 times the highest applicable minimum wage |
 | [California](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california/) | the lesser of 20% of disposable earnings or 40% of the amount above 48 times the applicable hourly minimum wage a week |
+| [Colorado](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/colorado/) | the lesser of 20% of disposable earnings or the amount above 40 times the higher of the federal and Colorado minimum wage |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia/) | 25% of the amount by which weekly disposable wages exceed 40 times the D.C. minimum wage, if that is less than the federal limit |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/iowa/) | the federal limit, and no more in a calendar year for each creditor than a cap set by the employee's expected earnings |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/kansas/) | the lesser of 25% of disposable earnings or the amount above 30 times the federal minimum wage (the federal rule), and no more than the claim |
@@ -98,6 +99,7 @@ Creditor (judgment) garnishments, pay on November 13, 2026, gross 1.25 times dis
 - [15 U.S.C. 1672 to 1677, U.S. Code on govinfo.gov (read November 8, 2026)](https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap41-subchapII.htm)
 - [Arizona: A.R.S. 33-1131 (read November 8, 2026)](https://www.azleg.gov/ars/33/01131.htm)
 - [California: Cal. Code Civ. Proc. 706.050, as stated on Judicial Council form WG-002 (Rev. January 1, 2026) (read November 8, 2026)](https://www.courts.ca.gov/documents/wg002.pdf)
+- [Colorado: Colorado Judicial Branch Form 27, Calculation of the Amount of Exempt Earnings Worksheet (C.R.S. 13-54-104) (read November 9, 2026)](https://www.coloradojudicial.gov/sites/default/files/2024-08/Form27.pdf)
 - [Delaware: 10 Del. C. 4913 (read November 8, 2026)](https://delcode.delaware.gov/title10/c049/sc01/index.html)
 - [District of Columbia: D.C. Code 16-572 (read November 8, 2026)](https://code.dccouncil.gov/us/dc/council/code/sections/16-572)
 - [Florida: Fla. Stat. 222.11 (read November 8, 2026)](https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0222/Sections/0222.11.html)
@@ -132,9 +134,9 @@ Of the states read here, Pennsylvania: 42 Pa.C.S. 8127 exempts wages in the empl
 - [CCPA limits by pay period](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/ccpa-limits/)
 - [Disposable earnings, line by line](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/disposable-earnings/)
 - [California limit](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/california/)
+- [Colorado limit](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/colorado/)
 - [Delaware limit](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/delaware/)
 - [District of Columbia limit](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/district-of-columbia/)
-- [Florida limit](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/florida/)
 - [What changes on January 1, 2027](https://krishnachagti-sudo.github.io/toll-preview/garnishment-calculator/garnishment-limits-2027/)
 
 ---

@@ -30,7 +30,7 @@ After the expiration date (read November 8, 2026)
 
 > Rules quoted from each state's own education agency page, with the date we read it. Not legal advice: your state agency, LPDC or district decides what counts. Totals come from the activities you enter; this tool does not read PERMS, TEACH, ECOS or any state portal. States whose official pages we could not read are listed as not covered rather than guessed.
 
-Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [renewal requirements by state table](https://krishnachagti-sudo.github.io/toll-preview/teacher-license-renewal-tracker/requirements-by-state/) (read November 8, 2026 to November 9, 2026).
 
 ## Related
 

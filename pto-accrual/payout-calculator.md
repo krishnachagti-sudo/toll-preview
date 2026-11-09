@@ -55,4 +55,4 @@ Unused hours times the final regular rate (salary divided by 2,080 for salaried 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/payout-calculator/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

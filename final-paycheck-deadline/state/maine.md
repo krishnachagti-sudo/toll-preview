@@ -78,4 +78,4 @@ In a court action, the unpaid wages plus twice the unpaid wages as liquidated da
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maine/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

@@ -1,6 +1,6 @@
 # Negative PTO and pay advances on the final check
 
-A negative PTO balance is paid time off taken before it was earned, so the deduction recovers an advance of wages. 7 of the 30 states read here have a rule for it in so many words; the rest apply their general deduction rule. In Illinois, a $320.00 deduction for a pay advance, loan or negative PTO balance: only if the advance agreement provided for it; after it, the final week pays $580.00 for 40 hours ($14.50 an hour), below $15.00 an hour (Illinois's basic minimum wage (DOL table)): at most $300.00 can come out of that week.
+A negative PTO balance is paid time off taken before it was earned, so the deduction recovers an advance of wages. 7 of the 36 states read here have a rule for it in so many words; the rest apply their general deduction rule. In Illinois, a $320.00 deduction for a pay advance, loan or negative PTO balance: only if the advance agreement provided for it; after it, the final week pays $580.00 for 40 hours ($14.50 an hour), below $15.00 an hour (Illinois's basic minimum wage (DOL table)): at most $300.00 can come out of that week.
 
 ## Check a deduction
 
@@ -14,18 +14,24 @@ Deduction for a pay advance, loan or negative PTO balance: what each covered sta
 | --- | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | no deduction rule read | We did not read Alaska's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | the general deduction rule applies | Only if required or empowered by law, with the employee's prior written authorization, or where there is a reasonable good faith dispute over the amount due (including a set-off the employer claims). | A.R.S. 23-352 |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | no deduction rule read | We did not read California's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/) | the general deduction rule applies | CDLE allows 10 days to audit that property or money entrusted to the employee was returned; written notice and other requirements apply to deductions in that case. Other deduction rules were not read. | C.R.S. 8-4-109 |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | the general deduction rule applies | Only if required or empowered by law, or with the employee's written authorization on a form approved by the labor commissioner (plus medical deductions without financial benefit to the employer, and automatic retirement enrollment). | C.G.S. 31-71e |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | the general deduction rule applies | Only if required or empowered by law, for medical care without financial benefit to the employer, or with a signed authorization for a lawful purpose that benefits the employee. | 19 Del. C. 1107 |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | no deduction rule read | We did not read District of Columbia's deduction rule on its own sites, so only the federal floor below applies here. |  |
+| [Hawaii](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/hawaii/) | no deduction rule read | We did not read Hawaii's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Idaho](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/) | allowed | Allowed: with proof of the advance or draw, the full amount can be withheld. | Idaho Code 45-609 |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/illinois/) | only if the advance agreement provided for it | Allowed from final compensation only if the agreement signed when the advance was made provided for it. | 820 ILCS 115/9; 56 Ill. Adm. Code 300 |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/) | the general deduction rule applies | Only if required or permitted by law or a court, or with written authorization for a lawful purpose that benefits the employee. Some items can never be deducted (shared-till shortages, most breakage and damage, lost or stolen property unless it was assigned equipment the employee acknowledged in writing). | Iowa Code 91A.5 |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/) | allowed after written notice | Allowed from final wages after a written notice and explanation (a loan or advance made during and within the scope of employment). | K.S.A. 44-319 |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kentucky/) | no deduction rule read | We did not read Kentucky's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maine/) | allowed with a signed writing | Allowed if the loan or advance is evidenced by a statement in writing signed by the employee. | 26 M.R.S. 626, 629 |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maryland/) | the general deduction rule applies | Only if ordered by a court, authorized expressly in writing by the employee, allowed by the Commissioner because the employee received full consideration, or made under another law. | Md. Code, Lab. & Empl. 3-503 |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/massachusetts/) | no deduction rule read | We did not read Massachusetts's deduction rule on its own sites, so only the federal floor below applies here. |  |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/michigan/) | no deduction rule read | We did not read Michigan's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/) | allowed if authorized in writing before the loan | A purchase or loan may be deducted, including at termination, if the employee authorized it in writing before making it; otherwise only with written authorization after the debt arose. | Minn. Stat. 181.79 |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/) | the general deduction rule applies | Reasonable deductions for board, room and other incidentals that are a condition of employment, or as otherwise provided by law. When an employee is discharged over an alleged theft connected to the work, the employer may withhold the value of the theft from the final paycheck if the conditions of 39-3-205(3) are met. | Mont. Code Ann. 39-3-204, 39-3-205(3) |
+| [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-hampshire/) | no deduction rule read | We did not read New Hampshire's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/) | only on the original loan schedule | An employer loan may be repaid only on the periodic schedule in the original loan agreement. | N.J.S.A. 34:11-4.4 |
 | [New York](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-york/) | no deduction rule read | We did not read New York's deduction rule on its own sites, so only the federal floor below applies here. |  |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-carolina/) | the general deduction rule applies | With a written authorization signed on or before the payday that gives the reason and the dollar amount or percentage; if the amount is not known in advance, a written authorization with the reason, then written notice of the amount and of the right to withdraw. Deductions for the employer's benefit may not cut into minimum wage or overtime. | G.S. 95-25.8 |
@@ -54,7 +60,7 @@ A deduction for the employer's benefit may not take the final week below the min
 - [29 CFR 531.35, "Free and clear" payment (eCFR, read November 8, 2026)](https://www.ecfr.gov/current/title-29/section-531.35)
 - [U.S. Department of Labor, State Minimum Wage Laws (page updated 2026-11-05, read November 8, 2026)](https://www.dol.gov/agencies/whd/minimum-wage/state)
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -65,5 +71,5 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/deductions/negative-pto/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/deductions/negative-pto.csv

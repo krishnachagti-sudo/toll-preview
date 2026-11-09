@@ -1,6 +1,6 @@
 # How the final paycheck deadline is worked out by state
 
-30 of the 51 jurisdictions (the states and DC) are covered from their own statute or labor department sites, read 2026-11-08; the other 21 are listed as not covered with the reason. A deadline counted in days is due by the end of that day; one counted in hours, such as Vermont's 72 hours, carries a time.
+36 of the 51 jurisdictions (the states and DC) are covered from their own statute or labor department sites, read 2026-11-09; the other 15 are listed as not covered with the reason. A deadline counted in days is due by the end of that day; one counted in hours, such as Vermont's 72 hours, carries a time.
 
 ## How does it work?
 
@@ -14,14 +14,14 @@
 
 ## What does it not cover?
 
-- States not read on their own sites are not covered (21 of them), and the answer gives the reason rather than a date.
+- States not read on their own sites are not covered (15 of them), and the answer gives the reason rather than a date.
 - Business days skip only weekends and US federal holidays; add state holidays and closed days yourself.
 - Local ordinances, union and employment contracts and industry rules can be stricter.
 - It is worked out from each state's own published text. It is not legal advice.
 
 ## How fresh is the data?
 
-- [Data as of Nov 4, 2026, from 46 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Each state's statute or labor department page, the eCFR text of 29 CFR 531.35 and the DOL state minimum wage table (page updated 2026-11-05) were read on 2026-11-08. The quotes are checked against the fetched text when the data is built. The rules change only by hand, with the tests that pin them.
+- [Data as of Nov 4, 2026, from 54 sources](https://krishnachagti-sudo.github.io/toll-preview/updates/): Each state's statute or labor department page, the eCFR text of 29 CFR 531.35 and the DOL state minimum wage table (page updated 2026-11-05) were read on 2026-11-09. The quotes are checked against the fetched text when the data is built. The rules change only by hand, with the tests that pin them.
 - [Tested: 3 checks in its test suite](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks): The tests check the covered and not-covered counts, Texas's 6 calendar days, hour, business-day and holiday counting, notice, demand and policy rules, missing inputs named rather than guessed, paydays from dates, lists and schedules, the deduction rules and the minimum-wage floor, each penalty formula, and a batch where a refused row still leaves the rest answered.
 
 - [29 CFR 531.35, "Free and clear" payment; "kickbacks" (eCFR)](https://www.ecfr.gov/current/title-29/section-531.35), see the document, read 2026-11-08
@@ -70,6 +70,14 @@
 - [West Virginia Division of Labor, WPCA Fact Sheet 6: Payment of Final Wages (July 2016)](https://labor.wv.gov/media/85/download?inline=), 2016-07, read 2026-11-08
 - [Wyoming Department of Workforce Services, Labor Standards employer FAQ](https://dws.wyo.gov/dws-division/labor-standards/employers/faq/), see the document, read 2026-11-08
 - [Wyoming Department of Workforce Services, Your Rights as a Worker](https://dws.wyo.gov/dws-division/labor-standards/workers-and-job-seekers/your-rights-as-a-worker/), see the document, read 2026-11-08
+- [Cal. Labor Code 201, payment of wages on discharge (California Legislative Information)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=201.), see the document, read 2026-11-09
+- [Cal. Labor Code 202, payment of wages on quitting (California Legislative Information)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=202.), see the document, read 2026-11-09
+- [Cal. Labor Code 203, waiting time penalty (California Legislative Information)](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=203.), see the document, read 2026-11-09
+- [Massachusetts Trial Court Law Libraries, Massachusetts law about wages (quoting G.L. c. 149, s. 148)](https://www.mass.gov/info-details/massachusetts-law-about-wages), see the document, read 2026-11-09
+- [KRS 337.055, Payment of all wages or salary upon dismissal or voluntary leaving required](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=32050), see the document, read 2026-11-09
+- [Hawaii Department of Labor and Industrial Relations, Wage Standards Division: Unpaid Wages (HRS 388-3)](https://labor.hawaii.gov/wsd/unpaid-wages/), see the document, read 2026-11-09
+- [New Hampshire Department of Labor, Wages and Work Hours FAQs (RSA 275:44)](https://www.dol.nh.gov/resource-center/frequently-asked-questions/wages-and-work-hours-faqs), see the document, read 2026-11-09
+- [Michigan Department of Labor and Economic Opportunity, Wage and Hour: Payment of Wages and Fringe Benefits Act, Public Act 390 of 1978](https://www.michigan.gov/leo/bureaus-agencies/ber/wage-and-hour/payment-of-wages-and-fringe-benefits-act-public-act-390-of-1978), see the document, read 2026-11-09
 
 [The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
@@ -115,11 +123,11 @@ Outputs:
 4. Paydays come from the dates you give or from the schedule: weekly and biweekly step from the anchor; semimonthly and monthly use the days of the month, 31 meaning the last day.
 5. Where a part of an earlier-of rule cannot be dated, the date shown is the latest the other part allows and the answer says the real deadline may be earlier. Where nothing can be dated, the answer names what is missing rather than guessing.
 6. For a deduction, the state's rule for that kind of deduction is quoted with a verdict; with no topic rule, the state's general deduction rule applies. The floor check takes the final week's gross pay less the deduction and compares it with the hours times the higher of the federal and state basic minimum wage (or the rate you enter).
-7. For a penalty, the state's formula is applied to the days after the due date up to the date paid: a multiple of the unpaid wages, a percent a day with a cap, a day's wages a day with a cap, or eight times the hourly rate a day. States with a formula: Alaska, Arizona, Connecticut, District of Columbia, Delaware, Kansas, Maine, Minnesota, North Dakota, Oregon, Pennsylvania, South Carolina and West Virginia.
+7. For a penalty, the state's formula is applied to the days after the due date up to the date paid: a multiple of the unpaid wages, a percent a day with a cap, a day's wages a day with a cap, or eight times the hourly rate a day. States with a formula: Alaska, Arizona, California, Connecticut, District of Columbia, Delaware, Kansas, Maine, Minnesota, North Dakota, Oregon, Pennsylvania, South Carolina and West Virginia.
 
 **State statutes and labor department pages.**
 
-Each covered state's rule is quoted word for word from its own statute site or labor department, read 2026-11-08. Each covered state's rules are quoted word for word from that state's own statute site or labor department, read on readOn. Quotes are checked against the fetched text by build\_states.py. Not-covered states give the reason.
+Each covered state's rule is quoted word for word from its own statute site or labor department, read 2026-11-09. Each covered state's rules are quoted word for word from that state's own statute site or labor department, read on the date given with each source (2026-11-08 or 2026-11-09). Quotes are checked against the fetched text by build\_states.py, or for pages read in a browser on 2026-11-09, copied from the page as shown. Not-covered states give the reason.
 
 **29 CFR 531.35 and the minimum wage.**
 
@@ -252,7 +260,7 @@ Five separations in one call
 | row 2 (CT) | the end of Monday, December 28, 2026 |
 | row 3 (VT) | 3:30 pm on Monday, December 7, 2026 |
 | row 4 (DE) | the end of Wednesday, January 6, 2027 |
-| row 5 (CA) | California is not covered: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts. |
+| row 5 (OH) | Ohio is not covered: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (codes.ohio.gov did not load), so no rule is shown. We do not copy other publishers' charts. |
 
 **The input**
 
@@ -283,7 +291,7 @@ Five separations in one call
       "nextPayday": "2027-01-01"
     },
     {
-      "state": "CA",
+      "state": "OH",
       "separation": "discharge",
       "separatedAt": "2026-12-04"
     }
@@ -295,7 +303,7 @@ Five separations in one call
 
 **What its test suite asserts (3)**
 
-- 30 jurisdictions are covered from their own sites and 21 are listed as not covered with a reason, each source with its read date, 2026-11-08.
+- 36 jurisdictions are covered from their own sites and 15 are listed as not covered with a reason, each source with its read date, 2026-11-09.
 - Calendar days, hours, business days, federal holidays, notice, demand and policy rules are each checked, and missing facts are named, not guessed.
 - Each state's deduction rule, the minimum-wage floor and every penalty formula are checked, and a batch answers every row it can.
 
@@ -311,7 +319,7 @@ No. The answer is worked out by fixed rules from the data on this page, so the s
 
 ### What will the final paycheck deadline by state refuse to answer?
 
-States not read on their own sites are not covered (21 of them), and the answer gives the reason rather than a date. A request outside what the data covers is refused with the reason and costs nothing.
+States not read on their own sites are not covered (15 of them), and the answer gives the reason rather than a date. A request outside what the data covers is refused with the reason and costs nothing.
 
 ## Related
 

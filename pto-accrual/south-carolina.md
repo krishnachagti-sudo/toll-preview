@@ -56,4 +56,4 @@ Wages include vacation, holiday and sick leave payments due under an employer po
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/south-carolina/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

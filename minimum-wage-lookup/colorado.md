@@ -1,6 +1,6 @@
-# Colorado Minimum Wage 2026 and 2027 (Plus 3 Local Rates)
+# Colorado Minimum Wage 2026 and 2027 (Plus 4 Local Rates)
 
-The Colorado minimum wage is $15.16 an hour (DOL's table updated November 5, 2026); on January 1, 2027 there is a change we could not read from the state's own page. 3 cities and counties in Colorado set their own higher rates we have read; the tipped cash wage is $12.14 with a tip credit of up to $3.02 (DOL).
+The Colorado minimum wage is $15.16 an hour (DOL's table updated November 5, 2026); on January 1, 2027 there is a change we could not read from the state's own page. 4 cities and counties in Colorado set their own higher rates we have read; the tipped cash wage is $12.14 with a tip credit of up to $3.02 (DOL).
 
 ## Look up an address in Colorado
 
@@ -29,11 +29,11 @@ Local rates on November 8, 2026 and the next change
 | [Boulder](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/boulder/) | $16.82 | changes on January 1, 2027; the new rate was not published when we read the page |
 | [Boulder County (unincorporated)](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/boulder-county-unincorporated/) | $16.82 | changes on January 1, 2027; the new rate was not published when we read the page |
 | [Denver](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/denver/) | $19.29 | changes on January 1, 2027; the new rate was not published when we read the page |
+| [Edgewater](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/edgewater/) | $18.17 | changes on January 1, 2027; the new rate was not published when we read the page |
 
 ## Not covered
 
 - Colorado: The Colorado Department of Labor and Employment page refused this network (HTTP 403) on 2026-11-08. Its rate in force comes from DOL's table; dated steps and announced changes are not covered.
-- Edgewater: The city's own minimum wage page refused this network (HTTP 403) on 2026-11-08; rate not guessed.
 
 Tipped wages in detail: [Colorado tipped minimum wage](https://krishnachagti-sudo.github.io/toll-preview/minimum-wage-lookup/colorado/tipped/).
 

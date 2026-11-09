@@ -1,6 +1,6 @@
 # Final paycheck laws by state
 
-Of the 30 jurisdictions whose own statute or labor department pages we read on November 8, 2026, 15 pay a fired employee and one who quits by the next regular payday (or the payday for the final pay period), and Colorado and Montana require payment immediately on a firing; Texas allows 6 days and Vermont 72 hours.
+Of the 36 jurisdictions whose own statute or labor department pages we read by November 9, 2026, 16 pay a fired employee and one who quits by the next regular payday (or the payday for the final pay period), and California and Colorado and Massachusetts and Montana require payment immediately on a firing; Texas allows 6 days and Vermont and New Hampshire 72 hours.
 
 ## Work out one separation
 
@@ -8,24 +8,30 @@ Of the 30 jurisdictions whose own statute or labor department pages we read on N
 
 ## The chart
 
-Final paycheck deadlines, quoted from each state's own site, read November 8, 2026
+Final paycheck deadlines, quoted from each state's own site, read November 9, 2026
 
 | State | Fired | Quit | Law |
 | --- | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | within 3 working days after the day of termination | the next regular payday at least 3 days after the employer received notice | AS 23.05.140 |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | within 7 working days or by the end of… | by the regular payday for the pay period in which the termination occurred | A.R.S. 23-353(A); A.R.S. 23-353(B) |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | immediately, at the time of discharge | with at least 72 hours' notice… | Cal. Lab. Code 201(a); Cal. Lab. Code 202(a) |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/) | immediately | by the next regular payday | C.R.S. 8-4-109 |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | by the next business day | by the next regular payday | C.G.S. 31-71c(b); C.G.S. 31-71c(a) |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | on the later of the next regular payday and… | on the later of the next regular payday and… | 19 Del. C. 1103(a) |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | by the next working day | by the next regular payday or within 7 days, whichever is earlier | D.C. Code 32-1303(1); D.C. Code 32-1303(2) |
+| [Hawaii](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/hawaii/) | at the time of discharge, or not later than the next working day | by the next regular payday… | HRS 388-3(a); HRS 388-3(b) |
 | [Idaho](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/) | by the next regular payday or within 10 days… | by the next regular payday or within 10 days… | Idaho Code 45-606 |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/illinois/) | by the next regular payday | by the next regular payday | 820 ILCS 115/5 |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/) | by the next regular payday for the pay period… | by the next regular payday for the pay period… | Iowa Code 91A.4 |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/) | by the next regular payday on which the employee would have been paid | by the next regular payday on which the employee would have been paid | K.S.A. 44-315(a) |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kentucky/) | by the next normal pay period or 14 days… | by the next normal pay period or 14 days… | KRS 337.055 |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maine/) | by the next established payday | by the next established payday | 26 M.R.S. 626 |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maryland/) | on or before the day the wages would have been paid had employment continued | on or before the day the wages would have been paid had employment continued | Md. Code, Lab. & Empl. 3-505(a) |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/massachusetts/) | in full on the day of discharge | in full on the following regular payday, or the… | G.L. c. 149, s. 148 |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/michigan/) | on the regular scheduled payday for the period in which the employee is discharged | on the regular scheduled payday for the period in which the employee quits | Payment of Wages and Fringe Benefits Act (1978 PA 390) |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/) | immediately on the employee's written demand; in default 24 hours after it | by the first regular payday… | Minn. Stat. 181.13(a); Minn. Stat. 181.14 subd. 1 |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/) | immediately when separated for cause or laid off, unless… | by the next regular payday for the pay period… | Mont. Code Ann. 39-3-205(2); Mont. Code Ann. 39-3-205(1) |
+| [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-hampshire/) | within 72 hours of the termination | by the next regular payday… | RSA 275:44 |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/) | by the regular payday for the pay period in which employment ended | by the regular payday for the pay period in which employment ended | N.J.S.A. 34:11-4.3 |
 | [New York](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-york/) | by the payday on which the next pay would have been due | by the payday on which the next pay would have been due | N.Y. Labor Law 191(3) |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-carolina/) | by the next regular payday | by the next regular payday | G.S. 95-25.7 |
@@ -43,26 +49,32 @@ Final paycheck deadlines, quoted from each state's own site, read November 8, 20
 | [West Virginia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/west-virginia/) | by the next regular payday on which the wages would otherwise be due | by the next regular payday on which the wages would otherwise be due | W. Va. Code 21-5-4(b) |
 | [Wyoming](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/wyoming/) | by the next regular payday | by the next regular payday | W.S. 27-4-104 |
 
-**Late penalties, and the long rules in full (30)**
+**Late penalties, and the long rules in full (36)**
 
-Final paycheck deadlines, quoted from each state's own site, read November 8, 2026: full wording
+Final paycheck deadlines, quoted from each state's own site, read November 9, 2026: full wording
 
 | State | Fired | Quit | Late penalty |
 | --- | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | within 3 working days after the day of termination | the next regular payday at least 3 days after the employer received notice | the regular wage from the time of demand to the time of payment, or for 90 working days, whichever is less |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | within 7 working days or by the end of the next regular pay period, whichever is sooner | by the regular payday for the pay period in which the termination occurred | in a civil action, treble the unpaid wages |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | immediately, at the time of discharge | with at least 72 hours' notice: at the time of quitting; with less: within 72 hours | if the employer willfully fails to pay, the wages continue as a penalty at the same daily rate until paid, for up to 30 days |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/) | immediately | by the next regular payday | not read |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | by the next business day | by the next regular payday | in a civil action, twice the full amount of the wages |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | on the later of the next regular payday and 3 business days after the last day worked | on the later of the next regular payday and 3 business days after the last day worked | liquidated damages of the lower of 10% of the unpaid wages for each day (except Sundays and legal holidays) the failure continues, or an amount equal to the unpaid wages |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | by the next working day | by the next regular payday or within 7 days, whichever is earlier | liquidated damages of 10% of the unpaid wages for each working day the failure continues, or treble the unpaid wages, whichever is smaller |
+| [Hawaii](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/hawaii/) | at the time of discharge, or not later than the next working day | by the next regular payday; at the time of quitting if the employee gave at least one pay period's notice | not read |
 | [Idaho](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/) | by the next regular payday or within 10 days (weekends and holidays excluded), whichever is sooner; within 48 hours (weekends and holidays excluded) of a written request | by the next regular payday or within 10 days (weekends and holidays excluded), whichever is sooner; within 48 hours (weekends and holidays excluded) of a written request | administrative penalties of up to $750 ($500 if paid before the department files a state lien) |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/illinois/) | by the next regular payday | by the next regular payday | not read |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/) | by the next regular payday for the pay period in which the wages were earned | by the next regular payday for the pay period in which the wages were earned | not read |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/) | by the next regular payday on which the employee would have been paid | by the next regular payday on which the employee would have been paid | if willful, 1% of the unpaid wages for each day (except Sundays and legal holidays) after the eighth day, or 100% of the unpaid wages, whichever is less |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kentucky/) | by the next normal pay period or 14 days after the separation, whichever is later | by the next normal pay period or 14 days after the separation, whichever is later | not read |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maine/) | by the next established payday | by the next established payday | in a court action, the unpaid wages plus twice the unpaid wages as liquidated damages, interest, costs and fees; also a fine of $100 to $500 per violation |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maryland/) | on or before the day the wages would have been paid had employment continued | on or before the day the wages would have been paid had employment continued | not read |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/massachusetts/) | in full on the day of discharge | in full on the following regular payday, or the following Saturday if there is none | not read |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/michigan/) | on the regular scheduled payday for the period in which the employee is discharged | on the regular scheduled payday for the period in which the employee quits | not read |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/) | immediately on the employee's written demand; in default 24 hours after it | by the first regular payday; if that is less than 5 days away, the second payday, but within 20 calendar days | average daily earnings for each day in default, up to 15 days |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/) | immediately when separated for cause or laid off, unless a written personnel policy extends it to the next regular payday or 15 days, whichever is first | by the next regular payday for the pay period, or 15 days, whichever is first | not read |
+| [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-hampshire/) | within 72 hours of the termination | by the next regular payday; within 72 hours if the employee gave one pay period's notice | not read |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/) | by the regular payday for the pay period in which employment ended | by the regular payday for the pay period in which employment ended | not read |
 | [New York](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-york/) | by the payday on which the next pay would have been due | by the payday on which the next pay would have been due | not read |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-carolina/) | by the next regular payday | by the next regular payday | not read |
@@ -86,25 +98,19 @@ These states' own sites could not be read when this chart was made, or we found 
 
 - Alabama: We found no final-pay statute or labor department rule on this state's own sites that we could read on 2026-11-08, so no deadline is shown. Do not read this as "no rule": check with the state.
 - Arkansas: The Arkansas Department of Labor and Licensing's own pages disagree (read 2026-11-08): its statute book (June 2020) prints Ark. Code 11-4-405 with wages due on the day of discharge, while its FAQ says by the next regular payday. We show no rule until the current statute can be read.
-- California: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
 - Florida: We found no final-pay statute or labor department rule on this state's own sites that we could read on 2026-11-08, so no deadline is shown. Do not read this as "no rule": check with the state.
 - Georgia: We found no final-pay statute or labor department rule on this state's own sites that we could read on 2026-11-08, so no deadline is shown. Do not read this as "no rule": check with the state.
-- Hawaii: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Indiana: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Kentucky: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Louisiana: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Massachusetts: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Michigan: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
+- Indiana: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (iga.in.gov loaded blank and in.gov did not load), so no rule is shown. We do not copy other publishers' charts.
+- Louisiana: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (legis.la.gov did not load and laworks.net showed a bot check), so no rule is shown. We do not copy other publishers' charts.
 - Mississippi: We found no final-pay statute or labor department rule on this state's own sites that we could read on 2026-11-08, so no deadline is shown. Do not read this as "no rule": check with the state.
-- Missouri: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Nebraska: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Nevada: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- New Hampshire: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- New Mexico: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Ohio: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Rhode Island: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Utah: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
-- Wisconsin: The state legislature's and labor department's sites could not be read from our network on 2026-11-08 (connection refused, timed out or a bot check), so no rule is shown. We do not copy other publishers' charts.
+- Missouri: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (revisor.mo.gov and labor.mo.gov did not load), so no rule is shown. We do not copy other publishers' charts.
+- Nebraska: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (nebraskalegislature.gov and dol.nebraska.gov did not load), so no rule is shown. We do not copy other publishers' charts.
+- Nevada: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (leg.state.nv.us showed a bot check and labor.nv.gov rejected the request), so no rule is shown. We do not copy other publishers' charts.
+- New Mexico: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (dws.state.nm.us returned only an error page), so no rule is shown. We do not copy other publishers' charts.
+- Ohio: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (codes.ohio.gov did not load), so no rule is shown. We do not copy other publishers' charts.
+- Rhode Island: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (webserver.rilegislature.gov did not load and dlt.ri.gov showed a bot check), so no rule is shown. We do not copy other publishers' charts.
+- Utah: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (le.utah.gov did not load and the Labor Commission site showed a bot check), so no rule is shown. We do not copy other publishers' charts.
+- Wisconsin: The state's own statute and labor department sites could not be read on 2026-11-08 or again in a browser on 2026-11-09 (docs.legis.wisconsin.gov and dwd.wisconsin.gov did not load), so no rule is shown. We do not copy other publishers' charts.
 
 > Worked out from each state's own published text, quoted with the date we read it. Not legal advice. Business days skip weekends and US federal holidays; add your state's holidays and closed days if they differ. Local ordinances, union contracts, employment contracts and industry rules can be stricter.
 
@@ -154,12 +160,20 @@ These states' own sites could not be read when this chart was made, or we found 
 - [West Virginia Division of Labor, WPCA Fact Sheet 6: Payment of Final Wages (July 2016), read November 8, 2026](https://labor.wv.gov/media/85/download?inline=)
 - [Wyoming Department of Workforce Services, Labor Standards employer FAQ, read November 8, 2026](https://dws.wyo.gov/dws-division/labor-standards/employers/faq/)
 - [Wyoming Department of Workforce Services, Your Rights as a Worker, read November 8, 2026](https://dws.wyo.gov/dws-division/labor-standards/workers-and-job-seekers/your-rights-as-a-worker/)
+- [Cal. Labor Code 201, payment of wages on discharge (California Legislative Information), read November 9, 2026](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=201.)
+- [Cal. Labor Code 202, payment of wages on quitting (California Legislative Information), read November 9, 2026](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=202.)
+- [Cal. Labor Code 203, waiting time penalty (California Legislative Information), read November 9, 2026](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=203.)
+- [Massachusetts Trial Court Law Libraries, Massachusetts law about wages (quoting G.L. c. 149, s. 148), read November 9, 2026](https://www.mass.gov/info-details/massachusetts-law-about-wages)
+- [KRS 337.055, Payment of all wages or salary upon dismissal or voluntary leaving required, read November 9, 2026](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=32050)
+- [Hawaii Department of Labor and Industrial Relations, Wage Standards Division: Unpaid Wages (HRS 388-3), read November 9, 2026](https://labor.hawaii.gov/wsd/unpaid-wages/)
+- [New Hampshire Department of Labor, Wages and Work Hours FAQs (RSA 275:44), read November 9, 2026](https://www.dol.nh.gov/resource-center/frequently-asked-questions/wages-and-work-hours-faqs)
+- [Michigan Department of Labor and Economic Opportunity, Wage and Hour: Payment of Wages and Fringe Benefits Act, Public Act 390 of 1978, read November 9, 2026](https://www.michigan.gov/leo/bureaus-agencies/ber/wage-and-hour/payment-of-wages-and-fringe-benefits-act-public-act-390-of-1978)
 
 ## Questions
 
 ### Which states require the final paycheck immediately when someone is fired?
 
-Of the states read here: Colorado, Montana. Some allow more time in narrow cases; see each state's page.
+Of the states read here: California, Colorado, Massachusetts, Montana. Some allow more time in narrow cases; see each state's page.
 
 ### Why are some states missing?
 
@@ -176,5 +190,5 @@ Each rule here is quoted from the state's own statute or labor department site. 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state.csv

@@ -19,18 +19,24 @@ Final week of $720 with a $250 advance: verdict, floor and due date
 | --- | --- | --- | --- | --- | --- |
 | [Alaska](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/alaska/) | no deduction rule read | $470.00 | $14.00 | $160.00 | 2026-11-23 |
 | [Arizona](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/arizona/) | the general deduction rule applies | $470.00 | $15.15 | $114.00 | 2026-11-28 |
+| [California](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/california/) | no deduction rule read | $470.00 | $16.90 | $44.00 | 2026-11-18 16:00 |
 | [Colorado](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/colorado/) | the general deduction rule applies | $470.00 | $15.16 | $113.60 | 2026-11-18 16:00 |
 | [Connecticut](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/connecticut/) | the general deduction rule applies | $470.00 | $16.94 | $42.40 | 2026-11-19 |
 | [Delaware](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/delaware/) | the general deduction rule applies | $470.00 | $15.00 | $120.00 | 2026-11-23 |
 | [District of Columbia](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/district-of-columbia/) | no deduction rule read | $470.00 | $18.40 | $0.00 | 2026-11-19 |
+| [Hawaii](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/hawaii/) | no deduction rule read | $470.00 | $16.00 | $80.00 | 2026-11-19 |
 | [Idaho](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/idaho/) | allowed | $470.00 | $7.25 | $430.00 | 2026-11-20 |
 | [Illinois](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/illinois/) | only if the advance agreement provided for it | $470.00 | $15.00 | $120.00 | 2026-11-20 |
 | [Iowa](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/iowa/) | the general deduction rule applies | $470.00 | $7.25 | $430.00 | 2026-12-04 |
 | [Kansas](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kansas/) | allowed after written notice | $470.00 | $7.25 | $430.00 | 2026-12-04 |
+| [Kentucky](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/kentucky/) | no deduction rule read | $470.00 | $7.25 | $430.00 | 2026-12-02 |
 | [Maine](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maine/) | allowed with a signed writing | $470.00 | $15.10 | $116.00 | 2026-11-20 |
 | [Maryland](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/maryland/) | the general deduction rule applies | $470.00 | $15.00 | $120.00 | 2026-12-04 |
+| [Massachusetts](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/massachusetts/) | no deduction rule read | $470.00 | $15.00 | $120.00 | 2026-11-18 16:00 |
+| [Michigan](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/michigan/) | no deduction rule read | $470.00 | $13.73 | $170.80 | 2026-12-04 |
 | [Minnesota](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/minnesota/) | allowed if authorized in writing before the loan | $470.00 | $11.41 | $263.60 | 2026-11-19 16:00 |
 | [Montana](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/montana/) | the general deduction rule applies | $470.00 | $10.85 | $286.00 | 2026-11-18 16:00 |
+| [New Hampshire](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-hampshire/) | no deduction rule read | $470.00 | $7.25 | $430.00 | 2026-11-21 16:00 |
 | [New Jersey](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-jersey/) | only on the original loan schedule | $470.00 | $15.92 | $83.20 | 2026-12-04 |
 | [New York](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/new-york/) | no deduction rule read | $470.00 | $16.00 | $80.00 | 2026-11-20 |
 | [North Carolina](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/state/north-carolina/) | the general deduction rule applies | $470.00 | $7.25 | $430.00 | 2026-11-20 |
@@ -57,7 +63,7 @@ Final week of $720 with a $250 advance: verdict, floor and due date
 - [29 CFR 531.35, "Free and clear" payment (eCFR, read November 8, 2026)](https://www.ecfr.gov/current/title-29/section-531.35)
 - [U.S. Department of Labor, State Minimum Wage Laws (page updated 2026-11-05, read November 8, 2026)](https://www.dol.gov/agencies/whd/minimum-wage/state)
 
-Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 8, 2026).
+Each state's own source is linked on its page and in the [final paycheck laws by state chart](https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/laws-by-state/) (read November 9, 2026).
 
 ## Related
 
@@ -68,5 +74,5 @@ Each state's own source is linked on its page and in the [final paycheck laws by
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/final-paycheck-calculator/  
-Data as of: 2026-11-08  
+Data as of: 2026-11-09  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/final-paycheck-deadline/final-paycheck-calculator.csv

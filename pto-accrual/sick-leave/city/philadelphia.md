@@ -68,4 +68,4 @@ Unused time carries over, but accrual and use may be held to 40 hours a year; no
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/sick-leave/city/philadelphia/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

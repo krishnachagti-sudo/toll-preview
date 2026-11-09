@@ -56,4 +56,4 @@ Fringe benefits payable under a written policy are part of final wages unless th
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/west-virginia/  
-Data as of: 2026-11-08
+Data as of: 2026-11-09

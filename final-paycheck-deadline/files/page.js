@@ -7,7 +7,7 @@ const $ = (id) => document.getElementById(id);
 
 // The states, and the ones whose own sites we have read (the tests check this list against the data).
 export const STATES = { AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California', CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia', FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York', NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming' };
-export const COVERED = ['AK', 'AZ', 'CO', 'CT', 'DC', 'DE', 'IA', 'ID', 'IL', 'KS', 'MD', 'ME', 'MN', 'MT', 'NC', 'ND', 'NJ', 'NY', 'OK', 'OR', 'PA', 'SC', 'SD', 'TN', 'TX', 'VA', 'VT', 'WA', 'WV', 'WY'];
+export const COVERED = ['AK', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'HI', 'IA', 'ID', 'IL', 'KS', 'KY', 'MA', 'MD', 'ME', 'MI', 'MN', 'MT', 'NC', 'ND', 'NH', 'NJ', 'NY', 'OK', 'OR', 'PA', 'SC', 'SD', 'TN', 'TX', 'VA', 'VT', 'WA', 'WV', 'WY'];
 
 const val = (id) => $(id).value.trim();
 const isDate = (v) => /^\d{4}-\d{2}-\d{2}$/.test(v);
