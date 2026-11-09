@@ -85,8 +85,12 @@ function renderCheck(r, { kind, note }) {
   const out = $('tt-check-out');
   out.textContent = '';
   const year = r.paymentYear;
-  put(out,
-    kind === 'example' ? h('p', { class: 'tt-sheet-label' }, 'Worked example') : null,
+  // The report's head (its own box, so a screenshot of the sample can take it whole).
+  const head = h('div', { id: 'tt-report-head' });
+  out.append(head);
+  put(head,
+    kind === 'example' ? h('div', { class: 'dz-rh' }, [h('span', { class: 'ex-tag' }, 'Example'), h('span', { class: 'dz-wx' }, 'Worked example')]) : null,
+    kind === 'example' ? h('p', { class: 'dz-exin' }, `Example: ${money(r.amount)} paid in ${year}${r.box ? `, ${r.box.form} box ${r.box.box}` : ''}`) : null,
     h('p', { class: `tt-answer ${r.required ? 'yes' : 'no'}` }, [h('small', {}, `${year} payments${r.lineStatus === 'provisional' ? ', provisional line' : ''}`), r.required ? 'Yes, file it' : 'No form needed']),
     h('p', { class: 'tt-sub' }, r.answer),
     r.line !== null && r.line !== undefined ? h('dl', { class: 'tt-facts' }, [
@@ -219,8 +223,12 @@ function renderReport(r, { kind, note }) {
   const s = r.summary;
   const d = r.dueDates;
   const owed = Object.values(s.forms).reduce((a, b) => a + b, 0);
-  put(out,
-    kind === 'example' ? h('p', { class: 'tt-sheet-label' }, 'Sample: a made-up remodeling business\'s 2026 payments') : null,
+  // The report's head (its own box, so a screenshot of the sample can take it whole).
+  const head = h('div', { id: 'tt-report-head' });
+  out.append(head);
+  put(head,
+    kind === 'example' ? h('div', { class: 'dz-rh' }, [h('span', { class: 'ex-tag' }, 'Example'), h('span', { class: 'dz-wx' }, 'Worked example')]) : null,
+    kind === 'example' ? h('p', { class: 'dz-exin' }, `Example: a made-up remodeling business's ${r.paymentYear} payments to ${s.payees} payees`) : null,
     h('p', { class: 'tt-answer' }, [h('small', {}, `${r.paymentYear} payments, ${lineText(r.general)} line${r.lineStatus === 'provisional' ? ' (provisional)' : ''}`), `${s.file} of ${s.payees} need a form`]),
     h('p', { class: 'tt-sub' }, r.answer),
     h('dl', { class: 'tt-facts' }, [
@@ -371,8 +379,9 @@ async function onScan(ev) {
 
 function showPrice() {
   const scan = tool.pricing.actions.find((a) => a.name === 'scan');
-  $('tt-price').textContent = `A year-end scan costs ${T.money(scan.text)}. Checking one payee is free${account ? '' : ': 5 free checks a day without an account'}.`;
-  $('tt-check-note').textContent = account ? 'Free, and not taken from your balance.' : '5 free checks a day, no account needed.';
+  const line = (el, ...parts) => { el.textContent = ''; put(el, ...parts.map((x) => h('span', {}, x))); };
+  line($('tt-price'), `A year-end scan costs ${T.money(scan.text)}`, account ? 'Charged from your balance' : 'Needs an account', 'Checking one payee is free');
+  line($('tt-check-note'), 'Checking one payee is free', account ? 'Not taken from your balance' : '5 free checks a day, no card needed');
   $('tt-scan-note').textContent = account ? 'Charged from your balance, once per payee for the year.' : 'A scan needs an account. The free preview above needs none.';
   $('tt-scan-run').textContent = account ? 'Run the scan' : 'Sign in to run the scan';
 }

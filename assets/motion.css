@@ -404,10 +404,10 @@ input[type=checkbox]:checked,input[type=radio]:checked{animation:tl-pop .35s var
 .hp-slim-tabs{flex:1;min-width:0;-webkit-mask:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent);mask:linear-gradient(90deg,transparent,#000 14px,#000 calc(100% - 14px),transparent)}
 /* Leaving is quick and all at once; arriving waits a beat and staggers, so the two rows never sit
    half-visible on top of each other. */
-.hp-slim-tabs a{opacity:0;transform:translateY(9px);filter:blur(3px);transition:color .25s,opacity .14s,transform .3s ease-in,filter .14s}
+.hp-slim-tabs a,.hp-slim-tabs .tp-more{opacity:0;transform:translateY(9px);filter:blur(3px);transition:color .25s,opacity .14s,transform .3s ease-in,filter .14s}
 .site-head.hp-slim-on .hp-slim{pointer-events:auto}
 .site-head.hp-slim-on .hp-menu{opacity:1;transform:none;transition-delay:.06s}
-.site-head.hp-slim-on .hp-slim-tabs a{opacity:1;transform:none;filter:none;transition-delay:0s,calc(var(--i,0) * 35ms + 80ms),calc(var(--i,0) * 35ms + 80ms),calc(var(--i,0) * 35ms + 80ms)}
+.site-head.hp-slim-on .hp-slim-tabs a,.site-head.hp-slim-on .hp-slim-tabs .tp-more{opacity:1;transform:none;filter:none;transition-delay:0s,calc(var(--i,0) * 35ms + 80ms),calc(var(--i,0) * 35ms + 80ms),calc(var(--i,0) * 35ms + 80ms)}
 .site-head.hp-slim-on .hp-slim-tabs .hp-ind.on{opacity:1;transition-delay:.12s}
 .head-nav>a{transition:color .15s,background .15s,opacity .3s,transform .5s var(--lg-spring),filter .3s}
 .site-head.hp-docked .head-nav>a{transition-delay:0s,0s,90ms,90ms,90ms}
@@ -426,10 +426,10 @@ input[type=checkbox]:checked,input[type=radio]:checked{animation:tl-pop .35s var
   padding:0 10px 6px;pointer-events:none;z-index:2}
 .hp-tray::before{content:"";position:absolute;left:18px;right:18px;top:0;height:1px;background:rgba(255,255,255,.07);opacity:0;transition:opacity .4s}
 .hp-tray .hp-tabs{max-width:100%}
-.hp-tray-tabs a{opacity:0;transform:translateY(-7px);filter:blur(2px)}
+.hp-tray-tabs a,.hp-tray-tabs .tp-more{opacity:0;transform:translateY(-7px);filter:blur(2px)}
 .site-head.hp-wide .hp-tray{pointer-events:auto}
 .site-head.hp-wide .hp-tray::before{opacity:1}
-.site-head.hp-wide .hp-tray-tabs a{opacity:1;transform:none;filter:none;transition-delay:0s,calc(var(--i,0) * 30ms + 60ms),calc(var(--i,0) * 30ms + 60ms),calc(var(--i,0) * 30ms + 60ms)}
+.site-head.hp-wide .hp-tray-tabs a,.site-head.hp-wide .hp-tray-tabs .tp-more{opacity:1;transform:none;filter:none;transition-delay:0s,calc(var(--i,0) * 30ms + 60ms),calc(var(--i,0) * 30ms + 60ms),calc(var(--i,0) * 30ms + 60ms)}
 .site-head.hp-wide .hp-tray-tabs .hp-ind.on{opacity:1;transition-delay:.12s}
 html.has-parts{scroll-padding-top:150px}
 /* Without the glass (motion.js did not run) the tray brings its own background. */

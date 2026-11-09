@@ -1,0 +1,63 @@
+/* eBay transaction report flattener: one row per sale. Sits inside the brand chrome and reuses its tokens. One
+   accent (the money hue); a sale with a note is marked by a warning rule and its note in words,
+   so it reads without colour too. */
+.ef {
+  --accent: var(--h-money);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06121a;
+  --ef-warn: #ffb547;
+}
+
+
+.ef-desk > * { min-width: 0; }
+.ef-form select { width: 100%; }
+.ef-drop { border: 1px dashed var(--rule-strong); border-radius: 8px; padding: 18px; margin-bottom: 10px; }
+.ef-drop.over { border-color: var(--accent); }
+.ef-drop-label { display: block; font-weight: 500; margin-bottom: 8px; }
+.ef-drop input { width: 100%; }
+.ef-hint { color: var(--ink-soft); font-size: 0.9rem; margin: 6px 0 12px; }
+.ef-custom { border-left: 3px solid var(--rule-strong); padding-left: 10px; margin-bottom: 12px; }
+.ef-grid { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; margin-bottom: 8px; }
+.ef-grid label { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; color: var(--text-2); }
+.ef-grid input { width: 100%; font-size: 0.9rem; }
+.ef-more { border-top: 1px solid var(--rule); padding-top: 12px; margin-bottom: 16px; }
+.ef-more summary { cursor: pointer; color: var(--text-2); margin-bottom: 8px; }
+.ef-check { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+.ef-out { min-height: 12rem; }
+.ef-label { margin: 0; font: 600 15px/1.4 var(--font-text); color: var(--text-2); }
+.ef-answer { color: var(--text-2); margin: 0 0 12px; max-width: 56rem; }
+.ef-warn { border-left: 3px solid var(--ef-warn); padding-left: 10px; color: var(--ink); }
+.ef-h { font-size: 1.05rem; margin: 22px 0 8px; }
+.ef-done { border: 1px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+.ef-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+
+.ef-table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+.ef-table th, .ef-table td { border-top: 1px solid var(--rule); padding: 6px 8px; text-align: left; vertical-align: top; }
+.ef-table th[scope="row"] { font-family: var(--font-mono); font-weight: 500; overflow-wrap: anywhere; }
+.ef-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ef-table caption { text-align: left; color: var(--text-2); padding-bottom: 4px; }
+.ef-table .ef-off th { border-left: 3px solid var(--ef-warn); }
+.ef-journal { margin-bottom: 14px; max-width: 36rem; }
+.ef-total th, .ef-total td { border-top: 2px solid var(--rule-strong); font-weight: 500; }
+
+.ef-rules, .ef-legal { border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.ef-rule-cols { display: grid; gap: 24px; }
+@media (min-width: 900px) { .ef-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.ef-rule-cols h3 { font-size: 1rem; margin-bottom: 6px; }
+.ef-rule-cols p { color: var(--ink-soft); margin: 0; }
+.ef-legal ul { padding-left: 1.2em; color: var(--ink-soft); }
+
+.ef-form textarea, .ef-form input[type="text"] { width: 100%; }
+.ef-checklist { list-style: none; padding: 0; margin: 0 0 12px; }
+.ef-checklist li { border-left: 3px solid var(--rule-strong); padding: 4px 0 4px 10px; margin-bottom: 6px; color: var(--ink-soft); }
+.ef-checklist li.ef-pass { border-left-color: var(--accent); }
+.ef-checklist li.ef-check { border-left-color: var(--ef-warn); }
+.ef-checklist strong { color: var(--ink); font-weight: 500; }
+.ef-values { margin: 10px 0 18px; }
+.ef-values summary { cursor: pointer; color: var(--text-2); }
+.ef-values select { max-width: 12rem; font-size: 0.85rem; }
+.ef-table .ef-off td:first-child { border-left: 3px solid var(--ef-warn); }
+.ef-values ul { padding-left: 1.2em; color: var(--ink-soft); margin: 8px 0 0; }
+.ef-table td:nth-child(3) { min-width: 10rem; }

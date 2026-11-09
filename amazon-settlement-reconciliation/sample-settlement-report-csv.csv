@@ -1,0 +1,37 @@
+line,transaction_type,order_id,amount_type,amount_description,amount,posted,sku,period
+3,other-transaction,(none),other-transaction,Previous Reserve Amount Balance,120.00,2026-10-24,(none),2026-10
+4,Order,112-0000001-0000001,ItemPrice,Principal,39.99,2026-10-25,MUG-BLUE,2026-10
+5,Order,112-0000001-0000001,ItemPrice,Tax,3.20,2026-10-25,MUG-BLUE,2026-10
+6,Order,112-0000001-0000001,ItemWithheldTax,MarketplaceFacilitatorTax-Principal,-3.20,2026-10-25,MUG-BLUE,2026-10
+7,Order,112-0000001-0000001,ItemFees,Commission,-6.00,2026-10-25,MUG-BLUE,2026-10
+8,Order,112-0000001-0000001,ItemFees,FBAPerUnitFulfillmentFee,-5.40,2026-10-25,MUG-BLUE,2026-10
+9,Order,112-0000002-0000002,ItemPrice,Principal,79.98,2026-10-29,MUG-SET,2026-10
+10,Order,112-0000002-0000002,ItemPrice,Tax,6.40,2026-10-29,MUG-SET,2026-10
+11,Order,112-0000002-0000002,ItemWithheldTax,MarketplaceFacilitatorTax-Principal,-6.40,2026-10-29,MUG-SET,2026-10
+12,Order,112-0000002-0000002,ItemFees,Commission,-12.00,2026-10-29,MUG-SET,2026-10
+13,Order,112-0000002-0000002,ItemFees,FBAPerUnitFulfillmentFee,-10.80,2026-10-29,MUG-SET,2026-10
+14,Order,112-0000002-0000002,Promotion,Principal,-5.00,2026-10-29,MUG-SET,2026-10
+15,other-transaction,(none),other-transaction,Subscription Fee,-39.99,2026-10-30,(none),2026-10
+16,Order,112-0000003-0000003,ItemPrice,Principal,24.99,2026-10-31,COASTER-4,2026-10
+17,Order,112-0000003-0000003,ItemPrice,Tax,2.00,2026-10-31,COASTER-4,2026-10
+18,Order,112-0000003-0000003,ItemWithheldTax,MarketplaceFacilitatorTax-Principal,-2.00,2026-10-31,COASTER-4,2026-10
+19,Order,112-0000003-0000003,ItemFees,Commission,-3.75,2026-10-31,COASTER-4,2026-10
+20,Order,112-0000003-0000003,ItemFees,FBAPerUnitFulfillmentFee,-4.25,2026-10-31,COASTER-4,2026-10
+21,other-transaction,(none),Cost of Advertising,TransactionTotalAmount,-42.17,2026-11-01,(none),2026-11
+22,Order,112-0000004-0000004,ItemPrice,Principal,59.99,2026-11-02,MUG-RED,2026-11
+23,Order,112-0000004-0000004,ItemPrice,Tax,4.80,2026-11-02,MUG-RED,2026-11
+24,Order,112-0000004-0000004,ItemWithheldTax,MarketplaceFacilitatorTax-Principal,-4.80,2026-11-02,MUG-RED,2026-11
+25,Order,112-0000004-0000004,ItemFees,Commission,-9.00,2026-11-02,MUG-RED,2026-11
+26,Order,112-0000004-0000004,ItemFees,FBAPerUnitFulfillmentFee,-6.10,2026-11-02,MUG-RED,2026-11
+27,Refund,112-0000001-0000001,ItemPrice,Principal,-39.99,2026-11-03,MUG-BLUE,2026-11
+28,Refund,112-0000001-0000001,ItemPrice,Tax,-3.20,2026-11-03,MUG-BLUE,2026-11
+29,Refund,112-0000001-0000001,ItemWithheldTax,MarketplaceFacilitatorTax-Principal,3.20,2026-11-03,MUG-BLUE,2026-11
+30,Refund,112-0000001-0000001,ItemFees,Commission,6.00,2026-11-03,MUG-BLUE,2026-11
+31,Refund,112-0000001-0000001,ItemFees,RefundCommission,-1.20,2026-11-03,MUG-BLUE,2026-11
+32,other-transaction,(none),FBA Inventory Reimbursement,WAREHOUSE_DAMAGE,18.50,2026-11-04,MUG-RED,2026-11
+33,Order,112-0000005-0000005,ItemPrice,Principal,149.99,2026-11-05,MUG-GIFT,2026-11
+34,Order,112-0000005-0000005,ItemPrice,Tax,12.00,2026-11-05,MUG-GIFT,2026-11
+35,Order,112-0000005-0000005,ItemWithheldTax,MarketplaceFacilitatorTax-Principal,-12.00,2026-11-05,MUG-GIFT,2026-11
+36,Order,112-0000005-0000005,ItemFees,Commission,-22.50,2026-11-05,MUG-GIFT,2026-11
+37,Order,112-0000005-0000005,ItemFees,FBAPerUnitFulfillmentFee,-8.15,2026-11-05,MUG-GIFT,2026-11
+38,other-transaction,(none),other-transaction,Current Reserve Amount,-95.00,2026-11-07,(none),2026-11

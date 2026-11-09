@@ -1,0 +1,7 @@
+scheduler,shortest_interval,time_zone,every_2_minutes
+Schedule by Zapier,Every hour (as described),Zapier account time zone,not offered
+n8n Schedule Trigger,Seconds (Custom cron with a seconds field),"Workflow, else instance",*/2 * * * *
+GitHub Actions,5 minutes,UTC unless set,below the 5-minute minimum
+cron-job.org,Every minute,Set per job,every 2 minutes
+AWS EventBridge Scheduler,1 minute (cron fields start at minutes),UTC unless set,cron(0/2 * * * ? *)
+Kubernetes CronJob,1 minute (five fields),"Controller manager, or .spec.timeZone",*/2 * * * *

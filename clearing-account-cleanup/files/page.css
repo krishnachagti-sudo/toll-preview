@@ -1,0 +1,45 @@
+/* Clearing account cleanup: an aging ledger. Sits inside the brand chrome and reuses its tokens,
+   with the money hue as the one accent; warnings carry a left rule so they read without colour. */
+.ca {
+  --accent: var(--h-money);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06121a;
+  --ca-warn: #ffb547;
+}
+
+/* Layout comes from web/tool-full.css; this file keeps the ledger's own parts. */
+.ca-drop { border: 1px dashed var(--line-2); border-radius: 12px; padding: 14px; }
+.ca-drop + .ca-drop { margin-top: 10px; }
+.ca-drop.over { border-color: var(--accent); }
+.ca-drop-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-2); margin-bottom: 8px; }
+.ca-drop input { width: 100%; font-size: 13px; }
+.ca-hint { color: var(--muted); font-size: 12.5px; margin: 8px 0 0; }
+.ca-sample-row { margin-top: 14px; text-align: center; }
+.ca-more input, .ca-more select { width: 100%; }
+.ca-more .xp-in .field + .field, .ca-more .xp-in .field + .tf-two, .ca-more .xp-in .tf-two + .tf-two, .ca-more .xp-in .tf-two + .field { margin-top: 12px; }
+@media (max-width: 640px) { .ca-drop { padding: 12px; } .ca-drop + .ca-drop { margin-top: 8px; } }
+
+.ca-label { margin: 0 0 10px; font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--hue); }
+.ca-answer { margin: 0 0 12px; max-width: 56rem; }
+.ca-h { margin: 22px 0 8px; font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.ca-out details.xpand { margin-top: 12px; }
+.ca-list { padding-left: 1.2em; color: var(--muted); font-size: 13.5px; }
+.ca-list li { margin-bottom: 4px; }
+.ca-warn { border-left: 3px solid var(--ca-warn); padding-left: 8px; list-style: none; margin-left: -1.2em; color: var(--text); }
+.ca-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+#ca-report { border-top: 1px solid var(--line-2); margin-top: 24px; padding-top: 16px; }
+#ca-report:empty { display: none; }
+
+.ca-table { border-collapse: collapse; width: 100%; font-size: 13px; display: block; overflow-x: auto; }
+.ca-table th, .ca-table td { border-top: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+.ca-table td { font-variant-numeric: tabular-nums; }
+
+.ca-quick-panel { padding: 22px; }
+.ca-quick-grid { display: grid; gap: 20px; }
+@media (min-width: 900px) { .ca-quick-grid { grid-template-columns: 1fr 1fr; } }
+.ca-quick textarea { width: 100%; font-family: var(--font-mono); font-size: 0.85rem; }
+.ca-quick .field { margin: 0; }
+.ca-quick .btn { margin-top: 14px; }
+.ca-quick #ca-q-out .ca-answer { margin-top: 14px; color: #fff; }
+.ca-rules ul { padding-left: 1.2em; }

@@ -1,0 +1,46 @@
+date,level,jurisdiction,state,rate,previous,tiers,source
+2027-01-01,city,Flagstaff,AZ,18.95,18.35,,https://www.flagstaff.az.gov/3520/Minimum-Wage
+2027-01-01,city,Tucson,AZ,16.00,15.45,,https://www.tucsonaz.gov/Departments/Business-Services-Department/Tucson-Minimum-Wage-Act
+2027-01-01,state,California,CA,17.40,16.90,,https://www.gov.ca.gov/2026/07/31/governor-newsom-announces-california-will-raise-statewide-minimum-wage/
+2027-01-01,city,Burlingame,CA,18.47,17.86,,https://burlingame.org/307/Minimum-Wage-Information
+2027-01-01,city,Cupertino,CA,19.25,18.70,,https://www.cupertino.org/our-city/city-news/cupertino-minimum-wage
+2027-01-01,city,Daly City,CA,18.10,17.50,,https://www.dalycity.org/388/Minimum-Wage
+2027-01-01,city,El Cerrito,CA,19.36,18.82,,https://www.elcerrito.gov/940/Minimum-Wage-Ordinance
+2027-01-01,city,Half Moon Bay,CA,18.52,17.91,,https://www.half-moon-bay.ca.us/659/Minimum-Wage
+2027-01-01,city,Hayward,CA,18.39,17.79,,https://www.hayward-ca.gov/local-minimum-wage
+2027-01-01,city,Los Altos,CA,19.25,,,https://www.losaltosca.gov/511/Minimum-Wage
+2027-01-01,city,Menlo Park,CA,18.05,17.55,,https://menlopark.gov/Government/Departments/City-Managers-Office/Economic-development/Local-minimum-wage-ordinance
+2027-01-01,city,Palo Alto,CA,19.25,18.70,,https://www.cityofpaloalto.org/Business/Business-Resources/Minimum-Wage
+2027-01-01,city,Petaluma,CA,18.93,18.31,,https://cityofpetaluma.org/minimum-wage/
+2027-01-01,city,Richmond,CA,19.61,19.18,,https://www.ci.richmond.ca.us/2615/Minimum-Wage-Ordinance
+2027-01-01,city,San Diego,CA,18.35,17.75,,https://www.sandiego.gov/olse/minimum-wage/earned-sick-leave
+2027-01-01,city,San Mateo,CA,19.25,18.60,,https://www.cityofsanmateo.org/3278/Minimum-Wage
+2027-01-01,county,San Mateo County (unincorporated),CA,18.58,17.95,,https://www.smcgov.org/ceo/minimum-wage-increase-unincorporated-areas
+2027-01-01,city,Santa Rosa,CA,18.83,18.21,,https://srcity.org/3164/Minimum-Wage
+2027-01-01,city,South San Francisco,CA,18.75,,,https://www.ssfca.gov/Departments/City-Manager/Local-Minimum-Wage
+2027-01-01,city,Boulder,CO,18.17,16.82,,https://bouldercolorado.gov/local-minimum-wage
+2027-01-01,county,Boulder County (unincorporated),CO,17.43,16.82,,https://bouldercounty.gov/departments/commissioners/local-minimum-wage/
+2027-01-01,city,Denver,CO,19.84,19.29,,https://denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Auditors-Office/Denver-Labor/Citywide-Minimum-Wage/
+2027-01-01,county,Howard County,MD,16.45,16.00,,https://www.howardcountymd.gov/finance/minimum-wage
+2027-01-01,state,Maine,ME,15.70,15.10,,https://www.maine.gov/labor/news_events/article.shtml?id=13362373
+2027-01-01,state,Michigan,MI,15.00,13.73,,https://www.dol.gov/agencies/whd/minimum-wage/state
+2027-01-01,state,Minnesota,MN,11.87,11.41,,https://www.dli.mn.gov/business/employment-practices/minimum-wage-minnesota
+2027-01-01,city,Minneapolis,MN,17.02,16.37,,https://minimumwage.minneapolismn.gov/
+2027-01-01,city,Saint Paul,MN,,16.37,Small businesses (6 to 100 employees): 16.37; Micro businesses (5 or fewer employees): 14.25,https://www.stpaul.gov/departments/human-rights-equal-economic-opportunity/15-minimum-wage
+2027-01-01,state,Montana,MT,11.20,10.85,,https://erd.dli.mt.gov/labor-standards/wage-and-hour-payment-act/state-minimum-wage
+2027-01-01,state,New Jersey,NJ,16.48,15.92,,https://www.nj.gov/labor/wageandhour/tools-resources/laws/
+2027-01-01,city,Albuquerque,NM,13.00,12.00,"Employer pays at least $2,500 a year for the employee's health care or child care: 12.00",https://www.cabq.gov/legal/albuquerque-minimum-wage-information
+2027-01-01,city,Santa Fe,NM,17.50,15.40,,https://santafenm.gov/economic-development/living-wage-in-the-city-of-santa-fe
+2027-01-01,state,Ohio,OH,11.40,11.00,"Employers with annual gross receipts of $419,000 or less (and 14- and 15-year-olds): the federal $7.25: 7.25",https://com.ohio.gov/about-us/media-center/news/Ohio-Minimum-Wage-to-Increase-in-2027
+2027-01-01,state,South Dakota,SD,12.30,11.85,,https://dlr.sd.gov/employment_laws/minimum_wage.aspx
+2027-01-01,state,Virginia,VA,13.75,12.77,,https://doli.virginia.gov/programs/labor-law/payment-of-wage/
+2027-01-01,state,Washington,WA,17.73,17.13,,https://lni.wa.gov/workers-rights/wages/minimum-wage/
+2027-01-01,city,Bellingham,WA,19.73,19.13,,https://cob.org/services/business/city-minimum-wage
+2027-01-01,city,Burien,WA,22.49,21.78,Medium employers (16 to 500 employees): equal to the large employer rate: 22.49; Small employers (15 or fewer employees): 20.49,https://www.burienwa.gov/city_hall/laws_regulations/minimum_wage
+2027-01-01,city,Everett,WA,21.52,20.77,"Covered employers (15 to 499 employees, or over $2 million annual gross revenue in Everett): 20.52",https://www.everettwa.gov/3287/Minimum-wage
+2027-01-01,county,King County (unincorporated),WA,21.57,20.82,15 or fewer employees and annual gross revenue under $2 million: 19.57,https://kingcounty.gov/en/dept/local-services/governance-leadership/local-government-for-unincorporated-king-county/minimum-wage
+2027-01-01,city,Renton,WA,22.28,21.57,"Mid-size employers (15 to 500 employees, or over $2 million annual gross revenue in Renton): 22.28",https://www.rentonwa.gov/City-Services/Tax-and-Licensing/Labor-Standards
+2027-01-01,city,Seattle,WA,22.14,21.30,,https://www.seattle.gov/laborstandards/ordinances/minimum-wage
+2027-01-01,city,Tukwila,WA,22.45,21.65,,https://www.tukwilawa.gov/departments/finance/minimum-wage-and-fair-access-to-additional-hours-of-work/
+2027-07-01,city,Saint Paul,MN,,,Micro businesses (5 or fewer employees): 15.00,https://www.stpaul.gov/departments/human-rights-equal-economic-opportunity/15-minimum-wage
+2027-07-01,city,Everett,WA,21.52,21.52,"Covered employers (15 to 499 employees, or over $2 million annual gross revenue in Everett): 21.52",https://www.everettwa.gov/3287/Minimum-wage

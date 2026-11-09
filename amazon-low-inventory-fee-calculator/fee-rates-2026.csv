@@ -1,0 +1,6 @@
+size_tier,shipping_weight,dos_0_to_14,dos_14_to_21,dos_21_to_28
+Small standard,Up to 16 oz,0.89,0.63,0.32
+Large standard,Up to 3 lb,0.97,0.70,0.36
+Large standard,3+ lb to 20 lb,1.11,0.87,0.47
+Small Bulky,Up to 50 lb,1.85,1.02,0.51
+Large Bulky,Up to 50 lb,2.09,1.15,0.57

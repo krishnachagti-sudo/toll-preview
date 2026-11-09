@@ -139,13 +139,40 @@ The rules and limits were read on 2026-11-08: the sitemaps.org protocol (page up
 - [RFC 9309: Robots Exclusion Protocol (read 2026-11-08)](https://www.rfc-editor.org/rfc/rfc9309)
 - [Search Engine Journal: Google Explains The "Couldn't Fetch" Sitemap Errors (read 2026-11-08)](https://www.searchenginejournal.com/google-explains-couldnt-fetch-sitemap-errors/592040/)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The rules and limits were read on 2026-11-08: the sitemaps.org protocol (page updated 2016-11-21), Google's Build and submit a sitemap page (updated 2026-07-08) and the Search Console Sitemaps report help. The pages are checked for changes once a day. A check fetches the sitemap live at the moment of the call; paste and rules make no request. Engine sitemap-validator-1.
+
+Sitemap validator: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [sitemaps.org: Sitemaps XML format (protocol)](https://www.sitemaps.org/protocol.html) | page updated 2016-11-21 | 2026-11-08 |
+| [sitemaps.org: sitemap.xsd and siteindex.xsd](https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd) | page updated 2008-03-26 | 2026-11-08 |
+| [Google Search Central: Build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) | page updated 2026-07-08 | 2026-11-08 |
+| [Google Search Central: What is a sitemap (Do I need a sitemap?)](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview) | page updated 2025-12-10 | 2026-11-08 |
+| [Google Search Central: Manage your sitemaps with a sitemap index file](https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps) | page updated 2025-12-10 | 2026-11-08 |
+| [Google Search Central: News sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/news-sitemap) | page updated 2025-12-10 | 2026-11-08 |
+| [Google Search Central: Image sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps) | page updated 2025-12-10 | 2026-11-08 |
+| [Search Console Help: Manage your sitemaps using the Sitemaps report](https://support.google.com/webmasters/answer/7451001?hl=en) | see the document | 2026-11-08 |
+| [Google Search Central: Robots meta tag, data-nosnippet and X-Robots-Tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag) | page updated 2026-03-24 | 2026-11-08 |
+| [Google Search Central Blog: Sitemaps ping endpoint is going away](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping) | published 2023-06-26 | 2026-11-08 |
+| [RFC 9309: Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309) | published 2022-09 | 2026-11-08 |
+| [Search Engine Journal: Google Explains The "Couldn't Fetch" Sitemap Errors](https://www.searchenginejournal.com/google-explains-couldnt-fetch-sitemap-errors/592040/) | published 2026-10-06 | 2026-11-08 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The tests pin the rules, limits and source dates as read, then check the XML reader (recoverable and structural errors with line numbers), every format and entry problem, the 50,000 URL and byte limits, URL scope, W3C dates, the lastmod heuristics, image and news extensions, nested indexes, robots.txt matching, noindex and canonical reading, every live verdict, the summary, answer line and CSV. Fetching runs against a fake web with no network: gzip, redirects, size caps, the per-host limit and the time budget, robots.txt blocking, private addresses refused and not charged. The worked examples equal run().
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The rules, limits and source dates are checked as read on 2026-11-08, and every Search Console name maps to a real issue code.
+- The XML reader, every format and entry problem, the URL and byte limits, URL scope, W3C dates, the lastmod heuristics, image and news extensions and nested indexes are each checked.
+- robots.txt matching (merged groups, the \* fallback, longest match, Allow on a tie, \* and $), noindex and canonical reading, and every live verdict are checked.
+- Fetching is checked against a fake web: gzip, redirects, size caps, the per-host limit, the time budget, robots.txt blocking, and private addresses refused and not charged.
+- The worked example, paste and rules equal what run() returns, and bad input is refused before any charge.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Sitemap validator tool](https://krishnachagti-sudo.github.io/toll-preview/sitemap-validator/).
 

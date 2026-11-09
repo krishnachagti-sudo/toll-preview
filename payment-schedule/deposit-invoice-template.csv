@@ -1,0 +1,2 @@
+invoice_number,issue_date,due_date,description,quantity,unit_price,amount
+INV-1001,2027-01-04,2027-01-11,"Deposit: 50% of Website redesign (contract price $5,000.00)",1,2500.00,2500.00

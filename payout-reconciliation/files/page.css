@@ -1,0 +1,42 @@
+/* Payout reconciliation: a payout ledger. Sits inside the brand chrome and reuses its tokens. One
+   accent (the money hue); a payout that does not tie is marked by a warning rule and the word "Gap",
+   so it reads without colour too. */
+.pr {
+  --accent: var(--h-money);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06121a;
+  --pr-warn: #ffb547;
+}
+
+/* Layout comes from web/tool-full.css; this file keeps the ledger's own parts. */
+.pr-form select { width: 100%; }
+.pr-drop { border: 1px dashed var(--line-2); border-radius: 12px; padding: 14px; }
+.pr-drop.over { border-color: var(--accent); }
+.pr-drop-label { display: block; font-size: 13px; font-weight: 500; color: var(--text-2); margin-bottom: 8px; }
+.pr-drop input { width: 100%; }
+.pr-hint { color: var(--muted); font-size: 12.5px; margin: 8px 0 12px; }
+.pr-custom { border-left: 3px solid var(--line-2); padding-left: 10px; margin-bottom: 12px; }
+.pr-grid { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; margin-bottom: 8px; }
+.pr-grid label { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; color: var(--text-2); }
+.pr-grid input { width: 100%; font-size: 0.9rem; }
+.pr-more .xp-in .field + .field { margin-top: 12px; }
+.pr-check { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; color: var(--muted); font-size: 0.92rem; }
+
+.pr-warn { border-left: 3px solid var(--pr-warn); padding-left: 10px; color: var(--ink); }
+.pr-h { margin: 18px 0 8px; font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.pr-done { border: 1px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+.pr-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+
+.pr-table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.pr-table th, .pr-table td { border-top: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+.pr-table th[scope="row"] { font-family: var(--font-mono); font-weight: 500; overflow-wrap: anywhere; }
+.pr-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pr-table caption { text-align: left; color: var(--text-2); padding-bottom: 4px; }
+.pr-table .pr-off th { border-left: 3px solid var(--pr-warn); }
+.pr-journal { margin-bottom: 14px; max-width: 36rem; }
+.pr-total th, .pr-total td { border-top: 2px solid var(--line-2); font-weight: 500; }
+
+.pr-out details.xpand { margin-top: 12px; }
+.pr-out .pr-warn { margin: 12px 0 0; font-size: 13.5px; }
+.pr-rules ul { padding-left: 1.2em; }

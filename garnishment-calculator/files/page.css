@@ -1,0 +1,15 @@
+/* Wage garnishment calculator page. Shared look from base.css; only the layout of this tool here. */
+.gc-grid { display: grid; gap: 0 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; }
+.gc-grid .gc-wide { grid-column: 1 / -1; margin: -4px 0 12px; }
+.gc input[type="date"] { color-scheme: dark; }
+.gc-form .field label { display: block; }
+.gc-form input[type="text"], .gc-form input[type="number"], .gc-form input[type="date"], .gc-form select { width: 100%; }
+.gc-more .gc-grid { align-items: start; }
+.gc-lines { width: 100%; border-collapse: collapse; margin: .75rem 0; }
+.gc-lines th { text-align: left; font-weight: normal; padding: .3rem .5rem .3rem 0; }
+.gc-lines td { text-align: right; font-variant-numeric: tabular-nums; padding: .3rem 0; white-space: nowrap; }
+.gc-lines tr + tr { border-top: 1px solid var(--line, #eee); }
+.gc-warn { font-size: .9rem; color: var(--text-2); }
+.gc-tests { margin: .5rem 0; font-size: .9rem; }
+.gc-notes { max-width: 60rem; }
+@media (max-width: 420px) { .gc-more .gc-grid { grid-template-columns: minmax(0, 1fr); } }

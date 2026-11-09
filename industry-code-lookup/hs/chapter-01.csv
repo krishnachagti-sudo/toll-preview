@@ -1,0 +1,35 @@
+hs6,heading,heading_description,description,us_statistical_numbers,schedule_b_numbers
+0101.21,0101,"Live horses, asses, mules and hinnies:","Live horses, asses, mules and hinnies: Horses: Purebred breeding animals",2,1
+0101.29,0101,"Live horses, asses, mules and hinnies:","Live horses, asses, mules and hinnies: Horses: Other",2,1
+0101.30,0101,"Live horses, asses, mules and hinnies:","Live horses, asses, mules and hinnies: Asses",1,1
+0101.90,0101,"Live horses, asses, mules and hinnies:","Live horses, asses, mules and hinnies: Other",2,1
+0102.21,0102,Live bovine animals:,Live bovine animals: Cattle: Purebred breeding animals,4,4
+0102.29,0102,Live bovine animals:,Live bovine animals: Cattle: Other,16,1
+0102.31,0102,Live bovine animals:,Live bovine animals: Buffalo: Purebred breeding animals,2,1
+0102.39,0102,Live bovine animals:,Live bovine animals: Buffalo: Other,12,1
+0102.90,0102,Live bovine animals:,Live bovine animals: Other,1,1
+0103.10,0103,Live swine:,Live swine: Purebred breeding animals,1,1
+0103.91,0103,Live swine:,Live swine: Other: Weighing less than 50 kg each,3,1
+0103.92,0103,Live swine:,Live swine: Other: Weighing 50 kg or more each,3,1
+0104.10,0104,Live sheep and goats:,Live sheep and goats: Sheep,1,1
+0104.20,0104,Live sheep and goats:,Live sheep and goats: Goats,1,1
+0105.11,0105,"Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas:","Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas: Weighing not more than 185 g: Chickens",3,3
+0105.12,0105,"Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas:","Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas: Weighing not more than 185 g: Turkeys",1,1
+0105.13,0105,"Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas:","Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas: Weighing not more than 185 g: Ducks",1,1
+0105.14,0105,"Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas:","Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas: Weighing not more than 185 g: Geese",1,1
+0105.15,0105,"Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas:","Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas: Weighing not more than 185 g: Guinea fowls",1,1
+0105.94,0105,"Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas:","Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas: Other: Chickens",1,1
+0105.99,0105,"Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas:","Live poultry of the following kinds: Chickens, ducks, geese, turkeys and guineas: Other: Other",1,1
+0106.11,0106,Other live animals:,Other live animals: Mammals: Primates,1,1
+0106.12,0106,Other live animals:,"Other live animals: Mammals: Whales, dolphins and porpoises (mammals of the order Cetacea); manatees and dugongs (mammals of the order Sirenia); seals, sea lions and walruses (mammals of the suborder Pinnipedia)",1,1
+0106.13,0106,Other live animals:,Other live animals: Mammals: Camels and other camelids (Camelidae),1,1
+0106.14,0106,Other live animals:,Other live animals: Mammals: Rabbits and hares,1,1
+0106.19,0106,Other live animals:,Other live animals: Mammals: Other,3,1
+0106.20,0106,Other live animals:,Other live animals: Reptiles (including snakes and turtles),1,1
+0106.31,0106,Other live animals:,Other live animals: Birds: Birds of prey,1,1
+0106.32,0106,Other live animals:,"Other live animals: Birds: Psittaciformes (including parrots, parakeets, macaws and cockatoos)",1,1
+0106.33,0106,Other live animals:,Other live animals: Birds: Ostriches; emus (Dromaius novaehollandiae),1,1
+0106.39,0106,Other live animals:,Other live animals: Birds: Other,1,1
+0106.41,0106,Other live animals:,Other live animals: Insects: Bees,1,1
+0106.49,0106,Other live animals:,Other live animals: Insects: Other,2,1
+0106.90,0106,Other live animals:,Other live animals: Other,3,1

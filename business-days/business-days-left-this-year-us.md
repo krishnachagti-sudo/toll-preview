@@ -1,6 +1,6 @@
 # Business days left this year, US
 
-There are 36 business days left in 2026 in the US after today, Saturday, November 7, 2026 (the date in Washington, DC), up to and including Thursday, December 31, 2026.
+There are 36 business days left in 2026 in the US after today, Sunday, November 8, 2026 (the date in Washington, DC), up to and including Thursday, December 31, 2026.
 
 - Left after today: 36
 - Business days in 2026: 250
@@ -9,7 +9,7 @@ There are 36 business days left in 2026 in the US after today, Saturday, Novembe
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2026-12-31)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2026-12-31)
 
 ## Month by month, 2026
 
@@ -52,5 +52,5 @@ Today is not counted, so on a business day the figure "counting today" is one mo
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-left-this-year-us.csv

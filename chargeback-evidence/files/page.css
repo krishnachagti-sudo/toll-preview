@@ -1,0 +1,67 @@
+/* Chargeback evidence: a seller's dispute desk inside the brand chrome, reusing its tokens.
+   The one colour idea: the money accent marks what to do first; red marks a limit the packet breaks
+   or a date that has passed. */
+.cb {
+  --accent: var(--h-money);
+  --accent-ink: #1a0610;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1a0610;
+  --cb-fail: #ff6b5e;
+  --cb-fail-wash: rgba(255, 107, 94, 0.14);
+}
+
+/* Layout comes from web/tool-full.css; this file keeps the dispute desk's own parts. */
+.cb [hidden] { display: none; }
+.cb-group { border: 0; padding: 0; margin: 0; min-width: 0; }
+.cb-group > legend { padding: 0; margin: 0 0 12px; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.tf-form .cb-group .tf-two + .tf-two { margin-top: 12px; }
+.cb-buy:empty { display: none; }
+.cb-buy .btn { width: 100%; margin-top: 8px; }
+.cb-buy .cb-aside { text-align: center; margin: 8px 0 0; }
+.cb-form .xp-in .tf-two + .tf-two, .cb-form .xp-in .tf-two + .field, .cb-form .xp-in .field + .tf-two, .cb-form .xp-in .field + .field, .cb-form .xp-in .field + details { margin-top: 12px; }
+.cb-form .xp-in > .tf-two:first-child { margin-top: 0; }
+.cb-facts { margin: 14px 0; }
+
+.cb-exhibits { display: grid; gap: 10px; margin-top: 6px; }
+.cb-ex { border-left: 3px solid var(--rule-strong); padding: 6px 0 6px 10px; display: grid; gap: 6px; }
+.cb-ex:first-child, .cb-ex:nth-child(2) { border-left-color: var(--accent); }
+.cb-ex-head { margin: 0; font-size: 14px; }
+.cb-ex input[type=file] { font-size: 13px; max-width: 100%; }
+.cb-ex textarea, .cb-ex input[type=text] { width: 100%; }
+.cb-slot { color: var(--ink-soft); font: 400 0.8rem/1.4 var(--font-mono); }
+
+/* Results */
+.cb-out { display: grid; gap: 18px; }
+.cb-out > div:empty { display: none; }
+.cb-label { margin: 22px 0 8px; font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.cb-out .tf-big b.word { font-size: 34px; line-height: 1.1; }
+@media (max-width: 640px) { .cb-out .tf-big b.word { font-size: 28px; } }
+.cb-out details.xpand { margin-top: 12px; }
+.cb-note { border-left: 3px solid var(--accent); padding: 4px 0 4px 12px; margin: 12px 0; }
+.cb-note ul { margin: 6px 0; padding-left: 1.1em; font-size: 14px; }
+.cb-items { padding-left: 1.3em; margin: 0; }
+.cb-items li { margin: 0 0 8px; font-size: 14px; }
+.cb-aside { color: var(--muted); font-size: 13px; }
+
+.cb-card { border: 1px solid var(--line-2); border-left: 3px solid var(--accent); padding: 14px 16px; border-radius: 10px; background: rgba(255, 255, 255, 0.02); }
+.cb-card.cb-bad { border-left-color: var(--cb-fail); background: var(--cb-fail-wash); }
+.cb-card-big { font: 500 1.4rem/1.2 var(--font-display); margin: 0 0 6px; font-variant-numeric: tabular-nums; }
+.cb-card ul { padding-left: 1.1em; }
+.cb-limits { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+.cb-limits th, .cb-limits td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--rule); }
+.cb-limits tr.cb-fail td { color: var(--cb-fail); }
+.cb-warn { font-size: 13px; color: var(--text-2); }
+.cb-fields { font-size: 13px; display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; }
+.cb-fields dt { font-family: var(--font-mono); color: var(--ink-soft); }
+.cb-fields dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cb-steps { font-size: 14px; padding-left: 1.3em; }
+
+.cb-ce3-panel { padding: 20px; }
+.cb-ce3 .tf-top details.xpand { margin-top: 12px; max-width: 62ch; }
+.cb-legal ul { padding-left: 1.1em; }
+.cb-narrow { max-width: 14rem; }
+.cb-ce3-table { border-collapse: collapse; font-size: 13px; min-width: 860px; }
+.cb-ce3-table th, .cb-ce3-table td { padding: 4px; text-align: left; border-bottom: 1px solid var(--rule); }
+.cb-ce3-table input { width: 100%; min-width: 7rem; font-size: 13px; }
+#cb-ce3-out { margin-top: 14px; max-width: 52rem; }
+.cb-sources { font-size: 14px; }

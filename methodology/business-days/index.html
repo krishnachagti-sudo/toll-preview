@@ -71,17 +71,18 @@
 <h1>How business days are counted: rules and sources</h1>
 <p class="cp-answer">Business days are counted on whole calendar days: the start day is not counted, the end day is, and Saturdays, Sundays and the holidays of the chosen region are skipped. Holidays are worked out by rule for any year from 1971 to 2100 in the United States and in England and Wales, and read from a table for India in 2025 to 2027.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the business days compute?</h2>
 <p>The tool does two things. It counts the business days between two dates, and it moves a date forward or back by a number of business days. Both use the same calendar for a region, plus any days off you add.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the business days compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>between</code>: Counts the business days after start and up to and including end. The answer is businessDays (negative if end is before start) and holidaysSkipped, the weekday holidays inside the range.</li><li><code>add</code>: Moves start by a whole number of business days, forward or back (up to 3,650 either way). The answer is date and holidaysSkipped, the weekday holidays passed on the way.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>region</code>: US (United States federal holidays), GB-ENG (England and Wales bank holidays) or IN-CENTRAL-DELHI (India, central government offices in Delhi).</li><li><code>start, end, days</code>: Real calendar dates written like 2026-07-01, and for add a whole number of days.</li><li><code>daysOff</code>: Optional list of your own dates (at most 400), skipped like holidays and reported separately as daysOffSkipped.</li></ul>
 <p>Outputs:</p>
-<ul><li>businessDays or date</li><li>holidaysSkipped: the date and name of each weekday holiday passed</li><li>daysOffSkipped: your own days off that were passed and were not already holidays</li><li>note: for India only, what the list covers and does not</li></ul>
+<ul><li>businessDays or date</li><li>holidaysSkipped: the date and name of each weekday holiday passed</li><li>daysOffSkipped: your own days off that were passed and were not already holidays</li><li>note: for India only, what the list covers and does not</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -170,16 +171,33 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>The US and England and Wales rules were last changed on 2026-10-30. The India table was read from the DoPT memoranda on 2026-11-03.</p>
 <ul class="cp-sources"><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/work-schedules/fact-sheets/Federal-Holidays-In-Lieu-Of-Determination">OPM: Federal holidays, &quot;in lieu of&quot; days</a></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></li><li><a href="https://www.gov.uk/bank-holidays">GOV.UK: UK bank holidays</a></li><li><a href="https://www.legislation.gov.uk/ukpga/1971/80">Banking and Financial Dealings Act 1971</a></li><li><a href="https://documents.doptcirculars.nic.in/D2/D02est/Holidays%20to%20be%20observed%20in%20Central%20Government%20Offices%20during%20the%20year%2020265vgBs.pdf">DoPT O.M. F.No.12/2/2023-JCA dated 3 July 2025: holidays during 2026</a></li><li><a href="https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html">DoPT O.M. No. 13/4/85-JCA dated 21 May 1985: the 5-day week</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>The United States and England and Wales holidays are worked out by rule for any year from 1971 to 2100; the rules were last changed on 2026-10-30. India (central government, Delhi) covers 2025 to 2027 only, from the memoranda below, read on 2026-11-03; other years are refused, not guessed.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Business days: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></th><td rowspan="6">rules as of 2026-10-30</td><td rowspan="6">2026-10-30</td></tr>
+<tr><th scope="row"><a href="https://www.opm.gov/policy-data-oversight/pay-leave/work-schedules/fact-sheets/Federal-Holidays-In-Lieu-Of-Determination">OPM: Federal holidays, &quot;in lieu of&quot; days</a></th></tr>
+<tr><th scope="row"><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></th></tr>
+<tr><th scope="row"><a href="https://www.federalreserve.gov/aboutthefed/k8.htm">Federal Reserve: Holidays observed (K.8)</a></th></tr>
+<tr><th scope="row"><a href="https://www.gov.uk/bank-holidays">GOV.UK: UK bank holidays</a></th></tr>
+<tr><th scope="row"><a href="https://www.legislation.gov.uk/ukpga/1971/80">Banking and Financial Dealings Act 1971</a></th></tr>
+<tr><th scope="row"><a href="https://documents.doptcirculars.nic.in/D2/D02est/List%20of%20holidays%202025KtKLw.pdf">DoPT O.M. F.No.12/2/2023-JCA dated 9 July 2024: holidays during 2025</a></th><td rowspan="2">holidays during 2025</td><td rowspan="6">2026-11-03</td></tr>
+<tr><th scope="row"><a href="https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20on%2014th%20April%202025%20Birthday%20of%20Dr%20B%20R%20AmbedkarDHZ8b.pdf">DoPT O.M. F.No.12/4/2020-JCA2 dated 27 March 2025: holiday on 14 April 2025</a></th></tr>
+<tr><th scope="row"><a href="https://documents.doptcirculars.nic.in/D2/D02est/Holidays%20to%20be%20observed%20in%20Central%20Government%20Offices%20during%20the%20year%2020265vgBs.pdf">DoPT O.M. F.No.12/2/2023-JCA dated 3 July 2025: holidays during 2026</a></th><td rowspan="2">holidays during 2026</td></tr>
+<tr><th scope="row"><a href="https://documents.doptcirculars.nic.in/D2/D02est/Change%20in%20the%20date%20of%20holiday%20of%20Id-ul-Zuhamg709.PDF">DoPT O.M. F.No.12/3/2023-JCA dated 22 May 2026: Id-ul-Zuha (Bakrid) moved to 28 May 2026</a></th></tr>
+<tr><th scope="row"><a href="https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20list%202027Cj0HU.PDF">DoPT O.M. F.No.12/2/2023-JCA dated 16 July 2026: holidays during 2027</a></th><td>holidays during 2027</td></tr>
+<tr><th scope="row"><a href="https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html">DoPT O.M. No. 13/4/85-JCA dated 21 May 1985: the 5-day week</a></th><td>the 5-day week</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>Easter is compared with published dates for nine years from 1971 to 2100, England and Wales lists with the official lists, US lists in full for 2026 and for the years where rules changed, and India name by name with the DoPT memoranda. Counting and adding are checked to agree with each other.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
-<p><a href="/toll-preview/business-days/">Open the Business days tool</a>.</p>
+<details class="xpand"><summary>Read the rest: How is it tested?</summary><div class="xp-in"><p>What its test suite asserts:</p>
+<ul><li>Easter Sunday is compared with published dates for nine years from 1971 to 2100.</li><li>England and Wales holidays are compared with the official lists for 2020 to 2025 and 2027, and the 2026 list is checked in full.</li><li>United States holidays are checked in full for 2026, and for the years where rules changed: Juneteenth from 2021, Martin Luther King Jr. Day from 1986, Veterans Day in 1971 to 1977, New Year's Day on a Saturday.</li><li>India is compared with the DoPT memoranda for 2025, 2026 and 2027, name by name, and the weekday printed in each memorandum must agree with the calendar. The Bakrid move to 28 May 2026 is checked.</li><li>Counting days and adding days must agree with each other, forwards and backwards.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/business-days/">Open the Business days tool</a>.</p></div></details>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the business days answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the business days refuse to answer?</h3><p>US holidays are the statutory federal ones only. One-off closures ordered by the President are not included, and neither are state, local, bank or stock exchange calendars. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the business days answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the business days refuse to answer?</h3></summary><div class="xp-in"><p>US holidays are the statutory federal ones only. One-off closures ordered by the President are not included, and neither are state, local, bank or stock exchange calendars. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/business-days/">Open the Business days tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/business-days/api/">Business days guides and API</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/business-days.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -272,6 +290,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

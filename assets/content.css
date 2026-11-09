@@ -11,7 +11,9 @@
 
 .cp-head { max-width: 52rem; }
 .cp-head h1 { max-width: 24ch; margin-bottom: 0.4em; }
-.cp-answer { font-size: 19px; line-height: 1.55; color: var(--text); max-width: 46rem; margin: 0 0 28px; }
+.cp-answer { font-size: 19px; line-height: 1.55; color: var(--text); max-width: 46rem; margin: 0 0 24px; padding: 18px 22px; border-radius: var(--radius-lg); border: 1px solid color-mix(in srgb, var(--hue, var(--warm)) 30%, var(--line-2)); border-left: 3px solid var(--hue, var(--warm)); background: linear-gradient(90deg, color-mix(in srgb, var(--hue, var(--warm)) 8%, var(--bg-1)), var(--bg-1)); }
+.cp-head .trust { margin: 0 0 32px; }
+@media (max-width: 720px) { .cp-answer { font-size: 17px; padding: 14px 16px; } }
 
 .cp-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: 0 0 40px; max-width: 46rem; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: var(--bg-1); overflow: hidden; }
 .cp-facts > div { padding: 14px 18px; border-top: 1px solid var(--line); }
@@ -27,7 +29,8 @@
 
 /* The body reads like the docs: one column, sections ruled off. Tables may run wider. */
 .cp-body.prose section { max-width: 56rem; }
-.cp-body .table-scroll { margin: 0 0 18px; }
+.cp-body .table-scroll { margin: 0 0 18px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--bg-1); padding: 0 14px; max-width: 100%; overflow-x: auto; }
+.cp-body .table-scroll table { margin: 0; }
 .cp-table th[scope="row"] { font: 500 14px/1.5 var(--font-text); text-transform: none; letter-spacing: 0; color: var(--text); white-space: normal; border-bottom: 1px solid var(--line); padding: 12px 14px 12px 0; }
 /* Cells keep their dates and numbers on one line; a narrow screen scrolls the table, not the page.
    The holiday name and the last (notes) column wrap. */
@@ -53,7 +56,13 @@ table.cp-table .r { padding-right: 24px; }
 .cp-tool > p.small { margin: 14px 0 0; }
 
 .cp-steps li { margin-bottom: 8px; }
-.cp-faq h3 { font-size: 17px; margin: 22px 0 6px; }
+.cp-faq h3 { font-size: 17px; margin: 0; display: inline; letter-spacing: -0.01em; }
+.cp-faq details.xpand { margin-top: 0; padding: 12px 0; }
+.cp-faq details.xpand > summary { color: var(--text); }
+.cp-faq .xp-in p { margin: 0; color: var(--text-2); }
+.cp-body details.xpand .xp-in > :last-child { margin-bottom: 0; }
+.cp-body .tgrid, .cp-body .acards, .cp-body .mcal-set, .cp-body .yr-row { margin: 0 0 18px; }
+.cp-body .cp-rows { max-width: none; }
 .cp-sources, .cp-related ul { padding-left: 1.2em; }
 .cp-formats { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line); max-width: 56rem; }
 .cp-formats a { color: var(--muted); }
@@ -67,7 +76,8 @@ table.cp-table .r { padding-right: 24px; }
   :root { --bg: #fff; --bg-1: #fff; --bg-2: #fff; --bg-3: #fff; --text: #000; --text-2: #000; --muted: #333; --faint: #333; --paper: #fff; --ink: #000; --line: #999; --line-2: #999; --line-3: #666; --rule: #999; color-scheme: light; }
   @page { margin: 14mm; }
   html, body { background: #fff !important; color: #000 !important; font-size: 11pt; }
-  .skip, .site-head, .site-foot, .nav-pal, .mx-field, .tl-toast, .cp-crumbs, .cp-tool, .cp-formats, .cp-related, .cp-eyebrow { display: none !important; }
+  details.xpand > .xp-in { display: block !important; }
+  .trust, .skip, .site-head, .site-foot, .nav-pal, .mx-field, .tl-toast, .cp-crumbs, .cp-tool, .cp-formats, .cp-related, .cp-eyebrow { display: none !important; }
   .wrap, .cp, main { max-width: none !important; width: auto !important; padding: 0 !important; margin: 0 !important; }
   .cp-head h1, .cp-answer, .cp-body, .cp-body p, .cp-body li, .cp-note { color: #000 !important; max-width: none; }
   .cp-answer { font-size: 12pt; }
@@ -86,3 +96,9 @@ table.cp-table .r { padding-right: 24px; }
   .cp-sources a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; overflow-wrap: anywhere; }
   .cp-sources li { break-inside: avoid; }
 }
+
+/* Hubs inside a content page use the full width. */
+.cp-body.prose section.hub-group { max-width: none; }
+.cp-body .hub-group-h h2 { border: 0; padding: 0; margin: 0; }
+.cp-body .tcard .tc-t { margin: 0; }
+.cp-body .tcard p { max-width: none; }

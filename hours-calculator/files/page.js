@@ -329,14 +329,19 @@ async function start() {
   drawDays(linked.days ?? EXAMPLE);
   recompute();
   if (!linked.days) {
-    const label = h('p', { class: 'hc-label' }, 'Worked example');
+    const label = h('p', { class: 't-ex' }, [h('span', { class: 'ex-tag' }, 'Example'), h('span', {}, 'Worked example: a week with lunches, a split shift and a Saturday morning, at $18.50 an hour')]);
     $('hc-out').prepend(label);
   }
   miniBetween();
   miniConvert();
 
   const form = $('hc-form');
-  form.addEventListener('submit', (e) => e.preventDefault());
+  // The button counts again and, on a phone, brings the totals into view under the form.
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    recompute();
+    if (matchMedia('(max-width: 959px)').matches) $('hc-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   form.addEventListener('input', soon(recompute));
   form.addEventListener('change', recompute);
   $('hc-start').addEventListener('change', () => { drawDays(); recompute(); });

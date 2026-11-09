@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the bank-feed duplicate finder pairs and scores lines</title>
+<meta name="description" content="How bank-feed duplicates are found: same amount to the cent within a few days, scored on date, payee words and reference, and which copy to keep and why.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/bank-feed-duplicate-finder/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/bank-feed-duplicate-finder.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the bank-feed duplicate finder pairs and scores lines">
+<meta property="og:description" content="How bank-feed duplicates are found: same amount to the cent within a few days, scored on date, payee words and reference, and which copy to keep and why.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/bank-feed-duplicate-finder/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/bank-feed-duplicate-finder/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/bank-feed-duplicate-finder/","name":"How the bank-feed duplicate finder pairs and scores lines","description":"How bank-feed duplicates are found: same amount to the cent within a few days, scored on date, payee words and reference, and which copy to keep and why.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the bank-feed duplicate finder pairs and scores lines","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/bank-feed-duplicate-finder/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the bank-feed duplicate finder for quickbooks online and xero answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the bank-feed duplicate finder for quickbooks online and xero refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"It lists likely duplicates and the action for each; it never excludes, deletes or changes anything in QuickBooks Online or Xero. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the bank-feed duplicate finder pairs and scores lines</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the bank-feed duplicate finder pairs and scores lines</h1>
+<p class="cp-answer">Two lines are a candidate pair when they have the same amount to the cent and are at most 3 days apart (you can set 0 to 31), inside the feed, inside the books or one in each. Each pair scores up to 6 points on the date gap, the payee words and the reference: 4 or more is high confidence, 2 or 3 medium, 0 or 1 low.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the bank-feed duplicate finder for quickbooks online and xero compute?</h2>
+<p>Given the bank-feed lines waiting for review, the entries already posted to the same account, or both, as CSV, the tool lists every pair of lines that look like one transaction twice: twice in the feed, twice in the books, or a feed line already entered in the books. Each pair gets a confidence, which copy to keep and why, the cause, and the action in QuickBooks Online or Xero, with an exclude-ready CSV. It never removes, excludes or changes anything; every pair is for you to check against the bank statement.</p>
+<details class="xpand"><summary>Read the rest: What does the bank-feed duplicate finder for quickbooks online and xero compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>preview</code>: Reads both files and returns the answer in words, the line counts and date range, the number of pairs by kind and by confidence, the totals of the copies to act on, any whole date range that came in twice, and the warnings. No pair detail. Free.</li><li><code>report</code>: Does what preview does and also returns every pair (up to 2,000 listed, all counted): both lines, the score, the copy to keep and why, the cause, the action and any flags, plus the exclude-ready CSV and a CSV of every pair. The same two files again within 7 days, with other settings, are free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>feed</code>: The bank lines as CSV text, at most 2,000,000 characters and 20,000 lines: QuickBooks Online For review lines, a bank CSV in Intuit's 3-column (Date, Description, Amount) or 4-column (Date, Description, Credit, Debit) layout, or Xero statement lines. Optional when books is given.</li><li><code>books</code>: What is already posted to the account as CSV text: QuickBooks Online Transaction Detail by Account or a register export, Xero Account Transactions, or any CSV with a Date and an Amount (or Debit and Credit) column. Optional when feed is given.</li><li><code>windowDays</code>: The most days apart two lines of the same amount may be and still be paired: 0 to 31, default 3.</li><li><code>platform</code>: auto (default), qbo or xero: whose words the actions use. auto picks Xero when a file looks like a Xero export or carries Xero's Source values, otherwise QuickBooks Online.</li><li><code>compare</code>: auto (default), same or flipped: how the books file's signs compare with the bank's. auto tries both and keeps the one that pairs more lines across the two files, the same signs on a tie.</li><li><code>account</code>: When the books file holds several accounts, the one to check (its name or part of it). Default: the one with the most lines.</li><li><code>dateOrder</code>: auto (default), mdy or dmy for slash dates. auto reads the order from the values and falls back to MM/DD.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: how many likely duplicates of each kind, their totals, the confidence split, any doubled date range, and the effect on the account balance</li><li>platform, windowDays, compare, files (layout, account, lines, date order), lines and range</li><li>counts and totals: pairs by confidence and kind, and the size of the copies to act on</li><li>patterns: a date range where nearly every feed line came in twice or is already in the books</li><li>pairs (report only): each pair with both lines, kind, cause, confidence, score, days apart, payee words shared, same reference, the copy kept and why, the action and flags</li><li>csv.exclude and csv.pairs (report only), and warnings</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each file is read as CSV (comma, tab or semicolon). The header row is the first of the first 40 rows with a Date column and an Amount (or Debit and Credit) column; title rows, account headings, Total rows and opening or closing balance rows are skipped, and lines marked Deleted are left out and counted.</li><li>Amounts become whole cents (&quot;$1,234.56&quot;, &quot;(45.00)&quot; and &quot;45.00-&quot; all read); a decimal comma is refused rather than guessed. In a bank file Credit is money in; in a books report Debit is money into the bank account. Zero amounts are skipped.</li><li>A books file grouped by account keeps one account: the one you name, else the one with the most lines, and a warning lists the others.</li><li>Candidate pairs are two lines with exactly the same amount dated at most windowDays apart (default 3). With both files, the books amounts are compared as written or with their signs flipped, whichever gives more pairs across the files.</li><li>Each pair is scored: a 0-day gap is 2 points and 1 day is 1; payee words shared (over the shorter list, after dropping words like inc, pos, ach and card) of 0.6 or more is 2 points and 0.3 or more is 1; the same reference is 2. A score of 4 or more is high confidence, 2 or 3 medium, 0 or 1 low.</li><li>Pairs are settled best score first, then the smallest gap, then file order. A line is removed at most once, and a line kept is never also removed, so three copies make two pairs with one kept.</li><li>The copy to keep: the entry already in the books over a feed line; otherwise the reconciled or cleared copy; then, in Xero, the Bank Feed line over an imported one; else the earlier line.</li><li>An amount that appears three or more times on one side (rent, a subscription) caps that side's pairs at medium confidence. Two equal amounts on the same day in one file are flagged: both can be real.</li><li>At least 5 pairs of one kind covering 80% or more of the feed lines in their date range are named as a pattern: a feed downloaded twice, or a block of feed lines already in the books.</li><li>Each pair gets its action in the platform's words: Exclude in For review, Match to the entry already in the books (or exclude when it is already reconciled), Delete the statement line in Xero, or remove the extra entry from the books. When both copies are reconciled the action is to ask your accountant.</li></ol>
+<p><strong>Intuit QuickBooks help.</strong></p>
+<p>Which copy to keep follows Intuit's help: &quot;If one of the transactions is reconciled, keep that one.&quot; A feed line for a record you already entered is matched rather than added, and a line whose record is already reconciled is excluded (Intuit's match article). The causes named (an account connected twice, a reconnect that downloads history again, an imported file that overlaps the feed) are the ones Intuit lists.</p>
+<p><strong>Xero Central.</strong></p>
+<p>In Xero a duplicate statement line is deleted from Bank Statements; Xero says &quot;You should only delete a statement line to remove a duplicate.&quot; Its own duplicate report compares date and amount only and &quot;It doesn't show any partial matches&quot;, which is why this tool also pairs lines a few days apart.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Two equal charges on the same day are listed but flagged, because the bank may really have charged twice.</li><li>Rent paid on October 1 in the books and October 31 in the feed is not a pair: it is outside the window.</li><li>Three copies of one charge make two pairs, both keeping the first copy.</li><li>A credit card account exported with opposite signs in the books is compared with the signs flipped, and a warning says so.</li><li>Dates that can only be day first (20/11) and only month first (11/20) in one column are refused, with both values named.</li><li>With only a books file, only entries in the books twice are looked for, and a warning says to add the feed.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A made-up bakery's October register and the bank lines waiting in For review</strong></p>
+<pre><code class="language-json">op: &quot;report&quot;
+feed: &quot;Date,Description,Amount\r\n10/26/2026,SQUARE INC DEP,\&quot;1,245.90\&quot;\r\n10/28/2026,VERIZON WIRELESS,-112.60\r\n10/29/2026,SQUARE INC DEP,\&quot;1,198.05\&quot;\r\n10/29/2026,SQUARE INC DEP,\&quot;1,198.05\&quot;\r\n10/30/2026,COMCAST BUSINESS,-189.99\r\n10/30/2026,STAPLES 0412,-45.17\r\n10/31/2026,HARBOR PROPERTIES RENT,\&quot;-2,400.00\&quot;\r\n&quot;
+books: &quot;Northwind Bakery (made-up sample)\r\nTransaction Detail by Account\r\n\&quot;October 1-31, 2026\&quot;\r\n\r\n,Date,Transaction Type,Num,Name,Memo/Description,Split,Amount,Balance\r\nBusiness Checking,,,,,,,,\r\n,10/01/2026,Expense,,Harbor Properties,October rent,Rent or Lease,\&quot;-2,400.00\&quot;,\&quot;-2,400.00\&quot;\r\n,10/02/2026,Expense,,Comcast Business,,Utilities,-189.99,\&quot;-2,589.99\&quot;\r\n,10/03/2026,Deposit,,Square,Card sales,Sales,\&quot;1,284.50\&quot;,\&quot;-1,305.49\&quot;\r\n,10/06/2026,Expense,,Sysco,Flour and dairy,Supplies,-642.18,\&quot;-1,947.67\&quot;\r\n,10/06/2026,Expense,,SYSCO FOOD SVC,,Supplies,-642.18,\&quot;-2,589.85\&quot;\r\n,10/08/2026,Check,1052,Rivera Electric,Oven repair,Repairs,-350.00,\&quot;-2,939.85\&quot;\r\n,10/10/2026,Deposit,,Square,Card sales,Sales,\&quot;1,102.75\&quot;,\&quot;-1,837.10\&quot;\r\n,10/13/2026,Expense,,Amazon,Packaging,Supplies,-86.40,\&quot;-1,923.50\&quot;\r\n,10/14/2026,Expense,,AMZN Mktp US,,Supplies,-86.40,\&quot;-2,009.90\&quot;\r\n,10/15/2026,Expense,,Gusto,Payroll,Payroll Expenses,\&quot;-4,215.33\&quot;,\&quot;-6,225.23\&quot;\r\n,10/17/2026,Deposit,,Square,Card sales,Sales,\&quot;1,317.20\&quot;,\&quot;-4,908.03\&quot;\r\n,10/20/2026,Expense,,Shell,Van fuel,Car &amp; Truck,-58.00,\&quot;-4,966.03\&quot;\r\n,10/20/2026,Expense,,Shell,Van fuel,Car &amp; Truck,-58.00,\&quot;-5,024.03\&quot;\r\n,10/24/2026,Bill Payment (Check),1053,Sysco,,Accounts Payable (A/P),\&quot;-1,018.44\&quot;,\&quot;-6,042.47\&quot;\r\n,10/27/2026,Deposit,,Square,Card sales,Sales,\&quot;1,245.90\&quot;,\&quot;-4,796.57\&quot;\r\n,10/28/2026,Expense,,Verizon,Phones,Utilities,-112.60,\&quot;-4,909.17\&quot;\r\nTotal for Business Checking,,,,,,,\&quot;-$4,909.17\&quot;,\r\n&quot;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A made-up bakery's October register and the bank lines waiting in For review</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Found 6 likely duplicates in 7 bank-feed lines and 16 books entries from October 1, 2026 to October 31, 2026, each the same amount within 3 days: 1 is in the feed twice ($1,198.05); 2 are feed lines already entered in the books ($1,358.50); 3 are in the books twice ($786.58). Confidence: 4 high, 1 medium, 1 low. The entries in the books twice make the account's balance $786.58 lower than it should be.</td></tr>
+<tr><th scope="row">pair 1</th><td>twice in the books, -$642.18, high: keep books line 10, act on books line 11; the earlier copy is kept</td></tr>
+<tr><th scope="row">pair 2</th><td>twice in the books, -$86.40, low: keep books line 14, act on books line 15; the earlier copy is kept</td></tr>
+<tr><th scope="row">pair 3</th><td>twice in the books, -$58.00, high: keep books line 18, act on books line 19; the earlier copy is kept</td></tr>
+<tr><th scope="row">pair 4</th><td>feed line already in the books, $1,245.90, medium: keep books line 21, act on feed line 2; the entry already in the books is kept</td></tr>
+<tr><th scope="row">pair 5</th><td>feed line already in the books, -$112.60, high: keep books line 22, act on feed line 3; the entry already in the books is kept</td></tr>
+<tr><th scope="row">pair 6</th><td>twice in the feed, $1,198.05, high: keep feed line 4, act on feed line 5; the earlier copy is kept</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>It lists likely duplicates and the action for each; it never excludes, deletes or changes anything in QuickBooks Online or Xero.</li><li>It pairs only lines with the same amount to the cent, so a duplicate entered with a different amount is not found.</li><li>One account per run, up to 20,000 lines a file and a window of 31 days.</li><li>It is not accounting or tax advice. Check every pair against the bank statement, and ask your accountant before changing a closed or reconciled period.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The QuickBooks Online and Xero help pages behind the layouts, the copy to keep and the actions were read on their own sites on 2026-11-08; each page's own updated date is shown where it gives one. The matching rules live in the tool's code and change only by hand, with the tests that pin them.</p>
+<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/duplicate-transactions/fix-duplicate-transactions-quickbooks-online-bank-feeds/L1fjxl88f_US_en_US">Intuit QuickBooks: Fix duplicate transactions in QuickBooks Online bank feeds</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-feeds/match-online-bank-transactions-quickbooks-online/L6qyw0PvP_US_en_US">Intuit QuickBooks: Match your bank and credit card transactions</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-za/help-article/bank-transactions/remove-duplicate-bank-transactions-quickbooks/L3X1ZPiEW_ZA_en_ZA">Intuit QuickBooks (South Africa): Remove duplicate bank transactions in QuickBooks Online</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/format-csv-files-excel-bank-transactions-quickbooks/L4BjLWckq_US_en_US">Intuit QuickBooks: Format CSV files in Excel to get bank transactions into QuickBooks</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-articles/export-your-reports-to-excel-from-quickbooks-online/00/262097">Intuit QuickBooks: Export your reports to Excel from QuickBooks Online</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-ca/help-article/close-books/close-books-quickbooks-online/L59LelyPM_CA_en_CA">Intuit QuickBooks (Canada): Lock your books in QuickBooks Online</a></li><li><a href="https://central.xero.com/s/article/Find-and-remove-duplicate-bank-statement-lines">Xero Central: Find and remove duplicate bank statement lines</a></li><li><a href="https://central.xero.com/s/article/Delete-or-restore-a-bank-statement-line">Xero Central: Delete or restore a bank statement line</a></li><li><a href="https://central.xero.com/s/article/View-bank-statements-and-bank-statement-lines-UK">Xero Central: View bank statements and bank statement lines</a></li><li><a href="https://central.xero.com/s/article/Export-a-list-of-uncoded-bank-statement-lines">Xero Central: Export a list of uncoded bank statement lines</a></li><li><a href="https://central.xero.com/s/article/Account-Transactions-report-New">Xero Central: Account Transactions report</a></li><li><a href="https://central.xero.com/0/article/Import-a-CSV-bank-statement-US">Xero Central: Import a bank statement in CSV format</a></li><li><a href="https://central.xero.com/0/article/About-manually-importing-bank-statements-US">Xero Central: About manually importing bank transactions</a></li></ul>
+<p>The QuickBooks Online and Xero help pages behind the layouts, the copy to keep and the actions were read on their own sites on 2026-11-08; each page's own updated date is shown where it gives one. The matching rules live in the tool's code and change only by hand, with the tests that pin them.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Bank-feed duplicate finder for QuickBooks Online and Xero: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/duplicate-transactions/fix-duplicate-transactions-quickbooks-online-bank-feeds/L1fjxl88f_US_en_US">Intuit QuickBooks: Fix duplicate transactions in QuickBooks Online bank feeds</a></th><td>see the document</td><td rowspan="13">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-feeds/match-online-bank-transactions-quickbooks-online/L6qyw0PvP_US_en_US">Intuit QuickBooks: Match your bank and credit card transactions</a></th><td>page updated 2026-08-14</td></tr>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-za/help-article/bank-transactions/remove-duplicate-bank-transactions-quickbooks/L3X1ZPiEW_ZA_en_ZA">Intuit QuickBooks (South Africa): Remove duplicate bank transactions in QuickBooks Online</a></th><td>Updated 1 month ago on 2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/format-csv-files-excel-bank-transactions-quickbooks/L4BjLWckq_US_en_US">Intuit QuickBooks: Format CSV files in Excel to get bank transactions into QuickBooks</a></th><td>page updated 2026-08-24</td></tr>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-articles/export-your-reports-to-excel-from-quickbooks-online/00/262097">Intuit QuickBooks: Export your reports to Excel from QuickBooks Online</a></th><td>Updated 3 months ago on 2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-ca/help-article/close-books/close-books-quickbooks-online/L59LelyPM_CA_en_CA">Intuit QuickBooks (Canada): Lock your books in QuickBooks Online</a></th><td>Updated 1 month ago on 2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://central.xero.com/s/article/Find-and-remove-duplicate-bank-statement-lines">Xero Central: Find and remove duplicate bank statement lines</a></th><td rowspan="7">see the document</td></tr>
+<tr><th scope="row"><a href="https://central.xero.com/s/article/Delete-or-restore-a-bank-statement-line">Xero Central: Delete or restore a bank statement line</a></th></tr>
+<tr><th scope="row"><a href="https://central.xero.com/s/article/View-bank-statements-and-bank-statement-lines-UK">Xero Central: View bank statements and bank statement lines</a></th></tr>
+<tr><th scope="row"><a href="https://central.xero.com/s/article/Export-a-list-of-uncoded-bank-statement-lines">Xero Central: Export a list of uncoded bank statement lines</a></th></tr>
+<tr><th scope="row"><a href="https://central.xero.com/s/article/Account-Transactions-report-New">Xero Central: Account Transactions report</a></th></tr>
+<tr><th scope="row"><a href="https://central.xero.com/0/article/Import-a-CSV-bank-statement-US">Xero Central: Import a bank statement in CSV format</a></th></tr>
+<tr><th scope="row"><a href="https://central.xero.com/0/article/About-manually-importing-bank-statements-US">Xero Central: About manually importing bank transactions</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests check money and date reading, every layout (QuickBooks reports with title and Total rows, Intuit's 3- and 4-column bank CSV, Xero statement lines with Source and Status, Xero Account Transactions), the scoring at its boundaries, the worked bakery month (six pairs of three kinds), the window from 0 to 31 days, a reconnect pattern, Xero's keep rules, flipped signs, settling three copies, and that the same input gives the same output.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The source pages are pinned with their read date, 2026-11-08, and the facts quoted from Intuit and Xero are checked word for word.</li><li>Scoring is checked at its boundaries (4 or more high, 2 or 3 medium, 0 or 1 low), and the worked bakery month gives six pairs of three kinds with the copy kept and the action for each.</li><li>The window from 0 to 31 days, a reconnect pattern, an overlapping upload, Xero's keep rules, flipped card signs and settling three copies are each tested, and the same input always gives the same output.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/bank-feed-duplicate-finder/">Open the Bank-feed duplicate finder for QuickBooks Online and Xero tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the bank-feed duplicate finder for quickbooks online and xero answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the bank-feed duplicate finder for quickbooks online and xero refuse to answer?</h3></summary><div class="xp-in"><p>It lists likely duplicates and the action for each; it never excludes, deletes or changes anything in QuickBooks Online or Xero. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/bank-feed-duplicate-finder/">Open the Bank-feed duplicate finder for QuickBooks Online and Xero tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/bank-feed-duplicate-finder.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

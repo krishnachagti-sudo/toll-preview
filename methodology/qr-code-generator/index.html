@@ -71,17 +71,18 @@
 <h1>How QR codes are generated: ISO/IEC 18004 method</h1>
 <p class="cp-answer">The text is encoded in the densest single mode that holds it, in the smallest of the 40 versions that fits at the chosen error correction level, with Reed-Solomon codewords added and the one of 8 masks with the lowest penalty applied. Every file is decoded again before it is returned.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the qr code generator compute?</h2>
 <p>The tool builds static QR Code symbols (Model 2) as SVG, PNG or PDF from a link, text, WiFi details, a contact card, email, SMS, phone or location, or from exact text you give. It can make many codes from a spreadsheet, read a code from a PNG, and report what a printed code encodes and where it redirects.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the qr code generator compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>static</code>: One code as a file, with the version, size in modules, error correction level, mask and mode, the read-back proof and print checks.</li><li><code>payload</code>: The exact text a payload type produces, and the version it needs at each error correction level, without making a file.</li><li><code>bulk</code>: Many codes from rows, a CSV or an .xlsx sheet, as files named by a column, a manifest and an optional label sheet. Rows that cannot be made are reported and not charged.</li><li><code>decode</code>: Reads a code from a PNG of a clean image.</li><li><code>expiry-check</code>: Says what a code encodes, follows a link's redirects, and reports a vendor's published expiry policy.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>type, fields</code>: A payload type (url, text, wifi, vcard, email, sms, phone, location) and its fields, or data: the exact text to encode, up to 7,100 characters.</li><li><code>ecc, boostEcc, mask</code>: Error correction L, M (default), Q or H; whether to raise the level when the size does not change; or a fixed mask 0 to 7.</li><li><code>margin, fg, bg, logo, logoShare</code>: The quiet zone in modules (default 4), colors, and a PNG logo of at most 30% of the code's width.</li><li><code>format, widthMm, sizePx, printerDpi</code>: The file type and size, and your printer's resolution for the print check.</li></ul>
 <p>Outputs:</p>
-<ul><li>version, modules, ecc, mask and mode of the symbol</li><li>verified and readBack: what a decoder read from the finished file</li><li>print.checks: quiet zone, module size, contrast</li><li>payloadNotes: any escaping applied</li></ul>
+<ul><li>version, modules, ecc, mask and mode of the symbol</li><li>verified and readBack: what a decoder read from the finished file</li><li>print.checks: quiet zone, module size, contrast</li><li>payloadNotes: any escaping applied</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -141,16 +142,32 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>Format and print rules were read 2026-11-02. The encoder follows ISO/IEC 18004.</p>
 <ul class="cp-sources"><li><a href="https://www.iso.org/standard/83389.html">ISO/IEC 18004 (QR Code bar code symbology specification)</a></li><li><a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE: Points for using QR Code (quiet zone of four modules)</a></li><li><a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE: Module size (4 or more printer dots a module)</a></li><li><a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE: Error correction (Level M 15% is most often selected)</a></li><li><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard)</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426: vCard 3.0 (escaping of commas, semicolons, backslashes and newlines)</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>Format and print rules read 2026-11-02. The encoder follows the QR Code standard, ISO/IEC 18004.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>QR code generator: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.qrcode.com/en/howto/code.html">DENSO WAVE: Points for using QR Code (quiet zone of four modules)</a></th><td rowspan="11">see the document</td><td rowspan="5">2026-11-02</td></tr>
+<tr><th scope="row"><a href="https://www.qrcode.com/en/howto/cell.html">DENSO WAVE: Module size (4 or more printer dots a module)</a></th></tr>
+<tr><th scope="row"><a href="https://www.qrcode.com/en/about/version.html">DENSO WAVE: QR Code versions (40 versions, 21 x 21 to 177 x 177 modules)</a></th></tr>
+<tr><th scope="row"><a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE: Error correction (Level M 15% is most often selected)</a></th></tr>
+<tr><th scope="row"><a href="https://www.qrcode.com/en/faq.html">DENSO WAVE FAQ: no licence needed to use QR Code; trademark notice</a></th></tr>
+<tr><th scope="row"><a href="https://www.iso.org/standard/83389.html">ISO/IEC 18004 (QR Code bar code symbology specification)</a></th><td>not recorded</td></tr>
+<tr><th scope="row"><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard)</a></th><td rowspan="5">2026-11-02</td></tr>
+<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426: vCard 3.0 (escaping of commas, semicolons, backslashes and newlines)</a></th></tr>
+<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc6068">RFC 6068: the mailto URI scheme</a></th></tr>
+<tr><th scope="row"><a href="https://www.avery.com/templates/5160">Avery 5160 template: 1 x 2-5/8 in, 30 per sheet</a></th></tr>
+<tr><th scope="row"><a href="https://www.avery.com/templates/22816">Avery 22816 template: 2 x 2 in square, 12 per sheet</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>The encoder is compared bit for bit with an independent implementation (node-qrcode 1.5.4) at every one of the 40 versions and 4 error-correction levels, in numeric, alphanumeric and byte modes. A decoder reads every code back, and the Reed-Solomon error correction fixes damage up to its limit and refuses more.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The encoder is compared bit for bit with an independent implementation (node-qrcode 1.5.4) at every one of the 40 versions and 4 error-correction levels, and in numeric, alphanumeric and byte modes.</li><li>A decoder reads every code back, and the Reed-Solomon error correction fixes damage up to its limit and refuses more.</li><li>Payload formats (WiFi, vCard, mailto, SMS, geo) are checked against the formats the sources describe, and the DENSO WAVE quiet-zone and module-size rules against the print checks.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/qr-code-generator/">Open the QR code generator tool</a>.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the qr code generator answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the qr code generator refuse to answer?</h3><p>Static codes only. A static code holds its content and cannot expire, but it works only while its destination exists. The tool does not host redirects. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the qr code generator answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the qr code generator refuse to answer?</h3></summary><div class="xp-in"><p>Static codes only. A static code holds its content and cannot expire, but it works only while its destination exists. The tool does not host redirects. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/qr-code-generator/">Open the QR code generator tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/qr-code-generator/static-vs-dynamic/">Static vs dynamic QR codes</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/qr-code-generator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -243,6 +260,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

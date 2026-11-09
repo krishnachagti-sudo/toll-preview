@@ -1,0 +1,7 @@
+Item,Type,Amount,Start,Months,End,Method,Paid on,Balance account,PL account,Cash account,Name,Rate,Payment,First payment,Day count,Cancel on,Refund,November 2026,December 2026,January 2027,February 2027,March 2027,April 2027,May 2027,June 2027,July 2027,August 2027,September 2027,October 2027,November 2027,December 2027,"Balance December 31, 2027"
+General liability policy,Prepaid,12000.00,2026-07-01,12,,,,Prepaid Insurance,Insurance Expense,,,,,,,,,1000.00,1000.00,1000.00,1000.00,1000.00,1000.00,1000.00,1000.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+Workers comp deposit premium,Prepaid,5400.00,2026-10-15,,2027-10-14,daily,,Prepaid Insurance,Insurance Expense,,,,,,,,,443.84,458.63,458.63,414.25,458.63,443.84,458.63,443.84,458.63,458.63,443.84,207.10,0.00,0.00,0.00
+Design software seats,Prepaid,4380.00,2026-09-17,,2027-09-16,daily,,Prepaid Expenses,Software Subscriptions,,,,,,,,,360.00,372.00,372.00,336.00,372.00,360.00,372.00,360.00,372.00,372.00,192.00,0.00,0.00,0.00,0.00
+"Office rent, last month deposit",Prepaid,7500.00,2026-11-01,3,,,,Prepaid Rent,Rent Expense,,,,,,,,,2500.00,2500.00,2500.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+Trade show booth,Prepaid,3200.00,2027-03-01,1,,,2026-11-20,Prepaid Expenses,Marketing,,,,,,,,,0.00,0.00,0.00,0.00,3200.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00
+CRM annual plan,Prepaid,2988.00,2026-12-16,12,,half-month,,Prepaid Expenses,Software Subscriptions,,,,,,,,,0.00,124.50,249.00,249.00,249.00,249.00,249.00,249.00,249.00,249.00,249.00,249.00,249.00,124.50,0.00

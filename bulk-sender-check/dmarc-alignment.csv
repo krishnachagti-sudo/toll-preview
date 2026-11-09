@@ -1,0 +1,11 @@
+from_domain,authenticated_domain,from_org_domain,authenticated_org_domain,relaxed,strict
+example.com,example.com,example.com,example.com,aligned,aligned
+example.com,mail.example.com,example.com,example.com,aligned,not aligned
+shop.example.com,example.com,example.com,example.com,aligned,not aligned
+shop.example.com,bounce.shop.example.com,example.com,example.com,aligned,not aligned
+shop.example.com,mailer.example.net,example.com,example.net,not aligned,not aligned
+example.co.uk,news.example.co.uk,example.co.uk,example.co.uk,aligned,not aligned
+example.co.uk,other.co.uk,example.co.uk,other.co.uk,not aligned,not aligned
+brand.github.io,other.github.io,brand.github.io,other.github.io,not aligned,not aligned
+example.com.au,em.example.com.au,example.com.au,example.com.au,aligned,not aligned
+example.org,example.org.mailer.example.net,example.org,example.net,not aligned,not aligned

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Amazon titles are checked: 75 characters and rules</title>
+<meta name="description" content="How the Amazon title checker counts characters, finds banned characters outside the brand, counts repeated words and cuts a title at the last whole word.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/amazon-title-checker/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/amazon-title-checker.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How Amazon titles are checked: 75 characters and rules">
+<meta property="og:description" content="How the Amazon title checker counts characters, finds banned characters outside the brand, counts repeated words and cuts a title at the last whole word.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/amazon-title-checker/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/amazon-title-checker/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/amazon-title-checker/","name":"How Amazon titles are checked: 75 characters and rules","description":"How the Amazon title checker counts characters, finds banned characters outside the brand, counts repeated words and cuts a title at the last whole word.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How Amazon titles are checked: 75 characters and rules","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/amazon-title-checker/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the amazon title checker answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the amazon title checker refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Rules that only Amazon's signed-in help page states are not checked: it asks for a Seller Central sign-in, so it was not read. Category style guides are not checked either. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How Amazon titles are checked: 75 characters and rules</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How Amazon titles are checked: 75 characters and rules</h1>
+<p class="cp-answer">A title outside media must be 75 characters or less, spaces included (from July 27, 2026); none of ! $ ? _ { } ^ ¬ ¦ may appear outside the brand name; and no word may appear more than twice, articles, prepositions and conjunctions excepted. A title over the limit is cut at the last whole word that fits, and the rest is a draft for Item Highlights (125).</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the amazon title checker compute?</h2>
+<p>Given titles as a list, rows or a file (an Amazon flat file or listings report saved as CSV or tab-separated text), the tool checks each against the three rules Amazon published in its Seller Forums announcements: the 75-character limit from July 27, 2026, and the banned characters and repeated words from January 21, 2025. Each title gets its count, what breaks which rule, where a cut to 75 falls, the overflow measured against Item Highlights' 125 characters, and a warning when the cut would lose the brand. A fix list CSV covers every title.</p>
+<details class="xpand"><summary>Read the rest: What does the amazon title checker compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>check</code>: Checks every title. The answer has the headline, a summary (titles, fail, warn and ok counts, and how many are long, have a banned character, repeat a word, have Item Highlights over the limit, would lose the brand, are media, or overflow past Item Highlights), each title's result (count, limit, characters over, verdict, findings with a fix and the source, notes, the cut and the brand position), the fix list CSV and the columns used.</li><li><code>rules</code>: Returns the rule numbers, the banned characters, the exempt words, Amazon's quoted text with its sources and read date, and what is not checked. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>titles, rows or csv</code>: One of the three: a list of titles, rows of objects with a title (and sku, brand, media, Item Highlights) keyed by field or by heading, or CSV text of at most 2,500,000 characters. At most 10,000 titles in one call, each at most 5,000 characters.</li><li><code>columns</code>: Names the heading that holds a field (title, sku, brand, media, highlights) when the tool does not recognize it.</li><li><code>brand</code>: One brand name for every title; a brand column in the file wins for its row.</li><li><code>media</code>: true to mark every title as media, to which the 75-character rule does not apply. A media column (yes, true, 1, x) marks single rows.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: how many titles break the rules and how (over the limit, a banned character, a repeated word), or for one title its count and its cut</li><li>summary: titles, fail, warn, ok, long, chars, repeat, highlights, brandCut, media and overflowTooLong</li><li>results: per title, line, sku, title, length, limit, over, media, verdict (ok, warn or fail), findings, notes, cut (title, overflow and their lengths, whether the overflow fits Item Highlights) and brandAt</li><li>fixCsv: one row per title with its count, characters over, verdict, problems, the cut title and the overflow</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Titles are read from the list, the rows or the file. A file's separator is whichever of tab, comma and semicolon is most used in its first line; quotes and a byte order mark are handled. The heading row is looked for in the first 5 rows, so the template rows above an Amazon flat file's heading are skipped; headings such as item_name, item-name and Product Name are matched with case and punctuation ignored. A file with no heading row is read as one title per line.</li><li>The length is counted in Unicode code points, spaces included, so an accented letter or a CJK character is one. Over 75 fails with how many characters over. A title marked media is not held to the limit. Spaces at the ends, two spaces in a row, and emoji, joiners or combining marks get a note on how they count.</li><li>Every occurrence of the brand name (in any case) is masked, and the rest of the title is searched for each of ! $ ? _ { } ^ ¬ ¦, with how many times each appears. Lookalike characters and characters not on the list (| &amp; ( ) - : ; / % and others) are allowed.</li><li>Words are split at spaces and , / | ; : +, with punctuation at their ends dropped and letters lowercased; a hyphenated word is one word, and a token with no letter (a number or size) is not a word. A word used more than 2 times fails, except the 3 articles, 58 prepositions and 17 conjunctions on the tool's English list. Plurals count as other words.</li><li>Item Highlights given beside a title fail over 125 characters.</li><li>A title over the limit is cut at the last whole word that fits in 75 (a first word longer than the limit is cut at 75), separators are trimmed from both sides of the cut, and the rest is measured against Item Highlights.</li><li>When the brand ends past character 75, a warning says the cut would lose it. A title fails if any rule is broken, is a warning if only the brand warning applies, and is ok otherwise.</li></ol>
+<p><strong>Amazon's announcements.</strong></p>
+<p>Length: &quot;Starting July 27, 2026, titles in all categories except for media will need to be 75 characters or less including spaces.&quot; Item Highlights: Amazon's post gives 125 characters. Both from the July 2026 post, read on 2026-11-08.</p>
+<p>Characters and repeats: &quot;The special characters !, $, ?, _, {, }, ^, ¬, and ¦ are not allowed, unless they are part of the brand name.&quot; &quot;Titles may not contain the same word more than twice. Prepositions, articles, and conjunctions are exceptions.&quot; From the January 2025 post, read on 2026-11-08.</p>
+<p>Amazon names only the word classes that are exempt from the repeat rule; the English word list is the tool's own, from standard grammar, and a word not on it counts.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Exactly 75 characters passes; 76 fails by 1.</li><li>A banned character inside the brand name is allowed, in any case, but the same character elsewhere in the title is still flagged.</li><li>&quot;Glass Set, Glass Tumblers and Glass Coasters&quot; repeats glass 3 times and fails; &quot;BPA-Free Bottle, Free Lid, Free Straw&quot; uses free twice, since BPA-Free is one word.</li><li>A word ending exactly at character 75 is kept whole; one word longer than 75 is cut at 75.</li><li>A media title is not held to 75; past 200 characters a note names the limit Amazon's January 2025 post set for most categories.</li><li>A brand that is not in the title gets a note, not a finding.</li><li>A cell that starts like a formula is written as text in the fix list CSV.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Six listings from a flat file: which titles break which rule and where each is cut</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;csv&quot;: &quot;sku,item_name,brand_name,media\r\nBTL-32,\&quot;Harbor &amp; Pine Insulated Water Bottle 32 oz, Leakproof Lid, Keeps Drinks Cold 24 Hours\&quot;,Harbor &amp; Pine,\r\nMUG-12,Harbor &amp; Pine Stoneware Coffee Mug 12 oz - Dishwasher Safe!,Harbor &amp; Pine,\r\nSET-03,\&quot;Harbor &amp; Pine Glass Set, Glass Tumblers and Glass Coasters, 6 Pieces\&quot;,Harbor &amp; Pine,\r\nKNF-08,\&quot;Chef Knife 8 Inch High Carbon Stainless Steel, Ergonomic Handle, Gift Box, by Harbor &amp; Pine\&quot;,Harbor &amp; Pine,\r\nBRD-01,Harbor &amp; Pine Acacia Cutting Board with Juice Groove,Harbor &amp; Pine,\r\nBK-101,\&quot;The Harbor &amp; Pine Kitchen Book: 101 Recipes for Small Kitchens, Slow Weekends and Big Family Dinners\&quot;,Harbor &amp; Pine,yes&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Six listings from a flat file: which titles break which rule and where each is cut</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>4 of your 6 titles break Amazon's title rules: 2 are over 75 characters, 1 contains a banned character, 1 repeats a word more than twice.</td></tr>
+<tr><th scope="row">line 2 (BTL-32)</th><td>85 characters, fail: length; cut to &quot;Harbor &amp; Pine Insulated Water Bottle 32 oz, Leakproof Lid, Keeps Drinks&quot;, 13 characters left for Item Highlights</td></tr>
+<tr><th scope="row">line 3 (MUG-12)</th><td>59 characters, fail: chars</td></tr>
+<tr><th scope="row">line 4 (SET-03)</th><td>68 characters, fail: repeat</td></tr>
+<tr><th scope="row">line 5 (KNF-08)</th><td>91 characters, fail: length, brand-cut; cut to &quot;Chef Knife 8 Inch High Carbon Stainless Steel, Ergonomic Handle, Gift Box&quot;, 16 characters left for Item Highlights</td></tr>
+<tr><th scope="row">line 6 (BRD-01)</th><td>52 characters, ok</td></tr>
+<tr><th scope="row">line 7 (BK-101)</th><td>100 characters, ok</td></tr>
+</tbody></table></div>
+<p><strong>Amazon's own &quot;before&quot; title from its July 2026 Engage post: its count and its cut</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;titles&quot;: [
+    &quot;Premium Stainless Steel Insulated Water Bottle – Keeps Drinks Cold 24 Hours, Hot 12 Hours, BPA-Free&quot;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Amazon's own &quot;before&quot; title from its July 2026 Engage post: its count and its cut</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>This title is 99 characters, 24 over Amazon's 75-character limit. Cut at the last whole word it reads &quot;Premium Stainless Steel Insulated Water Bottle – Keeps Drinks Cold 24&quot; (69), leaving 29 characters for Item Highlights.</td></tr>
+<tr><th scope="row">line 1</th><td>99 characters, fail: length; cut to &quot;Premium Stainless Steel Insulated Water Bottle – Keeps Drinks Cold 24&quot;, 29 characters left for Item Highlights</td></tr>
+</tbody></table></div>
+<p><strong>A pasted list with one brand for all, a brand that holds a banned character</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;titles&quot;: [
+    &quot;TaDa! Party Poppers for Kids, Confetti Cannons, Pack of 12&quot;,
+    &quot;TaDa! Party Popper Party Favors, Party Supplies for Birthday&quot;,
+    &quot;Confetti Poppers &#123;Gold&#125; 6 Pack&quot;
+  ],
+  &quot;brand&quot;: &quot;TaDa!&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A pasted list with one brand for all, a brand that holds a banned character</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>2 of your 3 titles break Amazon's title rules: 0 are over 75 characters, 1 contains a banned character, 1 repeats a word more than twice.</td></tr>
+<tr><th scope="row">line 1</th><td>58 characters, ok</td></tr>
+<tr><th scope="row">line 2</th><td>60 characters, fail: repeat</td></tr>
+<tr><th scope="row">line 3</th><td>30 characters, fail: chars</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Rules that only Amazon's signed-in help page states are not checked: it asks for a Seller Central sign-in, so it was not read. Category style guides are not checked either.</li><li>The cut is a mechanical cut at the last whole word that fits, not a rewrite.</li><li>Plural and other forms of a word count as other words, since Amazon's posts say &quot;the same word&quot;.</li><li>Not affiliated with Amazon.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>Amazon's July 27, 2026 and January 21, 2025 announcements and the July 2026 Engage post were read on 2026-11-08. The posts are checked once a day for changes, and the rules change only by hand, with the tests that pin them.</p>
+<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/145b6d0f-999c-4555-896c-c694bda2e470">Updates to improve your product titles begin on July 27 (News_Amazon, Amazon Seller Forums (News and Announcements))</a></li><li><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/ac660707-60c7-43e3-a3fd-420d7321cc4e">Engage With Amazon: Get your Product Title Update Questions Answered! (Dougal_Amazon, Amazon Seller Forums)</a></li><li><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/b2b15728-0d43-453e-974f-59eb63f73059">New product title requirements effective January 21, 2025 (News_Amazon, Amazon Seller Forums)</a></li></ul>
+<p>Amazon's July 27, 2026 and January 21, 2025 announcements and the July 2026 Engage post were read on 2026-11-08. The posts are checked once a day for changes, and the rules change only by hand, with the tests that pin them.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Amazon title checker: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/145b6d0f-999c-4555-896c-c694bda2e470">Updates to improve your product titles begin on July 27 (News_Amazon, Amazon Seller Forums (News and Announcements))</a></th><td>published 2026-06-10</td><td rowspan="3">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/ac660707-60c7-43e3-a3fd-420d7321cc4e">Engage With Amazon: Get your Product Title Update Questions Answered! (Dougal_Amazon, Amazon Seller Forums)</a></th><td>published 2026-06-02</td></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/b2b15728-0d43-453e-974f-59eb63f73059">New product title requirements effective January 21, 2025 (News_Amazon, Amazon Seller Forums)</a></th><td>published 2025-01-03</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests pin the rules to Amazon's quoted posts and read date, read CSV with each separator, quotes and a byte order mark and find a flat file's heading under its template rows, check 75 and 76 characters and code point counts, each of the 9 banned characters with the brand exception, repeats with case, exempt words, hyphens, numbers and plurals, the cut at the last whole word, the brand warning, the summary and answer, and the fix list.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The rules are pinned to Amazon's quoted announcements, read on 2026-11-08.</li><li>Exactly 75 characters passes and 76 fails; counts are in code points; media is not held to the limit.</li><li>Each of the 9 banned characters is flagged with its count and allowed inside the brand; repeats are case-insensitive with exempt words, hyphens, numbers and plurals checked.</li><li>The cut falls at the last whole word with separators trimmed, the brand warning fires past the limit, and the worked examples equal what run() returns.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/amazon-title-checker/">Open the Amazon title checker tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the amazon title checker answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the amazon title checker refuse to answer?</h3></summary><div class="xp-in"><p>Rules that only Amazon's signed-in help page states are not checked: it asks for a Seller Central sign-in, so it was not read. Category style guides are not checked either. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/amazon-title-checker/">Open the Amazon title checker tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/amazon-title-checker.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

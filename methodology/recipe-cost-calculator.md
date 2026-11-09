@@ -180,13 +180,31 @@ The unit factors are NIST Handbook 44 (2026 edition), Appendix C, read on 2026-1
 - [USDA FoodData Central, SR Legacy (April 2018), food\_portion.csv (read 2026-11-08)](https://fdc.nal.usda.gov/download-datasets)
 - [Recipe and Menu Costing, Introduction to Food Production and Service (Beth Egan, LibreTexts, CC BY 4.0)](https://workforce.libretexts.org/Bookshelves/Food_Production_Service_and_Culinary_Arts/Introduction_to_Food_Production_and_Service_%28Egan%29/02%3A_Menus_and_Recipes/2.04%3A_Recipe_and_Menu_Costing)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The unit factors are NIST Handbook 44 (2026 edition), Appendix C, read on 2026-11-08. The household weights are USDA FoodData Central's SR Legacy release (April 2018), read on 2026-11-08. Both are read once when the server starts and change only with a deploy. Prices are yours and are used as given at the moment of the call.
+
+Recipe cost calculator and menu re-coster: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [NIST Handbook 44 (2026 edition), Appendix C: General Tables of Units of Measurement](https://www.nist.gov/document/2026-nist-handbook-44-appendix-c) | 2026 edition, Appendix C | 2026-11-08 |
+| [USDA FoodData Central, SR Legacy (April 2018), food\_portion.csv](https://fdc.nal.usda.gov/download-datasets) | 35 household weights | 2026-11-08 |
+| [Recipe and Menu Costing, Introduction to Food Production and Service (Beth Egan, LibreTexts)](https://workforce.libretexts.org/Bookshelves/Food_Production_Service_and_Culinary_Arts/Introduction_to_Food_Production_and_Service_%28Egan%29/02%3A_Menus_and_Recipes/2.04%3A_Recipe_and_Menu_Costing) | yield and edible portion cost formulas | not recorded |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The NIST factors are checked to be exact against each other and the USDA weights against the published figures. Unit aliases and conversions, the sample menu with its sub-recipes, yields and USDA cups, a price change rippling through a sub-recipe, refused input, rounding up to each ending, every single calculation, CSV reading and writing, and the workbook's sheets and formulas are each tested, and the worked examples equal run().
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The NIST Handbook 44 factors are checked exact against each other, and the USDA household weights against the figures as read on 2026-11-08.
+- Unit aliases and conversions, and volume to weight only with a weight, are checked.
+- The sample menu is costed to the cent, with sub-recipes by volume and by portion, yields and USDA cups; a price change ripples into every dish that uses it, and refused input names the problem.
+- Rounding up to each price ending and every single calculation (menu price, food cost %, pour, bake, catering, yield, actual) are checked against worked figures.
+- CSV in and out, and the workbook (a valid zip with four sheets, live formulas and the engine's values) are checked, and the worked examples equal run().
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Recipe cost calculator and menu re-coster tool](https://krishnachagti-sudo.github.io/toll-preview/recipe-cost-calculator/).
 

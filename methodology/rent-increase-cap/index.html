@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How rent increase caps are checked: state and local method</title>
+<meta name="description" content="How the rent increase cap tool works: the cap in force on the effective date, rounded down to the cent, the notice owed and a notice PDF that checks it.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/rent-increase-cap/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/rent-increase-cap.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How rent increase caps are checked: state and local method">
+<meta property="og:description" content="How the rent increase cap tool works: the cap in force on the effective date, rounded down to the cent, the notice owed and a notice PDF that checks it.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/rent-increase-cap/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/rent-increase-cap/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/rent-increase-cap/","name":"How rent increase caps are checked: state and local method","description":"How the rent increase cap tool works: the cap in force on the effective date, rounded down to the cent, the notice owed and a notice PDF that checks it.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How rent increase caps are checked: state and local method","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/rent-increase-cap/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the rent increase cap calculator and notice answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the rent increase cap calculator and notice refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Figures are as published on the dates shown, for the windows shown; an increase taking effect outside a published window is refused, not guessed. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How rent increase caps are checked: state and local method</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How rent increase caps are checked: state and local method</h1>
+<p class="cp-answer">The figure is the one published for the window the effective date falls in, applied to the rent and rounded down to the cent: in Oregon, $2,000 rent may rise at most 10% for 2027, to $2,200, with 90 days' written notice. 4 jurisdictions set a percentage (California, Oregon, Washington and District of Columbia); 4 set notice rules only (New York, Maine, Delaware and Virginia). Not legal advice.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the rent increase cap calculator and notice compute?</h2>
+<p>Given a state (and, where it matters, a county or a local ordinance), the current rent and the day the increase takes effect, the tool gives the most the rent may rise to, whether a proposed rent is within it, the written notice owed and the last day to serve it, each with the rule it rests on and the date it was read. It also makes a rent increase notice PDF, refused while the increase breaks the rule. Covered: California, Oregon, Washington, District of Columbia, New York, Maine, Delaware, Virginia and Montgomery County, Maryland. The other 43 states are refused rather than guessed. Not legal advice. We are not a law firm, and this tool does not review your lease, your building or your case.</p>
+<details class="xpand"><summary>Read the rest: What does the rent increase cap calculator and notice compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>rules</code>: Returns the rule row for one state, with its quotes, sources and local rows; for a state not covered, the reason; with no state, every covered row and the list not covered. Free.</li><li><code>percent</code>: Works out the change from one monthly rent to another as a percentage, with the increase a month and a year. Free.</li><li><code>check</code>: Works out the cap in force on the effective date, the most the rent may be with the arithmetic, a verdict on any proposed rent, the timing rules (first year, once in 12 months, end of the lease term), the notice owed and its serve-by date, with each reason's citation.</li><li><code>notice</code>: Runs the check and returns the notice text and a PDF. The clean notice is refused while the increase is over the cap, late or for a date whose figure is not published; a preview is free, watermarked and shows what the check found.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>state, locality, county</code>: A two-letter code: CA, OR, WA, DC, NY, ME, DE, VA, or MD with locality &quot;montgomery-county&quot;. Localities: los-angeles, los-angeles-county-unincorporated, san-diego, new-york-city, montgomery-county. California needs the county, which picks the CPI region.</li><li><code>rent, newRent or increasePct, baseRent</code>: The current monthly rent; the proposed new rent or the increase in percent (not both); and, in California and Washington, the lowest rent in the 12 months before the increase.</li><li><code>effectiveDate, noticeDate</code>: The day the new rent takes effect, and the day written notice is or was given. Dates are written like 2027-02-01.</li><li><code>builtDate, exemption</code>: The first certificate of occupancy, for the age exemptions and local coverage, or an exemption id from the state's rules, from your own knowledge of the unit.</li><li><code>tenancyStart, lastIncreaseDate, leaseEnd, leaseMonths</code>: For the first-year and once-in-12-months rules, the end of the lease term (Washington, Delaware, Virginia) and the New York notice length.</li><li><code>weekToWeek, subsidized, elderly, rentDay, stabilized, leaseYears, goodCause, rstpoClass, localCovered, largeLandlord</code>: The answers the state and local rules turn on: Oregon week-to-week, Washington subsidized, DC elderly or disabled and its rent day, New York City stabilized or Good Cause, the LA County class, outside the local ordinance, and a Virginia landlord with more than four units.</li><li><code>landlord, tenants, property, exemptionFacts, replyBy, preview</code>: For notice: the landlord's name and address, one to six tenants, the rental address, any exemption facts, a reply date, and preview for the free watermarked copy.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: the most the rent may rise to on that date and the notice owed, and the verdict on a proposed rent in a sentence</li><li>verdict and verdictWords: Within the cap; Over the cap; Maximum worked out; Exempt from the cap; No cap; notice rules only; Figure not published yet; No increase in the first year; Too soon after the last increase; Above the local rent standard</li><li>cap: the percentage, the base it applies to, the increase, the new rent, the arithmetic and the window the figure is published for</li><li>proposed: the new rent, its increase and percentage, and the amount over the cap</li><li>notice: the days, the serve-by date, whether a notice already given is in time, and the rule</li><li>reasons, notes and sources with the dates read; for notice, the paragraphs and the PDF with its SHA-256</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The state code picks the rule row, and a locality its local row. A state with no row is refused with the reason; Maryland is answered only for Montgomery County.</li><li>An exemption you name, or an age exemption worked out from builtDate (Oregon under 15 years, California within 15 years, Washington 12 or fewer years), takes the unit outside the cap; the notice rule still applies.</li><li>A local ordinance that covers the unit is used before the state cap. In a notice-only state (New York, Maine, Delaware and Virginia) no percentage is given.</li><li>The figure is the one published for the window the effective date falls in: California by CPI region for increases from August 1 to July 31, Oregon and Washington by calendar year, DC by Rent Control Year, New York City by the Rent Guidelines Board order for the lease start. An effective date outside every published window is refused as not published, not guessed.</li><li>The increase is the base rent times the percentage, rounded down to the cent, so the result is never above the limit. California and Washington measure from the lowest rent in the 12 months before; the others from the current rent.</li><li>Timing: no increase in the first year of the tenancy where the state says so, only one in 12 months, and in Washington not before the lease term ends.</li><li>A proposed rent above the most allowed is over the cap, with the amount over. In New York City outside rent stabilization, the Good Cause local rent standard is used, and a rent above it must be justified in the notice.</li><li>The notice owed is counted back from the effective date: tiered by the size of the increase in California (30 days up to 10%, 90 over), 90 days in Oregon and Washington, the first rent day more than 60 days after notice in DC, by tenure in New York (Real Prop. Law 226-c), and the longer of a local and a state rule.</li><li>The notice PDF is made only when no rule fails and the figure is published. Nothing in it is dated by the clock, so the same notice gives the same bytes.</li></ol>
+<p><strong>The rule rows.</strong></p>
+<p>Every row was read on November 8, 2026 (rule version 2026.11.08), with the sentences each rule rests on copied word for word. Each row says how it was read: read on the state agency's page; read from an Internet Archive copy of the official page; read on the official site.</p>
+<p><strong>Local ordinances.</strong></p>
+<p>Local rows: City of Los Angeles, Unincorporated Los Angeles County, San Diego, New York City and Montgomery County, Maryland. Other cities and counties were not checked.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A California increase needs the county; a county that is not in California is refused.</li><li>A new rent below the current rent is a decrease, which no rule here limits, and is refused; so is a new rent given with a percentage.</li><li>A notice dated after the effective date, or a base rent above the current rent, is refused naming the field.</li><li>An Oregon notice dated in one year for an increase in the next is flagged when the increase is above the notice year's figure, since ORS 90.324 does not say which year governs.</li><li>A week-to-week Oregon tenancy is outside the cap and needs 7 days' notice.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Oregon, $2,000 rent, increase on March 1, 2027: the most and the notice deadline</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;state&quot;: &quot;OR&quot;,
+  &quot;rent&quot;: 2000,
+  &quot;newRent&quot;: 2190,
+  &quot;effectiveDate&quot;: &quot;2027-03-01&quot;,
+  &quot;noticeDate&quot;: &quot;2026-11-20&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Oregon, $2,000 rent, increase on March 1, 2027: the most and the notice deadline</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>For $2,000 rent in Oregon, the most it may rise for an increase taking effect March 1, 2027 is 10% ($200), to $2,200. Written notice: 90 days, served by December 1, 2026. Your $2,190 is within it.</td></tr>
+<tr><th scope="row">verdict</th><td>Within the cap</td></tr>
+<tr><th scope="row">law</th><td>ORS 90.323 and 90.324</td></tr>
+<tr><th scope="row">most the rent may be</th><td>$2,200 (10% of $2,000 = $200; $2,000 + $200 = $2,200)</td></tr>
+<tr><th scope="row">figure in force</th><td>10% for calendar year 2027</td></tr>
+<tr><th scope="row">written notice</th><td>90 days, by December 1, 2026 (ORS 90.323)</td></tr>
+</tbody></table></div>
+<p><strong>Los Angeles County, California: $2,300 on $2,000 from January 1, 2027</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;state&quot;: &quot;CA&quot;,
+  &quot;county&quot;: &quot;Los Angeles&quot;,
+  &quot;rent&quot;: 2000,
+  &quot;newRent&quot;: 2300,
+  &quot;effectiveDate&quot;: &quot;2027-01-01&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Los Angeles County, California: $2,300 on $2,000 from January 1, 2027</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>For $2,000 rent in Los Angeles County, California, the most it may rise for an increase taking effect January 1, 2027 is 8.7% ($174), to $2,174. Written notice: 90 days, served by October 3, 2026. Your $2,300 is $126 over it.</td></tr>
+<tr><th scope="row">verdict</th><td>Over the cap</td></tr>
+<tr><th scope="row">law</th><td>Civ. Code § 1947.12 (Tenant Protection Act)</td></tr>
+<tr><th scope="row">most the rent may be</th><td>$2,174 (8.7% of $2,000 = $174; $2,000 + $174 = $2,174)</td></tr>
+<tr><th scope="row">figure in force</th><td>8.7% for increases taking effect August 1, 2026 to July 31, 2027</td></tr>
+<tr><th scope="row">written notice</th><td>90 days, by October 3, 2026 (Civ. Code § 827)</td></tr>
+<tr><th scope="row">over by</th><td>$126</td></tr>
+</tbody></table></div>
+<p><strong>District of Columbia, rent-controlled, $2,000 rent from March 1, 2027</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;state&quot;: &quot;DC&quot;,
+  &quot;rent&quot;: 2000,
+  &quot;effectiveDate&quot;: &quot;2027-03-01&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>District of Columbia, rent-controlled, $2,000 rent from March 1, 2027</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>For $2,000 rent in the District of Columbia, the most it may rise for an increase taking effect March 1, 2027 is 4.1% ($82), to $2,082. Written notice: 60 days, served by December 30, 2026.</td></tr>
+<tr><th scope="row">verdict</th><td>Maximum worked out</td></tr>
+<tr><th scope="row">law</th><td>D.C. Code § 42-3502.08</td></tr>
+<tr><th scope="row">most the rent may be</th><td>$2,082 (4.1% of $2,000 = $82; $2,000 + $82 = $2,082)</td></tr>
+<tr><th scope="row">figure in force</th><td>4.1% for Rent Control Year 2026</td></tr>
+<tr><th scope="row">written notice</th><td>60 days, by December 30, 2026 (D.C. Code § 42-3509.04(b))</td></tr>
+</tbody></table></div>
+<p><strong>A sample Oregon notice, 9.5% from March 1, 2027 (made-up names)</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;notice&quot;,
+  &quot;state&quot;: &quot;OR&quot;,
+  &quot;rent&quot;: 2000,
+  &quot;newRent&quot;: 2190,
+  &quot;effectiveDate&quot;: &quot;2027-03-01&quot;,
+  &quot;noticeDate&quot;: &quot;2026-11-20&quot;,
+  &quot;tenancyStart&quot;: &quot;2023-06-01&quot;,
+  &quot;landlord&quot;: &#123;
+    &quot;name&quot;: &quot;Sample Landlord LLC (made up)&quot;,
+    &quot;address&quot;: &quot;100 Example Street; Portland, OR 97201&quot;
+  &#125;,
+  &quot;tenants&quot;: [
+    &quot;Alex Sample&quot;
+  ],
+  &quot;property&quot;: &quot;45 Made-Up Avenue, Unit 2, Portland, OR 97202&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A sample Oregon notice, 9.5% from March 1, 2027 (made-up names)</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>For $2,000 rent in Oregon, the most it may rise for an increase taking effect March 1, 2027 is 10% ($200), to $2,200. Written notice: 90 days, served by December 1, 2026. Your $2,190 is within it.</td></tr>
+<tr><th scope="row">verdict</th><td>Within the cap</td></tr>
+<tr><th scope="row">PDF</th><td>rent-increase-or-45-made-up-avenue-unit-2-portland-or-972-2027-03-01.pdf</td></tr>
+</tbody></table></div>
+<p><strong>Raising $1,850 to $1,980: the percentage</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;percent&quot;,
+  &quot;rent&quot;: 1850,
+  &quot;newRent&quot;: 1980
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Raising $1,850 to $1,980: the percentage</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Raising $1,850 to $1,980 is a 7.03% increase ($130 a month, $1,560 a year).</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Figures are as published on the dates shown, for the windows shown; an increase taking effect outside a published window is refused, not guessed.</li><li>Exemptions (building age, owner occupancy, local coverage) are applied from your answers; the tool does not check public records.</li><li>Local ordinances other than the City of Los Angeles, unincorporated Los Angeles County, New York City and Montgomery County, Maryland were not checked.</li><li>States without a row are not covered: the tool refuses them rather than guess.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>Every rule row and local row was read on November 8, 2026 (rule version 2026.11.08). A new figure is added by hand when its agency publishes it, with the tests that pin each figure and quote.</p>
+<ul class="cp-sources"><li><a href="https://oag.ca.gov/rentcaps">California: Limits on Rent Increases (regional chart and local ordinances) (read November 8, 2026)</a></li><li><a href="https://oag.ca.gov/tenants">California: Landlord-Tenant Issues (notice, exemptions) (read November 8, 2026)</a></li><li><a href="https://api.bls.gov/publicAPI/v1/timeseries/data/">California: CPI-U regional series (CUURS49ASA0, CUURS49BSA0, CUURS49CSA0, CUURS49ESA0) via the BLS public API (read November 8, 2026)</a></li><li><a href="https://www.oregonlegislature.gov/bills_laws/ors/ors090.html">Oregon: Oregon Revised Statutes chapter 90 (read November 8, 2026)</a></li><li><a href="https://www.oregon.gov/das/oea/pages/rent-stabilization.aspx">Oregon: Rent Stabilization (2027: 10%; 2026: 9.5%) and the 2027 workbook (published September 30, 2026) (read November 8, 2026)</a></li><li><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.700">Washington: Prohibition on certain rent increases (read November 8, 2026)</a></li><li><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.710">Washington: Exemptions (read November 8, 2026)</a></li><li><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.720">Washington: Notice of rent increases, form (read November 8, 2026)</a></li><li><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.140">Washington: Written notice of increase in rent (read November 8, 2026)</a></li><li><a href="https://content.govdelivery.com/accounts/WADOC/bulletins/420afb7">Washington: Commerce announces 10% rent cap for 2027 (bulletin of July 15, 2026) (read November 8, 2026)</a></li><li><a href="https://www.commerce.wa.gov/commerce-announces-9-683-rent-cap-for-2026/">Washington: Commerce announces 9.683% rent cap for 2026 (July 18, 2025) (read November 8, 2026)</a></li><li><a href="https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.08">District of Columbia: Increases above base rent (read November 8, 2026)</a></li><li><a href="https://code.dccouncil.gov/us/dc/council/code/sections/42-3509.04">District of Columbia: Service (60-day rule) (read November 8, 2026)</a></li><li><a href="https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.05">District of Columbia: Coverage and exemptions (read November 8, 2026)</a></li><li><a href="https://ota.dc.gov/node/1816006">District of Columbia: RHC publishes new rent increase caps (February 2, 2026) (read November 8, 2026)</a></li><li><a href="https://www.nysenate.gov/legislation/laws/RPP/226-C">New York: Notice of rent increase (version in effect from August 18, 2024) (read November 8, 2026)</a></li><li><a href="https://legislature.maine.gov/statutes/14/title14sec6015-2.html">Maine: Notice of rent or mandatory recurring fee increase (read November 8, 2026)</a></li><li><a href="https://legislature.maine.gov/statutes/14/title14sec6016.html">Maine: Rent increase limitation (read November 8, 2026)</a></li><li><a href="https://delcode.delaware.gov/title25/c051/sc01/index.html">Delaware: Renewals of rental agreements with modifications (read November 8, 2026)</a></li><li><a href="https://law.lis.virginia.gov/vacode/title55.1/chapter12/section55.1-1204/">Virginia: Terms and conditions of rental agreement (both versions) (read November 8, 2026)</a></li><li><a href="https://housing.lacity.gov/wp-content/uploads/2022/01/Allowable-Rent-Increase-Bulletin-English.pdf">City of Los Angeles: Allowable Rent Increase bulletin (2026-27: 3%) (read November 8, 2026)</a></li><li><a href="https://housing.lacity.gov/residents/rso-overview">City of Los Angeles: RSO overview (coverage; last modified September 22, 2026) (read November 8, 2026)</a></li><li><a href="https://dcba.lacounty.gov/rentstabilizationprogram/">Unincorporated Los Angeles County: Rent Stabilization Program (maximum allowable rent increase table) (read November 8, 2026)</a></li><li><a href="https://dcba.lacounty.gov/news/understanding-rent-increases/">Unincorporated Los Angeles County: Understanding Rent Increases (August 5, 2026) (read November 8, 2026)</a></li><li><a href="https://rentguidelinesboard.cityofnewyork.us/2026-27-apartment-loft-order-58/">New York City: Apartment and Loft Order #58 (June 25, 2026) (read November 8, 2026)</a></li><li><a href="https://rentguidelinesboard.cityofnewyork.us/2025-26-apartment-loft-order-57/">New York City: Apartment and Loft Order #57 (June 30, 2025) (read November 8, 2026)</a></li><li><a href="https://hcr.ny.gov/good-cause-eviction-law-notice-august-2026">New York City: Good Cause Eviction Law notice (posted July 16, 2026, reposted August 17, 2026) (read November 8, 2026)</a></li><li><a href="https://www.nysenate.gov/legislation/laws/RPP/211">New York City: Definitions (inflation index, local rent standard) (read November 8, 2026)</a></li><li><a href="https://www.montgomerycountymd.gov/department-housing-community-affairs/rent-stabilization/rent-stabilization-increases-limitations">Montgomery County, Maryland: Rent Stabilization Increases and Limitations (read November 8, 2026)</a></li><li><a href="https://www.montgomerycountymd.gov/department-housing-community-affairs/rent-stabilization">Montgomery County, Maryland: Rent Stabilization (coverage) (read November 8, 2026)</a></li></ul>
+<p>Every rule row and local row was read on November 8, 2026 (rule version 2026.11.08). A new figure is added by hand when its agency publishes it, with the tests that pin each figure and quote.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Rent increase cap calculator and notice: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://oag.ca.gov/rentcaps">California: Limits on Rent Increases (regional chart and local ordinances)</a></th><td rowspan="3">read on the state agency's page</td><td rowspan="30">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://oag.ca.gov/tenants">California: Landlord-Tenant Issues (notice, exemptions)</a></th></tr>
+<tr><th scope="row"><a href="https://api.bls.gov/publicAPI/v1/timeseries/data/">California: CPI-U regional series (CUURS49ASA0, CUURS49BSA0, CUURS49CSA0, CUURS49ESA0) via the BLS public API</a></th></tr>
+<tr><th scope="row"><a href="https://www.oregonlegislature.gov/bills_laws/ors/ors090.html">Oregon: Oregon Revised Statutes chapter 90</a></th><td rowspan="2">read from an Internet Archive copy of the official page</td></tr>
+<tr><th scope="row"><a href="https://www.oregon.gov/das/oea/pages/rent-stabilization.aspx">Oregon: Rent Stabilization (2027: 10%; 2026: 9.5%) and the 2027 workbook (published September 30, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.700">Washington: Prohibition on certain rent increases</a></th><td rowspan="25">read on the official site</td></tr>
+<tr><th scope="row"><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.710">Washington: Exemptions</a></th></tr>
+<tr><th scope="row"><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.720">Washington: Notice of rent increases, form</a></th></tr>
+<tr><th scope="row"><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=59.18.140">Washington: Written notice of increase in rent</a></th></tr>
+<tr><th scope="row"><a href="https://content.govdelivery.com/accounts/WADOC/bulletins/420afb7">Washington: Commerce announces 10% rent cap for 2027 (bulletin of July 15, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://www.commerce.wa.gov/commerce-announces-9-683-rent-cap-for-2026/">Washington: Commerce announces 9.683% rent cap for 2026 (July 18, 2025)</a></th></tr>
+<tr><th scope="row"><a href="https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.08">District of Columbia: Increases above base rent</a></th></tr>
+<tr><th scope="row"><a href="https://code.dccouncil.gov/us/dc/council/code/sections/42-3509.04">District of Columbia: Service (60-day rule)</a></th></tr>
+<tr><th scope="row"><a href="https://code.dccouncil.gov/us/dc/council/code/sections/42-3502.05">District of Columbia: Coverage and exemptions</a></th></tr>
+<tr><th scope="row"><a href="https://ota.dc.gov/node/1816006">District of Columbia: RHC publishes new rent increase caps (February 2, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://www.nysenate.gov/legislation/laws/RPP/226-C">New York: Notice of rent increase (version in effect from August 18, 2024)</a></th></tr>
+<tr><th scope="row"><a href="https://legislature.maine.gov/statutes/14/title14sec6015-2.html">Maine: Notice of rent or mandatory recurring fee increase</a></th></tr>
+<tr><th scope="row"><a href="https://legislature.maine.gov/statutes/14/title14sec6016.html">Maine: Rent increase limitation</a></th></tr>
+<tr><th scope="row"><a href="https://delcode.delaware.gov/title25/c051/sc01/index.html">Delaware: Renewals of rental agreements with modifications</a></th></tr>
+<tr><th scope="row"><a href="https://law.lis.virginia.gov/vacode/title55.1/chapter12/section55.1-1204/">Virginia: Terms and conditions of rental agreement (both versions)</a></th></tr>
+<tr><th scope="row"><a href="https://housing.lacity.gov/wp-content/uploads/2022/01/Allowable-Rent-Increase-Bulletin-English.pdf">City of Los Angeles: Allowable Rent Increase bulletin (2026-27: 3%)</a></th></tr>
+<tr><th scope="row"><a href="https://housing.lacity.gov/residents/rso-overview">City of Los Angeles: RSO overview (coverage; last modified September 22, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://dcba.lacounty.gov/rentstabilizationprogram/">Unincorporated Los Angeles County: Rent Stabilization Program (maximum allowable rent increase table)</a></th></tr>
+<tr><th scope="row"><a href="https://dcba.lacounty.gov/news/understanding-rent-increases/">Unincorporated Los Angeles County: Understanding Rent Increases (August 5, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://rentguidelinesboard.cityofnewyork.us/2026-27-apartment-loft-order-58/">New York City: Apartment and Loft Order #58 (June 25, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://rentguidelinesboard.cityofnewyork.us/2025-26-apartment-loft-order-57/">New York City: Apartment and Loft Order #57 (June 30, 2025)</a></th></tr>
+<tr><th scope="row"><a href="https://hcr.ny.gov/good-cause-eviction-law-notice-august-2026">New York City: Good Cause Eviction Law notice (posted July 16, 2026, reposted August 17, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://www.nysenate.gov/legislation/laws/RPP/211">New York City: Definitions (inflation index, local rent standard)</a></th></tr>
+<tr><th scope="row"><a href="https://www.montgomerycountymd.gov/department-housing-community-affairs/rent-stabilization/rent-stabilization-increases-limitations">Montgomery County, Maryland: Rent Stabilization Increases and Limitations</a></th></tr>
+<tr><th scope="row"><a href="https://www.montgomerycountymd.gov/department-housing-community-affairs/rent-stabilization">Montgomery County, Maryland: Rent Stabilization (coverage)</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests pin the 8 state rows and 5 local rows as read on November 8, 2026, every other state as not covered, the published figures and windows, the BLS CPI changes that reproduce them, and each quote word for word. They work each state's cap and notice, the local ordinances, rounding, the refusals, the percentage calculator and the notice PDF (the same bytes every time, refused while over the cap or late).</p>
+<p>What its test suite asserts:</p>
+<ul><li>The 8 state rows and 5 local rows are pinned as read on 2026-11-08, with every other state listed as not covered, the published figures and windows, and each quote word for word.</li><li>The BLS CPI changes reproduce the published percentages, and each state's cap, timing rules and notice are worked, with the local ordinances and rounding down to the cent.</li><li>The refusals, the percentage calculator, the examples and the notice PDF (the same bytes every time, refused while over the cap or late, watermarked as a preview) are checked.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/rent-increase-cap/">Open the Rent increase cap calculator and notice tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the rent increase cap calculator and notice answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the rent increase cap calculator and notice refuse to answer?</h3></summary><div class="xp-in"><p>Figures are as published on the dates shown, for the windows shown; an increase taking effect outside a published window is refused, not guessed. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/rent-increase-cap/">Open the Rent increase cap calculator and notice tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/rent-increase-cap.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

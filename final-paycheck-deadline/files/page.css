@@ -1,0 +1,32 @@
+/* Final paycheck deadline: a separation-day worksheet inside the brand chrome, reusing its tokens.
+   One accent carries the due date; quotes read as the state's own words. */
+.fp { --accent: var(--h-date); --endwise-accent: var(--h-date); }
+
+
+.fp-desk > * { min-width: 0; }
+#checks .fp-desk + .fp-desk { margin-top: 32px; }
+.fp-form h2 { font-size: 18px; margin: 0 0 14px; }
+.fp-step { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 18px 0 6px; }
+.fp-step:first-child { margin-top: 0; }
+.fp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; }
+.fp-wide { grid-column: 1 / -1; }
+.fp select, .fp input { max-width: 100%; }
+.fp input[type="date"], .fp input[type="time"] { color-scheme: dark; }
+.fp-check { display: flex; gap: 8px; align-items: baseline; color: var(--ink-soft); margin: 4px 0 8px; font-size: 0.95rem; }
+
+.fp-out { min-height: 10rem; }
+.fp-label { margin: 0; font: 600 15px/1.4 var(--font-text); color: var(--text-2); }
+.fp-sub, .fp-aside { color: var(--ink-soft); margin: 0 0 14px; max-width: 46rem; }
+.fp-need { color: var(--accent); margin: 0 0 10px; }
+.fp-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 20px 0 8px; }
+.fp-list { margin: 0 0 12px; padding-left: 1.1rem; max-width: 48rem; color: var(--text-2); }
+.fp-list li { margin: 4px 0; }
+.fp-quotes { list-style: none; padding: 0; margin: 0 0 12px; max-width: 48rem; }
+.fp-quotes li { border-left: 2px solid var(--rule-strong); padding: 2px 0 2px 12px; margin: 0 0 10px; color: var(--text-2); overflow-wrap: anywhere; }
+.fp-quotes q { font-style: italic; }
+.fp-quotes a { text-decoration: underline; }
+.fp-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 14px; }
+.fp-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.fp-facts dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; font-size: 1.1rem; }
+.fp-notes { margin-top: 20px; max-width: 52rem; }
+.fp-prices { margin-top: 24px; }

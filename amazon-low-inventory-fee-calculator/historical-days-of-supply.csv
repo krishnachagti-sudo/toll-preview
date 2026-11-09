@@ -1,0 +1,5 @@
+avg_inventory_30_days,shipped_60_in_30_days,shipped_120_in_30_days,shipped_240_in_30_days,shipped_360_in_30_days,shipped_600_in_30_days
+60,30.0,15.0,7.5,5.0,3.0
+120,60.0,30.0,15.0,10.0,6.0
+240,120.0,60.0,30.0,20.0,12.0
+480,240.0,120.0,60.0,40.0,24.0

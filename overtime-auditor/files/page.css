@@ -1,0 +1,46 @@
+/* Overtime auditor: the tool-full layout (web/tool-full.css) plus this page's own
+   pieces: the day grid, the day table, the file audit. A short week is marked in the warm date hue. */
+.oa {
+  --accent: var(--h-money);
+  --accent-ink: #1a0610;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1a0610;
+  --oa-short: var(--h-date);
+}
+
+
+
+
+.oa-table-wrap { overflow-x: auto; max-width: 100%; }
+.oa-table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 14px; }
+.oa-table caption { text-align: left; color: var(--ink-soft); padding-bottom: 6px; font-size: 13px; }
+.oa-table th, .oa-table td { padding: 6px 8px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+.oa-table .num { text-align: right; white-space: nowrap; }
+.oa-table tr.oa-short td { box-shadow: inset 3px 0 0 var(--oa-short); }
+
+.oa-file-grid { display: grid; gap: 6px 16px; }
+@media (min-width: 720px) { .oa-file-grid { grid-template-columns: 2fr 1fr 1.5fr; } }
+.oa-file textarea { width: 100%; font-family: var(--font-mono); font-size: 13px; }
+.oa-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.oa-facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 10px 20px; margin: 0 0 16px; }
+.oa-facts dt { color: var(--ink-soft); font-size: 13px; }
+.oa-facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+.oa-cols { display: grid; gap: 20px; }
+@media (min-width: 960px) { .oa-cols { grid-template-columns: repeat(3, 1fr); } }
+.oa-cols p { color: var(--ink-soft); }
+.oa-notes { max-width: 52rem; padding-left: 1.1em; }
+
+.oa-days { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 10px; }
+.oa-days .field { margin: 0 !important; }
+.oa-days label { font-size: 12.5px; color: var(--muted); margin: 0 0 4px; display: block; }
+.oa-days input { padding-left: 10px; padding-right: 8px; }
+@media (max-width: 380px) { .oa-days { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.oa-items .k { font-size: 11px; }
+.oa-fold { margin-top: 16px; }
+.oa-file-panel { margin-top: 20px; padding: 22px; }
+.oa-answer { font-size: 17px; line-height: 1.45; margin: 0 0 14px; }
+.oa-notes { margin: 0; padding-left: 1.1em; }
+.oa-notes li { margin-bottom: 0.6em; }
+.oa-prices { padding: 20px 24px; }
+.oa-prices h3 { font-size: 18px; margin: 0 0 8px; }

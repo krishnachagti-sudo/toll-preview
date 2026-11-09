@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deposit and milestone payment schedule maker, with invoices: Endwise</title>
+<meta name="description" content="Split a project fee into a deposit and milestone payments (50/50, 50/25/25, 30/30/40 or your own) to the cent, with invoice and due dates on business days, invoice-ready lines, a final invoice that nets off the deposit, and a calendar file.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/payment-schedule/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"payment-schedule"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/payment-schedule/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Deposit and milestone payment schedule">
+<meta property="og:description" content="Split a project fee into a deposit and milestone payments (50/50, 50/25/25, 30/30/40 or your own) to the cent, with invoice and due dates on business days, invoice-ready lines for every stage, a final invoice that nets off what was already paid, a calendar file, and the California, Maryland, Maine and Florida home-improvement deposit rules.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/payment-schedule/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/payment-schedule/","url":"https://krishnachagti-sudo.github.io/toll-preview/payment-schedule/","name":"Deposit and milestone payment schedule","description":"Split a project fee into a deposit and milestone payments (50/50, 50/25/25, 30/30/40 or your own) to the cent, with invoice and due dates on business days, invoice-ready lines for every stage, a final invoice that nets off what was already paid, a calendar file, and the California, Maryland, Maine and Florida home-improvement deposit rules.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Deposit and milestone payment schedule","item":"https://krishnachagti-sudo.github.io/toll-preview/payment-schedule/"}]},{"@type":"WebApplication","name":"Deposit and milestone payment schedule","url":"https://krishnachagti-sudo.github.io/toll-preview/payment-schedule/","description":"Split a project fee into a deposit and milestone payments (50/50, 50/25/25, 30/30/40 or your own) to the cent, with invoice and due dates on business days, invoice-ready lines for every stage, a final invoice that nets off what was already paid, a calendar file, and the California, Maryland, Maine and Florida home-improvement deposit rules.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Schedule with amounts and dates on this page","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"State deposit rules","price":"0","priceCurrency":"USD"},{"name":"Schedule over the API or MCP","@type":"Offer","price":"0.01","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.01","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"call"}}},{"name":"Invoice pack (every invoice's lines, the final invoice netted, a calendar file and a CSV)","@type":"Offer","price":"0.49","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.49","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"project"}}},{"name":"Final invoice after a deposit and milestones","@type":"Offer","price":"0.1","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.1","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"project"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="ps tf hue-money">
+  <section class="wrap tf-open">
+    <p class="eyebrow">Deposits and milestones, to the cent</p>
+    <h1>Deposit and milestone payment schedule</h1>
+    <p class="lede">Every payment of a project fee with its amount, invoice date and due date, <b>the cents adding up to the total</b> and due dates moved off weekends and holidays.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="ps-price"><span class="price">Free on this page</span><span>Invoice pack $0.49 per project</span><span>Edits free for 90 days</span></p>
+  </section>
+
+  <section class="wrap tf-calc ps-desk" data-jump="Tool" aria-label="Schedule maker">
+    <form class="tf-panel tf-form ps-form" id="ps-form" novalidate>
+      <div class="tf-two">
+          <div class="field">
+            <label for="ps-total">Project fee</label>
+            <input type="text" id="ps-total" value="6000" inputmode="decimal" autocomplete="off" maxlength="20">
+          </div>
+          <div class="field">
+            <label for="ps-currency">Currency</label>
+            <select id="ps-currency"></select>
+          </div>
+      </div>
+      <div class="tf-two">
+          <div class="field">
+            <label for="ps-start">Start (signed)</label>
+            <input type="date" id="ps-start" value="2026-12-01">
+          </div>
+          <div class="field">
+            <label for="ps-split">Split</label>
+            <select id="ps-split"></select>
+          </div>
+      </div>
+      <div class="tf-two">
+          <div class="field" id="ps-weeks-field">
+            <label for="ps-weeks">Length (weeks)</label>
+            <input type="number" id="ps-weeks" value="8" min="0" max="260">
+          </div>
+          <div class="field">
+            <label for="ps-net">Payment terms</label>
+            <select id="ps-net">
+              <option value="0">Due on receipt</option>
+              <option value="7" selected>Net 7</option>
+              <option value="14">Net 14</option>
+              <option value="15">Net 15</option>
+              <option value="30">Net 30</option>
+              <option value="45">Net 45</option>
+              <option value="60">Net 60</option>
+            </select>
+          </div>
+      </div>
+      <fieldset class="ps-custom" id="ps-custom" hidden>
+        <legend>Your stages</legend>
+        <p class="hint">A share is a percentage (25) or an amount (1500). Leave one share empty to make it the balance.</p>
+        <div id="ps-rows"></div>
+        <button type="button" class="btn btn-small btn-quiet" id="ps-add">Add a stage</button>
+      </fieldset>
+      <p class="field-error" id="ps-err" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="ps-run">Make the schedule</button>
+      <p class="hint tf-run-note">Free, worked out in your browser. It also updates as you type.</p>
+      <details class="xpand" id="ps-days">
+        <summary>Holidays and due dates on a day off</summary>
+        <div class="xp-in">
+            <div class="field">
+              <label for="ps-region">Holidays</label>
+              <select id="ps-region">
+                <option value="US">US federal holidays</option>
+                <option value="GB-ENG">England and Wales bank holidays</option>
+                <option value="none">Weekends only</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ps-roll">A due date on a day off</label>
+              <select id="ps-roll">
+                <option value="next">Move to the next business day</option>
+                <option value="previous">Move to the business day before</option>
+                <option value="none">Keep it</option>
+              </select>
+            </div>
+        </div>
+      </details>
+      <details class="xpand ps-more" id="ps-more">
+        <summary>Tax, home-improvement rules and names</summary>
+        <div class="xp-in ps-grid">
+          <div class="field">
+            <label for="ps-tax">Tax rate on each invoice (%)</label>
+            <input type="text" id="ps-tax" value="" inputmode="decimal" placeholder="none" maxlength="10">
+          </div>
+          <div class="field">
+            <label for="ps-state">Home improvement in</label>
+            <select id="ps-state">
+              <option value="">Not a home-improvement job</option>
+              <option value="CA">California</option>
+              <option value="FL">Florida</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="XX">Another state</option>
+            </select>
+          </div>
+          <div class="field ps-check">
+            <label><input type="checkbox" id="ps-cap"> Lower the deposit to the state limit</label>
+          </div>
+          <div class="field">
+            <label for="ps-project">Project</label>
+            <input type="text" id="ps-project" value="" maxlength="120" placeholder="Website build">
+          </div>
+          <div class="field">
+            <label for="ps-client">Client</label>
+            <input type="text" id="ps-client" value="" maxlength="120">
+          </div>
+          <div class="field">
+            <label for="ps-prefix">Invoice numbers start at</label>
+            <input type="text" id="ps-prefix" value="INV-1001" maxlength="28">
+          </div>
+        </div>
+      </details>
+    </form>
+
+    <div class="tf-panel tf-result ps-out" id="ps-out" aria-live="polite">
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec ps-pack" id="ps-pack" data-jump="Pack" aria-labelledby="ps-pack-title">
+    <p class="eyebrow">Invoices, $0.49 a project</p>
+    <h2 id="ps-pack-title">The invoice pack</h2>
+    <p class="tf-p">Every invoice's lines ready to paste into your invoicing or accounting app, the final invoice with the deposit and milestones shown as deductions, a calendar file with each invoice and due date, and a CSV. Nothing is sent to your client: you send the invoices yourself.</p>
+    <p class="ps-buy"><button type="button" class="btn" id="ps-buy">Make the invoice pack</button> <span class="small muted" id="ps-buy-note">$0.49 per project; edits to the same project are free for 90 days.</span></p>
+    <div id="ps-invoices"></div>
+  </section>
+
+  <section class="wrap tf-sec ps-rules" data-jump="Rules" aria-labelledby="ps-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">The rules</p>
+        <h2 id="ps-rules-title">Home-improvement deposit rules we cover, <span class="dim">quoted.</span></h2>
+        <p class="tf-p">Each rule is quoted from the state's own statute site or its contractors' licensing board, read November 8, 2026.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="ps-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="ps-limits-title">What it does not cover</h3>
+          <p>States other than California, Florida, Maine and Maryland, local closures, and legal or tax advice.</p>
+          <details class="xpand"><summary>Read the full notes</summary><div class="xp-in">
+            <ul class="ps-notes">
+      <li>Each rule is quoted from the state's own statute site or its contractors' licensing board, read November 8, 2026. Only California, Florida, Maine and Maryland are covered; any other state is not checked, which does not mean it has no rule.</li>
+      <li>Holidays: US federal holidays as OPM observes them, or England and Wales bank holidays as GOV.UK lists them. Your client's state, bank or office closures are not included.</li>
+      <li>Not legal or tax advice. Whether a deposit is refundable and when tax is due on it depend on your contract and where you work.</li>
+    </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tf-panel ps-box">
+    <div class="ps-table-wrap">
+      <table class="ps-table">
+        <thead><tr><th scope="col">State</th><th scope="col">Rule</th><th scope="col">Source</th></tr></thead>
+        <tbody id="ps-rule-rows"></tbody>
+      </table>
+    </div>
+    </div>
+
+    <div class="tf-panel ps-box ps-prices tf-mt">
+      <h3>Prices</h3>
+      <ul class="endwise-prices"><li><strong>Schedule with amounts and dates on this page</strong>: free.</li><li><strong>State deposit rules</strong>: free.</li><li><strong>Schedule over the API or MCP</strong>: $0.01 per call.</li><li><strong>Invoice pack (every invoice's lines, the final invoice netted, a calendar file and a CSV)</strong>: $0.49 per project; a repeat for the same project is free for 90 days, and a larger one pays only the difference.</li><li><strong>Final invoice after a deposit and milestones</strong>: $0.10 per project; a repeat for the same project is free for 90 days, and a larger one pays only the difference.</li><li>At most $4.99 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Splits" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Splits and templates</h2>
+<h3>Splits</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/50-50/" title="50/50 payment terms: the schedule, both invoices and the wording">50/50 payment schedule</a></li><li><a href="/toll-preview/payment-schedule/50-25-25/" title="50/25/25 payment schedule: a worked example with dates and invoices">50/25/25 payment schedule</a></li></ul>
+<h3>Templates</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/deposit-invoice-template/" title="Deposit invoice template (50% upfront), filled in with the numbers">Deposit invoice</a></li><li><a href="/toll-preview/payment-schedule/deposit-receipt-template/" title="Deposit receipt template: what to write when a client pays the deposit">Deposit receipt</a></li><li><a href="/toll-preview/payment-schedule/milestone-invoice-template/" title="Milestone invoice template, with the paid-to-date and balance lines">Milestone invoice</a></li><li><a href="/toll-preview/payment-schedule/progress-billing-invoice-template/" title="Progress billing invoice template: billed to date and left to bill">Progress billing invoice</a></li><li><a href="/toll-preview/payment-schedule/payment-schedule-template/" title="Payment schedule template (CSV for Excel or Google Sheets), filled in">Payment schedule template (CSV)</a></li><li><a href="/toll-preview/payment-schedule/deposit-terms-wording/" title="&quot;50% deposit required before work begins&quot;: wording for contracts and invoices">Deposit terms wording</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Guides</h2>
+<h3>How to</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/quickbooks-deposit-invoice/" title="How to invoice a deposit in QuickBooks Online (progress invoicing), with the amounts">Deposit invoices in QuickBooks Online</a></li></ul>
+<h3>Compare</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/deposit-invoice-vs-proforma-invoice/" title="Deposit invoice vs proforma invoice (and tax invoice): which to send">Deposit invoice vs proforma invoice</a></li></ul>
+<h3>Meaning</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/milestone-billing/" title="What is milestone billing? Meaning, with a worked schedule">Milestone billing</a></li></ul>
+<h3>By trade</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/for-web-designers/" title="Web design payment schedule: deposit and milestones by project size">Web designers</a></li><li><a href="/toll-preview/payment-schedule/for-video-production/" title="Video and post-production payment schedule: the AICP 50-25-25, 60-30-10 and 50-50 plans">Video and post-production</a></li><li><a href="/toll-preview/payment-schedule/guides/stage-payments-contractors/" title="Stage payments for contractors and renovation jobs, with state deposit limits">Contractors and renovation (state limits)</a></li></ul>
+<h3>Deposits</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/guides/how-much-deposit/" title="How much deposit should a freelancer ask for? Three options on a $4,000 project">How much deposit to ask for</a></li><li><a href="/toll-preview/payment-schedule/guides/deposit-vs-retainer-vs-prepayment/" title="Deposit vs retainer vs prepayment: what is the difference">Deposit vs retainer vs prepayment</a></li></ul>
+<h3>Invoicing</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/guides/final-invoice-after-deposit/" title="How to write the final invoice after a deposit and milestones">Final invoice after a deposit</a></li><li><a href="/toll-preview/payment-schedule/guides/tax-on-deposits/" title="Sales tax and VAT on deposits: when it is due and how to show it">Tax on deposits</a></li><li><a href="/toll-preview/payment-schedule/guides/choosing-payment-terms/" title="Net 15, net 30 or due on receipt: choosing payment terms for a project">Choosing payment terms</a></li></ul>
+<h3>Schedules</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/guides/website-milestone-schedule/" title="Milestone payment schedule for a website project: a worked 50/25/25 timeline">Website milestone schedule in dates</a></li><li><a href="/toll-preview/payment-schedule/milestone-dates-2027/" title="50/25/25 payment dates for projects starting each month, November 2026 to December 2027">Payment dates by start month, 2026 to 2027</a></li></ul>
+<h3>When it goes wrong</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/guides/client-went-silent-after-deposit/" title="The client paid the deposit then went silent: what you can do next">Client went silent after the deposit</a></li><li><a href="/toll-preview/payment-schedule/guides/keep-deposit-if-client-cancels/" title="Can I keep the deposit if the client cancels? Clauses and the arithmetic">Keeping the deposit if the client cancels</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compare" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Compare</h2>
+<h3>Other ways to do it</h3><ul class="cp-rows"><li><a href="/toll-preview/payment-schedule/vs/honeybook/" title="HoneyBook payment plans vs a per-project payment schedule">HoneyBook payment plans</a></li><li><a href="/toll-preview/payment-schedule/vs/bonsai/" title="Bonsai invoices vs a per-project deposit and milestone schedule">Bonsai</a></li><li><a href="/toll-preview/payment-schedule/vs/harvest-templates/" title="Harvest milestone invoice template vs a dated schedule with every invoice">Harvest invoice templates</a></li><li><a href="/toll-preview/payment-schedule/vs/everhour/" title="Everhour deposit invoice template alternative, with the whole schedule">Everhour deposit template</a></li><li><a href="/toll-preview/payment-schedule/vs/stripe-invoicing/" title="Stripe invoices for deposits and milestones: what it does and does not plan for you">Stripe Invoicing</a></li><li><a href="/toll-preview/payment-schedule/vs/accounting-apps/" title="Accounting apps' deposit and progress invoicing compared (FreshBooks, QuickBooks)">Accounting apps (FreshBooks, QuickBooks)</a></li></ul>
+</section>
+
+  <section class="wrap tf-code ps-code" data-jump="Code" aria-label="Use this from code">
+    <div data-endwise-code></div>
+  </section>
+  <noscript><div class="wrap"><p>The schedule maker needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/payment-schedule/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

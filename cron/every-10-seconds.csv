@@ -1,0 +1,10 @@
+scheduler,expression,fields,sunday_is,time_zone
+Linux crontab (Vixie cron),"Not possible: Linux crontab (Vixie cron) has no seconds field, and this runs at seconds 0, 10, 20, 30, 40 and 50.",5,0 or 7,the time zone the cron daemon runs in
+GitHub Actions,"Not possible: GitHub Actions has no seconds field, and this runs at seconds 0, 10, 20, 30, 40 and 50.",5,0,UTC
+Kubernetes CronJob,"Not possible: Kubernetes CronJob has no seconds field, and this runs at seconds 0, 10, 20, 30, 40 and 50.",5,0,the kube-controller-manager's local time zone
+Vercel Cron Jobs,"Not possible: Vercel Cron Jobs has no seconds field, and this runs at seconds 0, 10, 20, 30, 40 and 50.",5,0,always UTC
+n8n Schedule Trigger (Custom cron),*/10 * * * * *,5 or 6,0,"the workflow time zone, else the instance time zone (America/New_York by default when self-hosted)"
+Quartz Scheduler,*/10 * * * * ?,6 or 7,1,the scheduler's default time zone
+Spring @Scheduled,*/10 * * * * *,6,0 or 7,the server's default time zone
+UiPath Orchestrator time trigger,*/10 * * * * ?,6 or 7,1,the time zone set on the trigger
+Amazon EventBridge Scheduler,"Not possible: Amazon EventBridge Scheduler has no seconds field, and this runs at seconds 0, 10, 20, 30, 40 and 50.",6,1,UTC

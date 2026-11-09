@@ -71,17 +71,18 @@
 <h1>How trucker per diem is calculated: IRS notices</h1>
 <p class="cp-answer">Each day away is priced at the IRS special transportation-industry meals and incidental expenses rate in force on that day, a departure or return day counts at 3/4 of the rate, and the meal amount is deducted at 80%, 50% or, in 2021 and 2022, 100%. IRS notices on file run from 2018-10-01 to 2027-09-30.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the trucker per diem worksheet compute?</h2>
 <p>For an owner-operator or a driver who deducts per diem, the tool turns days away into the per diem amount and the deductible amount, split into the lines of Schedule C where they belong. It can start from counts of days, or from a log of trips and days, and it checks the log.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the trucker per diem worksheet compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>quick</code>: From counts of full and partial days (continental US and outside it) and incidental-only days, with octDec for the days from October 1 in years when the rate changed, returns per diem, the deductible amount and what to enter.</li><li><code>preview</code>: From trips and day entries, returns the same totals with a day-by-day breakdown and the checks a preparer would make, without the files.</li><li><code>worksheet</code>: The same as preview, with a worksheet as PDF and CSV and a hash of the log.</li><li><code>rates</code>: The IRS rates on file with the notice, URL and the sentence in section 3 that sets each rate.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>taxYear</code>: A calendar year from 2019 to the last year with notices on file.</li><li><code>fullDays, partialDays, oconusFullDays, oconusPartialDays</code>: Days away in the continental US (CONUS) and outside it (OCONUS: Alaska, Hawaii, Canada and abroad).</li><li><code>incidentalOnlyDays, incidentalOnlyPartialDays</code>: Days away with no meal costs.</li><li><code>hosSubject, interstate, transportationIndustry</code>: Whether meals were during DOT hours-of-service periods (default true), whether the work is interstate, and whether the work qualifies for the transportation rate.</li><li><code>days, trips</code>: A log: dates with a status (full, partial, incidental, incidental-partial, reimbursed, home), or trips with depart and return dates.</li></ul>
 <p>Outputs:</p>
-<ul><li>totals.perDiem, deductible, scheduleCLine24b and scheduleCLine24a</li><li>segments: each rate period with its notice and the days counted</li><li>limit: the percentage and the reason</li><li>citations</li></ul>
+<ul><li>totals.perDiem, deductible, scheduleCLine24b and scheduleCLine24a</li><li>segments: each rate period with its notice and the days counted</li><li>limit: the percentage and the reason</li><li>citations</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -132,16 +133,38 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>IRS notices from 2018-10-01 to 2027-09-30, each read 2026-10-31.</p>
 <ul class="cp-sources"><li><a href="https://www.irs.gov/pub/irs-drop/n-24-68.pdf">IRS Notice 2024-68</a></li><li><a href="https://www.irs.gov/pub/irs-drop/n-25-54.pdf">IRS Notice 2025-54</a></li><li><a href="https://www.irs.gov/pub/irs-drop/n-26-60.pdf">IRS Notice 2026-60</a></li><li><a href="https://www.irs.gov/pub/irs-drop/rp-11-47.pdf">Rev. Proc. 2011-47</a></li><li><a href="https://www.irs.gov/pub/irs-drop/rp-19-48.pdf">Rev. Proc. 2019-48</a></li><li><a href="https://www.irs.gov/pub/irs-drop/n-21-63.pdf">Notice 2021-63</a></li><li><a href="https://www.irs.gov/publications/p463">IRS Publication 463 (for 2025 returns)</a></li><li><a href="https://www.irs.gov/instructions/i1040sc">Instructions for Schedule C (Form 1040), 2025</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>IRS notices from 2018-10-01 to 2027-09-30, read 2026-10-31. A date after the last notice is refused.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Trucker per diem worksheet: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-18-77.pdf">IRS Notice 2018-77</a></th><td>2018-10-01 to 2019-09-30</td><td rowspan="17">2026-10-31</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-19-55.pdf">IRS Notice 2019-55</a></th><td>2019-10-01 to 2020-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-20-71.pdf">IRS Notice 2020-71</a></th><td>2020-10-01 to 2021-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-21-52.pdf">IRS Notice 2021-52</a></th><td>2021-10-01 to 2022-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-22-44.pdf">IRS Notice 2022-44</a></th><td>2022-10-01 to 2023-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-23-68.pdf">IRS Notice 2023-68</a></th><td>2023-10-01 to 2024-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-24-68.pdf">IRS Notice 2024-68</a></th><td>2024-10-01 to 2025-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-25-54.pdf">IRS Notice 2025-54</a></th><td>2025-10-01 to 2026-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-26-60.pdf">IRS Notice 2026-60</a></th><td>2026-10-01 to 2027-09-30</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/n-21-63.pdf">IRS Notice 2021-63</a></th><td>2021-01-01 to 2022-12-31</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/rp-11-47.pdf">Rev. Proc. 2011-47</a></th><td rowspan="7">see the document</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/rp-19-48.pdf">Rev. Proc. 2019-48</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/publications/p463">IRS Publication 463 (for 2025 returns)</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/instructions/i1040sc">Instructions for Schedule C (Form 1040), 2025</a></th></tr>
+<tr><th scope="row"><a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395/subpart-A/section-395.8">49 CFR 395.8(k) (records of duty status kept 6 months)</a></th></tr>
+<tr><th scope="row"><a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395/subpart-B/section-395.22">49 CFR 395.22(i) (ELD back-ups kept 6 months)</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/businesses/small-businesses-self-employed/how-long-should-i-keep-records">IRS: How long should I keep records?</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>Every notice period is compared with the notice: its URL, effective date and the sentence in section 3 that sets the rate. A gap in the rate table is refused. The rate in force on each date is checked across every October 1 change, and worked examples are reproduced, such as 240 full and 40 partial days in 2026 giving $21,600 of per diem and $17,280 at 80%.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Every notice period is compared with the notice: its URL, effective date and the sentence in section 3 that sets the rate. A gap in the rate table is refused.</li><li>The rate in force on each date is checked across every October 1 change, including the split years 2021 and 2024.</li><li>Worked examples are reproduced, such as 240 full and 40 partial days in 2026 giving $21,600 of per diem and $17,280 at 80%.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/trucker-per-diem/">Open the Trucker per diem worksheet tool</a>.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the trucker per diem worksheet answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the trucker per diem worksheet refuse to answer?</h3><p>The special transportation rate is only for work that directly moves people or goods by truck (or bus, train, ship, barge or plane) and regularly stops on one trip at places with different federal M&amp;IE rates. Work that does not qualify is refused. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the trucker per diem worksheet answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the trucker per diem worksheet refuse to answer?</h3></summary><div class="xp-in"><p>The special transportation rate is only for work that directly moves people or goods by truck (or bus, train, ship, barge or plane) and regularly stops on one trip at places with different federal M&amp;IE rates. Work that does not qualify is refused. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/trucker-per-diem/">Open the Trucker per diem worksheet tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/trucker-per-diem/rate-history/">Trucker per diem rate history since 2019</a></li><li><a href="/toll-preview/trucker-per-diem/partial-days/">Partial days</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/trucker-per-diem.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -234,6 +257,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

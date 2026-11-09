@@ -1,0 +1,30 @@
+/* PTO and sick leave accrual: two banks on one worksheet inside the brand chrome, reusing its tokens.
+   One accent carries the balances; quotes read as the law's own words. */
+.pa { --accent: var(--h-money); --endwise-accent: var(--h-money); }
+
+/* Layout comes from web/tool-full.css; this file keeps the worksheet's own parts. */
+.pa-form select { width: 100%; }
+.pa-sec .tf-top { margin-bottom: 16px; }
+.pa select, .pa input { max-width: 100%; }
+.pa input[type="date"], .pa input[type="time"] { color-scheme: dark; }
+.pa-check { display: flex; gap: 8px; align-items: baseline; color: var(--muted); margin: 4px 0 8px; font-size: 0.95rem; }
+.pa-more .xp-in .tf-two + .tf-two, .pa-more .xp-in .tf-two + .field { margin-top: 12px; }
+.pa-check { margin-top: 12px; }
+
+.pa-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 20px 0 8px; }
+.pa-list { margin: 0 0 12px; padding-left: 1.1rem; max-width: 48rem; color: var(--text-2); }
+.pa-list li { margin: 4px 0; }
+.pa-quotes { list-style: none; padding: 0; margin: 0 0 12px; max-width: 48rem; }
+.pa-quotes li { border-left: 2px solid var(--line-2); padding: 2px 0 2px 12px; margin: 0 0 10px; color: var(--text-2); overflow-wrap: anywhere; }
+.pa-quotes q { font-style: italic; }
+.pa-quotes a { text-decoration: underline; }
+.pa-out details.xpand { margin-top: 12px; }
+.pa-out .pa-list { margin-top: 12px; font-size: 13.5px; }
+.pa-notes { padding-left: 1.2em; }
+
+.pa-warn li { color: var(--accent); }
+.pa-scroll { overflow-x: auto; max-width: 100%; }
+.pa-scroll table { border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 0.9rem; min-width: 100%; }
+.pa-scroll th, .pa-scroll td { text-align: right; padding: 3px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.pa-scroll th:nth-child(2), .pa-scroll td:nth-child(2) { text-align: left; }
+.pa-part + .pa-part { margin-top: 56px; }

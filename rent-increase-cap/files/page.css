@@ -1,0 +1,48 @@
+/* Rent increase cap: a landlord's renewal desk. Sits inside the brand chrome and reuses its tokens.
+   The one colour idea: red marks a rule the increase breaks, the money accent marks the lawful figure. */
+.ri {
+  --accent: var(--h-money);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06121a;
+  --ri-fail: #ff6b5e;
+  --ri-fail-wash: rgba(255, 107, 94, 0.14);
+  --ri-check: #ffb547;
+  --ri-check-wash: rgba(255, 181, 71, 0.12);
+}
+
+/* Layout comes from web/tool-full.css. */
+.ri-form select, .ri-form input { width: 100%; }
+.ri-form .check input { width: auto; }
+.ri-more .xp-in > * + * { margin-top: 12px; }
+.ri-more + .ri-more { margin-top: 10px; }
+.ri-out details.xpand { margin-top: 12px; }
+.ri-out .tf-items { margin-top: 12px; }
+.ri-out .tf-sub strong { color: var(--text); font-weight: 500; }
+.ri-out .tf-sub strong.ri-v-over, .ri-out .tf-sub strong.ri-v-first-year, .ri-out .tf-sub strong.ri-v-too-soon { color: var(--ri-fail); }
+.ri-rules ul { padding-left: 1.2em; }
+
+
+.ri-form legend { padding: 0; }
+.ri-form > .btn { width: 100%; margin-bottom: 10px; }
+.ri [hidden] { display: none; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 12px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+
+/* Result */
+.ri-v-over.ri-label, .ri-label.ri-v-first-year, .ri-label.ri-v-too-soon { color: var(--ri-fail); border-color: var(--ri-fail); }
+.ri-reasons { list-style: none; padding: 0; margin: 16px 0 0; }
+.ri-reasons li { padding: 8px 10px; margin: 0 0 6px; border-left: 3px solid var(--line-2); font-size: 14px; }
+.ri-reasons li.ri-fail { border-color: var(--ri-fail); background: var(--ri-fail-wash); }
+.ri-reasons li.ri-check { border-color: var(--ri-check); background: var(--ri-check-wash); }
+.ri-reasons li.ri-ok { border-color: var(--accent); }
+.ri-tag { font: 500 0.7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.ri-aside, .ri-notes { color: var(--muted); font-size: 14px; }
+.ri-notes { padding-left: 1.1em; }
+.ri-quote { margin: 8px 0 0; padding: 6px 12px; border-left: 2px solid var(--line-2); font-size: 13px; color: var(--text-2); }
+.ri-quote cite { font-style: normal; color: var(--muted); }
+.ri-got a, .ri-aside a { overflow-wrap: anywhere; }
+
+.ri-table-title { margin-top: 28px; }
+.ri-sources li { margin: 4px 0; overflow-wrap: anywhere; }
+.ri-label.ri-v-above-standard, .ri-label.ri-v-not-published { color: var(--ri-check); border-color: var(--ri-check); }

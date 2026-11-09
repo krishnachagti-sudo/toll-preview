@@ -1,0 +1,56 @@
+/* DMARC report analyzer: the tool-full layout (web/tool-full.css) plus the drop zone,
+   the per-source lines and the IP table. Pass and fail carry the colour. */
+.dra {
+  --st-pass: #6fd39a;
+  --st-fail: #ff7a6b;
+  --st-mixed: #f2c46d;
+}
+.dra textarea { width: 100%; font: 13px/1.45 var(--font-mono); }
+.dra select { width: 100%; }
+.dra-drop { border: 1px dashed var(--line-2, var(--rule-strong)); border-radius: 12px; padding: 14px 16px; }
+.dra-drop.over { border-color: var(--hue); background: color-mix(in srgb, var(--hue) 8%, transparent); }
+.dra-drop-label { display: grid; gap: 4px; cursor: pointer; }
+.dra-drop-title { font-weight: 600; }
+.dra-drop .hint { margin: 0; }
+.dra-drop input[type="file"] { margin-top: 10px; max-width: 100%; font-size: 13px; }
+.dra-list { margin: 8px 0 0; padding-left: 1.1em; font: 12px/1.5 var(--font-mono); overflow-wrap: anywhere; }
+.dra-list:empty { display: none; }
+
+/* The result: one line per sending source. */
+.dra-out .tf-exin { overflow-wrap: anywhere; }
+.dra-items li.p-pass .k { color: var(--st-pass); background: color-mix(in srgb, var(--st-pass) 12%, transparent); }
+.dra-items li.p-mixed .k { color: var(--st-mixed); background: color-mix(in srgb, var(--st-mixed) 12%, transparent); }
+.dra-items li.p-mixed > em { color: var(--st-mixed); }
+.dra-items li > span:not(.k) { overflow-wrap: anywhere; }
+.dra-items li > details { grid-column: 2 / -1; margin-top: 4px; font-size: 13px; color: var(--muted); }
+.dra-items li > details summary { cursor: pointer; color: var(--text-2); font-size: 12.5px; }
+.dra-items li > details p, .dra-items li > details ul { margin: 6px 0; overflow-wrap: anywhere; }
+.dra-items li > details ul { padding-left: 1.1em; }
+.dra-out .tf-items + .tf-note, .dra-out .xpand { margin-top: 14px; }
+.dra-facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 0; }
+.dra-facts dt { color: var(--muted); }
+.dra-facts dd { margin: 0; overflow-wrap: anywhere; color: var(--text-2); }
+.dra-report + .dra-report { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.dra-report h3 { font-size: 15px; margin: 0 0 8px; overflow-wrap: anywhere; }
+.dra-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+
+/* Tables (the multi-report summary inside its fold, and the IP lookup). */
+.dra-scroll { overflow-x: auto; }
+.dra-table { border-collapse: collapse; font-size: 14px; width: 100%; }
+.dra-table th, .dra-table td { text-align: left; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+.dra-table th { color: var(--muted); font-weight: 500; white-space: nowrap; }
+.dra-table td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.dra-ip-panel { padding: 22px; display: grid; gap: 18px; }
+.dra-ip-form { padding: 0; border: 0; background: none; max-width: 36rem; }
+.dra-ip-form .btn { justify-self: start; }
+.dra-ip-out:empty { display: none; }
+.dra-ip-out p { margin: 0 0 10px; }
+.dra-price ul { margin: 0 0 0.8em; padding-left: 1.2em; }
+.dra .small { font-size: 13px; }
+@media (max-width: 640px) {
+  .dra-ip-panel { padding: 16px; }
+  .dra-facts { grid-template-columns: 1fr; gap: 0; }
+  .dra-facts dd { margin-bottom: 6px; }
+}
+.dra-drop + .field { margin-top: 16px; }

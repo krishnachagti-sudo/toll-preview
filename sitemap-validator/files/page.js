@@ -36,15 +36,6 @@ function hint() {
 
 const sevClass = (s) => (s === 'error' ? 's-fix' : s === 'warning' ? 's-review' : s === 'ok' ? 's-ok' : 's-note');
 
-function tally(s) {
-  const items = [
-    ['URLs', s.urls], ['files', s.files], ['errors', s.errors], ['warnings', s.warnings],
-    ['blocked by robots.txt', s.robotsBlocked], ['checked live', s.live.checked], ['not 200', s.live.non200],
-    ['noindex', s.live.noindex], ['other canonical', s.live.canonicalElsewhere],
-  ].filter(([, n], k) => k < 4 || n > 0);
-  return h('ul', { class: 'sv-tally' }, items.map(([label, n]) => h('li', null, [h('span', { class: 'n' }, n.toLocaleString('en-US')), label])));
-}
-
 function issueItem(it) {
   const shown = it.examples.slice(0, 5);
   return h('li', { class: `sv-issue ${sevClass(it.severity)}` }, [
@@ -97,27 +88,63 @@ function download(name, text) {
   return h('a', { href: url, download: name, class: 'btn btn-small' }, 'Download the CSV');
 }
 
-function showReport(box, report, { label, charged = null, nextBatch = false }) {
+// The inputs in one line: "https://www.example.com/sitemap_index.xml, 10 child sitemaps, 10 URLs checked live".
+function inputsLine(i) {
+  if (!i?.url) return null;
+  return `${i.url}, ${count(i.maxSitemaps ?? CALL.maxSitemaps, 'child sitemap')}, ${count(i.live ?? 0, 'URL')} checked live${i.pick === 'spread' ? ' (spread)' : ''}`;
+}
+
+const item = (k, label, value, why, cls = null) => h('li', { class: cls }, [
+  h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', null, label), h('b', null, value), h('em', null, why),
+]);
+
+// One line per figure, each with where it comes from; zero lines past the first four are left out.
+function items(s, report) {
+  const lv = s.live ?? {};
+  const rows = [
+    item('!', 'Errors', s.errors.toLocaleString('en-US'), 'rules broken in the sitemaps.org protocol or Google\'s sitemap docs', s.errors ? 'sk' : 'dim'),
+    item('?', 'Warnings', s.warnings.toLocaleString('en-US'), 'worth a look; includes our lastmod sanity flags', s.warnings ? null : 'dim'),
+    item('#', 'URLs listed', s.urls.toLocaleString('en-US'), `in ${count(s.files, 'file')} read${s.sitemaps ? `, an index of ${count(s.sitemaps, 'sitemap')}` : ''}`, 'plain'),
+    s.biggestFile ? item('kB', 'Largest file', sizeWords(s.biggestFile.bytes), 'uncompressed; the limit is 50MB and 50,000 URLs', 'plain') : null,
+    s.robotsBlocked ? item('R', 'Blocked by robots.txt', s.robotsBlocked.toLocaleString('en-US'), report.robots?.url ?? 'robots.txt, as Googlebot reads it', 'sk') : null,
+    lv.checked ? item('L', 'Checked live', lv.checked.toLocaleString('en-US'), `${lv.ok ?? 0} answer 200, indexable and canonical`, 'hi') : null,
+    lv.non200 ? item('3', 'Not 200', lv.non200.toLocaleString('en-US'), 'redirects, 404s and other errors, from the live requests', 'sk') : null,
+    lv.noindex ? item('N', 'noindex', lv.noindex.toLocaleString('en-US'), 'a robots meta tag or an X-Robots-Tag header', 'sk') : null,
+    lv.canonicalElsewhere ? item('C', 'Other canonical', lv.canonicalElsewhere.toLocaleString('en-US'), 'rel=canonical names a different URL', 'sk') : null,
+  ];
+  return h('ul', { class: 'tf-items sv-items' }, rows.filter(Boolean));
+}
+
+const fold = (summary, kids, open = false) => h('details', open ? { class: 'xpand', open: '' } : { class: 'xpand' }, [h('summary', null, summary), h('div', { class: 'xp-in' }, kids)]);
+
+const TITLES = { 'fetch-failed': 'Not fetched', invalid: 'Not valid', warnings: 'Valid, with warnings', valid: 'Valid' };
+
+function showReport(box, report, { tag = 'Your result', example = false, source = null, input = null, charged = null, nextBatch = false }) {
   box.textContent = '';
+  box.hidden = false;
   const s = report.summary;
   const v = report.verdict ?? verdictOf(s);
+  const line = inputsLine(input);
+  const issues = report.files.reduce((n, f) => n + f.issues.length, 0);
   const parts = [
-    h('p', { class: 'sv-label' }, label),
-    h('p', { class: `sv-verdict v-${v}` }, `The sitemap ${VERDICT_WORDS[v]}`),
-    h('p', { class: 'sv-answer' }, report.answer),
-    tally(s),
-    report.advice?.length ? h('ol', { class: 'sv-advice' }, report.advice.map((a) => h('li', null, a))) : null,
-    h('p', { class: 'sv-downloads' }, [download(report.csv.name, report.csv.text)]),
-    charged ? h('p', { class: 'muted' }, charged) : null,
-    report.robots ? h('p', { class: 'muted' }, robotsLine(report.robots)) : null,
-    report.note ? h('p', { class: 'muted' }, report.note) : null,
-    ...report.files.map(fileBlock),
-    report.live?.rows?.length ? h('h3', null, `Live checks: ${report.live.rows.length} of ${report.live.listed.toLocaleString('en-US')} listed URLs`) : null,
-    report.live ? liveTable(report.live.rows) : null,
+    h('div', { class: 'tf-rh' }, [
+      h('span', { class: example ? 'tf-tag' : 'tf-tag run' }, tag),
+      source ? h('span', { class: 'tf-src' }, source) : null,
+    ]),
+    line ? h('p', { class: 'tf-exin' }, example ? `Example: ${line}` : line) : null,
+    h('p', { class: 'tf-big' }, [h('b', { class: `word sv-verdict v-${v}` }, TITLES[v] ?? VERDICT_WORDS[v])]),
+    h('p', { class: 'tf-sub sv-answer' }, report.answer),
+    items(s, report),
+    report.advice?.length ? fold(`What to fix (${report.advice.length})`, h('ol', { class: 'sv-advice' }, report.advice.map((a) => h('li', null, a))), true) : null,
+    fold(`Each file and its problems (${issues})`, report.files.map(fileBlock)),
+    report.live?.rows?.length ? fold(`Live checks: ${report.live.rows.length} of ${report.live.listed.toLocaleString('en-US')} listed URLs`, liveTable(report.live.rows)) : null,
     nextBatch && report.live?.next !== null && report.live?.next !== undefined
       ? h('p', null, [h('button', { class: 'btn btn-quiet', type: 'button', onclick: () => runNext(report.live.next) }, `Check the next ${lastInput.live} URLs (from number ${report.live.next + 1})`)])
       : null,
-    report.checkedAt ? h('p', { class: 'muted' }, `Checked ${new Date(report.checkedAt).toUTCString()}.`) : null,
+    h('p', { class: 'sv-downloads' }, [download(report.csv.name, report.csv.text)]),
+    report.robots ? h('p', { class: 'tf-note' }, robotsLine(report.robots)) : null,
+    report.note ? h('p', { class: 'tf-note' }, report.note) : null,
+    h('p', { class: 'tf-cost' }, [charged, report.checkedAt ? ` Checked ${new Date(report.checkedAt).toUTCString()}.` : null].filter(Boolean).join('') || 'Checked in this browser, free.'),
   ];
   box.append(...parts.filter(Boolean));
 }
@@ -141,7 +168,8 @@ async function send(input) {
     lastInput = input;
     const spent = res.charged?.amount ?? 0;
     const charged = spent > 0 ? `Charged $${(spent / 1e6).toFixed(4)} for ${res.result.billed.units} checks.` : 'Free.';
-    showReport($('sv-out'), res.result, { label: 'Your report', charged, nextBatch: true });
+    showReport($('sv-out'), res.result, { input, charged, nextBatch: true });
+    if (window.matchMedia('(max-width: 1080px)').matches) $('sv-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
     $('sv-status').textContent = 'Report ready.';
   } catch (err) {
     if (err.status === 401) $('sv-error').textContent = `This size of check needs an account so it can be paid from your balance. Sign in, or use ${CALL.freeWebLive} live URLs and ${CALL.freeWebSitemaps} child sitemaps or fewer.`;
@@ -173,6 +201,7 @@ function runPaste() {
   const xml = $('sv-xml').value;
   const box = $('sv-paste-out');
   box.textContent = '';
+  box.hidden = true;
   if (!xml.trim()) { $('sv-paste-error').textContent = 'Paste the sitemap first.'; return; }
   if (xml.length > CALL.pasteChars) { $('sv-paste-error').textContent = `Paste at most ${CALL.pasteChars.toLocaleString('en-US')} characters; check a larger file by its address.`; return; }
   const where = $('sv-paste-url').value.trim();
@@ -188,7 +217,7 @@ function runPaste() {
     summary: s, verdict: verdictOf(s), answer: answerLine(url ?? 'The pasted sitemap', s), files: [file],
     note: url ? null : 'Add the address it will live at to check the host, protocol and folder rules too.',
     csv: { name: 'sitemap-paste-check.csv', text: toCsv([file]) },
-  }, { label: 'Pasted XML, checked in this browser' });
+  }, { tag: 'Pasted XML', source: 'Checked in this browser' });
 }
 
 // ?url=...&live=10&pick=spread&max=10; run=1 runs a free-sized check on arrival.
@@ -214,7 +243,7 @@ async function start() {
   try {
     const tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
     const sample = tool.examples.find((x) => x.input.op === 'check');
-    if (sample) showReport($('sv-out'), sample.output, { label: 'Worked example, not a real site' });
+    if (sample) showReport($('sv-out'), sample.output, { tag: 'Example', example: true, source: 'Not a real site, answers replayed', input: sample.input });
   } catch {
     // The sample sentence and list in the page stay.
   }

@@ -1,0 +1,6 @@
+order,sale_date,items,item_ids,quantity,gross,item_subtotal,shipping_and_handling,seller_collected_tax,final_value_fee_fixed,final_value_fee_variable,international_fee,other_deductions_on_sale_row,sale_row_net,ad_and_other_fees,shipping_labels,labels_outside_ebay,refunds,claims_and_disputes,adjustments,allocated_unmatched,kept,your_cost,profit,currency,notes
+01-11111-00001,2025-12-18,Vintage Pyrex mixing bowl,110000000001,1,32.50,24.00,8.50,0.00,-0.40,-4.31,0.00,0.00,27.79,0.00,-6.85,0.00,0.00,0.00,0.00,0.00,20.94,-6.00,14.94,USD,
+02-22222-00002,2026-10-03,"Fleece jacket, size M",110000000002,1,24.00,15.00,9.00,0.00,-0.40,-3.18,0.00,0.00,20.42,-1.82,0.00,0.00,0.00,0.00,0.00,0.00,18.60,-4.00,14.60,USD,
+03-33333-00003,2026-10-05,Minifigure lot x2; Baseplate 32x32,110000000003; 110000000004,3,46.00,40.00,6.00,0.00,-0.40,-6.10,0.00,0.00,39.50,0.00,0.00,-8.75,0.00,0.00,0.00,0.00,30.75,-16.00,14.75,USD,
+04-44444-00004,2026-10-12,Camera lens 50mm,110000000005,1,120.00,120.00,0.00,0.00,-0.40,-15.90,-1.98,0.00,101.72,0.00,-9.40,0.00,-20.00,0.00,0.00,0.00,72.32,-55.00,17.32,USD,refund or claim
+05-55555-00005,2026-11-02,"Board game, sealed",110000000006,1,23.00,18.00,5.00,0.00,-0.40,-3.05,0.00,0.00,19.55,0.00,-7.10,0.00,0.00,-23.00,0.00,0.00,-10.55,-8.00,-18.55,USD,refund or claim

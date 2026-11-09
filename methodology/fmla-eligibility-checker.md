@@ -205,13 +205,31 @@ The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-0
 - [DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act](https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf)
 - [DOL: FMLA forms](https://www.dol.gov/agencies/whd/fmla/forms)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The rules were read on 2026-11-08: 29 CFR Part 825 on eCFR, current to 2026-11-02; DOL Fact Sheet #28, revised March 2025; and Field Assistance Bulletin 2023-1 of 2023-02-09. Federal holidays come from the business days tool's calendar. The rules change only by hand, with the tests that pin them.
+
+FMLA eligibility checker: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [29 CFR Part 825, The Family and Medical Leave Act of 1993 (eCFR)](https://www.ecfr.gov/current/title-29/part-825) | eCFR current to 2026-11-02 | 2026-11-08 |
+| [DOL Wage and Hour Division, Fact Sheet #28: The Family and Medical Leave Act](https://www.dol.gov/agencies/whd/fact-sheets/28-fmla) | revised March 2025 | 2026-11-08 |
+| [DOL Wage and Hour Division, Field Assistance Bulletin No. 2023-1, Telework Under the Fair Labor Standards Act and Family and Medical Leave Act](https://www.dol.gov/sites/dolgov/files/WHD/fab/2023-1.pdf) | dated 2023-02-09 | 2026-11-08 |
+| [DOL: FMLA forms](https://www.dol.gov/agencies/whd/fmla/forms) | see the document | 2026-11-08 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The thresholds and quoted sections are pinned to eCFR and dol.gov with their read date. Each test is checked at its boundary: the anniversary and the day before, 51 and 52 weeks, seven years and a day less, 1,250 hours and 1,249.75, 75 and 75.1 miles, 19 and 20 workweeks. The rolling balance reproduces the regulation's own example in 825.200(c).
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The thresholds (12 months or 52 weeks, 1,250 hours, 50 employees within 75 miles, 7 years, 20 workweeks, 5 business days) and the quoted sections of Part 825 are pinned to eCFR and dol.gov as read on 2026-11-08.
+- The 12-month test is checked on the anniversary and the day before, a leap-day hire, seasonal periods in weeks, 51 and 52 weeks, and breaks of seven years kept by USERRA, an agreement or the employer.
+- The hours window, logs, USERRA credit, missing records and flight crew are checked, and so are 75 and 75.1 miles, staff abroad and the 300 employees of FAB 2023-1 example 5.
+- The notice due date skips weekends, Veterans Day, Thanksgiving and closed days; the rolling balance reproduces the 825.200(c) example; calendar, fixed, forward and military caregiver years and the ledger CSV are checked.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the FMLA eligibility checker tool](https://krishnachagti-sudo.github.io/toll-preview/fmla-eligibility-checker/).
 

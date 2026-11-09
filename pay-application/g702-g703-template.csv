@@ -1,0 +1,8 @@
+item,description,scheduled_value,from_previous_applications,this_period,materials_presently_stored,total_completed_and_stored,percent,balance_to_finish,retainage
+1,Mobilization and submittals,12000.00,12000.00,0.00,0.00,12000.00,100.0%,0.00,1200.00
+2,Underground and rough-in,96000.00,40000.00,25000.00,0.00,65000.00,67.7%,31000.00,6500.00
+3,Switchgear and panels,60000.00,0.00,0.00,18000.00,18000.00,30.0%,42000.00,1800.00
+4,"Trim, fixtures and devices",60000.00,0.00,0.00,0.00,0.00,0.0%,60000.00,0.00
+5,Testing and closeout,12000.00,0.00,0.00,0.00,0.00,0.0%,12000.00,0.00
+CO 1,Added generator receptacle,8500.00,0.00,4250.00,0.00,4250.00,50.0%,4250.00,425.00
+TOTAL,,248500.00,52000.00,29250.00,18000.00,99250.00,39.9%,149250.00,9925.00

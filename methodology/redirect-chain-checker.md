@@ -119,13 +119,32 @@ Google's redirect table and facts were read on 2026-11-07 (redirects page update
 - [Cloudflare: ERR\_TOO\_MANY\_REDIRECTS (read 2026-11-07)](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/)
 - [Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain (read 2026-11-07)](https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+Google's redirect table and facts were read on 2026-11-07 (redirects page updated 2026-04-14, HTTP status codes page updated 2026-02-04). Each check fetches the URLs live at the moment of the call.
+
+Bulk redirect chain checker: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [Google Search Central: Redirects and Google Search](https://developers.google.com/search/docs/crawling-indexing/301-redirects) | page updated 2026-04-14 | 2026-11-07 |
+| [Google Search Central: How HTTP status codes, and network and DNS errors affect Google Search](https://developers.google.com/search/docs/crawling-indexing/http-network-errors) | page updated 2026-02-04 | 2026-11-07 |
+| [Cloudflare: ERR\_TOO\_MANY\_REDIRECTS](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/) | page updated 2026-09-01 | 2026-11-07 |
+| [Search Engine Journal: Google's John Mueller recommends less than 5 hops per redirect chain](https://www.searchenginejournal.com/googles-john-mueller-recommends-less-than-5-hops-per-redirect-chain/344664/) | see the document | 2026-11-07 |
+| [RFC 9110, HTTP Semantics, section 15.4 (Redirection 3xx)](https://www.rfc-editor.org/rfc/rfc9110#section-15.4) | see the document | 2026-11-07 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Every verdict is checked against a fake web, with no network: one hop, chains, Google's codes, loops and their patterns, hop limits, plain HTTP, meta refresh, errors and refusals, and expected targets. Pasted curl output is judged like a live run, the worked examples equal run(), and blocked address forms are checked one by one.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Google's redirect table and facts are checked as read on 2026-11-07, as the verdicts use them.
+- Every verdict is checked against a fake web: one hop, chains, loops and their patterns, hop limits, plain HTTP, meta refresh, errors, refusals and expected targets.
+- Pasted curl output is judged like a live run, and the worked examples equal what run() returns.
+- Private, loopback, link-local, metadata, CGNAT, reserved and IPv6 address forms are refused.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Bulk redirect chain checker tool](https://krishnachagti-sudo.github.io/toll-preview/redirect-chain-checker/).
 

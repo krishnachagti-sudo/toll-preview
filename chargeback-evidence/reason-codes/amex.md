@@ -1,0 +1,102 @@
+# American Express chargeback reason codes
+
+Stripe publishes 67 American Express reason codes (rows) in 8 categories; the most are "General" (25). Each code below has its category and the evidence to lead with.
+
+- Codes: 67
+
+## Build the evidence for your dispute
+
+[Show the evidence](https://krishnachagti-sudo.github.io/toll-preview/chargeback-evidence/?platform=stripe&network=amex&productType=physical&code=A01)
+
+## The codes
+
+| Code | Name | Stripe category | Lead with |
+| --- | --- | --- | --- |
+| A01 | Charge Amount Exceeds Authorization Amount | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| C02 | Credit Not Processed | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| C04 | Goods/Services Returned or Refused | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| C05 | Goods/Services Cancelled | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| C18 | "No Show" or CARDeposit Cancelled | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| P03 | Credit Processed as Charge | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| P05 | Incorrect Charge Amount | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| 061 | Credit Processed as Charge | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| 062 | Charge Processed as Credit | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| 154 | Goods/Services Cancelled/Refused | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| 158 | Goods Returned (Request Credit) | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| 170 | Canceled lodging reservation/CARDeposit not received | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| 175 | Credit Not Processed | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| 680 | Incorrect Charge Amount | Credit not processed | Proof a refund or credit was already issued and refund or return policy, and where it was shown |
+| C14 | Paid by Other Means | Duplicate | Records showing the two charges are separate and proof of delivery |
+| P08 | Duplicate Charge | Duplicate | Records showing the two charges are separate and proof of delivery |
+| 173 | Duplicate Charge | Duplicate | Records showing the two charges are separate and proof of delivery |
+| 684 | Paid by Other Means | Duplicate | Records showing the two charges are separate and proof of delivery |
+| F10 | Missing Imprint | Fraudulent | Proof of delivery and shipping details |
+| F24 | Multiple ROCs | Fraudulent | Proof of delivery and shipping details |
+| F29 | Card Not Present | Fraudulent | Proof of delivery and shipping details |
+| F30 | EMV Liability Shift - Counterfeit | Fraudulent | Proof of delivery and shipping details |
+| F31 | EMV Liability Shift - Lost/Stolen/Non-Received | Fraudulent | Proof of delivery and shipping details |
+| FR2 | Fraud Full Recourse Program | Fraudulent | Proof of delivery and shipping details |
+| FR4 | Immediate Chargeback Program | Fraudulent | Proof of delivery and shipping details |
+| FR5 | Immediate Chargeback Program | Fraudulent | Proof of delivery and shipping details |
+| FR6 | Partial Immediate Chargeback Program | Fraudulent | Proof of delivery and shipping details |
+| 177 | Unauthorized Charge | Fraudulent | Proof of delivery and shipping details |
+| 193 | Fraudulent Charge | Fraudulent | Proof of delivery and shipping details |
+| A02 | No Valid Authorization | General | Receipt or order confirmation and messages with the customer |
+| A08 | Authorization Approval Expired | General | Receipt or order confirmation and messages with the customer |
+| M10 | Vehicle Rental - Capital Damages, Theft, or Loss of Use | General | Receipt or order confirmation and messages with the customer |
+| R03 | Insufficient Reply | General | Receipt or order confirmation and messages with the customer |
+| R13 | No Reply | General | Receipt or order confirmation and messages with the customer |
+| M01 | Chargeback Authorization | General | Receipt or order confirmation and messages with the customer |
+| P01 | Unassigned Card Number | General | Receipt or order confirmation and messages with the customer |
+| P04 | Charge Processed as Credit | General | Receipt or order confirmation and messages with the customer |
+| P07 | Late Submission | General | Receipt or order confirmation and messages with the customer |
+| P22 | Non-Matching Card Number | General | Receipt or order confirmation and messages with the customer |
+| P23 | Currency Discrepancy | General | Receipt or order confirmation and messages with the customer |
+| M04 | Merchant Accepted | General | Receipt or order confirmation and messages with the customer |
+| M11 | Reversal Due To Credit | General | Receipt or order confirmation and messages with the customer |
+| M36 | See Notes | General | Receipt or order confirmation and messages with the customer |
+| M38 | Reversal | General | Receipt or order confirmation and messages with the customer |
+| M39 | Correct a Previous Transaction | General | Receipt or order confirmation and messages with the customer |
+| M42 | Reversal Request Too Late | General | Receipt or order confirmation and messages with the customer |
+| S01 | Reversal Request Denied | General | Receipt or order confirmation and messages with the customer |
+| S04 | Reversal Request Under Review, Please Wait | General | Receipt or order confirmation and messages with the customer |
+| OP1 | General | General | Receipt or order confirmation and messages with the customer |
+| 147 | Charge paid by Insurance Company | General | Receipt or order confirmation and messages with the customer |
+| 169 | Charge submitted in an invalid currency | General | Receipt or order confirmation and messages with the customer |
+| 693 | Questioning Charge for Damage/Theft/Loss | General | Receipt or order confirmation and messages with the customer |
+| S02 | Reviewed Support; Won’t be Debiting Account | General | Receipt or order confirmation and messages with the customer |
+| S03 | Support received | General | Receipt or order confirmation and messages with the customer |
+| C08 | Goods/Services Not Received or Only Partially Received | Product not received | Proof of delivery and shipping details |
+| 004 | Product Not Received | Product not received | Proof of delivery and shipping details |
+| 155 | Goods not Received (Request Credit) | Product not received | Proof of delivery and shipping details |
+| C31 | Goods/Services Not As Described | Product unacceptable | How the product was described and messages with the customer |
+| C32 | Goods/Services Damaged or Defective | Product unacceptable | How the product was described and messages with the customer |
+| 024 | Goods Damaged/Defective | Product unacceptable | How the product was described and messages with the customer |
+| 059 | Goods Damaged/Defective (Request Repair) | Product unacceptable | How the product was described and messages with the customer |
+| 063 | Product Quality Unacceptable | Product unacceptable | How the product was described and messages with the customer |
+| C28 | Cancelled Recurring Billing | Subscription canceled | Cancellation policy, and where it was shown and why this charge stands after the claimed cancellation |
+| 021 | Goods/Services Cancelled/Expired | Subscription canceled | Cancellation policy, and where it was shown and why this charge stands after the claimed cancellation |
+| 127 | Unrecognized Charge | Unrecognized | Proof of delivery and shipping details |
+| 176 | Unrecognized Charge (Card Not Present) | Unrecognized | Proof of delivery and shipping details |
+| 691 | Requesting Support | Unrecognized | Proof of delivery and shipping details |
+
+> American Express rules were not read; codes and categories are as Stripe publishes them.
+
+## Sources
+
+- [Stripe Docs: Dispute reason code categories (read November 8, 2026)](https://docs.stripe.com/disputes/categories)
+
+> Not legal advice. The card issuer decides each dispute; this page shows what the networks and platforms publish, as read on the date shown.
+
+## Related
+
+- [All networks](https://krishnachagti-sudo.github.io/toll-preview/chargeback-evidence/reason-codes/)
+- [Visa reason codes](https://krishnachagti-sudo.github.io/toll-preview/chargeback-evidence/reason-codes/visa/)
+- [Mastercard reason codes](https://krishnachagti-sudo.github.io/toll-preview/chargeback-evidence/reason-codes/mastercard/)
+- [Discover reason codes](https://krishnachagti-sudo.github.io/toll-preview/chargeback-evidence/reason-codes/discover/)
+
+---
+
+Page: https://krishnachagti-sudo.github.io/toll-preview/chargeback-evidence/reason-codes/amex/  
+Data as of: 2026-11-08  
+CSV: https://krishnachagti-sudo.github.io/toll-preview/chargeback-evidence/reason-codes/amex.csv

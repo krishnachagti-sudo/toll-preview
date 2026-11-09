@@ -1,0 +1,26 @@
+kind,name,meaning,booked_as
+column,Transaction Date,"When the transaction happened, with the time zone.",
+column,Type,"charge, refund, dispute, adjustment, reserved funds and others: the split places rows by it.",
+column,Order,"The order number, where there is one.",
+column,Card Brand,"visa, master, amex and so on.",
+column,Card Source,How the card was charged.,
+column,Payout Status,"pending, or the status of the payout it went in.",
+column,Payout Date,The date Shopify sent the payout to your bank. The split groups rows by it.,
+column,Available On,When the money became available for payout.,
+column,Amount,The transaction amount: refunds and chargebacks are negative.,
+column,Fee,The fee on the transaction.,
+column,Net,Net: The difference between the amount and the fee.,
+type,charge,,Sales
+type,refund,,Refunds
+type,dispute,,Chargebacks and disputes
+type,dispute_reversal,,Chargebacks and disputes
+type,chargeback_fee,,Processing fees
+type,reserved_funds,,Reserves and holds
+type,reserved_funds_reversal,,Reserves and holds
+type,lending_capital_remittance,,Loan and advance repayments
+type,shipping_label,,Shipping labels
+type,customs_duty,,Duties and import taxes
+type,import_tax,,Duties and import taxes
+type,currency_conversion,,Currency conversion
+type,adjustment,,Other adjustments
+type,payout,,The payout itself

@@ -1,0 +1,9 @@
+name,role,hours,points,by_hours,by_points,by_hours_x_points,equal
+Ana,Server,7.5,10,193.75,225.46,271.93,155.00
+Ben,Server,6,10,155.00,225.45,217.54,155.00
+Carla,Server,5.25,10,135.62,225.45,190.35,155.00
+Cleo,Bartender,8,8,206.67,180.36,232.05,155.00
+Dev,Busser,6.5,5,167.92,112.73,117.84,155.00
+Ezra,Busser,4,5,103.33,112.73,72.51,155.00
+Fay,Host,5,3,129.17,67.64,54.39,155.00
+Gus,Food runner,5.75,4,148.54,90.18,83.39,155.00

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>eBay transaction report to one row per sale: every fee, the label and the net: Endwise</title>
+<meta name="description" content="Drop in your eBay transaction report CSV: each sale comes out on one row with gross, shipping charged, every fee column, the shipping label and ad-fee rows folded in by order number, refunds and what you kept. Totals by year, proved to the cent. Preview free; $2.00 a report.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/ebay-transaction-report-flattener/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"ebay-transaction-report-flattener"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/ebay-transaction-report-flattener/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="eBay transaction report flattener">
+<meta property="og:description" content="Upload an eBay transaction report CSV and get one row per sale: item, gross, shipping charged, every fee column by name, the shipping label and ad-fee rows folded in by order number, refunds and claims, and what you kept, with totals by year and month, proved to the cent against eBay's Net amount.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/ebay-transaction-report-flattener/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/ebay-transaction-report-flattener/","url":"https://krishnachagti-sudo.github.io/toll-preview/ebay-transaction-report-flattener/","name":"eBay transaction report flattener","description":"Upload an eBay transaction report CSV and get one row per sale: item, gross, shipping charged, every fee column by name, the shipping label and ad-fee rows folded in by order number, refunds and claims, and what you kept, with totals by year and month, proved to the cent against eBay's Net amount.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"eBay transaction report flattener","item":"https://krishnachagti-sudo.github.io/toll-preview/ebay-transaction-report-flattener/"}]},{"@type":"WebApplication","name":"eBay transaction report flattener","url":"https://krishnachagti-sudo.github.io/toll-preview/ebay-transaction-report-flattener/","description":"Upload an eBay transaction report CSV and get one row per sale: item, gross, shipping charged, every fee column by name, the shipping label and ad-fee rows folded in by order number, refunds and claims, and what you kept, with totals by year and month, proved to the cent against eBay's Net amount.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Preview (the totals by year, the proof and the first sales)","price":"0","priceCurrency":"USD"},{"name":"Flatten (every sale on one row, the months and the CSV files)","@type":"Offer","price":"2","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"2","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"2,500 sales"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="ef hue-money tf-plain">
+  <section class="wrap ef-intro tf-intro">
+    <p class="eyebrow">Getting paid</p>
+    <h1>eBay transaction report, one row per sale</h1>
+    <p class="lede">Drop in eBay's transaction report and get one row per sale, with each fee by name, the label, the ad fee and what you actually kept, proved to the cent.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="pline"><span class="price">Preview free, in your browser</span><span>full file $2.00 per 2,500 sales</span><span>at most $9 a month</span></p>
+  </section>
+
+  <section class="wrap ef-desk tf-calc" aria-label="Flatten a transaction report">
+    <div class="ef-form tf-card tf-form">
+      <div class="ef-drop" id="ef-drop">
+        <label for="ef-file" class="ef-drop-label">Choose the transaction report, or drop it here</label>
+        <input type="file" id="ef-file" accept=".csv,.txt,text/csv,text/plain">
+        <p class="ef-hint" id="ef-file-name">Up to 5 MB. In Seller Hub: Payments, Reports, Transaction report; download the CSV eBay emails you.</p>
+      </div>
+      <p class="ef-hint">Try a made-up report:
+        <button type="button" class="link-btn" data-sample="us">US, December 2025 to November 2026</button>,
+        <button type="button" class="link-btn" data-sample="uk">eBay UK, in pounds</button>.
+      </p>
+      <p class="form-error" id="ef-error" role="alert"></p>
+      <button class="btn" type="button" id="ef-go">Get every sale as CSV</button>
+      <p class="ef-hint" id="ef-go-note">The sample's full result is shown. Choose your own report to preview it, free.</p>
+      <p class="visually-hidden" id="ef-status" role="status"></p>
+      <details class="ef-more xpand">
+        <summary>More: your costs, outside labels, column names</summary>
+        <div class="xp-in">
+      <div class="field">
+        <label for="ef-costs">Your cost per item (optional)</label>
+        <textarea id="ef-costs" rows="3" placeholder="Item ID, cost per unit&#10;110000000001, 6.00"></textarea>
+        <p class="ef-hint">One item per line: the Item ID (or your SKU) and what one unit cost you. Adds your cost and profit per sale.</p>
+      </div>
+      <div class="field">
+        <label for="ef-labels">Labels bought outside eBay (optional)</label>
+        <textarea id="ef-labels" rows="2" placeholder="Order number, label cost&#10;02-22222-00002, 7.45"></textarea>
+        <p class="ef-hint">Labels from another carrier site are not in eBay's report. One order per line.</p>
+      </div>
+      <label class="ef-check"><input type="checkbox" id="ef-allocate"> Spread label and fee rows that have no order number over the sales, by gross (each share is marked)</label>
+          <p class="ef-hint">Column names and number formats: only when a column is not found. Type the heading exactly as it is in your file.</p>
+        <div class="ef-grid" id="ef-columns"></div>
+        <div class="ef-grid">
+          <label>Currency (three letters) <input type="text" id="ef-currency" maxlength="3" placeholder="read from the file, or USD"></label>
+          <label>Slash dates
+            <select id="ef-dateorder"><option value="">Read from the file</option><option value="mdy">10/25/2026 (month first)</option><option value="dmy">25/10/2026 (day first)</option></select>
+          </label>
+        </div>
+              </div>
+      </details>
+    </div>
+
+    <div class="ef-out tf-card" id="ef-out" aria-live="polite">
+      <div class="tf-res-h"><span class="ex-tag">Example</span><p class="ef-label">Sample: a made-up US report</p></div>
+      <p class="tf-exin">Example: a made-up US transaction report, December 2025 to November 2026, 17 rows</p>
+      <p class="tf-big">$113.17 kept<small>from 5 sales with $245.50 gross</small></p>
+      <p class="ef-answer" id="ef-sample-answer">Your report's 17 rows became 5 sales: gross $245.50, fees $36.52, labels $42.29, ad and other fees $6.77, refunds and claims $43.00, net $121.92; 1 label row had no order number.</p>
+      <ul class="tf-items">
+        <li><span>Gross</span><b>$245.50</b><small>Gross transaction amount on the sale rows</small></li>
+        <li><span>Fees on the sale rows</span><b>-$36.52</b><small>the fee columns, by name</small></li>
+        <li><span>Shipping labels</span><b>-$42.29</b><small>label rows with the order number</small></li>
+        <li><span>Ad and other fees</span><b>-$6.77</b><small>other fee rows with the order number</small></li>
+        <li><span>Refunds and claims</span><b>-$43.00</b><small>refund, claim and dispute rows</small></li>
+        <li><span>Adjustments</span><b>$5.00</b><small>adjustment rows</small></li>
+        <li><span>Labels bought outside eBay</span><b>-$8.75</b><small>your list under More</small></li>
+        <li><span>Kept</span><b>$113.17</b><small>eBay&#39;s Net amount on each sale&#39;s rows, less outside labels</small></li>
+        <li><span>Your cost</span><b>-$89.00</b><small>your list under More</small></li>
+        <li class="key"><span>Profit</span><b>$24.17</b><small>kept less your cost</small></li>
+      </ul>
+      <p class="muted">The preview of the sample report. Choose your own report and the same preview runs on it, in your browser.</p>
+    </div>
+  </section>
+
+  <section class="wrap ef-rules tf-sec" data-jump="Rules" aria-labelledby="ef-rules-title">
+    <div class="tf-rules-top">
+      <div>
+        <h2 id="ef-rules-title">How it works</h2>
+        <p>Every row that carries a sale's order number is folded into that sale's line, and what you kept is the sum of eBay's own Net amount on those rows. Every row's Net amount ends up in a sale, in the rows without an order number, or in money moved, to the cent.</p>
+      </div>
+      <aside class="tf-card tf-not" aria-labelledby="ef-not-title">
+        <h3 id="ef-not-title">What it does not cover</h3>
+        <ul>
+          <li>Labels bought outside eBay, unless you list them under "More".</li>
+          <li>What to report or deduct: this is arithmetic, not tax advice.</li>
+          <li>Payouts and transfers: they move money you already earned, so they are listed apart.</li>
+        </ul>
+      </aside>
+    </div>
+    <details class="xpand">
+      <summary>Read how sales are folded, proved and found</summary>
+      <div class="xp-in">
+    <div class="ef-rule-cols">
+      <div>
+        <h3>Folded by order number</h3>
+        <p>Every row that carries a sale's order number is folded into that sale's line: the sale row, its item rows (eBay lists a multi-item order's items on the rows after the first), its shipping label, its other fees such as ad fees, refunds, claims and disputes. Payouts, transfers, holds and charges recouped from your payment method move money you already earned, so they are listed apart.</p>
+      </div>
+      <div>
+        <h3>eBay's own numbers, proved</h3>
+        <p>What you kept on a sale is the sum of eBay's Net amount on its rows, not an estimate. The fee columns are kept by their own names and checked against Gross minus Net on the sale row; a difference is shown, never absorbed. Every row's Net amount ends up in a sale, in the rows without an order number, or in money moved, to the cent.</p>
+      </div>
+      <div>
+        <h3>Columns found, never guessed</h3>
+        <p>eBay's help names the details a report holds but does not publish the CSV headings, and you can add or remove columns in Seller Hub. So columns are found by eBay's help names, then by word, and shown with how each was found. Any column can be named in the settings.</p>
+      </div>
+    </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="wrap ef-legal tf-sec" data-jump="Sources" aria-labelledby="ef-legal-title">
+    <h2 id="ef-legal-title">Please read</h2>
+    <p class="ef-hint">Files are processed in memory and not kept. The preview is free and runs in your browser: nothing is uploaded until you ask for the full file. The full flattened report (every sale, by month, as CSV files) is $2.00 per 2,500 sales in the report, and the same file again within 7 days is free.</p>
+    <details class="xpand">
+      <summary>Read the notes, the prices and the sources</summary>
+      <div class="xp-in">
+    <ul id="ef-disclaimers">
+      <li>Files are processed in memory and not kept.</li>
+      <li>This is arithmetic on eBay&#39;s own transaction report. It is not tax or accounting advice: ask a tax professional what to report and what you can deduct.</li>
+      <li>eBay&#39;s help names the details a transaction report holds but does not publish the CSV&#39;s exact column headings. Columns are found by eBay&#39;s help names, then by word (any heading with &quot;fee&quot; is a fee column, kept by its own name), and you can name any column yourself. Every column is shown with how it was found.</li>
+      <li>A sale&#39;s &quot;kept&quot; is the sum of eBay&#39;s own Net amount on every row with its order number. Label and fee rows with no order number are listed apart unless you ask to spread them over the sales by gross; a spread share is an estimate and is marked.</li>
+    </ul>
+    <h3>Prices</h3>
+    <ul class="endwise-prices"><li><strong>Preview (the totals by year, the proof and the first sales)</strong>: free.</li><li><strong>Flatten (every sale on one row, the months and the CSV files)</strong>: $2.00 per 2,500 sales; a repeat for the same report is free for 7 days, and a larger one pays only the difference.</li><li>At most $9.00 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+    <h3>Sources, read November 8, 2026</h3>
+    <ul class="ef-sources">
+      <li><a href="https://www.ebay.com/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847">eBay Help (US): Reconciling your eBay sales transactions</a>: how to create the transaction report, customizing its columns, multi-item orders, and the details it holds (Order ID, Item ID, Gross transaction amount, Net amount, Final value fee, Other fees, Shipping label, Claim, Payment dispute, Hold, Charge, Adjustment)</li>
+      <li><a href="https://www.ebay.co.uk/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847">eBay Help (UK)</a>, <a href="https://www.ebay.com.au/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847">Australia</a> and <a href="https://www.ebay.ca/help/selling/selling-fees/reconciling-ebay-sales-transactions?id=4847">Canada</a>: the same report; the UK list adds the Regulatory operating fee</li>
+      <li><a href="https://www.ebay.com/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions/earnings-report?id=5481">eBay Help (US): Earnings report</a>: Item subtotal, Shipping and handling and Seller collected tax</li>
+      <li><a href="https://www.ebay.com/help/fees-billing/payouts-payments-paid/seller-hub-payouts-tab?id=4798">eBay Help (US): Using the Payments tab in Seller Hub</a>: the transaction types (sales, refunds, claims, disputes, holds, shipping labels, transfers and payouts)</li>
+      <li>eBay&#39;s developer pages for the Sell Finances API returned an error from our network on November 8, 2026 and are not used.</li>
+    </ul>
+      </div>
+    </details>
+  </section>
+
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Guides</h2>
+<h3>The transaction report</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/download/" title="How to download your eBay transaction report (steps)">How to download it</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/columns-explained/" title="eBay transaction report columns explained, from eBay's own help">The columns explained</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/export-to-excel/" title="How to export eBay sales to Excel, one row per sale with fees">Export to Excel, one row per sale</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/guides/why-multiple-rows-per-sale/" title="Why the eBay transaction report has more than one row per sale">Why one sale has several rows</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/guides/ebay-reports-other-countries/" title="eBay UK, Australia and Canada transaction reports: what differs">UK, Australia and Canada</a></li></ul>
+<h3>Profit</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/guides/profit-per-item-sheet/" title="eBay profit per item: a sheet from your transaction report">Profit per item</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/guides/labels-bought-outside-ebay/" title="Shipping labels bought outside eBay are not in the transaction report">Labels bought outside eBay</a></li></ul>
+<h3>Fees</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/guides/ad-fees-in-report/" title="eBay promoted listing and ad fees in the transaction report">Ad fees in the report</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/guides/refunds-and-returns/" title="Refunds, returns and claims in the eBay transaction report">Refunds and claims</a></li></ul>
+<h3>Year end</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/guides/year-end-checklist/" title="eBay year-end bookkeeping checklist for small sellers">Year-end checklist</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/seller-tax-calendar-2026-2027/" title="eBay seller tax and records calendar, November 2026 to December 2027">Seller calendar 2026 to 2027</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Uses" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Uses</h2>
+<h3>Taxes</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/taxes/" title="eBay sales report for taxes: yearly totals from your transaction report">Yearly totals for taxes</a></li></ul>
+<h3>Templates</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/spreadsheet-template/" title="eBay sales spreadsheet template, filled from your transaction report">Spreadsheet template</a></li></ul>
+<h3>Countries</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/uk/" title="eBay UK transaction report to one row per sale (for HMRC records)">eBay UK</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compared" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Compared</h2>
+<h3>Alternatives</h3><ul class="cp-rows"><li><a href="/toll-preview/ebay-transaction-report-flattener/vs/ebay-earnings-report/" title="eBay Earnings report vs a flattened transaction report">eBay Earnings report</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/vs/link-my-books-ebay/" title="Link My Books eBay bookkeeping vs one-off flattening">Link My Books</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/vs/spreadsheetic-extension/" title="Browser extensions that export eBay data vs a file-only flattener">Browser extensions</a></li><li><a href="/toll-preview/ebay-transaction-report-flattener/vs/excel-pivot/" title="Excel pivot of the eBay transaction report: how and where it breaks">Excel pivot</a></li></ul>
+</section>
+
+  <section class="wrap ef-code tf-sec" aria-label="Use this from code">
+    <div id="ef-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to read your file. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/ebay-transaction-report-flattener/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

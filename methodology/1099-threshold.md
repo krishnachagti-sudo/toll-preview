@@ -132,13 +132,36 @@ IRS instructions for payment years 2025 and 2026 were read 2026-10-31. The 2027 
 - [IRS: Information return penalties](https://www.irs.gov/payments/information-return-penalties)
 - [26 U.S. Code 6041(h), Inflation adjustment (Cornell LII)](https://www.law.cornell.edu/uscode/text/26/6041)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+IRS instructions for payment years 2025 and 2026, read 2026-10-31. The 2027 line is worked out from 26 U.S.C. 6041(h) and the chained CPI (latest month 2026-09) and is marked provisional until the IRS publishes its own.
+
+1099 threshold tracker: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. April 2025)](https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf) | Rev. 4-2025 | 2026-10-31 |
+| [IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026)](https://www.irs.gov/instructions/i1099mec) | Rev. 12/2026 | 2026-10-31 |
+| [IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), Filing dates](https://www.irs.gov/instructions/i1099mec) | filing dates | 2026-10-31 |
+| [IRS: Information return penalties](https://www.irs.gov/payments/information-return-penalties) | penalties | 2026-10-31 |
+| [IRS: General Instructions for Certain Information Returns (2025), part N, Backup Withholding](https://www.irs.gov/instructions/i1099gi) | 2025 | 2026-10-31 |
+| [26 U.S. Code 6041(h), Inflation adjustment (Cornell LII)](https://www.law.cornell.edu/uscode/text/26/6041) | 26 U.S.C. 6041 | 2026-10-31 |
+| [U.S. Bureau of Labor Statistics: Chained CPI for All Urban Consumers (C-CPI-U), series SUUR0000SA0](https://api.bls.gov/publicAPI/v1/timeseries/data/SUUR0000SA0) | through 2026-09 | 2026-10-31 |
+| [IRS Publication 1220 (Rev. 5-2026), Part A Sec. 12, Table 1: Participating States and Codes (for tax year 2025, FIRE)](https://www.irs.gov/pub/irs-pdf/p1220.pdf) | Rev. 5-2026 | 2026-10-31 |
+| [California Franchise Tax Board: Guide to Information Returns Filed With California (last updated 01/29/2026)](https://www.ftb.ca.gov/file/guide-to-information-returns-filed-with-california.html) | updated 01/29/2026 | 2026-10-31 |
+| [IRS: IRIS CSV Template Formatting guidelines, tax year 2025 (ZIP, updated 01/14/2026)](https://www.irs.gov/pub/irs-efile/ty2025-template-formatting-guidelines.zip) | tax year 2025 | 2026-10-31 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Every federal line for 2025 and 2026 is compared with the IRS instructions with the revision recorded, and penalties, the CF/SF states and the IRIS CSV columns the same way. The 2027 projection is checked against the arithmetic in 26 U.S.C. 6041(h). A payee is in at exactly the line and out a cent below it, for every box and year.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Every federal line for 2025 and 2026 is compared with the IRS instructions, with the revision and source recorded; penalties, the CF/SF states, California's lines and the IRIS CSV columns are checked the same way.
+- The 2027 projection is checked against the arithmetic in 26 U.S.C. 6041(h) (rounded to the nearest $100) and marked provisional.
+- A payee is in at exactly the line and out a cent below it, for every box and year.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the 1099 threshold tracker tool](https://krishnachagti-sudo.github.io/toll-preview/1099-threshold/).
 

@@ -1,0 +1,7 @@
+project,stage,name,share,amount,tax,total_due,currency,invoice_number,invoice_date,terms,due_date,paid_before,balance_after
+Website,1,Deposit,50%,3000.00,0.00,3000.00,USD,INV-1001,2027-01-04,Net 7,2027-01-11,0.00,3000.00
+Website,2,Midpoint milestone,25%,1500.00,0.00,1500.00,USD,INV-1002,2027-02-01,Net 7,2027-02-08,3000.00,1500.00
+Website,3,Final delivery,25%,1500.00,0.00,1500.00,USD,INV-1003,2027-03-01,Net 7,2027-03-08,4500.00,0.00
+Brand refresh,1,Deposit,30%,3600.00,0.00,3600.00,USD,INV-1004,2027-01-04,Net 7,2027-01-11,0.00,8400.00
+Brand refresh,2,Midpoint milestone,30%,3600.00,0.00,3600.00,USD,INV-1005,2027-02-08,Net 7,2027-02-16,3600.00,4800.00
+Brand refresh,3,Final delivery,40%,4800.00,0.00,4800.00,USD,INV-1006,2027-03-15,Net 7,2027-03-22,7200.00,0.00

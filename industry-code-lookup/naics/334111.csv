@@ -1,0 +1,27 @@
+field,value
+code,334111
+title,Electronic Computer Manufacturing
+level 2: 31-33,Manufacturing
+level 3: 334,Computer and Electronic Product Manufacturing
+level 4: 3341,Computer and Peripheral Equipment Manufacturing
+level 5: 33411,Computer and Peripheral Equipment Manufacturing
+description,"This U.S. industry comprises establishments primarily engaged in manufacturing and/or assembling electronic computers, such as mainframes, personal computers, workstations, laptops, and computer servers. Computers can be analog, digital, or hybrid. Digital computers, the most common type, are devices that do all of the following: (1) store the processing program or programs and the data immediately necessary for the execution of the program; (2) can be freely programmed in accordance with the requirements of the user; (3) perform arithmetical computations specified by the user; and (4) execute, without human intervention, a processing program that requires the computer to modify its execution by logical decision during the processing run. Analog computers are capable of simulating mathematical models and contain at least analog, control, and programming elements. The manufacture of computers includes the assembly or integration of processors, coprocessors, memory, storage, and input/output devices into a user-programmable final product."
+census index entry,Analog computers manufacturing
+census index entry,Computer servers manufacturing
+census index entry,Computers manufacturing
+census index entry,Digital computers manufacturing
+census index entry,Hybrid computers manufacturing
+census index entry,Laptop computers manufacturing
+census index entry,Mainframe computers manufacturing
+census index entry,Microcomputers manufacturing
+census index entry,Minicomputers manufacturing
+census index entry,Notebook computers manufacturing
+census index entry,Personal computers manufacturing
+census index entry,Portable computers manufacturing
+census index entry,Tablet computers manufacturing
+census index entry,"Workstations, computer, manufacturing"
+sba size standard,"1,250 employees"
+naics 2017,334111
+sic 1987,3571
+naics 2027 (proposed),combined: 334110 Computer and Peripheral Equipment Manufacturing
+schedule c,

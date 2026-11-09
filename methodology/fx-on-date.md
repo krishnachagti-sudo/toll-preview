@@ -149,13 +149,31 @@ ECB rates are fetched each day after the ECB publishes them. The IRS table was r
 - [IRS: Yearly average currency exchange rates](https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates)
 - [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+ECB rates are fetched each day after the ECB publishes them, around 16:00 CET; they start on 1999-01-04, and a date with no fixing uses the latest one in the 7 days before it and says which. Treasury rates come quarterly with amendments in between, HMRC rates monthly. The IRS table is copied by hand: 2021 to 2025, page updated 2026-09-17.
+
+Exchange rate on a date: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [European Central Bank euro foreign exchange reference rates](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html) | daily fixings from 1999-01-04 | refreshed daily |
+| [U.S. Treasury Reporting Rates of Exchange](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) | every report since 2001-03-31 | refreshed with the data files |
+| [IRS: Yearly average currency exchange rates](https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates) | page updated 2026-09-17 | 2026-10-31 |
+| [HMRC monthly exchange rates](https://www.trade-tariff.service.gov.uk/exchange_rates) | every month since 2021-01 | refreshed with the data files |
+| [U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange (31 December reports)](https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange) | 2023-12-31, 2024-12-31, 2025-12-31 | 2026-10-31 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback and rounding that is exact on the decimal value. Treasury and HMRC values read on 2026-11-02 are pinned against the real files, and IRS averages against the stored IRS table, including the cells the IRS prints irregularly.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback to the day, rounding that is exact on the decimal value.
+- When the real downloaded files are present, the worked examples and the currency list are compared with them. Treasury and HMRC values read on 2026-11-02 are pinned against the real files.
+- IRS yearly averages are tested against the stored IRS table, including the cells the IRS prints irregularly, which are refused rather than guessed.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Exchange rate on a date tool](https://krishnachagti-sudo.github.io/toll-preview/fx-on-date/).
 

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Low-inventory fee per FNSKU or per parent ASIN? How variations are judged</title>
+<meta name="description" content="Amazon's help says days of supply for the low-inventory-level fee is calculated per FNSKU, in the 2026 rule and the 2027 rule. Some tools still describe a parent-ASIN calculation. A two-variation example both ways.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Low-inventory fee per FNSKU or per parent ASIN? How variations are judged">
+<meta property="og:description" content="Amazon's help says days of supply for the low-inventory-level fee is calculated per FNSKU, in the 2026 rule and the 2027 rule. Some tools still describe a parent-ASIN calculation. A two-variation example both ways.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent/","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent/","name":"Low-inventory fee per FNSKU or per parent ASIN? How variations are judged","description":"Amazon's help says days of supply for the low-inventory-level fee is calculated per FNSKU, in the 2026 rule and the 2027 rule. Some tools still describe a parent-ASIN calculation. A two-variation example both ways.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Amazon low-inventory-level fee calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/"},{"@type":"ListItem","position":3,"name":"Per FNSKU or per parent ASIN?","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the low-inventory fee charged per SKU or per parent?","acceptedAnswer":{"@type":"Answer","text":"Per FNSKU. Amazon's 2026 help: \"For each seller, we'll calculate the historical days of supply metric at the product FNSKU level, and we'll add the low-inventory-level fee to the FBA fulfillment fee for all shipped units of eligible products.\" The 2027 help: \"We calculate days of supply at the product FNSKU level by comparing your inventory levels for any given week with your actual units shipped in the four weeks before the inventory check (trailing) and four weeks after (following).\""}},{"@type":"Question","name":"Why do some sources say parent ASIN?","acceptedAnswer":{"@type":"Answer","text":"Amazon's own staff post on the Seller Forums that first explained the fee (shown as three years old) said: \"The historical days of supply metric is calculated at the parent-product level.\" Some pages, SmartScout's calculator among them, still say so. Amazon's current help pages say FNSKU and do not give the date of the change, so this site does not give one either."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"amazon-low-inventory-fee-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/">Amazon low-inventory-level fee calculator</a></li><li aria-current="page">Per FNSKU or per parent ASIN?</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Per FNSKU or per parent ASIN?</h1>
+<p class="cp-answer">Per FNSKU: Amazon's help says it calculates days of supply &quot;at the product FNSKU level&quot;, so a fast blue mug with 300 units at 20 a day (15.0 days) pays $0.70 a unit while its slow red sibling (200 units at 2 a day) pays nothing; judged as one parent (500 units at 22 a day, 22.7 days) both would have paid $0.36.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check each variation</h2><p class="muted">One FNSKU at a time is free; a file of variations is $0.005 each.</p><form method="get" action="/toll-preview/amazon-low-inventory-fee-calculator/" class="cp-tool-form"><div class="field"><label for="tf-date">Week you are checking</label><input type="date" id="tf-date" name="date" value="2027-02-08"></div><div class="field"><label for="tf-sku">SKU</label><input type="text" id="tf-sku" name="sku" value="MUG-BLUE"></div><input type="hidden" name="tier" value="large-standard"><div class="field"><label for="tf-weightLb">Shipping weight, lb</label><input type="number" id="tf-weightLb" name="weightLb" value="1.2"></div><div class="field"><label for="tf-inventory">Sellable FBA units at the check</label><input type="number" id="tf-inventory" name="inventory" value="300"></div><div class="field"><label for="tf-avgDailyBefore">Average shipped a day, 28 days before</label><input type="number" id="tf-avgDailyBefore" name="avgDailyBefore" value="20"></div><div class="field"><label for="tf-unitsLast7">Units shipped, past 7 days</label><input type="number" id="tf-unitsLast7" name="unitsLast7" value="140"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check this SKU</button></form><p class="small"><a href="/toll-preview/amazon-low-inventory-fee-calculator/?date=2027-02-08&amp;sku=MUG-BLUE&amp;tier=large-standard&amp;weightLb=1.2&amp;inventory=300&amp;avgDailyBefore=20&amp;unitsLast7=140">Open these numbers in the calculator</a></p></aside>
+<section>
+<h2 id="example">The example both ways</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>2027 rule, steady sales (following = trailing). Worked out by the calculator.</caption><thead><tr><th scope="col">Judged as</th><th scope="col">Units</th><th scope="col">A day</th><th scope="col" class="r num">Days of supply</th><th scope="col" class="r num">Fee a unit</th></tr></thead><tbody>
+<tr><th scope="row">MUG-BLUE (FNSKU)</th><td>300</td><td>20</td><td class="r num">15.0</td><td class="r num">$0.70</td></tr>
+<tr><th scope="row">MUG-RED (FNSKU)</th><td>200</td><td>2</td><td class="r num">100.0</td><td class="r num">$0.00</td></tr>
+<tr><th scope="row">Both as one parent</th><td>500</td><td>22</td><td class="r num">22.7</td><td class="r num">$0.36</td></tr>
+</tbody></table></div>
+<p>The red mug also ships under 20 units a week, which is an exemption of its own: Days of supply 100.0 is at or above 28: the fee needs both windows under 28.</p>
+</section>
+<section>
+<h2 id="plan">How to plan for it</h2>
+<p>Plan each variation on its own sales: the fast colour needs its own 28-day line, and a slow colour cannot cover for it. Check the low-inventory-level fee column in FBA Inventory per FNSKU, and SKU Economics for what was charged.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GV43F6S76Y9DHYRH">Amazon Seller Central help: Low-inventory-level fee (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GFU8NTVGHP2JQLCR">Amazon Seller Central help: Low-inventory-level fee 2027 (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/aa9f98e5-fa91-4949-af8f-6cf918c86a77">Amazon Seller Forums: Low-inventory-level fee further explained (Amazon staff post) (read November 8, 2026)</a></li><li><a href="https://smartscout.com/amazon-low-inventory-calculator">SmartScout: calculator page (read November 8, 2026)</a></li></ul>
+<p class="cp-note">An estimate from the rules and rates Amazon publishes in its Seller Central help (United States). What Amazon charges is in FBA Inventory, SKU Economics and Transaction View.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is the low-inventory fee charged per SKU or per parent?</h3></summary><div class="xp-in"><p>Per FNSKU. Amazon's 2026 help: &quot;For each seller, we'll calculate the historical days of supply metric at the product FNSKU level, and we'll add the low-inventory-level fee to the FBA fulfillment fee for all shipped units of eligible products.&quot; The 2027 help: &quot;We calculate days of supply at the product FNSKU level by comparing your inventory levels for any given week with your actual units shipped in the four weeks before the inventory check (trailing) and four weeks after (following).&quot;</p></div></details><details class="xpand"><summary><h3>Why do some sources say parent ASIN?</h3></summary><div class="xp-in"><p>Amazon's own staff post on the Seller Forums that first explained the fee (shown as three years old) said: &quot;The historical days of supply metric is calculated at the parent-product level.&quot; Some pages, SmartScout's calculator among them, still say so. Amazon's current help pages say FNSKU and do not give the date of the change, so this site does not give one either.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/vs/smartscout/">SmartScout compared</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/historical-days-of-supply/">Historical days of supply</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/how-to-avoid/">How to avoid the fee</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

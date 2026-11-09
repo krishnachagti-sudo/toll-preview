@@ -114,13 +114,43 @@ IRS notices from 2018-10-01 to 2027-09-30, each read 2026-10-31.
 - [IRS Publication 463 (for 2025 returns)](https://www.irs.gov/publications/p463)
 - [Instructions for Schedule C (Form 1040), 2025](https://www.irs.gov/instructions/i1040sc)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+IRS notices from 2018-10-01 to 2027-09-30, read 2026-10-31. A date after the last notice is refused.
+
+Trucker per diem worksheet: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IRS Notice 2018-77](https://www.irs.gov/pub/irs-drop/n-18-77.pdf) | 2018-10-01 to 2019-09-30 | 2026-10-31 |
+| [IRS Notice 2019-55](https://www.irs.gov/pub/irs-drop/n-19-55.pdf) | 2019-10-01 to 2020-09-30 | 2026-10-31 |
+| [IRS Notice 2020-71](https://www.irs.gov/pub/irs-drop/n-20-71.pdf) | 2020-10-01 to 2021-09-30 | 2026-10-31 |
+| [IRS Notice 2021-52](https://www.irs.gov/pub/irs-drop/n-21-52.pdf) | 2021-10-01 to 2022-09-30 | 2026-10-31 |
+| [IRS Notice 2022-44](https://www.irs.gov/pub/irs-drop/n-22-44.pdf) | 2022-10-01 to 2023-09-30 | 2026-10-31 |
+| [IRS Notice 2023-68](https://www.irs.gov/pub/irs-drop/n-23-68.pdf) | 2023-10-01 to 2024-09-30 | 2026-10-31 |
+| [IRS Notice 2024-68](https://www.irs.gov/pub/irs-drop/n-24-68.pdf) | 2024-10-01 to 2025-09-30 | 2026-10-31 |
+| [IRS Notice 2025-54](https://www.irs.gov/pub/irs-drop/n-25-54.pdf) | 2025-10-01 to 2026-09-30 | 2026-10-31 |
+| [IRS Notice 2026-60](https://www.irs.gov/pub/irs-drop/n-26-60.pdf) | 2026-10-01 to 2027-09-30 | 2026-10-31 |
+| [IRS Notice 2021-63](https://www.irs.gov/pub/irs-drop/n-21-63.pdf) | 2021-01-01 to 2022-12-31 | 2026-10-31 |
+| [Rev. Proc. 2011-47](https://www.irs.gov/pub/irs-drop/rp-11-47.pdf) | see the document | 2026-10-31 |
+| [Rev. Proc. 2019-48](https://www.irs.gov/pub/irs-drop/rp-19-48.pdf) | see the document | 2026-10-31 |
+| [IRS Publication 463 (for 2025 returns)](https://www.irs.gov/publications/p463) | see the document | 2026-10-31 |
+| [Instructions for Schedule C (Form 1040), 2025](https://www.irs.gov/instructions/i1040sc) | see the document | 2026-10-31 |
+| [49 CFR 395.8(k) (records of duty status kept 6 months)](https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395/subpart-A/section-395.8) | see the document | 2026-10-31 |
+| [49 CFR 395.22(i) (ELD back-ups kept 6 months)](https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395/subpart-B/section-395.22) | see the document | 2026-10-31 |
+| [IRS: How long should I keep records?](https://www.irs.gov/businesses/small-businesses-self-employed/how-long-should-i-keep-records) | see the document | 2026-10-31 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Every notice period is compared with the notice: its URL, effective date and the sentence in section 3 that sets the rate. A gap in the rate table is refused. The rate in force on each date is checked across every October 1 change, and worked examples are reproduced, such as 240 full and 40 partial days in 2026 giving $21,600 of per diem and $17,280 at 80%.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Every notice period is compared with the notice: its URL, effective date and the sentence in section 3 that sets the rate. A gap in the rate table is refused.
+- The rate in force on each date is checked across every October 1 change, including the split years 2021 and 2024.
+- Worked examples are reproduced, such as 240 full and 40 partial days in 2026 giving $21,600 of per diem and $17,280 at 80%.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Trucker per diem worksheet tool](https://krishnachagti-sudo.github.io/toll-preview/trucker-per-diem/).
 

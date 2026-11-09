@@ -101,10 +101,10 @@ function download(name, body) {
   return h('a', { href: URL.createObjectURL(blob), download: name, class: 'gp-dl' }, name);
 }
 
-function render(r, { example = false, note = null } = {}) {
+function render(r, { example = null, note = null } = {}) {
   const out = $('gp-out');
   out.textContent = '';
-  if (example) out.appendChild(h('p', { class: 'gp-label' }, 'Worked example'));
+  if (example) out.appendChild(h('p', { class: 't-ex' }, [h('span', { class: 'ex-tag' }, 'Example'), h('span', {}, `Worked example: ${example}`)]));
   out.appendChild(h('p', { class: 'gp-answer' }, r.answer));
   if (note) out.appendChild(h('p', { class: 'muted small' }, note));
   const s = r.summary;
@@ -221,7 +221,7 @@ async function start() {
     const tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
     const ex = tool.examples[0];
     $('gp-csv').value = ex.input.csv;
-    render(ex.output, { example: true, note: 'Made-up listings for a US brand selling into Germany and France. Press "Check the listings" to run it, or paste your own export.' });
+    render(ex.output, { example: ex.title, note: 'Made-up listings for a US brand selling into Germany and France. Press "Check the listings" to run it, or paste your own export.' });
   } catch {
     $('gp-out').textContent = 'The worked example could not load. The checker still works: paste your export and press the button.';
   }

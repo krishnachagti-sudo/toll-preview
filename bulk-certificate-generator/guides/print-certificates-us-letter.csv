@@ -1,0 +1,5 @@
+paper,size_in,safe_margin_in,area_inside_margins_in,longest_sample_name_size
+US Letter landscape,11 x 8.5,0.5,10 x 7.5,33.25 pt
+US Letter portrait,8.5 x 11,0.5,7.5 x 10,24 pt
+A4 landscape,11.69 x 8.27,0.5,10.69 x 7.27,35.75 pt
+A4 portrait,8.27 x 11.69,0.5,7.27 x 10.69,23.25 pt

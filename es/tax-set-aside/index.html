@@ -9,6 +9,7 @@
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <link rel="stylesheet" href="/toll-preview/tax-set-aside/files/page.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"tax-set-aside"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
@@ -66,69 +67,64 @@
   </div>
 </header>
 
-<main id="main" class="ts">
-  <section class="wrap ts-intro">
+<main id="main" class="ts tf hue-money">
+  <section class="wrap tf-open">
     <p class="eyebrow">Impuestos del trabajo por cuenta propia, pago por pago</p>
     <h1>Cuánto apartar de este pago para impuestos</h1>
-    <p class="lede">Un 25% fijo es demasiado en sus primeros pagos del año y muy poco más adelante. Esto pasa porque el impuesto sobre un pago depende de lo que ganó antes: al principio del año su primera ganancia queda cubierta por la deducción estándar (en el Reino Unido, el Personal Allowance) y paga en los tramos más bajos, y los pagos posteriores caen en tramos más altos. Indique el pago y lo que ha ganado hasta ahora este año, y la calculadora obtiene el impuesto que agrega solo este pago: el impuesto sobre el trabajo por cuenta propia, el impuesto federal sobre los ingresos y el impuesto estatal en EE. UU., o Income Tax, Class 4 y préstamo estudiantil en el Reino Unido, dividido exactamente donde el pago cruza un tramo o un umbral.</p>
-    <p class="ts-price" id="ts-price">$0.10 por pago, como máximo $2.49 al mes. Sin cuenta obtiene el porcentaje en 5 ejecuciones gratis al día.</p>
-    <p class="hint"><a href="/toll-preview/tax-set-aside/" hreflang="en" lang="en">Use this calculator in English</a></p>
+    <p class="lede">Un 25% fijo falla en las dos direcciones; esto calcula <b>el impuesto exacto que agrega este pago</b>, según lo que ha ganado hasta ahora este año.</p>
+    <p class="tf-price" id="ts-price"><span class="price">$0.10 por pago</span><span>como máximo $2.49 al mes</span><span>el porcentaje gratis, 5 ejecuciones al día, sin tarjeta</span></p>
+    <p class="lang-alt"><a href="/toll-preview/tax-set-aside/" hreflang="en" lang="en">Use this calculator in English</a></p>
   </section>
 
-  <section class="wrap ts-desk" aria-label="Calculadora">
-    <form class="ts-form" id="ts-form" novalidate>
+  <section class="wrap tf-calc ts-desk" data-jump="Calculadora" aria-label="Calculadora">
+    <form class="tf-panel tf-form ts-form" id="ts-form" novalidate>
       <fieldset class="field">
-        <legend>Dónde paga impuestos</legend>
+        <legend class="visually-hidden">Dónde paga impuestos</legend>
         <div class="choice-row">
           <label class="choice"><input type="radio" name="country" value="US" checked><span>Estados Unidos</span></label>
           <label class="choice"><input type="radio" name="country" value="UK"><span>Reino Unido</span></label>
         </div>
       </fieldset>
-
-      <fieldset class="field ts-group">
-        <legend>Este pago</legend>
-        <div class="ts-pair">
-          <div class="field">
-            <label for="ts-amount">Monto recibido</label>
-            <input type="number" id="ts-amount" min="0.01" step="0.01" inputmode="decimal" value="3000" aria-describedby="ts-amount-err">
-            <p class="field-error" id="ts-amount-err"></p>
-          </div>
-          <div class="field">
-            <label for="ts-date">Fecha en que lo recibió</label>
-            <input type="date" id="ts-date" value="2026-10-31" aria-describedby="ts-date-err">
-            <p class="field-error" id="ts-date-err"></p>
-          </div>
+      <div class="ts-pair">
+        <div class="field">
+          <label for="ts-amount">Monto recibido</label>
+          <input type="number" id="ts-amount" min="0.01" step="0.01" inputmode="decimal" value="3000" aria-describedby="ts-amount-err">
+          <p class="field-error" id="ts-amount-err"></p>
         </div>
         <div class="field">
-          <label for="ts-expenses">Gastos del negocio pagados con este dinero (opcional)</label>
-          <input type="number" id="ts-expenses" min="0" step="0.01" inputmode="decimal" aria-describedby="ts-expenses-err">
-          <p class="field-error" id="ts-expenses-err"></p>
+          <label for="ts-date">Fecha en que lo recibió</label>
+          <input type="date" id="ts-date" value="2026-10-31" aria-describedby="ts-date-err">
+          <p class="field-error" id="ts-date-err"></p>
         </div>
-        <div class="ts-pair" data-country="US">
-          <div class="field">
-            <label for="ts-miles">Millas de negocio (opcional)</label>
-            <input type="number" id="ts-miles" min="0" step="1" inputmode="numeric" aria-describedby="ts-miles-hint">
-            <p class="hint" id="ts-miles-hint">A la tarifa del IRS para la fecha: 72.5 centavos hasta el 30 de junio y 76 centavos desde el 1 de julio de 2026.</p>
-          </div>
-          <div class="field">
-            <label for="ts-tips">De esto, propinas calificadas (opcional)</label>
-            <input type="number" id="ts-tips" min="0" step="0.01" inputmode="decimal" aria-describedby="ts-tips-err">
-            <p class="field-error" id="ts-tips-err"></p>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="field ts-group">
-        <legend>Su año hasta ahora</legend>
+      </div>
+      <div class="ts-pair ts-pair-end">
         <div class="field">
-          <label for="ts-ytd">Ganancia neta en lo que va del año tributario, antes de este pago</label>
+          <label for="ts-ytd">Ganancia en lo que va del año</label>
           <input type="number" id="ts-ytd" step="0.01" inputmode="decimal" value="40000" aria-describedby="ts-ytd-hint ts-ytd-err">
-          <p class="hint" id="ts-ytd-hint">Ingresos del trabajo por cuenta propia menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.</p>
           <p class="field-error" id="ts-ytd-err"></p>
         </div>
-
-        <div data-country="US">
-          <div class="ts-pair">
+        <div class="field" data-country="US">
+          <label for="ts-state">Estado donde vive</label>
+          <select id="ts-state" aria-describedby="ts-state-hint"></select>
+        </div>
+        <div class="field" data-country="UK" hidden>
+          <label for="ts-nation">Dónde vive</label>
+          <select id="ts-nation">
+            <option value="england-wales-ni" selected>Inglaterra, Gales o Irlanda del Norte</option>
+            <option value="scotland">Escocia</option>
+          </select>
+        </div>
+      </div>
+      <p class="hint tf-long ts-state-hint" id="ts-state-hint" data-country="US"></p>
+      <p class="form-error" id="ts-error" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="ts-run">Calcular cuánto apartar</button>
+      <p class="hint tf-run-note ts-run-note" id="ts-run-note"></p>
+      <p class="visually-hidden" id="ts-status-live" role="status"></p>
+      <details class="xpand ts-more" id="ts-more">
+        <summary>Estado civil tributario, gastos, millas, propinas, salarios y más</summary>
+        <div class="xp-in">
+          <p class="hint" id="ts-ytd-hint">Ingresos del trabajo por cuenta propia menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.</p>
+          <div data-country="US">
             <div class="field">
               <label for="ts-status">Estado civil tributario</label>
               <select id="ts-status">
@@ -139,71 +135,78 @@
                 <option value="qss">Cónyuge sobreviviente que reúne los requisitos</option>
               </select>
             </div>
-            <div class="field">
-              <label for="ts-state">Estado donde vive</label>
-              <select id="ts-state" aria-describedby="ts-state-hint"></select>
-            </div>
-          </div>
-          <p class="hint ts-state-hint" id="ts-state-hint"></p>
-          <div class="ts-pair">
-            <div class="field">
-              <label for="ts-w2">Salarios del W-2 este año (opcional)</label>
-              <input type="number" id="ts-w2" min="0" step="1" inputmode="numeric" aria-describedby="ts-w2-hint">
-              <p class="hint" id="ts-w2-hint">Los salarios que espera de un empleo durante todo el año.</p>
-            </div>
-            <div class="field">
-              <label for="ts-age">Personas de 65 años o más en la declaración</label>
-              <select id="ts-age"><option value="0" selected>Ninguna</option><option value="1">Una</option><option value="2">Dos (conjunta)</option></select>
-            </div>
           </div>
           <div class="field">
-            <label for="ts-sstb">¿Es un negocio de servicios especificados (leyes, salud, consultoría, finanzas, artes escénicas)?</label>
-            <select id="ts-sstb" aria-describedby="ts-sstb-hint">
-              <option value="" selected>No estoy seguro</option>
-              <option value="yes">Sí</option>
-              <option value="no">No</option>
-            </select>
-            <p class="hint" id="ts-sstb-hint">Solo importa por encima de $201,750 de ingreso tributable ($403,500 en conjunta), y para la deducción por propinas. "No estoy seguro" usa la deducción QBI menor.</p>
+            <label for="ts-expenses">Gastos del negocio pagados con este dinero (opcional)</label>
+            <input type="number" id="ts-expenses" min="0" step="0.01" inputmode="decimal" aria-describedby="ts-expenses-err">
+            <p class="field-error" id="ts-expenses-err"></p>
+          </div>
+          <div class="ts-pair" data-country="US">
+            <div class="field">
+              <label for="ts-miles">Millas de negocio (opcional)</label>
+              <input type="number" id="ts-miles" min="0" step="1" inputmode="numeric" aria-describedby="ts-miles-hint">
+              <p class="hint tf-long" id="ts-miles-hint">A la tarifa del IRS para la fecha: 72.5 centavos hasta el 30 de junio y 76 centavos desde el 1 de julio de 2026.</p>
+            </div>
+            <div class="field">
+              <label for="ts-tips">De esto, propinas calificadas (opcional)</label>
+              <input type="number" id="ts-tips" min="0" step="0.01" inputmode="decimal" aria-describedby="ts-tips-err">
+              <p class="field-error" id="ts-tips-err"></p>
+            </div>
+          </div>
+          <div data-country="US">
+            <div class="ts-pair">
+              <div class="field">
+                <label for="ts-w2">Salarios del W-2 este año (opcional)</label>
+                <input type="number" id="ts-w2" min="0" step="1" inputmode="numeric" aria-describedby="ts-w2-hint">
+                <p class="hint tf-long" id="ts-w2-hint">Los salarios que espera de un empleo durante todo el año.</p>
+              </div>
+              <div class="field">
+                <label for="ts-age">Personas de 65 años o más en la declaración</label>
+                <select id="ts-age"><option value="0" selected>Ninguna</option><option value="1">Una</option><option value="2">Dos (conjunta)</option></select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="ts-sstb">¿Es un negocio de servicios especificados (leyes, salud, consultoría, finanzas, artes escénicas)?</label>
+              <select id="ts-sstb" aria-describedby="ts-sstb-hint">
+                <option value="" selected>No estoy seguro</option>
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+              </select>
+              <p class="hint tf-long" id="ts-sstb-hint">Solo importa por encima de $201,750 de ingreso tributable ($403,500 en conjunta), y para la deducción por propinas. "No estoy seguro" usa la deducción QBI menor.</p>
+            </div>
+          </div>
+          <div data-country="UK" hidden>
+            <div class="field">
+              <label for="ts-salary">Salario de un empleo este año tributario (opcional)</label>
+              <input type="number" id="ts-salary" min="0" step="1" inputmode="numeric" aria-describedby="ts-salary-hint">
+              <p class="hint tf-long" id="ts-salary-hint">Paga impuestos primero por PAYE, así que su ganancia se suma encima.</p>
+            </div>
+            <div class="ts-pair">
+              <div class="field">
+                <label for="ts-loan">Préstamo estudiantil</label>
+                <select id="ts-loan"><option value="" selected>Ninguno</option><option value="plan1">Plan 1</option><option value="plan2">Plan 2</option><option value="plan4">Plan 4</option><option value="plan5">Plan 5</option></select>
+              </div>
+              <label class="check ts-check"><input type="checkbox" id="ts-pg"><span>Postgraduate Loan</span></label>
+            </div>
           </div>
         </div>
-
-        <div data-country="UK" hidden>
-          <div class="field">
-            <label for="ts-nation">Dónde vive</label>
-            <select id="ts-nation">
-              <option value="england-wales-ni" selected>Inglaterra, Gales o Irlanda del Norte</option>
-              <option value="scotland">Escocia</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="ts-salary">Salario de un empleo este año tributario (opcional)</label>
-            <input type="number" id="ts-salary" min="0" step="1" inputmode="numeric" aria-describedby="ts-salary-hint">
-            <p class="hint" id="ts-salary-hint">Paga impuestos primero por PAYE, así que su ganancia se suma encima.</p>
-          </div>
-          <div class="ts-pair">
-            <div class="field">
-              <label for="ts-loan">Préstamo estudiantil</label>
-              <select id="ts-loan"><option value="" selected>Ninguno</option><option value="plan1">Plan 1</option><option value="plan2">Plan 2</option><option value="plan4">Plan 4</option><option value="plan5">Plan 5</option></select>
-            </div>
-            <label class="check ts-check"><input type="checkbox" id="ts-pg"><span>Postgraduate Loan</span></label>
-          </div>
-        </div>
-      </fieldset>
-
-      <p class="form-error" id="ts-error" role="alert"></p>
-      <button class="btn" type="submit" id="ts-run">Calcular cuánto apartar</button>
-      <p class="hint ts-run-note" id="ts-run-note"></p>
-      <p class="visually-hidden" id="ts-status-live" role="status"></p>
+      </details>
     </form>
 
-    <div class="ts-out" id="ts-out">
+    <div class="tf-panel tf-result ts-out" id="ts-out">
       <p class="muted">Cargando el ejemplo resuelto.</p>
     </div>
   </section>
 
-  <section class="wrap ts-ledger" data-jump="Su año" id="ts-ledger" aria-labelledby="ts-ledger-title">
-    <h2 id="ts-ledger-title">Su año, guardado en este navegador</h2>
-    <p class="muted">Cada respuesta que agrega queda aquí, para que vea lo que ya debería tener apartado para impuestos. Se guarda solo en este navegador: no guardamos nada de sus pagos en nuestro servidor. Si borra los datos del navegador, se borra.</p>
+  <section class="wrap tf-sec ts-ledger" data-jump="Su año" id="ts-ledger" aria-labelledby="ts-ledger-title">
+    <div class="tf-top solo">
+      <div>
+        <p class="eyebrow">Su año</p>
+        <h2 id="ts-ledger-title">Su año, guardado en este navegador</h2>
+        <p class="tf-p">Cada respuesta que agrega queda aquí, para que vea lo que ya debería tener apartado para impuestos. Se guarda solo en este navegador: no guardamos nada de sus pagos en nuestro servidor. Si borra los datos del navegador, se borra.</p>
+      </div>
+    </div>
+    <div class="tf-panel ts-ledger-panel">
     <div class="ts-ledger-body" id="ts-ledger-body"></div>
     <div class="ts-ledger-tools">
       <div class="field ts-saved">
@@ -215,37 +218,76 @@
       <button class="btn btn-quiet btn-small" type="button" id="ts-clear">Borrar</button>
     </div>
     <p class="hint" id="ts-ledger-note">Recalcular vuelve a calcular cada pago en orden de fecha desde el primero (útil si los agregó en desorden): $0.10 por cada 25 pagos, con sesión iniciada.</p>
+    </div>
   </section>
 
-  <section class="wrap ts-how" data-jump="Cómo se calcula" aria-labelledby="ts-how-title">
-    <h2 id="ts-how-title">Cómo se calcula el monto</h2>
-    <div class="ts-cols">
+  <section class="wrap tf-sec ts-how" data-jump="Reglas" aria-labelledby="ts-how-title">
+    <div class="tf-top">
       <div>
-        <h3>El impuesto que agrega este pago</h3>
-        <p>Calcula el impuesto del año dos veces: una con su ganancia hasta ahora y otra con este pago sumado, con las mismas reglas las dos veces. La diferencia es lo que este pago le cuesta en impuestos. Por eso los mismos $3,000 necesitan $424 (14.1%) al comienzo del año y $915 (30.5%) con $90,000, soltero en Texas: para entonces el pago cae en un tramo más alto. Un pago que cruza un tramo, la base salarial del Seguro Social, el umbral del impuesto adicional del Medicare o una banda del Reino Unido se divide en esa línea.</p>
+        <p class="eyebrow">Las reglas</p>
+        <h2 id="ts-how-title">Cómo se calcula el monto</h2>
+        <p class="tf-p">Un estimado para planificar, no asesoría tributaria, con las tasas publicadas para 2026 (EE. UU.) y 2026 a 2027 (Reino Unido).</p>
       </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="ts-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="ts-limits-title">Lo que no cubre</h3>
+          <p>Créditos tributarios, impuestos locales de EE. UU., más de un estado, y en el Reino Unido los ahorros, los dividendos y el High Income Child Benefit Charge.</p>
+          <details class="xpand"><summary>Leer la lista completa</summary><div class="xp-in">
+            <ul class="ts-disclaimers">
+              <li>Estimado para planificar, no asesoría tributaria. Usa las tasas publicadas para el año tributario 2026 (EE. UU.) y 2026 a 2027 (Reino Unido), con las fuentes listadas debajo de cada resultado. Usted sigue siendo responsable de sus pagos de impuestos estimados.</li>
+              <li>Supone un solo estado de residencia, la deducción estándar (más cualquier deducción por propinas, horas extra o personas mayores que ingrese) y ningún crédito; deja fuera los impuestos locales de EE. UU., y en el Reino Unido los ahorros, los dividendos y el High Income Child Benefit Charge.</li>
+              <li>Las deducciones por propinas, horas extra y personas mayores se aplican solo si usted califica; usted confirma que cumple los requisitos. No reducen el impuesto sobre el trabajo por cuenta propia.</li>
+              <li>No movemos dinero; usted decide qué transferir.</li>
+              <li>Reino Unido: en el primer año, los payments on account pueden hacer que su cuenta de enero sea de alrededor del 150% del impuesto de un año. Cada respuesta del Reino Unido también muestra el monto que lo cubre.</li>
+            </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M7.5 7.5h0M16.5 16.5h0"/></svg></span>
+        <div>
+          <h3>Por qué no un 25% fijo</h3>
+          <p>Un 25% fijo es demasiado al principio del año y muy poco más adelante.</p>
+          <details class="xpand"><summary>Leer la regla completa</summary><div class="xp-in"><p>Un 25% fijo es demasiado en sus primeros pagos del año y muy poco más adelante. Esto pasa porque el impuesto sobre un pago depende de lo que ganó antes: al principio del año su primera ganancia queda cubierta por la deducción estándar (en el Reino Unido, el Personal Allowance) y paga en los tramos más bajos, y los pagos posteriores caen en tramos más altos. Indique el pago y lo que ha ganado hasta ahora este año, y la calculadora obtiene el impuesto que agrega solo este pago: el impuesto sobre el trabajo por cuenta propia, el impuesto federal sobre los ingresos y el impuesto estatal en EE. UU., o Income Tax, Class 4 y préstamo estudiantil en el Reino Unido, dividido exactamente donde el pago cruza un tramo o un umbral.</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18h16M6 18V9m4 9V5m4 13v-6m4 6V8"/></svg></span>
+        <div>
+          <h3>El impuesto que agrega este pago</h3>
+          <p>El impuesto del año con y sin este pago; la diferencia es lo que cuesta.</p>
+          <details class="xpand"><summary>Leer la regla completa</summary><div class="xp-in"><p>Calcula el impuesto del año dos veces: una con su ganancia hasta ahora y otra con este pago sumado, con las mismas reglas las dos veces. La diferencia es lo que este pago le cuesta en impuestos. Por eso los mismos $3,000 necesitan $424 (14.1%) al comienzo del año y $915 (30.5%) con $90,000, soltero en Texas: para entonces el pago cae en un tramo más alto. Un pago que cruza un tramo, la base salarial del Seguro Social, el umbral del impuesto adicional del Medicare o una banda del Reino Unido se divide en esa línea.</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+        <div>
+          <h3>Qué incluye</h3>
+          <p>EE. UU. 2026: impuesto federal, por cuenta propia y estatal; Reino Unido 2026 a 2027: Income Tax, Class 4 y préstamo estudiantil.</p>
+          <details class="xpand"><summary>Leer la regla completa</summary><div class="xp-in"><p>EE. UU., 2026: el impuesto sobre el trabajo por cuenta propia (15.3% del 92.35% de la ganancia; el Seguro Social se detiene en $184,500, contando los salarios del W-2), el impuesto adicional del Medicare, el impuesto federal sobre los ingresos con la deducción estándar, la deducción QBI, y las deducciones por propinas, horas extra y personas mayores para las que califique; el impuesto estatal sobre los ingresos para los estados de la lista. Reino Unido, 2026 a 2027: Income Tax (bandas escocesas en Escocia), la reducción del Personal Allowance, Class 4 National Insurance y el préstamo estudiantil por Self Assessment.</p></div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec ts-prices" data-jump="Precio" aria-labelledby="ts-prices-title">
+    <div class="tf-top solo">
       <div>
-        <h3>Qué incluye</h3>
-        <p>EE. UU., 2026: el impuesto sobre el trabajo por cuenta propia (15.3% del 92.35% de la ganancia; el Seguro Social se detiene en $184,500, contando los salarios del W-2), el impuesto adicional del Medicare, el impuesto federal sobre los ingresos con la deducción estándar, la deducción QBI, y las deducciones por propinas, horas extra y personas mayores para las que califique; el impuesto estatal sobre los ingresos para los estados de la lista. Reino Unido, 2026 a 2027: Income Tax (bandas escocesas en Escocia), la reducción del Personal Allowance, Class 4 National Insurance y el préstamo estudiantil por Self Assessment.</p>
+        <p class="eyebrow">Precio</p>
+        <h2 id="ts-prices-title">Lo que cuesta</h2>
       </div>
     </div>
-    <ul class="ts-disclaimers">
-      <li>Estimado para planificar, no asesoría tributaria. Usa las tasas publicadas para el año tributario 2026 (EE. UU.) y 2026 a 2027 (Reino Unido), con las fuentes listadas debajo de cada resultado. Usted sigue siendo responsable de sus pagos de impuestos estimados.</li>
-      <li>Supone un solo estado de residencia, la deducción estándar (más cualquier deducción por propinas, horas extra o personas mayores que ingrese) y ningún crédito; deja fuera los impuestos locales de EE. UU., y en el Reino Unido los ahorros, los dividendos y el High Income Child Benefit Charge.</li>
-      <li>Las deducciones por propinas, horas extra y personas mayores se aplican solo si usted califica; usted confirma que cumple los requisitos. No reducen el impuesto sobre el trabajo por cuenta propia.</li>
-      <li>No movemos dinero; usted decide qué transferir.</li>
-      <li>Reino Unido: en el primer año, los payments on account pueden hacer que su cuenta de enero sea de alrededor del 150% del impuesto de un año. Cada respuesta del Reino Unido también muestra el monto que lo cubre.</li>
-    </ul>
-  </section>
-
-  <section class="wrap ts-prices" data-jump="Precios" aria-labelledby="ts-prices-title">
-    <h2 id="ts-prices-title">Lo que cuesta</h2>
+    <div class="tf-panel ts-price-list">
 <ul class="endwise-prices"><li><strong>Cuánto apartar de un pago</strong>: $0.10 por pago.</li><li><strong>Solo el porcentaje</strong>: $0.10 por pago; sin el monto en dólares ni el desglose, y disponible en las ejecuciones gratis de los visitantes sin cuenta.</li><li><strong>Recalcular el registro del año</strong>: $0.10 por cada 25 pagos (redondeado hacia arriba).</li><li><strong>Próxima fecha de pago y safe harbor</strong>: gratis.</li><li><strong>Tasas y umbrales con sus fuentes</strong>: gratis.</li><li>Como máximo $2.49 por mes calendario por esta herramienta; después es gratis hasta que termine el mes.</li></ul>
+    </div>
   </section>
 
 
 
-  <section class="wrap ts-code" aria-label="Úselo desde código">
+  <section class="wrap tf-code ts-code" data-jump="Código" aria-label="Úselo desde código">
     <div id="ts-code"></div>
   </section>
   <noscript><div class="wrap"><p>Esta calculadora necesita JavaScript. También puede usarla desde código: vea <a href="/toll-preview/docs" hreflang="en">la documentación</a> (en inglés).</p></div></noscript>
@@ -338,6 +380,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

@@ -17,25 +17,16 @@
   --pd-home: rgba(255, 255, 255, 0.06);
 }
 
-.pd-intro { padding-block: 40px 8px; }
-.pd-intro h1 { margin-bottom: 0.25em; }
-.pd-price { color: var(--ink-soft); max-width: 44rem; margin: 0; font-variant-numeric: tabular-nums; }
-.pd-who { margin-top: 8px; }
-.pd-sample { max-width: 44rem; margin: 8px 0 0; }
-.pd-sample .btn { margin: 4px 6px 0 0; }
-.pd-format { margin-top: 6px; color: var(--ink-soft); }
-.pd-format summary { cursor: pointer; }
-.pd-format p { margin: 6px 0 0; max-width: 40rem; }
-
-.pd-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.pd-desk > * { min-width: 0; }
-@media (min-width: 960px) { .pd-desk { grid-template-columns: 23rem 1fr; gap: 48px; } }
-
-.pd-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.pd-form legend { padding: 0; }
-.pd-form > .btn { width: 100%; }
-.pd-group { border-top: 1px solid var(--rule); padding-top: 14px; }
-.pd-group > legend { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+/* The tool-full layout (web/tool-full.css) carries the page; here only the log. */
+.pd-sample { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+.pd-sample .btn { margin: 6px 6px 0 0; }
+.pd-form #pd-year-hint { margin-top: 8px; }
+.pd-format .xp-in p { margin: 0 0 8px; }
+.pd-format p { margin: 0; max-width: 40rem; }
+.pd-form .pd-get { width: 100%; margin-top: 12px; }
+.pd-form fieldset.pd-group + .tf-go, .pd-form [data-mode] + .tf-go { margin-top: 18px; }
+.pd-group { border-top: 1px solid var(--line); padding-top: 14px; }
+.pd-group > legend { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 .pd textarea { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; }
 .check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 12px; cursor: pointer; }
 .check input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
@@ -53,28 +44,20 @@
 .pd-get-note { margin: 10px 0 0; }
 
 /* Result */
-.pd-out { min-height: 12rem; }
-.pd-sheet-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.pd-answer { font: 500 clamp(2rem, 7vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 10px; font-variant-numeric: lining-nums tabular-nums; }
-.pd-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
-.pd-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 12px; }
-.pd-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
-.pd-facts dd { margin: 2px 0 0; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-.pd-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 46rem; }
-.pd-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
+.pd-items { margin-top: 18px; }
+.pd-items .k { font-size: 11px; }
+.pd-items em a { color: var(--text-2); }
 .pd-table { width: 100%; font-variant-numeric: tabular-nums; }
 .pd-table td, .pd-table th { white-space: nowrap; }
+.pd-out .pd-warn { margin-top: 14px; }
 .pd-warn, .pd-enter { margin: 0 0 8px; padding-left: 1.2em; max-width: 46rem; }
 .pd-warn li, .pd-enter li { margin: 0 0 6px; }
 .pd-warn li::marker { color: var(--pd-partial); }
-.pd-aside { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 10px; max-width: 44rem; }
-.pd-why { margin: 14px 0 6px; max-width: 46rem; }
-.pd-why summary { cursor: pointer; color: var(--text-2); }
-.pd-why ul { padding-left: 1.2em; color: var(--ink-soft); font-size: 0.92rem; }
+.pd-why ul, .pd-enter { padding-left: 1.2em; margin: 0; }
 .pd-downloads { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* The year calendar */
-.pd-cal-wrap { margin-top: 48px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.pd-cal-panel { padding: 22px; }
 .pd-cal { display: grid; gap: 20px 24px; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); margin-top: 14px; }
 .pd-month-name { font: 500 0.8rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 6px; color: var(--text-2); }
 .pd-dow, .pd-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
@@ -101,14 +84,13 @@
 .pd-key.abroad { background-image: repeating-linear-gradient(135deg, transparent 0 3px, rgba(255, 255, 255, 0.2) 3px 4px); }
 
 /* Rules, prices, sources */
-.pd-rules, .pd-legal { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
-.pd-rule-cols { display: grid; gap: 4px 40px; }
-@media (min-width: 760px) { .pd-rule-cols { grid-template-columns: repeat(3, 1fr); } }
-.pd-rule-cols p, .pd-legal li { color: var(--ink-soft); max-width: 40rem; }
-.pd-table-title { margin-top: 28px; }
+.pd-rate-panel, .pd-price-panel { padding: 22px; margin-top: 16px; }
+.pd-table-title { margin: 0 0 12px; font-size: 18px; }
+.pd-rate-panel details.xpand { margin-top: 14px; }
+.pd-src-fold { margin-top: 16px; }
+.pd-sources, .pd-limits ul, #pd-disclaimers { padding-left: 1.2em; margin: 0; }
+.pd-sources li, #pd-disclaimers li { margin: 0 0 6px; }
 .pd-sources a { word-break: break-word; }
-.pd-code { margin-top: 40px; max-width: 52rem; }
-.pd-code pre { max-width: 100%; }
 
 @media (max-width: 420px) {
   .pd-counts { grid-template-columns: 1fr; }
@@ -123,4 +105,15 @@
 }
 @media print {
   .pd-form, .pd-code, .pd-cal-wrap { display: none; }
+}
+.pd-top { align-items: start; }
+.pd-top .choice-row { flex-wrap: nowrap; gap: 6px; }
+.pd-top .choice span { padding: 0 12px; }
+.pd-form [data-mode="log"] > .field:first-child { margin-top: 14px; }
+.pd-drive .check:last-of-type { margin-bottom: 0; }
+@media (max-width: 640px) { .pd-about { display: none; } }
+@media (max-width: 640px) { .tf-open .tf-price > span:nth-child(3) { display: none; } }
+@media (max-width: 640px) {
+  .pd-top { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); }
+  #pd-trips { height: calc(3 * 1.55em + 26px); }
 }

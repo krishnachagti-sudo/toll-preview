@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazon seller settlement report explained: the Flat File V2, column by column</title>
+<meta name="description" content="All 24 columns of Amazon's Flat File V2 seller settlement report, from Amazon's SP-API docs, with a worked sample: one amount column labelled by amount-type and amount-description, local number formats, and the old reports ending November 11, 2026.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/settlement-report-explained/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/amazon-settlement-reconciliation/settlement-report-explained.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Amazon seller settlement report explained: the Flat File V2, column by column">
+<meta property="og:description" content="All 24 columns of Amazon's Flat File V2 seller settlement report, from Amazon's SP-API docs, with a worked sample: one amount column labelled by amount-type and amount-description, local number formats, and the old reports ending November 11, 2026.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/settlement-report-explained/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/settlement-report-explained/","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/settlement-report-explained/","name":"Amazon seller settlement report explained: the Flat File V2, column by column","description":"All 24 columns of Amazon's Flat File V2 seller settlement report, from Amazon's SP-API docs, with a worked sample: one amount column labelled by amount-type and amount-description, local number formats, and the old reports ending November 11, 2026.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Amazon settlement reconciliation","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/"},{"@type":"ListItem","position":3,"name":"The Amazon settlement report, column by column","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/settlement-report-explained/"}]},{"@type":"Dataset","name":"Amazon seller settlement report explained: the Flat File V2, column by column","description":"All 24 columns of Amazon's Flat File V2 seller settlement report, from Amazon's SP-API docs, with a worked sample: one amount column labelled by amount-type and amount-description, local number formats, and the old reports ending November 11, 2026.","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/settlement-report-explained/","dateModified":"2026-11-08","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/settlement-report-explained.csv"}],"temporalCoverage":"2026-10-24/2026-11-07"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I request an Amazon settlement report on demand?","acceptedAnswer":{"@type":"Answer","text":"No. Amazon's SP-API docs say: Settlement reports cannot be requested or scheduled. They are automatically scheduled by Amazon. You download each one after it closes."}},{"@type":"Question","name":"Why is every amount in one column?","acceptedAnswer":{"@type":"Answer","text":"In the Flat File V2 report, Price columns are condensed into three general-purpose columns: amount-type, amount-description, amount. So a fee, a price and a tax are separate rows, each with its amount in the amount column."}},{"@type":"Question","name":"Why does my EU settlement report show 95,00?","acceptedAnswer":{"@type":"Answer","text":"Amazon's docs say amounts are displayed in local currency formats (for example, 95,00 for EU instead of 95.00). The reconciler reads the decimal mark from the file."}},{"@type":"Question","name":"When do the old settlement reports stop?","acceptedAnswer":{"@type":"Answer","text":"Amazon's changelog says the old Flat File and XML settlement reports will be unavailable for sellers as of November 11, 2026. There is no XML report replacement."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"amazon-settlement-reconciliation"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement reconciliation</a></li><li aria-current="page">The Amazon settlement report, column by column</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">Flat File V2</p>
+<h1>The Amazon settlement report, column by column</h1>
+<p class="cp-answer">Amazon's Flat File V2 settlement report has 24 columns and puts every amount in one, amount, labelled by amount-type and amount-description; in the sample below, 36 amount rows add up to the total-amount of $188.14 to the cent.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the reconciler</h2><p class="muted">The made-up report below opens in the reconciler and is checked in your browser, free. Swap in your own settlement report there.</p><form method="get" action="/toll-preview/amazon-settlement-reconciliation/" class="cp-tool-form"><input type="hidden" name="sample" value="us"><input type="hidden" name="ledger" value="quickbooks-online"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this settlement in the reconciler</button></form><p class="small"><a href="/toll-preview/amazon-settlement-reconciliation/?sample=us&amp;ledger=quickbooks-online">Open this example in the reconciler</a></p></aside>
+<section>
+<h2 id="columns">The 24 columns</h2>
+<p>The column names and their order are Amazon's (GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2, a tab-delimited flat file). Amazon does not describe each column, so the table shows what each holds in the made-up sample and what the reconciler does with it.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Flat File V2 settlement report columns, with the sample's values</caption><thead><tr><th scope="col">Column</th><th scope="col" class="r num">#</th><th scope="col">Summary row</th><th scope="col">An order row</th><th scope="col">Used for</th></tr></thead><tbody>
+<tr><th scope="row">settlement-id</th><td class="r num">1</td><td>24816093571</td><td>24816093571</td><td>Groups the rows into settlements</td></tr>
+<tr><th scope="row">settlement-start-date</th><td class="r num">2</td><td>2026-10-24 07:00:00 UTC</td><td>(blank)</td><td>The period, shown with the answer</td></tr>
+<tr><th scope="row">settlement-end-date</th><td class="r num">3</td><td>2026-11-07 07:00:00 UTC</td><td>(blank)</td><td>The last part's journal date</td></tr>
+<tr><th scope="row">deposit-date</th><td class="r num">4</td><td>2026-11-09 09:00:00 UTC</td><td>(blank)</td><td>Checked against the day the money reached the bank</td></tr>
+<tr><th scope="row">total-amount</th><td class="r num">5</td><td>188.14</td><td>(blank)</td><td>The proof: the rows must add up to it</td></tr>
+<tr><th scope="row">currency</th><td class="r num">6</td><td>USD</td><td>(blank)</td><td>Decimal places and the currency of every amount</td></tr>
+<tr><th scope="row">transaction-type</th><td class="r num">7</td><td>(blank)</td><td>Order</td><td>Refund rows of price and shipping go to Refunds</td></tr>
+<tr><th scope="row">order-id</th><td class="r num">8</td><td>(blank)</td><td>112-0000001-0000001</td><td>Shown in the row file</td></tr>
+<tr><th scope="row">merchant-order-id</th><td class="r num">9</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
+<tr><th scope="row">adjustment-id</th><td class="r num">10</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
+<tr><th scope="row">shipment-id</th><td class="r num">11</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
+<tr><th scope="row">marketplace-name</th><td class="r num">12</td><td>(blank)</td><td>Amazon.com</td><td>Shown with the settlement</td></tr>
+<tr><th scope="row">amount-type</th><td class="r num">13</td><td>(blank)</td><td>ItemPrice</td><td>Read by the word rules</td></tr>
+<tr><th scope="row">amount-description</th><td class="r num">14</td><td>(blank)</td><td>Principal</td><td>Read by the word rules</td></tr>
+<tr><th scope="row">amount</th><td class="r num">15</td><td>(blank)</td><td>39.99</td><td>Every amount, summed by period and line</td></tr>
+<tr><th scope="row">fulfillment-id</th><td class="r num">16</td><td>(blank)</td><td>AFN</td><td>Kept as written</td></tr>
+<tr><th scope="row">posted-date</th><td class="r num">17</td><td>(blank)</td><td>10/25/26</td><td>The period each row is split into</td></tr>
+<tr><th scope="row">posted-date-time</th><td class="r num">18</td><td>(blank)</td><td>2026-10-25 15:20:11 UTC</td><td>The period, when you name a time zone</td></tr>
+<tr><th scope="row">order-item-code</th><td class="r num">19</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
+<tr><th scope="row">merchant-order-item-id</th><td class="r num">20</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
+<tr><th scope="row">merchant-adjustment-item-id</th><td class="r num">21</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
+<tr><th scope="row">sku</th><td class="r num">22</td><td>(blank)</td><td>MUG-BLUE</td><td>Shown in the row file</td></tr>
+<tr><th scope="row">quantity-purchased</th><td class="r num">23</td><td>(blank)</td><td>1</td><td>Kept as written</td></tr>
+<tr><th scope="row">promotion-id</th><td class="r num">24</td><td>(blank)</td><td>(blank)</td><td>Kept as written</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="rows">How the rows work</h2>
+<ul><li>The first row after the header carries the settlement: its id, start and end, deposit-date and total-amount, with no amount.</li><li>Every other row is one amount: an order's price, its tax, the tax Amazon withholds, each fee, a refund, an advertising charge, a reserve. In the sample, order 112-0000002-0000002 takes 6 rows.</li><li>Amazon's changelog lists posted-date (MM/DD/YY) and posted-date-time (YYYY-MM-DD HH:MM:SS UTC).</li><li>Amazon publishes the columns but not a closed list of amount-type and amount-description values; its Finances API docs say of a similar field that breakdownType is an open-ended string; Amazon does not publish a closed list of values. The reconciler shows every value it finds with the line it booked it to.</li></ul>
+</section>
+<section>
+<h2 id="values">The sample, by line</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>Every amount-type and amount-description in the sample</caption><thead><tr><th scope="col">Amount type / description</th><th scope="col">Transaction type</th><th scope="col" class="r num">Rows</th><th scope="col" class="r num">Total</th><th scope="col">Booked to</th></tr></thead><tbody>
+<tr><th scope="row">ItemPrice / Principal</th><td>Order</td><td class="r num">5</td><td class="r num">$354.94</td><td>Product sales</td></tr>
+<tr><th scope="row">Promotion / Principal</th><td>Order</td><td class="r num">1</td><td class="r num">-$5.00</td><td>Promotions</td></tr>
+<tr><th scope="row">ItemPrice / Principal</th><td>Refund</td><td class="r num">1</td><td class="r num">-$39.99</td><td>Refunds</td></tr>
+<tr><th scope="row">ItemPrice / Tax</th><td>Order</td><td class="r num">5</td><td class="r num">$28.40</td><td>Sales tax collected</td></tr>
+<tr><th scope="row">ItemPrice / Tax</th><td>Refund</td><td class="r num">1</td><td class="r num">-$3.20</td><td>Sales tax collected</td></tr>
+<tr><th scope="row">ItemWithheldTax / MarketplaceFacilitatorTax-Principal</th><td>Order</td><td class="r num">5</td><td class="r num">-$28.40</td><td>Tax withheld by Amazon</td></tr>
+<tr><th scope="row">ItemWithheldTax / MarketplaceFacilitatorTax-Principal</th><td>Refund</td><td class="r num">1</td><td class="r num">$3.20</td><td>Tax withheld by Amazon</td></tr>
+<tr><th scope="row">ItemFees / Commission</th><td>Order</td><td class="r num">5</td><td class="r num">-$53.25</td><td>Selling fees</td></tr>
+<tr><th scope="row">ItemFees / Commission</th><td>Refund</td><td class="r num">1</td><td class="r num">$6.00</td><td>Selling fees</td></tr>
+<tr><th scope="row">ItemFees / RefundCommission</th><td>Refund</td><td class="r num">1</td><td class="r num">-$1.20</td><td>Selling fees</td></tr>
+<tr><th scope="row">ItemFees / FBAPerUnitFulfillmentFee</th><td>Order</td><td class="r num">5</td><td class="r num">-$34.70</td><td>FBA fees</td></tr>
+<tr><th scope="row">Cost of Advertising / TransactionTotalAmount</th><td>other-transaction</td><td class="r num">1</td><td class="r num">-$42.17</td><td>Advertising</td></tr>
+<tr><th scope="row">other-transaction / Subscription Fee</th><td>other-transaction</td><td class="r num">1</td><td class="r num">-$39.99</td><td>Subscription</td></tr>
+<tr><th scope="row">FBA Inventory Reimbursement / WAREHOUSE_DAMAGE</th><td>other-transaction</td><td class="r num">1</td><td class="r num">$18.50</td><td>Reimbursements</td></tr>
+<tr><th scope="row">other-transaction / Previous Reserve Amount Balance</th><td>other-transaction</td><td class="r num">1</td><td class="r num">$120.00</td><td>Reserve held and released</td></tr>
+<tr><th scope="row">other-transaction / Current Reserve Amount</th><td>other-transaction</td><td class="r num">1</td><td class="r num">-$95.00</td><td>Reserve held and released</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="download">Getting the report</h2>
+<ul><li>Seller Central, Payments, All Statements: download the settlement. The Payments (settlements) reports you download from Seller Central are tab-delimited text files.</li><li>Through the SP-API it is GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2 and needs the Finance and Accounting role.</li><li>The old Flat File and XML versions will be unavailable for sellers as of November 11, 2026.</li></ul>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://developer-docs.amazon.com/sp-api/docs/report-type-values-settlement">Amazon SP-API: Settlement Reports (read November 8, 2026)</a></li><li><a href="https://developer-docs.amazon.com/sp-api/changelog/update-deprecation-of-two-payment-settlement-report-types">Amazon SP-API changelog: Deprecation of two payment settlement report types (read November 8, 2026)</a></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/sp-api-deprecations">Amazon SP-API: SP-API Deprecation Schedule (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G14921">Seller Central Help: How do I read my Payments report? (read November 8, 2026)</a></li><li><a href="https://developer-docs.amazon.com/sp-api/docs/get-latest-transactions">Amazon SP-API: Get the latest transactions (breakdownType) (read November 8, 2026)</a></li></ul>
+<p class="cp-note">Not accounting or tax advice: this is arithmetic on Amazon's own settlement file. The sample reports are made up; their amount-type and amount-description values are illustrative, and your file's own values are read as written.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Can I request an Amazon settlement report on demand?</h3></summary><div class="xp-in"><p>No. Amazon's SP-API docs say: Settlement reports cannot be requested or scheduled. They are automatically scheduled by Amazon. You download each one after it closes.</p></div></details><details class="xpand"><summary><h3>Why is every amount in one column?</h3></summary><div class="xp-in"><p>In the Flat File V2 report, Price columns are condensed into three general-purpose columns: amount-type, amount-description, amount. So a fee, a price and a tax are separate rows, each with its amount in the amount column.</p></div></details><details class="xpand"><summary><h3>Why does my EU settlement report show 95,00?</h3></summary><div class="xp-in"><p>Amazon's docs say amounts are displayed in local currency formats (for example, 95,00 for EU instead of 95.00). The reconciler reads the decimal mark from the file.</p></div></details><details class="xpand"><summary><h3>When do the old settlement reports stop?</h3></summary><div class="xp-in"><p>Amazon's changelog says the old Flat File and XML settlement reports will be unavailable for sellers as of November 11, 2026. There is no XML report replacement.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/amazon-settlement-reconciliation/sample-settlement-report-csv/">Download the sample settlement report</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/month-end-accrual-split/">Split a settlement at month end</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/deposit-doesnt-match/">Why the deposit does not match</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/vs/manual-spreadsheet/">Reconciling the report in a spreadsheet</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/amazon-settlement-reconciliation/settlement-report-explained.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/amazon-settlement-reconciliation/settlement-report-explained.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -38,8 +38,8 @@ function syncCountry() {
   const c = country();
   document.querySelectorAll('[data-country]').forEach((el) => { el.hidden = el.dataset.country !== c; });
   $('ts-ytd-hint').textContent = c === 'UK'
-    ? tr('Profit from self-employment since 6 April 2026, less expenses. Use a minus sign for a loss so far.', 'Ganancia del trabajo por cuenta propia desde el 6 de abril de 2026, menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.')
-    : tr('Income from self-employment since January 1, 2026, less expenses. Use a minus sign for a loss so far.', 'Ingresos del trabajo por cuenta propia desde el 1 de enero de 2026, menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.');
+    ? tr('Profit from self-employment since 6 April 2026, before this payment, less expenses. Use a minus sign for a loss so far.', 'Ganancia del trabajo por cuenta propia desde el 6 de abril de 2026, antes de este pago, menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.')
+    : tr('Income from self-employment since January 1, 2026, before this payment, less expenses. Use a minus sign for a loss so far.', 'Ingresos del trabajo por cuenta propia desde el 1 de enero de 2026, antes de este pago, menos los gastos. Use un signo de menos si hasta ahora tiene una pérdida.');
   syncState();
 }
 
@@ -100,21 +100,50 @@ function readForm() {
 
 function showErrors(errors) {
   for (const el of document.querySelectorAll('.ts-form .field-error')) el.textContent = '';
-  for (const [id, msg] of Object.entries(errors)) { const el = $(`${id}-err`); if (el) el.textContent = msg; }
+  for (const [id, msg] of Object.entries(errors)) {
+    const el = $(`${id}-err`);
+    if (el) { el.textContent = msg; if (el.closest('#ts-more')) $('ts-more').open = true; }
+  }
 }
 
 // ---------- the answer ----------
 
 const row = (label, value, cls) => h('tr', cls ? { class: cls } : null, [h('th', { scope: 'row', text: label }), h('td', { class: 'num', text: value })]);
+// One line per figure: a mark, what it is, the amount and where it comes from (a working line).
+const item = (k, label, value, why, cls = null) => h('li', { class: cls }, [
+  h('span', { class: 'k', 'aria-hidden': 'true', text: k }), h('span', { text: label }), h('b', { text: value }), h('em', null, why),
+]);
+const whyOf = (result, start) => {
+  const w = result.working.find((x) => x.label.startsWith(start));
+  if (!w) return '';
+  return w.source ? h('a', { href: w.source, text: w.label, rel: 'noopener' }) : w.label;
+};
+const head = (kind) => h('div', { class: 'tf-rh' }, [
+  kind === 'example' ? h('span', { class: 'tf-tag', text: tr('Example', 'Ejemplo') }) : h('span', { class: 'tf-tag run', text: tr('Your result', 'Su resultado') }),
+  h('span', { class: 'tf-src', text: tr('Tax year 2026 rates, dated sources', 'Tasas del año fiscal 2026, fuentes con fecha') }),
+]);
+
+// The inputs in one line: "$3,000 on October 31, 2026, single, Texas, $40,000 of profit so far".
+function inputsLine(input, result) {
+  const c = input.country;
+  const where = c === 'UK' ? NATION_NAMES[input.nation ?? result?.nation] : [statusName(input.filingStatus), result?.state?.name ?? $('ts-state').selectedOptions[0]?.textContent].filter(Boolean).join(', ');
+  return [
+    tr(`${whole(c)(input.amount)} on ${dateLong(input.date)}`, `${whole(c)(input.amount)} el ${dateLong(input.date)}`),
+    where,
+    tr(`${whole(c)(input.ytdNetProfit)} of profit so far`, `${whole(c)(input.ytdNetProfit)} de ganancia hasta ahora`),
+  ].filter(Boolean).join(', ');
+}
+const inputs = (kind, input, result) => h('p', { class: 'tf-exin', text: kind === 'example' ? tr(`Example: ${inputsLine(input, result)}`, `Ejemplo: ${inputsLine(input, result)}`) : inputsLine(input, result) });
 
 function renderPercentage(input, result) {
   const out = $('ts-out');
   out.replaceChildren(
-    h('p', { class: 'ts-kicker', text: tr('Your answer (free run)', 'Su respuesta (ejecución gratis)') }),
-    h('p', { class: 'ts-big num', text: `${result.percent.toFixed(1)}%` }),
-    h('p', { class: 'ts-sub', text: tr(`of this payment goes to your tax pot.`, 'de este pago va a su fondo para impuestos.') }),
+    head('free'),
+    inputs('free', input, result),
+    h('p', { class: 'tf-big' }, [h('b', { class: 'num', text: `${result.percent.toFixed(1)}%` }), h('span', { text: tr('of this payment', 'de este pago') })]),
+    h('p', { class: 'tf-sub', text: tr(`goes to your tax pot.`, 'va a su fondo para impuestos.') }),
     ...(result.flags ?? []).map((x) => h('p', { class: 'ts-flag', text: x })),
-    h('p', { class: 'muted', text: tr(
+    h('p', { class: 'tf-note', text: tr(
       `Sign in for the amount in ${result.country === 'UK' ? 'pounds' : 'dollars'}, the breakdown, the working with every source, the next due date and the year ledger: ${paidPrice(result.country)}.`,
       `Inicie sesión para ver el monto en ${result.country === 'UK' ? 'libras' : 'dólares'}, el desglose, el cálculo con cada fuente, la próxima fecha de pago y el registro del año: ${paidPrice(result.country)}.`,
     ) }),
@@ -129,21 +158,30 @@ function render(input, result, { kind }) {
   const b = result.breakdown;
   const where = c === 'UK' ? NATION_NAMES[result.nation] : result.state ? result.state.name : tr('federal only', 'solo federal');
   const lines = c === 'UK'
-    ? [row('Income Tax', m(b.incomeTax)), row('Class 4 National Insurance', m(b.class4)), ...(b.studentLoan ? [row(tr('Student loan', 'Préstamo estudiantil'), m(b.studentLoan))] : [])]
+    ? [
+      item('IT', 'Income Tax', m(b.incomeTax), whyOf(result, 'Income Tax')),
+      item('C4', 'Class 4 National Insurance', m(b.class4), whyOf(result, 'Class 4')),
+      b.studentLoan ? item('SL', tr('Student loan', 'Préstamo estudiantil'), m(b.studentLoan), whyOf(result, 'Student loan') || whyOf(result, 'Postgraduate')) : null,
+    ]
     : [
-      row(tr('Self-employment tax', 'Impuesto sobre el trabajo por cuenta propia'), m(b.seTax)),
-      ...(b.additionalMedicare ? [row(tr('Additional Medicare Tax', 'Impuesto adicional del Medicare'), m(b.additionalMedicare))] : []),
-      row(tr('Federal income tax', 'Impuesto federal sobre los ingresos'), m(b.federalIncomeTax)),
-      row(result.state?.covered ? tr(`${result.state.name} income tax`, `Impuesto sobre los ingresos de ${result.state.name}`) : tr('State income tax', 'Impuesto estatal sobre los ingresos'), result.state?.covered ? m(b.state) : tr('not included', 'no incluido')),
+      item('SS', tr('Social Security', 'Seguro Social'), m(b.socialSecurity), whyOf(result, 'Social Security')),
+      item('M', 'Medicare', m(b.medicare), whyOf(result, 'Medicare')),
+      b.additionalMedicare ? item('AM', tr('Additional Medicare Tax', 'Impuesto adicional del Medicare'), m(b.additionalMedicare), whyOf(result, 'Additional Medicare')) : null,
+      item('F', tr('Federal income tax', 'Impuesto federal sobre los ingresos'), m(b.federalIncomeTax), whyOf(result, 'Federal income tax')),
+      item('S', result.state?.covered ? tr(`${result.state.name} income tax`, `Impuesto sobre los ingresos de ${result.state.name}`) : tr('State income tax', 'Impuesto estatal sobre los ingresos'), result.state?.covered ? m(b.state) : tr('not included', 'no incluido'), result.state ? whyOf(result, result.state.name) : '', result.state?.covered ? null : 'dim'),
     ];
   const children = [
-    h('p', { class: 'ts-kicker', text: kind === 'example' ? tr('Worked example', 'Ejemplo resuelto') : tr('Your answer', 'Su respuesta') }),
-    h('p', { class: 'ts-big num', text: m(result.setAside) }),
-    h('p', { class: 'ts-sub', text: tr(
+    head(kind),
+    inputs(kind, input, result),
+    h('p', { class: 'tf-big' }, [h('b', { class: 'num', text: m(result.setAside) }), h('span', { text: tr('to set aside', 'para apartar') })]),
+    h('p', { class: 'tf-sub', text: tr(
       `${result.percent.toFixed(1)}% of this ${whole(c)(result.payment.amount)} payment. ${c === 'US' ? `${statusName(result.filingStatus)[0].toUpperCase()}${statusName(result.filingStatus).slice(1)}, ${where}` : where}, with ${whole(c)(result.ytdNetProfitBefore)} of profit before it.`,
       `${result.percent.toFixed(1)}% de este pago de ${whole(c)(result.payment.amount)}. ${c === 'US' ? `${statusName(result.filingStatus)[0].toUpperCase()}${statusName(result.filingStatus).slice(1)}, ${where}` : where}, con ${whole(c)(result.ytdNetProfitBefore)} de ganancia antes de este pago.`,
     ) }),
-    h('div', { class: 'table-scroll' }, h('table', { class: 'ts-table' }, [h('tbody', null, [...lines, row(tr('Set aside', 'Apartar'), m(result.setAside), 'ts-total')])])),
+    h('ul', { class: 'tf-items ts-items' }, [
+      ...lines.filter(Boolean),
+      item('=', tr('Set aside', 'Apartar'), m(result.setAside), tr('the tax this payment adds to the year', 'el impuesto que este pago agrega al año'), 'tot hi'),
+    ]),
   ];
   if (c === 'UK') {
     children.push(h('p', { class: 'ts-poa' }, [
@@ -151,7 +189,7 @@ function render(input, result, { kind }) {
       tr('Your first January bill also carries the first payment on account for the next year, half of this year\'s tax again.', 'Su primera cuenta de enero también incluye el primer payment on account del año siguiente: otra vez la mitad del impuesto de este año.'),
     ]));
   }
-  if (result.marginalRate !== null) children.push(h('p', { class: 'muted small', text: tr(`That is ${result.marginalRate.toFixed(1)}% of the ${whole(c)(result.payment.net)} of profit this payment adds.`, `Es el ${result.marginalRate.toFixed(1)}% de los ${whole(c)(result.payment.net)} de ganancia que agrega este pago.`) }));
+  if (result.marginalRate !== null) children.push(h('p', { class: 'tf-note', text: tr(`That is ${result.marginalRate.toFixed(1)}% of the ${whole(c)(result.payment.net)} of profit this payment adds.`, `Es el ${result.marginalRate.toFixed(1)}% de los ${whole(c)(result.payment.net)} de ganancia que agrega este pago.`) }));
   for (const x of [...result.crossings, ...result.flags]) children.push(h('p', { class: 'ts-flag', text: x }));
   if (result.nextDue) {
     children.push(h('p', { class: 'ts-due' }, c === 'UK'
@@ -161,21 +199,23 @@ function render(input, result, { kind }) {
         ` (Formulario 1040-ES, período ${result.nextDue.period}).${result.nextStateDue ? ` ${result.nextStateDue.state}: ${dateLong(result.nextStateDue.due)}, el ${Math.round(result.nextStateDue.share * 100)}% del impuesto estatal estimado del año.` : ''}`,
       )]));
   }
-  const working = h('details', { class: 'ts-working' }, [
+  const working = h('details', { class: 'xpand ts-working' }, [
     h('summary', { text: tr('Show the working and sources', 'Ver el cálculo y las fuentes') }),
-    h('div', { class: 'table-scroll' }, h('table', { class: 'ts-table' }, h('tbody', null, result.working.map((w) => h('tr', null, [
-      h('th', { scope: 'row' }, w.source ? h('a', { href: w.source, text: w.label, rel: 'noopener' }) : w.label),
-      h('td', { class: 'num', text: w.value }),
-    ]))))),
-    h('ul', { class: 'ts-sources' }, result.sources.map((s) => h('li', null, [h('a', { href: s.url, text: s.name, rel: 'noopener' }), tr(` (read ${s.readOn})`, ` (consultada el ${s.readOn})`)]))),
-    h('p', { class: 'muted small', text: tr(`Input fingerprint ${result.inputHash}: the same inputs always give this answer.`, `Huella de los datos ${result.inputHash}: los mismos datos siempre dan esta respuesta.`) }),
+    h('div', { class: 'xp-in' }, [
+      h('div', { class: 'table-scroll' }, h('table', { class: 'ts-table' }, h('tbody', null, result.working.map((w) => h('tr', null, [
+        h('th', { scope: 'row' }, w.source ? h('a', { href: w.source, text: w.label, rel: 'noopener' }) : w.label),
+        h('td', { class: 'num', text: w.value }),
+      ]))))),
+      h('ul', { class: 'ts-sources' }, result.sources.map((s) => h('li', null, [h('a', { href: s.url, text: s.name, rel: 'noopener' }), tr(` (read ${s.readOn})`, ` (consultada el ${s.readOn})`)]))),
+      h('p', { class: 'muted small', text: tr(`Input fingerprint ${result.inputHash}: the same inputs always give this answer.`, `Huella de los datos ${result.inputHash}: los mismos datos siempre dan esta respuesta.`) }),
+    ]),
   ]);
   children.push(working);
   if (kind === 'answer') {
     last = { input, result };
     children.push(h('p', null, [h('button', { class: 'btn btn-quiet btn-small', type: 'button', text: tr('Add to my year', 'Agregar a mi año'), onclick: addToYear })]));
   } else {
-    children.push(h('p', { class: 'muted small', text: tr(`Worked out on the server for the inputs shown in the form. Press "${$('ts-run').textContent}" to work out your own.`, `Calculado en el servidor con los datos que muestra el formulario. Presione "${$('ts-run').textContent}" para calcular el suyo.`) }));
+    children.push(h('p', { class: 'tf-cost', text: tr(`Worked out on the server for the inputs shown in the form. Press "${$('ts-run').textContent}" to work out your own.`, `Calculado en el servidor con los datos que muestra el formulario. Presione "${$('ts-run').textContent}" para calcular el suyo.`) }));
   }
   out.replaceChildren(...children);
 }
@@ -351,6 +391,11 @@ async function start() {
   fillStates(constants);
   const linked = fromQuery();
   syncCountry();
+  // Optional fields filled in from a link show themselves.
+  const changed = (el) => (el.type === 'checkbox' ? el.checked !== el.defaultChecked
+    : el.tagName === 'SELECT' ? el.value !== ([...el.options].find((o) => o.defaultSelected) ?? el.options[0])?.value
+      : el.value !== el.defaultValue);
+  if ([...$('ts-more').querySelectorAll('input, select')].some(changed)) $('ts-more').open = true;
   const ex = tool.examples[0];
   if (!linked) render(ex.input, ex.output, { kind: 'example' });
   else if (T.takeRunFlag()) $('ts-form').requestSubmit();

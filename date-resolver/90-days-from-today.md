@@ -1,15 +1,15 @@
 # What date is 90 days from today?
 
-90 days from today, Saturday, November 7, 2026 (today's date in New York, US Eastern time), is Friday, February 5, 2027. Counted from tomorrow it is Saturday, February 6, 2027.
+90 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Saturday, February 6, 2027. Counted from tomorrow it is Sunday, February 7, 2027.
 
-- Date: February 5, 2027
-- Weekday: Friday
+- Date: February 6, 2027
+- Weekday: Saturday
 - ISO week: 2027-W05
 - US business days between: 60
 
 ## 90 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-08&region=US)
 
 ## 90 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 90 days after | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-07) | Fri, Feb 5, 2027 | 60 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-08) | Sat, Feb 6, 2027 | 60 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-09) | Sun, Feb 7, 2027 | 59 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-10) | Mon, Feb 8, 2027 | 59 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-18) | Tue, Feb 16, 2027 | 59 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-19) | Wed, Feb 17, 2027 | 59 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-20) | Thu, Feb 18, 2027 | 59 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+from+today&ref=2026-11-21) | Fri, Feb 19, 2027 | 60 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 90 days from today: the same as 91 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-from-today/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-from-today.csv

@@ -1,0 +1,50 @@
+/* Time export to invoice: an invoice desk. Layout comes from web/tool-full.css; this file
+   keeps the form grids, the tables and the invoice fields. One accent (money) carries the total. */
+.ti {
+  --accent: var(--h-money);
+  --accent-ink: #06170f;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06170f;
+}
+.ti [hidden] { display: none !important; }
+.ti-about { margin-top: 14px; }
+
+.ti-form textarea { font-family: var(--font-mono); font-size: 12.5px; width: 100%; }
+.ti-form select, .ti-form input { min-width: 0; }
+.ti-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; margin-top: 18px; }
+.ti-trio { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 10px; margin-top: 18px; }
+.ti-pair > .field, .ti-trio > .field { margin: 0 !important; }
+.ti-options .xp-in > .ti-pair:first-child { margin-top: 0; }
+@media (max-width: 420px) { .ti-trio { grid-template-columns: 1fr 1fr; } }
+.ti input[type="date"] { color-scheme: dark; }
+.ti-samples { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 8px 0 0; font-size: 14px; }
+.ti-samples button { background: none; border: 0; padding: 0; color: var(--accent); text-decoration: underline; cursor: pointer; font: inherit; }
+.form-error:empty { display: none; }
+
+.ti-items { margin-top: 18px; }
+.ti-out details.xpand { margin-top: 14px; }
+.ti-aside { color: var(--muted); margin: 10px 0 0; font-size: 14px; }
+.ti-table { font-variant-numeric: tabular-nums; margin-bottom: 10px; }
+.ti-table .num { text-align: right; white-space: nowrap; }
+.ti-table td small { display: block; color: var(--muted); font-size: 12px; }
+.ti-chosen th, .ti-chosen td { color: var(--accent); }
+.ti-flags { margin: 12px 0 0; padding-left: 1.1rem; color: var(--text-2); font-size: 14px; }
+.ti-flags li { margin: 4px 0; }
+
+.ti-invoice-panel, .ti-price-list { padding: 20px 24px; }
+.ti-invoice-grid { display: grid; gap: 12px 14px; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+.ti-invoice-grid .field { margin: 0 !important; }
+.ti-invoice-grid .ti-wide { grid-column: 1 / -1; }
+.ti-invoice textarea { width: 100%; }
+.ti-buy { margin-top: 14px; }
+.ti-buy .btn { margin: 4px 0 8px; }
+.ti-got a { text-decoration: underline; }
+.ti-notes { margin: 0; padding-left: 1.1rem; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 14px 0 0; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; }
+.ti-form .ti-samples { margin-top: 8px; font-size: 13px; gap: 4px 10px; }
+.ti-pastefold { margin-top: 10px !important; }
+.ti-pastefold .xp-in textarea { margin: 0; }
+.ti-form .tf-go { margin-top: 14px; }
+.ti-form .tf-run-note + .field { margin-top: 18px; }
+.ti-colhint { margin: 0 0 12px; }

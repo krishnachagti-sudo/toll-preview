@@ -41,7 +41,7 @@ const EN = {
   fixing: (d) => `Fixing ${d}`,
   effective: (d) => `Effective ${d}`,
   from: (d) => `From ${d}`,
-  exampleTag: 'Worked example',
+  exampleTag: 'Example',
   buys: (base) => `1 ${base} buys`,
   inverseLead: 'The other way round: 1 ',
   diffDay: 'Different day',
@@ -57,8 +57,8 @@ const EN = {
   freeLeft: (n) => `Free run. You have ${n} free ${n === 1 ? 'run' : 'runs'} left today.`,
   signIn: 'Sign in',
   openAccount: 'Open your account',
-  priceAccount: (p) => `Each run costs ${p}, taken from your balance. A day with no rate costs nothing.`,
-  priceAnon: (p) => `Each run costs ${p}. Without an account you get 5 free runs a day.`,
+  priceAccount: (p) => `${p} a run, from your balance · a day with no rate costs nothing`,
+  priceAnon: (p) => `${p} a run · 5 free runs a day, no card needed · also works over an API`,
   runNote: '5 free runs a day, no account needed.',
   exampleCost: 'A worked example from the ECB file, not your own lookup. Press "Get the rate" to run it for real.',
   askLine: (base, quote, date) => `Press "Get the rate" for ${base} to ${quote} on ${date}.`,
@@ -445,6 +445,14 @@ function idleTicket(line = t('idle')) {
 // "Wednesday 31 Dec 2025 to Monday 30 Mar 2026"
 const span = (from, to) => t('span', dateLong(from), dateLong(to));
 
+// The Example tag over a worked example, and on the English page its inputs line.
+function exampleTag(r) {
+  return h('p', { class: 'fx-example-tag' }, [
+    h('span', { class: 'ex-tag' }, t('exampleTag')),
+    L === 'en' ? h('span', { class: 'tf-exin' }, `Example: ${NAMES[r.base] ?? r.base} to ${NAMES[r.quote] ?? r.quote} on ${dateLong(r.requestedDate)}`) : null,
+  ]);
+}
+
 // example: true labels the ticket as a worked example (the tool's first real example), so it is
 // never mistaken for the visitor's own lookup.
 function resultTicket(r, costLine, { example = false } = {}) {
@@ -456,7 +464,7 @@ function resultTicket(r, costLine, { example = false } = {}) {
   show(h('article', { class: example ? 'fx-ticket example' : 'fx-ticket' }, [
     head(t('fixing', r.fixingDate)),
     h('div', { class: 'fx-ticket-body' }, [
-      example ? h('p', { class: 'fx-example-tag' }, t('exampleTag')) : null,
+      example ? exampleTag(r) : null,
       pairName(r.base, r.quote),
       h('p', { class: 'fx-rate-line' }, t('buys', r.base)),
       h('span', { class: 'fx-rate' }, [fmt(r.rate), ' ', h('small', {}, r.quote)]),
@@ -482,7 +490,7 @@ function otherTicket(r, costLine, { example = false } = {}) {
   show(h('article', { class: example ? 'fx-ticket example' : 'fx-ticket' }, [
     head(r.effectiveDate ? t('effective', r.effectiveDate) : t('from', r.periodStart), id),
     h('div', { class: 'fx-ticket-body' }, [
-      example ? h('p', { class: 'fx-example-tag' }, t('exampleTag')) : null,
+      example ? exampleTag(r) : null,
       pairName(r.base, r.quote),
       h('p', { class: 'fx-rate-line' }, t('buys', r.base)),
       h('span', { class: 'fx-rate' }, [fmt(r.rate), ' ', h('small', {}, r.quote)]),
@@ -620,7 +628,15 @@ function fromQuery() {
 
 // ---------- start ----------
 
+// "Which rate to use" is folded on the English page: a link to it opens it.
+function openWhich() {
+  const el = document.getElementById('fx-which');
+  if (el && el.tagName === 'DETAILS' && location.hash === '#fx-which') el.open = true;
+}
+
 function start() {
+  openWhich();
+  window.addEventListener('hashchange', openWhich);
   fillSelect($('fx-base'), 'USD');
   fillSelect($('fx-quote'), 'EUR');
   // Today in UTC, as plain text. The server decides which fixing applies.

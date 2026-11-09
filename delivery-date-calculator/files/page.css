@@ -1,5 +1,5 @@
-/* Delivery dates: a shipping desk. Sits inside the brand chrome and reuses its tokens. Two colours
-   carry the page's one idea: amber is the store's calendar, teal is the carrier's. */
+/* Delivery dates: the tool-full layout (web/tool-full.css) plus this page's own
+   pieces. Two colours carry the page's one idea: amber is the store's calendar, teal is the carrier's. */
 .dd {
   --accent: var(--h-date);
   --accent-ink: #1a1206;
@@ -13,103 +13,87 @@
   --dd-hatch: rgba(255, 255, 255, 0.08);
 }
 
-.dd-intro { padding-block: 40px 8px; }
-.dd-intro h1 { margin-bottom: 0.25em; }
-.dd-price { color: var(--ink-soft); max-width: 42rem; margin: 0; font-variant-numeric: tabular-nums; }
-.dd-carriers { color: var(--ink-soft); max-width: 46rem; margin: 10px 0 0; }
+/* The opening: "Which carriers?" folds after the price and trust lines. */
+.tf-open .dd-carriers { order: 4; margin-top: 10px; max-width: 60ch; }
+.dd-carriers .xp-in { color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+.dd-carriers .xp-in p { margin: 0 0 0.8em; }
 
-.dd-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.dd-desk > * { min-width: 0; }
-@media (min-width: 960px) { .dd-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
-
-.dd-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.dd-form legend { padding: 0; }
-.dd-form .btn[type="submit"] { width: 100%; }
-.dd-group { border-top: 1px solid var(--rule); padding-top: 14px; }
-.dd-group > legend { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
-.dd-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; align-items: end; }
-.dd-pair > .field-error, .dd-pair > .hint { grid-column: 1 / -1; }
-.dd-pair label { display: block; margin-bottom: 6px; }
+/* The form */
 .dd input[type="time"] { font: inherit; font-size: 14.5px; color: var(--text); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 10px 12px; min-height: 44px; width: 100%; color-scheme: dark; }
 .dd input[type="date"] { color-scheme: dark; }
-.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 0 0 14px; cursor: pointer; }
-.check input { width: 18px; height: 18px; flex: none; }
-.dd-nocut { margin: 0; min-height: 44px; }
+.dd-form .tf-two > .field-error, .dd-form .tf-two > .hint { grid-column: 1 / -1; margin: 0; }
+.dd-svc:has(> [hidden]) { grid-template-columns: minmax(0, 1fr); }
+.dd-carrier { margin-top: 18px; }
+.dd-carrier > .choice-row + * { margin-top: 12px; }
+.dd-carrier > .field, .dd-carrier > fieldset { margin-top: 12px; }
+.dd-form .check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 12px 0 0; cursor: pointer; }
+.dd-form .check input { width: 18px; height: 18px; flex: none; }
+.dd-form .dd-nocut { margin-top: 8px; }
+.dd-form details.xpand > summary { display: flex; flex-wrap: wrap; gap: 2px 8px; }
+.dd-form details.xpand > summary::after { margin-left: auto; align-self: center; }
+.dd-sum { color: var(--muted); font-weight: 400; font-size: 13.5px; }
+.dd-sum::before { content: ""; }
+.dd-store .xp-in > * + *, .dd-carrier .xp-in > * + * { margin-top: 14px; }
 .dd-days { display: flex; flex-wrap: wrap; gap: 6px; }
 .dd-day-box { position: relative; }
 .dd-day-box input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
 .dd-day-box span { display: inline-grid; place-items: center; min-width: 44px; min-height: 40px; padding: 0 8px; border: 1px solid var(--line-2); border-radius: var(--radius); font: 500 0.82rem/1 var(--font-mono); color: var(--ink-soft); }
 .dd-day-box input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .dd-day-box input:focus-visible + span { box-shadow: 0 0 0 3px rgba(255, 176, 63, 0.3); }
-.dd-run-note { margin: 10px 0 0; }
+@media (max-width: 640px) {
+  .dd-carrier { margin-top: 12px; }
+  .dd-form .dd-when label, .dd-form .dd-transit label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
 
-/* Result */
-.dd-out { min-height: 12rem; }
-.dd-sheet-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.dd-answer { font: 500 clamp(1.9rem, 6vw, 3rem)/1.08 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; font-variant-numeric: lining-nums; }
-.dd-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
-.dd-answer.late { color: #ff8a70; }
-.dd-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 44rem; }
-.dd-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 8px; }
-.dd-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
-.dd-facts dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; }
-.dd-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
-.dd-steps { margin: 0 0 8px; padding-left: 1.3em; max-width: 46rem; }
+/* The result */
+.dd-late b { color: #ff8a70; }
+.tf-result .tf-items { margin-top: 18px; }
+.dd-deadlines li > b { white-space: nowrap; }
+@media (max-width: 640px) {
+  .dd-deadlines li > b { grid-column: 2 / -1; text-align: left; }
+  .dd-deadlines .k { grid-row: span 3; }
+}
+.dd-heading { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 22px 0 8px; }
+.tf-result details.xpand { margin-top: 12px; }
+.dd-steps { margin: 0 0 8px; padding-left: 1.3em; }
 .dd-steps li { margin: 0 0 6px; }
-.dd-none, .dd-aside, .dd-cost { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 10px; max-width: 44rem; }
-.dd-cost { margin-top: 16px; font-variant-numeric: tabular-nums; }
-.dd-skipped { list-style: none; margin: 0 0 12px; padding: 0; max-width: 44rem; }
-.dd-skipped li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--rule); }
-.dd-skipped li:first-child { border-top: 1px solid var(--rule); }
-.dd-skipped .when { font-family: var(--font-mono); font-size: 0.88rem; white-space: nowrap; }
-.dd-which { margin-left: auto; font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+.dd-none, .dd-aside { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; }
+.dd-skipped { list-style: none; margin: 0 0 12px; padding: 0; }
+.dd-skipped li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.dd-skipped li:first-child { border-top: 1px solid var(--line); }
+.dd-skipped .when { font-family: var(--font-mono); font-size: 13px; white-space: nowrap; }
+.dd-which { margin-left: auto; font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
 .dd-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; flex: none; transform: translateY(-1px); }
 .dd-dot.store { background: var(--dd-store); }
 .dd-dot.carrier { background: var(--dd-carrier); }
 
-.dd-table { width: 100%; font-variant-numeric: tabular-nums; }
-.dd-table tr.gone { opacity: 0.5; }
-.dd-table .dd-last { color: var(--text); font-weight: 500; white-space: nowrap; }
-.dd-why { margin: 6px 0; max-width: 46rem; }
-.dd-why summary { cursor: pointer; color: var(--text-2); }
-.dd-why[open] summary { margin-bottom: 8px; }
-
 /* The two calendars, one column per day. */
-.dd-strip-wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 10px; margin-top: 12px; }
-.dd-strip-rows { display: grid; grid-template-rows: 2.6rem 1.4rem 1.4rem; gap: 4px; font: 500 0.7rem/1.4rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); white-space: nowrap; }
+.dd-strip-wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 10px; margin-top: 18px; }
+.dd-strip-rows { display: grid; grid-template-rows: 2.6rem 1.4rem 1.4rem; gap: 4px; font: 500 0.7rem/1.4rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); white-space: nowrap; }
 .dd-strip { list-style: none; margin: 0; padding: 0 0 6px; display: flex; gap: 3px; overflow-x: auto; }
 .dd-col { position: relative; display: grid; grid-template-rows: 2.6rem 1.4rem 1.4rem auto; gap: 4px; min-width: 2.1rem; text-align: center; }
-.dd-col-date { display: grid; font: 400 0.78rem/1.15 var(--font-mono); color: var(--ink-soft); align-content: end; }
-.dd-col-date b { font-weight: 500; font-size: 0.66rem; text-transform: uppercase; }
+.dd-col-date { display: grid; font: 400 0.78rem/1.15 var(--font-mono); color: var(--muted); align-content: end; }
+.dd-col-date b { font-weight: 500; font-size: 0.7rem; text-transform: uppercase; }
 .dd-cell { border-radius: 3px; }
 .dd-cell.store { background: var(--dd-store-wash); box-shadow: inset 0 0 0 1px var(--dd-store); }
 .dd-cell.carrier { background: var(--dd-carrier-wash); box-shadow: inset 0 0 0 1px var(--dd-carrier); }
-.dd-cell.off { background: var(--dd-off) repeating-linear-gradient(135deg, transparent 0 4px, var(--dd-hatch) 4px 5px); box-shadow: inset 0 0 0 1px var(--rule); }
+.dd-cell.off { background: var(--dd-off) repeating-linear-gradient(135deg, transparent 0 4px, var(--dd-hatch) 4px 5px); box-shadow: inset 0 0 0 1px var(--line); }
 .dd-col.marked .dd-col-date { color: var(--text); }
-.dd-col-mark { font: 600 0.6rem/1.1 var(--font-mono); text-transform: uppercase; color: var(--accent); }
-.dd-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 12px 0 0; padding: 0; font-size: 0.88rem; color: var(--ink-soft); }
+.dd-col-mark { font: 600 0.66rem/1.1 var(--font-mono); text-transform: uppercase; color: var(--accent); }
+.dd-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 12px 0 0; padding: 0; font-size: 12.5px; color: var(--muted); }
 .dd-legend li { display: inline-flex; align-items: center; gap: 7px; }
 .dd-key { width: 18px; height: 14px; border-radius: 3px; flex: none; }
 .dd-key.store { background: var(--dd-store-wash); box-shadow: inset 0 0 0 1px var(--dd-store); }
 .dd-key.carrier { background: var(--dd-carrier-wash); box-shadow: inset 0 0 0 1px var(--dd-carrier); }
-.dd-key.off { background: var(--dd-off) repeating-linear-gradient(135deg, transparent 0 3px, var(--dd-hatch) 3px 4px); box-shadow: inset 0 0 0 1px var(--rule); }
+.dd-key.off { background: var(--dd-off) repeating-linear-gradient(135deg, transparent 0 3px, var(--dd-hatch) 3px 4px); box-shadow: inset 0 0 0 1px var(--line); }
 
 /* The banner maker */
-.dd-banner { margin-top: 24px; border-top: 1px solid var(--rule); padding-top: 4px; max-width: 46rem; }
+.dd-banner { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 4px; }
 .dd-occasion { max-width: 22rem; }
 .dd-banner-preview { margin: 14px 0 10px; }
-.dd-banner-code { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.5; white-space: pre; }
-
-/* Rules and banner docs */
-.dd-rules, .dd-banner-doc { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
-.dd-rule-cols { display: grid; gap: 4px 40px; }
-@media (min-width: 760px) { .dd-rule-cols { grid-template-columns: 1fr 1fr; } }
-.dd-rule-cols p, .dd-banner-doc p, .dd-banner-doc li { color: var(--ink-soft); max-width: 40rem; }
-.dd-code { margin-top: 40px; max-width: 52rem; }
-.dd-code pre { max-width: 100%; }
+.dd-banner-code { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.5; white-space: pre; width: 100%; }
 
 @media (max-width: 420px) {
-  .dd-pair { grid-template-columns: 1fr; }
   .dd-which { margin-left: 0; flex-basis: 100%; }
 }
 @media print {

@@ -1,0 +1,16 @@
+schedule,expression,reads_as
+Every minute,* * * * *,Every minute.
+Every 5 minutes,*/5 * * * *,Every 5 minutes.
+Every 15 minutes,*/15 * * * *,Every 15 minutes.
+Every hour,0 * * * *,At minute 0 past every hour.
+Every 2 hours,0 */2 * * *,At minute 0 past every 2nd hour.
+Every day at midnight,0 0 * * *,At 00:00.
+Every day at 9:30,30 9 * * *,At 09:30.
+Weekdays at 9:00,0 9 * * 1-5,"At 09:00, on weekdays (Monday to Friday)."
+Weekends at 10:00,"0 10 * * 0,6","At 10:00, on Saturdays and Sundays."
+Every Monday at 8:00,0 8 * * 1,"At 08:00, on Monday."
+1st of the month,0 0 1 * *,"At 00:00, on the 1st of the month."
+1st and 15th,"0 0 1,15 * *","At 00:00, on the 1st and 15th of the month."
+Every quarter,"0 0 1 1,4,7,10 *","At 00:00, on the 1st of the month, every 3 months from January."
+Once a year,0 0 1 1 *,"At 00:00, on the 1st of the month, in January."
+"Every 10 minutes, 8:00 to 18:50",*/10 8-18 * * *,Every 10 minutes from 08:00 through 18:59.

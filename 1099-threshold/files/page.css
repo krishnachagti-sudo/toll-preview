@@ -10,9 +10,6 @@
   --tt-out: var(--muted);
 }
 
-.tt-intro { padding-block: 40px 8px; }
-.tt-intro h1 { margin-bottom: 0.25em; }
-.tt-price { color: var(--ink-soft); max-width: 46rem; margin: 0; font-variant-numeric: tabular-nums; }
 .tt-sample { max-width: 46rem; margin: 8px 0 0; }
 .tt-sample .btn { margin: 4px 6px 0 0; }
 .tt-format { margin: 0 0 16px; color: var(--ink-soft); max-width: 46rem; }
@@ -22,11 +19,10 @@
 .tt h2 { margin-top: 0; }
 .tt-free { display: inline-block; vertical-align: middle; font: 500 0.7rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--tt-file); border: 1px solid var(--tt-file); padding: 1px 8px; border-radius: 999px; margin-left: 6px; }
 
-.tt-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.tt-desk > *, .tt-scan-grid > * { min-width: 0; }
-@media (min-width: 960px) { .tt-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
-
-.tt-form, .tt-scan-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.tt-scan-grid > * { min-width: 0; }
+.tt-scan-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.tt-h2b { margin-top: 40px !important; }
+.tt .tt-scan .pline { margin: 0 0 8px; }
 .tt-form legend { padding: 0; }
 .tt-form .btn[type="submit"], .tt-scan-form .btn[type="submit"] { width: 100%; }
 .tt-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
@@ -38,7 +34,7 @@
 /* Results */
 .tt-out { min-height: 12rem; }
 .tt-sheet-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.tt-answer { font: 500 clamp(1.9rem, 6vw, 3rem)/1.08 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; font-variant-numeric: lining-nums; }
+.tt-answer { font: 500 clamp(1.7rem, 5vw, 2.4rem)/1.08 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; font-variant-numeric: lining-nums; }
 .tt-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
 .tt-answer.yes { color: var(--tt-file); }
 .tt-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 46rem; }
@@ -107,7 +103,7 @@
   .tt-pair, .tt-pair3 { grid-template-columns: 1fr; }
 }
 @media print {
-  .tt-intro, .tt-desk, .tt-scan-form, .tt-code, .tt-lines, .tt-rules { display: none; }
+  .dz-hero, .dz-desk, .tt-scan-form, .tt-code, .tt-lines, .tt-rules { display: none; }
   .tt-why[open] summary, .tt-why summary { display: none; }
 }
 
@@ -124,3 +120,63 @@
   table.tt-table td:last-child { grid-column: 1 / -1; order: 2; }
   table.tt-table td[data-label]::before { content: attr(data-label) " "; color: var(--faint); font: 400 12px/1.4 var(--font-mono); }
 }
+
+/* ---------- Design A tool layout: the tool and its result first ----------
+   H1, a one-sentence answer and the trust line, then the form beside its result (with the Example
+   tag and its inputs line), a plain price line under the button, and the rules as a short summary
+   next to what the tool does not cover, the full text folded. */
+.dz-hero { padding-block: 28px 0; display: grid; gap: 24px; align-items: start; }
+.dz-hero > * { min-width: 0; }
+@media (min-width: 1000px) { .dz-hero { grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; } }
+.dz-hero h1 { margin: 0 0 0.2em; }
+.dz-hero .lede { margin: 0; max-width: 46rem; }
+.dz-hero .tool-shot .scr { max-height: 150px; }
+@media (max-width: 999px) { .dz-hero .tool-shot { display: none; } }
+@media (max-width: 640px) { .dz-hero { padding-top: 16px; } .dz-hero .eyebrow { display: none; } .dz-hero .lede { font-size: 15.5px; } }
+.dz-desk { display: grid; gap: 20px; margin-top: 16px; align-items: start; }
+.dz-desk > * { min-width: 0; }
+@media (min-width: 960px) { .dz-desk { grid-template-columns: minmax(0, 25rem) minmax(0, 1fr); gap: 24px; } }
+.dz-card { border: 1px solid var(--line-2); border-radius: 16px; background: var(--bg-1); padding: 18px 20px; }
+@media (max-width: 640px) { .dz-card { padding: 14px 14px; } }
+.pline { display: flex; flex-wrap: wrap; margin: 10px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.pline > span:not(:last-child)::after { content: "\00b7"; margin: 0 8px; color: var(--muted); }
+.dz-rh { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; margin: 0 0 6px; }
+.dz-rh .dz-wx { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.dz-exin { margin: 0 0 12px; font: 400 12.5px/1.45 var(--font-mono); color: var(--muted); }
+.dz-items { list-style: none; margin: 12px 0 0; padding: 0; font-variant-numeric: tabular-nums; }
+.dz-items li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 14px; padding: 9px 0; border-top: 1px solid var(--line); margin: 0; }
+.dz-items li > b { font-weight: 500; }
+.dz-items li > span:nth-child(2) { text-align: right; white-space: nowrap; font-weight: 600; }
+.dz-items li > small { grid-column: 1 / -1; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
+.dz-items li.tot { border-top: 2px solid var(--line-3); }
+.dz-items li.tot > span:nth-child(2) { color: var(--hue, var(--warm)); }
+.dz-rules { margin-top: 48px; }
+.dz-rules-top { display: grid; gap: 20px; align-items: start; }
+.dz-rules-top > * { min-width: 0; }
+@media (min-width: 960px) { .dz-rules-top { grid-template-columns: minmax(0, 1fr) 22rem; gap: 32px; } }
+.dz-sum { list-style: none; margin: 0; padding: 0; max-width: 48rem; }
+.dz-sum li { margin: 0; padding: 10px 0; border-top: 1px solid var(--line); }
+.dz-sum li:first-child { border-top: 0; padding-top: 0; }
+.dz-note { border: 1px solid color-mix(in srgb, var(--h-money) 35%, var(--line-2)); border-radius: 14px; background: var(--bg-1); padding: 16px 18px; }
+.dz-note h3 { margin: 0 0 6px; font-size: 16px; }
+.dz-note p { margin: 0; font-size: 14.5px; color: var(--text-2); }
+.dz-rules details.xpand { max-width: 50rem; }
+.dz-src { margin-top: 18px; font-size: 13.5px; color: var(--muted); max-width: 50rem; }
+.dz-hero .tool-shot figcaption span:last-child { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+@media (min-width: 1000px) { .dz-hero .lede { font-size: 16px; } }
+.dz-col > * + * { margin-top: 16px; }
+.dz-fold { border-top: 1px solid var(--line); padding: 2px 0; margin: 0; }
+.dz-fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 38px; font-size: 14px; color: var(--text-2); }
+.dz-fold > summary::-webkit-details-marker { display: none; }
+.dz-fold > summary::after { content: ""; flex: none; width: 7px; height: 7px; border-right: 1.6px solid var(--hue, var(--warm)); border-bottom: 1.6px solid var(--hue, var(--warm)); transform: translateY(-2px) rotate(45deg); transition: transform 0.2s; }
+.dz-fold[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.dz-fold > summary:hover { color: #fff; }
+.dz-fold[open] > summary { margin-bottom: 8px; }
+.dz-link { all: unset; cursor: pointer; display: inline-flex; align-items: center; min-height: 32px; font-size: 14px; font-weight: 500; color: var(--hue, var(--warm)); }
+.dz-link:hover { text-decoration: underline; }
+.dz-link:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; border-radius: 4px; }
+.dz-answer { font: 500 clamp(1.1rem, 2.2vw, 1.3rem)/1.4 var(--font-display); letter-spacing: -0.01em; margin: 0 0 6px; color: #fff; }
+.dz-form .btn[type="submit"] { width: 100%; margin-top: 8px; }
+.dz-form .field { margin-bottom: 12px; }
+@media (max-width: 640px) { .dz-desk { margin-top: 14px; } }
+@media (max-width: 640px) { .dz-form .field { margin-bottom: 10px; } .dz-form .btn[type="submit"] { margin-top: 6px; } }

@@ -1,0 +1,10 @@
+Bank reconciliation,Value,Worked October,Where the number comes from
+Balance per bank statement,,12711.13,Statement ending balance
+Add: deposits in transit,,412.60,Books deposits not yet at the bank
+Less: outstanding checks and payments,,312.75,Books payments not yet at the bank
+Adjusted bank balance,'=B2+B3-B4,12810.98,Formula
+Balance per books,,12915.98,Ledger balance at the statement date
+Add or less: bank lines not in the books,,-15.00,"Fees, interest, payments you have not entered"
+Add or less: corrections,,-90.00,"Transpositions, sign flips, entries made twice"
+Adjusted books balance,'=B6+B7+B8,12810.98,Formula
+Difference (should be 0.00),'=B5-B9,0.00,Formula

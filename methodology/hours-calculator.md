@@ -294,13 +294,36 @@ The federal rules were copied by hand from Cornell LII and dol.gov on 2026-11-07
 - [U.S. Department of Labor, Wage and Hour Division, Fact Sheet #23: Overtime Pay Requirements of the FLSA](https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay)
 - [U.S. Department of Labor, Wage and Hour Division, Fact Sheet #21: Recordkeeping Requirements under the FLSA](https://www.dol.gov/agencies/whd/fact-sheets/21-flsa-recordkeeping)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The federal rules were copied by hand on 2026-11-07. No state rule is held.
+
+Hours calculator and timesheet: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [29 CFR 785.48 Use of time clocks](https://www.law.cornell.edu/cfr/text/29/785.48) | current text | 2026-11-07 |
+| [29 CFR 785.18 Rest](https://www.law.cornell.edu/cfr/text/29/785.18) | current text | 2026-11-07 |
+| [29 CFR 785.19 Meal](https://www.law.cornell.edu/cfr/text/29/785.19) | current text | 2026-11-07 |
+| [29 CFR 778.104 Each workweek stands alone](https://www.law.cornell.edu/cfr/text/29/778.104) | current text | 2026-11-07 |
+| [29 CFR 778.105 Determining the workweek](https://www.law.cornell.edu/cfr/text/29/778.105) | current text | 2026-11-07 |
+| [U.S. Department of Labor, Wage and Hour Division, Fact Sheet #23: Overtime Pay Requirements of the FLSA](https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay) | revised October 2019 | 2026-11-07 |
+| [U.S. Department of Labor, Wage and Hour Division, Fact Sheet #21: Recordkeeping Requirements under the FLSA](https://www.dol.gov/agencies/whd/fact-sheets/21-flsa-recordkeeping) | revised July 2008 | 2026-11-07 |
+| [U.S. Department of Labor: Minimum Length of Meal Period Required under State Law for Adult Employees in Private Sector](https://www.dol.gov/agencies/whd/state/meal-breaks) | last updated 2023-01-01 | 2026-11-07 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The rules held are compared with the text read from each source. The worked week, the biweekly period, a shift over the workweek boundary, daily overtime and double time, rounding to 5, 6 and 15 minutes, daylight-saving nights and conversions are each checked to the minute, and the same timesheet input gives the same PDF bytes.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The federal rules held are compared with the text read from Cornell LII and dol.gov on 2026-11-07: 29 CFR 785.48, 785.18, 785.19, 778.104 and 778.105, and DOL Fact Sheets #21 and #23.
+- A worked week is reproduced: 46 hours with 6 of overtime, and $18.50 x 40 + $27.75 x 6 = $906.50.
+- A biweekly period of 30 and 50 hours gives 10 hours of overtime, never averaged (29 CFR 778.104), and moving the workweek start moves the overtime.
+- Daylight-saving nights in America/New\_York are checked: 10 PM to 6 AM is 9 hours on October 31, 2026 and 7 hours on March 13, 2027.
+- Rounding to 5, 6 and 15 minutes, nearest and in up and out down, is checked punch by punch, and the same timesheet input gives the same PDF bytes.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Hours calculator and timesheet tool](https://krishnachagti-sudo.github.io/toll-preview/hours-calculator/).
 

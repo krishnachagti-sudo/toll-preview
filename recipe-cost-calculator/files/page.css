@@ -5,45 +5,29 @@
   --endwise-accent: var(--h-money);
 }
 
-.rc-intro { padding-block: 40px 8px; }
-.rc-intro h1 { margin-bottom: 0.25em; }
-.rc-price { color: var(--ink-soft); max-width: 46rem; margin: 0 0 6px; }
 
-.rc-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.rc-desk > * { min-width: 0; }
-@media (min-width: 1000px) { .rc-desk { grid-template-columns: 30rem 1fr; gap: 48px; } }
 
-.rc-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.rc-form h2 { margin-top: 0; }
 .rc textarea { width: 100%; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.45; white-space: pre; overflow-x: auto; }
 .rc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr)); gap: 0 14px; }
 .rc-wide { grid-column: 1 / -1; }
-.rc-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 6px; }
-.rc-preview { color: var(--ink-soft); margin: 6px 0; }
+/* Layout comes from web/tool-full.css. */
+.rc-preview { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+.rc-preview:empty { display: none; }
+.rc-more .xp-in > * + * { margin-top: 12px; }
+.rc-form input, .rc-form select { width: 100%; }
+.rc-out details.xpand { margin-top: 12px; }
+.rc-out .tf-items { margin-top: 12px; }
 
-.rc-out { min-height: 12rem; }
-.rc-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.rc-answer { font: 500 clamp(1.25rem, 3.2vw, 1.6rem)/1.3 var(--font-display); letter-spacing: -0.01em; margin: 0 0 14px; max-width: 44rem; }
-.rc-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 14px; }
-.rc-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
-.rc-facts dd { margin: 2px 0 0; font-variant-numeric: tabular-nums; font-size: 1.1rem; }
-.rc-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
+.rc-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 22px 0 8px; }
 .rc-table { font-variant-numeric: tabular-nums; margin-bottom: 10px; }
 .rc-table .r { text-align: right; }
 .rc-table tr.rc-over th, .rc-table tr.rc-over td { color: var(--accent); }
-.rc-lines summary { cursor: pointer; color: var(--ink-soft); margin: 6px 0; }
+.rc-lines summary { cursor: pointer; color: var(--muted); margin: 6px 0; }
 
-.rc-small { margin-top: 48px; }
-.rc-aside { color: var(--ink-soft); margin: 0 0 14px; max-width: 46rem; }
-.rc-cards { display: grid; gap: 24px; }
+.rc-cards { display: grid; gap: 16px; }
 @media (min-width: 900px) { .rc-cards { grid-template-columns: 1fr 1fr; } }
-.rc-card { border-top: 1px solid var(--rule-strong); padding-top: 12px; min-width: 0; }
+.rc-card { padding: 20px; min-width: 0; }
 .rc-card h3 { margin: 0 0 8px; }
 .rc-mini-out { font-variant-numeric: tabular-nums; margin: 6px 0 0; }
 
-.rc-rules { margin-top: 48px; }
-.rc-rule-cols { display: grid; gap: 20px; }
-@media (min-width: 900px) { .rc-rule-cols { grid-template-columns: repeat(3, 1fr); } }
-.rc-notes { padding-left: 1.1em; margin-top: 18px; }
-.rc-prices { margin-top: 18px; }
-.rc-code { margin-top: 40px; }
+.rc-notes { padding-left: 1.2em; }

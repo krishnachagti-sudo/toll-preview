@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bank reconciliation difference finder: statement vs ledger: Endwise</title>
+<meta name="description" content="Bank reconciliation not balancing? Compare the bank statement CSV with your QuickBooks Online or Xero ledger: the difference, every unmatched line, likely transpositions and sign flips, and the date the running balance broke. Preview free; $3 a report.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/bank-reconciliation-difference-finder/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"bank-reconciliation-difference-finder"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Bank reconciliation difference finder">
+<meta property="og:description" content="Compare a bank statement CSV with the ledger for the same account (QuickBooks Online, Xero or any CSV): the difference at the statement date, every line on one side only, timing items (outstanding checks, deposits in transit) set apart from likely errors (digit transpositions, slides, sign flips, duplicates, bank lines missing from the books), the date the running balance broke, and a reconciliation statement. Never changes your books.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/","url":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/","name":"Bank reconciliation difference finder","description":"Compare a bank statement CSV with the ledger for the same account (QuickBooks Online, Xero or any CSV): the difference at the statement date, every line on one side only, timing items (outstanding checks, deposits in transit) set apart from likely errors (digit transpositions, slides, sign flips, duplicates, bank lines missing from the books), the date the running balance broke, and a reconciliation statement. Never changes your books.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Bank reconciliation difference finder","item":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/"}]},{"@type":"WebApplication","name":"Bank reconciliation difference finder","url":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/","description":"Compare a bank statement CSV with the ledger for the same account (QuickBooks Online, Xero or any CSV): the difference at the statement date, every line on one side only, timing items (outstanding checks, deposits in transit) set apart from likely errors (digit transpositions, slides, sign flips, duplicates, bank lines missing from the books), the date the running balance broke, and a reconciliation statement. Never changes your books.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Preview (the difference, how much is timing, how many likely errors, and the date the balances broke)","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Transposition check (is one difference a digit swap, a slide or a sign flip)","price":"0","priceCurrency":"USD"},{"name":"Reconciliation report (every match and unmatched line, each hint, the balance trail, the reconciliation statement and the CSVs)","@type":"Offer","price":"3","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"3","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"reconciliation"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="rd">
+  <section class="wrap dz-hero">
+    <div>
+      <p class="eyebrow">Bookkeeping cleanup</p>
+      <h1>Bank reconciliation difference finder</h1>
+      <p class="lede">Find why your reconciliation will not come to $0.00: timing apart from likely errors, and the date the balance broke.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    </div>
+    <figure class="tool-shot"><div class="scr"><img src="/toll-preview/bank-reconciliation-difference-finder/files/shot.webp" width="900" height="794" alt="Bank reconciliation difference finder: the result of its worked example" decoding="async"></div><figcaption><span class="ex-tag">Example</span><span>Example: a made-up bakery's October bank statement and its QuickBooks Online ledger</span></figcaption></figure>
+  </section>
+
+  <section class="wrap dz-desk" data-jump="Tool" aria-label="Compare the statement and the ledger">
+    <div class="rd-form dz-form dz-card">
+      <div class="rd-drop" id="rd-statement-drop">
+        <label for="rd-statement" class="rd-drop-label">Bank statement (CSV)</label>
+        <input type="file" id="rd-statement" accept=".csv,.txt,.tsv,text/csv,text/plain">
+        <p class="rd-hint" id="rd-statement-name">The bank's download for the period.</p>
+      </div>
+      <div class="rd-drop" id="rd-ledger-drop">
+        <label for="rd-ledger" class="rd-drop-label">Ledger for the same account (CSV)</label>
+        <input type="file" id="rd-ledger" accept=".csv,.txt,.tsv,text/csv,text/plain">
+        <p class="rd-hint" id="rd-ledger-name">From QuickBooks Online or Xero.</p>
+      </div>
+      <p class="rd-hint"><button type="button" class="link-btn" id="rd-sample">Load the sample again</button> (a made-up bakery's October)</p>
+      <details class="dz-fold rd-fold" id="rd-more">
+        <summary>Balances, settings and the exports it reads</summary>
+        <p class="rd-hint">Statement: the bank's download for the period, Date, Description and Amount (or Debit and Credit), with a Balance column if your bank gives one; Xero's Uncoded statement lines export also works. Ledger: in QuickBooks Online, Transaction Detail by Account for the bank account, exported to Excel and saved as CSV; in Xero, Account Transactions for the bank account, with Debit, Credit and Running Balance, saved as CSV.</p>
+        <div class="rd-row">
+          <div class="field">
+            <label for="rd-sopen">Statement opening balance</label>
+            <input type="text" id="rd-sopen" inputmode="decimal" placeholder="From the file">
+          </div>
+          <div class="field">
+            <label for="rd-sclose">Statement ending balance</label>
+            <input type="text" id="rd-sclose" inputmode="decimal" placeholder="From the file">
+          </div>
+        </div>
+        <div class="rd-row">
+          <div class="field">
+            <label for="rd-lopen">Books opening balance</label>
+            <input type="text" id="rd-lopen" inputmode="decimal" placeholder="From the file">
+          </div>
+          <div class="field">
+            <label for="rd-end">Statement date</label>
+            <input type="date" id="rd-end">
+          </div>
+        </div>
+        <div class="rd-row">
+          <div class="field">
+            <label for="rd-window">Days apart (window)</label>
+            <input type="number" id="rd-window" min="0" max="60" value="7">
+          </div>
+          <div class="field">
+            <label for="rd-stale">Stale after (days)</label>
+            <input type="number" id="rd-stale" min="1" max="3660" value="90">
+          </div>
+        </div>
+        <div class="field">
+          <label for="rd-compare">Signs between the two files</label>
+          <select id="rd-compare">
+            <option value="auto">Pick the way more amounts agree</option>
+            <option value="same">As written</option>
+            <option value="flipped">Flipped (a card account exported with opposite signs)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="rd-account">Account (when the ledger holds several)</label>
+          <input type="text" id="rd-account" maxlength="200" placeholder="Business Checking">
+        </div>
+        <div class="field">
+          <label for="rd-order">Slash dates are written</label>
+          <select id="rd-order">
+            <option value="auto">Read from the values (MM/DD when unclear)</option>
+            <option value="mdy">MM/DD/YYYY</option>
+            <option value="dmy">DD/MM/YYYY</option>
+          </select>
+        </div>
+      </details>
+      <p class="form-error" id="rd-error" role="alert"></p>
+      <button class="btn" type="button" id="rd-go">Get the full report ($3.00)</button>
+      <p class="pline" data-prices><span>The preview is free, in your browser</span><span>Full report $3.00 per reconciliation</span><span>The same files again within 7 days are free</span><span>At most $19.00 a month</span></p>
+      <p class="rd-hint">The report is worked out on the server from the same engine and is not kept.</p>
+      <p class="visually-hidden" id="rd-status" role="status"></p>
+    </div>
+
+    <div class="rd-out dz-card" id="rd-out" aria-live="polite">
+      <div class="dz-rh" id="rd-tag"><span class="ex-tag">Example</span><span class="dz-wx">Worked example</span></div>
+      <p class="dz-exin" id="rd-label">Example: a made-up bakery's October bank statement and ledger</p>
+      <p class="rd-answer" id="rd-answer">At October 31, 2026 the statement shows $12,711.13 and the books $12,915.98: a difference of $204.85. 11 lines match (1 as a split) and 5 lines are on one side only. Timing explains $99.85 (1 outstanding check and 1 deposit in transit); the other $105.00 (the books are higher) comes from 1 likely transposition and 1 bank line missing from the books. The running balances first disagree on October 5, 2026.</p>
+      <div id="rd-preview"></div>
+      <div id="rd-report"></div>
+    </div>
+  </section>
+
+  <section class="wrap rd-check" data-jump="Transposition" aria-labelledby="rd-check-title">
+    <h2 id="rd-check-title">Is the difference a transposition?</h2>
+    <p class="rd-hint">Free, in your browser. Type the difference; add the amounts from the period (one per line) to see which of them could have produced it.</p>
+    <div class="rd-row rd-check-row">
+      <div class="field">
+        <label for="rd-diff">Difference</label>
+        <input type="text" id="rd-diff" inputmode="decimal" value="90.00">
+      </div>
+      <div class="field">
+        <label for="rd-amounts">Amounts (optional)</label>
+        <textarea id="rd-amounts" rows="3">450.00
+1,245.90
+312.75</textarea>
+      </div>
+    </div>
+    <p class="rd-answer" id="rd-check-answer">$90.00 is divisible by 9 ($90.00 / 9 = $10.00), so a transposition is possible: two adjacent digits 1 apart in the $100 and $10 places. Amounts that become it with one swap: $450.00 (vs $540.00).</p>
+  </section>
+
+  <section class="wrap rd-rules dz-rules" data-jump="Rules" aria-labelledby="rd-rules-title">
+    <h2 id="rd-rules-title">How it works</h2>
+    <div class="dz-rules-top">
+      <ul class="dz-sum">
+        <li><b>Matching:</b> the same amount to the cent within 7 days (0 to 60), or the same check number; splits only when exactly one set fits.</li>
+        <li><b>Errors before timing:</b> swapped digits, slides, sign flips, wrong amounts and entries made twice are looked for first.</li>
+        <li><b>The break date:</b> the first date the running balances disagree.</li>
+      </ul>
+      <aside class="dz-note">
+        <h3>What it does not cover</h3>
+        <p>It never posts or adjusts anything in your books, and a transposition hint is an arithmetic clue, not proof. A break before the files start needs an earlier month's export.</p>
+      </aside>
+    </div>
+    <details class="xpand">
+      <summary>Read how it works in full</summary>
+      <div class="xp-in">
+    <div class="rd-rule-cols">
+      <div>
+        <h3>Matching</h3>
+        <p>A bank line and a books line match when the amount is the same to the cent and the dates are no more than 7 days apart (you can set 0 to 60), or when they carry the same check or reference number up to 120 days apart. Closer dates, matching payee words and a shared reference win. Then one bank deposit is matched to two to four books entries that add up to it, or one books entry to several bank lines, but only when exactly one set fits. Leftover equal amounts up to 92 days apart are matched with a date flag.</p>
+      </div>
+      <div>
+        <h3>Errors before timing</h3>
+        <p>What is left is checked for errors first: two amounts that are the same digits with two neighbours swapped (the gap is always a multiple of 9), ten times apart (a slide), the same amount the other way round (the balance moves by twice it), a different amount on the same reference, a books entry that repeats a matched one, a line twice in the statement. Books lines left over are outstanding checks, payments or deposits in transit, aged; bank lines left over are missing from the books.</p>
+      </div>
+      <div>
+        <h3>The break date</h3>
+        <p>The difference that is not timing is followed date by date. It starts at the gap between the two opening balances and moves on each date the books miss or get wrong something the bank has. The first such date is when the running balances broke. If the opening balances already differ, the break is before the files start: export an earlier month and run it again.</p>
+      </div>
+    </div>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary>Please read</summary>
+      <div class="xp-in">
+    <ul id="rd-disclaimers">
+      <li>Not accounting or tax advice. The tool compares two files and explains the difference; it never posts, adjusts or changes anything in your books.</li>
+      <li>A transposition, slide or sign-flip hint is an arithmetic clue, not proof: check each one against the bank statement before you correct anything.</li>
+      <li>Talk to your accountant before you post a reconciliation adjustment or change anything in a closed or filed period.</li>
+      <li>Files are processed in memory and not kept.</li>
+    </ul>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary>Prices</summary>
+      <div class="xp-in"><ul class="endwise-prices"><li><strong>Preview (the difference, how much is timing, how many likely errors, and the date the balances broke)</strong>: free.</li><li><strong>Transposition check (is one difference a digit swap, a slide or a sign flip)</strong>: free.</li><li><strong>Reconciliation report (every match and unmatched line, each hint, the balance trail, the reconciliation statement and the CSVs)</strong>: $3.00 per reconciliation; a repeat for the same reconciliation is free for 7 days.</li><li>At most $19.00 a calendar month for this tool; after that it is free until the month ends.</li></ul></div>
+    </details>
+    <details class="xpand">
+      <summary>Sources, read November 8, 2026</summary>
+      <div class="xp-in">
+    <ul class="rd-sources">
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/bank-transactions/fix-reconciliation-discrepancies/00/201285">Intuit: Fix reconciliation discrepancies in QuickBooks Online</a> (updated August 5, 2026): the Reconciliation Discrepancy report, the $0.00 target, "Adjustments don't fix errors"</li>
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/statement-reconciliation/reconcile-account-quickbooks-online/L3XzsllsK_US_en_US">Intuit: Reconcile an account in QuickBooks Online</a> (updated August 5, 2026): the ending balance and date, History by account</li>
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/profit-loss-reports/create-report-shows-debits-credits-transaction/L1zvqNX0e_US_en_US">Intuit: Run a ledger report that shows debits and credits</a> (updated August 3, 2026) and <a href="https://quickbooks.intuit.com/learn-support/en-us/help-articles/export-your-reports-to-excel-from-quickbooks-online/00/262097">Export your reports to Excel</a>: the QuickBooks Online ledger file</li>
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-transactions/format-csv-files-excel-bank-transactions-quickbooks/L4BjLWckq_US_en_US">Intuit: Format CSV files in Excel to get bank transactions into QuickBooks</a> (updated August 24, 2026): the 3- and 4-column bank layouts</li>
+      <li><a href="https://central.xero.com/0/article/Bank-Reconciliation-Summary">Xero Central: Bank Reconciliation reports</a> and <a href="https://central.xero.com/0/article/Bank-Reconciliation-Detail-report">Bank Reconciliation Detail report</a>: Balance in Xero, Statement balance (calculated), Calculated balance out by</li>
+      <li><a href="https://central.xero.com/s/article/Account-Transactions-report-New">Xero Central: Account Transactions report</a> and <a href="https://central.xero.com/s/article/Export-a-list-of-uncoded-bank-statement-lines">Export a list of uncoded bank statement lines</a>: the two Xero files</li>
+      <li><a href="https://accountingtools.com/articles/transposition-error">AccountingTools: Transposition error</a> (February 13, 2026): two adjacent digits reversed; differences divisible by 9</li>
+      <li><a href="https://www.accountingcoach.com/bank-reconciliation/explanation">AccountingCoach: Bank reconciliation</a>: adjusted balance per bank must equal adjusted balance per books</li>
+    </ul>
+      </div>
+    </details>
+  </section>
+
+<section class="wrap cp-index" data-jump="Software" aria-labelledby="cp-index-title"><h2 id="cp-index-title">By software</h2>
+<h3>Software</h3><ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/quickbooks-online/" title="Find a reconciliation discrepancy in QuickBooks Online (statement vs ledger export)">QuickBooks Online</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/xero/" title="Xero bank reconciliation not balancing: find the difference line by line">Xero</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Checks" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Checks and templates</h2>
+<h3>Checks</h3><ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/transposition-error-checker/" title="Transposition error checker: is your difference divisible by 9?">Transposition error checker</a></li></ul>
+<h3>Templates</h3><ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/bank-reconciliation-template-excel/" title="Bank reconciliation template (Excel and PDF) that shows the difference">Reconciliation template for Excel</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/bank-reconciliation-template-google-sheets/" title="Bank reconciliation template for Google Sheets (with formulas)">Reconciliation template for Google Sheets</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Guides</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/why-bank-reconciliation-not-balancing/" title="Why is my bank reconciliation not balancing? 7 causes, checked automatically">Why a reconciliation does not balance</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference/" title="Bank reconciliation difference in the opening balance: how to find it">Opening balance difference</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/journal-entry-reconciliation-discrepancy/" title="Journal entry for a bank reconciliation discrepancy (and when not to post one)">Journal entry for a discrepancy</a></li></ul>
+<h3>Excel</h3><ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/bank-reconciliation-in-excel/" title="How to do a bank reconciliation in Excel (formulas, matching, and a faster way)">Bank reconciliation in Excel</a></li></ul>
+<h3>Problems</h3><ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule/" title="Bank reconciliation off by 9, 90 or 900: the divisible-by-9 rule">Off by 9, 90 or 900</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/beginning-balance-wrong/" title="Beginning balance is wrong in the reconciliation: a 6-step diagnosis">Beginning balance wrong</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/reconcile-from-pdf-statement/" title="How to reconcile when you only have a PDF statement and a ledger export">Reconcile from a PDF statement</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/outstanding-checks-list/" title="Outstanding checks and deposits in transit: build the list in a minute">Outstanding checks list</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/year-end-reconciliation-checklist/" title="Year-end bank reconciliation checklist for the client file">Year-end checklist</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/credit-card-reconciliation-off/" title="Reconciling a credit card account that keeps being off">Credit card reconciliation off</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/worked-example-missing-payment/" title="Worked example: finding a missing $1,350 payment across three months">Worked example: missing payment</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/difference-is-double-a-transaction/" title="The difference is double a transaction: sign errors and reversed entries">Difference is twice an amount</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/stale-outstanding-checks/" title="Stale outstanding checks: when to void and how to document it">Stale outstanding checks</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/undo-reconciliation-safely/" title="Undo a reconciliation safely in QuickBooks Online: what to check first">Undo a reconciliation safely</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/xero-statement-vs-ledger/" title="Xero: statement lines and ledger do not match even though everything is reconciled">Xero statement vs ledger</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Reference" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Reference</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/bank-statement-vs-general-ledger/" title="Bank statement vs general ledger: the difference, with a worked example">Bank statement vs general ledger</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/bank-reconciliation-example/" title="Bank reconciliation example (step by step, computed)">Bank reconciliation example</a></li></ul>
+<h3>Calendar</h3><ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/quarter-end-reconciliation-dates-2026-2027/" title="Quarter-end bank reconciliation dates and stale-check cut-offs, December 2026 to December 2027">Quarter-end dates and stale cut-offs</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compared" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Compared</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/bank-reconciliation-difference-finder/vs/quickbooks-reconciliation-discrepancy-report/" title="QuickBooks reconciliation discrepancy report vs Endwise">QuickBooks discrepancy report</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/vs/xero-bank-reconciliation-report/" title="Xero reconciliation reports vs Endwise">Xero reconciliation reports</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/vs/excel-xlookup-reconciliation/" title="Reconcile in Excel with XLOOKUP, or use Endwise">Excel XLOOKUP</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/vs/solvexia/" title="Solvexia vs Endwise">Solvexia</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/vs/blackline/" title="BlackLine vs Endwise">BlackLine</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/vs/manual-tick-and-flick/" title="Manual tick and flick vs a diff tool">Manual tick and flick</a></li></ul>
+</section>
+
+  <section class="wrap rd-code" data-jump="Code" aria-label="Use this from code">
+    <div id="rd-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to read your files. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/bank-reconciliation-difference-finder/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

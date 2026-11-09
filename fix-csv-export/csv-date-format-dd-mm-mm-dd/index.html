@@ -71,6 +71,7 @@
 <h1>CSV dates flipped between DD/MM and MM/DD</h1>
 <p class="cp-answer">In this 4-row UK invoice export, 2 dates (13/04/2026 and 28/04/2026) can only be DD/MM, because no month is above 12, so the whole column reads DD/MM: 03/04/2026 is April 3, 2026, not March 4. Excel reads a CSV's dates in your computer's date order, which is why the same file flips on a US machine.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the fixer</h2><p class="muted">The example file below opens in the fixer and is scanned in your browser, free. Swap in your own file there.</p><form method="get" action="/toll-preview/fix-csv-export/" class="cp-tool-form"><input type="hidden" name="text" value="Invoice,Issued,Amount
@@ -102,7 +103,7 @@ UK-1044,05/05/2026,42.00
 <ul class="cp-sources"><li><a href="https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers">Microsoft Learn: How Excel works with two-digit year numbers (read November 8, 2026)</a></li><li><a href="https://learn.microsoft.com/en-us/power-query/data-types">Microsoft Learn: Data types in Power Query (read November 8, 2026)</a></li></ul>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>How can I tell which date format a column uses?</h3><p>Look for a value whose first part is above 12: it can only be DD/MM. A second part above 12 proves MM/DD. In this worked file 2 of 4 values prove DD/MM.</p><h3>How does Excel read two-digit years in a CSV?</h3><p>Imported dates follow the 2029 rule: two-digit years 00 to 29 are 2000 to 2029, 30 to 99 are 1930 to 1999.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>How can I tell which date format a column uses?</h3></summary><div class="xp-in"><p>Look for a value whose first part is above 12: it can only be DD/MM. A second part above 12 proves MM/DD. In this worked file 2 of 4 values prove DD/MM.</p></div></details><details class="xpand"><summary><h3>How does Excel read two-digit years in a CSV?</h3></summary><div class="xp-in"><p>Imported dates follow the 2029 rule: two-digit years 00 to 29 are 2000 to 2029, 30 to 99 are 1930 to 1999.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/fix-csv-export/csv-mixed-date-formats/">One column, two date formats</a></li><li><a href="/toll-preview/fix-csv-export/for/quickbooks-online-bank-import/">QuickBooks Online bank CSV dates</a></li><li><a href="/toll-preview/fix-csv-export/guide/open-csv-in-excel-without-changing-data/">Open a CSV in Excel without changing it</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/fix-csv-export/csv-date-format-dd-mm-mm-dd.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
@@ -195,6 +196,7 @@ UK-1044,05/05/2026,42.00
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

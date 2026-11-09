@@ -71,17 +71,18 @@
 <h1>How the 1099 threshold is applied: method and sources</h1>
 <p class="cp-answer">Payments are grouped by payee, the ones the IRS does not want on a 1099 are set aside, and each box total is compared with that box's line for the payment year: $600 for 2025 payments and $2,000 for 2026 payments on the general line. A total at exactly the line is reportable and one cent below is not.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the 1099 threshold tracker compute?</h2>
 <p>The tool checks which payees need a Form 1099-NEC or 1099-MISC for a payment year, in which box, and why, from a list of payments or from one payee. It also returns the lines, due dates, penalties and state rules, and works out the 2027 line from the statute.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the 1099 threshold tracker compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>scan</code>: A year-end scan of a payments list (rows or a spreadsheet): one verdict per payee, the boxes and amounts, due dates, penalties, a verdict CSV and an IRIS upload file.</li><li><code>check</code>: One payee, one amount: whether a form is needed and why.</li><li><code>thresholds</code>: Every box line for a payment year with the due dates.</li><li><code>projection</code>: The line for a year the IRS has not published, worked out from 26 U.S.C. 6041(h).</li><li><code>penalty</code>: Information return penalties by the year the return is due.</li><li><code>state</code>: A state's own 1099 rule and its Combined Federal/State Filing status.</li><li><code>rules</code>: The rule files every answer comes from, with their sources.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>paymentYear</code>: The calendar year the payments were made: 2025, 2026 or 2027.</li><li><code>payee, tin, date, amount</code>: Who was paid, their taxpayer identification number, the payment date and the amount.</li><li><code>type, method, payeeType, state</code>: What the payment was for, how it was paid, what kind of payee it was, and the state.</li></ul>
 <p>Outputs:</p>
-<ul><li>a verdict per payee: file, near (within 25% of a line), under or exempt</li><li>the forms and boxes with amounts, and the date a box first reached its line</li><li>reasons in plain words, and what was left out and why</li><li>due dates, TIN and W-9 notes, state copies</li></ul>
+<ul><li>a verdict per payee: file, near (within 25% of a line), under or exempt</li><li>the forms and boxes with amounts, and the date a box first reached its line</li><li>reasons in plain words, and what was left out and why</li><li>due dates, TIN and W-9 notes, state copies</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -141,16 +142,31 @@ exports: 2 items</code></pre>
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>IRS instructions for payment years 2025 and 2026 were read 2026-10-31. The 2027 line is provisional until the IRS publishes it.</p>
 <ul class="cp-sources"><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026)</a></li><li><a href="https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. April 2025)</a></li><li><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), Filing dates</a></li><li><a href="https://www.irs.gov/payments/information-return-penalties">IRS: Information return penalties</a></li><li><a href="https://www.law.cornell.edu/uscode/text/26/6041">26 U.S. Code 6041(h), Inflation adjustment (Cornell LII)</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>IRS instructions for payment years 2025 and 2026, read 2026-10-31. The 2027 line is worked out from 26 U.S.C. 6041(h) and the chained CPI (latest month 2026-09) and is marked provisional until the IRS publishes its own.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>1099 threshold tracker: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-prior/i1099mec--2025.pdf">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. April 2025)</a></th><td>Rev. 4-2025</td><td rowspan="10">2026-10-31</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026)</a></th><td>Rev. 12/2026</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/instructions/i1099mec">IRS: Instructions for Forms 1099-MISC and 1099-NEC (Rev. December 2026), Filing dates</a></th><td>filing dates</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/payments/information-return-penalties">IRS: Information return penalties</a></th><td>penalties</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/instructions/i1099gi">IRS: General Instructions for Certain Information Returns (2025), part N, Backup Withholding</a></th><td>2025</td></tr>
+<tr><th scope="row"><a href="https://www.law.cornell.edu/uscode/text/26/6041">26 U.S. Code 6041(h), Inflation adjustment (Cornell LII)</a></th><td>26 U.S.C. 6041</td></tr>
+<tr><th scope="row"><a href="https://api.bls.gov/publicAPI/v1/timeseries/data/SUUR0000SA0">U.S. Bureau of Labor Statistics: Chained CPI for All Urban Consumers (C-CPI-U), series SUUR0000SA0</a></th><td>through 2026-09</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-pdf/p1220.pdf">IRS Publication 1220 (Rev. 5-2026), Part A Sec. 12, Table 1: Participating States and Codes (for tax year 2025, FIRE)</a></th><td>Rev. 5-2026</td></tr>
+<tr><th scope="row"><a href="https://www.ftb.ca.gov/file/guide-to-information-returns-filed-with-california.html">California Franchise Tax Board: Guide to Information Returns Filed With California (last updated 01/29/2026)</a></th><td>updated 01/29/2026</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-efile/ty2025-template-formatting-guidelines.zip">IRS: IRIS CSV Template Formatting guidelines, tax year 2025 (ZIP, updated 01/14/2026)</a></th><td>tax year 2025</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>Every federal line for 2025 and 2026 is compared with the IRS instructions with the revision recorded, and penalties, the CF/SF states and the IRIS CSV columns the same way. The 2027 projection is checked against the arithmetic in 26 U.S.C. 6041(h). A payee is in at exactly the line and out a cent below it, for every box and year.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Every federal line for 2025 and 2026 is compared with the IRS instructions, with the revision and source recorded; penalties, the CF/SF states, California's lines and the IRIS CSV columns are checked the same way.</li><li>The 2027 projection is checked against the arithmetic in 26 U.S.C. 6041(h) (rounded to the nearest $100) and marked provisional.</li><li>A payee is in at exactly the line and out a cent below it, for every box and year.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/1099-threshold/">Open the 1099 threshold tracker tool</a>.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the 1099 threshold tracker answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the 1099 threshold tracker refuse to answer?</h3><p>Payment years 2025, 2026 and 2027 only. Another year is refused. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the 1099 threshold tracker answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the 1099 threshold tracker refuse to answer?</h3></summary><div class="xp-in"><p>Payment years 2025, 2026 and 2027 only. Another year is refused. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/1099-threshold/">Open the 1099 threshold tracker tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/1099-threshold/2026/">1099 payee guides</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/1099-threshold.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -243,6 +259,7 @@ exports: 2 items</code></pre>
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

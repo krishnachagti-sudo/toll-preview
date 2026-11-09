@@ -157,13 +157,29 @@ Percentage tables are from Publication 946 (2025 edition, dated 2026-03-13), rea
 - [Rev. Proc. 2025-32 sec. 4.24, and IRS Publication 946 (2025), What's New for 2026](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf)
 - [IRS Publication 946 (2025), chapter 3, What Is Qualified Property?](https://www.irs.gov/publications/p946)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+Percentage tables from Publication 946 (2025), dated 2026-03-13, read 2026-11-02. Section 179 limits for 2025 and 2026; other tax years are refused.
+
+MACRS depreciation schedule: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IRS Publication 946 (2025), How To Depreciate Property, Appendix A](https://www.irs.gov/pub/irs-pdf/p946.pdf) | 2025 edition, dated 2026-03-13 | 2026-11-02 |
+| [Rev. Proc. 2025-32 sec. 4.24, and IRS Publication 946 (2025), What's New for 2026](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf) | 2026 limits | 2026-11-02 |
+| [IRS Publication 946 (2025), What's New for 2025, and chapter 2, Dollar Limits](https://www.irs.gov/publications/p946) | 2025 limits | 2026-11-02 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Every column of every percentage table sums to exactly 100%, and the tables are checked a second time against the declining-balance and straight-line formulas. Worked examples from Publication 946 are reproduced, and the 2025 and 2026 Section 179 figures are compared with Publication 946 and Rev. Proc. 2025-32.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Every column of every percentage table sums to exactly 100%, and the tables are checked a second time against the declining-balance and straight-line formulas.
+- Worked examples from Publication 946 are reproduced: $10,000 of 7-year furniture (chapter 4), the October computer that forces mid-quarter, the $100,000 building placed in service in March, the $450,000 property that gets 40% bonus (chapter 3) and the Jane Ash Section 179 reduction (chapter 2).
+- The 2025 and 2026 Section 179 figures are compared with Publication 946 and Rev. Proc. 2025-32.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the MACRS depreciation schedule tool](https://krishnachagti-sudo.github.io/toll-preview/macrs-depreciation/).
 

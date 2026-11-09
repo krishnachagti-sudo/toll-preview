@@ -71,6 +71,7 @@
 <h1>Redirect status codes: 301, 302, 303, 307, 308</h1>
 <p class="cp-answer">Google treats 301 and 308 as permanent redirects and 302, 303 and 307 as temporary ones; an instant meta refresh counts as permanent and a delayed one as temporary. Google uses a 301 as a strong signal and a 302 as a weak signal that the redirect target should be processed.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Code</th><th scope="col">Name</th><th scope="col">Google treats it as</th><th scope="col">Request method</th><th scope="col">Defined in</th></tr></thead><tbody>
@@ -87,7 +88,7 @@
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">See which codes your redirects send</h2><p class="muted">Every hop is labelled permanent or temporary.</p><form method="get" action="/toll-preview/redirect-chain-checker/" class="cp-tool-form"><div class="field"><label for="tf-list">URL to check (paste a list in the full tool)</label><input type="text" id="tf-list" name="list" value="http://example.com/"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the redirects</button></form><p class="small"><a href="/toll-preview/redirect-chain-checker/?list=http%3A%2F%2Fexample.com%2F">Open this in the full tool</a></p></aside>
 <ul class="cp-sources"><li><a href="https://developers.google.com/search/docs/crawling-indexing/301-redirects">Google Search Central: Redirects and Google Search (updated April 14, 2026, read November 7, 2026)</a></li><li><a href="https://developers.google.com/search/docs/crawling-indexing/http-network-errors">Google Search Central: HTTP status codes, network and DNS errors (updated February 4, 2026, read November 7, 2026)</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9110#section-15.4">RFC 9110, HTTP Semantics, section 15.4: Redirection 3xx</a></li></ul>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is a 308 permanent like a 301?</h3><p>Yes. Google treats 301 and 308 as permanent; 308 also keeps the request method, so a POST stays a POST.</p><h3>Does Google see JavaScript redirects?</h3><p>Google advises JavaScript redirects only where server-side or meta refresh redirects are not possible, since it may never see one if rendering fails.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is a 308 permanent like a 301?</h3></summary><div class="xp-in"><p>Yes. Google treats 301 and 308 as permanent; 308 also keeps the request method, so a POST stays a POST.</p></div></details><details class="xpand"><summary><h3>Does Google see JavaScript redirects?</h3></summary><div class="xp-in"><p>Google advises JavaScript redirects only where server-side or meta refresh redirects are not possible, since it may never see one if rendering fails.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/redirect-chain-checker/301-redirect-checker/">301 redirect checker</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/redirect-chain-checker/redirect-status-codes.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/redirect-chain-checker/redirect-status-codes.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
@@ -180,6 +181,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

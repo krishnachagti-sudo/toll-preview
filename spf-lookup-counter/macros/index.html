@@ -71,6 +71,7 @@
 <h1>SPF macros, expanded</h1>
 <p class="cp-answer">SPF macros are placeholders RFC 7208 Section 7 fills in at check time: %{i} is the sending IP, %{d} the domain, %{s} the sender; for sender strong-bad@email.example.com and IP 192.0.2.3, %{ir}.%{v}._spf.%{d2} becomes 3.2.0.192.in-addr._spf.example.com.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Expand your own macro</h2><p class="muted">Free, and it runs in your browser: no DNS is queried.</p><form method="get" action="/toll-preview/spf-lookup-counter/" class="cp-tool-form"><div class="field"><label for="tf-macro">Macro</label><input type="text" id="tf-macro" name="macro" value="%{ir}.%{v}._spf.%{d2}"></div><div class="field"><label for="tf-mdomain">Domain</label><input type="text" id="tf-mdomain" name="mdomain" value="email.example.com"></div><div class="field"><label for="tf-mip">Sending IP</label><input type="text" id="tf-mip" name="mip" value="192.0.2.3"></div><div class="field"><label for="tf-msender">Sender</label><input type="text" id="tf-msender" name="msender" value="strong-bad@email.example.com"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Expand it</button></form><p class="small"><a href="/toll-preview/spf-lookup-counter/?macro=%25%7Bir%7D.%25%7Bv%7D._spf.%25%7Bd2%7D&amp;mdomain=email.example.com&amp;mip=192.0.2.3&amp;msender=strong-bad%40email.example.com">Open the macro explainer</a></p></aside>
@@ -106,7 +107,7 @@
 <ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc7208">IETF RFC 7208: Sender Policy Framework (SPF), read 2026-11-07</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7208#section-7.4">RFC 7208 Section 7.4</a></li></ul>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>What does %{i} mean in an SPF record?</h3><p>It is the sending IP address, filled in when the record is checked (RFC 7208 Section 7.2). %{ir} is the same address reversed, so 192.0.2.3 becomes 3.2.0.192.</p><h3>Does a term with a macro count toward the 10 lookups?</h3><p>Yes. exists:%{i}._spf.example.com is one exists term, so it costs 1 lookup whatever name it builds.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>What does %{i} mean in an SPF record?</h3></summary><div class="xp-in"><p>It is the sending IP address, filled in when the record is checked (RFC 7208 Section 7.2). %{ir} is the same address reversed, so 192.0.2.3 becomes 3.2.0.192.</p></div></details><details class="xpand"><summary><h3>Does a term with a macro count toward the 10 lookups?</h3></summary><div class="xp-in"><p>Yes. exists:%{i}._spf.example.com is one exists term, so it costs 1 lookup whatever name it builds.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/spf-lookup-counter/checkers-disagree/">Why two SPF checkers disagree</a></li><li><a href="/toll-preview/spf-lookup-counter/void-lookups/">Void lookups</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/spf-lookup-counter/macros.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/spf-lookup-counter/macros.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-07">2026-11-07</time></p>
@@ -199,6 +200,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

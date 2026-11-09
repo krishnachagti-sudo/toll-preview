@@ -1,0 +1,40 @@
+/* Rolled-up holiday pay calculator: a payslip desk inside the brand chrome, reusing its tokens. One
+   accent carries the holiday pay line; the payslip reads as ruled lines. */
+.rh {
+  --accent: var(--h-money);
+  --endwise-accent: var(--h-money);
+}
+
+
+
+/* Layout comes from web/tool-full.css. */
+.rh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 12px 14px; align-items: start; }
+.rh-form select, .rh-form input:not([type="checkbox"]), .rh-form textarea { width: 100%; }
+.rh-more .xp-in > * + * { margin-top: 12px; }
+.rh-out details.xpand { margin-top: 12px; }
+.rh-out .tf-items { margin-top: 12px; }
+.rh-small-panel { padding: 22px; }
+.rh-rules .rh-notes { padding-left: 1.2em; }
+.rh-wide { grid-column: 1 / -1; }
+.rh textarea { width: 100%; font-family: var(--font-mono); font-size: 13px; }
+.rh input[type="date"] { color-scheme: dark; }
+.rh-check { display: flex; gap: 8px; align-items: baseline; color: var(--muted); margin: 4px 0 8px; font-size: 0.95rem; }
+
+.rh-sub, .rh-aside { color: var(--muted); margin: 0 0 14px; max-width: 46rem; }
+.rh-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 22px 0 8px; }
+.rh-table { font-variant-numeric: tabular-nums; margin-bottom: 10px; width: 100%; max-width: 34rem; }
+.rh-table .num { text-align: right; white-space: nowrap; }
+.rh-table tr.rh-line td { color: var(--accent); font-weight: 500; }
+.rh-table tr:last-child td { border-top: 1px solid var(--line-2); }
+.rh-list { margin: 0 0 12px; padding-left: 1.1rem; max-width: 48rem; color: var(--text-2); overflow-wrap: anywhere; }
+.rh-list li { margin: 4px 0; }
+
+.rh-batch-grid { display: grid; gap: 28px; }
+.rh-batch-grid > * { min-width: 0; }
+@media (min-width: 1000px) { .rh-batch-grid { grid-template-columns: 1fr 1fr; } }
+#rh-preview { overflow-x: auto; }
+.rh-buy .btn { margin: 4px 0 8px; }
+.rh-got a { text-decoration: underline; }
+.rh-mini-out { font-size: 1.05rem; font-variant-numeric: tabular-nums; min-height: 1.5em; max-width: 52rem; }
+.rh-notes { margin-top: 20px; max-width: 52rem; }
+.rh-part + .rh-part { margin-top: 56px; }

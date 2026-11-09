@@ -1,15 +1,15 @@
 # What date is 60 days from today?
 
-60 days from today, Saturday, November 7, 2026 (today's date in New York, US Eastern time), is Wednesday, January 6, 2027. Counted from tomorrow it is Thursday, January 7, 2027.
+60 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Thursday, January 7, 2027. Counted from tomorrow it is Friday, January 8, 2027.
 
-- Date: January 6, 2027
-- Weekday: Wednesday
+- Date: January 7, 2027
+- Weekday: Thursday
 - ISO week: 2027-W01
-- US business days between: 39
+- US business days between: 40
 
 ## 60 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-08&region=US)
 
 ## 60 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 60 days after | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-07) | Wed, Jan 6, 2027 | 39 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-08) | Thu, Jan 7, 2027 | 40 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-09) | Fri, Jan 8, 2027 | 40 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-10) | Sat, Jan 9, 2027 | 39 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-18) | Sun, Jan 17, 2027 | 39 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-19) | Mon, Jan 18, 2027 | 38 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-20) | Tue, Jan 19, 2027 | 38 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=60+days+from+today&ref=2026-11-21) | Wed, Jan 20, 2027 | 39 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 60 days from today: the same as 61 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/60-days-from-today/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/60-days-from-today.csv

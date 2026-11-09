@@ -127,7 +127,7 @@ function syncMode() {
   $('pd-get').disabled = m !== 'log';
   $('pd-get-note').textContent = m === 'log'
     ? tr('Your log stays in this browser. It is sent only when you get the worksheet.', 'Su registro se queda en este navegador. Solo se envía cuando obtiene la hoja de cálculo.')
-    : tr('The worksheet is built from a day-by-day log: switch to "Trips and a calendar" to make one.', 'La hoja de cálculo se hace con un registro día por día: cambie a "Viajes y un calendario" para hacerla.');
+    : tr('The worksheet is built from a day-by-day log: switch to "Trips" to make one.', 'La hoja de cálculo se hace con un registro día por día: cambie a "Viajes" para hacerla.');
 }
 
 const TRIP_RE = /^(\d{4}-\d{2}-\d{2})(?:\s*(?:to|-|–)\s*(\d{4}-\d{2}-\d{2}))?\s*(.*)$/i;
@@ -190,48 +190,78 @@ function table(columns, rows, foot) {
   ]));
 }
 
+// One line per figure: a mark, what it is, the amount, and where it comes from.
+const item = (k, label, amount, why, cls = null) => h('li', { class: cls }, [
+  h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', {}, label), amount ? h('b', {}, amount) : null, why ? h('em', {}, why) : null,
+]);
+const usd = (v) => money(Math.round(v * 100));
+const noticeLinks = (list) => list.flatMap((n, i) => [i ? ', ' : '', h('a', { href: n.url, rel: 'noopener' }, n.notice)]);
+
+// The inputs in one line: "2024, 3 trips, 1 day marked, hours of service".
+function inputsLine(r) {
+  const parts = [String(r.taxYear)];
+  if (mode() === 'log') {
+    const trips = $('pd-trips').value.split('\n').filter((l) => l.trim()).length;
+    const abroad = $('pd-trips').value.split('\n').filter((l) => /canada|oconus|alaska|hawaii|mexico|outside/i.test(l)).length;
+    const marked = Object.keys(marks).length;
+    parts.push(tr(`${trips} ${trips === 1 ? 'trip' : 'trips'}`, `${trips} ${trips === 1 ? 'viaje' : 'viajes'}`));
+    if (abroad) parts.push(tr(`${abroad} outside the lower 48`, `${abroad} fuera de los 48 contiguos`));
+    if (marked) parts.push(tr(`${marked} ${marked === 1 ? 'day' : 'days'} marked`, `${marked} ${marked === 1 ? 'día marcado' : 'días marcados'}`));
+  } else {
+    const c = readCounts('pd-y').counts ?? {};
+    parts.push(tr(`${c.fullDays ?? 0} full and ${c.partialDays ?? 0} partial days`, `${c.fullDays ?? 0} días completos y ${c.partialDays ?? 0} parciales`));
+  }
+  parts.push(tr(`${r.totals.deductiblePct}% limit`, `límite de ${r.totals.deductiblePct}%`));
+  return parts.join(', ');
+}
+
+// The result like the other tool pages: a header row, the inputs, the line 24b figure as the big
+// one, then one line per rate period and per figure with where it comes from; the month table,
+// the rules applied and the log checks are folded or short.
 function render(r) {
   const out = $('pd-out');
   out.textContent = '';
   const t = r.totals;
-  const label = kind === 'example' ? tr('Worked example', 'Ejemplo resuelto') : kind === 'saved' ? tr('Your saved log', 'Su registro guardado') : tr('Worked out on this page, free', 'Calculado en esta página, gratis');
+  const tag = kind === 'example' ? h('span', { class: 'tf-tag' }, tr('Example', 'Ejemplo'))
+    : h('span', { class: 'tf-tag run' }, kind === 'saved' ? tr('Your saved log', 'Su registro guardado') : tr('Your result', 'Su resultado'));
+  const line = inputsLine(r);
+  const segs = r.segments.flatMap((s) => {
+    const full = s.fullDays + s.oconusFullDays;
+    const part = s.partialDays + s.oconusPartialDays;
+    const rate = `$${s.rateConus}${s.oconusFullDays + s.oconusPartialDays ? ` / $${s.rateOconus}` : ''}`;
+    return [item(`$${s.rateConus}`, `${dayMonth(s.from)} ${tr('to', 'al')} ${dayMonth(s.to)}: ${tr(`${full} full, ${part} partial`, `${full} completos, ${part} parciales`)}`, usd(s.perDiem),
+      [tr(`${rate} a day, 3/4 on partial days, `, `${rate} al día, 3/4 en días parciales, `), ...noticeLinks(s.notices)], 'plain')];
+  });
   const sheet = h('div', {}, [
-    h('p', { class: 'pd-sheet-label' }, label),
-    h('p', { class: 'pd-answer' }, [h('small', {}, tr(`Schedule C line 24b, ${r.taxYear}`, `Anexo C, línea 24b, ${r.taxYear}`)), t.display.deductible]),
-    h('dl', { class: 'pd-facts' }, [
-      h('div', {}, [h('dt', {}, tr('Full per diem, for tax software', 'Viáticos (per diem) completos, para el programa de impuestos')), h('dd', {}, t.display.perDiem)]),
-      h('div', {}, [h('dt', {}, tr('Limit', 'Límite')), h('dd', {}, `${t.deductiblePct}%`)]),
-      t.scheduleCLine24a ? h('div', {}, [h('dt', {}, tr('Line 24a, incidental only', 'Línea 24a, solo gastos imprevistos')), h('dd', {}, t.display.incidentalOnly)]) : null,
+    h('div', { class: 'tf-rh' }, [tag, h('span', { class: 'tf-src' }, tr(`Schedule C line 24b, ${r.taxYear}`, `Anexo C, línea 24b, ${r.taxYear}`))]),
+    h('p', { class: 'tf-exin' }, kind === 'example' ? `${tr('Example', 'Ejemplo')}: ${line}` : line),
+    h('p', { class: 'tf-big' }, [h('b', {}, t.display.deductible), h('span', {}, tr('to deduct on line 24b', 'para deducir en la línea 24b'))]),
+    h('p', { class: 'tf-sub' }, r.answer),
+    h('ul', { class: 'tf-items pd-items' }, [
+      ...segs,
+      item('=', tr('Full per diem, for tax software', 'Viáticos (per diem) completos, para el programa de impuestos'), t.display.perDiem, tr('enter this where the software applies the limit itself', 'escríbalo donde el programa aplica el límite por sí solo')),
+      item('%', tr('Limit', 'Límite'), `${t.deductiblePct}%`, r.limit.basis),
+      item('24b', tr('Schedule C line 24b', 'Anexo C, línea 24b'), t.display.deductible, tr(`${t.display.perDiem} x ${t.deductiblePct}%`, `${t.display.perDiem} x ${t.deductiblePct}%`), 'hi tot'),
+      t.scheduleCLine24a ? item('24a', tr('Line 24a, incidental only', 'Línea 24a, solo gastos imprevistos'), t.display.incidentalOnly, tr('$5 days, not limited', 'días de $5, sin límite')) : null,
     ]),
-    h('p', { class: 'pd-sub' }, r.answer),
-    h('p', { class: 'pd-heading' }, tr('By rate period', 'Por período de tarifa')),
-    table(
-      ES
-        ? [{ label: 'Fechas' }, { label: 'Aviso' }, { label: 'Tarifa', num: true }, { label: 'Completos', num: true }, { label: 'Parciales', num: true }, { label: 'Per diem', num: true }, { label: 'Deducible', num: true }]
-        : [{ label: 'Dates' }, { label: 'Notice' }, { label: 'Rate', num: true }, { label: 'Full', num: true }, { label: 'Partial', num: true }, { label: 'Per diem', num: true }, { label: 'Deductible', num: true }],
-      r.segments.map((s) => [`${dayMonth(s.from)} ${tr('to', 'al')} ${dayMonth(s.to)}`, s.notices.map((n) => n.notice).join(', '), `$${s.rateConus}${s.oconusFullDays + s.oconusPartialDays ? ` / $${s.rateOconus}` : ''}`,
-        String(s.fullDays + s.oconusFullDays), String(s.partialDays + s.oconusPartialDays), s.perDiem, s.deductible]),
-    ),
   ]);
   if (r.months) {
+    sheet.append(r.warnings.length
+      ? h('ul', { class: 'pd-warn' }, r.warnings.map((w) => h('li', {}, w.message)))
+      : h('p', { class: 'tf-note' }, tr('No problems found in the log.', 'No se encontraron problemas en el registro.')));
     const active = r.months.filter((m) => m.perDiem || m.incidentalOnly || m.reimbursedDays);
     if (active.length) {
-      sheet.append(h('p', { class: 'pd-heading' }, tr('By month', 'Por mes')), table(
+      sheet.append(h('details', { class: 'xpand' }, [h('summary', {}, tr(`By month (${active.length})`, `Por mes (${active.length})`)), h('div', { class: 'xp-in' }, table(
         ES
           ? [{ label: 'Mes' }, { label: 'Completos', num: true }, { label: 'Parciales', num: true }, { label: 'Fuera', num: true }, { label: 'Per diem', num: true }, { label: 'Deducible', num: true }]
           : [{ label: 'Month' }, { label: 'Full', num: true }, { label: 'Partial', num: true }, { label: 'Outside', num: true }, { label: 'Per diem', num: true }, { label: 'Deductible', num: true }],
         active.map((m) => [ES ? ES_MONTHS[+m.month.slice(5, 7) - 1] : m.name, String(m.fullDays), String(m.partialDays), String(m.oconusDays), m.perDiem, m.deductible]),
-      ));
+      ))]));
     }
-    sheet.append(h('p', { class: 'pd-heading' }, tr(`Log checks (${r.warnings.length})`, `Revisiones del registro (${r.warnings.length})`)));
-    sheet.append(r.warnings.length
-      ? h('ul', { class: 'pd-warn' }, r.warnings.map((w) => h('li', {}, w.message)))
-      : h('p', { class: 'pd-aside' }, tr('No problems found in the log.', 'No se encontraron problemas en el registro.')));
   }
   sheet.append(
-    h('p', { class: 'pd-heading' }, tr('Where the numbers go', 'Dónde van los números')),
-    h('ul', { class: 'pd-enter' }, r.howToEnter.map((x) => h('li', {}, x))),
-    h('details', { class: 'pd-why' }, [h('summary', {}, tr('Rules applied', 'Reglas aplicadas')), h('ul', {}, [r.methodLock, r.limit.basis[0].toUpperCase() + r.limit.basis.slice(1) + '.', ...r.notes].map((x) => h('li', {}, x)))]),
+    h('details', { class: 'xpand' }, [h('summary', {}, tr('Where the numbers go', 'Dónde van los números')), h('div', { class: 'xp-in' }, h('ul', { class: 'pd-enter' }, r.howToEnter.map((x) => h('li', {}, x))))]),
+    h('details', { class: 'xpand pd-why' }, [h('summary', {}, tr('Rules applied', 'Reglas aplicadas')), h('div', { class: 'xp-in' }, h('ul', {}, [r.methodLock, r.limit.basis[0].toUpperCase() + r.limit.basis.slice(1) + '.', ...r.notes].map((x) => h('li', {}, x))))]),
     h('div', { id: 'pd-files' }),
   );
   out.appendChild(sheet);
@@ -340,6 +370,7 @@ function update() {
     lastResult = null;
     const target = e.field === 'transportationIndustry' ? 'pd-transport-err' : e.field === 'trips' || e.field === 'days' ? 'pd-trips-err' : mode() === 'counts' ? 'pd-counts-err' : 'pd-error';
     $(target).textContent = e.message;
+    if (target === 'pd-transport-err') $('pd-drive-fold').open = true;
     renderCalendar(null);
   }
   if (kind !== 'example') save();
@@ -478,6 +509,9 @@ function apply(state) {
   $('pd-hos').checked = state.hos !== false;
   $('pd-interstate').checked = state.interstate !== false;
   $('pd-transport').checked = state.transport !== false;
+  // A log with any of these unticked shows them, so the limit used is never a surprise.
+  $('pd-drive-fold').open = !['pd-transport', 'pd-hos', 'pd-interstate'].every((id) => $(id).checked);
+  if (Object.keys(marks).length && state !== EXAMPLE) $('pd-marks-fold').open = true;
 }
 
 // ---------- start ----------
@@ -508,7 +542,13 @@ async function start() {
 
   $('pd-form').addEventListener('input', soon);
   $('pd-form').addEventListener('change', soon);
-  $('pd-form').addEventListener('submit', (ev) => ev.preventDefault());
+  // The button shows the per diem for the form as it stands (it also updates as you type).
+  $('pd-form').addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    if (timer) { clearTimeout(timer); timer = null; }
+    update();
+    if (window.matchMedia('(max-width: 1080px)').matches) $('pd-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   $('pd-get').addEventListener('click', getWorksheet);
   $('pd-clear-marks').addEventListener('click', () => { marks = {}; kind = 'edit'; update(); });
   $('pd-year').addEventListener('change', () => {

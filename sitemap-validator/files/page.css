@@ -1,6 +1,6 @@
-/* Sitemap validator: a file report. Sits inside the brand chrome and reuses its tokens. Colour
-   carries one idea: red is a rule broken (an error), amber a warning, green a URL that is fine,
-   grey a note. */
+/* Sitemap validator: a file report, on the tool-full layout (web/tool-full.css).
+   Colour carries one idea: red is a rule broken (an error), amber a warning, green a URL that is
+   fine, grey a note. */
 .sv {
   --accent: var(--h-file);
   --accent-ink: #06121a;
@@ -11,70 +11,57 @@
   --sv-fix: #ff6b6b;
 }
 
-.sv-intro { padding-block: 40px 8px; }
-.sv-intro h1 { margin-bottom: 0.25em; }
-.sv-price { color: var(--ink-soft); max-width: 46rem; margin: 0; }
-
-.sv-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.sv-desk > * { min-width: 0; }
-@media (min-width: 1040px) { .sv-desk { grid-template-columns: 24rem 1fr; gap: 48px; } }
-
-.sv-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.sv-form > .btn { width: 100%; }
 .sv input[type="text"], .sv textarea { font-family: var(--font-mono); font-size: 13px; line-height: 1.55; width: 100%; }
-.sv-pair { display: grid; gap: 0 12px; }
-@media (min-width: 480px) { .sv-pair { grid-template-columns: 1fr 1fr; } }
-.sv-more { border-top: 1px solid var(--rule); padding-top: 12px; margin-bottom: 16px; }
-.sv-more summary { cursor: pointer; color: var(--text-2); margin-bottom: 8px; }
-.sv-go-note { margin: 10px 0 0; }
+.tf-open .sv-about { order: 3; margin-top: 12px; }
+.sv-about .xp-in p { color: var(--muted); font-size: 14.5px; max-width: 62ch; }
 
 /* Result */
-.sv-out { min-height: 12rem; }
-.sv-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.sv-verdict { font: 600 0.85rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 6px; }
 .sv-verdict.v-valid { color: var(--sv-ok); }
 .sv-verdict.v-warnings { color: var(--sv-review); }
-.sv-verdict.v-invalid, .sv-verdict.v-fetch-failed { color: var(--sv-fix); }
-.sv-answer { font: 500 clamp(1.1rem, 3vw, 1.4rem)/1.35 var(--font-display); margin: 0 0 12px; max-width: 52rem; overflow-wrap: anywhere; }
-.sv-sample-list { padding-left: 1.2em; color: var(--ink-soft); max-width: 52rem; }
+.sv-verdict.v-invalid, .sv-verdict.v-fetch-failed { color: var(--sv-fix); text-shadow: none; }
+.sv-out .tf-sub, .sv-paste-out .tf-sub { overflow-wrap: anywhere; }
+.sv-items { margin-top: 18px; }
+.sv-sample-list { padding-left: 1.2em; color: var(--muted); font-size: 14px; max-width: 52rem; margin: 16px 0 0; }
 .sv-sample-list li { margin-bottom: 4px; overflow-wrap: anywhere; }
-.sv-tally { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; padding: 0; list-style: none; }
-.sv-tally li { border: 1px solid var(--rule-strong); border-radius: 999px; padding: 2px 10px; font: 500 0.8rem/1.5 var(--font-mono); }
-.sv-tally .n { color: var(--accent); margin-right: 4px; }
-.sv-advice { padding-left: 1.4em; max-width: 52rem; }
+.sv-advice { padding-left: 1.4em; margin: 0; }
 .sv-advice li { margin-bottom: 6px; }
-.sv-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.sv-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
+.sv-out details.xpand, .sv-paste-out details.xpand { margin-top: 14px; }
 
-.sv-file { border-top: 1px solid var(--rule-strong); margin-top: 18px; padding-top: 10px; }
-.sv-file-url { font: 500 0.95rem/1.4 var(--font-mono); overflow-wrap: anywhere; margin: 0 0 2px; }
+.sv-file { border-top: 1px solid var(--line-2); margin-top: 14px; padding-top: 10px; }
+.sv-file:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+.sv-file-url { font: 500 0.95rem/1.4 var(--font-mono); overflow-wrap: anywhere; margin: 0 0 2px; color: var(--text); }
 .sv-clean { color: var(--sv-ok); }
 .sv-issues { list-style: none; padding: 0; margin: 8px 0 0; }
-.sv-issue { border-top: 1px solid var(--rule); padding: 8px 0 8px 14px; position: relative; }
-.sv-issue::before { content: ""; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-soft); }
+.sv-issue { border-top: 1px solid var(--line); padding: 8px 0 8px 14px; position: relative; }
+.sv-issue::before { content: ""; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); }
 .sv-issue.s-fix::before { background: var(--sv-fix); }
 .sv-issue.s-review::before { background: var(--sv-review); }
-.sv-issue summary { cursor: pointer; }
-.sv-sev, .sv-v { font: 500 0.7rem/1.5 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; padding: 0 6px; border: 1px solid var(--rule-strong); color: var(--ink-soft); margin-right: 4px; display: inline-block; }
+.sv-issue summary { cursor: pointer; color: var(--text); }
+.sv-sev, .sv-v { font: 500 0.7rem/1.5 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px; padding: 0 6px; border: 1px solid var(--line-2); color: var(--muted); margin-right: 4px; display: inline-block; }
 .sv-sev.s-fix, .sv-v.s-fix { border-color: var(--sv-fix); color: var(--sv-fix); }
 .sv-sev.s-review, .sv-v.s-review { border-color: var(--sv-review); color: var(--sv-review); }
 .sv-v.s-ok { border-color: var(--sv-ok); color: var(--sv-ok); }
-.sv-gsc { color: var(--ink-soft); font-size: 0.88rem; }
-.sv-count { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.85rem; }
+.sv-gsc, .sv-count { color: var(--muted); font-size: 0.85rem; }
+.sv-count { font-family: var(--font-mono); }
 .sv-examples { margin: 6px 0 2px; padding-left: 1.2em; font-family: var(--font-mono); font-size: 0.82rem; }
 .sv-examples li { margin: 0 0 3px; overflow-wrap: anywhere; }
 .sv-line { color: var(--accent); margin-right: 8px; }
-.sv-out > h3 { margin-top: 28px; }
 .sv-live { font-size: 0.88rem; }
 .sv-url-cell { font: 400 0.82rem/1.4 var(--font-mono); overflow-wrap: anywhere; min-width: 12rem; }
 
-.sv-paste, .sv-rules, .sv-legal { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
-.sv-sub { color: var(--ink-soft); max-width: 46rem; }
-.sv-rule-cols { display: grid; gap: 4px 40px; }
-@media (min-width: 760px) { .sv-rule-cols { grid-template-columns: repeat(3, 1fr); } }
-.sv-rule-cols p, .sv-legal li { color: var(--ink-soft); max-width: 40rem; }
+/* Paste, price and sources */
+.sv-paste-box { padding: 22px; max-width: 52rem; }
+.sv-paste-box .field + .field { margin-top: 14px; }
+.sv-paste-box .btn { margin-top: 14px; }
+.sv-paste-out { margin-top: 16px; }
+.sv-price-list { padding: 22px; }
+.sv-src-fold { margin-top: 16px; }
+.sv-sources { padding-left: 1.2em; color: var(--muted); }
 .sv-sources a { word-break: break-word; }
-.sv-code { margin-top: 40px; max-width: 52rem; }
-.sv-code pre { max-width: 100%; }
+#sv-disclaimers { padding-left: 1.1em; margin: 0; }
+#sv-disclaimers li { margin-bottom: 0.6em; }
+@media (max-width: 640px) { .sv-paste-box, .sv-price-list { padding: 16px; } }
 
 @media print {
   .sv-form, .sv-code, .sv-paste { display: none; }

@@ -71,17 +71,18 @@
 <h1>How the tax set-aside is calculated: marginal method</h1>
 <p class="cp-answer">The set-aside is the year's tax on (profit so far plus this payment) minus the year's tax on the profit so far, worked out with the same rules both times, so every bracket, wage base or threshold crossed inside the payment is split exactly. It covers tax year 2026 for the US and 2026-27 for the UK.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the tax set-aside per payment compute?</h2>
 <p>For a self-employed person it says how much of one incoming payment to move to the tax pot, given what has been earned so far this year. It can also replay a year of payments and report a catch-up, and give the next estimated tax due date and safe-harbor amount.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the tax set-aside per payment compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>payment</code>: One payment: set-aside, percentage, marginal rate, the breakdown by tax and the working, with the sources of each figure.</li><li><code>ledger</code>: A year of payments in date order, with what should have been saved by now and the catch-up against what was saved.</li><li><code>next-due</code>: The next estimated payment date (US) or Self Assessment date (UK), and the safe-harbor amount or payments on account from last year's figures.</li><li><code>constants</code>: Every rate and threshold in use with its source.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>country</code>: US or UK.</li><li><code>filingStatus, state, age65, w2Wages, tips, overtime</code>: US: filing status, state, W-2 wages, qualified tips, overtime and age.</li><li><code>nation, salary, studentLoan</code>: UK: England/Wales/Northern Ireland or Scotland, salary and student loan plans.</li><li><code>amount, expenses, miles, date, ytdNetProfit</code>: The payment, its expenses (or a rate), business miles, the payment date and the net profit so far this year.</li></ul>
 <p>Outputs:</p>
-<ul><li>setAside and percent</li><li>breakdown: Social Security, Medicare, Additional Medicare, federal income tax and state tax, or Income Tax, Class 4 and student loan</li><li>crossings: each bracket or threshold passed inside this payment</li><li>nextDue</li></ul>
+<ul><li>setAside and percent</li><li>breakdown: Social Security, Medicare, Additional Medicare, federal income tax and state tax, or Income Tax, Class 4 and student loan</li><li>crossings: each bracket or threshold passed inside this payment</li><li>nextDue</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -137,16 +138,40 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>US federal figures are for tax year 2026, the UK for 2026-27. Each state's rule was read from the state's own site.</p>
 <ul class="cp-sources"><li><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">IRS Rev. Proc. 2025-32 (2026 inflation adjustments): tax rate tables, standard deduction, additional standard deduction, section 199A thresholds</a></li><li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes">IRS: Self-employment tax (Social Security and Medicare taxes), page updated 30-Oct-2026</a></li><li><a href="https://www.irs.gov/taxtopics/tc554">IRS Topic no. 554, Self-employment tax (92.35% of net earnings)</a></li><li><a href="https://www.irs.gov/taxtopics/tc560">IRS Topic no. 560, Additional Medicare Tax</a></li><li><a href="https://www.law.cornell.edu/uscode/text/26/199A">26 U.S.C. 199A(i), minimum deduction for active qualified business income</a></li><li><a href="https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors">IRS: Tax deductions for working Americans and seniors (tips, overtime, seniors, 2025 to 2028)</a></li><li><a href="https://www.gov.uk/income-tax-rates">GOV.UK: Income Tax rates and Personal Allowances (2026 to 2027)</a></li><li><a href="https://www.gov.uk/scottish-income-tax">GOV.UK: Scottish Income Tax (2026 to 2027 rates)</a></li><li><a href="https://www.gov.uk/self-employed-national-insurance-rates">GOV.UK: Self-employed National Insurance rates (2026 to 2027)</a></li><li><a href="https://www.gov.uk/repaying-your-student-loan/what-you-pay">GOV.UK: Repaying your student loan, what you pay</a></li><li><a href="https://www.gov.uk/understand-self-assessment-bill/payments-on-account">GOV.UK: Understanding your Self Assessment tax bill, payments on account</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>US federal figures for tax year 2026, the UK for 2026-27, state rules read 2026-10-31. Payments outside 2026 are refused.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Tax set-aside per payment: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">IRS Rev. Proc. 2025-32 (2026 inflation adjustments): tax rate tables, standard deduction, additional standard deduction, section 199A thresholds</a></th><td rowspan="13">US 2026</td><td rowspan="19">2026-10-31</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes">IRS: Self-employment tax (Social Security and Medicare taxes), page updated 30-Oct-2026</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/taxtopics/tc554">IRS Topic no. 554, Self-employment tax (92.35% of net earnings)</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/taxtopics/tc560">IRS Topic no. 560, Additional Medicare Tax</a></th></tr>
+<tr><th scope="row"><a href="https://www.law.cornell.edu/uscode/text/26/199A">26 U.S.C. 199A(i), minimum deduction for active qualified business income</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors">IRS: Tax deductions for working Americans and seniors (tips, overtime, seniors, 2025 to 2028)</a></th></tr>
+<tr><th scope="row"><a href="https://www.law.cornell.edu/uscode/text/26/224">26 U.S.C. 224, qualified tips ($25,000 cap, $100 per $1,000 over $150,000 / $300,000)</a></th></tr>
+<tr><th scope="row"><a href="https://www.law.cornell.edu/uscode/text/26/225">26 U.S.C. 225, qualified overtime compensation</a></th></tr>
+<tr><th scope="row"><a href="https://www.law.cornell.edu/uscode/text/26/151">26 U.S.C. 151(d)(5)(C), $6,000 deduction for seniors (6% over $75,000 / $150,000)</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/tax-professionals/standard-mileage-rates">IRS: Standard mileage rates (2026: 72.5 cents January to June, 76 cents July to December)</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-pdf/f1040es.pdf">IRS Form 1040-ES (2026), Payment due dates</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/faqs/estimated-tax/individuals/individuals">IRS: Estimated tax FAQs for individuals (the $1,000 rule and safe harbors)</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/payments/quarterly-interest-rates">IRS: Quarterly interest rates (individual underpayments, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://www.gov.uk/income-tax-rates">GOV.UK: Income Tax rates and Personal Allowances (2026 to 2027)</a></th><td rowspan="5">UK 2026-27</td></tr>
+<tr><th scope="row"><a href="https://www.gov.uk/scottish-income-tax">GOV.UK: Scottish Income Tax (2026 to 2027 rates)</a></th></tr>
+<tr><th scope="row"><a href="https://www.gov.uk/self-employed-national-insurance-rates">GOV.UK: Self-employed National Insurance rates (2026 to 2027)</a></th></tr>
+<tr><th scope="row"><a href="https://www.gov.uk/repaying-your-student-loan/what-you-pay">GOV.UK: Repaying your student loan, what you pay</a></th></tr>
+<tr><th scope="row"><a href="https://www.gov.uk/understand-self-assessment-bill/payments-on-account">GOV.UK: Understanding your Self Assessment tax bill, payments on account</a></th></tr>
+<tr><th scope="row">Each state's own tax agency or official state portal, named beside the state in the rates and thresholds answer</th><td>2026</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>The 2026 federal figures are compared with Rev. Proc. 2025-32 and the IRS pages named in the data. The UK 2026 to 2027 figures are compared with GOV.UK. Worked examples are checked, such as a $3,000 payment from a single filer in Texas, and the rules around them: the Social Security wage base, Additional Medicare Tax and the UK Personal Allowance taper.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The 2026 federal figures (brackets, standard deduction, self-employment tax, QBI thresholds, the tips, overtime and senior deductions, payment due dates) are compared with Rev. Proc. 2025-32 and the IRS pages named in the data.</li><li>The UK 2026 to 2027 figures are compared with GOV.UK, and every state covered is one whose rule was read from the state's own site.</li><li>Worked examples are checked, such as a $3,000 payment from a single filer in Texas, and the rules around them: Social Security wage base, Additional Medicare Tax, the UK Personal Allowance taper.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/tax-set-aside/">Open the Tax set-aside per payment tool</a>.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the tax set-aside per payment answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the tax set-aside per payment refuse to answer?</h3><p>US federal tables are for 2026 only, and UK tables for 2026-27 only; payments in other years are refused. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the tax set-aside per payment answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the tax set-aside per payment refuse to answer?</h3></summary><div class="xp-in"><p>US federal tables are for 2026 only, and UK tables for 2026-27 only; payments in other years are refused. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/tax-set-aside/">Open the Tax set-aside per payment tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/tax-set-aside/quarterly-estimated-tax-calculator/">Quarterly estimated tax calculator</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/tax-set-aside.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -239,6 +264,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

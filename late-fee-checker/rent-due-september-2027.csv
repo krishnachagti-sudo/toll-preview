@@ -1,0 +1,24 @@
+state,rent_due,first_fee_day,weekday,max_on_1500_rent,law
+AZ,2027-09-01,2027-09-02,Thursday,,Ariz. Rev. Stat. § 33-1368(B)
+CA,2027-09-01,2027-09-02,Thursday,,"Cal. Civ. Code § 1671(c)(2), (d)"
+CO,2027-09-01,2027-09-08,Wednesday,$75,Colo. Rev. Stat. § 38-12-105
+CT,2027-09-01,2027-09-11,Saturday,$50,Conn. Gen. Stat. § 47a-15a
+DE,2027-09-01,2027-09-07,Tuesday,$75,25 Del. C. § 5501(d)
+DC,2027-09-01,2027-09-07,Tuesday,$75,D.C. Code § 42-3505.31
+HI,2027-09-01,2027-09-02,Thursday,$120,Haw. Rev. Stat. § 521-21(f)
+IA,2027-09-01,2027-09-02,Thursday,$100,Iowa Code § 562A.9(4)
+ME,2027-09-01,2027-09-17,Friday,$60,14 M.R.S. § 6028
+MD,2027-09-01,2027-09-02,Thursday,$75,"Md. Code, Real Prop. § 8-208(d)(3)"
+MA,2027-09-01,2027-10-01,Friday,,"Mass. Gen. Laws ch. 186, § 15B(1)(c)"
+MN,2027-09-01,2027-09-02,Thursday,$120,Minn. Stat. § 504B.177
+NV,2027-09-01,2027-09-02,Thursday,$75,Nev. Rev. Stat. § 118A.210(4)
+NJ,2027-09-01,2027-09-10,Friday,,N.J. Stat. § 2A:42-6.1
+NM,2027-09-01,2027-09-02,Thursday,$150,N.M. Stat. § 47-8-15(D)
+NY,2027-09-01,2027-09-07,Tuesday,$50,N.Y. Real Prop. Law § 238-a(2)
+NC,2027-09-01,2027-09-06,Monday,$75,N.C. Gen. Stat. § 42-46
+OR,2027-09-01,2027-09-05,Sunday,$450,Or. Rev. Stat. § 90.260
+TN,2027-09-01,2027-09-07,Tuesday,$150,Tenn. Code Ann. § 66-28-201(d)
+TX,2027-09-01,2027-09-04,Saturday,$180,Tex. Prop. Code § 92.019
+VA,2027-09-01,2027-09-02,Thursday,$150,Va. Code § 55.1-1204(E)
+WA,2027-09-01,2027-09-07,Tuesday,,Rev. Code Wash. § 59.18.170(2)
+IL-Chicago,2027-09-01,2027-09-02,Thursday,$60,Chicago Municipal Code § 5-12-140(h) (RLTO)

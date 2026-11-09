@@ -1,15 +1,15 @@
 # What date was 14 days ago?
 
-14 days ago, counting back from Saturday, November 7, 2026 (today's date in New York, US Eastern time), was Saturday, October 24, 2026.
+14 days ago, counting back from Sunday, November 8, 2026 (today's date in New York, US Eastern time), was Sunday, October 25, 2026.
 
-- Date: October 24, 2026
-- Weekday: Saturday
+- Date: October 25, 2026
+- Weekday: Sunday
 - ISO week: 2026-W43
 - US business days between: 10
 
 ## 14 days ago, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-08&region=US)
 
 ## 14 days ago, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays from the date to the
 
 | Start | 14 days before | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-07) | Sat, Oct 24, 2026 | 10 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-08) | Sun, Oct 25, 2026 | 10 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-09) | Mon, Oct 26, 2026 | 10 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-10) | Tue, Oct 27, 2026 | 10 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays from the date to the
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-18) | Wed, Nov 4, 2026 | 9 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-19) | Thu, Nov 5, 2026 | 9 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-20) | Fri, Nov 6, 2026 | 9 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=14+days+ago&ref=2026-11-21) | Sat, Nov 7, 2026 | 9 |
 
 ## How it is counted
 
@@ -77,5 +77,5 @@ No. Today is day 0, so the count goes back from yesterday as day 1, the way a sp
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-ago/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/14-days-ago.csv

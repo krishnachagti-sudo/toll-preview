@@ -1,0 +1,7 @@
+crontab,quartz,reads_as
+*/5 * * * *,0 */5 * * * ?,Every 5 minutes.
+0 9 * * 1-5,0 0 9 ? * 2-6,"At 09:00, on weekdays (Monday to Friday)."
+0 0 1 * *,0 0 0 1 * ?,"At 00:00, on the 1st of the month."
+"30 4 1,15 * 5","0 30 4 1,15 * ? and 0 30 4 ? * 6","At 04:30, on the 1st and 15th of the month, and on Friday."
+0 0 * * 0,0 0 0 ? * 1,"At 00:00, on Sunday."
+"0 12 * * 6,0","0 0 12 ? * 1,7","At 12:00, on Saturdays and Sundays."

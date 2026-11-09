@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XRechnung and ZUGFeRD viewer and validator: open, check, save as PDF: Endwise</title>
+<meta name="description" content="Open a German e-invoice (XRechnung XML or ZUGFeRD PDF) as a readable invoice in your browser, with no upload, and check it against the official KoSIT and EN 16931 rules, every error code explained.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/xrechnung-viewer/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"xrechnung-viewer"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="XRechnung and ZUGFeRD viewer and validator">
+<meta property="og:description" content="Open an XRechnung (UBL or CII XML) or a ZUGFeRD / Factur-X PDF as a readable invoice, check it against the official KoSIT and EN 16931 schematron rules (KoSIT configuration 2026-08-31) with each error code explained, and get a readable PDF with the validation report.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/","url":"https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/","name":"XRechnung and ZUGFeRD viewer and validator","description":"Open an XRechnung (UBL or CII XML) or a ZUGFeRD / Factur-X PDF as a readable invoice, check it against the official KoSIT and EN 16931 schematron rules (KoSIT configuration 2026-08-31) with each error code explained, and get a readable PDF with the validation report.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"XRechnung and ZUGFeRD viewer and validator","item":"https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/"}]},{"@type":"WebApplication","name":"XRechnung and ZUGFeRD viewer and validator","url":"https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/","description":"Open an XRechnung (UBL or CII XML) or a ZUGFeRD / Factur-X PDF as a readable invoice, check it against the official KoSIT and EN 16931 schematron rules (KoSIT configuration 2026-08-31) with each error code explained, and get a readable PDF with the validation report.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Read the file (format, profile, the invoice as business terms)","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Explain a rule id","price":"0","priceCurrency":"USD"},{"name":"Validation against the official rules","@type":"Offer","price":"0.01","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.01","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"file"}}},{"name":"Readable PDF with the validation report","@type":"Offer","price":"0.03","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.03","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"file"}}}]}]}</script>
+<link rel="alternate" hreflang="en" href="https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/">
+<link rel="alternate" hreflang="de" href="https://krishnachagti-sudo.github.io/toll-preview/de/xrechnung-viewer/">
+<link rel="alternate" hreflang="x-default" href="https://krishnachagti-sudo.github.io/toll-preview/xrechnung-viewer/">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="xv tf hue-file">
+  <section class="wrap tf-open">
+    <p class="eyebrow">E-invoicing</p>
+    <h1>XRechnung and ZUGFeRD viewer and validator</h1>
+    <p class="lede">Drop an XRechnung or ZUGFeRD file to <b>read it as an invoice</b> in your browser, and check it against the official KoSIT and EN 16931 rules.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="xv-price"><span class="price">Reading free, in your browser</span><span>Check $0.01 a file</span><span>PDF report $0.03</span></p>
+    <p class="lang-alt"><a class="ul" href="/toll-preview/de/xrechnung-viewer/" hreflang="de" lang="de">Diese Seite auf Deutsch</a></p>
+  </section>
+
+  <section class="wrap tf-calc xv-desk" data-jump="Tool" aria-label="Open an e-invoice">
+    <div class="tf-panel tf-form xv-form">
+      <div class="xv-drop" id="xv-drop">
+        <label for="xv-file" class="xv-drop-label">Choose an e-invoice, or drop it here</label>
+        <input type="file" id="xv-file" accept=".xml,.pdf,application/xml,text/xml,application/pdf">
+        <p class="xv-hint" id="xv-file-name">Up to 5 MB. XRechnung (UBL or CII), other EN 16931 XML, or a ZUGFeRD / Factur-X PDF.</p>
+      </div>
+      <p class="xv-hint">Try a made-up file:
+        <button type="button" class="link-btn" data-sample="fehler">an XRechnung with two mistakes</button>,
+        <button type="button" class="link-btn" data-sample="ubl">a valid XRechnung</button>,
+        <button type="button" class="link-btn" data-sample="pdf">a ZUGFeRD PDF</button>.
+      </p>
+      <p class="form-error" id="xv-error" role="alert"></p>
+      <button class="btn tf-go" type="button" id="xv-validate">Check against the official rules</button>
+      <div class="xv-actions">
+        <button class="btn btn-small btn-ghost" type="button" id="xv-pdf">PDF with the validation report</button>
+        <button class="btn btn-small btn-ghost" type="button" id="xv-print">Print or save as PDF (free)</button>
+        <button class="btn btn-small btn-ghost" type="button" id="xv-csv">Lines as CSV (free)</button>
+      </div>
+      <p class="hint tf-run-note" id="xv-go-note">The check sends the file to the server, where it is checked in memory and not kept. Without an account a few checks a day are free.</p>
+      <details class="xpand xv-explain-fold">
+        <summary>Look up an error code (free)</summary>
+        <div class="xp-in">
+          <form class="xv-explain" id="xv-explain-form">
+            <label for="xv-rule" class="visually-hidden">Look up an error code (free)</label>
+            <div class="xv-explain-row"><input id="xv-rule" type="text" placeholder="BR-DE-15" autocomplete="off" spellcheck="false"><button class="btn btn-small" type="submit">Explain</button></div>
+            <div id="xv-explain-out" aria-live="polite"></div>
+          </form>
+        </div>
+      </details>
+      <p class="visually-hidden" id="xv-status" role="status"></p>
+    </div>
+
+    <div class="tf-panel tf-result xv-out" id="xv-out" aria-live="polite">
+      <div id="xv-sample">
+        <div class="tf-rh"><span class="tf-tag">Example</span><span class="tf-src">KoSIT configuration 2026-08-31</span></div>
+        <p class="tf-exin">Example: invoice RE-2026-0417, an XRechnung 3.0 (UBL) with two mistakes</p>
+        <p class="tf-big xv-big xv-invalid"><b class="word">3 errors</b><span>invalid</span></p>
+        <p class="tf-sub" id="xv-sample-answer">Your file is XRechnung 3.0 (UBL Invoice syntax); result under KoSIT configuration 2026-08-31 (XRechnung 3.0.2), XRechnung schematron 2.6.0, CEN EN 16931 schematron 1.3.16: Invalid under the KoSIT scenario "EN16931 XRechnung (UBL Invoice)": 3 errors, 0 warnings, 0 notices.</p>
+        <ol class="tf-items xv-items" id="xv-sample-findings">
+          <li class="sk"><span class="k" aria-hidden="true">!</span><span><a href="/toll-preview/xrechnung-viewer/fehler/br-co-10/"><code>BR-CO-10</code></a> Sum of Invoice line net amount (BT-106) = Σ Invoice line net amount (BT-131).</span><em>Possible content error (BMF letter Rn. 35a) · CEN EN 16931 schematron 1.3.16</em></li>
+          <li class="sk"><span class="k" aria-hidden="true">!</span><span><a href="/toll-preview/xrechnung-viewer/fehler/br-co-13/"><code>BR-CO-13</code></a> Invoice total amount without VAT (BT-109) = Σ Invoice line net amount (BT-131) - Sum of allowances on document level (BT-107) + Sum of charges on document level (BT-108).</span><em>Possible content error (BMF letter Rn. 35a) · CEN EN 16931 schematron 1.3.16</em></li>
+          <li class="sk"><span class="k" aria-hidden="true">!</span><span><a href="/toll-preview/xrechnung-viewer/fehler/br-de-15/"><code>BR-DE-15</code></a> Das Element "Buyer reference" (BT-10) muss übermittelt werden.</span><em>Business-rule error (BMF letter Rn. 6b) · XRechnung schematron 2.6.0</em></li>
+        </ol>
+        <p class="tf-note">The Leitweg-ID (buyer reference) is missing, and the sum of the lines is EUR 0.10 short; that second mistake breaks two calculation rules (BR-CO-10 and BR-CO-13). With JavaScript the whole invoice shows here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec xv-rules" data-jump="Rules" aria-labelledby="xv-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">How it checks</p>
+        <h2 id="xv-rules-title">The official rules, <span class="dim">in plain words.</span></h2>
+        <p class="tf-p">The file is read in your browser; only a check or the PDF sends it to the server, where it is checked in memory and not kept.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="xv-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="xv-limits-title">What it does not cover</h3>
+          <p>The XML Schema (XSD) step, whether the invoice is right in substance, and tax advice.</p>
+          <details class="xpand"><summary>Please read</summary><div class="xp-in">
+            <ul id="xv-disclaimers">
+      <li>Checked against the official schematron rules (KoSIT configuration 2026-08-31 (XRechnung 3.0.2), XRechnung schematron 2.6.0, CEN EN 16931 schematron 1.3.16). The XML Schema (XSD) step that the KoSIT validator also runs is not run here.</li>
+      <li>A pass does not mean the invoice is right in substance (BMF letter of 15 Oct 2025, Rn. 35a).</li>
+      <li>Not tax advice. Placing errors in the BMF letter&#39;s categories is a reading aid.</li>
+      <li>The XML file is the invoice; the view and the PDF are reading copies.</li>
+      <li>Files are processed in memory and not kept. The view on the web page is made in the browser, with no upload.</li>
+    </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card" aria-labelledby="xv-r0-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+        <div>
+          <h3 id="xv-r0-title">The official rules, as published</h3>
+          <p>The schematron files the KoSIT validator runs, with the scenario and versions named.</p>
+          <details class="xpand"><summary>Read more</summary><div class="xp-in">
+            <p>The check runs the schematron files the KoSIT validator runs: CEN EN 16931 version 1.3.16 and the XRechnung schematron 2.6.0, with the scenarios and severity changes of the KoSIT configuration 2026-08-31. Every result names its scenario and versions.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card" aria-labelledby="xv-r1-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v10H9l-4 3.5z"/></svg></span>
+        <div>
+          <h3 id="xv-r1-title">Every error in plain words</h3>
+          <p>The official message, the business terms and where in the file, for every error.</p>
+          <details class="xpand"><summary>Read more</summary><div class="xp-in">
+            <p>Each error shows the official message, the business terms it names (BT numbers) and where in the file it is. The codes people search for most have a page each, in German, with the cause, the fix and an example the engine itself checks.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card" aria-labelledby="xv-r2-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span>
+        <div>
+          <h3 id="xv-r2-title">Sorted the way the BMF letter sorts them</h3>
+          <p>Format, business-rule or content error, as the BMF letter of October 15, 2025 sorts them.</p>
+          <details class="xpand"><summary>Read more</summary><div class="xp-in">
+            <p>The German finance ministry's letter of October 15, 2025 tells format errors (Rn. 6a), business-rule errors (Rn. 6b) and content errors (Rn. 35a) apart. Each error is placed in one of these, as a reading aid, not tax advice.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="xv-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 11.5 5H19v7.5L11.5 20zM15 9h0"/></svg></span>
+        <div>
+          <h3 id="xv-prices-title">Prices and sources</h3>
+          <p data-prices>Opening and reading a file is free and runs in your browser. The check against the official rules is $0.01 a file and the PDF with the validation report $0.03; the same file is then free for 30 days.</p>
+          <details class="xpand"><summary>Read the prices and sources</summary><div class="xp-in">
+            <ul class="endwise-prices"><li><strong>Read the file (format, profile, the invoice as business terms)</strong>: free.</li><li><strong>Explain a rule id</strong>: free.</li><li><strong>Validation against the official rules</strong>: $0.01 per file; a repeat for the same file is free for 30 days, and a larger one pays only the difference.</li><li><strong>Readable PDF with the validation report</strong>: $0.03 per file; a repeat for the same file is free for 30 days, and a larger one pays only the difference; includes the validation.</li></ul>
+            <h4 class="xv-src-title">Sources, read November 8, 2026</h4>
+            <ul class="xv-sources">
+      <li><a href="https://github.com/itplr-kosit/validator-configuration-xrechnung/releases/tag/v2026-08-31">KoSIT: Validator Configuration XRechnung 2026-08-31</a> (published September 2, 2026, Apache-2.0): scenarios and severity levels</li>
+      <li><a href="https://github.com/itplr-kosit/xrechnung-schematron/releases/tag/v2.6.0">KoSIT: XRechnung schematron 2.6.0</a> (Apache-2.0): the BR-DE rules</li>
+      <li><a href="https://github.com/ConnectingEurope/eInvoicing-EN16931/releases/tag/validation-1.3.16">CEN: EN 16931 validation artefacts 1.3.16</a> (EUPL-1.2): the EN 16931 rules for UBL and CII</li>
+      <li><a href="https://github.com/itplr-kosit/xrechnung-testsuite/releases/tag/v2026-08-31">KoSIT: XRechnung test suite 2026-08-31</a>: all 86 test invoices check as valid here</li>
+      <li><a href="https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2025-10-15-einfuehrung-obligatorische-e-rechnung.html">BMF letter of October 15, 2025</a> (III C 2 - S 7287-a/00019/007/243): Rn. 6a, 6b, 35a; the MINIMUM and BASIC WL profiles</li>
+      <li><a href="https://www.ferd-net.de/standards/zugferd-faq">FeRD: ZUGFeRD/Factur-X FAQ</a>: profiles, the XML as the leading part</li>
+    </ul>
+          </div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Werkzeuge" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Werkzeuge</h2>
+<h3>Prüfen und öffnen</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/xrechnung-validator/" title="XRechnung Validator nach KoSIT-Regeln (Stand 2026-08-31)">XRechnung Validator</a></li><li><a href="/toll-preview/xrechnung-viewer/zugferd-viewer/" title="ZUGFeRD Viewer: PDF öffnen und die eingebettete XML lesen">ZUGFeRD Viewer</a></li><li><a href="/toll-preview/xrechnung-viewer/zugferd-validator/" title="ZUGFeRD Validator: PDF und XML nach EN 16931 prüfen">ZUGFeRD Validator</a></li><li><a href="/toll-preview/xrechnung-viewer/xrechnung-in-pdf/" title="XRechnung in PDF umwandeln: lesbare PDF zum Ablegen und Drucken">XRechnung in PDF</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Fehlercodes" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Fehlercodes</h2>
+<h3>XRechnung (BR-DE)</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-1/" title="BR-DE-1 (BR-DE-01): Zahlungsangaben (BG-16) fehlen">BR-DE-1</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-2/" title="BR-DE-2 (BR-DE-02): Kontaktdaten des Verkäufers (BG-6) fehlen">BR-DE-2</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-3/" title="BR-DE-3 (BR-DE-03): Ort des Verkäufers (BT-37) fehlt">BR-DE-3</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-4/" title="BR-DE-4 (BR-DE-04): Postleitzahl des Verkäufers (BT-38) fehlt">BR-DE-4</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-5/" title="BR-DE-5 (BR-DE-05): Name des Ansprechpartners (BT-41) fehlt">BR-DE-5</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-6/" title="BR-DE-6 (BR-DE-06): Telefonnummer des Verkäufers (BT-42) fehlt">BR-DE-6</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-7/" title="BR-DE-7 (BR-DE-07): E-Mail des Verkäufers (BT-43) fehlt">BR-DE-7</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-8/" title="BR-DE-8 (BR-DE-08): Ort des Käufers (BT-52) fehlt">BR-DE-8</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-9/" title="BR-DE-9 (BR-DE-09): Postleitzahl des Käufers (BT-53) fehlt">BR-DE-9</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-10/" title="BR-DE-10: Ort der Lieferanschrift (BT-77) fehlt">BR-DE-10</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-11/" title="BR-DE-11: Postleitzahl der Lieferanschrift (BT-78) fehlt">BR-DE-11</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-14/" title="BR-DE-14: Steuersatz in der Umsatzsteueraufschlüsselung (BT-119) fehlt">BR-DE-14</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-15/" title="BR-DE-15: Käuferreferenz (BT-10) fehlt, meist die Leitweg-ID">BR-DE-15</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-16/" title="BR-DE-16: USt-IdNr. oder Steuernummer des Verkäufers fehlt">BR-DE-16</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-17/" title="BR-DE-17: Rechnungsart (BT-3) außerhalb der in XRechnung vorgesehenen Codes">BR-DE-17</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-18/" title="BR-DE-18: Skonto-Angabe in den Zahlungsbedingungen falsch formatiert">BR-DE-18</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-19/" title="BR-DE-19: IBAN (BT-84) ungültig bei SEPA-Überweisung">BR-DE-19</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-20/" title="BR-DE-20: Belastetes Konto (BT-91) ist keine gültige IBAN bei SEPA-Lastschrift">BR-DE-20</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-21/" title="BR-DE-21: Spezifikationskennung (BT-24) entspricht nicht XRechnung">BR-DE-21</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-22/" title="BR-DE-22: Dateinamen der Anhänge nicht eindeutig">BR-DE-22</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-23/" title="BR-DE-23: Überweisung ohne Kontoangaben (BG-17), oder mit Karte oder Lastschrift gemischt">BR-DE-23</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-24/" title="BR-DE-24: Kartenzahlung ohne Kartenangaben (BG-18)">BR-DE-24</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-25/" title="BR-DE-25: Lastschrift ohne Mandatsangaben (BG-19)">BR-DE-25</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-26/" title="BR-DE-26: Korrigierte Rechnung (384) ohne Bezug auf die ursprüngliche Rechnung">BR-DE-26</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-27/" title="BR-DE-27: Telefonnummer (BT-42) hat weniger als drei Ziffern">BR-DE-27</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-28/" title="BR-DE-28: E-Mail-Adresse (BT-43) hat kein gültiges Format">BR-DE-28</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-30/" title="BR-DE-30: Lastschrift ohne Gläubiger-Identifikationsnummer (BT-90)">BR-DE-30</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-31/" title="BR-DE-31: Lastschrift ohne belastetes Konto (BT-91)">BR-DE-31</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-tmp-32/" title="BR-DE-TMP-32: Liefer- oder Leistungsdatum fehlt (Hinweis)">BR-DE-TMP-32</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-cvd-01/" title="BR-DE-CVD-01: CVD-Rechnung ohne Vertragsnummer (BT-12)">BR-DE-CVD-01</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-cvd-02/" title="BR-DE-CVD-02: CVD-Rechnung ohne Vergabe- oder Losnummer (BT-17)">BR-DE-CVD-02</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-cvd-03/" title="BR-DE-CVD-03: CVD-Rechnung ohne Fahrzeugposition">BR-DE-CVD-03</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-cvd-04/" title="BR-DE-CVD-04: Unzulässige Fahrzeugkategorie in einer CVD-Rechnung">BR-DE-CVD-04</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-cvd-05/" title="BR-DE-CVD-05: Unzulässiger Wert für cva in einer CVD-Rechnung">BR-DE-CVD-05</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-de-cvd-06/" title="BR-DE-CVD-06: CVD-Klassifikation und cva-Attribut nicht in derselben Position">BR-DE-CVD-06</a></li></ul>
+<h3>EN 16931 (BR-CO, BR-S)</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-09/" title="BR-CO-09: USt-IdNr. ohne Länderkennung">BR-CO-09</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-10/" title="BR-CO-10: Summe der Positionen (BT-106) stimmt nicht mit den Positionen überein">BR-CO-10</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-13/" title="BR-CO-13: Gesamtbetrag ohne Umsatzsteuer (BT-109) falsch berechnet">BR-CO-13</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-14/" title="BR-CO-14: Umsatzsteuer gesamt (BT-110) stimmt nicht mit der Aufschlüsselung überein">BR-CO-14</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-15/" title="BR-CO-15: Gesamtbetrag mit Umsatzsteuer (BT-112) falsch berechnet">BR-CO-15</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-16/" title="BR-CO-16: Zahlbetrag (BT-115) falsch berechnet">BR-CO-16</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-17/" title="BR-CO-17: Steuerbetrag je Steuersatz (BT-117) falsch gerundet oder berechnet">BR-CO-17</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-co-26/" title="BR-CO-26: Keine Kennung des Verkäufers (BT-29, BT-30 oder BT-31)">BR-CO-26</a></li><li><a href="/toll-preview/xrechnung-viewer/fehler/br-s-08/" title="BR-S-08: Bemessungsgrundlage (BT-116) beim Normalsatz passt nicht zu den Positionen">BR-S-08</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Anleitungen" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Anleitungen</h2>
+<h3>XRechnung öffnen</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/xrechnung-oeffnen/" title="XRechnung öffnen: kostenlos, ohne Software, im Browser">XRechnung öffnen</a></li><li><a href="/toll-preview/xrechnung-viewer/xrechnung-oeffnen/mac/" title="XRechnung auf dem Mac öffnen, ohne Installation">Auf dem Mac</a></li><li><a href="/toll-preview/xrechnung-viewer/xrechnung-oeffnen/drucken/" title="XRechnung öffnen und drucken">Drucken</a></li><li><a href="/toll-preview/xrechnung-viewer/xrechnung-oeffnen/in-excel/" title="E-Rechnung in Excel importieren: Positionen als CSV">Positionen in Excel</a></li></ul>
+<h3>Recht und Pflichten</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/xrechnung-validator/vorsteuerabzug/" title="Validierungsfehler in der E-Rechnung: Vorsteuerabzug in Gefahr? (BMF 15.10.2025)">Fehler und Vorsteuerabzug</a></li><li><a href="/toll-preview/xrechnung-viewer/guides/pflichten-2025-2028/" title="E-Rechnung: Pflichten und Fristen 2025 bis 2028">Pflichten 2025 bis 2028</a></li><li><a href="/toll-preview/xrechnung-viewer/guides/archivierung-gobd/" title="E-Rechnung archivieren: GoBD-Checkliste für XML und PDF">Archivieren</a></li><li><a href="/toll-preview/xrechnung-viewer/guides/e-rechnung-fuer-kleinunternehmer/" title="E-Rechnung für Kleinunternehmer und Freiberufler">Kleinunternehmer und Freiberufler</a></li></ul>
+<h3>ZUGFeRD</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/guides/zugferd-xml-auslesen/" title="ZUGFeRD-PDF: Wo steckt das XML und wie lese ich es aus?">Die XML in der ZUGFeRD-PDF</a></li><li><a href="/toll-preview/xrechnung-viewer/guides/xrechnung-vs-zugferd/" title="XRechnung vs ZUGFeRD: Welches Format schickt mein Kunde?">XRechnung oder ZUGFeRD?</a></li></ul>
+<h3>Fehler beheben</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/guides/fehlercodes-erklaert/" title="Fehlercodes in XRechnungen erklärt (BR-DE, BR-CO, BR-S)">Fehlercodes erklärt</a></li><li><a href="/toll-preview/xrechnung-viewer/guides/leitweg-id/" title="Leitweg-ID: Was ist das und wo trage ich sie ein?">Leitweg-ID</a></li><li><a href="/toll-preview/xrechnung-viewer/guides/rechnung-abgelehnt/" title="Rechnung abgelehnt? Sieben Gründe, warum Ihr Kunde Ihre XRechnung nicht annimmt">Rechnung abgelehnt?</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Vergleiche" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Vergleiche</h2>
+<h3>Andere Werkzeuge</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/vs/elster/" title="ELSTER E-Rechnungs-Viewer oder dieser Viewer: was kann welcher?">ELSTER-Viewer</a></li><li><a href="/toll-preview/xrechnung-viewer/vs/pdf24/" title="PDF24 oder dieser Viewer: E-Rechnung erstellen oder öffnen und prüfen">PDF24</a></li><li><a href="/toll-preview/xrechnung-viewer/vs/kosit-validator/" title="KoSIT Validator oder dieser Prüfer: Unterschiede">KoSIT Validator</a></li><li><a href="/toll-preview/xrechnung-viewer/vs/mustang-project/" title="Mustang Project oder dieser Viewer">Mustang Project</a></li><li><a href="/toll-preview/xrechnung-viewer/vs/ferd/" title="FeRD (ZUGFeRD) oder dieser Viewer">FeRD</a></li><li><a href="/toll-preview/xrechnung-viewer/vs/sevdesk/" title="sevdesk oder dieser Viewer: E-Rechnung öffnen ohne Abo">sevdesk</a></li><li><a href="/toll-preview/xrechnung-viewer/vs/lexoffice/" title="Lexware Office (lexoffice) oder dieser Viewer">Lexware Office (lexoffice)</a></li><li><a href="/toll-preview/xrechnung-viewer/vs/e-rechnungs-pruefer/" title="Andere Online-Viewer und Prüfer oder dieser Viewer">Andere Online-Viewer</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Referenz" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Referenz</h2>
+<h3>Tabellen</h3><ul class="cp-rows"><li><a href="/toll-preview/xrechnung-viewer/fehler/" title="XRechnung-Fehlercodes: alle 84 KoSIT-Regeln und 223 EN-16931-Regeln mit Bedeutung">Alle Fehlercodes</a></li><li><a href="/toll-preview/xrechnung-viewer/versionen/" title="XRechnung- und KoSIT-Validator-Versionen: welche Konfiguration welche Regeln nutzt">Versionen</a></li><li><a href="/toll-preview/xrechnung-viewer/rechnungsart-codes/" title="Invoice Type Code (BT-3): 380, 381, 384, 326 und die anderen Codes in der XRechnung">Rechnungsart-Codes (BT-3)</a></li></ul>
+</section>
+
+  <section class="wrap tf-code xv-code" data-jump="Code" aria-label="Use this from code">
+    <div id="xv-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to read your file. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/xrechnung-viewer/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

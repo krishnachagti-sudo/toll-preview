@@ -121,13 +121,30 @@ The rules were read from irs.gov on 2026-11-07: Publication 1771 (Rev. 11-2023),
 - [IRS: Charitable contributions, quid pro quo contributions](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-quid-pro-quo-contributions)
 - [IRS Publication 6196 (10-2026), Charitable Contribution Deduction Tips for Non-Itemizers](https://www.irs.gov/pub/irs-pdf/p6196.pdf)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The IRS rules are quoted from irs.gov, read on 2026-11-07, and change only by hand with the tests that pin them. The gifts themselves come from your own file.
+
+Year-end giving statements: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IRS Publication 1771 (Rev. 11-2023), Charitable Contributions: Substantiation and Disclosure Requirements](https://www.irs.gov/pub/irs-pdf/p1771.pdf) | Rev. 11-2023 | 2026-11-07 |
+| [IRS: Charitable contributions, written acknowledgments](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-written-acknowledgments) | page updated 2026-06-28 | 2026-11-07 |
+| [IRS: Charitable contributions, quid pro quo contributions](https://www.irs.gov/charities-non-profits/charitable-organizations/charitable-contributions-quid-pro-quo-contributions) | page updated 2026-06-28 | 2026-11-07 |
+| [IRS Publication 6196 (10-2026), Charitable Contribution Deduction Tips for Non-Itemizers](https://www.irs.gov/pub/irs-pdf/p6196.pdf) | 10-2026 | 2026-11-07 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The thresholds and quotes are pinned to the irs.gov sources with their read date. The tests check the goods-or-services sentence in every case, that gifts under $250 are never added together, that $75.00 is not quid pro quo and $75.01 is, that property values appear in no output, and that the PDFs and ZIP are the same bytes every time.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The thresholds ($250, $75, the $10 penalty up to $5,000, the $1,000 and $2,000 non-itemizer lines) and the quoted rules are pinned to their irs.gov sources and the read date.
+- The goods-or-services sentence is checked for no benefits, intangible religious benefits only and gifts with a benefit; gifts under $250 are never added together, and $75.00 is not quid pro quo while $75.01 is.
+- Gifts of property are described with their value in no output, refunds are subtracted, vehicles and extra addresses are flagged, and the PDFs and ZIP are the same bytes every time.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Year-end giving statements tool](https://krishnachagti-sudo.github.io/toll-preview/year-end-giving-statements/).
 

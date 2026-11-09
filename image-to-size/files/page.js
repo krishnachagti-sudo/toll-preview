@@ -231,7 +231,7 @@ const els = {
 
 const state = {
   file: null, source: null, previewUrl: null, resultUrl: null,
-  kb: 50, run: 0, busy: false,
+  kb: 50, run: 0, busy: false, sample: false,
 };
 
 // ---------- formatting ----------
@@ -315,7 +315,8 @@ function setDropFile(file, source) {
   els.dropNote.textContent = tx('replaceNote', bytesText(file.size), dimsText(source.width, source.height));
 }
 
-async function takeFile(file) {
+async function takeFile(file, sample = false) {
+  state.sample = sample;
   els.fileErr.textContent = '';
   if (!file) return;
   if (file.type && !TYPES.includes(file.type)) {
@@ -512,6 +513,8 @@ function showResult({ kb, file, source, blob, size, width, height, quality, unch
   const download = h('a', { class: 'btn its-download', href: state.resultUrl, download: downloadName }, tx('download', downloadName));
 
   els.out.appendChild(h('div', { class: 'its-result' }, [
+    h('div', { class: 'its-sum', id: 'its-sum' }, [
+    state.sample ? h('p', { class: 't-ex' }, [h('span', { class: 'ex-tag' }, 'Example'), h('span', null, `Worked example: a ${dimsText(source.width, source.height)} sample picture drawn by this page, ${bytesText(file.size)}, under ${kbText(kb)}`)]) : null,
     h('p', { class: 'its-stamp' }, unchanged ? tx('stampKept') : tx('stampFits')),
     h('p', { class: 'its-big num' }, [bytesText(size), h('small', null, tx('of', kbText(kb)))]),
     gauge(Math.min(100, pct), tx('gaugeLabel', pct, kbText(kb)), kbText(kb)),
@@ -534,6 +537,7 @@ function showResult({ kb, file, source, blob, size, width, height, quality, unch
       ]),
     ]),
 
+    ]),
     h('div', { class: 'its-bars' }, [
       bar(tx('before'), bytesText(file.size), 1, 'is-before'),
       bar(tx('after'), bytesText(size), size / file.size, 'is-after'),
@@ -543,6 +547,40 @@ function showResult({ kb, file, source, blob, size, width, height, quality, unch
     h('div', { class: 'its-actions' }, [download]),
   ]));
 }
+
+// ---------- a sample picture ----------
+// For a visitor with no photo to hand (and for the page's own screenshot): a 1600 x 1200 picture
+// drawn here, a sky, a sun and hills with fine grain so it weighs what a camera photo does. It is
+// made in this page like any photo the visitor picks; nothing is fetched.
+function samplePicture() {
+  const c = document.createElement('canvas');
+  c.width = 1600; c.height = 1200;
+  const g = c.getContext('2d');
+  const sky = g.createLinearGradient(0, 0, 0, 1200);
+  sky.addColorStop(0, '#2b4a7a'); sky.addColorStop(0.55, '#f2a65a'); sky.addColorStop(1, '#3d2a1f');
+  g.fillStyle = sky; g.fillRect(0, 0, 1600, 1200);
+  g.fillStyle = '#ffe2a8'; g.beginPath(); g.arc(1120, 560, 110, 0, Math.PI * 2); g.fill();
+  [['#4a3b2c', 760, 0.0031], ['#2f2a24', 860, 0.0047], ['#1d1a17', 960, 0.0068]].forEach(([color, base, f]) => {
+    g.fillStyle = color; g.beginPath(); g.moveTo(0, 1200);
+    for (let x = 0; x <= 1600; x += 8) g.lineTo(x, base + Math.sin(x * f) * 60 + Math.sin(x * f * 3.7) * 18);
+    g.lineTo(1600, 1200); g.closePath(); g.fill();
+  });
+  // Grain from a fixed seed, so the sample is the same picture every time.
+  const img = g.getImageData(0, 0, 1600, 1200);
+  let seed = 7;
+  for (let i = 0; i < img.data.length; i += 4) {
+    seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+    const n = (seed % 41) - 20;
+    img.data[i] += n; img.data[i + 1] += n; img.data[i + 2] += n;
+  }
+  g.putImageData(img, 0, 0);
+  return new Promise((resolve) => {
+    const done = (blob) => resolve(new File([blob], 'sample-picture.jpg', { type: 'image/jpeg' }));
+    c.toBlob(done, 'image/jpeg', 0.92);
+  });
+}
+const sampleButton = $('its-sample');
+if (sampleButton) sampleButton.addEventListener('click', async () => takeFile(await samplePicture(), true));
 
 // ---------- the limit from the address ----------
 // A link may carry the limit (?kb=240): the page opens with it chosen, so a page about one size

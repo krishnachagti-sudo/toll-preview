@@ -132,13 +132,33 @@ The Windows-1252 table is the WHATWG index dated 2024-09-18, read on 2026-11-08.
 - [Microsoft Learn: How Excel works with two-digit year numbers](https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers)
 - [Microsoft Support: Keeping leading zeros and large numbers](https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The Windows-1252 table is the WHATWG index dated 2024-09-18, read on 2026-11-08. The Microsoft and Unicode facts were read on 2026-11-08, and the Microsoft pages are checked for changes once a day. The rules change only with the code (engine fix-csv-export-1); nothing is fetched when a file is fixed.
+
+Fix a CSV export (leading zeros, dates, encoding) with a saved recipe: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IETF RFC 4180: Common Format and MIME Type for CSV Files (Informational, October 2005)](https://www.rfc-editor.org/rfc/rfc4180.txt) | see the document | not recorded |
+| [WHATWG Encoding Standard: index-windows-1252 (dated 2024-09-18)](https://encoding.spec.whatwg.org/index-windows-1252.txt) | index dated 2024-09-18 | 2026-11-08 |
+| [Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM](https://www.unicode.org/faq/utf_bom.html) | see the document | 2026-11-08 |
+| [Microsoft Learn: How Excel works with two-digit year numbers](https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/two-digit-year-numbers) | page updated 2026-07-22 | 2026-11-08 |
+| [Microsoft Support: Keeping leading zeros and large numbers](https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers) | see the document | 2026-11-08 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The tests pin the Windows-1252 table to the WHATWG index and the facts to their read date, then check decoding (BOMs, strict UTF-8, Windows-1252), encoding with and without a BOM, garbled-accent repair, RFC 4180 parsing and writing, delimiter detection, what each date proves, the 2029 rule, ZIP codes and amounts, mixed and unproven date columns, codes and widths, long IDs, recipes applied to next month's file with drift, limits and refusals, and that the same file and recipe give the same bytes. The worked examples equal run().
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The Windows-1252 table in the engine equals the WHATWG index dated 2024-09-18, and the quoted facts are dated 2026-11-08.
+- Decoding, encoding with and without a BOM, garbled-accent repair, RFC 4180 parsing and writing, and delimiter detection are each checked.
+- What each date proves about its order, the 2029 rule for two-digit years, mixed and unproven date columns, ZIP codes, amounts, code widths and long IDs are checked.
+- A recipe applied to next month's file reports drift, and the same file and recipe always give the same bytes.
+- Limits and refusals are checked, and the worked examples equal what run() returns.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Fix a CSV export (leading zeros, dates, encoding) with a saved recipe tool](https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/).
 

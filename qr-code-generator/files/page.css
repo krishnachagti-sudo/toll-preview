@@ -71,3 +71,16 @@
 .qr-notes li { margin: 6px 0; }
 .qr-prices { margin-top: 28px; }
 .qr-code { margin-top: 40px; }
+
+/* The English page's tool-full layout (web/tool-full.css); the translated pages
+   keep the rules above. */
+.tf .qr-form { border-top: 0; padding-top: 22px; }
+.tf .qr-form select, .tf .qr-form input[type="text"], .tf .qr-form input[type="number"] { width: 100%; }
+.tf .qr-options .xp-in > * + * { margin-top: 12px; }
+.tf .qr-out .qr-preview { margin-top: 16px; width: min(100%, 260px); }
+.tf .qr-out .qr-heading { margin-top: 18px; }
+.tf .qr-out .tf-items { margin-top: 12px; }
+.tf .qr-out .qr-checks { font-size: 13.5px; }
+.tf .tf-result { min-width: 0; }
+.tf .qr-rules ul { padding-left: 1.2em; }
+@media (max-width: 640px) { .tf .qr-form { padding: 16px; } }

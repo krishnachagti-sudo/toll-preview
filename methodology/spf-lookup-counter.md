@@ -127,13 +127,35 @@ The rules are RFC 7208's and change only with the code. Each check reads live DN
 - [Postmark: SPF setup (read 2026-11-07)](https://postmarkapp.com/support/article/1092-how-do-i-set-up-spf-for-postmark)
 - [Zoho Mail: SPF setup (read 2026-11-07)](https://www.zoho.com/mail/help/adminconsole/spf-configuration.html)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The rules are RFC 7208's and change only with the code. Each check reads live DNS at the moment of the call, through 1.1.1.1 and 8.8.8.8. The provider include hosts were read from each provider's own setup page on 2026-11-07, and what each include costs was measured on public DNS on 2026-11-07.
+
+SPF lookup counter: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [RFC 7208: Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1](https://www.rfc-editor.org/rfc/rfc7208) | the rules every count applies | not recorded |
+| [Google Workspace: SPF setup](https://knowledge.workspace.google.com/admin/security/set-up-spf) | include \_spf.google.com | 2026-11-07 |
+| [Microsoft 365: SPF setup](https://learn.microsoft.com/en-us/defender-office-365/email-authentication-spf-configure) | include spf.protection.outlook.com | 2026-11-07 |
+| [Amazon SES (custom MAIL FROM domain): SPF setup](https://docs.aws.amazon.com/ses/latest/dg/mail-from.html) | include amazonses.com | 2026-11-07 |
+| [Zendesk: SPF setup](https://support.zendesk.com/hc/en-us/articles/4408832543770) | include mail.zendesk.com | 2026-11-07 |
+| [HubSpot: SPF setup](https://knowledge.hubspot.com/marketing-email/manage-email-authentication-in-hubspot) | include shared.hubspot.com | 2026-11-07 |
+| [Postmark: SPF setup](https://postmarkapp.com/support/article/1092-how-do-i-set-up-spf-for-postmark) | include spf.mtasv.net | 2026-11-07 |
+| [Zoho Mail: SPF setup](https://www.zoho.com/mail/help/adminconsole/spf-configuration.html) | include zohomail.com | 2026-11-07 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Every counting rule is checked against a recorded DNS zone, with no network: which terms count, nested includes sharing one budget, exactly 10, void lookups, two records, syntax errors, redirect, mx over 10 names, loops and duplicate includes. The macro expander is checked against every example in RFC 7208 Section 7.4, IPv4 and IPv6, and check\_host() for each mechanism.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Counting is checked on a recorded DNS zone: include, a, mx, ptr, exists and redirect count; ip4, ip6, all and exp do not; nested includes share one budget and the 11th term is named.
+- Void lookups, two records, no record, syntax errors, mx over 10 names, loops and duplicate includes are each checked to give the RFC 7208 result.
+- The macro expander reproduces every example in RFC 7208 Section 7.4, IPv4 and IPv6, and check\_host() is checked for each mechanism, the default and the void limit on its path.
+- Private and special-use names are never queried on any hop, and the query and time caps stop a check.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the SPF lookup counter tool](https://krishnachagti-sudo.github.io/toll-preview/spf-lookup-counter/).
 

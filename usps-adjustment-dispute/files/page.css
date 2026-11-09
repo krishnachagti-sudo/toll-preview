@@ -1,0 +1,58 @@
+/* USPS adjustment dispute: the tool-full layout (web/tool-full.css) plus the folded parts
+   of the form, the working columns and the packet. The money hue marks what to dispute; red marks
+   a window that has closed. */
+.ua {
+  --accent: var(--h-money);
+  --accent-ink: #1a0610;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1a0610;
+}
+.ua [hidden] { display: none; }
+
+/* The form: three folded parts, each saying what is in it. */
+.tf-form details.ua-group { margin-top: 0; }
+.tf-form details.ua-group + details.ua-group { margin-top: 10px; }
+.ua-group > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.ua-gs { font: 400 12.5px/1.4 var(--font-mono); color: var(--muted); }
+.ua-group .xp-in > .ua-pair:first-child, .ua-group .xp-in > .hint:first-child { margin-top: 4px; }
+.ua-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.ua-row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+.ua-pair > *, .ua-row4 > * { min-width: 0; margin: 0 !important; }
+.ua-row4 input, .ua-pair input, .ua-pair select { width: 100%; }
+.ua-form .field > label { font-size: 12.5px; margin-bottom: 6px; }
+@media (max-width: 420px) { .ua-row4 { grid-template-columns: 1fr 1fr; } }
+.ua-more { margin-top: 12px !important; }
+.ua-checks label { display: block; font-size: 13px; margin-bottom: 6px; }
+
+/* The result */
+.ua-out { display: grid; gap: 16px; }
+.ua-out > div:empty { display: none; }
+.tf-big.ua-go b { color: var(--hue); }
+.ua-items { margin-top: 14px; }
+.ua-items li > b { white-space: nowrap; }
+.ua-working, .ua-packet { margin: 0; }
+.ua-cols { display: grid; gap: 14px; }
+@media (min-width: 720px) { .ua-cols { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); } }
+.ua-col { border-left: 2px solid var(--line-2); padding-left: 10px; min-width: 0; }
+.ua-col:last-child { border-left-color: var(--hue); }
+.ua-col-h { margin: 0; color: var(--text); font-weight: 500; }
+.ua-col-h small { display: block; font: 400 12.5px/1.4 var(--font-mono); color: var(--muted); }
+.ua-steps { padding-left: 1.2em; margin: 6px 0; font-size: 13px; }
+.ua-steps li { margin-bottom: 4px; overflow-wrap: anywhere; }
+.ua-packet textarea, .ua-packet input[type=text], .ua-packet input[type=email], .ua-packet input[type=tel] { width: 100%; }
+.ua-packet input[type=file] { font-size: 13px; max-width: 100%; }
+.ua-packet .field { margin-top: 12px; }
+.ua-packet .btn { margin-top: 12px; }
+.ua-text { width: 100%; font: 400 13px/1.45 var(--font-mono); margin: 6px 0; }
+
+/* Dimensional weight only */
+.ua-dimform { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 10px; align-items: end; }
+.ua-dimform > * { min-width: 0; margin: 0 !important; }
+.ua-dimform input, .ua-dimform select { width: 100%; }
+.ua-dimform .tf-go { margin-top: 0; min-height: 44px; }
+.ua-dim-res { margin-top: 8px; }
+
+.ua-sources, .ua-rules .endwise-prices, .ua-rules ul { padding-left: 1.1em; margin: 0; overflow-wrap: anywhere; }
+.ua-rules li { margin-bottom: 6px; }
+.ua-src-title { font-size: 14px; margin: 16px 0 6px; color: var(--text-2); }
+.tf-form details.ua-group:first-child { border-top: 0; }

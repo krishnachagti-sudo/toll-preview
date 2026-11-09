@@ -1,12 +1,13 @@
 # Endwise auf Deutsch
 
-3 Werkzeuge und 7 Anleitungen auf Deutsch. Jede Antwort ist exakt und nennt ihre Quelle.
+4 Werkzeuge und 7 Anleitungen auf Deutsch. Jede Antwort ist exakt und nennt ihre Quelle.
 
 ## Werkzeuge
 
 - [Exchange rate on a date](https://krishnachagti-sudo.github.io/toll-preview/de/fx-on-date/)
 - [Image to size](https://krishnachagti-sudo.github.io/toll-preview/de/image-to-size/)
 - [QR code generator](https://krishnachagti-sudo.github.io/toll-preview/de/qr-code-generator/)
+- [XRechnung and ZUGFeRD viewer and validator](https://krishnachagti-sudo.github.io/toll-preview/de/xrechnung-viewer/)
 
 ## Anleitungen
 

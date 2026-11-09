@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rolled-up holiday pay calculator (UK, 12.07%) with payroll CSV batch: Endwise</title>
+<meta name="description" content="Work out 12.07% rolled-up holiday pay as a separate payslip line and the holiday hours accrued for irregular-hours and part-year workers, one worker or a whole payroll CSV. GOV.UK rules, rounding shown.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/rolled-up-holiday-pay-calculator/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"rolled-up-holiday-pay-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/rolled-up-holiday-pay-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Rolled-up holiday pay calculator (UK, 12.07%)">
+<meta property="og:description" content="Work out UK rolled-up holiday pay (12.07% of total pay in the pay period, or the enhanced rate for a longer contract) as a separate payslip line, and the holiday hours accrued at 12.07% rounded to the hour, for irregular-hours and part-year workers in Great Britain, one worker at a time or a whole payroll CSV at once. Also the percentage for any entitlement, the eligibility test, the 52-week reference period average and the hours accrued during sick or statutory leave, as GOV.UK sets them out.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/rolled-up-holiday-pay-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/rolled-up-holiday-pay-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/rolled-up-holiday-pay-calculator/","name":"Rolled-up holiday pay calculator (UK, 12.07%)","description":"Work out UK rolled-up holiday pay (12.07% of total pay in the pay period, or the enhanced rate for a longer contract) as a separate payslip line, and the holiday hours accrued at 12.07% rounded to the hour, for irregular-hours and part-year workers in Great Britain, one worker at a time or a whole payroll CSV at once. Also the percentage for any entitlement, the eligibility test, the 52-week reference period average and the hours accrued during sick or statutory leave, as GOV.UK sets them out.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Rolled-up holiday pay calculator (UK, 12.07%)","item":"https://krishnachagti-sudo.github.io/toll-preview/rolled-up-holiday-pay-calculator/"}]},{"@type":"WebApplication","name":"Rolled-up holiday pay calculator (UK, 12.07%)","url":"https://krishnachagti-sudo.github.io/toll-preview/rolled-up-holiday-pay-calculator/","description":"Work out UK rolled-up holiday pay (12.07% of total pay in the pay period, or the enhanced rate for a longer contract) as a separate payslip line, and the holiday hours accrued at 12.07% rounded to the hour, for irregular-hours and part-year workers in Great Britain, one worker at a time or a whole payroll CSV at once. Also the percentage for any entitlement, the eligibility test, the 52-week reference period average and the hours accrued during sick or statutory leave, as GOV.UK sets them out.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"One worker, the rate, the 52-week average or the eligibility test on this page","price":"0","priceCurrency":"USD"},{"name":"One calculation over the API or MCP","@type":"Offer","price":"0.005","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.005","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"call"}}},{"name":"Payroll CSV (holiday pay column, payslip line and hours for every worker)","@type":"Offer","price":"0.02","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.02","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"worker row"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="rh tf hue-money">
+  <section class="wrap tf-open">
+    <p class="eyebrow">Great Britain, leave years from 1 April 2024</p>
+    <h1>Rolled-up holiday pay calculator</h1>
+    <p class="lede">For an irregular-hours or part-year worker, see <b>the holiday pay line for the payslip, 12.07% of total pay in the period, and the hours of holiday accrued</b>, rounded the way GOV.UK says. One worker here, or your whole payroll CSV at once.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="rh-priceline"><span class="price">Free on this page</span><span>Payroll CSV $0.02 a row</span><span>At most $9.90 a month</span></p>
+  </section>
+
+  <section class="wrap tf-calc rh-desk" data-jump="Tool" aria-label="One worker">
+    <form class="tf-panel tf-form rh-form" id="rh-one" novalidate>
+      <div class="field"><label for="rh-pay">Pay this period, one line per item</label>
+        <textarea id="rh-pay" rows="2" spellcheck="false">Basic pay (31.5 hours at £12.80) 403.20
+Premium hours (3.5 at £14.00) 49.00</textarea>
+      </div>
+      <div class="tf-two">
+        <div class="field"><label for="rh-hours">Hours worked</label><input type="text" id="rh-hours" value="35" inputmode="decimal"></div>
+        <div class="field"><label for="rh-ent">Holiday a year</label><input type="text" id="rh-ent" value="5.6 weeks"></div>
+      </div>
+      <p class="field-error" id="rh-one-err" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="rh-run">Work out the holiday pay</button>
+      <div class="tf-two">
+        <div class="field"><label for="rh-var">Paid hours under the contract</label>
+          <select id="rh-var"><option value="">Not checked</option><option value="wholly-variable" selected>Wholly variable</option><option value="mostly-variable">Mostly variable</option><option value="fixed">Fixed (a rotating pattern counts as fixed)</option></select>
+        </div>
+        <div class="field"><label for="rh-ly">Leave year started</label><input type="date" id="rh-ly" value="2026-04-01"></div>
+      </div>
+      <details class="xpand rh-more" id="rh-how">
+        <summary>How to write the pay and holiday</summary>
+        <div class="xp-in">
+        <p class="hint">An amount on its own, like <code>452.20</code>, or a label then the amount on each line. Overtime and premium-rate pay count: GOV.UK bases the line on total pay in the period.</p>
+        <p class="hint"><code>6</code> weeks, <code>33 days</code>, or <code>30 days 4</code> for a 4-day week.</p>
+        </div>
+      </details>
+      <details class="xpand rh-more" id="rh-more">
+        <summary>Part-year worker and rounding</summary>
+        <div class="xp-in">
+        <label class="rh-check"><input type="checkbox" id="rh-unpaid"> The contract has periods of a week or more with no work required and no pay (part-year)</label>
+        <div class="tf-two">
+          <div class="field"><label for="rh-round">Holiday pay</label>
+            <select id="rh-round"><option value="nearest" selected>12.07% of pay, nearest penny</option><option value="up">12.07% of pay, up to the next penny</option><option value="govuk-steps">GOV.UK's worked-example steps</option></select>
+          </div>
+          <div class="field"><label for="rh-hround">Hours accrued</label>
+            <select id="rh-hround"><option value="hour" selected>Nearest hour (30 minutes up)</option><option value="half-hour-up">Up to the next half hour</option><option value="none">Not rounded</option></select>
+          </div>
+        </div>
+        </div>
+      </details>
+    </form>
+    <div class="tf-panel tf-result rh-out" id="rh-out" aria-live="polite">
+      <div class="tf-rh"><span class="tf-tag">Example</span><span class="tf-src">GOV.UK holiday pay guidance</span></div>
+      <p class="tf-exin">Example: one week for a zero-hours bar worker, £452.20 of pay in 2 lines, 35 hours worked, wholly variable hours, leave year from 1 April 2026</p>
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec" data-jump="More" aria-label="Payroll and more calculators">
+<div role="region" class="rh-part rh-batch" id="batch" aria-labelledby="rh-batch-title">
+    <div class="tf-top solo"><div>
+      <h2 id="rh-batch-title">The whole payroll <span class="dim">at once</span></h2>
+      <p class="tf-p">Paste or choose your pay run as CSV. Columns are found by name: <code>worker</code>, <code>period_end</code> (or set it below), <code>pay</code> (the total) or parts such as <code>basic</code> and <code>overtime</code>, and optionally <code>hours</code>, <code>worker_type</code> (zero-hours, casual, agency, term-time, part-year, regular), <code>leave_year_start</code> and <code>entitlement_weeks</code> or <code>entitlement_days</code>. You get the same file back with the rate, the holiday pay, the hours accrued, the payslip line and a status on every row.</p>
+    </div></div>
+    <div class="tf-panel rh-small-panel">
+    <div class="rh-batch-grid">
+      <div>
+        <div class="field"><label for="rh-csv">Payroll CSV</label>
+          <textarea id="rh-csv" rows="8" spellcheck="false">worker,period_end,worker_type,hours,basic,overtime
+Sample A,2026-11-06,zero-hours,22,281.60,
+Sample B,2026-11-06,zero-hours,35.5,454.40,55.20
+Sample C,2026-11-06,term-time,30,384.00,
+Sample D,2026-11-06,regular,37.5,480.00,
+Sample E,2026-11-06,casual,6.25,80.00,</textarea>
+        </div>
+        <div class="rh-grid">
+          <div class="field"><label for="rh-file">Or choose a file</label><input type="file" id="rh-file" accept=".csv,text/csv"></div>
+          <div class="field"><label for="rh-bend">Period end, for every row</label><input type="date" id="rh-bend"></div>
+          <div class="field"><label for="rh-bly">Leave year started, for every row</label><input type="date" id="rh-bly"></div>
+        </div>
+        <p class="field-error" id="rh-batch-err" role="alert"></p>
+      </div>
+      <div>
+        <div id="rh-preview" aria-live="polite"></div>
+        <div class="rh-buy" id="rh-buy"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div role="region" class="rh-part rh-small" id="reference" aria-labelledby="rh-reference-title">
+    <div class="tf-top solo"><div>
+      <h2 id="rh-reference-title">A week's holiday pay <span class="dim">from the last 52 paid weeks</span></h2>
+      <p class="tf-p">For employers who pay holiday when it is taken. Weekly gross pay, most recent week first, one per line or separated by commas. Write <code>0</code> for a week with no pay, and add <code>sick</code> or <code>statutory</code> after a week with any sick or statutory leave: both are skipped and earlier weeks counted, up to 104 weeks back.</p>
+    </div></div>
+    <div class="tf-panel rh-small-panel">
+    <form id="rh-ref" class="rh-grid" novalidate>
+      <div class="field rh-wide"><label for="rh-weeks">Weekly pay</label><textarea id="rh-weeks" rows="3" spellcheck="false">412.50, 298.00, 0, 505.25, 366.30 sick, 244.20, 0, 458.10, 390.72, 317.46</textarea></div>
+      <div class="field"><label for="rh-lw">Weeks of leave</label><input type="text" id="rh-lw" value="1" inputmode="decimal"></div>
+    </form>
+    <p class="rh-mini-out" id="rh-ref-out"></p>
+    </div>
+  </div>
+
+  <div role="region" class="rh-part rh-small" id="sick" aria-labelledby="rh-sick-title">
+    <div class="tf-top solo"><div>
+      <h2 id="rh-sick-title">Holiday accrued while off sick <span class="dim">or on statutory leave</span></h2>
+      <p class="tf-p">GOV.UK's method: hours worked in the 52-week relevant period ÷ 46.4 (its recommended divisor, or your own), x 12.07%, x the weeks of leave, then to the nearest hour.</p>
+    </div></div>
+    <div class="tf-panel rh-small-panel">
+    <form id="rh-sick" class="rh-grid" novalidate>
+      <div class="field"><label for="rh-sh">Hours worked in the relevant period</label><input type="text" id="rh-sh" value="1032" inputmode="decimal"></div>
+      <div class="field"><label for="rh-sw">Weeks of sick or statutory leave</label><input type="text" id="rh-sw" value="40" inputmode="decimal"></div>
+      <div class="field"><label for="rh-sd">Divisor (weeks)</label><input type="text" id="rh-sd" value="46.4" inputmode="decimal"></div>
+    </form>
+    <p class="rh-mini-out" id="rh-sick-out"></p>
+    </div>
+  </div>
+  </section>
+
+  <section class="wrap tf-sec rh-rules" data-jump="Rules" aria-labelledby="rh-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">What the calculator follows</p>
+        <h2 id="rh-rules-title">Who may be paid this way, <span class="dim">how much, and the rounding.</span></h2>
+        <p class="tf-p">GOV.UK's guidance for Great Britain, for leave years beginning on or after 1 April 2024.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="rh-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="rh-limits-title">What it does not cover</h3>
+          <p>Northern Ireland, regular-hours workers, deciding a worker's type from their contract, and legal advice.</p>
+          <details class="xpand"><summary>Read the notes and sources</summary><div class="xp-in">
+            <ul class="rh-notes">
+      <li>Worked out under GOV.UK's guidance for Great Britain. Northern Ireland has its own rules and is not covered.</li>
+      <li>Whether a worker is an irregular-hours or part-year worker depends on the contract: the calculator applies your answer. Pay figures are yours. Not legal advice.</li>
+      <li>Sources, read 8 November 2026: <a href="https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024">GOV.UK, Holiday pay and entitlement reforms from 1 January 2024</a> (updated 1 April 2024), <a href="https://www.gov.uk/holiday-entitlement-rights">GOV.UK, Holiday entitlement</a> (updated 5 November 2026) and <a href="https://www.gov.uk/guidance/sia-approved-contractors-and-rolled-up-holiday-pay">SIA approved contractors and rolled-up holiday pay</a>. The statute is the <a href="https://www.legislation.gov.uk/uksi/1998/1833/regulation/16B">Working Time Regulations 1998, regulation 16B</a>.</li>
+    </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="rh-r1">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg></span>
+        <div>
+          <h3 id="rh-r1">Who and when</h3>
+          <p>Irregular-hours and part-year workers only, for leave years from 1 April 2024.</p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>Rolled-up holiday pay is allowed only for irregular-hours workers (paid hours in each pay period wholly or mostly variable under the contract) and part-year workers (periods of at least a week with no work required and no pay), for leave years beginning on or after 1 April 2024. Not for regular-hours workers, full or part time.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="rh-r2">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 8h.01M16 16h.01"/></svg></span>
+        <div>
+          <h3 id="rh-r2">How much</h3>
+          <p>12.07% of total pay in the period, as a separate payslip item.</p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>12.07% of total pay in the pay period: 5.6 weeks of leave over 46.4 working weeks. For a longer contract, weeks ÷ (52 - weeks): 6 weeks is 13.04%. Paid with the work, on top of pay at or above the minimum wage, as a separate item on each payslip.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="rh-r3">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+        <div>
+          <h3 id="rh-r3">Hours and rounding</h3>
+          <p>Hours accrue at the same rate, to the nearest hour; both penny roundings are shown.</p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>Holiday accrues at the same rate on hours worked, on the last day of each pay period, rounded down under 30 minutes and up at 30 minutes or more. The pound amount is 12.07% of the whole pay to the nearest penny; GOV.UK's worked tables round pay ÷ 100 first, which can differ by a few pence, so both are shown.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="rh-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v17M16 7.5c-.8-1.2-2.2-1.8-4-1.8-2.3 0-4 1.1-4 3s1.7 2.6 4 3.1 4 1.3 4 3.2-1.7 3.1-4 3.1c-1.9 0-3.4-.7-4.2-2"/></svg></span>
+        <div>
+          <h3 id="rh-prices-title">Prices</h3>
+          <p data-prices>One worker at a time is free on this page. A payroll CSV costs $0.02 a worker row (at least $0.25 a file).</p>
+          <details class="xpand"><summary>Read the full prices</summary><div class="xp-in">
+            <p data-prices>A payroll CSV costs $0.02 a worker row (at least $0.25 a file), and a re-run of the same rows within 30 days is free.</p>
+            <ul class="endwise-prices"><li><strong>One worker, the rate, the 52-week average or the eligibility test on this page</strong>: free.</li><li><strong>One calculation over the API or MCP</strong>: $0.005 per call.</li><li><strong>Payroll CSV (holiday pay column, payslip line and hours for every worker)</strong>: $0.02 per worker row, at least $0.25 per file; a repeat for the same worker pay period is free for 30 days.</li><li>At most $9.90 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+            <p data-prices>The free $0.25 each month on a signed-in account covers a 12-worker payroll file. This tool never costs more than $9.90 in a month.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Calculators" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Calculators</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/12-07-accrual-calculator/" title="12.07% holiday accrual calculator: hours accrued, with GOV.UK rounding">12.07% hours accrual</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/52-week-reference-period-calculator/" title="52-week reference period holiday pay calculator (irregular hours)">52-week reference period</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Reference" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Reference</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/holiday-pay-percentage-by-entitlement/" title="Holiday pay percentage by entitlement: 12.07% (28 days), 13.04% (30 days), 14.54% (33 days)">Percentage by entitlement</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/12-07-percent-of-pay-table/" title="12.07% of pay table: rolled-up holiday pay from £50 to £2,000">12.07% of pay</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Worker types" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">By worker type</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/for/zero-hours/" title="Zero-hours holiday pay calculator: 12.07% rolled-up pay and accrued hours">Zero-hours and casual</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/for/agency/" title="Agency workers' holiday pay calculator (12.07% rolled-up and accrued)">Agency workers</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/for/term-time/" title="Rolled-up holiday pay for term-time workers (part-year, 12.07%)">Term-time</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/for/part-year/" title="Part-year workers' holiday pay and entitlement (12.07% of pay and hours)">Part-year and seasonal</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Guides</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/guides/includes-overtime/" title="Does rolled-up holiday pay include overtime? Total pay, worked through">Does it include overtime?</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/guides/rules/" title="Rolled-up holiday pay rules (UK, 2024 onward): who, how much, how shown">The rules</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/guides/12-07-explained/" title="12.07% holiday pay explained, with the GOV.UK worked examples">12.07% explained</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/guides/record-keeping-2026/" title="Holiday record keeping from 6 April 2026: 6 years of leave and holiday pay">Record keeping from 6 April 2026</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/guides/xero/" title="Rolled-up holiday pay in Xero (and why Xero does not calculate it)">Xero</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/guides/is-it-legal/" title="Is rolled-up holiday pay legal in the UK now? Yes, since April 2024, for some">Is it legal?</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/guides/zero-hours-example/" title="Zero-hours holiday pay: a year month by month (12.07% example)">A zero-hours year</a></li></ul>
+<h3>Compare</h3><ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/rolled-up-vs-52-week-reference-period/" title="Rolled-up holiday pay vs the 52-week reference period: which method">Rolled-up vs 52-week</a></li></ul>
+<h3>Start here</h3><ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/what-is-rolled-up-holiday-pay/" title="What is rolled-up holiday pay? Meaning, UK rules and a calculator">What is rolled-up holiday pay?</a></li></ul>
+<h3>Calendar</h3><ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/holiday-pay-dates-2026-2027/" title="Holiday pay dates November 2026 to December 2027 (GB bank holidays)">Dates to December 2027</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Templates" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Templates</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/templates/payslip-example/" title="Rolled-up holiday pay payslip example (separate line, worked out)">Payslip example</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compare" aria-labelledby="cp-index-title-6"><h2 id="cp-index-title-6">Compare</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/vs/gov-uk/" title="GOV.UK holiday calculator vs a rolled-up holiday pay calculator">GOV.UK calculator</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/vs/acas/" title="Acas holiday pay guidance vs a rolled-up holiday pay calculator">Acas</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/vs/shiftbase/" title="Shiftbase alternative for 12.07% rolled-up holiday pay">Shiftbase</a></li><li><a href="/toll-preview/rolled-up-holiday-pay-calculator/vs/spreadsheet/" title="Spreadsheet vs calculator for 12.07% holiday pay (formulas included)">Spreadsheet</a></li></ul>
+</section>
+
+  <section class="wrap tf-code rh-code" data-jump="Code" aria-label="Use this from code">
+    <div id="rh-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This calculator needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/rolled-up-holiday-pay-calculator/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

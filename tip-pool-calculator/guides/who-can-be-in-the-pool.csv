@@ -1,0 +1,12 @@
+role,federal_tip_credit,federal_no_tip_credit,wa_no_tip_credit,mn_no_tip_credit,ma_no_tip_credit,ny_no_tip_credit,me_no_tip_credit,de_no_tip_credit,md_no_tip_credit,dc_no_tip_credit
+Server,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed
+Bartender,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed
+Busser,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed
+Counter staff,,,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed
+Host,check,allowed,allowed,allowed,check,allowed,allowed,allowed,allowed,allowed
+Barback,check,allowed,allowed,allowed,check,allowed,allowed,allowed,allowed,allowed
+Food runner,check,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed,allowed
+Cook,not allowed,allowed,allowed,allowed,not allowed,not allowed,allowed,allowed,allowed,allowed
+Dishwasher,not allowed,allowed,allowed,allowed,not allowed,not allowed,allowed,allowed,allowed,allowed
+Manager or supervisor,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed
+Owner,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed,not allowed

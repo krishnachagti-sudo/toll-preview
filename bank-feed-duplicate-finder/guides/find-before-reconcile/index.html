@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find duplicate transactions before you reconcile: a method with a day window</title>
+<meta name="description" content="A method for finding bank-feed duplicates before reconciling: equal amounts within a day window, a confidence for each pair, the statement check, and the list to act on.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Find duplicate transactions before you reconcile: a method with a day window">
+<meta property="og:description" content="A method for finding bank-feed duplicates before reconciling: equal amounts within a day window, a confidence for each pair, the statement check, and the list to act on.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile/","url":"https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile/","name":"Find duplicate transactions before you reconcile: a method with a day window","description":"A method for finding bank-feed duplicates before reconciling: equal amounts within a day window, a confidence for each pair, the statement check, and the list to act on.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Bank-feed duplicate finder","item":"https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/"},{"@type":"ListItem","position":3,"name":"Find duplicates before you reconcile","item":"https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile/"}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"bank-feed-duplicate-finder"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/bank-feed-duplicate-finder/">Bank-feed duplicate finder</a></li><li aria-current="page">Find duplicates before you reconcile</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">Guides</p>
+<h1>Find duplicates before you reconcile</h1>
+<p class="cp-answer">To find duplicates before you reconcile, line up equal amounts within a few days: on this worked month, a same-day window finds 4 pairs, the default 3 days finds 6, and 31 days finds 8, the extra ones being monthly bills such as rent paid on the 1st and the 31st, so start at 3 days.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the duplicate finder</h2><p class="muted">The worked files open in the tool and are previewed in your browser, free. Swap in your own exports there.</p><form method="get" action="/toll-preview/bank-feed-duplicate-finder/" class="cp-tool-form"><input type="hidden" name="feed" value="Date,Description,Amount
+10/26/2026,SQUARE INC DEP,&quot;1,245.90&quot;
+10/28/2026,VERIZON WIRELESS,-112.60
+10/29/2026,SQUARE INC DEP,&quot;1,198.05&quot;
+10/29/2026,SQUARE INC DEP,&quot;1,198.05&quot;
+10/30/2026,COMCAST BUSINESS,-189.99
+10/30/2026,STAPLES 0412,-45.17
+10/31/2026,HARBOR PROPERTIES RENT,&quot;-2,400.00&quot;
+"><input type="hidden" name="books" value="Northwind Bakery (made-up sample)
+Transaction Detail by Account
+&quot;October 1-31, 2026&quot;
+
+,Date,Transaction Type,Num,Name,Memo/Description,Split,Amount,Balance
+Business Checking,,,,,,,,
+,10/01/2026,Expense,,Harbor Properties,October rent,Rent or Lease,&quot;-2,400.00&quot;,&quot;-2,400.00&quot;
+,10/02/2026,Expense,,Comcast Business,,Utilities,-189.99,&quot;-2,589.99&quot;
+,10/03/2026,Deposit,,Square,Card sales,Sales,&quot;1,284.50&quot;,&quot;-1,305.49&quot;
+,10/06/2026,Expense,,Sysco,Flour and dairy,Supplies,-642.18,&quot;-1,947.67&quot;
+,10/06/2026,Expense,,SYSCO FOOD SVC,,Supplies,-642.18,&quot;-2,589.85&quot;
+,10/08/2026,Check,1052,Rivera Electric,Oven repair,Repairs,-350.00,&quot;-2,939.85&quot;
+,10/10/2026,Deposit,,Square,Card sales,Sales,&quot;1,102.75&quot;,&quot;-1,837.10&quot;
+,10/13/2026,Expense,,Amazon,Packaging,Supplies,-86.40,&quot;-1,923.50&quot;
+,10/14/2026,Expense,,AMZN Mktp US,,Supplies,-86.40,&quot;-2,009.90&quot;
+,10/15/2026,Expense,,Gusto,Payroll,Payroll Expenses,&quot;-4,215.33&quot;,&quot;-6,225.23&quot;
+,10/17/2026,Deposit,,Square,Card sales,Sales,&quot;1,317.20&quot;,&quot;-4,908.03&quot;
+,10/20/2026,Expense,,Shell,Van fuel,Car &amp; Truck,-58.00,&quot;-4,966.03&quot;
+,10/20/2026,Expense,,Shell,Van fuel,Car &amp; Truck,-58.00,&quot;-5,024.03&quot;
+,10/24/2026,Bill Payment (Check),1053,Sysco,,Accounts Payable (A/P),&quot;-1,018.44&quot;,&quot;-6,042.47&quot;
+,10/27/2026,Deposit,,Square,Card sales,Sales,&quot;1,245.90&quot;,&quot;-4,796.57&quot;
+,10/28/2026,Expense,,Verizon,Phones,Utilities,-112.60,&quot;-4,909.17&quot;
+Total for Business Checking,,,,,,,&quot;-$4,909.17&quot;,
+"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/bank-feed-duplicate-finder/?feed=Date%2CDescription%2CAmount%0D%0A10%2F26%2F2026%2CSQUARE+INC+DEP%2C%221%2C245.90%22%0D%0A10%2F28%2F2026%2CVERIZON+WIRELESS%2C-112.60%0D%0A10%2F29%2F2026%2CSQUARE+INC+DEP%2C%221%2C198.05%22%0D%0A10%2F29%2F2026%2CSQUARE+INC+DEP%2C%221%2C198.05%22%0D%0A10%2F30%2F2026%2CCOMCAST+BUSINESS%2C-189.99%0D%0A10%2F30%2F2026%2CSTAPLES+0412%2C-45.17%0D%0A10%2F31%2F2026%2CHARBOR+PROPERTIES+RENT%2C%22-2%2C400.00%22%0D%0A&amp;books=Northwind+Bakery+%28made-up+sample%29%0D%0ATransaction+Detail+by+Account%0D%0A%22October+1-31%2C+2026%22%0D%0A%0D%0A%2CDate%2CTransaction+Type%2CNum%2CName%2CMemo%2FDescription%2CSplit%2CAmount%2CBalance%0D%0ABusiness+Checking%2C%2C%2C%2C%2C%2C%2C%2C%0D%0A%2C10%2F01%2F2026%2CExpense%2C%2CHarbor+Properties%2COctober+rent%2CRent+or+Lease%2C%22-2%2C400.00%22%2C%22-2%2C400.00%22%0D%0A%2C10%2F02%2F2026%2CExpense%2C%2CComcast+Business%2C%2CUtilities%2C-189.99%2C%22-2%2C589.99%22%0D%0A%2C10%2F03%2F2026%2CDeposit%2C%2CSquare%2CCard+sales%2CSales%2C%221%2C284.50%22%2C%22-1%2C305.49%22%0D%0A%2C10%2F06%2F2026%2CExpense%2C%2CSysco%2CFlour+and+dairy%2CSupplies%2C-642.18%2C%22-1%2C947.67%22%0D%0A%2C10%2F06%2F2026%2CExpense%2C%2CSYSCO+FOOD+SVC%2C%2CSupplies%2C-642.18%2C%22-2%2C589.85%22%0D%0A%2C10%2F08%2F2026%2CCheck%2C1052%2CRivera+Electric%2COven+repair%2CRepairs%2C-350.00%2C%22-2%2C939.85%22%0D%0A%2C10%2F10%2F2026%2CDeposit%2C%2CSquare%2CCard+sales%2CSales%2C%221%2C102.75%22%2C%22-1%2C837.10%22%0D%0A%2C10%2F13%2F2026%2CExpense%2C%2CAmazon%2CPackaging%2CSupplies%2C-86.40%2C%22-1%2C923.50%22%0D%0A%2C10%2F14%2F2026%2CExpense%2C%2CAMZN+Mktp+US%2C%2CSupplies%2C-86.40%2C%22-2%2C009.90%22%0D%0A%2C10%2F15%2F2026%2CExpense%2C%2CGusto%2CPayroll%2CPayroll+Expenses%2C%22-4%2C215.33%22%2C%22-6%2C225.23%22%0D%0A%2C10%2F17%2F2026%2CDeposit%2C%2CSquare%2CCard+sales%2CSales%2C%221%2C317.20%22%2C%22-4%2C908.03%22%0D%0A%2C10%2F20%2F2026%2CExpense%2C%2CShell%2CVan+fuel%2CCar+%26+Truck%2C-58.00%2C%22-4%2C966.03%22%0D%0A%2C10%2F20%2F2026%2CExpense%2C%2CShell%2CVan+fuel%2CCar+%26+Truck%2C-58.00%2C%22-5%2C024.03%22%0D%0A%2C10%2F24%2F2026%2CBill+Payment+%28Check%29%2C1053%2CSysco%2C%2CAccounts+Payable+%28A%2FP%29%2C%22-1%2C018.44%22%2C%22-6%2C042.47%22%0D%0A%2C10%2F27%2F2026%2CDeposit%2C%2CSquare%2CCard+sales%2CSales%2C%221%2C245.90%22%2C%22-4%2C796.57%22%0D%0A%2C10%2F28%2F2026%2CExpense%2C%2CVerizon%2CPhones%2CUtilities%2C-112.60%2C%22-4%2C909.17%22%0D%0ATotal+for+Business+Checking%2C%2C%2C%2C%2C%2C%2C%22-%244%2C909.17%22%2C%0D%0A">Open this example in the tool</a></p></aside>
+<section>
+<h2 id="method">The method</h2>
+<ol><li>Put the bank lines and the books for one account and one month side by side, sorted by amount. Intuit's own version: &quot;Set the date range with the Filter, then select the Amount column so identical amounts line up.&quot;</li><li>Pair equal amounts dated within a few days. Score each pair: the same date, the same payee words and the same reference each make it likelier.</li><li>Check each pair against the bank statement. If the statement shows the charge twice, both are real.</li><li>Act on the extra copy of each confirmed pair, then reconcile.</li></ol>
+</section>
+<section>
+<h2 id="window">What the window changes</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>The worked bakery month at five windows</caption><thead><tr><th scope="col">Window</th><th scope="col" class="r num">Pairs</th><th scope="col" class="r num">High</th><th scope="col" class="r num">Medium</th><th scope="col" class="r num">Low</th></tr></thead><tbody>
+<tr><th scope="row">0 days</th><td class="r num">4</td><td class="r num">4</td><td class="r num">0</td><td class="r num">0</td></tr>
+<tr><th scope="row">1 day</th><td class="r num">6</td><td class="r num">4</td><td class="r num">1</td><td class="r num">1</td></tr>
+<tr><th scope="row">3 days</th><td class="r num">6</td><td class="r num">4</td><td class="r num">1</td><td class="r num">1</td></tr>
+<tr><th scope="row">7 days</th><td class="r num">6</td><td class="r num">4</td><td class="r num">1</td><td class="r num">1</td></tr>
+<tr><th scope="row">31 days</th><td class="r num">8</td><td class="r num">4</td><td class="r num">3</td><td class="r num">1</td></tr>
+</tbody></table></div>
+<p>Widening to a week adds nothing here; at 31 days the rent ($2,400.00) and the internet bill ($189.99) pair with their own monthly repeats. A wide window is for a feed known to post days late, not for a first pass.</p>
+</section>
+<section>
+<h2 id="list">The candidate list at 3 days</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>Pairs with confidence, the copy to keep and the action</caption><thead><tr><th scope="col">#</th><th scope="col">Confidence</th><th scope="col" class="r num">Amount</th><th scope="col">Act on</th><th scope="col">Keep</th><th scope="col">Action</th></tr></thead><tbody>
+<tr><th scope="row">1</th><td>high</td><td class="r num">-$642.18</td><td>books line 11: 2026-10-06, SYSCO FOOD SVC</td><td>books line 10: 2026-10-06, Sysco Flour and dairy</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
+<tr><th scope="row">2</th><td>low</td><td class="r num">-$86.40</td><td>books line 15: 2026-10-14, AMZN Mktp US</td><td>books line 14: 2026-10-13, Amazon Packaging</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
+<tr><th scope="row">3</th><td>high</td><td class="r num">-$58.00</td><td>books line 19: 2026-10-20, Shell Van fuel</td><td>books line 18: 2026-10-20, Shell Van fuel</td><td>Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register</td></tr>
+<tr><th scope="row">4</th><td>medium</td><td class="r num">$1,245.90</td><td>feed line 2: 2026-10-26, SQUARE INC DEP</td><td>books line 21: 2026-10-27, Square Card sales</td><td>Match this line to the entry already in the books (Find other match if it is not suggested); if that entry is already matched or reconciled, exclude this line instead</td></tr>
+<tr><th scope="row">5</th><td>high</td><td class="r num">-$112.60</td><td>feed line 3: 2026-10-28, VERIZON WIRELESS</td><td>books line 22: 2026-10-28, Verizon Phones</td><td>Match this line to the entry already in the books (Find other match if it is not suggested); if that entry is already matched or reconciled, exclude this line instead</td></tr>
+<tr><th scope="row">6</th><td>high</td><td class="r num">$1,198.05</td><td>feed line 5: 2026-10-29, SQUARE INC DEP</td><td>feed line 4: 2026-10-29, SQUARE INC DEP</td><td>Exclude this copy in For review; keep the other to match or add</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/duplicate-transactions/fix-duplicate-transactions-quickbooks-online-bank-feeds/L1fjxl88f_US_en_US">Intuit QuickBooks: Fix duplicate transactions in QuickBooks Online bank feeds (read November 8, 2026)</a></li></ul>
+</section>
+
+
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/bank-feed-duplicate-finder/guides/why-duplicates-happen/">Why duplicates happen</a></li><li><a href="/toll-preview/bank-feed-duplicate-finder/guides/exclude-vs-delete/">Exclude or delete</a></li><li><a href="/toll-preview/bank-feed-duplicate-finder/reconciliation-calendar-2026-2027/">The month-end calendar</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

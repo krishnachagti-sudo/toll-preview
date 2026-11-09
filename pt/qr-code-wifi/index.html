@@ -79,6 +79,7 @@
 <h1>QR Code de Wi-Fi: como é o texto dentro do código</h1>
 <p class="cp-answer">Um QR Code de Wi-Fi guarda uma linha de texto, por exemplo WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;. T é a segurança (WPA, WEP, WPA2-EAP ou nopass), S o nome da rede e P a senha; os caracteres \ ; , &quot; : recebem uma barra invertida na frente. Este exemplo é a versão 3 (29 x 29 módulos) no nível M.</p>
 
+
 </header>
 <div class="cp-body prose">
 <section>
@@ -109,7 +110,7 @@ WIFI:T:nopass;S:Lobby;;</code></pre>
 <ul class="cp-sources"><li><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard), lida em 2 de novembro de 2026</a></li></ul>
 </section>
 <section><h2 id="steps">Passos</h2><ol class="cp-steps"><li><strong>Comece com WIFI:.</strong> Depois vêm os campos, cada um terminado em ponto e vírgula, em qualquer ordem.</li><li><strong>Segurança.</strong> T:WPA para redes pessoais WPA, WPA2 e WPA3, T:WEP, T:WPA2-EAP para redes corporativas ou T:nopass para uma rede aberta.</li><li><strong>Nome e senha.</strong> S: o nome da rede, P: a senha. Coloque uma barra invertida antes de qualquer \ ; , &quot; ou :. Um nome ou senha que possa ser lido como hexadecimal vai entre aspas duplas.</li><li><strong>Final.</strong> Acrescente H:true para uma rede oculta e termine com um segundo ponto e vírgula.</li></ol></section>
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Perguntas</h2><h3>Como é o texto de um QR Code de Wi-Fi?</h3><p>Uma linha como WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;. T é a segurança, S o nome da rede e P a senha; os caracteres \ ; , &quot; : recebem uma barra invertida na frente.</p><h3>Como faço um QR Code para uma rede Wi-Fi aberta?</h3><p>Com T:nopass e sem senha, por exemplo WIFI:T:nopass;S:Lobby;;.</p><h3>Funciona em todos os celulares?</h3><p>Não há garantia: o suporte varia, principalmente nos campos corporativos (WPA2-EAP). Teste com os celulares que os seus convidados usam.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Perguntas</h2><details class="xpand"><summary><h3>Como é o texto de um QR Code de Wi-Fi?</h3></summary><div class="xp-in"><p>Uma linha como WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;. T é a segurança, S o nome da rede e P a senha; os caracteres \ ; , &quot; : recebem uma barra invertida na frente.</p></div></details><details class="xpand"><summary><h3>Como faço um QR Code para uma rede Wi-Fi aberta?</h3></summary><div class="xp-in"><p>Com T:nopass e sem senha, por exemplo WIFI:T:nopass;S:Lobby;;.</p></div></details><details class="xpand"><summary><h3>Funciona em todos os celulares?</h3></summary><div class="xp-in"><p>Não há garantia: o suporte varia, principalmente nos campos corporativos (WPA2-EAP). Teste com os celulares que os seus convidados usam.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Páginas relacionadas</h2><ul><li><a href="/toll-preview/pt/qr-code-que-nao-expira/">QR Code expira?</a></li><li><a href="/toll-preview/pt/qr-code-cartao-de-visita/">QR Code para cartão de visita (vCard)</a></li><li><a href="/toll-preview/pt/qr-code-generator/">Gerador de QR Code</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/pt/qr-code-wifi.md">Esta página em Markdown</a> <span aria-hidden="true">·</span> Dados de <time datetime="2026-11-02">2026-11-02</time></p>
@@ -202,6 +203,7 @@ WIFI:T:nopass;S:Lobby;;</code></pre>
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

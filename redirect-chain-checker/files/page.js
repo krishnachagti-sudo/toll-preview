@@ -65,32 +65,44 @@ function rowItem(r) {
   ]);
 }
 
-function tally(s) {
-  const items = [
-    ['URLs', s.total], ['OK', s.ok], ['to review', s.toReview], ['to fix', s.toFix], ['chains', s.chains], ['loops', s.loops],
-    ['temporary', s.temporary], ['plain http', s.httpInChain], ['4xx/5xx', s.broken], ['no answer', s.errors], ['not checked', s.notChecked],
-  ].filter(([, n], i) => i < 4 || n > 0);
-  return h('ul', { class: 'rc-tally' }, items.map(([label, n]) => h('li', null, [h('span', { class: 'n' }, n.toLocaleString('en-US')), label])));
-}
-
 function download(name, text) {
   const url = URL.createObjectURL(new Blob([text], { type: 'text/csv' }));
   return h('a', { href: url, download: name, class: 'btn btn-small' }, 'Download the CSV');
 }
 
+// The report like the other tool pages: the tag and source, the inputs in one line, what needs fixing
+// as the big figure, one line per finding with the rule behind it, then every URL folded.
+const FINDINGS = [
+  ['ok', 'OK', 'nothing flagged: no redirect, or one permanent hop', null],
+  ['toReview', 'To review', 'a chain, a temporary redirect or a target off the map', 'hi'],
+  ['toFix', 'To fix', 'a loop, an error, a downgrade to http, a wrong target or too many hops', 'sk'],
+  ['chains', 'Chains', '2 or more hops: point the old URL straight at the last one', null],
+  ['temporary', 'Temporary redirects', '302, 303 or 307: a weak signal to Google', null],
+  ['httpInChain', 'Plain http in a chain', 'an http:// hop after the first', null],
+  ['loops', 'Loops', 'a URL that comes back to one it already visited', 'sk'],
+  ['broken', 'Ends on a 4xx or 5xx', 'the final answer is an error', 'sk'],
+];
 function showReport(report, { label, charged, unreadable = [] }) {
   const out = $('rc-out');
   out.textContent = '';
+  const s = report.summary;
+  const example = label === 'Example';
+  const ins = `${example ? 'a recorded run of the checker on ' : ''}${s.total.toLocaleString('en-US')} ${example ? 'public ' : ''}URL${s.total === 1 ? '' : 's'}${s.expected?.rows ? `, ${s.expected.rows} with an expected target` : ''}`;
+  const item = ([k, what, why, cls]) => (k === 'ok' || k === 'toReview' || k === 'toFix' || s[k] ? h('li', { class: s[k] ? cls : 'dim' }, [h('span', { class: 'k', 'aria-hidden': 'true' }, String(s[k] ?? 0)), h('span', null, what), h('em', null, why)]) : null);
   out.append(
-    h('p', { class: 'rc-label' }, label),
-    h('p', { class: 'rc-answer' }, report.answer),
-    tally(report.summary),
+    h('div', { class: 'tf-rh' }, [h('span', { class: example ? 'tf-tag' : 'tf-tag run' }, example ? 'Example' : label), h('span', { class: 'tf-src' }, example ? 'recorded November 7, 2026' : `checked ${new Date(report.checkedAt).toUTCString().slice(5, 16)}`)]),
+    h('p', { class: 'tf-exin' }, example ? `Example: ${ins}` : ins),
+    h('p', { class: 'tf-big' }, [h('b', null, `${s.toFix} to fix`), h('span', null, `and ${s.toReview} to review, of ${s.total}`)]),
+    h('p', { class: 'tf-sub rc-answer' }, report.answer),
+    h('ul', { class: 'tf-items' }, FINDINGS.map(item)),
     h('p', { class: 'rc-downloads' }, [download(report.csv.name, report.csv.text)]),
     charged ? h('p', { class: 'muted' }, charged) : null,
     unreadable.length ? h('p', { class: 'rc-unread' }, `Skipped: ${unreadable.slice(0, 5).map((p) => `line ${p.line} (${p.message})`).join('; ')}${unreadable.length > 5 ? ` and ${unreadable.length - 5} more` : ''}.`) : null,
     report.notChecked.length ? h('p', { class: 'rc-unread' }, `${report.notChecked.length} URL${report.notChecked.length === 1 ? ' was' : 's were'} not reached in the time a run is given and not charged: run them again.`) : null,
-    h('p', { class: 'muted' }, `Sent as ${report.userAgent.name === 'endwise' ? 'our own checker' : report.userAgent.name} on ${new Date(report.checkedAt).toUTCString()}.`),
-    h('ol', { class: 'rc-rows' }, report.rows.map(rowItem)),
+    h('details', example ? { class: 'xpand' } : { class: 'xpand', open: '' }, [h('summary', null, `Every URL, hop by hop (${report.rows.length})`), h('div', { class: 'xp-in' }, [
+      h('p', { class: 'muted' }, `Sent as ${report.userAgent.name === 'endwise' ? 'our own checker' : report.userAgent.name} on ${new Date(report.checkedAt).toUTCString()}.`),
+      h('ol', { class: 'rc-rows' }, report.rows.map(rowItem)),
+    ])]),
   );
 }
 
@@ -197,7 +209,7 @@ async function start() {
   try {
     const tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
     const sample = tool.examples.find((x) => x.input.op === 'check');
-    if (sample) showReport(sample.output, { label: 'Sample: a recorded run' });
+    if (sample) showReport(sample.output, { label: 'Example' });
   } catch {
     // The sample sentence in the page stays.
   }

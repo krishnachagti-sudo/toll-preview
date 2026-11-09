@@ -1,0 +1,8 @@
+source_ip,source,count,disposition,dkim_aligned,spf_aligned,dkim_auth,spf_auth,reason
+54.240.8.17,Amazon SES,57,none,fail,fail,amazonses.com pass,us-east-1.amazonses.com pass,third-party-not-aligned
+203.0.113.9,Unnamed (203.0.113.9),23,none,fail,fail,none,example.com softfail,no-dkim
+192.0.2.44,Unnamed (192.0.2.44),6,none,fail,fail,example.com fail,lists.example.org none,dkim-broken
+35.174.145.124,A server at Amazon Web Services (EC2) (35.174.145.124),4,none,fail,fail,none,example.com fail,no-dkim
+209.85.220.41,Google Workspace,412,none,pass,pass,example.com pass,example.com pass,pass-both
+40.107.22.55,Microsoft 365,130,none,pass,pass,example.com pass,example.com pass,pass-both
+149.72.134.20,HubSpot,38,none,pass,fail,example.com pass,1234567.hubspotemail.net pass,pass-dkim

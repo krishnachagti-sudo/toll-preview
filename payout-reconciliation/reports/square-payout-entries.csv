@@ -1,0 +1,52 @@
+activity_type,booked_as
+CHARGE,Sales
+REFUND,Refunds
+DISPUTE,Chargebacks and disputes
+OPEN_DISPUTE,Chargebacks and disputes
+FEE,Processing fees
+PROCESSING_FEE,Processing fees
+PROCESSING_FEE_REFUND,Processing fees
+UNDO_PROCESSING_FEE_REFUND,Processing fees
+DEPOSIT_FEE,Processing fees
+DEPOSIT_FEE_REVERSED,Processing fees
+THIRD_PARTY_FEE,Processing fees
+THIRD_PARTY_FEE_REFUND,Processing fees
+PAID_SERVICE_FEE,Processing fees
+PAID_SERVICE_FEE_REFUND,Processing fees
+SUBSCRIPTION_FEE,Processing fees
+SUBSCRIPTION_FEE_PAID_REFUND,Processing fees
+SUBSCRIPTION_FEE_REFUND,Processing fees
+LOCAL_OFFERS_FEE,Processing fees
+GIFT_CARD_LOAD_FEE,Processing fees
+GIFT_CARD_LOAD_FEE_REFUND,Processing fees
+UNDO_GIFT_CARD_LOAD_FEE_REFUND,Processing fees
+FREE_PROCESSING,Processing fees
+TAX_ON_FEE,Tax on fees
+RESERVE_HOLD,Reserves and holds
+RESERVE_RELEASE,Reserves and holds
+HOLD_ADJUSTMENT,Reserves and holds
+RELEASE_ADJUSTMENT,Reserves and holds
+SQUARE_CAPITAL_PAYMENT,Loan and advance repayments
+SQUARE_CAPITAL_REVERSED_PAYMENT,Loan and advance repayments
+CREDIT_CARD_REPAYMENT,Loan and advance repayments
+CREDIT_CARD_REPAYMENT_REVERSED,Loan and advance repayments
+PERCENTAGE_PROCESSING_ENROLLMENT,Loan and advance repayments
+PERCENTAGE_PROCESSING_DEACTIVATION,Loan and advance repayments
+PERCENTAGE_PROCESSING_REPAYMENT,Loan and advance repayments
+PERCENTAGE_PROCESSING_REPAYMENT_REVERSED,Loan and advance repayments
+AUTOMATIC_SAVINGS,Transfers between balances
+AUTOMATIC_SAVINGS_REVERSED,Transfers between balances
+BALANCE_FOLDERS_TRANSFER,Transfers between balances
+BALANCE_FOLDERS_TRANSFER_REVERSED,Transfers between balances
+MONEY_TRANSFER,Transfers between balances
+MONEY_TRANSFER_REVERSAL,Transfers between balances
+GIFT_CARD_POOL_TRANSFER,Transfers between balances
+GIFT_CARD_POOL_TRANSFER_REVERSED,Transfers between balances
+AUTOMATIC_BITCOIN_CONVERSIONS,Transfers between balances
+AUTOMATIC_BITCOIN_CONVERSIONS_REVERSED,Transfers between balances
+SQUARE_PAYROLL_TRANSFER,Transfers between balances
+SQUARE_PAYROLL_TRANSFER_REVERSED,Transfers between balances
+APP_FEE_REVENUE,Platform earnings
+APP_FEE_REFUND,Platform earnings
+RETURNED_PAYOUT,Money back to the bank
+PAYOUT,The payout itself

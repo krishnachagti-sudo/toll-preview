@@ -123,13 +123,37 @@ Format and print rules were read 2026-11-02. The encoder follows ISO/IEC 18004.
 - [ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard)](https://github.com/zxing/zxing/wiki/Barcode-Contents)
 - [RFC 2426: vCard 3.0 (escaping of commas, semicolons, backslashes and newlines)](https://www.rfc-editor.org/rfc/rfc2426)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+Format and print rules read 2026-11-02. The encoder follows the QR Code standard, ISO/IEC 18004.
+
+QR code generator: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [DENSO WAVE: Points for using QR Code (quiet zone of four modules)](https://www.qrcode.com/en/howto/code.html) | see the document | 2026-11-02 |
+| [DENSO WAVE: Module size (4 or more printer dots a module)](https://www.qrcode.com/en/howto/cell.html) | see the document | 2026-11-02 |
+| [DENSO WAVE: QR Code versions (40 versions, 21 x 21 to 177 x 177 modules)](https://www.qrcode.com/en/about/version.html) | see the document | 2026-11-02 |
+| [DENSO WAVE: Error correction (Level M 15% is most often selected)](https://www.qrcode.com/en/about/error_correction.html) | see the document | 2026-11-02 |
+| [DENSO WAVE FAQ: no licence needed to use QR Code; trademark notice](https://www.qrcode.com/en/faq.html) | see the document | 2026-11-02 |
+| [ISO/IEC 18004 (QR Code bar code symbology specification)](https://www.iso.org/standard/83389.html) | see the document | not recorded |
+| [ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard)](https://github.com/zxing/zxing/wiki/Barcode-Contents) | see the document | 2026-11-02 |
+| [RFC 2426: vCard 3.0 (escaping of commas, semicolons, backslashes and newlines)](https://www.rfc-editor.org/rfc/rfc2426) | see the document | 2026-11-02 |
+| [RFC 6068: the mailto URI scheme](https://www.rfc-editor.org/rfc/rfc6068) | see the document | 2026-11-02 |
+| [Avery 5160 template: 1 x 2-5/8 in, 30 per sheet](https://www.avery.com/templates/5160) | see the document | 2026-11-02 |
+| [Avery 22816 template: 2 x 2 in square, 12 per sheet](https://www.avery.com/templates/22816) | see the document | 2026-11-02 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The encoder is compared bit for bit with an independent implementation (node-qrcode 1.5.4) at every one of the 40 versions and 4 error-correction levels, in numeric, alphanumeric and byte modes. A decoder reads every code back, and the Reed-Solomon error correction fixes damage up to its limit and refuses more.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The encoder is compared bit for bit with an independent implementation (node-qrcode 1.5.4) at every one of the 40 versions and 4 error-correction levels, and in numeric, alphanumeric and byte modes.
+- A decoder reads every code back, and the Reed-Solomon error correction fixes damage up to its limit and refuses more.
+- Payload formats (WiFi, vCard, mailto, SMS, geo) are checked against the formats the sources describe, and the DENSO WAVE quiet-zone and module-size rules against the print checks.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the QR code generator tool](https://krishnachagti-sudo.github.io/toll-preview/qr-code-generator/).
 

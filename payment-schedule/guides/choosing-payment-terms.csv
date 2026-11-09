@@ -1,0 +1,10 @@
+terms,stage,name,amount,invoice_date,due_date,days_from_start_to_due
+Due on receipt,1,Deposit,"$3,000.00",2027-01-04,2027-01-04,0
+Due on receipt,2,Midpoint milestone,"$1,500.00",2027-02-01,2027-02-01,28
+Due on receipt,3,Final delivery,"$1,500.00",2027-03-01,2027-03-01,56
+Net 15,1,Deposit,"$3,000.00",2027-01-04,2027-01-19,15
+Net 15,2,Midpoint milestone,"$1,500.00",2027-02-01,2027-02-16,43
+Net 15,3,Final delivery,"$1,500.00",2027-03-01,2027-03-16,71
+Net 30,1,Deposit,"$3,000.00",2027-01-04,2027-02-03,30
+Net 30,2,Midpoint milestone,"$1,500.00",2027-02-01,2027-03-03,58
+Net 30,3,Final delivery,"$1,500.00",2027-03-01,2027-03-31,86

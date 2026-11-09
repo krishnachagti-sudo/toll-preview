@@ -1,0 +1,12 @@
+amount,irs,shopify,ebay,square,where_it_goes
+Refunds,Not deducted (IRS),Included,Included,Included,Schedule C line 2
+Chargebacks,"Not deducted (credits, refunds)",Not deducted,Not stated,Not deducted,Schedule C line 2
+Fees,Not deducted (IRS),Not deducted,Not deducted,Not deducted,Schedule C line 10
+Discounts and credits,Not deducted (IRS),Not stated,Not deducted,Not deducted,Schedule C line 2
+Shipping,Not deducted (IRS),Not stated,Not stated,Not deducted,A business expense
+Cash equivalents,Not deducted (IRS),Not stated,Not stated,Not stated,Taken out of the gross
+Sales tax,Not named by the IRS,Not stated,Not included,Included,Not gross receipts when paid over
+Tips on card sales,Box 1c shows cash tips in 1a (2026),Not stated,Not stated,Included,Income
+Canceled transactions,Not named,Not stated,Not included,Not stated,Nothing to do
+Cash sales,Not reportable on 1099-K,Not included,Not included,Not included,Still income: add from books
+Gifts and reimbursements,Should not be reported,Not stated,Not stated,Not stated,Not income; ask for a correction

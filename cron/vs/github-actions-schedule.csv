@@ -1,0 +1,7 @@
+scheduler,shortest_interval,time_zone,clock_changes,timing
+GitHub Actions schedule,5 minutes,"UTC, or timezone (IANA)","GitHub: with a time zone that observes daylight saving time, a run in the skipped hour advances to the next valid time (2:30 am runs at 3:00 am). GitHub's docs do not say what happens in the repeated hour when the clocks go back.",Can be delayed at high load; queued jobs may be dropped
+Kubernetes CronJob,1 minute,"Controller manager, or .spec.timeZone",Kubernetes CronJob's docs do not say what happens to a run in the skipped or repeated hour at a daylight saving change; those runs are flagged.,startingDeadlineSeconds; one catch-up after 100+ missed
+AWS EventBridge Scheduler,1 minute,"UTC, or a time zone (IANA)","EventBridge Scheduler: a run at a time that does not exist when the clocks go forward is skipped; when they go back, it runs only once.",60-second precision
+Vercel Cron Jobs,Hobby: a day; Pro: a minute,UTC only,"Vercel Cron Jobs runs in UTC, which has no daylight saving changes.",Hobby runs within the hour
+cron-job.org,1 minute,Set per job,Not stated in its FAQ,No punctuality promise; 30-second timeout
+Linux crontab,1 minute,The daemon's time zone,"Debian cron(8): when the clocks go forward, a job at a particular time that falls in the skipped time runs soon after the change; when they go back, a job in the repeated time is not run again. Jobs with * in the minute or hour field run on the new time.",Runs on your own server

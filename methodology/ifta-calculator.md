@@ -189,13 +189,38 @@ Rates are held by quarter, 4th Quarter 2025 to 3rd Quarter 2026, all final, read
 - [Idaho State Tax Commission, IFTA licenses: records (IVDR)](https://tax.idaho.gov/?p=1239)
 - [Oregon DOT copy of the IFTA matrix, 3Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/3Q2026FuelRates.pdf)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+Rates are held by quarter, final rates only: 4th Quarter 2025 to 3rd Quarter 2026, read 2026-11-02. A quarter that is not on file is refused, not guessed.
+
+IFTA quarterly return calculator: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [Oregon DOT copy of the IFTA matrix, 4Q2025 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/4Q2025FuelRates.pdf) | 4th Quarter 2025 | 2026-11-02 |
+| [NY Tax IFTA-105 (12/25) rate sheet, PDF](https://www.tax.ny.gov/pdf/2025/motor/ifta105_1225.pdf) | 4th Quarter 2025 (cross-check) | 2026-11-02 |
+| [Oregon DOT copy of the IFTA matrix, 1Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/1Q2026FuelRates.pdf) | 1st Quarter 2026 | 2026-11-02 |
+| [NY Tax IFTA-105 (3/26) rate sheet, PDF](https://www.tax.ny.gov/pdf/2026/motor/ifta105_326.pdf) | 1st Quarter 2026 (cross-check) | 2026-11-02 |
+| [Oregon DOT copy of the IFTA matrix, 2Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/2Q2026FuelRates.pdf) | 2nd Quarter 2026 | 2026-11-02 |
+| [NY Tax IFTA-105 (2nd Quarter 2026), HTML table](https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-626.htm) | 2nd Quarter 2026 (cross-check) | 2026-11-02 |
+| [Oregon DOT copy of the IFTA matrix, 3Q2026 FINAL Fuel Tax Rates (PDF)](https://www.oregon.gov/odot/MCT/Fuel%20Tax%20Rates/3Q2026FuelRates.pdf) | 3rd Quarter 2026 | 2026-11-02 |
+| [NY Tax IFTA-105 (3rd Quarter 2026), HTML table](https://www.tax.ny.gov/forms/html-instructions/2026/motor/ifta105-926.htm) | 3rd Quarter 2026 (cross-check) | 2026-11-02 |
+| [Oregon DOT, IFTA Tax Return Form 735-9740 and its filing instructions (03-26)](https://www.oregon.gov/odot/forms/motcarr/9740.pdf) | rules | 2026-11-02 |
+| [Virginia DMV, IFTA tax returns](https://www.dmv.virginia.gov/businesses/motor-carriers/ifta/tax) | rules | 2026-11-02 |
+| [Idaho State Tax Commission, IFTA reporting step 6 (interest)](https://tax.idaho.gov/taxes/product-excise-taxes/fuels-taxes-and-fees/consumer-fuels/ifta-licenses/ifta-reporting/idaho-ifta-reporting-step-6/) | rules | 2026-11-02 |
+| [Idaho State Tax Commission, IFTA licenses: records (IVDR)](https://tax.idaho.gov/?p=1239) | rules | 2026-11-02 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Each of the four quarters on file is final, from the Oregon DOT copy with the New York State Tax cross-check. A two-state return is worked out by hand in the test and compared with the engine. Due dates for 2026 are compared with the Oregon DOT calendar, and the late-interest example from the Idaho State Tax Commission ($100 over 3 months late is $1.25) is reproduced.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Each of the four quarters on file is final, from the Oregon DOT copy with the New York State Tax cross-check. Florida for the 1st quarter of 2026 is held back where the copies disagree.
+- A two-state return is worked out by hand in the test and compared with the engine, with miles-per-gallon rounding and surcharges checked.
+- Due dates for 2026 are compared with the Oregon DOT calendar, and the late-interest example from the Idaho State Tax Commission ($100 over 3 months late is $1.25) is reproduced.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the IFTA quarterly return calculator tool](https://krishnachagti-sudo.github.io/toll-preview/ifta-calculator/).
 

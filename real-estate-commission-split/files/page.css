@@ -1,0 +1,41 @@
+/* Commission split calculator: a commission statement inside the brand chrome. One accent carries
+   the net; every deduction reads as a ruled line in the order the plan takes it. */
+.rc {
+  --accent: var(--h-money);
+  --endwise-accent: var(--h-money);
+}
+
+
+/* Layout comes from web/tool-full.css. */
+.rc-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.rc-tab { font: 500 0.85rem/1.4 var(--font-mono); padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; }
+.rc-tab[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+
+
+.rc-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.rc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 12px 12px; }
+.rc-form .rc-extra { margin-top: 0; }
+.rc-form .rc-extra + details.xpand { margin-top: 10px; }
+.rc-form input, .rc-form select { width: 100%; }
+.rc-wide { grid-column: 1 / -1; }
+.rc-check { display: flex; gap: 8px; align-items: baseline; color: var(--muted); margin: 4px 0 8px; font-size: 0.95rem; }
+
+.rc-sub, .rc-aside { color: var(--muted); margin: 0 0 14px; max-width: 46rem; }
+.rc-table { font-variant-numeric: tabular-nums; margin-bottom: 10px; }
+.rc-table .num { text-align: right; white-space: nowrap; }
+.rc-flags { margin: 0 0 12px; padding-left: 1.1rem; max-width: 48rem; color: var(--text-2); }
+.rc-flags li { margin: 4px 0; }
+.rc-sources { padding-left: 1.1rem; color: var(--muted); }
+
+.rc-statement textarea { width: 100%; max-width: 36rem; font-family: var(--font-mono); font-size: 13px; }
+.rc-buy { margin-top: 10px; }
+.rc-notes li { margin: 6px 0; }
+.rc-label-block { display: block; color: var(--muted); margin: 4px 0 6px; font-size: 0.95rem; }
+.rc-form textarea { width: 100%; font-family: var(--font-mono); font-size: 13px; }
+.rc-order { max-width: 48rem; padding-left: 1.2rem; }
+.rc-order li { margin: 6px 0; }
+.rc-out h3 { margin-top: 20px; }
+.rc-out .btn { margin: 0 0 14px; }
+.rc-out .tf-items { margin-top: 16px; }
+.rc-rules .rc-notes { padding-left: 1.2em; }
+@media (max-width: 640px) { .rc-tabs { gap: 6px; } .rc-tab { padding: 6px 9px; font-size: 0.78rem; } }

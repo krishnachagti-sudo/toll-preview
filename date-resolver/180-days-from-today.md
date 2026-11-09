@@ -1,15 +1,15 @@
 # What date is 180 days from today?
 
-180 days from today, Saturday, November 7, 2026 (today's date in New York, US Eastern time), is Thursday, May 6, 2027. Counted from tomorrow it is Friday, May 7, 2027.
+180 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Friday, May 7, 2027. Counted from tomorrow it is Saturday, May 8, 2027.
 
-- Date: May 6, 2027
-- Weekday: Thursday
+- Date: May 7, 2027
+- Weekday: Friday
 - ISO week: 2027-W18
-- US business days between: 123
+- US business days between: 124
 
 ## 180 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-08&region=US)
 
 ## 180 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 180 days after | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-07) | Thu, May 6, 2027 | 123 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-08) | Fri, May 7, 2027 | 124 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-09) | Sat, May 8, 2027 | 123 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-10) | Sun, May 9, 2027 | 122 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-18) | Mon, May 17, 2027 | 123 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-19) | Tue, May 18, 2027 | 123 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-20) | Wed, May 19, 2027 | 123 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=180+days+from+today&ref=2026-11-21) | Thu, May 20, 2027 | 124 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 180 days from today: the same as 181 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-from-today/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/180-days-from-today.csv

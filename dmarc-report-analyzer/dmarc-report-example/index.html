@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMARC aggregate report example (RFC 9990 and RFC 7489), parsed</title>
+<meta name="description" content="A complete DMARC aggregate report example for example.com in Google's format, with every record parsed: the sending service, the aligned and raw DKIM and SPF results, and why each failing source failed.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/dmarc-report-example/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/dmarc-report-analyzer/dmarc-report-example.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="DMARC aggregate report example (RFC 9990 and RFC 7489), parsed">
+<meta property="og:description" content="A complete DMARC aggregate report example for example.com in Google's format, with every record parsed: the sending service, the aligned and raw DKIM and SPF results, and why each failing source failed.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/dmarc-report-example/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/dmarc-report-example/","url":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/dmarc-report-example/","name":"DMARC aggregate report example (RFC 9990 and RFC 7489), parsed","description":"A complete DMARC aggregate report example for example.com in Google's format, with every record parsed: the sending service, the aligned and raw DKIM and SPF results, and why each failing source failed.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"DMARC report analyzer","item":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/"},{"@type":"ListItem","position":3,"name":"A DMARC report example, parsed","item":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/dmarc-report-example/"}]},{"@type":"Dataset","name":"DMARC aggregate report example (RFC 9990 and RFC 7489), parsed","description":"A complete DMARC aggregate report example for example.com in Google's format, with every record parsed: the sending service, the aligned and raw DKIM and SPF results, and why each failing source failed.","url":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/dmarc-report-example/","dateModified":"2026-11-08","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/dmarc-report-example.csv"}],"temporalCoverage":"2026-11-06","spatialCoverage":{"@type":"Place","name":"example.com (made-up sample)"}}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"dmarc-report-analyzer"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/dmarc-report-analyzer/">DMARC report analyzer</a></li><li aria-current="page">A DMARC report example, parsed</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Example</p>
+<h1>A DMARC report example, parsed</h1>
+<p class="cp-answer">This report from google.com covers 2026-11-06 (UTC) for example.com: 670 messages from 7 sources; 90 messages (13.4%) failed DMARC from 4 sources. The largest is Amazon SES (54.240.8.17), 57 failing messages: DKIM passed for d=amazonses.com and SPF passed for us-east-1.amazonses.com, but neither is example.com, so neither aligns. (A made-up report for example.com in Google's format; the IPs are inside each named provider's published ranges.)</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Open this example in the analyzer</h2><p class="muted">The same report, read live; drop your own file there next.</p><form method="get" action="/toll-preview/dmarc-report-analyzer/" class="cp-tool-form"><input type="hidden" name="sample" value="google"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this sample in the analyzer</button></form><p class="small"><a href="/toll-preview/dmarc-report-analyzer/?sample=google">Open the analyzer</a></p></aside>
+<section>
+<h2 id="xml">The XML</h2>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;feedback&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;report_metadata&gt;
+    &lt;org_name&gt;google.com&lt;/org_name&gt;
+    &lt;email&gt;noreply-dmarc-support@google.com&lt;/email&gt;
+    &lt;extra_contact_info&gt;https://support.google.com/a/answer/2466580&lt;/extra_contact_info&gt;
+    &lt;report_id&gt;7212384403927146551&lt;/report_id&gt;
+    &lt;date_range&gt;
+      &lt;begin&gt;1793923200&lt;/begin&gt;
+      &lt;end&gt;1794009599&lt;/end&gt;
+    &lt;/date_range&gt;
+  &lt;/report_metadata&gt;
+  &lt;policy_published&gt;
+    &lt;domain&gt;example.com&lt;/domain&gt;
+    &lt;adkim&gt;r&lt;/adkim&gt;
+    &lt;aspf&gt;r&lt;/aspf&gt;
+    &lt;p&gt;none&lt;/p&gt;
+    &lt;sp&gt;none&lt;/sp&gt;
+    &lt;pct&gt;100&lt;/pct&gt;
+    &lt;np&gt;none&lt;/np&gt;
+  &lt;/policy_published&gt;
+  &lt;record&gt;
+    &lt;row&gt;
+      &lt;source_ip&gt;209.85.220.41&lt;/source_ip&gt;
+      &lt;count&gt;412&lt;/count&gt;
+      &lt;policy_evaluated&gt;
+        &lt;disposition&gt;none&lt;/disposition&gt;
+        &lt;dkim&gt;pass&lt;/dkim&gt;
+        &lt;spf&gt;pass&lt;/spf&gt;
+      &lt;/policy_evaluated&gt;
+    &lt;/row&gt;
+    &lt;identifiers&gt;
+      &lt;header_from&gt;example.com&lt;/header_from&gt;
+    &lt;/identifiers&gt;
+    &lt;auth_results&gt;
+      &lt;dkim&gt;
+        &lt;domain&gt;example.com&lt;/domain&gt;
+        &lt;selector&gt;google&lt;/selector&gt;
+        &lt;result&gt;pass&lt;/result&gt;
+      &lt;/dkim&gt;
+      &lt;spf&gt;
+        &lt;domain&gt;example.com&lt;/domain&gt;
+        &lt;result&gt;pass&lt;/result&gt;
+      &lt;/spf&gt;
+    &lt;/auth_results&gt;
+  &lt;/record&gt;
+  &lt;record&gt;
+    &lt;row&gt;
+      &lt;source_ip&gt;40.107.22.55&lt;/source_ip&gt;
+      &lt;count&gt;130&lt;/count&gt;
+      &lt;policy_evaluated&gt;
+        &lt;disposition&gt;none&lt;/disposition&gt;
+        &lt;dkim&gt;pass&lt;/dkim&gt;
+        &lt;spf&gt;pass&lt;/spf&gt;
+      &lt;/policy_evaluated&gt;
+    &lt;/row&gt;
+    &lt;identifiers&gt;
+      &lt;header_from&gt;example.com&lt;/header_from&gt;
+    &lt;/identifiers&gt;
+  ...</code></pre>
+</section>
+<section>
+<h2 id="records">Every record, parsed</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">IP</th><th scope="col">Source</th><th scope="col" class="r num">Count</th><th scope="col">Disposition</th><th scope="col">DKIM aligned</th><th scope="col">SPF aligned</th><th scope="col">DKIM raw</th><th scope="col">SPF raw</th><th scope="col">Reason</th></tr></thead><tbody>
+<tr><th scope="row">54.240.8.17</th><td>Amazon SES</td><td class="r num">57</td><td>none</td><td>fail</td><td>fail</td><td>amazonses.com pass</td><td>us-east-1.amazonses.com pass</td><td>third-party-not-aligned</td></tr>
+<tr><th scope="row">203.0.113.9</th><td>Unnamed (203.0.113.9)</td><td class="r num">23</td><td>none</td><td>fail</td><td>fail</td><td>none</td><td>example.com softfail</td><td>no-dkim</td></tr>
+<tr><th scope="row">192.0.2.44</th><td>Unnamed (192.0.2.44)</td><td class="r num">6</td><td>none</td><td>fail</td><td>fail</td><td>example.com fail</td><td>lists.example.org none</td><td>dkim-broken</td></tr>
+<tr><th scope="row">35.174.145.124</th><td>A server at Amazon Web Services (EC2) (35.174.145.124)</td><td class="r num">4</td><td>none</td><td>fail</td><td>fail</td><td>none</td><td>example.com fail</td><td>no-dkim</td></tr>
+<tr><th scope="row">209.85.220.41</th><td>Google Workspace</td><td class="r num">412</td><td>none</td><td>pass</td><td>pass</td><td>example.com pass</td><td>example.com pass</td><td>pass-both</td></tr>
+<tr><th scope="row">40.107.22.55</th><td>Microsoft 365</td><td class="r num">130</td><td>none</td><td>pass</td><td>pass</td><td>example.com pass</td><td>example.com pass</td><td>pass-both</td></tr>
+<tr><th scope="row">149.72.134.20</th><td>HubSpot</td><td class="r num">38</td><td>none</td><td>pass</td><td>fail</td><td>example.com pass</td><td>1234567.hubspotemail.net pass</td><td>pass-dkim</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="sources-table">By source</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Source</th><th scope="col">IPs</th><th scope="col" class="r num">Messages</th><th scope="col" class="r num">Failed</th><th scope="col">Why</th></tr></thead><tbody>
+<tr><th scope="row">Amazon SES</th><td>54.240.8.17</td><td class="r num">57</td><td class="r num">57</td><td>DKIM passed for d=amazonses.com and SPF passed for us-east-1.amazonses.com, but neither is example.com, so neither aligns.</td></tr>
+<tr><th scope="row">Unnamed (203.0.113.9)</th><td>203.0.113.9</td><td class="r num">23</td><td class="r num">23</td><td>The mail was not DKIM-signed, and SPF softfail for example.com: this IP is not authorized to send as example.com.</td></tr>
+<tr><th scope="row">Unnamed (192.0.2.44)</th><td>192.0.2.44</td><td class="r num">6</td><td class="r num">6</td><td>A DKIM signature for example.com did not verify (fail), and SPF did not pass for example.com. The message was probably changed on the way (forwarding, a mailing list, a security gateway) or the published key does not match. The receiver gave a reason: local_policy: the receiver's own policy exempted it (&quot;arc=pass&quot;).</td></tr>
+<tr><th scope="row">A server at Amazon Web Services (EC2) (35.174.145.124)</th><td>35.174.145.124</td><td class="r num">4</td><td class="r num">4</td><td>The mail was not DKIM-signed, and SPF fail for example.com: this IP is not authorized to send as example.com.</td></tr>
+<tr><th scope="row">Google Workspace</th><td>209.85.220.41</td><td class="r num">412</td><td class="r num">0</td><td>Passed DMARC.</td></tr>
+<tr><th scope="row">Microsoft 365</th><td>40.107.22.55</td><td class="r num">130</td><td class="r num">0</td><td>Passed DMARC.</td></tr>
+<tr><th scope="row">HubSpot</th><td>149.72.134.20</td><td class="r num">38</td><td class="r num">0</td><td>Passed DMARC.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="rfc9990">The same report under RFC 9990</h2>
+<p>RFC 9990 reports put everything in the namespace <code>urn:ietf:params:xml:ns:dmarc-2.0</code>, drop pct, and may add np, testing, discovery_method and extensions; GMX already sends this format (see <a href="/toll-preview/dmarc-report-analyzer/from/gmx/">reports from GMX</a>). The analyzer reads both and gives the same answer.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc9990.html">RFC 9990: DMARC Aggregate Reporting (May 2026), read November 8, 2026</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7489.txt">RFC 7489: DMARC (2015, now obsolete), Appendix C schema, read November 8, 2026</a></li><li><a href="https://conyso.com/endwise/spf-lookup-counter/">Sending providers' SPF records, measured November 7, 2026 (the SPF lookup counter's data)</a></li><li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html">AWS IP address ranges (ip-ranges.json, EC2), read November 8, 2026</a></li></ul>
+<p class="cp-note">Source names are inferred from published provider data (each provider's SPF ranges, the signing and bounce domains its own documentation names, and the AWS and Google Cloud range lists), read on the dates shown, with the evidence listed for every name. Shared infrastructure can carry several companies' mail, so check before you change DNS. Reports you upload are read in memory and not kept.</p>
+</section>
+
+
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/dmarc-report-analyzer/how-to-read-dmarc-reports/">How to read a DMARC report</a></li><li><a href="/toll-preview/dmarc-report-analyzer/from/gmx/">The same mail in GMX's RFC 9990 format</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/dmarc-report-analyzer/dmarc-report-example.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/dmarc-report-analyzer/dmarc-report-example.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -71,17 +71,18 @@
 <h1>How MACRS depreciation is calculated: Publication 946</h1>
 <p class="cp-answer">Each asset's business basis goes through Section 179 first, then the special allowance, then the Publication 946 percentage table for its class and convention. Mid-quarter applies when the bases placed in service in the last 3 months are more than 40% of the year's total; exactly 40% stays half-year.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the macrs depreciation schedule compute?</h2>
 <p>For one entity and one calendar tax year of additions, the tool runs the mid-quarter test, applies Section 179 and the special depreciation allowance, and reads the IRS percentage tables to produce a year-by-year schedule and the year's journal entry.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the macrs depreciation schedule compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>schedule</code>: The full schedule for the year's assets, with the test worksheet, each asset's years and the totals by year, as a CSV and a journal entry.</li><li><code>mid-quarter-test</code>: Only the 40% worksheet, the convention and the year-1 total.</li><li><code>table</code>: A percentage table for a class, convention and quarter or month, with its page in Publication 946.</li><li><code>limits</code>: The Section 179 limits and special allowance rates for a tax year, with sources.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>taxYear</code>: 2025 or 2026.</li><li><code>assets</code>: For each: cost, placedInService, acquired (the binding contract date), class (3, 5, 7, 10, 15, 20, qip, 25, 27.5 or 39), businessUsePct, section179, vehicle and disposedSameYear.</li><li><code>bonusElectOut, elect40Percent, businessIncome, section179PropertyCost</code>: Classes elected out of the special allowance, the 2025 election of 40%, the business income limit, and the cost of all Section 179 property for the phase-out.</li></ul>
 <p>Outputs:</p>
-<ul><li>convention (HY, MQ or MM) and the test worksheet</li><li>per asset: Section 179, special allowance and its reason, the table used and each year's percentage and amount</li><li>totals by year and the year-1 total</li><li>warnings</li></ul>
+<ul><li>convention (HY, MQ or MM) and the test worksheet</li><li>per asset: Section 179, special allowance and its reason, the table used and each year's percentage and amount</li><li>totals by year and the year-1 total</li><li>warnings</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -175,16 +176,24 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>Percentage tables are from Publication 946 (2025 edition, dated 2026-03-13), read 2026-11-02. Section 179 limits are held for 2025 and 2026.</p>
 <ul class="cp-sources"><li><a href="https://www.irs.gov/pub/irs-pdf/p946.pdf">IRS Publication 946 (2025), How To Depreciate Property, Appendix A</a></li><li><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">Rev. Proc. 2025-32 sec. 4.24, and IRS Publication 946 (2025), What's New for 2026</a></li><li><a href="https://www.irs.gov/publications/p946">IRS Publication 946 (2025), chapter 3, What Is Qualified Property?</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>Percentage tables from Publication 946 (2025), dated 2026-03-13, read 2026-11-02. Section 179 limits for 2025 and 2026; other tax years are refused.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>MACRS depreciation schedule: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-pdf/p946.pdf">IRS Publication 946 (2025), How To Depreciate Property, Appendix A</a></th><td>2025 edition, dated 2026-03-13</td><td rowspan="3">2026-11-02</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf">Rev. Proc. 2025-32 sec. 4.24, and IRS Publication 946 (2025), What's New for 2026</a></th><td>2026 limits</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/publications/p946">IRS Publication 946 (2025), What's New for 2025, and chapter 2, Dollar Limits</a></th><td>2025 limits</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>Every column of every percentage table sums to exactly 100%, and the tables are checked a second time against the declining-balance and straight-line formulas. Worked examples from Publication 946 are reproduced, and the 2025 and 2026 Section 179 figures are compared with Publication 946 and Rev. Proc. 2025-32.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Every column of every percentage table sums to exactly 100%, and the tables are checked a second time against the declining-balance and straight-line formulas.</li><li>Worked examples from Publication 946 are reproduced: $10,000 of 7-year furniture (chapter 4), the October computer that forces mid-quarter, the $100,000 building placed in service in March, the $450,000 property that gets 40% bonus (chapter 3) and the Jane Ash Section 179 reduction (chapter 2).</li><li>The 2025 and 2026 Section 179 figures are compared with Publication 946 and Rev. Proc. 2025-32.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/macrs-depreciation/">Open the MACRS depreciation schedule tool</a>.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the macrs depreciation schedule answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the macrs depreciation schedule refuse to answer?</h3><p>Tax years 2025 and 2026 only, and only one year's additions per run; earlier assets go in that year's run. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the macrs depreciation schedule answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the macrs depreciation schedule refuse to answer?</h3></summary><div class="xp-in"><p>Tax years 2025 and 2026 only, and only one year's additions per run; earlier assets go in that year's run. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/macrs-depreciation/">Open the MACRS depreciation schedule tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/macrs-depreciation.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -277,6 +286,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

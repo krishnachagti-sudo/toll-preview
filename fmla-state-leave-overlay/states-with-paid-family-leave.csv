@@ -1,0 +1,52 @@
+state,name,covered,program,status,own_health_weeks,family_care_weeks,bonding_weeks,combined_weeks,job_protection,with_fmla
+AL,Alabama,no,,none read,,,,,,"We have not read a family or medical leave law on Alabama's own sites, so only the federal FMLA is shown."
+AK,Alaska,no,,none read,,,,,,"We have not read a family or medical leave law on Alaska's own sites, so only the federal FMLA is shown."
+AZ,Arizona,no,,none read,,,,,,"We have not read a family or medical leave law on Arizona's own sites, so only the federal FMLA is shown."
+AR,Arkansas,no,,none read,,,,,,"We have not read a family or medical leave law on Arkansas's own sites, so only the federal FMLA is shown."
+CA,California,yes,Paid Family Leave (PFL),paying,,8,8,,no job protection from the program,PFL provides benefit payments but not job protection.
+CO,Colorado,yes,Colorado Paid Family and Medical Leave Insurance (FAMLI),paying,12,12,12,,180 days with the employer before the leave,FAMLI is designed to run concurrently with FMLA: FAMLI leave for a reason FMLA also covers counts as FMLA leave. Employers cannot require employees to use PTO before or while receiving FAMLI.
+CT,Connecticut,yes,Connecticut Paid Leave,paying,12,12,12,,no job protection from the program,CT Paid Leave does not offer job protection; it is an income replacement benefit only.
+DE,Delaware,yes,Delaware Paid Leave,paying since 2026-01-01,6,6,12,12,no job protection from the program,"The Delaware page we read does not say how the program runs with FMLA or whether it protects the job; under 29 CFR 825.701(a) and the DOL opinion letter, FMLA-qualifying leave is designated FMLA."
+DC,District of Columbia,yes,DC Paid Family Leave,paying,10,6,12,,no job protection from the program,DC PFL pays benefits; the pages we read do not give it job protection. DC FMLA and federal FMLA protect the job.
+FL,Florida,no,,none read,,,,,,"We have not read a family or medical leave law on Florida's own sites, so only the federal FMLA is shown."
+GA,Georgia,no,,none read,,,,,,"We have not read a family or medical leave law on Georgia's own sites, so only the federal FMLA is shown."
+HI,Hawaii,no,,not covered: site refused our reads,,,,,,"Hawaii runs temporary disability insurance; labor.hawaii.gov and the legislature's site returned 403, so its rules are not covered."
+ID,Idaho,no,,none read,,,,,,"We have not read a family or medical leave law on Idaho's own sites, so only the federal FMLA is shown."
+IL,Illinois,no,,none read,,,,,,"We have not read a family or medical leave law on Illinois's own sites, so only the federal FMLA is shown."
+IN,Indiana,no,,none read,,,,,,"We have not read a family or medical leave law on Indiana's own sites, so only the federal FMLA is shown."
+IA,Iowa,yes,,none read,,,,,,
+KS,Kansas,no,,none read,,,,,,"We have not read a family or medical leave law on Kansas's own sites, so only the federal FMLA is shown."
+KY,Kentucky,no,,none read,,,,,,"We have not read a family or medical leave law on Kentucky's own sites, so only the federal FMLA is shown."
+LA,Louisiana,no,,none read,,,,,,"We have not read a family or medical leave law on Louisiana's own sites, so only the federal FMLA is shown."
+ME,Maine,yes,Maine Paid Family and Medical Leave,paying since 2026-05-01,12,12,12,,120 consecutive days with the employer,"Maine PFML, federal FMLA and Maine FMLA run at the same time when they all apply; FMLA leave in the 12 months before counts against the 12 PFML weeks."
+MD,Maryland,yes,Maryland FAMLI (paid family and medical leave),benefits from 2028-01-01,12,12,12,,eligibility rules not on the page we read,"Starts January 1, 2028. Under 29 CFR 825.701(a) leave that qualifies under both counts against both."
+MA,Massachusetts,no,,not covered: site refused our reads,,,,,,"Massachusetts runs a paid family and medical leave program; mass.gov returned 403 to every read (and malegislature.gov did not answer), so its rules are not covered."
+MI,Michigan,no,,none read,,,,,,"We have not read a family or medical leave law on Michigan's own sites, so only the federal FMLA is shown."
+MN,Minnesota,yes,Minnesota Paid Leave (Minn. Stat. chapter 268B),start date not read,12,12,12,20,90 calendar days from the date of hire,An employer may require Minnesota Paid Leave to run concurrently with FMLA leave for the same purpose.
+MS,Mississippi,no,,none read,,,,,,"We have not read a family or medical leave law on Mississippi's own sites, so only the federal FMLA is shown."
+MO,Missouri,no,,none read,,,,,,"We have not read a family or medical leave law on Missouri's own sites, so only the federal FMLA is shown."
+MT,Montana,yes,,none read,,,,,,
+NE,Nebraska,no,,none read,,,,,,"We have not read a family or medical leave law on Nebraska's own sites, so only the federal FMLA is shown."
+NV,Nevada,no,,none read,,,,,,"We have not read a family or medical leave law on Nevada's own sites, so only the federal FMLA is shown."
+NH,New Hampshire,no,,none read,,,,,,"We have not read a family or medical leave law on New Hampshire's own sites, so only the federal FMLA is shown."
+NJ,New Jersey,yes,Family Leave Insurance (FLI),paying,,12,12,,"while receiving FLI benefits, when the leave is not already covered by NJFLA; no employer size or work history test (from July 17, 2026)",New Jersey's pages do not say; under 29 CFR 825.701(a) leave that qualifies under both counts against both.
+NM,New Mexico,no,,none read,,,,,,"We have not read a family or medical leave law on New Mexico's own sites, so only the federal FMLA is shown."
+NY,New York,yes,New York Paid Family Leave (PFL),paying,,12,12,,26 consecutive weeks of employment on a schedule of 20 or more hours a week (175 days worked on a shorter schedule),The employer can require PFL and FMLA to run together only after notifying the employee that the leave qualifies for both and is designated as both.
+NC,North Carolina,no,,none read,,,,,,"We have not read a family or medical leave law on North Carolina's own sites, so only the federal FMLA is shown."
+ND,North Dakota,no,,none read,,,,,,"We have not read a family or medical leave law on North Dakota's own sites, so only the federal FMLA is shown."
+OH,Ohio,no,,none read,,,,,,"We have not read a family or medical leave law on Ohio's own sites, so only the federal FMLA is shown."
+OK,Oklahoma,no,,none read,,,,,,"We have not read a family or medical leave law on Oklahoma's own sites, so only the federal FMLA is shown."
+OR,Oregon,yes,Paid Leave Oregon,paying,12,12,12,,90 consecutive days with the employer,Oregon's pages do not say; under 29 CFR 825.701(a) leave that qualifies under both counts against both. Paid Leave Oregon and OFLA cannot be taken at the same time.
+PA,Pennsylvania,no,,none read,,,,,,"We have not read a family or medical leave law on Pennsylvania's own sites, so only the federal FMLA is shown."
+RI,Rhode Island,no,,not covered: site refused our reads,,,,,,"Rhode Island runs temporary disability and caregiver insurance; dlt.ri.gov returned 403 and the legislature's site did not answer, so its rules are not covered."
+SC,South Carolina,no,,none read,,,,,,"We have not read a family or medical leave law on South Carolina's own sites, so only the federal FMLA is shown."
+SD,South Dakota,no,,none read,,,,,,"We have not read a family or medical leave law on South Dakota's own sites, so only the federal FMLA is shown."
+TN,Tennessee,no,,none read,,,,,,"We have not read a family or medical leave law on Tennessee's own sites, so only the federal FMLA is shown."
+TX,Texas,no,,none read,,,,,,"We have not read a family or medical leave law on Texas's own sites, so only the federal FMLA is shown."
+UT,Utah,no,,none read,,,,,,"We have not read a family or medical leave law on Utah's own sites, so only the federal FMLA is shown."
+VT,Vermont,no,,none read,,,,,,"We have not read a family or medical leave law on Vermont's own sites, so only the federal FMLA is shown."
+VA,Virginia,no,,not covered: site refused our reads,,,,,,"Virginia enacted a paid family and medical leave law in 2026; the Virginia Employment Commission's site returned 403 and the law is not yet in the Code of Virginia online, so its rules are not covered."
+WA,Washington,yes,Washington Paid Family and Medical Leave,paying,12,12,12,16,"25 or more employees in Washington; 180 calendar days with the employer before the leave (from January 1, 2026)","Paid Leave and FMLA usually run concurrently; from January 1, 2026 an employer may count FMLA leave against Paid Leave job protection (16 typical workweeks in 52, 18 with pregnancy incapacity) if it gives the state's written notice within 5 business days and monthly."
+WV,West Virginia,no,,none read,,,,,,"We have not read a family or medical leave law on West Virginia's own sites, so only the federal FMLA is shown."
+WI,Wisconsin,no,,none read,,,,,,"We have not read a family or medical leave law on Wisconsin's own sites, so only the federal FMLA is shown."
+WY,Wyoming,no,,none read,,,,,,"We have not read a family or medical leave law on Wyoming's own sites, so only the federal FMLA is shown."

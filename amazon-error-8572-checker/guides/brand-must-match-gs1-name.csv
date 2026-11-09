@@ -1,0 +1,9 @@
+brand_on_amazon,gs1_licensee,result,differences
+Harbor & Pine LLC,Harbor & Pine LLC,identical,none
+HARBOR & PINE LLC,Harbor & Pine LLC,"the same letters, but not the same capitals or spacing",capitalization
+"Harbor & Pine, LLC",Harbor & Pine LLC,"the same words, but not the same punctuation",punctuation
+Harbor and Pine LLC,Harbor & Pine LLC,"the same words, but not the same punctuation","& written as ""and"""
+Harbor & Pine,Harbor & Pine LLC,the same name apart from the legal form,legal form (LLC)
+Harbor & Pine Home,Harbor & Pine LLC,"one name inside the other, with extra words",extra words: home; legal form (LLC)
+HarborPine,Harbor & Pine LLC,different names,different names
+Pine Street Goods,Harbor & Pine LLC,different names,different names

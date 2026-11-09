@@ -1,0 +1,13 @@
+rule,threshold,irs_text,source
+Written acknowledgment needed,Single gift of $250 or more,A donor cannot claim a federal income tax deduction for any single contribution valued at $250 or more unless the donor obtains a contemporaneous written acknowledgment of the contribution from the donee charitable organization.,"IRS Pub 1771, p. 3"
+Gifts under $250 added together?,No,Separate contributions of less than $250 will not be aggregated. An example of this could be weekly offerings to a donor's church of less than $250 even though the donor's annual total contributions are $250 or more.,"IRS Pub 1771, p. 3"
+Quid pro quo disclosure,Payment over $75 partly for goods or services,An organization must provide a written disclosure statement to a donor who makes a payment exceeding $75 partly as a contribution and partly for goods and services provided by the organization.,"IRS Pub 1771, p. 7"
+Penalty for a missing disclosure,"$10 a contribution, up to $5,000 an event or mailing","The penalty is $10 per contribution, not to exceed $5,000 per fundraising event or mailing.","IRS Pub 1771, p. 7"
+"Vehicles, boats, airplanes",Claimed value over $500: Form 1098-C rules,"The rules in this publication do not apply to a donated motor vehicle, boat, or airplane if the claimed value exceeds $500.","IRS Pub 1771, p. 1"
+When the donor must have it,Earlier of filing or the return due date,a donor must receive the acknowledgment on or before the earlier of: the date on which the donor files the donor's individual federal income tax return for the year of the contribution; or the due date (including extensions) of such return.,"IRS Pub 1771, p. 3"
+When charities usually send,By January 31,Charities typically send written acknowledgments to donors no later than January 31 of the year following the donation.,"IRS Pub 1771, p. 3"
+Form,None,There are no IRS forms for the contemporaneous written acknowledgment.,"IRS Pub 1771, p. 3"
+Email,Allowed,"An organization can provide the acknowledgment electronically, such as via an email addressed to the donor.","IRS Pub 1771, p. 3"
+Social Security number,Not needed,It isn't necessary to include either the donor's Social Security number or tax identification number on the contemporaneous written acknowledgment.,"IRS Pub 1771, p. 3"
+Donor's noncash total over $500,Form 8283 (the donor's),"If your total deduction for all noncash contributions for the year is over $500, you must complete Form 8283 and attach it to your Form 1040.",IRS Pub 526
+Volunteer time,Not deductible,"You can't deduct the value of your time or services, including: Blood donations to the American Red Cross or to blood banks, and The value of income lost while you work as an unpaid volunteer for a qualified organization.",IRS Pub 526

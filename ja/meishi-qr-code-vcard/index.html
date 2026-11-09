@@ -77,6 +77,7 @@
 <h1>名刺に入れるQRコード:vCardの書式</h1>
 <p class="cp-answer">連絡先のQRコードには、vCardが入っています。BEGIN:VCARD、VERSION:3.0、名前、電話、メールなどの行が続き、最後がEND:VCARDです。テキスト中のカンマ、セミコロン、バックスラッシュの前には、バックスラッシュを付けます(RFC 2426)。下の例は、レベルMでバージョン9(53 x 53モジュール)です。QRコードには、レベルLで最大2,953バイト入ります。</p>
 
+
 </header>
 <div class="cp-body prose">
 <section>
@@ -109,7 +110,7 @@ END:VCARD</code></pre>
 <ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc2426">RFC 2426: vCard 3.0 (escaping of commas, semicolons, backslashes and newlines), 2026年11月2日確認</a></li><li><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard), 2026年11月2日確認</a></li><li><a href="https://www.qrcode.com/en/about/error_correction.html">DENSO WAVE: Error correction (Level M 15% is most often selected), 2026年11月2日確認</a></li></ul>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">よくある質問</h2><h3>名刺用のQRコードはどう作りますか?</h3><p>作成ツールで「連絡先カード」を選び、名前、電話、メールを入力して、PNG、SVG、PDFをダウンロードします。コードにはvCard 3.0が入っていて、スマートフォンは連絡先として保存できます。</p><h3>名刺のQRコードに有効期限はありますか?</h3><p>スタティックなら、ありません。情報がコードの中に入っているからです。電話番号などが変わったときだけ古くなるので、そのときは新しいコードを作ってください。</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">よくある質問</h2><details class="xpand"><summary><h3>名刺用のQRコードはどう作りますか?</h3></summary><div class="xp-in"><p>作成ツールで「連絡先カード」を選び、名前、電話、メールを入力して、PNG、SVG、PDFをダウンロードします。コードにはvCard 3.0が入っていて、スマートフォンは連絡先として保存できます。</p></div></details><details class="xpand"><summary><h3>名刺のQRコードに有効期限はありますか?</h3></summary><div class="xp-in"><p>スタティックなら、ありません。情報がコードの中に入っているからです。電話番号などが変わったときだけ古くなるので、そのときは新しいコードを作ってください。</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">関連ページ</h2><ul><li><a href="/toll-preview/ja/wifi-qr-code-sakusei/">Wi-Fi用QRコードの作り方</a></li><li><a href="/toll-preview/ja/qr-code-yuko-kigen-nashi/">QRコードに有効期限はある?</a></li><li><a href="/toll-preview/ja/qr-code-generator/">QRコード作成</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/ja/meishi-qr-code-vcard.md">このページのMarkdown版</a> <span aria-hidden="true">·</span> データ日付 <time datetime="2026-11-02">2026-11-02</time></p>
@@ -202,6 +203,7 @@ END:VCARD</code></pre>
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

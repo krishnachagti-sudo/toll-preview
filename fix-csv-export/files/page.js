@@ -138,12 +138,31 @@ function driftNote(d) {
   return h('p', { class: 'fx-drift' }, `This file's columns changed since the recipe was saved: ${bits.join('; ')}.`);
 }
 
+// The scan, one line per problem: what it is, how many, and the column it is in. The words are the
+// scan's own sentence, split at its semicolons.
+function problemItems(answer) {
+  const i = answer.indexOf(': ');
+  if (i === -1) return [];
+  return answer.slice(i + 2).replace(/\.$/, '').split('; ').map((part) => {
+    const order = /read (DD\/MM|MM\/DD)/.exec(part);
+    const count = /^\d[\d,]*/.exec(part);
+    const cols = [...part.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+    const words = count && !order ? part.slice(count[0].length + 1) : part;
+    return { text: words[0].toUpperCase() + words.slice(1), figure: order ? order[1] : count ? count[0] : '-', where: cols.length ? `column ${cols.map((c) => `"${c}"`).join(', ')}` : 'the whole file' };
+  });
+}
+
 function show(report, label) {
   const out = $('fx-out');
   out.textContent = '';
   const todo = report.toDo;
+  const items = problemItems(report.answer);
+  const sample = state.name === 'sample';
   const parts = [
-    h('p', { class: 'fx-label' }, label),
+    h('div', { class: 'tf-res-h' }, [sample ? h('span', { class: 'ex-tag' }, 'Example') : null, h('p', { class: 'fx-label' }, label)].filter(Boolean)),
+    sample ? h('p', { class: 'tf-exin' }, 'Example: a made-up monthly bank export, 4 rows and 6 columns, with every problem in it') : null,
+    h('p', { class: 'tf-big' }, [items.length ? `${items.length} ${items.length === 1 ? 'problem' : 'problems'} found` : 'Nothing to fix', h('small', null, report.answer.split(': ')[0].replace(/^Your file is /, '').replace(/\.$/, ''))]),
+    items.length ? h('ul', { class: 'tf-items' }, items.map((x) => h('li', null, [h('span', null, x.text), h('b', null, x.figure), h('small', null, x.where)]))) : null,
     h('p', { class: 'fx-answer' }, report.answer),
     state.recipeFrom ? h('p', { class: 'muted' }, state.recipeFrom) : null,
     driftNote(report.drift),

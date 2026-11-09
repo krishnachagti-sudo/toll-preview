@@ -71,12 +71,13 @@
 <h1>Prompt library</h1>
 <p class="cp-answer">These 18 prompts each make your AI assistant call a named Endwise tool and show the tool's output, so the answer comes from the tool and not from the assistant's memory. Under each prompt is the exact answer the tool returns for those inputs.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="connect">Before you start: connect Endwise</h2>
 <p>Every prompt here tells your assistant to call a named Endwise tool. That only works once the assistant is connected to Endwise. Set it up once:</p>
-<ul><li><a href="/toll-preview/guides/use-with-claude/">Use Endwise with Claude</a></li><li><a href="/toll-preview/guides/use-with-chatgpt/">Use Endwise with ChatGPT</a></li><li><a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Use Endwise in Cursor and VS Code</a></li></ul>
+<ul class="cp-rows"><li><a href="/toll-preview/guides/use-with-claude/">Use Endwise with Claude</a></li><li><a href="/toll-preview/guides/use-with-chatgpt/">Use Endwise with ChatGPT</a></li><li><a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Use Endwise in Cursor and VS Code</a></li></ul>
 <p>Without the connection an assistant answers from memory, and it can be wrong on dates, rates and tax figures. <a href="/toll-preview/guides/why-ai-gets-numbers-wrong/">Why AI gets numbers wrong</a> explains why. A prompt below used without the connection is not a way to get an exact answer.</p>
 </section>
 <section>
@@ -88,7 +89,7 @@
 <section>
 <h2 id="dates">Which prompts get exact dates and business days?</h2>
 <p>Counting days, adding days and finding ship dates are the jobs where an assistant most often guesses.</p>
-<p><strong>Count business days between two dates</strong></p>
+<details class="xpand"><summary>Read the rest: Which prompts get exact dates and business days?</summary><div class="xp-in"><p><strong>Count business days between two dates</strong></p>
 <pre><code class="language-text">Use the Endwise business-days tool to count the business days from July 1 to July 8, 2026 in the US (op between, region US, start 2026-07-01, end 2026-07-08). Show me the tool's output as it came back, including which holidays it skipped, and name the source it used. Do not answer from memory.</code></pre>
 <p><strong>The tool returns: </strong>4 business days. Holidays skipped: Independence Day (observed) on July 3, 2026.</p>
 <p>List price: Business days: $0.0005 (per call). <a href="/toll-preview/business-days/">Run it on the Business days page</a>.</p>
@@ -99,12 +100,12 @@
 <p><strong>Find the ship and arrival dates for an order</strong></p>
 <pre><code class="language-text">Use the Endwise delivery-date-calculator tool for an order placed December 11, 2026 at 3:12 pm Eastern (America/New_York), with a 2:00 pm cutoff, 1 processing day and USPS Ground Advantage (op delivery-date, orderAt 2026-12-11T15:12, carrier usps, service ground-advantage). Show the tool's answer sentence and the dates it returned. Do not estimate delivery yourself.</code></pre>
 <p><strong>The tool returns: </strong>An order placed Friday, December 11, 2026 at 3:12 pm EST with a 2:00 pm cutoff and 1 processing day ships Tuesday, December 15, 2026 and, by USPS Ground Advantage, arrives between Thursday, December 17 and Monday, December 21, 2026.</p>
-<p>List price: Delivery date and holiday order-by calculator: $0.0005 (per call). <a href="/toll-preview/delivery-date-calculator/">Run it on the Delivery date and holiday order-by calculator page</a>.</p>
+<p>List price: Delivery date and holiday order-by calculator: $0.0005 (per call). <a href="/toll-preview/delivery-date-calculator/">Run it on the Delivery date and holiday order-by calculator page</a>.</p></div></details>
 </section>
 <section>
 <h2 id="money">Which prompts get exact exchange rates and mileage rates?</h2>
 <p>A rate depends on a date and a published source. These prompts make the assistant fetch both.</p>
-<p><strong>Get an exchange rate on a date, including a weekend</strong></p>
+<details class="xpand"><summary>Read the rest: Which prompts get exact exchange rates and mileage rates?</summary><div class="xp-in"><p><strong>Get an exchange rate on a date, including a weekend</strong></p>
 <pre><code class="language-text">Use the Endwise fx-on-date tool to get the US dollar to euro rate for October 24, 2026 (base USD, quote EUR, date 2026-10-24). Show me the rate, the fixing date the tool used, and the source it names. If the date is not a fixing day, tell me which day it used.</code></pre>
 <p><strong>The tool returns: </strong>1 USD = 0.893416 EUR on the October 23, 2026 fixing (you asked for October 24, 2026). Source: European Central Bank euro foreign exchange reference rates.</p>
 <p>List price: Exchange rate on a date: $0.001 (per call). <a href="/toll-preview/fx-on-date/">Run it on the Exchange rate on a date page</a>.</p>
@@ -115,12 +116,12 @@
 <p><strong>Look up the IRS mileage rate for a trip date</strong></p>
 <pre><code class="language-text">Use the Endwise mileage-reimbursement tool to look up the IRS business mileage rate for a trip on June 28, 2026 that is reimbursed on July 5, 2026 (op rate, date 2026-06-28, paidDate 2026-07-05, purpose business). Show the tool's answer sentence and the IRS document it cites.</code></pre>
 <p><strong>The tool returns: </strong>The IRS business rate for a trip on June 28, 2026 paid July 5, 2026 is 72.5 cents a mile (January 1 to June 30, 2026, IRS IR-2025-128, Notice 2026-10).</p>
-<p>List price: Mileage reimbursement and IRS mileage log: from $0.001 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/mileage-reimbursement/">Run it on the Mileage reimbursement and IRS mileage log page</a>.</p>
+<p>List price: Mileage reimbursement and IRS mileage log: from $0.001 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/mileage-reimbursement/">Run it on the Mileage reimbursement and IRS mileage log page</a>.</p></div></details>
 </section>
 <section>
 <h2 id="tax">Which prompts get exact tax and filing figures?</h2>
 <p>Thresholds, rates and set-aside amounts change by year. The tool reads the year you name.</p>
-<p><strong>Reimburse a year of mileage when the rate changes mid-year</strong></p>
+<details class="xpand"><summary>Read the rest: Which prompts get exact tax and filing figures?</summary><div class="xp-in"><p><strong>Reimburse a year of mileage when the rate changes mid-year</strong></p>
 <pre><code class="language-text">Use the Endwise mileage-reimbursement tool (op calculate) for two trips: 2,600 business miles from 2026-01-01 to 2026-06-30 and 1,600 business miles from 2026-07-01 to 2026-12-31. Show the tool's answer sentence and the total, with the rate it used for each part.</code></pre>
 <p><strong>The tool returns: </strong>4,200 business miles, 2,600 before July 1, 2026 and 1,600 from July 1: 2,600 x $0.725 + 1,600 x $0.76 = $3,101.00.</p>
 <p>List price: Mileage reimbursement and IRS mileage log: from $0.001 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/mileage-reimbursement/">Run it on the Mileage reimbursement and IRS mileage log page</a>.</p>
@@ -135,12 +136,12 @@
 <p><strong>Get the Section 179 limits for a tax year</strong></p>
 <pre><code class="language-text">Use the Endwise macrs-depreciation tool to get the 2026 depreciation limits (op limits, taxYear 2026). Show the Section 179 expensing limit, where the phase-out starts, the SUV cap, and the IRS document the tool cites.</code></pre>
 <p><strong>The tool returns: </strong>Section 179 limit $2,560,000.00, phase-out starts at $4,090,000.00, SUV cap $32,000.00. Source: Rev. Proc. 2025-32 sec. 4.24, and IRS Publication 946 (2025), What's New for 2026.</p>
-<p>List price: MACRS depreciation schedule: from $0.10 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/macrs-depreciation/">Run it on the MACRS depreciation schedule page</a>.</p>
+<p>List price: MACRS depreciation schedule: from $0.10 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/macrs-depreciation/">Run it on the MACRS depreciation schedule page</a>.</p></div></details>
 </section>
 <section>
 <h2 id="trucking">Which prompts help with trucking?</h2>
 <p>Per diem rates and IFTA dates are published by the IRS and the IFTA agreement, and move by quarter or year.</p>
-<p><strong>Total a driver's per diem for the year</strong></p>
+<details class="xpand"><summary>Read the rest: Which prompts help with trucking?</summary><div class="xp-in"><p><strong>Total a driver's per diem for the year</strong></p>
 <pre><code class="language-text">Use the Endwise trucker-per-diem tool for tax year 2026 with 240 full days and 40 departure or return days, all in the continental US (op quick, taxYear 2026, fullDays 240, partialDays 40). Show the tool's answer sentence with the rate and the IRS notices it names.</code></pre>
 <p><strong>The tool returns: </strong>240 full days and 40 departure or return days in 2026 at $80 a day (Notice 2025-54, Notice 2026-60) come to $21,600.00 of per diem; at the 80% limit the deduction for Schedule C line 24b is $17,280.00.</p>
 <p>List price: Trucker per diem worksheet: from $0.02 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/trucker-per-diem/">Run it on the Trucker per diem worksheet page</a>.</p>
@@ -151,46 +152,46 @@
 <p><strong>Look up a state's IFTA diesel rate and surcharge</strong></p>
 <pre><code class="language-text">Use the Endwise ifta-calculator tool to look up the Kentucky special diesel rate for every quarter it has on file (op rates, jurisdiction KY, fuel special_diesel). Show the tool's answer, including any surcharge.</code></pre>
 <p><strong>The tool returns: </strong>2025Q4: Kentucky special diesel $0.2200 plus a $0.1050 surcharge; 2026Q1: Kentucky special diesel $0.2200 plus a $0.1050 surcharge; 2026Q2: Kentucky special diesel $0.2200 plus a $0.1050 surcharge; 2026Q3: Kentucky special diesel $0.2200 plus a $0.1050 surcharge a gallon.</p>
-<p>List price: IFTA quarterly return calculator: from $0.01 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/ifta-calculator/">Run it on the IFTA quarterly return calculator page</a>.</p>
+<p>List price: IFTA quarterly return calculator: from $0.01 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/ifta-calculator/">Run it on the IFTA quarterly return calculator page</a>.</p></div></details>
 </section>
 <section>
 <h2 id="files">Which prompts make QR code text and checks?</h2>
 <p>The tool builds the exact text a code stores and reads the code back before it answers.</p>
-<p><strong>Get the exact text for a WiFi QR code</strong></p>
+<details class="xpand"><summary>Read the rest: Which prompts make QR code text and checks?</summary><div class="xp-in"><p><strong>Get the exact text for a WiFi QR code</strong></p>
 <pre><code class="language-text">Use the Endwise qr-code-generator tool to build the exact text a WiFi QR code should store for a network named &quot;Cafe Guest&quot; with the password tea;time42 and WPA security (op payload, type wifi, fields ssid, password, security). Show the payload text exactly as the tool returned it, and the smallest QR version that fits at each error-correction level.</code></pre>
 <p><strong>The tool returns: </strong>Payload: WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;; Smallest version that fits: L 3, M 3, Q 4, H 5.</p>
 <p>List price: QR code generator: from $0.002 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/qr-code-generator/">Run it on the QR code generator page</a>.</p>
 <p><strong>Make a QR code and read it back</strong></p>
 <pre><code class="language-text">Use the Endwise qr-code-generator tool to make a static QR code for https://example.com/menu as an SVG, 30 mm wide, for a 300 dpi printer (op static, type url, format svg, widthMm 30, printerDpi 300). Tell me the QR version, the number of modules, the error-correction level, and whether the tool read the code back and verified it.</code></pre>
 <p><strong>The tool returns: </strong>Version 2, 25 by 25 modules, error correction M. Read back and verified: yes. The tool read back: https://example.com/menu</p>
-<p>List price: QR code generator: from $0.002 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/qr-code-generator/">Run it on the QR code generator page</a>.</p>
+<p>List price: QR code generator: from $0.002 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/qr-code-generator/">Run it on the QR code generator page</a>.</p></div></details>
 </section>
 <section>
 <h2 id="chains">Which prompts use two tools together?</h2>
 <p>A chain makes the assistant call one tool and feed its answer to the next, so no step is guessed.</p>
-<p><strong>Delivery date, then business days to wait</strong></p>
+<details class="xpand"><summary>Read the rest: Which prompts use two tools together?</summary><div class="xp-in"><p><strong>Delivery date, then business days to wait</strong></p>
 <pre><code class="language-text">Use the Endwise delivery-date-calculator tool for an order placed December 11, 2026 at 3:12 pm Eastern (America/New_York), with a 2:00 pm cutoff, 1 processing day and USPS Ground Advantage (op delivery-date, orderAt 2026-12-11T15:12, carrier usps, service ground-advantage). Then use the Endwise business-days tool (op between, region US) to count the business days from the order date to the latest arrival date the first tool returned. Show both tool outputs.</code></pre>
 <p><strong>The tool returns: </strong>An order placed Friday, December 11, 2026 at 3:12 pm EST with a 2:00 pm cutoff and 1 processing day ships Tuesday, December 15, 2026 and, by USPS Ground Advantage, arrives between Thursday, December 17 and Monday, December 21, 2026. Business days from December 11, 2026 to December 21, 2026 in the US: 6. Holidays skipped: none.</p>
 <p>List price: Delivery date and holiday order-by calculator: $0.0005; Business days: $0.0005 (per call). <a href="/toll-preview/delivery-date-calculator/">Run it on the Delivery date and holiday order-by calculator page</a>. <a href="/toll-preview/business-days/">Run it on the Business days page</a>.</p>
 <p><strong>IFTA due date, then business days left to file</strong></p>
 <pre><code class="language-text">Use the Endwise ifta-calculator tool to get the IFTA due dates for 2026 (op due-dates, year 2026). Then use the Endwise business-days tool (op between, region US) to count the business days from October 15, 2026 to the 2026Q3 due date the first tool returned. Show both tool outputs.</code></pre>
 <p><strong>The tool returns: </strong>2026Q3 due November 2, 2026. Business days from October 15, 2026 to November 2, 2026 in the US: 12. Holidays skipped: none.</p>
-<p>List price: IFTA quarterly return calculator: from $0.01; Business days: $0.0005 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/ifta-calculator/">Run it on the IFTA quarterly return calculator page</a>. <a href="/toll-preview/business-days/">Run it on the Business days page</a>.</p>
+<p>List price: IFTA quarterly return calculator: from $0.01; Business days: $0.0005 (where a tool says &quot;from&quot;, the price depends on the action, and its page lists each). <a href="/toll-preview/ifta-calculator/">Run it on the IFTA quarterly return calculator page</a>. <a href="/toll-preview/business-days/">Run it on the Business days page</a>.</p></div></details>
 </section>
 <section>
 <h2 id="quote">How do I check the cost before a call?</h2>
 <p>The free quote_price tool prices a call without running it.</p>
-<p><strong>Ask what a call costs before you run it</strong></p>
+<details class="xpand"><summary>Read the rest: How do I check the cost before a call?</summary><div class="xp-in"><p><strong>Ask what a call costs before you run it</strong></p>
 <pre><code class="language-text">Use the Endwise quote_price tool to price a call to the tax-set-aside tool with these arguments: &#123;&quot;op&quot;:&quot;payment&quot;,&quot;country&quot;:&quot;US&quot;,&quot;filingStatus&quot;:&quot;single&quot;,&quot;state&quot;:&quot;texas&quot;,&quot;amount&quot;:3000,&quot;ytdNetProfit&quot;:40000,&quot;date&quot;:&quot;2026-10-31&quot;&#125;. Do not run the tax-set-aside tool yet. Show me the quote exactly as it came back, then wait for me to say go.</code></pre>
 <p><strong>The tool returns: </strong>quote_price is free. Its reply names the tool and the action, and gives the amount and the price in words for your account. For this call the list price reads: Set-aside for a payment: $0.10 per payment.</p>
-<p>List price: quote_price: free (the call you are pricing is separate). <a href="/toll-preview/tax-set-aside/">Run it on the Tax set-aside per payment page</a>.</p>
+<p>List price: quote_price: free (the call you are pricing is separate). <a href="/toll-preview/tax-set-aside/">Run it on the Tax set-aside per payment page</a>.</p></div></details>
 </section>
 <section>
 <h2 id="why">Why do the prompts give exact inputs?</h2>
 <p>A tool needs exact inputs: dates in year-month-day form, a region, a tax year. Each prompt states them so the assistant has nothing to guess. Change the dates and amounts to yours and keep the rest. Tools that run only in your browser, such as image to size, are not on this page, because an assistant cannot call them.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Why do the prompts name the tool?</h3><p>An assistant that is not told to use a tool may answer from memory, and from memory it can be wrong on dates, rates and tax figures. Naming the tool, giving the exact inputs and asking to see the tool's output makes a connected assistant call it.</p><h3>What happens if I paste a prompt without connecting Endwise?</h3><p>The assistant has no tool to call, so it answers from memory or says it cannot. Do not trust a number from that answer. Connect Endwise first, using the setup guides below.</p><h3>Do these prompts cost money?</h3><p>Each tool call is charged at the tool's price from your prepaid balance, shown under every prompt. The quote_price tool is free and says what a call would cost before you run it.</p><h3>Will I get the same answer as the one shown?</h3><p>Yes, for the same inputs and the same data. The answers shown are what the tools return for exactly the inputs in the prompt.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Why do the prompts name the tool?</h3></summary><div class="xp-in"><p>An assistant that is not told to use a tool may answer from memory, and from memory it can be wrong on dates, rates and tax figures. Naming the tool, giving the exact inputs and asking to see the tool's output makes a connected assistant call it.</p></div></details><details class="xpand"><summary><h3>What happens if I paste a prompt without connecting Endwise?</h3></summary><div class="xp-in"><p>The assistant has no tool to call, so it answers from memory or says it cannot. Do not trust a number from that answer. Connect Endwise first, using the setup guides below.</p></div></details><details class="xpand"><summary><h3>Do these prompts cost money?</h3></summary><div class="xp-in"><p>Each tool call is charged at the tool's price from your prepaid balance, shown under every prompt. The quote_price tool is free and says what a call would cost before you run it.</p></div></details><details class="xpand"><summary><h3>Will I get the same answer as the one shown?</h3></summary><div class="xp-in"><p>Yes, for the same inputs and the same data. The answers shown are what the tools return for exactly the inputs in the prompt.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/guides/why-ai-gets-numbers-wrong/">Why AI gets numbers wrong</a></li><li><a href="/toll-preview/guides/check-numbers-from-ai/">How to check a number an AI gives you</a></li><li><a href="/toll-preview/developers/mcp/">MCP for AI agents</a></li><li><a href="/toll-preview/pricing/">Pricing</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/prompts.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -283,6 +284,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

@@ -1,0 +1,24 @@
+hs6,heading,heading_description,description,us_statistical_numbers,schedule_b_numbers
+8601.10,8601,Rail locomotives powered from an external source of electricity or by electric accumulators (batteries):,Rail locomotives powered from an external source of electricity or by electric accumulators (batteries): Powered from an external source of electricity,1,1
+8601.20,8601,Rail locomotives powered from an external source of electricity or by electric accumulators (batteries):,Rail locomotives powered from an external source of electricity or by electric accumulators (batteries): Powered by electric accumulators (batteries),1,1
+8602.10,8602,Other rail locomotives; locomotive tenders:,Other rail locomotives; locomotive tenders: Diesel-electric locomotives,1,1
+8602.90,8602,Other rail locomotives; locomotive tenders:,Other rail locomotives; locomotive tenders: Other,1,1
+8603.10,8603,"Self-propelled railway or tramway coaches, vans and trucks, other than those of heading 8604:","Self-propelled railway or tramway coaches, vans and trucks, other than those of heading 8604: Powered from an external source of electricity",1,1
+8603.90,8603,"Self-propelled railway or tramway coaches, vans and trucks, other than those of heading 8604:","Self-propelled railway or tramway coaches, vans and trucks, other than those of heading 8604: Other",1,1
+8604.00,8604,,"Railway or tramway maintenance or service vehicles, whether or not self-propelled (for example, workshops, cranes, ballast tampers, trackliners, testing coaches and track inspection vehicles)",1,1
+8605.00,8605,,"Railway or tramway passenger coaches, not self- propelled; luggage vans, post office coaches and other special purpose railway or tramway coaches, not self- propelled (excluding those of heading 8604)",1,1
+8606.10,8606,"Railway or tramway freight cars, not self-propelled:","Railway or tramway freight cars, not self-propelled: Tank cars and the like",1,1
+8606.30,8606,"Railway or tramway freight cars, not self-propelled:","Railway or tramway freight cars, not self-propelled: Self-discharging cars, other than those of subheading 8606.10",1,1
+8606.91,8606,"Railway or tramway freight cars, not self-propelled:","Railway or tramway freight cars, not self-propelled: Other: Covered and closed",1,1
+8606.92,8606,"Railway or tramway freight cars, not self-propelled:","Railway or tramway freight cars, not self-propelled: Other: Open, with non-removable sides of a height exceeding 60 cm",1,1
+8606.99,8606,"Railway or tramway freight cars, not self-propelled:","Railway or tramway freight cars, not self-propelled: Other: Other",2,1
+8607.11,8607,Parts of railway or tramway locomotives or rolling stock:,"Parts of railway or tramway locomotives or rolling stock: Truck assemblies, axles and wheels, and parts thereof: Truck assemblies for self-propelled vehicles",1,1
+8607.12,8607,Parts of railway or tramway locomotives or rolling stock:,"Parts of railway or tramway locomotives or rolling stock: Truck assemblies, axles and wheels, and parts thereof: Other truck assemblies",1,1
+8607.19,8607,Parts of railway or tramway locomotives or rolling stock:,"Parts of railway or tramway locomotives or rolling stock: Truck assemblies, axles and wheels, and parts thereof: Other, including parts",8,6
+8607.21,8607,Parts of railway or tramway locomotives or rolling stock:,Parts of railway or tramway locomotives or rolling stock: Brakes and parts thereof: Air brakes and parts thereof,2,2
+8607.29,8607,Parts of railway or tramway locomotives or rolling stock:,Parts of railway or tramway locomotives or rolling stock: Brakes and parts thereof: Other,2,2
+8607.30,8607,Parts of railway or tramway locomotives or rolling stock:,"Parts of railway or tramway locomotives or rolling stock: Hooks and other coupling devices, buffers, and parts thereof",4,2
+8607.91,8607,Parts of railway or tramway locomotives or rolling stock:,Parts of railway or tramway locomotives or rolling stock: Other: Of locomotives,1,1
+8607.99,8607,Parts of railway or tramway locomotives or rolling stock:,Parts of railway or tramway locomotives or rolling stock: Other: Other,2,2
+8608.00,8608,,"Railway or tramway track fixtures and fittings; mechanical (including electro-mechanical) signaling, safety or traffic control equipment for railways, tramways, roads, inland waterways, parking facilities, port installations or airfields; parts of the foregoing",1,1
+8609.00,8609,,Containers (including containers for the transport of fluids) specially designed and equipped for carriage by one or more modes of transport,1,1

@@ -1,5 +1,5 @@
-/* Name tags: a print desk inside the brand chrome, reusing its tokens. The sheet preview is paper
-   white on the dark page, so what you see is what the printer gets. */
+/* Name tags: the tool-full layout (web/tool-full.css) plus this page's own pieces.
+   The sheet preview is paper white on the dark page, so what you see is what the printer gets. */
 .nt {
   --accent: var(--h-file);
   --accent-ink: #04161d;
@@ -7,37 +7,17 @@
   --endwise-accent-ink: #04161d;
 }
 
-.nt-intro { padding-block: 40px 8px; }
-.nt-intro h1 { margin-bottom: 0.25em; }
-.nt-price { color: var(--muted); max-width: 46rem; margin: 0; }
 
-.nt-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.nt-desk > * { min-width: 0; }
-@media (min-width: 960px) { .nt-desk { grid-template-columns: 23rem 1fr; gap: 48px; } }
 
-.nt-form { border-top: 3px double var(--line-3, var(--line-2)); padding-top: 18px; }
-.nt-form legend { padding: 0; }
 .nt-form textarea { font-family: var(--font-mono); font-size: 13px; }
 .nt-sub { margin-top: 6px; }
 .nt-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
 .check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 4px 0 10px; cursor: pointer; }
 .check input { width: 18px; height: 18px; flex: none; }
-.nt-options { margin: 4px 0 16px; }
-.nt-options summary { cursor: pointer; color: var(--text-2); margin-bottom: 12px; }
-.nt-actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.nt-actions .btn { flex: 1 1 auto; }
-.nt-cost { margin: 10px 0 0; }
 .nt-got { margin: 10px 0 0; overflow-wrap: anywhere; }
 .nt-got a, .nt-w-out a { color: var(--accent); }
 
 /* Result */
-.nt-out { min-height: 12rem; }
-.nt-tag { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.nt-answer { font: 500 clamp(1.35rem, 3.6vw, 1.9rem)/1.2 var(--font-display); letter-spacing: -0.01em; margin: 0 0 14px; max-width: 40rem; }
-.nt-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 10px; margin: 0 0 16px; }
-.nt-facts div { border-top: 1px solid var(--line-2); padding-top: 6px; }
-.nt-facts dt { font-size: 12.5px; color: var(--muted); }
-.nt-facts dd { margin: 2px 0 0; font-size: 18px; font-variant-numeric: tabular-nums; }
 .nt-pager { display: flex; gap: 10px; align-items: center; margin: 0 0 10px; font-size: 14px; color: var(--text-2); }
 .nt-sheet-box { max-width: 34rem; }
 .nt-sheet { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 12px 40px -18px rgba(0, 0, 0, 0.8); }
@@ -55,18 +35,18 @@
 .nt-aside { font-size: 13.5px; color: var(--muted); margin: 8px 0 0; max-width: 40rem; }
 
 /* Walk-in */
-.nt-walkin { margin-top: 56px; }
+.nt-walkin-form { margin-top: 20px; padding: 22px; }
 .nt-walkin-lede { color: var(--muted); max-width: 44rem; }
-.nt-walkin-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0 14px; align-items: end; }
+.nt-walkin-form { display: grid; padding: 22px; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0 14px; align-items: end; }
 .nt-w-go { margin-bottom: 16px; }
 .nt-w-out { margin-top: 8px; overflow-wrap: anywhere; }
 
 /* Rules */
-.nt-rules { margin-top: 56px; }
+
 .nt-rule-cols { display: grid; gap: 24px; }
 @media (min-width: 900px) { .nt-rule-cols { grid-template-columns: repeat(3, 1fr); } }
 .nt-rule-cols p { color: var(--muted); }
-.nt-tt { margin-top: 28px; }
+
 .nt-table-wrap { overflow-x: auto; }
 .nt-table { border-collapse: collapse; width: 100%; font-size: 14px; }
 .nt-table th, .nt-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
@@ -74,5 +54,16 @@
 .nt-table .num { font-variant-numeric: tabular-nums; }
 .nt-notes { margin-top: 20px; padding-left: 1.2em; max-width: 50rem; }
 .nt-notes a { color: inherit; }
-.nt-prices { margin-top: 24px; }
-.nt-code { margin-top: 40px; }
+
+
+.nt-form textarea { font-family: var(--font-mono); font-size: 12.5px; white-space: pre; overflow-x: auto; }
+.nt-form input[type="file"] { font-size: 13px; max-width: 100%; }
+.nt-test { width: 100%; margin-top: 16px; }
+.nt-items .k { font-size: 11px; }
+.nt-items li > b:empty { display: none; }
+.nt-flags { margin-top: 12px; }
+.nt-box { padding: 20px 24px; }
+.nt-box h3 { font-size: 18px; margin: 0 0 8px; }
+.nt-notes { margin: 0; padding-left: 1.1em; }
+.nt-notes li { margin-bottom: 0.6em; }
+.nt-got:empty { display: none; }

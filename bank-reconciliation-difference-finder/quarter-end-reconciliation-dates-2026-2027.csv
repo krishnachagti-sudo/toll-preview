@@ -1,0 +1,6 @@
+Quarter end,Weekday,Over 90 days if dated before,Over 180 days if dated before,Over 365 days if dated before,Next statement date,Year end
+2026-12-31,Thursday,2026-10-02,2026-07-04,2025-12-31,2027-01-31,yes
+2027-03-31,Wednesday,2026-12-31,2026-10-02,2026-03-31,2027-04-30,no
+2027-06-30,Wednesday,2027-04-01,2027-01-01,2026-06-30,2027-07-31,no
+2027-09-30,Thursday,2027-07-02,2027-04-03,2026-09-30,2027-10-31,no
+2027-12-31,Friday,2027-10-02,2027-07-04,2026-12-31,2028-01-31,yes

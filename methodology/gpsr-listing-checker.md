@@ -134,13 +134,36 @@ The rule texts were read on EUR-Lex on 2026-11-08, the Member State languages on
 - [eBay Help: Product safety disclosures and hazardous materials labelling (read 2026-11-08)](https://www.ebay.com/help/selling/selling/product-safety-disclosures-hazardous-materials-labelling?id=5407)
 - [Shopify Help Center: Using CSV files to import and export products (read 2026-11-08)](https://help.shopify.com/en/manual/products/import-export/using-csv)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The rule texts were read on EUR-Lex on 2026-11-08, the Member State languages on european-union.europa.eu on 2026-11-08, and the channel field names on each channel's own pages on 2026-11-08. They are read once when the server starts and change only with a deploy (data version gpsr-2023-988+guidelines-c2025-6233+read-2026-11-08).
+
+GPSR listing checker: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [EUR-Lex: Regulation (EU) 2023/988 on general product safety (GPSR), OJ L 135, 23.5.2023, p. 1](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988) | Article 19 items; applies from 2024-12-13 | 2026-11-08 |
+| [EUR-Lex: Commission Notice C/2025/6233: Guidelines on the application of the EU general product safety legislative framework by businesses, OJ C, 21.11.2025](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:C_202506233) | sections 2.1 and 3.1.1 | 2026-11-08 |
+| [EUR-Lex: Regulation (EU) 2019/1020 on market surveillance and compliance of products, Article 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019R1020) | who can be the responsible person | 2026-11-08 |
+| [European Union: EU countries (country profiles)](https://european-union.europa.eu/principles-countries-history/eu-countries_en) | 27 Member States, official EU languages | 2026-11-08 |
+| [Amazon Selling Partner API changelog: attributes for GPSR in programmatic listings submissions](https://developer-docs.amazon/sp-api/changelog/developers-can-use-attributes-in-their-programmatic-listings-submissions-to-comply-with-gpsr) | Amazon field names | 2026-11-08 |
+| [Etsy Help: What is the General Product Safety Regulation (GPSR)?](https://help.etsy.com/hc/en-us/articles/28211364687383-What-is-the-General-Product-Safety-Regulation-GPSR) | Etsy field names | 2026-11-08 |
+| [eBay Help: Product safety disclosures and hazardous materials labelling](https://www.ebay.com/help/selling/selling/product-safety-disclosures-hazardous-materials-labelling?id=5407) | eBay field names | 2026-11-08 |
+| [Shopify Help Center: Using CSV files to import and export products](https://help.shopify.com/en/manual/products/import-export/using-csv) | Shopify field names | 2026-11-08 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The quoted rule texts, the exclusions, the 27 Member States with their languages and the channel field names are pinned to the files as read. Each check is tested on its own: CSV reading, header matching, Shopify variant rows, each Article 19 item with its edge cases, language guessing, exclusions, defaults, markets and the responsible person operation. The worked examples equal run(), and the fix list CSV writes formula-like cells as text.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The quoted rule texts, the Article 2(2) exclusions and the read date 2026-11-08 are pinned to the EUR-Lex and Commission texts as read.
+- The 27 Member States carry the official EU languages europa.eu lists, and the channel field names are pinned to each channel's page.
+- CSV reading (commas, semicolons, tabs, quotes, line breaks, BOM), header matching and Shopify variant rows are each checked.
+- Each Article 19 item is checked on its own: manufacturer, responsible person by country, picture, identifier, GTIN check digits, warnings and their language per market, exclusions and defaults.
+- The responsible person operation is checked for EU, non-EU, UK, EEA and Northern Ireland cases, the worked examples equal run(), and formula-like cells are written as text.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the GPSR listing checker tool](https://krishnachagti-sudo.github.io/toll-preview/gpsr-listing-checker/).
 

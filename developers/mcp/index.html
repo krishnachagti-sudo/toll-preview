@@ -18,7 +18,7 @@
 <meta property="og:title" content="MCP server for AI agents: Endwise">
 <meta property="og:description" content="Connect an AI agent to Endwise over MCP: the server address, signing in or a Bearer key, the tools it lists, quote_price, and example calls with real answers.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","name":"MCP server for AI agents: Endwise","description":"Connect an AI agent to Endwise over MCP: the server address, signing in or a Bearer key, the tools it lists, quote_price, and example calls with real answers.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"},{"@type":"ListItem","position":3,"name":"MCP for AI agents","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","url":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/","name":"MCP server for AI agents: Endwise","description":"Connect an AI agent to Endwise over MCP: the server address, signing in or a Bearer key, the tools it lists, quote_price, and example calls with real answers.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Developers","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/"},{"@type":"ListItem","position":3,"name":"MCP for AI agents","item":"https://krishnachagti-sudo.github.io/toll-preview/developers/mcp/"}]}]}</script>
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -89,6 +89,7 @@
     <span class="eyebrow">MCP for AI agents</span>
     <h1 class="h1" id="page-h">Give your agent<br class="br-d"> exact tools.</h1>
     <p class="hero-lede">Endwise runs an MCP server over Streamable HTTP. Your agent gets the same tools and the same prices as the REST API, and the same answer every time. Apps that support MCP sign-in connect with just the address; other clients use an API key.</p>
+    <ul class="trust c" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
     
   </div>
 </section>
@@ -132,127 +133,88 @@
     <div class="rv">
       <span class="eyebrow">What your agent gets</span>
       <h2 class="h2" id="tools-h">Every API tool,<br class="br-d"> <span class="dim">as an MCP tool.</span></h2>
-      <p class="sec-lede">This is what tools/list returns. Each tool's name is its address on the API, and its input schema is the same as the API's.</p>
+      <p class="sec-lede">This is what tools/list returns. Each tool's name is its address on the API, and its input schema is the same as the API's: every schema is in the <a class="ul" href="/toll-preview/api/v1/openapi.json">OpenAPI document</a>, and each tool's page has worked examples.</p>
     </div>
     <div class="tbl keep mcp-tools rv"><table>
   <caption class="visually-hidden">MCP tools</caption>
-  <thead><tr><th scope="col">Name</th><th scope="col">What the agent reads</th><th scope="col">Price</th></tr></thead>
+  <thead><tr><th scope="col">Name</th><th scope="col">What the agent reads, prices included</th></tr></thead>
   <tbody>
-<tr>
-  <td><code>1099-threshold</code></td>
-  <td><b class="t">1099 threshold tracker</b><span class="d">Check which payees need a Form 1099-NEC or 1099-MISC for a payment year, in which box and why: the $2,000 line for 2026 payments, $600 for 2025, royalties at $10 and attorney gross proceeds at $600, with the corporation, card and merchandise exceptions, backup withholding, payees merged by TIN, due dates and an IRIS upload file. Prices: Year-end scan: $0.10 per payee-year for the first 500 each payment year, then $0.05 per payee-year; a repeat for the same payee-year is free; the IRIS upload file and the verdict CSV are included. Single-payee check: free. Lines, due dates, penalties, state rules and the 2027 projection: free.</span></td>
-  <td class="words">from $0.10</td>
-</tr>
-<tr>
-  <td><code>redirect-chain-checker</code></td>
-  <td><b class="t">Bulk redirect chain checker</b><span class="d">Follow up to 1,000 URLs (or an old-to-new redirect map) hop by hop and get, per URL, every status code, the final URL and status, loops, chains, temporary 302/303/307 vs permanent 301/308 redirects, plain-HTTP hops, Google's 10-hop limit and whether it lands on the expected target, with a CSV. Prices: Check of up to 10 URLs on this page: free. Bulk check: $0.0003 per URL for the first 20,000 each calendar month, then $0.0001 per URL; you pay only for what is delivered and the rest is refunded at once; a URL listed twice in a call is charged once; a private address, or a URL not reached in the call's time budget, is not delivered. Pasted curl output and the status code table: free.</span></td>
-  <td class="words">from $0.0003</td>
-</tr>
-<tr>
-  <td><code>business-days</code></td>
-  <td><b class="t">Business days</b><span class="d">Count the business days between two dates, or add business days to a date, for US federal, England and Wales, or India central government holidays. US holidays are the statutory federal ones only, with no executive-order closures. India (&quot;IN-CENTRAL-DELHI&quot;) is the closed (gazetted) holidays of central government offices in Delhi and New Delhi from the Department of Personnel and Training's yearly list, 2025 to 2027 only: not restricted holidays, not any state's list and not bank holidays. Add your own days off to skip them too. Costs $0.0005 per call.</span></td>
-  <td class="words">$0.0005</td>
-</tr>
-<tr>
-  <td><code>delivery-date-calculator</code></td>
-  <td><b class="t">Delivery date and holiday order-by calculator</b><span class="d">Work out when an order arrives, or the last day to order for delivery by a date such as Christmas, from your cutoff time, time zone, shipping days, closures and processing days, on the carrier's own delivery calendar, with USPS's 2026 holiday send-by dates and every skipped holiday named. Costs $0.0005 per call.</span></td>
-  <td class="words">$0.0005</td>
-</tr>
-<tr>
-  <td><code>fx-on-date</code></td>
-  <td><b class="t">Exchange rate on a date</b><span class="d">The official rate for a currency pair on a date, with the date or period actually used. By default the ECB euro reference rate (the latest fixing in the 7 days up to the date, and which); or, with source, the US Treasury reporting rate, the IRS yearly average or the HMRC monthly rate, each named with the publication it came from. Costs $0.001 per call.</span></td>
-  <td class="words">$0.001</td>
-</tr>
-<tr>
-  <td><code>fix-csv-export</code></td>
-  <td><b class="t">Fix a CSV export (leading zeros, dates, encoding) with a saved recipe</b><span class="d">Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change. Prices: Scan (what is wrong, the date proof and a suggested recipe, with the first 20 rows fixed): free. Fixed file: $0.25 per file; a repeat for the same file is free for 1 day. At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td>
-  <td class="words">from $0.25</td>
-</tr>
-<tr>
-  <td><code>fmla-eligibility-checker</code></td>
-  <td><b class="t">FMLA eligibility checker</b><span class="d">Check FMLA eligibility under 29 CFR 825.110: 12 months of employment (with the seven-year break rule for rehires), 1,250 hours in the 12 months before leave, and 50 employees within 75 surface miles of the worksite, where a remote worker's worksite is the office they report to. Gives the reason the eligibility notice must state and its five-business-day due date, the hours in 12 or 26 workweeks for any schedule, and the leave balance under the rolling, calendar-year, fixed-year or measured-forward method with the days leave comes back. Prices: Eligibility check, leave balance and hours on this page: free. Eligibility check, leave balance or hours over the API or MCP: $0.01 per call. Leave record for one employee (ledger CSV, balance under every method, notice fields): $1.00 per employee; a repeat for the same employee is free for 12 months. At most $9.90 a calendar month for this tool; after that it is free until the month ends.</span></td>
-  <td class="words">from $0.01</td>
-</tr>
-<tr>
-  <td><code>gpsr-listing-checker</code></td>
-  <td><b class="t">GPSR listing checker</b><span class="d">Check every SKU in an Amazon, Etsy, eBay, Shopify or plain CSV export against the four items Article 19 of the EU General Product Safety Regulation (EU) 2023/988 says an online offer must show: the manufacturer, the EU responsible person when the manufacturer is outside the EU, the product's picture, type and identifier, and warnings in a language of each market. Get a per-SKU fix list, a checklist CSV and a label block per SKU, each finding cited to its article. Prices: One listing checked on this page: free. Listing file or API call: $0.01 per SKU for the first 1,000 each calendar month, then $0.004 per SKU. Responsible person check for one manufacturer country: free. The rule set and the Member State table: free. At most $14.99 a calendar month for this tool; after that it is free until the month ends.</span></td>
-  <td class="words">from $0.01</td>
-</tr>
-<tr>
-  <td><code>hours-calculator</code></td>
-  <td><b class="t">Hours calculator and timesheet</b><span class="d">Add up clock-in and clock-out times minus unpaid breaks, including overnight and split shifts and daylight-saving nights, split overtime by fixed workweek (over 40 hours, plus optional daily thresholds), check what time-clock rounding did to the punches under 29 CFR 785.48, convert hours and minutes to decimal, and make a signable timesheet PDF. Prices: Totals, conversions and the rounding check on this page: free. Totals, conversion or hours between times over the API or MCP: $0.002 per call. Timesheet PDF and CSV for one employee and pay period: $0.15 per timesheet; a repeat for the same employee and pay period is free for 30 days. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td>
-  <td class="words">from $0.002</td>
-</tr>
-<tr>
-  <td><code>ifta-calculator</code></td>
-  <td><b class="t">IFTA quarterly return calculator</b><span class="d">Work out an IFTA quarterly return per jurisdiction and fuel at the quarter's final matrix rates, surcharges included, from totals or from trip sheets and fuel receipts, with an odometer reconciliation across trips and a check of every record against the IFTA distance and fuel record elements. Prices: Return, 1 to 5 vehicles: $5.00 per quarterly return (all fuel types, PDF and CSV); a repeat for the same licensee and quarter is free for 90 days, and a larger one pays only the difference. Return, 6 to 25 vehicles: $9.00 per quarterly return (all fuel types, PDF and CSV); a repeat for the same licensee and quarter is free for 90 days, and a larger one pays only the difference. Return, 26 or more vehicles: $15.00 per quarterly return (all fuel types, PDF and CSV); a repeat for the same licensee and quarter is free for 90 days, and a larger one pays only the difference. Estimate from totals: $0.03 per estimate. Trip sheet check: $0.03 per check; errors, warnings and missing fields counted, not listed. Late cost: $0.03 per calculation. Rates lookup: $0.01 per lookup. Due dates: $0.01 per lookup.</span></td>
-  <td class="words">from $0.01</td>
-</tr>
-<tr>
-  <td><code>macrs-depreciation</code></td>
-  <td><b class="t">MACRS depreciation schedule</b><span class="d">Paste a client's fixed-asset additions for 2025 or 2026 and get the IRS percentage-table schedule: the mid-quarter 40% test across every asset with the worksheet, Section 179 within the year's limit and phase-out, the special allowance by acquisition date (100% after January 19, 2025), each number tied to its Publication 946 table, and the journal entry as a CSV. Prices: Schedule: $2.00 per entity-year (up to 250 assets); a repeat for the same entity and tax year is free for 30 days, and a larger one pays only the difference. Mid-quarter test: $0.10 per test; the 40% worksheet, the convention and the year-1 total, no schedule or files. Table lookup: $0.10 per lookup. Limits lookup: $0.10 per lookup.</span></td>
-  <td class="words">from $0.10</td>
-</tr>
-<tr>
-  <td><code>mileage-reimbursement</code></td>
-  <td><b class="t">Mileage reimbursement and IRS mileage log</b><span class="d">Price each trip at the IRS mileage rate in force on its date (2026: 72.5 cents to June 30, 76 cents from July 1; medical, moving, charity and GSA rates too), apply Announcement 2026-11's paid-date rule to employer allowances, total a payroll trip sheet per employee with the true-up owed and the W-2 split above the federal rate, and make an IRS-ready vehicle-year log with a Publication 463 completeness check. Prices: Rate lookup or calculation on this page: free. Rate lookup or calculation over the API or MCP: $0.002 per call. Trip file (per-employee totals, true-up, W-2 split, results CSV): $0.001 per trip row, at least $0.25 per file. Vehicle-year log PDF with the completeness check: $4.00 per vehicle-year log; a repeat for the same vehicle and tax year is free for 30 days.</span></td>
-  <td class="words">from $0.001</td>
-</tr>
-<tr>
-  <td><code>name-tag-generator</code></td>
-  <td><b class="t">Name tag generator</b><span class="d">Turn an RSVP list (CSV, Excel or rows) into print-ready name badges at the exact positions of Avery badge templates 5395, 5895, 5390, 5392, 5146 and 5147 (and every number Avery lists as compatible, such as 8395 or 74459), each name fitted as large as it can be, with a start label for part-used sheets, spare blanks, a check-in list, a free alignment test page and single walk-in badges. Prices: Sheet count and badge plan: free. Alignment test page: free. Badge PDF and check-in list for an event: $0.01 per badge, at least $0.99 per event; a repeat for the same event is free for 30 days, and a larger one pays only the difference. Walk-in badge: $0.10 per walk-in badge; a repeat for the same event is free for 30 days, and a larger one pays only the difference.</span></td>
-  <td class="words">from $0.01</td>
-</tr>
-<tr>
-  <td><code>date-resolver</code></td>
-  <td><b class="t">Natural-language date resolver</b><span class="d">Turn a phrase such as &quot;90 days from today&quot;, &quot;10 business days after next Friday&quot; or &quot;end of next month&quot; into one exact calendar date with its weekday, from an explicit reference date. Business days skip weekends and US federal, England and Wales or India central government holidays, and every holiday skipped is named. Ambiguous phrases (&quot;next Friday&quot;) return both readings. Call it instead of doing date arithmetic yourself. Prices: Resolved phrase: $0.0005 per phrase for the first 10,000 each calendar month, then $0.0002 per phrase.</span></td>
-  <td class="words">from $0.0005</td>
-</tr>
-<tr>
-  <td><code>qr-code-generator</code></td>
-  <td><b class="t">QR code generator</b><span class="d">Static QR codes that never expire, for links, WiFi, contact cards, email, text messages, calls and map locations: every file is read back before you get it and shows the exact text it holds. Make a whole batch from a spreadsheet as a ZIP and a label sheet, and check whether a code you already printed goes through a vendor that can switch it off. Prices: Static code or payload over the API or MCP: $0.002 per call. Bulk codes (ZIP, manifest and label sheet): $0.002 per code for the first 5,000 each calendar month, then $0.0005 per code, at least 10 x the price per code for each job; rows that cannot be made into a code are never charged. Read a code from a PNG over the API or MCP: $0.002 per image. Expiry check over the API or MCP: $0.005 per check. Expiry check on this page: free.</span></td>
-  <td class="words">from $0.002</td>
-</tr>
-<tr>
-  <td><code>recipe-cost-calculator</code></td>
-  <td><b class="t">Recipe cost calculator and menu re-coster</b><span class="d">Keep one ingredient price list (pack size, pack price, yield %) and re-cost every recipe and sub-recipe from it: cost per portion, food cost % against the menu price, the price that meets your target food cost, which dishes a supplier price rise pushed over target, and an Excel workbook with live formulas. Also plate cost, menu price, pour cost, cake and bakery, catering per guest and yield calculations, with exact NIST unit conversions and USDA cup weights. Prices: Single calculations on this page: free. Menu price, food cost %, pour, cake, catering, yield or conversion over the API or MCP: $0.002 per call. One recipe costed over the API or MCP: $0.01 per recipe. Menu re-cost (every recipe, the drift since your last prices, the repricing list and CSV): $0.01 per recipe, at least $0.05 per run. Excel workbook of your menu with live formulas: $0.25 per workbook. Sample recipe costing workbook: free. At most $2.99 a calendar month for this tool; after that it is free until the month ends.</span></td>
-  <td class="words">from $0.002</td>
-</tr>
-<tr>
-  <td><code>sitemap-validator</code></td>
-  <td><b class="t">Sitemap validator</b><span class="d">Check an XML sitemap or sitemap index before Google does: the sitemaps.org schema, the 50,000 URL and 50MB limits, lastmod format and sanity, host and folder scope, image and news tags, robots.txt against every listed URL, and (optionally) each listed URL's status, redirect, noindex and canonical, answered in Search Console's own error names, with a CSV. Prices: One sitemap on this page (an index and up to 10 of its files) with up to 10 URLs checked live: free. Sitemap check: $0.0005 per check for the first 20,000 each calendar month, then $0.0001 per check; you pay only for what is delivered and the rest is refunded at once; a check is one sitemap file read or one listed URL requested live; files and URLs not reached in the call's time, URLs robots.txt blocks, and the sitemap read again for a later batch of live checks are not charged. Pasted sitemap XML, nothing fetched: free. The limits and rules table: free.</span></td>
-  <td class="words">from $0.0005</td>
-</tr>
-<tr>
-  <td><code>spf-lookup-counter</code></td>
-  <td><b class="t">SPF lookup counter</b><span class="d">Count exactly how many of the 10 DNS lookups a domain's SPF record uses under RFC 7208, with every nested include, void lookups, the mx limit and macros, the term that goes over, what a receiver decides for one sending IP, and what-if edits before you publish. Prices: Lookup count for one domain or draft record: $0.002 per check for the first 10,000 each calendar month, then $0.001 per check. Batch of up to 50 domains: $0.002 per domain for the first 10,000 each calendar month, then $0.001 per domain; you pay only for what is delivered and the rest is refunded at once. Macro explanation (no DNS): free.</span></td>
-  <td class="words">from $0.002</td>
-</tr>
-<tr>
-  <td><code>tax-set-aside</code></td>
-  <td><b class="t">Tax set-aside per payment</b><span class="d">How much of one payment a self-employed person should set aside for tax, given what they have earned so far this year: US self-employment tax, federal brackets with the QBI deduction and state income tax, or UK Income Tax, Class 4 and student loan, split exactly where the payment crosses a bracket or threshold, with every constant cited. Prices: Set-aside for a payment: $0.10 per payment. Percentage only: $0.10 per payment; no dollar amount or breakdown, and open to the free runs signed-out visitors get. Year ledger replay: $0.10 per 25 payments (rounded up). Next due date and safe harbor: free. Rates and thresholds with sources: free. At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td>
-  <td class="words">from $0.10</td>
-</tr>
-<tr>
-  <td><code>trucker-per-diem</code></td>
-  <td><b class="t">Trucker per diem worksheet</b><span class="d">Turn an owner-operator's days on the road into the year's per diem deduction at the IRS transportation-industry rate in force each day ($80 since October 1, 2024; $69 and $66 before), with departure and return days at 3/4, the 80% hours-of-service limit, log checks and a worksheet for the preparer. Prices: Worksheet: $9.00 per driver-year worksheet (PDF and CSV); a repeat for the same driver and tax year costs $0.10 for 15 months. Log preview: $0.02 per log check; totals, monthly table and log checks, no files. Quick total: $0.02 per calculation. Rates lookup: $0.02 per lookup.</span></td>
-  <td class="words">from $0.02</td>
-</tr>
-<tr>
-  <td><code>year-end-giving-statements</code></td>
-  <td><b class="t">Year-end giving statements</b><span class="d">Turn a year of gift rows (CSV or a list) into one contribution statement PDF per donor or household: every gift, the total, the IRS Publication 1771 goods-or-services sentence (or the intangible religious benefits sentence for a church), good faith estimates and the $75 quid pro quo disclosure where a gift bought something, gifts of property described without a value, plus a print file, a summary CSV and an email list. Prices: The IRS rules, with sources: free. Preview (every donor's totals and one sample statement): free. Statements (PDF per donor, print file, summary and email CSVs): $0.10 per donor statement; a repeat for the same donor statement is free for 180 days. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td>
-  <td class="words">from $0.10</td>
-</tr>
-<tr>
-  <td><code>zip-to-county</code></td>
-  <td><b class="t">ZIP code and UK postcode to county lookup</b><span class="d">Look up US ZIP codes and UK postcodes, one or 10,000 at a time: every county a ZIP touches with its county FIPS, share of the land, metro area and Census region (Census 2020 ZCTA file, OMB 2023), or a postcode's local authority, county, region and nation (ONS Postcode Directory), each answer with its source and date. Prices: One ZIP code or postcode, or one county's ZIP list, on this page: free. ZIP codes and postcodes (lists, REST and MCP): $0.0005 per code found for the first 100,000 each calendar month, then $0.0002 per code found; you pay only for what is delivered and the rest is refunded at once; codes not found are not charged. A county's ZIP list over REST or MCP: $0.001 per county.</span></td>
-  <td class="words">from $0.0005</td>
-</tr>
-<tr>
-  <td><code>quote_price</code></td>
-  <td><b class="t">Quote a price</b><span class="d">Free. Says exactly what calling a tool with these arguments would cost this account now, without running or charging it.</span></td>
-  <td class="words">Free</td>
-</tr>
+<tr><td><code>1099-threshold</code></td><td><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a><span>Check which payees need a Form 1099-NEC or 1099-MISC for a payment year, in which box and why: the $2,000 line for 2026 payments, $600 for 2025, royalties at $10 and attorney gross proceeds at $600, with the corporation, card and merchandise exceptions, backup withholding, payees merged by TIN, due dates and an IRIS upload file. Prices: Year-end scan: $0.10 per payee-year for the first 500 each payment year, then $0.05 per payee-year; a repeat for the same payee-year is free; the IRIS upload file and the verdict CSV are included. Single-payee check: free. Lines, due dates, penalties, state rules and the 2027 projection: free.</span></td></tr>
+<tr><td><code>1099-k-reconciliation</code></td><td><a href="/toll-preview/1099-k-reconciliation/">1099-K reconciliation</a><span>Walks Form 1099-K Box 1a down to your books: personal payments, duplicates, sales tax and personal items out, refunds and chargebacks to Schedule C line 2, fees to line 10, Boxes 5a to 5l month by month, the $20,000 and 200-transaction check, and a CPA worksheet, each line cited to the IRS. Prices: Reconcile on this page: free. Reconcile over the API or MCP: $0.05 per call. CPA worksheet (walkdown, month table, CSV, memo and a corrected-form request): $3.99 per Form 1099-K; a repeat for the same Form 1099-K is free for 90 days. The IRS rules and dates: free.</span></td></tr>
+<tr><td><code>amazon-error-8572-checker</code></td><td><a href="/toll-preview/amazon-error-8572-checker/">Amazon Error 8572 checker</a><span>Check UPCs, EANs and GTINs before an Amazon upload, or after Error 8572: the GS1 check digit, the GS1 Prefix, whether each code is inside the company prefix on your GS1 certificate, and whether the brand you list matches the GS1 licensee name you give it, with the documents Amazon's Error 8572 help asks for and a letter of affiliation built to its checks. It does not look up GS1 records. Prices: One code checked on this page: free. A file of codes, or any API or MCP check: $0.001 per code. Letter of affiliation: $0.99 per letter; a repeat for the same licensee and brand is free for 30 days. GS1 US cost planner: free. The rules and sources: free. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>amazon-low-inventory-fee-calculator</code></td><td><a href="/toll-preview/amazon-low-inventory-fee-calculator/">Amazon low-inventory-level fee and reorder planner</a><span>Check per FBA SKU whether Amazon's low-inventory-level fee applies this week, at which rate (Amazon's 2026 rule and the 2027 rule from February 1, 2027, by size tier and weight, with every listed exemption), and plan the reorder: the send-by and order-by dates and units to send that keep stock at 28 or more days of supply, given prep, transit and receiving days, and what a late shipment costs. Prices: One SKU checked on this page: free. A file of SKUs, or any API or MCP call: $0.005 per SKU. The rate tables, exemptions and sources: free. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>amazon-settlement-reconciliation</code></td><td><a href="/toll-preview/amazon-settlement-reconciliation/">Amazon settlement reconciliation</a><span>Upload an Amazon Flat File V2 settlement report and see its rows proved against total-amount, the total tied to the bank deposit, and the settlement split at month end by posted date, with sales, fees, refunds, tax and reserve on their own lines and a balanced journal per month for QuickBooks Online or Xero. Prices: Check (the proof, the bank tie and the split per month): free. Reconcile (the lines per month, the journals and the import files): $1.00 per settlement; a repeat for the same file is free for 7 days, and a larger one pays only the difference. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>amazon-title-checker</code></td><td><a href="/toll-preview/amazon-title-checker/">Amazon title checker</a><span>Check every Amazon product title in a file, a listings report or a pasted list against the rules Amazon published: 75 characters including spaces outside media since July 27, 2026, the banned characters ! $ ? _ { } ^ ¬ ¦ outside the brand name, and no word more than twice. Each title gets its count, what to fix, where a cut to 75 falls and the overflow for Item Highlights (125), plus a fix list CSV. Prices: One title checked on this page: free. A file, list or API call: $0.002 per title for the first 5,000 each calendar month, then $0.001 per title. The rule set with sources: free. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>amortization-schedule-journal-entries</code></td><td><a href="/toll-preview/amortization-schedule-journal-entries/">Amortization schedule to journal entries</a><span>Turns prepaid expenses, deferred revenue, loans and loan fees into balanced monthly journal entries: straight-line by equal months, half-months or actual days with the rounding in the last month, loan payments split into interest and principal, cancellations, a rollforward that ties to the GL and a 12-month rule check, as a QuickBooks Online or Xero import file. Prices: Preview (one month's amounts, balances, tie-out and the 12-month rule check): free. Journal entries and import file (every month of each schedule): $0.50 per schedule; a repeat for the same schedule is free for 12 months. At most $25.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>bank-reconciliation-difference-finder</code></td><td><a href="/toll-preview/bank-reconciliation-difference-finder/">Bank reconciliation difference finder</a><span>Compare a bank statement CSV with the ledger for the same account (QuickBooks Online, Xero or any CSV): the difference at the statement date, every line on one side only, timing items (outstanding checks, deposits in transit) set apart from likely errors (digit transpositions, slides, sign flips, duplicates, bank lines missing from the books), the date the running balance broke, and a reconciliation statement. Never changes your books. Prices: Preview (the difference, how much is timing, how many likely errors, and the date the balances broke): free. Transposition check (is one difference a digit swap, a slide or a sign flip): free. Reconciliation report (every match and unmatched line, each hint, the balance trail, the reconciliation statement and the CSVs): $3.00 per reconciliation; a repeat for the same reconciliation is free for 7 days. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>bank-feed-duplicate-finder</code></td><td><a href="/toll-preview/bank-feed-duplicate-finder/">Bank-feed duplicate finder for QuickBooks Online and Xero</a><span>Upload the bank-feed lines and the register (or Xero statement lines and Account Transactions) for one account: every pair of the same amount within N days is listed, in the feed twice, in the books twice or a feed line already entered by hand, with a confidence, which copy to keep (the reconciled one first) and the exact action in QuickBooks Online or Xero, as an exclude-ready CSV. Never changes your books. Prices: Preview (how many likely duplicates, their totals and any doubled date range): free. Duplicate report (every pair, the copy to keep, the action and the exclude-ready CSV): $3.00 per account check; a repeat for the same account check is free for 7 days. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>bulk-certificate-generator</code></td><td><a href="/toll-preview/bulk-certificate-generator/">Bulk certificate generator</a><span>Turn a class or attendee list (CSV, Excel or rows) into one printable certificate per name in one PDF, on US Letter or A4, in seven designs (achievement, completion, appreciation, end-of-year award, funny award, kids, participation), with each name fitted to its line, per-row award titles and hours, names cleaned and repeats found, a free plan and a free watermarked proof; the list is used in memory and not kept. Prices: Certificate plan and fit check: free. Watermarked proof PDF: free. Clean certificate PDF: $0.01 per certificate, at least $0.99 per batch; a repeat for the same batch is free for 30 days, and a larger one pays only the difference. At most $9.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>redirect-chain-checker</code></td><td><a href="/toll-preview/redirect-chain-checker/">Bulk redirect chain checker</a><span>Follow up to 1,000 URLs (or an old-to-new redirect map) hop by hop and get, per URL, every status code, the final URL and status, loops, chains, temporary 302/303/307 vs permanent 301/308 redirects, plain-HTTP hops, Google's 10-hop limit and whether it lands on the expected target, with a CSV. Prices: Check of up to 10 URLs on this page: free. Bulk check: $0.0003 per URL for the first 20,000 each calendar month, then $0.0001 per URL; you pay only for what is delivered and the rest is refunded at once; a URL listed twice in a call is charged once; a private address, or a URL not reached in the call's time budget, is not delivered. Pasted curl output and the status code table: free.</span></td></tr>
+<tr><td><code>bulk-sender-check</code></td><td><a href="/toll-preview/bulk-sender-check/">Bulk sender check</a><span>Grade one raw email (.eml) against Gmail's, Yahoo's and Microsoft Outlook.com's bulk-sender rules: SPF, DKIM (verified, with key length), DMARC record and alignment, RFC 8058 one-click unsubscribe, reverse DNS, TLS and RFC 5322 format, each rule quoted from the provider with its source. Prices: Check one message: $0.02 per message for the first 1,000 each calendar month, then $0.01 per message. The providers' rule table: free. Worked example messages: free.</span></td></tr>
+<tr><td><code>business-days</code></td><td><a href="/toll-preview/business-days/">Business days</a><span>Count the business days between two dates, or add business days to a date, for US federal, England and Wales, or India central government holidays. US holidays are the statutory federal ones only, with no executive-order closures. India (&quot;IN-CENTRAL-DELHI&quot;) is the closed (gazetted) holidays of central government offices in Delhi and New Delhi from the Department of Personnel and Training's yearly list, 2025 to 2027 only: not restricted holidays, not any state's list and not bank holidays. Add your own days off to skip them too. Costs $0.0005 per call.</span></td></tr>
+<tr><td><code>chargeback-evidence</code></td><td><a href="/toll-preview/chargeback-evidence/">Chargeback evidence packet builder</a><span>For a chargeback on Stripe, Shopify Payments or PayPal: what the reason code means (Visa, Mastercard, Amex, Discover or PayPal), the evidence that answers it strongest first and which upload slot each piece goes in; then the response packet itself, a rebuttal letter and one labelled exhibit PDF per evidence type built from your screenshots, checked against the platform's size, page and file limits. Also the fees and the break-even win chance, days left to the due date with a calendar file, and Visa Compelling Evidence 3.0 eligibility. Files are processed in memory and not kept. Not legal advice; the card issuer decides. Prices: Evidence checklist on this page: free. Reason code lists and the rules data: free. Fees and break-even, deadline, CE 3.0 check: free. Packet preview (watermarked letter and limits check): free. Evidence checklist over the API or MCP: $0.01 per checklist. Dispute packet (letter and exhibit files): $2.90 per dispute; a repeat for the same dispute is free for 30 days.</span></td></tr>
+<tr><td><code>cleaning-bid-calculator</code></td><td><a href="/toll-preview/cleaning-bid-calculator/">Cleaning bid calculator (commercial and post-construction)</a><span>Turn a building walk-through into a cleaning bid: square feet at your own production rates, restroom fixtures and glass panes at your own minutes each, a loaded wage built from BLS May 2025 wages and IRS 2026 payroll taxes, supplies, overhead and margin, priced per visit and month (janitorial) or per rough, final and touch-up phase (post-construction), with a $/sq ft check and a proposal PDF. Prices: Bid calculation on this page: free. Rate from a timing, or the BLS wage table: free. Bid calculation over the API or MCP: $0.02 per call. Bid proposal PDF and CSV for one job: $3.00 per job; a repeat for the same company, client and job is free for 30 days. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>clearing-account-cleanup</code></td><td><a href="/toll-preview/clearing-account-cleanup/">Clearing account cleanup: aging and exact deposit matches</a><span>Upload an Undeposited Funds, suspense or Ask My Accountant export (QuickBooks Online or Xero): see every open item aged 0-30, 31-60, 61-90 and over 90 days after what already nets off inside the account, and every set of open payments that adds up to each bank deposit to the cent, with fee-netted candidates listed apart. Lists matches; never posts to your books. Prices: Preview (aging totals, the tie-out and how many deposits match): free. Cleanup report (every aged item, what nets off and every match set, with CSVs): $3.00 per ledger file; a repeat for the same ledger file is free for 7 days. Match amounts to deposits: $0.10 per deposit. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>cron</code></td><td><a href="/toll-preview/cron/">Cron expression checker and next run times</a><span>Explain a cron expression in plain English and list its next run times in any IANA time zone, with each scheduler's own daylight saving rule; check it against the dialect of Linux crontab, GitHub Actions, Kubernetes, Vercel, n8n, Quartz, Spring, UiPath or AWS EventBridge, and write the same schedule for each of the others. Prices: Explain, next runs, conversion and clock changes on this page: free. Explain, build or clock changes over the API or MCP: $0.0005 per call. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>delivery-date-calculator</code></td><td><a href="/toll-preview/delivery-date-calculator/">Delivery date and holiday order-by calculator</a><span>Work out when an order arrives, or the last day to order for delivery by a date such as Christmas, from your cutoff time, time zone, shipping days, closures and processing days, on the carrier's own delivery calendar, with USPS's 2026 holiday send-by dates and every skipped holiday named. Costs $0.0005 per call.</span></td></tr>
+<tr><td><code>payment-schedule</code></td><td><a href="/toll-preview/payment-schedule/">Deposit and milestone payment schedule</a><span>Split a project fee into a deposit and milestone payments (50/50, 50/25/25, 30/30/40 or your own) to the cent, with invoice and due dates on business days, invoice-ready lines for every stage, a final invoice that nets off what was already paid, a calendar file, and the California, Maryland, Maine and Florida home-improvement deposit rules. Prices: Schedule with amounts and dates on this page: free. State deposit rules: free. Schedule over the API or MCP: $0.01 per call. Invoice pack (every invoice's lines, the final invoice netted, a calendar file and a CSV): $0.49 per project; a repeat for the same project is free for 90 days, and a larger one pays only the difference. Final invoice after a deposit and milestones: $0.10 per project; a repeat for the same project is free for 90 days, and a larger one pays only the difference. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>dmarc-report-analyzer</code></td><td><a href="/toll-preview/dmarc-report-analyzer/">DMARC report analyzer</a><span>Read a DMARC aggregate report (.xml, .gz, .zip or the .eml it came in, RFC 9990 or RFC 7489) and see which named service sent as your domain, which one fails DMARC and why, with the fix; reports are read in memory and not kept. Prices: One report on this page: free. Reports over the API, MCP, or several at once: $0.01 per report file for the first 1,000 each calendar month, then $0.002 per report file; you pay only for what is delivered and the rest is refunded at once; a file that holds no readable report is not charged. Name the service behind IP addresses: free.</span></td></tr>
+<tr><td><code>donor-acknowledgment-letter</code></td><td><a href="/toll-preview/donor-acknowledgment-letter/">Donor acknowledgment letters</a><span>Turn a list of gifts (CSV or a list) into one thank-you letter per gift with the right IRS Publication 1771 wording for each: the no-goods-or-services or intangible religious benefits sentence for money, a good faith estimate and the $75 disclosure for a ticket, a description without a value for goods and stock, a no-receipt thank-you for a donor-advised fund grant, a pledge confirmation, a volunteer thank-you, and a notice to a memorial family without the amount; segments (first, repeat, lapsed, major, monthly) choose the opening line. PDFs per letter, a print file, the letter texts and CSVs. Prices: The IRS rules, with sources: free. Preview (every gift's letter type, IRS sentence and segment, and one sample letter): free. Letters (PDF per letter and family notice, print file, letter texts, summary and email CSVs): $0.05 per gift letter; a repeat for the same gift letter is free for 180 days. At most $9.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>ebay-transaction-report-flattener</code></td><td><a href="/toll-preview/ebay-transaction-report-flattener/">eBay transaction report flattener</a><span>Upload an eBay transaction report CSV and get one row per sale: item, gross, shipping charged, every fee column by name, the shipping label and ad-fee rows folded in by order number, refunds and claims, and what you kept, with totals by year and month, proved to the cent against eBay's Net amount. Prices: Preview (the totals by year, the proof and the first sales): free. Flatten (every sale on one row, the months and the CSV files): $2.00 per 2,500 sales; a repeat for the same report is free for 7 days, and a larger one pays only the difference. At most $9.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>fx-on-date</code></td><td><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a><span>The official rate for a currency pair on a date, with the date or period actually used. By default the ECB euro reference rate (the latest fixing in the 7 days up to the date, and which); or, with source, the US Treasury reporting rate, the IRS yearly average or the HMRC monthly rate, each named with the publication it came from. Costs $0.001 per call.</span></td></tr>
+<tr><td><code>fba-prep-checker</code></td><td><a href="/toll-preview/fba-prep-checker/">FBA prep checker</a><span>Tell it what an Amazon FBA product is (category, size, weight, liquid container, bag) and get the prep Amazon's US Seller Central pages require, step by step with each page linked: poly bag, bubble wrap, box, cap seal, opaque bag, set label, the suffocation warning and its print size, FNSKU or manufacturer barcode, the expiration-date label and the 2026 and 2027 size tier; check a whole shipment list, and print FNSKU, warning, &quot;Sold as set&quot; and expiration labels as PDFs. Prices: One product checked on this page: free. The dated rule tables: free. Warning, set, expiration and alignment sheets: free. A product list, or a check over the API or MCP: $0.01 per SKU for the first 500 each calendar month, then $0.004 per SKU. FNSKU label PDF: $0.001 per label, at least $0.25 per PDF; a repeat for the same batch is free for 14 days, and a larger one pays only the difference. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>final-paycheck-deadline</code></td><td><a href="/toll-preview/final-paycheck-deadline/">Final paycheck deadline by state</a><span>The date (and time, where the law counts hours) a final paycheck is due when an employee is fired, laid off or quits, for the states whose own statute or labor department pages we have read, computed from the separation date, notice, pay schedule and business days; whether a deduction for unreturned equipment, an advance or negative PTO, a shortage or an overpayment is allowed, with the minimum-wage floor check; and the late-pay penalty where the state sets a formula. Every rule is quoted from the state's own site with the date read; other states are listed as not covered. Prices: Deadline, deduction check and penalty on this page: free. Deadline, deduction check or penalty over the API or MCP: $0.01 per lookup. Many separations in one call: $0.005 per separation, at least $0.05 per batch. At most $4.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>fix-csv-export</code></td><td><a href="/toll-preview/fix-csv-export/">Fix a CSV export (leading zeros, dates, encoding) with a saved recipe</a><span>Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change. Prices: Scan (what is wrong, the date proof and a suggested recipe, with the first 20 rows fixed): free. Fixed file: $0.25 per file; a repeat for the same file is free for 1 day. At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>fmla-eligibility-checker</code></td><td><a href="/toll-preview/fmla-eligibility-checker/">FMLA eligibility checker</a><span>Check FMLA eligibility under 29 CFR 825.110: 12 months of employment (with the seven-year break rule for rehires), 1,250 hours in the 12 months before leave, and 50 employees within 75 surface miles of the worksite, where a remote worker's worksite is the office they report to. Gives the reason the eligibility notice must state and its five-business-day due date, the hours in 12 or 26 workweeks for any schedule, and the leave balance under the rolling, calendar-year, fixed-year or measured-forward method with the days leave comes back. Prices: Eligibility check, leave balance and hours on this page: free. Eligibility check, leave balance or hours over the API or MCP: $0.01 per call. Leave record for one employee (ledger CSV, balance under every method, notice fields): $1.00 per employee; a repeat for the same employee is free for 12 months. At most $9.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>good-faith-estimate-generator</code></td><td><a href="/toll-preview/good-faith-estimate-generator/">Good Faith Estimate generator</a><span>A No Surprises Act Good Faith Estimate for an uninsured or self-pay patient (45 CFR 149.610), laid out like the CMS model notice: the date it is due in business days, a recurring course of care turned into dated sessions within 12 months, lines and totals for each provider or facility, the four required disclaimers, every required element checked, and a PDF. Patient details are not kept. Not legal advice. Prices: Due date and check on this page: free. Rules lookup: free. Estimate preview (watermarked): free. Due date or check over the API or MCP: $0.01 per check. Good Faith Estimate PDF: $1.00 per estimate.</span></td></tr>
+<tr><td><code>gpsr-listing-checker</code></td><td><a href="/toll-preview/gpsr-listing-checker/">GPSR listing checker</a><span>Check every SKU in an Amazon, Etsy, eBay, Shopify or plain CSV export against the four items Article 19 of the EU General Product Safety Regulation (EU) 2023/988 says an online offer must show: the manufacturer, the EU responsible person when the manufacturer is outside the EU, the product's picture, type and identifier, and warnings in a language of each market. Get a per-SKU fix list, a checklist CSV and a label block per SKU, each finding cited to its article. Prices: One listing checked on this page: free. Listing file or API call: $0.01 per SKU for the first 1,000 each calendar month, then $0.004 per SKU. Responsible person check for one manufacturer country: free. The rule set and the Member State table: free. At most $14.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>hours-calculator</code></td><td><a href="/toll-preview/hours-calculator/">Hours calculator and timesheet</a><span>Add up clock-in and clock-out times minus unpaid breaks, including overnight and split shifts and daylight-saving nights, split overtime by fixed workweek (over 40 hours, plus optional daily thresholds), check what time-clock rounding did to the punches under 29 CFR 785.48, convert hours and minutes to decimal, and make a signable timesheet PDF. Prices: Totals, conversions and the rounding check on this page: free. Totals, conversion or hours between times over the API or MCP: $0.002 per call. Timesheet PDF and CSV for one employee and pay period: $0.15 per timesheet; a repeat for the same employee and pay period is free for 30 days. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>industry-code-lookup</code></td><td><a href="/toll-preview/industry-code-lookup/">HS, HTS, NAICS and SIC code checker</a><span>Check HS, US HTS, Schedule B, NAICS, US and UK SIC and IRS Schedule C codes against the official tables, one or 5,000 at a time: valid or not, the official title, the table's edition and date, NAICS 2017 codes that were replaced, SBA size standards and the proposed NAICS 2027 changes; or search the official index for the codes that contain your words. Prices: One code or one search, on this page: free. Code checks (lists, REST and MCP): $0.002 per code checked for the first 50,000 each calendar month, then $0.0005 per code checked; an invalid code is an answer too. Search over REST or MCP: $0.002 per search.</span></td></tr>
+<tr><td><code>ifta-calculator</code></td><td><a href="/toll-preview/ifta-calculator/">IFTA quarterly return calculator</a><span>Work out an IFTA quarterly return per jurisdiction and fuel at the quarter's final matrix rates, surcharges included, from totals or from trip sheets and fuel receipts, with an odometer reconciliation across trips and a check of every record against the IFTA distance and fuel record elements. Prices: Return, 1 to 5 vehicles: $5.00 per quarterly return (all fuel types, PDF and CSV); a repeat for the same licensee and quarter is free for 90 days, and a larger one pays only the difference. Return, 6 to 25 vehicles: $9.00 per quarterly return (all fuel types, PDF and CSV); a repeat for the same licensee and quarter is free for 90 days, and a larger one pays only the difference. Return, 26 or more vehicles: $15.00 per quarterly return (all fuel types, PDF and CSV); a repeat for the same licensee and quarter is free for 90 days, and a larger one pays only the difference. Estimate from totals: $0.03 per estimate. Trip sheet check: $0.03 per check; errors, warnings and missing fields counted, not listed. Late cost: $0.03 per calculation. Rates lookup: $0.01 per lookup. Due dates: $0.01 per lookup.</span></td></tr>
+<tr><td><code>inbound-placement-fee-calculator</code></td><td><a href="/toll-preview/inbound-placement-fee-calculator/">Inbound placement fee calculator</a><span>Which Amazon FBA inbound placement option is cheapest for a shipment once your freight is in: minimal, partial or Amazon-optimized splits, priced from Amazon's own US fee table by size tier and weight, with the break-even fee, the five-identical-carton check for Amazon-optimized splits, the day the fee is charged, and AWD as the alternative. Prices: Compare, eligibility and AWD on this page: free. Amazon's fee table: free. Compare, eligibility or AWD over the API or MCP: $0.01 per shipping plan. Send-in worksheet (the comparison with a CSV per product and option): $0.10 per shipping plan. At most $4.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>landed-cost-allocator</code></td><td><a href="/toll-preview/landed-cost-allocator/">Landed cost allocator</a><span>Spread a shipment's freight, duty, broker and other invoices across its PO lines by value, weight, CBM, units, per line, as given or a mix, and get the landed cost per unit of every SKU, with each invoice split to the cent and added back exactly; re-cost only the units still on hand when an invoice comes late, and fill Cost per item in your own Shopify product export. Prices: A shipment of 3 lines or fewer: free. Landed cost for a shipment (per-SKU table, CSV, spreadsheet with formulas, Shopify file): $1.50 per 50 PO lines; a repeat for the same shipment is free for 365 days, and a larger one pays only the difference. At most $14.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>late-payment-interest</code></td><td><a href="/toll-preview/late-payment-interest/">Late payment interest calculator and claim letter</a><span>The statutory interest and fixed compensation you can claim on a late business invoice: UK Late Payment Act (8% over the Bank Rate on the reference date, £40, £70 or £100), Ireland, Germany (§ 288 BGB) and the EU directive minimum by half-year, the US federal Prompt Payment Act, Texas and Florida public bodies, or your own terms; each rate dated and sourced. Plus a claim letter and interest invoice PDF, and many invoices at once from a CSV. Business debts only; not legal advice. Prices: Calculation on this page: free. Rate tables: free. Claim letter preview (watermarked): free. Calculation over the API or MCP: $0.02 per calculation. Claim letter and interest invoice (PDF): $1.50 per overdue invoice; a repeat for the same customer and invoice is free for 30 days. Many invoices at once (claims CSV): $0.10 per invoice, at least $0.50 per file. At most $15.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>lien-deadline</code></td><td><a href="/toll-preview/lien-deadline/">Lien deadline calculator</a><span>The last day to send the preliminary notice, record the lien and sue to enforce it, for your state, role and project, worked out from your furnishing and completion dates, with each date quoted from the state's own statute and the day it was read; what a late notice still protects; the Texas month-by-month notice dates; the federal Miller Act bond claim dates; and the state's statutory notice filled in as a PDF with a proof-of-service log. States whose own statute site we could not read are listed as not covered. Not legal advice. Prices: Deadlines on this page: free. State rules and coverage: free. Deadlines over the API or MCP: $0.02 per lookup. Many jobs in one call: $0.01 per job, at least $0.10 per batch. Statutory notice PDF: $2.90 per notice (one job, claimant, owner and, in Texas, month of work); a repeat for the same notice is free for 30 days.</span></td></tr>
+<tr><td><code>lien-waiver</code></td><td><a href="/toll-preview/lien-waiver/">Lien waiver generator by state</a><span>Pick the lien waiver a payment needs from the state and whether you have been paid, then fill in that state's statutory form word for word from the official statute (Arizona, California, Florida, Texas with its pre-2022 notarized version, Wyoming), with a hard stop on unconditional waivers before the money clears and the matching unconditional free for the same payment. Prices: Which waiver to sign: free. State rules and coverage: free. Watermarked preview PDF: free. Waiver for a payment: $1.50 per payment (the conditional waiver and its matching unconditional); a repeat for the same payment is free for 180 days.</span></td></tr>
+<tr><td><code>macrs-depreciation</code></td><td><a href="/toll-preview/macrs-depreciation/">MACRS depreciation schedule</a><span>Paste a client's fixed-asset additions for 2025 or 2026 and get the IRS percentage-table schedule: the mid-quarter 40% test across every asset with the worksheet, Section 179 within the year's limit and phase-out, the special allowance by acquisition date (100% after January 19, 2025), each number tied to its Publication 946 table, and the journal entry as a CSV. Prices: Schedule: $2.00 per entity-year (up to 250 assets); a repeat for the same entity and tax year is free for 30 days, and a larger one pays only the difference. Mid-quarter test: $0.10 per test; the 40% worksheet, the convention and the year-1 total, no schedule or files. Table lookup: $0.10 per lookup. Limits lookup: $0.10 per lookup.</span></td></tr>
+<tr><td><code>mileage-reimbursement</code></td><td><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement and IRS mileage log</a><span>Price each trip at the IRS mileage rate in force on its date (2026: 72.5 cents to June 30, 76 cents from July 1; medical, moving, charity and GSA rates too), apply Announcement 2026-11's paid-date rule to employer allowances, total a payroll trip sheet per employee with the true-up owed and the W-2 split above the federal rate, and make an IRS-ready vehicle-year log with a Publication 463 completeness check. Prices: Rate lookup or calculation on this page: free. Rate lookup or calculation over the API or MCP: $0.002 per call. Trip file (per-employee totals, true-up, W-2 split, results CSV): $0.001 per trip row, at least $0.25 per file. Vehicle-year log PDF with the completeness check: $4.00 per vehicle-year log; a repeat for the same vehicle and tax year is free for 30 days.</span></td></tr>
+<tr><td><code>minimum-wage-lookup</code></td><td><a href="/toll-preview/minimum-wage-lookup/">Minimum wage lookup by address</a><span>The legal minimum wage and tipped cash wage at a US work address, ZIP code or city on any date: the highest of the federal, state, county and city rates, which government sets it, since when, and the next scheduled change, each rate with the official page it was read from and the date. Employer-size tiers, regional state rates (New York, Oregon) and unincorporated county areas are handled; cities and states whose pages could not be read are listed as not covered, never guessed. Also lists every known change in a date window. Prices: One place, or the change list, on this page: free. Places (lists, REST and MCP): $0.002 per place answered for the first 10,000 each calendar month, then $0.001 per place answered; you pay only for what is delivered and the rest is refunded at once; places not found or not covered are not charged. The list of changes in a date window over REST or MCP: $0.005 per list.</span></td></tr>
+<tr><td><code>name-tag-generator</code></td><td><a href="/toll-preview/name-tag-generator/">Name tag generator</a><span>Turn an RSVP list (CSV, Excel or rows) into print-ready name badges at the exact positions of Avery badge templates 5395, 5895, 5390, 5392, 5146 and 5147 (and every number Avery lists as compatible, such as 8395 or 74459), each name fitted as large as it can be, with a start label for part-used sheets, spare blanks, a check-in list, a free alignment test page and single walk-in badges. Prices: Sheet count and badge plan: free. Alignment test page: free. Badge PDF and check-in list for an event: $0.01 per badge, at least $0.99 per event; a repeat for the same event is free for 30 days, and a larger one pays only the difference. Walk-in badge: $0.10 per walk-in badge; a repeat for the same event is free for 30 days, and a larger one pays only the difference.</span></td></tr>
+<tr><td><code>date-resolver</code></td><td><a href="/toll-preview/date-resolver/">Natural-language date resolver</a><span>Turn a phrase such as &quot;90 days from today&quot;, &quot;10 business days after next Friday&quot; or &quot;end of next month&quot; into one exact calendar date with its weekday, from an explicit reference date. Business days skip weekends and US federal, England and Wales or India central government holidays, and every holiday skipped is named. Ambiguous phrases (&quot;next Friday&quot;) return both readings. Call it instead of doing date arithmetic yourself. Prices: Resolved phrase: $0.0005 per phrase for the first 10,000 each calendar month, then $0.0002 per phrase.</span></td></tr>
+<tr><td><code>ontario-rent-increase</code></td><td><a href="/toll-preview/ontario-rent-increase/">Ontario rent increase calculator (N1)</a><span>The most an Ontario rent can rise to (1.9% for 2027, 2.1% for 2026), the earliest date under the 12-month rule, the last day to serve Form N1 by hand or by mail (90 days, mail counts from the fifth day), the November 15, 2018 exemption check, and the interest and top-up on a last month's rent deposit, each with its section of the Residential Tenancies Act. Prices: Rent increase check or deposit interest on this page: free. Rent increase check or deposit interest over the API or MCP: $0.02 per call. N1 prep sheet (every N1 field, the service record, the deposit schedule): $0.99 per N1 prep sheet; a repeat for the same unit and increase date is free for 30 days. Many-units file (serve-by dates and new rents for each unit, CSV): $0.20 per unit, at least $0.99 per file. The guideline table, 1991 to 2027: free.</span></td></tr>
+<tr><td><code>overtime-auditor</code></td><td><a href="/toll-preview/overtime-auditor/">Overtime auditor for timesheet CSVs</a><span>Audit a timesheet export (many employees, many weeks, punches or hours) for the regular, overtime and double-time hours owed under the federal weekly rule and the California (daily, double time, seventh day, alternative workweek), Alaska, Colorado and Kentucky rules, flag the weeks payroll underpaid, and total the FLSA-only premium for W-2 box 12, code TT. Prices: One week checked on this page: free. The state rule table: free. Totals for a timesheet file (no per-week detail): free. One week checked over the API or MCP: $0.002 per call. Timesheet audit (every employee-week with the rule behind each hour, shortfall, code TT per employee, results CSV): $0.10 per employee-week for the first 500 each calendar month, then $0.05 per employee-week up to 5,000, then $0.02 per employee-week, at least 5 x the price per employee-week for each file; you pay only for what is delivered and the rest is refunded at once.</span></td></tr>
+<tr><td><code>pay-application</code></td><td><a href="/toll-preview/pay-application/">Pay application and retainage (G702/G703-style)</a><span>Build this month's pay application from the schedule of values: work from previous applications, this period and stored materials, change orders, retainage (flat, per line, separate on stored materials, or reduced at a percent complete), previous certificates and the amount due, with the tie-out checks a GC runs and a G702/G703-style PDF and CSV; plus retainage calculators (forward, reverse, change orders, release) and state retainage limits quoted from the statutes. Prices: Totals, checks, calculators and state rules on this page: free. Watermarked preview PDF on this page: free. Check, preview, calculator or state rule over the API or MCP: $0.002 per call. Pay application to submit (PDF and CSV): $2.50 per pay application; a repeat for the same pay application is free for 60 days. At most $29.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>payout-reconciliation</code></td><td><a href="/toll-preview/payout-reconciliation/">Payout reconciliation: split a payout into sales, refunds, fees and tax</a><span>Upload the payout export from Stripe, Shopify Payments, PayPal or Square and get each payout split into sales, refunds, chargebacks, fees, tax on fees, reserves and adjustments that add up to the deposit to the cent, with a balanced journal through a clearing account and an import file for QuickBooks Online or Xero. Prices: Split (every payout's totals, the proof and the fee check): free. Journal and import files: $0.10 per payout, at least $0.50 per file; a repeat for the same file is free for 7 days, and a larger one pays only the difference. At most $9.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>pto-accrual</code></td><td><a href="/toll-preview/pto-accrual/">PTO and sick leave accrual by state</a><span>Runs one employee's PTO policy bank and the state or city paid sick leave bank side by side, paycheck by paycheck: hours earned per hour worked or per pay period, the yearly and balance caps, the waiting period, year-end carryover and what is forfeited; the payout owed at separation with the state's vacation rule; hours per pay period for an annual PTO amount; and each covered place's rules quoted from its own statute or agency page with the date read. Places we could not read are listed as not covered. Prices: Accrual, payout, per-paycheck and rules on this page: free. Accrual, payout, per-paycheck or rules over the API or MCP: $0.01 per lookup. Many employees in one call: $0.01 per employee, at least $0.10 per batch. At most $9.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>qr-code-generator</code></td><td><a href="/toll-preview/qr-code-generator/">QR code generator</a><span>Static QR codes that never expire, for links, WiFi, contact cards, email, text messages, calls and map locations: every file is read back before you get it and shows the exact text it holds. Make a whole batch from a spreadsheet as a ZIP and a label sheet, and check whether a code you already printed goes through a vendor that can switch it off. Prices: Static code or payload over the API or MCP: $0.002 per call. Bulk codes (ZIP, manifest and label sheet): $0.002 per code for the first 5,000 each calendar month, then $0.0005 per code, at least 10 x the price per code for each job; rows that cannot be made into a code are never charged. Read a code from a PNG over the API or MCP: $0.002 per image. Expiry check over the API or MCP: $0.005 per check. Expiry check on this page: free.</span></td></tr>
+<tr><td><code>quid-pro-quo-receipt-checker</code></td><td><a href="/toll-preview/quid-pro-quo-receipt-checker/">Quid pro quo receipt checker</a><span>Check a gala ticket, auction, raffle, sponsorship, membership or premium receipt against the IRS rules: the deductible amount, whether the over-$75 quid pro quo disclosure is required, the token, membership and religious exceptions with each year's limits (2020 to 2027), and your own receipt text checked line by line with corrected wording. Batch check a ticket list with penalty exposure. Prices: The insubstantial benefit limits by year: free. Check one receipt (verdict, deductible amount, disclosure and corrected sentence): free. Event wording (every ticket level's receipt, the invitation line and correction letters, as text and CSV): $2.00 per event; a repeat for the same event is free for 90 days. Batch check (a ticket or auction list, with penalty exposure and a CSV): $0.01 per payment row, at least $0.25 per file. At most $9.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>real-estate-commission-split</code></td><td><a href="/toll-preview/real-estate-commission-split/">Real estate commission split and cap tracker</a><span>What a real estate agent nets on a deal after the referral fee, the royalty, the team's share, the brokerage split up to the cap and the per-deal fees, in the order your plan takes them; a year of deals across anniversary caps (the crossing deal split part at each rate) with cap progress, deals to cap and the 1099 total per calendar year; plans compared at your deal count. Cent-exact arithmetic on your own plan. Prices: One deal, a comparison or a goal on this page: free. Published plan presets and the 1099 thresholds: free. One deal, a comparison or a goal over the API or MCP: $0.002 per call. Year tracker (every deal in date order, cap progress, the 1099 total and a CSV): $3.99 per agent cap year; a repeat for the same agent cap year is free for 12 months.</span></td></tr>
+<tr><td><code>recipe-cost-calculator</code></td><td><a href="/toll-preview/recipe-cost-calculator/">Recipe cost calculator and menu re-coster</a><span>Keep one ingredient price list (pack size, pack price, yield %) and re-cost every recipe and sub-recipe from it: cost per portion, food cost % against the menu price, the price that meets your target food cost, which dishes a supplier price rise pushed over target, and an Excel workbook with live formulas. Also plate cost, menu price, pour cost, cake and bakery, catering per guest and yield calculations, with exact NIST unit conversions and USDA cup weights. Prices: Single calculations on this page: free. Menu price, food cost %, pour, cake, catering, yield or conversion over the API or MCP: $0.002 per call. One recipe costed over the API or MCP: $0.01 per recipe. Menu re-cost (every recipe, the drift since your last prices, the repricing list and CSV): $0.01 per recipe, at least $0.05 per run. Excel workbook of your menu with live formulas: $0.25 per workbook. Sample recipe costing workbook: free. At most $2.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>fba-refund-not-returned</code></td><td><a href="/toll-preview/fba-refund-not-returned/">Refunded but never returned: FBA customer return reimbursement checker</a><span>Upload Amazon's refunds (Date Range Transaction or settlement report), FBA Customer Returns and Reimbursements reports and see which refunded FBA orders were neither returned nor reimbursed, or reimbursed below the refund, each with the claim window from Amazon's help page for the marketplace (US: days 60 to 120 after the refund), the case text and a CSV. Prices: Claim window for refund dates: free. Check (how many refunds are owed, and their total): free. Audit (every order, its claim dates, case text and CSV): $0.25 per order found still owed; you pay only for what is delivered and the rest is refunded at once; each refunded FBA order in the file is reserved first. At most $9.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>rent-increase-cap</code></td><td><a href="/toll-preview/rent-increase-cap/">Rent increase cap calculator and notice</a><span>The most a landlord may raise the rent for a unit on a given effective date (state cap, CPI region or local ordinance), whether a proposed increase is within it, the written notice owed and the last day to serve it, from the official sources with their dates; plus a rent increase notice PDF that refuses an over-cap or late increase. Covered: California, Oregon, Washington, District of Columbia, New York, Maine, Delaware, Virginia, Montgomery County, Maryland; other states are refused. Not legal advice. Prices: Rent increase check on this page: free. Rules lookup: free. Percentage calculator: free. Notice preview (watermarked): free. Rent increase check over the API or MCP: $0.02 per check. Rent increase notice PDF: $2.50 per notice; a repeat for the same unit, tenant and effective date is free for 30 days.</span></td></tr>
+<tr><td><code>late-fee-checker</code></td><td><a href="/toll-preview/late-fee-checker/">Rent late fee checker and late notice</a><span>The most a landlord may lawfully charge as a rent late fee in a state, from which day, and whether a proposed fee (flat, percent or daily) is within the statute, each rule quoted from the statute with its source and reading date; plus a late rent notice PDF with the fee checked. Covered: Arizona, California, Colorado, Connecticut, Delaware, District of Columbia, Hawaii, Iowa, Maine, Maryland, Massachusetts, Minnesota, Nevada, New Jersey, New Mexico, New York, North Carolina, Oregon, Tennessee, Texas, Virginia, Washington, and Chicago's ordinance; other states are refused until their statute is read. Not legal advice. Prices: Late-fee check on this page: free. Rules lookup: free. Notice preview (watermarked): free. Late-fee check over the API or MCP: $0.01 per check. Late rent notice PDF: $1.50 per notice; a repeat for the same tenant and due date is free for 30 days.</span></td></tr>
+<tr><td><code>rolled-up-holiday-pay-calculator</code></td><td><a href="/toll-preview/rolled-up-holiday-pay-calculator/">Rolled-up holiday pay calculator (UK, 12.07%)</a><span>Work out UK rolled-up holiday pay (12.07% of total pay in the pay period, or the enhanced rate for a longer contract) as a separate payslip line, and the holiday hours accrued at 12.07% rounded to the hour, for irregular-hours and part-year workers in Great Britain, one worker at a time or a whole payroll CSV at once. Also the percentage for any entitlement, the eligibility test, the 52-week reference period average and the hours accrued during sick or statutory leave, as GOV.UK sets them out. Prices: One worker, the rate, the 52-week average or the eligibility test on this page: free. One calculation over the API or MCP: $0.005 per call. Payroll CSV (holiday pay column, payslip line and hours for every worker): $0.02 per worker row, at least $0.25 per file; a repeat for the same worker pay period is free for 30 days. At most $9.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>security-deposit-letter</code></td><td><a href="/toll-preview/security-deposit-letter/">Security deposit return deadline and itemized letter</a><span>The exact day a landlord's itemized deposit statement and refund are due, counted from the trigger the state statute names (move-out, end of tenancy, the tenant's demand, abandonment), with business days and holidays where the statute uses them; a check of each deduction and the delivery method against the statute; the statutory penalty for missing it; and a dated letter PDF with a proof record. States covered: California, Texas, Florida, New York, Pennsylvania, Illinois, Ohio, Georgia, North Carolina, Michigan, Virginia, Washington, Arizona. Prices: Due date or check on this page: free. Rules lookup: free. Letter preview (watermarked, no proof record): free. Due date or compliance check over the API or MCP: $0.10 per call. Letter PDF with proof record and calendar file: $4.90 per move-out letter; a repeat for the same move-out is free for 30 days.</span></td></tr>
+<tr><td><code>sitemap-validator</code></td><td><a href="/toll-preview/sitemap-validator/">Sitemap validator</a><span>Check an XML sitemap or sitemap index before Google does: the sitemaps.org schema, the 50,000 URL and 50MB limits, lastmod format and sanity, host and folder scope, image and news tags, robots.txt against every listed URL, and (optionally) each listed URL's status, redirect, noindex and canonical, answered in Search Console's own error names, with a CSV. Prices: One sitemap on this page (an index and up to 10 of its files) with up to 10 URLs checked live: free. Sitemap check: $0.0005 per check for the first 20,000 each calendar month, then $0.0001 per check; you pay only for what is delivered and the rest is refunded at once; a check is one sitemap file read or one listed URL requested live; files and URLs not reached in the call's time, URLs robots.txt blocks, and the sitemap read again for a later batch of live checks are not charged. Pasted sitemap XML, nothing fetched: free. The limits and rules table: free.</span></td></tr>
+<tr><td><code>smtp-bounce-code-classifier</code></td><td><a href="/toll-preview/smtp-bounce-code-classifier/">SMTP bounce classifier</a><span>Classify an SMTP bounce, DSN or Postfix log line as hard, soft, block or policy, with the rule that matched (Gmail, Microsoft and Yahoo published texts, the IANA enhanced status codes, RFC 5321 reply codes), what the code means and whether to suppress the address; batches of up to 500 lines, and free code lookups. Prices: One bounce: $0.0005 per bounce; you pay only for what is delivered and the rest is refunded at once; a line with no status code or known text is free. Batch of up to 500 bounces: $0.0005 per bounce line; you pay only for what is delivered and the rest is refunded at once. Code lookup: free. At most $29.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>spf-lookup-counter</code></td><td><a href="/toll-preview/spf-lookup-counter/">SPF lookup counter</a><span>Count exactly how many of the 10 DNS lookups a domain's SPF record uses under RFC 7208, with every nested include, void lookups, the mx limit and macros, the term that goes over, what a receiver decides for one sending IP, and what-if edits before you publish. Prices: Lookup count for one domain or draft record: $0.002 per check for the first 10,000 each calendar month, then $0.001 per check. Batch of up to 50 domains: $0.002 per domain for the first 10,000 each calendar month, then $0.001 per domain; you pay only for what is delivered and the rest is refunded at once. Macro explanation (no DNS): free.</span></td></tr>
+<tr><td><code>fmla-state-leave-overlay</code></td><td><a href="/toll-preview/fmla-state-leave-overlay/">State family and medical leave overlay</a><span>For one employee's leave in one state (employer size, hire date, hours, reason, start date), lists the state family and medical leave laws that apply alongside the federal FMLA, how each runs with it, and the total weeks of job-protected and state-paid leave, including a birth parent's pregnancy disability followed by bonding. Every state rule is quoted from the state's own site with the date read; states we could not read are named as not covered. Federal eligibility comes from the FMLA eligibility checker. Not legal advice. Prices: State leave overlay on this page: free. State leave overlay over the API or MCP: $0.01 per lookup. Case plan for one employee (designation note and CSV): $1.00 per employee; a repeat for the same employee and state is free for 12 months. Many employees in one call: $0.01 per employee, at least $0.10 per batch. At most $9.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>stats-tables</code></td><td><a href="/toll-preview/stats-tables/">Statistical tables: control chart constants and critical values</a><span>Control chart constants (d2, d3, c4, A2, A3, D3, D4, B3, B4 and more) for any subgroup size from 2 to 100, critical values and p-values for z, t, chi-square and F at any degrees of freedom, control limits, Cp/Cpk/Pp/Ppk, sigma level from DPMO, and OC curves for your own sampling plan, all computed from their definitions and tested against the NIST/SEMATECH e-Handbook. Prices: Every table and calculation on this page: free. Any lookup or calculation over the API or MCP (one value, a row or a whole table): $0.0005 per call. At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>tax-set-aside</code></td><td><a href="/toll-preview/tax-set-aside/">Tax set-aside per payment</a><span>How much of one payment a self-employed person should set aside for tax, given what they have earned so far this year: US self-employment tax, federal brackets with the QBI deduction and state income tax, or UK Income Tax, Class 4 and student loan, split exactly where the payment crosses a bracket or threshold, with every constant cited. Prices: Set-aside for a payment: $0.10 per payment. Percentage only: $0.10 per payment; no dollar amount or breakdown, and open to the free runs signed-out visitors get. Year ledger replay: $0.10 per 25 payments (rounded up). Next due date and safe harbor: free. Rates and thresholds with sources: free. At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>teacher-license-renewal-tracker</code></td><td><a href="/toll-preview/teacher-license-renewal-tracker/">Teacher license renewal hours tracker</a><span>How many professional development hours, credits, CEUs, PDPs or PDUs a teaching license needs to renew, for the states whose own education agency pages we have read: the hours you have (each activity converted into the state's unit), the hours left, the date they are due and the monthly pace, with required topics and caps checked (New York's language acquisition share, the Texas caps, North Carolina literacy credits, Massachusetts PDP areas) and activities outside the cycle flagged; a staff table of expiry dates for HR; and an audit-ready CSV log. Every rule is quoted from the state's site with the date read; other states are listed as not covered. Prices: Rules and your hours left, on this page: free. Rules or hours left over the API or MCP: $0.01 per lookup. Audit export (CSV log and printable summary) for one renewal cycle: $0.99 per renewal cycle; a repeat for the same renewal cycle is free for 72 months. Staff expiry table: $0.05 per educator, at least $0.50 per table. At most $9.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>time-export-to-invoice</code></td><td><a href="/toll-preview/time-export-to-invoice/">Time export to invoice lines</a><span>Turn a Toggl Track, Clockify, Harvest or Everhour CSV export (or any sheet with a date and a duration) into invoice lines grouped by project, task, day, client, person or entry, with your rounding rule applied per entry or per line, a different rate per task, project, tag or client, a retainer block, discount, cap and tax, a reconciliation of exact against billed time (including Clockify's two-decimal invoice method), and a lines CSV and invoice PDF. Prices: Preview on this page (totals, reconciliation and the first lines): free. Preview over the API or MCP: $0.002 per call. Invoice: every line, the lines and entries CSVs and the PDF: $0.40 per invoice; a repeat for the same client and service period is free for 30 days. At most $2.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>tip-pool-calculator</code></td><td><a href="/toll-preview/tip-pool-calculator/">Tip pool calculator</a><span>Split a tip pool by hours, points, hours x points, role percentages or equally, to the cent with shares that add up exactly, work out server tip-outs, and check who may be in the pool: managers, supervisors and owners, back of house with or without a tip credit, card-fee deductions, under 29 CFR 531 and DOL Fact Sheet #15, the state rules read from the state's own site, the UK Tipping Act code or Ontario's ESA guide. Gives a payroll CSV with the IRS tipped occupation code. Prices: Split, tip-out and legality check on this page: free. Tip rules for a state or country: free. Split, tip-out or legality check over the API or MCP: $0.002 per call. Pay-run record (payroll CSV, tip sheet to sign and the legality check): $0.25 per pay run; a repeat for the same pay run is free for 30 days. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>trucker-per-diem</code></td><td><a href="/toll-preview/trucker-per-diem/">Trucker per diem worksheet</a><span>Turn an owner-operator's days on the road into the year's per diem deduction at the IRS transportation-industry rate in force each day ($80 since October 1, 2024; $69 and $66 before), with departure and return days at 3/4, the 80% hours-of-service limit, log checks and a worksheet for the preparer. Prices: Worksheet: $9.00 per driver-year worksheet (PDF and CSV); a repeat for the same driver and tax year costs $0.10 for 15 months. Log preview: $0.02 per log check; totals, monthly table and log checks, no files. Quick total: $0.02 per calculation. Rates lookup: $0.02 per lookup.</span></td></tr>
+<tr><td><code>upwork-fee-calculator</code></td><td><a href="/toll-preview/upwork-fee-calculator/">Upwork fee calculator: what reaches your bank</a><span>What an Upwork or Freelancer.com payment leaves in your bank, in your currency: the service fee (0% to 15% on Upwork), the withdrawal fee, PayPal's, Payoneer's, Wise's or Skydo's published fees and conversion margin, at a dated ECB or US Treasury reference rate. Also the rate to bill to keep a target, the cost of Connects per job won, and fixed fees a year by how often you withdraw. Every fee is quoted from the company's own page with the date read. Prices: Net, rate, Connects and schedule on this page: free. The dated fee tables: free. Net, rate, Connects or schedule over the API or MCP: $0.002 per call. Statement of payments (each one worked out, with totals and a CSV): $0.001 per payment, at least $0.25 per statement. At most $2.49 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>hts-duty-estimator</code></td><td><a href="/toll-preview/hts-duty-estimator/">US import duty estimator by HTS code</a><span>Estimate the US import duty on one SKU or a whole product list from its HTS code, country of origin and value: the base rate from the USITC schedule plus each Section 301 layer by origin, each with its legal source and date, refusing any layer not verified; plus MPF and HMF for a shipment and a check of which products are missing an HTS code, origin or weight. Prices: One SKU estimated on this page: free. Product list check for missing HTS code, origin, weight and value: free. Duty estimate (per SKU row, every layer with its source and date, results CSV): $0.01 per SKU row for the first 2,000 each calendar month, then $0.004 per SKU row, at least 10 x the price per SKU row for each call; you pay only for what is delivered and the rest is refunded at once; rows we refuse or cannot read are refunded. At most $25.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>usps-adjustment-dispute</code></td><td><a href="/toll-preview/usps-adjustment-dispute/">USPS adjustment dispute checker</a><span>For a USPS postage adjustment (Automated Package Verification) on a label bought through eBay, Etsy, Pirate Ship, Click-N-Ship or another PC Postage platform: prices the label, USPS's measurements and your own at USPS Notice 123 commercial prices with the Domestic Mail Manual rules for the ship date (dimensional weight rounded up and divided by 139 since July 12, 2026; cubic tiers; nonstandard and Dimension Noncompliance fees), says whether the charge matches, and gives the last day of the 60-day dispute window. The packet adds the dispute text for USPS's webform and a PDF with the worksheet and your photos. Photos are processed in memory and not kept. Not legal advice; USPS decides. Prices: Adjustment check on this page: free. Dimensional weight, deadline and the rules data: free. Adjustment check over the API or MCP: $0.01 per check. Dispute packet (dispute text and PDF): $0.49 per adjustment; a repeat for the same adjustment is free for 60 days. At most $4.99 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>vat-number-check</code></td><td><a href="/toll-preview/vat-number-check/">VAT number check with receipt</a><span>Check an EU customer's VAT number live with VIES (and GB with HMRC when switched on), get the consultation number when you give your own number, and keep a hashed, signed receipt of the answer as JSON and PDF. Only a valid or invalid answer is charged. Prices: Check: $0.0025 per valid or invalid answer; you pay only for what is delivered and the rest is refunded at once; no answer, a refused requester number or a blocked number costs nothing. Wrong shape: free; a number with the wrong shape, or one this tool cannot check, is answered without calling VIES or HMRC. Receipt: free; verify a receipt or print its PDF again. Formats and status: free; format checks, the VIES format table, VIES availability and the public signing key.</span></td></tr>
+<tr><td><code>garnishment-calculator</code></td><td><a href="/toll-preview/garnishment-calculator/">Wage garnishment calculator for employers</a><span>For one paycheck: disposable earnings from the pay stub, the federal CCPA limit and the work state's own limit (from its statute, for the states covered), the lesser of the two, what is left for a creditor after child support and earlier orders, support and federal-debt limits, the IRS levy exempt amount from Publication 1494, and the numbers for the answer form. Prices: One paycheck or levy on this page: free. One paycheck or levy over the API or MCP: $0.01 per paycheck. Several paychecks in one call: $0.01 per paycheck; you pay only for what is delivered and the rest is refunded at once. At most $9.90 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>warn-act-checker</code></td><td><a href="/toll-preview/warn-act-checker/">WARN Act checker</a><span>Check a layoff site by site against the federal WARN Act (20 CFR Part 639) and the state laws of California, New York, New Jersey, Illinois, Iowa, Maine, Maryland, Delaware, Washington and Tennessee: covered employer, plant closing or mass layoff over rolling 30-day and 90-day windows, the notice days owed, who must get the notice and the last day to send it for each separation date. Takes site counts or a whole employee list, and works out the back pay and New Jersey or Maine severance if notice is short. Prices: Site check and exposure on this page: free. Site check or exposure over the API or MCP: $0.01 per call. Employee list for one layoff plan (each employee's class and notice dates under every law, as CSV): $0.05 per affected employee, at least $2.00 per plan; a repeat for the same layoff plan is free for 90 days, and a larger one pays only the difference. At most $49.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>xrechnung-viewer</code></td><td><a href="/toll-preview/xrechnung-viewer/">XRechnung and ZUGFeRD viewer and validator</a><span>Open an XRechnung (UBL or CII XML) or a ZUGFeRD / Factur-X PDF as a readable invoice, check it against the official KoSIT and EN 16931 schematron rules (KoSIT configuration 2026-08-31) with each error code explained, and get a readable PDF with the validation report. Prices: Read the file (format, profile, the invoice as business terms): free. Explain a rule id: free. Validation against the official rules: $0.01 per file; a repeat for the same file is free for 30 days, and a larger one pays only the difference. Readable PDF with the validation report: $0.03 per file; a repeat for the same file is free for 30 days, and a larger one pays only the difference; includes the validation.</span></td></tr>
+<tr><td><code>year-end-giving-statements</code></td><td><a href="/toll-preview/year-end-giving-statements/">Year-end giving statements</a><span>Turn a year of gift rows (CSV or a list) into one contribution statement PDF per donor or household: every gift, the total, the IRS Publication 1771 goods-or-services sentence (or the intangible religious benefits sentence for a church), good faith estimates and the $75 quid pro quo disclosure where a gift bought something, gifts of property described without a value, plus a print file, a summary CSV and an email list. Prices: The IRS rules, with sources: free. Preview (every donor's totals and one sample statement): free. Statements (PDF per donor, print file, summary and email CSVs): $0.10 per donor statement; a repeat for the same donor statement is free for 180 days. At most $19.00 a calendar month for this tool; after that it is free until the month ends.</span></td></tr>
+<tr><td><code>zip-to-county</code></td><td><a href="/toll-preview/zip-to-county/">ZIP code and UK postcode to county lookup</a><span>Look up US ZIP codes and UK postcodes, one or 10,000 at a time: every county a ZIP touches with its county FIPS, share of the land, metro area and Census region (Census 2020 ZCTA file, OMB 2023), or a postcode's local authority, county, region and nation (ONS Postcode Directory), each answer with its source and date. Prices: One ZIP code or postcode, or one county's ZIP list, on this page: free. ZIP codes and postcodes (lists, REST and MCP): $0.0005 per code found for the first 100,000 each calendar month, then $0.0002 per code found; you pay only for what is delivered and the rest is refunded at once; codes not found are not charged. A county's ZIP list over REST or MCP: $0.001 per county.</span></td></tr>
+<tr><td><code>quote_price</code></td><td><b>Quote a price</b><span>Free. Says exactly what calling a tool with these arguments would cost this account now, without running or charging it.</span></td></tr>
   </tbody>
 </table></div>
 <div class="gcard quote-card hue-agent rv">
@@ -314,569 +276,49 @@
 }</code></pre>
 </div></div>
 <div><div class="code solo">
-  <div class="resp-h"><span>The answer, first tool shown</span></div>
+  <div class="resp-h"><span>The answer, one tool shown</span></div>
   <pre><code>{
   &quot;jsonrpc&quot;: &quot;2.0&quot;,
   &quot;id&quot;: 2,
   &quot;result&quot;: {
     &quot;tools&quot;: [
       {
-        &quot;name&quot;: &quot;1099-threshold&quot;,
-        &quot;title&quot;: &quot;1099 threshold tracker&quot;,
-        &quot;description&quot;: &quot;Check which payees need a Form 1099-NEC or 1099-MISC for a payment year, in which box and why: the $2,000 line for 2026 payments, $600 for 2025, royalties at $10 and attorney gross proceeds at $600, with the corporation, card and merchandise exceptions, backup withholding, payees merged by TIN, due dates and an IRIS upload file. Prices: Year-end scan: $0.10 per payee-year for the first 500 each payment year, then $0.05 per payee-year; a repeat for the same payee-year is free; the IRIS upload file and the verdict CSV are included. Single-payee check: free. Lines, due dates, penalties, state rules and the 2027 projection: free.&quot;,
+        &quot;name&quot;: &quot;fx-on-date&quot;,
+        &quot;title&quot;: &quot;Exchange rate on a date&quot;,
+        &quot;description&quot;: &quot;The official rate for a currency pair on a date, with the date or period actually used. By default the ECB euro reference rate (the latest fixing in the 7 days up to the date, and which); or, with source, the US Treasury reporting rate, the IRS yearly average or the HMRC monthly rate, each named with the publication it came from. Costs $0.001 per call.&quot;,
         &quot;inputSchema&quot;: {
           &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
-          &quot;oneOf&quot;: [
-            {
-              &quot;type&quot;: &quot;object&quot;,
-              &quot;properties&quot;: {
-                &quot;op&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;const&quot;: &quot;scan&quot;
-                },
-                &quot;paymentYear&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: -9007199254740991,
-                  &quot;maximum&quot;: 9007199254740991
-                },
-                &quot;payments&quot;: {
-                  &quot;minItems&quot;: 1,
-                  &quot;maxItems&quot;: 5000,
-                  &quot;type&quot;: &quot;array&quot;,
-                  &quot;items&quot;: {
-                    &quot;type&quot;: &quot;object&quot;,
-                    &quot;properties&quot;: {
-                      &quot;payee&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;minLength&quot;: 1,
-                        &quot;maxLength&quot;: 120
-                      },
-                      &quot;tin&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;maxLength&quot;: 20
-                      },
-                      &quot;date&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;pattern&quot;: &quot;^\\d{4}-\\d{2}-\\d{2}$&quot;
-                      },
-                      &quot;amount&quot;: {
-                        &quot;type&quot;: &quot;number&quot;
-                      },
-                      &quot;type&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;enum&quot;: [
-                          &quot;services&quot;,
-                          &quot;legal-fees&quot;,
-                          &quot;rents&quot;,
-                          &quot;rent-to-agent&quot;,
-                          &quot;royalties&quot;,
-                          &quot;other-income&quot;,
-                          &quot;fishing-boat-proceeds&quot;,
-                          &quot;medical&quot;,
-                          &quot;direct-sales&quot;,
-                          &quot;substitute-payments&quot;,
-                          &quot;crop-insurance&quot;,
-                          &quot;attorney-gross-proceeds&quot;,
-                          &quot;fish-for-resale&quot;,
-                          &quot;section-409a-deferrals&quot;,
-                          &quot;nqdc&quot;,
-                          &quot;golden-parachute&quot;,
-                          &quot;merchandise&quot;,
-                          &quot;wages&quot;,
-                          &quot;personal&quot;
-                        ]
-                      },
-                      &quot;method&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;enum&quot;: [
-                          &quot;check&quot;,
-                          &quot;ach&quot;,
-                          &quot;wire&quot;,
-                          &quot;cash&quot;,
-                          &quot;other&quot;,
-                          &quot;card&quot;,
-                          &quot;payment-app&quot;
-                        ]
-                      },
-                      &quot;payeeType&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;enum&quot;: [
-                          &quot;individual&quot;,
-                          &quot;single-member-llc&quot;,
-                          &quot;partnership&quot;,
-                          &quot;c-corporation&quot;,
-                          &quot;s-corporation&quot;,
-                          &quot;estate&quot;,
-                          &quot;tax-exempt&quot;,
-                          &quot;government&quot;,
-                          &quot;foreign&quot;,
-                          &quot;unknown&quot;
-                        ]
-                      },
-                      &quot;state&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;pattern&quot;: &quot;^[A-Z]{2}$&quot;
-                      },
-                      &quot;withheld&quot;: {
-                        &quot;type&quot;: &quot;number&quot;
-                      },
-                      &quot;address&quot;: {
-                        &quot;type&quot;: &quot;object&quot;,
-                        &quot;properties&quot;: {
-                          &quot;address1&quot;: {
-                            &quot;type&quot;: &quot;string&quot;,
-                            &quot;maxLength&quot;: 80
-                          },
-                          &quot;address2&quot;: {
-                            &quot;type&quot;: &quot;string&quot;,
-                            &quot;maxLength&quot;: 80
-                          },
-                          &quot;city&quot;: {
-                            &quot;type&quot;: &quot;string&quot;,
-                            &quot;maxLength&quot;: 60
-                          },
-                          &quot;zip&quot;: {
-                            &quot;type&quot;: &quot;string&quot;,
-                            &quot;maxLength&quot;: 12
-                          }
-                        },
-                        &quot;additionalProperties&quot;: false
-                      }
-                    },
-                    &quot;required&quot;: [
-                      &quot;payee&quot;,
-                      &quot;amount&quot;
-                    ],
-                    &quot;additionalProperties&quot;: false
-                  }
-                },
-                &quot;csv&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;maxLength&quot;: 95000
-                },
-                &quot;columns&quot;: {
-                  &quot;type&quot;: &quot;object&quot;,
-                  &quot;properties&quot;: {
-                    &quot;payee&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;tin&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;date&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;amount&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;type&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;method&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;payeeType&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;state&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;withheld&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;address1&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;address2&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;city&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;zip&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    }
-                  },
-                  &quot;additionalProperties&quot;: false
-                },
-                &quot;defaults&quot;: {
-                  &quot;type&quot;: &quot;object&quot;,
-                  &quot;properties&quot;: {
-                    &quot;type&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;enum&quot;: [
-                        &quot;services&quot;,
-                        &quot;legal-fees&quot;,
-                        &quot;rents&quot;,
-                        &quot;rent-to-agent&quot;,
-                        &quot;royalties&quot;,
-                        &quot;other-income&quot;,
-                        &quot;fishing-boat-proceeds&quot;,
-                        &quot;medical&quot;,
-                        &quot;direct-sales&quot;,
-                        &quot;substitute-payments&quot;,
-                        &quot;crop-insurance&quot;,
-                        &quot;attorney-gross-proceeds&quot;,
-                        &quot;fish-for-resale&quot;,
-                        &quot;section-409a-deferrals&quot;,
-                        &quot;nqdc&quot;,
-                        &quot;golden-parachute&quot;,
-                        &quot;merchandise&quot;,
-                        &quot;wages&quot;,
-                        &quot;personal&quot;
-                      ]
-                    },
-                    &quot;method&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;enum&quot;: [
-                        &quot;check&quot;,
-                        &quot;ach&quot;,
-                        &quot;wire&quot;,
-                        &quot;cash&quot;,
-                        &quot;other&quot;,
-                        &quot;card&quot;,
-                        &quot;payment-app&quot;
-                      ]
-                    },
-                    &quot;payeeType&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;enum&quot;: [
-                        &quot;individual&quot;,
-                        &quot;single-member-llc&quot;,
-                        &quot;partnership&quot;,
-                        &quot;c-corporation&quot;,
-                        &quot;s-corporation&quot;,
-                        &quot;estate&quot;,
-                        &quot;tax-exempt&quot;,
-                        &quot;government&quot;,
-                        &quot;foreign&quot;,
-                        &quot;unknown&quot;
-                      ]
-                    },
-                    &quot;state&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;pattern&quot;: &quot;^[A-Z]{2}$&quot;
-                    }
-                  },
-                  &quot;additionalProperties&quot;: false
-                },
-                &quot;payer&quot;: {
-                  &quot;type&quot;: &quot;object&quot;,
-                  &quot;properties&quot;: {
-                    &quot;name&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;tin&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 20
-                    },
-                    &quot;nameType&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;enum&quot;: [
-                        &quot;B&quot;,
-                        &quot;I&quot;
-                      ]
-                    },
-                    &quot;address1&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;address2&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 80
-                    },
-                    &quot;city&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 60
-                    },
-                    &quot;state&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;pattern&quot;: &quot;^[A-Z]{2}$&quot;
-                    },
-                    &quot;zip&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 12
-                    },
-                    &quot;phone&quot;: {
-                      &quot;type&quot;: &quot;string&quot;,
-                      &quot;maxLength&quot;: 20
-                    },
-                    &quot;federalExecutiveAgency&quot;: {
-                      &quot;type&quot;: &quot;boolean&quot;
-                    }
-                  },
-                  &quot;additionalProperties&quot;: false
-                },
-                &quot;payees&quot;: {
-                  &quot;maxItems&quot;: 5000,
-                  &quot;type&quot;: &quot;array&quot;,
-                  &quot;items&quot;: {
-                    &quot;type&quot;: &quot;object&quot;,
-                    &quot;properties&quot;: {
-                      &quot;name&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;maxLength&quot;: 120
-                      },
-                      &quot;tin&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;maxLength&quot;: 20
-                      },
-                      &quot;nameType&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;enum&quot;: [
-                          &quot;B&quot;,
-                          &quot;I&quot;
-                        ]
-                      },
-                      &quot;address1&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;maxLength&quot;: 80
-                      },
-                      &quot;address2&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;maxLength&quot;: 80
-                      },
-                      &quot;city&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;maxLength&quot;: 60
-                      },
-                      &quot;state&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;pattern&quot;: &quot;^[A-Z]{2}$&quot;
-                      },
-                      &quot;zip&quot;: {
-                        &quot;type&quot;: &quot;string&quot;,
-                        &quot;maxLength&quot;: 12
-                      }
-                    },
-                    &quot;additionalProperties&quot;: false
-                  }
-                },
-                &quot;otherInformationReturns&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: 0,
-                  &quot;maximum&quot;: 1000000
-                },
-                &quot;exports&quot;: {
-                  &quot;maxItems&quot;: 2,
-                  &quot;type&quot;: &quot;array&quot;,
-                  &quot;items&quot;: {
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;enum&quot;: [
-                      &quot;csv&quot;,
-                      &quot;iris&quot;
-                    ]
-                  }
-                }
-              },
-              &quot;required&quot;: [
-                &quot;op&quot;,
-                &quot;paymentYear&quot;
-              ],
-              &quot;additionalProperties&quot;: false
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;properties&quot;: {
+            &quot;base&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;pattern&quot;: &quot;^[A-Z]{3}$&quot;
             },
-            {
-              &quot;type&quot;: &quot;object&quot;,
-              &quot;properties&quot;: {
-                &quot;op&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;const&quot;: &quot;check&quot;
-                },
-                &quot;paymentYear&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: -9007199254740991,
-                  &quot;maximum&quot;: 9007199254740991
-                },
-                &quot;amount&quot;: {
-                  &quot;type&quot;: &quot;number&quot;
-                },
-                &quot;paymentType&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;enum&quot;: [
-                    &quot;services&quot;,
-                    &quot;legal-fees&quot;,
-                    &quot;rents&quot;,
-                    &quot;rent-to-agent&quot;,
-                    &quot;royalties&quot;,
-                    &quot;other-income&quot;,
-                    &quot;fishing-boat-proceeds&quot;,
-                    &quot;medical&quot;,
-                    &quot;direct-sales&quot;,
-                    &quot;substitute-payments&quot;,
-                    &quot;crop-insurance&quot;,
-                    &quot;attorney-gross-proceeds&quot;,
-                    &quot;fish-for-resale&quot;,
-                    &quot;section-409a-deferrals&quot;,
-                    &quot;nqdc&quot;,
-                    &quot;golden-parachute&quot;,
-                    &quot;merchandise&quot;,
-                    &quot;wages&quot;,
-                    &quot;personal&quot;
-                  ]
-                },
-                &quot;payeeType&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;enum&quot;: [
-                    &quot;individual&quot;,
-                    &quot;single-member-llc&quot;,
-                    &quot;partnership&quot;,
-                    &quot;c-corporation&quot;,
-                    &quot;s-corporation&quot;,
-                    &quot;estate&quot;,
-                    &quot;tax-exempt&quot;,
-                    &quot;government&quot;,
-                    &quot;foreign&quot;,
-                    &quot;unknown&quot;
-                  ]
-                },
-                &quot;method&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;enum&quot;: [
-                    &quot;check&quot;,
-                    &quot;ach&quot;,
-                    &quot;wire&quot;,
-                    &quot;cash&quot;,
-                    &quot;other&quot;,
-                    &quot;card&quot;,
-                    &quot;payment-app&quot;
-                  ]
-                },
-                &quot;withheld&quot;: {
-                  &quot;type&quot;: &quot;number&quot;
-                },
-                &quot;state&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;pattern&quot;: &quot;^[A-Z]{2}$&quot;
-                },
-                &quot;federalExecutiveAgency&quot;: {
-                  &quot;type&quot;: &quot;boolean&quot;
-                }
-              },
-              &quot;required&quot;: [
-                &quot;op&quot;,
-                &quot;paymentYear&quot;,
-                &quot;amount&quot;
-              ],
-              &quot;additionalProperties&quot;: false
+            &quot;quote&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;pattern&quot;: &quot;^[A-Z]{3}$&quot;
             },
-            {
-              &quot;type&quot;: &quot;object&quot;,
-              &quot;properties&quot;: {
-                &quot;op&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;const&quot;: &quot;thresholds&quot;
-                },
-                &quot;paymentYear&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: -9007199254740991,
-                  &quot;maximum&quot;: 9007199254740991
-                }
-              },
-              &quot;required&quot;: [
-                &quot;op&quot;,
-                &quot;paymentYear&quot;
-              ],
-              &quot;additionalProperties&quot;: false
+            &quot;date&quot;: {
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;pattern&quot;: &quot;^\\d{4}-\\d{2}-\\d{2}$&quot;
             },
-            {
-              &quot;type&quot;: &quot;object&quot;,
-              &quot;properties&quot;: {
-                &quot;op&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;const&quot;: &quot;projection&quot;
-                },
-                &quot;paymentYear&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: -9007199254740991,
-                  &quot;maximum&quot;: 9007199254740991
-                }
-              },
-              &quot;required&quot;: [
-                &quot;op&quot;,
-                &quot;paymentYear&quot;
-              ],
-              &quot;additionalProperties&quot;: false
-            },
-            {
-              &quot;type&quot;: &quot;object&quot;,
-              &quot;properties&quot;: {
-                &quot;op&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;const&quot;: &quot;penalty&quot;
-                },
-                &quot;paymentYear&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: -9007199254740991,
-                  &quot;maximum&quot;: 9007199254740991
-                },
-                &quot;forms&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: 0,
-                  &quot;maximum&quot;: 10000000
-                },
-                &quot;smallBusiness&quot;: {
-                  &quot;type&quot;: &quot;boolean&quot;
-                }
-              },
-              &quot;required&quot;: [
-                &quot;op&quot;,
-                &quot;paymentYear&quot;,
-                &quot;forms&quot;
-              ],
-              &quot;additionalProperties&quot;: false
-            },
-            {
-              &quot;type&quot;: &quot;object&quot;,
-              &quot;properties&quot;: {
-                &quot;op&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;const&quot;: &quot;state&quot;
-                },
-                &quot;state&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;pattern&quot;: &quot;^[A-Z]{2}$&quot;
-                },
-                &quot;paymentYear&quot;: {
-                  &quot;type&quot;: &quot;integer&quot;,
-                  &quot;minimum&quot;: -9007199254740991,
-                  &quot;maximum&quot;: 9007199254740991
-                }
-              },
-              &quot;required&quot;: [
-                &quot;op&quot;,
-                &quot;state&quot;,
-                &quot;paymentYear&quot;
-              ],
-              &quot;additionalProperties&quot;: false
-            },
-            {
-              &quot;type&quot;: &quot;object&quot;,
-              &quot;properties&quot;: {
-                &quot;op&quot;: {
-                  &quot;type&quot;: &quot;string&quot;,
-                  &quot;const&quot;: &quot;rules&quot;
-                }
-              },
-              &quot;required&quot;: [
-                &quot;op&quot;
-              ],
-              &quot;additionalProperties&quot;: false
+            &quot;source&quot;: {
+              &quot;default&quot;: &quot;ecb&quot;,
+              &quot;type&quot;: &quot;string&quot;,
+              &quot;enum&quot;: [
+                &quot;ecb&quot;,
+                &quot;treasury&quot;,
+                &quot;irs&quot;,
+                &quot;hmrc&quot;
+              ]
             }
-          ]
+          },
+          &quot;required&quot;: [
+            &quot;base&quot;,
+            &quot;quote&quot;,
+            &quot;date&quot;
+          ],
+          &quot;additionalProperties&quot;: false
         },
         &quot;_meta&quot;: {
           &quot;securitySchemes&quot;: [
@@ -1083,6 +525,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

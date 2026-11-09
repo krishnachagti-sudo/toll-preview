@@ -1,0 +1,52 @@
+state,name,status,weekly_limit_1000,biweekly_limit_2000,federal_weekly_limit_1000,citation,statute_url,checked_on
+AL,Alabama,not-covered,,,250.00,,,2026-11-08
+AK,Alaska,not-covered,,,250.00,,,2026-11-08
+AZ,Arizona,covered,,,250.00,A.R.S. 33-1131,https://www.azleg.gov/ars/33/01131.htm,2026-11-08
+AR,Arkansas,not-covered,,,250.00,,,2026-11-08
+CA,California,covered,75.52,151.04,250.00,"Cal. Code Civ. Proc. 706.050, as stated on Judicial Council form WG-002 (Rev. January 1, 2026)",https://www.courts.ca.gov/documents/wg002.pdf,2026-11-08
+CO,Colorado,not-covered,,,250.00,,,2026-11-08
+CT,Connecticut,not-covered,,,250.00,,,2026-11-08
+DE,Delaware,covered,187.50,375.00,250.00,10 Del. C. 4913,https://delcode.delaware.gov/title10/c049/sc01/index.html,2026-11-08
+DC,District of Columbia,covered,66.00,132.00,250.00,D.C. Code 16-572,https://code.dccouncil.gov/us/dc/council/code/sections/16-572,2026-11-08
+FL,Florida,covered,250.00,500.00,250.00,Fla. Stat. 222.11,https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0200-0299/0222/Sections/0222.11.html,2026-11-08
+GA,Georgia,not-covered,,,250.00,,,2026-11-08
+HI,Hawaii,not-covered,,,250.00,,,2026-11-08
+ID,Idaho,not-covered,,,250.00,,,2026-11-08
+IL,Illinois,not-covered,,,250.00,,,2026-11-08
+IN,Indiana,not-covered,,,250.00,,,2026-11-08
+IA,Iowa,covered,250.00,500.00,250.00,Iowa Code 642.21,https://www.legis.iowa.gov/docs/code/642.21.pdf,2026-11-08
+KS,Kansas,covered,250.00,500.00,250.00,K.S.A. 60-2310,https://www.ksrevisor.gov/statutes/chapters/ch60/060_023_0010.html,2026-11-08
+KY,Kentucky,covered,250.00,500.00,250.00,KRS 427.010,https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=46624,2026-11-08
+LA,Louisiana,not-covered,,,250.00,,,2026-11-08
+ME,Maine,covered,250.00,500.00,250.00,14 M.R.S. 3126-A(3) and 3127-B,https://legislature.maine.gov/statutes/14/title14sec3126-A.html,2026-11-08
+MD,Maryland,covered,250.00,500.00,250.00,"Md. Code, Com. Law 15-601.1",https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gcl&section=15-601.1,2026-11-08
+MA,Massachusetts,not-covered,,,250.00,,,2026-11-08
+MI,Michigan,not-covered,,,250.00,,,2026-11-08
+MN,Minnesota,covered,250.00,500.00,250.00,Minn. Stat. 571.922,https://www.revisor.mn.gov/statutes/cite/571.922,2026-11-08
+MS,Mississippi,not-covered,,,250.00,,,2026-11-08
+MO,Missouri,not-covered,,,250.00,,,2026-11-08
+MT,Montana,covered,250.00,500.00,250.00,Mont. Code Ann. 25-13-614,https://archive.legmt.gov/bills/mca/title_0250/chapter_0130/part_0060/section_0140/0250-0130-0060-0140.html,2026-11-08
+NE,Nebraska,not-covered,,,250.00,,,2026-11-08
+NV,Nevada,not-covered,,,250.00,,,2026-11-08
+NH,New Hampshire,not-covered,,,250.00,,,2026-11-08
+NJ,New Jersey,not-covered,,,250.00,,,2026-11-08
+NM,New Mexico,not-covered,,,250.00,,,2026-11-08
+NY,New York,covered,125.00,250.00,250.00,N.Y. CPLR 5231(b),https://www.nysenate.gov/legislation/laws/CVP/5231,2026-11-08
+NC,North Carolina,not-covered,,,250.00,,,2026-11-08
+ND,North Dakota,covered,250.00,500.00,250.00,N.D. Cent. Code 32-09.1-03,https://ndlegis.gov/cencode/t32c09-1.pdf,2026-11-08
+OH,Ohio,not-covered,,,250.00,,,2026-11-08
+OK,Oklahoma,not-covered,,,250.00,,,2026-11-08
+OR,Oregon,not-covered,,,250.00,,,2026-11-08
+PA,Pennsylvania,covered,100.00,200.00,250.00,42 Pa.C.S. 8127,https://www.palegis.us/statutes/consolidated/view-statute?txtType=PDF&ttl=42&div=00.&chpt=081.&sctn=027.&subsctn=000.,2026-11-08
+RI,Rhode Island,not-covered,,,250.00,,,2026-11-08
+SC,South Carolina,not-covered,,,250.00,,,2026-11-08
+SD,South Dakota,covered,200.00,400.00,250.00,S.D. Codified Laws 21-18-51,https://sdlegislature.gov/api/Statutes/21-18-51.html,2026-11-08
+TN,Tennessee,not-covered,,,250.00,,,2026-11-08
+TX,Texas,not-covered,,,250.00,,,2026-11-08
+UT,Utah,not-covered,,,250.00,,,2026-11-08
+VT,Vermont,not-covered,,,250.00,,,2026-11-08
+VA,Virginia,covered,250.00,500.00,250.00,Va. Code 34-29,https://law.lis.virginia.gov/vacode/title34/chapter3/section34-29/,2026-11-08
+WA,Washington,covered,200.00,400.00,250.00,RCW 6.27.150,https://app.leg.wa.gov/RCW/default.aspx?cite=6.27.150,2026-11-08
+WV,West Virginia,not-covered,,,250.00,,,2026-11-08
+WI,Wisconsin,not-covered,,,250.00,,,2026-11-08
+WY,Wyoming,not-covered,,,250.00,,,2026-11-08

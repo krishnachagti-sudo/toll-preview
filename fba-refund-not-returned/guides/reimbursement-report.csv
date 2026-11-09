@@ -1,0 +1,20 @@
+download_header,online_header,amazon_description,used_for
+approval-date,Date,The date the reimbursement was approved.,Starts the 60 days to dispute the value
+reimbursement-id,Reimbursement ID,The unique identifier for this reimbursement. Each reimbursement may include multiple line items.,Named in the dispute text
+case-id,Case ID,The unique identifier assigned to the case when you request a reimbursement.,Shown with the order
+amazon-order-id,Amazon Order ID,The unique identifier assigned to the customer order. This field is empty if the reimbursement is not associated with an order.,The join to the refund
+reason,Reason,"The reason for the reimbursement (for example, Damaged: Warehouse).",Shown as written
+Sku,Merchant SKU,The merchant SKU you assigned to your product.,Kept as written
+fnsku,FNSKU,The fulfillment network SKU Fulfillment by Amazon assigned to your product.,Kept as written
+asin,ASIN,The Amazon Standard Identification Number.,Kept as written
+product-name,Title,The name of your product.,Kept as written
+condition,Condition,"The condition of your item (for example, New).",Kept as written
+quantity,Quantity,The total number of units reimbursed for this line item.,Kept as written
+currency-unit,(download only),The currency for the applicable store.,The currency of the amounts
+amount-per-unit,Amount Per Unit,The per-unit reimbursement amount for this line item.,Kept as written
+quantity-reimbursed-cash,Quantity Reimbursed [Cash],The total number of units reimbursed with cash.,Units paid in cash
+amount-total,Amount Total,The total amount of the cash reimbursement for this line item.,"Cash paid, compared with the refund"
+quantity-reimbursed-inventory,Quantity Reimbursed [Inventory],The number of units reimbursed with inventory.,Units paid back in stock
+quantity-reimbursed-total,Quantity Reimbursed [Total],Cash plus inventory units reimbursed.,Units counted as paid
+original-reimbursement-id,Original Reimbursement ID,"The original reimbursement being adjusted, if present.",Marks a reversal
+original-reimbursement-type,Original Reimbursement Type,"The type of the original reimbursement being adjusted, if present.",Kept as written

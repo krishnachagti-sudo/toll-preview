@@ -1,0 +1,64 @@
+code,kind,meaning,source,verdict,provider_texts,provider_verdicts
+421,reply,"<domain> Service not available, closing transmission channel",RFC 5321,soft,20,soft block policy
+432,reply,A password transition is needed,RFC 4954,policy,1,soft
+450,reply,"Requested mail action not taken: mailbox unavailable (e.g., mailbox busy or temporarily blocked for policy reasons)",RFC 5321,soft,4,soft policy
+451,reply,Requested action aborted: local error in processing,RFC 5321,soft,7,soft policy
+452,reply,Requested action not taken: insufficient system storage,RFC 5321,soft,2,soft policy
+454,reply,Temporary authentication failure,RFC 4954,soft,2,policy soft
+455,reply,Server unable to accommodate parameters,RFC 5321,soft,0,
+500,reply,"Syntax error, command unrecognized",RFC 5321,policy,0,
+501,reply,Syntax error in parameters or arguments,RFC 5321,policy,2,policy
+502,reply,Command not implemented,RFC 5321,policy,0,
+503,reply,Bad sequence of commands,RFC 5321,policy,1,policy
+504,reply,Command parameter not implemented,RFC 5321,policy,1,policy
+521,reply,The host does not accept mail under any circumstances (used at connection opening),RFC 7504,hard,0,
+530,reply,Authentication required,RFC 4954,policy,1,policy
+534,reply,Authentication mechanism is too weak,RFC 4954,policy,2,policy
+535,reply,Authentication credentials invalid,RFC 4954,policy,2,policy
+538,reply,Encryption required for requested authentication mechanism,RFC 4954,policy,0,
+550,reply,"Requested action not taken: mailbox unavailable (e.g., mailbox not found, no access, or command rejected for policy reasons)",RFC 5321,hard,35,hard soft policy block
+551,reply,User not local; please try <forward-path>,RFC 5321,hard,0,
+552,reply,Requested mail action aborted: exceeded storage allocation,RFC 5321,soft,3,hard policy block
+553,reply,"Requested action not taken: mailbox name not allowed (e.g., mailbox syntax incorrect)",RFC 5321,hard,3,hard policy
+554,reply,"Transaction failed (or, at connection opening, ""No SMTP service here"")",RFC 5321,block,4,policy hard
+555,reply,MAIL FROM/RCPT TO parameters not recognized or not implemented,RFC 5321,policy,0,
+556,reply,"The domain does not accept mail (reported by a relay without connecting, for example after finding a null MX)",RFC 7504,hard,0,
+550 5.1.1,reply+enhanced,Bad destination mailbox address,IANA,hard,2,hard
+550 5.7.1,reply+enhanced,"Delivery not authorized, message refused",IANA,block,12,policy block
+554 5.7.1,reply+enhanced,"Delivery not authorized, message refused",IANA,block,3,policy
+421 4.7.0,reply+enhanced,Other or undefined security status,IANA,block,8,soft block policy
+550 5.4.1,reply+enhanced,No answer from host,IANA,soft,1,hard
+452 4.2.2,reply+enhanced,Mailbox full,IANA,soft,1,soft
+552 5.2.2,reply+enhanced,Mailbox full,IANA,soft,2,hard policy
+550 5.2.1,reply+enhanced,"Mailbox disabled, not accepting messages",IANA,hard,2,hard soft
+553 5.1.2,reply+enhanced,Bad destination system address,IANA,hard,1,hard
+553 5.1.3,reply+enhanced,Bad destination mailbox address syntax,IANA,hard,1,hard
+450 4.2.1,reply+enhanced,"Mailbox disabled, not accepting messages",IANA,soft,2,soft policy
+451 4.3.0,reply+enhanced,Other or undefined mail system status,IANA,soft,2,soft policy
+421 4.3.0,reply+enhanced,Other or undefined mail system status,IANA,soft,1,soft
+451 4.4.2,reply+enhanced,Bad connection,IANA,soft,1,soft
+421 4.4.5,reply+enhanced,Mail system congestion,IANA,soft,1,soft
+452 4.5.3,reply+enhanced,Too many recipients,IANA,policy,2,policy
+552 5.3.4,reply+enhanced,Message too big for system,IANA,policy,1,policy
+550 5.4.5,reply+enhanced,Mail system congestion,IANA,soft,1,policy
+554 5.4.6,reply+enhanced,Routing loop detected,IANA,policy,2,policy
+503 5.5.1,reply+enhanced,Invalid command,IANA,policy,1,policy
+501 5.5.4,reply+enhanced,Invalid command arguments,IANA,policy,1,policy
+554 5.6.0,reply+enhanced,Other or undefined media error,IANA,policy,1,policy
+550 5.7.0,reply+enhanced,Other or undefined security status,IANA,block,3,policy block
+530 5.7.0,reply+enhanced,Other or undefined security status,IANA,policy,1,policy
+552 5.7.0,reply+enhanced,Other or undefined security status,IANA,block,1,block
+550 5.7.23,reply+enhanced,SPF validation failed,IANA,policy,1,policy
+550 5.7.24,reply+enhanced,SPF validation error,IANA,policy,1,policy
+550 5.7.25,reply+enhanced,Reverse DNS validation failed,IANA,policy,2,policy
+550 5.7.27,reply+enhanced,Sender address has null MX,IANA,policy,1,policy
+550 5.7.28,reply+enhanced,Mail flood detected,IANA,block,1,block
+550 5.7.29,reply+enhanced,ARC validation failure,IANA,policy,1,policy
+550 5.7.30,reply+enhanced,REQUIRETLS support required,IANA,policy,1,policy
+535 5.7.8,reply+enhanced,Authentication credentials invalid,IANA,policy,0,
+550 5.1.0,reply+enhanced,Other address status,IANA,hard,1,hard
+550 5.4.4,reply+enhanced,Unable to route,IANA,hard,0,
+553 5.1.7,reply+enhanced,Bad sender's mailbox address syntax,IANA,policy,1,policy
+556 5.1.10,reply+enhanced,Recipient address has null MX,IANA,hard,1,hard
+550 5.5.3,reply+enhanced,Too many recipients,IANA,policy,1,policy
+451 4.7.24,reply+enhanced,SPF validation error,IANA,policy,1,policy

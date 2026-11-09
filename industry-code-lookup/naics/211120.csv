@@ -1,0 +1,27 @@
+field,value
+code,211120
+title,Crude Petroleum Extraction
+level 2: 21,"Mining, Quarrying, and Oil and Gas Extraction"
+level 3: 211,Oil and Gas Extraction
+level 4: 2111,Oil and Gas Extraction
+level 5: 21112,Crude Petroleum Extraction
+description,"This industry comprises establishments primarily engaged in (1) the exploration, development, and/or the production of petroleum from wells in which the hydrocarbons will initially flow or can be produced using normal or enhanced drilling and extraction techniques or (2) the production of crude petroleum from surface shales or tar sands or from reservoirs in which the hydrocarbons are semisolids. Establishments in this industry operate oil wells on their own account or for others on a contract or fee basis."
+census index entry,Crude petroleum from oil sand
+census index entry,Crude petroleum from oil shale
+census index entry,Crude petroleum lease condensate production
+census index entry,Crude petroleum production
+census index entry,Kerogen processing
+census index entry,Offshore crude petroleum production
+census index entry,Oil field development for own account
+census index entry,Oil field exploration for own account
+census index entry,Oil shale mining and/or beneficiating
+census index entry,"Operating crude petroleum field gathering lines, except on a contract basis"
+census index entry,"Petroleum, crude, production (i.e., extraction)"
+census index entry,"Shale, oil, mining and/or beneficiating"
+census index entry,Stripper oil well production
+census index entry,Tar sands mining
+sba size standard,"1,250 employees"
+naics 2017,211120
+sic 1987,1311
+naics 2027 (proposed),no change proposed
+schedule c,211120 Crude petroleum extraction

@@ -1,0 +1,5 @@
+sku,size_tier,shipping_weight_lb,avg_inventory_30,units_shipped_30,avg_inventory_90,units_shipped_90,units_last_7d,daily_sales,on_hand,new_selection,product_first_received,status,days_of_supply,fee_per_unit,send_by,units_to_send
+MUG-12OZ,large-standard,1.2,240,360,280,990,84,12,230,,,fee,25.5,$0.36,2026-10-24,682
+RUG-5X7,large-bulky,14,150,90,170,300,21,3,140,,,no-fee,51.0,,2026-11-12,97
+CANDLE-SM,small-standard,0.6,20,45,25,150,10,1.5,18,,,exempt,15.0,,2026-10-24,90
+LAMP-NEW,large-standard,4.5,60,120,60,120,28,4,55,2026,2026-09-20,no-fee,45.0,,2026-10-24,240

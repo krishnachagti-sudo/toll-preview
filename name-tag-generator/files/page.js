@@ -32,6 +32,9 @@ let fileText = null; // a long file read from disk, kept here rather than in the
 let signedIn = false;
 let sheetShown = 1;
 let lastPlan = null;
+// The form as first served (the worked example), so its preview says "Example".
+let DEFAULTS = null;
+const formNow = () => JSON.stringify([listText(), options()]);
 
 const money = (micros) => `$${(micros / 1_000_000).toFixed(2)}`;
 const PRICE = { badge: 10_000, min: 990_000, walkin: 100_000 };
@@ -178,18 +181,37 @@ function render() {
     h('span', {}, `Sheet ${sheetShown} of ${p.maths.sheets}`),
     h('button', { type: 'button', class: 'btn btn-quiet btn-small', disabled: sheetShown === p.maths.sheets ? '' : null, onclick: () => { sheetShown += 1; render(); } }, 'Next sheet'),
   ]) : null;
-  box.replaceChildren(
-    h('p', { class: 'nt-tag' }, `Avery ${t.template}, ${inchText(t.label.w)} x ${inchText(t.label.h)}`),
-    h('p', { class: 'nt-answer' }, s.answer),
-    h('dl', { class: 'nt-facts' }, facts.map(([k, v]) => h('div', {}, [h('dt', {}, k), h('dd', { class: 'num' }, v)]))),
-    pager,
-    h('div', { class: 'nt-sheet-box' }, [sheetSvg(p, sheetShown)]),
-    s.flagged.length ? h('div', { class: 'nt-flags' }, [
-      h('p', { class: 'nt-heading' }, `Check ${s.flagged.length === 1 ? 'one badge' : `${s.flagged.length} badges`} before printing`),
-      h('ul', {}, s.flagged.slice(0, 20).map((f) => h('li', {}, `${f.name || 'Spare badge'}${f.row ? ` (row ${f.row})` : ''}: ${f.flags.map((x) => FLAG_WORDS[x.kind](x)).join('; ')}.`))),
-    ]) : h('p', { class: 'nt-ok' }, 'Every name fits on its badge.'),
-    ...notes.map((n) => h('p', { class: 'nt-aside' }, n)),
-  );
+  const example = DEFAULTS !== null && formNow() === DEFAULTS;
+  const rows = Math.max(0, listText().split(/\r?\n/).filter((l) => l.trim()).length - 1);
+  const styleWord = { 'first-large': 'big first name', 'full-name': 'full name', 'first-only': 'first name only' }[style()];
+  const inputs = `${rows} RSVP ${rows === 1 ? 'line' : 'lines'} on Avery ${productAsked()}, ${options().event}, ${styleWord}`;
+  const item = (k, what, fig, em, cls) => h('li', { class: cls ?? null }, [h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', {}, what), h('b', {}, fig), h('em', {}, em)]);
+  box.replaceChildren(...[
+    h('div', { class: 'tf-rh' }, [
+      example ? h('span', { class: 'tf-tag' }, 'Example') : h('span', { class: 'tf-tag run' }, 'Your preview'),
+      h('span', { class: 'tf-src' }, `Avery ${t.template}, ${inchText(t.label.w)} x ${inchText(t.label.h)}`),
+    ]),
+    h('p', { class: 'tf-exin' }, example ? `Example: ${inputs}` : inputs),
+    h('p', { class: 'tf-big' }, [h('b', {}, String(s.sheets)), h('span', {}, `${s.sheets === 1 ? 'sheet' : 'sheets'} of Avery ${t.template}`)]),
+    h('p', { class: 'tf-sub' }, s.answer),
+    h('div', { class: 'tf-grid2' }, [
+      h('div', {}, [pager, h('div', { class: 'nt-sheet-box' }, [sheetSvg(p, sheetShown)])].filter(Boolean)),
+      h('ol', { class: 'tf-items nt-items' }, [
+        item('B', 'Badges', String(s.guests + s.spares), `${s.guests} guests${s.spares ? ` and ${s.spares} spares` : ''}, read from the list`),
+        item('S', 'Sheets', String(s.sheets), `${t.perSheet} per sheet, as printed on Avery's template page`, 'hi'),
+        item('0', 'Blank on the last sheet', String(s.lastSheetBlank), 'Left for walk-ins'),
+        item('pt', 'Name sizes', s.nameSizes ? `${s.nameSizes.smallest} to ${s.nameSizes.largest} pt` : 'none', 'Each name as large as its badge allows (Helvetica widths)'),
+        s.flagged.length
+          ? item('!', `Check ${s.flagged.length === 1 ? 'one badge' : `${s.flagged.length} badges`}`, String(s.flagged.length), s.flagged.slice(0, 3).map((f) => `${f.name || 'Spare badge'}: ${f.flags.map((x) => FLAG_WORDS[x.kind](x)).join('; ')}`).join('. '), 'sk')
+          : item('✓', 'Every name fits on its badge', '', 'Nothing cut or wrapped'),
+      ]),
+    ]),
+    s.flagged.length > 3 ? h('details', { class: 'xpand nt-flags' }, [
+      h('summary', {}, `All ${s.flagged.length} badges to check`),
+      h('div', { class: 'xp-in' }, h('ul', {}, s.flagged.slice(0, 20).map((f) => h('li', {}, `${f.name || 'Spare badge'}${f.row ? ` (row ${f.row})` : ''}: ${f.flags.map((x) => FLAG_WORDS[x.kind](x)).join('; ')}.`)))),
+    ]) : null,
+    ...notes.map((n) => h('p', { class: 'tf-note' }, n)),
+  ].filter(Boolean));
   updateCost();
 }
 
@@ -377,7 +399,10 @@ function onNumber() {
 
 fillProducts();
 $('nt-paste').value = SAMPLE_CSV;
+fillPositions();
+DEFAULTS = formNow();
 fromQuery();
+if (new URLSearchParams(window.location.search).toString()) $('nt-badge-fold').open = true;
 render();
 T.me().then((account) => { signedIn = !!account; updateCost(); }).catch(() => {});
 

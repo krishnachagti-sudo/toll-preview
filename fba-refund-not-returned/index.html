@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refunded but never returned: FBA customer return reimbursement checker: Endwise</title>
+<meta name="description" content="Find FBA refunds that were never returned and never reimbursed, or reimbursed below the refund. Drop in three Amazon reports and get each order's claim window from Amazon's help page (US: days 60 to 120), the case text and a CSV. Check free; $0.25 per order found.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/fba-refund-not-returned/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fba-refund-not-returned"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/fba-refund-not-returned/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Refunded but never returned: FBA customer return reimbursement checker">
+<meta property="og:description" content="Upload Amazon's refunds (Date Range Transaction or settlement report), FBA Customer Returns and Reimbursements reports and see which refunded FBA orders were neither returned nor reimbursed, or reimbursed below the refund, each with the claim window from Amazon's help page for the marketplace (US: days 60 to 120 after the refund), the case text and a CSV.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/fba-refund-not-returned/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/fba-refund-not-returned/","url":"https://krishnachagti-sudo.github.io/toll-preview/fba-refund-not-returned/","name":"Refunded but never returned: FBA customer return reimbursement checker","description":"Upload Amazon's refunds (Date Range Transaction or settlement report), FBA Customer Returns and Reimbursements reports and see which refunded FBA orders were neither returned nor reimbursed, or reimbursed below the refund, each with the claim window from Amazon's help page for the marketplace (US: days 60 to 120 after the refund), the case text and a CSV.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Refunded but never returned: FBA customer return reimbursement checker","item":"https://krishnachagti-sudo.github.io/toll-preview/fba-refund-not-returned/"}]},{"@type":"WebApplication","name":"Refunded but never returned: FBA customer return reimbursement checker","url":"https://krishnachagti-sudo.github.io/toll-preview/fba-refund-not-returned/","description":"Upload Amazon's refunds (Date Range Transaction or settlement report), FBA Customer Returns and Reimbursements reports and see which refunded FBA orders were neither returned nor reimbursed, or reimbursed below the refund, each with the claim window from Amazon's help page for the marketplace (US: days 60 to 120 after the refund), the case text and a CSV.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Claim window for refund dates","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Check (how many refunds are owed, and their total)","price":"0","priceCurrency":"USD"},{"name":"Audit (every order, its claim dates, case text and CSV)","@type":"Offer","price":"0.25","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.25","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"order found still owed"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="rn hue-money tf-plain">
+  <section class="wrap rn-intro tf-intro">
+    <p class="eyebrow">Getting paid</p>
+    <h1>Refunded but never returned</h1>
+    <p class="lede">Drop in three Seller Central reports and see every refunded FBA order that was neither returned nor reimbursed, with the days Amazon accepts its claim.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="pline"><span class="price">Check free, in your browser</span><span>order list $0.25 per order still owed</span><span>at most $9.99 a month</span></p>
+  </section>
+
+  <section class="wrap rn-desk tf-calc" aria-label="Check your refunds">
+    <div class="rn-form tf-card tf-form">
+      <div class="rn-grid">
+        <label>Marketplace
+          <select id="rn-market">
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="AU">Australia</option>
+            <option value="UK">United Kingdom</option>
+          </select>
+        </label>
+        <label>Judge the windows on <input type="date" id="rn-asof"></label>
+      </div>
+      <div class="rn-drop" data-report="refunds">
+        <label for="rn-refunds" class="rn-drop-label">1. Refunds</label>
+        <input type="file" id="rn-refunds" accept=".txt,.tsv,.csv,text/plain,text/csv,text/tab-separated-values">
+        <p class="rn-hint" id="rn-refunds-name">Payments, Reports Repository, Transaction report (CSV), for up to 365 days. A settlement report (Flat File V2) works too.</p>
+      </div>
+      <div class="rn-drop" data-report="returns">
+        <label for="rn-returns" class="rn-drop-label">2. FBA Customer Returns report</label>
+        <input type="file" id="rn-returns" accept=".txt,.tsv,.csv,text/plain,text/csv,text/tab-separated-values">
+        <p class="rn-hint" id="rn-returns-name">Reports, Fulfillment, Customer Returns: the same dates, downloaded.</p>
+      </div>
+      <div class="rn-drop" data-report="reimbursements">
+        <label for="rn-reimbursements" class="rn-drop-label">3. Reimbursements report</label>
+        <input type="file" id="rn-reimbursements" accept=".txt,.tsv,.csv,text/plain,text/csv,text/tab-separated-values">
+        <p class="rn-hint" id="rn-reimbursements-name">Reports, Fulfillment, Reimbursements: from the first refund date to today.</p>
+      </div>
+      <p class="rn-hint"><button type="button" class="link-btn" id="rn-sample">Load the made-up sample again</button></p>
+      <p class="form-error" id="rn-error" role="alert"></p>
+      <button class="btn" type="button" id="rn-go">Get the order list, case text and CSV</button>
+      <p class="rn-hint" id="rn-go-note">The sample's order list is shown. Choose your own reports to check them, free.</p>
+      <p class="visually-hidden" id="rn-status" role="status"></p>
+      <details class="rn-more xpand">
+        <summary>More: your own window, date format, renamed headings</summary>
+        <div class="xp-in">
+        <div class="rn-grid">
+          <label>Your window opens on day <input type="number" id="rn-open" min="0" max="1000" placeholder="Amazon's"></label>
+          <label>and closes on day <input type="number" id="rn-close" min="0" max="2000" placeholder="Amazon's"></label>
+        </div>
+        <div class="field">
+          <label for="rn-dates">Slash dates are</label>
+          <select id="rn-dates"><option value="mdy">MM/DD/YY (Amazon US)</option><option value="dmy">DD/MM/YY</option></select>
+        </div>
+        <div class="field">
+          <label for="rn-columns">Renamed headings (a column map, JSON)</label>
+          <textarea id="rn-columns" rows="3" placeholder='{"refunds": {"orderId": "Order Number", "date": "Refund Date", "amount": "Refund"}}'></textarea>
+          <p class="rn-hint">Only for a copy whose headings are not Amazon's. Keys: refunds date, type, orderId, sku, quantity, fulfillment, amount; returns orderId, date, quantity, disposition; reimbursements orderId, date, amount, total.</p>
+        </div>
+              </div>
+      </details>
+    </div>
+
+    <div class="rn-out tf-card" id="rn-out" aria-live="polite">
+      <div class="tf-res-h"><span class="ex-tag">Example</span><p class="rn-label">Sample: a made-up US seller, checked on November 8, 2026</p></div>
+      <p class="tf-exin">Example: a made-up US seller's refunds, returns and reimbursements, June 20 to October 1, 2026, checked November 8, 2026</p>
+      <p class="tf-big">4 to claim today<small>$146.45 refunded; days 60 to 120 after the refund (United States)</small></p>
+      <p class="rn-answer" id="rn-sample-answer">7 of your 11 refunded FBA orders from June 20, 2026 to October 1, 2026 were neither returned nor reimbursed: 4 can be claimed today ($146.45 refunded; the first window closes November 12, 2026), 2 open later ($54.49 refunded) and 1 expired; 1 order was reimbursed $16.87 below the refund.</p>
+      <ul class="tf-items">
+        <li class="key"><span>Claim now: 4 orders</span><b>$146.45</b><small>refunds with no return or reimbursement, window open today</small></li>
+        <li><span>Not yet claimable: 2 orders</span><b>$54.49</b><small>window not open yet</small></li>
+        <li><span>Window closed: 1 order</span><b>$34.50</b><small>window closed</small></li>
+        <li><span>Reimbursed below the refund: 1 order</span><b>$16.87</b><small>gap below the refund, Reimbursements report</small></li>
+        <li><span>Reimbursed: 1 order</span><b>-</b><small>Reimbursements report</small></li>
+        <li><span>Returned: 1 order</span><b>-</b><small>FBA Customer Returns report</small></li>
+        <li><span>Returned damaged by the customer or defective: 1 order</span><b>-</b><small>customer damaged or defective, Returns report</small></li>
+      </ul>
+      <p class="muted">Choose your own reports and the same check runs on them, in your browser.</p>
+    </div>
+  </section>
+
+  <section class="wrap rn-rules tf-sec" data-jump="Rules" aria-labelledby="rn-rules-title">
+    <div class="tf-rules-top">
+      <div>
+        <h2 id="rn-rules-title">How it works</h2>
+        <p>Each refunded FBA order is matched to the returns and the reimbursements by order ID. Every order still owed gets the first and last day Amazon accepts a claim, from Amazon's own help page for your marketplace: days 60 to 120 after the refund in the US, 45 to 105 in Canada and Australia.</p>
+      </div>
+      <aside class="tf-card tf-not" aria-labelledby="rn-not-title">
+        <h3 id="rn-not-title">What it does not cover</h3>
+        <ul>
+          <li>Seller-fulfilled refunds: only FBA refunds are reimbursed under this policy.</li>
+          <li>Amazon's "applicable fees": they are not listed, so a gap is shown to ask about, not as a sum owed.</li>
+          <li>Whether Amazon pays: Amazon decides every claim.</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="rn-window tf-card">
+      <h3 id="rn-window-title">When can I claim one refund?</h3>
+    <div class="rn-grid rn-window-form">
+      <label>Refund date <input type="date" id="rn-one" value="2026-09-20"></label>
+      <label>Marketplace
+        <select id="rn-one-market"><option value="US">United States</option><option value="CA">Canada</option><option value="AU">Australia</option><option value="UK">United Kingdom</option></select>
+      </label>
+    </div>
+    <p class="rn-answer" id="rn-one-out">A refund made on September 20, 2026 can be claimed from November 19, 2026 to January 18, 2027 (days 60 to 120 after the refund, Amazon's United States help page).</p>
+    </div>
+    <details class="xpand">
+      <summary>Read how orders are joined, dated and valued</summary>
+      <div class="xp-in">
+    <div class="rn-rule-cols">
+      <div>
+        <h3>Joined by order ID</h3>
+        <p>Every Refund row of an Amazon-fulfilled order is one refunded order. Units received back in the FBA Customer Returns report are returned; units with the disposition DAMAGED or CARRIER DAMAGED are Amazon's responsibility and still owed; CUSTOMER DAMAGED and DEFECTIVE are not eligible under Amazon's policy. Cash and inventory units in the Reimbursements report count as paid, and a reversed reimbursement is netted off.</p>
+      </div>
+      <div>
+        <h3>Dated from Amazon's own page</h3>
+        <p>Amazon's US help page says a customer return claim is filed no sooner than 60 days and no later than 120 days after the refund. Canada and Australia say 45 to 105. Each order owed gets its opening and closing day and its status on the day you choose. Nothing is drafted before the window opens: Amazon warns that premature requests can lead to account action.</p>
+      </div>
+      <div>
+        <h3>The gap, not a guess</h3>
+        <p>Amazon values a refund that never came back at the refund amount minus "applicable fees", without listing them. So a reimbursement below the refund is shown with its gap and the 60-day dispute deadline, and the case text asks Amazon which fees make up the difference.</p>
+      </div>
+    </div>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary id="rn-hand-title">The same check by hand, in Excel or Google Sheets</summary>
+      <div class="xp-in">
+    <ol class="rn-steps">
+      <li>Download the Date Range Transaction report and filter column <code>type</code> to Refund and <code>fulfillment</code> to Amazon.</li>
+      <li>Download the FBA Customer Returns and Reimbursements reports for the same dates and later.</li>
+      <li>Beside each refund, count its returns: <code>=COUNTIFS(Returns!B:B, D2)</code>, where column B of the returns sheet is <code>order-id</code> and D2 the refund's order id.</li>
+      <li>Count its reimbursements the same way on <code>amazon-order-id</code>, and sum <code>amount-total</code> with <code>SUMIFS</code>.</li>
+      <li>For a refund with neither, the claim opens on the refund date + 60 and closes on the refund date + 120 (US).</li>
+      <li>Sort by the closing date and file the ones open today, one order at a time.</li>
+    </ol>
+    <p class="muted">A refund for two units with one returned, a CARRIER DAMAGED return, a reversed reimbursement and a reimbursement in inventory units each need their own formula; the checker handles them.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="wrap rn-legal tf-sec" data-jump="Sources" aria-labelledby="rn-legal-title">
+    <h2 id="rn-legal-title">Please read</h2>
+    <p class="rn-hint">The check is free and runs in your browser: nothing is uploaded until you ask for the order list. The order list, case text and CSV are $0.25 per order found still owed, and you pay nothing for the orders that were returned or paid. At most $9.99 a month.</p>
+    <details class="xpand">
+      <summary>Read the notes, the prices and the sources</summary>
+      <div class="xp-in">
+    <ul id="rn-disclaimers">
+      <li>Files are processed in memory and not kept.</li>
+      <li>Not legal or accounting advice: Amazon decides every claim. Check the Eligible for claim tab of the Inventory Defect and Reimbursement portal before you file.</li>
+      <li>Claim windows are the ones stated on Amazon&#39;s help page for the marketplace, read on November 8, 2026. Amazon&#39;s US page says days 60 to 120 after the refund; its Canada and Australia pages say days 45 to 105.</li>
+      <li>Values are the refund amounts. Amazon pays the refund minus &quot;applicable fees&quot; and does not list those fees, so a gap is shown for you to ask about, not as a sum owed.</li>
+    </ul>
+    <h3>Prices</h3>
+    <ul class="endwise-prices"><li><strong>Claim window for refund dates</strong>: free.</li><li><strong>Check (how many refunds are owed, and their total)</strong>: free.</li><li><strong>Audit (every order, its claim dates, case text and CSV)</strong>: $0.25 per order found still owed; you pay only for what is delivered and the rest is refunded at once; each refunded FBA order in the file is reserved first.</li><li>At most $9.99 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+    <h3>Sources, read November 8, 2026</h3>
+    <ul class="rn-sources">
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G9N934L7Y4SFWPJ4">Seller Central Help (US): FBA inventory reimbursement policy: Customer return claims</a>: no sooner than 60 days and no later than 120 days after the customer refund or replacement</li>
+      <li><a href="https://sellercentral.amazon.ca/help/hub/reference/external/G9N934L7Y4SFWPJ4">Seller Central Help (Canada): Customer return claims</a> and <a href="https://sellercentral.amazon.com.au/help/hub/reference/external/G9N934L7Y4SFWPJ4">Australia: Customer returns</a>: 45 to 105 days</li>
+      <li><a href="https://sellercentral.amazon.co.uk/help/hub/reference/external/G9N934L7Y4SFWPJ4">Seller Central Help (UK): FBA customer returns reimbursement policy</a>: reimbursed when not returned within 45 days; no last day stated</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200213130">Seller Central Help (US): FBA inventory reimbursement policy</a>: refund amount minus applicable fees, 60 days to dispute the value, $5,000 per unit, reversals, premature requests</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/200453320">Seller Central Help (US): FBA Customer Returns report</a>: columns and dispositions</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200732720">Seller Central Help (US): Reimbursements report</a>: columns</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GL9ZDED52WXZUMFD">Seller Central Help (US): Reversed Reimbursement</a></li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200989190">Seller Central Help (US): Payment Date Range Transaction and Summary reports</a>: columns and the Refund type</li>
+    </ul>
+      </div>
+    </details>
+  </section>
+
+<section class="wrap cp-index" data-jump="Reference" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Reference</h2>
+<h3>Claim windows and policy</h3><ul class="cp-rows"><li><a href="/toll-preview/fba-refund-not-returned/claim-windows/" title="Amazon FBA reimbursement claim windows (2026): every deadline in one table">Every claim window</a></li><li><a href="/toll-preview/fba-refund-not-returned/policy/" title="FBA reimbursement policy for refunds never returned, explained with the numbers (2026)">The policy, with the numbers</a></li><li><a href="/toll-preview/fba-refund-not-returned/claim-calendar-2026-2027/" title="FBA refund claim calendar 2026 to 2027: when each month's refunds can be claimed (US)">Claim calendar 2026 to 2027</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Guides</h2>
+<h3>Reports</h3><ul class="cp-rows"><li><a href="/toll-preview/fba-refund-not-returned/guides/reimbursement-report/" title="Amazon Reimbursements report: every column, and how to read it against your refunds">The Reimbursements report</a></li><li><a href="/toll-preview/fba-refund-not-returned/guides/re-evaluation-and-reversal/" title="FBA reimbursement reversal and re-evaluation: what triggers each, and the deadlines">Reversals and disputes</a></li><li><a href="/toll-preview/fba-refund-not-returned/guides/returns-report-columns/" title="Amazon FBA Customer Returns report: what each column and disposition means">The FBA Customer Returns report</a></li></ul>
+<h3>Finding and claiming</h3><ul class="cp-rows"><li><a href="/toll-preview/fba-refund-not-returned/guides/find-unreturned-refunds/" title="How to find refunded FBA orders that never came back (and never got reimbursed)">Find unreturned refunds</a></li><li><a href="/toll-preview/fba-refund-not-returned/guides/45-day-rule/" title="The 45-day rule for FBA customer returns: 45 days in Canada and Australia, 60 in the US">The 45-day rule by marketplace</a></li><li><a href="/toll-preview/fba-refund-not-returned/guides/why-reimbursed-less/" title="Why Amazon reimbursed less than the sale price on a refund that was never returned">Why it is below the refund</a></li><li><a href="/toll-preview/fba-refund-not-returned/case-text/" title="Case text for a refunded-but-not-returned FBA claim (and a valuation dispute)">Case text</a></li><li><a href="/toll-preview/fba-refund-not-returned/guides/weekly-routine/" title="A weekly FBA reimbursement routine for small sellers (20 minutes)">A weekly routine</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compared" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Compared</h2>
+<h3>Services and tools</h3><ul class="cp-rows"><li><a href="/toll-preview/fba-refund-not-returned/vs-reimbursement-services/" title="FBA reimbursement services vs tools vs DIY: what each costs on what you recover">Services vs tools vs DIY</a></li><li><a href="/toll-preview/fba-refund-not-returned/vs/sellerboard/" title="sellerboard Reimbursement Gap vs Endwise for unreturned FBA refunds">sellerboard</a></li><li><a href="/toll-preview/fba-refund-not-returned/vs/amzprep/" title="AMZ Prep reimbursement tool vs a file-based refund checker">AMZ Prep</a></li><li><a href="/toll-preview/fba-refund-not-returned/vs/threecolts/" title="Threecolts Margin Pro vs doing FBA refund claims yourself">Threecolts</a></li><li><a href="/toll-preview/fba-refund-not-returned/vs/manual-reports/" title="Do it by hand with Seller Central reports: the free way to find unpaid FBA refunds">By hand with Amazon's reports</a></li></ul>
+</section>
+
+  <section class="wrap rn-code tf-sec" aria-label="Use this from code">
+    <div id="rn-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to read your files. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/fba-refund-not-returned/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

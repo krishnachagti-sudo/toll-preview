@@ -1,0 +1,21 @@
+field,value
+code,111199
+title,All Other Grain Farming
+level 2: 11,"Agriculture, Forestry, Fishing and Hunting"
+level 3: 111,Crop Production
+level 4: 1111,Oilseed and Grain Farming
+level 5: 11119,Other Grain Farming
+description,"This U.S. industry comprises establishments primarily engaged in growing grains and/or producing grain(s) seeds (except wheat, corn, rice, and oilseed(s) and grain(s) combinations)."
+census index entry,"Barley farming, field and seed production"
+census index entry,Broomcorn farming
+census index entry,Buckwheat farming
+census index entry,"Milo farming, field and seed production"
+census index entry,"Oat farming, field and seed production"
+census index entry,"Rye farming, field and seed production"
+census index entry,"Sorghum farming, field and seed production"
+census index entry,"Wild rice farming, field and seed production"
+sba size standard,$2.25 million in average annual receipts
+naics 2017,111199
+sic 1987,0119 0139
+naics 2027 (proposed),no change proposed
+schedule c,

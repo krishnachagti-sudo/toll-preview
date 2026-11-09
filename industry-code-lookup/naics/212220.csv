@@ -1,0 +1,28 @@
+field,value
+code,212220
+title,Gold Ore and Silver Ore Mining
+level 2: 21,"Mining, Quarrying, and Oil and Gas Extraction"
+level 3: 212,Mining (except Oil and Gas)
+level 4: 2122,Metal Ore Mining
+level 5: 21222,Gold Ore and Silver Ore Mining
+description,"This industry comprises establishments primarily engaged in developing the mine site, mining, and/or beneficiating (i.e., preparing) ores valued chiefly for their gold and/or silver content. Establishments primarily engaged in the transformation of the gold and silver into bullion or dore bar in combination with mining activities are included in this industry."
+census index entry,"Bullion, gold, produced at the mine"
+census index entry,"Bullion, silver, produced at the mine"
+census index entry,Calaverite mining and/or beneficiating
+census index entry,Gold lode mining and/or beneficiating
+census index entry,Gold ore mine site development for own account
+census index entry,Gold ore mining and/or beneficiating plants
+census index entry,"Gold ores, concentrates, bullion, and/or precipitates mining and/or beneficiating"
+census index entry,Gold placer mining and/or beneficiating
+census index entry,Lode gold mining and/or beneficiating
+census index entry,Placer gold mining and/or beneficiating
+census index entry,Placer silver mining and/or beneficiating
+census index entry,Silver ore mine site development for own account
+census index entry,Silver ores mining and/or beneficiating
+census index entry,Sylvanite mining and/or beneficiating
+census index entry,Telluride (gold) mining and/or beneficiating
+sba size standard,"1,500 employees"
+naics 2017,212221 212222
+sic 1987,1041 1044
+naics 2027 (proposed),no change proposed
+schedule c,

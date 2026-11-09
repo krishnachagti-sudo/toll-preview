@@ -1,0 +1,15 @@
+Month end,Weekday,Days in month,Daily-method entry,Balance after,Quarter end,Year end
+2026-11-30,Monday,30,3000.00,33500.00,no,
+2026-12-31,Thursday,31,3100.00,30400.00,yes,calendar year end
+2027-01-31,Sunday,31,3100.00,27300.00,no,
+2027-02-28,Sunday,28,2800.00,24500.00,no,
+2027-03-31,Wednesday,31,3100.00,21400.00,yes,March 31 year end
+2027-04-30,Friday,30,3000.00,18400.00,no,
+2027-05-31,Monday,31,3100.00,15300.00,no,
+2027-06-30,Wednesday,30,3000.00,12300.00,yes,
+2027-07-31,Saturday,31,3100.00,9200.00,no,
+2027-08-31,Tuesday,31,3100.00,6100.00,no,
+2027-09-30,Thursday,30,3000.00,3100.00,yes,
+2027-10-31,Sunday,31,3100.00,0.00,no,
+2027-11-30,Tuesday,30,0.00,0.00,no,
+2027-12-31,Friday,31,0.00,0.00,yes,calendar year end

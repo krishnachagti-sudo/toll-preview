@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amortization schedule to journal entries (prepaids, deferred revenue, loans): Endwise</title>
+<meta name="description" content="Turn prepaid expense, deferred revenue, loan and loan fee schedules into balanced monthly journal entries and a QuickBooks Online or Xero import file, with a rollforward that ties to the GL. Preview free; $0.50 per schedule.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/amortization-schedule-journal-entries/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"amortization-schedule-journal-entries"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Amortization schedule to journal entries">
+<meta property="og:description" content="Turns prepaid expenses, deferred revenue, loans and loan fees into balanced monthly journal entries: straight-line by equal months, half-months or actual days with the rounding in the last month, loan payments split into interest and principal, cancellations, a rollforward that ties to the GL and a 12-month rule check, as a QuickBooks Online or Xero import file.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/","url":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/","name":"Amortization schedule to journal entries","description":"Turns prepaid expenses, deferred revenue, loans and loan fees into balanced monthly journal entries: straight-line by equal months, half-months or actual days with the rounding in the last month, loan payments split into interest and principal, cancellations, a rollforward that ties to the GL and a 12-month rule check, as a QuickBooks Online or Xero import file.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Amortization schedule to journal entries","item":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/"}]},{"@type":"WebApplication","name":"Amortization schedule to journal entries","url":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/","description":"Turns prepaid expenses, deferred revenue, loans and loan fees into balanced monthly journal entries: straight-line by equal months, half-months or actual days with the rounding in the last month, loan payments split into interest and principal, cancellations, a rollforward that ties to the GL and a 12-month rule check, as a QuickBooks Online or Xero import file.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Preview (one month's amounts, balances, tie-out and the 12-month rule check)","price":"0","priceCurrency":"USD"},{"name":"Journal entries and import file (every month of each schedule)","@type":"Offer","price":"0.5","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.5","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"schedule"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="am">
+  <section class="wrap dz-hero">
+    <div>
+      <p class="eyebrow">Bookkeeping cleanup</p>
+      <h1>Amortization schedule to journal entries</h1>
+      <p class="lede">List your prepaids, deferred revenue and loans once, and get each month's balanced entries and a file QuickBooks Online or Xero imports.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    </div>
+    <figure class="tool-shot"><div class="scr"><img src="/toll-preview/amortization-schedule-journal-entries/files/shot.webp" width="900" height="794" alt="Amortization schedule to journal entries: the result of its worked example" decoding="async"></div><figcaption><span class="ex-tag">Example</span><span>Example: 4 schedules (a policy, software seats, a support contract and a loan), November 2026</span></figcaption></figure>
+  </section>
+
+  <section class="wrap dz-desk" data-jump="Tool" aria-label="Build the entries">
+    <div class="am-form dz-form dz-card">
+      <div class="field">
+        <label for="am-csv">Your schedules (one row each, CSV)</label>
+        <textarea id="am-csv" rows="5" spellcheck="false" wrap="off"></textarea>
+        <p class="am-hint"><button type="button" class="link-btn" id="am-blank">Blank template</button> · <label class="link-btn" for="am-file">open a CSV</label><input type="file" id="am-file" accept=".csv,.txt,text/csv,text/plain" class="visually-hidden"> · <button type="button" class="link-btn" id="am-sample">load the sample again</button></p>
+      </div>
+      <details class="dz-fold am-fold" id="am-add">
+        <summary>Add one schedule</summary>
+        <div class="am-row">
+          <div class="field">
+            <label for="am-type">Type</label>
+            <select id="am-type">
+              <option value="prepaid">Prepaid expense</option>
+              <option value="deferred-revenue">Deferred revenue</option>
+              <option value="loan">Loan</option>
+              <option value="loan-fees">Loan fees</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="am-amount">Amount ($)</label>
+            <input type="text" id="am-amount" inputmode="decimal" placeholder="12000">
+          </div>
+        </div>
+        <div class="field">
+          <label for="am-item">Item</label>
+          <input type="text" id="am-item" maxlength="80" placeholder="Property insurance policy">
+        </div>
+        <div class="am-row">
+          <div class="field">
+            <label for="am-start">Start</label>
+            <input type="date" id="am-start">
+          </div>
+          <div class="field">
+            <label for="am-months">Months (payments for a loan)</label>
+            <input type="number" id="am-months" min="1" max="600" placeholder="12">
+          </div>
+        </div>
+        <div class="am-row">
+          <div class="field">
+            <label for="am-method">Method</label>
+            <select id="am-method">
+              <option value="monthly">Equal months</option>
+              <option value="half-month">Half-month</option>
+              <option value="daily">Actual days</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="am-rate">Loan rate (% a year)</label>
+            <input type="text" id="am-rate" inputmode="decimal" placeholder="6.5">
+          </div>
+        </div>
+        <button type="button" class="btn btn-small" id="am-add-row">Add to the list</button>
+      </details>
+      <details class="dz-fold am-fold" id="am-settings">
+        <summary>Month, file and tie-out</summary>
+        <div class="am-row">
+          <div class="field">
+            <label for="am-period">Month to preview</label>
+            <input type="month" id="am-period" value="2026-11">
+          </div>
+          <div class="field">
+            <label for="am-format">Import file for</label>
+            <select id="am-format">
+              <option value="qbo">QuickBooks Online</option>
+              <option value="xero">Xero</option>
+              <option value="generic">Other (generic CSV)</option>
+            </select>
+          </div>
+        </div>
+        <div class="am-row">
+          <div class="field">
+            <label for="am-from">File from month</label>
+            <input type="month" id="am-from" value="2026-11">
+          </div>
+          <div class="field">
+            <label for="am-to">to month</label>
+            <input type="month" id="am-to" value="2026-12">
+          </div>
+        </div>
+        <div class="field">
+          <label for="am-loan">Loan entries</label>
+          <select id="am-loan">
+            <option value="payment">The whole payment (Dr loan, Dr interest, Cr bank)</option>
+            <option value="interest-reclass">Interest only (the bank feed already posted the payment to the loan)</option>
+          </select>
+        </div>
+        <label class="am-check"><input type="checkbox" id="am-initial"> Also make the initial entries (payment, invoice, loan received)</label>
+        <div class="field">
+          <label for="am-gl">GL balances at the month end (one per line: account, balance)</label>
+          <textarea id="am-gl" rows="3" spellcheck="false" placeholder="Prepaid Insurance, 7000.00"></textarea>
+        </div>
+      </details>
+      <details class="dz-fold am-fold">
+        <summary>The columns it reads</summary>
+        <p class="am-hint">Columns: Item, Type (Prepaid, Deferred revenue, Loan, Loan fees), Amount, Start, Months or End, Method (monthly, half-month, daily), Paid on, the three accounts, Name, and for loans Rate, Payment, First payment, Day count.</p>
+      </details>
+      <p class="form-error" id="am-error" role="alert"></p>
+      <button class="btn" type="button" id="am-go">Get the entries and import file</button>
+      <p class="pline" data-prices><span>The preview is free, in your browser</span><span>Entries and import file $0.50 per schedule</span><span>The same schedule again within 12 months is free</span><span>At most $25.00 a month</span></p>
+      <p class="am-hint">The file is worked out on the server from the same engine and is not kept.</p>
+      <p class="visually-hidden" id="am-status" role="status"></p>
+    </div>
+
+    <div class="am-out dz-card" id="am-out" aria-live="polite">
+      <div class="dz-rh" id="am-tag"><span class="ex-tag">Example</span><span class="dz-wx">Worked example</span></div>
+      <p class="dz-exin" id="am-label">Example: a made-up services company's policy, software subscription, support contract and equipment loan, November 2026</p>
+      <p class="am-answer" id="am-answer">For November 2026, your 4 schedules post 9 journal lines: $1,360.00 from prepaids to expense, $2,500.00 from deferred revenue to revenue and $306.46 of loan interest against $867.51 of principal.</p>
+      <div id="am-preview"></div>
+      <div id="am-report"></div>
+    </div>
+  </section>
+
+  <section class="wrap am-rules dz-rules" data-jump="Rules" aria-labelledby="am-rules-title">
+    <h2 id="am-rules-title">How it works</h2>
+    <div class="dz-rules-top">
+      <ul class="dz-sum">
+        <li><b>Straight-line, three ways:</b> equal months, half-month or actual days; the last month takes the rounding, so the balance ends at zero.</li>
+        <li><b>Loans, payment by payment:</b> interest on the opening balance, principal the rest; the level payment matches Excel's PMT to the cent.</li>
+        <li><b>Entries and the tie-out:</b> one balanced journal per date, and a rollforward per account checked against your GL.</li>
+      </ul>
+      <aside class="dz-note">
+        <h3>What it does not cover</h3>
+        <p>Fixed assets (use the <a href="/toll-preview/macrs-depreciation/">MACRS depreciation tool</a>), whether an item is a prepaid or when revenue is earned, and the 12-month rule's exceptions. Nothing is posted to your books.</p>
+      </aside>
+    </div>
+    <details class="xpand">
+      <summary>Read how it works in full</summary>
+      <div class="xp-in">
+    <div class="am-rule-cols">
+      <div>
+        <h3>Straight-line, three ways</h3>
+        <p>Equal months: the amount over the months of the term, the start month counting in full. Half-month: half a month in the first and last calendar month, full months between. Actual days: each month's days over the days of the term. Every month is rounded to the cent and the last month takes the difference, so the balance ends at exactly zero. A cancellation books the month it ends in, then refunds and writes off (or recognizes) what is left.</p>
+      </div>
+      <div>
+        <h3>Loans, payment by payment</h3>
+        <p>Interest is the opening balance times the rate: a twelfth of the yearly rate (30/360), or the days since the last payment over 365 or 360. Principal is the payment less the interest. The level payment matches Excel's PMT to the cent, the last payment clears what is left, and a lender's own rows can replace the computed ones.</p>
+      </div>
+      <div>
+        <h3>Entries, files and the tie-out</h3>
+        <p>Each date gets one balanced journal. QuickBooks Online: the journal entry import columns (Journal No., Journal Date, Account Name, Debits, Credits, Description, Name). Xero: the manual journal fields, debits positive and credits negative, at most 300 lines a file. The rollforward per balance sheet account (opening, additions, amortization, cancellations, closing) is checked against the GL balances you give.</p>
+      </div>
+    </div>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary>Please read</summary>
+      <div class="xp-in">
+    <ul id="am-disclaimers">
+      <li>Not accounting or tax advice. The tool does straight-line arithmetic on the terms you enter; whether an item is a prepaid, when revenue is earned (ASC 606) and which convention your policy uses are your accountant's call.</li>
+      <li>The 12-month rule check tests only the duration test in 26 CFR 1.263(a)-4(f)(1); it does not check the exceptions, the election to capitalize or economic performance for accrual-method taxpayers.</li>
+      <li>Nothing is posted to your books. Import the file into a test company, or one month first, and check it before importing the rest.</li>
+      <li>Schedules are processed in memory and not kept.</li>
+    </ul>
+    <p>Fixed assets follow their own tax rules: for depreciation, use the <a href="/toll-preview/macrs-depreciation/">MACRS depreciation tool</a>.</p>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary>Prices</summary>
+      <div class="xp-in"><ul class="endwise-prices"><li><strong>Preview (one month's amounts, balances, tie-out and the 12-month rule check)</strong>: free.</li><li><strong>Journal entries and import file (every month of each schedule)</strong>: $0.50 per schedule; a repeat for the same schedule is free for 12 months.</li><li>At most $25.00 a calendar month for this tool; after that it is free until the month ends.</li></ul></div>
+    </details>
+    <details class="xpand">
+      <summary>Sources, read November 8, 2026</summary>
+      <div class="xp-in">
+    <ul class="am-sources">
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">Intuit: Import journal entries into QuickBooks Online</a> (updated August 4, 2026): the columns, the steps and the account rules</li>
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/journal-entries/does-quickbooks-online-have-an-amortization-schedule/00/185786">Intuit: Does QuickBooks Online have an amortization schedule?</a> (updated August 5, 2026): amortization is done with manual transactions; a loan check splits principal and interest</li>
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/expense-accounting/prepaid-expenses-amortization/L0aBbAeMQ_US_en_US">Intuit: Prepaid expenses and amortization</a> (updated August 3, 2026): the payment and monthly entries</li>
+      <li><a href="https://central.xero.com/s/article/Add-import-and-post-manual-journals-US">Xero Central: Add, import and post manual journals</a>: the template fields, dates, signs and the 300-line limit</li>
+      <li><a href="https://www.ecfr.gov/current/title-26/chapter-I/subchapter-A/part-1/section-1.263(a)-4">eCFR: 26 CFR 1.263(a)-4(f)</a> (up to date as of November 5, 2026): the 12-month rule</li>
+      <li><a href="https://support.microsoft.com/en-us/excel/functions/pmt-function">Microsoft Support: PMT function</a>: the level payment the loan schedule matches</li>
+    </ul>
+      </div>
+    </details>
+  </section>
+
+<section class="wrap cp-index" data-jump="Schedules" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Schedules</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/amortization-schedule-journal-entries/prepaid-expense/" title="Prepaid expense amortization schedule and journal entries">Prepaid expenses</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/deferred-revenue/" title="Deferred revenue schedule (waterfall) with monthly journal entries">Deferred revenue</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/loan/" title="Loan amortization journal entries: principal and interest each month">Loans</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/loan-fees/" title="Amortization of loan fees: journal entry and schedule">Loan fees</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="In your ledger" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">In your ledger</h2>
+<h3>Ledgers</h3><ul class="cp-rows"><li><a href="/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online/" title="How to record loan payments in QuickBooks Online (principal and interest split)">Loans in QuickBooks Online</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-desktop/" title="How to record loan payments in QuickBooks Desktop: principal and interest split">Loans in QuickBooks Desktop</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/prepaid-expense/quickbooks-online/" title="How to amortize prepaid expenses in QuickBooks Online (import file)">Prepaids in QuickBooks Online</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Templates" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Templates</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/amortization-schedule-journal-entries/prepaid-expense/template/" title="Prepaid expense schedule template (CSV for Excel and Google Sheets, with journal entries)">Prepaid expense template</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/deferred-revenue/template/" title="Deferred revenue schedule template (CSV for Excel and Google Sheets)">Deferred revenue template</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Guides</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/prepaid-insurance-journal-entry/" title="Prepaid insurance journal entry: a worked annual policy">Prepaid insurance journal entry</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/saas-prepaid-schedule/" title="Annual SaaS subscriptions as prepaids: one schedule for 30 vendors">Annual SaaS for many vendors</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/deferred-revenue-12-month-contract/" title="Deferred revenue schedule for a 12-month contract invoiced up front">A 12-month contract</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/loan-principal-interest-split/" title="Loan payment split into principal and interest, month by month">Principal and interest split</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/prepaid-rollforward-checklist/" title="Month-end prepaid rollforward checklist">Month-end rollforward</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/prepaid-cancelled-mid-term/" title="Prepaid contract cancelled mid-term: what to book">Cancelled mid-term</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/journal-entry-import-layout/" title="Importing journal entries into QuickBooks Online and Xero: the file layout">Import file layout</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/daily-vs-monthly-proration/" title="Daily vs monthly proration: which to use for prepaid amortization">Daily vs monthly proration</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compare" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Compare</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/amortization-schedule-journal-entries/vs/spreadsheet/" title="Endwise vs a prepaid spreadsheet">A prepaid spreadsheet</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/vs/dancing-numbers/" title="Endwise vs Dancing Numbers for journal entry import">Dancing Numbers</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/vs/zenskar-deferred-revenue-calculator/" title="Zenskar deferred revenue calculator vs Endwise">Zenskar's calculator</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/vs/xero-repeating-journals/" title="Xero repeating journals vs Endwise for prepayments">Xero repeating journals</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/vs/excel-prepaid-template/" title="Prepaid and loan schedules in Excel vs Endwise">An Excel schedule</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/vs/quickbooks-recurring-journal/" title="QuickBooks recurring journal vs Endwise for amortization">QuickBooks recurring journal</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Calendar" aria-labelledby="cp-index-title-6"><h2 id="cp-index-title-6">Calendar</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/amortization-schedule-journal-entries/month-end-calendar-2026-2027/" title="Month-end amortization calendar, November 2026 to December 2027">Month-end calendar 2026 to 2027</a></li></ul>
+</section>
+
+  <section class="wrap am-code" data-jump="Code" aria-label="Use this from code">
+    <div id="am-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to build the schedules. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/amortization-schedule-journal-entries/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

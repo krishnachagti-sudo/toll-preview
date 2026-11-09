@@ -1,15 +1,15 @@
 # What date was 45 days ago?
 
-45 days ago, counting back from Saturday, November 7, 2026 (today's date in New York, US Eastern time), was Wednesday, September 23, 2026.
+45 days ago, counting back from Sunday, November 8, 2026 (today's date in New York, US Eastern time), was Thursday, September 24, 2026.
 
-- Date: September 23, 2026
-- Weekday: Wednesday
+- Date: September 24, 2026
+- Weekday: Thursday
 - ISO week: 2026-W39
-- US business days between: 31
+- US business days between: 30
 
 ## 45 days ago, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-08&region=US)
 
 ## 45 days ago, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays from the date to the
 
 | Start | 45 days before | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-07) | Wed, Sep 23, 2026 | 31 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-08) | Thu, Sep 24, 2026 | 30 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-09) | Fri, Sep 25, 2026 | 30 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-10) | Sat, Sep 26, 2026 | 31 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays from the date to the
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-18) | Sun, Oct 4, 2026 | 31 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-19) | Mon, Oct 5, 2026 | 31 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-20) | Tue, Oct 6, 2026 | 31 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+ago&ref=2026-11-21) | Wed, Oct 7, 2026 | 30 |
 
 ## How it is counted
 
@@ -77,5 +77,5 @@ No. Today is day 0, so the count goes back from yesterday as day 1, the way a sp
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-ago/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-ago.csv

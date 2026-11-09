@@ -1,63 +1,40 @@
-/* MACRS schedule: a fixed-asset ledger. Sits inside the brand chrome and reuses its tokens; the one
-   accent marks the convention verdict, and rows left out of the 40% test are dimmed. */
+/* MACRS schedule: the tool-full layout (web/tool-full.css) plus this page's own
+   pieces: the CSV box, the elections, the ledger tables. Rows left out of the 40% test are dimmed. */
 .md {
   --accent: var(--h-money);
   --accent-ink: #1a0610;
   --endwise-accent: var(--h-money);
   --endwise-accent-ink: #1a0610;
 }
-
-.md-intro { padding-block: 40px 8px; }
-.md-intro h1 { margin-bottom: 0.25em; }
-.md-price { color: var(--ink-soft); max-width: 44rem; margin: 0; font-variant-numeric: tabular-nums; }
-.md-who { margin-top: 8px; }
-.md-sample { max-width: 44rem; margin: 8px 0 0; }
-.md-format { margin-top: 6px; color: var(--ink-soft); }
-.md-format summary { cursor: pointer; }
-.md-format ul { margin: 6px 0 0; padding-left: 1.2em; max-width: 40rem; font-size: 0.92rem; }
-
-.md-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.md-desk > * { min-width: 0; }
-@media (min-width: 960px) { .md-desk { grid-template-columns: 25rem 1fr; gap: 48px; } }
-
-.md-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.md-form legend { padding: 0; }
-.md-form > .btn { width: 100%; margin-top: 8px; }
-.md-group { border-top: 1px solid var(--rule); padding-top: 14px; }
-.md-group > legend { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
 .md textarea { font-family: var(--font-mono); font-size: 12.5px; line-height: 1.55; white-space: pre; overflow-x: auto; }
-.check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 12px; cursor: pointer; }
+.md-format { margin-top: 8px; }
+.md-format ul { margin: 0; padding-left: 1.2em; font-size: 13.5px; }
+.md-group { border: 0; padding: 0; }
+.md-group + .md-group { margin-top: 16px; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 10px; cursor: pointer; }
 .check input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
-.md-classes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 10px; }
+.md-classes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 10px; margin-top: 10px; }
 @media (max-width: 420px) { .md-classes { grid-template-columns: repeat(2, 1fr); } }
+#md-full .btn { width: 100%; margin-top: 12px; }
 .md-get-note { margin: 10px 0 0; }
 
-.md-out { min-height: 12rem; }
-.md-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.md-answer { font: 500 clamp(2rem, 7vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 10px; }
-.md-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); margin-top: 8px; }
-.md-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 12px; }
-.md-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
-.md-facts dd { margin: 2px 0 0; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-.md-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 22px 0 8px; }
-.md-table { width: 100%; font-variant-numeric: tabular-nums; }
+.md-items .k { font-size: 10.5px; }
+.md-warn { list-style: none; margin: 12px 0 0; padding: 0; font-size: 13.5px; color: var(--text-2); }
+.md-warn li { border-left: 3px solid var(--hue); padding: 4px 0 4px 14px; margin: 0 0 6px; }
+.md-fold { margin-top: 16px; }
+.md-heading { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 22px 0 8px; }
+.md-table { width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
 .md-table td, .md-table th { white-space: nowrap; }
 .md-left-out { opacity: 0.55; }
-.md-warn { margin: 12px 0 8px; padding-left: 1.2em; max-width: 46rem; }
-.md-warn li { margin: 0 0 6px; }
-.md-aside { color: var(--ink-soft); font-size: 0.92rem; margin: 10px 0; max-width: 44rem; }
-.md-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.md-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
+.md-sample { margin-top: 18px; }
 
-.md-rules, .md-legal { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
-.md-rule-cols { display: grid; gap: 4px 40px; }
-@media (min-width: 760px) { .md-rule-cols { grid-template-columns: repeat(3, 1fr); } }
-.md-rule-cols p, .md-legal li, .md-scope li { color: var(--ink-soft); max-width: 40rem; }
-.md-table-title { margin-top: 28px; }
-.md-scope { padding-left: 1.2em; }
-.md-scope li { margin: 0 0 8px; max-width: 52rem; }
+.md-box { padding: 20px 24px; }
+.md-box h3 { font-size: 18px; margin: 0 0 8px; }
+.md-box .tf-p { font-size: 14.5px; margin: 0 0 4px; }
+#md-disclaimers, .md-sources { margin: 0; padding-left: 1.1em; }
+#md-disclaimers li, .md-sources li { margin-bottom: 0.6em; }
 .md-sources a { word-break: break-word; }
-.md-code { margin-top: 40px; max-width: 52rem; }
-.md-code pre { max-width: 100%; }
 
 @media print {
   .md-form, .md-code { display: none; }

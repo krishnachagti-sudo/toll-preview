@@ -140,13 +140,29 @@ USPS send-by dates, postal holidays and delivery times were read from the USPS p
 - [USPS: Mail and shipping services](https://www.usps.com/ship/mail-shipping-services.htm)
 - [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+USPS data for the 2026 season, read 2026-10-31. UPS and FedEx tables are not published here because both pages refused automated reading on 2026-10-31; for those carriers you give the carrier's own date.
+
+Delivery date and holiday order-by calculator: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [USPS: 2026 Holiday Shipping Deadlines](https://www.usps.com/holiday/holiday-shipping-dates.htm) | 2026 season | 2026-10-31 |
+| [USPS Newsroom: Holidays and events (postal holidays)](https://about.usps.com/newsroom/events/) | 2026 | 2026-10-31 |
+| [USPS: Mail and shipping services](https://www.usps.com/ship/mail-shipping-services.htm) | current | 2026-10-31 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists. USPS delivery times are compared with its services page, and the missing UPS and FedEx tables are checked to be absent, with the reason recorded.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Every USPS 2026 send-by date and weekday is compared with the USPS page as recorded, and the postal-holiday rule must give exactly the closures USPS lists.
+- USPS delivery times are compared with the USPS services page.
+- UPS and FedEx tables are checked to be absent, with the reason recorded, so the tool never invents them.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Delivery date and holiday order-by calculator tool](https://krishnachagti-sudo.github.io/toll-preview/delivery-date-calculator/).
 

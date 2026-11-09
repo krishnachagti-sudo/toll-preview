@@ -1,0 +1,39 @@
+hs6,heading,heading_description,description,us_statistical_numbers,schedule_b_numbers
+5101.11,5101,"Wool, not carded or combed:","Wool, not carded or combed: Greasy, including fleece-washed wool: Shorn wool",6,1
+5101.19,5101,"Wool, not carded or combed:","Wool, not carded or combed: Greasy, including fleece-washed wool: Other",6,1
+5101.21,5101,"Wool, not carded or combed:","Wool, not carded or combed: Degreased, not carbonized: Shorn wool",8,1
+5101.29,5101,"Wool, not carded or combed:","Wool, not carded or combed: Degreased, not carbonized: Other",8,1
+5101.30,5101,"Wool, not carded or combed:","Wool, not carded or combed: Carbonized",6,1
+5102.11,5102,"Fine or coarse animal hair, not carded or combed:","Fine or coarse animal hair, not carded or combed: Fine animal hair: Of Kashmir (cashmere) goats",2,2
+5102.19,5102,"Fine or coarse animal hair, not carded or combed:","Fine or coarse animal hair, not carded or combed: Fine animal hair: Other",5,3
+5102.20,5102,"Fine or coarse animal hair, not carded or combed:","Fine or coarse animal hair, not carded or combed: Coarse animal hair",1,1
+5103.10,5103,"Waste of wool or of fine or coarse animal hair, including yarn waste but excluding garnetted stock:","Waste of wool or of fine or coarse animal hair, including yarn waste but excluding garnetted stock: Noils of wool or of fine animal hair",1,1
+5103.20,5103,"Waste of wool or of fine or coarse animal hair, including yarn waste but excluding garnetted stock:","Waste of wool or of fine or coarse animal hair, including yarn waste but excluding garnetted stock: Other waste of wool or of fine animal hair",1,1
+5103.30,5103,"Waste of wool or of fine or coarse animal hair, including yarn waste but excluding garnetted stock:","Waste of wool or of fine or coarse animal hair, including yarn waste but excluding garnetted stock: Waste of coarse animal hair",1,1
+5104.00,5104,,Garnetted stock of wool or of fine or coarse animal hair,1,1
+5105.10,5105,"Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments):","Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments): Carded wool (400)",1,1
+5105.21,5105,"Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments):","Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments): Wool tops and other combed wool: Combed wool in fragments (400)",1,1
+5105.29,5105,"Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments):","Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments): Wool tops and other combed wool: Other (400)",1,1
+5105.31,5105,"Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments):","Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments): Fine animal hair, carded or combed: Of Kashmir (cashmere) goats (400)",1,1
+5105.39,5105,"Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments):","Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments): Fine animal hair, carded or combed: Other (400)",1,1
+5105.40,5105,"Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments):","Wool and fine or coarse animal hair, carded or combed (including combed wool in fragments): Coarse animal hair, carded or combed",1,1
+5106.10,5106,"Yarn of carded wool, not put up for retail sale:","Yarn of carded wool, not put up for retail sale: Containing 85 percent or more by weight of wool",2,2
+5106.20,5106,"Yarn of carded wool, not put up for retail sale:","Yarn of carded wool, not put up for retail sale: Containing less than 85 percent by weight of wool (400)",1,1
+5107.10,5107,"Yarn of combed wool, not put up for retail sale:","Yarn of combed wool, not put up for retail sale: Containing 85 percent or more by weight of wool",2,1
+5107.20,5107,"Yarn of combed wool, not put up for retail sale:","Yarn of combed wool, not put up for retail sale: Containing less than 85 percent by weight of wool",2,1
+5108.10,5108,"Yarn of fine animal hair (carded or combed), not put up for retail sale:","Yarn of fine animal hair (carded or combed), not put up for retail sale: Carded",3,1
+5108.20,5108,"Yarn of fine animal hair (carded or combed), not put up for retail sale:","Yarn of fine animal hair (carded or combed), not put up for retail sale: Combed",3,1
+5109.10,5109,"Yarn of wool or of fine animal hair, put up for retail sale:","Yarn of wool or of fine animal hair, put up for retail sale: Containing 85 percent or more by weight of wool or of fine animal hair",4,1
+5109.90,5109,"Yarn of wool or of fine animal hair, put up for retail sale:","Yarn of wool or of fine animal hair, put up for retail sale: Other",4,1
+5110.00,5110,,"Yarn of coarse animal hair or of horsehair (including gimped horsehair yarn), whether or not put up for retail sale",1,1
+5111.11,5111,Woven fabrics of carded wool or of carded fine animal hair:,Woven fabrics of carded wool or of carded fine animal hair: Containing 85 percent or more by weight of wool or of fine animal hair: Of a weight not exceeding 300 g/m2,4,1
+5111.19,5111,Woven fabrics of carded wool or of carded fine animal hair:,Woven fabrics of carded wool or of carded fine animal hair: Containing 85 percent or more by weight of wool or of fine animal hair: Other,6,1
+5111.20,5111,Woven fabrics of carded wool or of carded fine animal hair:,"Woven fabrics of carded wool or of carded fine animal hair: Other, mixed mainly or solely with man-made filaments",3,1
+5111.30,5111,Woven fabrics of carded wool or of carded fine animal hair:,"Woven fabrics of carded wool or of carded fine animal hair: Other, mixed mainly or solely with man-made staple fibers",3,1
+5111.90,5111,Woven fabrics of carded wool or of carded fine animal hair:,Woven fabrics of carded wool or of carded fine animal hair: Other,4,1
+5112.11,5112,Woven fabrics of combed wool or of combed fine animal hair:,Woven fabrics of combed wool or of combed fine animal hair: Containing 85 percent or more by weight of wool or of fine animal hair: Of a weight not exceeding 200g/m2,5,1
+5112.19,5112,Woven fabrics of combed wool or of combed fine animal hair:,Woven fabrics of combed wool or of combed fine animal hair: Containing 85 percent or more by weight of wool or of fine animal hair: Other,13,1
+5112.20,5112,Woven fabrics of combed wool or of combed fine animal hair:,"Woven fabrics of combed wool or of combed fine animal hair: Other, mixed mainly or solely with man-made filaments",3,1
+5112.30,5112,Woven fabrics of combed wool or of combed fine animal hair:,"Woven fabrics of combed wool or of combed fine animal hair: Other, mixed mainly or solely with man-made staple fibers",3,1
+5112.90,5112,Woven fabrics of combed wool or of combed fine animal hair:,Woven fabrics of combed wool or of combed fine animal hair: Other,5,1
+5113.00,5113,,Woven fabrics of coarse animal hair or of horsehair,1,1

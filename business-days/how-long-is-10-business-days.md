@@ -1,21 +1,20 @@
 # How long is 10 business days?
 
-10 business days from today, Saturday, November 7, 2026 (the date in Washington, DC), is Monday, November 23, 2026 in the US, 16 calendar days away. In England and Wales it is Friday 20 November 2026.
+10 business days from today, Sunday, November 8, 2026 (the date in Washington, DC), is Monday, November 23, 2026 in the US, 15 calendar days away. In England and Wales it is Friday 20 November 2026.
 
 - US date: November 23, 2026
-- Calendar days (US): 16
+- Calendar days (US): 15
 - England and Wales: 20 November 2026
-- Calendar days (E&W): 13
+- Calendar days (E&W): 12
 
 ## Add 10 business days to any date
 
-[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-07&days=10)
+[Find the date in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-08&days=10)
 
 ## 10 business days from each of the next 10 days
 
 | Start | US: ends on | Days | England and Wales: ends on | Days |
 | --- | --- | ---: | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-07&days=10) | Mon, Nov 23, 2026 | 16 | Fri 20 Nov 2026 | 13 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-08&days=10) | Mon, Nov 23, 2026 | 15 | Fri 20 Nov 2026 | 12 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-09&days=10) | Tue, Nov 24, 2026 | 15 | Mon 23 Nov 2026 | 14 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-10&days=10) | Wed, Nov 25, 2026 | 15 | Tue 24 Nov 2026 | 14 |
@@ -25,6 +24,7 @@
 | [Sat, Nov 14, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-14&days=10) | Mon, Nov 30, 2026 | 16 | Fri 27 Nov 2026 | 13 |
 | [Sun, Nov 15, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-15&days=10) | Mon, Nov 30, 2026 | 15 | Fri 27 Nov 2026 | 12 |
 | [Mon, Nov 16, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-16&days=10) | Tue, Dec 1, 2026 | 15 | Mon 30 Nov 2026 | 14 |
+| [Tue, Nov 17, 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=add&region=US&start=2026-11-17&days=10) | Wed, Dec 2, 2026 | 15 | Tue 1 Dec 2026 | 14 |
 
 ## 10 business days from each weekday, with no holidays
 
@@ -77,5 +77,5 @@ Not here: day 1 is the first business day after today, the way WORKDAY counts in
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-10-business-days/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/how-long-is-10-business-days.csv

@@ -1,0 +1,25 @@
+kind,name,meaning,booked_as
+column,Date,"For US accounts, it uses this format: MM/DD/YYYY.",
+column,Type,Type: The transaction event code T-code description.,
+column,Status,"Completed, Pending, Reversed and others.",
+column,Currency,The ISO currency code of the row.,
+column,Gross,"Gross: The localized gross amount of the transaction, including fees.",
+column,Fee,The fee on the row; most files write it as a negative amount.,
+column,Net,Net: The localized net amount of the transaction (typically the gross minus any fees),
+column,Transaction ID,PayPal's id for the row.,
+column,Reference Txn ID,The parent transaction: a refund points to its sale.,
+column,Balance,Balance: The running available balance in the merchant's account in the transaction currency. The balance is the previous balance plus the net amount of the current activity.,
+column,Sales Tax,"Sales Tax: The localized sales tax amount paid as part of the transaction, as reported by PayPal or the merchant",
+column,Balance Impact,"Balance Impact: The impact of the transaction on the account balance: Debit, Credit, or Memo.",
+type,Express Checkout payment (T0006),,Sales
+type,General payment (T0000),,Sales
+type,Payment refund (T1107),,Refunds
+type,Fee refund (T1109),,Processing fees
+type,Chargeback (T1201),,Chargebacks and disputes
+type,Chargeback fee (T0106),,Processing fees
+type,Dispute fee (T0114),,Processing fees
+type,Hold on balance for dispute investigation (T1110),,Chargebacks and disputes
+type,Reserve hold (T2103),,Reserves and holds
+type,General currency conversion (T0200),,Currency conversion
+type,"General withdrawal, bank account (T0400)",,Withdrawal to the bank
+type,Bank deposit to PayPal account (T0300),,Money from the bank

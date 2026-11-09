@@ -1,0 +1,14 @@
+bag_width_in,bag_length_in,length_plus_width_in,warning_required,min_print_pt
+4,6,10,no,
+5,7,12,yes,10
+5,8,13,yes,10
+6,9,15,yes,10
+8,10,18,yes,10
+9,12,21,yes,10
+10,13,23,yes,10
+11,14,25,yes,10
+12,15,27,yes,10
+14,20,34,yes,14
+16,24,40,yes,18
+20,30,50,yes,18
+24,36,60,yes,24

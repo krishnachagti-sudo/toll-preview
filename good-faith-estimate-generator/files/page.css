@@ -1,0 +1,58 @@
+/* Good Faith Estimate generator: a front-desk form beside the estimate it makes. Sits inside the
+   brand chrome and reuses its tokens. Red marks an element the estimate lacks, amber one to check. */
+.gf {
+  --accent: var(--h-money);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06121a;
+  --gf-fail: #ff6b5e;
+  --gf-fail-wash: rgba(255, 107, 94, 0.14);
+  --gf-check: #ffb547;
+  --gf-check-wash: rgba(255, 181, 71, 0.12);
+}
+
+.gf-price { color: var(--ink-soft); max-width: 44rem; }
+.gf-private { margin: 0 0 12px; }
+
+.gf-desk > * { min-width: 0; }
+.gf-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.gf-form > fieldset:first-child { padding-top: 0; border-top: 0; }
+#gf-run { margin: 4px 0 18px; }
+.gf-form legend { padding: 0; }
+.gf-form > .btn { width: 100%; margin-bottom: 10px; }
+.gf-group { border-top: 1px solid var(--rule); padding-top: 14px; margin-bottom: 8px; }
+.gf-group > legend { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.gf-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gf-pair > * { min-width: 0; }
+.gf [hidden] { display: none; }
+.gf-small { font-size: 14px; padding: 6px 12px; margin: 0 0 14px; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 12px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+
+.gf-card { border: 1px solid var(--rule); border-radius: 8px; padding: 12px; margin: 0 0 12px; }
+.gf-card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 0 0 8px; }
+.gf-card-head strong { font-size: 14px; }
+.gf-remove { background: none; border: 0; color: var(--ink-soft); text-decoration: underline; cursor: pointer; font-size: 13px; padding: 0; }
+.gf-line { display: grid; grid-template-columns: 1fr 5.5rem; gap: 8px; border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: 4px; }
+.gf-line > * { min-width: 0; }
+.gf-line .field { margin-bottom: 8px; }
+
+/* The estimate */
+.gf-out { min-height: 12rem; }
+.gf-label { display: inline-block; font: 600 13px/1.4 var(--font-text); color: var(--ok); margin: 0 0 6px; }
+.gf-label.gf-incomplete { color: var(--gf-fail); }
+.gf-due { padding: 10px 12px; border-left: 3px solid var(--accent); margin: 12px 0; font-size: 15px; }
+.gf-due.gf-late { border-color: var(--gf-fail); background: var(--gf-fail-wash); }
+.gf-checks { list-style: none; padding: 0; margin: 16px 0 0; }
+.gf-checks li { padding: 8px 10px; margin: 0 0 6px; border-left: 3px solid var(--rule-strong); font-size: 14px; }
+.gf-checks li.gf-missing { border-color: var(--gf-fail); background: var(--gf-fail-wash); }
+.gf-checks li.gf-warn { border-color: var(--gf-check); background: var(--gf-check-wash); }
+.gf-checks li.gf-ok, .gf-checks li.gf-auto { border-color: var(--accent); }
+.gf-tag { font: 500 0.7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.gf-aside { color: var(--ink-soft); font-size: 14px; }
+.gf-got a, .gf-aside a { overflow-wrap: anywhere; }
+.gf-sessions { font-size: 13px; color: var(--ink-soft); }
+
+.gf-cols { display: grid; gap: 20px; }
+@media (min-width: 860px) { .gf-cols { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+.gf-sources li { margin: 4px 0; overflow-wrap: anywhere; }

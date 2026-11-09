@@ -1,0 +1,15 @@
+/* Minimum wage lookup: the tool-full layout (web/tool-full.css) plus this page's
+   own pieces: the layers, one line each, the one that sets the rate marked. */
+.mw { --accent: var(--h-money); --endwise-accent: var(--accent); }
+.mw input[type="date"] { color-scheme: dark; }
+.mw-check { display: flex; gap: 8px; align-items: center; margin: 12px 0 0; font-size: 14px; color: var(--text-2); }
+.mw-items { margin-top: 16px; }
+.mw-items .k { font-size: 11px; }
+.mw-items a { color: var(--text-2); }
+.mw-cand { font-size: 16px; margin: 20px 0 0; }
+.mw-warn { border-left: 3px solid var(--hue); padding: 4px 0 4px 14px; margin: 12px 0 0; font-size: 13.5px; color: var(--text-2); }
+.mw-list { color: var(--muted); font-size: 13.5px; padding-left: 1.1em; margin: 12px 0 0; }
+.mw-notes { margin: 0; padding-left: 1.1em; }
+.mw-notes li { margin-bottom: 0.6em; }
+.mw-prices { padding: 20px 24px; }
+.mw-prices h3 { font-size: 18px; margin: 0 0 8px; }

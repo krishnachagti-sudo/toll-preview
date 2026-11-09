@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the deposit and milestone payment schedule works: Endwise</title>
+<meta name="description" content="How the payment schedule splits a fee into a deposit and milestones to the cent, dates each invoice on a business day and checks state deposit limits.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/payment-schedule/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/payment-schedule.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the deposit and milestone payment schedule works">
+<meta property="og:description" content="How the payment schedule splits a fee into a deposit and milestones to the cent, dates each invoice on a business day and checks state deposit limits.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/payment-schedule/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/payment-schedule/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/payment-schedule/","name":"How the deposit and milestone payment schedule works","description":"How the payment schedule splits a fee into a deposit and milestones to the cent, dates each invoice on a business day and checks state deposit limits.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the deposit and milestone payment schedule works","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/payment-schedule/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the deposit and milestone payment schedule answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the deposit and milestone payment schedule refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Stages that do not add up, a date out of range or an overpayment are refused with the field. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the deposit and milestone payment schedule works</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the deposit and milestone payment schedule works</h1>
+<p class="cp-answer">Each stage's share is an exact fraction of the total, rounded half up to the cent; the cents the rounding leaves go to one stage (the last by default), so the stages add up to the total exactly. Presets include 50-50, 50-25-25, 30-30-40, 40-30-30, or give your own.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the deposit and milestone payment schedule compute?</h2>
+<p>Give the total fee, the start date, the split and the length of the project and the tool works out each stage's amount to the cent, its invoice date and its due date (moved off weekends and holidays), the invoice-ready lines for every stage with the last one netting off what was paid, a calendar file and a CSV. For home improvement work it checks the deposit against the state's limit where it was read (CA, MD, ME, FL).</p>
+<details class="xpand"><summary>Read the rest: What does the deposit and milestone payment schedule compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>schedule</code>: Returns the stages with amounts, invoice and due dates, the check that they add up, the warnings, the contract wording and, with a state, the deposit rule.</li><li><code>pack</code>: Does what schedule does and also returns every invoice (the last netting the earlier ones), the .ics calendar file and the CSV, paid once per project with free edits.</li><li><code>final</code>: Returns the final invoice: the total less each payment received, with tax on the whole; an overpayment is refused.</li><li><code>rules</code>: Returns the state deposit rules held, each quoted from its official page with the read date. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>total, currency</code>: The fee (up to 100,000,000 in the currency's units) and its currency: USD, CAD, AUD, NZD, GBP, EUR, SGD, ZAR, JPY.</li><li><code>start, weeks, split</code>: The start date, the project length in weeks (up to 260) and a preset split or your own stages (up to 12) by percent, amount or the balance.</li><li><code>net, terms, region</code>: Payment terms (up to 120 days, or business days, weeks or months), how to move a due date off a weekend or holiday, and whose holidays (US, England, or none).</li><li><code>state, capDeposit</code>: A state to check the deposit against, and whether to lower the deposit to its limit.</li><li><code>project, client, invoice, tax</code>: For the pack and final invoice: names, invoice numbers and a tax rate.</li></ul>
+<p>Outputs:</p>
+<ul><li>stages: each with share, amount, invoice date, due date, paid before and balance after</li><li>check: the stages add up to the total; warnings; wording for the contract</li><li>pack: invoices, the .ics file and the CSV; final: the balance due</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Money is read exactly into whole minor units and worked as BigInt, never floats; a share is an exact fraction (50% is a half, a third is 1/3).</li><li>Each share is rounded half up to the cent; the leftover cents go to the last stage (or the first) and the answer says so.</li><li>The deposit is invoiced at the start; the other stages are spread over the weeks, or set by offsets in days, weeks, months or business days.</li><li>Each due date is the invoice date plus the terms, moved to the next (or previous) business day when it falls on a weekend or a holiday of the chosen region; holidays come from the business days engine and are named.</li><li>Tax is rounded on each invoice; the last takes the cent so the taxes equal tax on the total.</li><li>With a state, the deposit is checked against the rule quoted from its official page; with capDeposit it is lowered to the limit and the balance moves to the next stage.</li></ol>
+<p><strong>State deposit rules.</strong></p>
+<p>California (CSLB: $1,000 or 10%, whichever is less), Maryland and Maine (one-third) and Florida (a rule over 10%) are quoted word for word from each state's official page, read on 2026-11-08. Other states are shown as not covered.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Custom stages that do not add up to the total are refused.</li><li>A due date on a holiday names the holiday it moved for.</li><li>Currencies without cents, such as JPY, are rounded to the whole unit.</li><li>The final invoice refuses payments that add up to more than the total.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A $6,000 website split 50/25/25 over 8 weeks, net 7</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;schedule&quot;,
+  &quot;total&quot;: &quot;6000&quot;,
+  &quot;start&quot;: &quot;2026-12-01&quot;,
+  &quot;split&quot;: &quot;50-25-25&quot;,
+  &quot;weeks&quot;: 8,
+  &quot;net&quot;: 7
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A $6,000 website split 50/25/25 over 8 weeks, net 7</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">Deposit (50%)</th><td>$3,000.00, invoiced 2026-12-01, due 2026-12-08</td></tr>
+<tr><th scope="row">Midpoint milestone (25%)</th><td>$1,500.00, invoiced 2026-12-29, due 2027-01-05</td></tr>
+<tr><th scope="row">Final delivery (25%)</th><td>$1,500.00, invoiced 2027-01-26, due 2027-02-02</td></tr>
+</tbody></table></div>
+<p><strong>The final invoice after a $2,000 deposit on a $6,000 project</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;final&quot;,
+  &quot;total&quot;: &quot;6000&quot;,
+  &quot;project&quot;: &quot;Website build&quot;,
+  &quot;payments&quot;: [
+    &#123;
+      &quot;label&quot;: &quot;Deposit&quot;,
+      &quot;amount&quot;: &quot;2000&quot;,
+      &quot;date&quot;: &quot;2026-12-01&quot;,
+      &quot;invoice&quot;: &quot;INV-1001&quot;
+    &#125;
+  ],
+  &quot;issueDate&quot;: &quot;2027-01-29&quot;,
+  &quot;net&quot;: 7
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>The final invoice after a $2,000 deposit on a $6,000 project</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Bill the total of $6,000.00, subtract the $2,000.00 already received, and the balance due is $4,000.00.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Stages that do not add up, a date out of range or an overpayment are refused with the field.</li><li>It sends nothing: the invoices are lines to paste or import and the calendar file is for your own calendar.</li><li>Deposit rules are held only for the states named; not legal advice.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The state deposit rules were read on each state's official page on 2026-11-08, with a dated snapshot each quote is checked against. The pages are checked daily for changes. Holidays come from the business days tool's data.</p>
+<ul class="cp-sources"><li><a href="https://www.cslb.ca.gov/Consumers/Hire_A_Contractor/Home_Improvement_Contracts/What_Is_A_Contract.aspx">CSLB, Learn About Home Improvement Contracts (California down payment limit)</a></li><li><a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&amp;section=8-617&amp;enactments=false">Md. Code, Business Regulation 8-617 (home improvement deposits)</a></li><li><a href="https://legislature.maine.gov/statutes/10/title10sec1487.html">10 M.R.S. 1487, Home construction contracts</a></li><li><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0400-0499/0489/Sections/0489.126.html">Fla. Stat. 489.126, Moneys received by contractors</a></li></ul>
+<p>The state deposit rules were read on each state's official page on 2026-11-08, with a dated snapshot each quote is checked against. The pages are checked daily for changes. Holidays come from the business days tool's data.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Deposit and milestone payment schedule: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.cslb.ca.gov/Consumers/Hire_A_Contractor/Home_Improvement_Contracts/What_Is_A_Contract.aspx">CSLB, Learn About Home Improvement Contracts (California down payment limit)</a></th><td rowspan="4">see the document</td><td rowspan="4">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gbr&amp;section=8-617&amp;enactments=false">Md. Code, Business Regulation 8-617 (home improvement deposits)</a></th></tr>
+<tr><th scope="row"><a href="https://legislature.maine.gov/statutes/10/title10sec1487.html">10 M.R.S. 1487, Home construction contracts</a></th></tr>
+<tr><th scope="row"><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0400-0499/0489/Sections/0489.126.html">Fla. Stat. 489.126, Moneys received by contractors</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests check that every preset adds up to the total to the cent, the rounding rule, custom stages, dates and due dates moved off weekends and holidays, tax on each invoice, that each state quote is word for word in its dated snapshot, the pack and the final invoice.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Every preset adds up to the total exactly, with the leftover cent on one stage.</li><li>Each state deposit quote is word for word in the dated snapshot of its official page, read on 2026-11-08.</li><li>Due dates move off weekends and named holidays; the final invoice nets every payment received.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/payment-schedule/">Open the Deposit and milestone payment schedule tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the deposit and milestone payment schedule answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the deposit and milestone payment schedule refuse to answer?</h3></summary><div class="xp-in"><p>Stages that do not add up, a date out of range or an overpayment are refused with the field. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/payment-schedule/">Open the Deposit and milestone payment schedule tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/payment-schedule.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

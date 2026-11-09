@@ -1,0 +1,37 @@
+/* State leave overlay: a leave-case worksheet inside the brand chrome, reusing its tokens.
+   One accent carries the week totals; quotes read as the state's own words. */
+.so { --accent: var(--h-date); --endwise-accent: var(--h-date); }
+
+
+.so-desk { display: grid; gap: 24px; align-items: start; }
+.so-desk > * { min-width: 0; }
+@media (min-width: 861px) { .so-desk { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.so-step { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 18px 0 6px; }
+.so-step:first-child { margin-top: 0; }
+.so-grid { display: grid; gap: 0 12px; }
+.so-wide { grid-column: 1 / -1; }
+.so select, .so input { max-width: 100%; }
+.so input[type="date"] { color-scheme: dark; }
+.so-check { display: flex; gap: 8px; align-items: baseline; color: var(--ink-soft); margin: 4px 0 8px; font-size: 0.95rem; }
+[hidden] { display: none !important; }
+
+.so-out { min-height: 10rem; }
+.so-label { margin: 0; font: 600 15px/1.4 var(--font-text); color: var(--text-2); }
+.so-sub, .so-aside { color: var(--ink-soft); margin: 0 0 14px; max-width: 46rem; }
+.so-need { color: var(--accent); margin: 0 0 10px; }
+.so-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 20px 0 8px; }
+.so-list { margin: 0 0 12px; padding-left: 1.1rem; max-width: 48rem; color: var(--text-2); }
+.so-list li { margin: 4px 0; }
+.so-table { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-variant-numeric: tabular-nums; display: block; overflow-x: auto; }
+.so-table th, .so-table td { text-align: left; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.so-table th { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+.so-law { border-top: 1px solid var(--rule); padding: 8px 0; }
+.so-law summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.so-tag { color: var(--ink-soft); font-size: 0.9rem; }
+.so-quotes { list-style: none; padding: 0; margin: 0 0 12px; max-width: 48rem; }
+.so-quotes li { border-left: 2px solid var(--rule-strong); padding: 2px 0 2px 12px; margin: 0 0 10px; color: var(--text-2); overflow-wrap: anywhere; }
+.so-quotes q { font-style: italic; }
+.so-quotes a { text-decoration: underline; }
+.so-pre { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--surface-2, transparent); border: 1px solid var(--rule); padding: 12px; font-size: 0.9rem; }
+.so-notes { margin-top: 20px; max-width: 52rem; }
+.so-prices { margin-top: 24px; }

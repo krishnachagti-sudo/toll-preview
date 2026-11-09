@@ -1,0 +1,89 @@
+/* Late fee checker: a landlord's late-rent desk. Sits inside the brand chrome and reuses its tokens.
+   The one colour idea: red marks a rule the fee breaks, the money accent marks the lawful figure. */
+.lf {
+  --accent: var(--h-money);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06121a;
+  --lf-fail: #ff6b5e;
+  --lf-fail-wash: rgba(255, 107, 94, 0.14);
+  --lf-check: #ffb547;
+  --lf-check-wash: rgba(255, 181, 71, 0.12);
+}
+
+.lf-intro { padding-block: 40px 8px; }
+.lf-intro h1 { margin-bottom: 0.25em; }
+.lf-price, .lf-covered { color: var(--ink-soft); max-width: 44rem; margin: 8px 0 0; }
+
+.lf-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
+.lf-desk > * { min-width: 0; }
+@media (min-width: 960px) { .lf-desk { grid-template-columns: 26rem 1fr; gap: 48px; } }
+
+.lf-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.lf-form legend { padding: 0; }
+.lf-form > .btn { width: 100%; margin-bottom: 10px; }
+.lf-group { border-top: 1px solid var(--rule); padding-top: 14px; }
+.lf-group > legend { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }
+.lf-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.lf-pair > * { min-width: 0; }
+.lf [hidden] { display: none; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 12px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+
+/* Result */
+.lf-out { min-height: 12rem; }
+.lf-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
+.lf-label.lf-v-over, .lf-label.lf-v-too-early, .lf-label.lf-v-not-in-lease { color: var(--lf-fail); border-color: var(--lf-fail); }
+.lf-answer { font: 500 clamp(2rem, 7vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 10px; font-variant-numeric: lining-nums tabular-nums; }
+.lf-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
+.lf-reasons { list-style: none; padding: 0; margin: 16px 0 0; }
+.lf-reasons li { padding: 8px 10px; margin: 0 0 6px; border-left: 3px solid var(--rule-strong); font-size: 14px; }
+.lf-reasons li.lf-fail { border-color: var(--lf-fail); background: var(--lf-fail-wash); }
+.lf-reasons li.lf-check { border-color: var(--lf-check); background: var(--lf-check-wash); }
+.lf-reasons li.lf-ok { border-color: var(--accent); }
+.lf-tag { font: 500 0.7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.lf-aside, .lf-notes { color: var(--ink-soft); font-size: 14px; }
+.lf-notes { padding-left: 1.1em; }
+.lf-quote { margin: 8px 0 0; padding: 6px 12px; border-left: 2px solid var(--rule-strong); font-size: 13px; color: var(--text-2); }
+.lf-quote cite { font-style: normal; color: var(--ink-soft); }
+.lf-got a, .lf-aside a { overflow-wrap: anywhere; }
+
+.lf-rules, .lf-legal, .lf-code { margin-top: 56px; }
+.lf-rule-cols { display: grid; gap: 20px; }
+@media (min-width: 860px) { .lf-rule-cols { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+.lf-table-title { margin-top: 28px; }
+.lf-sources li { margin: 4px 0; overflow-wrap: anywhere; }
+
+/* ---------- The tool page layout (design A): one-sentence answer, plain price line, the tool and its
+   result first in two panels, the rules as a short summary beside what it does not cover, the
+   rest folded. Same tokens as web/base.css. ---------- */
+.t-intro { padding-block: 40px 0; }
+.t-intro h1 { margin-bottom: 0.2em; }
+.t-intro .lede { margin: 10px 0 0; max-width: 46rem; }
+.t-price { margin: 14px 0 0; max-width: 52rem; font: 400 13.5px/1.6 var(--font-mono); color: var(--text-2); }
+.t-desk { display: grid; gap: 16px; margin-top: 24px; align-items: start; }
+.t-desk > * { min-width: 0; }
+@media (min-width: 960px) { .t-desk { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.t-panel { padding: 22px; border-radius: var(--radius-lg); border: 1px solid var(--line-2); background: linear-gradient(180deg, #111215, #0c0d0f); }
+.t-result { border-color: color-mix(in srgb, var(--hue, var(--warm)) 38%, var(--line-2)); }
+.t-run { width: 100%; margin-top: 16px; min-height: 46px; }
+.t-panel details.xpand > summary { font-size: 14px; }
+.t-ex { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 14px; font: 400 12px/1.5 var(--font-mono); color: var(--muted); }
+.t-ex .ex-tag { flex: none; color: var(--hue, var(--warm)); border-color: color-mix(in srgb, var(--hue, var(--warm)) 45%, transparent); background: none; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+.t-sec { padding-top: 72px; }
+.t-sum { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; align-items: start; margin-top: 18px; }
+.t-sum > * { min-width: 0; }
+.t-sum > div > p:first-child { margin-top: 0; }
+.t-nocover { padding: 20px 22px; border-radius: var(--radius-lg); border: 1px solid var(--line-2); background: var(--bg-1); }
+.t-nocover h3 { font-size: 17px; margin: 0 0 8px; }
+.t-nocover ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14.5px; }
+.t-nocover li + li { margin-top: 6px; }
+@media (max-width: 860px) { .t-sum { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 720px) { .t-intro { padding-top: 24px; } .t-intro .eyebrow { display: none; } .t-panel { padding: 16px; } .t-sec { padding-top: 48px; } }
+.lf { --hue: var(--h-money); }
+.lf-form.t-panel { border-top: 1px solid var(--line-2); padding-top: 22px; }
+.lf-out.t-panel { min-height: 0; }
+.lf-rule-cols { margin-top: 12px; }
+.lf-q { margin: 6px 0 0; }
+.lf-q > summary { cursor: pointer; font: 500 12px/1.6 var(--font-mono); color: var(--muted); }
+.lf-q > summary:hover { color: var(--text); }

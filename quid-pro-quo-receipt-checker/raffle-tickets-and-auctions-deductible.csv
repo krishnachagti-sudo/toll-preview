@@ -1,0 +1,13 @@
+payment_for,paid,value_received,deductible,disclosure_required,rule
+Raffle tickets,20.00,0.00,0.00,no,raffle
+Bingo night,35.00,0.00,0.00,no,raffle
+50/50 drawing,10.00,0.00,0.00,no,raffle
+Gala ticket,150.00,60.00,90.00,yes,quid-pro-quo
+Golf foursome,1000.00,400.00,600.00,yes,quid-pro-quo
+"Silent auction, bid above value",450.00,300.00,150.00,yes,quid-pro-quo
+"Live auction, bid at value",600.00,600.00,0.00,no,no-donative-element
+Bake sale cake at its price,12.00,12.00,0.00,no,no-donative-element
+Gift with a logo tote,100.00,0.00,100.00,no,token-logo-items
+Annual membership,60.00,0.00,60.00,no,membership
+"Sponsorship, logo only",2500.00,0.00,2500.00,no,recognition
+Fund-a-need paddle raise,500.00,0.00,500.00,no,gift

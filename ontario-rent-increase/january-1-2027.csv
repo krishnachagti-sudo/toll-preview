@@ -1,0 +1,7 @@
+served_on,method,counts_as_given,days_of_notice,enough
+2026-09-25,hand,2026-09-25,98,yes
+2026-10-03,hand,2026-10-03,90,yes
+2026-10-04,hand,2026-10-04,89,no
+2026-09-28,mail,2026-10-03,90,yes
+2026-09-30,mail,2026-10-05,88,no
+2026-10-01,mailbox,2026-10-01,92,yes

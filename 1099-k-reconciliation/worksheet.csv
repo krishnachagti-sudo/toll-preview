@@ -1,0 +1,12 @@
+line,item,amount,where_it_goes
+1,Box 1a gross (2 forms),54150.00,Form 1099-K
+2,"Personal payments (gifts, reimbursements, shared costs)",-1200.00,"Not income: ask the issuer for a corrected form; if it does not come, enter it in the space at the top of Schedule 1 (Form 1040)"
+3,Sales tax collected for the state and paid over (by you or the marketplace),-2860.00,Not gross receipts when the tax is imposed on the buyer and paid over (Schedule C line 23 instructions)
+4,Business gross receipts from these forms,50090.00,"Schedule C line 1, gross receipts"
+5,Refunds to customers,-2150.00,"Schedule C line 2, returns and allowances"
+6,Chargebacks and disputes lost,-300.00,"Schedule C line 2, returns and allowances"
+7,Discounts and credits given after the sale,-75.00,"Schedule C line 2, returns and allowances (a reduction in the selling price)"
+8,Net sales after returns and allowances,47565.00,Schedule C line 3
+9,Platform and processing fees,-1422.40,"Schedule C line 10, commissions and fees"
+10,Shipping labels and postage taken from payouts,-1180.00,A business expense (the IRS lists shipping among the amounts you can deduct from the gross)
+11,What you kept from these sales before other costs,44962.60,Should be close to what the platform paid out to you

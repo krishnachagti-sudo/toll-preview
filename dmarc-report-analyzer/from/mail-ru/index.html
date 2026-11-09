@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMARC report from Mail.ru (dmarc_support@corp.mail.ru) explained</title>
+<meta name="description" content="What the DMARC aggregate report email from Mail.ru is, the address and attachment it uses (gzip (.xml.gz)), its quirks as seen in a real Mail.ru report, and a drop-in reader that names the failing service.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/from/mail-ru/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/dmarc-report-analyzer/from/mail-ru.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="DMARC report from Mail.ru (dmarc_support@corp.mail.ru) explained">
+<meta property="og:description" content="What the DMARC aggregate report email from Mail.ru is, the address and attachment it uses (gzip (.xml.gz)), its quirks as seen in a real Mail.ru report, and a drop-in reader that names the failing service.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/from/mail-ru/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/from/mail-ru/","url":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/from/mail-ru/","name":"DMARC report from Mail.ru (dmarc_support@corp.mail.ru) explained","description":"What the DMARC aggregate report email from Mail.ru is, the address and attachment it uses (gzip (.xml.gz)), its quirks as seen in a real Mail.ru report, and a drop-in reader that names the failing service.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"DMARC report analyzer","item":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/"},{"@type":"ListItem","position":3,"name":"DMARC reports from Mail.ru","item":"https://krishnachagti-sudo.github.io/toll-preview/dmarc-report-analyzer/from/mail-ru/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the DMARC report email from Mail.ru legitimate?","acceptedAnswer":{"@type":"Answer","text":"A real one comes from dmarc_support@corp.mail.ru, names Mail.Ru as the submitter in the subject and carries mail.ru!\u003cyour domain\u003e!\u003cbegin\u003e!\u003cend\u003e.xml.gz. It is sent only because your DMARC record asks for reports (rua=). Do not open other attachment types it might carry."}},{"@type":"Question","name":"How do I stop the Mail.ru DMARC reports?","acceptedAnswer":{"@type":"Answer","text":"Remove the rua= tag (or the address in it) from your domain's DMARC TXT record at _dmarc.\u003cyour domain\u003e; RFC 9989 says receivers must not send aggregate reports when there is no rua tag. Keep it if you are still checking your senders or moving to quarantine or reject."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"dmarc-report-analyzer"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/dmarc-report-analyzer/">DMARC report analyzer</a></li><li aria-current="page">DMARC reports from Mail.ru</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Reports by sender</p>
+<h1>DMARC reports from Mail.ru</h1>
+<p class="cp-answer">Reports from Mail.ru arrive from dmarc_support@corp.mail.ru as gzip (.xml.gz); each one lists the mail Mail.ru's systems received claiming your domain over one UTC day, grouped by sending IP, and is sent because your domain's DMARC record has a rua= address. In Mail.ru's format, a sample for example.com reads: 670 messages from 7 sources; 90 messages (13.4%) failed DMARC from 4 sources. The largest is Amazon SES (54.240.8.17), 57 failing messages: DKIM passed for d=amazonses.com and SPF passed for us-east-1.amazonses.com, but neither is example.com, so neither aligns.</p>
+<dl class="cp-facts"><div><dt>Messages in the sample</dt><dd class="num">670</dd></div><div><dt>Failing sources</dt><dd class="num">4</dd></div></dl>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Read a report in Mail.ru's format</h2><p class="muted">Drop your own gzip attachment in the analyzer, or open this made-up sample for example.com.</p><form method="get" action="/toll-preview/dmarc-report-analyzer/" class="cp-tool-form"><input type="hidden" name="sample" value="mail-ru"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this sample in the analyzer</button></form><p class="small"><a href="/toll-preview/dmarc-report-analyzer/?sample=mail-ru">Open the analyzer</a></p></aside>
+<section>
+<h2 id="format">What a Mail.ru report looks like</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>From a real Mail.ru report in the IETF's public archive (dated November 6, 2026) and Mail.ru's own pages, read November 8, 2026.</caption><thead><tr><th scope="col">Part</th><th scope="col">Mail.ru</th></tr></thead><tbody>
+<tr><th scope="row">From</th><td><code>dmarc_support@corp.mail.ru</code></td></tr>
+<tr><th scope="row">Subject</th><td><code>Report Domain: &lt;your domain&gt;; Submitter: Mail.Ru; Report-ID: &lt;id&gt;</code></td></tr>
+<tr><th scope="row">Attachment</th><td><code>mail.ru!&lt;your domain&gt;!&lt;begin&gt;!&lt;end&gt;.xml.gz</code></td></tr>
+<tr><th scope="row">Compression</th><td><code>gzip (.xml.gz)</code></td></tr>
+<tr><th scope="row">org_name and email in the XML</th><td><code>Mail.Ru; dmarc_support@corp.mail.ru</code></td></tr>
+<tr><th scope="row">Format</th><td><code>RFC 7489 style: no namespace and no version element; the whole XML is on one line</code></td></tr>
+<tr><th scope="row">Period</th><td><code>One UTC day; the end time is the next midnight (00:00:00), so periods overlap by one second</code></td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="quirks">Its quirks</h2>
+<ul><li>The subject separates its parts with semicolons and names the submitter as &quot;Mail.Ru&quot;, not a domain name.</li><li>extra_contact_info is http://help.mail.ru/mail-help.</li></ul>
+</section>
+<section>
+<h2 id="docs">What Mail.ru says about its reports</h2>
+<ul><li>Aggregate (RUA) reports are sent daily by a mail server that received mail from your domain in the past day, and contain SPF, DKIM and DMARC results.</li><li>Reports arrive only if mail with your domain in the From field reached the receiving server in the past day.</li><li>A report is a GZIP archive (.gz) holding an XML file; Mail.ru's own sample names org_name Mail.Ru and the address dmarc_support@corp.mail.ru.</li></ul>
+</section>
+<section>
+<h2 id="sample">The sample, read by the analyzer</h2>
+<p>The same made-up mail for example.com, written in Mail.ru's format: 670 messages from 7 sources, 86.6% passing DMARC. The largest failing source is Amazon SES: DKIM passed for d=amazonses.com and SPF passed for us-east-1.amazonses.com, but neither is example.com, so neither aligns.</p>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Source</th><th scope="col">IPs</th><th scope="col" class="r num">Messages</th><th scope="col" class="r num">Failed</th><th scope="col">Why</th></tr></thead><tbody>
+<tr><th scope="row">Amazon SES</th><td>54.240.8.17</td><td class="r num">57</td><td class="r num">57</td><td>DKIM passed for d=amazonses.com and SPF passed for us-east-1.amazonses.com, but neither is example.com, so neither aligns.</td></tr>
+<tr><th scope="row">Unnamed (203.0.113.9)</th><td>203.0.113.9</td><td class="r num">23</td><td class="r num">23</td><td>The mail was not DKIM-signed, and SPF softfail for example.com: this IP is not authorized to send as example.com.</td></tr>
+<tr><th scope="row">Unnamed (192.0.2.44)</th><td>192.0.2.44</td><td class="r num">6</td><td class="r num">6</td><td>A DKIM signature for example.com did not verify (fail), and SPF did not pass for example.com. The message was probably changed on the way (forwarding, a mailing list, a security gateway) or the published key does not match. The receiver gave a reason: local_policy: the receiver's own policy exempted it (&quot;arc=pass&quot;).</td></tr>
+<tr><th scope="row">A server at Amazon Web Services (EC2) (35.174.145.124)</th><td>35.174.145.124</td><td class="r num">4</td><td class="r num">4</td><td>The mail was not DKIM-signed, and SPF fail for example.com: this IP is not authorized to send as example.com.</td></tr>
+<tr><th scope="row">Google Workspace</th><td>209.85.220.41</td><td class="r num">412</td><td class="r num">0</td><td>Passed DMARC.</td></tr>
+<tr><th scope="row">Microsoft 365</th><td>40.107.22.55</td><td class="r num">130</td><td class="r num">0</td><td>Passed DMARC.</td></tr>
+<tr><th scope="row">HubSpot</th><td>149.72.134.20</td><td class="r num">38</td><td class="r num">0</td><td>Passed DMARC.</td></tr>
+</tbody></table></div>
+<p class="cp-note">The analyzer's notes on this format: The end time is the next midnight (00:00:00 UTC), not 23:59:59; RFC 9990 asks for non-overlapping periods, so the last second overlaps the next report. Microsoft and Mail.ru reports do this.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://help.mail.ru/developers/notes/rua/">Mail.ru Help for developers: DMARC reports (Otchety DMARC, in Russian), read November 8, 2026</a></li><li><a href="https://mailarchive.ietf.org/arch/msg/dmarc-report/bWvpmYLSqm6ZmfP8e49T9Wqlfkk/">A real Mail.ru report in the IETF dmarc-report archive (November 6, 2026), read November 8, 2026</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9990.html">RFC 9990: DMARC Aggregate Reporting (May 2026), read November 8, 2026</a></li></ul>
+<p class="cp-note">Source names are inferred from published provider data (each provider's SPF ranges, the signing and bounce domains its own documentation names, and the AWS and Google Cloud range lists), read on the dates shown, with the evidence listed for every name. Shared infrastructure can carry several companies' mail, so check before you change DNS. Reports you upload are read in memory and not kept.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is the DMARC report email from Mail.ru legitimate?</h3></summary><div class="xp-in"><p>A real one comes from dmarc_support@corp.mail.ru, names Mail.Ru as the submitter in the subject and carries mail.ru!&lt;your domain&gt;!&lt;begin&gt;!&lt;end&gt;.xml.gz. It is sent only because your DMARC record asks for reports (rua=). Do not open other attachment types it might carry.</p></div></details><details class="xpand"><summary><h3>How do I stop the Mail.ru DMARC reports?</h3></summary><div class="xp-in"><p>Remove the rua= tag (or the address in it) from your domain's DMARC TXT record at _dmarc.&lt;your domain&gt;; RFC 9989 says receivers must not send aggregate reports when there is no rua tag. Keep it if you are still checking your senders or moving to quarantine or reject.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/dmarc-report-analyzer/how-to-read-dmarc-reports/">How to read a DMARC report</a></li><li><a href="/toll-preview/dmarc-report-analyzer/why-am-i-getting-dmarc-reports/">Why am I getting DMARC reports?</a></li><li><a href="/toll-preview/dmarc-report-analyzer/from/microsoft/">Microsoft DMARC aggregate reports</a></li><li><a href="/toll-preview/dmarc-report-analyzer/from/google/">DMARC reports from Google</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/dmarc-report-analyzer/from/mail-ru.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

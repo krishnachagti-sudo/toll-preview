@@ -1,0 +1,54 @@
+/* Cron checker: the tool-full layout (web/tool-full.css) plus this page's own
+   pieces: the expression box, the run log, the conversions and the scheduler table. */
+.cr {
+  --accent: var(--h-date);
+  --endwise-accent: var(--h-date);
+}
+
+.tf-open .cr-about { order: 4; margin-top: 10px; max-width: 60ch; }
+.cr-about .xp-in { color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+.cr-about .xp-in p { margin: 0 0 0.8em; }
+
+.cr #cr-expr { font: 500 1.15rem/1.4 var(--font-mono); letter-spacing: 0.02em; }
+.cr input[type="datetime-local"] { color-scheme: dark; }
+.cr-form .tf-run-note { color: var(--muted); }
+.cr-form .xp-in.tf-two { margin-top: 12px; }
+.cr-build .tf-two { row-gap: 12px; }
+.cr-days { border: 0; padding: 0; margin: 12px 0; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.cr-days legend { font-size: 13px; color: var(--text-2); margin-bottom: 6px; }
+.cr-day { display: inline-flex; gap: 4px; align-items: center; margin: 0; font-size: 14px; }
+
+.cr-out .tf-big b.word { font-size: 30px; line-height: 1.15; letter-spacing: -0.02em; }
+@media (max-width: 640px) { .cr-out .tf-big b.word { font-size: 24px; } }
+.cr-heading { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 22px 0 8px; }
+.cr-runs .cr-when { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.cr-runs li > b.cr-zone { font-weight: 500; color: var(--text-2); font-size: 12.5px; }
+.cr-runs li > em.cr-dst { color: var(--hue); }
+.cr-runs .sk .cr-when { text-decoration: line-through; color: var(--muted); }
+.cr-warn { border-left: 3px solid var(--hue); padding: 4px 0 4px 16px; margin: 16px 0 0; list-style: none; color: var(--text-2); font-size: 13.5px; }
+.cr-warn li { margin: 4px 0; }
+.cr-fields { font-size: 13.5px; }
+.cr-fields th { font-weight: 500; color: var(--text-2); padding: 3px 14px 3px 0; text-align: left; }
+.cr-fields td { padding: 3px 14px 3px 0; }
+.cr-out .tf-note { font-size: 13px; }
+
+#cr-conv { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1080px) { #cr-conv { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { #cr-conv { grid-template-columns: minmax(0, 1fr); } }
+.cr-c { padding: 18px 20px; min-width: 0; }
+.cr-c h3 { font-size: 16px; margin: 0 0 8px; }
+.cr-c p { margin: 0 0 8px; }
+.cr-c-no h3 { color: var(--muted); }
+.cr-c-no p { color: var(--muted); font-size: 14px; }
+.cr-expr code { font-size: 14px; }
+.cr-snip { overflow-x: auto; font-size: 12.5px; margin: 8px 0 0; }
+
+.cr-table-wrap { overflow-x: auto; padding: 8px 20px; }
+.cr-table { font-size: 13.5px; width: 100%; border-collapse: collapse; }
+.cr-table td, .cr-table th { vertical-align: top; padding: 10px 14px 10px 0; text-align: left; border-bottom: 1px solid var(--line); }
+.cr-table tr:last-child td, .cr-table tr:last-child th { border-bottom: 0; }
+.cr-table thead th { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.cr-table td { color: var(--text-2); }
+.cr-notes { margin: 0; padding-left: 1.1em; }
+.cr-notes li { margin-bottom: 0.6em; }
+.cr-price-list { padding: 20px 24px; }

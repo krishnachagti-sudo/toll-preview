@@ -1,0 +1,14 @@
+download_header,online_header,amazon_description,used_for
+return-date,Returned date,Date returned merchandise was processed at the fulfillment center (DD-MM-YYYY),Shown with the order
+amazon-order-id,Order ID,"Unique ID in the original shipment for returned item, if available",The join to the refund
+sku,Merchant SKU,Seller's item identifier,Shown with the order
+Asin,ASIN,Amazon standard item number,Kept as written
+fnsku,FNSKU,Fulfillment network SKU,Kept as written
+product-name,Product name,Name of the product as it appears on Amazon,Kept as written
+quantity,Quantity,Number of units of this item returned,Units back
+fulfillment-center-id,FC,Fulfillment center where the returned merchandise was processed,Kept as written
+detailed disposition,Disposition,Condition of the returned item,Who is responsible
+reason,Reason,Short description of reason for return as indicated by the customer,Kept as written
+status,Status,A short description of the status of the customer return,Shown as written
+lpn,LPN,Unique serial number that identifies specific items throughout the fulfillment process,Kept as written
+customer-comments,(download only),Comments submitted by customers about the reason for the return,Kept as written

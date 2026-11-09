@@ -1,0 +1,11 @@
+Line,Amount
+Bank reconciliation,"October 1, 2026 to October 31, 2026"
+Balance per bank statement,12711.13
+Add: deposits in transit,412.60
+Less: outstanding checks and payments,312.75
+Adjusted bank balance,12810.98
+Balance per books,12915.98
+Add or less: bank lines not in the books,-15.00
+Add or less: corrections the hints point to,-90.00
+Adjusted books balance,12810.98
+Difference (should be 0.00),0.00

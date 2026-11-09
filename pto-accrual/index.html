@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PTO and sick leave accrual calculator by state: separate banks, caps, carryover, payout: Endwise</title>
+<meta name="description" content="Run an employee's PTO policy and the state or city paid sick leave bank paycheck by paycheck: hours earned, the caps, year-end carryover and the payout owed at separation, with each rule quoted from the state's own site.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/pto-accrual/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"pto-accrual"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="PTO and sick leave accrual by state">
+<meta property="og:description" content="Runs one employee's PTO policy bank and the state or city paid sick leave bank side by side, paycheck by paycheck: hours earned per hour worked or per pay period, the yearly and balance caps, the waiting period, year-end carryover and what is forfeited; the payout owed at separation with the state's vacation rule; hours per pay period for an annual PTO amount; and each covered place's rules quoted from its own statute or agency page with the date read. Places we could not read are listed as not covered.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/","url":"https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/","name":"PTO and sick leave accrual by state","description":"Runs one employee's PTO policy bank and the state or city paid sick leave bank side by side, paycheck by paycheck: hours earned per hour worked or per pay period, the yearly and balance caps, the waiting period, year-end carryover and what is forfeited; the payout owed at separation with the state's vacation rule; hours per pay period for an annual PTO amount; and each covered place's rules quoted from its own statute or agency page with the date read. Places we could not read are listed as not covered.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"PTO and sick leave accrual by state","item":"https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/"}]},{"@type":"WebApplication","name":"PTO and sick leave accrual by state","url":"https://krishnachagti-sudo.github.io/toll-preview/pto-accrual/","description":"Runs one employee's PTO policy bank and the state or city paid sick leave bank side by side, paycheck by paycheck: hours earned per hour worked or per pay period, the yearly and balance caps, the waiting period, year-end carryover and what is forfeited; the payout owed at separation with the state's vacation rule; hours per pay period for an annual PTO amount; and each covered place's rules quoted from its own statute or agency page with the date read. Places we could not read are listed as not covered.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Accrual, payout, per-paycheck and rules on this page","price":"0","priceCurrency":"USD"},{"name":"Accrual, payout, per-paycheck or rules over the API or MCP","@type":"Offer","price":"0.01","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.01","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"lookup"}}},{"name":"Many employees in one call","@type":"Offer","price":"0.01","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.01","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"employee"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="pa tf hue-money">
+  <section class="wrap tf-open">
+    <p class="eyebrow">PTO and sick leave, state by state</p>
+    <h1>PTO and sick leave accrual by state</h1>
+    <p class="lede">Pick where the employee works, the pay schedule and the hours, and see <b>your PTO bank and the state's or city's paid sick leave bank side by side</b>, paycheck by paycheck, with the caps, the waiting period and what carries over.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="pa-price"><span class="price">Free on this page</span><span>$0.01 a lookup over the API</span><span>At most $9.90 a month</span></p>
+  </section>
+
+  <section class="wrap tf-calc pa-desk" data-jump="Tool" aria-label="Accrual">
+    <form class="tf-panel tf-form pa-form" id="pa-acc" novalidate>
+      <div class="tf-two">
+        <div class="field"><label for="pa-place">Works in</label><select id="pa-place"></select></div>
+        <div class="field"><label for="pa-freq">Paid</label>
+          <select id="pa-freq"><option value="weekly">Weekly</option><option value="biweekly" selected>Every two weeks</option><option value="semimonthly">Twice a month (15th and last day)</option><option value="monthly">Monthly</option></select>
+        </div>
+      </div>
+      <div class="tf-two">
+        <div class="field"><label for="pa-hours">Hours each period</label><input type="text" id="pa-hours" value="44" inputmode="decimal"></div>
+        <div class="field"><label for="pa-pto">PTO hours a year</label><input type="text" id="pa-pto" value="80" inputmode="decimal"></div>
+      </div>
+      <p class="field-error" id="pa-acc-err" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="pa-run">Work out the balances</button>
+      <details class="xpand pa-more" id="pa-more">
+        <summary>Dates, caps, sick time method and time used</summary>
+        <div class="xp-in">
+        <div class="tf-two">
+          <div class="field"><label for="pa-first">First pay period ends</label><input type="date" id="pa-first" value="2027-01-08"></div>
+          <div class="field"><label for="pa-periods">Pay periods</label><input type="number" id="pa-periods" min="1" max="160" value="26"></div>
+        </div>
+        <div class="tf-two">
+          <div class="field"><label for="pa-ptocap">PTO balance cap</label><input type="text" id="pa-ptocap" inputmode="decimal" placeholder="none"></div>
+          <div class="field"><label for="pa-ptocarry">PTO carryover limit</label><input type="text" id="pa-ptocarry" inputmode="decimal" placeholder="none"></div>
+        </div>
+        <div class="tf-two">
+          <div class="field"><label for="pa-emp">Employees in the business</label><input type="number" id="pa-emp" min="1" value="" placeholder="for size tiers"></div>
+          <div class="field"><label for="pa-method">Sick time</label><select id="pa-method"><option value="accrue" selected>Accrue per hour worked</option><option value="frontload">Front-load each year</option></select></div>
+        </div>
+        <div class="tf-two">
+          <div class="field"><label for="pa-hire">Hire date</label><input type="date" id="pa-hire"></div>
+          <div class="field"><label for="pa-ystart">Plan year starts (MM-DD)</label><input type="text" id="pa-ystart" value="01-01"></div>
+        </div>
+        <div class="field"><label for="pa-use">Sick hours used (period:hours)</label><input type="text" id="pa-use" value="10:8" placeholder="10:8, 20:4"></div>
+        <label class="pa-check"><input type="checkbox" id="pa-caps" checked> Apply the limits the law lets an employer apply</label>
+        </div>
+      </details>
+    </form>
+    <div class="tf-panel tf-result pa-out" id="pa-acc-out" aria-live="polite">
+      <div class="tf-rh"><span class="tf-tag">Example</span><span class="tf-src">Washington · RCW 49.46.210</span></div>
+      <p class="tf-exin">Example: Washington, 44 hours every two weeks for 26 paychecks, an 80-hour PTO policy, 8 sick hours used</p>
+      <p class="tf-big"><b>20.6 h</b><span>of sick time at year end</span></p>
+      <p class="tf-sub" id="pa-static">Over 26 paychecks every two weeks (January 8, 2027 to December 24, 2027) and 1,144 hours worked, the PTO bank earns 80 hours and ends at 80 hours; the separate Washington sick bank earns 28.60 hours at 1 hour per 40 hours worked and ends at 20.60 hours.</p>
+      <ul class="tf-items">
+        <li><span class="k" aria-hidden="true">+</span><span>Sick time earned</span><b>28.6 h</b><em>1 hour per 40 hours worked on 1,144 hours, RCW 49.46.210(1)(a)</em></li>
+        <li><span class="k" aria-hidden="true">-</span><span>Sick time used</span><b>8 h</b><em>your entry: 8 hours in paycheck 10</em></li>
+        <li class="tot"><span class="k" aria-hidden="true">=</span><span>Sick balance</span><b>20.6 h</b><em>up to 40 hours may carry over, RCW 49.46.210(1)(j)</em></li>
+        <li><span class="k" aria-hidden="true">P</span><span>PTO balance</span><b>80 h</b><em>your policy: 80 hours a year, 3.08 hours a paycheck</em></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec" data-jump="More" aria-label="More calculators">
+<div role="region" class="pa-part pa-sec" id="payout" aria-labelledby="pa-pay-title">
+    <div class="tf-top solo"><div><h2 id="pa-pay-title">What is owed when someone leaves</h2></div></div>
+    <div class="tf-calc">
+      <form class="tf-panel tf-form pa-form" id="pa-pay" novalidate>
+        <div class="field"><label for="pa-pstate">Work state</label><select id="pa-pstate"></select></div>
+        <div class="tf-two">
+          <div class="field"><label for="pa-ptoh">Unused PTO hours</label><input type="text" id="pa-ptoh" value="64" inputmode="decimal"></div>
+          <div class="field"><label for="pa-sickh">Unused sick hours</label><input type="text" id="pa-sickh" value="20" inputmode="decimal"></div>
+        </div>
+        <div class="field"><label for="pa-rate">Final hourly rate</label><input type="text" id="pa-rate" value="28" inputmode="decimal"></div>
+        <label class="pa-check"><input type="checkbox" id="pa-combined"> One combined PTO bank (vacation and sick time together)</label>
+        <p class="field-error" id="pa-pay-err" role="alert"></p>
+        <button class="btn tf-go" type="submit">Work out the payout</button>
+      </form>
+      <div class="tf-panel tf-result pa-out" id="pa-pay-out" aria-live="polite">
+        <div class="tf-rh"><span class="tf-tag">Example</span><span class="tf-src">Illinois · 820 ILCS 115/5</span></div>
+        <p class="tf-exin">Example: Illinois, 64 unused PTO hours and 20 sick hours at $28.00 an hour</p>
+        <p class="tf-sub" id="pa-static-pay">Paying out 64 hours of PTO at $28.00 an hour is $1,792.00 gross (and 20 hours of sick time would be $560.00). In Illinois, unused vacation at separation must be paid, as earned vacation counts as wages (820 ILCS 115/5; 56 Ill. Adm. Code 300.520); unused sick leave under the state law need not be paid out (IDOL PLAWA FAQ).</p>
+      </div>
+    </div>
+  </div>
+
+  <div role="region" class="pa-part pa-sec" id="per-paycheck" aria-labelledby="pa-per-title">
+    <div class="tf-top solo"><div><h2 id="pa-per-title">PTO hours per paycheck</h2></div></div>
+    <div class="tf-calc">
+      <form class="tf-panel tf-form pa-form" id="pa-per" novalidate>
+        <div class="field"><label for="pa-annual">PTO hours a year</label><input type="text" id="pa-annual" value="120" inputmode="decimal"></div>
+        <p class="field-error" id="pa-per-err" role="alert"></p>
+        <button class="btn tf-go" type="submit">Work it out</button>
+      </form>
+      <div class="tf-panel tf-result pa-out" id="pa-per-out" aria-live="polite">
+        <div class="tf-rh"><span class="tf-tag">Example</span><span class="tf-src">arithmetic</span></div>
+        <p class="tf-exin">Example: 120 PTO hours a year</p>
+        <p class="tf-sub" id="pa-static-per">120 hours a year is 4.62 hours a paycheck every two weeks (120 / 26), 5.00 twice a month, 2.31 weekly and 10.00 monthly; per hour worked it is 0.0577 hours (120 / 2,080).</p>
+      </div>
+    </div>
+  </div>
+
+  <div role="region" class="pa-part pa-sec" id="rules" aria-labelledby="pa-rul-title">
+    <div class="tf-top solo"><div><h2 id="pa-rul-title">One place's rules, quoted</h2></div></div>
+    <div class="tf-calc">
+      <form class="tf-panel tf-form pa-form" id="pa-rul" novalidate>
+        <div class="field"><label for="pa-rplace">Place</label><select id="pa-rplace"></select></div>
+        <p class="field-error" id="pa-rul-err" role="alert"></p>
+        <button class="btn tf-go" type="submit">Show the rules</button>
+      </form>
+      <div class="tf-panel tf-result pa-out" id="pa-rul-out" aria-live="polite">
+        <div class="tf-rh"><span class="tf-tag">Example</span><span class="tf-src">Seattle · SMC 14.16</span></div>
+        <p class="tf-exin">Example: Seattle, WA</p>
+        <p class="tf-sub" id="pa-static-rul">Seattle, WA (SMC 14.16): Tier 3: 250 or more FTEs worldwide: 1 hour per 30 hours worked; carryover may be limited to 72 hours. Tier 2: 50 to 249 FTEs: 1 hour per 40 hours worked; carryover may be limited to 56 hours. Tier 1: 1 to 49 FTEs: 1 hour per 40 hours worked; carryover may be limited to 40 hours.</p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="wrap tf-sec pa-rules" data-jump="Rules" aria-labelledby="pa-src-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">Where the rules come from</p>
+        <h2 id="pa-src-title">Quoted from each place's own law, <span class="dim">with the date we read it.</span></h2>
+        <p class="tf-p">Each covered state's and city's rule is quoted word for word from its own statute or agency page, read on November 8, 2026; every answer shows the quote and the link.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="pa-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="pa-limits-title">What it does not cover</h3>
+          <p>Legal advice, places whose official sites we could not read, and what your own policy or a union contract gives beyond the law.</p>
+          <details class="xpand"><summary>Read the full list</summary><div class="xp-in">
+            <ul class="pa-notes">
+              <li>Worked out from each state's or city's own published text, quoted with the date we read it. Not legal advice.</li>
+              <li>The limits shown are the most an employer may apply; your written policy, a union contract or a local ordinance can give more.</li>
+              <li>Places whose official sites we could not read are listed as not covered rather than guessed.</li>
+              <li>Sick time is worked out from the hours worked so far in the plan year (hours divided by the rate, to the thousandth of an hour), so it never drifts across paychecks.</li>
+            </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+    <div class="tf-cards c2">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="pa-cov-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg></span>
+        <div>
+          <h3 id="pa-cov-title">What it covers</h3>
+          <p>Every state for the PTO bank; paid sick leave and vacation payout where we read the law.</p>
+          <details class="xpand"><summary>Read the full list</summary><div class="xp-in">
+            <p id="pa-coverage"></p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="pa-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v17M16 7.5c-.8-1.2-2.2-1.8-4-1.8-2.3 0-4 1.1-4 3s1.7 2.6 4 3.1 4 1.3 4 3.2-1.7 3.1-4 3.1c-1.9 0-3.4-.7-4.2-2"/></svg></span>
+        <div>
+          <h3 id="pa-prices-title">Prices</h3>
+          <p data-prices>Everything on this page is free. Over the API or MCP a lookup costs $0.01.</p>
+          <details class="xpand"><summary>Read the full prices</summary><div class="xp-in">
+            <p data-prices>Over the API or MCP a lookup costs $0.01, and a batch of employees $0.01 each (at least $0.10 a batch). The free $0.25 each month on a signed-in account covers 25 lookups over the API. This tool never costs more than $9.90 in a month.</p>
+            <ul class="endwise-prices"><li><strong>Accrual, payout, per-paycheck and rules on this page</strong>: free.</li><li><strong>Accrual, payout, per-paycheck or rules over the API or MCP</strong>: $0.01 per lookup.</li><li><strong>Many employees in one call</strong>: $0.01 per employee, at least $0.10 per batch.</li><li>At most $9.90 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+          </div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Calculators" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Calculators</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/sick-leave/" title="Sick leave accrual calculator: per hour worked, part-time, by state and city">Sick leave accrual calculator</a></li><li><a href="/toll-preview/pto-accrual/payout-calculator/" title="PTO payout calculator for employers: final-paycheck vacation payout by state">PTO payout calculator</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Charts" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Charts</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/sick-leave-laws-by-state/" title="Paid sick leave laws by state 2026: rate, caps, carryover and payout, sourced">Paid sick leave laws by state</a></li><li><a href="/toll-preview/pto-accrual/payout-laws-by-state/" title="PTO payout and carryover laws by state (2026 table, quoted and dated)">PTO payout laws by state</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Sick leave" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Sick leave by state</h2>
+<h3>States</h3><ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/sick-leave/alaska/" title="Alaska paid sick leave law: 1 hour per 30 hours worked (calculator)">Alaska</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/arizona/" title="Arizona paid sick leave law: 1 hour per 30 hours worked (calculator)">Arizona</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/colorado/" title="Colorado paid sick leave law: 1 hour per 30 hours worked (calculator)">Colorado</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/district-of-columbia/" title="District of Columbia paid sick leave law: 1 hour per 37 hours worked up to 7 days a year  (calculator)">District of Columbia</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/illinois/" title="Illinois paid sick leave law: 1 hour per 40 hours worked (calculator)">Illinois</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/maine/" title="Maine paid sick leave law: 1 hour per 40 hours worked (calculator)">Maine</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/maryland/" title="Maryland paid sick leave law: At least 1 hour per 30 hours worked (calculator)">Maryland</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/minnesota/" title="Minnesota paid sick leave law: 1 hour per 30 hours worked (calculator)">Minnesota</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/new-jersey/" title="New Jersey paid sick leave law: 1 hour per 30 hours worked (calculator)">New Jersey</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/oregon/" title="Oregon paid sick leave law: At least 1 hour per 30 hours worked (calculator)">Oregon</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/vermont/" title="Vermont paid sick leave law: 1 hour per 52 hours worked (calculator)">Vermont</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/virginia/" title="Virginia paid sick leave law: 1 hour per 30 hours worked (calculator)">Virginia</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/washington/" title="Washington paid sick leave law: At least 1 hour for every 40 hours worked (calculator)">Washington</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Sick leave" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Sick leave by city</h2>
+<h3>Cities</h3><ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/sick-leave/city/chicago/" title="Chicago paid sick leave: accrual rate, caps and a calculator (Chicago Mun. Code ch. 6-130)">Chicago, IL</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/city/los-angeles/" title="Los Angeles paid sick leave: accrual rate, caps and a calculator (LAMC 187.04)">Los Angeles, CA</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/city/montgomery-county-md/" title="Montgomery County paid sick leave: accrual rate, caps and a calculator (Montgomery County Code ch. 27, art. XIII)">Montgomery County, MD</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/city/new-york-city/" title="New York City paid sick leave: accrual rate, caps and a calculator (N.Y.C. Admin. Code 20-911 et seq.)">New York City, NY</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/city/philadelphia/" title="Philadelphia paid sick leave: accrual rate, caps and a calculator (Phila. Code 9-4100)">Philadelphia, PA</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/city/saint-paul/" title="Saint Paul paid sick leave: accrual rate, caps and a calculator (Saint Paul Leg. Code ch. 233)">Saint Paul, MN</a></li><li><a href="/toll-preview/pto-accrual/sick-leave/city/seattle/" title="Seattle paid sick leave: accrual rate, caps and a calculator (SMC 14.16)">Seattle, WA</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="PTO payout" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">PTO payout by state</h2>
+<h3>Payout</h3><ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/connecticut/" title="Connecticut PTO laws: vacation payout at termination (C.G.S. 31-76k)">Connecticut</a></li><li><a href="/toll-preview/pto-accrual/illinois/" title="Illinois PTO laws: vacation payout at termination and sick leave (820 ILCS 115/5; 56 Ill. Adm. Code 300.520)">Illinois</a></li><li><a href="/toll-preview/pto-accrual/iowa/" title="Iowa PTO laws: vacation payout at termination (Iowa Code 91A.4)">Iowa</a></li><li><a href="/toll-preview/pto-accrual/maine/" title="Maine PTO laws: vacation payout at termination and sick leave (26 M.R.S. 626)">Maine</a></li><li><a href="/toll-preview/pto-accrual/maryland/" title="Maryland PTO laws: vacation payout at termination and sick leave (Md. Lab. &amp; Empl. 3-505(b))">Maryland</a></li><li><a href="/toll-preview/pto-accrual/north-dakota/" title="North Dakota PTO laws: vacation payout at termination (N.D. Cent. Code 34-14-09.2)">North Dakota</a></li><li><a href="/toll-preview/pto-accrual/oklahoma/" title="Oklahoma PTO laws: vacation payout at termination (Oklahoma DOL)">Oklahoma</a></li><li><a href="/toll-preview/pto-accrual/oregon/" title="Oregon PTO laws: vacation payout at termination and sick leave (Oregon BOLI)">Oregon</a></li><li><a href="/toll-preview/pto-accrual/south-carolina/" title="South Carolina PTO laws: vacation payout at termination (S.C. Code 41-10-10(2) (2019 copy))">South Carolina</a></li><li><a href="/toll-preview/pto-accrual/south-dakota/" title="South Dakota PTO laws: vacation payout at termination (South Dakota DLR)">South Dakota</a></li><li><a href="/toll-preview/pto-accrual/tennessee/" title="Tennessee PTO laws: vacation payout at termination (Tenn. Code Ann. 50-2-103 (TDLWD))">Tennessee</a></li><li><a href="/toll-preview/pto-accrual/texas/" title="Texas PTO laws: vacation payout at termination (Tex. Lab. Code 61.001(7))">Texas</a></li><li><a href="/toll-preview/pto-accrual/vermont/" title="Vermont PTO laws: vacation payout at termination and sick leave (Vermont DOL WH-13 (2019))">Vermont</a></li><li><a href="/toll-preview/pto-accrual/west-virginia/" title="West Virginia PTO laws: vacation payout at termination (W. Va. Code 21-5 (Fact Sheet 6))">West Virginia</a></li><li><a href="/toll-preview/pto-accrual/wyoming/" title="Wyoming PTO laws: vacation payout at termination (Wyoming DWS employer FAQ)">Wyoming</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-6"><h2 id="cp-index-title-6">Guides</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/separate-pto-and-sick-leave/" title="Separate PTO and sick banks or one combined bank? The state-by-state answer">Separate PTO and sick banks</a></li><li><a href="/toll-preview/pto-accrual/excel/" title="PTO accrual calculator in Excel and Google Sheets: formulas plus state caps">In Excel and Google Sheets</a></li><li><a href="/toll-preview/pto-accrual/guides/hourly-accrual/" title="Sick leave accrual: one hour per 30 hours worked, and the other rates">One hour per 30 hours worked</a></li><li><a href="/toll-preview/pto-accrual/guides/carryover-caps/" title="Sick leave carryover, accrual caps and use-it-or-lose-it by state">Carryover and caps</a></li><li><a href="/toll-preview/pto-accrual/guides/per-pay-period/" title="120 hours of PTO a year: hours per pay period (weekly, biweekly, semimonthly, monthly)">Hours per pay period</a></li><li><a href="/toll-preview/pto-accrual/guides/multi-state/" title="Employees in several states: which paid sick leave law applies">Employees in several states</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Comparisons" aria-labelledby="cp-index-title-7"><h2 id="cp-index-title-7">Comparisons</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/vs/bamboohr/" title="BambooHR vs a state-aware accrual engine: PTO and sick leave by state">BambooHR</a></li><li><a href="/toll-preview/pto-accrual/vs/clockspot/" title="Clockspot vs a multi-bank accrual engine: PTO and sick leave by state">Clockspot</a></li><li><a href="/toll-preview/pto-accrual/vs/vacation-tracker/" title="Vacation Tracker alternative for state sick leave and PTO accrual math">Vacation Tracker</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Dates" aria-labelledby="cp-index-title-8"><h2 id="cp-index-title-8">Dates</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/pto-accrual/year-end-carryover-2026/" title="December 31, 2026 sick leave carryover: what carries into 2027, by state">December 31, 2026 carryover</a></li></ul>
+</section>
+
+  <section class="wrap tf-code pa-code" data-jump="Code" aria-label="Use this from code">
+    <div id="pa-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to work out new balances. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/pto-accrual/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

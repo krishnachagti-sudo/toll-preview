@@ -1,0 +1,32 @@
+place,name,tier,rate,year_cap_hours,use_cap_hours,balance_cap_hours,carryover_cap_hours,frontload_hours,paid,wait_days,payout_at_separation,law,sources
+AK,Alaska,15 or more employees (FTEs),1 per 30,56,56,,,56,paid,,not required,AS 23.10.067,https://labor.alaska.gov/lss/sick-leave-faq.html
+AK,Alaska,Fewer than 15 employees (FTEs),1 per 30,40,40,,,40,paid,,not required,AS 23.10.067,https://labor.alaska.gov/lss/sick-leave-faq.html
+AZ,Arizona,15 or more employees,1 per 30,40,40,,,40,paid,90,not required,A.R.S. 23-372,https://www.azleg.gov/ars/23/00372.htm https://www.azleg.gov/ars/23/00373.htm
+AZ,Arizona,Fewer than 15 employees,1 per 30,24,24,,,24,paid,90,not required,A.R.S. 23-372,https://www.azleg.gov/ars/23/00372.htm https://www.azleg.gov/ars/23/00373.htm
+CO,Colorado,All employers,1 per 30,48,,,,,paid,,,C.R.S. 8-13.3-403,https://cdle.colorado.gov/sites/cdle/files/info_%236_hfwa_summary_%26_overview_07.19.23.pdf
+DC,District of Columbia,100 or more employees,1 per 37,7 days,,,,,paid,90,,D.C. Code 32-531.02,https://code.dccouncil.gov/us/dc/council/code/sections/32-531.02
+DC,District of Columbia,25 to 99 employees,1 per 43,5 days,,,,,paid,90,,D.C. Code 32-531.02,https://code.dccouncil.gov/us/dc/council/code/sections/32-531.02
+DC,District of Columbia,24 or fewer employees,1 per 87,3 days,,,,,paid,90,,D.C. Code 32-531.02,https://code.dccouncil.gov/us/dc/council/code/sections/32-531.02
+IL,Illinois,All employers (Chicago and Cook County have their own ordinances),1 per 40,40,40,,,40,paid,90,not required,820 ILCS 192,https://labor.illinois.gov/faqs/paidleavefaq.html
+ME,Maine,More than 10 employees,1 per 40,40,,,,,paid,120,,26 M.R.S. 637,https://legislature.maine.gov/statutes/26/title26sec637-2.html
+MD,Maryland,15 or more employees: paid,1 per 30,40,64,64,40,40,paid,106,not required,Md. Lab. & Empl. 3-1304,https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-1304&enactments=false
+MD,Maryland,14 or fewer employees: unpaid,1 per 30,40,64,64,40,40,unpaid,106,not required,Md. Lab. & Empl. 3-1304,https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gle&section=3-1304&enactments=false
+MN,Minnesota,All employers,1 per 30,48,,80,,80,paid,,not required,Minn. Stat. 181.9446,https://www.revisor.mn.gov/statutes/cite/181.9446 https://www.revisor.mn.gov/statutes/cite/181.9448 https://www.dli.mn.gov/sick-leave
+NJ,New Jersey,All employers,1 per 30,40,40,,40,40,paid,,,N.J.S.A. 34:11D-2,https://www.nj.gov/labor/myworkrights/leave-benefits/sick-leave/law.shtml
+OR,Oregon,10 or more employees in Oregon (6 or more with a Portland location): paid,1 per 30,40,40,80,40,40,paid,90,not required,ORS 653.606,https://www.oregon.gov/boli/workers/pages/sick-time.aspx
+OR,Oregon,"Fewer than 10 employees (fewer than 6 with a Portland location): unpaid, protected",1 per 30,40,40,80,40,40,unpaid,90,not required,ORS 653.606,https://www.oregon.gov/boli/workers/pages/sick-time.aspx
+VT,Vermont,All covered employers,1 per 52,,40,,,,paid,365,,21 V.S.A. 482,https://labor.vermont.gov/sites/labor/files/doc_library/Earned%20sick%20time%20text%20new.pdf https://labor.vermont.gov/sites/labor/files/doc_library/EarnedSickTimePoster.pdf
+VA,Virginia,Home health workers (average 20 hours a week or 90 a month),1 per 30,40,40,,,,paid,,,Va. Code 40.1-33.4,https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-33.4/ https://law.lis.virginia.gov/vacode/title40.1/chapter3/section40.1-33.3/
+WA,Washington,All employers,1 per 40,,,,40,,paid,90,not required,RCW 49.46.210,https://lni.wa.gov/workers-rights/leave/paid-sick-leave/ https://app.leg.wa.gov/RCW/default.aspx?cite=49.46.210
+chicago,"Chicago, IL","All employers: paid sick leave bank (a second, paid leave bank accrues at the same rate)",1 per 35,,,,,,paid,,,Chicago Mun. Code ch. 6-130,https://www.chicago.gov/city/en/depts/bacp/supp_info/paidsickleaveinfo.html
+los-angeles,"Los Angeles, CA",All employers,1 per 30,,48,72,,48,paid,90,not required,LAMC 187.04,https://wagesla.lacity.gov/
+montgomery-county-md,"Montgomery County, MD",5 or more employees,1 per 30,56,80,,,,paid,,,"Montgomery County Code ch. 27, art. XIII",https://www.montgomerycountymd.gov/humanrights/Resources/Files/EarnedSickandSavedLeave_Poster.pdf
+montgomery-county-md,"Montgomery County, MD","Fewer than 5 employees (32 hours paid, then 24 unpaid)",1 per 30,32,80,,,,paid,,,"Montgomery County Code ch. 27, art. XIII",https://www.montgomerycountymd.gov/humanrights/Resources/Files/EarnedSickandSavedLeave_Poster.pdf
+new-york-city,"New York City, NY",100 or more employees,1 per 30,56,,,,,paid,,,N.Y.C. Admin. Code 20-911 et seq.,https://www.nyc.gov/site/dca/about/paid-sick-leave-FAQs.page
+new-york-city,"New York City, NY",99 or fewer employees,1 per 30,40,,,,,paid,,,N.Y.C. Admin. Code 20-911 et seq.,https://www.nyc.gov/site/dca/about/paid-sick-leave-FAQs.page
+philadelphia,"Philadelphia, PA",10 or more employees: paid,1 per 40,40,40,,,40,paid,90,,Phila. Code 9-4100,https://www.phila.gov/media/20250731151754/dol-paid-sick-leave-one-pager-en.pdf https://www.phila.gov/departments/department-of-records/regulations/sick-leave-regulations.pdf
+philadelphia,"Philadelphia, PA",9 or fewer employees: unpaid,1 per 40,40,40,,,40,unpaid,90,,Phila. Code 9-4100,https://www.phila.gov/media/20250731151754/dol-paid-sick-leave-one-pager-en.pdf https://www.phila.gov/departments/department-of-records/regulations/sick-leave-regulations.pdf
+saint-paul,"Saint Paul, MN",All employers,1 per 30,48,,80,,,paid,,not required,Saint Paul Leg. Code ch. 233,https://www.stpaul.gov/departments/human-rights-equal-economic-opportunity/labor-standards-enforcement-and-education/earned-sick-safe-time
+seattle,"Seattle, WA",Tier 3: 250 or more FTEs worldwide,1 per 30,,,,72,,paid,,,SMC 14.16,https://www.seattle.gov/laborstandards/ordinances/paid-sick-and-safe-time
+seattle,"Seattle, WA",Tier 2: 50 to 249 FTEs,1 per 40,,,,56,,paid,,,SMC 14.16,https://www.seattle.gov/laborstandards/ordinances/paid-sick-and-safe-time
+seattle,"Seattle, WA",Tier 1: 1 to 49 FTEs,1 per 40,,,,40,,paid,,,SMC 14.16,https://www.seattle.gov/laborstandards/ordinances/paid-sick-and-safe-time

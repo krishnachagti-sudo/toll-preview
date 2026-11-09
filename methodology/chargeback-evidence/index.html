@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the chargeback evidence packet is built: rules: Endwise</title>
+<meta name="description" content="How the chargeback evidence builder works: reason code to category, evidence strongest first, the break-even win chance, CE 3.0 and upload limits.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/chargeback-evidence/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/chargeback-evidence.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the chargeback evidence packet is built: rules">
+<meta property="og:description" content="How the chargeback evidence builder works: reason code to category, evidence strongest first, the break-even win chance, CE 3.0 and upload limits.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/chargeback-evidence/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/chargeback-evidence/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/chargeback-evidence/","name":"How the chargeback evidence packet is built: rules","description":"How the chargeback evidence builder works: reason code to category, evidence strongest first, the break-even win chance, CE 3.0 and upload limits.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the chargeback evidence packet is built: rules","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/chargeback-evidence/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the chargeback evidence packet builder answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the chargeback evidence packet builder refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"It does not read your platform account; the due date and facts are what you enter. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the chargeback evidence packet is built: rules</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the chargeback evidence packet is built: rules</h1>
+<p class="cp-answer">A reason code is looked up in Stripe's published table to one of 9 dispute categories, and the category gives the evidence that answers it, strongest first, for a physical product, a digital product or an offline service. Fighting pays when your chance of winning is above the extra cost of fighting divided by what a win gives back.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the chargeback evidence packet builder compute?</h2>
+<p>For a dispute on Stripe, Shopify Payments or PayPal, the tool says what the reason code means, which evidence answers it and which upload slot each piece goes in. It builds the packet: a rebuttal letter from the facts you give (nothing is assumed) and one labelled exhibit PDF per evidence type from your screenshots and typed text, checked against the platform's size, page and file limits. It also works out the fees and the break-even win chance, the days left to the due date with a calendar file, and whether a Visa 10.4 dispute meets Compelling Evidence 3.0. The card issuer decides every dispute.</p>
+<details class="xpand"><summary>Read the rest: What does the chargeback evidence packet builder compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>codes</code>: Returns every code Stripe publishes for one network (Visa, Mastercard, American Express, Discover) or PayPal, each with its Stripe category, and the source with its read date. Free.</li><li><code>rules</code>: Returns the whole rules data: codes, categories, evidence items, platform limits, windows, fees, the CE 3.0 rule and the sources. Free.</li><li><code>checklist</code>: Returns the code's name and category, the claim it makes, the ways it is overturned, the evidence items strongest first with each one's upload slot on the platform, the platform's limits, response window and submission rule, and the sources. Free on the page; $0.01 over the API.</li><li><code>worth</code>: Returns the fees on the platform, the cost if you accept, win or lose, the extra cost of fighting, the break-even win chance with its formula, Stripe's published win-chance ranks against it, and with a win chance, the expected cost and a verdict. Free.</li><li><code>deadline</code>: Returns the days left to the due date and its weekday, or from an open date the platform's window, with a calendar file. Free.</li><li><code>ce3</code>: Returns whether a Visa 10.4 dispute meets Compelling Evidence 3.0 as entered: the qualifying date window, each earlier payment with its matching identifiers and its problems, and the reasons it fails. Free.</li><li><code>packet</code>: Returns the letter, the exhibits with their slots, the text fields to fill, the limits check, warnings and the steps to submit, with the letter and exhibit PDFs. preview: true gives a free watermarked letter and the limits check without the files.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>platform</code>: stripe, shopify, paypal (Shopify Payments).</li><li><code>network, code, category</code>: The network (visa, mastercard, amex, discover, paypal) and the reason code as written on the dispute (Visa &quot;13.1&quot;, Mastercard &quot;4853&quot;, Amex &quot;C08&quot;), or the Stripe category when there is no code (Product not received, Product unacceptable, Fraudulent, Unrecognized, Subscription canceled, Credit not processed, Duplicate, General, Non-compliant).</li><li><code>productType</code>: physical, digital, offline (default physical): a physical product; a digital product or service; an offline service (tickets, bookings, work done in person).</li><li><code>amount, winChance, compliance, paypalCase, highVolume, minutes, hourly, packet</code>: For worth: the disputed amount in dollars, your estimate of the chance of winning, a Stripe compliance case, a PayPal chargeback or dispute and its High Volume fee, and your time and packet cost if you want them counted.</li><li><code>opened, dueBy, caseId</code>: For deadline: the due date on the dispute, or the date it was opened; the case ID for the calendar file.</li><li><code>disputeDate, disputed, prior</code>: For ce3: the day the dispute was submitted, the disputed payment's identifiers (device ID or fingerprint, IP address, login, delivery address, description) and up to 20 earlier payments with their dates.</li><li><code>caseId, merchant, customer, transaction, facts, exhibits</code>: For packet: the case ID, your business, the customer, the transaction date and amount, the facts you can state (shipping, delivery, access, cancellation, refund and the rest), and 1 to 20 exhibits, each an evidence item (23 kinds) with a note, typed text and PDF, JPEG or PNG files (at most 30 files in one packet).</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: the code's category and the evidence to lead with, the break-even chance, the days left, the CE 3.0 verdict, or whether the packet fits the limits</li><li>items: per evidence item, its rank, label, what to include, whether it is a file or text, and its slot on the platform</li><li>costIfAccepted, costIfWon, costIfLost, extraToFight, breakEven, math, stripeRanks, verdict (worth)</li><li>dueBy, daysLeft, weekday, late, range and ics (deadline); eligible, window, prior, problems (ce3)</li><li>letter, exhibits, textFields, limits, warnings, steps and files or letterPreview (packet)</li><li>sources with their read dates</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The code is normalized the ways people write it (Visa &quot;13.1&quot; or &quot;131&quot;, Mastercard &quot;4853&quot;, PayPal reason names) and looked up in Stripe's published table for that network. A code not in the table is refused, and the category can be given instead.</li><li>The category sets the claim the code makes, the ways it is overturned, and the evidence list for the product type, strongest first. Each item has its slot: Stripe's file field and text fields, PayPal's evidence type, or on Shopify its own file typed as that evidence.</li><li>The fees are the platform's own, in US dollars. Stripe charges $15 when a dispute arrives, never returned, and $15 more to counter, returned on a win ($500 more for a compliance case). Shopify Payments takes a $15 chargeback fee with the amount and returns both on a win. PayPal's chargeback fee is $20 and its dispute fee $15 ($30 High Volume); PayPal's pages do not say whether it is returned, so it is counted as not returned.</li><li>Break-even = extra cost of fighting / (amount + fees returned on a win). With a win chance p, the expected cost of fighting is p x the cost if won + (1 - p) x the cost if lost, and the verdict compares it with the cost of accepting.</li><li>The deadline is the due date you give, in whole days from today. From an open date only: PayPal gives 10 days for a card chargeback and 20 days to settle a PayPal dispute; Stripe and Shopify give a range of 7 to 21 days, and the exact date must be read on the dispute.</li><li>Compelling Evidence 3.0 applies to Visa 10.4 only. It needs 2 earlier payments 121 to 365 days before the dispute, on the same card, not reported as fraud and not disputed, each matching the disputed payment on at least two of device ID or fingerprint, IP address, login and delivery address, one of them the device or the IP. A device ID must be at least 15 characters and a fingerprint at least 20.</li><li>The letter is written only from the facts given: who paid what and when, the code and its claim, a sentence for each fact you state, your own summary as written, and the exhibits in order.</li><li>Each uploaded file is typed by its first bytes (PDF, JPEG or PNG); PDF pages are counted and encryption flagged, and PNGs are drawn on white and scaled to a page. Exhibits that share a slot become one PDF; an uploaded PDF passes through alone in its slot.</li><li>The packet is checked against the platform: file types, combined size, size of each file, combined pages, the Mastercard page limit on Stripe, pages in each PDF, and one file per evidence type on Stripe and Shopify. On Stripe the text fields are filled from the facts and the letter goes in uncategorized_text.</li></ol>
+<p><strong>Platform limits.</strong></p>
+<p>Stripe: PDF, JPEG or PNG, one file per evidence type, 4.5 MB combined, a 49-page limit (19-page for Mastercard), 150,000 characters of text. Shopify Payments: each file under 2 MB, 4 MB combined, a 49-page limit for each PDF. PayPal: each file under 10 MB, 50 MB per case.</p>
+<p>Stripe takes one submission: it forwards the response at once, and you cannot edit it or add files. Shopify takes one submission: it sends your evidence on the due date, or when you click Submit now, and after that you cannot edit it.</p>
+<p><strong>Visa.</strong></p>
+<p>The CE 3.0 test is Visa Core Rules Table 11-29, Dispute Condition 10.4 invalid disputes (Compelling Evidence 3.0), from the Visa rules of October 24, 2026.</p>
+<p><strong>What was not read.</strong></p>
+<p>Mastercard, American Express and Discover codes are shown as Stripe publishes them; those networks' own rule books were not read.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Mastercard 4853 has several sub-reasons in one Stripe category; all are listed.</li><li>An exhibit that is not on the evidence list for the category is kept, with a warning that issuers may give it no weight.</li><li>Typed evidence that Stripe already takes in a text field from the facts is not repeated, and the packet says which text was not used.</li><li>An uploaded PDF cannot be combined with other files in one slot; the tool says to merge them or upload screenshots instead.</li><li>A due date that has passed is flagged in the packet and in the deadline answer.</li><li>On Shopify, fighting adds no fee, so the break-even is 0% and any evidence is worth submitting.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Visa 13.1 (not received) on Stripe, physical product</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;checklist&quot;,
+  &quot;platform&quot;: &quot;stripe&quot;,
+  &quot;network&quot;: &quot;visa&quot;,
+  &quot;code&quot;: &quot;13.1&quot;,
+  &quot;productType&quot;: &quot;physical&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Visa 13.1 (not received) on Stripe, physical product</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Visa 13.1 (Merchandise/Services Not Received) is in Stripe's &quot;Product not received&quot; category: the customer says they did not receive what they paid for. For a physical product on Stripe, lead with proof of delivery, shipping details and signature or ID at pickup or delivery. Stripe takes one response: one file per evidence type, PDF, JPEG or PNG, 4.5 MB combined, a 50-page limit (a 19-page limit for Mastercard), and no links, audio or video.</td></tr>
+<tr><th scope="row">category</th><td>Product not received</td></tr>
+<tr><th scope="row">evidence 1</th><td>Proof of delivery: file field shipping_documentation</td></tr>
+<tr><th scope="row">evidence 2</th><td>Shipping details: text fields shipping_address, shipping_date, shipping_carrier, shipping_tracking_number</td></tr>
+<tr><th scope="row">evidence 3</th><td>Signature or ID at pickup or delivery: file field customer_signature</td></tr>
+</tbody></table></div>
+<p><strong>Is a $40 Stripe dispute worth fighting at a 25% chance?</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;worth&quot;,
+  &quot;platform&quot;: &quot;stripe&quot;,
+  &quot;amount&quot;: 40,
+  &quot;winChance&quot;: 25
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Is a $40 Stripe dispute worth fighting at a 25% chance?</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>On a $40.00 Stripe dispute, fighting costs $15.00 more than accepting and pays off when your chance of winning is above 27.3%; at 25% the expected cost is $56.25 against $55.00 if you accept.</td></tr>
+<tr><th scope="row">break-even</th><td>27.3%</td></tr>
+<tr><th scope="row">formula</th><td>break-even = extra cost of fighting / (amount + fees returned on a win) = $15.00 / $55.00 = 27.3%</td></tr>
+<tr><th scope="row">cost if accepted</th><td>$55.00</td></tr>
+<tr><th scope="row">verdict</th><td>accept</td></tr>
+</tbody></table></div>
+<p><strong>Visa CE 3.0: two earlier payments with the same device and login</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;ce3&quot;,
+  &quot;disputeDate&quot;: &quot;2026-11-08&quot;,
+  &quot;disputed&quot;: &#123;
+    &quot;description&quot;: &quot;Annual plan, Pro&quot;,
+    &quot;ip&quot;: &quot;203.0.113.7&quot;,
+    &quot;deviceFingerprint&quot;: &quot;fp-7f3a9c2e81b44d0a9e15&quot;,
+    &quot;login&quot;: &quot;jordan@example.com&quot;
+  &#125;,
+  &quot;prior&quot;: [
+    &#123;
+      &quot;date&quot;: &quot;2026-03-02&quot;,
+      &quot;description&quot;: &quot;Monthly plan, Pro&quot;,
+      &quot;ip&quot;: &quot;203.0.113.7&quot;,
+      &quot;deviceFingerprint&quot;: &quot;fp-7f3a9c2e81b44d0a9e15&quot;,
+      &quot;login&quot;: &quot;jordan@example.com&quot;
+    &#125;,
+    &#123;
+      &quot;date&quot;: &quot;2026-04-02&quot;,
+      &quot;description&quot;: &quot;Monthly plan, Pro&quot;,
+      &quot;ip&quot;: &quot;198.51.100.20&quot;,
+      &quot;deviceFingerprint&quot;: &quot;fp-7f3a9c2e81b44d0a9e15&quot;,
+      &quot;login&quot;: &quot;jordan@example.com&quot;
+    &#125;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Visa CE 3.0: two earlier payments with the same device and login</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>This Visa 10.4 dispute meets the Compelling Evidence 3.0 test as entered: 2 earlier undisputed payments between November 8, 2025 and July 10, 2026 match on device ID or fingerprint, IP address and account or login ID.</td></tr>
+<tr><th scope="row">qualifying window</th><td>November 8, 2025 to July 10, 2026</td></tr>
+<tr><th scope="row">payment of 2026-03-02</th><td>251 days before; matches device ID or fingerprint, IP address, account or login ID</td></tr>
+<tr><th scope="row">payment of 2026-04-02</th><td>220 days before; matches device ID or fingerprint, account or login ID</td></tr>
+</tbody></table></div>
+<p><strong>A packet preview for a made-up seller: Visa 13.1 on Stripe</strong></p>
+<pre><code class="language-json">op: &quot;packet&quot;
+platform: &quot;stripe&quot;
+network: &quot;visa&quot;
+code: &quot;13.1&quot;
+productType: &quot;physical&quot;
+caseId: &quot;du_SAMPLE0001&quot;
+merchant: &#123;...&#125;
+customer: &#123;...&#125;
+transaction: &#123;...&#125;
+dueBy: &quot;2026-11-20&quot;
+letterDate: &quot;2026-11-08&quot;
+facts: &#123;...&#125;
+exhibits: 2 items
+preview: true</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A packet preview for a made-up seller: Visa 13.1 on Stripe</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">dispute</th><td>visa 13.1, Merchandise/Services Not Received</td></tr>
+<tr><th scope="row">File types</th><td>PDF (limit PDF, JPEG, PNG)</td></tr>
+<tr><th scope="row">Combined size</th><td>3 KB (limit 4.50 MB)</td></tr>
+<tr><th scope="row">Combined pages</th><td>2 (limit under 50)</td></tr>
+<tr><th scope="row">One file per evidence type</th><td>yes (limit 1)</td></tr>
+<tr><th scope="row">Text in all fields</th><td>1,197 characters (limit 150,000 characters)</td></tr>
+<tr><th scope="row">text fields</th><td>customer_name, customer_email_address, billing_address, shipping_address, shipping_date, shipping_carrier, shipping_tracking_number, uncategorized_text</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>It does not read your platform account; the due date and facts are what you enter.</li><li>Mastercard, American Express and Discover codes are shown as Stripe publishes them; those networks' own rule books were not read.</li><li>It cannot tell you your chance of winning; the break-even shows the chance at which fighting pays.</li><li>Not legal advice. The card issuer (or PayPal, for a PayPal claim) decides every dispute; no packet guarantees a win.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The rules data (version 2026-11-08) was read on November 8, 2026 from Stripe, Shopify, PayPal and Visa pages, each listed with its date. Card networks change their rules in April and October and platforms change fees with notice; the data changes only by hand, with the tests that pin it.</p>
+<ul class="cp-sources"><li><a href="https://docs.stripe.com/disputes/categories">Stripe Docs: Dispute reason code categories</a></li><li><a href="https://docs.stripe.com/disputes/reason-codes-defense-requirements">Stripe Docs: Dispute reason codes</a></li><li><a href="https://docs.stripe.com/disputes/responding">Stripe Docs: Respond to disputes</a></li><li><a href="https://docs.stripe.com/disputes/best-practices">Stripe Docs: Dispute evidence best practices</a></li><li><a href="https://docs.stripe.com/disputes/api">Stripe Docs: Manage disputes programmatically</a></li><li><a href="https://docs.stripe.com/api/disputes/object">Stripe API: the Dispute object (evidence fields)</a></li><li><a href="https://support.stripe.com/questions/june-2025-pricing-updates-for-disputes">Stripe Support: June 2025 pricing updates for disputes</a></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-process">Shopify Help Center: Responding to chargebacks and inquiries</a></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargebacks-in-admin">Shopify Help Center: Managing chargebacks in the Shopify admin</a></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/resolve-chargeback">Shopify Help Center: Resolving a chargeback or inquiry</a></li><li><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-reasons">Shopify Help Center: Reasons for a chargeback or inquiry</a></li><li><a href="https://www.paypal.com/us/business/paypal-business-fees">PayPal Merchant Fees (US), last updated November 4, 2026</a></li><li><a href="https://developer.paypal.com/docs/disputes/">PayPal Developer: Disputes overview, last updated November 3, 2026</a></li><li><a href="https://developer.paypal.com/limited-release/commerce-platform/manage-risks-liabilities/disputes-chargebacks/faqs/">PayPal Developer: Disputes and chargebacks FAQ, last updated October 14, 2026</a></li><li><a href="https://developer.paypal.com/api/customer-disputes/v1/">PayPal Customer Disputes API v1.12 (schema)</a></li><li><a href="https://usa.visa.com/dam/VCOM/global/support-legal/documents/merchants-dispute-management-guidelines.pdf">Visa Dispute Management Guide for Merchants, October 2026</a></li><li><a href="https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf">Visa Core Rules and Visa Product and Service Rules, 24 October 2026</a></li></ul>
+<p>The rules data (version 2026-11-08) was read on November 8, 2026 from Stripe, Shopify, PayPal and Visa pages, each listed with its date. Card networks change their rules in April and October and platforms change fees with notice; the data changes only by hand, with the tests that pin it.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Chargeback evidence packet builder: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://docs.stripe.com/disputes/categories">Stripe Docs: Dispute reason code categories</a></th><td rowspan="11">see the document</td><td rowspan="17">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://docs.stripe.com/disputes/reason-codes-defense-requirements">Stripe Docs: Dispute reason codes</a></th></tr>
+<tr><th scope="row"><a href="https://docs.stripe.com/disputes/responding">Stripe Docs: Respond to disputes</a></th></tr>
+<tr><th scope="row"><a href="https://docs.stripe.com/disputes/best-practices">Stripe Docs: Dispute evidence best practices</a></th></tr>
+<tr><th scope="row"><a href="https://docs.stripe.com/disputes/api">Stripe Docs: Manage disputes programmatically</a></th></tr>
+<tr><th scope="row"><a href="https://docs.stripe.com/api/disputes/object">Stripe API: the Dispute object (evidence fields)</a></th></tr>
+<tr><th scope="row"><a href="https://support.stripe.com/questions/june-2025-pricing-updates-for-disputes">Stripe Support: June 2025 pricing updates for disputes</a></th></tr>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-process">Shopify Help Center: Responding to chargebacks and inquiries</a></th></tr>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargebacks-in-admin">Shopify Help Center: Managing chargebacks in the Shopify admin</a></th></tr>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/payments/chargebacks/resolve-chargeback">Shopify Help Center: Resolving a chargeback or inquiry</a></th></tr>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/payments/chargebacks/chargeback-reasons">Shopify Help Center: Reasons for a chargeback or inquiry</a></th></tr>
+<tr><th scope="row"><a href="https://www.paypal.com/us/business/paypal-business-fees">PayPal Merchant Fees (US), last updated November 4, 2026</a></th><td>updated 2026-11-04</td></tr>
+<tr><th scope="row"><a href="https://developer.paypal.com/docs/disputes/">PayPal Developer: Disputes overview, last updated November 3, 2026</a></th><td>updated 2026-11-03</td></tr>
+<tr><th scope="row"><a href="https://developer.paypal.com/limited-release/commerce-platform/manage-risks-liabilities/disputes-chargebacks/faqs/">PayPal Developer: Disputes and chargebacks FAQ, last updated October 14, 2026</a></th><td>updated 2026-10-14</td></tr>
+<tr><th scope="row"><a href="https://developer.paypal.com/api/customer-disputes/v1/">PayPal Customer Disputes API v1.12 (schema)</a></th><td>see the document</td></tr>
+<tr><th scope="row"><a href="https://usa.visa.com/dam/VCOM/global/support-legal/documents/merchants-dispute-management-guidelines.pdf">Visa Dispute Management Guide for Merchants, October 2026</a></th><td>updated 2026-10</td></tr>
+<tr><th scope="row"><a href="https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf">Visa Core Rules and Visa Product and Service Rules, 24 October 2026</a></th><td>updated 2026-10-24</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests check every code row against Stripe's table, each platform's limits, windows and fees, codes written the ways people write them, the Visa 13.1 checklist on Stripe, the break-even on each platform, deadlines and the calendar file, the CE 3.0 test at its day and length boundaries, a letter built only from the facts given, file typing and page counts, packets on Stripe, Shopify and PayPal with their refusals and warnings, and that each worked example is what the engine returns.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Every code row matches Stripe's published table and every source is dated, as read on November 8, 2026.</li><li>Each platform's limits, windows and fees are pinned; the break-even is the countered fee over the amount plus that fee on Stripe, nothing on Shopify, and sunk on PayPal.</li><li>CE 3.0 needs 2 payments 121 to 365 days old with the device or IP plus one more element; the letter uses only the facts given; packets fit each platform's limits.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/chargeback-evidence/">Open the Chargeback evidence packet builder tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the chargeback evidence packet builder answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the chargeback evidence packet builder refuse to answer?</h3></summary><div class="xp-in"><p>It does not read your platform account; the due date and facts are what you enter. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/chargeback-evidence/">Open the Chargeback evidence packet builder tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/chargeback-evidence.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

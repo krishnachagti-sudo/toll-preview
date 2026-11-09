@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cron syntax cheat sheet: fields, special characters and examples</title>
+<meta name="description" content="A cron expression has 5 fields: minute, hour, day of month, month, day of week. Ranges, steps, the special characters of Quartz and AWS, 15 common patterns and what cron cannot say.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/cron/cheat-sheet/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/cron/cheat-sheet.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Cron syntax cheat sheet: fields, special characters and examples">
+<meta property="og:description" content="A cron expression has 5 fields: minute, hour, day of month, month, day of week. Ranges, steps, the special characters of Quartz and AWS, 15 common patterns and what cron cannot say.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/cron/cheat-sheet/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/cron/cheat-sheet/","url":"https://krishnachagti-sudo.github.io/toll-preview/cron/cheat-sheet/","name":"Cron syntax cheat sheet: fields, special characters and examples","description":"A cron expression has 5 fields: minute, hour, day of month, month, day of week. Ranges, steps, the special characters of Quartz and AWS, 15 common patterns and what cron cannot say.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Cron expression checker","item":"https://krishnachagti-sudo.github.io/toll-preview/cron/"},{"@type":"ListItem","position":3,"name":"Cron cheat sheet","item":"https://krishnachagti-sudo.github.io/toll-preview/cron/cheat-sheet/"}]},{"@type":"Dataset","name":"Cron syntax cheat sheet: fields, special characters and examples","description":"A cron expression has 5 fields: minute, hour, day of month, month, day of week. Ranges, steps, the special characters of Quartz and AWS, 15 common patterns and what cron cannot say.","url":"https://krishnachagti-sudo.github.io/toll-preview/cron/cheat-sheet/","dateModified":"2026-11-08","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/cron/cheat-sheet.csv"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does 0 */2 * * * mean?","acceptedAnswer":{"@type":"Answer","text":"At minute 0 past every 2nd hour. That is 00:00, 02:00, 04:00 and so on, in the scheduler's time zone."}},{"@type":"Question","name":"What does each cron field mean?","acceptedAnswer":{"@type":"Answer","text":"In order: minute (0-59), hour (0-23), day of month (1-31), month (1-12 or JAN-DEC), day of week (0-6 with Sunday as 0, or SUN-SAT; crontab and Spring also take 7 for Sunday)."}},{"@type":"Question","name":"How do I run a cron job on the last day of the month?","acceptedAnswer":{"@type":"Answer","text":"Crontab has no last-day token: run on days 28 to 31 and check inside the job whether tomorrow is the 1st. Quartz, Spring, UiPath and AWS EventBridge have L in the day-of-month field."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"cron"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/cron/">Cron expression checker</a></li><li aria-current="page">Cron cheat sheet</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-agent)">
+<p class="eyebrow">Reference</p>
+<h1>Cron cheat sheet</h1>
+<p class="cp-answer">A cron expression has 5 fields: minute (0-59), hour (0-23), day of month (1-31), month (1-12), day of week (0-6, Sunday = 0); Quartz, Spring and UiPath add seconds in front, and Quartz, UiPath and AWS EventBridge a year at the end, with Sunday = 1.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Read any expression</h2><p class="muted">Type it in; the checker says what it means and lists the next runs.</p><form method="get" action="/toll-preview/cron/" class="cp-tool-form"><div class="field"><label for="tf-expr">Cron expression</label><input type="text" id="tf-expr" name="expr" value="0 */2 * * *"></div><input type="hidden" name="dialect" value="vixie"><div class="field"><label for="tf-tz">Time zone (IANA name)</label><input type="text" id="tf-tz" name="tz" value="UTC"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check the next runs</button></form><p class="small"><a href="/toll-preview/cron/?expr=0+*%2F2+*+*+*&amp;dialect=vixie&amp;tz=UTC">Open this schedule in the checker</a></p></aside>
+<section>
+<h2 id="fields">The fields</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Field</th><th scope="col">Values</th><th scope="col">Notes</th></tr></thead><tbody>
+<tr><th scope="row">Minute</th><td>0-59</td><td></td></tr>
+<tr><th scope="row">Hour</th><td>0-23</td><td>24-hour clock</td></tr>
+<tr><th scope="row">Day of month</th><td>1-31</td><td>Quartz/AWS: L, W, ?</td></tr>
+<tr><th scope="row">Month</th><td>1-12 or JAN-DEC</td><td>Vercel: numbers only</td></tr>
+<tr><th scope="row">Day of week</th><td>0-6 or SUN-SAT</td><td>Sunday 0 (crontab, Spring also 7); 1 in Quartz, UiPath, AWS</td></tr>
+<tr><th scope="row">Seconds (first)</th><td>0-59</td><td>Quartz, Spring, UiPath; optional in n8n</td></tr>
+<tr><th scope="row">Year (last)</th><td>1970-2099 / 2199</td><td>Quartz, UiPath (optional); AWS (required, to 2199)</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="characters">Characters</h2>
+<ul><li><code>*</code> every value</li><li><code>a-b</code> a range, inclusive</li><li><code>a,b</code> a list</li><li><code>*/n</code> or <code>a-b/n</code> every nth value; GitHub, Quartz and AWS also take <code>a/n</code></li><li><code>?</code> no specific value: required in one day field in Quartz and AWS; the same as * in Kubernetes and Spring</li><li><code>L</code> last day of the month, or <code>5L</code> the last Friday (Quartz numbers it 6L)</li><li><code>W</code> nearest weekday: <code>15W</code></li><li><code>#</code> nth weekday: <code>6#3</code> is the third Friday in Quartz and AWS</li></ul>
+</section>
+<section>
+<h2 id="common">Common expressions</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Schedule</th><th scope="col">Expression</th><th scope="col">Reads as</th></tr></thead><tbody>
+<tr><th scope="row">Every minute</th><td><code>* * * * *</code></td><td>Every minute.</td></tr>
+<tr><th scope="row">Every 5 minutes</th><td><code>*/5 * * * *</code></td><td>Every 5 minutes.</td></tr>
+<tr><th scope="row">Every 15 minutes</th><td><code>*/15 * * * *</code></td><td>Every 15 minutes.</td></tr>
+<tr><th scope="row">Every hour</th><td><code>0 * * * *</code></td><td>At minute 0 past every hour.</td></tr>
+<tr><th scope="row">Every 2 hours</th><td><code>0 */2 * * *</code></td><td>At minute 0 past every 2nd hour.</td></tr>
+<tr><th scope="row">Every day at midnight</th><td><code>0 0 * * *</code></td><td>At 00:00.</td></tr>
+<tr><th scope="row">Every day at 9:30</th><td><code>30 9 * * *</code></td><td>At 09:30.</td></tr>
+<tr><th scope="row">Weekdays at 9:00</th><td><code>0 9 * * 1-5</code></td><td>At 09:00, on weekdays (Monday to Friday).</td></tr>
+<tr><th scope="row">Weekends at 10:00</th><td><code>0 10 * * 0,6</code></td><td>At 10:00, on Saturdays and Sundays.</td></tr>
+<tr><th scope="row">Every Monday at 8:00</th><td><code>0 8 * * 1</code></td><td>At 08:00, on Monday.</td></tr>
+<tr><th scope="row">1st of the month</th><td><code>0 0 1 * *</code></td><td>At 00:00, on the 1st of the month.</td></tr>
+<tr><th scope="row">1st and 15th</th><td><code>0 0 1,15 * *</code></td><td>At 00:00, on the 1st and 15th of the month.</td></tr>
+<tr><th scope="row">Every quarter</th><td><code>0 0 1 1,4,7,10 *</code></td><td>At 00:00, on the 1st of the month, every 3 months from January.</td></tr>
+<tr><th scope="row">Once a year</th><td><code>0 0 1 1 *</code></td><td>At 00:00, on the 1st of the month, in January.</td></tr>
+<tr><th scope="row">Every 10 minutes, 8:00 to 18:50</th><td><code>*/10 8-18 * * *</code></td><td>Every 10 minutes from 08:00 through 18:59.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="cannot">What cron cannot say directly</h2>
+<ul><li>The last day of the month: use L where it exists, otherwise days 28-31 and a date check (see <a href="/toll-preview/cron/last-day-of-month/">the last-day page</a>).</li><li>Every 90 minutes: steps restart every hour and every day, so it takes two lines, <code>0 0-21/3 * * *</code> and <code>30 1-22/3 * * *</code>, which run at 00:00, 01:30, 03:00, 04:30, 06:00 and 07:30 UTC and on.</li><li>Day of month AND day of week (the 13th only if it is a Friday): crontab runs on either; check the weekday inside the job.</li><li>Public holidays: cron has no calendar; see <a href="/toll-preview/cron/guides/business-days-only/">running only on business days</a>.</li></ul>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://manpages.debian.org/trixie/cron/crontab.5.en.html">Debian crontab(5), cron 3.0pl1-197 (Vixie cron) (read November 8, 2026)</a></li><li><a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz 2.3 tutorial: CronTrigger (read November 8, 2026)</a></li><li><a href="https://docs.spring.io/spring-framework/reference/integration/scheduling.html">Spring Framework reference: Task execution and scheduling, cron expressions (read November 8, 2026)</a></li><li><a href="https://docs.aws.amazon.com/scheduler/latest/UserGuide/schedule-types.html">Amazon EventBridge Scheduler: Schedule types (read November 8, 2026)</a></li><li><a href="https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows">GitHub Docs: Events that trigger workflows, schedule (read November 8, 2026)</a></li><li><a href="https://vercel.com/docs/cron-jobs">Vercel docs: Cron Jobs (read November 8, 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>What does 0 */2 * * * mean?</h3></summary><div class="xp-in"><p>At minute 0 past every 2nd hour. That is 00:00, 02:00, 04:00 and so on, in the scheduler's time zone.</p></div></details><details class="xpand"><summary><h3>What does each cron field mean?</h3></summary><div class="xp-in"><p>In order: minute (0-59), hour (0-23), day of month (1-31), month (1-12 or JAN-DEC), day of week (0-6 with Sunday as 0, or SUN-SAT; crontab and Spring also take 7 for Sunday).</p></div></details><details class="xpand"><summary><h3>How do I run a cron job on the last day of the month?</h3></summary><div class="xp-in"><p>Crontab has no last-day token: run on days 28 to 31 and check inside the job whether tomorrow is the 1st. Quartz, Spring, UiPath and AWS EventBridge have L in the day-of-month field.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/cron/guides/unix-vs-quartz/">Unix cron vs Quartz cron</a></li><li><a href="/toll-preview/cron/last-day-of-month/">Cron on the last day of the month</a></li><li><a href="/toll-preview/cron/guides/daylight-saving-time/">Daylight saving time and cron</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/cron/cheat-sheet.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/cron/cheat-sheet.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

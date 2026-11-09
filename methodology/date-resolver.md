@@ -139,13 +139,31 @@ The grammar and counting rules are fixed in the code. The holiday rules are the 
 - [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103)
 - [ISO 8601: Date and time format](https://www.iso.org/iso-8601-date-and-time-format.html)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The grammar and counting rules are fixed in the code. Business days use the Business days tool's holiday calendars (rules last changed 2026-10-30); the OPM federal holiday page was read on 2026-11-07.
+
+Natural-language date resolver: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/) | federal holidays and observed days | 2026-11-07 |
+| [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103) | rules as of 2026-10-30 | 2026-10-30 |
+| [ISO 8601: Date and time format](https://www.iso.org/iso-8601-date-and-time-format.html) | weeks Monday to Sunday | not recorded |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Calendar days, months, quarters and years, month-end clamping, weekdays on both readings, periods, business days, written dates, rolling and ISO weeks are each checked phrase by phrase from a fixed reference date. Business days must equal the Business days tool's own add, and refused phrases are checked to be refused.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Calendar days, weeks, months, quarters and years are checked phrase by phrase from a fixed reference date: 90 days from Monday, November 2, 2026 is Sunday, January 31, 2027.
+- Month ends are clamped and leap years kept: 1 month after January 31, 2027 is February 28, and 1 year after February 29, 2028 is February 28, 2029.
+- "Next Friday", "last Tuesday" and dates with no year are checked on both readings, and the second reading is given only when it differs.
+- Business days must equal the Business days tool's own add for US federal holidays; England and Wales, India, weekends only and your own days off are checked too.
+- Rolling (following, preceding, modified following), ISO weeks and the refusal of times, unknown words and out-of-range dates are checked.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Natural-language date resolver tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/).
 

@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazon settlement reconciliation: tie the settlement report to the bank deposit and split it at month end: Endwise</title>
+<meta name="description" content="Drop in an Amazon Flat File V2 settlement report: the rows are proved against total-amount, the total is tied to your bank deposit, and the settlement is split at month end by posted date. Check free; $1.00 a settlement for the journals.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/amazon-settlement-reconciliation/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"amazon-settlement-reconciliation"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Amazon settlement reconciliation">
+<meta property="og:description" content="Upload an Amazon Flat File V2 settlement report and see its rows proved against total-amount, the total tied to the bank deposit, and the settlement split at month end by posted date, with sales, fees, refunds, tax and reserve on their own lines and a balanced journal per month for QuickBooks Online or Xero.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/","name":"Amazon settlement reconciliation","description":"Upload an Amazon Flat File V2 settlement report and see its rows proved against total-amount, the total tied to the bank deposit, and the settlement split at month end by posted date, with sales, fees, refunds, tax and reserve on their own lines and a balanced journal per month for QuickBooks Online or Xero.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Amazon settlement reconciliation","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/"}]},{"@type":"WebApplication","name":"Amazon settlement reconciliation","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-settlement-reconciliation/","description":"Upload an Amazon Flat File V2 settlement report and see its rows proved against total-amount, the total tied to the bank deposit, and the settlement split at month end by posted date, with sales, fees, refunds, tax and reserve on their own lines and a balanced journal per month for QuickBooks Online or Xero.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Check (the proof, the bank tie and the split per month)","price":"0","priceCurrency":"USD"},{"name":"Reconcile (the lines per month, the journals and the import files)","@type":"Offer","price":"1","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"1","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"settlement"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="as">
+  <section class="wrap dz-hero">
+    <div>
+      <p class="eyebrow">Getting paid</p>
+      <h1>Amazon settlement reconciliation</h1>
+      <p class="lede">Prove a settlement to the cent, tie it to the bank, and split it at the month end.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    </div>
+    <figure class="tool-shot"><div class="scr"><img src="/toll-preview/amazon-settlement-reconciliation/files/shot.webp" width="900" height="731" alt="Amazon settlement reconciliation: the result of its worked example" decoding="async"></div><figcaption><span class="ex-tag">Example</span><span>Example: a made-up US settlement, 2026-10-24 to 2026-11-07, paid as $150.00 and $38.14</span></figcaption></figure>
+  </section>
+
+  <section class="wrap dz-desk" data-jump="Check" aria-label="Reconcile a settlement report">
+    <div class="as-form dz-form dz-card">
+      <div class="as-drop" id="as-drop">
+        <label for="as-file" class="as-drop-label">The settlement report, chosen or dropped here</label>
+        <input type="file" id="as-file" accept=".txt,.tsv,.csv,text/plain,text/csv,text/tab-separated-values">
+        <p class="as-hint" id="as-file-name">Flat File V2 (.txt) from Payments, All Statements. Up to 5 MB.</p>
+      </div>
+      <p class="as-hint">Try a made-up report:
+        <button type="button" class="link-btn" data-sample="us">US, crosses October 31</button>,
+        <button type="button" class="link-btn" data-sample="eu">German, decimal commas</button>,
+        <button type="button" class="link-btn" data-sample="negative">a negative settlement</button>.
+      </p>
+      <div class="field">
+        <label for="as-deposits">What reached the bank, one amount per line</label>
+        <textarea id="as-deposits" rows="2" placeholder="150.00"></textarea>
+      </div>
+      <details class="dz-fold">
+        <summary>Dates, books and accounts</summary>
+        <p class="as-hint">One line per deposit: Amazon can pay one settlement from two payers.</p>
+        <div class="as-grid">
+          <label>Day it reached the bank <input type="date" id="as-bankdate"></label>
+          <label>Split at (leave empty for month ends) <input type="date" id="as-cutoff"></label>
+        </div>
+        <div class="field">
+          <label for="as-ledger">Books</label>
+          <select id="as-ledger">
+            <option value="quickbooks-online">QuickBooks Online (journal entry import)</option>
+            <option value="xero">Xero (manual journal lines)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="as-fees">Book Amazon's fees as</label>
+          <select id="as-fees">
+            <option value="expense">Expenses</option>
+            <option value="contra-revenue">Contra-revenue under sales</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="as-zone">Split by posted-date-time in this time zone (optional)</label>
+          <input type="text" id="as-zone" placeholder="e.g. America/Los_Angeles; empty uses posted-date">
+        </div>
+        <p class="as-hint">Account names</p>
+        <div class="as-grid" id="as-accounts"></div>
+        <label class="as-check"><input type="checkbox" id="as-transfer"> Add a journal moving the total from the clearing account to the bank (leave off when your bank feed records the deposit)</label>
+      </details>
+      <p class="form-error" id="as-error" role="alert"></p>
+      <button class="btn" type="button" id="as-go">Get the journals and import file</button>
+      <p class="pline" data-prices><span>The check is free, in your browser</span><span>Journals $1.00 a settlement</span><span>The same file again within 7 days is free</span><span>At most $19 a month</span></p>
+      <p class="as-hint" id="as-go-note">The sample's journals are shown. Choose your own report to check it, free.</p>
+      <p class="visually-hidden" id="as-status" role="status"></p>
+    </div>
+
+    <div class="as-out dz-card" id="as-out" aria-live="polite">
+      <div class="dz-rh"><span class="ex-tag">Example</span><span class="dz-wx">Worked example</span></div>
+      <p class="as-answer" id="as-sample-answer">Settlement 24816093571 (October 24, 2026 to November 7, 2026) totals $188.14, and its 36 rows add up to it to the cent; it ties to the bank deposits of $150.00 and $38.14. 94.5% ($177.77) is posted in October 2026 and 5.5% ($10.37) in November 2026.</p>
+      <p class="muted">The check of the sample report. Choose your own report and the same check runs on it, in your browser.</p>
+    </div>
+  </section>
+
+  <section class="wrap as-rules dz-rules" data-jump="Rules" aria-labelledby="as-rules-title">
+    <h2 id="as-rules-title">How it works</h2>
+    <div class="dz-rules-top">
+      <ul class="dz-sum">
+        <li><b>Proved to the cent:</b> the rows must add up to total-amount, and the total to what reached the bank. Any gap is shown, never absorbed.</li>
+        <li><b>Split by posted date:</b> each month gets its own journal, dated its last day.</li>
+        <li><b>Every value shown:</b> each amount type goes to a line by a named rule, and you can move it.</li>
+      </ul>
+      <aside class="dz-note">
+        <h3>What it does not cover</h3>
+        <p>A settlement lists only released transactions, so earnings by shipment date need Amazon's Date Range Transaction report. It is not accounting or tax advice.</p>
+      </aside>
+    </div>
+    <details class="xpand">
+      <summary>Read how it works in full</summary>
+      <div class="xp-in">
+    <div class="as-rule-cols">
+      <div>
+        <h3>Proved to the cent</h3>
+        <p>Amazon puts every amount in one column, amount, and the settlement's total in total-amount. The rows must add up to the total; any gap is shown, never absorbed. The total is then tied to the bank lines you give, and a gap gets Amazon's own reasons: a second payer, up to five business days in transit, a negative balance or a currency conversion.</p>
+      </div>
+      <div>
+        <h3>Split by posted date</h3>
+        <p>Each row goes to the month of its posted date (or the period before your cut-off). Each month gets its own journal, dated the month's last day, and the clearing account holds exactly the settlement until the deposit is matched. The settlement lists released transactions, by release date.</p>
+      </div>
+      <div>
+        <h3>Every value shown, nothing guessed</h3>
+        <p>Amazon does not publish a list of amount-type and amount-description values. Endwise's word rules place each one (principal to sales, commission to selling fees, reserve to a balance-sheet account), the list shows every value with its line and rule, and you can move any of them. A value no rule knows goes to Other, by name.</p>
+      </div>
+    </div>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary>Please read</summary>
+      <div class="xp-in">
+    <ul id="as-disclaimers">
+      <li>Files are processed in memory and not kept.</li>
+      <li>This is arithmetic on Amazon&#39;s own settlement file. It is not accounting or tax advice: confirm how fees, sales tax and the reserve are booked with your accountant.</li>
+      <li>Amazon publishes the settlement report&#39;s columns but not a list of its amount-type and amount-description values. Each value in your file is shown with the line it was booked to, by Endwise&#39;s word rules, and you can move it.</li>
+      <li>A settlement lists only released transactions, by the date they were released (Amazon&#39;s help). For earnings by shipment date, Amazon points accrual users to the Date Range Transaction report.</li>
+    </ul>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary>Prices</summary>
+      <div class="xp-in"><ul class="endwise-prices"><li><strong>Check (the proof, the bank tie and the split per month)</strong>: free.</li><li><strong>Reconcile (the lines per month, the journals and the import files)</strong>: $1.00 per settlement; a repeat for the same file is free for 7 days, and a larger one pays only the difference.</li><li>At most $19.00 a calendar month for this tool; after that it is free until the month ends.</li></ul></div>
+    </details>
+    <details class="xpand">
+      <summary>Sources, read November 8, 2026</summary>
+      <div class="xp-in">
+    <ul class="as-sources">
+      <li><a href="https://developer-docs.amazon.com/sp-api/docs/report-type-values-settlement">Amazon SP-API: Settlement Reports</a> (updated October 14, 2026): the Flat File V2 report (GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2), its 24 columns, amount-type, amount-description and amount, local number formats such as 95,00</li>
+      <li><a href="https://developer-docs.amazon.com/sp-api/changelog/update-deprecation-of-two-payment-settlement-report-types">Amazon SP-API changelog: Deprecation of two payment settlement report types</a>: the old flat file and XML reports end November 11, 2026; posted-date is MM/DD/YY and posted-date-time YYYY-MM-DD HH:MM:SS UTC</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GLRNLZDAKHDBBVBY">Seller Central Help: Deferred transactions for accounting and payment reconciliation</a>: statements hold only released transactions</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/202124090">Seller Central Help: Payments based on delivery date</a>: the standard DD + 7 reserve</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200136810">Seller Central Help: What is account level reserve?</a></li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G19321">Seller Central Help: How Amazon transfers payments</a>: two payers, Amazon Payments, Inc. and Amazon Services LLC</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G14911">Seller Central Help: When will I be paid?</a>: up to five business days to the bank</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G19301">Seller Central Help: Why didn't I get paid?</a>: the 14-day payout period</li>
+      <li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G16261">Seller Central Help: Negative balance</a></li>
+      <li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">QuickBooks Online: Import journal entries</a> (updated August 4, 2026): the import columns</li>
+      <li><a href="https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml">Xero Accounting API</a>: manual journal lines, debits positive and credits negative</li>
+    </ul>
+      </div>
+    </details>
+  </section>
+
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Guides</h2>
+<h3>The settlement report</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-settlement-reconciliation/settlement-report-explained/" title="Amazon seller settlement report explained: the Flat File V2, column by column">Column by column</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/settlement-period/" title="Amazon settlement period and cycle: why it never matches the month">The settlement period</a></li></ul>
+<h3>Money held back</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-settlement-reconciliation/unavailable-balance/" title="Amazon unavailable balance and reserve: where the missing deposit went">The unavailable balance</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/deposit-doesnt-match/" title="Amazon deposit doesn't match the settlement report: 8 causes, from Amazon's help">The deposit does not match</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/deferred-transactions/" title="Amazon deferred transactions (Delivery Date + 7): why sales are missing from the settlement">Deferred transactions</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/guides/amazon-reserve-bookkeeping/" title="Amazon reserve explained for bookkeepers: booking it without hitting the P&amp;L">Booking the reserve</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/guides/negative-balance-next-deposit/" title="Amazon negative balance: what a negative settlement does to the next deposit">A negative settlement</a></li></ul>
+<h3>Month end</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-settlement-reconciliation/month-end-accrual-split/" title="Month-end accrual split for an Amazon settlement that straddles two months">Split at month end</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/guides/month-end-checklist/" title="Amazon settlement reconciliation checklist for month end">The checklist</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/month-end-close-calendar-2026-2027/" title="Amazon month-end close calendar 2026 to 2027: month ends, deposit windows and straddling settlements">Close calendar 2026 to 2027</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Templates" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Templates</h2>
+<h3>Samples</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-settlement-reconciliation/sample-settlement-report-csv/" title="Amazon settlement report sample CSV (Flat File V2) and reconciliation template">Sample settlement report</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Book it" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Book it</h2>
+<h3>Ledgers</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-settlement-reconciliation/quickbooks/" title="Reconcile Amazon settlements in QuickBooks Online without a connector">QuickBooks Online</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/xero/" title="Reconcile Amazon settlements in Xero without a connector (with the journals)">Xero</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compared" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Compared</h2>
+<h3>Connectors</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-settlement-reconciliation/vs/a2x/" title="A2X alternative for Amazon settlements: pay per settlement, not per month">A2X</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/vs/link-my-books/" title="Link My Books alternative for Amazon settlements">Link My Books</a></li><li><a href="/toll-preview/amazon-settlement-reconciliation/vs/connectbooks/" title="ConnectBooks vs Endwise for Amazon settlements">ConnectBooks</a></li></ul>
+<h3>By hand</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-settlement-reconciliation/vs/manual-spreadsheet/" title="Reconciling Amazon settlements in Excel: formulas and limits">A spreadsheet</a></li></ul>
+</section>
+
+  <section class="wrap as-code" data-jump="Code" aria-label="Use this from code">
+    <div id="as-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript to read your file. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/amazon-settlement-reconciliation/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

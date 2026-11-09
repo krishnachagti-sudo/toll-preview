@@ -1,15 +1,15 @@
 # What date is 120 days from today?
 
-120 days from today, Saturday, November 7, 2026 (today's date in New York, US Eastern time), is Sunday, March 7, 2027. Counted from tomorrow it is Monday, March 8, 2027.
+120 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Monday, March 8, 2027. Counted from tomorrow it is Tuesday, March 9, 2027.
 
-- Date: March 7, 2027
-- Weekday: Sunday
-- ISO week: 2027-W09
-- US business days between: 79
+- Date: March 8, 2027
+- Weekday: Monday
+- ISO week: 2027-W10
+- US business days between: 80
 
 ## 120 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-08&region=US)
 
 ## 120 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 120 days after | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-07) | Sun, Mar 7, 2027 | 79 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-08) | Mon, Mar 8, 2027 | 80 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-09) | Tue, Mar 9, 2027 | 80 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-10) | Wed, Mar 10, 2027 | 80 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-18) | Thu, Mar 18, 2027 | 81 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-19) | Fri, Mar 19, 2027 | 81 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-20) | Sat, Mar 20, 2027 | 80 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+from+today&ref=2026-11-21) | Sun, Mar 21, 2027 | 80 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 120 days from today: the same as 121 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-from-today/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-from-today.csv

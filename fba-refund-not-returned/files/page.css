@@ -1,0 +1,60 @@
+/* Refunded but never returned: a claims work list. Sits inside the brand chrome and reuses its tokens. One
+   accent (the money hue); an order to claim now carries a warning rule and its status in words, so it
+   reads without colour too. */
+.rn {
+  --accent: var(--h-money);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06121a;
+  --rn-warn: #ffb547;
+}
+
+
+.rn-desk > * { min-width: 0; }
+
+.rn-form select, .rn-form textarea { width: 100%; }
+.rn-drop { border: 1px dashed var(--rule-strong); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
+.rn-drop.over { border-color: var(--accent); }
+.rn-drop.loaded { border-style: solid; }
+.rn-drop-label { display: block; font-weight: 500; margin-bottom: 6px; }
+.rn-drop input { width: 100%; }
+.rn-hint { color: var(--ink-soft); font-size: 0.9rem; margin: 6px 0 12px; }
+.rn-grid { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; margin-bottom: 8px; }
+.rn-grid label { display: flex; flex-direction: column; gap: 2px; font-size: 0.85rem; color: var(--text-2); }
+.rn-grid input, .rn-grid select { width: 100%; font-size: 0.9rem; }
+.rn-more { border-top: 1px solid var(--rule); padding-top: 12px; margin-bottom: 16px; }
+.rn-more summary { cursor: pointer; color: var(--text-2); margin-bottom: 8px; }
+
+.rn-out { min-height: 12rem; }
+.rn-label { margin: 0; font: 600 15px/1.4 var(--font-text); color: var(--text-2); }
+.rn-answer { color: var(--text-2); margin: 0 0 12px; max-width: 56rem; }
+.rn-warn { border-left: 3px solid var(--rn-warn); padding-left: 10px; color: var(--ink); }
+.rn-h { font-size: 1.05rem; margin: 22px 0 8px; }
+.rn-done { border: 1px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
+.rn-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+
+.rn-table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+.rn-table th, .rn-table td { border-top: 1px solid var(--rule); padding: 6px 8px; text-align: left; vertical-align: top; }
+.rn-table th[scope="row"] { font-family: var(--font-mono); font-weight: 500; overflow-wrap: anywhere; }
+.rn-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rn-table caption { text-align: left; color: var(--text-2); padding-bottom: 4px; }
+.rn-table tr.rn-claim th { border-left: 3px solid var(--rn-warn); }
+.rn-table td.rn-note { color: var(--ink-soft); min-width: 14rem; }
+.rn-total th, .rn-total td { border-top: 2px solid var(--rule-strong); font-weight: 500; }
+
+.rn-cases details { border-top: 1px solid var(--rule); padding: 8px 0; }
+.rn-cases summary { cursor: pointer; }
+.rn-cases pre { white-space: pre-wrap; font: 0.85rem/1.5 var(--font-mono); background: var(--surface-2, transparent); border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; overflow-wrap: anywhere; }
+
+.rn-rules, .rn-legal { border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.rn-window { margin-top: 20px; }
+.rn-window h3 { margin: 0 0 10px; font-size: 16px; }
+.rn-window .rn-answer { margin: 8px 0 0; }
+.rn-window-form { max-width: 30rem; }
+.rn-rule-cols { display: grid; gap: 24px; }
+@media (min-width: 900px) { .rn-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.rn-rule-cols h3 { font-size: 1rem; margin-bottom: 6px; }
+.rn-rule-cols p { color: var(--ink-soft); margin: 0; }
+.rn-steps { color: var(--ink-soft); max-width: 52rem; padding-left: 1.3em; }
+.rn-steps li { margin-bottom: 6px; }
+.rn-legal ul { padding-left: 1.2em; color: var(--ink-soft); }

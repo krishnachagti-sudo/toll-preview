@@ -407,6 +407,11 @@ function make() {
     const moduleMm = widthMm / (qr.size + 2 * design.margin);
     current = { type, payload, qr, design, widthMm };
     out.textContent = '';
+    // The English page's tool-full layout: the Example tag and the inputs line above the code.
+    const tf = out.classList.contains('tf-result');
+    const ex = tf && type === 'url' && payload === START.url;
+    if (tf) out.append(h('div', { class: 'tf-rh' }, [h('span', { class: ex ? 'tf-tag' : 'tf-tag run' }, ex ? 'Example' : 'Your result'), h('span', { class: 'tf-src' }, 'made in your browser, free')]),
+      h('p', { class: 'tf-exin' }, `${ex ? 'Example: ' : ''}${TYPE_NAMES[type]}, ${payload.length > 60 ? `${payload.slice(0, 59)}…` : payload}, level ${qr.ecc}, ${widthMm} mm wide`));
     const preview = h('div', { class: 'qr-preview' });
     preview.innerHTML = svg; // svgOf writes only numbers, colours and the logo's data URL
     out.appendChild(preview);
@@ -418,7 +423,13 @@ function make() {
     ]));
     out.appendChild(h('p', { class: 'qr-heading' }, t('inside', 'Inside the code')));
     out.appendChild(h('pre', { class: 'qr-payload' }, payload));
-    out.appendChild(h('dl', { class: 'qr-facts' }, [
+    const item = (k, what, v, why) => h('li', null, [h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', null, what), h('b', null, v), h('em', null, why)]);
+    out.appendChild(tf ? h('ul', { class: 'tf-items' }, [
+      item('S', 'Kind', `Static: ${TYPE_NAMES[type]}`, 'the text is in the modules; no service in between'),
+      item('V', 'Size', `Version ${qr.version}, ${qr.size} x ${qr.size}`, 'the smallest version that fits, ISO/IEC 18004'),
+      item(qr.ecc, 'Error correction', `${qr.ecc}, about ${ECC_RESTORE[qr.ecc]}`, 'restorable if part of the print is damaged'),
+      item('M', 'Mask', String(qr.mask), 'chosen by the standard\'s penalty rules'),
+    ]) : h('dl', { class: 'qr-facts' }, [
       h('div', null, [h('dt', null, t('kind', 'Kind')), h('dd', null, t('staticKind', `Static: ${TYPE_NAMES[type]}`, typeName(type)))]),
       h('div', null, [h('dt', null, t('size', 'Size')), h('dd', null, t('sizeVal', `Version ${qr.version}, ${qr.size} x ${qr.size}`, qr.version, qr.size, qr.size))]),
       h('div', null, [h('dt', null, t('ecc', 'Error correction')), h('dd', null, t('eccVal', `${qr.ecc}, about ${ECC_RESTORE[qr.ecc]}`, qr.ecc, ECC_RESTORE[qr.ecc]))]),

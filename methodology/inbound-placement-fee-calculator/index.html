@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the inbound placement fee is compared: FBA method: Endwise</title>
+<meta name="description" content="How the placement fee calculator works: Amazon's fee row by size tier and weight, your freight per option, the cheapest pick and the break-even fee.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/inbound-placement-fee-calculator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/inbound-placement-fee-calculator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the inbound placement fee is compared: FBA method">
+<meta property="og:description" content="How the placement fee calculator works: Amazon's fee row by size tier and weight, your freight per option, the cheapest pick and the break-even fee.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/inbound-placement-fee-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/inbound-placement-fee-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/inbound-placement-fee-calculator/","name":"How the inbound placement fee is compared: FBA method","description":"How the placement fee calculator works: Amazon's fee row by size tier and weight, your freight per option, the cheapest pick and the break-even fee.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the inbound placement fee is compared: FBA method","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/inbound-placement-fee-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the inbound placement fee calculator answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the inbound placement fee calculator refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Amazon publishes the placement fee as a range per unit that varies with the inbound location and capacity. The fee Send to Amazon shows for your plan is the one you are charged; enter it for an exact answer. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the inbound placement fee is compared: FBA method</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the inbound placement fee is compared: FBA method</h1>
+<p class="cp-answer">Each product's placement fee comes from Amazon's US table by size tier and shipping weight, as a range per unit on minimal splits (for example $0.34 to $0.60 for large standard at 1.5+ lb to 3 lb) and none on Amazon-optimized splits; your freight for each option is added, and the cheapest is named only when it wins across the whole range. The fee is charged 45 days after Amazon receives the shipment.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the inbound placement fee calculator compute?</h2>
+<p>Given the products in a shipping plan (size tier and weight, or the packaged sides and unit weight) and your freight quote for each placement option, the tool prices minimal, partial and Amazon-optimized splits with Amazon's published fee range (or the exact fee Send to Amazon shows you), names the cheapest and how sure that is, and gives the most the fee can be before the free option wins. It also checks a carton plan against the five-identical-cartons rule, looks up Amazon's fee row, and prices Amazon Warehousing and Distribution (AWD) against the fee. Not affiliated with Amazon. The fee table is Amazon's US Seller Central page, read on the date shown.</p>
+<details class="xpand"><summary>Read the rest: What does the inbound placement fee calculator compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>compare</code>: Prices each placement option asked for: the placement fee (Amazon's range or your figure, less any new-seller credits), your freight and other costs, the total and per unit; names the cheapest and how sure, the break-even fee, the options Amazon would not offer for the plan, and, with worksheet, a CSV per product and option.</li><li><code>eligibility</code>: Checks a carton (or pallet) plan against Amazon's rule for Amazon-optimized splits: at least five identical cartons per item, the same quantity and item mix in each. Names each item that blocks it and how to fix it.</li><li><code>rates</code>: Returns Amazon's placement fee table, and for a tier and weight its row, the range per unit for each option and the inbound defect fee for the same row.</li><li><code>awd</code>: Prices a carton through AWD (processing, transport to FBA and storage for the months held, at the base, smart or managed rate) per unit and per carton, against a placement fee per unit or Amazon's minimal-split range, with the months at which each end of the range breaks even.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>items</code>: Up to 200 products, each with units and either a size tier with its shipping weight, or the packaged length, width, height and unit weight, from which the tier and shipping weight are worked out.</li><li><code>options</code>: minimal, partial and optimized, each with your freight quote for all its shipments and any other costs; minimal and partial may also take the fee (or fee per unit) Send to Amazon shows.</li><li><code>planDate, receivedDate</code>: The day the plan is created (it picks Amazon's 2026 or 2027 size tiers) and the day Amazon receives it (the fee is charged 45 days later). Dates are written like 2026-11-20.</li><li><code>credits, region</code>: New-seller placement fee credits left, in dollars, and the inbound region for a minimal-split shipment (for notes only).</li><li><code>cartons, unit</code>: The carton or pallet plan, each with a count and what it holds, to check Amazon-optimized splits.</li><li><code>unitsPerCarton, cubicFeet, months, region, rate, date, placementFeePerUnit</code>: For awd: one carton, the months it waits in AWD, the storage region and rate, and the fee to compare with.</li><li><code>worksheet</code>: With compare, the send-in worksheet as CSV, the paid output.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: the total for each option and the cheapest, with how sure that is</li><li>verdict: exact, certain, cheapest at both ends of the range, depends on where the fee falls, or the only option</li><li>items: each product's tier, shipping weight, fee row, range per unit and inbound defect fee</li><li>options: the placement fee and its source, credits, freight, other costs, total and per unit; breakEven: the most the fee can be</li><li>eligibility: each item's cartons, how many are identical, why it blocks and the fix</li><li>rates: the matched row and the table; awd: the cost per unit and per carton, its parts and the break-even months</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each product's size tier is the one given, or is worked out from the packaged sides and unit weight with Amazon's size tier tables (the 2026 table, or the 2027 table for a plan dated January 15, 2027 or later). Shipping weight is the unit weight for small standard and the larger of unit and dimensional weight otherwise; dimensional weight is the volume divided by 139, with sides of at least 2 inches for bulky items.</li><li>The weight picks the fee row and band in Amazon's table; a band's top edge is inclusive. Weights and money are read exactly, so a figure on an edge lands in the right band.</li><li>Minimal and partial splits are priced at the low and high ends of Amazon's published range times the units, unless you give the fee Send to Amazon shows, which is then exact. Amazon-optimized splits have no placement fee. Credits come off the fee, up to the fee.</li><li>Partial splits are not offered for a plan with standard-size items. Amazon-optimized splits are not offered when the carton plan fails the five-identical-cartons rule, or, with no carton plan, when an item has fewer than five units.</li><li>Each option's total is the fee less credits, plus freight and other costs, at both ends of the range. An option that is cheapest even against the others' best case is named with the margin; otherwise the answer says which wins at the low end and which at the high end.</li><li>The break-even is the most a fee option's placement fee can be before Amazon-optimized splits cost less, in total and per unit.</li><li>The carton check groups cartons by item: an item qualifies when it sits in at least five cartons packed identically (same quantity and item mix), and an odd carton is named with the packing that would make it match.</li><li>AWD is priced from Amazon's AWD fee table for the date (before or from February 1, 2027): processing and transport per carton plus storage per cubic foot a month, divided by the units in the carton.</li></ol>
+<p><strong>Amazon's pages.</strong></p>
+<p>The fee table, the option rules, the size tiers, dimensional weight, the inbound defect fee and the AWD fees were read on November 8, 2026 from Amazon's US Seller Central pages, with the sentences they rest on quoted.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A fee you give outside Amazon's published range for the items is flagged, with the range.</li><li>A plan whose items pay no placement fee says partial splits are not for it.</li><li>A plan dated January 15, 2027 or later uses Amazon's 2027 size tiers, including medium bulky, extra-large bulky and oversize.</li><li>A product with neither a tier and weight nor its sides is refused, naming the field.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>1,000 large standard units at 2 lb: minimal splits with $420 freight against Amazon-optimized with $690</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;compare&quot;,
+  &quot;items&quot;: [
+    &#123;
+      &quot;sku&quot;: &quot;MUG-2LB&quot;,
+      &quot;units&quot;: 1000,
+      &quot;tier&quot;: &quot;large-standard&quot;,
+      &quot;weight&quot;: &quot;2&quot;
+    &#125;
+  ],
+  &quot;options&quot;: &#123;
+    &quot;minimal&quot;: &#123;
+      &quot;freight&quot;: &quot;420&quot;
+    &#125;,
+    &quot;optimized&quot;: &#123;
+      &quot;freight&quot;: &quot;690&quot;
+    &#125;
+  &#125;,
+  &quot;planDate&quot;: &quot;2026-11-08&quot;,
+  &quot;receivedDate&quot;: &quot;2026-11-20&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>1,000 large standard units at 2 lb: minimal splits with $420 freight against Amazon-optimized with $690</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>For 1,000 large standard units at 2 lb, minimal splits cost $340.00 to $600.00 in placement fees (Amazon's range) plus $420.00 freight = $760.00 to $1,020.00; Amazon-optimized splits cost $690.00 in freight, no placement fee; cheapest: Amazon-optimized splits, by $70.00 to $330.00 wherever the fee falls in Amazon's range.</td></tr>
+<tr><th scope="row">size table</th><td>2026</td></tr>
+<tr><th scope="row">MUG-2LB: fee row</th><td>Large standard, 1.5+ lb to 3 lb, $0.34 to $0.60 a unit on minimal splits</td></tr>
+<tr><th scope="row">Minimal shipment splits</th><td>$340.00 to $600.00 (Amazon's published range) + $420.00 freight = $760.00 to $1,020.00</td></tr>
+<tr><th scope="row">Amazon-optimized shipment splits</th><td>$0.00 (No placement fee) + $690.00 freight = $690.00</td></tr>
+</tbody></table></div>
+<p><strong>An exact fee from Send to Amazon: $108.80 plus $130.36 LTL against $274.06 of parcel freight</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;compare&quot;,
+  &quot;items&quot;: [
+    &#123;
+      &quot;sku&quot;: &quot;FORUM&quot;,
+      &quot;units&quot;: 272,
+      &quot;tier&quot;: &quot;large-standard&quot;,
+      &quot;weight&quot;: &quot;1&quot;
+    &#125;
+  ],
+  &quot;options&quot;: &#123;
+    &quot;minimal&quot;: &#123;
+      &quot;freight&quot;: &quot;130.36&quot;,
+      &quot;fee&quot;: &quot;108.80&quot;
+    &#125;,
+    &quot;optimized&quot;: &#123;
+      &quot;freight&quot;: &quot;274.06&quot;
+    &#125;
+  &#125;,
+  &quot;planDate&quot;: &quot;2026-11-08&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>An exact fee from Send to Amazon: $108.80 plus $130.36 LTL against $274.06 of parcel freight</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>For 272 large standard units at 1 lb, minimal splits cost $108.80 in placement fees plus $130.36 freight = $239.16; Amazon-optimized splits cost $274.06 in freight, no placement fee; cheapest: minimal splits, by $34.90.</td></tr>
+<tr><th scope="row">size table</th><td>2026</td></tr>
+<tr><th scope="row">FORUM: fee row</th><td>Large standard, 12+ oz to 1.5 lb, $0.24 to $0.50 a unit on minimal splits</td></tr>
+<tr><th scope="row">Minimal shipment splits</th><td>$108.80 (The fee you entered) + $130.36 freight = $239.16</td></tr>
+<tr><th scope="row">Amazon-optimized shipment splits</th><td>$0.00 (No placement fee) + $274.06 freight = $274.06</td></tr>
+<tr><th scope="row">break-even</th><td>Minimal splits are cheaper while their placement fee stays under $143.70 ($0.52 a unit across 272 units); above it, Amazon-optimized splits are cheaper.</td></tr>
+</tbody></table></div>
+<p><strong>Five identical cartons and one odd carton</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;eligibility&quot;,
+  &quot;cartons&quot;: [
+    &#123;
+      &quot;count&quot;: 5,
+      &quot;items&quot;: &#123;
+        &quot;SKU-A&quot;: 24
+      &#125;
+    &#125;,
+    &#123;
+      &quot;id&quot;: &quot;Extra&quot;,
+      &quot;items&quot;: &#123;
+        &quot;SKU-A&quot;: 10
+      &#125;
+    &#125;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Five identical cartons and one odd carton</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Amazon-optimized splits: not eligible. 1 of 1 product blocks it: SKU-A. Pack Extra the same as the others (24 x SKU-A), so all 6 match, or move it to another shipment; the other 5 cartons qualify.</td></tr>
+</tbody></table></div>
+<p><strong>AWD for a 1.5 cubic foot carton of 24 held three months</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;awd&quot;,
+  &quot;unitsPerCarton&quot;: 24,
+  &quot;cubicFeet&quot;: &quot;1.5&quot;,
+  &quot;months&quot;: 3,
+  &quot;tier&quot;: &quot;large-standard&quot;,
+  &quot;weight&quot;: &quot;2&quot;,
+  &quot;date&quot;: &quot;2026-11-08&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>AWD for a 1.5 cubic foot carton of 24 held three months</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>AWD costs $0.29 a unit for a carton of 24 at 1.5 cu ft held 3 months ($0.20 of it processing and transport to FBA), against a minimal-split placement fee of $0.34 to $0.60 a unit; AWD is cheaper across that range. Freight into AWD is not included.</td></tr>
+<tr><th scope="row">per carton</th><td>$7.06</td></tr>
+<tr><th scope="row">fees used</th><td>AWD fees until January 31, 2027</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Amazon publishes the placement fee as a range per unit that varies with the inbound location and capacity. The fee Send to Amazon shows for your plan is the one you are charged; enter it for an exact answer.</li><li>Freight figures are your own quotes. The cheapest pick is only as good as them.</li><li>Freight into AWD is not included in the AWD cost. US marketplace only.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>Amazon's placement fee table and the pages around it were read on November 8, 2026 on Amazon's US Seller Central. They change only by hand, with the tests that pin the table row by row.</p>
+<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z">FBA inbound placement service fee (read November 8, 2026)</a></li><li><a href="https://amazon.com/selling-fee-changes">2027 US Referral and Fulfillment by Amazon fees (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G5KW835AHDJCH8W">Product size tiers (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G53Z9EKF8VVZVH29">Dimensional weight (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GL5XA3MNXAJKJE8E">Inbound defect fees (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GAYG62Q3MPE6STFS">Amazon Warehousing and Distribution fees (read November 8, 2026)</a></li><li><a href="https://sell.amazon.com/programs/warehousing">Amazon Warehousing and Distribution (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GXMJ38VA95GUN5XU">New Seller Incentives (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/200280260">Small-parcel delivery to Amazon (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/200280270">Truckload delivery to Amazon (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200141510">Shipping and routing requirements (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/f3fa3211-820b-4e2e-a023-158a9cf55f99">2026 Updates to US Referral and Fulfillment by Amazon Fees (Amazon's announcement in Seller Forums) (read November 8, 2026)</a></li></ul>
+<p>Amazon's placement fee table and the pages around it were read on November 8, 2026 on Amazon's US Seller Central. They change only by hand, with the tests that pin the table row by row.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Inbound placement fee calculator: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/GC3Q44PBK8BXQW3Z">FBA inbound placement service fee</a></th><td rowspan="12">Amazon page, United States</td><td rowspan="12">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://amazon.com/selling-fee-changes">2027 US Referral and Fulfillment by Amazon fees</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/G5KW835AHDJCH8W">Product size tiers</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/G53Z9EKF8VVZVH29">Dimensional weight</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/GL5XA3MNXAJKJE8E">Inbound defect fees</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/GAYG62Q3MPE6STFS">Amazon Warehousing and Distribution fees</a></th></tr>
+<tr><th scope="row"><a href="https://sell.amazon.com/programs/warehousing">Amazon Warehousing and Distribution</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/GXMJ38VA95GUN5XU">New Seller Incentives</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/200280260">Small-parcel delivery to Amazon</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/200280270">Truckload delivery to Amazon</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/help/hub/reference/external/G200141510">Shipping and routing requirements</a></th></tr>
+<tr><th scope="row"><a href="https://sellercentral.amazon.com/seller-forums/discussions/t/f3fa3211-820b-4e2e-a023-158a9cf55f99">2026 Updates to US Referral and Fulfillment by Amazon Fees (Amazon's announcement in Seller Forums)</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests pin Amazon's placement fee table row by row as read, and check exact money and weights, inclusive band edges, size tiers from dimensions against Amazon's own examples (with the 2-inch minimum and the 2027 table), totals per option, the cheapest and how sure, the break-even, options Amazon does not offer, credits, refusals, Amazon's carton plan examples, rates and AWD.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Amazon's placement fee table is pinned row by row as read on 2026-11-08, with band edges inclusive at the top and the size tiers from dimensions checked against Amazon's own examples.</li><li>Totals per option, the cheapest and how sure, the break-even fee, options Amazon does not offer, mixed plans, credits and dates are checked, and inputs it cannot price are refused naming the field.</li><li>Amazon's carton plan examples for the five-identical-cartons rule, the rates lookup, AWD and the worked examples are checked.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/inbound-placement-fee-calculator/">Open the Inbound placement fee calculator tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the inbound placement fee calculator answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the inbound placement fee calculator refuse to answer?</h3></summary><div class="xp-in"><p>Amazon publishes the placement fee as a range per unit that varies with the inbound location and capacity. The fee Send to Amazon shows for your plan is the one you are charged; enter it for an exact answer. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/inbound-placement-fee-calculator/">Open the Inbound placement fee calculator tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/inbound-placement-fee-calculator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

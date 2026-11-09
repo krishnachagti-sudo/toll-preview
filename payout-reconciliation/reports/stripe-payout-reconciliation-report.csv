@@ -1,0 +1,51 @@
+kind,name,meaning,booked_as
+column,automatic_payout_effective_at,The date Stripe expects the payout to arrive; also when it leaves your Stripe balance.,
+column,automatic_payout_id,The automatic payout this row belongs to. Rows with the same id add up to that payout.,
+column,available_on,When the row's net became available in your Stripe balance.,
+column,balance_transaction_id,The row's own id.,
+column,created,When the balance transaction was created.,
+column,currency,"The currency of gross, fee and net.",
+column,description,"Free text, often the order or the fee's name.",
+column,fee,"Fees for this row, in dollars (major units). Any withheld_tax is already inside it.",
+column,gross,"The row's gross amount: a charge's full price, a refund as a negative.",
+column,net,Gross less fee: what the row added to or took from the payout.,
+column,reporting_category,"What the row is: charge, refund, dispute, fee and so on. The split places rows by it.",
+reporting_category,charge,,Sales
+reporting_category,partial_capture_reversal,,Sales
+reporting_category,charge_failure,,Sales
+reporting_category,refund,,Refunds
+reporting_category,refund_failure,,Refunds
+reporting_category,dispute,,Chargebacks and disputes
+reporting_category,dispute_reversal,,Chargebacks and disputes
+reporting_category,fee,,Processing fees
+reporting_category,tax,,Tax on fees
+reporting_category,tax_withholding,,Tax withheld by the processor
+reporting_category,tax_fund,,Transfers between balances
+reporting_category,risk_reserved_funds,,Reserves and holds
+reporting_category,connect_reserved_funds,,Reserves and holds
+reporting_category,payment_network_reserve_hold,,Reserves and holds
+reporting_category,payment_network_reserve_release,,Reserves and holds
+reporting_category,payout_minimum_balance_hold,,Reserves and holds
+reporting_category,payout_minimum_balance_release,,Reserves and holds
+reporting_category,anticipation_repayment,,Loan and advance repayments
+reporting_category,transfer,,Transfers between balances
+reporting_category,transfer_reversal,,Transfers between balances
+reporting_category,connect_collection_transfer,,Transfers between balances
+reporting_category,platform_earning,,Platform earnings
+reporting_category,platform_earning_refund,,Platform earnings
+reporting_category,currency_conversion,,Currency conversion
+reporting_category,topup,,Money from or back to your bank
+reporting_category,topup_reversal,,Money from or back to your bank
+reporting_category,payout_reversal,,Money from or back to your bank
+reporting_category,other_adjustment,,Other adjustments
+reporting_category,advance,,Other adjustments
+reporting_category,advance_funding,,Other adjustments
+reporting_category,climate_order_purchase,,Other adjustments
+reporting_category,climate_order_refund,,Other adjustments
+reporting_category,contribution,,Other adjustments
+reporting_category,revenue_share,,Other adjustments
+reporting_category,reward,,Other adjustments
+reporting_category,fee_credit_funding,,Processing fees
+reporting_category,stripe_balance_payment_debit,,Other adjustments
+reporting_category,stripe_balance_payment_debit_reversal,,Other adjustments
+reporting_category,unreconciled_customer_funds,,Other adjustments

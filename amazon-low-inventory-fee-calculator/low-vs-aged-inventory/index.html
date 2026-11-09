@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The safe zone between the low-inventory fee and aged inventory</title>
+<meta name="description" content="Under 28 days of supply Amazon charges the low-inventory-level fee; stock older than 180 days moves to aged storage rates. At 12 a day the safe zone is 336 to 2,160 units. Table from 1 to 250 a day.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="The safe zone between the low-inventory fee and aged inventory">
+<meta property="og:description" content="Under 28 days of supply Amazon charges the low-inventory-level fee; stock older than 180 days moves to aged storage rates. At 12 a day the safe zone is 336 to 2,160 units. Table from 1 to 250 a day.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory/","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory/","name":"The safe zone between the low-inventory fee and aged inventory","description":"Under 28 days of supply Amazon charges the low-inventory-level fee; stock older than 180 days moves to aged storage rates. At 12 a day the safe zone is 336 to 2,160 units. Table from 1 to 250 a day.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Amazon low-inventory-level fee calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/"},{"@type":"ListItem","position":3,"name":"Between too little and too old: the FBA stock safe zone","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory/"}]},{"@type":"Dataset","name":"The safe zone between the low-inventory fee and aged inventory","description":"Under 28 days of supply Amazon charges the low-inventory-level fee; stock older than 180 days moves to aged storage rates. At 12 a day the safe zone is 336 to 2,160 units. Table from 1 to 250 a day.","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory/","dateModified":"2026-11-08","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory.csv"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When does inventory count as aged?","acceptedAnswer":{"@type":"Answer","text":"From day 181. Until February 1, 2027 Amazon's aged inventory surcharge starts at items aged 181-210 days; from February 1, 2027 the unified monthly storage fee has its own rate for age 181-210 days (standard-size off-peak: $2.78 a cubic foot, against $0.78 for 0-180 days)."}},{"@type":"Question","name":"Why 180 days of sales?","acceptedAnswer":{"@type":"Answer","text":"Selling first in, first out at steady sales, a unit that arrives with more than 180 days of stock ahead of it will be older than 180 days when it sells."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"amazon-low-inventory-fee-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/">Amazon low-inventory-level fee calculator</a></li><li aria-current="page">Between too little and too old: the FBA stock safe zone</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Between too little and too old: the FBA stock safe zone</h1>
+<p class="cp-answer">At 12 units a day the safe FBA stock is between 336 units (28 days of supply, under which Amazon charges the low-inventory-level fee) and 2,160 units (180 days: past that, units age into Amazon's aged-inventory storage rates from day 181), a room of 1,824 units.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Your own safe zone</h2><p class="muted">The calculator shows it under the plan. Free for one SKU.</p><form method="get" action="/toll-preview/amazon-low-inventory-fee-calculator/" class="cp-tool-form"><div class="field"><label for="tf-date">Week you are checking</label><input type="date" id="tf-date" name="date" value="2026-11-09"></div><div class="field"><label for="tf-sku">SKU</label><input type="text" id="tf-sku" name="sku" value="MY-SKU"></div><input type="hidden" name="tier" value="small-standard"><div class="field"><label for="tf-dos30">Short-term days of supply</label><input type="number" id="tf-dos30" name="dos30" value="60"></div><div class="field"><label for="tf-dos90">Long-term days of supply</label><input type="number" id="tf-dos90" name="dos90" value="60"></div><div class="field"><label for="tf-dailySales">Daily sales</label><input type="number" id="tf-dailySales" name="dailySales" value="12"></div><div class="field"><label for="tf-onHand">Sellable FBA units now</label><input type="number" id="tf-onHand" name="onHand" value="900"></div><div class="field"><label for="tf-prepDays">Prep days</label><input type="number" id="tf-prepDays" name="prepDays" value="3"></div><div class="field"><label for="tf-transitDays">Transit days</label><input type="number" id="tf-transitDays" name="transitDays" value="6"></div><div class="field"><label for="tf-receivingDays">Receiving days</label><input type="number" id="tf-receivingDays" name="receivingDays" value="7"></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">Check this SKU</button></form><p class="small"><a href="/toll-preview/amazon-low-inventory-fee-calculator/?date=2026-11-09&amp;sku=MY-SKU&amp;tier=small-standard&amp;dos30=60&amp;dos90=60&amp;dailySales=12&amp;onHand=900&amp;prepDays=3&amp;transitDays=6&amp;receivingDays=7">Open these numbers in the calculator</a></p></aside>
+<section>
+<h2 id="table">Safe zone by daily sales</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>FBA units. First in, first out, steady sales. Worked out by the calculator.</caption><thead><tr><th scope="col">Daily sales</th><th scope="col" class="r num">At least (28 days)</th><th scope="col" class="r num">At most (180 days)</th><th scope="col" class="r num">Room</th></tr></thead><tbody>
+<tr><th scope="row">1</th><td class="r num">28</td><td class="r num">180</td><td class="r num">152</td></tr>
+<tr><th scope="row">2</th><td class="r num">56</td><td class="r num">360</td><td class="r num">304</td></tr>
+<tr><th scope="row">5</th><td class="r num">140</td><td class="r num">900</td><td class="r num">760</td></tr>
+<tr><th scope="row">10</th><td class="r num">280</td><td class="r num">1,800</td><td class="r num">1,520</td></tr>
+<tr><th scope="row">20</th><td class="r num">560</td><td class="r num">3,600</td><td class="r num">3,040</td></tr>
+<tr><th scope="row">50</th><td class="r num">1,400</td><td class="r num">9,000</td><td class="r num">7,600</td></tr>
+<tr><th scope="row">100</th><td class="r num">2,800</td><td class="r num">18,000</td><td class="r num">15,200</td></tr>
+<tr><th scope="row">250</th><td class="r num">7,000</td><td class="r num">45,000</td><td class="r num">38,000</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="sides">The two sides</h2>
+<ul><li>Too little: &quot;We recommend that you track your trailing 28-day daily units shipped in FBA Inventory, multiply by 28, and maintain that many units on-hand before the inventory is assessed.&quot;</li><li>Too old (to January 31, 2027): Aged Inventory Surcharge: Items aged 181-210 days $0.50 per cubic foot (excluding certain items).</li><li>Too old (from February 1, 2027): Unified monthly storage fee: Age 0 - 180 days $0.78 per cubic foot (standard-size, off-peak); Age 181 - 210 days $2.78.</li></ul>
+<p>AWD auto-replenishment at 70% or more of a SKU also takes the youngest storage rate whatever the age, and waives the low-inventory fee, under Amazon's storage page.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GFU8NTVGHP2JQLCR">Amazon Seller Central help: Low-inventory-level fee 2027 (read November 8, 2026)</a></li><li><a href="https://sellercentral.amazon.com/help/hub/reference/external/GVZX6EAEL2KZ3SGA">Amazon Seller Central help: Unified monthly storage fee (read November 8, 2026)</a></li></ul>
+<p class="cp-note">The reorder plan assumes the steady daily sales you give it. Amazon does not publish which day of the week it checks inventory, so dates are to the day of your own plan.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>When does inventory count as aged?</h3></summary><div class="xp-in"><p>From day 181. Until February 1, 2027 Amazon's aged inventory surcharge starts at items aged 181-210 days; from February 1, 2027 the unified monthly storage fee has its own rate for age 181-210 days (standard-size off-peak: $2.78 a cubic foot, against $0.78 for 0-180 days).</p></div></details><details class="xpand"><summary><h3>Why 180 days of sales?</h3></summary><div class="xp-in"><p>Selling first in, first out at steady sales, a unit that arrives with more than 180 days of stock ahead of it will be older than 180 days when it sells.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/fba-restock/">How many units to send</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/q4-inventory-balance/">Q4 planning</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/how-to-avoid/">How to avoid the fee</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

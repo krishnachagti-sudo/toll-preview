@@ -1,0 +1,37 @@
+/* Lien deadline calculator: the tool-full layout (web/tool-full.css) plus this page's own pieces:
+   the deadlines one line each, the statute's words folded, the Texas month table. */
+.ld { --accent: var(--h-date); --endwise-accent: var(--h-date); }
+
+.ld input[type="date"], .ld input[type="month"] { color-scheme: dark; }
+.ld select, .ld input { max-width: 100%; }
+.ld-check { display: flex; gap: 8px; align-items: baseline; color: var(--text-2); margin: 14px 0 0; font-size: 14px; }
+.ld-form .xp-in .ld-check { margin-top: 10px; }
+.ld-h { font-size: 20px; margin: 0 0 6px; }
+.tf-calc + .tf-calc { margin-top: 16px; }
+
+.ld-items .ld-passed { opacity: 0.6; }
+.ld-items .ld-passed > b { text-decoration: line-through; }
+.ld-warn { color: var(--hue); margin: 12px 0 0; font-size: 13.5px; max-width: 46rem; }
+.ld-ok { color: var(--text-2); margin: 12px 0 0; font-size: 13.5px; }
+.ld-fold { margin-top: 16px; }
+.ld-fold q { font-style: italic; }
+.ld-fold a { color: var(--text-2); text-decoration: underline; }
+.ld-steps { list-style: none; padding: 0; margin: 0; }
+.ld-stepcard { border-left: 2px solid var(--line-2); padding: 2px 0 2px 14px; margin: 0 0 16px; }
+.ld-stepcard.ld-k-lien { border-left-color: var(--hue); }
+.ld-name { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 4px !important; }
+.ld-small { color: var(--muted); font-size: 13.5px; margin: 2px 0 6px !important; }
+.ld-months { border-collapse: collapse; margin: 6px 0 8px; font-variant-numeric: tabular-nums; }
+.ld-months th, .ld-months td { text-align: left; padding: 3px 14px 3px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.ld-months .ld-gone td { color: var(--muted); text-decoration: line-through; }
+.ld-quotes { list-style: none; padding: 0; margin: 6px 0 0; }
+.ld-quotes li { border-left: 2px solid var(--line-2); padding: 2px 0 2px 12px; margin: 0 0 10px; overflow-wrap: anywhere; }
+.ld-list { margin: 12px 0 0; padding-left: 1.1rem; color: var(--muted); font-size: 13.5px; }
+.ld-list li { margin: 4px 0; }
+.ld-notes { margin: 0; padding-left: 1.1em; }
+.ld-notes li { margin-bottom: 0.6em; }
+.ld-prices { padding: 20px 24px; }
+.ld-prices h3 { font-size: 18px; margin: 0 0 8px; }
+.ld-ics { margin: 16px 0 0; }
+.tf-form .tf-two + .ld-check { margin-top: 12px; }
+.tf-form .hint + .field { margin-top: 14px; }

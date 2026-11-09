@@ -1,15 +1,15 @@
 # What date is 45 days from today?
 
-45 days from today, Saturday, November 7, 2026 (today's date in New York, US Eastern time), is Tuesday, December 22, 2026. Counted from tomorrow it is Wednesday, December 23, 2026.
+45 days from today, Sunday, November 8, 2026 (today's date in New York, US Eastern time), is Wednesday, December 23, 2026. Counted from tomorrow it is Thursday, December 24, 2026.
 
-- Date: December 22, 2026
-- Weekday: Tuesday
+- Date: December 23, 2026
+- Weekday: Wednesday
 - ISO week: 2026-W52
-- US business days between: 30
+- US business days between: 31
 
 ## 45 days from today, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-08&region=US)
 
 ## 45 days from today, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays after the start up t
 
 | Start | 45 days after | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-07) | Tue, Dec 22, 2026 | 30 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-08) | Wed, Dec 23, 2026 | 31 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-09) | Thu, Dec 24, 2026 | 31 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-10) | Fri, Dec 25, 2026 | 30 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays after the start up t
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-18) | Sat, Jan 2, 2027 | 29 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-19) | Sun, Jan 3, 2027 | 28 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-20) | Mon, Jan 4, 2027 | 28 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=45+days+from+today&ref=2026-11-21) | Tue, Jan 5, 2027 | 29 |
 
 ## How it is counted
 
@@ -81,5 +81,5 @@ One day later than 45 days from today: the same as 46 days from today.
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-from-today/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/45-days-from-today.csv

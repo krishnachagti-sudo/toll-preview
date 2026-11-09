@@ -1,0 +1,21 @@
+time_zone,date,direction,clocks,offsets
+Europe/London,2027-03-28,forward,01:00 becomes 02:00,'+00:00 to +01:00
+Europe/London,2027-10-31,back,02:00 becomes 01:00,'+01:00 to +00:00
+Europe/Dublin,2027-03-28,forward,01:00 becomes 02:00,'+00:00 to +01:00
+Europe/Dublin,2027-10-31,back,02:00 becomes 01:00,'+01:00 to +00:00
+Europe/Lisbon,2027-03-28,forward,01:00 becomes 02:00,'+00:00 to +01:00
+Europe/Lisbon,2027-10-31,back,02:00 becomes 01:00,'+01:00 to +00:00
+Europe/Paris,2027-03-28,forward,02:00 becomes 03:00,'+01:00 to +02:00
+Europe/Paris,2027-10-31,back,03:00 becomes 02:00,'+02:00 to +01:00
+Europe/Berlin,2027-03-28,forward,02:00 becomes 03:00,'+01:00 to +02:00
+Europe/Berlin,2027-10-31,back,03:00 becomes 02:00,'+02:00 to +01:00
+Europe/Madrid,2027-03-28,forward,02:00 becomes 03:00,'+01:00 to +02:00
+Europe/Madrid,2027-10-31,back,03:00 becomes 02:00,'+02:00 to +01:00
+Europe/Rome,2027-03-28,forward,02:00 becomes 03:00,'+01:00 to +02:00
+Europe/Rome,2027-10-31,back,03:00 becomes 02:00,'+02:00 to +01:00
+Europe/Amsterdam,2027-03-28,forward,02:00 becomes 03:00,'+01:00 to +02:00
+Europe/Amsterdam,2027-10-31,back,03:00 becomes 02:00,'+02:00 to +01:00
+Europe/Athens,2027-03-28,forward,03:00 becomes 04:00,'+02:00 to +03:00
+Europe/Athens,2027-10-31,back,04:00 becomes 03:00,'+03:00 to +02:00
+Europe/Helsinki,2027-03-28,forward,03:00 becomes 04:00,'+02:00 to +03:00
+Europe/Helsinki,2027-10-31,back,04:00 becomes 03:00,'+03:00 to +02:00

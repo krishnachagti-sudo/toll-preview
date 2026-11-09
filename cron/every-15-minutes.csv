@@ -1,0 +1,10 @@
+scheduler,expression,fields,sunday_is,time_zone
+Linux crontab (Vixie cron),*/15 * * * *,5,0 or 7,the time zone the cron daemon runs in
+GitHub Actions,*/15 * * * *,5,0,UTC
+Kubernetes CronJob,*/15 * * * *,5,0,the kube-controller-manager's local time zone
+Vercel Cron Jobs,*/15 * * * *,5,0,always UTC
+n8n Schedule Trigger (Custom cron),*/15 * * * *,5 or 6,0,"the workflow time zone, else the instance time zone (America/New_York by default when self-hosted)"
+Quartz Scheduler,0 */15 * * * ?,6 or 7,1,the scheduler's default time zone
+Spring @Scheduled,0 */15 * * * *,6,0 or 7,the server's default time zone
+UiPath Orchestrator time trigger,0 */15 * * * ?,6 or 7,1,the time zone set on the trigger
+Amazon EventBridge Scheduler,cron(0/15 * * * ? *),6,1,UTC

@@ -1,0 +1,37 @@
+/* Upwork fee calculator: the tool-full layout (web/tool-full.css) in the money hue.
+   Only this tool's parts are here: the calculator tabs, the form grid and the statement box. */
+.uf { --accent: var(--h-money); --endwise-accent: var(--h-money); }
+
+/* Three calculators side by side and More for the fourth; labels are never cut. */
+.uf-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; }
+.uf-tab, .uf-tabmore > summary { font: 500 13.5px/1 var(--font-text); min-height: 36px; padding: 0 12px; display: inline-flex; align-items: center; border: 1px solid var(--line-2); border-radius: 999px; background: transparent; color: var(--text-2); cursor: pointer; white-space: nowrap; }
+.uf-tab[aria-pressed="true"], .uf-tabmore.on > summary { border-color: var(--hue); color: var(--hue); }
+.uf-tabmore { position: relative; }
+.uf-tabmore > summary { list-style: none; }
+.uf-tabmore > summary::-webkit-details-marker { display: none; }
+.uf-tabmore > summary::after { content: ""; width: 6px; height: 6px; margin-left: 8px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: translateY(-2px) rotate(45deg); }
+.uf-tabmore > div { position: absolute; z-index: 5; top: calc(100% + 6px); right: 0; padding: 6px; border-radius: 12px; background: var(--bg-2, #111215); border: 1px solid var(--line-2); }
+
+.uf-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.uf-step { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 16px 0 8px; padding: 0; }
+.uf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
+.uf-grid > .field, .uf-grid > .uf-check { margin: 0 !important; }
+.uf-grid .hint { margin-top: 6px; }
+.uf-wide { grid-column: 1 / -1; }
+.uf-check { display: flex; gap: 8px; align-items: baseline; color: var(--text-2); margin: 4px 0; font-size: 14px; }
+
+.uf-items { margin-top: 18px; }
+.uf-items li > span:nth-child(2) { overflow-wrap: anywhere; }
+.uf-flags { margin: 14px 0 0; padding-left: 1.1rem; max-width: 48rem; color: var(--text-2); font-size: 13.5px; }
+.uf-flags li { margin: 4px 0; }
+.uf-sources a { color: var(--text-2); }
+
+.uf-st-panel { padding: 22px; }
+.uf-statement textarea { width: 100%; max-width: 36rem; font-family: var(--font-mono); font-size: 13px; }
+.uf-buy { margin-top: 10px; }
+.uf-buy .uf-aside { color: var(--muted); margin: 0 0 10px; }
+.uf-price-list { padding: 22px; }
+.uf-grid { align-items: start; }
+@media (max-width: 640px) { .uf-about { display: none; } }
+@media (max-width: 640px) { .tf-open .tf-price > span:nth-child(3) { display: none; } }
+@media (max-width: 640px) { .uf-tabs { margin-bottom: 12px; } .uf-grid { gap: 10px; } }

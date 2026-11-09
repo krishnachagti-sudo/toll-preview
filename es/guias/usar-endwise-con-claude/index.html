@@ -74,6 +74,7 @@
 <h1>Cómo usar Endwise con Claude (aplicaciones y Claude Code)</h1>
 <p class="cp-answer">Sí, en 3 pasos: en claude.ai o Claude Desktop, agregue Endwise como conector personalizado en <code>https://krishnachagti-sudo.github.io/toll-preview/mcp</code>, inicie sesión en Endwise y apruebe a Claude con un límite mensual. En Claude Code, ejecute <code>claude mcp add --transport http</code> con la misma dirección e inicie sesión con <code>/mcp</code>, o envíe una clave de API como encabezado.</p>
 
+
 </header>
 <div class="cp-body prose">
 <section>
@@ -84,9 +85,9 @@
 <section>
 <h2 id="apps-de-claude">¿Cómo lo agrego a claude.ai o a Claude Desktop?</h2>
 <p>En un plan Free, Pro, Max o Ultra, vaya a <strong>Customize &gt; Connectors</strong>, elija <strong>Add custom connector</strong> y escriba la dirección del servidor. Los nombres de los menús son los de la interfaz en inglés:</p>
-<pre><code class="language-text">https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
+<details class="xpand"><summary>Leer el resto: ¿Cómo lo agrego a claude.ai o a Claude Desktop?</summary><div class="xp-in"><pre><code class="language-text">https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
 <p>Deje vacíos el ID de cliente y el secreto de OAuth. Si el cuadro de diálogo pregunta cómo iniciar sesión, <strong>Sign in when needed</strong> deja que Claude vea primero la lista de herramientas y le pida iniciar sesión cuando llame a una. Para el cliente de OAuth, Anthropic recomienda <strong>Use Claude's published identity</strong>; Endwise también acepta <strong>Register automatically</strong>.</p>
-<p>En un plan Team o Enterprise, un Owner lo agrega para la organización en <strong>Organization settings &gt; Connectors</strong> eligiendo <strong>Add</strong> y luego <strong>Custom</strong>. En Enterprise, un miembro cuyo rol personalizado incluya administrar las bibliotecas de la organización también puede agregar uno. Después, los miembros se conectan desde <strong>Customize &gt; Connectors</strong> con su propia cuenta de Endwise.</p>
+<p>En un plan Team o Enterprise, un Owner lo agrega para la organización en <strong>Organization settings &gt; Connectors</strong> eligiendo <strong>Add</strong> y luego <strong>Custom</strong>. En Enterprise, un miembro cuyo rol personalizado incluya administrar las bibliotecas de la organización también puede agregar uno. Después, los miembros se conectan desde <strong>Customize &gt; Connectors</strong> con su propia cuenta de Endwise.</p></div></details>
 </section>
 <section>
 <h2 id="inicio-de-sesion">¿Cómo es el inicio de sesión?</h2>
@@ -97,7 +98,7 @@
 <section>
 <h2 id="claude-code">¿Cómo lo agrego a Claude Code?</h2>
 <p>Ejecute un comando en su terminal:</p>
-<pre><code class="language-bash">claude mcp add --transport http endwise https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
+<details class="xpand"><summary>Leer el resto: ¿Cómo lo agrego a Claude Code?</summary><div class="xp-in"><pre><code class="language-bash">claude mcp add --transport http endwise https://krishnachagti-sudo.github.io/toll-preview/mcp</code></pre>
 <p>Luego escriba <code>/mcp</code> dentro de Claude Code y elija iniciar sesión. Se abre en el navegador una página de Endwise como la de arriba. Claude Code se ejecuta en su computadora, así que la página añade una línea que le pide aprobar solo si usted inició la conexión.</p>
 <p>Claude Code también puede enviar una clave de API en lugar de iniciar sesión. Cree una clave en la <a href="/toll-preview/account">página de su cuenta</a> y agregue el servidor con un encabezado:</p>
 <pre><code class="language-bash">claude mcp add --transport http endwise https://krishnachagti-sudo.github.io/toll-preview/mcp \
@@ -106,7 +107,7 @@
 <pre><code class="language-bash">claude mcp list
 claude mcp get endwise
 # inside Claude Code:
-/mcp</code></pre>
+/mcp</code></pre></div></details>
 </section>
 <section>
 <h2 id="alcances">¿Qué alcance (scope) debo usar en Claude Code?</h2>
@@ -133,7 +134,7 @@ claude mcp get endwise
 <section>
 <h2 id="primera-pregunta">¿Qué debo preguntar primero?</h2>
 <p>Pregunte algo que tenga una sola respuesta correcta. Pruebe: &quot;Cuente los días hábiles entre el 1 de julio de 2026 y el 8 de julio de 2026 en EE. UU.&quot;</p>
-<p>Primero Claude le pregunta al servidor qué ofrece (una solicitud <code>tools/list</code>, que no necesita iniciar sesión). Luego elige la herramienta <code>business-days</code> y la llama con argumentos como estos:</p>
+<details class="xpand"><summary>Leer el resto: ¿Qué debo preguntar primero?</summary><div class="xp-in"><p>Primero Claude le pregunta al servidor qué ofrece (una solicitud <code>tools/list</code>, que no necesita iniciar sesión). Luego elige la herramienta <code>business-days</code> y la llama con argumentos como estos:</p>
 <pre><code class="language-json">&#123;
   &quot;op&quot;: &quot;between&quot;,
   &quot;region&quot;: &quot;US&quot;,
@@ -150,7 +151,7 @@ claude mcp get endwise
     &#125;
   ]
 &#125;</code></pre>
-<p>Claude luego redacta la respuesta para usted. Nada de la cifra salió de un modelo de lenguaje. Esta llamada cuesta <strong>$0.0005</strong>. Claude le pide permiso antes de llamar a una herramienta, a menos que usted haya elegido permitirla siempre.</p>
+<p>Claude luego redacta la respuesta para usted. Nada de la cifra salió de un modelo de lenguaje. Esta llamada cuesta <strong>$0.0005</strong>. Claude le pide permiso antes de llamar a una herramienta, a menos que usted haya elegido permitirla siempre.</p></div></details>
 </section>
 <section>
 <h2 id="gasto">¿Cómo mantengo el gasto bajo control?</h2>
@@ -172,7 +173,7 @@ claude mcp get endwise
 <ul class="cp-sources"><li><a href="https://claude.com/docs/connectors/custom">Claude docs: Add a connector that isn't in the directory</a></li><li><a href="https://claude.com/docs/connectors/building/authentication">Claude docs: Authentication for connectors</a></li><li><a href="https://code.claude.com/docs/en/mcp">Claude Code docs: Connect Claude Code to tools via MCP</a></li></ul>
 </section>
 <section><h2 id="steps">Pasos</h2><ol class="cp-steps"><li><strong>Agregue un conector personalizado.</strong> En claude.ai o Claude Desktop, vaya a Customize &gt; Connectors y elija Add custom connector. En los planes Team y Enterprise, un Owner lo agrega para la organización.</li><li><strong>Escriba la dirección del servidor.</strong> Escriba la dirección del servidor MCP de Endwise. Deje vacíos el ID de cliente y el secreto de OAuth.</li><li><strong>Inicie sesión en Endwise y apruebe.</strong> Claude abre una página de Endwise. Inicie sesión, compruebe que la aplicación que aparece es Claude, fije un límite mensual para ella y elija Approve.</li><li><strong>Haga una pregunta que necesite una respuesta exacta.</strong> Pida un conteo de fechas, un tipo de cambio o una cifra de millaje. Claude enumera las herramientas, elige una y la llama.</li><li><strong>Vigile el gasto y desconecte si hace falta.</strong> Pida a Claude que ejecute primero quote_price para una llamada de la que no esté seguro. Desconecte a Claude desde la página de su cuenta en cualquier momento.</li></ol></section>
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Preguntas</h2><h3>¿Puede Claude conectarse a Endwise?</h3><p>Sí. Agregue Endwise como conector personalizado por su dirección e inicie sesión en Endwise cuando Claude se lo pida. Usted aprueba a Claude en una página de Endwise y le da un límite mensual. No necesita copiar una clave de API en Claude.</p><h3>¿Quién puede agregar un conector personalizado en las aplicaciones de Claude?</h3><p>Según la documentación de Anthropic, un servidor remoto se puede agregar como conector personalizado en los planes Free, Pro, Max, Ultra, Team y Enterprise. En Team y Enterprise lo agrega un Owner para la organización, y luego cada miembro se conecta con su propia cuenta. El plan Free permite un conector personalizado.</p><h3>¿Me cobrará Claude por cada llamada a una herramienta?</h3><p>Claude no. Las herramientas cobran a su saldo prepagado por cada llamada, igual que la API. Cada aplicación conectada tiene un límite mensual, y una llamada que pase del límite se rechaza y no se cobra.</p><h3>¿Cómo dejo de usar Endwise en Claude?</h3><p>Abra la página de su cuenta, busque Claude en Connected apps y elija Disconnect. Desde ese momento, las llamadas de Claude fallan. También puede quitar el conector en Claude, en Customize &gt; Connectors.</p><h3>¿Puedo seguir usando una clave de API con Claude Code?</h3><p>Sí. Claude Code acepta una opción header en claude mcp add, así que una clave de API Bearer funciona allí como antes.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Preguntas</h2><details class="xpand"><summary><h3>¿Puede Claude conectarse a Endwise?</h3></summary><div class="xp-in"><p>Sí. Agregue Endwise como conector personalizado por su dirección e inicie sesión en Endwise cuando Claude se lo pida. Usted aprueba a Claude en una página de Endwise y le da un límite mensual. No necesita copiar una clave de API en Claude.</p></div></details><details class="xpand"><summary><h3>¿Quién puede agregar un conector personalizado en las aplicaciones de Claude?</h3></summary><div class="xp-in"><p>Según la documentación de Anthropic, un servidor remoto se puede agregar como conector personalizado en los planes Free, Pro, Max, Ultra, Team y Enterprise. En Team y Enterprise lo agrega un Owner para la organización, y luego cada miembro se conecta con su propia cuenta. El plan Free permite un conector personalizado.</p></div></details><details class="xpand"><summary><h3>¿Me cobrará Claude por cada llamada a una herramienta?</h3></summary><div class="xp-in"><p>Claude no. Las herramientas cobran a su saldo prepagado por cada llamada, igual que la API. Cada aplicación conectada tiene un límite mensual, y una llamada que pase del límite se rechaza y no se cobra.</p></div></details><details class="xpand"><summary><h3>¿Cómo dejo de usar Endwise en Claude?</h3></summary><div class="xp-in"><p>Abra la página de su cuenta, busque Claude en Connected apps y elija Disconnect. Desde ese momento, las llamadas de Claude fallan. También puede quitar el conector en Claude, en Customize &gt; Connectors.</p></div></details><details class="xpand"><summary><h3>¿Puedo seguir usando una clave de API con Claude Code?</h3></summary><div class="xp-in"><p>Sí. Claude Code acepta una opción header en claude mcp add, así que una clave de API Bearer funciona allí como antes.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Relacionado</h2><ul><li><a href="/toll-preview/es/guias/usar-endwise-con-chatgpt/">Usar Endwise con ChatGPT</a></li><li><a href="/toll-preview/es/guias/por-que-la-ia-se-equivoca-con-los-numeros/">Por qué la IA se equivoca con fechas y números</a></li><li><a href="/toll-preview/es/guias/como-verificar-un-numero-de-la-ia/">Cómo verificar un número que le da una IA</a></li><li><a href="/toll-preview/guides/use-in-cursor-and-vs-code/">Usar las herramientas en Cursor y VS Code (en inglés)</a></li><li><a href="/toll-preview/developers/mcp/">MCP para agentes de IA (en inglés)</a></li><li><a href="/toll-preview/account">Su cuenta y las aplicaciones conectadas</a></li><li><a href="/toll-preview/es/guias/">Guías en español</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/es/guias/usar-endwise-con-claude.md">Esta página en Markdown</a> <span aria-hidden="true">·</span> Datos al <time datetime="2026-11-04">2026-11-04</time></p>
@@ -265,6 +266,7 @@ claude mcp get endwise
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

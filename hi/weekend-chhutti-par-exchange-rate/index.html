@@ -71,6 +71,7 @@
 <h1>वीकेंड और छुट्टी पर एक्सचेंज रेट: ECB और US Treasury</h1>
 <p class="cp-answer">जिस दिन ECB रेट जारी नहीं करता, उस दिन उससे पहले का आख़िरी रेट चलता है, ज़्यादा से ज़्यादा 7 दिन पीछे तक: 15 फ़रवरी 2026 (रविवार) के लिए शुक्रवार, 13 फ़रवरी 2026 का रेट, यानी 1 डॉलर = 90.609509 रुपये।</p>
 
+
 </header>
 <div class="cp-body prose">
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">बिना रेट वाला दिन आज़माएँ</h2><p class="muted">टूल ECB का रेफरेंस रेट और असल में इस्तेमाल हुई तारीख़ बताता है।</p><form method="get" action="/toll-preview/hi/fx-on-date/" class="cp-tool-form"><input type="hidden" name="base" value="USD"><input type="hidden" name="quote" value="INR"><div class="field"><label for="tf-date">तारीख़</label><input type="date" id="tf-date" name="date" value="2026-10-24"><p class="hint">शनिवार-रविवार या छुट्टी पर उससे पहले का आख़िरी रेट इस्तेमाल होता है।</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">टूल में रेट पाएँ</button></form><p class="small"><a href="/toll-preview/hi/fx-on-date/?base=USD&amp;quote=INR&amp;date=2026-10-24">ये डेटा पूरे टूल में खोलें</a></p></aside>
@@ -107,7 +108,7 @@
 <ul class="cp-sources"><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">यूरोपीय सेंट्रल बैंक: Euro foreign exchange reference rates (अंग्रेज़ी में)</a></li><li><a href="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip">यूरोपीय सेंट्रल बैंक: पूरा इतिहास, zip फ़ाइल में CSV</a></li><li><a href="https://www.ecb.europa.eu/paym/target/t2/html/index.en.html">यूरोपीय सेंट्रल बैंक: T2, बंद रहने के दिन (अंग्रेज़ी में)</a></li><li><a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange">US Treasury: Treasury Reporting Rates of Exchange (अंग्रेज़ी में)</a></li></ul>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">सवाल</h2><h3>क्या शनिवार-रविवार को ECB का रेट मिलता है?</h3><p>नहीं। ECB कामकाजी दिनों में रेट जारी करता है। शनिवार या रविवार के लिए आम तौर पर उससे पहले का आख़िरी रेट लिया जाता है, यानी अक्सर शुक्रवार का। टूल यही करता है और तारीख़ बताता है।</p><h3>ECB किन दिनों रेट जारी नहीं करता?</h3><p>शनिवार-रविवार के अलावा TARGET की छुट्टियों पर: 1 जनवरी, गुड फ़्राइडे, ईस्टर मंडे, 1 मई, 25 और 26 दिसंबर, ECB के T2 पेज के अनुसार। जो छुट्टियाँ TARGET की सूची में नहीं हैं (जैसे भारत की ज़्यादातर छुट्टियाँ), उन पर ECB का रेट आता है।</p><h3>US Treasury का रेट ECB के रेट से अलग क्यों है?</h3><p>ECB का रेट रोज़ आता है, जबकि US Treasury का रिपोर्टिंग रेट तिमाही होता है और एक बार जारी होकर कई महीने चलता है। दोनों अलग संस्थाएँ अलग तरीके से तय करती हैं, इसलिए वे बराबर नहीं होते। जिस संस्था को आप रिपोर्ट करते हैं, वह जिसे माँगे वही लें।</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">सवाल</h2><details class="xpand"><summary><h3>क्या शनिवार-रविवार को ECB का रेट मिलता है?</h3></summary><div class="xp-in"><p>नहीं। ECB कामकाजी दिनों में रेट जारी करता है। शनिवार या रविवार के लिए आम तौर पर उससे पहले का आख़िरी रेट लिया जाता है, यानी अक्सर शुक्रवार का। टूल यही करता है और तारीख़ बताता है।</p></div></details><details class="xpand"><summary><h3>ECB किन दिनों रेट जारी नहीं करता?</h3></summary><div class="xp-in"><p>शनिवार-रविवार के अलावा TARGET की छुट्टियों पर: 1 जनवरी, गुड फ़्राइडे, ईस्टर मंडे, 1 मई, 25 और 26 दिसंबर, ECB के T2 पेज के अनुसार। जो छुट्टियाँ TARGET की सूची में नहीं हैं (जैसे भारत की ज़्यादातर छुट्टियाँ), उन पर ECB का रेट आता है।</p></div></details><details class="xpand"><summary><h3>US Treasury का रेट ECB के रेट से अलग क्यों है?</h3></summary><div class="xp-in"><p>ECB का रेट रोज़ आता है, जबकि US Treasury का रिपोर्टिंग रेट तिमाही होता है और एक बार जारी होकर कई महीने चलता है। दोनों अलग संस्थाएँ अलग तरीके से तय करती हैं, इसलिए वे बराबर नहीं होते। जिस संस्था को आप रिपोर्ट करते हैं, वह जिसे माँगे वही लें।</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">संबंधित पेज</h2><ul><li><a href="/toll-preview/hi/dollar-euro-ke-mukable-rupaye-ka-rate/">किसी तारीख़ पर डॉलर और यूरो के मुकाबले रुपये का रेट</a></li><li><a href="/toll-preview/hi/fx-on-date/">टूल: किसी तारीख़ का एक्सचेंज रेट</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/hi/weekend-chhutti-par-exchange-rate.md">यह पेज Markdown में</a> <span aria-hidden="true">·</span> डेटा की तारीख <time datetime="2026-11-05">2026-11-05</time></p>
@@ -200,6 +201,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

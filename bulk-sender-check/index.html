@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bulk sender check: Gmail, Yahoo and Outlook rules for one email: Endwise</title>
+<meta name="description" content="Paste one raw email (.eml) and see, rule by rule, whether it meets Gmail's, Yahoo's and Microsoft Outlook.com's bulk-sender requirements: SPF, DKIM, DMARC alignment, one-click unsubscribe (RFC 8058), PTR, TLS and RFC 5322 format.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/bulk-sender-check/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"bulk-sender-check"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Bulk sender check">
+<meta property="og:description" content="Grade one raw email (.eml) against Gmail's, Yahoo's and Microsoft Outlook.com's bulk-sender rules: SPF, DKIM (verified, with key length), DMARC record and alignment, RFC 8058 one-click unsubscribe, reverse DNS, TLS and RFC 5322 format, each rule quoted from the provider with its source.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/","url":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/","name":"Bulk sender check","description":"Grade one raw email (.eml) against Gmail's, Yahoo's and Microsoft Outlook.com's bulk-sender rules: SPF, DKIM (verified, with key length), DMARC record and alignment, RFC 8058 one-click unsubscribe, reverse DNS, TLS and RFC 5322 format, each rule quoted from the provider with its source.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Bulk sender check","item":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/"}]},{"@type":"WebApplication","name":"Bulk sender check","url":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/","description":"Grade one raw email (.eml) against Gmail's, Yahoo's and Microsoft Outlook.com's bulk-sender rules: SPF, DKIM (verified, with key length), DMARC record and alignment, RFC 8058 one-click unsubscribe, reverse DNS, TLS and RFC 5322 format, each rule quoted from the provider with its source.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"name":"Check one message","@type":"Offer","price":"0.02","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.02","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"message"}}},{"@type":"Offer","name":"The providers' rule table","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Worked example messages","price":"0","priceCurrency":"USD"}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="bsc tf hue-agent">
+  <section class="wrap tf-open">
+    <p class="eyebrow">Email deliverability, per message</p>
+    <h1>Bulk sender check</h1>
+    <p class="lede">Paste one real email you sent, as raw source, and see <b>Gmail's, Yahoo's and Microsoft Outlook.com's bulk-sender rules</b>, pass or fail, with the fix.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p class="tf-price" id="bsc-price"><span class="price">$0.02 a message</span><span>$0.01 after 1,000 a month</span><span>5 free checks a day without an account</span></p>
+  </section>
+
+  <section class="wrap tf-calc bsc-desk" data-jump="Tool" aria-label="Checker">
+    <form class="tf-panel tf-form bsc-form" id="bsc-form" novalidate>
+      <div class="field">
+        <label for="bsc-eml">Raw message (.eml)</label>
+        <textarea id="bsc-eml" rows="4" spellcheck="false" autocomplete="off" placeholder="Received: from ...&#10;Authentication-Results: ...&#10;DKIM-Signature: ...&#10;From: ...&#10;&#10;(body)" aria-describedby="bsc-eml-hint bsc-eml-err"></textarea>
+        <p class="hint tf-long" id="bsc-eml-hint">Best: the copy that arrived in a Gmail, Yahoo or Outlook.com inbox, so the receiver's results are in it. Headers alone work too; the body is needed for the body hash and the unsubscribe link.</p>
+        <p class="field-error" id="bsc-eml-err"></p>
+      </div>
+      <div class="field">
+        <label for="bsc-type">Kind of message</label>
+        <select id="bsc-type">
+          <option value="marketing">Marketing or subscribed (newsletters, promotions)</option>
+          <option value="transactional">Transactional (receipts, password resets)</option>
+        </select>
+        <p class="hint tf-long">Google and Yahoo require one-click unsubscribe on marketing and subscribed mail only.</p>
+      </div>
+      <label class="bsc-dnsck"><input type="checkbox" id="bsc-dns" checked> <span>Look up DNS now<span class="tf-long"> (DKIM keys, DMARC, reverse DNS, SPF)</span></span></label>
+      <p class="form-error field-error" id="bsc-error" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="bsc-run">Check this message</button>
+      <p class="hint tf-run-note tf-long">Your message is processed in memory and not stored, and we never call your unsubscribe link.</p>
+      <p class="visually-hidden" id="bsc-status" role="status"></p>
+      <div class="field bsc-file">
+        <label for="bsc-file">Or open an .eml file</label>
+        <input id="bsc-file" type="file" accept=".eml,.txt,message/rfc822,text/plain">
+      </div>
+      <div class="bsc-samples">
+        <p class="bsc-label">Worked examples (free)</p>
+        <button class="btn btn-ghost" type="button" data-sample="compliant">Compliant newsletter</button>
+        <button class="btn btn-ghost" type="button" data-sample="one-click-missing">No one-click unsubscribe</button>
+        <button class="btn btn-ghost" type="button" data-sample="not-aligned">SPF passes, DMARC fails</button>
+      </div>
+    </form>
+
+    <div class="tf-panel tf-result bsc-out" id="bsc-out" aria-live="polite">
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec bsc-how" data-jump="Raw message" aria-labelledby="bsc-how-title">
+    <div class="tf-top solo">
+      <div>
+        <p class="eyebrow">Before you paste</p>
+        <h2 id="bsc-how-title">How to get the raw message, <span class="dim">in each mailbox.</span></h2>
+        <p class="tf-p">Copy it from the inbox it arrived in, so the receiver's own results come with it.</p>
+      </div>
+    </div>
+    <div class="tf-cards c2 bsc-howcards">
+      <article class="tf-panel tf-note-card ok"><span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 6l8 6 8-6"/></svg></span><div><h3>Gmail</h3><p>Open the message, then next to Reply choose More, then Show original, then Copy to clipboard.</p></div></article>
+      <article class="tf-panel tf-note-card ok"><span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 6l8 6 8-6"/></svg></span><div><h3>Yahoo Mail</h3><p>More, then View Raw Message.</p></div></article>
+      <article class="tf-panel tf-note-card ok"><span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 6l8 6 8-6"/></svg></span><div><h3>Outlook on the web, Outlook.com and new Outlook</h3><p>More actions, then View, then View message details (headers only).</p></div></article>
+      <article class="tf-panel tf-note-card ok"><span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 6l8 6 8-6"/></svg></span><div><h3>Classic Outlook for Windows</h3><p>Open the message in its own window, then File, then Properties: the headers are in the Internet headers box.</p></div></article>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec bsc-rules" data-jump="Rules" aria-labelledby="bsc-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">The rules</p>
+        <h2 id="bsc-rules-title">What is checked, <span class="dim">and what cannot be.</span></h2>
+        <p class="tf-p">The receiver's own verdict, then our own checks of the signature, the alignment and the unsubscribe headers.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="bsc-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="bsc-limits-title">What it does not cover</h3>
+          <p>Spam rate, daily volume and unsubscribe speed, and Microsoft 365 or Google Workspace mailboxes. Passing is not a promise of the inbox.</p>
+          <details class="xpand"><summary>Read the full list</summary><div class="xp-in">
+            <p><b>Not from one message:</b> spam rate (Google Postmaster Tools, Yahoo's Complaint Feedback Loop), daily volume and how fast you process unsubscribes.</p>
+            <p>Providers also use reputation and content, so passing every rule does not guarantee the inbox. Microsoft's rules cover Outlook.com consumer mailboxes (hotmail.com, live.com, outlook.com), not Microsoft 365 business mailboxes; Google's cover personal Gmail accounts, not Google Workspace.</p>
+            <p>DNS answers come from public resolvers at the time shown and may differ from when the message was sent. Private and internal names are never queried.</p>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tf-cards c2">
+      <article class="tf-panel tf-note-card ok">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 6l8 6 8-6"/></svg></span>
+        <div>
+          <h3>From the receiver</h3>
+          <p>The topmost Authentication-Results header and its Received line.</p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>The topmost Authentication-Results header is the receiving server's own SPF, DKIM and DMARC verdict, and its Received line shows whether the hop used TLS.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <div>
+          <h3>Our own checks</h3>
+          <p>DKIM verified with the key in DNS, DMARC alignment worked out, one-click unsubscribe checked to RFC 8058.</p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>Every DKIM signature is verified (RFC 6376) with the key in DNS, and the key length measured; DMARC alignment is worked out from the From: domain using the Public Suffix List (RFC 7489); one-click unsubscribe is checked to RFC 8058: exactly "List-Unsubscribe=One-Click", one HTTPS URI, and both headers signed by a DKIM signature that passes.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="bsc-read-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg></span>
+        <div>
+          <h3 id="bsc-read-title">Rules as read</h3>
+          <p>Read on the providers' pages on November 8, 2026, quoted with links in every result.</p>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card ok" aria-labelledby="bsc-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M16 7.5c-1-1-2.4-1.5-4-1.5-2.2 0-4 1.1-4 3s1.8 2.6 4 3 4 1.1 4 3-1.8 3-4 3c-1.7 0-3.2-.6-4.2-1.6"/></svg></span>
+        <div>
+          <h3 id="bsc-prices-title">Prices</h3>
+          <p>Paid per message checked. The worked examples and the rule table are free.</p>
+          <details class="xpand"><summary>Read the full prices</summary><div class="xp-in">
+            <div class="bsc-price"><ul class="endwise-prices"><li><strong>Check one message</strong>: $0.02 per message for the first 1,000 each calendar month, then $0.01 per message.</li><li><strong>The providers' rule table</strong>: free.</li><li><strong>Worked example messages</strong>: free.</li></ul></div>
+            <p>Without an account you get 5 free checks a day. The worked examples are free. Your message is processed in memory and not stored, and we never call your unsubscribe link.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Bulk" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Bulk sender rules</h2>
+<h3>Providers</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/requirements/" title="Gmail, Yahoo and Outlook.com bulk sender requirements, side by side">Gmail, Yahoo and Outlook.com side by side</a></li><li><a href="/toll-preview/bulk-sender-check/gmail/" title="Gmail bulk sender requirements (2026), with a checker">Gmail rules</a></li><li><a href="/toll-preview/bulk-sender-check/yahoo/" title="Yahoo sender requirements, checked against your email">Yahoo rules</a></li><li><a href="/toll-preview/bulk-sender-check/microsoft-outlook/" title="Outlook.com high-volume sender rules (May 2025) and 550 5.7.515">Microsoft (Outlook.com) rules</a></li></ul>
+<h3>Rules</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/one-click-unsubscribe/" title="One-click unsubscribe checker (List-Unsubscribe-Post, RFC 8058)">One-click unsubscribe (RFC 8058)</a></li><li><a href="/toll-preview/bulk-sender-check/dmarc-alignment/" title="DMARC alignment checker for one email (relaxed and strict)">DMARC alignment</a></li><li><a href="/toll-preview/bulk-sender-check/dkim-key-length/" title="DKIM key length checker: 1024 vs 2048 bits for Gmail">DKIM key length</a></li></ul>
+<h3>Sending platforms</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/list-unsubscribe/postfix/" title="Postfix List-Unsubscribe and List-Unsubscribe-Post headers for Gmail one-click">Postfix</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Raw message" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Get the raw message</h2>
+<h3>Mail clients</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/headers/gmail/" title="How to get the raw email (Show original) in Gmail and check it">Gmail</a></li><li><a href="/toll-preview/bulk-sender-check/headers/outlook/" title="How to view email headers in Outlook and Outlook.com, then check them">Outlook and Outlook.com</a></li><li><a href="/toll-preview/bulk-sender-check/headers/new-outlook/" title="How to view email headers in the new Outlook, then check them">New Outlook</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compare" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Compare</h2>
+<h3>Other tools</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/vs/dmarcian/" title="dmarcian vs a one-message bulk sender check">dmarcian</a></li><li><a href="/toll-preview/bulk-sender-check/vs/glockapps/" title="GlockApps vs Endwise bulk sender check">GlockApps</a></li><li><a href="/toll-preview/bulk-sender-check/vs/google-postmaster/" title="Google Postmaster Tools vs a one-message bulk sender check">Google Postmaster Tools</a></li><li><a href="/toll-preview/bulk-sender-check/vs/mail-tester/" title="Mail-Tester vs Endwise bulk sender check">Mail-Tester</a></li><li><a href="/toll-preview/bulk-sender-check/vs/mxtoolbox/" title="MxToolbox header analyzer vs bulk sender check">MxToolbox</a></li><li><a href="/toll-preview/bulk-sender-check/vs/yahoo-sender-hub/" title="Yahoo Sender Hub vs checking your email against its rules">Yahoo Sender Hub</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Guides</h2>
+<h3>Headers</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/guides/read-email-headers-spf-dkim-dmarc/" title="How to read email headers for SPF, DKIM and DMARC results">Read SPF, DKIM and DMARC results</a></li></ul>
+<h3>DMARC</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/guides/spf-passes-dmarc-fails/" title="SPF passes but DMARC fails: the alignment problem, and the fix">SPF passes but DMARC fails</a></li><li><a href="/toll-preview/bulk-sender-check/guides/dmarc-p-none-enough/" title="Is DMARC p=none enough for Gmail, Yahoo and Outlook.com?">Is p=none enough?</a></li></ul>
+<h3>Infrastructure</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/guides/ptr-reverse-dns/" title="PTR and reverse DNS for email senders: what Gmail, Yahoo and Outlook.com require">PTR and reverse DNS</a></li></ul>
+<h3>Calendar</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/guides/bfcm-sending-checklist/" title="Black Friday email sending checklist 2026 and 2027 (Gmail, Yahoo, Outlook.com)">Black Friday sending checklist</a></li></ul>
+<h3>Monitoring</h3><ul class="cp-rows"><li><a href="/toll-preview/bulk-sender-check/guides/postmaster-tools-spam-rate/" title="Google Postmaster Tools spam rate: where to see it and what 0.3% means">Postmaster Tools spam rate</a></li></ul>
+</section>
+
+  <section class="wrap tf-code bsc-code" data-jump="Code" aria-label="Use this from code">
+    <div id="bsc-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This checker needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/bulk-sender-check/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

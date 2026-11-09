@@ -13,6 +13,7 @@
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <link rel="stylesheet" href="/toll-preview/trucker-per-diem/files/page.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"trucker-per-diem"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
@@ -70,59 +71,47 @@
   </div>
 </header>
 
-<main id="main" class="pd">
-  <section class="wrap pd-intro">
+<main id="main" class="pd tf hue-money">
+  <section class="wrap tf-open pd-intro">
     <p class="eyebrow">Impuestos del dueño-operador</p>
     <h1>Hoja de viáticos (per diem) para camioneros</h1>
-    <p class="lede">Anote los días que estuvo en la carretera, o solo cuéntelos. Cada día se calcula con la tarifa del IRS para la industria del transporte vigente ese día, los días de salida y de regreso a 3/4, y luego el límite de 80% de las horas de servicio. El resultado es la cifra para la línea 24b del Anexo C (Formulario 1040) y la cifra que se escribe en el programa de impuestos.</p>
-    <p data-prices class="pd-price" id="pd-price">Los totales de esta página son gratis. La hoja de cálculo para su preparador de impuestos (PDF y CSV) cuesta $9 por conductor y año tributario. El precio de repetirla para el mismo conductor y año está más abajo, en Precios.</p>
-    <p class="pd-price pd-who">Una flota o un preparador compra una hoja por cada conductor y cada año tributario. Cada hoja nombra el aviso del IRS y la tarifa diaria que usó en cada fila, para que el preparador pueda verificarla en irs.gov.</p>
-    <p class="pd-sample" id="pd-sample">Vea primero una muestra: la hoja de los viajes de 2025 de un conductor inventado, hecha por esta herramienta. <span id="pd-sample-links">Los archivos de muestra se cargan con la página.</span></p>
-    <p class="hint"><a href="/toll-preview/trucker-per-diem/" hreflang="en" lang="en">Use this calculator in English</a></p>
+    <p class="lede">Cuente sus días en la carretera y obtenga <b>la deducción de viáticos (per diem) para la línea 24b del Anexo C</b>, con la tarifa del IRS vigente cada día.</p>
+    <p data-prices class="tf-price" id="pd-price"><span class="price">Totales gratis en esta página</span><span>Hoja para su preparador (PDF y CSV) $9 por conductor y año tributario</span></p>
+    <details class="xpand pd-about">
+      <summary>Qué obtiene</summary>
+      <div class="xp-in">
+        <p>Anote los días que estuvo en la carretera, o solo cuéntelos. Cada día se calcula con la tarifa del IRS para la industria del transporte vigente ese día, los días de salida y de regreso a 3/4, y luego el límite de 80% de las horas de servicio. El resultado es la cifra para la línea 24b del Anexo C (Formulario 1040) y la cifra que se escribe en el programa de impuestos.</p>
+        <p data-prices>Los totales de esta página son gratis. La hoja de cálculo para su preparador de impuestos (PDF y CSV) cuesta $9 por conductor y año tributario. El precio de repetirla para el mismo conductor y año está más abajo, en Precios.</p>
+        <p>Una flota o un preparador compra una hoja por cada conductor y cada año tributario. Cada hoja nombra el aviso del IRS y la tarifa diaria que usó en cada fila, para que el preparador pueda verificarla en irs.gov.</p>
+      </div>
+    </details>
+    <p class="hint lang-alt"><a href="/toll-preview/trucker-per-diem/" hreflang="en" lang="en">Use this calculator in English</a></p>
   </section>
 
-  <section class="wrap pd-desk" aria-label="Calculadora de viáticos (per diem)">
-    <form class="pd-form" id="pd-form" novalidate>
-      <div class="field">
-        <label for="pd-year">Año tributario</label>
-        <select id="pd-year"></select>
-        <p class="hint" id="pd-year-hint"></p>
-      </div>
-
-      <fieldset class="field pd-group">
-        <legend>Su manejo</legend>
-        <label class="check"><input type="checkbox" id="pd-transport" checked><span>Transporto carga en camión y un viaje suele pasar por lugares con tarifas de comidas distintas</span></label>
-        <label class="check"><input type="checkbox" id="pd-hos" checked><span>Mis comidas fueron durante el servicio sujeto a las horas de servicio del DOT (límite de 80%)</span></label>
-        <label class="check"><input type="checkbox" id="pd-interstate" checked><span>Manejo entre estados</span></label>
-        <p class="field-error" id="pd-transport-err"></p>
-      </fieldset>
-
-      <fieldset class="field">
-        <legend>Cómo quiere ingresar sus días</legend>
-        <div class="choice-row">
-          <label class="choice"><input type="radio" name="mode" value="log" checked><span>Viajes y un calendario</span></label>
-          <label class="choice"><input type="radio" name="mode" value="counts"><span>Cantidad de días</span></label>
+  <section class="wrap tf-calc pd-desk" data-jump="Calcular" aria-label="Calculadora de viáticos (per diem)">
+    <form class="tf-panel tf-form pd-form" id="pd-form" novalidate>
+      <div class="tf-two pd-top">
+        <div class="field">
+          <label for="pd-year">Año tributario</label>
+          <select id="pd-year"></select>
         </div>
-      </fieldset>
+        <fieldset class="field">
+          <legend>Ingrese sus días como</legend>
+          <div class="choice-row">
+            <label class="choice"><input type="radio" name="mode" value="log" checked><span>Viajes</span></label>
+            <label class="choice"><input type="radio" name="mode" value="counts"><span>Cantidad de días</span></label>
+          </div>
+        </fieldset>
+      </div>
+      <p class="hint tf-long" id="pd-year-hint"></p>
+
 
       <div data-mode="log">
         <div class="field">
           <label for="pd-trips">Viajes</label>
-          <textarea id="pd-trips" rows="6" spellcheck="false" aria-describedby="pd-trips-hint pd-trips-err"></textarea>
-          <p class="hint" id="pd-trips-hint">Un viaje por línea: el día que salió, la palabra "to", el día que regresó, luego "Canada" (u OCONUS) si el viaje fue fuera de los 48 estados contiguos, y luego un número de carga si quiere. El primer día y el último cuentan como días de salida y de regreso.</p>
-          <details class="pd-format">
-            <summary>Lo que lee este cuadro, y las exportaciones de un ELD</summary>
-            <p>Las fechas se escriben con el año primero, como <code>2025-03-02 to 2025-03-13 Load 1180</code>; un viaje de un solo día puede ser una sola fecha. Si tiene una exportación de un ELD (dispositivo de registro electrónico) o de una bolsa de cargas, copie las fechas de salida y de regreso de cada viaje en este formato. En una hoja de cálculo con la fecha de salida en la columna A y la de regreso en la columna B, <code>=TEXT(A2,"yyyy-mm-dd")&amp;" to "&amp;TEXT(B2,"yyyy-mm-dd")</code> escribe la línea por usted; pegue aquí la columna.</p>
-          </details>
+          <textarea id="pd-trips" rows="4" spellcheck="false" aria-describedby="pd-trips-hint pd-trips-err"></textarea>
           <p class="field-error" id="pd-trips-err"></p>
         </div>
-        <fieldset class="field pd-group">
-          <legend>Marque días sueltos en el calendario</legend>
-          <p class="hint">Elija una marca y luego toque los días. Una marca reemplaza a los viajes en ese día.</p>
-          <div class="pd-brushes" id="pd-brushes" role="radiogroup" aria-label="Marca del día"></div>
-          <label class="check"><input type="checkbox" id="pd-oconus"><span>Fuera de los Estados Unidos continentales (Alaska, Hawái, Canadá)</span></label>
-          <button class="btn btn-quiet btn-small" type="button" id="pd-clear-marks">Quitar las marcas</button>
-        </fieldset>
       </div>
 
       <div data-mode="counts" hidden>
@@ -138,6 +127,34 @@
         </fieldset>
       </div>
 
+      <button class="btn tf-go" type="submit" id="pd-run">Calcular los viáticos</button>
+      <p class="hint tf-run-note">Se actualiza mientras escribe. Gratis en esta página.</p>
+
+      <details class="xpand pd-format" data-mode="log">
+            <summary>Lo que lee este cuadro, y las exportaciones de un ELD</summary><div class="xp-in">
+            <p id="pd-trips-hint">Un viaje por línea: el día que salió, la palabra "to", el día que regresó, luego "Canada" (u OCONUS) si el viaje fue fuera de los 48 estados contiguos, y luego un número de carga si quiere. El primer día y el último cuentan como días de salida y de regreso.</p>
+            <p>Las fechas se escriben con el año primero, como <code>2025-03-02 to 2025-03-13 Load 1180</code>; un viaje de un solo día puede ser una sola fecha. Si tiene una exportación de un ELD (dispositivo de registro electrónico) o de una bolsa de cargas, copie las fechas de salida y de regreso de cada viaje en este formato. En una hoja de cálculo con la fecha de salida en la columna A y la de regreso en la columna B, <code>=TEXT(A2,"yyyy-mm-dd")&amp;" to "&amp;TEXT(B2,"yyyy-mm-dd")</code> escribe la línea por usted; pegue aquí la columna.</p>
+          </div>
+          </details>
+      <details class="xpand pd-marks" id="pd-marks-fold" data-mode="log">
+        <summary>Marque días sueltos en el calendario (opcional)</summary>
+        <div class="xp-in">
+          <p class="hint">Elija una marca y luego toque los días. Una marca reemplaza a los viajes en ese día.</p>
+          <div class="pd-brushes" id="pd-brushes" role="radiogroup" aria-label="Marca del día"></div>
+          <label class="check"><input type="checkbox" id="pd-oconus"><span>Fuera de los Estados Unidos continentales (Alaska, Hawái, Canadá)</span></label>
+          <button class="btn btn-quiet btn-small" type="button" id="pd-clear-marks">Quitar las marcas</button>
+          </div>
+        </details>
+      <details class="xpand pd-drive" id="pd-drive-fold">
+        <summary>Su manejo: carga, horas de servicio, entre estados</summary>
+        <div class="xp-in">
+        <label class="check"><input type="checkbox" id="pd-transport" checked><span>Transporto carga en camión y un viaje suele pasar por lugares con tarifas de comidas distintas</span></label>
+        <label class="check"><input type="checkbox" id="pd-hos" checked><span>Mis comidas fueron durante el servicio sujeto a las horas de servicio del DOT (límite de 80%)</span></label>
+        <label class="check"><input type="checkbox" id="pd-interstate" checked><span>Manejo entre estados</span></label>
+        <p class="field-error" id="pd-transport-err"></p>
+        </div>
+      </details>
+
       <fieldset class="field pd-group">
         <legend>Para la hoja de cálculo</legend>
         <div class="field">
@@ -152,56 +169,89 @@
       </fieldset>
 
       <p class="form-error" id="pd-error" role="alert"></p>
-      <button class="btn" type="button" id="pd-get">Obtener la hoja de cálculo (PDF y CSV)</button>
+      <button class="btn btn-quiet pd-get" type="button" id="pd-get">Obtener la hoja de cálculo (PDF y CSV)</button>
       <p class="hint pd-get-note" id="pd-get-note">Su registro se queda en este navegador. Solo se envía cuando obtiene la hoja de cálculo.</p>
+      <p class="pd-sample" id="pd-sample">Vea primero una muestra: la hoja de los viajes de 2025 de un conductor inventado, hecha por esta herramienta. <span id="pd-sample-links">Los archivos de muestra se cargan con la página.</span></p>
       <p class="visually-hidden" id="pd-status" role="status"></p>
     </form>
 
-    <div class="pd-out" id="pd-out">
+    <div class="tf-panel tf-result pd-out" id="pd-out">
       <p class="muted">Cargando el ejemplo resuelto.</p>
     </div>
   </section>
 
-  <section class="wrap pd-cal-wrap" data-jump="El año" data-mode="log" aria-labelledby="pd-cal-title">
-    <h2 id="pd-cal-title">El año, día por día</h2>
+  <section class="wrap tf-sec pd-cal-wrap" data-jump="Año" data-mode="log" aria-labelledby="pd-cal-title">
+    <div class="tf-top solo"><div>
+      <p class="eyebrow">El registro</p>
+      <h2 id="pd-cal-title">El año, <span class="dim">día por día.</span></h2>
+    </div></div>
+    <div class="tf-panel pd-cal-panel">
     <ul class="pd-legend" id="pd-legend" aria-label="Clave"></ul>
     <p class="hint pd-cal-swipe">Deslice hacia los lados para ver los otros meses.</p>
     <div class="pd-cal" id="pd-cal" data-lenis-prevent></div>
-  </section>
-
-  <section class="wrap pd-rules" data-jump="Las reglas" aria-labelledby="pd-rules-title">
-    <h2 id="pd-rules-title">La tarifa de cada día, no una tarifa para todo el año</h2>
-    <div class="pd-rule-cols">
-      <div>
-        <h3>Un aviso nuevo cada 1 de octubre</h3>
-        <p>El IRS fija la tarifa para la industria del transporte en un aviso cada otoño, para los viajes a partir del 1 de octubre. Un año calendario abarca dos avisos, y en dos años la tarifa cambió a mitad de año: 2021 ($66, y $69 desde el 1 de octubre) y 2024 ($69, y luego $80). Cada fila de la hoja nombra el aviso detrás de su tarifa.</p>
-      </div>
-      <div>
-        <h3>3/4 en los días de salida y de regreso</h3>
-        <p>Un día completo va de las 12:01 a. m. a la medianoche. La sección 6.04 del Rev. Proc. 2019-48 obliga a los trabajadores por cuenta propia a usar 3/4 de la tarifa en los días de salida y de regreso, o sea $60 de $80. La Publicación 463 también describe "cualquier método consistente"; esa opción está escrita para empleadores, así que esta herramienta usa 3/4 y lo dice.</p>
-      </div>
-      <div>
-        <h3>80% por las horas de servicio, una sola vez</h3>
-        <p>Las comidas durante el servicio sujeto a las horas de servicio del DOT son deducibles al 80% (50% en otros casos), y al 100% en 2021 y 2022 según el Aviso 2021-63. Los programas de impuestos que preguntan por las horas de servicio aplican el 80% por sí solos, así que déles el per diem completo; la línea 24b del Anexo C lleva el monto deducible. Aplicar el 80% dos veces le hace perder una quinta parte.</p>
-      </div>
     </div>
-    <h3 class="pd-table-title">Todas las tarifas registradas</h3>
-    <div class="table-scroll" id="pd-rate-table"><p class="muted">Cargando las tarifas.</p></div>
-    <p class="muted small">Si usa la tarifa especial, úsela en todos los viajes de ese año calendario; solo puede pasar a las tarifas federales por localidad a partir del 1 de enero (Rev. Proc. 2019-48, secciones 4.04(3) y 4.06(2)). Los días de solo gastos imprevistos ($5) son para días sin gastos de comida; no tienen límite y van en la línea 24a. Los días en que su transportista o empleador le pagó per diem no se pueden deducir también (sección 6.06). Los transportistas solo tienen que guardar los registros del estado de servicio y las copias del ELD durante 6 meses (49 CFR 395.8(k) y 395.22(i)), así que exporte los suyos cada mes o cada trimestre.</p>
   </section>
 
-  <section class="wrap pd-legal" data-jump="Lea esto" aria-labelledby="pd-legal-title">
-    <h2 id="pd-legal-title">Lea esto</h2>
-    <ul id="pd-disclaimers">
+  <section class="wrap tf-sec pd-rules" data-jump="Reglas" aria-labelledby="pd-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">Las reglas</p>
+        <h2 id="pd-rules-title">La tarifa de cada día, no una tarifa para todo el año</h2>
+        <p class="tf-p">Cada día se calcula con la tarifa del aviso vigente ese día.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="pd-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="pd-limits-title">Lo que no cubre</h3>
+          <p>Conductores de una empresa (con W-2), días que pagó su transportista, otros métodos de per diem, y si usted califica, que lo decide usted o su preparador.</p>
+          <details class="xpand"><summary>Leer la lista completa</summary><div class="xp-in">
+            <ul id="pd-disclaimers">
       <li>Las cifras se calculan a partir de los avisos del IRS nombrados en cada fila, el Rev. Proc. 2019-48 y la Publicación 463; no es asesoría tributaria. Si usted está lejos de su domicilio tributario, si trabaja en la industria del transporte y si está sujeto a las horas de servicio del DOT lo decide usted o su preparador.</li>
       <li>Los días parciales usan 3/4 de la tarifa diaria, como exige la sección 6.04 del Rev. Proc. 2019-48 para el método de per diem de los trabajadores por cuenta propia; la Publicación 463 también describe otros métodos, así que pregunte a su preparador si usa uno.</li>
       <li>Escriba el per diem completo en los programas de impuestos que aplican el límite de 80% por sí solos; escriba la cifra deducible solo donde el formulario pide el monto deducible (Anexo C, línea 24b).</li>
       <li>Los conductores de una empresa (con W-2) no pueden deducir las comidas que no les reembolsaron según la ley actual; los días que su transportista o empleador le reembolsó tampoco se pueden deducir.</li>
       <li>Esta hoja cuenta lo que usted anota; guarde sus registros del ELD, las hojas de carga y los recibos como prueba durante al menos 3 años (6 si se declara de menos más del 25% del ingreso).</li>
     </ul>
-    <h3>Precios</h3>
-    <ul class="endwise-prices"><li><strong>Hoja de cálculo para su preparador de impuestos</strong>: $9.00 por hoja de un conductor y un año (PDF y CSV); repetirla para el mismo conductor y año tributario cuesta $0.10 durante 15 meses.</li><li><strong>Revisión del registro</strong>: $0.02 por revisión del registro; totales, tabla por mes y revisiones del registro, sin archivos.</li><li><strong>Total rápido</strong>: $0.02 por cálculo.</li><li><strong>Consulta de tarifas</strong>: $0.02 por consulta.</li></ul>
-    <h3>Fuentes (en inglés), consultadas el 31 de octubre de 2026</h3>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+    <div class="tf-cards">
+      <article class="tf-panel tf-rule"><div class="rb">
+        <h3>Un aviso nuevo cada 1 de octubre</h3>
+        <p>La tarifa cambia cada 1 de octubre, así que un año abarca dos avisos.</p>
+        <p class="tf-srcp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><a href="https://www.irs.gov/pub/irs-drop/n-26-60.pdf">IRS Notice 2026-60</a></p>
+        <details class="xpand"><summary>Leer las reglas completas</summary><div class="xp-in"><p>El IRS fija la tarifa para la industria del transporte en un aviso cada otoño, para los viajes a partir del 1 de octubre. Un año calendario abarca dos avisos, y en dos años la tarifa cambió a mitad de año: 2021 ($66, y $69 desde el 1 de octubre) y 2024 ($69, y luego $80). Cada fila de la hoja nombra el aviso detrás de su tarifa.</p></div></details>
+      </div></article>
+      <article class="tf-panel tf-rule"><div class="rb">
+        <h3>3/4 en los días de salida y de regreso</h3>
+        <p>Los días de salida y de regreso van a 3/4 de la tarifa: $60 de $80.</p>
+        <p class="tf-srcp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><a href="https://www.irs.gov/pub/irs-drop/rp-19-48.pdf">Rev. Proc. 2019-48</a></p>
+        <details class="xpand"><summary>Leer las reglas completas</summary><div class="xp-in"><p>Un día completo va de las 12:01 a. m. a la medianoche. La sección 6.04 del Rev. Proc. 2019-48 obliga a los trabajadores por cuenta propia a usar 3/4 de la tarifa en los días de salida y de regreso, o sea $60 de $80. La Publicación 463 también describe "cualquier método consistente"; esa opción está escrita para empleadores, así que esta herramienta usa 3/4 y lo dice.</p></div></details>
+      </div></article>
+      <article class="tf-panel tf-rule"><div class="rb">
+        <h3>80% por las horas de servicio, una sola vez</h3>
+        <p>80% deducible por las horas de servicio del DOT, aplicado una sola vez.</p>
+        <p class="tf-srcp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><a href="https://www.irs.gov/publications/p463">IRS Publication 463</a></p>
+        <details class="xpand"><summary>Leer las reglas completas</summary><div class="xp-in"><p>Las comidas durante el servicio sujeto a las horas de servicio del DOT son deducibles al 80% (50% en otros casos), y al 100% en 2021 y 2022 según el Aviso 2021-63. Los programas de impuestos que preguntan por las horas de servicio aplican el 80% por sí solos, así que déles el per diem completo; la línea 24b del Anexo C lleva el monto deducible. Aplicar el 80% dos veces le hace perder una quinta parte.</p></div></details>
+      </div></article>
+    </div>
+    <div class="tf-panel pd-rate-panel">
+      <h3 class="pd-table-title">Todas las tarifas registradas</h3>
+      <div class="table-scroll" id="pd-rate-table"><p class="muted">Cargando las tarifas.</p></div>
+      <details class="xpand"><summary>Método fijo, días de solo imprevistos y registros</summary><div class="xp-in"><p>Si usa la tarifa especial, úsela en todos los viajes de ese año calendario; solo puede pasar a las tarifas federales por localidad a partir del 1 de enero (Rev. Proc. 2019-48, secciones 4.04(3) y 4.06(2)). Los días de solo gastos imprevistos ($5) son para días sin gastos de comida; no tienen límite y van en la línea 24a. Los días en que su transportista o empleador le pagó per diem no se pueden deducir también (sección 6.06). Los transportistas solo tienen que guardar los registros del estado de servicio y las copias del ELD durante 6 meses (49 CFR 395.8(k) y 395.22(i)), así que exporte los suyos cada mes o cada trimestre.</p></div></details>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec pd-legal" data-jump="Precio" aria-labelledby="pd-legal-title">
+    <div class="tf-top solo"><div>
+      <p class="eyebrow">Precio</p>
+      <h2 id="pd-legal-title">Totales gratis, <span class="dim">la hoja por conductor y año.</span></h2>
+    </div></div>
+    <div class="tf-panel pd-price-panel">
+      <ul class="endwise-prices"><li><strong>Hoja de cálculo para su preparador de impuestos</strong>: $9.00 por hoja de un conductor y un año (PDF y CSV); repetirla para el mismo conductor y año tributario cuesta $0.10 durante 15 meses.</li><li><strong>Revisión del registro</strong>: $0.02 por revisión del registro; totales, tabla por mes y revisiones del registro, sin archivos.</li><li><strong>Total rápido</strong>: $0.02 por cálculo.</li><li><strong>Consulta de tarifas</strong>: $0.02 por consulta.</li></ul>
+    </div>
+    <details class="xpand pd-src-fold"><summary>Fuentes (en inglés), consultadas el 31 de octubre de 2026</summary><div class="xp-in">
     <ul class="pd-sources" id="pd-sources">
       <li><a href="https://www.irs.gov/pub/irs-drop/n-26-60.pdf">IRS Notice 2026-60</a>, <a href="https://www.irs.gov/pub/irs-drop/n-25-54.pdf">2025-54</a>, <a href="https://www.irs.gov/pub/irs-drop/n-24-68.pdf">2024-68</a>, <a href="https://www.irs.gov/pub/irs-drop/n-23-68.pdf">2023-68</a>, <a href="https://www.irs.gov/pub/irs-drop/n-22-44.pdf">2022-44</a>, <a href="https://www.irs.gov/pub/irs-drop/n-21-52.pdf">2021-52</a>, <a href="https://www.irs.gov/pub/irs-drop/n-20-71.pdf">2020-71</a>, <a href="https://www.irs.gov/pub/irs-drop/n-19-55.pdf">2019-55</a> y <a href="https://www.irs.gov/pub/irs-drop/n-18-77.pdf">2018-77</a>, sección 3 (tarifas especiales de comidas y gastos imprevistos para la industria del transporte) y sección 4 (solo gastos imprevistos)</li>
       <li><a href="https://www.irs.gov/pub/irs-drop/n-21-63.pdf">IRS Notice 2021-63</a>: la deducción de 100% de la parte de comidas del per diem de 2021 y 2022</li>
@@ -209,11 +259,12 @@
       <li><a href="https://www.irs.gov/publications/p463">IRS Publication 463</a> (para las declaraciones de 2025; el IRS la llama en español "Gastos de viaje, regalos y automóvil" en su <a href="https://www.irs.gov/publications/p334sp">Publicación 334</a>) y las <a href="https://www.irs.gov/instructions/i1040sc">Instructions for Schedule C</a>, líneas 24a y 24b. En español: <a href="https://www.irs.gov/es/forms-pubs/about-schedule-c-form-1040">Anexo C (Formulario 1040)</a></li>
       <li><a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395/subpart-A/section-395.8">49 CFR 395.8(k)</a> y <a href="https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-395/subpart-B/section-395.22">395.22(i)</a>: conservación de los registros durante 6 meses</li>
     </ul>
+    </div></details>
   </section>
 
 
 
-  <section class="wrap pd-code" aria-label="Úselo desde código">
+  <section class="wrap tf-code pd-code" data-jump="Código" aria-label="Úselo desde código">
     <div id="pd-code"></div>
   </section>
   <noscript><div class="wrap"><p>Esta calculadora necesita JavaScript. También puede usarla desde código: vea <a href="/toll-preview/docs" hreflang="en">la documentación</a> (en inglés).</p></div></noscript>
@@ -306,6 +357,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

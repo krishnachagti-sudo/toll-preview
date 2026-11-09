@@ -11,17 +11,9 @@
   --fx-stamp-wash: rgba(255, 95, 168, 0.1);
 }
 
-.fx-intro { padding-block: 40px 8px; }
-.fx-intro h1 { margin-bottom: 0.25em; }
-.fx-price { color: var(--ink-soft); max-width: 40rem; margin: 0; font-variant-numeric: tabular-nums; }
+.fx-price { font-variant-numeric: tabular-nums; }
 
-.fx-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
 .fx-desk > * { min-width: 0; }
-@media (min-width: 900px) { .fx-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
-
-/* Form: a ruled slip. */
-.fx-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.fx-form .btn { width: 100%; }
 .fx-run-note { margin: 10px 0 0; }
 
 .fx-pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: start; }
@@ -33,9 +25,9 @@
 .fx-swap:hover { background: var(--paper-sunk); }
 .fx-swap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 @media (max-width: 420px) {
-  .fx-pair { grid-template-columns: 1fr; gap: 0; }
-  .fx-swap { margin: -6px 0 10px; justify-self: start; }
-  .fx-swap svg { transform: rotate(90deg); }
+  .fx-pair { gap: 6px; }
+  .fx-swap { width: 36px; height: 36px; margin-top: 34px; }
+  .fx-pair select { padding-left: 8px; padding-right: 4px; }
 }
 
 .fx select, .fx input[type="date"] {
@@ -104,19 +96,16 @@
 .fx-cost { margin: 0; font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 
 /* The worked example shown on load: a label, so it never reads as the visitor's own result. */
-.fx-example-tag {
-  display: inline-block; font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--fx-stamp); border: 1px solid var(--fx-stamp); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px;
-}
+.fx-example-tag { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 12px; }
+.fx-example-tag .tf-exin { margin: 0; }
 
 /* Empty and error states reuse the ticket, with dashes where the rate goes. */
 .fx-ticket.idle .fx-rate, .fx-ticket.none .fx-rate { color: var(--ink-soft); }
 .fx-none-msg { margin: 0 0 14px; max-width: 30rem; }
 .fx-none-msg a { white-space: nowrap; }
 
-.fx-about { margin-top: 56px; }
 .fx-about-cols { display: grid; gap: 24px; margin-bottom: 8px; }
-@media (min-width: 760px) { .fx-about-cols { grid-template-columns: repeat(3, 1fr); gap: 32px; } }
+@media (min-width: 760px) { .fx-about-cols { grid-template-columns: repeat(2, 1fr); gap: 24px 32px; } }
 .fx-about h3 { margin-bottom: 0.3em; }
 .fx-about-cols p { color: var(--ink-soft); font-size: 0.95rem; }
 .fx-code { margin-top: 40px; }

@@ -1,0 +1,15 @@
+dsn,status,iana_name,verdict,suppress
+5.1.1,bounced,Bad destination mailbox address,hard,now
+5.1.2,bounced,Bad destination system address,hard,now
+5.1.10,bounced,Recipient address has null MX,hard,now
+5.2.2,bounced,Mailbox full,soft,after-repeats
+5.4.4,bounced,Unable to route,hard,now
+5.4.6,bounced,Routing loop detected,policy,no
+5.7.1,bounced,"Delivery not authorized, message refused",block,no
+5.7.26,bounced,Multiple authentication checks failed,policy,no
+5.0.0,bounced,Other undefined Status,soft,after-repeats
+4.4.1,deferred,No answer from host,soft,after-repeats
+4.4.2,deferred,Bad connection,soft,after-repeats
+4.7.0,deferred,Other or undefined security status,block,no
+4.2.2,deferred,Mailbox full,soft,after-repeats
+4.4.7,deferred,Delivery time expired,soft,after-repeats

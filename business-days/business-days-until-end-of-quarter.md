@@ -1,22 +1,22 @@
 # How many business days until the end of the quarter?
 
-36 business days from today, Saturday, November 7, 2026 (the date in Washington, DC), until the end of the quarter on Thursday, December 31, 2026. That is 54 calendar days, with 3 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
+36 business days from today, Sunday, November 8, 2026 (the date in Washington, DC), until the end of the quarter on Thursday, December 31, 2026. That is 53 calendar days, with 3 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
 
 - Business days: 36
-- Calendar days: 54
+- Calendar days: 53
 - Holidays skipped: 3
 - Date: December 31, 2026
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2026-12-31)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2026-12-31)
 
 ## The count to the end of the quarter
 
 | From today | Count |
 | --- | ---: |
 | Counting to | Thursday, December 31, 2026 |
-| Calendar days | 54 |
+| Calendar days | 53 |
 | Business days | 36 |
 | Holidays skipped | Nov 11: Veterans Day; Nov 26: Thanksgiving Day; Dec 25: Christmas Day |
 
@@ -26,10 +26,10 @@ December 31, 2026 is a Thursday.
 
 | Date | Day | Calendar days | Business days |
 | --- | --- | ---: | ---: |
-| [Q4 2026 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2026-12-31) | Dec 31, Thu | 54 | 36 |
-| [Q1 2027 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2027-03-31) | Mar 31, Wed | 144 | 97 |
-| [Q2 2027 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2027-06-30) | Jun 30, Wed | 235 | 160 |
-| [Q3 2027 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2027-09-30) | Sep 30, Thu | 327 | 224 |
+| [Q4 2026 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2026-12-31) | Dec 31, Thu | 53 | 36 |
+| [Q1 2027 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2027-03-31) | Mar 31, Wed | 143 | 97 |
+| [Q2 2027 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2027-06-30) | Jun 30, Wed | 234 | 160 |
+| [Q3 2027 ends](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2027-09-30) | Sep 30, Thu | 326 | 224 |
 
 ## How this is counted
 
@@ -74,5 +74,5 @@ No. Day 1 is the next business day after today, the way WORKDAY and NETWORKDAYS 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-quarter/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-end-of-quarter.csv

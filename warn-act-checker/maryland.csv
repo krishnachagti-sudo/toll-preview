@@ -1,0 +1,15 @@
+site_full_time_employees,md_losses_that_trigger,federal_losses_that_trigger
+40,not triggered,not triggered
+60,15,50
+75,19,50
+80,20,50
+100,25,50
+120,30,50
+150,38,50
+200,50,66
+250,63,83
+300,75,99
+500,125,165
+760,190,251
+1000,250,330
+1600,400,500

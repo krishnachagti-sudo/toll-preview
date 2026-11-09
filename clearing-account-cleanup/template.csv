@@ -1,0 +1,15 @@
+Line,Date,Name,Num,Amount,Age (days),Bucket,Matched to deposit,Notes
+7,2025-03-14,Birch Cafe,1041,"$1,200.00",595,Over 90 days,,over a year old
+8,2025-06-02,Walk-in sale,1077,$85.00,515,Over 90 days,,over a year old
+14,2026-08-20,Pine Street Gym,2268,$450.00,71,61 to 90 days,,
+15,2026-09-05,Oak & Co,2280,$275.50,55,31 to 60 days,2026-09-14 $963.25,
+16,2026-09-09,Lumen Dental,2283,$412.25,51,31 to 60 days,,
+17,2026-09-12,Rivera Plumbing,2290,$687.75,48,31 to 60 days,2026-09-14 $963.25,
+18,2026-09-18,Pine Street Gym,2297,$412.25,42,31 to 60 days,,
+19,2026-10-02,Birch Cafe,2305,$960.00,28,0 to 30 days,"2026-10-16 $1,500.00",
+20,2026-10-06,Lumen Dental,2311,$540.00,24,0 to 30 days,"2026-10-16 $1,500.00",
+21,2026-10-09,Oak & Co,2316,$230.00,21,0 to 30 days,,
+22,2026-10-14,Rivera Plumbing,2320,$320.00,16,0 to 30 days,,possible duplicate
+23,2026-10-14,Rivera Plumbing,2320,$320.00,16,0 to 30 days,,possible duplicate
+24,2026-10-27,Pine Street Gym,2334,"$1,050.00",3,0 to 30 days,,
+25,2026-10-30,Walk-in sale,2339,$129.99,0,0 to 30 days,,

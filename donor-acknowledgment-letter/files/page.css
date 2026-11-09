@@ -1,0 +1,37 @@
+/* Acknowledgment letters: the tool-full layout (web/tool-full.css) plus the gift lines,
+   the letter-type tags and the folded organization settings. */
+.da textarea { font-family: var(--font-mono); font-size: 13px; }
+.da-form #da-paste { white-space: pre; overflow-wrap: normal; overflow-x: auto; }
+.da-form legend { padding: 0; }
+.da input[type="date"] { color-scheme: dark; }
+.da-file input[type="file"] { max-width: 100%; font-size: 13px; }
+.da-quote { margin: 18px 0 0; }
+.da-buy .tf-go { margin-top: 10px; }
+.da-buy select { width: 100%; max-width: 100%; margin: 0 0 10px; }
+.da-pick { display: block; font-size: 14px; color: var(--muted); margin: 0 0 4px; }
+.da-got { margin: 8px 0 0; font-size: 14px; overflow-wrap: anywhere; }
+.da-got:empty { display: none; }
+.da-sample a, .da-got a { color: var(--hue); }
+.da-sample { margin: 16px 0 0; }
+.choice-line { display: flex; gap: 8px; align-items: center; font-size: 14px; margin: 6px 0; cursor: pointer; }
+.choice-line input { width: 18px; height: 18px; flex: none; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 0 0 14px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; }
+
+/* The result: one line per gift. */
+.da-items li > span:not(.k) { overflow-wrap: anywhere; }
+.da-items .da-when { color: var(--muted); font-size: 12.5px; }
+.da-items li > em { line-height: 1.5; }
+.da-tag { display: inline-block; font: 500 11.5px/1.5 var(--font-mono); padding: 0 6px; border: 1px solid color-mix(in srgb, var(--hue) 45%, transparent); color: var(--hue); border-radius: 999px; margin: 0 4px 2px 0; white-space: nowrap; }
+.da-tag.dim { color: var(--muted); border-color: var(--line-2); }
+.da-out .xpand { margin-top: 14px; }
+.da-flags { list-style: none; margin: 0; padding: 0; }
+.da-flags li { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.da-flags .when { font: 500 12.5px/1.5 var(--font-mono); color: var(--muted); min-width: 4.5rem; }
+
+.da-kinds { margin-top: 12px; color: var(--muted); max-width: 46rem; }
+.da-kinds summary { cursor: pointer; }
+.da-kinds .xp-in p { margin: 8px 0 0; }
+.da-prices ul { margin: 0 0 0.8em; padding-left: 1.2em; }
+.tf-form .da-file { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+.tf-form .da-file > label { margin: 0; font-size: 13.5px; }

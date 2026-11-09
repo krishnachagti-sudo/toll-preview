@@ -1,0 +1,21 @@
+/* Statistical tables: a ruled reference sheet inside the brand chrome. One accent (the agent hue)
+   marks the answer; tables read like the back pages of a textbook. Layout comes from
+   web/tool-full.css; this file keeps the sheet's own parts. */
+.st {
+  --accent: var(--h-agent);
+  --endwise-accent: var(--h-agent);
+}
+.st [hidden] { display: none !important; }
+
+.st-set { border: 0; padding: 0; margin: 0; min-width: 0; }
+.st-set .field { margin-top: 18px; }
+.st-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0 12px; }
+.st #st-data { width: 100%; font: 400 0.9rem/1.5 var(--font-mono); }
+
+.st-out details.xpand { margin-top: 14px; }
+.st-table { font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.st-table td, .st-table th { vertical-align: top; padding: 6px 12px 6px 0; text-align: left; border-bottom: 1px solid var(--line); }
+.st-table thead th { color: var(--muted); font-weight: 500; }
+.st-notes { margin: 8px 0 0; padding-left: 1.1rem; }
+.st-notes li { margin: 6px 0; }
+.st-price-list { padding: 20px 24px; }

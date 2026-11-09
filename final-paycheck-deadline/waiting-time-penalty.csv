@@ -1,0 +1,15 @@
+state,name,penalty_on_1000_paid_10_days_late,math,rule
+AK,Alaska,"$1,000.00",$200.00 a day x 5 working days (at most 90),"the regular wage from the time of demand to the time of payment, or for 90 working days, whichever is less"
+AZ,Arizona,"$2,000.00","3 x $1,000.00 recoverable in all, so $2,000.00 on top of the wages","in a civil action, treble the unpaid wages"
+CT,Connecticut,"$1,000.00","2 x $1,000.00 recoverable in all, so $1,000.00 on top of the wages","in a civil action, twice the full amount of the wages"
+DE,Delaware,$700.00,"10% x $1,000.00 x 7 days, Sundays and holidays not counted = $700.00; capped at the unpaid wages ($1,000.00)","liquidated damages of the lower of 10% of the unpaid wages for each day (except Sundays and legal holidays) the failure continues, or an amount equal to the unpaid wages"
+DC,District of Columbia,$500.00,"10% x $1,000.00 x 5 days, working days only = $500.00; capped at 3 x the unpaid wages ($3,000.00)","liquidated damages of 10% of the unpaid wages for each working day the failure continues, or treble the unpaid wages, whichever is smaller"
+ID,Idaho,set by the agency,,administrative penalties of up to $750 ($500 if paid before the department files a state lien)
+KS,Kansas,$10.00,"1% x $1,000.00 x 1 day (after the first 8), Sundays and holidays not counted = $10.00; capped at the unpaid wages ($1,000.00)","if willful, 1% of the unpaid wages for each day (except Sundays and legal holidays) after the eighth day, or 100% of the unpaid wages, whichever is less"
+ME,Maine,"$2,000.00","2 x $1,000.00 on top of the wages","in a court action, the unpaid wages plus twice the unpaid wages as liquidated damages, interest, costs and fees; also a fine of $100 to $500 per violation"
+MN,Minnesota,"$2,000.00",$200.00 a day x 10 days (at most 15),"average daily earnings for each day in default, up to 15 days"
+ND,North Dakota,"$2,000.00",$200.00 a day x 10 days (at most 30),"the agreed wage for each day in default, ending 30 days after the default"
+OR,Oregon,"$2,000.00",8 x $25.00 an hour x 10 days (at most 30),"penalty wages of eight times the regular hourly rate for each day unpaid, up to 30 days; plus a possible $1,000 civil penalty for willful failure"
+PA,Pennsylvania,$0.00,10 days late: liquidated damages start once wages are unpaid 30 days beyond the regular payday,"wages unpaid 30 days after the regular payday (with no good-faith dispute): liquidated damages of 25% of the wages due or $500, whichever is greater"
+SC,South Carolina,"$2,000.00","3 x $1,000.00 recoverable in all, so $2,000.00 on top of the wages","in a civil action, three times the unpaid wages, plus costs and attorney's fees"
+WV,West Virginia,"$2,000.00","2 x $1,000.00 on top of the wages",the unpaid amount plus two times that amount as liquidated damages

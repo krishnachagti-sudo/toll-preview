@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the landed cost allocator works: charges to SKUs: Endwise</title>
+<meta name="description" content="How the landed cost allocator spreads freight, duty and fees by value, weight, volume or units, so each invoice adds back to the cent.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/landed-cost-allocator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/landed-cost-allocator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the landed cost allocator works: charges to SKUs">
+<meta property="og:description" content="How the landed cost allocator spreads freight, duty and fees by value, weight, volume or units, so each invoice adds back to the cent.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/landed-cost-allocator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/landed-cost-allocator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/landed-cost-allocator/","name":"How the landed cost allocator works: charges to SKUs","description":"How the landed cost allocator spreads freight, duty and fees by value, weight, volume or units, so each invoice adds back to the cent.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the landed cost allocator works: charges to SKUs","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/landed-cost-allocator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the landed cost allocator answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the landed cost allocator refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"A line or charge the basis cannot be applied to is refused with the line and field. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the landed cost allocator works: charges to SKUs</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the landed cost allocator works: charges to SKUs</h1>
+<p class="cp-answer">Each charge is split over the PO lines in proportion to the basis you choose (value, weight, volume, quantity, equal, specific amounts or a mix) by the largest remainder method, so the line shares add back to the invoice to the cent; the landed cost per unit is the product cost plus the line's shares, over its units. Shipments of 3 lines or fewer are free.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the landed cost allocator compute?</h2>
+<p>Enter a shipment's PO lines (SKU, quantity, unit cost and, where a basis needs them, weight, volume or dimensions) and its invoices, and the tool spreads each invoice over the lines, gives the landed cost per unit of every SKU and adds every invoice back exactly. A late invoice can be split between units still on hand and units already sold. It writes a CSV, a spreadsheet with live formulas and, from your Shopify product export, the same file back with only Cost per item changed.</p>
+<details class="xpand"><summary>Read the rest: What does the landed cost allocator compute?</summary><div class="xp-in"><p>Inputs:</p>
+<ul><li><code>lines or linesCsv</code>: Up to 2,000 PO lines: sku, title, qty, unitCost (up to four decimals), and optionally value, weight (kg or lb, per unit or per line), CBM, dimensions in cm, and units on hand.</li><li><code>charges</code>: Up to 40 invoices, each with a kind (freight, duty, brokerage, insurance, fees, discount, other), an amount and a basis (value, weight, volume, quantity, equal, specific, mixed), a mix of bases by percent, amounts per SKU, the lines it applies to, and whether it is late.</li><li><code>shipment</code>: A PO or container reference, needed over 3 lines: re-runs for the same shipment are free.</li><li><code>latePolicy, currency, shopifyExport</code>: For a late invoice, split by units on hand (onhand) or across all units (split); the currency code; and a Shopify product export to fill.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: the landed cost per unit of each SKU, the charges on the goods and their share</li><li>rows: per SKU the product cost, each charge's share and the landed cost per unit; charges: each invoice with its split</li><li>late (when a late invoice is given): what goes to stock on hand and what goes to cost of goods sold</li><li>compare: each charge under the other bases, and the files</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Amounts are read exactly into integers: product cost in ten-thousandths of a unit (unit prices may have four decimals), charges in cents. More decimals than allowed are refused, never rounded.</li><li>Each charge's basis is what you choose; the default by kind is freight by volume, duty by value, brokerage by value, insurance by value, fees by value, discount by value, other by value. Volume comes from CBM or from the dimensions in cm; weight from kg or lb, per unit or per line.</li><li>Each line's weight in the basis is its share of the total; the charge in cents times each weight is divided by the total weight, the whole cents are given out, and the cents left over go to the lines with the largest remainders (ties to the larger weight, then line order). The shares add back to the invoice exactly.</li><li>A mixed charge is split into its parts by percent first, each part by its own basis. A discount is a negative charge.</li><li>The landed cost per unit is the line's product cost plus its shares, divided by its units, shown to four decimals.</li><li>A late invoice is split between units on hand and units sold: the on-hand part re-costs the stock, and the sold part is reported as a cost of goods sold variance.</li></ol>
+<p><strong>What landed cost includes.</strong></p>
+<p>IRS Publication 538 says the cost of merchandise purchased is the invoice price less appropriate discounts plus transportation or other charges incurred in acquiring the goods (read 2026-11-08).</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A charge on a basis a line lacks (no weight given) names the line instead of guessing.</li><li>Ties in the remainder go to the larger weight, then to line order, so the same input splits the same way.</li><li>A Shopify export comes back with only Cost per item changed, for whole products only.</li><li>Cells that a spreadsheet would read as a formula are made plain text.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A 3-SKU ocean shipment: freight by CBM, duty by value, the broker fee per line</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;shipment&quot;: &quot;PO-1042&quot;,
+  &quot;lines&quot;: [
+    &#123;
+      &quot;sku&quot;: &quot;MUG-12&quot;,
+      &quot;title&quot;: &quot;Ceramic mug 12 oz&quot;,
+      &quot;qty&quot;: 600,
+      &quot;unitCost&quot;: &quot;2.10&quot;,
+      &quot;unitWeightKg&quot;: 0.42,
+      &quot;unitCbm&quot;: 0.0018
+    &#125;,
+    &#123;
+      &quot;sku&quot;: &quot;TEE-M&quot;,
+      &quot;title&quot;: &quot;Cotton T-shirt M&quot;,
+      &quot;qty&quot;: 1200,
+      &quot;unitCost&quot;: &quot;3.85&quot;,
+      &quot;unitWeightKg&quot;: 0.18,
+      &quot;unitCbm&quot;: 0.0009
+    &#125;,
+    &#123;
+      &quot;sku&quot;: &quot;CANDLE-8&quot;,
+      &quot;title&quot;: &quot;Soy candle 8 oz&quot;,
+      &quot;qty&quot;: 400,
+      &quot;unitCost&quot;: &quot;4.40&quot;,
+      &quot;unitWeightKg&quot;: 0.35,
+      &quot;unitCbm&quot;: 0.0011
+    &#125;
+  ],
+  &quot;charges&quot;: [
+    &#123;
+      &quot;name&quot;: &quot;Ocean freight&quot;,
+      &quot;kind&quot;: &quot;freight&quot;,
+      &quot;amount&quot;: &quot;1840.00&quot;,
+      &quot;basis&quot;: &quot;volume&quot;
+    &#125;,
+    &#123;
+      &quot;name&quot;: &quot;Duty (entry summary)&quot;,
+      &quot;kind&quot;: &quot;duty&quot;,
+      &quot;amount&quot;: &quot;1312.47&quot;,
+      &quot;basis&quot;: &quot;value&quot;
+    &#125;,
+    &#123;
+      &quot;name&quot;: &quot;Customs broker&quot;,
+      &quot;kind&quot;: &quot;brokerage&quot;,
+      &quot;amount&quot;: &quot;185.00&quot;,
+      &quot;basis&quot;: &quot;equal&quot;
+    &#125;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A 3-SKU ocean shipment: freight by CBM, duty by value, the broker fee per line</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Landed cost per unit is $3.8374 for MUG-12, $5.1997 for TEE-M, $6.0885 for CANDLE-8: $3,337.47 of charges on $7,640.00 of goods (43.7%), every charge split to the cent and added back to its invoice.</td></tr>
+</tbody></table></div>
+<p><strong>A late drayage invoice on the same shipment</strong></p>
+<pre><code class="language-json">shipment: &quot;PO-1042&quot;
+lines: 3 items
+charges: 4 items</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A late drayage invoice on the same shipment</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Landed cost per unit is $4.1226 for MUG-12, $5.3219 for TEE-M, $6.3261 for CANDLE-8: $3,750.27 of charges on $7,640.00 of goods (49.1%), every charge split to the cent and added back to its invoice. The late $412.80 adds $238.85 to the 1,540 units still on hand and $173.95 to cost of goods sold for units already sold.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>A line or charge the basis cannot be applied to is refused with the line and field.</li><li>Every freight, duty and fee amount is yours: it uses no rates. For US duty use the broker's entry summary.</li><li>How you book a late invoice is for you and your accountant. Not tax, accounting or customs advice.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The engine uses no rates or outside data. The facts the pages quote were read on 2026-11-08 on the publishers' own pages, which are checked daily for changes.</p>
+<ul class="cp-sources"><li><a href="https://help.shopify.com/en/manual/inventory-and-locations/transitioning-from-stocky">Shopify Help: Transitioning from Stocky</a></li><li><a href="https://help.shopify.com/en/manual/products/import-export/using-csv">Shopify Help: Using CSV files to import and export products</a></li><li><a href="https://www.irs.gov/publications/p538">IRS Publication 538, Accounting Periods and Methods</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/set-inventory-lists/calculate-landed-cost-quickbooks-enterprise/L4D21nWRC_US_en_US">Intuit: Calculate landed cost in QuickBooks Desktop Enterprise</a></li><li><a href="https://apps.shopify.com/stock-room">Stockroom app listing</a></li><li><a href="https://apps.shopify.com/landed-cost-receiving">Landed Cost Receiving app listing</a></li><li><a href="https://apps.shopify.com/landedwise">Landrio app listing</a></li><li><a href="https://www.sku.io/pricing">SKU.io pricing</a></li><li><a href="https://www.prediko.io/pricing">Prediko pricing</a></li></ul>
+<p>The engine uses no rates or outside data. The facts the pages quote were read on 2026-11-08 on the publishers' own pages, which are checked daily for changes.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Landed cost allocator: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/inventory-and-locations/transitioning-from-stocky">Shopify Help: Transitioning from Stocky</a></th><td rowspan="9">see the document</td><td rowspan="9">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/products/import-export/using-csv">Shopify Help: Using CSV files to import and export products</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/publications/p538">IRS Publication 538, Accounting Periods and Methods</a></th></tr>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/set-inventory-lists/calculate-landed-cost-quickbooks-enterprise/L4D21nWRC_US_en_US">Intuit: Calculate landed cost in QuickBooks Desktop Enterprise</a></th></tr>
+<tr><th scope="row"><a href="https://apps.shopify.com/stock-room">Stockroom app listing</a></th></tr>
+<tr><th scope="row"><a href="https://apps.shopify.com/landed-cost-receiving">Landed Cost Receiving app listing</a></th></tr>
+<tr><th scope="row"><a href="https://apps.shopify.com/landedwise">Landrio app listing</a></th></tr>
+<tr><th scope="row"><a href="https://www.sku.io/pricing">SKU.io pricing</a></th></tr>
+<tr><th scope="row"><a href="https://www.prediko.io/pricing">Prediko pricing</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests check that largest remainder shares add back exactly with ties broken by weight then order, a worked shipment to the cent, every basis, refusals, late invoices, the CSV and formula workbook, the Shopify round trip, and the price of $1.50 per 50 lines with 3 lines free.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Largest remainder shares add back to each invoice exactly, with ties broken by weight then line order.</li><li>A worked shipment is checked to the cent on every basis, and late invoices split between stock on hand and cost of goods sold.</li><li>The CSV adds up and is formula-safe; a Shopify export comes back with only Cost per item changed.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/landed-cost-allocator/">Open the Landed cost allocator tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the landed cost allocator answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the landed cost allocator refuse to answer?</h3></summary><div class="xp-in"><p>A line or charge the basis cannot be applied to is refused with the line and field. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/landed-cost-allocator/">Open the Landed cost allocator tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/landed-cost-allocator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

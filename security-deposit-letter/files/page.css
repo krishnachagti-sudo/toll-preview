@@ -1,0 +1,49 @@
+/* Security deposit letter: a landlord's move-out desk. Sits inside the brand chrome and reuses its
+   tokens. The one colour idea: amber marks what the statute still requires, the accent marks the
+   due date. */
+.sd {
+  --accent: var(--h-date);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-date);
+  --endwise-accent-ink: #06121a;
+  --sd-missing: #ffb547;
+  --sd-missing-wash: rgba(255, 181, 71, 0.16);
+}
+
+/* Layout comes from web/tool-full.css. */
+.sd-sample, .sd-covered { color: var(--muted); font-size: 14.5px; margin: 0; }
+.sd-form select, .sd-form input:not([type="checkbox"]), .sd-form textarea { width: 100%; }
+.sd-more .xp-in > * + * { margin-top: 12px; }
+.sd-more + .sd-more { margin-top: 10px; }
+.sd-out details.xpand { margin-top: 12px; }
+.sd-out .tf-items { margin-top: 12px; }
+.sd-rules ul { padding-left: 1.2em; }
+
+
+.sd-form legend { padding: 0; }
+.sd-form > .btn { width: 100%; margin-bottom: 10px; }
+.sd-sub { font-size: 14px; color: var(--text-2); margin: 4px 0 6px; }
+.sd-ded { display: grid; grid-template-columns: 7rem 1fr; gap: 6px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.sd-ded > input:first-child, .sd-ded > select:nth-of-type(2) { grid-column: 1 / -1; }
+.sd-ded select { min-width: 0; }
+.sd-labor { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; grid-column: 1 / -1; }
+.sd-labor[hidden] { display: none; }
+.sd-ded .btn { justify-self: start; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--text-2); margin: 0 0 12px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+.check[hidden] { display: none; }
+
+/* Result */
+.sd-issues h3 { font-size: 1rem; margin: 18px 0 6px; }
+.sd-issues ul { list-style: none; padding: 0; margin: 0; }
+.sd-issues li { padding: 8px 10px; margin: 0 0 6px; border-left: 3px solid var(--line-2); font-size: 14px; }
+.sd-issues li.sd-missing { border-color: var(--sd-missing); background: var(--sd-missing-wash); }
+.sd-tag { font: 500 0.7rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.sd-aside, .sd-notes { color: var(--muted); font-size: 14px; }
+.sd-notes { padding-left: 1.1em; }
+.sd-quote { margin: 16px 0 0; padding: 10px 14px; border-left: 3px solid var(--accent); font-size: 14px; color: var(--text-2); }
+.sd-quote cite { font-style: normal; color: var(--muted); }
+.sd-got a { word-break: break-all; }
+
+.sd-table-title { margin-top: 28px; }
+.sd-sources li { margin: 4px 0; overflow-wrap: anywhere; }

@@ -1,0 +1,11 @@
+who,type,suppress,send_again,note
+This classifier,hard,Suppress now,No,"The address is bad (does not exist, domain gone, null MX)"
+This classifier,soft,Only after repeated failures,"Yes, with backoff","Temporary or mailbox-level (full, busy, timeout, deferral)"
+This classifier,block,No,After fixing the sender,"The receiver refuses the sender (reputation, content, volume, block lists)"
+This classifier,policy,No,After fixing the setup,"A rule the sending setup breaks (SPF, DKIM, DMARC, TLS, size, format, relay)"
+Mailchimp,soft,After 7 soft bounces (no activity) or 15 (with activity),Yes,Then treated as hard and cleaned
+MailerLite,soft,After 3 soft bounces in a row,Yes,Then removed from active subscribers
+HubSpot,pending,Becomes a soft bounce after 72 hours of retries,Up to 72 hours,Hard bounces are dropped from marketing email
+Mailgun,hard,Added to suppressions automatically,No,Soft bounces are not retried and not suppressed
+Amazon SES,Permanent / General,Remove immediately (SES),No,Transient bounces may succeed later
+Yahoo (receiver),5xx,List managers should remove 5xx addresses (Yahoo),No,This classifier keeps 5xx policy and content blocks

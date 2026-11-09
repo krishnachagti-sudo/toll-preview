@@ -1,0 +1,63 @@
+# Duplicate transactions and your taxes
+
+Duplicate expenses lower profit by exactly their total: in this worked card account, 40 card purchases entered twice add $10,928.60 of expenses that never happened, so the month's profit is understated by $10,928.60 until the extra copies come out.
+
+## Run this example in the duplicate finder
+
+[Open this example in the tool](https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/?books=Lakeside+Print+Co+%28made-up+sample%29%0D%0ATransaction+Detail+by+Account%0D%0A%22September+1-30%2C+2026%22%0D%0A%0D%0A%2CDate%2CTransaction+Type%2CNum%2CName%2CMemo%2FDescription%2CSplit%2CAmount%2CBalance%0D%0ABusiness+Card%2C%2C%2C%2C%2C%2C%2C%2C%0D%0A%2C09%2F01%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-12.50%2C-12.50%0D%0A%2C09%2F01%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-12.50%2C-25.00%0D%0A%2C09%2F01%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-25.87%2C-50.87%0D%0A%2C09%2F01%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-25.87%2C-76.74%0D%0A%2C09%2F02%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-39.24%2C-115.98%0D%0A%2C09%2F02%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-39.24%2C-155.22%0D%0A%2C09%2F03%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-52.61%2C-207.83%0D%0A%2C09%2F03%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-52.61%2C-260.44%0D%0A%2C09%2F04%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-65.98%2C-326.42%0D%0A%2C09%2F04%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-65.98%2C-392.40%0D%0A%2C09%2F04%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-79.35%2C-471.75%0D%0A%2C09%2F04%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-79.35%2C-551.10%0D%0A%2C09%2F05%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-92.72%2C-643.82%0D%0A%2C09%2F05%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-92.72%2C-736.54%0D%0A%2C09%2F06%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-106.09%2C-842.63%0D%0A%2C09%2F06%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-106.09%2C-948.72%0D%0A%2C09%2F07%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-119.46%2C%22-1%2C068.18%22%0D%0A%2C09%2F07%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-119.46%2C%22-1%2C187.64%22%0D%0A%2C09%2F07%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-132.83%2C%22-1%2C320.47%22%0D%0A%2C09%2F07%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-132.83%2C%22-1%2C453.30%22%0D%0A%2C09%2F08%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-146.20%2C%22-1%2C599.50%22%0D%0A%2C09%2F08%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-146.20%2C%22-1%2C745.70%22%0D%0A%2C09%2F09%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-159.57%2C%22-1%2C905.27%22%0D%0A%2C09%2F09%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-159.57%2C%22-2%2C064.84%22%0D%0A%2C09%2F10%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-172.94%2C%22-2%2C237.78%22%0D%0A%2C09%2F10%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-172.94%2C%22-2%2C410.72%22%0D%0A%2C09%2F10%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-186.31%2C%22-2%2C597.03%22%0D%0A%2C09%2F10%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-186.31%2C%22-2%2C783.34%22%0D%0A%2C09%2F11%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-199.68%2C%22-2%2C983.02%22%0D%0A%2C09%2F11%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-199.68%2C%22-3%2C182.70%22%0D%0A%2C09%2F12%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-213.05%2C%22-3%2C395.75%22%0D%0A%2C09%2F12%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-213.05%2C%22-3%2C608.80%22%0D%0A%2C09%2F13%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-226.42%2C%22-3%2C835.22%22%0D%0A%2C09%2F13%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-226.42%2C%22-4%2C061.64%22%0D%0A%2C09%2F13%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-239.79%2C%22-4%2C301.43%22%0D%0A%2C09%2F13%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-239.79%2C%22-4%2C541.22%22%0D%0A%2C09%2F14%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-253.16%2C%22-4%2C794.38%22%0D%0A%2C09%2F14%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-253.16%2C%22-5%2C047.54%22%0D%0A%2C09%2F15%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-266.53%2C%22-5%2C314.07%22%0D%0A%2C09%2F15%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-266.53%2C%22-5%2C580.60%22%0D%0A%2C09%2F16%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-279.90%2C%22-5%2C860.50%22%0D%0A%2C09%2F16%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-279.90%2C%22-6%2C140.40%22%0D%0A%2C09%2F16%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-293.27%2C%22-6%2C433.67%22%0D%0A%2C09%2F16%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-293.27%2C%22-6%2C726.94%22%0D%0A%2C09%2F17%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-306.64%2C%22-7%2C033.58%22%0D%0A%2C09%2F17%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-306.64%2C%22-7%2C340.22%22%0D%0A%2C09%2F18%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-320.01%2C%22-7%2C660.23%22%0D%0A%2C09%2F18%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-320.01%2C%22-7%2C980.24%22%0D%0A%2C09%2F19%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-333.38%2C%22-8%2C313.62%22%0D%0A%2C09%2F19%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-333.38%2C%22-8%2C647.00%22%0D%0A%2C09%2F19%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-346.75%2C%22-8%2C993.75%22%0D%0A%2C09%2F19%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-346.75%2C%22-9%2C340.50%22%0D%0A%2C09%2F20%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-360.12%2C%22-9%2C700.62%22%0D%0A%2C09%2F20%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-360.12%2C%22-10%2C060.74%22%0D%0A%2C09%2F21%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-373.49%2C%22-10%2C434.23%22%0D%0A%2C09%2F21%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-373.49%2C%22-10%2C807.72%22%0D%0A%2C09%2F22%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-386.86%2C%22-11%2C194.58%22%0D%0A%2C09%2F22%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-386.86%2C%22-11%2C581.44%22%0D%0A%2C09%2F22%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-400.23%2C%22-11%2C981.67%22%0D%0A%2C09%2F22%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-400.23%2C%22-12%2C381.90%22%0D%0A%2C09%2F23%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-413.60%2C%22-12%2C795.50%22%0D%0A%2C09%2F23%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-413.60%2C%22-13%2C209.10%22%0D%0A%2C09%2F24%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-426.97%2C%22-13%2C636.07%22%0D%0A%2C09%2F24%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-426.97%2C%22-14%2C063.04%22%0D%0A%2C09%2F25%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-440.34%2C%22-14%2C503.38%22%0D%0A%2C09%2F25%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-440.34%2C%22-14%2C943.72%22%0D%0A%2C09%2F25%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-453.71%2C%22-15%2C397.43%22%0D%0A%2C09%2F25%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-453.71%2C%22-15%2C851.14%22%0D%0A%2C09%2F26%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-467.08%2C%22-16%2C318.22%22%0D%0A%2C09%2F26%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-467.08%2C%22-16%2C785.30%22%0D%0A%2C09%2F27%2F2026%2CExpense%2C%2COffice+Mart%2C%2CSupplies%2C-480.45%2C%22-17%2C265.75%22%0D%0A%2C09%2F27%2F2026%2CExpense%2C%2COFFICE+MART%2C%2CSupplies%2C-480.45%2C%22-17%2C746.20%22%0D%0A%2C09%2F28%2F2026%2CExpense%2C%2CShell%2C%2CSupplies%2C-493.82%2C%22-18%2C240.02%22%0D%0A%2C09%2F28%2F2026%2CExpense%2C%2CSHELL%2C%2CSupplies%2C-493.82%2C%22-18%2C733.84%22%0D%0A%2C09%2F28%2F2026%2CExpense%2C%2CHome+Depot%2C%2CSupplies%2C-507.19%2C%22-19%2C241.03%22%0D%0A%2C09%2F28%2F2026%2CExpense%2C%2CHOME+DEPOT%2C%2CSupplies%2C-507.19%2C%22-19%2C748.22%22%0D%0A%2C09%2F29%2F2026%2CExpense%2C%2CStaples%2C%2CSupplies%2C-520.56%2C%22-20%2C268.78%22%0D%0A%2C09%2F29%2F2026%2CExpense%2C%2CSTAPLES%2C%2CSupplies%2C-520.56%2C%22-20%2C789.34%22%0D%0A%2C09%2F30%2F2026%2CExpense%2C%2CUline%2C%2CSupplies%2C-533.93%2C%22-21%2C323.27%22%0D%0A%2C09%2F30%2F2026%2CExpense%2C%2CULINE%2C%2CSupplies%2C-533.93%2C%22-21%2C857.20%22%0D%0ATotal+for+Business+Card%2C%2C%2C%2C%2C%2C%2C%22-%2421%2C857.20%22%2C%0D%0A)
+
+## The arithmetic
+
+- An expense in the books twice: expenses up by its amount, profit down by the same.
+- Income in the books twice: income up, profit up by the same.
+- A bank line excluded or matched in For review was never in the books, so it never changed profit; only entries in the register (or Xero account transactions) do.
+
+## The worked account
+
+A made-up print shop's Business Card for September 2026: 80 entries, every purchase in twice (once added from the feed, once from a receipt app, with the payee in capitals).
+
+What the check found
+
+| Kind | Pairs | Total of the copies |
+| --- | ---: | ---: |
+| In the feed twice | 0 | $0.00 |
+| Feed line already in the books | 0 | $0.00 |
+| In the books twice | 40 | $10,928.60 |
+
+The first 10 pairs
+
+| # | Confidence | Amount | Act on | Keep | Action |
+| --- | --- | ---: | --- | --- | --- |
+| 1 | high | -$12.50 | books line 8: 2026-09-01, OFFICE MART | books line 7: 2026-09-01, Office Mart | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 2 | high | -$25.87 | books line 10: 2026-09-01, SHELL | books line 9: 2026-09-01, Shell | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 3 | high | -$39.24 | books line 12: 2026-09-02, HOME DEPOT | books line 11: 2026-09-02, Home Depot | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 4 | high | -$52.61 | books line 14: 2026-09-03, STAPLES | books line 13: 2026-09-03, Staples | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 5 | high | -$65.98 | books line 16: 2026-09-04, ULINE | books line 15: 2026-09-04, Uline | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 6 | high | -$79.35 | books line 18: 2026-09-04, OFFICE MART | books line 17: 2026-09-04, Office Mart | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 7 | high | -$92.72 | books line 20: 2026-09-05, SHELL | books line 19: 2026-09-05, Shell | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 8 | high | -$106.09 | books line 22: 2026-09-06, HOME DEPOT | books line 21: 2026-09-06, Home Depot | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 9 | high | -$119.46 | books line 24: 2026-09-07, STAPLES | books line 23: 2026-09-07, Staples | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+| 10 | high | -$132.83 | books line 26: 2026-09-07, ULINE | books line 25: 2026-09-07, Uline | Remove the extra entry: if it was added from the bank feed, Undo it in Categorized and exclude it; if it was entered by hand, delete or void it in the register |
+
+## Before filing
+
+- Remove the extra copies in the period they belong to and keep the exclude-ready CSV as the record of what changed.
+- If the period is closed or a return is already filed, do not change it yourself: take the list to your accountant.
+- Check the statement first: Intuit's Step 1 is to make sure the charge did not really happened twice.
+
+> Not tax advice: the effect on a return depends on how the books feed it. Ask your accountant.
+
+## Sources
+
+- [Intuit QuickBooks: Fix duplicate transactions in QuickBooks Online bank feeds (read November 8, 2026)](https://quickbooks.intuit.com/learn-support/en-us/help-article/duplicate-transactions/fix-duplicate-transactions-quickbooks-online-bank-feeds/L1fjxl88f_US_en_US)
+
+## Related
+
+- [Find duplicates before you reconcile](https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/find-before-reconcile/)
+- [The month-end calendar](https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/reconciliation-calendar-2026-2027/)
+- [Protect closed reconciliations](https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/protect-closed-reconciliations/)
+
+---
+
+Page: https://krishnachagti-sudo.github.io/toll-preview/bank-feed-duplicate-finder/guides/duplicate-expenses-tax-impact/  
+Data as of: 2026-11-08

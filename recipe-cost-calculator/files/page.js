@@ -110,33 +110,45 @@ function base64Blob(b64, type) {
 function renderReport(r, label) {
   const out = $('rc-out');
   out.textContent = '';
-  if (label) out.append(h('p', { class: 'rc-label' }, label));
-  out.append(h('p', { class: 'rc-answer' }, r.answer));
+  // Like the other tool pages: the tag and source, the inputs in one line, the dishes over target as
+  // the big figure, then one line per dish to reprice and per price that moved.
+  const example = label === 'Worked example';
   const s = r.summary;
-  out.append(h('dl', { class: 'rc-facts' }, [
-    ['Recipes', String(s.recipes)], ['Over target', `${s.overTarget} of ${s.priced}`], ['Average food cost', s.averageFoodCostPct === null ? dash : pct(s.averageFoodCostPct)],
-    ...(s.movedMoreThanThreshold === null ? [] : [['Moved', `${s.movedMoreThanThreshold}`]]),
-  ].map(([k, v]) => h('div', {}, [h('dt', {}, k), h('dd', {}, v)]))));
+  const ins = `${r.changedIngredients.length ? `${r.changedIngredients.map((x) => x.name.split(',')[0].toLowerCase()).join(', ')} ${r.changedIngredients.every((x) => x.changePct > 0) ? 'went up' : 'changed'}; ` : ''}${s.recipes} recipes against a ${r.targetPct}% target`;
+  out.append(
+    h('div', { class: 'tf-rh' }, [h('span', { class: example ? 'tf-tag' : 'tf-tag run' }, example ? 'Example' : 'Your result'), h('span', { class: 'tf-src' }, label && !example ? label : 'your prices and recipes')]),
+    h('p', { class: 'tf-exin' }, example ? `Example: ${ins}` : ins),
+    h('p', { class: 'tf-big' }, [h('b', {}, `${s.overTarget} of ${s.priced}`), h('span', {}, `priced dishes over your ${r.targetPct}% target`)]),
+    h('p', { class: 'tf-sub' }, r.answer),
+  );
+  const item = (k, what, v, why, cls = null) => h('li', { class: cls }, [h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', {}, what), h('b', {}, v), h('em', {}, why)]);
+  out.append(h('ul', { class: 'tf-items' }, [
+    ...r.reprice.map((x) => item('%', x.name, pct(x.foodCostPct), `menu ${cents(x.menuPrice)}; ${cents(x.suggestedPrice)} meets the target`, 'sk')),
+    ...r.changedIngredients.map((x) => item('$', x.name, x.changePct === null ? cents(x.packPrice) : `${x.changePct > 0 ? '+' : ''}${x.changePct}%`, `${cents(x.previousPackPrice)} to ${cents(x.packPrice)} a pack; in ${x.usedIn.join(', ') || 'nothing'}`)),
+    s.averageFoodCostPct === null ? null : item('=', 'Average food cost', pct(s.averageFoodCostPct), `of ${s.priced} priced ${s.priced === 1 ? 'dish' : 'dishes'}`, 'tot'),
+  ]));
+  const more = h('div', { class: 'xp-in' });
+  out.append(h('details', { class: 'xpand' }, [h('summary', {}, 'Every recipe, line by line'), more]));
   if (r.reprice.length) {
-    out.append(h('h3', { class: 'rc-heading' }, `Over your ${r.targetPct}% target, worst first`));
-    out.append(table(['Dish', 'Food cost', 'Menu price', 'Price at target', 'Rounded', 'Short by'], r.reprice.map((x) => ({ cells: [x.name, pct(x.foodCostPct), cents(x.menuPrice), cents(x.priceAtTarget), cents(x.suggestedPrice), cents(x.shortBy)] }))));
+    more.append(h('h3', { class: 'rc-heading' }, `Over your ${r.targetPct}% target, worst first`));
+    more.append(table(['Dish', 'Food cost', 'Menu price', 'Price at target', 'Rounded', 'Short by'], r.reprice.map((x) => ({ cells: [x.name, pct(x.foodCostPct), cents(x.menuPrice), cents(x.priceAtTarget), cents(x.suggestedPrice), cents(x.shortBy)] }))));
   }
   if (r.changedIngredients.length) {
-    out.append(h('h3', { class: 'rc-heading' }, 'Prices that changed'));
-    out.append(table(['Ingredient', 'Was', 'Now', 'Change', 'Used in'], r.changedIngredients.map((x) => ({ cells: [x.name, cents(x.previousPackPrice), cents(x.packPrice), x.changePct === null ? dash : `${x.changePct > 0 ? '+' : ''}${x.changePct}%`, x.usedIn.join(', ') || 'nothing'] }))));
+    more.append(h('h3', { class: 'rc-heading' }, 'Prices that changed'));
+    more.append(table(['Ingredient', 'Was', 'Now', 'Change', 'Used in'], r.changedIngredients.map((x) => ({ cells: [x.name, cents(x.previousPackPrice), cents(x.packPrice), x.changePct === null ? dash : `${x.changePct > 0 ? '+' : ''}${x.changePct}%`, x.usedIn.join(', ') || 'nothing'] }))));
   }
-  out.append(h('h3', { class: 'rc-heading' }, 'Every recipe'));
-  out.append(table(['Recipe', 'Per portion', 'Was', 'Menu price', 'Food cost', 'Moved', 'At target'], r.recipes.map((x) => ({
+  more.append(h('h3', { class: 'rc-heading' }, 'Every recipe'));
+  more.append(table(['Recipe', 'Per portion', 'Was', 'Menu price', 'Food cost', 'Moved', 'At target'], r.recipes.map((x) => ({
     cls: x.status === 'over target' ? 'rc-over' : '',
     cells: [x.name, money(x.portionCost), money(x.previousPortionCost), x.menuPrice === null ? dash : cents(x.menuPrice), x.foodCostPct === null ? dash : pct(x.foodCostPct), x.pointsMoved === null ? dash : `${x.pointsMoved > 0 ? '+' : ''}${x.pointsMoved}`, cents(x.priceAtTarget)],
   }))));
   for (const x of r.recipes) {
     const d = h('details', { class: 'rc-lines' }, [h('summary', {}, `${x.name}: ${money(x.batchCost)} a batch of ${x.portions}`)]);
     d.append(table(['Line', 'Qty', 'Cost', 'Share'], x.lines.map((l) => ({ cells: [l.item + (l.kind === 'recipe' ? ' (sub-recipe)' : ''), `${l.qty} ${l.unit}`, money(l.cost), `${l.sharePct}%`] }))));
-    out.append(d);
+    more.append(d);
   }
-  if (r.unusedIngredients?.length) out.append(h('p', { class: 'small muted' }, `On the price list but in no recipe: ${r.unusedIngredients.join(', ')}.`));
-  if (r.csv) out.append(h('p', {}, ['Download: ', download('recipe-costs.csv', new Blob([r.csv], { type: 'text/csv' }))]));
+  if (r.unusedIngredients?.length) out.append(h('p', { class: 'tf-note' }, `On the price list but in no recipe: ${r.unusedIngredients.join(', ')}.`));
+  if (r.csv) out.append(h('p', { class: 'tf-note' }, ['Download: ', download('recipe-costs.csv', new Blob([r.csv], { type: 'text/csv' }))]));
 }
 
 // ---------- paid runs ----------

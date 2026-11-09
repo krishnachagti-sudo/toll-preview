@@ -9,7 +9,9 @@
    - On a tool's page (and a long brand page), a bar under the header jumps to its parts (the calculator, the rules,
      the prices, the code, the guides) and marks the one you are reading. When it reaches the header it
      attaches to it: one slim row while reading, the full bar with a tray of parts when reaching up. On a phone a long
-     intro folds to a few lines with "Read more", so the calculator is near the top.
+     intro folds to a few lines with "Read more", so the calculator is near the top. A tool page's bar
+     shows at most three short names; the other parts sit under More, and a part moves there too
+     rather than be cut off when the row runs out of room.
 
    The index is fetched once, the first time someone reaches for either. Without JavaScript the
    Tools link and the search box both go to the tools page. */
@@ -256,7 +258,25 @@
     if (i === 0) return 'Calculator';
     var label = sec.getAttribute('aria-label') || ((sec.querySelector('h2') || {}).textContent || '');
     if (/^use this from code$/i.test(label.trim())) return 'From code';
-    return label.trim().split(/[,:]\s/)[0];
+    return shortTab(label.trim().split(/[,:]\s/)[0]);
+  }
+  // A long name cut down for the bar, by the same rules as the server's (lib/brand/tab-labels.js,
+  // which also names the guide and table sections): drop a leading "The"/"A", cut at " by ",
+  // " for ", " and ", " in " and a trailing year, then keep the first word if it is still long.
+  function shortTab(s) {
+    if (s.length <= 13) return s;
+    var t = s.replace(/^(the|a|an)\s+/i, '').split(/ by | for | and | in /i)[0].replace(/\s+\d{4}$/, '').trim();
+    if (t.length > 13) { var w = t.split(/\s+/)[0]; if (w.length >= 4) t = w; }
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+  // A part's name in the More menu, where there is room for more words: a guide or table section's
+  // own heading, a page's catch-all "More" section by its label; else its name in the bar.
+  function menuName(sec, label) {
+    var full = sec.getAttribute('aria-label') || ((sec.querySelector('h2') || {}).textContent || '');
+    full = full.trim().split(/[,:]\s/)[0];
+    if (/^more$/i.test(label)) return full && !/^more$/i.test(full) ? full : 'More pages';
+    if (sec.classList.contains('cp-index') && full && full.length <= 34) return full;
+    return label;
   }
   // A tool's page: every section after the intro. A brand page (pricing, developers and the
   // like): its home-style sections after the opening, named by their eyebrows, without the closing.
@@ -275,16 +295,98 @@
     if (!intro || secs.length < 3) return;
     var bar = h('nav', { class: 'tool-parts', 'aria-label': 'On this page', 'data-lenis-prevent': '' });
     var row = h('div', { class: 'tp-row' });
-    var links = secs.map(function (sec, i) {
-      if (!sec.id) sec.id = 'part-' + (i === 0 ? 'calculator' : name(sec, i).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
-      var a = h('a', { href: '#' + sec.id, text: name(sec, i) });
-      row.appendChild(a);
-      return a;
+    var parts = secs.map(function (sec, i) {
+      var label = name(sec, i);
+      if (!sec.id) sec.id = 'part-' + (i === 0 ? 'calculator' : label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+      return { href: '#' + sec.id, label: label, menu: menuName(sec, label) };
     });
+    // A tool page shows at most three parts; the rest go under More. A page's own catch-all section
+    // named "More" goes there first, so the bar never shows two Mores.
+    var shown = parts.map(function () { return true; });
+    if (cfg.tool && parts.length > 3) {
+      var room = 3;
+      shown = parts.map(function (p) { var on = room > 0 && !/^more$/i.test(p.label); if (on) room -= 1; return on; });
+    }
+    parts.forEach(function (p, i) { p.shown = shown[i]; });
+    var links = fillRow(row, parts);
     bar.appendChild(row);
     intro.after(bar);
     document.documentElement.classList.add('has-parts');
-    docked(bar, row, secs, links);
+    docked(bar, row, secs, links, parts);
+    fitRow(row);
+    window.addEventListener('resize', function () { fitRow(row); });
+  }
+
+  // ---------- the parts' rows: at most three, then More ----------
+  // A row gets a link per part (those not shown carry tp-off) and, at the end, a More button that
+  // opens the menu of the parts it is not showing.
+  function fillRow(r, parts) {
+    var links = parts.map(function (p, i) {
+      var a = h('a', { href: p.href, text: p.label, class: p.shown ? null : 'tp-off' });
+      a.style.setProperty('--i', i);
+      r.appendChild(a);
+      return a;
+    });
+    var more = h('button', { type: 'button', class: 'tp-more', 'aria-haspopup': 'true', 'aria-expanded': 'false' }, [h('span', { text: 'More' }), svgIcon('M5 7l4 4 4-4')]);
+    more.style.setProperty('--i', parts.length);
+    more.addEventListener('click', function (e) { e.stopPropagation(); toggleMenu(more, r, parts); });
+    r.appendChild(more);
+    r._parts = parts;
+    r._more = more;
+    syncMore(r);
+    return links;
+  }
+  function syncMore(r) {
+    r._more.hidden = !r.querySelector(':scope > a.tp-off');
+  }
+  // Never cut off: while the row is wider than its room, the last part shown moves under More.
+  function fitRow(r) {
+    if (!r._parts || !r.clientWidth) return;
+    var links = [].slice.call(r.querySelectorAll(':scope > a'));
+    links.forEach(function (a, i) { a.classList.toggle('tp-off', !r._parts[i].shown); });
+    syncMore(r);
+    for (var i = links.length - 1; i > 0 && r.scrollWidth > r.clientWidth + 1; i--) {
+      if (links[i].classList.contains('tp-off')) continue;
+      links[i].classList.add('tp-off');
+      syncMore(r);
+    }
+  }
+  var menu = null, menuFor = null;
+  function closeMenu() {
+    if (!menu || menu.hidden) return;
+    menu.hidden = true;
+    if (menuFor) menuFor.setAttribute('aria-expanded', 'false');
+    menuFor = null;
+  }
+  function toggleMenu(btn, r, parts) {
+    if (menuFor === btn) { closeMenu(); return; }
+    closeMenu();
+    if (!menu) {
+      menu = h('div', { class: 'tp-menu', hidden: '' });
+      document.body.appendChild(menu);
+      document.addEventListener('click', function (e) { if (!menu.contains(e.target)) closeMenu(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { var b = menuFor; closeMenu(); if (b) b.focus(); } });
+      window.addEventListener('scroll', closeMenu, { passive: true });
+      window.addEventListener('resize', closeMenu);
+    }
+    menu.textContent = '';
+    var links = [].slice.call(r.querySelectorAll(':scope > a'));
+    links.forEach(function (a, i) {
+      if (!a.classList.contains('tp-off')) return;
+      var item = h('a', { href: parts[i].href, text: parts[i].menu });
+      if (a.hasAttribute('aria-current')) item.setAttribute('aria-current', 'location');
+      item.addEventListener('click', closeMenu);
+      menu.appendChild(item);
+    });
+    menu.hidden = false;
+    menuFor = btn;
+    btn.setAttribute('aria-expanded', 'true');
+    var box = btn.getBoundingClientRect();
+    var w = menu.offsetWidth;
+    menu.style.top = Math.round(box.bottom + 6) + 'px';
+    menu.style.left = Math.round(Math.max(8, Math.min(box.right - w, window.innerWidth - w - 8))) + 'px';
+    var first = menu.querySelector('a');
+    if (first && document.activeElement === btn && btn.matches(':focus-visible')) first.focus();
   }
 
   // ---------- the parts attach to the bar ----------
@@ -294,7 +396,7 @@
   // row comes back and the parts sit in a tray under it. On a narrow screen there is no room for
   // the slim row, so docked is always the tray. motion.js reshapes the glass to match (hp-docked,
   // hp-wide); every row of parts marks the one being read with a sliding pill.
-  function docked(bar, row, secs, links) {
+  function docked(bar, row, secs, links, parts) {
     var navRow = head.querySelector('.nav-row');
     var mainNav = head.querySelector('.head-nav');
     var search = head.querySelector('.nav-search');
@@ -306,11 +408,8 @@
     function copyRow(cls) {
       var r = h('div', { class: 'hp-tabs ' + cls });
       r.appendChild(h('span', { class: 'hp-ind', 'aria-hidden': 'true' }));
-      links.forEach(function (a, i) {
-        var c = h('a', { href: a.getAttribute('href'), tabindex: '-1', text: a.textContent });
-        c.style.setProperty('--i', i);
-        r.appendChild(c);
-      });
+      fillRow(r, parts);
+      [].forEach.call(r.querySelectorAll('a, .tp-more'), function (c) { c.tabIndex = -1; });
       return r;
     }
     var menuBtn = h('button', { type: 'button', class: 'hp-menu', 'aria-label': 'Open the main menu', 'aria-expanded': 'false' }, [
@@ -323,12 +422,14 @@
     head.appendChild(tray);
     var rows = [row, slimTabs, trayTabs];
     row.insertBefore(h('span', { class: 'hp-ind', 'aria-hidden': 'true' }), row.firstChild);
-    links.forEach(function (a, i) { a.style.setProperty('--i', i); });
 
     // The pill slides to the current part in a row; a row that is not showing hides its pill.
     function place(r) {
-      var ind = r.querySelector(':scope > .hp-ind'), on = r.querySelector('a[aria-current]');
+      var ind = r.querySelector(':scope > .hp-ind'), on = r.querySelector(':scope > a[aria-current]');
       if (!ind) return;
+      // A part under More: the pill sits on More.
+      if (on && on.classList.contains('tp-off')) on = r._more;
+      if (r._more) r._more.classList.toggle('on', on === r._more);
       if (!on || !on.offsetWidth || !r.offsetWidth) { ind.classList.remove('on'); return; }
       ind.style.width = on.offsetWidth + 'px';
       ind.style.transform = 'translateX(' + on.offsetLeft + 'px)';
@@ -344,6 +445,7 @@
       var right = search ? navRow.clientWidth - (search.offsetLeft + search.offsetWidth) + 42 + 12 : 200;
       slim.style.left = left + 'px';
       slim.style.right = right + 'px';
+      fitRow(slimTabs);
     }
 
     var isDocked = false, wide = false, upward = false, hovering = false, travel = 0, lastY = window.scrollY;
@@ -353,11 +455,14 @@
       head.classList.toggle('hp-docked', isDocked);
       head.classList.toggle('hp-slim-on', isDocked && !w);
       menuBtn.setAttribute('aria-expanded', w ? 'true' : 'false');
-      [].forEach.call(slimTabs.querySelectorAll('a'), function (a) { a.tabIndex = isDocked && !w ? 0 : -1; });
-      [].forEach.call(trayTabs.querySelectorAll('a'), function (a) { a.tabIndex = w ? 0 : -1; });
+      [].forEach.call(slimTabs.querySelectorAll('a, .tp-more'), function (a) { a.tabIndex = isDocked && !w ? 0 : -1; });
+      [].forEach.call(trayTabs.querySelectorAll('a, .tp-more'), function (a) { a.tabIndex = w ? 0 : -1; });
       if (w !== wide) {
         wide = w;
         head.classList.toggle('hp-wide', w);
+        closeMenu();
+        fitRow(trayTabs);
+        fitRow(slimTabs);
       }
       setTimeout(placeAll, 80);
     }
@@ -420,14 +525,14 @@
       if (at !== cur) {
         cur = at;
         rows.forEach(function (r) {
-          [].forEach.call(r.querySelectorAll('a'), function (a, i) { if (i === at) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
+          [].forEach.call(r.querySelectorAll(':scope > a'), function (a, i) { if (i === at) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); });
         });
         placeAll();
       }
     }
     var ticking = false;
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; tick(); }); } }, { passive: true });
-    window.addEventListener('resize', function () { measure(); if (isDocked) fitSlim(); placeAll(); });
+    window.addEventListener('resize', function () { measure(); if (isDocked) fitSlim(); fitRow(trayTabs); placeAll(); });
     if ('ResizeObserver' in window) new ResizeObserver(function () { measure(); tick(); }).observe(document.body);
     narrow.addEventListener('change', set);
     measure();
@@ -455,18 +560,82 @@
     more.addEventListener('click', function () { lede.classList.remove('folded'); more.remove(); });
     lede.after(more);
   }
-  // The tools page's category chips filter its list.
-  function toolFilter() {
-    var chips = document.querySelectorAll('[data-tool-filter]');
-    if (!chips.length) return;
-    [].forEach.call(chips, function (chip) {
-      chip.setAttribute('role', 'button');
+  // A photo's credit button (ⓘ): a tap shows its credit, another tap or a tap elsewhere hides it.
+  function photoCredits() {
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('.ph-i');
+      [].forEach.call(document.querySelectorAll('.ph-i.open'), function (x) { if (x !== b) x.classList.remove('open'); });
+      if (!b) return;
+      e.preventDefault(); e.stopPropagation();
+      b.classList.toggle('open');
+    });
+  }
+  // A hub's finder: one search box and the category chips filter its cards; a group with no card
+  // left is hidden, and a line says when nothing matches.
+  function hubFinder() {
+    var box = document.querySelector('[data-finder]');
+    if (!box) return;
+    var input = box.querySelector('input[type="search"]');
+    var chips = [].slice.call(box.querySelectorAll('[data-filter]'));
+    var scope = document.querySelector(box.getAttribute('data-finder')) || document;
+    var cards = [].slice.call(scope.querySelectorAll('[data-group]'));
+    var groups = [].slice.call(scope.querySelectorAll('.hub-group'));
+    var empty = scope.querySelector('.finder-empty');
+    var cat = '';
+    function apply() {
+      var q = (input && input.value || '').trim().toLowerCase();
+      cards.forEach(function (c) {
+        var hit = (!cat || c.getAttribute('data-group') === cat) && (!q || c.textContent.toLowerCase().indexOf(q) !== -1);
+        c.hidden = !hit;
+      });
+      var any = false;
+      groups.forEach(function (g) { var on = !!g.querySelector('[data-group]:not([hidden])'); g.hidden = !on; any = any || on; });
+      if (empty) empty.hidden = any;
+    }
+    chips.forEach(function (chip) {
       chip.addEventListener('click', function (e) {
         e.preventDefault();
-        var id = chip.getAttribute('data-tool-filter');
-        [].forEach.call(chips, function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
-        [].forEach.call(document.querySelectorAll('.tool-card[data-group]'), function (card) { card.hidden = !!id && card.getAttribute('data-group') !== id; });
+        cat = chip.getAttribute('data-filter');
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        apply();
       });
+    });
+    if (input) input.addEventListener('input', apply);
+  }
+  // Chip rows that scroll sideways show an arrow while there is more to the right.
+  function chipScrolls() {
+    [].forEach.call(document.querySelectorAll('.chip-scroll'), function (wrap) {
+      var row = wrap.querySelector('.chips');
+      if (!row) return;
+      function mark() { wrap.classList.toggle('over', row.scrollWidth - row.clientWidth - row.scrollLeft > 4); }
+      row.addEventListener('scroll', mark, { passive: true });
+      window.addEventListener('resize', mark);
+      mark();
+    });
+  }
+  // Tabs: chips over panels. Without JavaScript every panel shows.
+  function tabs() {
+    [].forEach.call(document.querySelectorAll('[data-tabs]'), function (row) {
+      var btns = [].slice.call(row.querySelectorAll('[role="tab"]'));
+      function show(btn) {
+        btns.forEach(function (b) {
+          var on = b === btn;
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+          b.tabIndex = on ? 0 : -1;
+          var panel = document.getElementById(b.getAttribute('aria-controls'));
+          if (panel) panel.hidden = !on;
+        });
+      }
+      btns.forEach(function (b, i) {
+        b.addEventListener('click', function () { show(b); });
+        b.addEventListener('keydown', function (e) {
+          var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!k) return;
+          var next = btns[(i + k + btns.length) % btns.length];
+          next.focus(); show(next);
+        });
+      });
+      show(btns.filter(function (b) { return b.getAttribute('aria-selected') === 'true'; })[0] || btns[0]);
     });
   }
   // The docs' contents list marks the section being read.
@@ -494,5 +663,8 @@
   toolParts();
   docsSpy();
   foldIntro();
-  toolFilter();
+  hubFinder();
+  photoCredits();
+  chipScrolls();
+  tabs();
 })();

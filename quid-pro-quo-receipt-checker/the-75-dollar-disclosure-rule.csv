@@ -1,0 +1,12 @@
+case,payment,value_received,deductible,disclosure_required,exception
+"$75.00 ticket, $30 dinner",75.00,30.00,45.00,no,quid pro quo
+"$75.01 ticket, $30 dinner",75.01,30.00,45.01,yes,quid pro quo
+"$80 ticket, $70 dinner (deductible part only $10)",80.00,70.00,10.00,yes,quid pro quo
+$150 for two $75 tickets (one payment),150.00,60.00,90.00,yes,quid pro quo
+"$100 gift, program worth $2",100.00,0.00,100.00,no,token 2 percent
+"$100 gift, logo tote that cost $6.50",100.00,0.00,100.00,no,token logo items
+"$100 gift, logo tote that cost $15 (valued $20)",100.00,20.00,80.00,yes,quid pro quo
+"$7,000 gift, dinner worth $139",7000.00,0.00,7000.00,no,token 2 percent
+"$7,000 gift, dinner worth $140",7000.00,140.00,6860.00,yes,quid pro quo
+"$60 membership, free admission and parking",60.00,0.00,60.00,no,membership
+"$100 membership, free admission valued $30",100.00,30.00,70.00,yes,quid pro quo

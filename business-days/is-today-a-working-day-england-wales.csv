@@ -1,6 +1,4 @@
 date,weekday,working_day,holiday
-2026-11-07,Saturday,no,
-2026-11-08,Sunday,no,
 2026-11-09,Monday,yes,
 2026-11-10,Tuesday,yes,
 2026-11-11,Wednesday,yes,
@@ -13,3 +11,5 @@ date,weekday,working_day,holiday
 2026-11-18,Wednesday,yes,
 2026-11-19,Thursday,yes,
 2026-11-20,Friday,yes,
+2026-11-21,Saturday,no,
+2026-11-22,Sunday,no,

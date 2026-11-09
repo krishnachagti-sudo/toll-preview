@@ -93,6 +93,17 @@ const STR = {
     after: 'बाद',
     before: 'पहले',
     sheetLabel: 'हल किया हुआ उदाहरण',
+    tagExample: 'उदाहरण',
+    tagRun: 'आपका नतीजा',
+    exampleLine: (x) => `उदाहरण: ${x}`,
+    itemStart: 'शुरू का दिन, गिना नहीं गया',
+    itemBusiness: 'कार्य दिवस',
+    itemBusinessRun: (a, b) => `कार्य दिवस ${a} से ${b}`,
+    itemWeekend: 'सप्ताहांत',
+    itemOwn: 'आपकी छुट्टी',
+    itemEnd: 'आखिरी दिन',
+    itemResult: 'नतीजा',
+    to: 'से',
     charged: (amount, balance) => `${amount} कटे। आपका बैलेंस ${balance} है।`,
     freeRun: (n) => `मुफ़्त रन। आज आपके ${n} मुफ़्त रन बचे हैं।`,
     signIn: 'साइन इन करें',
@@ -148,6 +159,8 @@ const fieldOf = (k) => k.split('.')[0];
 function showFieldErrors(fields) {
   const known = Object.keys(fields).filter((k) => FIELD_ERRORS[fieldOf(k)]);
   for (const k of known) $(FIELD_ERRORS[fieldOf(k)]).textContent = fields[k];
+  const fold = $('bd-off-fold');
+  if (fold && known.some((k) => fieldOf(k) === 'daysOff')) fold.open = true;
   return known.length === Object.keys(fields).length;
 }
 
@@ -201,6 +214,8 @@ function syncMode() {
   const adding = pick('op') === 'add';
   $('bd-end-field').hidden = adding;
   $('bd-days-field').hidden = !adding;
+  if ($('bd-end-hint')) $('bd-end-hint').hidden = adding;
+  if ($('bd-days-hint')) $('bd-days-hint').hidden = !adding;
   $('bd-run').textContent = adding ? say('btnAdd', 'Find the date') : say('btnBetween', 'Count business days');
   $('bd-region-hint').textContent = REGION_HINTS[pick('region')];
 }
@@ -317,62 +332,136 @@ function calendar(input, built) {
   return h('div', {}, [h('div', { class: 'bd-cal' }, months), legend]);
 }
 
+// The answer one line per day, in date order: the start, each counted day with its number, each
+// skipped day with its reason (the holiday's name, your day off or the weekend). Weekends and long
+// runs of counted days fold into one line so the list stays short.
+const MAX_ITEMS = 12;
+
+function dayItems(input, built) {
+  const { view, days, ordinals } = built;
+  if (!days.length) return [];
+  const span = days.filter((d) => d.date >= view.lo && d.date <= view.hi);
+  const rows = [];
+  for (const d of span) {
+    const ord = ordinals.get(d.date);
+    let row;
+    if (d.date === view.start && input.op === 'between') row = { kind: 'start', d, k: '0', em: say('itemStart', 'start, not counted') };
+    else if (d.date === view.start) row = { kind: 'start', d, k: '0', em: say('saidStart', 'start day') };
+    else if (d.holiday) row = { kind: 'skip', d, k: '×', em: holidayName(d.holiday) };
+    else if (d.own) row = { kind: 'own', d, k: '×', em: say('itemOwn', 'your day off') };
+    else if (d.weekend) row = { kind: 'we', d, k: '×', em: say('itemWeekend', 'weekend') };
+    else if (ord !== undefined) row = { kind: 'bd', d, k: ord, em: say('itemBusiness', 'business day') };
+    else continue;
+    if (d.date === view.end) { row.last = true; if (row.kind === 'bd') row.em = say('itemEnd', 'end day'); }
+    if (d.date === view.landing) { row.last = true; row.em = say('itemResult', 'result'); }
+    rows.push(row);
+  }
+  // A weekend is one line.
+  const merged = [];
+  for (const r of rows) {
+    const prev = merged[merged.length - 1];
+    if (r.kind === 'we' && prev?.kind === 'we' && dayNumber(r.d.date) - dayNumber(prev.to.date) === 1) { prev.to = r.d; continue; }
+    merged.push({ ...r, to: r.d });
+  }
+  // Too long: runs of counted days become one line each.
+  let out = merged;
+  if (merged.length > MAX_ITEMS) {
+    out = [];
+    for (const r of merged) {
+      const prev = out[out.length - 1];
+      if (r.kind === 'bd' && !r.last && prev?.kind === 'bd' && !prev.last && prev.run) { prev.to = r.d; prev.k = r.k; continue; }
+      out.push({ ...r, run: r.kind === 'bd' && !r.last, from: r.k });
+    }
+    for (const r of out) if (r.run && r.to !== r.d) r.em = say('itemBusinessRun', `business days ${r.from} to ${r.k}`, r.from, r.k);
+  }
+  const label = (r) => {
+    if (r.to === r.d) return shortDate(r.d.date);
+    const [, m1, d1] = part(r.d.date);
+    const [y2, m2, d2] = part(r.to.date);
+    const head = `${WEEKDAYS_SHORT[weekdayOf(r.d.date)]} ${d1}${m1 === m2 ? '' : ` ${MONTHS_SHORT[m1 - 1]}`}`;
+    const tail = `${WEEKDAYS_SHORT[weekdayOf(r.to.date)]} ${d2} ${MONTHS_SHORT[m2 - 1]} ${y2}`;
+    return r.kind === 'we' && dayNumber(r.to.date) - dayNumber(r.d.date) === 1 ? `${head}, ${tail}` : `${head} ${say('to', 'to')} ${tail}`;
+  };
+  const cls = { start: 'plain', skip: 'sk', own: 'own', we: 'dim', bd: '' };
+  return h('ol', { class: 'tf-items' }, out.map((r) => h('li', { class: [cls[r.kind], r.last ? 'hi' : ''].filter(Boolean).join(' ') || null }, [
+    h('span', { class: 'k', 'aria-hidden': 'true' }, String(r.k)),
+    h('span', {}, label(r)),
+    h('em', {}, r.em),
+  ])));
+}
+
 function holidayList(input, result, built) {
   const skipped = result.holidaysSkipped;
   const nodes = [];
-  if (skipped.length) {
+  // When the days are drawn, the day list names every skipped day; a range too long to draw
+  // lists the holidays and your days off here instead.
+  const listed = built.days.length > 0;
+  if (!listed && skipped.length) {
     nodes.push(h('p', { class: 'bd-heading' }, say('skippedHead', `Holidays skipped (${skipped.length})`, skipped.length)));
     nodes.push(h('ul', { class: 'bd-skipped' }, skipped.map((x) => h('li', {}, [
       h('span', { class: 'bd-dot', 'aria-hidden': 'true' }),
       h('span', { class: 'when' }, shortDate(x.date)),
       h('span', {}, holidayName(x.name)),
     ]))));
-  } else {
-    nodes.push(h('p', { class: 'bd-none' }, say('noneFell', 'No holidays fell on a weekday in this range.')));
+  } else if (!skipped.length) {
+    nodes.push(h('p', { class: 'tf-note' }, say('noneFell', 'No holidays fell on a weekday in this range.')));
   }
   // Your own days off, listed the same way, when the run had any.
   const own = result.daysOffSkipped ?? [];
-  if (own.length) {
+  if (own.length && !listed) {
     nodes.push(h('p', { class: 'bd-heading' }, say('ownHead', `Your days off skipped (${own.length})`, own.length)));
     nodes.push(h('ul', { class: 'bd-skipped' }, own.map((x) => h('li', {}, [
       h('span', { class: 'bd-dot own', 'aria-hidden': 'true' }),
       h('span', { class: 'when' }, shortDate(x.date)),
       h('span', {}, holidayName(x.name)),
     ]))));
-  } else if (input.daysOff?.length) {
-    nodes.push(h('p', { class: 'bd-none' }, say('ownNone', 'None of your days off fell on a weekday in this range that was not already a holiday.')));
+  } else if (!own.length && input.daysOff?.length) {
+    nodes.push(h('p', { class: 'tf-note' }, say('ownNone', 'None of your days off fell on a weekday in this range that was not already a holiday.')));
   }
   // Holidays inside the drawn span that the count did not use (a holiday start day).
   const used = new Set(skipped.map((x) => `${x.date}|${x.name}`));
   const reversed = input.op === 'between' && input.end < input.start;
   const unused = built.days.filter((d) => d.holiday && !used.has(`${d.date}|${d.holiday}`));
   if (unused.length) {
-    nodes.push(h('p', { class: 'bd-aside' }, say('unused', `Marked on the calendar but outside the count: ${unused.map((d) => `${shortDate(d.date)}, ${d.holiday}`).join('; ')}. ${reversed ? 'The end date itself is never counted.' : 'The start day is never counted.'}`, unused.map((d) => `${shortDate(d.date)}, ${holidayName(d.holiday)}`).join('; '), reversed)));
+    nodes.push(h('p', { class: 'tf-note' }, say('unused', `Marked on the calendar but outside the count: ${unused.map((d) => `${shortDate(d.date)}, ${d.holiday}`).join('; ')}. ${reversed ? 'The end date itself is never counted.' : 'The start day is never counted.'}`, unused.map((d) => `${shortDate(d.date)}, ${holidayName(d.holiday)}`).join('; '), reversed)));
   }
   return nodes;
 }
 
 function headline(input, result) {
-  const where = say('regionNames', REGIONS)[input.region];
   if (input.op === 'between') {
     const n = result.businessDays;
     const forward = input.end >= input.start;
     const sub = forward
-      ? say('subForward', `After ${longDate(input.start)}, up to and including ${longDate(input.end)}. ${where}.`, longDate(input.start), longDate(input.end), where)
-      : say('subBack', `Counting back: after ${longDate(input.end)}, up to and including ${longDate(input.start)}. ${where}.`, longDate(input.end), longDate(input.start), where);
+      ? say('subForward', `After ${longDate(input.start)}, up to and including ${longDate(input.end)}.`, longDate(input.start), longDate(input.end), say('regionNames', REGIONS)[input.region])
+      : say('subBack', `Counting back: after ${longDate(input.end)}, up to and including ${longDate(input.start)}.`, longDate(input.end), longDate(input.start), say('regionNames', REGIONS)[input.region]);
     return [
-      h('p', { class: 'bd-answer' }, [signed(n), ' ', h('small', {}, Math.abs(n) === 1 ? say('bdOne', 'business day') : say('bdMany', 'business days'))]),
-      h('p', { class: 'bd-sub' }, sub),
+      h('p', { class: 'tf-big' }, [h('b', {}, signed(n)), h('span', {}, Math.abs(n) === 1 ? say('bdOne', 'business day') : say('bdMany', 'business days'))]),
+      h('p', { class: 'tf-sub' }, sub),
     ];
   }
   const n = input.days;
+  const where = say('regionNames', REGIONS)[input.region];
   const sub = n === 0
-    ? say('subZero', `Zero business days from ${longDate(input.start)} is the same day. ${where}.`, longDate(input.start), where)
-    : say('subAdd', `${plural(n, 'business day', 'business days')} ${n > 0 ? 'after' : 'before'} ${longDate(input.start)}. ${where}.`, Math.abs(n).toLocaleString(NUM), n > 0 ? say('after', 'after') : say('before', 'before'), longDate(input.start), where);
+    ? say('subZero', `Zero business days from ${longDate(input.start)} is the same day.`, longDate(input.start), where)
+    : say('subAdd', `${plural(n, 'business day', 'business days')} ${n > 0 ? 'after' : 'before'} ${longDate(input.start)}.`, Math.abs(n).toLocaleString(NUM), n > 0 ? say('after', 'after') : say('before', 'before'), longDate(input.start), where);
   return [
-    h('p', { class: 'bd-answer' }, longDate(result.date)),
-    h('p', { class: 'bd-sub' }, sub),
+    h('p', { class: 'tf-big' }, [h('b', { class: 'word' }, longDate(result.date))]),
+    h('p', { class: 'tf-sub' }, sub),
   ];
+}
+
+// The inputs in one line, for the Example tag: "US federal holidays, start July 1, end July 8, 2026".
+const US_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+function inputsLine(input) {
+  const md = (iso) => { const [, m, d] = part(iso); return `${US_MONTHS[m - 1]} ${d}`; };
+  const who = { US: 'US federal holidays', 'GB-ENG': 'England and Wales bank holidays', [IN]: 'India central government (Delhi) holidays' }[input.region];
+  const own = input.daysOff?.length ? `, ${plural(input.daysOff.length, 'day off', 'days off')} of your own` : '';
+  if (input.op === 'between') {
+    const sameYear = input.start.slice(0, 4) === input.end.slice(0, 4);
+    return `${who}, start ${md(input.start)}${sameYear ? '' : `, ${input.start.slice(0, 4)}`}, end ${md(input.end)}, ${input.end.slice(0, 4)}${own}`;
+  }
+  return `${who}, ${input.days} business days from ${md(input.start)}, ${input.start.slice(0, 4)}${own}`;
 }
 
 function summaryText(input, result) {
@@ -385,13 +474,22 @@ function render(input, result, { kind, note }) {
   const built = build(input, result);
   const out = $('bd-out');
   out.textContent = '';
+  const where = say('regionNames', REGIONS)[input.region];
+  const items = dayItems(input, built);
+  const cal = calendar(input, built);
   out.appendChild(h('div', {}, [
-    kind === 'example' ? h('p', { class: 'bd-sheet-label' }, say('sheetLabel', 'Worked example')) : null,
+    h('div', { class: 'tf-rh' }, [
+      kind === 'example'
+        ? h('span', { class: 'tf-tag' }, say('tagExample', 'Example'))
+        : h('span', { class: 'tf-tag run' }, say('tagRun', 'Your result')),
+      h('span', { class: 'tf-src' }, where),
+    ]),
+    L === 'hi' ? null : h('p', { class: 'tf-exin' }, kind === 'example' ? `Example: ${inputsLine(input)}` : inputsLine(input)),
     ...headline(input, result),
     ...holidayList(input, result, built),
-    result.note ? h('p', { class: 'bd-aside' }, result.note === IN_NOTE ? say('inNote', IN_NOTE) : result.note) : null,
-    calendar(input, built),
-    note ? h('p', { class: 'bd-cost' }, note) : null,
+    result.note ? h('p', { class: 'tf-note' }, result.note === IN_NOTE ? say('inNote', IN_NOTE) : result.note) : null,
+    items && items.childNodes?.length ? h('div', { class: 'tf-grid2' }, [cal, items]) : cal,
+    note ? h('p', { class: 'tf-cost' }, note) : null,
   ]));
   $('bd-status').textContent = kind === 'run' ? summaryText(input, result) : '';
 }
@@ -448,12 +546,16 @@ function showPrice() {
   Promise.all([T.api(`/api/v1/tools/${SLUG}`), T.me()]).then(([json, account]) => {
     const price = json.tool.price.display;
     const el = $('bd-price');
+    // The English page's price line is three short parts; the Hindi page's one sentence.
+    const parts = L === 'hi' ? null : el.querySelectorAll('span');
     if (account) {
-      el.textContent = say('priceAccount', `Each run costs ${T.money(price)}, taken from your balance.`, T.money(price));
+      if (parts?.length) { parts[0].textContent = `${T.money(price)} a run`; parts[1].textContent = 'taken from your balance'; }
+      else el.textContent = say('priceAccount', `Each run costs ${T.money(price)}, taken from your balance.`, T.money(price));
       $('bd-run-note').textContent = '';
     } else {
-      el.textContent = say('priceFree', `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`, T.money(price));
-      $('bd-run-note').textContent = say('runNoteFree', '5 free runs a day, no account needed.');
+      if (parts?.length) { parts[0].textContent = `${T.money(price)} a run`; parts[1].textContent = '5 free runs a day, no card needed'; }
+      else el.textContent = say('priceFree', `Each run costs ${T.money(price)}. Without an account you get 5 free runs a day.`, T.money(price));
+      $('bd-run-note').textContent = L === 'hi' ? say('runNoteFree', '5 free runs a day, no account needed.') : '';
     }
   }).catch(() => {});
 }

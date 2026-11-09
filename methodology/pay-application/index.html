@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the pay application and retainage tool works: Endwise</title>
+<meta name="description" content="How the pay application works: each schedule of values column, retainage on work and stored materials, change orders and state limits.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/pay-application/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/pay-application.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the pay application and retainage tool works">
+<meta property="og:description" content="How the pay application works: each schedule of values column, retainage on work and stored materials, change orders and state limits.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/pay-application/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/pay-application/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/pay-application/","name":"How the pay application and retainage tool works","description":"How the pay application works: each schedule of values column, retainage on work and stored materials, change orders and state limits.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the pay application and retainage tool works","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/pay-application/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the pay application and retainage (g702/g703-style) answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the pay application and retainage (g702/g703-style) refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"A pay application whose lines do not tie out is refused before any charge, with the line. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the pay application and retainage tool works</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the pay application and retainage tool works</h1>
+<p class="cp-answer">Each line's total completed and stored is previous work plus this period plus materials stored; retainage is the rate on that total (or a separate rate on stored materials); the current payment due is the total earned less retainage less previous certificates, in whole cents, with rates in basis points (10% is 1,000).</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the pay application and retainage (g702/g703-style) compute?</h2>
+<p>Enter the schedule of values with each line's previous work, this period and stored materials, the change orders and the retainage terms, and the tool works out every G703-style column and the G702-style summary to the cent, checks the application for what a general contractor sends back, and writes a PDF and CSV to submit. Separate calculators work retainage forward and in reverse, a reduction at a percent complete and a release, and the state rule checks the rate against the statute where it was read (Arizona, Florida, Kansas, Minnesota, Texas, Virginia, Washington).</p>
+<details class="xpand"><summary>Read the rest: What does the pay application and retainage (g702/g703-style) compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>check</code>: Returns the summary, every column and the checks. Free.</li><li><code>preview</code>: The same totals and checks as check, as the page shows them. Free.</li><li><code>payapp</code>: Does what check does and also returns the PDF and CSV to submit. Corrections to the same application are free for 60 days.</li><li><code>retainage</code>: Retainage forward (held on a gross), in reverse (the gross a net check was billed as, exact to the cent) or with a reduction at a percent complete.</li><li><code>release</code>: The retainage released, partial or final, and what is left held.</li><li><code>state</code>: The retainage limit and release rule for a state, project type and contract value, quoted from the statute with its read date.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>lines</code>: Up to 200 lines of the schedule of values: scheduled value, work from previous applications, this period, materials stored, and an optional rate for the line.</li><li><code>changeOrders</code>: Up to 100 change orders; one not signed yet is listed but not billed or added to the contract sum.</li><li><code>retainage</code>: The rate, a different rate on stored materials, a reduced rate and the percent complete at which it applies, and any amount released.</li><li><code>contract, previousCertificates</code>: The original contract sum, to check the lines add up, and the payments certified on earlier applications.</li><li><code>state, projectType, contractValue</code>: To check the rate against the state's statute; some turn on the contract value.</li></ul>
+<p>Outputs:</p>
+<ul><li>summary and display: original contract sum, change orders, contract sum to date, total completed and stored, retainage, earned less retainage, previous certificates, current payment due and balance to finish</li><li>rows: every column per line; checks: what to fix before sending</li><li>payapp: the PDF and CSV</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Money is whole cents and rates are basis points (10% is 1,000); nothing is a float until it is shown.</li><li>For each line: total completed and stored is previous plus this period plus stored materials; percent is the total over the scheduled value; balance to finish is the scheduled value less the total. These are the columns AIA's published G703 instructions describe; the layout and wording are this tool's own.</li><li>Signed change orders are added to the contract sum; unsigned ones are listed only.</li><li>Retainage is the rate on completed work and the stored-materials rate on stored materials, or each line's own rate; with a reduction, the reduced rate applies to work after the percent complete is reached. Releases are subtracted.</li><li>Total earned less retainage, less previous certificates, is the current payment due; the balance to finish includes retainage.</li><li>Checks flag what a general contractor sends back: lines that do not add up to the contract sum, a negative total or negative work this period, previous certificates missing or different from the earlier applications, a change order not yet signed, a negative payment due, and a rate over the state limit where the statute was read.</li></ol>
+<p><strong>State retainage rules.</strong></p>
+<p>Each covered state's rule is quoted word for word from the statute on the state's own site, read on 2026-11-08. Every other state and DC is shown as not covered rather than guessed.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>Reverse retainage gives the gross a net check was billed as, exact to the cent.</li><li>Stored materials incorporated this period move from stored to this period's work.</li><li>Texas public works change limit at $5 million and Florida rules turn on $200,000, so the contract value is asked for.</li><li>The PDF and CSV are the same bytes for the same input.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Application 3 on a $240,000 electrical subcontract at 10% retainage</strong></p>
+<pre><code class="language-json">op: &quot;check&quot;
+project: &quot;Sample Medical Office Building (made-up)&quot;
+projectNumber: &quot;2026-114&quot;
+contractor: &quot;Sample Electric LLC (made-up)&quot;
+to: &quot;Sample Builders Inc. (made-up)&quot;
+owner: &quot;Sample Owner LP (made-up)&quot;
+applicationNumber: 3
+periodTo: &quot;2026-11-30&quot;
+applicationDate: &quot;2026-11-25&quot;
+contractDate: &quot;2026-08-03&quot;
+contractSum: &quot;240,000.00&quot;
+retainage: &#123;...&#125;
+lines: 5 items
+changeOrders: 2 items
+previousCertificates: &quot;46,800.00&quot;
+state: &quot;TX&quot;
+projectType: &quot;private&quot;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Application 3 on a $240,000 electrical subcontract at 10% retainage</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">Original contract sum</th><td>$240,000.00</td></tr>
+<tr><th scope="row">Net change by change orders</th><td>$8,500.00</td></tr>
+<tr><th scope="row">Contract sum to date</th><td>$248,500.00</td></tr>
+<tr><th scope="row">Total completed and stored to date</th><td>$99,250.00</td></tr>
+<tr><th scope="row">Retainage held</th><td>$9,925.00</td></tr>
+<tr><th scope="row">Total earned less retainage</th><td>$89,325.00</td></tr>
+<tr><th scope="row">Less previous certificates for payment</th><td>$46,800.00</td></tr>
+<tr><th scope="row">Current payment due</th><td>$42,525.00</td></tr>
+<tr><th scope="row">Balance to finish, including retainage</th><td>$159,175.00</td></tr>
+</tbody></table></div>
+<p><strong>Reverse retainage: a $45,000 check net of 10% retainage</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;retainage&quot;,
+  &quot;mode&quot;: &quot;reverse&quot;,
+  &quot;rate&quot;: 10,
+  &quot;net&quot;: &quot;45,000.00&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Reverse retainage: a $45,000 check net of 10% retainage</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">net</th><td>$45,000.00</td></tr>
+<tr><th scope="row">gross</th><td>$50,000.00</td></tr>
+<tr><th scope="row">held</th><td>$5,000.00</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>A pay application whose lines do not tie out is refused before any charge, with the line.</li><li>State rules are held only for Arizona, Florida, Kansas, Minnesota, Texas, Virginia, Washington; it says when a state is not covered.</li><li>Not legal or accounting advice: whether the numbers match your contract is yours to check.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The state statutes were read on each state's own site, and the G703 column logic on AIA's published instructions, on 2026-11-08. The pages are checked daily for changes.</p>
+<ul class="cp-sources"><li><a href="https://www.azleg.gov/ars/34/00221.htm">A.R.S. 34-221(C) (Arizona)</a></li><li><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0700-0799/0715/Sections/0715.12.html">Fla. Stat. 715.12(7) (Florida)</a></li><li><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0200-0299/0255/Sections/0255.078.html">Fla. Stat. 255.078 (Florida)</a></li><li><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0200-0299/0218/Sections/0218.735.html">Fla. Stat. 218.735(8) (Florida)</a></li><li><a href="https://www.ksrevisor.gov/statutes/chapters/ch16/016_018_0003.html">K.S.A. 16-1803 (Kansas)</a></li><li><a href="https://www.ksrevisor.gov/statutes/chapters/ch16/016_019_0004.html">K.S.A. 16-1904 (Kansas)</a></li><li><a href="https://www.ksrevisor.gov/statutes/chapters/ch16/016_019_0001.html">K.S.A. 16-1901 (Kansas)</a></li><li><a href="https://www.revisor.mn.gov/statutes/cite/337.10">Minn. Stat. 337.10, subd. 4 (Minnesota)</a></li><li><a href="https://www.revisor.mn.gov/statutes/cite/15.72">Minn. Stat. 15.72, subd. 2 (Minnesota)</a></li><li><a href="https://statutes.capitol.texas.gov/Docs/PR/htm/PR.53.htm">Tex. Prop. Code 53.101 and 28.002 (Texas)</a></li><li><a href="https://statutes.capitol.texas.gov/Docs/PR/htm/PR.28.htm">Tex. Prop. Code 28.002 (Texas)</a></li><li><a href="https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2252.htm">Tex. Gov't Code 2252.032 (Texas)</a></li><li><a href="https://law.lis.virginia.gov/vacode/title2.2/chapter43/section2.2-4333/">Va. Code 2.2-4333 (Virginia)</a></li><li><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=60.28.011">RCW 60.28.011 (Washington)</a></li><li><a href="https://help.aiacontracts.com/hc/en-us/articles/1500009308302-Instructions-G703-1992-Continuation-Sheet">AIA: Instructions, G703-1992 Continuation Sheet</a></li><li><a href="https://aiacontracts.com/documents/g702-1992">AIA: G702 store page</a></li></ul>
+<p>The state statutes were read on each state's own site, and the G703 column logic on AIA's published instructions, on 2026-11-08. The pages are checked daily for changes.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Pay application and retainage (G702/G703-style): sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.azleg.gov/ars/34/00221.htm">A.R.S. 34-221(C) (Arizona)</a></th><td rowspan="16">see the document</td><td rowspan="16">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0700-0799/0715/Sections/0715.12.html">Fla. Stat. 715.12(7) (Florida)</a></th></tr>
+<tr><th scope="row"><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0200-0299/0255/Sections/0255.078.html">Fla. Stat. 255.078 (Florida)</a></th></tr>
+<tr><th scope="row"><a href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&amp;URL=0200-0299/0218/Sections/0218.735.html">Fla. Stat. 218.735(8) (Florida)</a></th></tr>
+<tr><th scope="row"><a href="https://www.ksrevisor.gov/statutes/chapters/ch16/016_018_0003.html">K.S.A. 16-1803 (Kansas)</a></th></tr>
+<tr><th scope="row"><a href="https://www.ksrevisor.gov/statutes/chapters/ch16/016_019_0004.html">K.S.A. 16-1904 (Kansas)</a></th></tr>
+<tr><th scope="row"><a href="https://www.ksrevisor.gov/statutes/chapters/ch16/016_019_0001.html">K.S.A. 16-1901 (Kansas)</a></th></tr>
+<tr><th scope="row"><a href="https://www.revisor.mn.gov/statutes/cite/337.10">Minn. Stat. 337.10, subd. 4 (Minnesota)</a></th></tr>
+<tr><th scope="row"><a href="https://www.revisor.mn.gov/statutes/cite/15.72">Minn. Stat. 15.72, subd. 2 (Minnesota)</a></th></tr>
+<tr><th scope="row"><a href="https://statutes.capitol.texas.gov/Docs/PR/htm/PR.53.htm">Tex. Prop. Code 53.101 and 28.002 (Texas)</a></th></tr>
+<tr><th scope="row"><a href="https://statutes.capitol.texas.gov/Docs/PR/htm/PR.28.htm">Tex. Prop. Code 28.002 (Texas)</a></th></tr>
+<tr><th scope="row"><a href="https://statutes.capitol.texas.gov/Docs/GV/htm/GV.2252.htm">Tex. Gov't Code 2252.032 (Texas)</a></th></tr>
+<tr><th scope="row"><a href="https://law.lis.virginia.gov/vacode/title2.2/chapter43/section2.2-4333/">Va. Code 2.2-4333 (Virginia)</a></th></tr>
+<tr><th scope="row"><a href="https://app.leg.wa.gov/RCW/default.aspx?cite=60.28.011">RCW 60.28.011 (Washington)</a></th></tr>
+<tr><th scope="row"><a href="https://help.aiacontracts.com/hc/en-us/articles/1500009308302-Instructions-G703-1992-Continuation-Sheet">AIA: Instructions, G703-1992 Continuation Sheet</a></th></tr>
+<tr><th scope="row"><a href="https://aiacontracts.com/documents/g702-1992">AIA: G702 store page</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests check the sample application to the cent in every column, stored-materials and per-line rates, reductions, rounding and releases, the reverse calculator, every check, that each state quote is word for word in its dated snapshot, and that the PDF and CSV are deterministic.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The sample application is checked to the cent in every column and the summary.</li><li>Each state quote is word for word in its dated snapshot, read on 2026-11-08.</li><li>Retainage forward, in reverse, reduced and released is exact to the cent; the PDF and CSV are deterministic.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/pay-application/">Open the Pay application and retainage (G702/G703-style) tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the pay application and retainage (g702/g703-style) answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the pay application and retainage (g702/g703-style) refuse to answer?</h3></summary><div class="xp-in"><p>A pay application whose lines do not tie out is refused before any charge, with the line. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/pay-application/">Open the Pay application and retainage (G702/G703-style) tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/pay-application.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

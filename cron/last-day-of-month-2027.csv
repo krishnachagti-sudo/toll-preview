@@ -1,0 +1,13 @@
+month,last_day,weekday,last_weekday_LW,last_friday_6L
+January,2027-01-31,Sunday,2027-01-29,2027-01-29
+February,2027-02-28,Sunday,2027-02-26,2027-02-26
+March,2027-03-31,Wednesday,2027-03-31,2027-03-26
+April,2027-04-30,Friday,2027-04-30,2027-04-30
+May,2027-05-31,Monday,2027-05-31,2027-05-28
+June,2027-06-30,Wednesday,2027-06-30,2027-06-25
+July,2027-07-31,Saturday,2027-07-30,2027-07-30
+August,2027-08-31,Tuesday,2027-08-31,2027-08-27
+September,2027-09-30,Thursday,2027-09-30,2027-09-24
+October,2027-10-31,Sunday,2027-10-29,2027-10-29
+November,2027-11-30,Tuesday,2027-11-30,2027-11-26
+December,2027-12-31,Friday,2027-12-31,2027-12-31

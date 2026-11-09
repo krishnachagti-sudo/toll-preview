@@ -1,0 +1,64 @@
+/* Bulk sender check: the tool-full layout (web/tool-full.css) plus one line per check,
+   the per-provider rule cards (folded) and the DKIM table. Pass and fail carry the colour. */
+.bsc {
+  --bsc-fail: #ff7a6b;
+  --bsc-pass: #6fd39a;
+  --bsc-warn: #f2c14e;
+}
+.bsc textarea { width: 100%; font: 12px/1.45 var(--font-mono); }
+.bsc select { width: 100%; }
+.tf-form .bsc-file { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; }
+.tf-form .bsc-file > label { margin: 0; font-size: 13.5px; }
+.bsc-file input[type="file"] { max-width: 100%; font-size: 13px; }
+.bsc-dnsck { display: flex; gap: 8px; align-items: center; margin: 14px 0 0; font-size: 13.5px; color: var(--text-2); cursor: pointer; }
+.bsc-dnsck input { width: 16px; height: 16px; flex: none; }
+.bsc-samples { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.bsc-samples .btn { font-size: 13px; min-height: 0; padding: 6px 12px; }
+.bsc-label { width: 100%; font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 2px; }
+
+/* The result: one line per check. */
+.bsc-items li > span:not(.k) { overflow-wrap: anywhere; }
+.bsc-items li.p-pass .k { color: var(--bsc-pass); background: color-mix(in srgb, var(--bsc-pass) 12%, transparent); }
+.bsc-items li.p-warn .k { color: var(--bsc-warn); background: color-mix(in srgb, var(--bsc-warn) 12%, transparent); }
+.bsc-items li > em { overflow-wrap: anywhere; line-height: 1.5; }
+.bsc-items .bsc-who { color: var(--text-2); }
+.bsc-items li > .bsc-fix, .bsc-items li > details { grid-column: 2 / -1; margin: 4px 0 0; font-size: 13px; overflow-wrap: anywhere; }
+.bsc-items li > .bsc-fix { color: var(--text-2); }
+.bsc-items li > details summary { cursor: pointer; color: var(--text-2); font-size: 12.5px; }
+.bsc-items li > details { color: var(--muted); }
+.bsc-out .xpand { margin-top: 14px; }
+.bsc-out .tf-items + .tf-note { margin-top: 14px; }
+
+.bsc-badge { display: inline-block; font: 600 11px/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; padding: 0 6px; border-radius: 4px; border: 1px solid var(--line-2); color: var(--muted); text-align: center; white-space: nowrap; }
+.bsc-badge.s-pass { color: var(--bsc-pass); border-color: var(--bsc-pass); }
+.bsc-badge.s-fail { color: var(--bsc-fail); border-color: var(--bsc-fail); }
+.bsc-badge.s-warn, .bsc-badge.s-unknown { color: var(--bsc-warn); border-color: var(--bsc-warn); }
+
+.bsc-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 14px; font-size: 13px; margin: 0; }
+.bsc-facts dt { color: var(--muted); }
+.bsc-facts dd { margin: 0; overflow-wrap: anywhere; color: var(--text-2); }
+.bsc-cards { display: grid; gap: 16px; margin-top: 12px; }
+.bsc-card { border-top: 2px solid var(--hue); padding-top: 8px; min-width: 0; }
+.bsc-card h3 { margin: 0 0 4px; font-size: 15px; color: var(--text); }
+.bsc-scope { font-size: 12.5px; margin: 0 0 8px; }
+.bsc-aud { margin-bottom: 12px; }
+.bsc-aud-head { display: flex; justify-content: space-between; gap: 8px; margin: 0 0 4px; font-size: 14px; color: var(--text); }
+.bsc-score { font: 600 13px/1.4 var(--font-mono); color: var(--bsc-pass); white-space: nowrap; }
+.bsc-score.bad { color: var(--bsc-fail); }
+.bsc-rows { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+.bsc-rows li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) auto; gap: 6px; align-items: baseline; padding: 3px 0; border-bottom: 1px solid var(--line); }
+.bsc-src { font-size: 12px; }
+.bsc-tag { font-size: 12px; }
+.bsc-note { font-size: 13px; overflow-wrap: anywhere; }
+.bsc-steps { margin: 4px 0; padding-left: 1.2em; font-size: 13px; }
+.bsc-steps li.ok { color: var(--bsc-pass); }
+.bsc-steps li.no { color: var(--bsc-fail); }
+.bsc-scroll { overflow-x: auto; }
+.bsc-table { border-collapse: collapse; font-size: 13px; margin: 6px 0; }
+.bsc-table th, .bsc-table td { text-align: left; padding: 4px 12px 4px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.bsc-price ul { margin: 0 0 0.8em; padding-left: 1.2em; }
+@media (max-width: 640px) {
+  .bsc-rows li { grid-template-columns: minmax(0, 1fr) auto; }
+  .bsc-rows li > .bsc-rule { grid-column: 1 / -1; }
+}
+.tf-form .bsc-file { margin-top: 16px; }

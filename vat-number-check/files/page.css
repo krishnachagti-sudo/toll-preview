@@ -1,0 +1,55 @@
+/* VAT number check: the tool-full layout (web/tool-full.css) plus the answer's status
+   colours: green is a valid answer, red a not-valid answer, amber a check that got no answer
+   (free), grey a number that never left this page. */
+.vc {
+  --accent: var(--h-file);
+  --accent-ink: #06121a;
+  --endwise-accent: var(--h-file);
+  --endwise-accent-ink: #06121a;
+  --vc-valid: #6fdc8c;
+  --vc-invalid: #ff6b6b;
+  --vc-wait: #ffb547;
+  --vc-none: #9aa0aa;
+}
+
+.vc input[type="text"], .vc textarea { font-family: var(--font-mono); }
+.vc textarea { font-size: 13px; line-height: 1.55; width: 100%; }
+.vc-shape { color: var(--vc-valid); }
+.vc-form details.xpand .xp-in > .hint { margin: 14px 0 0; }
+
+/* The answer: a status dot, the word, the number. */
+.vc-answer b::before { content: ""; display: inline-block; width: 0.32em; height: 0.32em; border-radius: 50%; margin-right: 0.25em; vertical-align: 0.18em; background: var(--vc-none); }
+.vc-answer.s-valid b::before { background: var(--vc-valid); }
+.vc-answer.s-invalid b::before { background: var(--vc-invalid); }
+.vc-answer.s-unavailable b::before { background: var(--vc-wait); }
+.vc-answer span { font-family: var(--font-mono); font-size: 16px; }
+.vc-items { margin-top: 16px; }
+.vc-items .vc-v { overflow-wrap: anywhere; }
+.vc-hash { font-family: var(--font-mono); font-size: 12px; }
+.vc-notes { padding-left: 1.2em; margin: 14px 0 0; color: var(--muted); font-size: 13.5px; }
+.vc-notes li { margin: 0 0 6px; }
+.vc-downloads { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+.vc-sample { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); }
+.vc-sample .vc-downloads { margin-top: 8px; }
+
+/* Verify, availability, sources */
+.vc-verify-box { max-width: 44rem; }
+.vc-verify-box .btn { margin-top: 14px; }
+.vc-ok { color: var(--vc-valid); }
+.vc-bad { color: var(--vc-invalid); }
+.vc-table { min-width: 48rem; font-size: 13px; }
+.vc-table td:last-child { min-width: 18rem; }
+.vc-table td, .vc-table th { vertical-align: top; }
+.vc-table td:nth-child(2), .vc-table td:nth-child(3) { white-space: nowrap; }
+.vc-table td:first-child { white-space: nowrap; font-family: var(--font-mono); }
+#vc-status-table { margin-top: 12px; }
+.vc-src-title { font-size: 14px; margin: 16px 0 6px; color: var(--text-2); }
+.vc-sources { padding-left: 1.1em; margin: 0; }
+.vc-sources a, .tf-panel #vc-disclaimers a { word-break: break-word; }
+#vc-disclaimers { padding-left: 1.1em; margin: 0; }
+#vc-disclaimers li { margin: 0 0 8px; }
+.endwise-prices { padding-left: 1.1em; margin: 0; }
+
+@media print {
+  .vc-form, .vc-code, .vc-verify { display: none; }
+}

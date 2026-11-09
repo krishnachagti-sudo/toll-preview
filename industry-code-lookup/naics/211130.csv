@@ -1,0 +1,48 @@
+field,value
+code,211130
+title,Natural Gas Extraction
+level 2: 21,"Mining, Quarrying, and Oil and Gas Extraction"
+level 3: 211,Oil and Gas Extraction
+level 4: 2111,Oil and Gas Extraction
+level 5: 21113,Natural Gas Extraction
+description,"This industry comprises establishments primarily engaged in (1) the exploration, development, and/or the production of natural gas from wells in which the hydrocarbons will initially flow or can be produced using normal or enhanced drilling and extraction techniques or (2) the recovery of liquid hydrocarbons from oil and gas field gases. Establishments primarily engaged in sulfur recovery from natural gas are included in this industry."
+census index entry,"Butane, natural, mining"
+census index entry,Casing-head butane and propane production
+census index entry,Coal gasification at mine site
+census index entry,Coal liquefaction at mine site
+census index entry,Coal pyrolysis
+census index entry,"Condensate, cycle, natural gas production"
+census index entry,Cycle condensate production
+census index entry,Ethane recovered from oil and gas field gases
+census index entry,Fractionating natural gas liquids
+census index entry,Gas field development for own account
+census index entry,Gas field exploration for own account
+census index entry,"Gas, natural liquefied petroleum, extraction"
+census index entry,"Gas, natural, extraction"
+census index entry,"Gas, natural, liquids, extraction"
+census index entry,"Gas, residue, extraction"
+census index entry,"Gases, petroleum, liquefied, extraction"
+census index entry,"Gasoline, natural, production"
+census index entry,Isobutane recovered from oil and gas field gases
+census index entry,Isopentane recovered from oil and gas field gases
+census index entry,"Liquefied petroleum gases (LPG), natural"
+census index entry,Liquid hydrocarbons recovered from oil and gas field gases
+census index entry,"Liquids, natural gas (e.g., ethane, isobutane, natural gasoline, propane) recovered from oil and gas field gases"
+census index entry,Natural gas liquid lease condensate production
+census index entry,"Natural gas liquids (e.g., ethane, isobutane, natural gasoline, propane) recovered from oil and gas field gases"
+census index entry,Natural gas production
+census index entry,"Natural gas, offshore production"
+census index entry,Natural gasoline recovered from oil and gas field gases
+census index entry,Offshore natural gas production
+census index entry,"Oil line drip, natural gas liquid"
+census index entry,"Operating natural gas liquid field gathering lines, except on a contract basis"
+census index entry,"Petroleum gases, liquefied, recovering from oil and gas field gases"
+census index entry,Propane recovered from oil and gas field gases
+census index entry,Residue gas production
+census index entry,Stripper gas well production
+census index entry,Sulfur recovered from natural gas
+sba size standard,"1,250 employees"
+naics 2017,211130
+sic 1987,1311 1321 2819
+naics 2027 (proposed),no change proposed
+schedule c,211130 Natural gas extraction

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How cleaning bids are priced: labor hours method: Endwise</title>
+<meta name="description" content="How the cleaning bid calculator works: hours from your own production rates, a loaded wage from BLS and IRS figures, overhead, margin and a $/sq ft check.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/cleaning-bid-calculator/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/cleaning-bid-calculator.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How cleaning bids are priced: labor hours method">
+<meta property="og:description" content="How the cleaning bid calculator works: hours from your own production rates, a loaded wage from BLS and IRS figures, overhead, margin and a $/sq ft check.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/cleaning-bid-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/cleaning-bid-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/cleaning-bid-calculator/","name":"How cleaning bids are priced: labor hours method","description":"How the cleaning bid calculator works: hours from your own production rates, a loaded wage from BLS and IRS figures, overhead, margin and a $/sq ft check.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How cleaning bids are priced: labor hours method","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/cleaning-bid-calculator/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the cleaning bid calculator (commercial and post-construction) answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the cleaning bid calculator (commercial and post-construction) refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"State unemployment, workers' compensation and local minimum wages vary and are your inputs; city and county minimums are not in the table. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How cleaning bids are priced: labor hours method</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How cleaning bids are priced: labor hours method</h1>
+<p class="cp-answer">Hours are square feet divided by your production rate, or a count times your minutes each. Each hour is priced at the wage plus payroll costs (7.65% employer FICA and 0.6% FUTA, or 29.96% from BLS ECEC), supplies and overhead, divided by one less the margin. A janitorial month is 52/12 weeks of visits.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the cleaning bid calculator (commercial and post-construction) compute?</h2>
+<p>The tool turns a walk-through into a bid: area tasks at the contractor's own production rates, restroom fixtures and glass panes at their own minutes each, and fixed-time tasks become labor hours by line. A loaded hourly cost is built from the wage (the contractor's own, or a BLS May 2025 figure) and payroll costs, then supplies, overhead and margin are added. It prices a janitorial contract per visit, month and year, or a post-construction job per rough, final and touch-up phase, with a dollars per square foot check and a proposal PDF. Production rates, minutes per fixture or pane, extras and the target range are the figures you enter; this tool supplies no industry production rates or market prices.</p>
+<details class="xpand"><summary>Read the rest: What does the cleaning bid calculator (commercial and post-construction) compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>bid</code>: Works out the hours and price of every task line, the totals by category, the hourly rates from the wage to the billed rate, and the price per visit, month and year (janitorial) or per phase and job (post-construction), with the $/sq ft figures, the target check and the flags. Free on the page.</li><li><code>proposal</code>: Does what bid does and also returns a proposal PDF (a client copy with the scope and prices, or the full copy with hours and the cost build-up) and a CSV of the lines and totals.</li><li><code>rate</code>: Turns a timing into a production rate: square feet cleaned in a number of minutes into square feet an hour and minutes per 1,000 sq ft, or items done into minutes each. Free.</li><li><code>wages</code>: Returns the BLS May 2025 median and mean hourly wages for janitors and cleaners and for maids and housekeeping cleaners in one state or all of them, with each state's minimum wage. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>type, sqft</code>: janitorial (the default) or post-construction, and the cleanable square feet of the building.</li><li><code>lines</code>: Up to 60 tasks, each with a name, a category (area, restroom, glass, other), for post-construction a phase (rough, final, touch-up; final by default), and one of: a production rate in sq ft an hour (with its own sq ft, or the building's), a count and minutes each, or hours.</li><li><code>visitsPerWeek, crew</code>: For janitorial, visits a week (5 by default); and the crew size, to give the hours on site.</li><li><code>wage</code>: Either { hourly } or { state, occupation, stat } for a BLS figure: occupation janitors or maids, stat median or mean.</li><li><code>burden</code>: mode itemized, ecec, flat (itemized by default). Itemized takes fica and futa switches and your own suta, workersComp and benefits percents; flat takes one percent.</li><li><code>suppliesPercent, overheadPercent, marginPercent</code>: Supplies and equipment as a percent of loaded labor, overhead as a percent of cost, and the margin as a percent of the price.</li><li><code>extras, minimum, target, state</code>: Up to 20 extra charges at cost (with a phase for post-construction), a minimum charge, a target $/sq ft range per visit, month or job, and the state for the minimum wage check.</li><li><code>company, client, job, address, date, validDays, notes, detail</code>: For proposal: the names and details that print on it, and scope (client copy) or full.</li><li><code>minutes, sqft or count</code>: For rate: the minutes timed and the square feet or items done.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: the hours, the loaded hourly cost, the margin and the price per visit and month, or per phase and job</li><li>lines and byCategory: how each line's hours were found, its hours and price, and the price per fixture or pane</li><li>rates: the wage and its source, the burden lines, and the loaded, with-supplies, with-overhead and billed hourly rates</li><li>visit, month, year or phases and job: hours, wages, burden, supplies, extras, overhead, profit and price</li><li>perSqft and check: dollars per square foot, and where the price sits against your target, with the break-even</li><li>flags, and pdf and csv for proposal</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each line has exactly one way to find its hours: square feet divided by the production rate, a count times the minutes each divided by 60, or the hours given. A rate line with no square feet of its own uses the building's.</li><li>The wage is the one given, or the BLS May 2025 figure for the state, occupation and statistic chosen (janitors and median by default).</li><li>The burden is a percent of wages. Itemized adds employer social security and Medicare (6.2% + 1.45%), FUTA at 0.6% after the 5.4% credit, and your state unemployment, workers' compensation and benefits rates. The BLS option uses service occupations' benefits of $5.47 on $18.26 of wages (29.96%). Flat uses your percent.</li><li>The billed rate per labor hour is the wage times one plus the burden, times one plus supplies, times one plus overhead, divided by one less the margin. Extras are priced at cost times one plus overhead, divided by one less the margin.</li><li>Each line is priced at its hours times the billed rate, rounded to whole cents once, so the lines add up to the total. The cost build-up (wages, burden, supplies, extras, overhead and profit) is worked out the same way.</li><li>Janitorial: a visit is the sum of the lines and extras, or the minimum charge if higher; a month is the visit times visits a week times 52/12; a year is times 52. Post-construction: each phase is priced on its own, and the job is the sum.</li><li>Dollars per square foot is the price divided by the building's square feet. With a target range, the price is marked below, within or above it, with the break-even per square foot.</li><li>Flags: a wage below the state's minimum (the higher of the state rate and the federal $7.25), a scheduled minimum wage rise DOL lists, state unemployment or workers' compensation not entered, FUTA charged on every hour, a 0% margin, a missing phase, and no area task with a production rate.</li></ol>
+<p><strong>Official figures only.</strong></p>
+<p>The only figures the tool supplies are BLS OEWS May 2025 wages, IRS Publication 15 (2026) payroll tax rates, BLS ECEC benefit costs for 2026-06, and the DOL state minimum wage table updated 2026-11-05. No production rate, minutes per fixture or market price is built in: those are inputs.</p>
+<p><strong>Margin and markup.</strong></p>
+<p>The margin is a share of the price, not a markup on cost, so a 20% margin is a 25% markup on cost; both are shown.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>FUTA stops once a worker has earned $7,000 in a year; charging it on every hour is the most it can be, and the bid says so.</li><li>A line with both a rate and minutes, or with a count and no minutes, is refused, naming the line.</li><li>A visit priced under the minimum charge is raised to it and flagged.</li><li>A phase given on a janitorial bid is refused; phases are for post-construction bids.</li><li>Michigan's scheduled minimum wage rise is named on a bid in Michigan.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A 25,000 sq ft office cleaned 5 nights a week, from sample production rates</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;bid&quot;,
+  &quot;type&quot;: &quot;janitorial&quot;,
+  &quot;sqft&quot;: 25000,
+  &quot;visitsPerWeek&quot;: 5,
+  &quot;lines&quot;: [
+    &#123;
+      &quot;task&quot;: &quot;Vacuum carpeted offices&quot;,
+      &quot;category&quot;: &quot;area&quot;,
+      &quot;sqft&quot;: 18000,
+      &quot;rate&quot;: 3600
+    &#125;,
+    &#123;
+      &quot;task&quot;: &quot;Dust mop and damp mop hard floors&quot;,
+      &quot;category&quot;: &quot;area&quot;,
+      &quot;sqft&quot;: 7000,
+      &quot;rate&quot;: 2800
+    &#125;,
+    &#123;
+      &quot;task&quot;: &quot;Empty trash and recycling&quot;,
+      &quot;category&quot;: &quot;other&quot;,
+      &quot;count&quot;: 120,
+      &quot;minutes&quot;: 0.75
+    &#125;,
+    &#123;
+      &quot;task&quot;: &quot;Clean restroom fixtures and refill dispensers&quot;,
+      &quot;category&quot;: &quot;restroom&quot;,
+      &quot;count&quot;: 16,
+      &quot;minutes&quot;: 4
+    &#125;,
+    &#123;
+      &quot;task&quot;: &quot;Entrance door glass&quot;,
+      &quot;category&quot;: &quot;glass&quot;,
+      &quot;count&quot;: 6,
+      &quot;minutes&quot;: 2
+    &#125;
+  ],
+  &quot;wage&quot;: &#123;
+    &quot;state&quot;: &quot;US&quot;,
+    &quot;occupation&quot;: &quot;janitors&quot;,
+    &quot;stat&quot;: &quot;median&quot;
+  &#125;,
+  &quot;burden&quot;: &#123;
+    &quot;mode&quot;: &quot;itemized&quot;,
+    &quot;suta&quot;: 2.7,
+    &quot;workersComp&quot;: 4
+  &#125;,
+  &quot;suppliesPercent&quot;: 6,
+  &quot;overheadPercent&quot;: 15,
+  &quot;marginPercent&quot;: 15
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A 25,000 sq ft office cleaned 5 nights a week, from sample production rates</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>At your production rates, 25,000 sq ft, 16 restroom fixtures and 6 glass panes is 10.27 labor hours a visit; at $20.36 an hour loaded and a 15% margin the bid is $299.74 a visit, $6,494.37 a month at 5 visits a week ($0.260 per sq ft a month, $0.012 a visit).</td></tr>
+<tr><th scope="row">hours a visit</th><td>10.27</td></tr>
+<tr><th scope="row">wage</th><td>$17.71 (BLS May 2025 median hourly wage, janitors and cleaners, United States)</td></tr>
+<tr><th scope="row">burden</th><td>14.95%</td></tr>
+<tr><th scope="row">billed rate an hour</th><td>$29.20</td></tr>
+<tr><th scope="row">a visit</th><td>$299.74</td></tr>
+<tr><th scope="row">a month</th><td>$6,494.37</td></tr>
+<tr><th scope="row">a year</th><td>$77,932.40</td></tr>
+<tr><th scope="row">per sq ft a month</th><td>$0.260</td></tr>
+</tbody></table></div>
+<p><strong>A 12,000 sq ft new build priced in rough, final and touch-up phases</strong></p>
+<pre><code class="language-json">op: &quot;bid&quot;
+type: &quot;post-construction&quot;
+sqft: 12000
+lines: 5 items
+extras: 1 items
+wage: &#123;...&#125;
+burden: &#123;...&#125;
+suppliesPercent: 8
+overheadPercent: 12
+marginPercent: 20</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A 12,000 sq ft new build priced in rough, final and touch-up phases</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>A 12,000 sq ft post-construction job is 27.93 labor hours at your production rates and prices at rough $519.57, final $676.04 and touch-up $101.74: $1,297.35 in all ($0.108 per sq ft), glass $162.79 for 48 panes ($3.39 a pane, inside the final clean).</td></tr>
+<tr><th scope="row">burden (BLS ECEC)</th><td>29.96%</td></tr>
+<tr><th scope="row">Rough clean</th><td>$519.57, 5.00 hours</td></tr>
+<tr><th scope="row">Final clean</th><td>$676.04, 19.93 hours</td></tr>
+<tr><th scope="row">Touch-up clean</th><td>$101.74, 3.00 hours</td></tr>
+<tr><th scope="row">job</th><td>$1,297.35</td></tr>
+<tr><th scope="row">per sq ft</th><td>$0.108</td></tr>
+</tbody></table></div>
+<p><strong>A production rate from a timing: 1,500 sq ft vacuumed in 25 minutes</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;rate&quot;,
+  &quot;sqft&quot;: 1500,
+  &quot;minutes&quot;: 25
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A production rate from a timing: 1,500 sq ft vacuumed in 25 minutes</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>1,500 sq ft in 25 minutes is 3,600 sq ft an hour (16.67 minutes per 1,000 sq ft).</td></tr>
+</tbody></table></div>
+<p><strong>BLS May 2025 wages for janitors and cleaners in Ohio</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;wages&quot;,
+  &quot;state&quot;: &quot;OH&quot;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>BLS May 2025 wages for janitors and cleaners in Ohio</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>BLS May 2025: janitors and cleaners in Ohio earned a median $17.26 an hour (mean $18.06); maids and housekeeping cleaners a median $15.47. Ohio's minimum wage is $11.00 (DOL, updated 2026-11-05). Employers with annual gross receipts of $405,000 or more; $7.25 for smaller employers.</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>State unemployment, workers' compensation and local minimum wages vary and are your inputs; city and county minimums are not in the table.</li><li>It supplies no industry production rates or market prices; check the bid against your own timed rates and costs.</li><li>A bid is a business decision. It is not legal, tax or accounting advice.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The figures were read on 2026-11-08: BLS OEWS May 2025 (released 2026-05-15), IRS Publication 15 (2026), BLS ECEC for 2026-06 (released 2026-09-09) and the DOL state minimum wage table (updated 2026-11-05). They change only by hand, with the tests that pin them.</p>
+<ul class="cp-sources"><li><a href="https://www.bls.gov/oes/">U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025 estimates (released 2026-05-15, read 2026-11-08)</a></li><li><a href="https://www.irs.gov/publications/p15">IRS Publication 15 (2026), (Circular E), Employer's Tax Guide (read 2026-11-08)</a></li><li><a href="https://www.bls.gov/news.release/ecec.t04.htm">BLS Employer Costs for Employee Compensation, June 2026 (USDL-26-1494), Table 4, private industry workers, service occupations (released 2026-09-09)</a></li><li><a href="https://www.dol.gov/agencies/whd/minimum-wage/state">U.S. Department of Labor, Wage and Hour Division: State Minimum Wage Laws (basic minimum rate, non-farm employment) (updated 2026-11-05, read 2026-11-08)</a></li></ul>
+<p>The figures were read on 2026-11-08: BLS OEWS May 2025 (released 2026-05-15), IRS Publication 15 (2026), BLS ECEC for 2026-06 (released 2026-09-09) and the DOL state minimum wage table (updated 2026-11-05). They change only by hand, with the tests that pin them.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Cleaning bid calculator (commercial and post-construction): sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.bls.gov/oes/">U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS), May 2025 estimates</a></th><td>May 2025 estimates, released 2026-05-15</td><td rowspan="4">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/publications/p15">IRS Publication 15 (2026), (Circular E), Employer's Tax Guide</a></th><td>2026 edition</td></tr>
+<tr><th scope="row"><a href="https://www.bls.gov/news.release/ecec.t04.htm">BLS Employer Costs for Employee Compensation, June 2026 (USDL-26-1494), Table 4, private industry workers, service occupations</a></th><td>released 2026-09-09</td></tr>
+<tr><th scope="row"><a href="https://www.dol.gov/agencies/whd/minimum-wage/state">U.S. Department of Labor, Wage and Hour Division: State Minimum Wage Laws (basic minimum rate, non-farm employment)</a></th><td>updated 2026-11-05</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The BLS wages, the IRS rates and quotes, the ECEC figures and the DOL table are pinned. The tests work the sample office and new build line by line, each burden mode, margin against overhead, the monthly figure, the minimum charge, the target check, the minimum wage flags, the CSV, and that the proposal PDF is the same bytes every time.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The BLS May 2025 wages, the IRS Publication 15 (2026) rates, the BLS ECEC figures and the DOL minimum wage table are pinned as read on 2026-11-08.</li><li>The sample office and new build are checked line by line: hours, the loaded rate, each burden mode, margin against overhead, the monthly figure and the minimum charge.</li><li>The target check, the minimum wage flags, the CSV and the proposal PDF (the same bytes every time) are checked.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/cleaning-bid-calculator/">Open the Cleaning bid calculator (commercial and post-construction) tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the cleaning bid calculator (commercial and post-construction) answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the cleaning bid calculator (commercial and post-construction) refuse to answer?</h3></summary><div class="xp-in"><p>State unemployment, workers' compensation and local minimum wages vary and are your inputs; city and county minimums are not in the table. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/cleaning-bid-calculator/">Open the Cleaning bid calculator (commercial and post-construction) tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/cleaning-bid-calculator.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

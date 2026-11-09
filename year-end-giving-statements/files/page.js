@@ -144,32 +144,45 @@ function put(el, ...children) {
   for (const c of children.flat()) if (c) el.append(c);
 }
 
+// The inputs in one line: "Grace Community Church (sample), 2026, 10 gift rows".
+function inputsLine(input, raw) {
+  const org = input.org?.name || 'Your organization';
+  const period = input.year !== undefined ? String(input.year) : `${input.from} to ${input.to}`;
+  return `${org}, ${period}, ${raw.rows.length} gift ${raw.rows.length === 1 ? 'row' : 'rows'}`;
+}
+
+const SENTENCE = (d) => (d.benefits ? 'goods or services marked, with the disclosure' : d.sentence.startsWith('The only') ? 'intangible religious benefits only' : 'no goods or services');
+
+// One line per donor: the gift count, the donor, the total, and the sentence the statement carries.
+function donorItem(d) {
+  const extra = [d.largeGifts ? `${d.largeGifts} gift${d.largeGifts === 1 ? '' : 's'} of $250 or more` : null, d.propertyGifts ? `${d.propertyGifts} of property, not valued` : null];
+  return h('li', { class: d.largeGifts ? 'hi' : null }, [
+    h('span', { class: 'k', 'aria-hidden': 'true' }, String(d.gifts + d.propertyGifts)),
+    h('span', {}, d.name || d.id),
+    h('b', {}, usd(d.cash)),
+    h('em', {}, [...extra, SENTENCE(d)].filter(Boolean).join('; ') + ' (Pub 1771)'),
+  ]);
+}
+
 function render(result, { example }) {
   const t = result.totals;
   const donors = result.donors.slice(0, SHOWN_DONORS);
   const flags = result.flags.slice(0, SHOWN_FLAGS);
+  const line = current ? inputsLine(current.input, current.raw) : '';
   put($('gs-summary'),
-    example ? h('p', { class: 'gs-label' }, 'Worked example') : null,
-    h('p', { class: 'gs-answer' }, result.answer),
-    h('dl', { class: 'gs-facts' }, [
-      ['Statements', String(t.donors)],
-      ['Money given', usd(t.cash)],
-      ['With a gift of $250 or more', String(t.largeGiftStatements)],
-      ['Gifts of property', String(t.propertyGifts)],
-      ['Set aside (outside the period)', String(t.setAside)],
-    ].map(([k, v]) => h('div', {}, [h('dt', {}, k), h('dd', {}, v)]))),
-    result.columnsUsed ? h('p', { class: 'gs-aside' }, `Columns read: ${Object.entries(result.columnsUsed).map(([f, c]) => `${c} as ${f}`).join(', ')}${result.columnsIgnored.length ? `. Not used: ${result.columnsIgnored.join(', ')}` : ''}.`) : null,
-    h('div', { class: 'table-wrap' }, h('table', { class: 'gs-table' }, [
-      h('thead', {}, h('tr', {}, [h('th', {}, 'Donor'), h('th', { class: 'num' }, 'Gifts'), h('th', { class: 'num' }, 'Total'), h('th', { class: 'num' }, '$250+'), h('th', {}, 'Sentence')])),
-      h('tbody', {}, donors.map((d) => h('tr', {}, [
-        h('th', { scope: 'row' }, d.name || d.id),
-        h('td', { class: 'num' }, String(d.gifts + d.propertyGifts)),
-        h('td', { class: 'num' }, usd(d.cash)),
-        h('td', { class: 'num' }, String(d.largeGifts)),
-        h('td', { class: 'gs-sentence' }, d.benefits ? 'Goods or services marked, with the disclosure' : d.sentence.startsWith('The only') ? 'Intangible religious benefits only' : 'No goods or services'),
-      ]))),
-    ])),
-    result.donors.length > donors.length ? h('p', { class: 'gs-aside' }, `And ${result.donors.length - donors.length} more donors.`) : null,
+    h('div', { class: 'tf-rh' }, [
+      example ? h('span', { class: 'tf-tag' }, 'Example') : h('span', { class: 'tf-tag run' }, 'Your gifts'),
+      h('span', { class: 'tf-src' }, example ? 'Worked out on this page' : 'Worked out on this page, free'),
+    ]),
+    h('p', { class: 'tf-exin' }, example ? `Example: ${line}` : line),
+    h('p', { class: 'tf-big' }, [h('b', {}, String(t.donors)), h('span', {}, t.donors === 1 ? 'statement' : 'statements')]),
+    h('p', { class: 'tf-sub' }, result.answer),
+    h('ol', { class: 'tf-items gs-items' }, [
+      ...donors.map(donorItem),
+      h('li', { class: 'tot' }, [h('span', { class: 'k', 'aria-hidden': 'true' }, String(t.gifts + t.propertyGifts)), h('span', {}, 'Money given in all'), h('b', {}, usd(t.cash)), h('em', {}, `${t.largeGiftStatements} with a gift of $250 or more; ${t.setAside} set aside, outside the period`)]),
+    ]),
+    result.donors.length > donors.length ? h('p', { class: 'tf-note' }, `And ${result.donors.length - donors.length} more donors.`) : null,
+    result.columnsUsed ? h('p', { class: 'tf-note' }, `Columns read: ${Object.entries(result.columnsUsed).map(([f, c]) => `${c} as ${f}`).join(', ')}${result.columnsIgnored.length ? `. Not used: ${result.columnsIgnored.join(', ')}` : ''}.`) : null,
     h('p', { class: 'gs-heading' }, flags.length ? `To check (${result.flags.length})` : 'Nothing to check'),
     flags.length ? h('ul', { class: 'gs-flags' }, flags.map((f) => h('li', {}, [h('span', { class: 'when' }, f.row ? `Row ${f.row}` : f.donor ?? 'File'), h('span', {}, f.donor && f.row ? `${f.donor}: ${f.message}` : f.message)]))) : null,
   );

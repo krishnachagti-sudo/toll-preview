@@ -1,0 +1,49 @@
+/* Payment schedule: the tool-full layout (web/tool-full.css) plus this page's own
+   pieces: the stage rows, the schedule table, the invoice pack. Deductions in the final invoice are
+   set apart. */
+.ps {
+  --accent: var(--h-money);
+  --endwise-accent: var(--h-money);
+}
+
+
+
+.ps #ps-total { font: 500 1.15rem/1.4 var(--font-mono); }
+.ps-custom { border: 0; padding: 0; margin: 8px 0; }
+.ps-custom legend { font-weight: 500; margin-bottom: 4px; }
+.ps-row { display: grid; grid-template-columns: 1.4fr 0.8fr 1.1fr auto; gap: 6px; margin-bottom: 6px; }
+.ps-row input { min-width: 0; }
+
+.ps-table-wrap { overflow-x: auto; }
+.ps-table { font-size: 0.92rem; font-variant-numeric: tabular-nums; border-collapse: collapse; width: 100%; }
+.ps-table td, .ps-table th { vertical-align: top; padding: 6px 12px 6px 0; text-align: left; border-bottom: 1px solid var(--line); }
+.ps-table .num { text-align: right; white-space: nowrap; }
+.ps-table tfoot th, .ps-table tfoot td { border-top: 1px solid var(--line-2); font-weight: 600; }
+.ps-flag { display: block; color: var(--hue); font-size: 0.82rem; }
+.ps-warn { border-left: 3px solid var(--hue); padding: 4px 0 4px 16px; margin: 12px 0; list-style: none; }
+.ps-warn li { margin: 4px 0; }
+.ps-state { border: 1px solid var(--line-2); padding: 10px 14px; margin: 12px 0; }
+.ps-state p { margin: 4px 0; }
+.ps-wording { max-width: 46rem; border-left: 3px solid var(--line-2); padding-left: 14px; }
+
+#ps-invoices { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
+#ps-invoices > p { grid-column: 1 / -1; }
+.ps-inv { border-top: 3px double var(--line-2); padding-top: 8px; min-width: 0; }
+.ps-inv h3 { font-size: 1rem; margin: 0 0 4px; }
+.ps-less td { color: var(--muted); }
+
+.ps-rules td p { margin: 0 0 4px; }
+@media (max-width: 560px) { .ps-row { grid-template-columns: 1fr 1fr; } }
+
+.ps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 10px 14px; }
+.ps-grid .field { margin: 0 !important; }
+.ps-check label { display: inline-flex; gap: 6px; align-items: center; margin-top: 1.6em; font-size: 14px; }
+.ps-form details.xpand .xp-in > .field + .field { margin-top: 12px; }
+.ps-custom { margin-top: 18px !important; }
+.ps-items .k { font-size: 11px; }
+.ps-fold { margin-top: 14px; }
+.ps-buy { margin: 20px 0; }
+.ps-box { padding: 20px 24px; }
+.ps-box h3 { font-size: 18px; margin: 0 0 8px; }
+.ps-notes { margin: 0; padding-left: 1.1em; }
+.ps-notes li { margin-bottom: 0.6em; }

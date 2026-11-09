@@ -1,0 +1,46 @@
+/* Tip pool calculator: the tool-full layout (web/tool-full.css) in the money hue.
+   Only this tool's parts are here: the form grid, the verdict and the findings of the check, worst
+   first, and the tip sheet. */
+.tp { --accent: var(--h-money); --endwise-accent: var(--h-money); }
+
+.tp-step { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 18px 0 8px; }
+.tp-step:first-child { margin-top: 0; }
+.tp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
+.tp-grid > .field { margin: 0 !important; }
+.tp-wide { grid-column: 1 / -1; }
+.tp-narrow { max-width: 24rem; }
+.tp textarea { width: 100%; font-family: var(--font-mono); font-size: 13px; }
+.tp input[type="date"] { color-scheme: dark; }
+.tp-check { display: flex; gap: 8px; align-items: baseline; color: var(--text-2); margin: 0 0 8px; font-size: 14px; }
+
+.tp-verdict { font: 500 15px/1.4 var(--font-text); margin: 12px 0 0; color: var(--ok); }
+.tp-verdict.fail { color: #ff6b6b; }
+.tp-verdict.check { color: var(--h-date); }
+.tp-items { margin-top: 18px; }
+.tp-list { margin: 0; padding-left: 1.1rem; }
+.tp-list li { margin: 4px 0; }
+
+.tp-panel { padding: 22px; }
+.tp-buy .btn { margin: 4px 0 8px; }
+.tp-buy .tp-aside { color: var(--muted); margin: 10px 0; }
+.tp-got a { text-decoration: underline; }
+.tp-mini-out { margin-top: 14px; font-size: 15px; font-variant-numeric: tabular-nums; min-height: 1.5em; }
+.tp-sources { max-width: 60rem; margin-top: 20px; }
+.tp-sources a { color: var(--text-2); }
+
+.tp-findings { list-style: none; padding: 0; margin: 0; max-width: 52rem; }
+.tp-findings li { border-left: 3px solid var(--line-2); padding: 6px 0 6px 12px; margin: 0 0 10px; }
+.tp-findings li.fail { border-color: #ff6b6b; }
+.tp-findings li.warn { border-color: var(--h-date); }
+.tp-findings .lvl { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 6px; }
+.tp-findings li.fail .lvl { color: #ff6b6b; }
+.tp-findings li.warn .lvl { color: var(--h-date); }
+.tp-findings blockquote { margin: 6px 0 0; padding: 0 0 0 10px; border-left: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+.tp-findings .cite { font-size: 0.85rem; color: var(--muted); }
+.tp-findings .cite a { text-decoration: underline; }
+.tp-sheet { white-space: pre; overflow-x: auto; font: 12px/1.5 var(--font-mono); padding: 10px 0; }
+.tp-mt { margin-top: 12px; }
+.tp-form .tf-two + .field { margin-top: 18px; }
+.tp-roles { margin: 0 0 12px; }
+@media (max-width: 640px) { .tp-about { display: none; } #tp-staff { height: calc(4 * 1.6em + 26px); } }
+@media (max-width: 640px) { .tf-open .tf-price > span:nth-child(3) { display: none; } }

@@ -1,0 +1,63 @@
+/* Pay application: the tool-full layout (web/tool-full.css) plus this page's own
+   pieces: the line editor, the checks and the calculators. One colour marks what would get the pay
+   app sent back. */
+.pa {
+  --accent: var(--h-money);
+  --accent-ink: #1a0610;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #1a0610;
+  --pa-stop: #ff7a6b;
+  --pa-stop-wash: rgba(255, 122, 107, 0.14);
+  --pa-warn-wash: rgba(255, 196, 92, 0.14);
+}
+.pa input[type="date"] { color-scheme: dark; }
+.pa-form details.xpand .tf-two + .tf-two, .pa-form details.xpand .tf-two + .field { margin-top: 12px; }
+.pa-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pa-actions .btn { flex: 1 1 10rem; }
+
+.pa-editor { padding: 20px 24px; margin-top: 24px; }
+.pa-group { border: 0; padding: 0; margin: 0 0 20px; min-width: 0; }
+.pa-group:last-child { margin-bottom: 0; }
+.pa-group > legend { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding: 0; margin-bottom: 8px; }
+.pa-edit { width: 100%; border-collapse: collapse; font-size: 13px; }
+.pa-edit th { font-weight: 500; text-align: left; padding: 4px; color: var(--muted); white-space: nowrap; }
+.pa-edit th.r { text-align: right; }
+.pa-edit td { padding: 2px; }
+.pa-edit td.c { text-align: center; }
+/* An editor, not a reading table: no row hover or first-cell marker from the site's table motion. */
+main .pa-edit tbody tr:hover { background: none; }
+main .pa-edit tbody tr > :first-child { background-image: none; text-indent: 0; }
+.pa-edit input:not([type="checkbox"]) { width: 100%; min-width: 5.5rem; padding: 6px 6px; font-size: 13px; }
+.pa-edit td:nth-child(2) input { min-width: 11rem; }
+.pa-edit input.num { text-align: right; font-variant-numeric: tabular-nums; }
+.pa-x { border: 0; background: none; color: var(--muted); font-size: 18px; line-height: 1; padding: 4px 8px; cursor: pointer; }
+.pa-x:hover, .pa-x:focus-visible { color: var(--pa-stop); }
+.pa-group .btn-small { margin-top: 8px; }
+
+.pa-items .k { font-size: 11px; }
+.pa-checks { list-style: none; padding: 0; margin: 14px 0 0; font-size: 13.5px; color: var(--text-2); }
+.pa-checks li { padding: 8px 10px; margin-bottom: 6px; border-left: 3px solid var(--line-2); }
+.pa-checks .pa-error { border-left-color: var(--pa-stop); background: var(--pa-stop-wash); }
+.pa-checks .pa-warning { border-left-color: #e8a93a; background: var(--pa-warn-wash); }
+.pa-checks .pa-ok { border-left-color: var(--hue); }
+.pa-sheet { margin-top: 14px; }
+.pa-sheet table { font-size: 13px; }
+.pa-downloads .btn { margin: 4px 6px 0 0; }
+#pa-files:empty { display: none; }
+
+.pa-calc-desk { margin-top: 24px; }
+.pa-calc .choice-row { flex-wrap: wrap; }
+#pa-calc-fields { display: grid; gap: 10px 12px; grid-template-columns: 1fr 1fr; margin-top: 16px; }
+#pa-calc-fields .field { margin: 0 !important; }
+.pa-calc-out .tf-big b.word { font-size: 28px; }
+.pa-box { padding: 20px 24px; }
+.pa-box h3 { font-size: 18px; margin: 0 0 8px; }
+.pa-coverage { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.pa-coverage td, .pa-coverage th { vertical-align: top; text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); color: var(--text-2); }
+.pa-coverage thead th { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.pa-aside { color: var(--muted); font-size: 13.5px; margin: 12px 0 0; }
+#pa-disclaimers, .pa-sources { margin: 0; padding-left: 1.1em; }
+#pa-disclaimers li, .pa-sources li { margin-bottom: 0.6em; }
+.pa-sources a { word-break: break-word; }
+.r { text-align: right; }
+.num { font-variant-numeric: tabular-nums; }

@@ -1,0 +1,45 @@
+field,value
+code,518210
+title,"Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+level 2: 51,Information
+level 3: 518,"Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+level 4: 5182,"Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+level 5: 51821,"Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+description,"This industry comprises establishments primarily engaged in providing computing infrastructure, data processing services, Web hosting services (except software publishing), and related services, including streaming support services (except streaming distribution services). Data processing establishments provide complete processing and specialized reports from data supplied by clients or provide automated data processing and data entry services."
+census index entry,Application hosting (excluding software publishing)
+census index entry,Automated data processing services
+census index entry,Cloud computing services (except software publishing and computer systems design)
+census index entry,Cloud storage services
+census index entry,"Colocation services (i.e., rental of server and networking space in data centers)"
+census index entry,Computer data storage services
+census index entry,Computer input preparation services
+census index entry,Computer time leasing
+census index entry,Computer time rental
+census index entry,Computer time sharing services
+census index entry,Computing infrastructure provision
+census index entry,Computing platform infrastructure provision
+census index entry,Data capture imaging services
+census index entry,Data entry services
+census index entry,Data processing computer services
+census index entry,"Data processing services (except payroll services, financial transaction processing services)"
+census index entry,Disk and diskette conversion services
+census index entry,Disk and diskette recertification services
+census index entry,Electronic data processing services
+census index entry,Game server hosting providers
+census index entry,Infrastructure as a service (IaaS)
+census index entry,Media streaming data storage services
+census index entry,Media streaming technical support services
+census index entry,Microfiche recording and imaging services
+census index entry,Microfilm recording and imaging services
+census index entry,Optical scanning services
+census index entry,Platform as a service (PaaS)
+census index entry,"Scanning services, optical"
+census index entry,Video and audio technical streaming support services
+census index entry,Video tape and film stock technical streaming support services
+census index entry,Virtual currency (cryptocurrency) mining
+census index entry,Web hosting (excluding software publishing)
+sba size standard,$40 million in average annual receipts
+naics 2017,518210
+sic 1987,7374 7379 7389
+naics 2027 (proposed),no change proposed
+schedule c,"518210 Computing infrastructure providers, data processing, web hosting, & related services"

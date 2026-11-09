@@ -70,3 +70,45 @@
 @media print {
   .if-form, .if-code { display: none; }
 }
+
+/* ---------- The tool page layout (design A): one-sentence answer, plain price line, the tool and its
+   result first in two panels, the rules as a short summary beside what it does not cover, the
+   rest folded. Same tokens as web/base.css. ---------- */
+.t-intro { padding-block: 40px 0; }
+.t-intro h1 { margin-bottom: 0.2em; }
+.t-intro .lede { margin: 10px 0 0; max-width: 46rem; }
+.t-price { margin: 14px 0 0; max-width: 52rem; font: 400 13.5px/1.6 var(--font-mono); color: var(--text-2); }
+.t-desk { display: grid; gap: 16px; margin-top: 24px; align-items: start; }
+.t-desk > * { min-width: 0; }
+@media (min-width: 960px) { .t-desk { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+.t-panel { padding: 22px; border-radius: var(--radius-lg); border: 1px solid var(--line-2); background: linear-gradient(180deg, #111215, #0c0d0f); }
+.t-result { border-color: color-mix(in srgb, var(--hue, var(--warm)) 38%, var(--line-2)); }
+.t-run { width: 100%; margin-top: 16px; min-height: 46px; }
+.t-panel details.xpand > summary { font-size: 14px; }
+.t-ex { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 14px; font: 400 12px/1.5 var(--font-mono); color: var(--muted); }
+.t-ex .ex-tag { flex: none; color: var(--hue, var(--warm)); border-color: color-mix(in srgb, var(--hue, var(--warm)) 45%, transparent); background: none; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; }
+.t-sec { padding-top: 72px; }
+.t-sum { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; align-items: start; margin-top: 18px; }
+.t-sum > * { min-width: 0; }
+.t-sum > div > p:first-child { margin-top: 0; }
+.t-nocover { padding: 20px 22px; border-radius: var(--radius-lg); border: 1px solid var(--line-2); background: var(--bg-1); }
+.t-nocover h3 { font-size: 17px; margin: 0 0 8px; }
+.t-nocover ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14.5px; }
+.t-nocover li + li { margin-top: 6px; }
+@media (max-width: 860px) { .t-sum { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 720px) { .t-intro { padding-top: 24px; } .t-intro .eyebrow { display: none; } .t-panel { padding: 16px; } .t-sec { padding-top: 48px; } }
+.if { --hue: var(--h-money); }
+.if-form.t-panel { border-top: 1px solid var(--line-2); padding-top: 22px; }
+.if-out.t-panel { min-height: 0; }
+.if-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 12px; }
+.if-pair [hidden] { display: none; }
+.if-mode { border: 0; padding: 0; margin: 0 0 12px; }
+.if-rule-cols { margin-top: 12px; }
+.if-return .btn { width: 100%; }
+.if-go { display: flex; align-items: flex-end; padding-bottom: 16px; }
+.if-go .t-run { margin-top: 0; min-height: 44px; }
+.if-mode .choice { padding-block: 6px; }
+.if-mode .choice span { min-height: 36px; padding-block: 0; font-size: 14px; }
+.if-mode .choice { padding-block: 0; }
+@media (min-width: 960px) { .if-desk.t-desk { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); } }
+.if-out th + th { padding-left: 10px; }

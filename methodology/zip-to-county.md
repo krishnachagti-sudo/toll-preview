@@ -165,13 +165,32 @@ The US files are the Census 2020 ZCTA to county relationship file, Census 2020 c
 - [ONS: Postcode products](https://www.ons.gov.uk/methodology/geography/geographicalproducts/postcodeproducts)
 - [ONS: Licences](https://www.ons.gov.uk/methodology/geography/licences)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+US answers come from Census 2020 files and OMB's July 2023 delineation, read 2026-11-07. UK answers come from the ONS Postcode Directory, August 2026, read 2026-11-07; Northern Ireland is not covered.
+
+ZIP code and UK postcode to county lookup: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [Census 2020 ZCTA5 to County relationship file](https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt) | 2020 | 2026-11-07 |
+| [Census 2020 national county codes](https://www2.census.gov/geo/docs/reference/codes2020/national_county2020.txt) | 2020 | 2026-11-07 |
+| [Census 2020 national state codes](https://www2.census.gov/geo/docs/reference/codes2020/national_state2020.txt) | 2020 | 2026-11-07 |
+| [Census regions and divisions](https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt) | 2020 | 2026-11-07 |
+| [OMB July 2023 CBSA delineation (Census list 1)](https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx) | July 2023 | 2026-11-07 |
+| [ONS Postcode Directory (August 2026), ONSPD\_AUG\_2026.zip](https://geoportal.statistics.gov.uk/) | August 2026 | 2026-11-07 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The counts are pinned against the files: 33,791 ZCTAs and 10,180 in more than one county, 2,652,624 postcodes decoded back to the counts the build wrote. Answers are checked for one-county and six-county ZIPs, a state line, Connecticut, Puerto Rico, two-tier and single-tier councils, Scotland, Wales, London, terminated and unplaced postcodes.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The file counts are pinned: 33,791 ZCTAs, 10,180 in more than one county, 3,234 counties, and 2,652,624 Great Britain postcodes decoded back to the counts the build wrote.
+- ZIP 77002 is all in Harris County, ZIP 39573 is split across six Mississippi counties with shares adding to 100, and the Bronx, Connecticut, Puerto Rico and a ZIP with no ZCTA give the noted answers.
+- Postcodes are checked in two-tier and single-tier councils, Scotland, Wales and London, terminated and unplaced; Northern Ireland, the Crown dependencies and unknown postcodes are named, not charged.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the ZIP code and UK postcode to county lookup tool](https://krishnachagti-sudo.github.io/toll-preview/zip-to-county/).
 

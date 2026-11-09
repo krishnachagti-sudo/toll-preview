@@ -1,15 +1,15 @@
 # What date was 90 days ago?
 
-90 days ago, counting back from Saturday, November 7, 2026 (today's date in New York, US Eastern time), was Sunday, August 9, 2026.
+90 days ago, counting back from Sunday, November 8, 2026 (today's date in New York, US Eastern time), was Monday, August 10, 2026.
 
-- Date: August 9, 2026
-- Weekday: Sunday
-- ISO week: 2026-W32
-- US business days between: 63
+- Date: August 10, 2026
+- Weekday: Monday
+- ISO week: 2026-W33
+- US business days between: 62
 
 ## 90 days ago, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-08&region=US)
 
 ## 90 days ago, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays from the date to the
 
 | Start | 90 days before | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-07) | Sun, Aug 9, 2026 | 63 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-08) | Mon, Aug 10, 2026 | 62 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-09) | Tue, Aug 11, 2026 | 62 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-10) | Wed, Aug 12, 2026 | 62 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays from the date to the
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-18) | Thu, Aug 20, 2026 | 61 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-19) | Fri, Aug 21, 2026 | 61 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-20) | Sat, Aug 22, 2026 | 62 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=90+days+ago&ref=2026-11-21) | Sun, Aug 23, 2026 | 62 |
 
 ## How it is counted
 
@@ -77,5 +77,5 @@ No. Today is day 0, so the count goes back from yesterday as day 1, the way a sp
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-ago/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/90-days-ago.csv

@@ -1,0 +1,13 @@
+time_zone,date,direction,clocks,offsets
+America/New_York,2027-03-14,forward,02:00 becomes 03:00,'-05:00 to -04:00
+America/New_York,2027-11-07,back,02:00 becomes 01:00,'-04:00 to -05:00
+America/Chicago,2027-03-14,forward,02:00 becomes 03:00,'-06:00 to -05:00
+America/Chicago,2027-11-07,back,02:00 becomes 01:00,'-05:00 to -06:00
+America/Denver,2027-03-14,forward,02:00 becomes 03:00,'-07:00 to -06:00
+America/Denver,2027-11-07,back,02:00 becomes 01:00,'-06:00 to -07:00
+America/Phoenix,none,,,
+America/Los_Angeles,2027-03-14,forward,02:00 becomes 03:00,'-08:00 to -07:00
+America/Los_Angeles,2027-11-07,back,02:00 becomes 01:00,'-07:00 to -08:00
+America/Anchorage,2027-03-14,forward,02:00 becomes 03:00,'-09:00 to -08:00
+America/Anchorage,2027-11-07,back,02:00 becomes 01:00,'-08:00 to -09:00
+Pacific/Honolulu,none,,,

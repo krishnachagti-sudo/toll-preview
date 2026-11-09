@@ -71,17 +71,18 @@
 <h1>How mileage reimbursement is calculated: IRS rates</h1>
 <p class="cp-answer">Each trip is priced at the rate in force on its date, from the IRS standard mileage table (loaded from 2011 to 2026), so a year with a mid-year change is split at the change date. Miles are kept in hundredths and rates in tenths of a cent, so every amount is exact and rounded to the cent once per rate.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the mileage reimbursement and irs mileage log compute?</h2>
 <p>The tool prices trips, totals them by period, purpose and employee, works out what an employer still owes against what was paid, splits an allowance above the federal rate for the W-2, and checks a vehicle log against the record elements of IRS Publication 463.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the mileage reimbursement and irs mileage log compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>rate</code>: The rate for one date and purpose, with the period it covers and the document it comes from. With paidDate it applies the paid-date rule below.</li><li><code>rates</code>: The full IRS and GSA tables with their sources.</li><li><code>calculate</code>: Prices up to 25 trips and returns miles, rate and amount by rate period and purpose.</li><li><code>batch</code>: Prices a trip sheet of up to 5,000 rows (rows or csv), totals it per employee, works out the true-up against amounts already paid, and the W-2 box 12 code L and box 1 split.</li><li><code>log</code>: Builds one vehicle's log for a tax year as PDF and CSV, with the completeness checks.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>date, endDate, miles</code>: The trip date (a trip may span several days within one rate period), and miles, accepted as numbers or text such as &quot;1,234.5&quot;.</li><li><code>purpose</code>: business (default), medical, moving, charity, or one of the GSA purposes for federal travel.</li><li><code>paidDate, paidAmount, paidRate</code>: When and how much an employer already paid, for the paid-date rule and the true-up.</li><li><code>employerRate</code>: Your own rate in cents, or a schedule of rates by effective date, for batch.</li><li><code>parking, tolls, odometerStart, odometerEnd, recordedOn</code>: Extras that are added to the total, and the record fields the log checks.</li></ul>
 <p>Outputs:</p>
-<ul><li>rate, its period and its source document for each line</li><li>amounts by period and purpose, and a one-line sentence such as &quot;2,600 x $0.725 + 1,600 x $0.76 = $3,101.00&quot;</li><li>for batch: due, paid, trueUp, box12CodeL and box1Wages per employee</li><li>for log: flags, each with a code and the Publication 463 reason</li></ul>
+<ul><li>rate, its period and its source document for each line</li><li>amounts by period and purpose, and a one-line sentence such as &quot;2,600 x $0.725 + 1,600 x $0.76 = $3,101.00&quot;</li><li>for batch: due, paid, trueUp, box12CodeL and box1Wages per employee</li><li>for log: flags, each with a code and the Publication 463 reason</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -137,16 +138,26 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>IRS rates were read 2026-10-31 from a page updated 2026-07-28. GSA rates come from a page updated 2026-10-23.</p>
 <ul class="cp-sources"><li><a href="https://www.irs.gov/tax-professionals/standard-mileage-rates">IRS: Standard mileage rates (Mileage rates for all years)</a></li><li><a href="https://www.gsa.gov/travel/plan-a-trip/transportation-airfare-rates-pov-rates-etc/privately-owned-vehicle-pov-mileage-reimbursement">GSA: Privately owned vehicle (POV) mileage reimbursement rates</a></li><li><a href="https://www.irs.gov/irb/2026-29_IRB">IRS: Internal Revenue Bulletin 2026-29 (July 13, 2026), Announcement 2026-11</a></li><li><a href="https://www.irs.gov/irb/2026-04_IRB">IRS: Internal Revenue Bulletin 2026-4 (January 20, 2026), Notice 2026-10</a></li><li><a href="https://www.irs.gov/publications/p463">IRS: Publication 463 (2025), Travel, Gift, and Car Expenses</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>IRS rates from 2011-01-01 through 2026-12-31, page updated 2026-07-28. GSA rates known through 2026-12-31, page updated 2026-10-23. Dates outside the loaded years are refused, not guessed.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Mileage reimbursement and IRS mileage log: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.irs.gov/tax-professionals/standard-mileage-rates">IRS: Standard mileage rates (Mileage rates for all years)</a></th><td>page updated 2026-07-28</td><td rowspan="5">2026-10-31</td></tr>
+<tr><th scope="row"><a href="https://www.gsa.gov/travel/plan-a-trip/transportation-airfare-rates-pov-rates-etc/privately-owned-vehicle-pov-mileage-reimbursement">GSA: Privately owned vehicle (POV) mileage reimbursement rates</a></th><td>page updated 2026-10-23</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/irb/2026-29_IRB">IRS: Internal Revenue Bulletin 2026-29 (July 13, 2026), Announcement 2026-11</a></th><td rowspan="3">see the document</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/irb/2026-04_IRB">IRS: Internal Revenue Bulletin 2026-4 (January 20, 2026), Notice 2026-10</a></th></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/publications/p463">IRS: Publication 463 (2025), Travel, Gift, and Car Expenses</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>The stored IRS table is compared period by period with the IRS table recorded in the test, and every row of the GSA table by the date travel began. The 2026 change, the paid-date rule from Announcement 2026-11 and the 2011 and 2022 mid-year changes are checked, and a worked example is reproduced: 4,200 miles split at July 1 is 2,600 x $0.725 + 1,600 x $0.76 = $3,101.00.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The stored IRS table is compared period by period with the IRS table recorded in the test, and every row of the GSA table is checked by the date travel began.</li><li>The 2026 change is checked (72.5 cents to June 30, 76 cents from July 1), with the paid-date rule from Announcement 2026-11, and the 2011 and 2022 mid-year changes.</li><li>A worked example is reproduced: 4,200 miles split at July 1 is 2,600 x $0.725 + 1,600 x $0.76 = $3,101.00.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/mileage-reimbursement/">Open the Mileage reimbursement and IRS mileage log tool</a>.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the mileage reimbursement and irs mileage log answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the mileage reimbursement and irs mileage log refuse to answer?</h3><p>Rates are loaded from 2011-01-01 through 2026-12-31; a date before or after is refused and never guessed. GSA rates are known through 2026-12-31. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the mileage reimbursement and irs mileage log answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the mileage reimbursement and irs mileage log refuse to answer?</h3></summary><div class="xp-in"><p>Rates are loaded from 2011-01-01 through 2026-12-31; a date before or after is refused and never guessed. GSA rates are known through 2026-12-31. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/mileage-reimbursement/">Open the Mileage reimbursement and IRS mileage log tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/mileage-reimbursement/irs-mileage-log-requirements/">Mileage log requirements</a></li><li><a href="/toll-preview/mileage-reimbursement/mileage-log-template/">Mileage log template</a></li><li><a href="/toll-preview/mileage-reimbursement/irs-mileage-rate-2026/">IRS mileage rates 2026</a></li><li><a href="/toll-preview/irs-mileage-rate-history/">IRS mileage rate history</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/mileage-reimbursement.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -239,6 +250,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

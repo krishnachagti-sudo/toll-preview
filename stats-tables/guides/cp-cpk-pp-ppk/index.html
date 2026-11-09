@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cp vs Cpk vs Pp vs Ppk, and which sigma each one uses: Endwise</title>
+<meta name="description" content="Each capability index in one line with its formula, why Cpk uses R-bar / d2 and Ppk the overall standard deviation, and one dataset worked both ways (Cpk 1.39, Ppk 1.31).">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/stats-tables/guides/cp-cpk-pp-ppk/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/stats-tables/guides/cp-cpk-pp-ppk.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Cp vs Cpk vs Pp vs Ppk, and which sigma each one uses">
+<meta property="og:description" content="Each capability index in one line with its formula, why Cpk uses R-bar / d2 and Ppk the overall standard deviation, and one dataset worked both ways (Cpk 1.39, Ppk 1.31).">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/stats-tables/guides/cp-cpk-pp-ppk/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/stats-tables/guides/cp-cpk-pp-ppk/","url":"https://krishnachagti-sudo.github.io/toll-preview/stats-tables/guides/cp-cpk-pp-ppk/","name":"Cp vs Cpk vs Pp vs Ppk, and which sigma each one uses","description":"Each capability index in one line with its formula, why Cpk uses R-bar / d2 and Ppk the overall standard deviation, and one dataset worked both ways (Cpk 1.39, Ppk 1.31).","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Statistical tables","item":"https://krishnachagti-sudo.github.io/toll-preview/stats-tables/"},{"@type":"ListItem","position":3,"name":"Cp, Cpk, Pp and Ppk","item":"https://krishnachagti-sudo.github.io/toll-preview/stats-tables/guides/cp-cpk-pp-ppk/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between Cpk and Ppk?","acceptedAnswer":{"@type":"Answer","text":"Cpk uses the within-subgroup sigma (R-bar / d2 or s-bar / c4); Ppk uses the overall standard deviation of all readings. When Ppk is well below Cpk, the process mean is moving between subgroups."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"stats-tables"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/stats-tables/">Statistical tables</a></li><li aria-current="page">Cp, Cpk, Pp and Ppk</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>Cp, Cpk, Pp and Ppk</h1>
+<p class="cp-answer">Cp and Cpk use the within-subgroup sigma (R-bar / d2), Pp and Ppk the overall standard deviation; on the example data (LSL 9.8, USL 10.2) that gives Cp 1.394, Cpk 1.386, Pp 1.314 and Ppk 1.305.</p>
+<dl class="cp-facts"><div><dt>Cp</dt><dd class="num">1.394</dd></div><div><dt>Cpk</dt><dd class="num">1.386</dd></div><div><dt>Pp</dt><dd class="num">1.314</dd></div><div><dt>Ppk</dt><dd class="num">1.305</dd></div></dl>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="defs">The four indices</h2>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Index</th><th scope="col">Formula</th><th scope="col">Sigma used</th></tr></thead><tbody>
+<tr><th scope="row">Cp</th><td><code>(USL - LSL) / (6 sigma_within)</code></td><td>Within subgroups: R-bar / d2, s-bar / c4, or MR-bar / 1.128</td></tr>
+<tr><th scope="row">Cpk</th><td><code>min(USL - mean, mean - LSL) / (3 sigma_within)</code></td><td>Within subgroups</td></tr>
+<tr><th scope="row">Pp</th><td><code>(USL - LSL) / (6 sigma_overall)</code></td><td>Overall standard deviation of all readings</td></tr>
+<tr><th scope="row">Ppk</th><td><code>min(USL - mean, mean - LSL) / (3 sigma_overall)</code></td><td>Overall</td></tr>
+</tbody></table></div>
+<p>The link to the constants table is d2: within-subgroup sigma is R-bar / d2 (d2 = 2.3259 for subgroups of 5). See <a href="/toll-preview/stats-tables/guides/control-chart-constants/">control chart constants</a>.</p>
+</section>
+<section>
+<h2 id="nist">NIST's example</h2>
+<p>NIST's e-Handbook takes USL 20, LSL 8, mean 16 and sigma 2: Cp = 12 / 12 = 1.0000, Cpu = 4 / 6 = 0.6667, Cpl = 8 / 6 = 1.3333, so Cpk = 0.6667. The process could fit the specs if it were centred at 14, but it runs at 16.</p>
+</section>
+<section>
+<h2 id="both">One dataset, both ways</h2>
+<p>The 125 readings from <a href="/toll-preview/stats-tables/guides/xbar-r-control-limits-worked/">the worked X-bar and R chart</a>, with specs 9.8 to 10.2 mm:</p>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col"></th><th scope="col" class="r num">Within (Cp, Cpk)</th><th scope="col" class="r num">Overall (Pp, Ppk)</th></tr></thead><tbody>
+<tr><th scope="row">Sigma</th><td class="r num">0.04781</td><td class="r num">0.05075</td></tr>
+<tr><th scope="row">Capability (Cp / Pp)</th><td class="r num">1.394</td><td class="r num">1.314</td></tr>
+<tr><th scope="row">Upper (Cpu / Ppu)</th><td class="r num">1.386</td><td class="r num">1.305</td></tr>
+<tr><th scope="row">Lower (Cpl / Ppl)</th><td class="r num">1.403</td><td class="r num">1.322</td></tr>
+<tr><th scope="row">Cpk / Ppk</th><td class="r num">1.386</td><td class="r num">1.305</td></tr>
+<tr><th scope="row">Expected parts outside spec, per million</th><td class="r num">28.9</td><td class="r num">81.7</td></tr>
+</tbody></table></div>
+<p>The gap (Ppk 1.305 against Cpk 1.386) is the shift in subgroup 17: overall variation counts it, within-subgroup variation does not.</p>
+</section>
+<section>
+<h2 id="reading">Reading the numbers</h2>
+<ul><li>NIST notes it would like Cpk to be at least 1.0 in its example. Customers set their own minimums (1.33 and 1.67 are common in contracts); check the one that applies to you rather than a general rule.</li><li>Capability assumes normal data from a stable process: check the control chart first, and do not read Cpk from an unstable process.</li><li>Too few subgroups make sigma, and so every index, uncertain.</li></ul>
+</section>
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Your own data</h2><p class="muted">Paste readings and the spec limits in the capability tab.</p><form method="get" action="/toll-preview/stats-tables/" class="cp-tool-form"><input type="hidden" name="op" value="capability"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open the capability calculator</button></form><p class="small"><a href="/toll-preview/stats-tables/?op=capability">Open this in the full calculator</a></p></aside>
+<ul class="cp-sources"><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm">NIST/SEMATECH e-Handbook 6.1.6: What is process capability? (read November 8, 2026)</a></li><li><a href="https://www.itl.nist.gov/div898/handbook/pmc/section3/pmc321.htm">NIST/SEMATECH e-Handbook 6.3.2.1: Shewhart X-bar and R and S control charts (A2, D3, D4 for n = 2 to 10; read November 8, 2026)</a></li></ul>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>What is the difference between Cpk and Ppk?</h3></summary><div class="xp-in"><p>Cpk uses the within-subgroup sigma (R-bar / d2 or s-bar / c4); Ppk uses the overall standard deviation of all readings. When Ppk is well below Cpk, the process mean is moving between subgroups.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/stats-tables/guides/xbar-r-control-limits-worked/">The worked X-bar and R chart (same data)</a></li><li><a href="/toll-preview/stats-tables/guides/sigma-level-dpmo-yield/">Sigma level, DPMO and yield</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/stats-tables/guides/cp-cpk-pp-ppk.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

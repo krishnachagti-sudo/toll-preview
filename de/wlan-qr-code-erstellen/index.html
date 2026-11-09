@@ -79,6 +79,7 @@
 <h1>WLAN-QR-Code erstellen: so ist der Text im Code aufgebaut</h1>
 <p class="cp-answer">Ein WLAN-QR-Code enthält eine Zeile Text, zum Beispiel WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;. T ist die Verschlüsselung (WPA, WEP, WPA2-EAP oder nopass), S der Netzwerkname, P das Passwort; die Zeichen \ ; , &quot; : werden mit einem Backslash maskiert. Dieses Beispiel ist Version 3 (29 x 29 Module) bei Stufe M.</p>
 
+
 </header>
 <div class="cp-body prose">
 <section>
@@ -109,7 +110,7 @@ WIFI:T:nopass;S:Lobby;;</code></pre>
 <ul class="cp-sources"><li><a href="https://github.com/zxing/zxing/wiki/Barcode-Contents">ZXing wiki: Barcode Contents (WiFi, SMS, geo, tel, mailto, vCard), gelesen am 2. November 2026</a></li></ul>
 </section>
 <section><h2 id="steps">Schritte</h2><ol class="cp-steps"><li><strong>Mit WIFI: beginnen.</strong> Danach folgen die Felder, jedes mit einem Semikolon am Ende, in beliebiger Reihenfolge.</li><li><strong>Verschlüsselung.</strong> T:WPA für private WPA-, WPA2- und WPA3-Netze, T:WEP, T:WPA2-EAP für Unternehmensnetze oder T:nopass für ein offenes Netz.</li><li><strong>Name und Passwort.</strong> S: der Netzwerkname, P: das Passwort. Setzen Sie vor jedes \ ; , &quot; oder : einen Backslash. Ein Name oder Passwort, das sich als Hex-Zahl lesen ließe, steht in doppelten Anführungszeichen.</li><li><strong>Abschluss.</strong> Für ein verstecktes Netzwerk H:true ergänzen, dann mit einem zweiten Semikolon enden.</li></ol></section>
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Fragen</h2><h3>Wie sieht der Text in einem WLAN-QR-Code aus?</h3><p>Eine Zeile wie WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;. T ist die Verschlüsselung, S der Netzwerkname, P das Passwort; die Zeichen \ ; , &quot; : werden mit einem Backslash maskiert.</p><h3>Wie mache ich einen QR-Code für ein offenes WLAN?</h3><p>Mit T:nopass und ohne Passwort, zum Beispiel WIFI:T:nopass;S:Lobby;;.</p><h3>Funktioniert der Code auf jedem Handy?</h3><p>Nicht garantiert: Die Unterstützung ist unterschiedlich, besonders bei Unternehmensfeldern (WPA2-EAP). Testen Sie mit den Handys, die Ihre Gäste benutzen.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Fragen</h2><details class="xpand"><summary><h3>Wie sieht der Text in einem WLAN-QR-Code aus?</h3></summary><div class="xp-in"><p>Eine Zeile wie WIFI:T:WPA;S:Cafe Guest;P:tea\;time42;;. T ist die Verschlüsselung, S der Netzwerkname, P das Passwort; die Zeichen \ ; , &quot; : werden mit einem Backslash maskiert.</p></div></details><details class="xpand"><summary><h3>Wie mache ich einen QR-Code für ein offenes WLAN?</h3></summary><div class="xp-in"><p>Mit T:nopass und ohne Passwort, zum Beispiel WIFI:T:nopass;S:Lobby;;.</p></div></details><details class="xpand"><summary><h3>Funktioniert der Code auf jedem Handy?</h3></summary><div class="xp-in"><p>Nicht garantiert: Die Unterstützung ist unterschiedlich, besonders bei Unternehmensfeldern (WPA2-EAP). Testen Sie mit den Handys, die Ihre Gäste benutzen.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Verwandte Seiten</h2><ul><li><a href="/toll-preview/de/qr-code-laeuft-nie-ab/">Läuft ein QR-Code ab?</a></li><li><a href="/toll-preview/de/visitenkarte-qr-code-vcard/">Visitenkarte als QR-Code (vCard)</a></li><li><a href="/toll-preview/de/qr-code-generator/">QR-Code-Generator</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/de/wlan-qr-code-erstellen.md">Diese Seite als Markdown</a> <span aria-hidden="true">·</span> Datenstand <time datetime="2026-11-02">2026-11-02</time></p>
@@ -202,6 +203,7 @@ WIFI:T:nopass;S:Lobby;;</code></pre>
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

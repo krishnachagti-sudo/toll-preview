@@ -1,0 +1,31 @@
+Service,Weight,Zone,"From July 12, 2026","From October 4, 2026",Change,Change %
+USPS Ground Advantage,1 lb,Zone 1,$7.61,$8.01,'+$0.40,5.3%
+USPS Ground Advantage,1 lb,Zone 5,$8.74,$9.29,'+$0.55,6.3%
+USPS Ground Advantage,1 lb,Zone 8,$10.67,$11.22,'+$0.55,5.2%
+USPS Ground Advantage,2 lb,Zone 1,$7.99,$8.39,'+$0.40,5.0%
+USPS Ground Advantage,2 lb,Zone 5,$9.95,$10.50,'+$0.55,5.5%
+USPS Ground Advantage,2 lb,Zone 8,$12.87,$13.42,'+$0.55,4.3%
+USPS Ground Advantage,5 lb,Zone 1,$9.70,$10.35,'+$0.65,6.7%
+USPS Ground Advantage,5 lb,Zone 5,$13.48,$14.53,'+$1.05,7.8%
+USPS Ground Advantage,5 lb,Zone 8,$19.19,$20.24,'+$1.05,5.5%
+USPS Ground Advantage,10 lb,Zone 1,$11.91,$12.56,'+$0.65,5.5%
+USPS Ground Advantage,10 lb,Zone 5,$16.76,$17.81,'+$1.05,6.3%
+USPS Ground Advantage,10 lb,Zone 8,$25.34,$26.39,'+$1.05,4.1%
+USPS Ground Advantage,20 lb,Zone 1,$16.46,$17.51,'+$1.05,6.4%
+USPS Ground Advantage,20 lb,Zone 5,$24.93,$26.68,'+$1.75,7.0%
+USPS Ground Advantage,20 lb,Zone 8,$40.39,$42.14,'+$1.75,4.3%
+Priority Mail,1 lb,Zone 1,$9.04,$9.44,'+$0.40,4.4%
+Priority Mail,1 lb,Zone 5,$12.97,$13.82,'+$0.85,6.6%
+Priority Mail,1 lb,Zone 8,$15.22,$16.07,'+$0.85,5.6%
+Priority Mail,2 lb,Zone 1,$9.10,$9.50,'+$0.40,4.4%
+Priority Mail,2 lb,Zone 5,$13.17,$14.02,'+$0.85,6.5%
+Priority Mail,2 lb,Zone 8,$16.37,$17.22,'+$0.85,5.2%
+Priority Mail,5 lb,Zone 1,$11.39,$12.04,'+$0.65,5.7%
+Priority Mail,5 lb,Zone 5,$21.52,$23.27,'+$1.75,8.1%
+Priority Mail,5 lb,Zone 8,$29.18,$30.93,'+$1.75,6.0%
+Priority Mail,10 lb,Zone 1,$14.50,$15.15,'+$0.65,4.5%
+Priority Mail,10 lb,Zone 5,$27.78,$29.53,'+$1.75,6.3%
+Priority Mail,10 lb,Zone 8,$41.28,$43.03,'+$1.75,4.2%
+Priority Mail,20 lb,Zone 1,$20.56,$21.61,'+$1.05,5.1%
+Priority Mail,20 lb,Zone 5,$44.81,$48.66,'+$3.85,8.6%
+Priority Mail,20 lb,Zone 8,$68.06,$71.91,'+$3.85,5.7%

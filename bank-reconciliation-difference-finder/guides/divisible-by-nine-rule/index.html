@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bank reconciliation off by 9, 90 or 900: the divisible-by-9 rule</title>
+<meta name="description" content="Why a transposition error is always a multiple of 9, the proof in two lines, a table of digit swaps, why a slide gives a multiple of 9 too, and how to find the swapped pair among your unmatched lines.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Bank reconciliation off by 9, 90 or 900: the divisible-by-9 rule">
+<meta property="og:description" content="Why a transposition error is always a multiple of 9, the proof in two lines, a table of digit swaps, why a slide gives a multiple of 9 too, and how to find the swapped pair among your unmatched lines.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule/","url":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule/","name":"Bank reconciliation off by 9, 90 or 900: the divisible-by-9 rule","description":"Why a transposition error is always a multiple of 9, the proof in two lines, a table of digit swaps, why a slide gives a multiple of 9 too, and how to find the swapped pair among your unmatched lines.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Bank reconciliation difference finder","item":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/"},{"@type":"ListItem","position":3,"name":"Off by 9, 90 or 900: the divisible-by-9 rule","item":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does a difference divisible by 9 hint at a transposition?","acceptedAnswer":{"@type":"Answer","text":"Swap neighbouring digits a and b in places 10^(k+1) and 10^k and the number changes by (10a + b - 10b - a) x 10^k = 9 x (a - b) x 10^k: always a multiple of 9."}},{"@type":"Question","name":"Is it proof?","acceptedAnswer":{"@type":"Answer","text":"No. A slide (an extra or missing zero) gives a multiple of 9 too, and two errors can add up to one. Check the pair against the statement."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"bank-reconciliation-difference-finder"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/">Bank reconciliation difference finder</a></li><li aria-current="page">Off by 9, 90 or 900: the divisible-by-9 rule</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">Guide</p>
+<h1>Off by 9, 90 or 900: the divisible-by-9 rule</h1>
+<p class="cp-answer">A bank reconciliation off by 9, 90 or 900 points to two swapped digits, because swapping neighbours changes a number by 9 x the gap between them; in this worked month the gaps are $18.00 ($46.00 for $64.00) and $90.00 ($450.00 for $540.00), and a $1,080.00 gap is a slide ($120.00 for $1,200.00), also a multiple of 9.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the difference finder</h2><p class="muted">The worked files open in the tool and are previewed in your browser, free. Swap in your own exports there.</p><form method="get" action="/toll-preview/bank-reconciliation-difference-finder/" class="cp-tool-form"><input type="hidden" name="statement" value="Date,Description,Amount,Balance
+10/02/2026,SQUARE INC DEP,987.60,&quot;5,107.60&quot;
+10/05/2026,OFFICE DEPOT,-64.00,&quot;5,043.60&quot;
+10/09/2026,SYSCO FOOD SVC,-540.00,&quot;4,503.60&quot;
+10/13/2026,SQUARE INC DEP,&quot;1,012.45&quot;,&quot;5,516.05&quot;
+10/16/2026,CITY WATER,&quot;-1,200.00&quot;,&quot;4,316.05&quot;
+10/21/2026,SQUARE INC DEP,998.30,&quot;5,314.35&quot;
+10/27/2026,COMCAST BUSINESS,-189.99,&quot;5,124.36&quot;
+"><input type="hidden" name="ledger" value="Pine Street Deli (made-up sample)
+Transaction Detail by Account
+&quot;October 1-31, 2026&quot;
+
+,Date,Transaction Type,Num,Name,Memo/Description,Split,Amount,Balance
+Checking,,,,,,,,
+Beginning Balance,,,,,,,,&quot;4,120.00&quot;
+,10/02/2026,Deposit,,Square,Card sales,Sales,987.60,&quot;5,107.60&quot;
+,10/05/2026,Expense,,Office Depot,Receipt rolls,Supplies,-46.00,&quot;5,061.60&quot;
+,10/09/2026,Expense,,Sysco,Produce,Supplies,-450.00,&quot;4,611.60&quot;
+,10/13/2026,Deposit,,Square,Card sales,Sales,&quot;1,012.45&quot;,&quot;5,624.05&quot;
+,10/16/2026,Expense,,City Water,Water and sewer,Utilities,-120.00,&quot;5,504.05&quot;
+,10/21/2026,Deposit,,Square,Card sales,Sales,998.30,&quot;6,502.35&quot;
+,10/27/2026,Expense,,Comcast Business,Internet,Utilities,-189.99,&quot;6,312.36&quot;
+Total for Checking,,,,,,,&quot;$2,192.36&quot;,
+"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/bank-reconciliation-difference-finder/?statement=Date%2CDescription%2CAmount%2CBalance%0D%0A10%2F02%2F2026%2CSQUARE+INC+DEP%2C987.60%2C%225%2C107.60%22%0D%0A10%2F05%2F2026%2COFFICE+DEPOT%2C-64.00%2C%225%2C043.60%22%0D%0A10%2F09%2F2026%2CSYSCO+FOOD+SVC%2C-540.00%2C%224%2C503.60%22%0D%0A10%2F13%2F2026%2CSQUARE+INC+DEP%2C%221%2C012.45%22%2C%225%2C516.05%22%0D%0A10%2F16%2F2026%2CCITY+WATER%2C%22-1%2C200.00%22%2C%224%2C316.05%22%0D%0A10%2F21%2F2026%2CSQUARE+INC+DEP%2C998.30%2C%225%2C314.35%22%0D%0A10%2F27%2F2026%2CCOMCAST+BUSINESS%2C-189.99%2C%225%2C124.36%22%0D%0A&amp;ledger=Pine+Street+Deli+%28made-up+sample%29%0D%0ATransaction+Detail+by+Account%0D%0A%22October+1-31%2C+2026%22%0D%0A%0D%0A%2CDate%2CTransaction+Type%2CNum%2CName%2CMemo%2FDescription%2CSplit%2CAmount%2CBalance%0D%0AChecking%2C%2C%2C%2C%2C%2C%2C%2C%0D%0ABeginning+Balance%2C%2C%2C%2C%2C%2C%2C%2C%224%2C120.00%22%0D%0A%2C10%2F02%2F2026%2CDeposit%2C%2CSquare%2CCard+sales%2CSales%2C987.60%2C%225%2C107.60%22%0D%0A%2C10%2F05%2F2026%2CExpense%2C%2COffice+Depot%2CReceipt+rolls%2CSupplies%2C-46.00%2C%225%2C061.60%22%0D%0A%2C10%2F09%2F2026%2CExpense%2C%2CSysco%2CProduce%2CSupplies%2C-450.00%2C%224%2C611.60%22%0D%0A%2C10%2F13%2F2026%2CDeposit%2C%2CSquare%2CCard+sales%2CSales%2C%221%2C012.45%22%2C%225%2C624.05%22%0D%0A%2C10%2F16%2F2026%2CExpense%2C%2CCity+Water%2CWater+and+sewer%2CUtilities%2C-120.00%2C%225%2C504.05%22%0D%0A%2C10%2F21%2F2026%2CDeposit%2C%2CSquare%2CCard+sales%2CSales%2C998.30%2C%226%2C502.35%22%0D%0A%2C10%2F27%2F2026%2CExpense%2C%2CComcast+Business%2CInternet%2CUtilities%2C-189.99%2C%226%2C312.36%22%0D%0ATotal+for+Checking%2C%2C%2C%2C%2C%2C%2C%22%242%2C192.36%22%2C%0D%0A">Open this example in the tool</a></p></aside>
+<section>
+<h2 id="proof">The proof</h2>
+<p>A two-digit block ab is worth 10a + b; swapped it is 10b + a. The gap is 9a - 9b = 9 x (a - b). In a longer number the block sits at some place value, which multiplies the gap and keeps it a multiple of 9. AccountingTools: &quot;Transposition errors are often revealed during reconciliation processes, especially when the difference is divisible by 9.&quot;</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Swaps and slides, worked out by the checker</caption><thead><tr><th scope="col">Right</th><th scope="col">Typed</th><th scope="col" class="r num">Gap</th><th scope="col" class="r num">Gap / 9</th><th scope="col">Kind</th></tr></thead><tbody>
+<tr><th scope="row">$540.00</th><td>$450.00</td><td class="r num">$90.00</td><td class="r num">$10.00</td><td>swap, digits 1 apart</td></tr>
+<tr><th scope="row">$64.00</th><td>$46.00</td><td class="r num">$18.00</td><td class="r num">$2.00</td><td>swap, digits 2 apart</td></tr>
+<tr><th scope="row">$983.00</th><td>$893.00</td><td class="r num">$90.00</td><td class="r num">$10.00</td><td>swap, digits 1 apart</td></tr>
+<tr><th scope="row">$1,250.00</th><td>$1,520.00</td><td class="r num">$270.00</td><td class="r num">$30.00</td><td>swap, digits 3 apart</td></tr>
+<tr><th scope="row">$72.00</th><td>$27.00</td><td class="r num">$45.00</td><td class="r num">$5.00</td><td>swap, digits 5 apart</td></tr>
+<tr><th scope="row">$3,080.00</th><td>$3,800.00</td><td class="r num">$720.00</td><td class="r num">$80.00</td><td>swap, digits 8 apart</td></tr>
+<tr><th scope="row">$1,200.00</th><td>$120.00</td><td class="r num">$1,080.00</td><td class="r num">$120.00</td><td>slide (ten times)</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="worked">The worked month</h2>
+<p>At October 31, 2026 the statement shows $5,124.36 and the books $6,312.36: a difference of $1,188.00. 4 lines match and 6 lines are on one side only. There are no timing items; the other $1,188.00 (the books are higher) comes from 2 likely transpositions and 1 slide. The running balances first disagree on October 5, 2026.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>The swapped and slid amounts</caption><thead><tr><th scope="col">Date</th><th scope="col">Kind</th><th scope="col">Bank</th><th scope="col">Books</th><th scope="col" class="r num">Effect</th></tr></thead><tbody>
+<tr><th scope="row">2026-10-05</th><td>digit transposition</td><td>bank 2026-10-05 -$64.00 OFFICE DEPOT</td><td>books 2026-10-05 -$46.00 Office Depot Receipt rolls</td><td class="r num">-$18.00</td></tr>
+<tr><th scope="row">2026-10-09</th><td>digit transposition</td><td>bank 2026-10-09 -$540.00 SYSCO FOOD SVC</td><td>books 2026-10-09 -$450.00 Sysco Produce</td><td class="r num">-$90.00</td></tr>
+<tr><th scope="row">2026-10-16</th><td>slide (a missing or extra zero)</td><td>bank 2026-10-16 -$1,200.00 CITY WATER</td><td>books 2026-10-16 -$120.00 City Water Water and sewer</td><td class="r num">-$1,080.00</td></tr>
+</tbody></table></div>
+<p>The month's total gap, $1,188.00, is divisible by 9 as well, but its quotient is not one digit followed by zeros, so no single swap explains it: several errors are mixed. That is why the tool tests each unmatched pair, not only the total.</p>
+</section>
+<section>
+<h2 id="order">The order to check in</h2>
+<ul><li>A swap: two unmatched amounts that are the same digits with neighbours swapped.</li><li>A missing line: an amount equal to the difference.</li><li>An entry made twice.</li><li>A sign error: an amount equal to half the difference.</li></ul>
+</section>
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check a difference</h2><p class="muted">The transposition check on the tool page runs in your browser and is free.</p><form method="get" action="/toll-preview/bank-reconciliation-difference-finder/" class="cp-tool-form"><input type="hidden" name="diff" value="90.00"><input type="hidden" name="amounts" value="450.00"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open the check with this difference</button></form><p class="small"><a href="/toll-preview/bank-reconciliation-difference-finder/?diff=90.00&amp;amounts=450.00">Open the check with this difference</a></p></aside>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://accountingtools.com/articles/transposition-error">AccountingTools: Transposition error, February 13, 2026 (read November 8, 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Why does a difference divisible by 9 hint at a transposition?</h3></summary><div class="xp-in"><p>Swap neighbouring digits a and b in places 10^(k+1) and 10^k and the number changes by (10a + b - 10b - a) x 10^k = 9 x (a - b) x 10^k: always a multiple of 9.</p></div></details><details class="xpand"><summary><h3>Is it proof?</h3></summary><div class="xp-in"><p>No. A slide (an extra or missing zero) gives a multiple of 9 too, and two errors can add up to one. Check the pair against the statement.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/bank-reconciliation-difference-finder/transposition-error-checker/">Transposition error checker</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/difference-is-double-a-transaction/">Difference is twice an amount</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/why-bank-reconciliation-not-balancing/">Why a reconciliation does not balance</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/bank-reconciliation-difference-finder/guides/divisible-by-nine-rule.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

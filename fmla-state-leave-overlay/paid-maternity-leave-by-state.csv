@@ -1,0 +1,15 @@
+state,name,protected_weeks_100,paid_weeks_100,protected_weeks_20,paid_weeks_20,parts_100
+CA,California,22,18,22,18,pregnancy 10; bonding 12
+CO,Colorado,12,12,12,12,pregnancy 10; bonding 2
+CT,Connecticut,12,12,12,12,pregnancy 10; bonding 2
+DE,Delaware,12,12,0,12,pregnancy 10; bonding 2
+DC,District of Columbia,26,>=12,26,>=12,pregnancy 10; bonding 16
+IA,Iowa,12,0,8,0,pregnancy 10; bonding 2
+ME,Maine,12,12,12,12,pregnancy 10; bonding 2
+MD,Maryland,12,0,6,0,pregnancy 10; bonding 2
+MN,Minnesota,20,20,20,20,pregnancy 10; bonding 10
+MT,Montana,12,0,0,0,pregnancy 10; bonding 2
+NJ,New Jersey,22,22,22,22,pregnancy 10; bonding 12
+NY,New York,22,12,12,12,pregnancy 10; bonding 12
+OR,Oregon,22,12,12,12,pregnancy 10; bonding 12
+WA,Washington,16,16,0,16,pregnancy 10; bonding 6

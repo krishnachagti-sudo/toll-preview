@@ -147,7 +147,7 @@ function linesTable(f) {
 
 function headline(label, cents, sub) {
   return [
-    h('p', { class: 'if-label' }, label),
+    kind === 'example' ? h('p', { class: 't-ex' }, [h('span', { class: 'ex-tag' }, tr('Example', 'Ejemplo')), h('span', {}, tr(`${label}: ${tool.examples[0].title}`, label))]) : h('p', { class: 'if-label' }, label),
     h('p', { class: `if-answer${cents < 0 ? ' credit' : ''}` }, [h('small', {}, sub), cents < 0 ? tr(`${money(-cents)} credit`, `Crédito de ${money(-cents)}`) : tr(`${money(cents)} due`, `${money(cents)} por pagar`)]),
   ];
 }
@@ -448,7 +448,12 @@ async function start() {
 
   $('if-form').addEventListener('input', soon);
   $('if-form').addEventListener('change', soon);
-  $('if-form').addEventListener('submit', (ev) => ev.preventDefault());
+  // The button works it out again and, on a phone, brings the answer into view under the form.
+  $('if-form').addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    update();
+    if (matchMedia('(max-width: 959px)').matches) $('if-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   $('if-get').addEventListener('click', getReturn);
   update();
 }

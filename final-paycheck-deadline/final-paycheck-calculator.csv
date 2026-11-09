@@ -1,0 +1,31 @@
+state,name,due_if_fired_2026_11_18,advance_deduction_verdict,net_after_250,minimum_wage,max_deduction_that_week
+AK,Alaska,2026-11-23,no deduction rule read,$470.00,$14.00,$160.00
+AZ,Arizona,2026-11-28,the general deduction rule applies,$470.00,$15.15,$114.00
+CO,Colorado,2026-11-18 16:00,the general deduction rule applies,$470.00,$15.16,$113.60
+CT,Connecticut,2026-11-19,the general deduction rule applies,$470.00,$16.94,$42.40
+DE,Delaware,2026-11-23,the general deduction rule applies,$470.00,$15.00,$120.00
+DC,District of Columbia,2026-11-19,no deduction rule read,$470.00,$18.40,$0.00
+ID,Idaho,2026-11-20,allowed,$470.00,$7.25,$430.00
+IL,Illinois,2026-11-20,only if the advance agreement provided for it,$470.00,$15.00,$120.00
+IA,Iowa,2026-12-04,the general deduction rule applies,$470.00,$7.25,$430.00
+KS,Kansas,2026-12-04,allowed after written notice,$470.00,$7.25,$430.00
+ME,Maine,2026-11-20,allowed with a signed writing,$470.00,$15.10,$116.00
+MD,Maryland,2026-12-04,the general deduction rule applies,$470.00,$15.00,$120.00
+MN,Minnesota,2026-11-19 16:00,allowed if authorized in writing before the loan,$470.00,$11.41,$263.60
+MT,Montana,2026-11-18 16:00,the general deduction rule applies,$470.00,$10.85,$286.00
+NJ,New Jersey,2026-12-04,only on the original loan schedule,$470.00,$15.92,$83.20
+NY,New York,2026-11-20,no deduction rule read,$470.00,$16.00,$80.00
+NC,North Carolina,2026-11-20,the general deduction rule applies,$470.00,$7.25,$430.00
+ND,North Dakota,2026-11-20,allowed,$470.00,$7.25,$430.00
+OK,Oklahoma,2026-11-20,no deduction rule read,$470.00,$7.25,$430.00
+OR,Oregon,2026-11-19,the general deduction rule applies,$470.00,$15.55,$98.00
+PA,Pennsylvania,2026-12-04,no deduction rule read,$470.00,$7.25,$430.00
+SC,South Carolina,2026-11-20,the general deduction rule applies,$470.00,$7.25,$430.00
+SD,South Dakota,2026-11-20,the general deduction rule applies,$470.00,$11.85,$246.00
+TN,Tennessee,2026-12-09,the general deduction rule applies,$470.00,$7.25,$430.00
+TX,Texas,2026-11-24,the general deduction rule applies,$470.00,$7.25,$430.00
+VT,Vermont,2026-11-21 16:00,the general deduction rule applies,$470.00,$14.42,$143.20
+VA,Virginia,2026-12-04,the general deduction rule applies,$470.00,$12.77,$209.20
+WA,Washington,2026-11-28,the general deduction rule applies,$470.00,$17.13,$34.80
+WV,West Virginia,2026-12-04,the general deduction rule applies,$470.00,$8.75,$370.00
+WY,Wyoming,2026-11-20,the general deduction rule applies,$470.00,$7.25,$430.00

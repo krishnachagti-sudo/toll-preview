@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to record loan payments in QuickBooks Online (principal and interest split)</title>
+<meta name="description" content="QuickBooks Online does not split loan payments for you. The check split Intuit describes, the interest-only fix when the bank feed posted the whole payment to the loan, and an import file for every payment.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How to record loan payments in QuickBooks Online (principal and interest split)">
+<meta property="og:description" content="QuickBooks Online does not split loan payments for you. The check split Intuit describes, the interest-only fix when the bank feed posted the whole payment to the loan, and an import file for every payment.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online/","url":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online/","name":"How to record loan payments in QuickBooks Online (principal and interest split)","description":"QuickBooks Online does not split loan payments for you. The check split Intuit describes, the interest-only fix when the bank feed posted the whole payment to the loan, and an import file for every payment.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Amortization schedule to journal entries","item":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/"},{"@type":"ListItem","position":3,"name":"Loans","item":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/loan/"},{"@type":"ListItem","position":4,"name":"Record loan payments in QuickBooks Online","item":"https://krishnachagti-sudo.github.io/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does QuickBooks Online have an amortization schedule?","acceptedAnswer":{"@type":"Answer","text":"No. Intuit: \"Amortization of debts and assets in QuickBooks Online will have to be done through manual transactions\"."}},{"@type":"Question","name":"Can I make the loan payment recurring?","acceptedAnswer":{"@type":"Answer","text":"Intuit suggests it only when the amounts are going to always be the same; a loan's interest falls every month, so a recurring entry with fixed amounts drifts from the lender's balance. Import the computed payments instead."}},{"@type":"Question","name":"How do I record a mortgage payment in QuickBooks Online?","acceptedAnswer":{"@type":"Answer","text":"The same way: principal to the mortgage liability, interest to mortgage interest expense. Escrow for taxes and insurance, if the payment includes it, is a third line to an escrow account."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"amortization-schedule-journal-entries"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/">Amortization schedule to journal entries</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/loan/">Loans</a></li><li aria-current="page">Record loan payments in QuickBooks Online</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">QuickBooks Online</p>
+<h1>Record loan payments in QuickBooks Online</h1>
+<p class="cp-answer">QuickBooks Online has no amortization schedule (Intuit says it will have to be done through manual transactions); for this $40,000.00 loan at 5.9% over 48 months, payment 1 on November 20, 2026 splits into $740.90 principal and $196.67 interest, and the import file posts all 48 payments at once.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the tool</h2><p class="muted">The worked schedules open in the tool and are previewed in your browser, free. Edit them or paste your own there.</p><form method="get" action="/toll-preview/amortization-schedule-journal-entries/" class="cp-tool-form"><input type="hidden" name="csv" value="Item,Type,Amount,Start,Months,End,Method,Paid on,Balance account,PL account,Cash account,Name,Rate,Payment,First payment,Day count,Cancel on,Refund
+Vehicle loan,Loan,40000.00,2026-10-20,48,,,,Vehicle Loan,Interest Expense,Checking,,5.9,,,,,
+"><input type="hidden" name="period" value="2026-11"><input type="hidden" name="from" value="2026-11"><input type="hidden" name="to" value="2027-10"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/amortization-schedule-journal-entries/?csv=Item%2CType%2CAmount%2CStart%2CMonths%2CEnd%2CMethod%2CPaid+on%2CBalance+account%2CPL+account%2CCash+account%2CName%2CRate%2CPayment%2CFirst+payment%2CDay+count%2CCancel+on%2CRefund%0D%0AVehicle+loan%2CLoan%2C40000.00%2C2026-10-20%2C48%2C%2C%2C%2CVehicle+Loan%2CInterest+Expense%2CChecking%2C%2C5.9%2C%2C%2C%2C%2C%0D%0A&amp;period=2026-11&amp;from=2026-11&amp;to=2027-10">Open this example in the tool</a></p></aside>
+<section>
+<h2 id="check">The split check, as Intuit describes it</h2>
+<ol><li>Write the check (or expense) for the full payment from the bank account.</li><li>Line 1: the loan liability account, with the principal ($740.90 for payment 1).</li><li>Line 2: &quot;On line 2, enter the interest expense account and the interest amount under Amount.&quot; ($196.67).</li><li>Intuit: &quot;The amount on your check must equal the total of the lines listing principal and interest.&quot;</li></ol>
+<div class="table-scroll"><table class="rules cp-table"><caption>The first 12 payments</caption><thead><tr><th scope="col">#</th><th scope="col">Date</th><th scope="col" class="r num">Payment</th><th scope="col" class="r num">Interest</th><th scope="col" class="r num">Principal</th><th scope="col" class="r num">Balance</th></tr></thead><tbody>
+<tr><th scope="row">1</th><td>November 20, 2026</td><td class="r num">$937.57</td><td class="r num">$196.67</td><td class="r num">$740.90</td><td class="r num">$39,259.10</td></tr>
+<tr><th scope="row">2</th><td>December 20, 2026</td><td class="r num">$937.57</td><td class="r num">$193.02</td><td class="r num">$744.55</td><td class="r num">$38,514.55</td></tr>
+<tr><th scope="row">3</th><td>January 20, 2027</td><td class="r num">$937.57</td><td class="r num">$189.36</td><td class="r num">$748.21</td><td class="r num">$37,766.34</td></tr>
+<tr><th scope="row">4</th><td>February 20, 2027</td><td class="r num">$937.57</td><td class="r num">$185.68</td><td class="r num">$751.89</td><td class="r num">$37,014.45</td></tr>
+<tr><th scope="row">5</th><td>March 20, 2027</td><td class="r num">$937.57</td><td class="r num">$181.99</td><td class="r num">$755.58</td><td class="r num">$36,258.87</td></tr>
+<tr><th scope="row">6</th><td>April 20, 2027</td><td class="r num">$937.57</td><td class="r num">$178.27</td><td class="r num">$759.30</td><td class="r num">$35,499.57</td></tr>
+<tr><th scope="row">7</th><td>May 20, 2027</td><td class="r num">$937.57</td><td class="r num">$174.54</td><td class="r num">$763.03</td><td class="r num">$34,736.54</td></tr>
+<tr><th scope="row">8</th><td>June 20, 2027</td><td class="r num">$937.57</td><td class="r num">$170.79</td><td class="r num">$766.78</td><td class="r num">$33,969.76</td></tr>
+<tr><th scope="row">9</th><td>July 20, 2027</td><td class="r num">$937.57</td><td class="r num">$167.02</td><td class="r num">$770.55</td><td class="r num">$33,199.21</td></tr>
+<tr><th scope="row">10</th><td>August 20, 2027</td><td class="r num">$937.57</td><td class="r num">$163.23</td><td class="r num">$774.34</td><td class="r num">$32,424.87</td></tr>
+<tr><th scope="row">11</th><td>September 20, 2027</td><td class="r num">$937.57</td><td class="r num">$159.42</td><td class="r num">$778.15</td><td class="r num">$31,646.72</td></tr>
+<tr><th scope="row">12</th><td>October 20, 2027</td><td class="r num">$937.57</td><td class="r num">$155.60</td><td class="r num">$781.97</td><td class="r num">$30,864.75</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="reclass">When the bank feed already posted the payment</h2>
+<p>A common shortcut is to add each bank-feed payment to the loan account in full. Then the loan balance is too low by the interest, and interest expense is missing. The fix is one entry per payment: debit Interest Expense, credit the loan account, $196.67 for payment 1. In the tool, set Loan entries to interest only.</p>
+</section>
+<section>
+<h2 id="import">All payments at once: the import file</h2>
+<pre><code class="language-csv">Journal No.,Journal Date,Account Name,Debits,Credits,Description,Name
+AM-20261120,11/20/2026,Vehicle Loan,740.90,,&quot;Vehicle loan: payment 1 of 48, interest $196.67, principal $740.90&quot;,
+AM-20261120,11/20/2026,Interest Expense,196.67,,&quot;Vehicle loan: payment 1 of 48, interest $196.67, principal $740.90&quot;,
+AM-20261120,11/20/2026,Checking,,937.57,&quot;Vehicle loan: payment 1 of 48, interest $196.67, principal $740.90&quot;,
+AM-20261220,12/20/2026,Vehicle Loan,744.55,,&quot;Vehicle loan: payment 2 of 48, interest $193.02, principal $744.55&quot;,
+AM-20261220,12/20/2026,Interest Expense,193.02,,&quot;Vehicle loan: payment 2 of 48, interest $193.02, principal $744.55&quot;,
+AM-20261220,12/20/2026,Checking,,937.57,&quot;Vehicle loan: payment 2 of 48, interest $193.02, principal $744.55&quot;,
+... 30 more lines</code></pre>
+<ul><li>Intuit's steps: Open Settings, then go to Import Data. Select Journal Entries. Select Browse, choose your CSV file, then Open and Next. Map your spreadsheet headers to the QuickBooks fields. Select Next, then Start import, then Done.</li><li>Accounts must exist first: &quot;If your spreadsheet has new accounts, be sure to add them in your chart of accounts before importing.&quot;</li></ul>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/journal-entries/does-quickbooks-online-have-an-amortization-schedule/00/185786">Intuit QuickBooks: Does QuickBooks Online have an amortization schedule?, updated August 5, 2026 (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">Intuit QuickBooks: Import journal entries into QuickBooks Online, updated August 4, 2026 (read November 8, 2026)</a></li></ul>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Does QuickBooks Online have an amortization schedule?</h3></summary><div class="xp-in"><p>No. Intuit: &quot;Amortization of debts and assets in QuickBooks Online will have to be done through manual transactions&quot;.</p></div></details><details class="xpand"><summary><h3>Can I make the loan payment recurring?</h3></summary><div class="xp-in"><p>Intuit suggests it only when the amounts are going to always be the same; a loan's interest falls every month, so a recurring entry with fixed amounts drifts from the lender's balance. Import the computed payments instead.</p></div></details><details class="xpand"><summary><h3>How do I record a mortgage payment in QuickBooks Online?</h3></summary><div class="xp-in"><p>The same way: principal to the mortgage liability, interest to mortgage interest expense. Escrow for taxes and insurance, if the payment includes it, is a third line to an escrow account.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-desktop/">Loan payments in QuickBooks Desktop</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/guides/journal-entry-import-layout/">The import file layout</a></li><li><a href="/toll-preview/amortization-schedule-journal-entries/vs/quickbooks-recurring-journal/">QuickBooks recurring journal compared</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/amortization-schedule-journal-entries/loan/quickbooks-online.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

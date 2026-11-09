@@ -1,0 +1,115 @@
+/* Amazon Error 8572 checker: a barcode audit sheet. The verdict column carries the page's one idea. */
+.ae {
+  --accent: var(--h-file);
+  --endwise-accent: var(--h-file);
+  --ae-fail: #ff7a6b;
+  --ae-review: #ffb547;
+  --ae-pass: #6fd39a;
+}
+.ae { --hue: var(--h-file); }
+.ae-price ul { margin: 0; padding-left: 1.2em; color: var(--ink-soft); }
+.ae-more { margin-top: 48px; }
+.ae-more h2 { margin-top: 0; }
+.ae textarea { width: 100%; font: 13px/1.4 var(--font-mono); }
+.ae-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--rule); margin-bottom: 10px; }
+.ae-tabs button { font: inherit; background: none; border: 0; border-bottom: 2px solid transparent; color: inherit; padding: 6px 12px; min-height: 36px; cursor: pointer; margin-bottom: -1px; }
+.ae-tabs button[aria-selected="true"] { border-bottom-color: var(--accent); font-weight: 600; }
+.ae-grid { display: grid; gap: 0 14px; }
+@media (min-width: 560px) { .ae-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ae-label { font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0; }
+.ae-answer { font-size: 1.1rem; overflow-wrap: anywhere; }
+.ae-mono { font-family: var(--font-mono); }
+.ae-figures { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline; margin: 10px 0 16px; }
+.ae-fig { display: flex; flex-direction: column; }
+.ae-big { font: 600 2.2rem/1 var(--font-mono); font-variant-numeric: tabular-nums; }
+.ae-fig-fix-first .ae-big { color: var(--ae-fail); }
+.ae-fig-review .ae-big { color: var(--ae-review); }
+.ae-fig-nothing-found .ae-big { color: var(--ae-pass); }
+.ae-table-wrap { overflow-x: auto; margin-top: 14px; }
+.ae-table { border-collapse: collapse; font-size: 13px; width: 100%; }
+.ae-table th, .ae-table td { text-align: left; vertical-align: top; padding: 6px 10px 6px 0; border-bottom: 1px solid var(--rule); }
+.ae-table td:last-child { min-width: 16rem; }
+.ae-verdict { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 7px; border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
+.ae-verdict.v-fail { color: var(--ae-fail); border-color: var(--ae-fail); }
+.ae-verdict.v-review { color: var(--ae-review); border-color: var(--ae-review); }
+.ae-verdict.v-pass { color: var(--ae-pass); border-color: var(--ae-pass); }
+.ae-fixes { margin: 0; padding-left: 1.1em; }
+.ae-fixes li { margin-bottom: 6px; overflow-wrap: anywhere; }
+.ae-fixes .sev-fail::marker { color: var(--ae-fail); }
+.ae-fixes .sev-review::marker { color: var(--ae-review); }
+.ae-fix { display: block; color: var(--ink-soft); }
+.ae-downloads { margin-top: 14px; }
+.ae-dl { font-family: var(--font-mono); }
+.ae-docs { border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 14px; }
+.ae-docs summary { cursor: pointer; min-height: 32px; font-weight: 600; }
+.ae-letter-text { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; border: 1px solid var(--rule); border-radius: 4px; padding: 12px 14px; margin: 8px 0 0; }
+.ae-l-out h3 { font-size: 1rem; margin: 18px 0 6px; }
+.ae-cost-form { display: grid; gap: 0 16px; }
+@media (min-width: 760px) { .ae-cost-form { grid-template-columns: repeat(2, minmax(0, 1fr)) auto; align-items: end; } .ae-cost-form .btn { margin-bottom: 16px; } }
+.ae-rules .xp-in li { margin-bottom: 6px; }
+@media (max-width: 600px) {
+  .ae-table:not(.ae-ctable) thead, .ae-table:not(.ae-ctable) td:first-child { display: none; }
+  .ae-table:not(.ae-ctable) tr { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; border-bottom: 1px solid var(--rule); padding: 8px 0; }
+  .ae-table td { border: 0; padding: 0; }
+  .ae-table td:last-child { grid-column: 1 / -1; min-width: 0; }
+}
+
+/* ---------- Design A tool layout: the tool and its result first ----------
+   H1, a one-sentence answer and the trust line, then the form beside its result (with the Example
+   tag and its inputs line), a plain price line under the button, and the rules as a short summary
+   next to what the tool does not cover, the full text folded. */
+.dz-hero { padding-block: 28px 0; display: grid; gap: 24px; align-items: start; }
+.dz-hero > * { min-width: 0; }
+@media (min-width: 1000px) { .dz-hero { grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; } }
+.dz-hero h1 { margin: 0 0 0.2em; }
+.dz-hero .lede { margin: 0; max-width: 46rem; }
+.dz-hero .tool-shot .scr { max-height: 150px; }
+@media (max-width: 999px) { .dz-hero .tool-shot { display: none; } }
+@media (max-width: 640px) { .dz-hero { padding-top: 16px; } .dz-hero .eyebrow { display: none; } .dz-hero .lede { font-size: 15.5px; } }
+.dz-desk { display: grid; gap: 20px; margin-top: 16px; align-items: start; }
+.dz-desk > * { min-width: 0; }
+@media (min-width: 960px) { .dz-desk { grid-template-columns: minmax(0, 25rem) minmax(0, 1fr); gap: 24px; } }
+.dz-card { border: 1px solid var(--line-2); border-radius: 16px; background: var(--bg-1); padding: 18px 20px; }
+@media (max-width: 640px) { .dz-card { padding: 14px 14px; } }
+.pline { display: flex; flex-wrap: wrap; margin: 10px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.pline > span:not(:last-child)::after { content: "\00b7"; margin: 0 8px; color: var(--muted); }
+.dz-rh { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; margin: 0 0 6px; }
+.dz-rh .dz-wx { font: 500 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.dz-exin { margin: 0 0 12px; font: 400 12.5px/1.45 var(--font-mono); color: var(--muted); }
+.dz-items { list-style: none; margin: 12px 0 0; padding: 0; font-variant-numeric: tabular-nums; }
+.dz-items li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 14px; padding: 9px 0; border-top: 1px solid var(--line); margin: 0; }
+.dz-items li > b { font-weight: 500; }
+.dz-items li > span:nth-child(2) { text-align: right; white-space: nowrap; font-weight: 600; }
+.dz-items li > small { grid-column: 1 / -1; font-size: 12.5px; line-height: 1.4; color: var(--muted); }
+.dz-items li.tot { border-top: 2px solid var(--line-3); }
+.dz-items li.tot > span:nth-child(2) { color: var(--hue, var(--warm)); }
+.dz-rules { margin-top: 48px; }
+.dz-rules-top { display: grid; gap: 20px; align-items: start; }
+.dz-rules-top > * { min-width: 0; }
+@media (min-width: 960px) { .dz-rules-top { grid-template-columns: minmax(0, 1fr) 22rem; gap: 32px; } }
+.dz-sum { list-style: none; margin: 0; padding: 0; max-width: 48rem; }
+.dz-sum li { margin: 0; padding: 10px 0; border-top: 1px solid var(--line); }
+.dz-sum li:first-child { border-top: 0; padding-top: 0; }
+.dz-note { border: 1px solid color-mix(in srgb, var(--h-money) 35%, var(--line-2)); border-radius: 14px; background: var(--bg-1); padding: 16px 18px; }
+.dz-note h3 { margin: 0 0 6px; font-size: 16px; }
+.dz-note p { margin: 0; font-size: 14.5px; color: var(--text-2); }
+.dz-rules details.xpand { max-width: 50rem; }
+.dz-src { margin-top: 18px; font-size: 13.5px; color: var(--muted); max-width: 50rem; }
+.dz-hero .tool-shot figcaption span:last-child { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+@media (min-width: 1000px) { .dz-hero .lede { font-size: 16px; } }
+.dz-col > * + * { margin-top: 16px; }
+.dz-fold { border-top: 1px solid var(--line); padding: 2px 0; margin: 0; }
+.dz-fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 38px; font-size: 14px; color: var(--text-2); }
+.dz-fold > summary::-webkit-details-marker { display: none; }
+.dz-fold > summary::after { content: ""; flex: none; width: 7px; height: 7px; border-right: 1.6px solid var(--hue, var(--warm)); border-bottom: 1.6px solid var(--hue, var(--warm)); transform: translateY(-2px) rotate(45deg); transition: transform 0.2s; }
+.dz-fold[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.dz-fold > summary:hover { color: #fff; }
+.dz-fold[open] > summary { margin-bottom: 8px; }
+.dz-link { all: unset; cursor: pointer; display: inline-flex; align-items: center; min-height: 32px; font-size: 14px; font-weight: 500; color: var(--hue, var(--warm)); }
+.dz-link:hover { text-decoration: underline; }
+.dz-link:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; border-radius: 4px; }
+.dz-answer { font: 500 clamp(1.1rem, 2.2vw, 1.3rem)/1.4 var(--font-display); letter-spacing: -0.01em; margin: 0 0 6px; color: #fff; }
+.dz-form .btn[type="submit"] { width: 100%; margin-top: 8px; }
+.dz-form .field { margin-bottom: 12px; }
+@media (max-width: 640px) { .dz-desk { margin-top: 14px; } }
+@media (max-width: 640px) { .dz-form .field { margin-bottom: 10px; } .dz-form .btn[type="submit"] { margin-top: 6px; } }

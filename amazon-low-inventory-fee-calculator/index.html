@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amazon low-inventory-level fee calculator and reorder planner Endwise</title>
+<meta name="description" content="Will Amazon charge the low-inventory-level fee on this SKU this week, and at what rate? Amazon's 2026 and 2027 rules and rates, every exemption, and the date to send how many units so stock stays at 28 days of supply.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/amazon-low-inventory-fee-calculator/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"amazon-low-inventory-fee-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Amazon low-inventory-level fee and reorder planner">
+<meta property="og:description" content="Check per FBA SKU whether Amazon's low-inventory-level fee applies this week, at which rate (Amazon's 2026 rule and the 2027 rule from February 1, 2027, by size tier and weight, with every listed exemption), and plan the reorder: the send-by and order-by dates and units to send that keep stock at 28 or more days of supply, given prep, transit and receiving days, and what a late shipment costs.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/","name":"Amazon low-inventory-level fee and reorder planner","description":"Check per FBA SKU whether Amazon's low-inventory-level fee applies this week, at which rate (Amazon's 2026 rule and the 2027 rule from February 1, 2027, by size tier and weight, with every listed exemption), and plan the reorder: the send-by and order-by dates and units to send that keep stock at 28 or more days of supply, given prep, transit and receiving days, and what a late shipment costs.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Amazon low-inventory-level fee and reorder planner","item":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/"}]},{"@type":"WebApplication","name":"Amazon low-inventory-level fee and reorder planner","url":"https://krishnachagti-sudo.github.io/toll-preview/amazon-low-inventory-fee-calculator/","description":"Check per FBA SKU whether Amazon's low-inventory-level fee applies this week, at which rate (Amazon's 2026 rule and the 2027 rule from February 1, 2027, by size tier and weight, with every listed exemption), and plan the reorder: the send-by and order-by dates and units to send that keep stock at 28 or more days of supply, given prep, transit and receiving days, and what a late shipment costs.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"One SKU checked on this page","price":"0","priceCurrency":"USD"},{"name":"A file of SKUs, or any API or MCP call","@type":"Offer","price":"0.005","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.005","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"SKU"}}},{"@type":"Offer","name":"The rate tables, exemptions and sources","price":"0","priceCurrency":"USD"}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="li">
+  <section class="wrap dz-hero">
+    <div>
+      <p class="eyebrow">Amazon FBA, SKU by SKU</p>
+      <h1>Amazon low-inventory-level fee calculator</h1>
+      <p class="lede">See whether the fee hits a SKU this week, at what rate, and when to send how many units so it stops.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    </div>
+    <figure class="tool-shot"><div class="scr"><img src="/toll-preview/amazon-low-inventory-fee-calculator/files/shot.webp" width="900" height="794" alt="Amazon low-inventory-level fee and reorder planner: the result of its worked example" decoding="async"></div><figcaption><span class="ex-tag">Example</span><span>Example: MUG-12OZ, large standard, 84 units shipped last week, week of 2026-11-09</span></figcaption></figure>
+  </section>
+
+  <section class="wrap dz-desk" aria-label="Calculator" data-jump="Calculator">
+    <form class="li-form dz-form dz-card" id="li-form" novalidate>
+      <div class="li-tabs" role="tablist">
+        <button type="button" role="tab" id="li-tab-one" aria-selected="true" aria-controls="li-one">One SKU</button>
+        <button type="button" role="tab" id="li-tab-file" aria-selected="false" aria-controls="li-file">A file</button>
+      </div>
+
+      <div class="li-grid li-grid-2">
+        <div class="field"><label for="li-date">Week you are checking</label><input id="li-date" type="date" value="2026-11-09"></div>
+        <div class="field"><label for="li-rule">Rule</label>
+          <select id="li-rule"><option value="">By the date</option><option value="2026">2026 rule (30 and 90 days)</option><option value="2027">2027 rule (28 days before and after)</option></select></div>
+      </div>
+
+      <div id="li-one" role="tabpanel" aria-labelledby="li-tab-one">
+        <div class="li-grid li-grid-2">
+          <div class="field"><label for="li-sku">SKU</label><input id="li-sku" type="text" autocomplete="off" value="MUG-12OZ"></div>
+          <div class="field"><label for="li-tier">Size tier</label>
+            <select id="li-tier">
+              <optgroup label="Standard"><option value="small-standard">Small standard</option><option value="large-standard" selected>Large standard</option></optgroup>
+              <optgroup label="Bulky"><option value="small-bulky">Small bulky</option><option value="medium-bulky">Medium bulky (2027)</option><option value="large-bulky">Large bulky</option><option value="extra-large-bulky">Extra-large bulky (2027)</option></optgroup>
+              <optgroup label="Extra-large / oversize"><option value="extra-large">Extra-large (2026)</option><option value="small-oversize">Small oversize (2027)</option><option value="medium-oversize">Medium oversize (2027)</option><option value="large-oversize">Large oversize (2027)</option><option value="long-oversize">Long oversize (2027)</option><option value="special-oversize-light">Special oversize light (2027)</option><option value="special-oversize-heavy">Special oversize heavy (2027)</option></optgroup>
+            </select></div>
+        </div>
+
+        <details class="dz-fold">
+          <summary>Weight, sales and stock on hand</summary>
+          <p class="hint li-hint">Up to January 31, 2027 Amazon's 2026 rule applies; from February 1, 2027 the 2027 rule.</p>
+          <div class="li-grid">
+            <div class="field"><label for="li-weightLb">Shipping weight, lb</label><input id="li-weightLb" type="number" min="0" step="0.01" value="1.2"><p class="hint">Needed for large standard: the rate changes over 3 lb.</p></div>
+            <div class="field"><label for="li-unitsLast7">Units shipped, past 7 days</label><input id="li-unitsLast7" type="number" min="0" step="1" value="84"><p class="hint">Under 20 is exempt.</p></div>
+          </div>
+        <fieldset class="li-set" id="li-set-2026">
+          <legend>2026 rule: the last 30 and 90 days</legend>
+          <div class="li-grid">
+            <div class="field"><label for="li-avgInventory30">Average units on hand a day, 30 days</label><input id="li-avgInventory30" type="number" min="0" step="0.01" value="240"></div>
+            <div class="field"><label for="li-unitsShipped30">Units shipped, 30 days</label><input id="li-unitsShipped30" type="number" min="0" step="1" value="360"></div>
+            <div class="field"><label for="li-avgInventory90">Average units on hand a day, 90 days</label><input id="li-avgInventory90" type="number" min="0" step="0.01" value="280"></div>
+            <div class="field"><label for="li-unitsShipped90">Units shipped, 90 days</label><input id="li-unitsShipped90" type="number" min="0" step="1" value="990"></div>
+            <div class="field"><label for="li-dos30">Or: short-term days of supply</label><input id="li-dos30" type="number" min="0" step="0.1"><p class="hint">As FBA Inventory shows it. Fill both to use these instead.</p></div>
+            <div class="field"><label for="li-dos90">Or: long-term days of supply</label><input id="li-dos90" type="number" min="0" step="0.1"></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="li-set" id="li-set-2027" hidden>
+          <legend>2027 rule: the weekly inventory check</legend>
+          <div class="li-grid">
+            <div class="field"><label for="li-inventory">Sellable FBA units at the check</label><input id="li-inventory" type="number" min="0" step="1" value="360"></div>
+            <div class="field"><label for="li-avgDailyBefore">Average shipped a day, 28 days before</label><input id="li-avgDailyBefore" type="number" min="0" step="0.01" value="20"></div>
+            <div class="field"><label for="li-avgDailyAfter">Average shipped a day, 28 days after</label><input id="li-avgDailyAfter" type="number" min="0" step="0.01" value="15"><p class="hint">Your forecast; empty means the same as before.</p></div>
+          </div>
+        </fieldset>
+
+        </details>
+
+        <details class="dz-fold">
+          <summary>Exemptions</summary>
+          <div class="li-grid">
+            <div class="field"><label for="li-awdSharePct">Share auto-replenished through AWD, prior 90 days (%)</label><input id="li-awdSharePct" type="number" min="0" max="100" step="1"></div>
+            <div class="field"><label for="li-sellerFirstReceived">Your first inventory-received date (new Professional sellers)</label><input id="li-sellerFirstReceived" type="date"></div>
+            <div class="field"><label for="li-newSelection">New Selection</label><select id="li-newSelection"><option value="">Not enrolled</option><option value="2026">New Selection Program (2026)</option><option value="legacy">FBA New Selection (ended July 30, 2026)</option></select></div>
+            <div class="field"><label for="li-productFirstReceived">Product's first inventory-received date</label><input id="li-productFirstReceived" type="date"></div>
+            <div class="field li-check"><label><input id="li-grocery" type="checkbox"> Grocery category</label></div>
+          </div>
+        </details>
+
+
+      </div>
+
+      <div id="li-file" role="tabpanel" aria-labelledby="li-tab-file" hidden>
+        <div class="field">
+          <label for="li-csv">Paste the CSV, or choose the file</label>
+          <textarea id="li-csv" rows="8" spellcheck="false" aria-describedby="li-csv-err"></textarea>
+          <input id="li-upload" type="file" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values">
+          <p class="hint">First row the headers, read by name: sku, size_tier, shipping_weight_lb; for the 2026 rule avg_inventory_30, units_shipped_30, avg_inventory_90, units_shipped_90 (or dos_30, dos_90); for the 2027 rule inventory, avg_daily_before, avg_daily_after; and units_last_7d, awd_share, grocery, new_selection, product_first_received, daily_sales, on_hand, inbound_units, inbound_arrives. The worked example below shows the shape.</p>
+          <p class="field-error" id="li-csv-err"></p>
+        </div>
+      </div>
+
+      <details class="dz-fold">
+        <summary>Reorder and lead time</summary>
+      <fieldset class="li-set li-set-first" id="li-reorder">
+        <legend>Reorder</legend>
+        <div class="li-grid">
+          <div class="field"><label for="li-onHand">Sellable FBA units now</label><input id="li-onHand" type="number" min="0" step="1" value="230"></div>
+          <div class="field"><label for="li-dailySales">Daily sales to plan with</label><input id="li-dailySales" type="number" min="0" step="0.01"><p class="hint">Empty: the 30-day average (2026), or the following 28 days (2027).</p></div>
+          <div class="field"><label for="li-inboundUnits">Units already inbound</label><input id="li-inboundUnits" type="number" min="0" step="1"></div>
+          <div class="field"><label for="li-inboundArrives">Inbound available on</label><input id="li-inboundArrives" type="date"></div>
+        </div>
+      </fieldset>
+        <fieldset class="li-set">
+          <legend>Lead time</legend>
+      <div class="li-grid li-grid-3">
+        <div class="field"><label for="li-prepDays">Prep days</label><input id="li-prepDays" type="number" min="0" max="365" step="1" value="3"></div>
+        <div class="field"><label for="li-transitDays">Transit days</label><input id="li-transitDays" type="number" min="0" max="365" step="1" value="6"></div>
+        <div class="field"><label for="li-receivingDays">Receiving days</label><input id="li-receivingDays" type="number" min="0" max="365" step="1" value="7"></div>
+        <div class="field"><label for="li-supplierDays">Supplier days (optional)</label><input id="li-supplierDays" type="number" min="0" max="365" step="1" value="30"></div>
+        <div class="field"><label for="li-safetyDays">Safety days above 28</label><input id="li-safetyDays" type="number" min="0" max="365" step="1" value="0"></div>
+        <div class="field"><label for="li-coverDays">Days of stock to send</label><input id="li-coverDays" type="number" min="28" max="365" step="1" value="60"></div>
+      </div>
+        </fieldset>
+      </details>
+
+      <button class="btn" type="submit" id="li-run">Check this SKU</button>
+      <p class="pline" data-prices><span>One SKU free on this page</span><span>Files $0.005 per SKU, with an account</span><span>Not kept</span></p>
+      <p class="muted small" id="li-cost"></p>
+      <p class="field-error" id="li-error" role="alert"></p>
+      <p class="visually-hidden" id="li-status" role="status"></p>
+    </form>
+
+    <div class="li-out dz-card" id="li-out" aria-live="polite">
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap li-rules dz-rules" aria-labelledby="li-rules-title" data-jump="Rules">
+    <h2 id="li-rules-title">The rules it uses</h2>
+    <div class="dz-rules-top">
+      <ul class="dz-sum">
+        <li><b>The fee</b> applies when days of supply are under 28 in both windows Amazon measures, on every unit shipped that week.</li>
+        <li><b>2026 rule</b> (through January 31, 2027): the last 30 and 90 days. <b>2027 rule</b>: 28 days before and after the weekly check.</li>
+        <li><b>Bands</b> under 14, 14 to 21 and 21 to 28 days, at Amazon's rate for the size tier and weight.</li>
+        <li><b>Exempt:</b> new sellers, New Selection, AWD auto-replenished, under 20 units a week, grocery.</li>
+      </ul>
+      <aside class="dz-note">
+        <h3>What it does not cover</h3>
+        <p>United States only, from the rules and rates Amazon publishes. What Amazon actually charges is in FBA Inventory, SKU Economics and Transaction View. The plan assumes the steady daily sales you give it.</p>
+      </aside>
+    </div>
+    <details class="xpand">
+      <summary>Read the full rules</summary>
+      <div class="xp-in">
+    <ul>
+      <li><b>2026 rule (through January 31, 2027):</b> historical days of supply is average daily units on hand divided by average daily units shipped, over the last 30 and the last 90 days, per FNSKU. Amazon charges only when both are below 28, at the band of the larger one, on every unit shipped that week. Standard-size and small and large bulky products only.</li>
+      <li><b>2027 rule (from February 1, 2027):</b> inventory at the weekly check divided by average daily units shipped in the 28 days before and the 28 days after it. Charged only when both are below 28, at the band of the higher one, on the units shipped in the first week after the check, about four weeks later, as its own line. Oversize tiers are added.</li>
+      <li><b>Bands:</b> under 14 days, 14 to 21, 21 to 28. Rates from Amazon's tables by size tier and shipping weight: $0.32 to $2.09 a unit (2026), $0.32 to $3.50 (2027).</li>
+      <li><b>Exemptions Amazon lists:</b> new Professional sellers for 365 days; New Selection products (FBA New Selection 180 days; New Selection Program (2026) the first 200 units within 120 days); SKUs 70% or more auto-replenished through AWD over the prior 90 days; products under 20 units in the past 7 days; grocery. No shipments in a window: no fee.</li>
+      <li><b>The plan:</b> at your daily sales, the day FBA stock would fall under 28 days of sales (plus your safety days), less prep, transit and receiving days, is the send-by date; the units to send bring stock to the days you choose. A late plan shows the weeks under 28 days and, under the 2027 rule, what they cost.</li>
+    </ul>
+    <p class="muted small">An estimate from the rules and rates Amazon publishes in its Seller Central help (United States). What Amazon charges is in FBA Inventory, SKU Economics and Transaction View. The plan assumes the steady daily sales you give it. Not financial or accounting advice.</p>
+      </div>
+    </details>
+    <details class="xpand">
+      <summary>Prices</summary>
+      <div class="xp-in li-price"><ul class="endwise-prices"><li><strong>One SKU checked on this page</strong>: free.</li><li><strong>A file of SKUs, or any API or MCP call</strong>: $0.005 per SKU.</li><li><strong>The rate tables, exemptions and sources</strong>: free.</li><li>At most $4.99 a calendar month for this tool; after that it is free until the month ends.</li></ul></div>
+    </details>
+    <p class="dz-src">Sources, read November 8, 2026: Amazon Seller Central help: <a href="https://sellercentral.amazon.com/help/hub/reference/external/GV43F6S76Y9DHYRH">Low-inventory-level fee</a>, <a href="https://sellercentral.amazon.com/help/hub/reference/external/GFU8NTVGHP2JQLCR">Low-inventory-level fee 2027</a>, <a href="https://sellercentral.amazon.com/help/hub/reference/external/GG5KW835AHDJCH8W">Product size tiers</a>, <a href="https://sellercentral.amazon.com/help/hub/reference/external/GB36EVK8V94P8J5D">New Selection Program - 2026</a>, <a href="https://sellercentral.amazon.com/help/hub/reference/external/GVZX6EAEL2KZ3SGA">Unified monthly storage fee</a>; Amazon: <a href="https://amazon.com/selling-fee-changes">2027 US Referral and Fulfillment by Amazon fees</a>.</p>
+  </section>
+
+<section class="wrap cp-index" data-jump="Calculators" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Calculators</h2>
+<h3>Reorder</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/fba-reorder-point/" title="FBA reorder point calculator with prep, transit and receiving time">FBA reorder point</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/fba-restock/" title="FBA restock calculator: how many units to send to Amazon">How many units to send</a></li></ul>
+<h3>Days of supply</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/historical-days-of-supply/" title="Amazon historical days of supply calculator (30 and 90 days)">Historical days of supply</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Rates" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Rates</h2>
+<h3>Amazon's tables</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/fee-rates-2026/" title="Amazon low-inventory-level fee rates 2026 by days of supply and size tier">Fee rates 2026</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/fee-rates-2027/" title="Amazon low-inventory-level fee rates 2027 by days of supply and size tier">Fee rates 2027</a></li></ul>
+<h3>Dates</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/low-inventory-fee-calendar-2027/" title="Amazon low-inventory fee dates 2026 to 2027">Low-inventory fee dates 2026 to 2027</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Guides</h2>
+<h3>The fee</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/how-to-avoid/" title="How to avoid Amazon's low-inventory-level fee">How to avoid it</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/exemptions/" title="Low-inventory-level fee exemptions: new sellers, New Selection, AWD, low volume">Exemptions</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/low-inventory-fee-2026-explained/" title="Amazon low-inventory-level fee in 2026: what triggers it and what it costs">The fee in 2026, explained</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/per-fnsku-vs-parent/" title="Low-inventory fee per FNSKU or per parent ASIN? How variations are judged">Per FNSKU or parent</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/find-low-inventory-fees-in-reports/" title="Where to find low-inventory fees in Seller Central reports">Find the fees in reports</a></li></ul>
+<h3>Planning</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/low-vs-aged-inventory/" title="The safe zone between the low-inventory fee and aged inventory">Low fee vs aged inventory</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/seasonal-and-discontinued-items/" title="Low-inventory fee on seasonal and discontinued items">Seasonal and discontinued</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/awd-replenishment-low-inventory-waiver/" title="Using AWD auto-replenishment to waive the low-inventory fee">AWD waiver</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/guides/q4-inventory-balance/" title="Q4 inventory planning: low-inventory fees vs storage fees">Q4 planning</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Templates" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Templates</h2>
+<h3>Downloads</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/reorder-point-spreadsheet/" title="FBA reorder point spreadsheet with a low-inventory fee check (CSV template)">Reorder spreadsheet</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Comparisons" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Comparisons</h2>
+<h3>Other tools</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/vs/smartscout/" title="SmartScout low inventory fee calculator vs a reorder planner">SmartScout</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/vs/ecomcalctools/" title="EcomCalcTools low inventory fee calculator vs Endwise">EcomCalcTools</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/vs/inventoryhero/" title="InventoryHero reorder point calculator vs Endwise">InventoryHero</a></li><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/vs/spreadsheet-reorder-model/" title="Spreadsheet reorder model vs a low-inventory fee calculator">A spreadsheet</a></li></ul>
+<h3>Amazon</h3><ul class="cp-rows"><li><a href="/toll-preview/amazon-low-inventory-fee-calculator/vs/amazon-restock-inventory/" title="Amazon Restock Inventory vs your own reorder plan">Amazon Restock Inventory</a></li></ul>
+</section>
+
+  <section class="wrap li-code" data-jump="Code" aria-label="Use this from code">
+    <div id="li-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This calculator needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/amazon-low-inventory-fee-calculator/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -1,22 +1,22 @@
 # How many business days until Christmas?
 
-32 business days from today, Saturday, November 7, 2026 (the date in Washington, DC), until Christmas on Friday, December 25, 2026. That is 48 calendar days, with 3 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
+32 business days from today, Sunday, November 8, 2026 (the date in Washington, DC), until Christmas on Friday, December 25, 2026. That is 47 calendar days, with 3 federal holidays skipped. Today is not counted; the date itself is counted when it is a business day.
 
 - Business days: 32
-- Calendar days: 48
+- Calendar days: 47
 - Holidays skipped: 3
 - Date: December 25, 2026
 
 ## Count the business days to any date
 
-[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2026-12-25)
+[Count in the tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2026-12-25)
 
 ## The count to Christmas
 
 | From today | Count |
 | --- | ---: |
 | Counting to | Friday, December 25, 2026 |
-| Calendar days | 48 |
+| Calendar days | 47 |
 | Business days | 32 |
 | Holidays skipped | Nov 11: Veterans Day; Nov 26: Thanksgiving Day; Dec 25: Christmas Day |
 
@@ -26,10 +26,10 @@ Christmas Day is a Friday.
 
 | Date | Day | Calendar days | Business days |
 | --- | --- | ---: | ---: |
-| [Christmas 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2026-12-25) | Dec 25, Fri | 48 | 32 |
-| [Christmas 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2027-12-25) | Dec 25, Sat | 413 | 281 |
-| [Christmas 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2028-12-25) | Dec 25, Mon | 779 | 531 |
-| [Christmas 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-07&end=2029-12-25) | Dec 25, Tue | 1144 | 781 |
+| [Christmas 2026](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2026-12-25) | Dec 25, Fri | 47 | 32 |
+| [Christmas 2027](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2027-12-25) | Dec 25, Sat | 412 | 281 |
+| [Christmas 2028](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2028-12-25) | Dec 25, Mon | 778 | 531 |
+| [Christmas 2029](https://krishnachagti-sudo.github.io/toll-preview/business-days/?op=between&region=US&start=2026-11-08&end=2029-12-25) | Dec 25, Tue | 1143 | 781 |
 
 ## How this is counted
 
@@ -76,5 +76,5 @@ No. Day 1 is the next business day after today, the way WORKDAY and NETWORKDAYS 
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-christmas/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/business-days/business-days-until-christmas.csv

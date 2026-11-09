@@ -1,0 +1,52 @@
+state,law,employer,triggers,notice_days,source
+Alabama,not covered,,,,not read on the state site
+Alaska,not covered,,,,not read on the state site
+Arizona,not covered,,,,not read on the state site
+Arkansas,not covered,,,,not read on the state site
+California,Cal-WARN,75+ at the site,closure (termination); mass layoff; relocation of 100 miles or more,60,"Cal. Labor Code 1400 to 1408 (1400.5, 1401, 1403)"
+Colorado,not covered,,,,not read on the state site
+Connecticut,federal only,100+ (federal),as federal,60,"Connecticut Department of Labor, WARN"
+Delaware,Delaware WARN,100+ employees,plant closing; mass layoff; relocation of 50 miles or more,60,19 Del. C. 1901 to 1911
+District of Columbia,not covered,,,,not read on the state site
+Florida,not covered,,,,not read on the state site
+Georgia,not covered,,,,not read on the state site
+Hawaii,not covered,,,,not read on the state site
+Idaho,not covered,,,,not read on the state site
+Illinois,Illinois WARN,75+ employees,mass layoff,60,820 ILCS 65; 56 Ill. Adm. Code 230
+Indiana,not covered,,,,not read on the state site
+Iowa,Iowa WARN,25+ employees,business closing; mass layoff,30,Iowa Code chapter 84C
+Kansas,not covered,,,,not read on the state site
+Kentucky,not covered,,,,not read on the state site
+Louisiana,not covered,,,,not read on the state site
+Maine,Maine 625-B,100+ at the site,closing; relocation of 100 miles or more; mass layoff (6 months or longer),90,26 M.R.S. 625-B
+Maryland,Maryland ESA,50+ in the state,reduction in operations,60,"Md. Code Ann., Lab. & Empl. 11-301 et seq."
+Massachusetts,not covered,,,,not read on the state site
+Michigan,not covered,,,,not read on the state site
+Minnesota,not covered,,,,not read on the state site
+Mississippi,not covered,,,,not read on the state site
+Missouri,not covered,,,,not read on the state site
+Montana,not covered,,,,not read on the state site
+Nebraska,not covered,,,,not read on the state site
+Nevada,not covered,,,,not read on the state site
+New Hampshire,not covered,,,,not read on the state site
+New Jersey,NJ WARN,100+ employees,closure; mass layoff; relocation,90,"N.J.S.A. 34:21-1 et seq., as amended effective April 10, 2023"
+New Mexico,not covered,,,,not read on the state site
+New York,NY WARN,50+ in the state,plant closing; mass layoff; relocation of 50 miles or more,90,N.Y. Labor Law Article 25-A (860 et seq.); 12 NYCRR Part 921
+North Carolina,not covered,,,,not read on the state site
+North Dakota,not covered,,,,not read on the state site
+Ohio,not covered,,,,not read on the state site
+Oklahoma,not covered,,,,not read on the state site
+Oregon,not covered,,,,not read on the state site
+Pennsylvania,not covered,,,,not read on the state site
+Rhode Island,not covered,,,,not read on the state site
+South Carolina,not covered,,,,not read on the state site
+South Dakota,not covered,,,,not read on the state site
+Tennessee,Tennessee 50-1-601,50-99 at the site,reduction in operations,when told,Tenn. Code Ann. 50-1-601 to 50-1-604
+Texas,not covered,,,,not read on the state site
+Utah,not covered,,,,not read on the state site
+Vermont,not covered,,,,not read on the state site
+Virginia,not covered,,,,not read on the state site
+Washington,Washington WARN,50+ in the state,business closing; mass layoff (counted statewide),60,RCW 49.45 (2025 c 277; 2026 c 86)
+West Virginia,not covered,,,,not read on the state site
+Wisconsin,not covered,,,,not read on the state site
+Wyoming,not covered,,,,not read on the state site

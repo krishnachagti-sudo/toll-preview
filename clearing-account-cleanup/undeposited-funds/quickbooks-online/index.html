@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to clear Undeposited Funds in QuickBooks Online (Payments to deposit)</title>
+<meta name="description" content="Clear Undeposited Funds in QuickBooks Online: export the account, find which payments make up each bank deposit, then record one Bank Deposit per bank line. Intuit's steps, with a worked export.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-online/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-online.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How to clear Undeposited Funds in QuickBooks Online (Payments to deposit)">
+<meta property="og:description" content="Clear Undeposited Funds in QuickBooks Online: export the account, find which payments make up each bank deposit, then record one Bank Deposit per bank line. Intuit's steps, with a worked export.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-online/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-online/","url":"https://krishnachagti-sudo.github.io/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-online/","name":"How to clear Undeposited Funds in QuickBooks Online (Payments to deposit)","description":"Clear Undeposited Funds in QuickBooks Online: export the account, find which payments make up each bank deposit, then record one Bank Deposit per bank line. Intuit's steps, with a worked export.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Clearing account cleanup","item":"https://krishnachagti-sudo.github.io/toll-preview/clearing-account-cleanup/"},{"@type":"ListItem","position":3,"name":"Undeposited Funds","item":"https://krishnachagti-sudo.github.io/toll-preview/clearing-account-cleanup/undeposited-funds/"},{"@type":"ListItem","position":4,"name":"Clear Undeposited Funds in QuickBooks Online","item":"https://krishnachagti-sudo.github.io/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-online/"}]},{"@type":"HowTo","name":"How to clear Undeposited Funds in QuickBooks Online (Payments to deposit)","description":"Clear Undeposited Funds in QuickBooks Online: export the account, find which payments make up each bank deposit, then record one Bank Deposit per bank line. Intuit's steps, with a worked export.","step":[{"@type":"HowToStep","position":1,"name":"Export the account","text":"Run Transaction Detail by Account for Undeposited Funds over the dates you are cleaning, export it to Excel and save it as CSV."},{"@type":"HowToStep","position":2,"name":"Find the sets","text":"Load the CSV and your bank statement CSV into the tool; each bank deposit gets every set of open payments that adds up to it."},{"@type":"HowToStep","position":3,"name":"Bank Deposit step 1","text":"Select + Create."},{"@type":"HowToStep","position":4,"name":"Bank Deposit step 2","text":"Select Bank Deposit."},{"@type":"HowToStep","position":5,"name":"Bank Deposit step 3","text":"From the Account dropdown, choose the account you want to put the money into."},{"@type":"HowToStep","position":6,"name":"Bank Deposit step 4","text":"Select the checkbox for each transaction you want to combine."},{"@type":"HowToStep","position":7,"name":"Bank Deposit step 5","text":"Confirm the total of the selected transactions matches your actual deposit slip."},{"@type":"HowToStep","position":8,"name":"Bank Deposit step 6","text":"Select Save and close or Save and new."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"My chart of accounts says Payments to deposit, not Undeposited Funds.","acceptedAnswer":{"@type":"Answer","text":"Intuit says: \"This account can be renamed, so check the Detail type column for \"Undeposited Funds.\"\" Export the account by the name it has in your file."}},{"@type":"Question","name":"How do I record the processor fee on a deposit?","acceptedAnswer":{"@type":"Answer","text":"Intuit: add it under \"Add funds to this deposit\" with the account Bank Charges \u0026 Fees. \"Enter the amount fee as a negative number.\""}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"clearing-account-cleanup"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/clearing-account-cleanup/">Clearing account cleanup</a></li><li><a href="/toll-preview/clearing-account-cleanup/undeposited-funds/">Undeposited Funds</a></li><li aria-current="page">Clear Undeposited Funds in QuickBooks Online</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">QuickBooks Online</p>
+<h1>Clear Undeposited Funds in QuickBooks Online</h1>
+<p class="cp-answer">In QuickBooks Online, clear Undeposited Funds with one Bank Deposit per bank line, ticking exactly the payments that make it up: in the worked export, 2 deposits have exactly one set ($963.25 = Oak &amp; Co #2280 $275.50 (2026-09-05) + Rivera Plumbing #2290 $687.75 (2026-09-12)), one has 2 sets to choose from, and one needs a $30.75 fee line.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Run this example in the cleanup tool</h2><p class="muted">The worked file opens in the tool and is previewed in your browser, free. Swap in your own export there.</p><form method="get" action="/toll-preview/clearing-account-cleanup/" class="cp-tool-form"><input type="hidden" name="ledger" value="Harbor Lane Studio (made-up sample)
+Transaction Detail by Account
+&quot;January 1, 2025 - October 31, 2026&quot;
+
+,Date,Transaction Type,Num,Name,Memo/Description,Split,Amount,Balance
+Undeposited Funds,,,,,,,,
+,03/14/2025,Payment,1041,Birch Cafe,,Accounts Receivable (A/R),&quot;1,200.00&quot;,&quot;1,200.00&quot;
+,06/02/2025,Sales Receipt,1077,Walk-in sale,,Sales,85.00,&quot;1,285.00&quot;
+,07/06/2026,Payment,2210,Oak &amp; Co,,Accounts Receivable (A/R),640.00,&quot;1,925.00&quot;
+,07/08/2026,Payment,2214,Lumen Dental,,Accounts Receivable (A/R),&quot;1,150.00&quot;,&quot;3,075.00&quot;
+,07/10/2026,Deposit,,,,Business Checking,&quot;-1,790.00&quot;,&quot;1,285.00&quot;
+,08/03/2026,Payment,2251,Birch Cafe,,Accounts Receivable (A/R),300.00,&quot;1,585.00&quot;
+,08/04/2026,Deposit,,Birch Cafe,,Business Checking,-300.00,&quot;1,285.00&quot;
+,08/20/2026,Payment,2268,Pine Street Gym,,Accounts Receivable (A/R),450.00,&quot;1,735.00&quot;
+,09/05/2026,Payment,2280,Oak &amp; Co,,Accounts Receivable (A/R),275.50,&quot;2,010.50&quot;
+,09/09/2026,Payment,2283,Lumen Dental,,Accounts Receivable (A/R),412.25,&quot;2,422.75&quot;
+,09/12/2026,Payment,2290,Rivera Plumbing,,Accounts Receivable (A/R),687.75,&quot;3,110.50&quot;
+,09/18/2026,Payment,2297,Pine Street Gym,,Accounts Receivable (A/R),412.25,&quot;3,522.75&quot;
+,10/02/2026,Payment,2305,Birch Cafe,,Accounts Receivable (A/R),960.00,&quot;4,482.75&quot;
+,10/06/2026,Payment,2311,Lumen Dental,,Accounts Receivable (A/R),540.00,&quot;5,022.75&quot;
+,10/09/2026,Payment,2316,Oak &amp; Co,,Accounts Receivable (A/R),230.00,&quot;5,252.75&quot;
+,10/14/2026,Payment,2320,Rivera Plumbing,,Accounts Receivable (A/R),320.00,&quot;5,572.75&quot;
+,10/14/2026,Payment,2320,Rivera Plumbing,,Accounts Receivable (A/R),320.00,&quot;5,892.75&quot;
+,10/27/2026,Payment,2334,Pine Street Gym,,Accounts Receivable (A/R),&quot;1,050.00&quot;,&quot;6,942.75&quot;
+,10/30/2026,Sales Receipt,2339,Walk-in sale,,Sales,129.99,&quot;7,072.74&quot;
+Total for Undeposited Funds,,,,,,,&quot;$7,072.74&quot;,
+"><input type="hidden" name="bank" value="Date,Description,Amount
+09/14/2026,DEPOSIT,963.25
+09/15/2026,ACH VENDOR PAYMENT,-220.00
+09/22/2026,DEPOSIT,412.25
+10/16/2026,DEPOSIT,&quot;1,500.00&quot;
+10/29/2026,DEPOSIT,&quot;1,019.25&quot;
+"><input type="hidden" name="fee" value="3"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/clearing-account-cleanup/?ledger=Harbor+Lane+Studio+%28made-up+sample%29%0D%0ATransaction+Detail+by+Account%0D%0A%22January+1%2C+2025+-+October+31%2C+2026%22%0D%0A%0D%0A%2CDate%2CTransaction+Type%2CNum%2CName%2CMemo%2FDescription%2CSplit%2CAmount%2CBalance%0D%0AUndeposited+Funds%2C%2C%2C%2C%2C%2C%2C%2C%0D%0A%2C03%2F14%2F2025%2CPayment%2C1041%2CBirch+Cafe%2C%2CAccounts+Receivable+%28A%2FR%29%2C%221%2C200.00%22%2C%221%2C200.00%22%0D%0A%2C06%2F02%2F2025%2CSales+Receipt%2C1077%2CWalk-in+sale%2C%2CSales%2C85.00%2C%221%2C285.00%22%0D%0A%2C07%2F06%2F2026%2CPayment%2C2210%2COak+%26+Co%2C%2CAccounts+Receivable+%28A%2FR%29%2C640.00%2C%221%2C925.00%22%0D%0A%2C07%2F08%2F2026%2CPayment%2C2214%2CLumen+Dental%2C%2CAccounts+Receivable+%28A%2FR%29%2C%221%2C150.00%22%2C%223%2C075.00%22%0D%0A%2C07%2F10%2F2026%2CDeposit%2C%2C%2C%2CBusiness+Checking%2C%22-1%2C790.00%22%2C%221%2C285.00%22%0D%0A%2C08%2F03%2F2026%2CPayment%2C2251%2CBirch+Cafe%2C%2CAccounts+Receivable+%28A%2FR%29%2C300.00%2C%221%2C585.00%22%0D%0A%2C08%2F04%2F2026%2CDeposit%2C%2CBirch+Cafe%2C%2CBusiness+Checking%2C-300.00%2C%221%2C285.00%22%0D%0A%2C08%2F20%2F2026%2CPayment%2C2268%2CPine+Street+Gym%2C%2CAccounts+Receivable+%28A%2FR%29%2C450.00%2C%221%2C735.00%22%0D%0A%2C09%2F05%2F2026%2CPayment%2C2280%2COak+%26+Co%2C%2CAccounts+Receivable+%28A%2FR%29%2C275.50%2C%222%2C010.50%22%0D%0A%2C09%2F09%2F2026%2CPayment%2C2283%2CLumen+Dental%2C%2CAccounts+Receivable+%28A%2FR%29%2C412.25%2C%222%2C422.75%22%0D%0A%2C09%2F12%2F2026%2CPayment%2C2290%2CRivera+Plumbing%2C%2CAccounts+Receivable+%28A%2FR%29%2C687.75%2C%223%2C110.50%22%0D%0A%2C09%2F18%2F2026%2CPayment%2C2297%2CPine+Street+Gym%2C%2CAccounts+Receivable+%28A%2FR%29%2C412.25%2C%223%2C522.75%22%0D%0A%2C10%2F02%2F2026%2CPayment%2C2305%2CBirch+Cafe%2C%2CAccounts+Receivable+%28A%2FR%29%2C960.00%2C%224%2C482.75%22%0D%0A%2C10%2F06%2F2026%2CPayment%2C2311%2CLumen+Dental%2C%2CAccounts+Receivable+%28A%2FR%29%2C540.00%2C%225%2C022.75%22%0D%0A%2C10%2F09%2F2026%2CPayment%2C2316%2COak+%26+Co%2C%2CAccounts+Receivable+%28A%2FR%29%2C230.00%2C%225%2C252.75%22%0D%0A%2C10%2F14%2F2026%2CPayment%2C2320%2CRivera+Plumbing%2C%2CAccounts+Receivable+%28A%2FR%29%2C320.00%2C%225%2C572.75%22%0D%0A%2C10%2F14%2F2026%2CPayment%2C2320%2CRivera+Plumbing%2C%2CAccounts+Receivable+%28A%2FR%29%2C320.00%2C%225%2C892.75%22%0D%0A%2C10%2F27%2F2026%2CPayment%2C2334%2CPine+Street+Gym%2C%2CAccounts+Receivable+%28A%2FR%29%2C%221%2C050.00%22%2C%226%2C942.75%22%0D%0A%2C10%2F30%2F2026%2CSales+Receipt%2C2339%2CWalk-in+sale%2C%2CSales%2C129.99%2C%227%2C072.74%22%0D%0ATotal+for+Undeposited+Funds%2C%2C%2C%2C%2C%2C%2C%22%247%2C072.74%22%2C%0D%0A&amp;bank=Date%2CDescription%2CAmount%0D%0A09%2F14%2F2026%2CDEPOSIT%2C963.25%0D%0A09%2F15%2F2026%2CACH+VENDOR+PAYMENT%2C-220.00%0D%0A09%2F22%2F2026%2CDEPOSIT%2C412.25%0D%0A10%2F16%2F2026%2CDEPOSIT%2C%221%2C500.00%22%0D%0A10%2F29%2F2026%2CDEPOSIT%2C%221%2C019.25%22%0D%0A&amp;fee=3">Open this example in the tool</a></p></aside>
+<section>
+<h2 id="export">1. Export the account</h2>
+<ol><li>Go to Reports and select Standard reports.</li><li>Search for and select the report you want.</li><li>Classic view: select the Export icon, then Export to Excel. New enhanced experience: select Export/Print, then Export to Excel.</li><li>Pick Transaction Detail by Account, filter it to the one account, set the dates, then save the Excel file as CSV.</li></ol>
+<p>Intuit's ledger article says to &quot;start with the Transaction Detail by Account report and then customize it to add the appropriate columns&quot;; the tool reads Amount, or Debit and Credit, either way. If the account has another name in your file, &quot;This account can be renamed, so check the Detail type column for &quot;Undeposited Funds.&quot;&quot;</p>
+</section>
+<section>
+<h2 id="sets">2. Find which payments make up each deposit</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>The worked export against its bank statement</caption><thead><tr><th scope="col">Bank deposit</th><th scope="col">Result</th><th scope="col">The sets</th></tr></thead><tbody>
+<tr><th scope="row">2026-09-14: $963.25</th><td>one set fits</td><td>Oak &amp; Co #2280 $275.50 (2026-09-05) + Rivera Plumbing #2290 $687.75 (2026-09-12)</td></tr>
+<tr><th scope="row">2026-09-22: $412.25</th><td>several sets fit (2)</td><td>Set 1: Pine Street Gym #2297 $412.25 (2026-09-18); Set 2: Lumen Dental #2283 $412.25 (2026-09-09)</td></tr>
+<tr><th scope="row">2026-10-16: $1,500.00</th><td>one set fits</td><td>Birch Cafe #2305 $960.00 (2026-10-02) + Lumen Dental #2311 $540.00 (2026-10-06)</td></tr>
+<tr><th scope="row">2026-10-29: $1,019.25</th><td>fits only after a fee</td><td>Pine Street Gym #2334 $1,050.00 (2026-10-27) = $1,050.00, fee $30.75 (2.93%)</td></tr>
+</tbody></table></div>
+<p>Payments still in Undeposited Funds cannot be matched one by one to a bank line that combines them: an Intuit Community Manager wrote (August 21, 2026) that &quot;QuickBooks looks for a single matching record, not several combined ones.&quot; So the Bank Deposit comes first, then the bank feed matches it.</p>
+</section>
+<section>
+<h2 id="deposit">3. Record one Bank Deposit per bank line</h2>
+<ol><li>Select + Create.</li><li>Select Bank Deposit.</li><li>From the Account dropdown, choose the account you want to put the money into.</li><li>Select the checkbox for each transaction you want to combine.</li><li>Confirm the total of the selected transactions matches your actual deposit slip.</li><li>Select Save and close or Save and new.</li></ol>
+<p>Date each deposit to the bank statement. For a fee, add a line under &quot;Add funds to this deposit&quot; in Bank Charges &amp; Fees: &quot;Enter the amount fee as a negative number.&quot; Intuit also says: &quot;Don't edit the original transactions in QuickBooks.&quot;</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/bank-deposits/record-make-bank-deposits-quickbooks-online/L2BBZOPdr_US_en_US">Intuit QuickBooks: Record and make bank deposits in QuickBooks Online, updated August 3, 2026 (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-articles/export-your-reports-to-excel-from-quickbooks-online/00/262097">Intuit QuickBooks: Export your reports to Excel from QuickBooks Online (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/profit-loss-reports/create-report-shows-debits-credits-transaction/L1zvqNX0e_US_en_US">Intuit QuickBooks: Run a ledger report that shows debits and credits for each transaction, updated August 3, 2026 (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-setup/deposit-payments-undeposited-funds-account-online/L1td0m8Z2_US_en_US">Intuit QuickBooks: Deposit payments into the Undeposited Funds account in QuickBooks Online, updated August 24, 2026 (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/community/banking-4/why-can-t-i-find-a-transaction-to-match-to-a-bank-deposit-in-quickbooks-online-24717">QuickBooks Community: Why can't I find a transaction to match to a bank deposit in QuickBooks Online? (read November 8, 2026)</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Export the account.</strong> Run Transaction Detail by Account for Undeposited Funds over the dates you are cleaning, export it to Excel and save it as CSV.</li><li><strong>Find the sets.</strong> Load the CSV and your bank statement CSV into the tool; each bank deposit gets every set of open payments that adds up to it.</li><li><strong>Bank Deposit step 1.</strong> Select + Create.</li><li><strong>Bank Deposit step 2.</strong> Select Bank Deposit.</li><li><strong>Bank Deposit step 3.</strong> From the Account dropdown, choose the account you want to put the money into.</li><li><strong>Bank Deposit step 4.</strong> Select the checkbox for each transaction you want to combine.</li><li><strong>Bank Deposit step 5.</strong> Confirm the total of the selected transactions matches your actual deposit slip.</li><li><strong>Bank Deposit step 6.</strong> Select Save and close or Save and new.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>My chart of accounts says Payments to deposit, not Undeposited Funds.</h3></summary><div class="xp-in"><p>Intuit says: &quot;This account can be renamed, so check the Detail type column for &quot;Undeposited Funds.&quot;&quot; Export the account by the name it has in your file.</p></div></details><details class="xpand"><summary><h3>How do I record the processor fee on a deposit?</h3></summary><div class="xp-in"><p>Intuit: add it under &quot;Add funds to this deposit&quot; with the account Bank Charges &amp; Fees. &quot;Enter the amount fee as a negative number.&quot;</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-desktop/">QuickBooks Desktop</a></li><li><a href="/toll-preview/clearing-account-cleanup/undeposited-funds/old-years/">Old Undeposited Funds</a></li><li><a href="/toll-preview/clearing-account-cleanup/vs/qbo-built-in-tools/">QuickBooks built-in tools vs this tool</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/clearing-account-cleanup/undeposited-funds/quickbooks-online.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

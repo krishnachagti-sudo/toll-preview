@@ -171,13 +171,32 @@ Every template was read from its avery.com page, and its label outlines measured
 - [Avery template 5146: Print or Write Name Badge Labels (read 2026-11-08)](https://www.avery.com/templates/5146)
 - [Avery template 5147: Print or Write Name Badge Labels (read 2026-11-08)](https://www.avery.com/templates/5147)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+Every template was read from its avery.com page, and its label outlines measured from the blank PDF template that page offers, on 2026-11-08. The data changes only by hand, with the tests that pin each template.
+
+Name tag generator: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [Avery template 5395: Adhesive Name Badges](https://www.avery.com/templates/5395) | blank PDF template U-0121-01 | 2026-11-08 |
+| [Avery template 5895: Adhesive Name Badges](https://www.avery.com/templates/5895) | blank PDF template U-0086-01 | 2026-11-08 |
+| [Avery template 5390: Name Badge Inserts](https://www.avery.com/templates/5390) | blank PDF template U-0119-01 | 2026-11-08 |
+| [Avery template 5392: Name Badges Insert Refills](https://www.avery.com/templates/5392) | blank PDF template U-0114-01 | 2026-11-08 |
+| [Avery template 5146: Print or Write Name Badge Labels](https://www.avery.com/templates/5146) | blank PDF template U-0236-01 | 2026-11-08 |
+| [Avery template 5147: Print or Write Name Badge Labels](https://www.avery.com/templates/5147) | blank PDF template U-0237-01 | 2026-11-08 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Each template is pinned to its avery.com page and blank PDF template: size, count, first and last label positions and compatible numbers. The tests check that every line of every badge stays 0.12 in inside the label in every style, the sheet maths at its boundaries, name case fixing, CSV reading, and that the PDFs are valid and the same bytes every time.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Each of the 6 templates is pinned to its avery.com page and blank PDF template: size as sold, labels per sheet, sheet and label size, first and last label position, and compatible numbers.
+- Every line of every badge stays 0.12 inch inside its label in every style, names shrink, wrap and are cut only in that order, and the sheet maths is checked at its boundaries.
+- CSV reading, heading matching, name case fixing, duplicates and sorting are checked, and the badge, alignment test and check-in PDFs are valid and the same bytes every time.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Name tag generator tool](https://krishnachagti-sudo.github.io/toll-preview/name-tag-generator/).
 

@@ -1,0 +1,31 @@
+/* Ontario rent increase: the tool-full layout (web/tool-full.css) plus this
+   page's own pieces: the folds for a tenant's check and the exemption, the N1 prep sheet. */
+.ri {
+  --accent: var(--h-date);
+  --accent-ink: #1a1206;
+  --endwise-accent: var(--h-date);
+  --endwise-accent-ink: #1a1206;
+}
+.ri input[type="date"] { color-scheme: dark; }
+.ri .check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 12px 0 0; cursor: pointer; }
+.ri .check input { width: 18px; height: 18px; flex: none; }
+.ri-folds > details.xpand { margin-top: 12px; }
+.ri-items .k { font-size: 11px; }
+.ri-problems { list-style: none; margin: 12px 0 0; padding: 0; font-size: 13.5px; }
+.ri-problems li { border-left: 3px solid #ff7b6b; padding: 4px 0 4px 14px; margin: 0 0 6px; color: #ffb4a3; }
+.ri-ex { margin-top: 14px; }
+.ri-dep { color: var(--text); font-size: 17px; }
+.ri-sheet-in { padding: 22px 24px; }
+.ri-sheet-in h2 { font-size: 22px; margin: 0; }
+.ri-sheet-fields { display: grid; gap: 0 16px; margin-top: 16px; }
+@media (min-width: 760px) { .ri-sheet-fields { grid-template-columns: repeat(3, 1fr); } }
+.ri-sheet table { width: 100%; font-variant-numeric: tabular-nums; }
+.ri-sheet .rules { display: block; overflow-x: auto; }
+.ri-md { white-space: pre-wrap; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 14px; font-size: 13px; max-height: 28rem; overflow: auto; }
+.ri-rulelist { padding: 20px 24px; }
+.ri-rule-list { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: 14.5px; }
+.ri-rule-list li { margin: 0 0 10px; }
+.ri-rule-list b { color: var(--text); font-weight: 600; }
+.ri-prices { padding: 20px 24px; }
+.ri-prices h3 { font-size: 18px; margin: 0 0 8px; }
+.ri .check + .field, .ri .ri-startchk + .field { margin-top: 14px; }

@@ -71,6 +71,7 @@
 <h1>How exchange rates on a date are worked out: method</h1>
 <p class="cp-answer">The rate is the quote currency per euro divided by the base currency per euro, from the ECB reference file for that day, calculated in exact decimals and rounded half away from zero to 6 places. If the ECB published nothing on the date, the latest fixing in the 7 days before it is used and the answer says which.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
@@ -158,16 +159,26 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>ECB rates are fetched each day after the ECB publishes them. The IRS table was read 2026-10-31. Treasury and HMRC files are refreshed with the data files.</p>
 <ul class="cp-sources"><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">ECB: euro foreign exchange reference rates</a></li><li><a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange">U.S. Treasury Reporting Rates of Exchange</a></li><li><a href="https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates">IRS: Yearly average currency exchange rates</a></li><li><a href="https://www.trade-tariff.service.gov.uk/exchange_rates">HMRC monthly exchange rates</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>ECB rates are fetched each day after the ECB publishes them, around 16:00 CET; they start on 1999-01-04, and a date with no fixing uses the latest one in the 7 days before it and says which. Treasury rates come quarterly with amendments in between, HMRC rates monthly. The IRS table is copied by hand: 2021 to 2025, page updated 2026-09-17.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Exchange rate on a date: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">European Central Bank euro foreign exchange reference rates</a></th><td>daily fixings from 1999-01-04</td><td>refreshed daily</td></tr>
+<tr><th scope="row"><a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange">U.S. Treasury Reporting Rates of Exchange</a></th><td>every report since 2001-03-31</td><td>refreshed with the data files</td></tr>
+<tr><th scope="row"><a href="https://www.irs.gov/individuals/international-taxpayers/yearly-average-currency-exchange-rates">IRS: Yearly average currency exchange rates</a></th><td>page updated 2026-09-17</td><td>2026-10-31</td></tr>
+<tr><th scope="row"><a href="https://www.trade-tariff.service.gov.uk/exchange_rates">HMRC monthly exchange rates</a></th><td>every month since 2021-01</td><td>refreshed with the data files</td></tr>
+<tr><th scope="row"><a href="https://fiscaldata.treasury.gov/datasets/treasury-reporting-rates-exchange/treasury-reporting-rates-of-exchange">U.S. Treasury Fiscal Data: Treasury Reporting Rates of Exchange (31 December reports)</a></th><td>2023-12-31, 2024-12-31, 2025-12-31</td><td>2026-10-31</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback and rounding that is exact on the decimal value. Treasury and HMRC values read on 2026-11-02 are pinned against the real files, and IRS averages against the stored IRS table, including the cells the IRS prints irregularly.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
+<p>What its test suite asserts:</p>
+<ul><li>The ECB file parser and the rate arithmetic are tested on a sample file: units per euro, cross rates, the 7-day lookback to the day, rounding that is exact on the decimal value.</li><li>When the real downloaded files are present, the worked examples and the currency list are compared with them. Treasury and HMRC values read on 2026-11-02 are pinned against the real files.</li><li>IRS yearly averages are tested against the stored IRS table, including the cells the IRS prints irregularly, which are refused rather than guessed.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
 <p><a href="/toll-preview/fx-on-date/">Open the Exchange rate on a date tool</a>.</p>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the exchange rate on a date answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the exchange rate on a date refuse to answer?</h3><p>The default table is the ECB reference rate. It is a reference rate published once a day, not a rate you could trade at, and not a bank's rate. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the exchange rate on a date answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the exchange rate on a date refuse to answer?</h3></summary><div class="xp-in"><p>The default table is the ECB reference rate. It is a reference rate published once a day, not a rate you could trade at, and not a bank's rate. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/fx-on-date/">Open the Exchange rate on a date tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/fx-on-date/which-exchange-rate-for-us-taxes/">Which exchange rate to use for US taxes</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/fx-on-date.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -260,6 +271,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

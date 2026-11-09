@@ -15,47 +15,56 @@ const country = () => document.querySelector('input[name="country"]:checked').va
 
 function sourceLine(sources) {
   if (!sources?.length) return null;
-  return h('p', { class: 'zc-source' }, ['Source: ', ...sources.flatMap((s, i) => [
+  return h('p', { class: 'tf-note zc-source' }, ['Source: ', ...sources.flatMap((s, i) => [
     i ? '; ' : '',
     h('a', { href: s.url }, s.name),
     s.release ? ` (${s.release})` : s.vintage ? ` (${s.vintage})` : '',
   ]), sources[0].readOn ? `. Files read ${sources[0].readOn}.` : '.']);
 }
 
+// One line per figure: a mark, what it is, the figure, and where it comes from.
+const item = (k, label, fig, src, cls) => h('li', { class: cls ?? null }, [
+  h('span', { class: 'k', 'aria-hidden': 'true' }, k),
+  h('span', {}, label),
+  fig == null ? h('b', {}, '') : h('b', {}, fig),
+  h('em', {}, src),
+]);
+const ZCTA_FILE = 'Census 2020 ZCTA file';
+
 function usCard(r) {
-  const rows = r.counties.map((c) => h('tr', {}, [
-    h('th', { scope: 'row' }, [countyLabel(c), c.largest && r.counties.length > 1 ? h('span', { class: 'zc-tag' }, 'largest') : null]),
-    h('td', { class: 'num' }, c.fips),
-    h('td', { class: 'num' }, percentText(c.sharePercent, c.landM2)),
-    h('td', {}, c.cbsa ? `${c.cbsa.title} (${c.cbsa.type})` : 'none'),
-  ]));
+  const many = r.counties.length > 1;
   return [
-    h('p', { class: 'zc-answer' }, [r.county.fips, h('small', {}, ` ${countyLabel(r.county)}`)]),
-    h('p', { class: 'zc-sub' }, r.answer),
+    h('p', { class: 'tf-big' }, [h('b', { class: 'word' }, countyLabel(r.county)), h('span', {}, `FIPS ${r.county.fips}`)]),
+    h('p', { class: 'tf-sub' }, many ? `ZIP ${r.code} has land in ${r.counties.length} counties, largest share first, by the Census 2020 ZCTA file.` : r.answer),
     h('div', { class: 'zc-bars', 'aria-hidden': 'true' }, r.counties.map((c) => h('span', { style: `flex-grow:${Math.max(c.sharePercent, 0.6)}`, title: `${countyLabel(c)} ${percentText(c.sharePercent, c.landM2)}` }))),
-    h('table', { class: 'zc-table' }, [
-      h('thead', {}, h('tr', {}, [h('th', {}, 'County'), h('th', { class: 'num' }, 'FIPS'), h('th', { class: 'num' }, 'Share of land'), h('th', {}, 'Metro or micro area')])),
-      h('tbody', {}, rows),
+    h('ol', { class: 'tf-items zc-items' }, [
+      ...r.counties.map((c, i) => item(String(i + 1), `${countyLabel(c)} · FIPS ${c.fips}`, percentText(c.sharePercent, c.landM2),
+        `${c.cbsa ? `${c.cbsa.title} (${c.cbsa.type})` : 'No metro or micro area'} · share of land, ${ZCTA_FILE}`, i === 0 && many ? 'hi' : null)),
+      r.region ? item('R', `Census region: ${r.region.region}, ${r.region.division} division`, null, 'Census Bureau regions and divisions', 'plain') : null,
+      r.landKm2 != null ? item('A', 'Land area of the ZIP', `${r.landKm2} km²`, ZCTA_FILE, 'plain') : null,
     ]),
-    r.region ? h('p', { class: 'zc-aside' }, `Census region: ${r.region.region}, ${r.region.division} division. Land area ${r.landKm2} km².`) : null,
   ];
 }
 
 function gbCard(r) {
-  if (!r.localAuthority) return [h('p', { class: 'zc-answer' }, r.code), h('p', { class: 'zc-sub' }, r.answer)];
-  const dl = h('dl', { class: 'zc-facts' });
-  const add = (dt, dd) => dl.append(h('dt', {}, dt), h('dd', {}, dd));
-  add('Local authority', `${r.localAuthority.name} (${r.localAuthority.code})`);
-  add('County council', r.county ? `${r.county.name} (${r.county.code})` : 'None: single-tier council');
-  add('County or unitary authority', `${r.countyOrUnitary.name} (${r.countyOrUnitary.code})`);
-  if (r.region) add('Region', `${r.region.name} (${r.region.code})`);
-  add('Nation', r.nation.name);
-  add('Status', r.status === 'live' ? 'Live' : 'Terminated');
-  return [h('p', { class: 'zc-answer' }, [r.code, h('small', {}, ` ${r.localAuthority.name}`)]), h('p', { class: 'zc-sub' }, r.answer), dl];
+  if (!r.localAuthority) return [h('p', { class: 'tf-big' }, h('b', { class: 'word' }, r.code)), h('p', { class: 'tf-sub' }, r.answer)];
+  const ONS = 'ONS Postcode Directory';
+  return [
+    h('p', { class: 'tf-big' }, [h('b', { class: 'word' }, r.localAuthority.name), h('span', {}, r.code)]),
+    h('p', { class: 'tf-sub' }, r.answer),
+    h('ol', { class: 'tf-items zc-items' }, [
+      item('LA', 'Local authority', `${r.localAuthority.name} (${r.localAuthority.code})`, ONS, 'hi'),
+      item('CC', 'County council', r.county ? `${r.county.name} (${r.county.code})` : 'None: single-tier council', ONS),
+      item('CU', 'County or unitary authority', `${r.countyOrUnitary.name} (${r.countyOrUnitary.code})`, ONS),
+      r.region ? item('R', 'Region', `${r.region.name} (${r.region.code})`, ONS) : null,
+      item('N', 'Nation', r.nation.name, ONS),
+      item('S', 'Status', r.status === 'live' ? 'Live' : 'Terminated', ONS, 'plain'),
+    ]),
+  ];
 }
 
 function oneResult(r) {
-  if (!r.found) return [h('p', { class: 'zc-answer zc-miss' }, r.code ?? r.input), h('p', { class: 'zc-sub' }, r.message)];
+  if (!r.found) return [h('p', { class: 'tf-big zc-miss' }, h('b', { class: 'word' }, r.code ?? r.input)), h('p', { class: 'tf-sub' }, r.message)];
   return r.country === 'US' ? usCard(r) : gbCard(r);
 }
 
@@ -77,22 +86,22 @@ function listView(result) {
       h('td', { class: 'num' }, r.localAuthority ? '100%' : ''), h('td', {}, [r.county?.name, r.region?.name ?? r.nation?.name, r.status === 'terminated' ? 'terminated' : null].filter(Boolean).join('; '))]);
   };
   return [
-    h('p', { class: 'zc-answer' }, [`${s.found.toLocaleString('en-US')}`, h('small', {}, ` of ${s.codes.toLocaleString('en-US')} found`)]),
-    h('p', { class: 'zc-sub' }, result.answer),
+    h('p', { class: 'tf-big' }, [h('b', {}, `${s.found.toLocaleString('en-US')}`), h('span', {}, `of ${s.codes.toLocaleString('en-US')} found`)]),
+    h('p', { class: 'tf-sub' }, result.answer),
     h('p', { class: 'zc-downloads' }, download('zip-to-county.csv', toCsv(result.results))),
     h('div', { class: 'zc-scroll' }, h('table', { class: 'zc-table' }, [
       h('thead', {}, h('tr', {}, [h('th', {}, 'You gave'), h('th', {}, 'Code'), h('th', {}, 'County or local authority'), h('th', { class: 'num' }, 'Share'), h('th', {}, 'Also')])),
       h('tbody', {}, shown.map(row)),
     ])),
-    result.results.length > shown.length ? h('p', { class: 'zc-aside' }, `The first ${shown.length} are shown; the CSV has all ${result.results.length.toLocaleString('en-US')}.`) : null,
+    result.results.length > shown.length ? h('p', { class: 'tf-note' }, `The first ${shown.length} are shown; the CSV has all ${result.results.length.toLocaleString('en-US')}.`) : null,
   ];
 }
 
 function countyView(c) {
   return [
-    h('p', { class: 'zc-answer' }, [String(c.zctaCount), h('small', {}, ` ZCTAs in ${c.name}, ${c.state}`)]),
-    h('p', { class: 'zc-sub' }, c.answer),
-    c.cbsa ? h('p', { class: 'zc-aside' }, `Metro or micro area: ${c.cbsa.title} (${c.cbsa.code}).`) : null,
+    h('p', { class: 'tf-big' }, [h('b', {}, String(c.zctaCount)), h('span', {}, `ZCTAs in ${c.name}, ${c.state}`)]),
+    h('p', { class: 'tf-sub' }, c.answer),
+    c.cbsa ? h('p', { class: 'tf-note' }, `Metro or micro area: ${c.cbsa.title} (${c.cbsa.code}).`) : null,
     h('div', { class: 'zc-scroll' }, h('table', { class: 'zc-table' }, [
       h('thead', {}, h('tr', {}, [h('th', {}, 'ZCTA'), h('th', { class: 'num' }, 'Share in this county'), h('th', {}, 'Other counties')])),
       h('tbody', {}, c.zctas.map((z) => h('tr', {}, [h('td', {}, z.zcta), h('td', { class: 'num' }, percentText(z.sharePercent, z.landM2)),
@@ -101,17 +110,30 @@ function countyView(c) {
   ];
 }
 
-function render(result, { label, note }) {
+// The inputs in one line: "ZIP code 39573", "6 codes: 2134, 10463-2201, ...", "County FIPS 11001".
+function inputsLine(result) {
+  if (result.op === 'county') return `Every ZIP in county FIPS ${result.fips ?? ''}`.trim();
+  const codes = result.results.map((r) => r.input);
+  if (codes.length === 1) return `${result.results[0].country === 'GB' ? 'UK postcode' : 'ZIP code'} ${codes[0]}`;
+  return `${codes.length.toLocaleString('en-US')} codes: ${codes.slice(0, 4).join(', ')}${codes.length > 4 ? ', ...' : ''}`;
+}
+
+// kind: 'example' (the worked example, at rest) or 'run' (your lookup).
+function render(result, { kind, note }) {
   const out = $('zc-out');
   out.textContent = '';
   const body = result.op === 'county' ? countyView(result) : result.results.length === 1 ? oneResult(result.results[0]) : listView(result);
   const notes = result.op === 'county' ? result.notes : result.results.length === 1 ? result.results[0].notes : [];
   out.append(h('div', {}, [
-    label ? h('p', { class: 'zc-label' }, label) : null,
+    h('div', { class: 'tf-rh' }, [
+      kind === 'example' ? h('span', { class: 'tf-tag' }, 'Example') : h('span', { class: 'tf-tag run' }, 'Your result'),
+      h('span', { class: 'tf-src' }, result.op === 'county' ? 'Census 2020 ZCTA file' : 'Census 2020 and ONS files'),
+    ]),
+    h('p', { class: 'tf-exin' }, kind === 'example' ? `Example: ${inputsLine(result)}` : inputsLine(result)),
     ...body,
     notes?.length ? h('ul', { class: 'zc-notes' }, notes.map((x) => h('li', {}, x))) : null,
     sourceLine(result.sources),
-    note ? h('p', { class: 'zc-cost' }, note) : null,
+    note ? h('p', { class: 'tf-cost' }, note) : null,
   ]));
 }
 
@@ -175,7 +197,7 @@ async function onLookup(ev) {
   button.disabled = true;
   try {
     const { result, note } = await runList(codes, country());
-    render(result, { label: codes.length === 1 ? 'Your lookup' : 'Your list', note });
+    render(result, { kind: 'run', note });
     $('zc-status').textContent = result.answer;
   } catch (e) {
     showError(e);
@@ -193,7 +215,7 @@ async function onCounty(ev) {
   button.disabled = true;
   try {
     const json = await T.run(SLUG, { op: 'county', fips });
-    render(json.result, { label: 'Your county', note: costNote(json) });
+    render(json.result, { kind: 'run', note: costNote(json) });
   } catch (e) {
     showError(e, 'zc-fips-err');
   } finally {
@@ -218,10 +240,10 @@ $('zc-county-form').addEventListener('submit', onCounty);
 const asked = fromQuery();
 
 T.api(`/api/v1/tools/${SLUG}`).then((json) => {
-  const ex = json.tool.examples.find((x) => x.input.op === 'lookup' && x.input.codes[0] === '39573') ?? json.tool.examples[0];
+  const ex = json.tool.examples[0];
   if (!asked) {
     $('zc-codes').value = ex.input.codes.join('\n');
-    render(ex.output, { label: 'Worked example', note: 'Change the code and press "Look up".' });
+    render(ex.output, { kind: 'example', note: 'Change the code and press "Look up".' });
   }
 }).catch(() => { $('zc-out').textContent = ''; });
 

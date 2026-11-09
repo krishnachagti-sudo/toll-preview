@@ -71,27 +71,47 @@ function showError(e) {
   if (e.code === 'insufficient_balance' || e.code === 'cap_reached') $('md-error').append(' ', h('a', { href: `${T.base}/account#top-up` }, 'Open your account'));
 }
 
-// The verdict, the worksheet and year 1: what the test returns, and the top of a schedule.
-function renderTest(r, box) {
+// The inputs in one line: "7 assets, tax year 2026, 7-yr elected out of bonus, business income $250,000".
+function inputsLine() {
+  const n = Math.max(0, $('md-csv').value.trim().split('\n').filter((l) => l.trim()).length - 1);
+  const out = [...document.querySelectorAll('#md-electout input:checked')].map((x) => classWord(x.value));
+  const income = num('md-income');
+  return [`${n} asset${n === 1 ? '' : 's'}`, `tax year ${$('md-year').value}`,
+    out.length ? `${out.join(', ')} elected out of bonus` : null,
+    income !== undefined ? `business income ${dollars(income).replace(/\.00$/, '')}` : null].filter(Boolean).join(', ');
+}
+
+// The verdict, year 1 one line per figure with its source, and the 40% worksheet folded: what the
+// test returns, and the top of a schedule.
+function renderTest(r, box, example) {
   const t = r.test;
+  const cite = (t.citations ?? [])[0];
+  const line = (k, what, fig, em, cls) => h('li', { class: cls ?? null }, [h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', {}, what), h('b', {}, fig), h('em', {}, em)]);
   box.append(
-    h('p', { class: 'md-label' }, `Tax year ${r.taxYear}`),
-    h('p', { class: 'md-answer' }, [t.convention === 'MQ' ? 'Mid-quarter' : 'Half-year', h('small', {}, t.arithmetic)]),
-    h('dl', { class: 'md-facts' }, [
-      h('div', {}, [h('dt', {}, 'Year 1 total'), h('dd', {}, dollars(r.year1.total))]),
-      h('div', {}, [h('dt', {}, 'Section 179'), h('dd', {}, dollars(r.year1.section179))]),
-      h('div', {}, [h('dt', {}, 'Special allowance'), h('dd', {}, dollars(r.year1.bonus))]),
-      h('div', {}, [h('dt', {}, 'MACRS'), h('dd', {}, dollars(r.year1.macrs))]),
+    h('div', { class: 'tf-rh' }, [
+      example ? h('span', { class: 'tf-tag' }, 'Example') : h('span', { class: 'tf-tag run' }, 'Your result'),
+      h('span', { class: 'tf-src' }, `Tax year ${r.taxYear}, Publication 946`),
     ]),
-    h('p', { class: 'md-heading' }, 'The 40% worksheet'),
-    table(
+    h('p', { class: 'tf-exin' }, example ? `Example: ${inputsLine()} (a made-up client)` : inputsLine()),
+    h('p', { class: 'tf-big' }, [h('b', {}, dollars(r.year1.total)), h('span', {}, `year-1 deduction, ${t.convention === 'MQ' ? 'mid-quarter' : 'half-year'}`)]),
+    h('p', { class: 'tf-sub' }, t.arithmetic),
+    h('ol', { class: 'tf-items md-items' }, [
+      line('Q4', 'Last 3 months of the year', t.shareText, `${dollars(t.q4Basis)} of ${dollars(t.totalBasis)}. ${t.rule}`, t.convention === 'MQ' ? 'sk' : null),
+      line('179', 'Section 179', dollars(r.year1.section179), `${dollars(r.section179.elected)} elected of a ${dollars(r.section179.dollarLimit)} limit (${r.section179.source})`),
+      line('SA', 'Special allowance (bonus)', dollars(r.year1.bonus), 'Publication 946, chapter 3, by acquisition date'),
+      line('%', 'MACRS', dollars(r.year1.macrs), 'Publication 946 Appendix A tables, rounded to the cent'),
+      line('=', 'Year 1 total', dollars(r.year1.total), cite ? cite.text : 'Section 179 plus special allowance plus MACRS', 'tot hi'),
+    ]),
+  );
+  if (r.warnings.length) box.append(h('ul', { class: 'md-warn' }, r.warnings.map((w) => h('li', {}, w.text))));
+  box.append(h('details', { class: 'xpand md-fold' }, [
+    h('summary', {}, 'The 40% worksheet, asset by asset'),
+    h('div', { class: 'xp-in' }, table(
       [{ label: 'Asset' }, { label: 'Placed in service' }, { label: 'Class' }, { label: 'Basis for the test', num: true }, { label: 'Counted' }],
       t.worksheet.map((w) => ({ muted: !w.included, cells: [w.description ? `${w.id} ${w.description}` : w.id, `${w.placedInService} (Q${w.quarter})`, classWord(w.class), dollars(w.testBasis), w.reason] })),
       ['Last 3 months / year', '', '', `${dollars(t.q4Basis)} / ${dollars(t.totalBasis)}`, t.shareText],
-    ),
-    h('p', { class: 'md-aside' }, `${t.rule} Section 179 for the year: ${dollars(r.section179.elected)} elected of a ${dollars(r.section179.dollarLimit)} limit.`),
-  );
-  if (r.warnings.length) box.append(h('ul', { class: 'md-warn' }, r.warnings.map((w) => h('li', {}, w.text))));
+    )),
+  ]));
 }
 
 function renderSchedule(r, box) {
@@ -127,8 +147,8 @@ async function runTest() {
     const json = await T.run(SLUG, read.input);
     const box = $('md-out');
     box.textContent = '';
-    renderTest(json.result, box);
-    if (json.charged) box.append(h('p', { class: 'md-aside' }, `Charged ${json.charged.display}.`));
+    renderTest(json.result, box, false);
+    if (json.charged) box.append(h('p', { class: 'tf-cost' }, `Charged ${json.charged.display}.`));
     $('md-status').textContent = json.result.answer;
   } catch (e) {
     showError(e);
@@ -166,9 +186,9 @@ async function getSchedule() {
     const json = await T.run(SLUG, read.input);
     const box = $('md-out');
     box.textContent = '';
-    renderTest(json.result, box);
+    renderTest(json.result, box, false);
     renderSchedule(json.result, box);
-    box.append(downloads(json.result.files, false), h('p', { class: 'md-aside' }, `${json.result.journal.note} ${json.charged ? `Charged ${json.charged.display}.` : ''}`));
+    box.append(downloads(json.result.files, false), h('p', { class: 'tf-cost' }, `${json.result.journal.note} ${json.charged ? `Charged ${json.charged.display}.` : ''}`));
     pendingQuote = null;
     button.textContent = 'Get the schedule (CSV and journal entry)';
     $('md-get-note').textContent = 'Running the same entity and year again with edits within 30 days is free.';
@@ -225,13 +245,18 @@ function fromQuery() {
   return s;
 }
 
-// The sample files near the price: the tool's own schedule example for a made-up client.
-async function sampleLinks() {
+// The worked example at rest and its sample files: the tool's own schedule example for a made-up
+// client, which is the list the form starts with. No run is spent to show it.
+async function sampleLinks(atRest) {
   const box = $('md-sample-links');
   try {
     const tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
     const ex = tool.examples.find((x) => x.input.op === 'schedule');
     if (!ex) return;
+    const out = $('md-out');
+    out.textContent = '';
+    if (atRest) renderTest(ex.output, out, true);
+    else out.append(h('p', { class: 'muted' }, 'Run the 40% test to see the convention, the worksheet and the year-1 total.'));
     box.textContent = '';
     box.append(downloads(ex.output.files, true));
   } catch {
@@ -247,14 +272,15 @@ function start() {
   for (const k of CLASS_KEYS.filter((c) => c !== '27.5' && c !== '39')) {
     el.appendChild(h('label', { class: 'check' }, [h('input', { type: 'checkbox', value: k }), h('span', {}, classWord(k))]));
   }
-  apply(fromQuery() ?? loadSaved() ?? EXAMPLE);
+  const start = fromQuery() ?? loadSaved() ?? EXAMPLE;
+  apply(start);
+  const atRest = start === EXAMPLE;
   sync40();
   $('md-year').addEventListener('change', sync40);
   $('md-form').addEventListener('input', () => { pendingQuote = null; $('md-get').textContent = 'Get the schedule (CSV and journal entry)'; });
-  $('md-form').addEventListener('submit', (ev) => ev.preventDefault());
-  $('md-test').addEventListener('click', runTest);
+  $('md-form').addEventListener('submit', (ev) => { ev.preventDefault(); runTest(); });
   $('md-get').addEventListener('click', getSchedule);
-  sampleLinks();
+  sampleLinks(atRest);
 }
 
 start();

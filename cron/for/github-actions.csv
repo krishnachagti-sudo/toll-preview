@@ -1,0 +1,13 @@
+schedule,expression,scheduler
+Every 5 minutes,*/5 * * * *,GitHub Actions
+Every 30 seconds,"Not possible: GitHub Actions has no seconds field, and this runs at seconds 0 and 30.",GitHub Actions
+"Every hour, on the hour",0 * * * *,GitHub Actions
+Every day at midnight,0 0 * * *,GitHub Actions
+Every weekday at 9:00,0 9 * * 1-5,GitHub Actions
+Every Monday at 9:00,0 9 * * 1,GitHub Actions
+"Every 15 minutes, 9:00 to 17:45, Monday to Friday",*/15 9-17 * * 1-5,GitHub Actions
+The 1st of the month at midnight,0 0 1 * *,GitHub Actions
+The 1st and 15th at midnight,"0 0 1,15 * *",GitHub Actions
+The last day of the month at midnight,Not possible: GitHub Actions has no L or W in the day of month.,GitHub Actions
+The last Friday of the month at midnight,Not possible: GitHub Actions has no L or # in the day of week.,GitHub Actions
+The first Monday of the month at midnight,Not possible: GitHub Actions has no L or # in the day of week.,GitHub Actions

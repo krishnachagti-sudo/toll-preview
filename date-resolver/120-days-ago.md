@@ -1,15 +1,15 @@
 # What date was 120 days ago?
 
-120 days ago, counting back from Saturday, November 7, 2026 (today's date in New York, US Eastern time), was Friday, July 10, 2026.
+120 days ago, counting back from Sunday, November 8, 2026 (today's date in New York, US Eastern time), was Saturday, July 11, 2026.
 
-- Date: July 10, 2026
-- Weekday: Friday
+- Date: July 11, 2026
+- Weekday: Saturday
 - ISO week: 2026-W28
 - US business days between: 83
 
 ## 120 days ago, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-08&region=US)
 
 ## 120 days ago, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays from the date to the
 
 | Start | 120 days before | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-07) | Fri, Jul 10, 2026 | 83 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-08) | Sat, Jul 11, 2026 | 83 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-09) | Sun, Jul 12, 2026 | 84 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-10) | Mon, Jul 13, 2026 | 84 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays from the date to the
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-18) | Tue, Jul 21, 2026 | 83 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-19) | Wed, Jul 22, 2026 | 83 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-20) | Thu, Jul 23, 2026 | 83 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=120+days+ago&ref=2026-11-21) | Fri, Jul 24, 2026 | 82 |
 
 ## How it is counted
 
@@ -77,5 +77,5 @@ No. Today is day 0, so the count goes back from yesterday as day 1, the way a sp
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-ago/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/120-days-ago.csv

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How payout reconciliation works: rows to deposit: Endwise</title>
+<meta name="description" content="How payout reconciliation works: each row placed by the processor's own category, totals per payout proved to the deposit, the fee check and journal.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/payout-reconciliation/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/payout-reconciliation.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How payout reconciliation works: rows to deposit">
+<meta property="og:description" content="How payout reconciliation works: each row placed by the processor's own category, totals per payout proved to the deposit, the fee check and journal.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/payout-reconciliation/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/payout-reconciliation/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/payout-reconciliation/","name":"How payout reconciliation works: rows to deposit","description":"How payout reconciliation works: each row placed by the processor's own category, totals per payout proved to the deposit, the fee check and journal.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How payout reconciliation works: rows to deposit","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/payout-reconciliation/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the payout reconciliation: split a payout into sales, refunds, fees and tax answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the payout reconciliation: split a payout into sales, refunds, fees and tax refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"Stripe, Shopify Payments and Square payout files carry no sales tax collected; book it from the store's sales report. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How payout reconciliation works: rows to deposit</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How payout reconciliation works: rows to deposit</h1>
+<p class="cp-answer">Each row of a Stripe, Shopify Payments, PayPal or Square export is placed in one of 17 lines by the category or type the processor documents, the rows of each payout are added in whole cents, and the total is checked against the deposit. The journal credits sales and debits refunds, fees and the rest against a clearing account, so debits equal credits.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the payout reconciliation: split a payout into sales, refunds, fees and tax compute?</h2>
+<p>Upload the payout export your processor gives you and the tool reads it as the processor documents it, places every row in a line of the split (sales, sales tax, refunds, chargebacks, fees, tax on fees, reserves, loans, transfers and the rest), adds them per payout and per currency, and proves the total against the money that reached the bank. It can check the fees charged on sales against a published standard rate, and it builds a balanced journal for each payout with an import file for QuickBooks Online or Xero. Nothing is guessed: what the file does not say is reported.</p>
+<details class="xpand"><summary>Read the rest: What does the payout reconciliation: split a payout into sales, refunds, fees and tax compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>split</code>: Returns every payout's totals by line, its net, the deposit and the difference where one is known, the first and last activity dates, the sales count, gross and fee percentage, the warnings, the rows skipped and, with a rate, the fee check per payout. Free.</li><li><code>journal</code>: Does what split does and also returns one balanced journal per payout (and, with transfer, one moving the deposit from the clearing account to the bank), the account names used and three files: the QuickBooks Online or Xero import, a summary per payout and every row with the line it went to.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>file or text</code>: The export as base64 or as text, one of the two, up to 5 MB and 50,000 rows: Stripe's itemized payout reconciliation CSV, Shopify Payments' payout transactions CSV, PayPal's Activity Download CSV, Square's payout entries JSON, or any CSV with its columns named.</li><li><code>processor, columns</code>: stripe, shopify, paypal, square, custom; found from the headings when left out. For any other CSV, the headings of its amount, fee, net, type, date, payout, currency and reference columns, and whether fees are written positive or negative.</li><li><code>currency, dateOrder</code>: The currency of a file with no currency column (default USD), and mdy or dmy for slash dates the file cannot settle.</li><li><code>deposits</code>: The amount each payout put in the bank, by payout id, at most 500, to check the rows against.</li><li><code>rate</code>: A published standard rate to check sale fees against: stripe-card (2.9% + 30¢), stripe-card-international (4.4% + 30¢), paypal-checkout (3.49% + 49¢), paypal-cards (2.99% + 49¢), square-in-person (2.6% + 15¢), square-online (3.3% + 30¢), square-online-plus (2.9% + 30¢); or your own percent and fixed cents.</li><li><code>ledger, accounts, transfer, dates</code>: For journal: quickbooks-online (the default) or xero; account names to replace the defaults; whether to add the bank transfer journal; and mdy, dmy or iso dates in the import file.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: each payout as sales less refunds, chargebacks, fees and the rest equals the net, and whether it ties to the deposit</li><li>groups: per payout and currency, the totals by line, net, deposit, difference, dates, months and sales figures (amounts as decimal strings)</li><li>warnings and skipped: what to check, and the rows left out with the reason</li><li>feeCheck: per payout, the fees charged on sales, the fees the rate would charge, and the difference</li><li>journals, accounts and files (journal only)</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The processor is found from the headings it documents: Stripe's balance_transaction_id and reporting_category, Shopify's Transaction Date, Type and Payout Date, PayPal's Gross, Fee, Net and Type with Balance Impact, Transaction ID or TimeZone, and JSON for Square. A file named as one processor but headed as another is refused.</li><li>Amounts are read exactly into the currency's smallest unit, with its decimal places taken from ISO 4217 (two for USD, none for JPY). &quot;(12.00)&quot;, &quot;-3.20&quot;, &quot;1.234,56&quot; and &quot;$5&quot; are read; a value that is not an amount is refused with its line.</li><li>Each row goes to one line by the processor's own label: Stripe's reporting_category, Shopify's transaction type (exact names, then families such as reserved_funds or shipping_), PayPal's Type text by T-code family, Square's activity type. A label not in the processor's published list goes to other adjustments and is named in a warning.</li><li>Inside a row, PayPal's Sales Tax column is split out of the gross, Stripe's withheld_tax (already inside the fee) goes to tax on fees, and the fee goes to fees. A row whose stated net is not the gross less the fee is counted in a warning, and the gross and fee are used.</li><li>Rows are grouped by payout id and currency. Shopify rows still pending are kept apart from paid payouts. PayPal is a balance, not payouts: withdrawals are the money moved to the bank, and the running Balance column, where present, must run from the first balance to the last with these rows.</li><li>The deposit is the payout row in the file, Square's payout amount, or the amount you give, which wins. The difference is the deposit less the rows' net. A payout with activity in two months, a negative payout, a difference from the deposit and a Stripe file with no payout ids are each warned about.</li><li>The fee check charges the rate on each sale payment, percent plus fixed, rounded half up to the cent, adds them, and compares the total with the fees charged on those sales.</li><li>The journal posts each line to its account, credit when money came into the processor balance and debit when it went out; the clearing account takes the net, so debits equal credits. The QuickBooks Online file has Journal No, Journal Date, Account Name, Description, Debits, Credits and Currency Code; the Xero file has one signed amount per line, debits positive. A cell that a spreadsheet would read as a formula is prefixed with an apostrophe.</li></ol>
+<p><strong>The processors' report documentation.</strong></p>
+<p>Stripe's itemized payout reconciliation report (payout_reconciliation.itemized.7) and reporting categories, Shopify's payout CSV columns and transaction types, PayPal's Activity Download fields and T-code families, and Square's payout entries are read from each processor's own pages, on 2026-11-08. Stripe: &quot;Taxes collected by Stripe to be remitted to the appropriate local governments. Typically, this is a tax on Stripe fees.&quot;</p>
+<p><strong>Published standard rates.</strong></p>
+<p>The fee check presets are each processor's US pricing page as read on 2026-11-08: Stripe, domestic cards 2.9% + 30¢; Stripe, international cards (2.9% + 1.5%) 4.4% + 30¢; PayPal Checkout 3.49% + 49¢; PayPal standard credit and debit card payments 2.99% + 49¢; Square Free plan, tap, dip or swipe 2.6% + 15¢; Square Free plan, online 3.3% + 30¢; Square Plus or Premium, online 2.9% + 30¢. Shopify Payments rates depend on the plan and show only in the store's admin, so there is no Shopify preset.</p>
+<p><strong>Import formats.</strong></p>
+<p>The QuickBooks Online columns follow Intuit's &quot;Import journal entries&quot; help page; the Xero lines follow the ManualJournalLine LineAmount in Xero's Accounting API definition, debits positive and credits negative.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A Stripe partial capture reversal reduces the sale rather than counting as a refund, because Stripe says the two transactions together are the captured part.</li><li>A Shopify payout of refunds larger than its sales is negative, and the answer says the processor takes it from the bank or later payouts.</li><li>PayPal memo rows, such as an authorization, and rows with a pending, denied or voided status are left out and listed.</li><li>PayPal fees are written negative in most files; the Net column decides which way round a fee is.</li><li>Slash dates are read day first only when a first part above 12 proves it, unless dateOrder says otherwise.</li><li>The same file gives the same import file bytes every time.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Two Stripe payouts split, with the fee check against 2.9% + 30¢</strong></p>
+<pre><code class="language-json">op: &quot;split&quot;
+text: &quot;automatic_payout_id,automatic_payout_effective_at,balance_transaction_id,created,available_on,currency,gross,fee,net,reporting_category,description\npo_SAMPLE1014,2026-10-14,txn_S01,2026-10-10 14:02:11,2026-10-12,usd,120.00,3.78,116.22,charge,Order 1041\npo_SAMPLE1014,2026-10-14,txn_S02,2026-10-10 16:40:05,2026-10-12,usd,45.00,1.61,43.39,charge,Order 1042\npo_SAMPLE1014,2026-10-14,txn_S03,2026-10-11 09:15:44,2026-10-13,usd,89.99,2.91,87.08,charge,Order 1043\npo_SAMPLE1014,2026-10-14,txn_S04,2026-10-11 11:20:00,2026-10-13,usd,-30.00,0.00,-30.00,refund,Refund for order 1038\npo_SAMPLE1014,2026-10-14,txn_S05,2026-10-12 08:00:00,2026-10-12,usd,-45.00,15.00,-60.00,dispute,Chargeback on order 1022\npo_SAMPLE1102,2026-11-02,txn_S06,2026-10-30 13:05:09,2026-11-01,usd,250.00,7.55,242.45,charge,Order 1050\npo_SAMPLE1102,2026-11-02,txn_S07,2026-10-31 19:44:31,2026-11-02,usd,19.99,0.88,19.11,charge,Order 1051\npo_SAMPLE1102,2026-11-02,txn_S08,2026-11-01 10:12:00,2026-11-01,usd,-19.99,0.00,-19.99,refund,Refund for order 1051\npo_SAMPLE1102,2026-11-02,txn_S09,2026-11-01 00:00:00,2026-11-01,usd,-2.00,0.00,-2.00,fee,Billing - usage fee\n&quot;
+rate: &quot;stripe-card&quot;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Two Stripe payouts split, with the fee check against 2.9% + 30¢</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>2 Stripe payouts from October 14, 2026 to November 2, 2026: $396.26 = $524.98 sales - $49.99 refunds - $45.00 chargebacks - $33.73 fees.</td></tr>
+<tr><th scope="row">payout po_SAMPLE1014</th><td>$156.69 net from 3 sales of $254.99, fees 3.26% of sales</td></tr>
+<tr><th scope="row">payout po_SAMPLE1102</th><td>$239.57 net from 2 sales of $269.99, fees 3.12% of sales</td></tr>
+<tr><th scope="row">fee check po_SAMPLE1014</th><td>charged $8.30, rate gives $8.30</td></tr>
+<tr><th scope="row">fee check po_SAMPLE1102</th><td>charged $8.43, rate gives $8.43</td></tr>
+<tr><th scope="row">warning 1</th><td>Payout po_SAMPLE1102 holds activity from 2026-10 and 2026-11: it spans a month end.</td></tr>
+</tbody></table></div>
+<p><strong>A Shopify Payments payout with a chargeback and reserved funds, as Xero journal lines</strong></p>
+<pre><code class="language-json">op: &quot;journal&quot;
+text: &quot;Transaction Date,Type,Order,Card Brand,Card Source,Payout Status,Payout Date,Available On,Amount,Fee,Net\n2026-10-12 10:14:03 -0400,charge,#1001,visa,online,paid,2026-10-14,2026-10-14,64.00,2.16,61.84\n2026-10-12 12:30:41 -0400,charge,#1002,master,online,paid,2026-10-14,2026-10-14,128.50,4.03,124.47\n2026-10-12 15:02:19 -0400,charge,#1003,amex,online,paid,2026-10-14,2026-10-14,37.25,1.38,35.87\n2026-10-13 09:41:00 -0400,refund,#0998,visa,online,paid,2026-10-14,2026-10-14,-22.00,0.00,-22.00\n2026-10-13 11:00:00 -0400,dispute,#0975,visa,online,paid,2026-10-14,2026-10-14,-49.00,15.00,-64.00\n2026-10-13 11:00:00 -0400,reserved_funds,,,,paid,2026-10-14,2026-10-14,-10.00,0.00,-10.00\n&quot;
+ledger: &quot;xero&quot;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A Shopify Payments payout with a chargeback and reserved funds, as Xero journal lines</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>Your Shopify Payments payout of $126.18 on October 14, 2026 = $229.75 sales - $22.00 refunds - $49.00 chargebacks - $22.57 fees - $10.00 reserves.</td></tr>
+<tr><th scope="row">Sales</th><td>credit $229.75</td></tr>
+<tr><th scope="row">Refunds</th><td>debit $22.00</td></tr>
+<tr><th scope="row">Chargebacks</th><td>debit $49.00</td></tr>
+<tr><th scope="row">Merchant fees</th><td>debit $22.57</td></tr>
+<tr><th scope="row">Processor reserve</th><td>debit $10.00</td></tr>
+<tr><th scope="row">Shopify Payments clearing</th><td>debit $126.18</td></tr>
+<tr><th scope="row">import file</th><td>shopify-payouts-xero.csv</td></tr>
+</tbody></table></div>
+<p><strong>A PayPal Activity Download with sales tax, a refund, a chargeback fee and a withdrawal</strong></p>
+<pre><code class="language-json">op: &quot;split&quot;
+text: &quot;Date,Time,TimeZone,Name,Type,Status,Currency,Gross,Fee,Net,Transaction ID,Reference Txn ID,Balance,Sales Tax,Balance Impact\n10/20/2026,16:05:00,PDT,,General Withdrawal,Completed,USD,-150.00,0.00,-150.00,8SAMPLE0000000007,,57.78,0.00,Debit\n10/19/2026,09:30:12,PDT,,Chargeback Fee,Completed,USD,-20.00,0.00,-20.00,8SAMPLE0000000006,8SAMPLE0000000005,207.78,0.00,Debit\n10/18/2026,14:22:51,PDT,Sample Buyer C,Payment Refund,Completed,USD,-25.00,0.00,-25.00,8SAMPLE0000000005,8SAMPLE0000000002,227.78,0.00,Debit\n10/17/2026,11:02:33,PDT,Sample Buyer C,Express Checkout Payment,Completed,USD,25.00,-1.36,23.64,8SAMPLE0000000004,,252.78,0.00,Credit\n10/16/2026,18:45:09,PDT,Sample Buyer B,Express Checkout Payment,Completed,USD,54.00,-2.37,51.63,8SAMPLE0000000003,,229.14,0.00,Credit\n10/16/2026,18:45:09,PDT,Sample Buyer B,Authorization,Pending,USD,54.00,0.00,54.00,8SAMPLE0000000009,,,0.00,Memo\n10/15/2026,10:10:10,PDT,Sample Buyer A,Express Checkout Payment,Completed,USD,107.00,-4.22,102.78,8SAMPLE0000000002,,177.51,7.00,Credit\n&quot;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A PayPal Activity Download with sales tax, a refund, a chargeback fee and a withdrawal</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>PayPal USD activity from October 15, 2026 to October 20, 2026: $179.00 sales + $7.00 sales tax - $25.00 refunds - $27.95 fees = $133.05 net, of which $150.00 was withdrawn to the bank and the balance went from $74.73 to $57.78, to the cent.</td></tr>
+<tr><th scope="row">withdrawn to the bank</th><td>$150.00</td></tr>
+<tr><th scope="row">balance</th><td>$74.73 to $57.78, ties</td></tr>
+<tr><th scope="row">rows skipped</th><td>1</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>Stripe, Shopify Payments and Square payout files carry no sales tax collected; book it from the store's sales report.</li><li>Stripe's report covers automatic payouts only: Stripe cannot say which transactions are in an instant payout.</li><li>Check the account names against your chart of accounts, and skip the transfer journal when the bank feed already records the deposit.</li><li>It is arithmetic on your processor's own file, not accounting or tax advice. Files are processed in memory and not kept.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>Every report format, category list, fee rate and import format was read on the processor's or ledger's own page on 2026-11-08. The pages are checked daily for changes, and the mappings change only by hand, with the tests that pin them.</p>
+<ul class="cp-sources"><li><a href="https://docs.stripe.com/reports/payout-reconciliation">Stripe Docs: Payout reconciliation report</a></li><li><a href="https://docs.stripe.com/reports/reporting-categories">Stripe Docs: Reporting categories</a></li><li><a href="https://stripe.com/us/pricing">Stripe pricing (United States)</a></li><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details">Shopify Help Center: Viewing and exporting your Shopify Payments payout details</a></li><li><a href="https://shopify.dev/docs/api/admin-graphql/latest/enums/ShopifyPaymentsTransactionType">Shopify Admin API: ShopifyPaymentsTransactionType</a></li><li><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/reserves">Shopify Help Center: Overview of reserves in Shopify Payments</a></li><li><a href="https://developer.paypal.com/reports/activity-download">PayPal Developer: Activity Download report</a></li><li><a href="https://developer.paypal.com/reports/reference/t-codes">PayPal Developer: Transaction event code (T-code) reference</a></li><li><a href="https://www.paypal.com/us/business/paypal-business-fees">PayPal merchant fees (United States)</a></li><li><a href="https://developer.squareup.com/reference/square/payouts-api/list-payout-entries">Square Developer: Payouts API, ListPayoutEntries and PayoutEntry</a></li><li><a href="https://squareup.com/us/en/pricing">Square pricing (United States)</a></li><li><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">QuickBooks Online: Import journal entries</a></li><li><a href="https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml">Xero Accounting API (OpenAPI): ManualJournalLine</a></li></ul>
+<p>Every report format, category list, fee rate and import format was read on the processor's or ledger's own page on 2026-11-08. The pages are checked daily for changes, and the mappings change only by hand, with the tests that pin them.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Payout reconciliation: split a payout into sales, refunds, fees and tax: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://docs.stripe.com/reports/payout-reconciliation">Stripe Docs: Payout reconciliation report</a></th><td rowspan="13">see the document</td><td rowspan="13">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://docs.stripe.com/reports/reporting-categories">Stripe Docs: Reporting categories</a></th></tr>
+<tr><th scope="row"><a href="https://stripe.com/us/pricing">Stripe pricing (United States)</a></th></tr>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/view-details">Shopify Help Center: Viewing and exporting your Shopify Payments payout details</a></th></tr>
+<tr><th scope="row"><a href="https://shopify.dev/docs/api/admin-graphql/latest/enums/ShopifyPaymentsTransactionType">Shopify Admin API: ShopifyPaymentsTransactionType</a></th></tr>
+<tr><th scope="row"><a href="https://help.shopify.com/en/manual/payments/shopify-payments/payouts/reserves">Shopify Help Center: Overview of reserves in Shopify Payments</a></th></tr>
+<tr><th scope="row"><a href="https://developer.paypal.com/reports/activity-download">PayPal Developer: Activity Download report</a></th></tr>
+<tr><th scope="row"><a href="https://developer.paypal.com/reports/reference/t-codes">PayPal Developer: Transaction event code (T-code) reference</a></th></tr>
+<tr><th scope="row"><a href="https://www.paypal.com/us/business/paypal-business-fees">PayPal merchant fees (United States)</a></th></tr>
+<tr><th scope="row"><a href="https://developer.squareup.com/reference/square/payouts-api/list-payout-entries">Square Developer: Payouts API, ListPayoutEntries and PayoutEntry</a></th></tr>
+<tr><th scope="row"><a href="https://squareup.com/us/en/pricing">Square pricing (United States)</a></th></tr>
+<tr><th scope="row"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/import-journal-entries-quickbooks-online/L4tQBwbs7_US_en_US">QuickBooks Online: Import journal entries</a></th></tr>
+<tr><th scope="row"><a href="https://github.com/XeroAPI/Xero-OpenAPI/blob/master/xero_accounting.yaml">Xero Accounting API (OpenAPI): ManualJournalLine</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>Every Stripe reporting category and Square activity type is pinned to a known line, and the rate presets to the published rates. The tests check CSV quoting, every written amount form, date orders, processor detection, each processor's sample file to the cent, deposits and unknown types, that every journal balances, and the import file columns and bytes.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Every fact is dated and read on the processor's own page on 2026-11-08, and the fee presets match the published rates.</li><li>Every Stripe reporting category and Square activity type lands in a known line; each processor's sample file splits to the cent.</li><li>Every journal balances, accounts can be renamed and merged, and the import files have the documented columns and the same bytes every time.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/payout-reconciliation/">Open the Payout reconciliation: split a payout into sales, refunds, fees and tax tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the payout reconciliation: split a payout into sales, refunds, fees and tax answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the payout reconciliation: split a payout into sales, refunds, fees and tax refuse to answer?</h3></summary><div class="xp-in"><p>Stripe, Shopify Payments and Square payout files carry no sales tax collected; book it from the store's sales report. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/payout-reconciliation/">Open the Payout reconciliation: split a payout into sales, refunds, fees and tax tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/payout-reconciliation.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

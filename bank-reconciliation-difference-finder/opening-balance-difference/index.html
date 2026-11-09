@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bank reconciliation difference in the opening balance: how to find it</title>
+<meta name="description" content="When the beginning balance does not match the statement, walk back: run earlier months until the opening balances agree, and the first month that breaks holds the line. A worked bakery account, three months.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Bank reconciliation difference in the opening balance: how to find it">
+<meta property="og:description" content="When the beginning balance does not match the statement, walk back: run earlier months until the opening balances agree, and the first month that breaks holds the line. A worked bakery account, three months.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference/","url":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference/","name":"Bank reconciliation difference in the opening balance: how to find it","description":"When the beginning balance does not match the statement, walk back: run earlier months until the opening balances agree, and the first month that breaks holds the line. A worked bakery account, three months.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Bank reconciliation difference finder","item":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/"},{"@type":"ListItem","position":3,"name":"Bank reconciliation difference in the opening balance","item":"https://krishnachagti-sudo.github.io/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference/"}]},{"@type":"HowTo","name":"Bank reconciliation difference in the opening balance: how to find it","description":"When the beginning balance does not match the statement, walk back: run earlier months until the opening balances agree, and the first month that breaks holds the line. A worked bakery account, three months.","step":[{"@type":"HowToStep","position":1,"name":"Compare the opening balances","text":"The statement's opening balance against the books' balance just before the first line. If they differ, the cause is earlier than this statement."},{"@type":"HowToStep","position":2,"name":"Export one more month back","text":"Run the statement and the ledger from the previous month's start to this month's end."},{"@type":"HowToStep","position":3,"name":"Repeat until they agree","text":"When the opening balances agree, the break date the tool gives is the first line the books missed or changed."},{"@type":"HowToStep","position":4,"name":"Fix the line, not the balance","text":"Restore or correct that line rather than post an adjustment, then run the files again."}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"bank-reconciliation-difference-finder"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/">Bank reconciliation difference finder</a></li><li aria-current="page">Bank reconciliation difference in the opening balance</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">Guide</p>
+<h1>Bank reconciliation difference in the opening balance</h1>
+<p class="cp-answer">Your opening balance differs from the bank by $642.18; run on October alone the balances disagree before October 1, 2026, and run on August to October the first disagreement is September 14, 2026, a $642.18 payment at the bank that is missing from the books, so the break is in September.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Open the three-month example</h2><p class="muted">August to October; the break date points to September 14. The preview is free.</p><form method="get" action="/toll-preview/bank-reconciliation-difference-finder/" class="cp-tool-form"><input type="hidden" name="statement" value="Date,Description,Amount,Balance
+08/03/2026,HARBOR PROPERTIES RENT,&quot;-2,400.00&quot;,&quot;16,214.55&quot;
+08/07/2026,SQUARE INC DEP,&quot;5,124.00&quot;,&quot;21,338.55&quot;
+08/14/2026,PACIFIC GAS ELECTRIC,-589.04,&quot;20,749.51&quot;
+08/17/2026,GUSTO PAYROLL,&quot;-4,215.33&quot;,&quot;16,534.18&quot;
+08/21/2026,SQUARE INC DEP,&quot;4,987.60&quot;,&quot;21,521.78&quot;
+08/28/2026,SYSCO FOOD SVC,-612.00,&quot;20,909.78&quot;
+09/01/2026,HARBOR PROPERTIES RENT,&quot;-2,400.00&quot;,&quot;18,509.78&quot;
+09/04/2026,SQUARE INC DEP,&quot;5,053.10&quot;,&quot;23,562.88&quot;
+09/14/2026,PACIFIC GAS ELECTRIC,-642.18,&quot;22,920.70&quot;
+09/15/2026,GUSTO PAYROLL,&quot;-4,215.33&quot;,&quot;18,705.37&quot;
+09/18/2026,SQUARE INC DEP,&quot;4,872.15&quot;,&quot;23,577.52&quot;
+09/25/2026,SYSCO FOOD SVC,-598.70,&quot;22,978.82&quot;
+10/01/2026,HARBOR PROPERTIES RENT,&quot;-2,400.00&quot;,&quot;20,578.82&quot;
+10/02/2026,SQUARE INC DEP,&quot;5,211.40&quot;,&quot;25,790.22&quot;
+10/14/2026,PACIFIC GAS ELECTRIC,-613.77,&quot;25,176.45&quot;
+10/15/2026,GUSTO PAYROLL,&quot;-4,215.33&quot;,&quot;20,961.12&quot;
+10/16/2026,SQUARE INC DEP,&quot;4,933.80&quot;,&quot;25,894.92&quot;
+10/26/2026,SYSCO FOOD SVC,-630.45,&quot;25,264.47&quot;
+10/30/2026,SQUARE INC DEP,&quot;1,320.55&quot;,&quot;26,585.02&quot;
+"><input type="hidden" name="ledger" value="Northwind Bakery (made-up sample)
+Transaction Detail by Account
+&quot;August 1 - October 31, 2026&quot;
+
+,Date,Transaction Type,Num,Name,Memo/Description,Split,Amount,Balance
+Business Checking,,,,,,,,
+Beginning Balance,,,,,,,,&quot;18,614.55&quot;
+,08/03/2026,Expense,,Harbor Properties,,Supplies,&quot;-2,400.00&quot;,&quot;16,214.55&quot;
+,08/07/2026,Deposit,,Square,,Sales,&quot;5,124.00&quot;,&quot;21,338.55&quot;
+,08/14/2026,Expense,,Pacific Gas &amp; Electric,,Supplies,-589.04,&quot;20,749.51&quot;
+,08/17/2026,Expense,,Gusto,,Supplies,&quot;-4,215.33&quot;,&quot;16,534.18&quot;
+,08/21/2026,Deposit,,Square,,Sales,&quot;4,987.60&quot;,&quot;21,521.78&quot;
+,08/28/2026,Expense,,Sysco,,Supplies,-612.00,&quot;20,909.78&quot;
+,09/01/2026,Expense,,Harbor Properties,,Supplies,&quot;-2,400.00&quot;,&quot;18,509.78&quot;
+,09/04/2026,Deposit,,Square,,Sales,&quot;5,053.10&quot;,&quot;23,562.88&quot;
+,09/15/2026,Expense,,Gusto,,Supplies,&quot;-4,215.33&quot;,&quot;19,347.55&quot;
+,09/18/2026,Deposit,,Square,,Sales,&quot;4,872.15&quot;,&quot;24,219.70&quot;
+,09/25/2026,Expense,,Sysco,,Supplies,-598.70,&quot;23,621.00&quot;
+,10/01/2026,Expense,,Harbor Properties,,Supplies,&quot;-2,400.00&quot;,&quot;21,221.00&quot;
+,10/02/2026,Deposit,,Square,,Sales,&quot;5,211.40&quot;,&quot;26,432.40&quot;
+,10/14/2026,Expense,,Pacific Gas &amp; Electric,,Supplies,-613.77,&quot;25,818.63&quot;
+,10/15/2026,Expense,,Gusto,,Supplies,&quot;-4,215.33&quot;,&quot;21,603.30&quot;
+,10/16/2026,Deposit,,Square,,Sales,&quot;4,933.80&quot;,&quot;26,537.10&quot;
+,10/26/2026,Expense,,Sysco,,Supplies,-630.45,&quot;25,906.65&quot;
+,10/30/2026,Deposit,,Square,,Sales,&quot;1,320.55&quot;,&quot;27,227.20&quot;
+Total for Business Checking,,,,,,,&quot;$8,612.65&quot;,
+"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Open this example in the tool</button></form><p class="small"><a href="/toll-preview/bank-reconciliation-difference-finder/?statement=Date%2CDescription%2CAmount%2CBalance%0D%0A08%2F03%2F2026%2CHARBOR+PROPERTIES+RENT%2C%22-2%2C400.00%22%2C%2216%2C214.55%22%0D%0A08%2F07%2F2026%2CSQUARE+INC+DEP%2C%225%2C124.00%22%2C%2221%2C338.55%22%0D%0A08%2F14%2F2026%2CPACIFIC+GAS+ELECTRIC%2C-589.04%2C%2220%2C749.51%22%0D%0A08%2F17%2F2026%2CGUSTO+PAYROLL%2C%22-4%2C215.33%22%2C%2216%2C534.18%22%0D%0A08%2F21%2F2026%2CSQUARE+INC+DEP%2C%224%2C987.60%22%2C%2221%2C521.78%22%0D%0A08%2F28%2F2026%2CSYSCO+FOOD+SVC%2C-612.00%2C%2220%2C909.78%22%0D%0A09%2F01%2F2026%2CHARBOR+PROPERTIES+RENT%2C%22-2%2C400.00%22%2C%2218%2C509.78%22%0D%0A09%2F04%2F2026%2CSQUARE+INC+DEP%2C%225%2C053.10%22%2C%2223%2C562.88%22%0D%0A09%2F14%2F2026%2CPACIFIC+GAS+ELECTRIC%2C-642.18%2C%2222%2C920.70%22%0D%0A09%2F15%2F2026%2CGUSTO+PAYROLL%2C%22-4%2C215.33%22%2C%2218%2C705.37%22%0D%0A09%2F18%2F2026%2CSQUARE+INC+DEP%2C%224%2C872.15%22%2C%2223%2C577.52%22%0D%0A09%2F25%2F2026%2CSYSCO+FOOD+SVC%2C-598.70%2C%2222%2C978.82%22%0D%0A10%2F01%2F2026%2CHARBOR+PROPERTIES+RENT%2C%22-2%2C400.00%22%2C%2220%2C578.82%22%0D%0A10%2F02%2F2026%2CSQUARE+INC+DEP%2C%225%2C211.40%22%2C%2225%2C790.22%22%0D%0A10%2F14%2F2026%2CPACIFIC+GAS+ELECTRIC%2C-613.77%2C%2225%2C176.45%22%0D%0A10%2F15%2F2026%2CGUSTO+PAYROLL%2C%22-4%2C215.33%22%2C%2220%2C961.12%22%0D%0A10%2F16%2F2026%2CSQUARE+INC+DEP%2C%224%2C933.80%22%2C%2225%2C894.92%22%0D%0A10%2F26%2F2026%2CSYSCO+FOOD+SVC%2C-630.45%2C%2225%2C264.47%22%0D%0A10%2F30%2F2026%2CSQUARE+INC+DEP%2C%221%2C320.55%22%2C%2226%2C585.02%22%0D%0A&amp;ledger=Northwind+Bakery+%28made-up+sample%29%0D%0ATransaction+Detail+by+Account%0D%0A%22August+1+-+October+31%2C+2026%22%0D%0A%0D%0A%2CDate%2CTransaction+Type%2CNum%2CName%2CMemo%2FDescription%2CSplit%2CAmount%2CBalance%0D%0ABusiness+Checking%2C%2C%2C%2C%2C%2C%2C%2C%0D%0ABeginning+Balance%2C%2C%2C%2C%2C%2C%2C%2C%2218%2C614.55%22%0D%0A%2C08%2F03%2F2026%2CExpense%2C%2CHarbor+Properties%2C%2CSupplies%2C%22-2%2C400.00%22%2C%2216%2C214.55%22%0D%0A%2C08%2F07%2F2026%2CDeposit%2C%2CSquare%2C%2CSales%2C%225%2C124.00%22%2C%2221%2C338.55%22%0D%0A%2C08%2F14%2F2026%2CExpense%2C%2CPacific+Gas+%26+Electric%2C%2CSupplies%2C-589.04%2C%2220%2C749.51%22%0D%0A%2C08%2F17%2F2026%2CExpense%2C%2CGusto%2C%2CSupplies%2C%22-4%2C215.33%22%2C%2216%2C534.18%22%0D%0A%2C08%2F21%2F2026%2CDeposit%2C%2CSquare%2C%2CSales%2C%224%2C987.60%22%2C%2221%2C521.78%22%0D%0A%2C08%2F28%2F2026%2CExpense%2C%2CSysco%2C%2CSupplies%2C-612.00%2C%2220%2C909.78%22%0D%0A%2C09%2F01%2F2026%2CExpense%2C%2CHarbor+Properties%2C%2CSupplies%2C%22-2%2C400.00%22%2C%2218%2C509.78%22%0D%0A%2C09%2F04%2F2026%2CDeposit%2C%2CSquare%2C%2CSales%2C%225%2C053.10%22%2C%2223%2C562.88%22%0D%0A%2C09%2F15%2F2026%2CExpense%2C%2CGusto%2C%2CSupplies%2C%22-4%2C215.33%22%2C%2219%2C347.55%22%0D%0A%2C09%2F18%2F2026%2CDeposit%2C%2CSquare%2C%2CSales%2C%224%2C872.15%22%2C%2224%2C219.70%22%0D%0A%2C09%2F25%2F2026%2CExpense%2C%2CSysco%2C%2CSupplies%2C-598.70%2C%2223%2C621.00%22%0D%0A%2C10%2F01%2F2026%2CExpense%2C%2CHarbor+Properties%2C%2CSupplies%2C%22-2%2C400.00%22%2C%2221%2C221.00%22%0D%0A%2C10%2F02%2F2026%2CDeposit%2C%2CSquare%2C%2CSales%2C%225%2C211.40%22%2C%2226%2C432.40%22%0D%0A%2C10%2F14%2F2026%2CExpense%2C%2CPacific+Gas+%26+Electric%2C%2CSupplies%2C-613.77%2C%2225%2C818.63%22%0D%0A%2C10%2F15%2F2026%2CExpense%2C%2CGusto%2C%2CSupplies%2C%22-4%2C215.33%22%2C%2221%2C603.30%22%0D%0A%2C10%2F16%2F2026%2CDeposit%2C%2CSquare%2C%2CSales%2C%224%2C933.80%22%2C%2226%2C537.10%22%0D%0A%2C10%2F26%2F2026%2CExpense%2C%2CSysco%2C%2CSupplies%2C-630.45%2C%2225%2C906.65%22%0D%0A%2C10%2F30%2F2026%2CDeposit%2C%2CSquare%2C%2CSales%2C%221%2C320.55%22%2C%2227%2C227.20%22%0D%0ATotal+for+Business+Checking%2C%2C%2C%2C%2C%2C%2C%22%248%2C612.65%22%2C%0D%0A">Open this example in the tool</a></p></aside>
+<section>
+<h2 id="one">One month: the break is before the file</h2>
+<p>At October 31, 2026 the statement shows $26,585.02 and the books $27,227.20: a difference of $642.18. 7 lines match and no line is on one side only. There are no timing items; the other $642.18 (the books are higher) comes from an opening difference of $642.18. The running balances already disagree before October 1, 2026: the opening balances differ.</p>
+</section>
+<section>
+<h2 id="three">Three months: the break has a date</h2>
+<p>At October 31, 2026 the statement shows $26,585.02 and the books $27,227.20: a difference of $642.18. 18 lines match and 1 line is on one side only. There are no timing items; the other $642.18 (the books are higher) comes from 1 bank line missing from the books. The running balances first disagree on September 14, 2026.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>August to October, date by date</caption><thead><tr><th scope="col">Date</th><th scope="col" class="r num">Change</th><th scope="col" class="r num">Difference after</th><th scope="col">Why</th></tr></thead><tbody>
+<tr><th scope="row">Opening</th><td class="r num"></td><td class="r num">$0.00</td><td>The gap between the two opening balances</td></tr>
+<tr><th scope="row">2026-09-14</th><td class="r num">-$642.18</td><td class="r num">-$642.18</td><td>money out at the bank, not in the books: PACIFIC GAS ELECTRIC -$642.18</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="why">Why opening balances change</h2>
+<ul><li>A transaction from a month already reconciled was deleted, edited or re-dated (here, the September 14 utility payment was deleted).</li><li>An opening balance entry was posted twice, or with the wrong date, when the account was set up.</li><li>A transfer was recorded in both accounts.</li><li>In QuickBooks Online, Intuit: &quot;You may need to undo the previous reconciliation until the opening balance is correct.&quot; Find the line first: the steps are on <a href="/toll-preview/bank-reconciliation-difference-finder/guides/beginning-balance-wrong/">beginning balance wrong in QuickBooks Online</a>.</li></ul>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://quickbooks.intuit.com/learn-support/en-us/bank-transactions/fix-reconciliation-discrepancies/00/201285">Intuit QuickBooks: Fix reconciliation discrepancies in QuickBooks Online, updated August 5, 2026 (read November 8, 2026)</a></li><li><a href="https://quickbooks.intuit.com/community/account-management-7/when-i-try-to-reconcile-my-account-my-beginning-balance-is-off-how-can-i-view-a-full-reconciliation-discrepancy-report-i-tried-to-view-report-and-nothing-shows-up-72781">QuickBooks Community: beginning balance is off and the discrepancy report shows nothing (staff answer) (read November 8, 2026)</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Compare the opening balances.</strong> The statement's opening balance against the books' balance just before the first line. If they differ, the cause is earlier than this statement.</li><li><strong>Export one more month back.</strong> Run the statement and the ledger from the previous month's start to this month's end.</li><li><strong>Repeat until they agree.</strong> When the opening balances agree, the break date the tool gives is the first line the books missed or changed.</li><li><strong>Fix the line, not the balance.</strong> Restore or correct that line rather than post an adjustment, then run the files again.</li></ol></section>
+
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/beginning-balance-wrong/">Beginning balance wrong in QuickBooks Online</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/undo-reconciliation-safely/">Undo a reconciliation safely</a></li><li><a href="/toll-preview/bank-reconciliation-difference-finder/guides/worked-example-missing-payment/">Worked example: a missing payment across three months</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/bank-reconciliation-difference-finder/opening-balance-difference.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

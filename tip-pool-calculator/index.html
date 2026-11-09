@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tip pool calculator: split by hours, points or role, with a legality check: Endwise</title>
+<meta name="description" content="Split tonight's tips by hours, points, hours x points or role percentages to the cent, work out tip-outs, and check managers, owners and back of house against the FLSA and your state's rules.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/tip-pool-calculator/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"tip-pool-calculator"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/tip-pool-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Tip pool calculator">
+<meta property="og:description" content="Split a tip pool by hours, points, hours x points, role percentages or equally, to the cent with shares that add up exactly, work out server tip-outs, and check who may be in the pool: managers, supervisors and owners, back of house with or without a tip credit, card-fee deductions, under 29 CFR 531 and DOL Fact Sheet #15, the state rules read from the state's own site, the UK Tipping Act code or Ontario's ESA guide. Gives a payroll CSV with the IRS tipped occupation code.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/tip-pool-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/tip-pool-calculator/","url":"https://krishnachagti-sudo.github.io/toll-preview/tip-pool-calculator/","name":"Tip pool calculator","description":"Split a tip pool by hours, points, hours x points, role percentages or equally, to the cent with shares that add up exactly, work out server tip-outs, and check who may be in the pool: managers, supervisors and owners, back of house with or without a tip credit, card-fee deductions, under 29 CFR 531 and DOL Fact Sheet #15, the state rules read from the state's own site, the UK Tipping Act code or Ontario's ESA guide. Gives a payroll CSV with the IRS tipped occupation code.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Tip pool calculator","item":"https://krishnachagti-sudo.github.io/toll-preview/tip-pool-calculator/"}]},{"@type":"WebApplication","name":"Tip pool calculator","url":"https://krishnachagti-sudo.github.io/toll-preview/tip-pool-calculator/","description":"Split a tip pool by hours, points, hours x points, role percentages or equally, to the cent with shares that add up exactly, work out server tip-outs, and check who may be in the pool: managers, supervisors and owners, back of house with or without a tip credit, card-fee deductions, under 29 CFR 531 and DOL Fact Sheet #15, the state rules read from the state's own site, the UK Tipping Act code or Ontario's ESA guide. Gives a payroll CSV with the IRS tipped occupation code.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Split, tip-out and legality check on this page","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Tip rules for a state or country","price":"0","priceCurrency":"USD"},{"name":"Split, tip-out or legality check over the API or MCP","@type":"Offer","price":"0.002","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.002","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"call"}}},{"name":"Pay-run record (payroll CSV, tip sheet to sign and the legality check)","@type":"Offer","price":"0.25","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.25","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"pay run"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="tp tf hue-money">
+  <section class="wrap tf-open tp-intro">
+    <p class="eyebrow">Tip pools and tip-outs, 29 CFR 531.54</p>
+    <h1>Tip pool calculator</h1>
+    <p class="lede">Split a tip pool to the cent by hours, points or role, and <b>check who may be in it</b> under the federal rules and your state's.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="tp-price"><span class="price">Free on this page</span><span>Pay-run record $0.25</span><span>corrections to the same run free for 30 days</span></p>
+    <details class="xpand tp-about">
+      <summary>What you get</summary>
+      <div class="xp-in">
+        <p>Split a tip pool by hours, points, hours x points, role percentages or equally. Every share is rounded to the cent and the shares add up exactly to the pool. The same run checks who may be in the pool: managers, supervisors and owners, back of house with or without a tip credit, and card-fee deductions, under the federal rules and your state's own rules where we have read them.</p>
+        <p data-prices>Splits, tip-outs and checks are free on this page. A pay-run record (the payroll CSV, a tip sheet to sign and the check) costs $0.25, and corrections to the same run are free for 30 days.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="wrap tf-calc tp-desk" data-jump="Tool" aria-label="Split the pool">
+    <form class="tf-panel tf-form tp-form" id="tp-split" novalidate>
+      <div class="tp-grid">
+        <div class="field tp-wide"><label for="tp-place" class="visually-hidden">Where</label>
+          <select id="tp-place">
+          <option value="US" selected>United States, federal rules only</option>
+          <option value="US-AL">Alabama</option>
+          <option value="US-AK">Alaska</option>
+          <option value="US-AZ">Arizona (state rules read)</option>
+          <option value="US-AR">Arkansas</option>
+          <option value="US-CA">California</option>
+          <option value="US-CO">Colorado</option>
+          <option value="US-CT">Connecticut</option>
+          <option value="US-DE">Delaware (state rules read)</option>
+          <option value="US-DC">District of Columbia (state rules read)</option>
+          <option value="US-FL">Florida (state rules read)</option>
+          <option value="US-GA">Georgia</option>
+          <option value="US-HI">Hawaii</option>
+          <option value="US-ID">Idaho</option>
+          <option value="US-IL">Illinois</option>
+          <option value="US-IN">Indiana</option>
+          <option value="US-IA">Iowa</option>
+          <option value="US-KS">Kansas (state rules read)</option>
+          <option value="US-KY">Kentucky</option>
+          <option value="US-LA">Louisiana</option>
+          <option value="US-ME">Maine (state rules read)</option>
+          <option value="US-MD">Maryland (state rules read)</option>
+          <option value="US-MA">Massachusetts (state rules read)</option>
+          <option value="US-MI">Michigan</option>
+          <option value="US-MN">Minnesota (state rules read)</option>
+          <option value="US-MS">Mississippi</option>
+          <option value="US-MO">Missouri</option>
+          <option value="US-MT">Montana (state rules read)</option>
+          <option value="US-NE">Nebraska</option>
+          <option value="US-NV">Nevada</option>
+          <option value="US-NH">New Hampshire</option>
+          <option value="US-NJ">New Jersey</option>
+          <option value="US-NM">New Mexico</option>
+          <option value="US-NY">New York (state rules read)</option>
+          <option value="US-NC">North Carolina</option>
+          <option value="US-ND">North Dakota</option>
+          <option value="US-OH">Ohio</option>
+          <option value="US-OK">Oklahoma</option>
+          <option value="US-OR">Oregon</option>
+          <option value="US-PA">Pennsylvania</option>
+          <option value="US-RI">Rhode Island</option>
+          <option value="US-SC">South Carolina</option>
+          <option value="US-SD">South Dakota (state rules read)</option>
+          <option value="US-TN">Tennessee</option>
+          <option value="US-TX">Texas</option>
+          <option value="US-UT">Utah</option>
+          <option value="US-VT">Vermont</option>
+          <option value="US-VA">Virginia (state rules read)</option>
+          <option value="US-WA">Washington (state rules read)</option>
+          <option value="US-WV">West Virginia</option>
+          <option value="US-WI">Wisconsin</option>
+          <option value="US-WY">Wyoming</option>
+          <option value="UK">United Kingdom</option>
+          <option value="CA-ON">Ontario, Canada</option>
+          </select>
+        </div>
+      </div>
+      <div class="tf-two">
+        <div class="field"><label for="tp-pool">Tips in the pool</label><input type="text" id="tp-pool" value="800.00" inputmode="decimal"></div>
+        <div class="field"><label for="tp-method">Split by</label>
+          <select id="tp-method"><option value="hours" selected>Hours worked</option><option value="points">Points</option><option value="hours-points">Hours x points</option><option value="percentage">Role percentages</option><option value="equal">Equal shares</option></select>
+        </div>
+      </div>
+      <div class="field"><label for="tp-staff">One line each: name, role, hours, points</label>
+        <textarea id="tp-staff" rows="5" spellcheck="false">Ana, server, 8
+Ben, server, 6.5
+Cleo, bartender, 7
+Dev, busser, 5
+Eli, cook, 4.5</textarea>
+      </div>
+      <div class="field" id="tp-pct-row" hidden><label for="tp-pct">Each role's percentage of the pool</label>
+        <textarea id="tp-pct" rows="3" spellcheck="false">server 70
+bartender 20
+busser 10</textarea>
+        <p class="hint">One line each: <code>bartender 20</code>. They must add up to 100. Inside a role, shares go by hours (or equally when hours are missing).</p>
+      </div>
+      <p class="field-error" id="tp-err" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="tp-run">Split the pool</button>
+      <p class="hint tf-run-note">Updates as you type. Free on this page.</p>
+      <details class="xpand" id="tp-card-fold">
+        <summary>Roles, tip credit, staff agreement and card fees</summary>
+        <div class="xp-in">
+          <p class="hint tp-roles">Roles: server, bartender, busser, counter, barista, host, runner, barback, cook, prep, dishwasher, stylist, barber, nail-tech, assistant, bellhop, manager, owner, other. Add <code>supervisor</code> or <code>owner</code> to a line for anyone who manages staff or owns 20% or more.</p>
+          <label class="tp-check" id="tp-credit-row"><input type="checkbox" id="tp-credit"> We take a tip credit (pay tipped staff less than the full minimum wage)</label>
+          <label class="tp-check"><input type="checkbox" id="tp-vol"> The staff agreed this pool among themselves (we do not require it)</label>
+          <div class="tp-grid tp-mt">
+            <div class="field"><label for="tp-card">Of which by card</label><input type="text" id="tp-card" inputmode="decimal" placeholder="none"></div>
+            <div class="field"><label for="tp-fee">Card fee percent</label><input type="text" id="tp-fee" inputmode="decimal" placeholder="e.g. 2.9"></div>
+            <div class="field" id="tp-paid-row" hidden><label for="tp-paid">Tips paid by customers on</label><input type="date" id="tp-paid"></div>
+          </div>
+        </div>
+      </details>
+    </form>
+    <div class="tf-panel tf-result tp-out" id="tp-out" aria-live="polite"><p class="muted">Loading the worked example.</p></div>
+  </section>
+
+  <section class="wrap tf-sec tp-record" id="record" data-jump="Record" aria-labelledby="tp-rec-title">
+    <div class="tf-top solo"><div>
+      <p class="eyebrow">For payroll</p>
+      <h2 id="tp-rec-title">The pay-run record, <span class="dim">a CSV and a tip sheet.</span></h2>
+      <p class="tf-p">The split above as a payroll CSV (name, role, hours, points, share, the leftover cent, the IRS tipped occupation code for the 2026 Form W-2 box 14b, and each person's check result), with a plain tip sheet to print and sign.</p>
+    </div></div>
+    <div class="tf-panel tp-panel">
+    <div class="tp-grid tp-narrow">
+      <div class="field"><label for="tp-loc">Location</label><input type="text" id="tp-loc" maxlength="80" placeholder="Main Street"></div>
+      <div class="field"><label for="tp-end">Pay period ends</label><input type="date" id="tp-end"></div>
+    </div>
+    <div class="tp-buy" id="tp-buy"></div>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec tp-small" id="tipout" data-jump="Tip-out" aria-labelledby="tp-to-title">
+    <div class="tf-top solo"><div>
+      <p class="eyebrow">Tip-outs</p>
+      <h2 id="tp-to-title">Server tip-out, <span class="dim">by sales or by tips.</span></h2>
+    </div></div>
+    <div class="tf-panel tp-panel">
+    <form id="tp-to" class="tp-grid" novalidate>
+      <div class="field"><label for="tp-to-base">Tip out a percentage of</label><select id="tp-to-base"><option value="sales" selected>Sales</option><option value="tips">Tips</option></select></div>
+      <div class="field"><label for="tp-to-sales">Sales</label><input type="text" id="tp-to-sales" value="2000.00" inputmode="decimal"></div>
+      <div class="field"><label for="tp-to-tips">The server's tips</label><input type="text" id="tp-to-tips" value="360.00" inputmode="decimal"></div>
+      <div class="field tp-wide"><label for="tp-to-outs">Tip-outs, one line each</label><textarea id="tp-to-outs" rows="2" spellcheck="false">bartender 2
+busser 1.5</textarea></div>
+    </form>
+    <div class="tp-mini-out" id="tp-to-out" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec tp-rules" data-jump="Rules" aria-labelledby="tp-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">The rules</p>
+        <h2 id="tp-rules-title">What the check follows, <span class="dim">rule by rule.</span></h2>
+        <p class="tf-p">The federal rules for every state, and a state's own rules where its site was read on November 8, 2026.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="tp-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="tp-limits-title">What it does not cover</h3>
+          <p>City rules, the rules of states not read yet, and whether someone's duties make them a manager.</p>
+          <details class="xpand"><summary>Read the full list</summary><div class="xp-in">
+            <p>Not legal or tax advice. The split is arithmetic on the hours, points and roles you enter; the check applies the rules quoted with each finding to the facts you give. Whether someone is a manager or supervisor, or customarily tipped, depends on their duties.</p>
+            <p>State rules come only from each state's own site, read November 8, 2026: Arizona, Delaware, District of Columbia, Florida, Kansas, Maine, Maryland, Massachusetts, Minnesota, Montana, New York, South Dakota, Virginia and Washington. Every other state gets the federal rules and its row of the DOL wage table, and the answer says its own rules are not covered. City rules are not covered.</p>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+    <div class="tf-cards">
+      <article class="tf-panel tf-rule"><div class="rb">
+        <h3>Never managers or the employer</h3>
+        <p>No part of staff tips for the employer, managers or supervisors, with or without a tip credit.</p>
+        <p class="tf-srcp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><a href="https://www.dol.gov/agencies/whd/fact-sheets/15-tipped-employees-flsa">DOL Fact Sheet #15</a></p>
+        <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+          <p>An employer may not keep any part of staff tips, and may not let managers or supervisors take from a pool, whether or not it takes a tip credit (29 CFR 531.52(b), 531.54(b)). Fact Sheet #15 counts an owner of at least 20 percent who actively manages as a manager. A manager who serves their own tables keeps those tips but stays out of the pool.</p>
+        </div></details>
+      </div></article>
+      <article class="tf-panel tf-rule"><div class="rb">
+        <h3>Tip credit or full minimum wage</h3>
+        <p>With a tip credit, only customarily tipped staff share. Paying the full minimum wage lets cooks in.</p>
+        <p class="tf-srcp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><a href="https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-A/part-531/subpart-D">29 CFR 531.50 to 531.60</a></p>
+        <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+          <p>With a tip credit, a pool may include only staff who customarily and regularly get more than $30 a month in tips (531.54(c)). Paying everyone the full minimum wage in cash lets the pool include cooks and dishwashers (531.54(d)). Some states allow no tip credit, and some are stricter about who may share.</p>
+        </div></details>
+      </div></article>
+      <article class="tf-panel tf-rule"><div class="rb">
+        <h3>Card fees and payday</h3>
+        <p>No more than the card company's fee, where the state allows it. Pay out by the regular payday.</p>
+        <p class="tf-srcp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><a href="https://www.dol.gov/agencies/whd/state/minimum-wage/tipped">DOL tipped wage table</a></p>
+        <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+          <p>Take off no more than the card company's fee on the tip, and only where the state allows it: Minnesota and Maine do not; Massachusetts bars any deduction from a tip. Pay out pooled tips by the regular payday (531.54(b)(2)). In the UK, by the end of the month after the customer paid.</p>
+        </div></details>
+      </div></article>
+    </div>
+    <p class="tf-cost tp-sources">Sources, read November 8, 2026: <a href="https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-A/part-531/subpart-D">29 CFR 531.50 to 531.60 on eCFR</a>, <a href="https://www.dol.gov/agencies/whd/fact-sheets/15-tipped-employees-flsa">DOL Fact Sheet #15</a>, <a href="https://www.dol.gov/agencies/whd/state/minimum-wage/tipped">DOL tipped wage table</a> (revised November 5, 2026), the <a href="https://www.gov.uk/government/publications/distributing-tips-fairly-statutory-code-of-practice/code-of-practice-on-fair-and-transparent-distribution-of-tips-html-version">UK code of practice on tips</a>, <a href="https://www.ontario.ca/document/your-guide-employment-standards-act-0/tips-and-other-gratuities">Ontario's ESA guide on tips</a> and the <a href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-dec-31-2024">IRS tipped occupation codes</a>.</p>
+  </section>
+
+  <section class="wrap tf-sec tp-prices" data-jump="Price" aria-labelledby="tp-prices-title">
+    <div class="tf-top solo"><div>
+      <p class="eyebrow">Price</p>
+      <h2 id="tp-prices-title">Free here, <span class="dim">$0.25 for a pay-run record.</span></h2>
+      <p data-prices class="tf-p">The free $0.25 each month on a signed-in account covers one pay-run record. This tool never costs more than $4.99 in a month.</p>
+    </div></div>
+    <div class="tf-panel tp-panel">
+      <ul class="endwise-prices"><li><strong>Split, tip-out and legality check on this page</strong>: free.</li><li><strong>Tip rules for a state or country</strong>: free.</li><li><strong>Split, tip-out or legality check over the API or MCP</strong>: $0.002 per call.</li><li><strong>Pay-run record (payroll CSV, tip sheet to sign and the legality check)</strong>: $0.25 per pay run; a repeat for the same pay run is free for 30 days.</li><li>At most $4.99 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Ways to split" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Ways to split</h2>
+<h3>Methods</h3><ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/by-hours/" title="Tip pool calculator by hours: split tips by hours worked, to the cent">By hours</a></li><li><a href="/toll-preview/tip-pool-calculator/by-points/" title="Tip pool point system calculator: points per role, worked out to the cent">By points</a></li><li><a href="/toll-preview/tip-pool-calculator/by-hours-and-points/" title="Hours x points tip pool calculator: weight each role and each shift">By hours x points</a></li><li><a href="/toll-preview/tip-pool-calculator/by-percentage/" title="Tip out percentage calculator: split a pool by role percentages">By role percentages</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/points-vs-hours/" title="Points vs hours tip pool: the same night split four ways">Points vs hours</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Tip-outs" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Tip-outs by role</h2>
+<h3>Tip-outs</h3><ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/tip-out/bartender/" title="Bartender tip out calculator: what the bar gets from sales or tips">Bartender tip-out</a></li><li><a href="/toll-preview/tip-pool-calculator/tip-out/busser/" title="Busser tip out calculator: the busser's share from each server">Busser tip-out</a></li><li><a href="/toll-preview/tip-pool-calculator/tip-out/server/" title="Tip out calculator for servers: what you owe the bar, bussers and runners">Tip-out calculator for servers</a></li><li><a href="/toll-preview/tip-pool-calculator/tip-out/barista/" title="Barista tip split calculator: share the tip jar by hours">Barista tip split</a></li><li><a href="/toll-preview/tip-pool-calculator/tip-out/salon/" title="Salon tip split calculator: stylist and assistant">Salon tip split: stylist and assistant</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Rules" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Rules by place</h2>
+<h3>Laws</h3><ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/laws/" title="Tip pooling laws by state (2026): tipped cash wage, tip credit and who can share">Tipped wages and pool rules by state</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/arizona/" title="Is tip pooling legal in Arizona? Tip pool rules and tipped wage (2026)">Arizona</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/delaware/" title="Is tip pooling legal in Delaware? Tip pool rules and tipped wage (2026)">Delaware</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/district-of-columbia/" title="Is tip pooling legal in the District of Columbia? Tip pool rules and tipped wage (2026)">District of Columbia</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/florida/" title="Is tip pooling legal in Florida? Tip pool rules and tipped wage (2026)">Florida</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/kansas/" title="Is tip pooling legal in Kansas? Tip pool rules and tipped wage (2026)">Kansas</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/maine/" title="Is tip pooling legal in Maine? Tip pool rules and tipped wage (2026)">Maine</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/maryland/" title="Is tip pooling legal in Maryland? Tip pool rules and tipped wage (2026)">Maryland</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/massachusetts/" title="Is tip pooling legal in Massachusetts? Tip pool rules and tipped wage (2026)">Massachusetts</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/minnesota/" title="Is tip pooling legal in Minnesota? Tip pool rules and tipped wage (2026)">Minnesota</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/montana/" title="Is tip pooling legal in Montana? Tip pool rules and tipped wage (2026)">Montana</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/new-york/" title="Is tip pooling legal in New York? Tip pool rules and tipped wage (2026)">New York</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/south-dakota/" title="Is tip pooling legal in South Dakota? Tip pool rules and tipped wage (2026)">South Dakota</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/virginia/" title="Is tip pooling legal in Virginia? Tip pool rules and tipped wage (2026)">Virginia</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/washington/" title="Tip pooling laws Washington State (2026): no tip credit, kitchen staff allowed">Washington</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/uk/" title="UK tip allocation law: tronc, the Tipping Act and the code of practice">United Kingdom</a></li><li><a href="/toll-preview/tip-pool-calculator/laws/canada/" title="Tip pooling laws in Canada: Ontario's rules, with a calculator">Canada (Ontario)</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Templates" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Templates</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/templates/excel/" title="Tip pool calculator Excel template: free formulas with cent-exact rounding">Excel</a></li><li><a href="/toll-preview/tip-pool-calculator/templates/google-sheets/" title="Tip pool calculator Google Sheets template: formulas that add up to the cent">Google Sheets</a></li><li><a href="/toll-preview/tip-pool-calculator/templates/tip-pooling-policy-template/" title="Tip pooling policy template: a one-page policy built on the FLSA rules">Tip pooling policy</a></li><li><a href="/toll-preview/tip-pool-calculator/templates/uk-tipping-policy-template/" title="UK tipping policy template for the Tipping Act 2023">UK tipping policy</a></li><li><a href="/toll-preview/tip-pool-calculator/templates/tip-out-sheet/" title="Tip out sheet to print: names, hours, shares and a signature line">Tip-out sheet</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Point of sale" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Point of sale</h2>
+<h3>POS</h3><ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/on/toast/" title="How to split tips on Toast: points, percentages and a legality check">Toast</a></li><li><a href="/toll-preview/tip-pool-calculator/on/square/" title="How to split tips on Square: tip pooling modes and what they leave out">Square</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-6"><h2 id="cp-index-title-6">Guides</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/guides/who-can-be-in-the-pool/" title="Who can legally be in a tip pool? Every role, with and without a tip credit, by state">Who can be in the pool</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/tip-pooling-vs-tip-out/" title="Tip pooling vs tip sharing vs tip out: the difference, and why the law treats them alike">Pooling vs tip-out</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/managers-in-tip-pool/" title="Can managers be in a tip pool? No, and owners of 20% or more count as managers">Managers in the pool</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/back-of-house-tips/" title="Can back of house share tips? Only with no tip credit, and not in every state">Back of house</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/no-tax-on-tips-and-tip-pools/" title="No tax on tips and tip pools: shared tips count as qualified tips">No tax on tips</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/tip-credit/" title="Tip credit explained: the $5.12 federal credit and what each state allows">The tip credit</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/deduct-card-fees/" title="Can you deduct credit card fees from tips? Federal rule and the states that forbid it">Card fees</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/service-charge-vs-tip/" title="Service charge vs tip: who keeps an automatic gratuity, and how it is taxed">Service charge vs tip</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/w2-tips-2026/" title="W-2 and tips for 2026: box 12 code TP, box 14b occupation codes, due February 1, 2027">W-2 and tips, 2026</a></li><li><a href="/toll-preview/tip-pool-calculator/guides/fix-an-illegal-tip-pool/" title="Fixing an illegal tip pool: recalculate who was owed what">Fixing an illegal pool</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compared" aria-labelledby="cp-index-title-7"><h2 id="cp-index-title-7">Compared</h2>
+<h3>Compare</h3><ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/vs/toast-tips-manager/" title="Toast Tips Manager vs a tip pool check before you split">Toast Tips Manager</a></li><li><a href="/toll-preview/tip-pool-calculator/vs/square-tip-pooling/" title="Square tip pooling vs a legal check of who can be in the pool">Square tip pooling</a></li><li><a href="/toll-preview/tip-pool-calculator/vs/marketman/" title="MarketMan tip pool calculator vs Endwise: hours only vs any method with a check">MarketMan's tip pooling calculator</a></li><li><a href="/toll-preview/tip-pool-calculator/vs/scheduling-payroll-apps/" title="Scheduling and payroll apps' tip pooling vs a one-off split with a legality check">scheduling and payroll apps</a></li><li><a href="/toll-preview/tip-pool-calculator/vs/spreadsheet/" title="Tip pool in a spreadsheet: rounding and fairness errors, and when it is fine">a spreadsheet</a></li><li><a href="/toll-preview/tip-pool-calculator/vs/dol-fact-sheet-15/" title="DOL Fact Sheet 15 in plain steps vs a tool that applies it">DOL Fact Sheet #15</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Dates" aria-labelledby="cp-index-title-8"><h2 id="cp-index-title-8">Dates</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/tip-pool-calculator/minimum-wage-changes-january-2027/" title="Tipped minimum wage changes on January 1, 2027: Washington, Virginia, South Dakota">January 1, 2027 wage changes</a></li><li><a href="/toll-preview/tip-pool-calculator/uk-tip-deadlines-2027/" title="UK tip distribution deadlines for 2027: the last day for each month's tips">UK tip deadlines 2027</a></li></ul>
+</section>
+
+  <section class="wrap tf-code tp-code" data-jump="Code" aria-label="Use this from code">
+    <div id="tp-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This calculator needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/tip-pool-calculator/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

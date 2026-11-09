@@ -1,0 +1,6 @@
+service,free,shortest_interval,timeout,note,source
+cron-job.org,Free; no job-count limit (fair use),Every minute (60 runs an hour per job),30 seconds; reads up to 64 KB,No promise on punctuality; disables a job after more than 25 failures in a row,https://cron-job.org/en/faq/
+FastCron Free,$0: 15 cron jobs,5 minutes,15 seconds,Paid plans from $6 a month (30-second interval),https://www.fastcron.com/pricing
+EasyCron Free,"$0: 200 executions a day, expires monthly",20 minutes,5 seconds,Paid plans from $24 a year (1-minute interval),https://www.easycron.com/pricing
+GitHub Actions schedule,Part of GitHub Actions,5 minutes,The workflow's own limits,Can be delayed at high load; disabled after 60 days without activity in public repos,https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+Vercel Cron Jobs (Hobby),Included: 100 cron jobs per project,Once a day,The function's limits,Runs anywhere within the hour; UTC only,https://vercel.com/docs/cron-jobs/usage-and-pricing

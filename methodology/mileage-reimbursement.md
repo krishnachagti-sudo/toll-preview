@@ -120,13 +120,31 @@ IRS rates were read 2026-10-31 from a page updated 2026-07-28. GSA rates come fr
 - [IRS: Internal Revenue Bulletin 2026-4 (January 20, 2026), Notice 2026-10](https://www.irs.gov/irb/2026-04_IRB)
 - [IRS: Publication 463 (2025), Travel, Gift, and Car Expenses](https://www.irs.gov/publications/p463)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+IRS rates from 2011-01-01 through 2026-12-31, page updated 2026-07-28. GSA rates known through 2026-12-31, page updated 2026-10-23. Dates outside the loaded years are refused, not guessed.
+
+Mileage reimbursement and IRS mileage log: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IRS: Standard mileage rates (Mileage rates for all years)](https://www.irs.gov/tax-professionals/standard-mileage-rates) | page updated 2026-07-28 | 2026-10-31 |
+| [GSA: Privately owned vehicle (POV) mileage reimbursement rates](https://www.gsa.gov/travel/plan-a-trip/transportation-airfare-rates-pov-rates-etc/privately-owned-vehicle-pov-mileage-reimbursement) | page updated 2026-10-23 | 2026-10-31 |
+| [IRS: Internal Revenue Bulletin 2026-29 (July 13, 2026), Announcement 2026-11](https://www.irs.gov/irb/2026-29_IRB) | see the document | 2026-10-31 |
+| [IRS: Internal Revenue Bulletin 2026-4 (January 20, 2026), Notice 2026-10](https://www.irs.gov/irb/2026-04_IRB) | see the document | 2026-10-31 |
+| [IRS: Publication 463 (2025), Travel, Gift, and Car Expenses](https://www.irs.gov/publications/p463) | see the document | 2026-10-31 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The stored IRS table is compared period by period with the IRS table recorded in the test, and every row of the GSA table by the date travel began. The 2026 change, the paid-date rule from Announcement 2026-11 and the 2011 and 2022 mid-year changes are checked, and a worked example is reproduced: 4,200 miles split at July 1 is 2,600 x $0.725 + 1,600 x $0.76 = $3,101.00.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The stored IRS table is compared period by period with the IRS table recorded in the test, and every row of the GSA table is checked by the date travel began.
+- The 2026 change is checked (72.5 cents to June 30, 76 cents from July 1), with the paid-date rule from Announcement 2026-11, and the 2011 and 2022 mid-year changes.
+- A worked example is reproduced: 4,200 miles split at July 1 is 2,600 x $0.725 + 1,600 x $0.76 = $3,101.00.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Mileage reimbursement and IRS mileage log tool](https://krishnachagti-sudo.github.io/toll-preview/mileage-reimbursement/).
 

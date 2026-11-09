@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMTP bounce classifier: hard, soft, block or policy: Endwise</title>
+<meta name="description" content="Paste a bounce, a DSN or a Postfix log line and get one verdict: hard, soft, block or policy, with the rule that matched, what the code means and whether to suppress the address.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/smtp-bounce-code-classifier/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"smtp-bounce-code-classifier"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/smtp-bounce-code-classifier/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="SMTP bounce classifier">
+<meta property="og:description" content="Classify an SMTP bounce, DSN or Postfix log line as hard, soft, block or policy, with the rule that matched (Gmail, Microsoft and Yahoo published texts, the IANA enhanced status codes, RFC 5321 reply codes), what the code means and whether to suppress the address; batches of up to 500 lines, and free code lookups.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/smtp-bounce-code-classifier/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/smtp-bounce-code-classifier/","url":"https://krishnachagti-sudo.github.io/toll-preview/smtp-bounce-code-classifier/","name":"SMTP bounce classifier","description":"Classify an SMTP bounce, DSN or Postfix log line as hard, soft, block or policy, with the rule that matched (Gmail, Microsoft and Yahoo published texts, the IANA enhanced status codes, RFC 5321 reply codes), what the code means and whether to suppress the address; batches of up to 500 lines, and free code lookups.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"SMTP bounce classifier","item":"https://krishnachagti-sudo.github.io/toll-preview/smtp-bounce-code-classifier/"}]},{"@type":"WebApplication","name":"SMTP bounce classifier","url":"https://krishnachagti-sudo.github.io/toll-preview/smtp-bounce-code-classifier/","description":"Classify an SMTP bounce, DSN or Postfix log line as hard, soft, block or policy, with the rule that matched (Gmail, Microsoft and Yahoo published texts, the IANA enhanced status codes, RFC 5321 reply codes), what the code means and whether to suppress the address; batches of up to 500 lines, and free code lookups.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"name":"One bounce","@type":"Offer","price":"0.0005","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.0005","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"bounce"}}},{"name":"Batch of up to 500 bounces","@type":"Offer","price":"0.0005","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.0005","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"bounce line"}}},{"@type":"Offer","name":"Code lookup","price":"0","priceCurrency":"USD"}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="sbc tf hue-file">
+  <section class="wrap tf-open">
+    <p class="eyebrow">Email deliverability, per bounce</p>
+    <h1>SMTP bounce classifier</h1>
+    <p class="lede">Paste a bounce and get one verdict, <b>hard</b>, <b>soft</b>, <b>block</b> or <b>policy</b>, with the rule that decided it and whether to suppress the address.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p class="tf-price" id="sbc-price"><span class="price">$0.0005 a bounce</span><span>5 free bounces a day, no card needed</span><span>Code lookups are free</span></p>
+    <details class="xpand sbc-about">
+      <summary>What you get</summary>
+      <div class="xp-in">
+        <p>Paste the raw SMTP reply, a delivery status notification (DSN) or a Postfix log line. You get the verdict, the rule that decided it, what the codes mean, and whether to suppress the address. Gmail's, Microsoft's and Yahoo's own published texts are read first, so a 550 5.7.26 is an authentication problem to fix, not an address to delete.</p>
+        <p>Without an account you get 5 free single bounces a day. Code lookups are free. Batches need an account.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="wrap tf-calc sbc-desk" data-jump="Tool" aria-label="Classifier">
+    <form class="tf-panel tf-form sbc-form" id="sbc-form" novalidate>
+      <fieldset class="field">
+        <legend class="visually-hidden">What to classify</legend>
+        <div class="choice-row sbc-mode">
+          <label class="choice"><input type="radio" name="mode" value="one" checked><span>One bounce</span></label>
+          <label class="choice"><input type="radio" name="mode" value="many"><span>Many, one per line</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="sbc-text" id="sbc-text-label">The bounce</label>
+        <textarea id="sbc-text" rows="4" spellcheck="false" aria-describedby="sbc-text-hint sbc-text-err" placeholder="550 5.1.1 &lt;ann@example.com&gt;: Recipient address rejected: User unknown"></textarea>
+        <p class="field-error" id="sbc-text-err"></p>
+      </div>
+      <p class="field-error" id="sbc-error" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="sbc-run">Classify</button>
+      <p class="hint tf-run-note" id="sbc-text-hint">An SMTP reply, a whole DSN (Status and Diagnostic-Code lines) or a Postfix log line with dsn= and status=.</p>
+      <details class="xpand" id="sbc-provider-fold">
+        <summary>Receiving provider (optional)</summary>
+        <div class="xp-in">
+      <div class="field">
+        <label for="sbc-provider" class="visually-hidden">Receiving provider</label>
+        <select id="sbc-provider">
+          <option value="">Work it out from the text</option>
+          <option value="gmail">Gmail and Google Workspace</option>
+          <option value="microsoft">Microsoft 365, Exchange Online, Outlook.com</option>
+          <option value="yahoo">Yahoo Mail and AOL</option>
+          <option value="postfix">Postfix</option>
+        </select>
+      </div>
+        </div>
+      </details>
+      <p class="visually-hidden" id="sbc-status" role="status"></p>
+    </form>
+
+    <div class="tf-panel tf-result sbc-out" id="sbc-out" aria-live="polite">
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec sbc-lookup" id="lookup" data-jump="Codes" aria-labelledby="sbc-lookup-title">
+    <div class="tf-top solo">
+      <div>
+        <p class="eyebrow">Free</p>
+        <h2 id="sbc-lookup-title">Look up a code, <span class="dim">and every text published with it.</span></h2>
+        <p class="tf-p">A reply code, an enhanced code or both: the RFC and IANA meaning, the default verdict, and every Gmail, Microsoft and Yahoo text published with it.</p>
+      </div>
+    </div>
+    <div class="tf-panel sbc-lookup-box">
+      <form class="sbc-lookup-form" id="sbc-lookup-form" novalidate>
+        <div class="field">
+          <label for="sbc-code">Code</label>
+          <input id="sbc-code" type="text" spellcheck="false" autocomplete="off" value="421 4.7.0" aria-describedby="sbc-code-err">
+          <p class="field-error" id="sbc-code-err"></p>
+        </div>
+        <button class="btn btn-ghost" type="submit">Look it up</button>
+      </form>
+      <div id="sbc-lookup-out" class="sbc-lookup-out" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec sbc-rules" data-jump="Rules" aria-labelledby="sbc-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">The rules</p>
+        <h2 id="sbc-rules-title">How it decides, <span class="dim">in this order.</span></h2>
+        <p class="tf-p">The provider's own text first, then the enhanced code, then the reply code. A 4xx is never hard.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="sbc-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="sbc-limits-title">What it does not cover</h3>
+          <p>Texts in languages other than English, and changes a receiver makes after the dates shown. Suppression stays your decision.</p>
+          <details class="xpand"><summary>Read the full note</summary><div class="xp-in">
+            <p>Verdicts follow the RFCs, the IANA registry and each provider's published texts as read on the dates shown; receivers can change their texts at any time, and English texts only are matched. Suppression is your decision: the verdict is a rule-based recommendation, not proof that an address is valid or invalid. Every result names its rule, so you can override it in your own code.</p>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+    <div class="tf-panel sbc-steps">
+      <ol>
+        <li><b>The provider's own text first.</b> Gmail's SMTP error table (last updated October 26, 2026), Microsoft's Exchange Online NDR table, Microsoft's MTA-STS page and Outlook.com 5.7.515 notice, and Yahoo's Sender Hub error families, each read November 8, 2026. One code can carry several texts: Gmail publishes eight with 421 4.7.0.</li>
+        <li><b>Then the enhanced status code.</b> Every detail code in the <a href="https://www.iana.org/assignments/smtp-enhanced-status-codes/smtp-enhanced-status-codes.xml">IANA registry</a> (updated December 6, 2024) has a verdict for class 4 and class 5. A code IANA does not list is judged by its subject (X.1 to X.7).</li>
+        <li><b>Then the reply code</b> (<a href="https://www.rfc-editor.org/rfc/rfc5321.txt">RFC 5321</a>, RFC 7504, RFC 4954), <b>then the class digit</b>.</li>
+        <li><b>A 4xx is never hard.</b> <a href="https://www.rfc-editor.org/rfc/rfc3463.txt">RFC 3463</a> says a 4.X.X failure may succeed if sent again, so a 4xx can be soft, block or policy, never "suppress now".</li>
+        <li><b>Ambiguous is never hard by accident.</b> 5.0.0, 554 and unknown 5xx details are not treated as hard; a bare 550 with no enhanced code and no known text is, at low confidence, and says so.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec sbc-prices" data-jump="Price" aria-labelledby="sbc-prices-title">
+    <div class="tf-top solo">
+      <div>
+        <p class="eyebrow">Price</p>
+        <h2 id="sbc-prices-title">Per bounce, <span class="dim">lookups free.</span></h2>
+      </div>
+    </div>
+    <div class="tf-panel sbc-price"><ul class="endwise-prices"><li><strong>One bounce</strong>: $0.0005 per bounce; you pay only for what is delivered and the rest is refunded at once; a line with no status code or known text is free.</li><li><strong>Batch of up to 500 bounces</strong>: $0.0005 per bounce line; you pay only for what is delivered and the rest is refunded at once.</li><li><strong>Code lookup</strong>: free.</li><li>At most $29.00 a calendar month for this tool; after that it is free until the month ends.</li></ul></div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Bounce codes" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Bounce codes</h2>
+<h3>Reference</h3><ul class="cp-rows"><li><a href="/toll-preview/smtp-bounce-code-classifier/smtp-error-codes/" title="SMTP error codes list: every reply code, hard or soft, and what to do">SMTP error codes list</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/enhanced-status-codes/" title="SMTP enhanced status codes: all 81 IANA codes with a verdict">All IANA enhanced status codes</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/api/" title="Bounce classification API and MCP tool ($0.50 per 1,000 bounces)">API and MCP</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/provider-strings/" title="Provider bounce strings: 171 Gmail, Microsoft and Yahoo texts with verdicts">Every provider bounce text</a></li></ul>
+<h3>Status codes</h3><ul class="cp-rows"><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-1-relaying-denied/" title="550 5.7.1 relaying denied (and 554 5.7.1 relay access denied): policy, not a bad address">Relay access denied</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-1-1/" title="550 5.1.1: Bad destination mailbox address, hard bounce (2 provider texts)">550 5.1.1</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-1/" title="550 5.7.1: Delivery not authorized, message refused, block (12 provider texts)">550 5.7.1</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/554-5-7-1/" title="554 5.7.1: Delivery not authorized, message refused, block (3 provider texts)">554 5.7.1</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/421-4-7-0/" title="421 4.7.0: Other or undefined security status, block (8 provider texts)">421 4.7.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-4-1/" title="550 5.4.1: No answer from host, soft bounce (1 provider text)">550 5.4.1</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/452-4-2-2/" title="452 4.2.2: Mailbox full, soft bounce (1 provider text)">452 4.2.2</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/552-5-2-2/" title="552 5.2.2: Mailbox full, soft bounce (2 provider texts)">552 5.2.2</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-2-1/" title="550 5.2.1: Mailbox disabled, not accepting messages, hard bounce (2 provider texts)">550 5.2.1</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/553-5-1-2/" title="553 5.1.2: Bad destination system address, hard bounce (1 provider text)">553 5.1.2</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/553-5-1-3/" title="553 5.1.3: Bad destination mailbox address syntax, hard bounce (1 provider text)">553 5.1.3</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/450-4-2-1/" title="450 4.2.1: Mailbox disabled, not accepting messages, soft bounce (2 provider texts)">450 4.2.1</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/451-4-3-0/" title="451 4.3.0: Other or undefined mail system status, soft bounce (2 provider texts)">451 4.3.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/421-4-3-0/" title="421 4.3.0: Other or undefined mail system status, soft bounce (1 provider text)">421 4.3.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/451-4-4-2/" title="451 4.4.2: Bad connection, soft bounce (1 provider text)">451 4.4.2</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/421-4-4-5/" title="421 4.4.5: Mail system congestion, soft bounce (1 provider text)">421 4.4.5</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/452-4-5-3/" title="452 4.5.3: Too many recipients, policy (2 provider texts)">452 4.5.3</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/552-5-3-4/" title="552 5.3.4: Message too big for system, policy (1 provider text)">552 5.3.4</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-4-5/" title="550 5.4.5: Mail system congestion, soft bounce (1 provider text)">550 5.4.5</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/554-5-4-6/" title="554 5.4.6: Routing loop detected, policy (2 provider texts)">554 5.4.6</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/503-5-5-1/" title="503 5.5.1: Invalid command, policy (1 provider text)">503 5.5.1</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/501-5-5-4/" title="501 5.5.4: Invalid command arguments, policy (1 provider text)">501 5.5.4</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/554-5-6-0/" title="554 5.6.0: Other or undefined media error, policy (1 provider text)">554 5.6.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-0/" title="550 5.7.0: Other or undefined security status, block (3 provider texts)">550 5.7.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/530-5-7-0/" title="530 5.7.0: Other or undefined security status, policy (1 provider text)">530 5.7.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/552-5-7-0/" title="552 5.7.0: Other or undefined security status, block (1 provider text)">552 5.7.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-23/" title="550 5.7.23: SPF validation failed, policy (1 provider text)">550 5.7.23</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-24/" title="550 5.7.24: SPF validation error, policy (1 provider text)">550 5.7.24</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-25/" title="550 5.7.25: Reverse DNS validation failed, policy (2 provider texts)">550 5.7.25</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-27/" title="550 5.7.27: Sender address has null MX, policy (1 provider text)">550 5.7.27</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-28/" title="550 5.7.28: Mail flood detected, block (1 provider text)">550 5.7.28</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-29/" title="550 5.7.29: ARC validation failure, policy (1 provider text)">550 5.7.29</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-30/" title="550 5.7.30: REQUIRETLS support required, policy (1 provider text)">550 5.7.30</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/535-5-7-8/" title="535 5.7.8: Authentication credentials invalid, policy (RFC meaning)">535 5.7.8</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-1-0/" title="550 5.1.0: Other address status, hard bounce (1 provider text)">550 5.1.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-4-4/" title="550 5.4.4: Unable to route, hard bounce (RFC meaning)">550 5.4.4</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/553-5-1-7/" title="553 5.1.7: Bad sender's mailbox address syntax, policy (1 provider text)">553 5.1.7</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/556-5-1-10/" title="556 5.1.10: Recipient address has null MX, hard bounce (1 provider text)">556 5.1.10</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-5-3/" title="550 5.5.3: Too many recipients, policy (1 provider text)">550 5.5.3</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/code/451-4-7-24/" title="451 4.7.24: SPF validation error, policy (1 provider text)">451 4.7.24</a></li></ul>
+<h3>By provider</h3><ul class="cp-rows"><li><a href="/toll-preview/smtp-bounce-code-classifier/provider/gmail/" title="Gmail bounce codes: 79 published texts, each hard, soft, block or policy">Gmail and Google Workspace</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/provider/microsoft/" title="Microsoft bounce codes: 86 published texts, each hard, soft, block or policy">Microsoft 365, Exchange Online and Outlook.com</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/provider/yahoo/" title="Yahoo bounce codes: 3 published texts, each hard, soft, block or policy">Yahoo Mail (and AOL)</a></li></ul>
+<h3>Guides</h3><ul class="cp-rows"><li><a href="/toll-preview/smtp-bounce-code-classifier/postfix-dsn-status-bounced/" title="Postfix dsn=5.7.1 status=bounced (and every other dsn= value) explained">Postfix dsn= lines</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/hard-vs-soft-bounce/" title="Hard vs soft bounce (and the two kinds nobody mentions: block and policy)">Hard vs soft vs block vs policy</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/5-7-codes/" title="5.7.x bounce codes decoded: authentication, policy and reputation">5.7.x codes decoded</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/4xx-retry/" title="4xx deferrals: when to retry a temporary SMTP error and when to stop">4xx deferrals: when to retry</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/parse-dsn/" title="How to read a delivery status notification (DSN): Action, Status, Diagnostic-Code">Read a DSN</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/mailbox-full/" title="Mailbox full: 452 4.2.2 vs 552 5.2.2, soft or hard bounce?">Mailbox full: soft or hard?</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/yahoo-421-4-7-0/" title="Yahoo 421 4.7.0 temporarily deferred (TS errors): why and what to do">Yahoo 421 4.7.0</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/suppression-rules/" title="When to suppress an email address: rules for hard, soft, block and policy bounces">When to suppress an address</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/guides/no-such-domain/" title="No such domain: 5.1.2, 5.4.4 and null MX bounces explained">No such domain</a></li></ul>
+<h3>Sending platforms</h3><ul class="cp-rows"><li><a href="/toll-preview/smtp-bounce-code-classifier/esp/sendgrid/" title="Twilio SendGrid bounce types mapped to hard, soft, block and policy">Twilio SendGrid</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/esp/amazon-ses/" title="Amazon SES bounce types mapped to hard, soft, block and policy">Amazon SES</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/esp/mailgun/" title="Mailgun bounce types mapped to hard, soft, block and policy">Mailgun</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/esp/mailchimp/" title="Mailchimp bounce types mapped to hard, soft, block and policy">Mailchimp</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/esp/hubspot/" title="HubSpot bounce types mapped to hard, soft, block and policy">HubSpot</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/esp/mailerlite/" title="MailerLite bounce types mapped to hard, soft, block and policy">MailerLite</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/esp/salesforce-marketing-cloud/" title="Salesforce Marketing Cloud bounce types mapped to hard, soft, block and policy">Salesforce Marketing Cloud</a></li></ul>
+<h3>Compared</h3><ul class="cp-rows"><li><a href="/toll-preview/smtp-bounce-code-classifier/vs/iana/" title="IANA status code registry vs a bounce classifier">IANA registry</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/vs/postmark/" title="Postmark bounce types vs a bounce classifier">Postmark bounce types</a></li><li><a href="/toll-preview/smtp-bounce-code-classifier/vs/postmaster-tools/" title="Google Postmaster Tools and Microsoft SNDS vs a bounce classifier">Postmaster Tools and SNDS</a></li></ul>
+</section>
+
+  <section class="wrap tf-code sbc-code" data-jump="Code" aria-label="Use this from code">
+    <div id="sbc-code-panel" data-endwise-code></div>
+  </section>
+  <noscript><div class="wrap"><p>This classifier needs JavaScript on this page. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/smtp-bounce-code-classifier/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

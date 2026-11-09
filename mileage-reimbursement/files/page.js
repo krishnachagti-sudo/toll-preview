@@ -69,6 +69,9 @@ function fillYears(keep) {
   sel.value = [...sel.options].some((o) => o.value === String(want)) ? String(want) : sel.options[0].value;
 }
 
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const shortRange = (from, to) => [from, to].map((d) => `${MON[+d.slice(5, 7) - 1]} ${+d.slice(8)}`).join(' to ');
+
 function fillPeriods(values = []) {
   const box = $('mr-periods');
   const old = [...box.querySelectorAll('input')].map((x) => x.value);
@@ -76,9 +79,8 @@ function fillPeriods(values = []) {
   periodsIn($('mr-purpose').value, $('mr-year').value).forEach((p, i) => {
     const id = `mr-m${i + 1}`;
     box.appendChild(h('div', { class: 'field' }, [
-      h('label', { for: id }, tr(`Miles, ${rangeText(p.from, p.to)}`, `Millas, ${range(p.from, p.to)}`)),
-      h('input', { type: 'text', id, inputmode: 'decimal', value: values[i] ?? old[i] ?? '', placeholder: '0' }),
-      h('p', { class: 'hint' }, tr(`${p.rate.words}, ${p.rate.source.label}`, `${p.rate.mills >= 1000 ? `${p.rate.dollars} por milla` : `${p.rate.cents} centavos por milla`}, ${p.rate.source.label}`)),
+      h('label', { for: id }, tr(`Miles, ${shortRange(p.from, p.to)}`, `Millas, ${range(p.from, p.to)}`)),
+      h('input', { type: 'text', id, inputmode: 'decimal', value: values[i] ?? old[i] ?? '', placeholder: '0', title: tr(`${p.rate.words}, ${p.rate.source.label}`, `${p.rate.mills >= 1000 ? `${p.rate.dollars} por milla` : `${p.rate.cents} centavos por milla`}, ${p.rate.source.label}`) }),
     ]));
   });
 }
@@ -150,37 +152,48 @@ const link = (text, href) => h('a', { href }, text);
 // Element.append writes null as the text "null", so leave the empty ones out.
 const put = (el, ...nodes) => el.append(...nodes.filter((x) => x !== null && x !== undefined));
 
+// The inputs in one line: "4,200 business miles in 2026, 2,600 of them January 1 to June 30".
+function inputsLine(r) {
+  const miles = milesText(Math.round(r.miles * 100));
+  const parts = r.periods.map((p) => tr(`${milesText(Math.round(p.miles * 100))} ${range(p.from, p.to)}`, `${milesText(Math.round(p.miles * 100))} ${range(p.from, p.to)}`));
+  const purpose = shortOf(r.periods[0]?.purpose ?? $('mr-purpose').value);
+  const extra = r.parkingAndTolls !== '$0.00' ? tr(`, ${r.parkingAndTolls} parking and tolls`, `, ${r.parkingAndTolls} de estacionamiento y peajes`) : '';
+  return tr(`${miles} ${purpose} miles: ${parts.join(', ')}${extra}`, `${miles} millas (${purpose}): ${parts.join(', ')}${extra}`);
+}
+
+// The total, then one line per rate period (its rate, miles and amount, with the source), any
+// parking and tolls, and each trip folded.
 function renderCalc(r, { kind, note }) {
   const out = $('mr-out');
   out.textContent = '';
-  const periods = h('div', { class: 'table-scroll' }, h('table', { class: 'rules mr-table' }, [
-    h('thead', {}, h('tr', {}, (ES ? ['Período', 'Tarifa', 'Millas', 'Monto', 'Fuente'] : ['Period', 'Rate', 'Miles', 'Amount', 'Source']).map((x, i) => h('th', { scope: 'col', class: i && i < 4 ? 'num' : null }, x)))),
-    h('tbody', {}, r.periods.map((p) => h('tr', {}, [
-      h('th', { scope: 'row' }, `${PURPOSES[p.purpose].short === 'business' ? '' : `${shortOf(p.purpose)}, `}${range(p.from, p.to)}`),
-      h('td', { class: 'num' }, `${p.rateCents}¢`),
-      h('td', { class: 'num' }, milesText(Math.round(p.miles * 100))),
-      h('td', { class: 'num' }, p.amount),
-      h('td', { class: 'mr-src' }, p.source),
-    ]))),
-  ]));
   const notes = r.lines.filter((l) => l.note || l.basis === 'paid-date');
-  out.appendChild(h('div', {}, [
-    kind === 'example' ? h('p', { class: 'mr-sheet-label' }, tr('Worked example', 'Ejemplo resuelto')) : null,
-    h('p', { class: 'mr-answer' }, [h('small', {}, r.parkingAndTolls !== '$0.00' ? tr('Mileage, parking and tolls', 'Millaje, estacionamiento y peajes') : tr('Mileage amount', 'Monto por millaje')), r.total]),
-    h('p', { class: 'mr-sub' }, r.answer),
-    periods,
-    r.lines.length > 2 || mode() === 'trips' ? h('details', { class: 'mr-why', open: r.lines.length <= 8 ? true : null }, [
+  const item = (k, what, fig, em, cls) => h('li', { class: cls ?? null }, [h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', {}, what), h('b', {}, fig), h('em', {}, em)]);
+  const lines = r.periods.map((p, i) => item(String(i + 1),
+    `${PURPOSES[p.purpose].short === 'business' ? '' : `${shortOf(p.purpose)}, `}${range(p.from, p.to)}, ${p.rateCents}¢`,
+    p.amount, tr(`${milesText(Math.round(p.miles * 100))} mi x ${p.rateCents}¢, ${p.source}`, `${milesText(Math.round(p.miles * 100))} mi x ${p.rateCents}¢, ${p.source}`), i === r.periods.length - 1 && r.periods.length > 1 ? 'hi' : null));
+  if (r.parkingAndTolls !== '$0.00') lines.push(item('+', tr('Parking and tolls', 'Estacionamiento y peajes'), r.parkingAndTolls, tr('At cost, on top of the mileage (Pub 463)', 'Al costo, además del millaje (Pub 463)'), 'plain'));
+  lines.push(item('=', tr('Total', 'Total'), r.total, tr(`${milesText(Math.round(r.miles * 100))} miles`, `${milesText(Math.round(r.miles * 100))} millas`), 'tot'));
+  put(out,
+    h('div', { class: 'tf-rh' }, [
+      kind === 'example' ? h('span', { class: 'tf-tag' }, tr('Example', 'Ejemplo')) : h('span', { class: 'tf-tag run' }, tr('Your result', 'Su resultado')),
+      h('span', { class: 'tf-src' }, tr(`IRS rates, read ${longDate(engine.irs.source.readOn)}`, `Tarifas del IRS, ${dateLong(engine.irs.source.readOn)}`)),
+    ]),
+    h('p', { class: 'tf-exin' }, kind === 'example' ? `${tr('Example', 'Ejemplo')}: ${inputsLine(r)}` : inputsLine(r)),
+    h('p', { class: 'tf-big' }, [h('b', {}, r.total), h('span', {}, r.parkingAndTolls !== '$0.00' ? tr('mileage, parking and tolls', 'millaje, estacionamiento y peajes') : tr('mileage amount', 'monto por millaje'))]),
+    h('p', { class: 'tf-sub' }, r.answer),
+    h('ol', { class: 'tf-items mr-items' }, lines),
+    r.lines.length > 2 || mode() === 'trips' ? h('details', { class: 'xpand mr-why', open: mode() === 'trips' && r.lines.length <= 8 ? true : null }, [
       h('summary', {}, tr(`Each trip (${r.lines.length})`, `Cada viaje (${r.lines.length})`)),
-      h('ul', { class: 'mr-lines' }, r.lines.map((l) => h('li', {}, [
+      h('div', { class: 'xp-in' }, h('ul', { class: 'mr-lines' }, r.lines.map((l) => h('li', {}, [
         h('span', { class: 'when' }, l.endDate ? tr(`${l.date} to ${l.endDate}`, `${l.date} al ${l.endDate}`) : l.date),
         h('span', {}, `${milesText(Math.round(l.miles * 100))} mi x ${l.rateCents}¢ = ${l.amount}`),
         l.basis === 'paid-date' ? h('span', { class: 'mr-tag' }, tr('rate set by the paid date', 'tarifa fijada por la fecha de pago')) : null,
-      ]))),
+      ])))),
     ]) : null,
-    ...notes.map((l) => h('p', { class: 'mr-aside' }, l.note)),
-    h('p', { class: 'mr-aside' }, [tr('Sources: ', 'Fuentes: '), ...r.sources.flatMap((s, i) => [i ? '; ' : '', link(s.label, s.url)]), tr(`. Rates read ${longDate(engine.irs.source.readOn)}.`, `. Tarifas consultadas el ${dateLong(engine.irs.source.readOn)}.`)]),
-    note ? h('p', { class: 'mr-cost' }, note) : null,
-  ]));
+    ...notes.map((l) => h('p', { class: 'tf-note' }, l.note)),
+    h('p', { class: 'tf-cost' }, [tr('Sources: ', 'Fuentes: '), ...r.sources.flatMap((s, i) => [i ? '; ' : '', link(s.label, s.url)]), '.']),
+    note ? h('p', { class: 'tf-cost' }, note) : null,
+  );
   $('mr-status').textContent = kind === 'run' ? r.answer : '';
 }
 
@@ -249,10 +262,11 @@ function sampleLinks() {
   if (!box || !ex?.output.pdf) return;
   const { pdf, csv } = ex.output;
   box.textContent = '';
-  box.append(
-    download(pdf.filename, new Blob([base64Bytes(pdf.base64)], { type: 'application/pdf' })), tr(' (PDF) and ', ' (PDF) y '),
-    download(pdf.filename.replace(/\.pdf$/, '.csv'), csv, 'text/csv'), ' (CSV).',
-  );
+  const pdfLink = download(pdf.filename, new Blob([base64Bytes(pdf.base64)], { type: 'application/pdf' }));
+  const csvLink = download(pdf.filename.replace(/\.pdf$/, '.csv'), csv, 'text/csv');
+  pdfLink.textContent = 'PDF';
+  csvLink.textContent = 'CSV';
+  box.append(pdfLink, tr(' and ', ' y '), csvLink);
 }
 
 const options = () => {
@@ -306,8 +320,8 @@ function renderFile(r, { example = false } = {}) {
     ? ['Empleado', 'Viajes', 'Millas', custom ? 'A pagar con su tarifa' : 'A pagar', 'Estacionamiento, peajes', ...(anyPaid ? ['Pagado', 'Ajuste'] : []), 'W-2 casilla 12 L', 'W-2 casilla 1']
     : ['Employee', 'Trips', 'Miles', custom ? 'Due at your rate' : 'Due', 'Parking, tolls', ...(anyPaid ? ['Paid', 'True-up'] : []), 'W-2 box 12 L', 'W-2 box 1'];
   put(out,
-    example ? h('p', { class: 'mr-sheet-label' }, tr('Worked example', 'Ejemplo resuelto')) : null,
-    h('p', { class: 'mr-sub mr-file-answer' }, r.answer),
+    example ? h('div', { class: 'tf-rh' }, [h('span', { class: 'tf-tag' }, tr('Example', 'Ejemplo')), h('span', { class: 'tf-src' }, tr('A made-up payroll sheet', 'Una hoja de nómina inventada'))]) : null,
+    h('p', { class: 'tf-sub mr-file-answer' }, r.answer),
     factsList([
       [tr('Trips', 'Viajes'), String(t.trips)],
       [tr('Miles', 'Millas'), milesText(Math.round(t.miles * 100))],
@@ -603,7 +617,7 @@ function fromQuery() {
     document.querySelector('input[name="mode"][value="trips"]').checked = true;
     if (q.get('trips')) $('mr-trips').value = q.get('trips').split(';').map((x) => x.split(',').join(', ')).join('\n');
   }
-  if (q.get('extra') && scaled(q.get('extra'), 2) !== null) $('mr-extra').value = q.get('extra');
+  if (q.get('extra') && scaled(q.get('extra'), 2) !== null) { $('mr-extra').value = q.get('extra'); if ($('mr-extra-fold')) $('mr-extra-fold').open = true; }
   return true;
 }
 
@@ -672,7 +686,7 @@ async function start() {
   let result = null;
   try { result = read.input ? engine.calculate(read.input) : null; } catch { result = null; }
   if (result) {
-    renderCalc(result, { kind: 'example', note: tr(`Worked out on this page${linked ? ' from the link you followed' : ''}. Press "Work it out" to run it, or change the miles.`, `Calculado en esta página${linked ? ' con el enlace que siguió' : ''}. Presione "Calcular" para ejecutarlo, o cambie las millas.`) });
+    renderCalc(result, { kind: linked ? 'link' : 'example', note: tr(`Worked out on this page${linked ? ' from the link you followed' : ''}. Press "Work it out" to run it, or change the miles.`, `Calculado en esta página${linked ? ' con el enlace que siguió' : ''}. Presione "Calcular" para ejecutarlo, o cambie las millas.`) });
   } else {
     $('mr-out').textContent = tr('Enter your miles and press "Work it out".', 'Ingrese sus millas y presione "Calcular".');
   }

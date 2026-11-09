@@ -1,0 +1,50 @@
+/* Teacher license renewal tracker: a PD log beside its running total. Layout comes from
+   web/tool-full.css; this file keeps the log rows, the quotes and the tables. */
+.tr { --accent: var(--h-date); --endwise-accent: var(--h-date); }
+.tr [hidden] { display: none !important; }
+
+.tr-step { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 22px 0 6px; }
+.tr-step:first-child { margin-top: 0; }
+.tr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 12px; }
+.tr-grid select { width: 100%; text-overflow: ellipsis; }
+.tr-acts { margin-top: 18px !important; }
+.tr-acts > summary.tr-step { margin: 0; }
+.tr-acts .xp-in > .hint { margin-top: 0; }
+.tr-grid > .field { margin: 0 !important; }
+.tr-wide { grid-column: 1 / -1; }
+.tr select, .tr input, .tr textarea { max-width: 100%; }
+.tr textarea { width: 100%; font: 400 0.9rem/1.5 var(--font-mono); }
+.tr input[type="date"] { color-scheme: dark; }
+.tr-check { display: flex; gap: 8px; align-items: baseline; color: var(--text-2); margin: 4px 0 0; font-size: 0.95rem; }
+
+.tr-log { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 8px; }
+.tr-log #tr-rows { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.tr-row { min-width: 0; border: 1px solid var(--line); border-radius: 10px; background: rgba(255, 255, 255, 0.02); }
+.tr-sum { cursor: pointer; padding: 10px 12px; font-size: 14px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tr-row[open] > .tr-sum { color: var(--text); border-bottom: 1px solid var(--line); }
+.tr-row-in { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: 8px 10px; padding: 10px 12px 12px; }
+.tr-row .field { margin: 0 !important; }
+.tr-row label { font-size: 0.78rem; }
+.tr-row .tr-title { grid-column: 1 / -1; }
+.tr-row .tr-del { align-self: end; justify-self: start; }
+.tr-log-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.tr-about { order: 4; margin-top: 12px; }
+
+.tr-out details.xpand { margin-top: 14px; }
+.tr-bar { height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; margin: 16px 0 0; max-width: 30rem; }
+.tr-bar span { display: block; height: 100%; background: var(--hue); }
+.tr-items { margin-top: 16px; }
+.tr-list { margin: 0; padding-left: 1.1rem; color: var(--text-2); }
+.tr-list li { margin: 4px 0; }
+.tr-quotes { list-style: none; padding: 0; margin: 0; }
+.tr-quotes li { border-left: 2px solid var(--line-2); padding: 2px 0 2px 12px; margin: 0 0 10px; color: var(--text-2); overflow-wrap: anywhere; }
+.tr-quotes q { font-style: italic; }
+.tr-quotes a { text-decoration: underline; }
+.tr-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+.tr-table th, .tr-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.tr-scroll { overflow-x: auto; max-width: 100%; margin-top: 14px; }
+.tr-actions { margin-top: 18px; }
+.tr-notes { margin: 0; padding-left: 1.1rem; }
+.tr-coverage { color: var(--muted); font-size: 14px; margin: 0; }
+.tr-price-list { padding: 20px 24px; }
+.tr-staff-desk { margin-top: 0; }

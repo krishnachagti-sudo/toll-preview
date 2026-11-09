@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How USPS adjustments are checked: DMM and Notice 123: Endwise</title>
+<meta name="description" content="How the USPS adjustment checker prices the label and USPS's measurements, works out dimensional weight, cubic tiers and fees, and counts the 60-day window.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/usps-adjustment-dispute/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/usps-adjustment-dispute.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How USPS adjustments are checked: DMM and Notice 123">
+<meta property="og:description" content="How the USPS adjustment checker prices the label and USPS's measurements, works out dimensional weight, cubic tiers and fees, and counts the 60-day window.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/usps-adjustment-dispute/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/usps-adjustment-dispute/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/usps-adjustment-dispute/","name":"How USPS adjustments are checked: DMM and Notice 123","description":"How the USPS adjustment checker prices the label and USPS's measurements, works out dimensional weight, cubic tiers and fees, and counts the 60-day window.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How USPS adjustments are checked: DMM and Notice 123","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/usps-adjustment-dispute/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the usps adjustment dispute checker answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the usps adjustment dispute checker refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"It refuses labels with no loaded price list: before July 12, 2026, or from January 17, 2027 until the new Notice 123 is loaded. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How USPS adjustments are checked: DMM and Notice 123</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How USPS adjustments are checked: DMM and Notice 123</h1>
+<p class="cp-answer">The label and USPS's measurements are both priced at USPS Notice 123 commercial prices for the label's ship date, and the adjustment should be the difference, plus the $3.00 Dimension Noncompliance Fee where it applies. Since July 12, 2026, dimensional weight rounds each side up to the whole inch and divides by 139 over 1,728 cubic inches. A dispute must be filed within 60 days of the notice.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the usps adjustment dispute checker compute?</h2>
+<p>For a Priority Mail, Priority Mail Express, Ground Advantage or Parcel Select label that USPS adjusted under Automated Package Verification, the tool prices what was entered on the label, what USPS measured and, if given, your own measurements, using the Domestic Mail Manual rules and the Notice 123 commercial price list in force on the ship date. It says what the adjustment should be, whether the charge matches, how much to dispute, and the last day to file. The packet adds the text for USPS's dispute webform and a PDF with the worksheet and your photos.</p>
+<details class="xpand"><summary>Read the rest: What does the usps adjustment dispute checker compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>check</code>: Prices the label, USPS's measurements and your own, and returns each price with its steps, the expected adjustment with and without the Dimension Noncompliance Fee, whether the charge matches, the amount to dispute, the reasons, the deadline and the sources. Free on the tool page; $0.01 a call over the API or MCP.</li><li><code>packet</code>: Does what check does and adds the dispute text for USPS's webform (Revenue Assurance ID without leading zeros, tracking number, reason and the rule), the steps to file, and a PDF with the worksheet and up to 6 photos. $0.49 per adjustment; changes to the same adjustment are free for 60 days, and a month costs at most $4.99.</li><li><code>dim</code>: Works out the dimensional weight of one parcel under the rule in force now and the rule before July 12, 2026, side by side, with the weight USPS bills and any nonstandard fees. Free.</li><li><code>deadline</code>: Returns the last day to dispute, 60 days after the notice date, and the days left. Free.</li><li><code>rules</code>: Returns the rules file and the price file: every service, rounding rule, divisor, cubic tier, fee and price by zone, with the USPS page and the date each was read. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>service, zone, shipDate</code>: The service on the label (priority-mail, priority-mail-express, ground-advantage or parcel-select), the zone (1 to 9), and the day the label was bought or mailed, which picks the price list.</li><li><code>label</code>: What was entered on the label: weight in pounds (and ounces), length, width and height in inches, and pricing (weight, the default, or cubic).</li><li><code>usps</code>: What the notice says USPS measured: only what differs, including a different service or zone.</li><li><code>actual</code>: Your own measurements of the parcel, if you disagree with USPS.</li><li><code>notified, charged</code>: The date of the adjustment notice (starts the 60 days) and the adjustment amount in dollars.</li><li><code>shape, softPack, characteristics</code>: rectangular (default) or nonrectangular; a poly mailer or padded envelope priced by length plus width; a nonstandard characteristic such as a tube, roll or liquid.</li><li><code>raid, tracking, name, email, phone, note, photos</code>: For packet: the Revenue Assurance ID (up to 15 digits), the tracking number, your details, a short note, and up to 6 JPEG or PNG photos.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: the label price, the price at USPS's measurements, what the adjustment should be, whether the charge matches, what to dispute and the date to file by</li><li>edition: the price list used; label, usps and actual: each price with its row, fees, steps and dimensional weight</li><li>expected, verdict and reasons: the adjustment with and without the fee, matches, above or below, the amount to dispute, and Weight, Dimensions, Zone or Package</li><li>deadline: the notice date, the last day and the days left</li><li>packet: the dispute text, the fields for the webform, the steps and the PDF (packet op)</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>The price list is chosen by the ship date: July 12, 2026 prices (July 12, 2026 to October 3, 2026) and Time-limited prices, October 4, 2026 to January 17, 2027 (October 4, 2026 to January 16, 2027). A label from before the first or from January 17, 2027 on is refused, since those prices are not loaded.</li><li>Measurements are worked in hundredths of an inch and weights in ten-thousandths of a pound, so no rounding depends on floating point. Dimensional weight (DMM 213.1.4, 223.1.4, 253.1.2, 283.1.4): from July 12, 2026, each side is rounded up to the whole inch, multiplied, and over 1,728 cubic inches divided by 139 and rounded up, at most 70 lb. A nonrectangular parcel is multiplied by 0.785 first, and nonrectangular Priority Mail still rounds each side off and divides by 166. Before that date every service rounded off and divided by 166.</li><li>The weight row: Ground Advantage under 1 lb uses the 4, 8, 12 and 15.999 oz rows; Priority Mail and Priority Mail Express have a 0.5 lb row; otherwise the weight is rounded up to the next pound. The parcel is priced at the dimensional weight when that is more than the actual weight row.</li><li>Cubic prices (DMM 223.1.3 and 283.1.3): each side is rounded down to the quarter inch and the volume put in tenth-of-a-cubic-foot tiers, up to 0.5 cubic feet for Priority Mail and 1.0 for Ground Advantage. A cubic piece weighs at most 20 lb and its longest side is at most 22 inches; a soft pack is tiered by length plus width, at most 36 inches. A piece that does not qualify is priced by weight.</li><li>Fees from Notice 123: a nonstandard length fee over 22 and over 30 inches or a nonstandard characteristics fee, whichever is higher, plus a volume fee over 2 cubic feet. Ground Advantage with length plus girth over 108 up to 130 inches gets the oversized price; over 130 is refused.</li><li>The Dimension Noncompliance Fee ($3.00) is counted when the label's dimensions were omitted or differ from USPS's (each rounded up to the whole inch) and the parcel is over 1 cubic foot or 22 inches long, the Phase One rule of USPS's Parcel Dimension Compliance initiative.</li><li>The expected adjustment is the price at USPS's measurements minus the label price, with and without the fee. A charge within one cent of either matches. With your own measurements, the amount to dispute is the charge less what would be owed at them; without them, it is any amount charged above what USPS's own measurements produce.</li><li>The last day to dispute is 60 days after the notice date. The packet's text gives the Revenue Assurance ID without leading zeros, as USPS's FAQ asks, the tracking number, the reason, the measurements and the rule, for the webform at https://apvdisputes.usps.com/.</li></ol>
+<p><strong>Prices.</strong></p>
+<p>USPS Notice 123 commercial prices in cents by zone (index 0 = zone 1 ... index 8 = zone 9), transcribed by script from USPS's own CSV price files and checked against the Notice 123 web page. pounds: weight not over N lb (Priority Mail and Priority Mail Express also have a 0.5 lb row). ounces: Ground Advantage under 1 lb. cubic: tier 'cubic feet up to'. fees: nonstandard and Dimension Noncompliance fees. Platforms such as eBay, Etsy and Pirate Ship may charge other rates, so the tool compares the adjustment (the difference), not label totals.</p>
+<p><strong>Parcel Select.</strong></p>
+<p>Parcel Select prices depend on the entry facility and are not priced; its dimensional weight is still worked out.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A parcel of exactly 1,728 cubic inches has no dimensional weight; it is priced on its actual weight.</li><li>A box measured 12 x 10 x 8 in by you and 14 x 12 x 11 in by USPS: at your measurements nothing extra is owed, so the whole charge is disputed.</li><li>A nonrectangular parcel with a nonstandard characteristic is not eligible for cubic prices.</li><li>A notice dated October 28, 2026 can be disputed through December 27, 2026; after that the window is closed.</li><li>Photos are checked by their contents: a file that is not a JPEG or PNG is refused.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>Ground Advantage, zone 5: label 12 x 10 x 8 in, USPS says 14 x 12 x 11 in, $13.01 charged</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;check&quot;,
+  &quot;service&quot;: &quot;ground-advantage&quot;,
+  &quot;zone&quot;: 5,
+  &quot;shipDate&quot;: &quot;2026-10-20&quot;,
+  &quot;notified&quot;: &quot;2026-10-28&quot;,
+  &quot;charged&quot;: 13.01,
+  &quot;label&quot;: &#123;
+    &quot;weight&quot;: 3,
+    &quot;length&quot;: 12,
+    &quot;width&quot;: 10,
+    &quot;height&quot;: 8
+  &#125;,
+  &quot;usps&quot;: &#123;
+    &quot;length&quot;: 14,
+    &quot;width&quot;: 12,
+    &quot;height&quot;: 11
+  &#125;,
+  &quot;actual&quot;: &#123;
+    &quot;length&quot;: 12,
+    &quot;width&quot;: 10,
+    &quot;height&quot;: 8
+  &#125;
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Ground Advantage, zone 5: label 12 x 10 x 8 in, USPS says 14 x 12 x 11 in, $13.01 charged</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">label</th><td>3 lb, $12.12</td></tr>
+<tr><th scope="row">at USPS's measurements</th><td>14 lb, $22.13</td></tr>
+<tr><th scope="row">the adjustment should be</th><td>$10.01, or $13.01 with the $3.00 Dimension Noncompliance Fee</td></tr>
+<tr><th scope="row">to dispute</th><td>$13.01</td></tr>
+<tr><th scope="row">reasons</th><td>Dimensions</td></tr>
+<tr><th scope="row">file by</th><td>December 27, 2026</td></tr>
+</tbody></table></div>
+<p><strong>Dimensional weight: 21.06 x 15.55 x 9.61 in box, 8 lb, Ground Advantage</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;dim&quot;,
+  &quot;service&quot;: &quot;ground-advantage&quot;,
+  &quot;length&quot;: 21.06,
+  &quot;width&quot;: 15.55,
+  &quot;height&quot;: 9.61,
+  &quot;weight&quot;: 8
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Dimensional weight: 21.06 x 15.55 x 9.61 in box, 8 lb, Ground Advantage</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>A 21.06 x 15.55 x 9.61 in rectangular parcel rounds up to 22 x 16 x 10 in = 3,520 cubic inches; over 1,728, so its Ground Advantage dimensional weight is 26 lb (divided by 139, rounded up) and USPS bills 26 lb.</td></tr>
+<tr><th scope="row">before July 12, 2026</th><td>21 x 16 x 10 in, 21 lb (divided by 166)</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>It refuses labels with no loaded price list: before July 12, 2026, or from January 17, 2027 until the new Notice 123 is loaded.</li><li>It does not read your account or USPS's scan data: the zone and USPS's measurements come from your notice.</li><li>It does not file the dispute; USPS decides every one, and a packet does not guarantee a refund.</li><li>Photos are processed to build the PDF and are not kept. It is not legal advice.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>USPS's rules and the Notice 123 prices were read on November 8, 2026, the prices transcribed from USPS's own price files. USPS changes prices next on January 17, 2027: Postal Explorer listed only postage statement redlines (revised 11/06/2026) on November 8, 2026; no Notice 123 for January 17, 2027 yet.</p>
+<ul class="cp-sources"><li><a href="https://www.usps.com/business/verify-postage.htm">USPS: Postage Verification (Automated Package Verification)</a></li><li><a href="https://faq.usps.com/articles/Knowledge/Automated-Package-Verification-Program">USPS FAQ: Automated Package Verification Program</a></li><li><a href="https://postalpro.usps.com/node/13550">USPS Industry Alert: Automated Package Verification (APV) Dispute Process, updated October 25, 2024 (PostalPro)</a></li><li><a href="https://pe.usps.com/text/dmm300/223.htm">USPS DMM 223 Priority Mail Commercial Prices and Eligibility, sections 1.1 to 1.10</a></li><li><a href="https://pe.usps.com/text/dmm300/283.htm">USPS DMM 283 USPS Ground Advantage Commercial Prices and Eligibility, sections 1.1 to 1.8</a></li><li><a href="https://pe.usps.com/text/dmm300/604.htm">USPS DMM 604.7.0 Computing Postage (round off, round up, round down)</a></li><li><a href="https://pe.usps.com/text/dmm300/Notice123.htm">USPS Notice 123 Price List, effective October 4, 2026</a></li></ul>
+<p>USPS's rules and the Notice 123 prices were read on November 8, 2026, the prices transcribed from USPS's own price files. USPS changes prices next on January 17, 2027: Postal Explorer listed only postage statement redlines (revised 11/06/2026) on November 8, 2026; no Notice 123 for January 17, 2027 yet.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>USPS adjustment dispute checker: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.usps.com/business/verify-postage.htm">USPS: Postage Verification (Automated Package Verification)</a></th><td rowspan="11">see the document</td><td rowspan="15">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://faq.usps.com/articles/Knowledge/Automated-Package-Verification-Program">USPS FAQ: Automated Package Verification Program</a></th></tr>
+<tr><th scope="row"><a href="https://postalpro.usps.com/node/13550">USPS Industry Alert: Automated Package Verification (APV) Dispute Process, updated October 25, 2024 (PostalPro)</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/text/dmm300/213.htm">USPS DMM 213 Priority Mail Express Commercial Prices and Eligibility, section 1.4</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/text/dmm300/223.htm">USPS DMM 223 Priority Mail Commercial Prices and Eligibility, sections 1.1 to 1.10</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/text/dmm300/253.htm">USPS DMM 253 Parcel Select Prices and Eligibility, sections 1.2 and 1.7 to 1.8</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/text/dmm300/283.htm">USPS DMM 283 USPS Ground Advantage Commercial Prices and Eligibility, sections 1.1 to 1.8</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/text/dmm300/604.htm">USPS DMM 604.7.0 Computing Postage (round off, round up, round down)</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/Archive/NHTML/DMMArchive20260406/223.htm">USPS DMM archive, issue of April 6, 2026: 223 section 1.4 (the rule before July 12, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/text/dmm300/Notice123.htm">USPS Notice 123 Price List, effective October 4, 2026</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/PriceChange/Index">USPS Postal Explorer: Price Change (Time-Limited 2026 and January 2027)</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/PriceFile_Archive/CSV/PriceFile_Archive_20260712/Price%20Files%20-%20CSV.zip">USPS Postal Explorer, Price and SKU File Archive: price files effective July 12, 2026 (CSV)</a></th><td rowspan="2">July 12, 2026 prices</td></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/Archive/PriceFile">USPS Postal Explorer, Price and SKU File Archive</a></th></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/text/dmm300/Notice123.htm">USPS Notice 123 Price List, effective October 4, 2026 (Postal Explorer)</a></th><td rowspan="2">Time-limited prices, October 4, 2026 to January 17, 2027</td></tr>
+<tr><th scope="row"><a href="https://pe.usps.com/PriceChange/Index">USPS Postal Explorer, Time-Limited 2026 Price Change: Notice 123 (final, revised 09/18/2026)</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests pin Notice 123 prices and fees to USPS's own files, dimensional weight under the rule in force and the rule before July 12, 2026, the weight rows, cubic tiers and soft packs, the nonstandard and noncompliance fees, refusals outside the loaded price lists, the sample adjustment with the $3 fee, the 60-day deadline, the dispute text, and that the packet PDF is the same bytes every time.</p>
+<p>What its test suite asserts:</p>
+<ul><li>Notice 123 prices and fees are pinned to USPS's own price files for both price lists, read November 8, 2026.</li><li>Dimensional weight rounds up and divides by 139 since July 12, 2026 (nonrectangular Priority Mail still rounds off and divides by 166), and the weight rows, cubic tiers, soft packs and fees are checked.</li><li>The sample adjustment matches USPS's numbers with the $3 fee and is all disputed at the seller's measurements; the 60-day deadline, the dispute text and the packet PDF's same bytes are checked.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/usps-adjustment-dispute/">Open the USPS adjustment dispute checker tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the usps adjustment dispute checker answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the usps adjustment dispute checker refuse to answer?</h3></summary><div class="xp-in"><p>It refuses labels with no loaded price list: before July 12, 2026, or from January 17, 2027 until the new Notice 123 is loaded. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/usps-adjustment-dispute/">Open the USPS adjustment dispute checker tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/usps-adjustment-dispute.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

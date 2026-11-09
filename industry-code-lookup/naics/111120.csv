@@ -1,0 +1,21 @@
+field,value
+code,111120
+title,Oilseed (except Soybean) Farming
+level 2: 11,"Agriculture, Forestry, Fishing and Hunting"
+level 3: 111,Crop Production
+level 4: 1111,Oilseed and Grain Farming
+level 5: 11112,Oilseed (except Soybean) Farming
+description,"This industry comprises establishments primarily engaged in growing fibrous oilseed producing plants and/or producing oilseed seeds, such as sunflower, safflower, flax, rape, canola, and sesame."
+census index entry,"Canola farming, field and seed production"
+census index entry,"Flaxseed farming, field and seed production"
+census index entry,"Mustard seed farming, field and seed production"
+census index entry,"Oilseed farming (except soybean), field and seed production"
+census index entry,"Rapeseed farming, field and seed production"
+census index entry,"Safflower farming, field and seed production"
+census index entry,"Sesame farming, field and seed production"
+census index entry,"Sunflower farming, field and seed production"
+sba size standard,$2.25 million in average annual receipts
+naics 2017,111120
+sic 1987,0119
+naics 2027 (proposed),no change proposed
+schedule c,

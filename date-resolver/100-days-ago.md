@@ -1,15 +1,15 @@
 # What date was 100 days ago?
 
-100 days ago, counting back from Saturday, November 7, 2026 (today's date in New York, US Eastern time), was Thursday, July 30, 2026.
+100 days ago, counting back from Sunday, November 8, 2026 (today's date in New York, US Eastern time), was Friday, July 31, 2026.
 
-- Date: July 30, 2026
-- Weekday: Thursday
+- Date: July 31, 2026
+- Weekday: Friday
 - ISO week: 2026-W31
-- US business days between: 69
+- US business days between: 68
 
 ## 100 days ago, from any date
 
-[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-07&region=US)
+[Resolve it in the tool](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-08&region=US)
 
 ## 100 days ago, for each of the next 14 days
 
@@ -17,7 +17,6 @@ If "today" is the start date. US business days are weekdays from the date to the
 
 | Start | 100 days before | US business days |
 | --- | --- | ---: |
-| [Sat, Nov 7, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-07) | Thu, Jul 30, 2026 | 69 |
 | [Sun, Nov 8, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-08) | Fri, Jul 31, 2026 | 68 |
 | [Mon, Nov 9, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-09) | Sat, Aug 1, 2026 | 69 |
 | [Tue, Nov 10, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-10) | Sun, Aug 2, 2026 | 70 |
@@ -31,6 +30,7 @@ If "today" is the start date. US business days are weekdays from the date to the
 | [Wed, Nov 18, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-18) | Mon, Aug 10, 2026 | 69 |
 | [Thu, Nov 19, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-19) | Tue, Aug 11, 2026 | 69 |
 | [Fri, Nov 20, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-20) | Wed, Aug 12, 2026 | 69 |
+| [Sat, Nov 21, 2026](https://krishnachagti-sudo.github.io/toll-preview/date-resolver/?text=100+days+ago&ref=2026-11-21) | Thu, Aug 13, 2026 | 68 |
 
 ## How it is counted
 
@@ -77,5 +77,5 @@ No. Today is day 0, so the count goes back from yesterday as day 1, the way a sp
 ---
 
 Page: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-ago/  
-Worked out for: 2026-11-07  
+Worked out for: 2026-11-08  
 CSV: https://krishnachagti-sudo.github.io/toll-preview/date-resolver/100-days-ago.csv

@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
 <link rel="stylesheet" href="/toll-preview/fix-csv-export/files/page.css">
+<!-- After page.css: the plain-card layout (main.tf-plain) sets the layout over this page's own rules. -->
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"fix-csv-export"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
 <link rel="stylesheet" href="/toll-preview/assets/motion.css">
@@ -21,7 +23,7 @@
 <meta property="og:title" content="Fix a CSV export (leading zeros, dates, encoding) with a saved recipe">
 <meta property="og:description" content="Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.">
 <meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","url":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","description":"Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.","dateModified":"2026-11-07","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","item":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/"}]},{"@type":"WebApplication","name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","url":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","description":"Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Scan (what is wrong, the date proof and a suggested recipe, with the first 20 rows fixed)","price":"0","priceCurrency":"USD"},{"name":"Fixed file","@type":"Offer","price":"0.25","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.25","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"file"}}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","url":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","description":"Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","item":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/"}]},{"@type":"WebApplication","name":"Fix a CSV export (leading zeros, dates, encoding) with a saved recipe","url":"https://krishnachagti-sudo.github.io/toll-preview/fix-csv-export/","description":"Upload the CSV export you fix every month: get back leading zeros on ZIP codes and account codes, DD/MM vs MM/DD settled per column with the values that prove it (ambiguous dates listed, never guessed), long IDs kept as text, garbled accents repaired and UTF-8 with or without a BOM, plus a saved recipe that applies the same fix to next month's file and warns when its columns change.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Scan (what is wrong, the date proof and a suggested recipe, with the first 20 rows fixed)","price":"0","priceCurrency":"USD"},{"name":"Fixed file","@type":"Offer","price":"0.25","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.25","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"file"}}}]}]}</script>
 <meta name="robots" content="noindex, nofollow">
 </head>
 <body>
@@ -63,16 +65,17 @@
   </div>
 </header>
 
-<main id="main" class="fx">
-  <section class="wrap fx-intro">
+<main id="main" class="fx hue-file tf-plain">
+  <section class="wrap fx-intro tf-intro">
     <p class="eyebrow">Data files</p>
     <h1>Fix a CSV export</h1>
-    <p class="lede">The export you pull every month opens wrong: ZIP codes and account codes lose their leading zeros, dates flip between DD/MM and MM/DD, long IDs turn into 1.23E+15, accents come out as Ã©. Drop the file in. You see what is wrong, column by column, with the values that prove each date order. Fix it once and save the fix as a recipe; next month's file gets the same fix, and a warning if its columns changed.</p>
-    <p data-prices class="fx-price">The scan is free and runs in your browser: nothing is uploaded until you ask for the fixed file. The fixed file is $0.25, and running the same file again within a day is free. At most $2.49 a month, however many files you fix.</p>
+    <p class="lede">Drop in the export that opens wrong every month and see what is wrong, column by column: lost leading zeros, flipped dates, cut IDs, garbled accents, with the values that prove each date order.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="pline"><span class="price">Scan free, in your browser</span><span>fixed file $0.25</span><span>at most $2.49 a month</span></p>
   </section>
 
-  <section class="wrap fx-desk" aria-label="Fix a file">
-    <div class="fx-form">
+  <section class="wrap fx-desk tf-calc" aria-label="Fix a file">
+    <div class="fx-form tf-card tf-form">
       <div class="fx-drop" id="fx-drop">
         <label for="fx-file" class="fx-drop-label">Choose a CSV file, or drop it here</label>
         <input type="file" id="fx-file" accept=".csv,.txt,.tsv,text/csv,text/plain">
@@ -84,8 +87,13 @@
         <input type="file" id="fx-recipe-file" accept=".json,application/json">
         <p class="fx-hint" id="fx-recipe-note">A recipe you saved here is used again by itself when the file has the same columns.</p>
       </div>
-      <details class="fx-more" id="fx-more">
+      <p class="form-error" id="fx-error" role="alert"></p>
+      <button class="btn" type="button" id="fx-go" disabled>Download the fixed file ($0.25)</button>
+      <p class="fx-hint" id="fx-go-note">Choose a file to see what is wrong with it, free.</p>
+      <p class="visually-hidden" id="fx-status" role="status"></p>
+      <details class="fx-more xpand" id="fx-more">
         <summary>How to save the fixed file</summary>
+        <div class="xp-in">
         <div class="field">
           <label for="fx-out-enc">Encoding</label>
           <select id="fx-out-enc">
@@ -110,22 +118,47 @@
           </select>
         </div>
         <label class="fx-check"><input type="checkbox" id="fx-out-guard"> Write codes as ="00123" so Excel keeps the zeros when the file is double-clicked (other importers read this literally)</label>
+              </div>
       </details>
-      <p class="form-error" id="fx-error" role="alert"></p>
-      <button class="btn" type="button" id="fx-go" disabled>Download the fixed file ($0.25)</button>
-      <p class="fx-hint" id="fx-go-note">Choose a file to see what is wrong with it, free.</p>
-      <p class="visually-hidden" id="fx-status" role="status"></p>
     </div>
 
-    <div class="fx-out" id="fx-out" aria-live="polite">
-      <p class="fx-label">Sample: a made-up monthly export</p>
+    <div class="fx-out tf-card" id="fx-out" aria-live="polite">
+      <div class="tf-res-h"><span class="ex-tag">Example</span><p class="fx-label">Sample: a made-up monthly export</p></div>
+      <p class="tf-exin">Example: a made-up monthly bank export, 4 rows and 6 columns, with every problem in it</p>
+      <p class="tf-big">8 problems found<small>UTF-8 without a BOM, comma-separated, with 4 rows and 6 columns</small></p>
+      <ul class="tf-items">
+        <li><span>ZIP codes in &quot;ZIP&quot; lost their leading zero</span><b>3</b><small>column &quot;ZIP&quot;</small></li>
+        <li><span>Column of codes with leading zeros to keep as text (&quot;Account&quot;)</span><b>1</b><small>column &quot;Account&quot;</small></li>
+        <li><span>IDs of 16 or more digits that Excel would cut to 15</span><b>3</b><small>the whole file</small></li>
+        <li><span>Dates in &quot;Posted&quot; read DD/MM (2 values prove it)</span><b>DD/MM</b><small>column &quot;Posted&quot;</small></li>
+        <li><span>Value already in scientific notation (1.23E+15), whose lost digits are not in the file</span><b>1</b><small>the whole file</small></li>
+        <li><span>Amounts written with currency signs, digit-grouping commas or brackets in &quot;Amount&quot; (a recipe can write them as plain numbers)</span><b>3</b><small>column &quot;Amount&quot;</small></li>
+        <li><span>Values with accents or symbols that Excel shows garbled unless the file has a BOM</span><b>3</b><small>the whole file</small></li>
+        <li><span>Values with garbled accents (such as Ã© for é) to repair</span><b>3</b><small>the whole file</small></li>
+      </ul>
       <p class="fx-answer" id="fx-sample-answer">Your file is UTF-8 without a BOM, comma-separated, with 4 rows and 6 columns: 3 ZIP codes in "ZIP" lost their leading zero; 1 column of codes with leading zeros to keep as text ("Account"); 3 IDs of 16 or more digits that Excel would cut to 15; dates in "Posted" read DD/MM (2 values prove it); 1 value already in scientific notation (1.23E+15), whose lost digits are not in the file; 3 amounts written with currency signs, digit-grouping commas or brackets in "Amount" (a recipe can write them as plain numbers); 3 values with accents or symbols that Excel shows garbled unless the file has a BOM; 3 values with garbled accents (such as Ã© for é) to repair.</p>
       <p class="muted">The scan of the sample file. Choose your own file and the same scan runs on it, in your browser.</p>
     </div>
   </section>
 
-  <section class="wrap fx-rules" data-jump="How it decides" aria-labelledby="fx-rules-title">
-    <h2 id="fx-rules-title">How it decides</h2>
+  <section class="wrap fx-rules tf-sec" data-jump="Rules" aria-labelledby="fx-rules-title">
+    <div class="tf-rules-top">
+      <div>
+        <h2 id="fx-rules-title">How it decides</h2>
+        <p>Dates are read by the values that prove their order, ZIP codes go back to 5 digits, codes keep their zeros as text, and garbled accents are turned back only where that gives valid UTF-8. Fix a file once and save the fix as a recipe: next month's file gets the same fix, and a warning if its columns changed.</p>
+      </div>
+      <aside class="tf-card tf-not" aria-labelledby="fx-not-title">
+        <h3 id="fx-not-title">What it does not cover</h3>
+        <ul>
+          <li>Digits Excel already cut to 15: they are not in the file any more, so they are flagged, never invented.</li>
+          <li>Dates like 03/04/2026 with no proof of their order: listed and left as written unless your recipe names the order.</li>
+          <li>Zeros stripped from codes with no known width.</li>
+        </ul>
+      </aside>
+    </div>
+    <details class="xpand">
+      <summary>Read how dates, zeros and encodings are decided</summary>
+      <div class="xp-in">
     <div class="fx-rule-cols">
       <div>
         <h3>Dates: proof, not guesses</h3>
@@ -140,10 +173,16 @@
         <p>A byte order mark is read first, then the bytes are checked as UTF-8; a file that is not valid UTF-8 is read as Windows-1252. Text that was UTF-8 read the wrong way (CafÃ© for Café) is turned back, value by value, only where that gives valid UTF-8. The fixed file is UTF-8 with a BOM by default, which Excel reads correctly.</p>
       </div>
     </div>
+      </div>
+    </details>
   </section>
 
-  <section class="wrap fx-legal" data-jump="Please read" aria-labelledby="fx-legal-title">
+  <section class="wrap fx-legal tf-sec" data-jump="Sources" aria-labelledby="fx-legal-title">
     <h2 id="fx-legal-title">Please read</h2>
+    <p class="fx-hint">The scan is free and runs in your browser: nothing is uploaded until you ask for the fixed file. The fixed file is $0.25, and running the same file again within a day is free. At most $2.49 a month, however many files you fix.</p>
+    <details class="xpand">
+      <summary>Read the notes, the prices and the sources</summary>
+      <div class="xp-in">
     <ul id="fx-disclaimers">
       <li>Files are processed in memory and not kept. A recipe holds settings only (column headings and rules), never the values in your file.</li>
       <li>A date whose day and month are both 12 or below cannot be settled from the value alone. It is read by its column's proven order or by your recipe; otherwise it is listed and left as written.</li>
@@ -161,21 +200,23 @@
       <li><a href="https://www.unicode.org/faq/utf_bom.html">Unicode FAQ: UTF-8, UTF-16, UTF-32 and BOM</a>: the UTF-8 byte order mark, EF BB BF</li>
       <li><a href="https://encoding.spec.whatwg.org/index-windows-1252.txt">WHATWG Encoding Standard: index-windows-1252</a> (dated September 18, 2024): how Windows-1252 bytes are read</li>
     </ul>
+      </div>
+    </details>
   </section>
 
-<section class="wrap cp-index" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Fix a breakage</h2>
-<h3>Problems</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/keep-leading-zeros-csv/" title="Keep leading zeros in a CSV (restore 0010, not 10)">Leading zeros</a></li><li><a href="/toll-preview/fix-csv-export/csv-zip-codes-leading-zeros/" title="ZIP codes lost their leading zero? Restore them in your CSV">ZIP codes</a></li><li><a href="/toll-preview/fix-csv-export/csv-date-format-dd-mm-mm-dd/" title="CSV dates flipped between DD/MM and MM/DD: detect and fix">DD/MM vs MM/DD</a></li><li><a href="/toll-preview/fix-csv-export/csv-mixed-date-formats/" title="One column, two date formats: fix mixed DD/MM and MM/DD dates safely">Mixed date formats</a></li><li><a href="/toll-preview/fix-csv-export/csv-utf-8-bom/" title="CSV UTF-8 with or without BOM for Excel">UTF-8 BOM</a></li><li><a href="/toll-preview/fix-csv-export/csv-encoding-windows-1252-to-utf-8/" title="CSV encoding: convert Windows-1252 to UTF-8 and fix Ã© characters">Windows-1252 to UTF-8</a></li><li><a href="/toll-preview/fix-csv-export/csv-long-numbers-scientific-notation/" title="Long numbers turned into 1.23E+15 in a CSV: keep every digit">Long numbers</a></li></ul>
+<section class="wrap cp-index" data-jump="Fix a breakage" aria-labelledby="cp-index-title"><h2 id="cp-index-title">Fix a breakage</h2>
+<h3>Problems</h3><ul class="cp-rows"><li><a href="/toll-preview/fix-csv-export/keep-leading-zeros-csv/" title="Keep leading zeros in a CSV (restore 0010, not 10)">Leading zeros</a></li><li><a href="/toll-preview/fix-csv-export/csv-zip-codes-leading-zeros/" title="ZIP codes lost their leading zero? Restore them in your CSV">ZIP codes</a></li><li><a href="/toll-preview/fix-csv-export/csv-date-format-dd-mm-mm-dd/" title="CSV dates flipped between DD/MM and MM/DD: detect and fix">DD/MM vs MM/DD</a></li><li><a href="/toll-preview/fix-csv-export/csv-mixed-date-formats/" title="One column, two date formats: fix mixed DD/MM and MM/DD dates safely">Mixed date formats</a></li><li><a href="/toll-preview/fix-csv-export/csv-utf-8-bom/" title="CSV UTF-8 with or without BOM for Excel">UTF-8 BOM</a></li><li><a href="/toll-preview/fix-csv-export/csv-encoding-windows-1252-to-utf-8/" title="CSV encoding: convert Windows-1252 to UTF-8 and fix Ã© characters">Windows-1252 to UTF-8</a></li><li><a href="/toll-preview/fix-csv-export/csv-long-numbers-scientific-notation/" title="Long numbers turned into 1.23E+15 in a CSV: keep every digit">Long numbers</a></li></ul>
 </section>
-<section class="wrap cp-index" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Guides</h2>
-<h3>Excel and scripts</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/guide/open-csv-in-excel-without-changing-data/" title="Open a CSV in Excel without losing zeros or changing dates">Open a CSV without changing it</a></li><li><a href="/toll-preview/fix-csv-export/guide/excel-automatic-data-conversion/" title="Excel automatic data conversion: the 4 settings and the CSV notice">Automatic data conversion settings</a></li><li><a href="/toll-preview/fix-csv-export/guide/power-query-keep-leading-zeros/" title="Power Query: keep leading zeros on every refresh">Power Query and leading zeros</a></li><li><a href="/toll-preview/fix-csv-export/guide/save-csv-without-losing-zeros/" title="Save as CSV without losing zeros or long numbers">Save as CSV without losing zeros</a></li><li><a href="/toll-preview/fix-csv-export/guide/python-read-csv-utf-8-bom/" title="Read and write a UTF-8 BOM CSV in Python and PowerShell">Python and PowerShell</a></li></ul>
-<h3>Questions</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/guides/saved-recipe/" title="Save a recipe for a monthly CSV export (and catch column changes)">Save a recipe for a monthly export</a></li><li><a href="/toll-preview/fix-csv-export/guides/gene-names-dates/" title="Gene names turned into dates by Excel (SEPT2, MARCH1)">Gene names turned into dates</a></li><li><a href="/toll-preview/fix-csv-export/guides/delimiters-locale/" title="Semicolon vs comma CSV delimiters by locale">Delimiters by locale</a></li><li><a href="/toll-preview/fix-csv-export/guides/csv-with-commas-in-fields/" title="Commas and quotes inside CSV fields: why columns shift">Commas inside fields</a></li><li><a href="/toll-preview/fix-csv-export/guides/negative-numbers-currency-formats/" title="Currency symbols, brackets and negative numbers in CSV exports">Currency and negative amounts</a></li></ul>
-<h3>Compared</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/vs/openrefine/" title="OpenRefine vs Endwise for fixing a recurring CSV export">OpenRefine</a></li><li><a href="/toll-preview/fix-csv-export/vs/power-query/" title="Power Query vs Endwise for CSV dates and leading zeros">Power Query</a></li><li><a href="/toll-preview/fix-csv-export/vs/pandas/" title="pandas vs Endwise for cleaning a CSV export">pandas</a></li><li><a href="/toll-preview/fix-csv-export/vs/csvlint/" title="CSV Lint vs a recipe-based CSV fixer">CSV Lint</a></li></ul>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Guides</h2>
+<h3>Excel and scripts</h3><ul class="cp-rows"><li><a href="/toll-preview/fix-csv-export/guide/open-csv-in-excel-without-changing-data/" title="Open a CSV in Excel without losing zeros or changing dates">Open a CSV without changing it</a></li><li><a href="/toll-preview/fix-csv-export/guide/excel-automatic-data-conversion/" title="Excel automatic data conversion: the 4 settings and the CSV notice">Automatic data conversion settings</a></li><li><a href="/toll-preview/fix-csv-export/guide/power-query-keep-leading-zeros/" title="Power Query: keep leading zeros on every refresh">Power Query and leading zeros</a></li><li><a href="/toll-preview/fix-csv-export/guide/save-csv-without-losing-zeros/" title="Save as CSV without losing zeros or long numbers">Save as CSV without losing zeros</a></li><li><a href="/toll-preview/fix-csv-export/guide/python-read-csv-utf-8-bom/" title="Read and write a UTF-8 BOM CSV in Python and PowerShell">Python and PowerShell</a></li></ul>
+<h3>Questions</h3><ul class="cp-rows"><li><a href="/toll-preview/fix-csv-export/guides/saved-recipe/" title="Save a recipe for a monthly CSV export (and catch column changes)">Save a recipe for a monthly export</a></li><li><a href="/toll-preview/fix-csv-export/guides/gene-names-dates/" title="Gene names turned into dates by Excel (SEPT2, MARCH1)">Gene names turned into dates</a></li><li><a href="/toll-preview/fix-csv-export/guides/delimiters-locale/" title="Semicolon vs comma CSV delimiters by locale">Delimiters by locale</a></li><li><a href="/toll-preview/fix-csv-export/guides/csv-with-commas-in-fields/" title="Commas and quotes inside CSV fields: why columns shift">Commas inside fields</a></li><li><a href="/toll-preview/fix-csv-export/guides/negative-numbers-currency-formats/" title="Currency symbols, brackets and negative numbers in CSV exports">Currency and negative amounts</a></li></ul>
+<h3>Compared</h3><ul class="cp-rows"><li><a href="/toll-preview/fix-csv-export/vs/openrefine/" title="OpenRefine vs Endwise for fixing a recurring CSV export">OpenRefine</a></li><li><a href="/toll-preview/fix-csv-export/vs/power-query/" title="Power Query vs Endwise for CSV dates and leading zeros">Power Query</a></li><li><a href="/toll-preview/fix-csv-export/vs/pandas/" title="pandas vs Endwise for cleaning a CSV export">pandas</a></li><li><a href="/toll-preview/fix-csv-export/vs/csvlint/" title="CSV Lint vs a recipe-based CSV fixer">CSV Lint</a></li></ul>
 </section>
-<section class="wrap cp-index" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">By system</h2>
-<h3>Imports and exports</h3><ul class="cp-index-list"><li><a href="/toll-preview/fix-csv-export/for/quickbooks-online-bank-import/" title="QuickBooks Online bank CSV import: fix the date format and amounts">QuickBooks Online bank import</a></li><li><a href="/toll-preview/fix-csv-export/for/jira-export/" title="Jira CSV export garbled in Excel: fix the encoding">Jira export</a></li></ul>
+<section class="wrap cp-index" data-jump="Systems" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">By system</h2>
+<h3>Imports and exports</h3><ul class="cp-rows"><li><a href="/toll-preview/fix-csv-export/for/quickbooks-online-bank-import/" title="QuickBooks Online bank CSV import: fix the date format and amounts">QuickBooks Online bank import</a></li><li><a href="/toll-preview/fix-csv-export/for/jira-export/" title="Jira CSV export garbled in Excel: fix the encoding">Jira export</a></li></ul>
 </section>
 
-  <section class="wrap fx-code" aria-label="Use this from code">
+  <section class="wrap fx-code tf-sec" aria-label="Use this from code">
     <div id="fx-code"></div>
   </section>
   <noscript><div class="wrap"><p>This page needs JavaScript to read your file. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
@@ -268,6 +309,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

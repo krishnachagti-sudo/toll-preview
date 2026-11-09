@@ -1,0 +1,13 @@
+category,description,examples,first_step,poly_or_opaque_bag
+Adult,Displays potentially offensive material such as profanity or nudity,"Products that contain pictures of live, nude models, packaging that has obscene or profane messaging",Place product in a black or opaque bag.,yes
+Apparel on hanger,Made of cloth or fabric and intended to be put on a hanger,"Scarves, shirts, jackets","Remove hanger, and then place product in a transparent poly bag to protect from damage or dust.",yes
+"Apparel, fabric, plush, and textiles","Made of cloth or fabric that could be damaged by dirt, dust, moisture, or liquid","Shirts, bags, belts, plush toys such as teddy bears",Place product in a transparent poly bag to protect from damage or dust.,yes
+Baby,"Made for a child aged three years or younger, packaging with cutouts greater than one square inch","Teething rings, bibs, exposed toys",Place product in a transparent poly bag.,yes
+"Fragile, glass","Glass or otherwise fragile, or a liquid in a glass container","Glass, china, picture frames, clocks, mirrors, bottles of olive oil",Place product in bubble wrap or a bubble bag to prevent damage. Products can also be placed in a protective overbox.,no
+Liquids (non-glass),Liquid or viscous without a double seal,"Soap, spray bottles, lotion, honey",Place product in a transparent poly bag to protect from leakage.,yes
+Perforated packaging,In packaging that has a perforated opening,"Chocolate boxes, candy display boxes",Seal product in a transparent poly bag. The poly bag must include a suffocation warning.,yes
+"Powder, pellets, and granular","Made of powder, pellets, or granular material","Facial powder, sugar, powdered detergents",Seal product in a transparent poly bag. The poly bag must include a suffocation warning.,yes
+Sharp,Sharp units are objects with an edge or point that are able to cut or pierce packaging material or human skin,"Knives, blades, shears, scissors, cutters, saw blades, barbed wire, hardware nails, axe/mattock, steel wire, graters, peelers, slicers, scalpels, swords, tools","No additional prep required. Instead, follow the guidelines on Packaging sharp units.",no
+Small,Longest side less than 2 1/8 inches (width of a credit card),"Jewelry, keychains, flash drives",Place product in a transparent poly bag.,yes
+Sold as set,Multiple items that are sold as one unit,"Bundled items, Multi-packs, Toy sets, Case of bottled drinks","Add a label to the unit that clearly states that the products are to be received and sold as a single unit. For example, ""Sold as set,"" ""Ready to ship,"" or ""This is a set. Do not separate.""",no
+No prep needed,Does not require prep,"Books, DVDs, video games",Units might still require labeling,no

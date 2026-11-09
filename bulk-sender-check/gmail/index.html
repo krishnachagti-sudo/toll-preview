@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gmail bulk sender requirements (2026), with a checker: Endwise</title>
+<meta name="description" content="Gmail's 7 rules for all senders and 13 for 5,000 or more a day, quoted from Google with the bounce code for each, read November 8, 2026. Check one email against them.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/gmail/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/bulk-sender-check/gmail.md">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Gmail bulk sender requirements (2026), with a checker">
+<meta property="og:description" content="Gmail's 7 rules for all senders and 13 for 5,000 or more a day, quoted from Google with the bounce code for each, read November 8, 2026. Check one email against them.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/gmail/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/gmail/","url":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/gmail/","name":"Gmail bulk sender requirements (2026), with a checker","description":"Gmail's 7 rules for all senders and 13 for 5,000 or more a day, quoted from Google with the bounce code for each, read November 8, 2026. Check one email against them.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Bulk sender check","item":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/"},{"@type":"ListItem","position":3,"name":"Requirements","item":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/requirements/"},{"@type":"ListItem","position":4,"name":"Gmail bulk sender requirements","item":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/gmail/"}]},{"@type":"Dataset","name":"Gmail bulk sender requirements (2026), with a checker","description":"Gmail's 7 rules for all senders and 13 for 5,000 or more a day, quoted from Google with the bounce code for each, read November 8, 2026. Check one email against them.","url":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/gmail/","dateModified":"2026-11-08","isAccessibleForFree":true,"creator":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"distribution":[{"@type":"DataDownload","encodingFormat":"text/csv","contentUrl":"https://krishnachagti-sudo.github.io/toll-preview/bulk-sender-check/gmail.csv"}],"temporalCoverage":"2024-02-01/2026-11-08","spatialCoverage":{"@type":"Place","name":"Worldwide"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When did Gmail start enforcing the bulk sender rules?","acceptedAnswer":{"@type":"Answer","text":"Google's guidelines apply from February 1, 2024; its FAQ adds that starting November 2025 Gmail is ramping up enforcement, with temporary and permanent rejections for messages that do not meet the requirements."}},{"@type":"Question","name":"How long must a Gmail DKIM key be?","acceptedAnswer":{"@type":"Answer","text":"Google: \"Sending to personal Gmail accounts requires a DKIM key of 1024 bits or longer.\" It recommends 2048 bits."}},{"@type":"Question","name":"Does Gmail accept a mailto unsubscribe?","acceptedAnswer":{"@type":"Answer","text":"Google's FAQ: mailto links do not meet its one-click unsubscribe requirement; the List-Unsubscribe header must include one HTTPS URL, as RFC 8058 describes."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"bulk-sender-check"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/bulk-sender-check/">Bulk sender check</a></li><li><a href="/toll-preview/bulk-sender-check/requirements/">Requirements</a></li><li aria-current="page">Gmail bulk sender requirements</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-file)">
+<p class="eyebrow">Reference table</p>
+<h1>Gmail bulk sender requirements</h1>
+<p class="cp-answer">Google treats you as a bulk sender once you send close to 5,000 messages or more to personal Gmail accounts within 24 hours from one primary domain (its FAQ; the guidelines page says more than 5,000 a day), and the status is permanent; bulk senders must meet 13 rules, including SPF and DKIM, a DMARC record (p=none is enough), From: alignment and one-click unsubscribe, and Google says that starting November 2025 Gmail is ramping up its enforcement on non-compliant traffic.</p>
+<dl class="cp-facts"><div><dt>Bulk rules</dt><dd class="num">13</dd></div><div><dt>Rules for all senders</dt><dd class="num">7</dd></div><div><dt>Read</dt><dd class="num">November 8, 2026</dd></div></dl>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Check a message against Gmail's rules</h2><p class="muted">Paste one message you sent: each Gmail rule below gets pass or fail, with the fix.</p><form method="get" action="/toll-preview/bulk-sender-check/" class="cp-tool-form"><input type="hidden" name="example" value="not-aligned"><input type="hidden" name="run" value="1"><button class="btn" type="submit">Show this worked example</button></form><p class="small"><a href="/toll-preview/bulk-sender-check/?example=not-aligned">Open the checker with this example</a></p></aside>
+<p>Scope: Personal Gmail accounts (addresses ending in @gmail.com or @googlemail.com). Google's FAQ: the guidelines do not apply to mail sent to Google Workspace accounts.</p>
+<section>
+<h2 id="bulk">5,000 or more messages a day</h2>
+<p>The guidelines page says senders who send more than 5,000 messages per day to Gmail accounts; the FAQ defines a bulk sender as one that sends close to 5,000 messages or more to personal Gmail accounts within 24 hours, counted per primary domain, and the status is permanent.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Gmail: 5,000 or more messages a day, since February 1, 2024</caption><thead><tr><th scope="col">Rule</th><th scope="col">In the provider's words</th><th scope="col">What the checker looks at</th><th scope="col">Bounce code</th></tr></thead><tbody>
+<tr><th scope="row">SPF passes</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Set up SPF and DKIM email authentication for your domain.&quot;</a></td><td>the receiver's SPF result, re-checked for the sending IP</td><td>421 4.7.27, 550 5.7.27</td></tr>
+<tr><th scope="row">DKIM passes</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Set up SPF and DKIM email authentication for your domain.&quot;</a></td><td>every DKIM signature, verified with its key</td><td>421 4.7.30, 550 5.7.30</td></tr>
+<tr><th scope="row">DKIM key of 1024 bits or longer</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Sending to personal Gmail accounts requires a DKIM key of 1024 bits or longer.&quot;</a></td><td>the key length in DNS</td><td>none listed</td></tr>
+<tr><th scope="row">DMARC record (p=none is enough)</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Set up DMARC email authentication for your sending domain. Your DMARC enforcement policy can be set to none.&quot;</a></td><td>_dmarc TXT record at the From: domain or its organizational domain</td><td>421 4.7.40, 550 5.7.40</td></tr>
+<tr><th scope="row">From aligned with SPF or DKIM</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;For direct email, the domain in the sender's From: header must be aligned with either the SPF domain or the DKIM domain.&quot;</a></td><td>From: domain against the passing SPF and DKIM domains</td><td>421 4.7.32, 550 5.7.32</td></tr>
+<tr><th scope="row">Valid forward and reverse DNS (PTR)</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Ensure that sending domains or IPs have valid forward and reverse DNS records, also referred to as PTR records.&quot;</a></td><td>PTR of the sending IP and its forward lookup</td><td>451 4.7.23, 550 5.7.25</td></tr>
+<tr><th scope="row">TLS connection</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Use a TLS connection for transmitting email.&quot;</a></td><td>the receiving hop's Received line</td><td>421 4.7.29, 550 5.7.29</td></tr>
+<tr><th scope="row">RFC 5322 format</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Format messages according to the Internet Message Format standard, RFC 5322.&quot;</a></td><td>single From:, Date:, Message-ID:, no repeated headers</td><td>550 5.7.1, 554 5.6.0</td></tr>
+<tr><th scope="row">No impersonated Gmail From:</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Don’t impersonate Gmail From: headers.&quot;</a></td><td>a @gmail.com From: not signed by gmail.com</td><td>none listed</td></tr>
+<tr><th scope="row">One-click unsubscribe (RFC 8058) on marketing mail (marketing mail)</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Marketing messages and subscribed messages must support one-click unsubscribe, and include a clearly visible unsubscribe link in the message body.&quot;</a></td><td>RFC 8058 headers and their DKIM coverage</td><td>none listed</td></tr>
+<tr><th scope="row">Visible unsubscribe link in the body of marketing mail (marketing mail)</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Marketing messages and subscribed messages must support one-click unsubscribe, and include a clearly visible unsubscribe link in the message body.&quot;</a></td><td>an unsubscribe link in the text or HTML body</td><td>none listed</td></tr>
+<tr><th scope="row">Spam rate below 0.3% in Postmaster Tools</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Keep spam rates reported in Postmaster Tools below 0.30%.&quot;</a></td><td>not checkable from one message</td><td>none listed</td></tr>
+<tr><th scope="row">Unsubscribes honored within 48 hours</th><td><a href="https://support.google.com/a/answer/14229414?hl=en">&quot;we recommend that you fulfill unsubscribe requests within 48 hours&quot;</a></td><td>not checkable from one message</td><td>none listed</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="all">All senders</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>Gmail: All senders, since February 1, 2024</caption><thead><tr><th scope="col">Rule</th><th scope="col">In the provider's words</th><th scope="col">What the checker looks at</th><th scope="col">Bounce code</th></tr></thead><tbody>
+<tr><th scope="row">SPF or DKIM</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Set up SPF or DKIM email authentication for your sending domains.&quot;</a></td><td>SPF or DKIM passing</td><td>550 5.7.26</td></tr>
+<tr><th scope="row">DKIM key of 1024 bits or longer</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Sending to personal Gmail accounts requires a DKIM key of 1024 bits or longer.&quot;</a></td><td>the key length in DNS</td><td>none listed</td></tr>
+<tr><th scope="row">Valid forward and reverse DNS (PTR)</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Ensure that sending domains or IPs have valid forward and reverse DNS records, also referred to as PTR records.&quot;</a></td><td>PTR of the sending IP and its forward lookup</td><td>451 4.7.23, 550 5.7.25</td></tr>
+<tr><th scope="row">TLS connection</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Use a TLS connection for transmitting email.&quot;</a></td><td>the receiving hop's Received line</td><td>none listed</td></tr>
+<tr><th scope="row">Spam rate below 0.3% in Postmaster Tools</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Keep spam rates reported in Postmaster Tools below 0.3%.&quot;</a></td><td>not checkable from one message</td><td>none listed</td></tr>
+<tr><th scope="row">RFC 5322 format</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Format messages according to the Internet Message Format standard, RFC 5322.&quot;</a></td><td>single From:, Date:, Message-ID:, no repeated headers</td><td>550 5.7.1, 554 5.6.0</td></tr>
+<tr><th scope="row">No impersonated Gmail From:</th><td><a href="https://support.google.com/a/answer/81126?hl=en">&quot;Don’t impersonate Gmail From: headers.&quot;</a></td><td>a @gmail.com From: not signed by gmail.com</td><td>none listed</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="codes">The bounce code for each rule</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>From Gmail's SMTP errors and codes page (4.x.x is a temporary rate limit, 5.x.x a block)</caption><thead><tr><th scope="col">Rule</th><th scope="col">Codes</th></tr></thead><tbody>
+<tr><th scope="row">SPF passes</th><td>421 4.7.27, 550 5.7.27</td></tr>
+<tr><th scope="row">DKIM passes</th><td>421 4.7.30, 550 5.7.30</td></tr>
+<tr><th scope="row">DMARC record (p=none is enough)</th><td>421 4.7.40, 550 5.7.40</td></tr>
+<tr><th scope="row">From aligned with SPF or DKIM</th><td>421 4.7.32, 550 5.7.32</td></tr>
+<tr><th scope="row">Valid forward and reverse DNS (PTR)</th><td>451 4.7.23, 550 5.7.25</td></tr>
+<tr><th scope="row">TLS connection</th><td>421 4.7.29, 550 5.7.29</td></tr>
+<tr><th scope="row">RFC 5322 format</th><td>550 5.7.1, 554 5.6.0</td></tr>
+</tbody></table></div>
+<p>Code by code, with the classifier's verdict: <a href="/toll-preview/smtp-bounce-code-classifier/provider/gmail/550-5-7-26/">550 5.7.26</a>, <a href="/toll-preview/smtp-bounce-code-classifier/provider/gmail/550-5-7-40/">550 5.7.40</a>, <a href="/toll-preview/smtp-bounce-code-classifier/provider/gmail/421-4-7-28/">421 4.7.28</a>, <a href="/toll-preview/smtp-bounce-code-classifier/code/550-5-7-1/">550 5.7.1</a>.</p>
+</section>
+<section>
+<h2 id="example">One message, checked</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>The three worked examples, checked by the engine</caption><thead><tr><th scope="col">Example</th><th scope="col" class="r num">Gmail 5,000+/day</th><th scope="col" class="r num">Yahoo bulk</th><th scope="col" class="r num">Microsoft 5,000+/day</th><th scope="col">First failing check</th></tr></thead><tbody>
+<tr><th scope="row">A compliant newsletter received by Gmail</th><td class="r num">11 of 11</td><td class="r num">8 of 8</td><td class="r num">3 of 3</td><td>none</td></tr>
+<tr><th scope="row">A promotion received by Outlook.com with no one-click unsubscribe</th><td class="r num">10 of 11</td><td class="r num">7 of 8</td><td class="r num">3 of 3</td><td>one-click unsubscribe</td></tr>
+<tr><th scope="row">SPF and DKIM pass but DMARC fails (Gmail)</th><td class="r num">7 of 11</td><td class="r num">4 of 8</td><td class="r num">2 of 3</td><td>DMARC alignment</td></tr>
+</tbody></table></div>
+<ul class="cp-sources"><li><a href="https://support.google.com/a/answer/81126?hl=en">Google: Email sender guidelines, read November 8, 2026</a></li><li><a href="https://support.google.com/a/answer/14229414?hl=en">Google: Email sender guidelines FAQ, read November 8, 2026</a></li><li><a href="https://knowledge.workspace.google.com/admin/support/troubleshooting/gmail-smtp-errors-and-codes?hl=en">Google Workspace: Gmail SMTP errors and codes (last updated 2026-10-26), read November 8, 2026</a></li></ul>
+<p class="cp-note">Rules as published by Google, Yahoo and Microsoft and read on November 8, 2026. Providers also judge reputation and content, so meeting every rule does not guarantee the inbox. Spam rate, volume and unsubscribe handling cannot be judged from one message.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>When did Gmail start enforcing the bulk sender rules?</h3></summary><div class="xp-in"><p>Google's guidelines apply from February 1, 2024; its FAQ adds that starting November 2025 Gmail is ramping up enforcement, with temporary and permanent rejections for messages that do not meet the requirements.</p></div></details><details class="xpand"><summary><h3>How long must a Gmail DKIM key be?</h3></summary><div class="xp-in"><p>Google: &quot;Sending to personal Gmail accounts requires a DKIM key of 1024 bits or longer.&quot; It recommends 2048 bits.</p></div></details><details class="xpand"><summary><h3>Does Gmail accept a mailto unsubscribe?</h3></summary><div class="xp-in"><p>Google's FAQ: mailto links do not meet its one-click unsubscribe requirement; the List-Unsubscribe header must include one HTTPS URL, as RFC 8058 describes.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/bulk-sender-check/requirements/">All three side by side</a></li><li><a href="/toll-preview/bulk-sender-check/yahoo/">Yahoo rules</a></li><li><a href="/toll-preview/bulk-sender-check/microsoft-outlook/">Microsoft (Outlook.com) rules</a></li><li><a href="/toll-preview/bulk-sender-check/one-click-unsubscribe/">One-click unsubscribe</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/bulk-sender-check/gmail.md">This page as Markdown</a> <span aria-hidden="true">·</span> <a href="/toll-preview/bulk-sender-check/gmail.csv">The table as CSV</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

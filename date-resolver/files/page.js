@@ -71,13 +71,39 @@ function fillForm(input) {
 
 // ---------- the answer ----------
 
-function render(input, r, { note }) {
+// The inputs in one line: "10 business days after next Friday", said on Monday, November 2, 2026, US federal holidays.
+function inputsLine(input, r) {
+  const opts = [];
+  if (r.assumptions.weekdayRule === 'next-week') opts.push('"next" means next week');
+  if (r.assumptions.roll && r.assumptions.roll !== 'none') opts.push(`roll ${r.assumptions.roll}`);
+  if (r.assumptions.dateOrder === 'DMY') opts.push('day/month/year');
+  if (input.daysOff?.length) opts.push(`${input.daysOff.length} ${input.daysOff.length === 1 ? 'day' : 'days'} off of your own`);
+  return [`"${r.text}", said on ${longDate(r.assumptions.ref)}`, `${r.assumptions.holidayCalendar} holidays`, ...opts].join(', ');
+}
+
+// The answer one line per step, then each day skipped with its reason.
+function items(r) {
+  const rows = r.steps.map((step, i) => h('li', { class: i === r.steps.length - 1 ? 'hi' : null }, [
+    h('span', { class: 'k', 'aria-hidden': 'true' }, String(i + 1)),
+    h('span', {}, step),
+  ]));
+  for (const x of r.holidaysSkipped) rows.push(h('li', { class: 'sk' }, [h('span', { class: 'k', 'aria-hidden': 'true' }, '×'), h('span', {}, shortDate(x.date)), h('em', {}, `skipped: ${x.name}`)]));
+  for (const x of r.daysOffSkipped ?? []) rows.push(h('li', { class: 'own' }, [h('span', { class: 'k', 'aria-hidden': 'true' }, '×'), h('span', {}, shortDate(x.date)), h('em', {}, 'skipped: your day off')]));
+  return h('ol', { class: 'tf-items' }, rows);
+}
+
+// kind: 'example' (worked out on the page, free) or 'run' (a real call). note: the line under the result.
+function render(input, r, { kind = 'example', note }) {
   const out = $('dr-out');
   out.textContent = '';
   const parts = [
-    h('p', { class: 'dr-said' }, [`"${r.text}", said on ${longDate(r.assumptions.ref)}`]),
-    h('p', { class: 'dr-date' }, r.dateText),
-    h('p', { class: 'dr-meta' }, [
+    h('div', { class: 'tf-rh' }, [
+      kind === 'example' ? h('span', { class: 'tf-tag' }, 'Example') : h('span', { class: 'tf-tag run' }, 'Your result'),
+      h('span', { class: 'tf-src' }, r.assumptions.holidayCalendar),
+    ]),
+    h('p', { class: 'tf-exin' }, kind === 'example' ? `Example: ${inputsLine(input, r)}` : inputsLine(input, r)),
+    h('p', { class: 'tf-big' }, [h('b', { class: 'word' }, r.dateText)]),
+    h('p', { class: 'tf-sub' }, [
       `${r.calendarDaysFromRef === 0 ? 'The reference date itself' : `${Math.abs(r.calendarDaysFromRef)} calendar ${Math.abs(r.calendarDaysFromRef) === 1 ? 'day' : 'days'} ${r.calendarDaysFromRef > 0 ? 'after' : 'before'} the reference date`}. ISO week ${r.isoWeek}, day ${r.dayOfYear} of the year. `,
       r.businessDay ? 'A business day.' : 'Not a business day.',
       r.rolledFrom ? ` Moved from ${shortDate(r.rolledFrom)}.` : '',
@@ -89,15 +115,16 @@ function render(input, r, { note }) {
       h('ul', {}, r.readings.slice(1).map((x) => h('li', {}, [h('strong', {}, longDate(x.date)), ` if you read ${x.means}.`]))),
     ]));
   }
-  if (r.holidaysSkipped.length) {
-    parts.push(h('p', { class: 'dr-skipped' }, [h('strong', {}, 'Holidays skipped: '), r.holidaysSkipped.map((x) => `${x.name} (${shortDate(x.date)})`).join('; '), '.']));
-  }
-  if (r.daysOffSkipped && r.daysOffSkipped.length) {
-    parts.push(h('p', { class: 'dr-skipped' }, [h('strong', {}, 'Your days off skipped: '), r.daysOffSkipped.map((x) => shortDate(x.date)).join('; '), '.']));
-  }
-  parts.push(h('h3', {}, 'Steps'), h('ol', { class: 'dr-steps' }, r.steps.map((s) => h('li', {}, s))));
-  parts.push(h('p', { class: 'muted small' }, `Holidays: ${r.assumptions.holidayCalendar}.${r.assumptions.note ? ` ${r.assumptions.note}` : ''}`));
-  if (note) parts.push(h('p', { class: 'dr-note' }, note));
+  parts.push(items(r));
+  if (!r.holidaysSkipped.length && !(r.daysOffSkipped ?? []).length) parts.push(h('p', { class: 'tf-note' }, 'No holiday was skipped.'));
+  parts.push(h('details', { class: 'xpand' }, [
+    h('summary', {}, 'The rules it used'),
+    h('div', { class: 'xp-in' }, [
+      h('ul', {}, (r.assumptions.rules ?? []).map((x) => h('li', {}, x))),
+      h('p', {}, `Holidays: ${r.assumptions.holidayCalendar}.${r.assumptions.note ? ` ${r.assumptions.note}` : ''}`),
+    ]),
+  ]));
+  if (note) parts.push(h('p', { class: 'tf-cost' }, note));
   for (const p of parts) out.appendChild(p);
   $('dr-status').textContent = `${r.text}: ${r.dateText}`;
 }
@@ -141,7 +168,7 @@ async function onSubmit(ev) {
   button.disabled = true;
   try {
     const json = await T.run(SLUG, read.input);
-    render(read.input, json.result, { note: costNote(json) });
+    render(read.input, json.result, { kind: 'run', note: costNote(json) });
   } catch (e) {
     showError(e);
   } finally {
@@ -184,8 +211,8 @@ function start() {
   const chip = document.querySelector('[data-endwise-chip]');
   if (chip) T.mountAccountChip(chip);
   T.mountCodePanel($('dr-code'), SLUG);
-  $('dr-run-note').textContent = '5 free runs a day, no account needed.';
-  T.me().then((account) => { if (account) $('dr-run-note').textContent = ''; }).catch(() => {});
+  // The price line says what a signed-in visitor pays from; the run note is in it.
+  T.me().then((account) => { if (account) $('dr-price').querySelectorAll('span')[1].textContent = 'taken from your balance'; }).catch(() => {});
 
   const linked = fromQuery();
   const linkedResult = linked && workedOut(linked);

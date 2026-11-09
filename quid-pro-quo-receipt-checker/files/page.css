@@ -1,0 +1,47 @@
+/* Quid pro quo receipt checker: a gift-processing desk inside the brand chrome, reusing its tokens.
+   One accent (money green) carries the verdict; checks read as ruled lines with a status tag. */
+.qp {
+  --accent: var(--h-money);
+  --accent-ink: #06170f;
+  --endwise-accent: var(--h-money);
+  --endwise-accent-ink: #06170f;
+}
+
+
+.qp-form textarea, .qp-batch textarea { font-family: var(--font-mono); font-size: 13px; width: 100%; }
+.qp-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; align-items: end; }
+.qp-benefit { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.qp-benefit select, .qp-benefit input { width: 100%; min-width: 0; }
+.qp-benefit select { grid-column: 1 / -1; }
+.qp-benefit input[aria-label="What the donor received"] { grid-column: 1 / -1; }
+.qp-drop { justify-self: start; }
+.qp-add { margin: 10px 0 4px; }
+.qp-more .xp-in > * + * { margin-top: 12px; }
+.qp-sub { color: var(--text-2); font-size: 13px; margin: 14px 0 0; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 0 0 14px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; }
+
+.qp-out .qp-verdict { color: var(--text); font-weight: 500; }
+.qp-reasons { margin: 0 0 12px; padding-left: 1.1em; max-width: 46rem; }
+.qp-heading { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 22px 0 8px; }
+.qp-checks { list-style: none; margin: 0 0 12px; padding: 0; max-width: 48rem; }
+.qp-checks li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.qp-tag { display: inline-block; font: 500 0.72rem/1.4 var(--font-mono); padding: 0 6px; border: 1px solid var(--line-2); border-radius: 999px; margin: 0 8px 2px 0; white-space: nowrap; }
+.qp-fail .qp-tag { border-color: var(--h-alert, #e5484d); color: var(--h-alert, #e5484d); }
+.qp-pass .qp-tag { border-color: var(--accent); color: var(--accent); }
+.qp-quote { margin: 0 0 8px; padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--surface-2, transparent); max-width: 46rem; }
+.qp-aside { color: var(--muted); font-size: 0.92rem; margin: 0 0 10px; max-width: 46rem; }
+.qp-buy { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 6px; }
+.qp-buy .btn { margin: 0 0 8px; }
+.qp-got a, .qp-batch a { color: var(--accent); }
+
+.qp-table { font-variant-numeric: tabular-nums; margin-top: 8px; }
+.qp-notes { padding-left: 1.1em; max-width: 60rem; }
+.qp-notes li { margin-bottom: 8px; }
+
+/* Layout comes from web/tool-full.css. */
+.qp-form .qp-benefit { border-bottom-color: var(--line); }
+.qp-batch-panel { padding: 22px; }
+.qp-batch-panel .btn { margin-top: 12px; }
+.qp-rules .qp-notes { padding-left: 1.2em; }
+.qp-out .tf-items { margin-top: 12px; }

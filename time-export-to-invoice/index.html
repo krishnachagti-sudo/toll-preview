@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time tracker CSV to invoice lines (Toggl, Clockify, Harvest): Endwise</title>
+<meta name="description" content="Turn a Toggl, Clockify or Harvest CSV export into invoice lines grouped by project, task or day, rounded per entry or per line, with a different rate per task.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/time-export-to-invoice/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"time-export-to-invoice"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Time export to invoice lines">
+<meta property="og:description" content="Turn a Toggl Track, Clockify, Harvest or Everhour CSV export (or any sheet with a date and a duration) into invoice lines grouped by project, task, day, client, person or entry, with your rounding rule applied per entry or per line, a different rate per task, project, tag or client, a retainer block, discount, cap and tax, a reconciliation of exact against billed time (including Clockify's two-decimal invoice method), and a lines CSV and invoice PDF.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/","url":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/","name":"Time export to invoice lines","description":"Turn a Toggl Track, Clockify, Harvest or Everhour CSV export (or any sheet with a date and a duration) into invoice lines grouped by project, task, day, client, person or entry, with your rounding rule applied per entry or per line, a different rate per task, project, tag or client, a retainer block, discount, cap and tax, a reconciliation of exact against billed time (including Clockify's two-decimal invoice method), and a lines CSV and invoice PDF.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Time export to invoice lines","item":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/"}]},{"@type":"WebApplication","name":"Time export to invoice lines","url":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/","description":"Turn a Toggl Track, Clockify, Harvest or Everhour CSV export (or any sheet with a date and a duration) into invoice lines grouped by project, task, day, client, person or entry, with your rounding rule applied per entry or per line, a different rate per task, project, tag or client, a retainer block, discount, cap and tax, a reconciliation of exact against billed time (including Clockify's two-decimal invoice method), and a lines CSV and invoice PDF.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Preview on this page (totals, reconciliation and the first lines)","price":"0","priceCurrency":"USD"},{"name":"Preview over the API or MCP","@type":"Offer","price":"0.002","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.002","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"call"}}},{"name":"Invoice: every line, the lines and entries CSVs and the PDF","@type":"Offer","price":"0.4","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.4","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"invoice"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="ti tf hue-money">
+  <section class="wrap tf-open">
+    <p class="eyebrow">Time tracker export to invoice</p>
+    <h1>Time tracker CSV to invoice lines</h1>
+    <p class="lede">Open a Toggl Track, Clockify, Harvest or Everhour export and see <b>the invoice lines, the total and how far the billed time is from the exact time</b>, grouped, rounded and priced your way.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="ti-price"><span class="price">Free preview on this page</span><span>Full invoice and PDF $0.40</span><span>same client and period again within 30 days free</span></p>
+  </section>
+
+  <section class="wrap tf-calc ti-desk" data-jump="Tool" aria-label="Invoice lines">
+    <form class="tf-panel tf-form ti-form" id="ti-form" novalidate>
+      <div class="field">
+        <label for="ti-upload">Time export (CSV)</label>
+        <input type="file" id="ti-upload" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values">
+      </div>
+      <p class="ti-samples">Try a sample: <button type="button" data-sample="0">Toggl month</button><button type="button" data-sample="1">Clockify mismatch</button><button type="button" data-sample="2">Harvest hours</button></p>
+      <details class="xpand ti-pastefold" id="ti-pastefold">
+        <summary>Or paste it</summary>
+        <div class="xp-in">
+          <label for="ti-paste" class="visually-hidden">Paste your export</label>
+          <textarea id="ti-paste" rows="3" spellcheck="false" aria-describedby="ti-paste-hint ti-file-err"></textarea>
+        </div>
+      </details>
+      <p class="field-error" id="ti-file-err"></p>
+      <div class="ti-pair">
+        <div class="field">
+          <label for="ti-group">One line per</label>
+          <select id="ti-group">
+            <option value="project">Project</option>
+            <option value="task" selected>Project and task</option>
+            <option value="day">Day</option>
+            <option value="day-project">Day and project</option>
+            <option value="client">Client</option>
+            <option value="user">Person</option>
+            <option value="tag">Tag</option>
+            <option value="description">Description</option>
+            <option value="entry">Time entry</option>
+            <option value="single">One line for everything</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="ti-inc">Round to</label>
+          <select id="ti-inc">
+            <option value="">No rounding</option>
+            <option value="1">1 minute</option>
+            <option value="5">5 minutes</option>
+            <option value="6">6 minutes</option>
+            <option value="10">10 minutes</option>
+            <option value="12">12 minutes</option>
+            <option value="15" selected>15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="60">1 hour</option>
+          </select>
+        </div>
+      </div>
+      <p class="form-error" id="ti-error" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="ti-run">Show the invoice lines</button>
+      <p class="hint tf-run-note">Updates as you change anything. Worked out in your browser, free, and uses no run.</p>
+      <div class="field">
+        <label for="ti-rates">Rates per hour</label>
+        <textarea id="ti-rates" rows="4" spellcheck="false" aria-describedby="ti-rates-hint ti-rates-err">default = 100
+task: Design = 90
+task: Development = 120
+task: Meetings = 60</textarea>
+        <p class="hint" id="ti-rates-hint">One a line: "default = 95", or a task, tag, project, client or person and its rate, such as "project: Website = 110". A task rate wins over a tag, then project, client, person, the file's own billable rate and the default.</p>
+        <p class="field-error" id="ti-rates-err"></p>
+      </div>
+      <div class="ti-trio">
+        <div class="field">
+          <label for="ti-mode">Direction</label>
+          <select id="ti-mode"><option value="up" selected>Up</option><option value="nearest">Nearest</option><option value="down">Down</option></select>
+        </div>
+        <div class="field">
+          <label for="ti-level">Applied to</label>
+          <select id="ti-level"><option value="entry" selected>Each entry</option><option value="line">Each line</option></select>
+        </div>
+        <div class="field">
+          <label for="ti-source">Exported from</label>
+          <select id="ti-source">
+            <option value="toggl">Toggl Track</option>
+            <option value="clockify">Clockify</option>
+            <option value="harvest">Harvest</option>
+            <option value="everhour">Everhour</option>
+            <option value="other">Another tracker or a sheet</option>
+          </select>
+        </div>
+      </div>
+      <details class="xpand ti-options">
+        <summary>More options: dates, billable, minimum, retainer, tax</summary>
+        <div class="xp-in">
+        <p class="hint ti-colhint" id="ti-paste-hint">A heading line, then one time entry a line. It reads Start date, Start time and Duration (Toggl, Clockify), Date, Hours and Notes (Harvest), and Project, Task, Client, User, Description, Tags, Billable and Billable rate.</p>
+        <div class="ti-pair">
+          <div class="field"><label for="ti-from">Invoice from</label><input type="date" id="ti-from"></div>
+          <div class="field"><label for="ti-to">Invoice to</label><input type="date" id="ti-to"></div>
+        </div>
+        <div class="ti-pair">
+          <div class="field">
+            <label for="ti-billable">Entries</label>
+            <select id="ti-billable"><option value="billable" selected>Leave out non-billable</option><option value="all">Include every entry</option></select>
+          </div>
+          <div class="field"><label for="ti-min">Minimum per entry (minutes)</label><input type="text" id="ti-min" inputmode="numeric" placeholder="0"></div>
+        </div>
+        <div class="ti-pair">
+          <div class="field"><label for="ti-retainer">Retainer block (hours)</label><input type="text" id="ti-retainer" inputmode="decimal" placeholder="none"></div>
+          <div class="field"><label for="ti-overage">Rate over the block</label><input type="text" id="ti-overage" inputmode="decimal" placeholder="each line's rate"></div>
+        </div>
+        <div class="ti-trio">
+          <div class="field"><label for="ti-discount">Discount %</label><input type="text" id="ti-discount" inputmode="decimal" placeholder="0"></div>
+          <div class="field"><label for="ti-tax">Tax %</label><input type="text" id="ti-tax" inputmode="decimal" placeholder="0"></div>
+          <div class="field"><label for="ti-cap">Not to exceed</label><input type="text" id="ti-cap" inputmode="decimal" placeholder="none"></div>
+        </div>
+        <div class="ti-pair">
+          <div class="field">
+            <label for="ti-qty">Line amounts</label>
+            <select id="ti-qty"><option value="two-decimals" selected>Hours to 2 decimals x rate</option><option value="exact">Exact time x rate</option></select>
+          </div>
+          <div class="field">
+            <label for="ti-order">Dates like 03/04/2026 are</label>
+            <select id="ti-order"><option value="auto" selected>Worked out from the file</option><option value="mdy">Month first</option><option value="dmy">Day first</option></select>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="ti-desc"><span>List the entries' descriptions under each line</span></label>
+        </div>
+      </details>
+    </form>
+
+    <div class="tf-panel tf-result ti-out" id="ti-out" aria-live="polite">
+      <p class="muted">Loading the worked example.</p>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec ti-invoice" data-jump="Invoice" id="ti-invoice" aria-labelledby="ti-invoice-title">
+    <div class="tf-top solo">
+      <div>
+        <p class="eyebrow">The invoice</p>
+        <h2 id="ti-invoice-title">The invoice, <span class="dim">a PDF and two CSVs.</span></h2>
+        <p class="tf-p">Every line with its service dates, a lines CSV for your accounting app, an entries CSV that shows how each entry was rounded and priced, and a PDF to send. The export is sent once to make them and is not kept.</p>
+        <details class="xpand ti-about">
+          <summary>What you get, and a sample</summary>
+          <div class="xp-in">
+            <p>Open the detailed report you exported from Toggl Track, Clockify, Harvest or Everhour. Choose how to group the lines, how your contract rounds time and what each kind of work is billed at, and see the lines, the total and how far the billed time is from the exact time.</p>
+            <p data-prices>The preview is free on this page and the file does not leave your browser. The full invoice (every line, a lines CSV, an entries CSV and the PDF) costs $0.40; the same client and period again within 30 days is free.</p>
+            <p class="ti-sample" id="ti-sample">See a sample first, made by this tool from a made-up month of Toggl entries: <span id="ti-sample-links">the sample files load with the page.</span></p>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="tf-panel ti-invoice-panel">
+    <div class="ti-invoice-grid">
+      <div class="field"><label for="ti-client">Client</label><input type="text" id="ti-client" maxlength="120" placeholder="Acme Co"></div>
+      <div class="field"><label for="ti-number">Invoice number</label><input type="text" id="ti-number" maxlength="40"></div>
+      <div class="field"><label for="ti-issue">Invoice date</label><input type="date" id="ti-issue"></div>
+      <div class="field"><label for="ti-due">Due date</label><input type="date" id="ti-due"></div>
+      <div class="field"><label for="ti-seller">Your name or business</label><input type="text" id="ti-seller" maxlength="120"></div>
+      <div class="field"><label for="ti-currency">Currency code</label><input type="text" id="ti-currency" maxlength="3" value="USD"></div>
+      <div class="field ti-wide"><label for="ti-seller-details">Your address and contact (optional)</label><textarea id="ti-seller-details" rows="2" maxlength="300"></textarea></div>
+      <div class="field ti-wide"><label for="ti-client-details">Client address (optional)</label><textarea id="ti-client-details" rows="2" maxlength="300"></textarea></div>
+      <div class="field ti-wide"><label for="ti-notes">Notes on the invoice (optional)</label><textarea id="ti-notes" rows="2" maxlength="600" placeholder="Payment terms, bank details"></textarea></div>
+    </div>
+      <div class="ti-buy" id="ti-buy"></div>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec ti-rules" data-jump="Rules" aria-labelledby="ti-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">The rules</p>
+        <h2 id="ti-rules-title">Where the cents go, <span class="dim">line by line.</span></h2>
+        <p class="tf-p">Lines are worked out from the file you send, with the grouping, rounding and rates you choose. Check them before you send an invoice.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="ti-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="ti-limits-title">What it does not cover</h3>
+          <p>Employees' time-clock rounding, which is a different rule, and tax or legal advice.</p>
+          <details class="xpand"><summary>Read the full list</summary><div class="xp-in">
+            <ul class="ti-notes" id="ti-notes-list">
+              <li>Lines are worked out from the file you send, with the grouping, rounding and rates you choose. Check them before you send an invoice.</li>
+              <li>Rounding for freelance and agency work is set by your contract. Rounding employees' time-clock punches is a different rule (29 CFR 785.48): see the <a class="ul" href="/toll-preview/hours-calculator/">hours calculator</a>.</li>
+              <li>Tax is applied at the rate you enter. Not tax or legal advice.</li>
+              <li>Not affiliated with Toggl, Clockify, Harvest or Everhour. Sources, read November 8, 2026: <a href="https://support.toggl.com/creating-invoices-in-toggl-track">Toggl: Creating invoices</a>, <a href="https://support.toggl.com/rounding">Toggl: Rounding</a>, <a href="https://support.toggl.com/en/articles/2216070-editing-and-uploading-a-csv-file">Toggl: CSV files</a>, <a href="https://clockify.me/help/projects/invoicing-tracked-time-expenses">Clockify: Invoicing</a>, <a href="https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match">Clockify: Invoices and reports don't match</a>, <a href="https://clockify.me/help/track-time-and-expenses/time-rounding">Clockify: Time rounding</a>, <a href="https://help.getharvest.com/api-v2/timesheets-api/timesheets/time-entries/">Harvest API: Time entries</a>.</li>
+            </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg></span>
+        <div>
+          <h3>Each entry, or each line</h3>
+          <p>Rounding each entry up to 15 minutes can add up to 14 minutes 59 seconds an entry; rounding the line adds it once.</p>
+          <details class="xpand"><summary>Read the full rule</summary><div class="xp-in"><p>Rounding every entry up to 15 minutes adds up to 14 minutes 59 seconds per entry; rounding the line once adds it once. Toggl rounds each entry separately and, for a group, rounds the subtotal; Clockify rounds each entry first and then adds them up. The preview shows both, and the total rounded once, side by side.</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></span>
+        <div>
+          <h3>Two decimals, then the rate</h3>
+          <p>Hours to 2 decimals, then times the rate, so hours x rate is the amount shown.</p>
+          <details class="xpand"><summary>Read the full rule</summary><div class="xp-in"><p>Clockify's help says its invoices round each entry to 2 decimals before multiplying by the rate, while its reports add the time first and then multiply. Lines here take the line's hours to 2 decimals, so hours x rate is the amount shown; the reconciliation shows Clockify's two ways for the same entries.</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/></svg></span>
+        <div>
+          <h3>A rate for each kind of work</h3>
+          <p>One rate a line; a project with tasks at different rates splits by rate.</p>
+          <details class="xpand"><summary>Read the full rule</summary><div class="xp-in"><p>A line holds one rate. When a project's tasks bill at different rates, the project becomes one line per rate. Rates you give win over the file's own billable rate, which wins over the default. Entries with no rate are billed at $0 and flagged.</p></div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec ti-prices" data-jump="Price" aria-labelledby="ti-prices-title">
+    <div class="tf-top solo">
+      <div>
+        <p class="eyebrow">Price</p>
+        <h2 id="ti-prices-title">A free preview, <span class="dim">a paid invoice.</span></h2>
+      </div>
+    </div>
+    <div class="tf-panel ti-price-list">
+      <ul class="endwise-prices"><li><strong>Preview on this page (totals, reconciliation and the first lines)</strong>: free.</li><li><strong>Preview over the API or MCP</strong>: $0.002 per call.</li><li><strong>Invoice: every line, the lines and entries CSVs and the PDF</strong>: $0.40 per invoice; a repeat for the same client and service period is free for 30 days.</li><li>At most $2.99 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="Trackers" aria-labelledby="cp-index-title"><h2 id="cp-index-title">By time tracker</h2>
+<h3>Trackers</h3><ul class="cp-rows"><li><a href="/toll-preview/time-export-to-invoice/toggl/" title="Toggl invoice template: turn a Toggl Track export into invoice lines">Toggl Track</a></li><li><a href="/toll-preview/time-export-to-invoice/clockify/" title="Clockify invoice without the Standard plan: export to invoice lines">Clockify</a></li><li><a href="/toll-preview/time-export-to-invoice/harvest/" title="Harvest export to invoice lines: decimal hours, rounding and rates">Harvest</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Templates" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Templates and fixes</h2>
+<h3>Templates</h3><ul class="cp-rows"><li><a href="/toll-preview/time-export-to-invoice/timesheet-invoice-template/" title="Timesheet invoice template: dated lines with hours, rate and amount">Timesheet invoice template</a></li></ul>
+<h3>Fixes</h3><ul class="cp-rows"><li><a href="/toll-preview/time-export-to-invoice/clockify-invoice-report-mismatch/" title="Why your Clockify invoice and report totals don't match">Clockify invoice and report don't match</a></li></ul>
+<h3>Compared</h3><ul class="cp-rows"><li><a href="/toll-preview/time-export-to-invoice/toggl-vs-clockify-vs-harvest-invoicing/" title="Toggl vs Clockify vs Harvest invoicing: plans, rounding and line grouping">Toggl vs Clockify vs Harvest invoicing</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Guides and comparisons</h2>
+<h3>Compared</h3><ul class="cp-rows"><li><a href="/toll-preview/time-export-to-invoice/vs/toggl-invoices/" title="Toggl invoices vs Endwise: when to use each">Toggl invoices</a></li><li><a href="/toll-preview/time-export-to-invoice/vs/clockify-invoicing/" title="Clockify invoicing vs Endwise: plan, rounding and line layout">Clockify invoicing</a></li><li><a href="/toll-preview/time-export-to-invoice/vs/harvest/" title="Harvest vs Endwise for invoicing tracked time">Harvest</a></li><li><a href="/toll-preview/time-export-to-invoice/vs/everhour/" title="Everhour vs Endwise for invoices from tracked time">Everhour</a></li><li><a href="/toll-preview/time-export-to-invoice/vs/spreadsheet-pivot/" title="Spreadsheet pivot vs Endwise for invoice lines from a time export">Spreadsheet pivot</a></li></ul>
+<h3>Guides</h3><ul class="cp-rows"><li><a href="/toll-preview/time-export-to-invoice/guides/round-time-on-invoice/" title="How to round time on an invoice: 6, 10, 15 and 30 minute rules compared">Rounding time on an invoice</a></li><li><a href="/toll-preview/time-export-to-invoice/guides/different-rates-per-task/" title="Different hourly rates per task on one invoice">Different rates per task</a></li><li><a href="/toll-preview/time-export-to-invoice/guides/client-friendly-time-invoice/" title="What a client-friendly time invoice looks like (and what to leave out)">A client-friendly time invoice</a></li><li><a href="/toll-preview/time-export-to-invoice/guides/hours-do-not-match-invoice/" title="My hours do not match the invoice total: reconcile in five checks">Hours that do not match the invoice</a></li><li><a href="/toll-preview/time-export-to-invoice/guides/harvest-everhour-exports/" title="Harvest and Everhour exports to invoice lines: the columns">Harvest and Everhour columns</a></li><li><a href="/toll-preview/time-export-to-invoice/guides/decimal-hours-conversion/" title="Decimal hours vs hh:mm on an invoice: is 1:20 1.2 or 1.33 hours?">Decimal hours vs hh:mm</a></li><li><a href="/toll-preview/time-export-to-invoice/guides/retainer-and-blocks-of-hours/" title="Billing retainers and prepaid blocks of hours from a time export">Retainers and blocks of hours</a></li></ul>
+<h3>Calendar</h3><ul class="cp-rows"><li><a href="/toll-preview/time-export-to-invoice/invoice-calendar-2027/" title="Month-end invoice calendar 2027: last business day of each month">Month-end invoice calendar 2027</a></li></ul>
+</section>
+
+  <section class="wrap tf-code ti-code" data-jump="Code" aria-label="Use this from code">
+    <div id="ti-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This page needs JavaScript. You can also call the tool from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/time-export-to-invoice/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+hs6,heading,heading_description,description,us_statistical_numbers,schedule_b_numbers
+0901.11,0901,"Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion:","Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion: Coffee, not roasted: Not decaffeinated",6,1
+0901.12,0901,"Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion:","Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion: Coffee, not roasted: Decaffeinated",6,1
+0901.21,0901,"Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion:","Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion: Coffee, roasted: Not decaffeinated",8,2
+0901.22,0901,"Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion:","Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion: Coffee, roasted: Decaffeinated",9,1
+0901.90,0901,"Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion:","Coffee, whether or not roasted or decaffeinated; coffee husks and skins; coffee substitutes containing coffee in any proportion: Other",2,2
+0902.10,0902,"Tea, whether or not flavored:","Tea, whether or not flavored: Green tea (not fermented) in immediate packings of a content not exceeding 3 kg",4,1
+0902.20,0902,"Tea, whether or not flavored:","Tea, whether or not flavored: Other green tea (not fermented)",3,1
+0902.30,0902,"Tea, whether or not flavored:","Tea, whether or not flavored: Black tea (fermented) and partly fermented tea, in immediate packings of a content not exceeding 3 kg",3,1
+0902.40,0902,"Tea, whether or not flavored:","Tea, whether or not flavored: Other black tea (fermented) and other partly fermented tea",1,1
+0903.00,0903,,Maté,1,1
+0904.11,0904,"Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice):","Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice): Pepper of the genus Piper: Neither crushed nor ground",2,1
+0904.12,0904,"Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice):","Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice): Pepper of the genus Piper: Crushed or ground",1,1
+0904.21,0904,"Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice):","Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice): Fruits of the genus Capsicum or of the genus Pimenta: Dried, neither crushed nor ground",6,1
+0904.22,0904,"Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice):","Pepper of the genus Piper; dried or crushed or ground fruits of the genus Capsicum (peppers) or of the genus Pimenta (e.g., allspice): Fruits of the genus Capsicum or of the genus Pimenta: Crushed or ground",5,1
+0905.10,0905,Vanilla:,Vanilla: Neither crushed nor ground,1,1
+0905.20,0905,Vanilla:,Vanilla: Crushed or ground,1,1
+0906.11,0906,Cinnamon and cinnamon-tree flowers:,Cinnamon and cinnamon-tree flowers: Neither crushed nor ground: Cinnamon (Cinnamomum zeylanicum Blume),1,1
+0906.19,0906,Cinnamon and cinnamon-tree flowers:,Cinnamon and cinnamon-tree flowers: Neither crushed nor ground: Other,1,1
+0906.20,0906,Cinnamon and cinnamon-tree flowers:,Cinnamon and cinnamon-tree flowers: Crushed or ground,1,1
+0907.10,0907,"Cloves (whole fruit, cloves and stems):","Cloves (whole fruit, cloves and stems): Neither crushed nor ground",1,1
+0907.20,0907,"Cloves (whole fruit, cloves and stems):","Cloves (whole fruit, cloves and stems): Crushed or ground",1,1
+0908.11,0908,"Nutmeg, mace and cardamoms:","Nutmeg, mace and cardamoms: Nutmeg: Neither crushed nor ground",1,1
+0908.12,0908,"Nutmeg, mace and cardamoms:","Nutmeg, mace and cardamoms: Nutmeg: Crushed or ground",1,1
+0908.21,0908,"Nutmeg, mace and cardamoms:","Nutmeg, mace and cardamoms: Mace: Neither crushed nor ground",1,1
+0908.22,0908,"Nutmeg, mace and cardamoms:","Nutmeg, mace and cardamoms: Mace: Crushed or ground",2,1
+0908.31,0908,"Nutmeg, mace and cardamoms:","Nutmeg, mace and cardamoms: Cardamoms: Neither crushed nor ground",1,1
+0908.32,0908,"Nutmeg, mace and cardamoms:","Nutmeg, mace and cardamoms: Cardamoms: Crushed or ground",1,1
+0909.21,0909,"Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries:","Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries: Seeds of coriander: Neither crushed nor ground",1,1
+0909.22,0909,"Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries:","Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries: Seeds of coriander: Crushed or ground",1,1
+0909.31,0909,"Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries:","Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries: Seeds of cumin: Neither crushed nor ground",1,1
+0909.32,0909,"Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries:","Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries: Seeds of cumin: Crushed or ground",1,1
+0909.61,0909,"Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries:","Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries: Seeds of anise, badian, caraway or fennel; juniper berries: Neither crushed nor ground",1,1
+0909.62,0909,"Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries:","Seeds of anise, badian, fennel, coriander, cumin or caraway; juniper berries: Seeds of anise, badian, caraway or fennel; juniper berries: Crushed or ground",1,1
+0910.11,0910,"Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices:","Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices: Ginger: Neither crushed nor ground",2,1
+0910.12,0910,"Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices:","Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices: Ginger: Crushed or ground",1,1
+0910.20,0910,"Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices:","Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices: Saffron",1,1
+0910.30,0910,"Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices:","Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices: Turmeric (curcuma)",1,1
+0910.91,0910,"Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices:","Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices: Other spices: Mixtures referred to in note 1(b) to this chapter",1,1
+0910.99,0910,"Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices:","Ginger, saffron, turmeric (curcuma), thyme, bay leaves, curry and other spices: Other spices: Other",8,3

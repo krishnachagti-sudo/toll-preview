@@ -1,0 +1,305 @@
+code,activity,category,subcategory,also_naics_2022
+721310,"Rooming & boarding houses, dormitories, & workers’ camps","Accommodation, Food Services, & Drinking Places",Accommodation,yes
+721210,RV (recreational vehicle) parks & recreational camps,"Accommodation, Food Services, & Drinking Places",Accommodation,no
+721100,"Traveler accommodation (including hotels, motels, & bed & breakfast inns)","Accommodation, Food Services, & Drinking Places",Accommodation,no
+722514,"Cafeterias, grill buffets, & buffets","Accommodation, Food Services, & Drinking Places",Food Services & Drinking Places,yes
+722410,Drinking places (alcoholic beverages),"Accommodation, Food Services, & Drinking Places",Food Services & Drinking Places,yes
+722511,Full-service restaurants,"Accommodation, Food Services, & Drinking Places",Food Services & Drinking Places,yes
+722513,Limited-service restaurants,"Accommodation, Food Services, & Drinking Places",Food Services & Drinking Places,yes
+722515,Snack & nonalcoholic beverage bars,"Accommodation, Food Services, & Drinking Places",Food Services & Drinking Places,yes
+722300,Special food services (including food service contractors & caterers),"Accommodation, Food Services, & Drinking Places",Food Services & Drinking Places,no
+561430,Business service centers (including private mail centers & copy shops),Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,no
+561740,Carpet & upholstery cleaning services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561440,Collection agencies,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561450,Credit bureaus,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561410,Document preparation services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561300,Employment services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,no
+561710,Exterminating & pest control services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561210,Facilities support (management) services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561600,Investigation & security services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,no
+561720,Janitorial services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561730,Landscaping services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561110,Office administrative services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561420,Telephone call centers (including telephone answering services & telemarketing bureaus),Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,no
+561500,Travel arrangement & reservation services,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,no
+561490,"Other business support services (including repossession services, court reporting, & stenotype services)",Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,no
+561790,Other services to buildings & dwellings,Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,yes
+561900,"Other support services (including packaging & labeling services, & convention & trade show organizers)",Administrative & Support and Waste Management & Remediation Services,Administrative & Support Services,no
+562000,Waste management & remediation services,Administrative & Support and Waste Management & Remediation Services,Waste Management & Remediation Services,no
+112900,Animal production (including breeding of cats and dogs),"Agriculture, Forestry, Hunting, & Fishing",,no
+114110,Fishing,"Agriculture, Forestry, Hunting, & Fishing",,no
+113000,Forestry & logging (including forest nurseries & timber tracts),"Agriculture, Forestry, Hunting, & Fishing",,no
+114210,Hunting & trapping,"Agriculture, Forestry, Hunting, & Fishing",,yes
+115210,Support activities for animal production (including farriers),"Agriculture, Forestry, Hunting, & Fishing",Support Activities for Agriculture & Forestry,yes
+115110,"Support activities for crop production (including cotton ginning, soil preparation, planting, & cultivating)","Agriculture, Forestry, Hunting, & Fishing",Support Activities for Agriculture & Forestry,no
+115310,Support activities for forestry,"Agriculture, Forestry, Hunting, & Fishing",Support Activities for Agriculture & Forestry,yes
+713100,Amusement parks & arcades,"Arts, Entertainment, & Recreation","Amusement, Gambling, & Recreation Industries",no
+713200,Gambling industries,"Arts, Entertainment, & Recreation","Amusement, Gambling, & Recreation Industries",no
+713900,"Other amusement & recreation services (including golf courses, skiing facilities, marinas, fitness centers, bowling centers, skating rinks, miniature golf courses)","Arts, Entertainment, & Recreation","Amusement, Gambling, & Recreation Industries",no
+712100,"Museums, historical sites, & similar institutions","Arts, Entertainment, & Recreation","Museums, Historical Sites, & Similar Institutions",no
+711410,"Agents & managers for artists, athletes, entertainers, & other public figures","Arts, Entertainment, & Recreation","Performing Arts, Spectator Sports, & Related Industries",yes
+711510,"Independent artists, writers, & performers","Arts, Entertainment, & Recreation","Performing Arts, Spectator Sports, & Related Industries",yes
+711100,Performing arts companies,"Arts, Entertainment, & Recreation","Performing Arts, Spectator Sports, & Related Industries",no
+711300,"Promoters of performing arts, sports, & similar events","Arts, Entertainment, & Recreation","Performing Arts, Spectator Sports, & Related Industries",no
+711210,Spectator sports (including professional sports clubs & racetrack operations),"Arts, Entertainment, & Recreation","Performing Arts, Spectator Sports, & Related Industries",no
+236200,Nonresidential building construction,Construction of Buildings,,no
+236100,Residential building construction,Construction of Buildings,,no
+237310,"Highway, street, & bridge construction",Construction of Buildings,Heavy and Civil Engineering Construction,yes
+237210,Land subdivision,Construction of Buildings,Heavy and Civil Engineering Construction,yes
+237100,Utility system construction,Construction of Buildings,Heavy and Civil Engineering Construction,no
+237990,Other heavy & civil engineering construction,Construction of Buildings,Heavy and Civil Engineering Construction,yes
+238310,Drywall & insulation contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238210,Electrical contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238350,Finish carpentry contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238330,Flooring contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238130,Framing carpentry contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238150,Glass & glazing contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238140,Masonry contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238320,Painting & wall covering contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238220,"Plumbing, heating, & air-conditioning contractors",Construction of Buildings,Specialty Trade Contractors,yes
+238110,Poured concrete foundation & structure contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238160,Roofing contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238170,Siding contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238910,Site preparation contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238120,Structural steel & precast concrete construction contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238340,Tile & terrazzo contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238290,Other building equipment contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238390,Other building finishing contractors,Construction of Buildings,Specialty Trade Contractors,yes
+238190,"Other foundation, structure, & building exterior contractors",Construction of Buildings,Specialty Trade Contractors,yes
+238990,All other specialty trade contractors,Construction of Buildings,Specialty Trade Contractors,yes
+611000,"Educational services (including schools, colleges, & universities)",Educational Services,,no
+522100,"Depository credit intermediation (including commercial banking, savings institutions, & credit unions)",Finance & Insurance,Credit Intermediation & Related Activities,no
+522200,Nondepository credit intermediation (including sales financing & consumer lending),Finance & Insurance,Credit Intermediation & Related Activities,no
+522300,Activities related to credit intermediation (including loan brokers),Finance & Insurance,Credit Intermediation & Related Activities,no
+524210,Insurance agencies & brokerages,Finance & Insurance,"Insurance Agents, Brokers, & Related Activities",yes
+524290,Other insurance related activities,Finance & Insurance,"Insurance Agents, Brokers, & Related Activities",no
+523160,Commodity contracts intermediation,Finance & Insurance,"Securities, Commodity Contracts, & Other Financial Investments & Related Activities",yes
+523150,Investment banking & securities intermediation,Finance & Insurance,"Securities, Commodity Contracts, & Other Financial Investments & Related Activities",yes
+523210,Securities & commodity exchanges,Finance & Insurance,"Securities, Commodity Contracts, & Other Financial Investments & Related Activities",yes
+523900,Other financial investment activities (including investment advice),Finance & Insurance,"Securities, Commodity Contracts, & Other Financial Investments & Related Activities",no
+621610,Home health care services,Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621510,Medical & diagnostic laboratories,Health Care & Social Assistance,Ambulatory Health Care Services,no
+621310,Offices of chiropractors,Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621210,Offices of dentists,Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621330,Offices of mental health practitioners (except physicians),Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621320,Offices of optometrists,Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621340,"Offices of physical therapists, occupational & speech therapists, & audiologists",Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621111,Offices of physicians (except mental health specialists),Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621112,"Offices of physicians, mental health specialists",Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621391,Offices of podiatrists,Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621399,Offices of all other miscellaneous health practitioners,Health Care & Social Assistance,Ambulatory Health Care Services,yes
+621400,Outpatient care centers,Health Care & Social Assistance,Ambulatory Health Care Services,no
+621900,"Other ambulatory health care services (including ambulance services, blood banks, & organ banks)",Health Care & Social Assistance,Ambulatory Health Care Services,no
+622000,Hospitals,Health Care & Social Assistance,Hospitals,no
+623000,Nursing & residential care facilities,Health Care & Social Assistance,Nursing & Residential Care Facilities,no
+624410,Childcare services,Health Care & Social Assistance,Social Assistance,yes
+624200,Community food & housing & emergency & other relief services,Health Care & Social Assistance,Social Assistance,no
+624100,Individual & family services,Health Care & Social Assistance,Social Assistance,no
+624310,Vocational rehabilitation services,Health Care & Social Assistance,Social Assistance,yes
+513000,Publishing industries,Information,Publishing Industries,no
+516000,Broadcasting & content providers,Information,Broadcasting & Content Providers & Telecommunications,no
+517000,"Telecommunications (including wired, wireless, satellite, cable, & other program distribution, resellers, agents, other telecommunications, & internet service providers)",Information,Broadcasting & Content Providers & Telecommunications,no
+518210,"Computing infrastructure providers, data processing, web hosting, & related services",Information,"Data Processing, Web Search Portals, & Other Information Services",yes
+519200,"Web search portals, libraries, archives, & other info. services",Information,"Data Processing, Web Search Portals, & Other Information Services",no
+512100,Motion picture & video industries (except video rental),Information,Motion Picture & Sound Recording,no
+512200,Sound recording industries,Information,Motion Picture & Sound Recording,no
+315000,Apparel mfg.,Manufacturing,,no
+312000,Beverage & tobacco product mfg.,Manufacturing,,no
+334000,Computer & electronic product mfg.,Manufacturing,,no
+335000,"Electrical equipment, appliance, & component mfg.",Manufacturing,,no
+332000,Fabricated metal product mfg.,Manufacturing,,no
+337000,Furniture & related product mfg.,Manufacturing,,no
+333000,Machinery mfg.,Manufacturing,,no
+339110,Medical equipment & supplies mfg.,Manufacturing,,no
+322000,Paper mfg.,Manufacturing,,no
+324100,Petroleum & coal products mfg.,Manufacturing,,no
+326000,Plastics & rubber products mfg.,Manufacturing,,no
+331000,Primary metal mfg.,Manufacturing,,no
+323100,Printing & related support activities,Manufacturing,,no
+313000,Textile mills,Manufacturing,,no
+314000,Textile product mills,Manufacturing,,no
+336000,Transportation equipment mfg.,Manufacturing,,no
+321000,Wood product mfg.,Manufacturing,,no
+339900,Other miscellaneous mfg.,Manufacturing,,no
+325100,Basic chemical mfg.,Manufacturing,Chemical Manufacturing,no
+325500,"Paint, coating, & adhesive mfg.",Manufacturing,Chemical Manufacturing,no
+325300,"Pesticide, fertilizer, & other agricultural chemical mfg.",Manufacturing,Chemical Manufacturing,no
+325410,Pharmaceutical & medicine mfg.,Manufacturing,Chemical Manufacturing,no
+325200,"Resin, synthetic rubber, & artificial & synthetic fibers & filaments mfg.",Manufacturing,Chemical Manufacturing,no
+325600,"Soap, cleaning compound, & toilet preparation mfg.",Manufacturing,Chemical Manufacturing,no
+325900,Other chemical product & preparation mfg.,Manufacturing,Chemical Manufacturing,no
+311110,Animal food mfg.,Manufacturing,Food Manufacturing,no
+311800,Bakeries & tortilla & dry pasta mfg.,Manufacturing,Food Manufacturing,no
+311500,Dairy product mfg.,Manufacturing,Food Manufacturing,no
+311400,Fruit & vegetable preserving & speciality food mfg.,Manufacturing,Food Manufacturing,no
+311200,Grain & oilseed milling,Manufacturing,Food Manufacturing,no
+311610,Animal slaughtering & processing,Manufacturing,Food Manufacturing,no
+311710,Seafood product preparation & packaging,Manufacturing,Food Manufacturing,yes
+311300,Sugar & confectionery product mfg.,Manufacturing,Food Manufacturing,no
+311900,"Other food mfg. (including coffee, tea, flavorings, & seasonings)",Manufacturing,Food Manufacturing,no
+316210,"Footwear mfg. (including leather, rubber, & plastics)",Manufacturing,Leather & Allied Product Manufacturing,yes
+316110,Leather & hide tanning & finishing,Manufacturing,Leather & Allied Product Manufacturing,yes
+316990,Other leather & allied product mfg.,Manufacturing,Leather & Allied Product Manufacturing,yes
+327300,Cement & concrete product mfg.,Manufacturing,Nonmetallic Mineral Product Manufacturing,no
+327100,Clay product & refractory mfg.,Manufacturing,Nonmetallic Mineral Product Manufacturing,no
+327210,Glass & glass product mfg.,Manufacturing,Nonmetallic Mineral Product Manufacturing,no
+327400,Lime & gypsum product mfg.,Manufacturing,Nonmetallic Mineral Product Manufacturing,no
+327900,Other nonmetallic mineral product mfg.,Manufacturing,Nonmetallic Mineral Product Manufacturing,no
+212110,Coal mining,Mining,,no
+211120,Crude petroleum extraction,Mining,,yes
+212200,Metal ore mining,Mining,,no
+211130,Natural gas extraction,Mining,,yes
+212300,Nonmetallic mineral mining & quarrying,Mining,,no
+213110,Support activities for mining,Mining,,no
+812111,Barber shops,Other Services,Personal & Laundry Services,yes
+812112,Beauty salons,Other Services,Personal & Laundry Services,yes
+812220,Cemeteries & crematories,Other Services,Personal & Laundry Services,yes
+812310,Coin-operated laundries & drycleaners,Other Services,Personal & Laundry Services,yes
+812320,Drycleaning & laundry services (except coin-operated) (including laundry & drycleaning drop-off & pickup sites),Other Services,Personal & Laundry Services,yes
+812210,Funeral homes & funeral services,Other Services,Personal & Laundry Services,yes
+812330,Linen & uniform supply,Other Services,Personal & Laundry Services,no
+812113,Nail salons,Other Services,Personal & Laundry Services,yes
+812930,Parking lots & garages,Other Services,Personal & Laundry Services,yes
+812910,Pet care (except veterinary) services,Other Services,Personal & Laundry Services,yes
+812920,Photofinishing,Other Services,Personal & Laundry Services,no
+812190,Other personal care services (including diet & weight reducing centers),Other Services,Personal & Laundry Services,no
+812990,All other personal services,Other Services,Personal & Laundry Services,yes
+811120,"Automotive body, paint, interior, & glass repair",Other Services,Repair & Maintenance,no
+811110,Automotive mechanical & electrical repair & maintenance,Other Services,Repair & Maintenance,no
+811190,Other automotive repair & maintenance (including oil change & lubrication shops & car washes),Other Services,Repair & Maintenance,no
+811310,Commercial & industrial machinery & equipment (except automotive & electronic) repair & maintenance,Other Services,Repair & Maintenance,yes
+811210,Electronic & precision equipment repair & maintenance,Other Services,Repair & Maintenance,yes
+811430,Footwear & leather goods repair,Other Services,Repair & Maintenance,yes
+811410,Home & garden equipment & appliance repair & maintenance,Other Services,Repair & Maintenance,no
+811420,Reupholstery & furniture repair,Other Services,Repair & Maintenance,yes
+811490,Other personal & household goods repair & maintenance,Other Services,Repair & Maintenance,yes
+541100,Legal services,"Professional, Scientific, & Technical Services",,no
+541211,Offices of certified public accountants,"Professional, Scientific, & Technical Services",,yes
+541214,Payroll services,"Professional, Scientific, & Technical Services",,yes
+541213,Tax preparation services,"Professional, Scientific, & Technical Services",,yes
+541219,Other accounting services,"Professional, Scientific, & Technical Services",,yes
+541310,Architectural services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541350,Building inspection services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541340,Drafting services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541330,Engineering services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541360,Geophysical surveying & mapping services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541320,Landscape architecture services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541370,Surveying & mapping (except geophysical) services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541380,Testing laboratories & services,"Professional, Scientific, & Technical Services","Architectural, Engineering, & Related Services",yes
+541510,Computer systems design & related services,"Professional, Scientific, & Technical Services",Computer Systems Design & Related Services,no
+541400,"Specialized design services (including interior, industrial, graphic, & fashion design)","Professional, Scientific, & Technical Services",Specialized Design Services,no
+541800,"Advertising, public relations, & related services","Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",no
+541600,"Management, scientific, & technical consulting services","Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",no
+541910,Market research & public opinion polling,"Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",yes
+541920,Photographic services,"Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",no
+541700,Scientific research & development services,"Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",no
+541930,Translation & interpretation services,"Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",yes
+541940,Veterinary services,"Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",yes
+541990,"All other professional, scientific, & technical services","Professional, Scientific, & Technical Services","Other Professional, Scientific, & Technical Services",yes
+531100,Lessors of real estate (including miniwarehouses & self-storage units),Real Estate & Rental & Leasing,Real Estate,no
+531210,Offices of real estate agents & brokers,Real Estate & Rental & Leasing,Real Estate,yes
+531320,Offices of real estate appraisers,Real Estate & Rental & Leasing,Real Estate,yes
+531310,Real estate property managers,Real Estate & Rental & Leasing,Real Estate,no
+531390,Other activities related to real estate,Real Estate & Rental & Leasing,Real Estate,yes
+532100,Automotive equipment rental & leasing,Real Estate & Rental & Leasing,Rental & Leasing Services,no
+532400,Commercial & industrial machinery & equipment rental & leasing,Real Estate & Rental & Leasing,Rental & Leasing Services,no
+532210,Consumer electronics & appliances rental,Real Estate & Rental & Leasing,Rental & Leasing Services,yes
+532281,Formal wear & costume rental,Real Estate & Rental & Leasing,Rental & Leasing Services,yes
+532310,General rental centers,Real Estate & Rental & Leasing,Rental & Leasing Services,yes
+532283,Home health equipment rental,Real Estate & Rental & Leasing,Rental & Leasing Services,yes
+532284,Recreational goods rental,Real Estate & Rental & Leasing,Rental & Leasing Services,yes
+532282,Video tape & disc rental,Real Estate & Rental & Leasing,Rental & Leasing Services,yes
+532289,Other consumer goods rental,Real Estate & Rental & Leasing,Rental & Leasing Services,yes
+813000,"Religious, grantmaking, civic, professional, & similar organizations","Religious, Grantmaking, Civic, Professional, & Similar Organizations",,no
+444140,Hardware retailers,Retail Trade,Building Material & Garden Equipment & Supplies Dealers,yes
+444110,Home centers,Retail Trade,Building Material & Garden Equipment & Supplies Dealers,yes
+444200,Lawn & garden equipment & supplies retailers,Retail Trade,Building Material & Garden Equipment & Supplies Dealers,no
+444120,Paint & wallpaper retailers,Retail Trade,Building Material & Garden Equipment & Supplies Dealers,yes
+444180,Other building materials dealers,Retail Trade,Building Material & Garden Equipment & Supplies Dealers,yes
+458110,Clothing & clothing accessories retailers,Retail Trade,Clothing & Accessories Retailers,yes
+458310,Jewelry retailers,Retail Trade,Clothing & Accessories Retailers,yes
+458320,Luggage & leather goods retailers,Retail Trade,Clothing & Accessories Retailers,yes
+458210,Shoe retailers,Retail Trade,Clothing & Accessories Retailers,yes
+449210,Electronics & appliance retailers (including computers),Retail Trade,Electronic & Appliance Retailers,yes
+445320,"Beer, wine, & liquor retailers",Retail Trade,Food & Beverage Retailers,yes
+445250,Fish & seafood retailers,Retail Trade,Food & Beverage Retailers,yes
+445230,Fruit & vegetable retailers,Retail Trade,Food & Beverage Retailers,yes
+445100,Grocery & convenience retailers,Retail Trade,Food & Beverage Retailers,no
+445240,Meat retailers,Retail Trade,Food & Beverage Retailers,yes
+445290,Other specialty food retailers,Retail Trade,Food & Beverage Retailers,no
+445132,Vending machine operators,Retail Trade,Food & Beverage Retailers,yes
+449110,Furniture retailers,Retail Trade,Furniture & Home Furnishings Retailers,yes
+449120,Home furnishings retailers,Retail Trade,Furniture & Home Furnishings Retailers,no
+457100,Gasoline stations (including convenience stores with gas),Retail Trade,Gasoline Stations & Fuel Dealers,no
+457210,Fuel dealers (including heating oil & liquefied petroleum),Retail Trade,Gasoline Stations & Fuel Dealers,yes
+455000,General merchandise retailers,Retail Trade,General Merchandise Retailers,no
+456120,"Cosmetics, beauty supplies, & perfume retailers",Retail Trade,Health & Personal Care Retailers,yes
+456130,Optical goods retailers,Retail Trade,Health & Personal Care Retailers,yes
+456110,Pharmacies & drug retailers,Retail Trade,Health & Personal Care Retailers,yes
+456190,Other health & personal care retailers,Retail Trade,Health & Personal Care Retailers,no
+441300,"Automotive parts, accessories, & tire retailers",Retail Trade,Motor Vehicle & Parts Dealers,no
+441222,Boat dealers,Retail Trade,Motor Vehicle & Parts Dealers,yes
+441227,"Motorcycle, ATV, & all other motor vehicle dealers",Retail Trade,Motor Vehicle & Parts Dealers,yes
+441110,New car dealers,Retail Trade,Motor Vehicle & Parts Dealers,yes
+441210,Recreational vehicle dealers (including motor home & travel trailer dealers),Retail Trade,Motor Vehicle & Parts Dealers,yes
+441120,Used car dealers,Retail Trade,Motor Vehicle & Parts Dealers,yes
+459210,Book retailers & news dealers (including newsstands),Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459120,"Hobby, toy, & game retailers",Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459140,"Musical instrument, & supplies retailers",Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459130,"Sewing, needlework, & piece goods retailers",Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459110,Sporting goods retailers,Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459920,Art dealers,Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459310,Florists,Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459420,"Gift, novelty, & souvenir retailers",Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459930,Manufactured (mobile) home dealers,Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459410,Office supplies & stationery retailers,Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459910,Pet & pet supplies retailers,Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459510,Used merchandise retailers,Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",yes
+459990,"All other miscellaneous retailers (including tobacco, candle, & trophy retailers)",Retail Trade,"Sporting Goods, Hobby, Book, Musical Instrument, & Miscellaneous Retailers",no
+481000,Air transportation,Transportation & Warehousing,,no
+485510,Charter bus industry,Transportation & Warehousing,,yes
+484110,"General freight trucking, local",Transportation & Warehousing,,yes
+484120,"General freight trucking, long distance",Transportation & Warehousing,,no
+485210,Interurban & rural bus transportation,Transportation & Warehousing,,yes
+486000,Pipeline transportation,Transportation & Warehousing,,no
+482110,Rail transportation,Transportation & Warehousing,,no
+487000,Scenic & sightseeing transportation,Transportation & Warehousing,,no
+485410,School & employee bus transportation,Transportation & Warehousing,,yes
+484200,Specialized freight trucking (including household moving vans),Transportation & Warehousing,,no
+485300,"Taxi, limousine, & ridesharing service",Transportation & Warehousing,,no
+485110,Urban transit systems,Transportation & Warehousing,,no
+483000,Water transportation,Transportation & Warehousing,,no
+485990,Other transit & ground passenger transportation,Transportation & Warehousing,,no
+488000,Support activities for transportation (including motor vehicle towing),Transportation & Warehousing,,no
+492000,Couriers & messengers,Transportation & Warehousing,Couriers & Messengers,no
+493100,Warehousing & storage (except leases of miniwarehouses & self-storage units),Transportation & Warehousing,Warehousing & Storage Facilities,no
+221000,Utilities,Utilities,,no
+423200,Furniture & home furnishing,Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423700,Hardware & plumbing & heating equipment & supplies,Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423600,Household appliances & electrical & electronic goods,Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423940,"Jewelry, watches, precious stones, & precious metals",Wholesale Trade,"Merchant Wholesalers, Durable Goods",yes
+423300,Lumber & other construction materials,Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423800,"Machinery, equipment, & supplies",Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423500,Metal & mineral (except petroleum),Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423100,Motor vehicle & motor vehicle parts & supplies,Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423400,Professional & commercial equipment & supplies,Wholesale Trade,"Merchant Wholesalers, Durable Goods",no
+423930,Recyclable materials,Wholesale Trade,"Merchant Wholesalers, Durable Goods",yes
+423910,Sporting & recreational goods & supplies,Wholesale Trade,"Merchant Wholesalers, Durable Goods",yes
+423920,Toy & hobby goods & supplies,Wholesale Trade,"Merchant Wholesalers, Durable Goods",yes
+423990,Other miscellaneous durable goods,Wholesale Trade,"Merchant Wholesalers, Durable Goods",yes
+424300,"Apparel, piece goods, & notions",Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",no
+424800,"Beer, wine, & distilled alcoholic beverages",Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",no
+424920,"Books, periodicals, & newspapers",Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",yes
+424600,Chemical & allied products,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",no
+424210,Drugs & druggists’ sundries,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",yes
+424500,Farm product raw materials,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",no
+424910,Farm supplies,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",yes
+424930,"Flower, nursery stock, & florists’ supplies",Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",yes
+424400,Grocery & related products,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",no
+424950,"Paint, varnish, & supplies",Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",yes
+424100,Paper & paper products,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",no
+424700,Petroleum & petroleum products,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",no
+424940,Tobacco products & electronic cigarettes,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",yes
+424990,Other miscellaneous nondurable goods,Wholesale Trade,"Merchant Wholesalers, Nondurable Goods",yes
+425120,Wholesale trade agents & brokers,Wholesale Trade Agents & Brokers,,yes
+999000,Unclassified establishments (unable to classify),,,no

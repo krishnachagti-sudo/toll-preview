@@ -1,0 +1,15 @@
+month,month_end,weekday,fifth_business_day_after,straddling_settlement,days_before_after
+November 2026,"November 30, 2026",Monday,"December 7, 2026","November 21, 2026 to December 5, 2026",10 / 4
+December 2026,"December 31, 2026",Thursday,"January 7, 2027","December 19, 2026 to January 2, 2027",13 / 1
+January 2027,"January 31, 2027",Sunday,"February 5, 2027","January 30, 2027 to February 13, 2027",2 / 12
+February 2027,"February 28, 2027",Sunday,"March 5, 2027","February 27, 2027 to March 13, 2027",2 / 12
+March 2027,"March 31, 2027",Wednesday,"April 7, 2027","March 27, 2027 to April 10, 2027",5 / 9
+April 2027,"April 30, 2027",Friday,"May 7, 2027","April 24, 2027 to May 8, 2027",7 / 7
+May 2027,"May 31, 2027",Monday,"June 7, 2027","May 22, 2027 to June 5, 2027",10 / 4
+June 2027,"June 30, 2027",Wednesday,"July 7, 2027","June 19, 2027 to July 3, 2027",12 / 2
+July 2027,"July 31, 2027",Saturday,"August 6, 2027","July 31, 2027 to August 14, 2027",1 / 13
+August 2027,"August 31, 2027",Tuesday,"September 7, 2027","August 28, 2027 to September 11, 2027",4 / 10
+September 2027,"September 30, 2027",Thursday,"October 7, 2027","September 25, 2027 to October 9, 2027",6 / 8
+October 2027,"October 31, 2027",Sunday,"November 5, 2027","October 23, 2027 to November 6, 2027",9 / 5
+November 2027,"November 30, 2027",Tuesday,"December 7, 2027","November 20, 2027 to December 4, 2027",11 / 3
+December 2027,"December 31, 2027",Friday,"January 7, 2028",none (a settlement ends on it),14 / 0

@@ -1,0 +1,62 @@
+/* FBA prep checker: a packing bench inside the brand chrome, reusing its tokens. */
+.fp {
+  --accent: var(--h-file);
+  --accent-ink: #04161d;
+  --endwise-accent: var(--h-file);
+  --endwise-accent-ink: #04161d;
+}
+
+.fp-desk > * { min-width: 0; }
+
+.fp-form legend { padding: 0; }
+.fp-types { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.fp-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.fp-row3 { display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: 0 10px; }
+.fp-row3 legend { grid-column: 1 / -1; }
+.fp-row3 > * { min-width: 0; }
+.fp-wrow { grid-template-columns: minmax(0, 1fr) 4.5rem minmax(0, 1.6fr); }
+.fp-types-fold { margin: 0 0 12px; border-top: 0; padding-top: 0; }
+.fp-more-tools { display: grid; gap: 24px; }
+.fp-more-tools h2 { font-size: 20px; }
+.check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--text-2); margin: 4px 0 8px; cursor: pointer; }
+.check input { width: 18px; height: 18px; flex: none; }
+.fp-options { margin: 4px 0 16px; }
+.fp-options summary { cursor: pointer; color: var(--text-2); margin-bottom: 12px; }
+.fp-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.fp-actions .btn { flex: 1 1 auto; }
+.fp-got { margin: 10px 0 0; overflow-wrap: anywhere; }
+.fp-got a, .fp-list-out a, .fp-out a { color: var(--accent); }
+
+.fp-out { min-height: 12rem; }
+.fp-tag { margin: 0; font: 600 15px/1.4 var(--font-text); color: var(--text-2); }
+.fp-answer { font: 600 clamp(1.25rem, 3vw, 1.6rem)/1.25 var(--font-display); letter-spacing: -0.01em; color: #fff; margin: 0 0 12px; max-width: 42rem; }
+.fp-answer-s { font-size: 1.2rem; }
+.fp-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 10px; margin: 0 0 16px; }
+.fp-facts div { border-top: 1px solid var(--line-2); padding-top: 6px; }
+.fp-facts dt { font-size: 12.5px; color: var(--muted); }
+.fp-facts dd { margin: 2px 0 0; font-size: 17px; }
+.fp-steps { padding-left: 1.2rem; margin: 0 0 16px; }
+.fp-steps li { margin-bottom: 10px; }
+.fp-prep { display: inline-block; font: 500 0.7rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-right: 8px; }
+.fp-why { display: block; color: var(--text-2); font-size: 14px; margin-top: 2px; }
+.fp-src { font-size: 13px; white-space: nowrap; }
+.fp-block { border-top: 1px solid var(--line-2); padding-top: 10px; margin-top: 14px; }
+.fp-block h3 { font-size: 1rem; margin: 0 0 6px; }
+.fp-checks { list-style: none; padding: 0; margin: 6px 0 0; }
+.fp-checks .ok::before { content: ""; }
+.fp-checks .bad, .fp-bad, .fp-refused { color: var(--danger, #e5484d); }
+.fp-aside { color: var(--text-2); font-size: 14px; border-left: 2px solid var(--line-2); padding-left: 10px; }
+
+
+.fp-list textarea, #fp-lines { font-family: var(--font-mono); font-size: 13px; }
+.fp-label-cols, .fp-rule-cols { display: grid; gap: 32px; }
+.fp-label-cols > *, .fp-rule-cols > * { min-width: 0; }
+@media (min-width: 900px) { .fp-label-cols { grid-template-columns: 1fr 1fr; } .fp-rule-cols { grid-template-columns: repeat(3, 1fr); } }
+.fp-table-wrap { overflow-x: auto; }
+.fp-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.fp-table th, .fp-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+.fp-table .num { font-variant-numeric: tabular-nums; }
+.fp-notes { margin-top: 24px; padding-left: 1.1rem; }
+.fp-prices { margin-top: 24px; }
+
+@media (max-width: 520px) { .fp-types { grid-template-columns: 1fr; } }

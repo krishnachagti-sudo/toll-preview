@@ -121,13 +121,45 @@ US federal figures are for tax year 2026, the UK for 2026-27. Each state's rule 
 - [GOV.UK: Repaying your student loan, what you pay](https://www.gov.uk/repaying-your-student-loan/what-you-pay)
 - [GOV.UK: Understanding your Self Assessment tax bill, payments on account](https://www.gov.uk/understand-self-assessment-bill/payments-on-account)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+US federal figures for tax year 2026, the UK for 2026-27, state rules read 2026-10-31. Payments outside 2026 are refused.
+
+Tax set-aside per payment: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [IRS Rev. Proc. 2025-32 (2026 inflation adjustments): tax rate tables, standard deduction, additional standard deduction, section 199A thresholds](https://www.irs.gov/pub/irs-drop/rp-25-32.pdf) | US 2026 | 2026-10-31 |
+| [IRS: Self-employment tax (Social Security and Medicare taxes), page updated 30-Oct-2026](https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes) | US 2026 | 2026-10-31 |
+| [IRS Topic no. 554, Self-employment tax (92.35% of net earnings)](https://www.irs.gov/taxtopics/tc554) | US 2026 | 2026-10-31 |
+| [IRS Topic no. 560, Additional Medicare Tax](https://www.irs.gov/taxtopics/tc560) | US 2026 | 2026-10-31 |
+| [26 U.S.C. 199A(i), minimum deduction for active qualified business income](https://www.law.cornell.edu/uscode/text/26/199A) | US 2026 | 2026-10-31 |
+| [IRS: Tax deductions for working Americans and seniors (tips, overtime, seniors, 2025 to 2028)](https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors) | US 2026 | 2026-10-31 |
+| [26 U.S.C. 224, qualified tips ($25,000 cap, $100 per $1,000 over $150,000 / $300,000)](https://www.law.cornell.edu/uscode/text/26/224) | US 2026 | 2026-10-31 |
+| [26 U.S.C. 225, qualified overtime compensation](https://www.law.cornell.edu/uscode/text/26/225) | US 2026 | 2026-10-31 |
+| [26 U.S.C. 151(d)(5)(C), $6,000 deduction for seniors (6% over $75,000 / $150,000)](https://www.law.cornell.edu/uscode/text/26/151) | US 2026 | 2026-10-31 |
+| [IRS: Standard mileage rates (2026: 72.5 cents January to June, 76 cents July to December)](https://www.irs.gov/tax-professionals/standard-mileage-rates) | US 2026 | 2026-10-31 |
+| [IRS Form 1040-ES (2026), Payment due dates](https://www.irs.gov/pub/irs-pdf/f1040es.pdf) | US 2026 | 2026-10-31 |
+| [IRS: Estimated tax FAQs for individuals (the $1,000 rule and safe harbors)](https://www.irs.gov/faqs/estimated-tax/individuals/individuals) | US 2026 | 2026-10-31 |
+| [IRS: Quarterly interest rates (individual underpayments, 2026)](https://www.irs.gov/payments/quarterly-interest-rates) | US 2026 | 2026-10-31 |
+| [GOV.UK: Income Tax rates and Personal Allowances (2026 to 2027)](https://www.gov.uk/income-tax-rates) | UK 2026-27 | 2026-10-31 |
+| [GOV.UK: Scottish Income Tax (2026 to 2027 rates)](https://www.gov.uk/scottish-income-tax) | UK 2026-27 | 2026-10-31 |
+| [GOV.UK: Self-employed National Insurance rates (2026 to 2027)](https://www.gov.uk/self-employed-national-insurance-rates) | UK 2026-27 | 2026-10-31 |
+| [GOV.UK: Repaying your student loan, what you pay](https://www.gov.uk/repaying-your-student-loan/what-you-pay) | UK 2026-27 | 2026-10-31 |
+| [GOV.UK: Understanding your Self Assessment tax bill, payments on account](https://www.gov.uk/understand-self-assessment-bill/payments-on-account) | UK 2026-27 | 2026-10-31 |
+| Each state's own tax agency or official state portal, named beside the state in the rates and thresholds answer | 2026 | 2026-10-31 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The 2026 federal figures are compared with Rev. Proc. 2025-32 and the IRS pages named in the data. The UK 2026 to 2027 figures are compared with GOV.UK. Worked examples are checked, such as a $3,000 payment from a single filer in Texas, and the rules around them: the Social Security wage base, Additional Medicare Tax and the UK Personal Allowance taper.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- The 2026 federal figures (brackets, standard deduction, self-employment tax, QBI thresholds, the tips, overtime and senior deductions, payment due dates) are compared with Rev. Proc. 2025-32 and the IRS pages named in the data.
+- The UK 2026 to 2027 figures are compared with GOV.UK, and every state covered is one whose rule was read from the state's own site.
+- Worked examples are checked, such as a $3,000 payment from a single filer in Texas, and the rules around them: Social Security wage base, Additional Medicare Tax, the UK Personal Allowance taper.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Tax set-aside per payment tool](https://krishnachagti-sudo.github.io/toll-preview/tax-set-aside/).
 

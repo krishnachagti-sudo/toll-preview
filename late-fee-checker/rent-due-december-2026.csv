@@ -1,0 +1,24 @@
+state,rent_due,first_fee_day,weekday,max_on_1500_rent,law
+AZ,2026-12-01,2026-12-02,Wednesday,,Ariz. Rev. Stat. § 33-1368(B)
+CA,2026-12-01,2026-12-02,Wednesday,,"Cal. Civ. Code § 1671(c)(2), (d)"
+CO,2026-12-01,2026-12-08,Tuesday,$75,Colo. Rev. Stat. § 38-12-105
+CT,2026-12-01,2026-12-11,Friday,$50,Conn. Gen. Stat. § 47a-15a
+DE,2026-12-01,2026-12-07,Monday,$75,25 Del. C. § 5501(d)
+DC,2026-12-01,2026-12-07,Monday,$75,D.C. Code § 42-3505.31
+HI,2026-12-01,2026-12-02,Wednesday,$120,Haw. Rev. Stat. § 521-21(f)
+IA,2026-12-01,2026-12-02,Wednesday,$100,Iowa Code § 562A.9(4)
+ME,2026-12-01,2026-12-17,Thursday,$60,14 M.R.S. § 6028
+MD,2026-12-01,2026-12-02,Wednesday,$75,"Md. Code, Real Prop. § 8-208(d)(3)"
+MA,2026-12-01,2026-12-31,Thursday,,"Mass. Gen. Laws ch. 186, § 15B(1)(c)"
+MN,2026-12-01,2026-12-02,Wednesday,$120,Minn. Stat. § 504B.177
+NV,2026-12-01,2026-12-02,Wednesday,$75,Nev. Rev. Stat. § 118A.210(4)
+NJ,2026-12-01,2026-12-09,Wednesday,,N.J. Stat. § 2A:42-6.1
+NM,2026-12-01,2026-12-02,Wednesday,$150,N.M. Stat. § 47-8-15(D)
+NY,2026-12-01,2026-12-07,Monday,$50,N.Y. Real Prop. Law § 238-a(2)
+NC,2026-12-01,2026-12-06,Sunday,$75,N.C. Gen. Stat. § 42-46
+OR,2026-12-01,2026-12-05,Saturday,$450,Or. Rev. Stat. § 90.260
+TN,2026-12-01,2026-12-06,Sunday,$150,Tenn. Code Ann. § 66-28-201(d)
+TX,2026-12-01,2026-12-04,Friday,$180,Tex. Prop. Code § 92.019
+VA,2026-12-01,2026-12-02,Wednesday,$150,Va. Code § 55.1-1204(E)
+WA,2026-12-01,2026-12-07,Monday,,Rev. Code Wash. § 59.18.170(2)
+IL-Chicago,2026-12-01,2026-12-02,Wednesday,$60,Chicago Municipal Code § 5-12-140(h) (RLTO)

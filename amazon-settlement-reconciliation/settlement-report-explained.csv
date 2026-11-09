@@ -1,0 +1,25 @@
+column,position,sample_summary_row,sample_order_row,used_for
+settlement-id,1,24816093571,24816093571,Groups the rows into settlements
+settlement-start-date,2,2026-10-24 07:00:00 UTC,(blank),"The period, shown with the answer"
+settlement-end-date,3,2026-11-07 07:00:00 UTC,(blank),The last part's journal date
+deposit-date,4,2026-11-09 09:00:00 UTC,(blank),Checked against the day the money reached the bank
+total-amount,5,188.14,(blank),The proof: the rows must add up to it
+currency,6,USD,(blank),Decimal places and the currency of every amount
+transaction-type,7,(blank),Order,Refund rows of price and shipping go to Refunds
+order-id,8,(blank),112-0000001-0000001,Shown in the row file
+merchant-order-id,9,(blank),(blank),Kept as written
+adjustment-id,10,(blank),(blank),Kept as written
+shipment-id,11,(blank),(blank),Kept as written
+marketplace-name,12,(blank),Amazon.com,Shown with the settlement
+amount-type,13,(blank),ItemPrice,Read by the word rules
+amount-description,14,(blank),Principal,Read by the word rules
+amount,15,(blank),39.99,"Every amount, summed by period and line"
+fulfillment-id,16,(blank),AFN,Kept as written
+posted-date,17,(blank),10/25/26,The period each row is split into
+posted-date-time,18,(blank),2026-10-25 15:20:11 UTC,"The period, when you name a time zone"
+order-item-code,19,(blank),(blank),Kept as written
+merchant-order-item-id,20,(blank),(blank),Kept as written
+merchant-adjustment-item-id,21,(blank),(blank),Kept as written
+sku,22,(blank),MUG-BLUE,Shown in the row file
+quantity-purchased,23,(blank),1,Kept as written
+promotion-id,24,(blank),(blank),Kept as written

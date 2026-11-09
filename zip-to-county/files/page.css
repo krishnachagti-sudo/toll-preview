@@ -1,5 +1,5 @@
-/* ZIP code to county: a land-survey desk. Sits inside the brand chrome and reuses its tokens; the
-   share bars are this page's own. Reference data is lit with the files hue. */
+/* ZIP code to county: the tool-full layout (web/tool-full.css) plus the share bar, the
+   list tables and the county form folded under the lookup. Reference data is lit with the files hue. */
 .zc {
   --accent: var(--h-file);
   --accent-ink: #06121a;
@@ -10,52 +10,27 @@
   --zc-bar-3: rgba(255, 255, 255, 0.18);
 }
 
-.zc-intro { padding-block: 40px 8px; }
-.zc-intro h1 { margin-bottom: 0.25em; }
-.zc-price { color: var(--ink-soft); max-width: 46rem; margin: 0; font-variant-numeric: tabular-nums; }
-.zc-price ul { margin: 6px 0 0; padding-left: 1.1em; }
-
-.zc-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.zc-desk > * { min-width: 0; }
-@media (min-width: 960px) { .zc-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
-
-.zc-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
 .zc-form legend { padding: 0; }
-.zc-form .btn[type="submit"] { width: 100%; }
 .zc-form textarea { font-family: var(--font-mono); font-size: 14px; }
-.zc-county-form { margin-top: 28px; border-top-style: solid; border-top-width: 1px; }
-.zc-run-note { margin: 10px 0 0; }
-
-.zc-out { min-height: 12rem; }
-.zc-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.zc-answer { font: 500 clamp(2.2rem, 7vw, 3.4rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 6px; font-variant-numeric: tabular-nums lining-nums; overflow-wrap: anywhere; }
-.zc-answer small { font: 400 1.1rem/1.3 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
-.zc-answer.zc-miss { color: var(--ink-soft); }
-.zc-sub { color: var(--ink-soft); margin: 0 0 16px; max-width: 44rem; }
-.zc-aside, .zc-cost, .zc-source { color: var(--ink-soft); font-size: 0.92rem; margin: 10px 0 0; max-width: 44rem; }
-.zc-cost { font-variant-numeric: tabular-nums; }
+.zc-county-form .tf-go { margin-top: 12px; }
+.tf-big.zc-miss b { color: var(--text-2); text-shadow: none; }
 
 /* One bar, cut by county: the land, as the Census file splits it. */
-.zc-bars { display: flex; gap: 2px; height: 14px; margin: 0 0 14px; max-width: 44rem; border-radius: 3px; overflow: hidden; }
+.zc-bars { display: flex; gap: 2px; height: 14px; margin: 18px 0 12px; border-radius: 3px; overflow: hidden; }
 .zc-bars span { display: block; flex-basis: 0; background: var(--zc-bar-3); }
 .zc-bars span:first-child { background: var(--zc-bar-1); }
 .zc-bars span:nth-child(2) { background: var(--zc-bar-2); }
+.zc-items { margin-top: 14px; }
+.zc-bars + .zc-items { margin-top: 0; }
+.zc-items .k { font-size: 11px; }
 
-.zc-table { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
-.zc-table th, .zc-table td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
-.zc-table thead th { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); border-bottom-color: var(--rule-strong); }
+.zc-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 16px; }
+.zc-table th, .zc-table td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.zc-table thead th { font: 500 11.5px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom-color: var(--line-2); }
 .zc-table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.zc-table tr.zc-miss td { color: var(--ink-soft); }
+.zc-table tr.zc-miss td { color: var(--muted); }
 .zc-tag { margin-left: 8px; font: 600 0.62rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
 .zc-scroll { overflow-x: auto; max-height: 34rem; overflow-y: auto; }
-
-.zc-facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 0; max-width: 44rem; }
-.zc-facts dt { color: var(--ink-soft); font-size: 0.9rem; }
-.zc-facts dd { margin: 0; }
-.zc-notes { margin: 14px 0 0; padding-left: 1.1em; color: var(--ink-soft); font-size: 0.92rem; max-width: 44rem; }
-.zc-downloads { margin: 0 0 14px; }
-
-.zc-rules { margin-top: 56px; }
-.zc-rule-cols { display: grid; gap: 24px; }
-@media (min-width: 900px) { .zc-rule-cols { grid-template-columns: 1fr 1fr; gap: 40px; } }
-.zc-code { margin-top: 40px; }
+.zc-notes { margin: 14px 0 0; padding-left: 1.1em; color: var(--muted); font-size: 13.5px; }
+.zc-downloads { margin: 14px 0 0; }
+.zc-price ul { margin: 0; padding-left: 1.1em; }

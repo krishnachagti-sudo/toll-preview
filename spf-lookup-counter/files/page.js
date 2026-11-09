@@ -99,19 +99,57 @@ function list(title, items, cls) {
   return h('div', { class: `spf-list ${cls}` }, [h('h3', {}, title), h('ul', {}, items)]);
 }
 
-function render(r, { kind, note }) {
+// The inputs in one line: "github.com, live DNS" or "example.com, draft record, IP 203.0.113.7".
+function inputsLine(input) {
+  if (!input?.domain) return null;
+  return [
+    input.domain,
+    input.record ? 'a draft record' : null,
+    input.add?.length ? `adding ${input.add.join(' ')}` : null,
+    input.remove?.length ? `removing ${input.remove.join(' ')}` : null,
+    input.ip ? `sending IP ${input.ip}` : null,
+  ].filter(Boolean).join(', ');
+}
+
+const item = (k, label, value, why, cls = null) => h('li', { class: cls }, [
+  h('span', { class: 'k', 'aria-hidden': 'true' }, k), h('span', {}, label), h('b', {}, value), h('em', {}, why),
+]);
+
+// One line per term of the top record that costs a lookup: its number, its cost and where its
+// lookups go; the terms that cost nothing are one dim line.
+function termItems(r) {
+  const terms = r.tree?.terms ?? [];
+  const rows = terms.filter((e) => e.counted).map((e) => {
+    const span = e.cost > 1 ? `lookups ${e.n} to ${e.n + e.cost - 1}` : `lookup ${e.n}`;
+    const st = STATUS_WORDS[e.status] ?? '';
+    return item(String(e.n), h('code', {}, e.term), `${e.cost} ${e.cost === 1 ? 'lookup' : 'lookups'}`, [span, st, e.note].filter(Boolean).join('; '), e.n + (e.cost || 1) - 1 > 10 || ['void', 'none', 'error', 'loop'].includes(e.status) ? 'sk' : null);
+  });
+  const free = terms.filter((e) => !e.counted);
+  if (free.length) rows.push(item('0', free.length === 1 ? h('code', {}, free[0].term) : `${free.length} other terms`, '0 lookups', `${[...new Set(free.map((e) => e.term.replace(/^[-~+?]/, '').split(/[:/]/)[0]))].join(', ')}: not counted (RFC 7208 Section 4.6.4)`, 'dim'));
+  rows.push(item('V', 'Void lookups', `${r.voidLookups} of 2`, 'queries that found nothing; receivers SHOULD stop at 2', r.voidLookups > 2 ? 'sk' : 'plain'));
+  return h('ul', { class: 'tf-items spf-items' }, rows);
+}
+
+function render(r, { kind, note, input = null }) {
   const out = $('spf-out');
   out.textContent = '';
-  if (kind === 'example') out.appendChild(h('p', { class: 'spf-label' }, 'Worked example'));
-  out.appendChild(h('p', { class: 'spf-answer' }, r.answer));
+  const example = kind === 'example';
+  const line = inputsLine(input);
+  out.append(
+    h('div', { class: 'tf-rh' }, [
+      example ? h('span', { class: 'tf-tag' }, 'Example') : h('span', { class: 'tf-tag run' }, 'Your result'),
+      h('span', { class: `tf-src spf-verdict v-${r.verdict}` }, r.verdict === 'ok' ? 'No permerror' : r.verdict),
+    ]),
+    line ? h('p', { class: 'tf-exin' }, example ? `Example: ${line}` : line) : '',
+  );
   if (r.tree) {
-    out.appendChild(h('div', { class: 'spf-figures' }, [
-      h('div', {}, [h('span', { class: `spf-big${r.lookups > 10 ? ' over' : ''}` }, `${r.lookupsComplete ? '' : '>'}${r.lookups}`), h('span', { class: 'muted' }, ' of 10 lookups')]),
-      h('div', {}, [h('span', { class: `spf-big${r.voidLookups > 2 ? ' over' : ''}` }, String(r.voidLookups)), h('span', { class: 'muted' }, ' of 2 void')]),
-      h('div', {}, [h('span', { class: `spf-verdict v-${r.verdict}` }, r.verdict === 'ok' ? 'No permerror' : r.verdict)]),
-    ]));
-    out.appendChild(gauge(r));
+    out.append(
+      h('p', { class: 'tf-big' }, [h('b', { class: r.lookups > 10 ? 'spf-over' : null }, `${r.lookupsComplete ? '' : '>'}${r.lookups}`), h('span', {}, 'of 10 lookups')]),
+      gauge(r),
+    );
   }
+  out.appendChild(h('p', { class: 'tf-sub spf-answer' }, r.answer));
+  if (r.tree) out.appendChild(termItems(r));
   if (r.path) {
     out.appendChild(h('div', { class: 'spf-path' }, [
       h('h3', {}, `For ${r.path.ip}: ${r.path.result}`),
@@ -121,12 +159,14 @@ function render(r, { kind, note }) {
     ]));
   }
   out.appendChild(list('Errors', r.errors.map((e) => h('li', {}, e.message)), 'errors') ?? h('span'));
-  out.appendChild(list('Warnings', r.warnings.map((e) => h('li', {}, e.message)), 'warnings') ?? h('span'));
   out.appendChild(list('Ways to save lookups', r.suggestions.map((s) => h('li', {}, `${s.action}: saves ${s.saves}. ${s.why[0].toUpperCase()}${s.why.slice(1)}.`)), 'tips') ?? h('span'));
-  if (r.record) out.appendChild(h('div', { class: 'spf-record' }, [h('h3', {}, r.source === 'draft' ? 'Draft record' : 'Record'), h('code', {}, r.record), r.recordNote ? h('p', { class: 'spf-note' }, r.recordNote) : null]));
-  if (r.tree) out.appendChild(h('div', { class: 'spf-tree' }, [h('h3', {}, 'Every term, in the order a receiver reaches it'), treeNode(r.tree)]));
-  out.appendChild(h('p', { class: 'muted small' }, `DNS: ${r.dns.resolver}, ${r.dns.queries} queries, ${r.dns.checkedAt.replace('T', ' ').slice(0, 19)} UTC.${note ? ` ${note}` : ''}`));
+  if (r.warnings.length) out.appendChild(fold(`Warnings (${r.warnings.length})`, h('ul', { class: 'spf-warn-list' }, r.warnings.map((e) => h('li', {}, e.message)))));
+  if (r.record) out.appendChild(fold(r.source === 'draft' ? 'Draft record' : 'The record', [h('code', { class: 'spf-rec' }, r.record), r.recordNote ? h('p', { class: 'spf-note' }, r.recordNote) : null]));
+  if (r.tree) out.appendChild(fold('Every term, in the order a receiver reaches it', h('div', { class: 'spf-tree' }, treeNode(r.tree))));
+  out.appendChild(h('p', { class: 'tf-cost' }, `DNS: ${r.dns.resolver}, ${r.dns.queries} queries, ${r.dns.checkedAt.replace('T', ' ').slice(0, 19)} UTC.${note ? ` ${note}` : ''}`));
 }
+
+const fold = (summary, kids) => h('details', { class: 'xpand' }, [h('summary', {}, summary), h('div', { class: 'xp-in' }, kids)]);
 
 async function onSubmit(ev) {
   ev.preventDefault();
@@ -139,8 +179,9 @@ async function onSubmit(ev) {
   $('spf-status').textContent = 'Counting.';
   try {
     const json = await T.run(SLUG, read.input);
-    render(json.result, { kind: 'run', note: costNote(json) });
+    render(json.result, { kind: 'run', note: costNote(json), input: read.input });
     $('spf-status').textContent = 'Done.';
+    if (window.matchMedia('(max-width: 1080px)').matches) $('spf-out').scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (e) {
     showError(e);
   } finally {
@@ -203,7 +244,7 @@ async function start() {
   try {
     const tool = (await T.api(`/api/v1/tools/${SLUG}`)).tool;
     const ex = tool.examples[0];
-    render(ex.output, { kind: 'example', note: `Recorded DNS for ${ex.input.domain}; press "Count the lookups" for today's answer.` });
+    render(ex.output, { kind: 'example', input: ex.input, note: `Recorded DNS for ${ex.input.domain}; press "Count the lookups" for today's answer.` });
   } catch {
     $('spf-out').textContent = 'The worked example could not load. The counter still works: enter a domain and press the button.';
   }

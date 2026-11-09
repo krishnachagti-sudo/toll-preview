@@ -121,7 +121,8 @@ const table = (cols, rows) => h('div', { class: 'table-scroll' }, h('table', { c
   h('thead', {}, h('tr', {}, cols.map((c, i) => h('th', { scope: 'col', class: i ? 'num' : null }, c)))),
   h('tbody', {}, rows.map((r) => h('tr', {}, r.map((c, i) => (i ? h('td', { class: 'num' }, c) : h('th', { scope: 'row' }, c)))))),
 ]));
-const mark = (pass) => (pass === true ? 'Yes' : pass === false ? 'No' : 'Open');
+const item = (label, value, src, key = false) => h('li', key ? { class: 'key' } : {}, [h('span', {}, label), h('b', {}, value), h('small', {}, src)]);
+const mark = (pass) => (pass === true ? 'met' : pass === false ? 'not met' : 'open');
 
 function renderCheck(r, example) {
   const t = r.tests;
@@ -129,20 +130,21 @@ function renderCheck(r, example) {
   const site = t.worksite;
   put($('fm-out'),
     example ? h('p', { class: 'fm-label' }, 'Worked example') : null,
-    h('p', { class: `fm-answer ${r.eligible === true ? 'yes' : r.eligible === false ? 'no' : 'maybe'}` }, [
+    h('p', { class: `tf-big fm-answer ${r.eligible === true ? 'yes' : r.eligible === false ? 'no' : 'maybe'}` }, [
       r.eligible === true ? 'Eligible' : r.eligible === false ? 'Not eligible' : 'Not decided',
       h('small', {}, `for FMLA leave starting ${longDate(r.leaveStart)}`),
     ]),
     h('p', { class: 'fm-sub' }, r.answer),
-    table(['Test', 'Employee', 'Needed', 'Met'], [
-      ['Employer covered', t.coverage.type === 'private' ? (t.coverage.assumed ? 'assumed' : `${t.coverage.workweeksWith50} weeks`) : 'any size', '20 weeks at 50+', mark(t.coverage.pass)],
-      ['12 months', s.measure === 'months' ? `${s.months} months` : `${s.weeks} weeks`, s.measure === 'months' ? '12 months' : '52 weeks', mark(s.pass)],
-      ['1,250 hours', t.hours.flightCrew ? 'flight crew rule' : hoursText(t.hours.total), '1,250', mark(t.hours.pass)],
-      ['50 within 75 miles', site.count.toLocaleString('en-US'), '50', mark(site.pass)],
+    // One line per test: what the employee has, what is needed, and the rule it comes from.
+    h('ul', { class: 'tf-items' }, [
+      item('Employer covered', t.coverage.type === 'private' ? (t.coverage.assumed ? 'assumed' : `${t.coverage.workweeksWith50} weeks`) : 'any size', `needs 20 workweeks with 50+ employees · ${mark(t.coverage.pass)} · 29 CFR 825.104`),
+      item('12 months of employment', s.measure === 'months' ? `${s.months} months` : `${s.weeks} weeks`, `needs ${s.measure === 'months' ? '12 months' : '52 weeks'} · ${mark(s.pass)} · 29 CFR 825.110(b)`),
+      item('Hours in the 12 months before leave', t.hours.flightCrew ? 'flight crew rule' : hoursText(t.hours.total), `needs 1,250 · ${mark(t.hours.pass)} · 29 CFR 825.110(c)`),
+      item(`Employees within 75 miles of ${site.worksite ?? 'the worksite'}`, site.count.toLocaleString('en-US'), `needs 50 · ${mark(site.pass)} · 29 CFR 825.111`),
+      item('Eligibility notice due', dayDate(r.notice.due), 'five business days from the request · 29 CFR 825.300(b)', true),
     ]),
     r.reasons.length ? [h('p', { class: 'fm-heading' }, 'Reason to state on the eligibility notice'), h('ul', { class: 'fm-list' }, r.reasons.map((x) => h('li', {}, x)))] : null,
-    h('p', { class: 'fm-heading' }, 'Notice due'),
-    h('p', { class: 'fm-due' }, [h('strong', {}, dayDate(r.notice.due)), ` · ${r.notice.text}${r.notice.holidaysSkipped.length ? ` Skips ${r.notice.holidaysSkipped.map((x) => x.name).join(', ')}.` : ''}`]),
+    h('p', { class: 'fm-due fm-sub' }, `${r.notice.text}${r.notice.holidaysSkipped.length ? ` Skips ${r.notice.holidaysSkipped.map((x) => x.name).join(', ')}.` : ''}`),
     site.sites ? h('details', { class: 'fm-why' }, [h('summary', {}, 'The headcount, site by site'), table(['Site', 'Employees', 'Miles', 'Counted'], site.sites.map((x) => [x.name, x.employees.toLocaleString('en-US'), x.worksite ? 'worksite' : String(x.miles), x.counted ? 'yes' : x.outsideUS ? 'no (outside US)' : 'no'])) ]) : null,
     r.notes.length ? [h('p', { class: 'fm-heading' }, 'Notes'), h('ul', { class: 'fm-list' }, r.notes.map((x) => h('li', {}, x)))] : null,
   );
@@ -152,7 +154,7 @@ function renderBalance(r, cmp, example) {
   const requested = r.rows.filter((x) => x.kind === 'requested');
   put($('fm-bal-out'),
     example ? h('p', { class: 'fm-label' }, 'Worked example') : null,
-    h('p', { class: 'fm-answer' }, [`${hoursText(r.remaining)} hours`, h('small', {}, `left on ${longDate(r.asOf)}: ${r.remainingWeeks} of ${r.weeks} weeks`)]),
+    h('p', { class: 'tf-big fm-answer' }, [`${hoursText(r.remaining)} hours`, h('small', {}, `left on ${longDate(r.asOf)}: ${r.remainingWeeks} of ${r.weeks} weeks`)]),
     h('p', { class: 'fm-sub' }, r.answer),
     h('dl', { class: 'fm-facts' }, [
       fact('Entitlement', `${hoursText(r.entitlement)} h`),
@@ -315,6 +317,7 @@ function fromQuery() {
 
 // ---------- start ----------
 
+const EXAMPLE_LINE = 'Example: teleworker reporting to Headquarters (210 employees; Suburban office 90 at 28 miles), hired March 4, 2024, 1,612 hours, leave from December 1, 2026, asked for November 5';
 const soon = (fn, ms = 200) => { let t = null; return () => { clearTimeout(t); t = setTimeout(fn, ms); }; };
 
 async function start() {
@@ -323,10 +326,11 @@ async function start() {
   recomputeCheck();
   recomputeBalance();
   recomputeConv();
-  if (!linked.check && lastCheck) $('fm-out').prepend(h('p', { class: 'fm-label' }, 'Worked example'));
-  if (!linked.balance && lastBal) $('fm-bal-out').prepend(h('p', { class: 'fm-label' }, 'Worked example'));
+  // The page opens on the first worked example, tagged as one; the visitor's own facts replace it.
+  if (!linked.check && lastCheck) $('fm-out').prepend(h('div', { class: 'tf-res-h' }, [h('span', { class: 'ex-tag' }, 'Example'), h('p', { class: 'fm-label' }, 'Worked example')]), h('p', { class: 'tf-exin' }, EXAMPLE_LINE));
+  if (!linked.balance && lastBal) $('fm-bal-out').prepend(h('div', { class: 'tf-res-h' }, [h('span', { class: 'ex-tag' }, 'Example'), h('p', { class: 'fm-label' }, 'Worked example')]));
   for (const [form, fn] of [['fm-check', recomputeCheck], ['fm-bal', recomputeBalance], ['fm-conv', recomputeConv]]) {
-    $(form).addEventListener('submit', (e) => e.preventDefault());
+    $(form).addEventListener('submit', (e) => { e.preventDefault(); fn(); });
     $(form).addEventListener('input', soon(fn));
     $(form).addEventListener('change', fn);
   }

@@ -176,13 +176,40 @@ The US and England and Wales rules were last changed on 2026-10-30. The India ta
 - [DoPT O.M. F.No.12/2/2023-JCA dated 3 July 2025: holidays during 2026](https://documents.doptcirculars.nic.in/D2/D02est/Holidays%20to%20be%20observed%20in%20Central%20Government%20Offices%20during%20the%20year%2020265vgBs.pdf)
 - [DoPT O.M. No. 13/4/85-JCA dated 21 May 1985: the 5-day week](https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+The United States and England and Wales holidays are worked out by rule for any year from 1971 to 2100; the rules were last changed on 2026-10-30. India (central government, Delhi) covers 2025 to 2027 only, from the memoranda below, read on 2026-11-03; other years are refused, not guessed.
+
+Business days: sources
+
+| Source | Edition or date | Read on |
+| --- | --- | --- |
+| [OPM: Federal holidays](https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/) | rules as of 2026-10-30 | 2026-10-30 |
+| [OPM: Federal holidays, "in lieu of" days](https://www.opm.gov/policy-data-oversight/pay-leave/work-schedules/fact-sheets/Federal-Holidays-In-Lieu-Of-Determination) | rules as of 2026-10-30 | 2026-10-30 |
+| [5 U.S.C. 6103: Holidays](https://www.law.cornell.edu/uscode/text/5/6103) | rules as of 2026-10-30 | 2026-10-30 |
+| [Federal Reserve: Holidays observed (K.8)](https://www.federalreserve.gov/aboutthefed/k8.htm) | rules as of 2026-10-30 | 2026-10-30 |
+| [GOV.UK: UK bank holidays](https://www.gov.uk/bank-holidays) | rules as of 2026-10-30 | 2026-10-30 |
+| [Banking and Financial Dealings Act 1971](https://www.legislation.gov.uk/ukpga/1971/80) | rules as of 2026-10-30 | 2026-10-30 |
+| [DoPT O.M. F.No.12/2/2023-JCA dated 9 July 2024: holidays during 2025](https://documents.doptcirculars.nic.in/D2/D02est/List%20of%20holidays%202025KtKLw.pdf) | holidays during 2025 | 2026-11-03 |
+| [DoPT O.M. F.No.12/4/2020-JCA2 dated 27 March 2025: holiday on 14 April 2025](https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20on%2014th%20April%202025%20Birthday%20of%20Dr%20B%20R%20AmbedkarDHZ8b.pdf) | holidays during 2025 | 2026-11-03 |
+| [DoPT O.M. F.No.12/2/2023-JCA dated 3 July 2025: holidays during 2026](https://documents.doptcirculars.nic.in/D2/D02est/Holidays%20to%20be%20observed%20in%20Central%20Government%20Offices%20during%20the%20year%2020265vgBs.pdf) | holidays during 2026 | 2026-11-03 |
+| [DoPT O.M. F.No.12/3/2023-JCA dated 22 May 2026: Id-ul-Zuha (Bakrid) moved to 28 May 2026](https://documents.doptcirculars.nic.in/D2/D02est/Change%20in%20the%20date%20of%20holiday%20of%20Id-ul-Zuhamg709.PDF) | holidays during 2026 | 2026-11-03 |
+| [DoPT O.M. F.No.12/2/2023-JCA dated 16 July 2026: holidays during 2027](https://documents.doptcirculars.nic.in/D2/D02est/Holiday%20list%202027Cj0HU.PDF) | holidays during 2027 | 2026-11-03 |
+| [DoPT O.M. No. 13/4/85-JCA dated 21 May 1985: the 5-day week](https://documents.doptcirculars.nic.in/D2/D02est/jcm3.html) | the 5-day week | 2026-11-03 |
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 Easter is compared with published dates for nine years from 1971 to 2100, England and Wales lists with the official lists, US lists in full for 2026 and for the years where rules changed, and India name by name with the DoPT memoranda. Counting and adding are checked to agree with each other.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- Easter Sunday is compared with published dates for nine years from 1971 to 2100.
+- England and Wales holidays are compared with the official lists for 2020 to 2025 and 2027, and the 2026 list is checked in full.
+- United States holidays are checked in full for 2026, and for the years where rules changed: Juneteenth from 2021, Martin Luther King Jr. Day from 1986, Veterans Day in 1971 to 1977, New Year's Day on a Saturday.
+- India is compared with the DoPT memoranda for 2025, 2026 and 2027, name by name, and the weekday printed in each memorandum must agree with the calendar. The Bakrid move to 28 May 2026 is checked.
+- Counting days and adding days must agree with each other, forwards and backwards.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Business days tool](https://krishnachagti-sudo.github.io/toll-preview/business-days/).
 

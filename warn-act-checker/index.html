@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WARN Act checker: federal and state mini-WARN thresholds by site for your layoff list: Endwise</title>
+<meta name="description" content="Check each site of a layoff against federal WARN and the California, New York, New Jersey, Illinois, Iowa, Maine, Maryland, Delaware, Washington and Tennessee laws: 30 and 90-day counts, notice days, recipients and the last day to send.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/warn-act-checker/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"warn-act-checker"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/warn-act-checker/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="WARN Act checker">
+<meta property="og:description" content="Check a layoff site by site against the federal WARN Act (20 CFR Part 639) and the state laws of California, New York, New Jersey, Illinois, Iowa, Maine, Maryland, Delaware, Washington and Tennessee: covered employer, plant closing or mass layoff over rolling 30-day and 90-day windows, the notice days owed, who must get the notice and the last day to send it for each separation date. Takes site counts or a whole employee list, and works out the back pay and New Jersey or Maine severance if notice is short.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/warn-act-checker/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/warn-act-checker/","url":"https://krishnachagti-sudo.github.io/toll-preview/warn-act-checker/","name":"WARN Act checker","description":"Check a layoff site by site against the federal WARN Act (20 CFR Part 639) and the state laws of California, New York, New Jersey, Illinois, Iowa, Maine, Maryland, Delaware, Washington and Tennessee: covered employer, plant closing or mass layoff over rolling 30-day and 90-day windows, the notice days owed, who must get the notice and the last day to send it for each separation date. Takes site counts or a whole employee list, and works out the back pay and New Jersey or Maine severance if notice is short.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"WARN Act checker","item":"https://krishnachagti-sudo.github.io/toll-preview/warn-act-checker/"}]},{"@type":"WebApplication","name":"WARN Act checker","url":"https://krishnachagti-sudo.github.io/toll-preview/warn-act-checker/","description":"Check a layoff site by site against the federal WARN Act (20 CFR Part 639) and the state laws of California, New York, New Jersey, Illinois, Iowa, Maine, Maryland, Delaware, Washington and Tennessee: covered employer, plant closing or mass layoff over rolling 30-day and 90-day windows, the notice days owed, who must get the notice and the last day to send it for each separation date. Takes site counts or a whole employee list, and works out the back pay and New Jersey or Maine severance if notice is short.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"Site check and exposure on this page","price":"0","priceCurrency":"USD"},{"name":"Site check or exposure over the API or MCP","@type":"Offer","price":"0.01","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.01","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"call"}}},{"name":"Employee list for one layoff plan (each employee's class and notice dates under every law, as CSV)","@type":"Offer","price":"0.05","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.05","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"affected employee"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wn tf hue-date">
+  <section class="wrap tf-open">
+    <p class="eyebrow">WARN Act, 20 CFR Part 639, and state mini-WARN laws</p>
+    <h1>WARN Act checker</h1>
+    <p class="lede">Enter each site and the dates people leave, and see <b>which WARN laws a layoff triggers</b> and the last day to send each notice.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="wn-price"><span class="price">Free on this page</span><span>Employee notice list $0.05 an affected employee</span><span>Worked out in your browser</span></p>
+  </section>
+
+  <section class="wrap tf-calc wn-desk" data-jump="Tool" aria-label="Site check">
+    <form class="tf-panel tf-form wn-form" id="wn-check" novalidate>
+      <div class="field"><label for="wn-sites">Sites: name, state, full-time, part-time</label>
+        <textarea id="wn-sites" rows="3" spellcheck="false">Fresno plant, CA, 160, 20
+Albany office, NY, 90, 0
+Dallas warehouse, TX, 120, 0, closing</textarea>
+      </div>
+      <div class="field"><label for="wn-losses">Job losses: date, site, full-time, part-time</label>
+        <textarea id="wn-losses" rows="4" spellcheck="false">2027-01-15, Fresno plant, 40, 5
+2027-02-05, Fresno plant, 15
+2027-01-29, Albany office, 30
+2027-03-01, Dallas warehouse, 48</textarea>
+      </div>
+      <p class="field-error" id="wn-check-err" role="alert"></p>
+      <button class="btn tf-go" type="submit" id="wn-go">Check the sites</button>
+      <p class="hint tf-run-note">Free, worked out in your browser as you type.</p>
+      <details class="xpand wn-how">
+        <summary>How to write the lines</summary>
+        <div class="xp-in">
+          <p>Sites: Headcount on the day notice is first due. Full-time means 20 or more hours a week on average and at least 6 of the last 12 months; everyone else is part-time (add a fifth number to split out people with under 6 months). Add <code>closing</code> when the site or a unit in it shuts down, and <code>moves 120 miles</code> for a relocation.</p>
+          <p>Job losses: Count only employment losses: terminations other than for cause, quitting or retiring; layoffs over 6 months; hours cut by more than half in each month of 6 (20 CFR 639.3(f)). Each person's last day is their date.</p>
+        </div>
+      </details>
+      <details class="xpand wn-more" id="wn-more">
+        <summary>The company <span class="wn-gs" id="wn-sum-co"></span></summary>
+        <div class="xp-in">
+          <div class="tf-two">
+            <div class="field"><label for="wn-cft">Full-time, all US sites</label><input type="text" id="wn-cft" value="400" inputmode="numeric"></div>
+            <div class="field"><label for="wn-cpt">Part-time, all US sites</label><input type="text" id="wn-cpt" value="40" inputmode="numeric"></div>
+          </div>
+          <div class="tf-two">
+            <div class="field"><label for="wn-notice">Notice given on</label><input type="date" id="wn-notice" value="2026-12-01"></div>
+            <div class="field"><label for="wn-hours">Hours a week, all employees</label><input type="text" id="wn-hours" inputmode="numeric" placeholder="4,000-hour test"></div>
+          </div>
+          <div class="field"><label for="wn-states">Employees in a state beyond the sites above: state, full-time, part-time</label>
+            <textarea id="wn-states" rows="2" spellcheck="false" placeholder="NY, 140, 12"></textarea>
+            <p class="hint">New York, Maryland and Washington count the employer's staff in the state; without a line the checker adds up the sites listed there. The hours are overtime excluded, for the federal 4,000-hour test.</p>
+          </div>
+        </div>
+      </details>
+    </form>
+    <div class="tf-panel tf-result wn-out" id="wn-out" aria-live="polite"><p class="muted">Loading the worked example.</p></div>
+  </section>
+
+  <section class="wrap tf-sec wn-rules" data-jump="Rules" aria-labelledby="wn-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">The rules</p>
+        <h2 id="wn-rules-title">What the check follows, <span class="dim">law by law.</span></h2>
+        <p class="tf-p">Every site is tested against federal WARN and the state's own law where one was read: covered employer, a closing or mass layoff in any 30 days, smaller rounds added up over 90 days, and the notice owed for each last day.</p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="wn-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="wn-limits-title">What it does not cover</h3>
+          <p>States not in the table, single-site and exception questions, and who the employer is. Not legal advice.</p>
+          <details class="xpand"><summary>Read the full list</summary><div class="xp-in">
+            <ul class="wn-notes small muted">
+      <li>Worked out from the counts and dates you enter under 20 CFR Part 639 as published on eCFR (up to date as of November 5, 2026) and the DOL Employer's Guide, and each state's own statute or labor department site. Your counts are yours; the tool cannot check them.</li>
+      <li>The tool does not decide whether locations are one single site of employment, whether an exception applies (faltering company, unforeseeable business circumstances, natural disaster), or who the employer is. Not legal advice.</li>
+      <li>Not covered (not read on the state's own site): every state not in the table above. Federal WARN still applies there.</li>
+      <li>Sources, read November 8, 2026: <a href="https://www.ecfr.gov/current/title-20/chapter-V/part-639">20 CFR Part 639 on eCFR</a>, the <a href="https://www.dol.gov/agencies/eta/layoffs/warn">DOL WARN compliance page</a> and its <a href="https://www.dol.gov/sites/dolgov/files/ETA/Layoff/pdfs/_EmployerWARN2003.pdf">Employer's Guide</a>; each state's source is linked in the table.</li>
+    </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card" aria-labelledby="wn-fed-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9.5 12 4l8.5 5.5M5.5 10v8M10 10v8M14 10v8M18.5 10v8M3.5 20h17"/></svg></span>
+        <div>
+          <h3 id="wn-fed-title">Federal WARN</h3>
+          <p>100 or more full-time employees; 50 or more lost at a site in 30 days; 60 days' notice.</p>
+          <p class="tf-srcp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><a href="https://www.ecfr.gov/current/title-20/chapter-V/part-639">20 CFR Part 639</a></p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>An employer with 100 or more employees not counting part-time staff, or 100 or more who work 4,000 hours a week in all (20 CFR 639.3(a)). A plant closing is an employment loss for 50 or more full-time employees at a single site in any 30 days; a mass layoff is 50 or more who are at least 33% of the site, or 500 or more (639.3(b), (c)). Smaller rounds within 90 days add up unless they have separate and distinct causes (639.5(a)). 60 days' notice before each person's last day.</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card" aria-labelledby="wn-who-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 4.5a3.5 3.5 0 0 1 0 6.5M18 14.3c2 .8 3.5 2.8 3.5 5.7"/></svg></span>
+        <div>
+          <h3 id="wn-who-title">Who counts</h3>
+          <p>Part-time staff are left out of the federal counts but still get notice.</p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>Part-time employees, those averaging under 20 hours a week or employed under 6 of the last 12 months, are left out of every federal count but still get notice (639.3(h), 639.6(b)). A remote or traveling employee belongs to the site that is their home base, assigns their work or that they report to (639.3(i)(6)). Headcounts are taken on the day the first notice is due (639.5(a)(2)).</p>
+          </div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card" aria-labelledby="wn-state-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5 9 4.5l6 2 5-2v13l-5 2-6-2-5 2zM9 4.5v13M15 6.5v13"/></svg></span>
+        <div>
+          <h3 id="wn-state-title">State laws</h3>
+          <p>Each with its own counts, windows and notice days, read on the state's own site.</p>
+          <details class="xpand"><summary>Read the full rules</summary><div class="xp-in">
+            <p>Each state law is read on the state's own statute or labor department site and applied with its own counts, windows and notice days: New York and New Jersey want 90 days, Iowa 30, Maine 90 for a closing. Washington counts a mass layoff across the whole state. A state not in the table below is not covered here.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+
+    <div class="tf-panel tf-cover wn-statepanel">
+      <div><h3>The state laws it applies</h3><p>Read November 8, 2026, each on the state's own site.</p></div>
+      <details class="xpand wn-statefold"><summary>Show the table</summary><div class="xp-in">
+        <div class="table-scroll"><table class="rules wn-table" id="wn-states-table">
+          <caption>State laws this checker applies, read November 8, 2026.</caption>
+          <thead><tr><th>State</th><th>Employer</th><th>Triggers</th><th class="num">Notice</th><th>Source</th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+      </div></details>
+    </div>
+
+    <div class="tf-cards c2 tf-mt">
+      <article class="tf-panel tf-note-card ok" aria-labelledby="wn-prices-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5 11.5 5H19v7.5L11.5 20zM15 9h0"/></svg></span>
+        <div>
+          <h3 id="wn-prices-title">Prices</h3>
+          <p data-prices>Site checks and the exposure calculator are free on this page. The employee list costs $0.05 per affected employee, at least $2.00 a plan, and re-runs of the same plan are free for 90 days.</p>
+          <details class="xpand"><summary>Read the full prices</summary><div class="xp-in wn-prices">
+            <ul class="endwise-prices"><li><strong>Site check and exposure on this page</strong>: free.</li><li><strong>Site check or exposure over the API or MCP</strong>: $0.01 per call.</li><li><strong>Employee list for one layoff plan (each employee's class and notice dates under every law, as CSV)</strong>: $0.05 per affected employee, at least $2.00 per plan; a repeat for the same layoff plan is free for 90 days, and a larger one pays only the difference.</li><li>At most $49.00 a calendar month for this tool; after that it is free until the month ends.</li></ul>
+            <p data-prices>The free $0.25 each month on a signed-in account covers 25 checks over the API. This tool never costs more than $49.00 in a month.</p>
+          </div></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec wn-extra" data-jump="More" aria-label="More from this tool">
+    <div class="wn-roster" id="list">
+    <div class="tf-top solo"><div>
+      <p class="eyebrow">From your employee list</p>
+      <h2 id="wn-list-title">Every employee's notice dates, <span class="dim">from one CSV.</span></h2>
+    </div></div>
+    <div class="tf-panel tf-form wn-rosterbox">
+    <p class="wn-aside">Paste or open a CSV with one row per employee: <code>employee, site, state, hire_date, weekly_hours, separation_date, reason</code>. Leave the separation date empty for people who stay. Reason is <code>layoff</code> (the default), <code>short-layoff</code> (6 months or less), <code>cause</code>, <code>quit</code>, <code>retirement</code> or <code>transfer</code>. The checker classes each person on the day notice is first due and builds the site counts for you. The site summary is free; the CSV of every employee's notice dates is the paid download.</p>
+    <div class="wn-grid">
+      <div class="field"><label for="wn-file">CSV file</label><input type="file" id="wn-file" accept=".csv,text/csv"></div>
+      <div class="field"><label for="wn-plan">Plan name</label><input type="text" id="wn-plan" maxlength="80" value="Q1 2027 restructuring"></div>
+    </div>
+    <div class="field"><label for="wn-rows">Rows</label><textarea id="wn-rows" rows="7" spellcheck="false"></textarea></div>
+    <p class="field-error" id="wn-list-err" role="alert"></p>
+    <div class="wn-out" id="wn-list-out" aria-live="polite"></div>
+    <div class="wn-buy" id="wn-buy"></div>
+    </div>
+    </div>
+
+    <div class="wn-small" id="exposure">
+    <div class="tf-top solo"><div>
+      <p class="eyebrow">If notice is short</p>
+      <h2 id="wn-exp-title">Back pay and severance for one employee</h2>
+    </div></div>
+    <div class="tf-panel tf-form">
+    <form id="wn-exp" class="wn-grid" novalidate>
+      <div class="field"><label for="wn-est">State</label>
+        <select id="wn-est"><option value="">Federal WARN only</option><option value="CA">California</option><option value="NY" selected>New York</option><option value="NJ">New Jersey</option><option value="IL">Illinois</option><option value="WA">Washington</option><option value="ME">Maine</option></select>
+      </div>
+      <div class="field"><label for="wn-ehire">Hired on</label><input type="date" id="wn-ehire" value="2023-06-05"></div>
+      <div class="field"><label for="wn-esep">Last day</label><input type="date" id="wn-esep" value="2027-01-29"></div>
+      <div class="field"><label for="wn-enot">Notice received on</label><input type="date" id="wn-enot" value="2026-12-15"></div>
+      <div class="field"><label for="wn-epay">Daily pay</label><input type="text" id="wn-epay" value="230" inputmode="decimal"></div>
+      <div class="field"><label for="wn-eavg">3-year average daily pay</label><input type="text" id="wn-eavg" inputmode="decimal" placeholder="if higher"></div>
+      <div class="field"><label for="wn-eben">Benefits a day</label><input type="text" id="wn-eben" value="38" inputmode="decimal"></div>
+      <div class="field"><label for="wn-ewk">Weekly pay (NJ, Maine severance)</label><input type="text" id="wn-ewk" inputmode="decimal"></div>
+      <div class="field"><label for="wn-epaid">Wages paid in the notice period</label><input type="text" id="wn-epaid" inputmode="decimal" placeholder="0"></div>
+    </form>
+    <div class="wn-mini-out" id="wn-exp-out" aria-live="polite"></div>
+    </div>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="State laws" aria-labelledby="cp-index-title"><h2 id="cp-index-title">State laws</h2>
+<h3>By state</h3><ul class="cp-rows"><li><a href="/toll-preview/warn-act-checker/mini-warn-states/" title="Mini-WARN Act states 2026: thresholds and notice days by state">All states</a></li><li><a href="/toll-preview/warn-act-checker/california/" title="California WARN Act (Cal-WARN): 75+ employees, 60 days' notice">California</a></li><li><a href="/toll-preview/warn-act-checker/new-york/" title="New York WARN Act (NY WARN): 50+ employees, 90 days' notice">New York</a></li><li><a href="/toll-preview/warn-act-checker/new-jersey/" title="New Jersey WARN Act (NJ WARN): 100+ employees, 90 days' notice">New Jersey</a></li><li><a href="/toll-preview/warn-act-checker/illinois/" title="Illinois WARN Act (Illinois WARN): 75+ employees, 60 days' notice">Illinois</a></li><li><a href="/toll-preview/warn-act-checker/iowa/" title="Iowa WARN Act (Iowa WARN): 25+ employees, 30 days' notice">Iowa</a></li><li><a href="/toll-preview/warn-act-checker/maine/" title="Maine WARN Act (Maine 625-B): 100+ employees, 90 days' notice">Maine</a></li><li><a href="/toll-preview/warn-act-checker/maryland/" title="Maryland WARN Act (Maryland ESA): 50+ employees, 60 days' notice">Maryland</a></li><li><a href="/toll-preview/warn-act-checker/delaware/" title="Delaware WARN Act (Delaware WARN): 100+ employees, 60 days' notice">Delaware</a></li><li><a href="/toll-preview/warn-act-checker/washington/" title="Washington WARN Act (Washington WARN): 50+ employees, 60 days' notice">Washington</a></li><li><a href="/toll-preview/warn-act-checker/tennessee/" title="Tennessee WARN Act (Tennessee 50-1-601): 50-99 employees, notice when employees are told">Tennessee</a></li><li><a href="/toll-preview/warn-act-checker/connecticut/" title="Connecticut WARN Act: federal rules, 60 days, and where to send the notice">Connecticut</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Coverage" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">Does WARN apply</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/warn-act-checker/does-it-apply/remote-employees/" title="Does the WARN Act apply to remote employees? The home-base rule">Remote employees</a></li><li><a href="/toll-preview/warn-act-checker/does-it-apply/part-time-employees/" title="Do part-time employees count for WARN? Under 20 hours or under 6 of 12 months">Part-time employees</a></li><li><a href="/toll-preview/warn-act-checker/does-it-apply/temporary-and-contract-workers/" title="Does WARN apply to temporary workers and contractors?">Temporary and contract workers</a></li><li><a href="/toll-preview/warn-act-checker/does-it-apply/furloughs-and-temporary-layoffs/" title="Does WARN apply to furloughs and temporary layoffs? The 6-month rule">Furloughs and temporary layoffs</a></li><li><a href="/toll-preview/warn-act-checker/does-it-apply/nonprofits-and-public-employers/" title="Does WARN apply to nonprofits and public employers?">Nonprofits and public employers</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Notices" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Notices</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/warn-act-checker/notice-template/" title="WARN notice template: what the letter to employees, the union and the state must say">Notice template</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Calculators" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Calculators</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/warn-act-checker/severance/" title="WARN Act pay in lieu of notice and severance calculator (federal, NY, CA, WA, NJ, Maine)">Back pay and severance</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Guides</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/warn-act-checker/guides/federal-threshold/" title="Does the federal WARN Act apply to our layoff? The threshold test by site size">The federal threshold test</a></li><li><a href="/toll-preview/warn-act-checker/guides/california-2026/" title="California WARN notice content in 2026 (SB 617): what to add and when to send">California 2026 notices</a></li><li><a href="/toll-preview/warn-act-checker/guides/aggregation/" title="WARN 90-day aggregation: do earlier layoffs count? (with the DOL example)">Adding up over 90 days</a></li><li><a href="/toll-preview/warn-act-checker/guides/deadline-recipients/" title="WARN notice recipients and deadlines: who gets notice and by when, by law">Recipients and deadlines</a></li><li><a href="/toll-preview/warn-act-checker/warn-notice-deadlines-2026-2027/" title="WARN notice deadlines November 2026 to December 2027: 30, 60 and 90 days back">Deadline calendar 2026 to 2027</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Compare" aria-labelledby="cp-index-title-6"><h2 id="cp-index-title-6">Compare</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/warn-act-checker/vs/dol-guide/" title="DOL WARN Employer's Guide and elaws Advisor vs a WARN checker">DOL guide and Advisor</a></li><li><a href="/toll-preview/warn-act-checker/vs/warntracker/" title="WARNTracker is a notice database, not a WARN checker">WARNTracker</a></li><li><a href="/toll-preview/warn-act-checker/vs/law-firm-chart/" title="Law-firm 50-state mini-WARN charts vs a WARN checker">Law-firm charts</a></li><li><a href="/toll-preview/warn-act-checker/vs/spreadsheet/" title="WARN Act spreadsheet vs a checker: the 30 and 90-day formulas">Spreadsheet</a></li></ul>
+</section>
+
+  <section class="wrap tf-code wn-code" data-jump="Code" aria-label="Use this from code">
+    <div id="wn-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>This checker needs JavaScript. You can also call it from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/warn-act-checker/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

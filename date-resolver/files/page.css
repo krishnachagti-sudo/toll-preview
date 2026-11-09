@@ -1,4 +1,5 @@
-/* Date resolver: a phrase box and one big answer. Sits inside the brand chrome and reuses its tokens. */
+/* Date resolver: the tool-full layout (web/tool-full.css) plus this page's phrase
+   chips and readings. */
 .dr {
   --accent: var(--h-date);
   --accent-ink: #1a1206;
@@ -6,39 +7,34 @@
   --endwise-accent-ink: #1a1206;
 }
 
-.dr-intro { padding-block: 40px 8px; }
-.dr-intro h1 { margin-bottom: 0.25em; }
+.tf-open .dr-about { order: 4; margin-top: 10px; max-width: 60ch; }
+.dr-about .xp-in { color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+.dr-about .xp-in p { margin: 0; }
 
-.dr-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
-.dr-desk > * { min-width: 0; }
-@media (min-width: 960px) { .dr-desk { grid-template-columns: 24rem 1fr; gap: 48px; } }
-
-.dr-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.dr-form .btn[type="submit"] { width: 100%; }
+.dr #dr-text { font-size: 15.5px; }
 .dr input[type="date"] { color-scheme: dark; }
 .dr-form textarea { width: 100%; }
+.dr-form .tf-two > .field-error { grid-column: 1 / -1; margin: 0; }
+.dr-form .tf-two select { text-overflow: ellipsis; }
+.dr-more .xp-in > .field + .field { margin-top: 14px; }
 
-.dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: -4px 0 16px; }
+.dr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 0; }
 .dr-chip {
   font: inherit; font-size: 13px; color: var(--text-2); background: var(--bg-2);
   border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 12px; min-height: 32px; cursor: pointer;
 }
 .dr-chip:hover, .dr-chip:focus-visible { border-color: var(--accent); color: var(--text); }
 
-.dr-more { border-top: 1px solid var(--rule); padding: 12px 0; margin-bottom: 12px; }
-.dr-more summary { cursor: pointer; font-size: 14px; color: var(--ink-soft); margin-bottom: 8px; }
-
-.dr-out { border-top: 3px double var(--rule-strong); padding-top: 18px; min-width: 0; }
-.dr-said { color: var(--ink-soft); margin: 0; overflow-wrap: anywhere; }
-.dr-date { font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.15; margin: 6px 0 8px; color: var(--accent); font-weight: 600; }
-.dr-meta { margin: 0 0 14px; color: var(--text-2); font-variant-numeric: tabular-nums; }
-.dr-readings { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 0 0 14px; }
+.dr-out .tf-big b.word { font-size: 36px; }
+@media (max-width: 640px) { .dr-out .tf-big b.word { font-size: 28px; } }
+.dr-readings { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 16px 0 0; font-size: 14px; color: var(--text-2); }
 .dr-readings p, .dr-readings ul { margin: 0; }
-.dr-skipped { margin: 0 0 10px; }
-.dr-steps { padding-left: 1.3em; color: var(--text-2); }
-.dr-steps li { margin-bottom: 6px; overflow-wrap: anywhere; }
-.dr-note { color: var(--ink-soft); font-size: 14px; }
+.dr-readings ul { padding-left: 1.1em; margin-top: 4px; }
+.dr-out .tf-items { margin-top: 18px; }
+.dr-out .tf-items li > span:not(.k) { overflow-wrap: anywhere; }
+.dr-out details.xpand ul { margin: 0 0 0.8em; padding-left: 1.2em; }
 
-.dr-rules { margin-top: 48px; }
-.dr-rules ul { max-width: 46rem; }
-.dr-code { margin-top: 40px; }
+.dr-rules .tf-srcp .dim { color: var(--muted); font-size: 12.5px; }
+.dr-price-table { padding: 22px; overflow-x: auto; }
+.dr-code h2 { font-size: clamp(22px, 2.4vw, 28px); margin: 0 0 8px; }
+.dr-code > p { color: var(--muted); max-width: 60ch; }

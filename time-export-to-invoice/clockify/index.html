@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clockify invoice without the Standard plan: export to invoice lines</title>
+<meta name="description" content="Clockify invoicing needs the Standard plan. Turn a Clockify Detailed report CSV into grouped, rounded invoice lines with a rate per task, and see why totals differ by cents.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/clockify/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/time-export-to-invoice/clockify.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Clockify invoice without the Standard plan: export to invoice lines">
+<meta property="og:description" content="Clockify invoicing needs the Standard plan. Turn a Clockify Detailed report CSV into grouped, rounded invoice lines with a rate per task, and see why totals differ by cents.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/clockify/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/clockify/","url":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/clockify/","name":"Clockify invoice without the Standard plan: export to invoice lines","description":"Clockify invoicing needs the Standard plan. Turn a Clockify Detailed report CSV into grouped, rounded invoice lines with a rate per task, and see why totals differ by cents.","dateModified":"2026-11-08","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Time export to invoice","item":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/"},{"@type":"ListItem","position":3,"name":"Clockify export to invoice lines","item":"https://krishnachagti-sudo.github.io/toll-preview/time-export-to-invoice/clockify/"}]},{"@type":"HowTo","name":"Clockify invoice without the Standard plan: export to invoice lines","description":"Clockify invoicing needs the Standard plan. Turn a Clockify Detailed report CSV into grouped, rounded invoice lines with a rate per task, and see why totals differ by cents.","step":[{"@type":"HowToStep","position":1,"name":"Open the Detailed report","text":"Filter it to the client and the dates you are billing for."},{"@type":"HowToStep","position":2,"name":"Export CSV","text":"Export, then CSV (Basic plan or higher in Clockify; the Free plan exports PDF)."},{"@type":"HowToStep","position":3,"name":"Open it here","text":"The tool reads Start date, Start time, Duration (clock or decimal), Project, Client, Task, Description, Tags, Billable and the billable rate."},{"@type":"HowToStep","position":4,"name":"Choose lines, rounding and rates","text":"Clockify's Single item, Detailed and Grouped layouts are one line for everything, one line per entry, and one line per project, person or day here."},{"@type":"HowToStep","position":5,"name":"Reconcile and make the invoice","text":"Check the two-decimals-per-entry line against the exact total, then download the PDF and CSVs."}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Clockify invoicing free?","acceptedAnswer":{"@type":"Answer","text":"No. Clockify's help says: \"Invoicing is a paid feature on the Standard, Pro or Enterprise plan.\""}},{"@type":"Question","name":"How can I group Clockify time on an invoice?","acceptedAnswer":{"@type":"Answer","text":"Single item (all hours and expenses on one line), Detailed (each time entry or expense on its own line) or Grouped by project, user or date, with subgroups. Here the same choices are one line for everything, one line per entry, or one line per project, person or day, and also per task, tag or client."}},{"@type":"Question","name":"Does Clockify round each entry or the total?","acceptedAnswer":{"@type":"Answer","text":"Each entry is rounded first, then the rounded durations are added together; reports, exports and earnings use the rounded values; the underlying data is not changed."}},{"@type":"Question","name":"Why does my Clockify invoice not match the report?","acceptedAnswer":{"@type":"Answer","text":"Invoices round each time entry to 2 decimals before multiplying by the rate; reports calculate the total time first, then multiply. On Clockify's own three entries at $100 an hour that is $502.00 against $501.81."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"time-export-to-invoice"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/time-export-to-invoice/">Time export to invoice</a></li><li aria-current="page">Clockify export to invoice lines</li></ol></nav>
+<header class="cp-head" style="--hue: var(--h-money)">
+<p class="eyebrow">Clockify</p>
+<h1>Clockify export to invoice lines</h1>
+<p class="cp-answer">Clockify invoicing is a paid feature on the Standard plan ($5.49 a seat a month billed annually, read November 8, 2026) and up, and its Free plan exports reports as PDF only. From a Detailed report CSV (Basic, $3.99) the tool makes the lines instead: the sample month's 13 entries, each rounded to the nearest 6 minutes, become 3 task lines totalling $2,589.00.</p>
+<dl class="cp-facts"><div><dt>Total</dt><dd class="num">$2,589.00</dd></div><div><dt>Standard plan</dt><dd class="num">$5.49 a seat a month</dd></div><div><dt>Lines</dt><dd class="num">3</dd></div></dl>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">Open the sample month</h2><p class="muted">The made-up month in the documented Start date, Start time and Duration layout, rounded to the nearest 6 minutes per entry.</p><form method="get" action="/toll-preview/time-export-to-invoice/" class="cp-tool-form"><input type="hidden" name="sample" value="0"><input type="hidden" name="source" value="clockify"><input type="hidden" name="group" value="task"><input type="hidden" name="inc" value="6"><input type="hidden" name="mode" value="nearest"><input type="hidden" name="level" value="entry"><input type="hidden" name="rates" value="task:Design=90;task:Development=120;task:Meetings=60"><input type="hidden" name="run" value="1"><input type="hidden" name="run" value="1"><button class="btn" type="submit">See the lines</button></form><p class="small"><a href="/toll-preview/time-export-to-invoice/?sample=0&amp;source=clockify&amp;group=task&amp;inc=6&amp;mode=nearest&amp;level=entry&amp;rates=task%3ADesign%3D90%3Btask%3ADevelopment%3D120%3Btask%3AMeetings%3D60&amp;run=1">Open this example in the tool</a></p></aside>
+<section>
+<h2 id="plans">What Clockify includes, plan by plan</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>Clockify's pricing page, read November 8, 2026. Per seat per month.</caption><thead><tr><th scope="col">Plan</th><th scope="col" class="r num">Billed annually</th><th scope="col" class="r num">Billed monthly</th><th scope="col">For invoicing</th></tr></thead><tbody>
+<tr><th scope="row">Free</th><td class="r num">$0</td><td class="r num">$0</td><td>up to 5 users; reports export as PDF</td></tr>
+<tr><th scope="row">Basic</th><td class="r num">$3.99</td><td class="r num">$4.99</td><td>per seat per month; CSV and Excel export, billable rates</td></tr>
+<tr><th scope="row">Standard</th><td class="r num">$5.49</td><td class="r num">$6.99</td><td>per seat per month; invoicing, time rounding, QuickBooks</td></tr>
+<tr><th scope="row">Pro</th><td class="r num">$7.99</td><td class="r num">$9.99</td><td>per seat per month</td></tr>
+</tbody></table></div>
+<ul><li>Invoicing is a paid feature on the Standard, Pro or Enterprise plan.</li><li>Detailed report export is in PDF on the Free plan, CSV or Excel on Basic or higher.</li><li>Only uninvoiced, billable time entries and expenses can be imported.</li><li>Workspace rounding can be applied on import, to each time entry, not just the final total.</li></ul>
+</section>
+<section>
+<h2 id="columns">The columns the tool reads</h2>
+<p>Clockify's Detailed report help lists these fields (also approver and currency) without the exact heading text; its timesheet import guide spells Email, Start date, Start time, Duration, Project, Client, Task, Description, Tag and Billable.</p>
+<div class="table-scroll"><table class="rules cp-table"><thead><tr><th scope="col">Field</th><th scope="col">What the lines use it for</th></tr></thead><tbody>
+<tr><th scope="row">Project</th><td>Group by project; a rate per project</td></tr>
+<tr><th scope="row">Client</th><td>Group by client; a rate per client; keep one client</td></tr>
+<tr><th scope="row">Description</th><td>Group by description, or listed under each line</td></tr>
+<tr><th scope="row">Task</th><td>Group by project and task; a rate per task</td></tr>
+<tr><th scope="row">User</th><td>Group by person; a rate per person</td></tr>
+<tr><th scope="row">Email</th><td>The person, when there is no name column</td></tr>
+<tr><th scope="row">Tags</th><td>Group by tag; a rate per tag</td></tr>
+<tr><th scope="row">Billable</th><td>Non-billable entries are left out (or kept, if you choose)</td></tr>
+<tr><th scope="row">Start date</th><td>The service date of each entry and line</td></tr>
+<tr><th scope="row">Start time</th><td>Start and end on one-line-per-entry invoices</td></tr>
+<tr><th scope="row">End date</th><td>Overnight entries</td></tr>
+<tr><th scope="row">End time</th><td>Overnight entries; end times on entry lines</td></tr>
+<tr><th scope="row">Duration</th><td>The time billed, to the second</td></tr>
+<tr><th scope="row">Billable rate</th><td>The rate, when your rate card does not set one</td></tr>
+<tr><th scope="row">Billable amount</th><td>Not used: amounts are worked out again from the time</td></tr>
+</tbody></table></div>
+<p>Durations can be Clock HH:mm or Decimal (such as 01:30 or 1.5), set per workspace; both are read.</p>
+</section>
+<section>
+<h2 id="lines">The sample month as invoice lines</h2>
+<div class="table-scroll"><table class="rules cp-table"><caption>Each entry rounded to the nearest 6 minutes (a tenth of an hour).</caption><thead><tr><th scope="col">Line</th><th scope="col">Dates</th><th scope="col" class="r num">Hours</th><th scope="col" class="r num">Rate</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
+<tr><th scope="row">Website redesign: Design</th><td>Nov 2 to Nov 19, 2026; 4 entries</td><td class="r num">7.90</td><td class="r num">$90.00/h</td><td class="r num">$711.00</td></tr>
+<tr><th scope="row">Website redesign: Meetings</th><td>Nov 2 to Nov 25, 2026; 4 entries</td><td class="r num">2.70</td><td class="r num">$60.00/h</td><td class="r num">$162.00</td></tr>
+<tr><th scope="row">Website redesign: Development</th><td>Nov 3 to Nov 24, 2026; 5 entries</td><td class="r num">14.30</td><td class="r num">$120.00/h</td><td class="r num">$1,716.00</td></tr>
+</tbody></table></div>
+<div class="table-scroll"><table class="rules cp-table"><caption>The same entries billed each way</caption><thead><tr><th scope="col">Method</th><th scope="col" class="r num">Hours</th><th scope="col" class="r num">Amount</th></tr></thead><tbody>
+<tr><th scope="row">Exact time, no rounding</th><td class="r num">24.69</td><td class="r num">$2,570.88</td></tr>
+<tr><th scope="row">Each entry rounded to the nearest 6 minutes</th><td class="r num">24.90</td><td class="r num">$2,589.00</td></tr>
+<tr><th scope="row">Each line rounded to the nearest 6 minutes</th><td class="r num">24.80</td><td class="r num">$2,580.00</td></tr>
+<tr><th scope="row">The total rounded to the nearest 6 minutes</th><td class="r num">24.80</td><td class="r num">$2,580.00</td></tr>
+</tbody></table></div>
+<p>Each entry to two decimals then times the rate, Clockify's invoice method, gives $2,571.60 on the exact times; the report method gives $2,570.88. <a href="/toll-preview/time-export-to-invoice/clockify-invoice-report-mismatch/">Why the two differ</a>.</p>
+<p class="cp-note">Lines are worked out from the entries shown, with the grouping, rounding and rates named. Rounding for freelance work is set by your contract; check an invoice before you send it. Not affiliated with Toggl, Clockify, Harvest or Everhour. Not tax or legal advice.</p>
+</section>
+<section>
+<h2 id="sources">Sources</h2>
+<ul class="cp-sources"><li><a href="https://clockify.me/help/projects/invoicing-tracked-time-expenses">Clockify Help: Invoicing tracked time and expenses (read November 8, 2026)</a></li><li><a href="https://clockify.me/help/track-time/detailed-report">Clockify Help: Detailed report (read November 8, 2026)</a></li><li><a href="https://clockify.me/help/getting-started/import-timesheets">Clockify Help: Import data into Clockify (read November 8, 2026)</a></li><li><a href="https://clockify.me/help/track-time-and-expenses/time-rounding">Clockify Help: Time rounding (read November 8, 2026)</a></li><li><a href="https://clockify.me/help/troubleshooting/rate-issues/invoices-dont-match">Clockify Help: Invoices and reports don't match (read November 8, 2026)</a></li><li><a href="https://clockify.me/pricing">Clockify: Pricing (read November 8, 2026)</a></li></ul>
+</section>
+<section><h2 id="steps">Steps</h2><ol class="cp-steps"><li><strong>Open the Detailed report.</strong> Filter it to the client and the dates you are billing for.</li><li><strong>Export CSV.</strong> Export, then CSV (Basic plan or higher in Clockify; the Free plan exports PDF).</li><li><strong>Open it here.</strong> The tool reads Start date, Start time, Duration (clock or decimal), Project, Client, Task, Description, Tags, Billable and the billable rate.</li><li><strong>Choose lines, rounding and rates.</strong> Clockify's Single item, Detailed and Grouped layouts are one line for everything, one line per entry, and one line per project, person or day here.</li><li><strong>Reconcile and make the invoice.</strong> Check the two-decimals-per-entry line against the exact total, then download the PDF and CSVs.</li></ol></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is Clockify invoicing free?</h3></summary><div class="xp-in"><p>No. Clockify's help says: &quot;Invoicing is a paid feature on the Standard, Pro or Enterprise plan.&quot;</p></div></details><details class="xpand"><summary><h3>How can I group Clockify time on an invoice?</h3></summary><div class="xp-in"><p>Single item (all hours and expenses on one line), Detailed (each time entry or expense on its own line) or Grouped by project, user or date, with subgroups. Here the same choices are one line for everything, one line per entry, or one line per project, person or day, and also per task, tag or client.</p></div></details><details class="xpand"><summary><h3>Does Clockify round each entry or the total?</h3></summary><div class="xp-in"><p>Each entry is rounded first, then the rounded durations are added together; reports, exports and earnings use the rounded values; the underlying data is not changed.</p></div></details><details class="xpand"><summary><h3>Why does my Clockify invoice not match the report?</h3></summary><div class="xp-in"><p>Invoices round each time entry to 2 decimals before multiplying by the rate; reports calculate the total time first, then multiply. On Clockify's own three entries at $100 an hour that is $502.00 against $501.81.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/time-export-to-invoice/clockify-invoice-report-mismatch/">Why a Clockify invoice and report differ</a></li><li><a href="/toll-preview/time-export-to-invoice/toggl/">Toggl Track export to invoice</a></li><li><a href="/toll-preview/time-export-to-invoice/toggl-vs-clockify-vs-harvest-invoicing/">Toggl vs Clockify vs Harvest invoicing</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/time-export-to-invoice/clockify.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-08">2026-11-08</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

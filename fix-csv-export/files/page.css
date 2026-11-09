@@ -9,16 +9,9 @@
   --fx-warn: #ffb547;
 }
 
-.fx-intro { padding-block: 40px 8px; }
-.fx-intro h1 { margin-bottom: 0.25em; }
-.fx-price { color: var(--ink-soft); max-width: 46rem; margin: 0; }
 
-.fx-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
 .fx-desk > * { min-width: 0; }
-@media (min-width: 1040px) { .fx-desk { grid-template-columns: 22rem 1fr; gap: 48px; } }
 
-.fx-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
-.fx-form > .btn { width: 100%; }
 .fx-drop { border: 1px dashed var(--rule-strong); border-radius: 8px; padding: 18px; margin-bottom: 10px; }
 .fx-drop.over { border-color: var(--accent); }
 .fx-drop-label { display: block; font-weight: 500; margin-bottom: 8px; }
@@ -32,8 +25,8 @@
 .fx-check { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; color: var(--ink-soft); font-size: 0.92rem; }
 
 .fx-out { min-height: 12rem; }
-.fx-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.fx-answer { font: 500 clamp(1rem, 2.2vw, 1.12rem)/1.5 var(--font-display); margin: 0 0 12px; max-width: 56rem; }
+.fx-label { margin: 0; font: 600 15px/1.4 var(--font-text); color: var(--text-2); }
+.fx-answer { color: var(--text-2); margin: 0 0 12px; max-width: 56rem; }
 .fx-h { font-size: 1.05rem; margin: 22px 0 8px; }
 .fx-ask, .fx-drift { border-left: 3px solid var(--fx-warn); padding-left: 10px; color: var(--ink); }
 .fx-done { border: 1px solid var(--accent); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
@@ -53,10 +46,9 @@
 .fx-preview .fx-changed s { color: var(--ink-soft); }
 .fx-flags { color: var(--ink-soft); font-size: 0.9rem; padding-left: 1.2em; }
 
-.fx-rules, .fx-legal { margin-top: 56px; border-top: 1px solid var(--rule-strong); padding-top: 20px; }
+.fx-rules, .fx-legal { border-top: 1px solid var(--rule-strong); padding-top: 20px; }
 .fx-rule-cols { display: grid; gap: 24px; }
 @media (min-width: 900px) { .fx-rule-cols { grid-template-columns: repeat(3, 1fr); } }
 .fx-rule-cols h3 { font-size: 1rem; margin-bottom: 6px; }
 .fx-rule-cols p { color: var(--ink-soft); margin: 0; }
 .fx-legal ul { padding-left: 1.2em; color: var(--ink-soft); }
-.fx-code { margin-top: 48px; }

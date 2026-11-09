@@ -1,0 +1,43 @@
+Code,Name,Stripe category,Lead with
+13.6,Credit not processed,Credit not processed,"Proof a refund or credit was already issued and refund or return policy, and where it was shown"
+13.7,Cancelled Merchandise/Services,Credit not processed,"Proof a refund or credit was already issued and refund or return policy, and where it was shown"
+12.6.1,Duplicate processing,Duplicate,Records showing the two charges are separate and proof of delivery
+12.6.2,Paid by other means,Duplicate,Records showing the two charges are separate and proof of delivery
+33,Fraud analysis request,Fraudulent,Proof of delivery and shipping details
+10.1,EMV Liability Shift Counterfeit Fraud,Fraudulent,Proof of delivery and shipping details
+10.2,EMV Liability Shift Non-Counterfeit Fraud,Fraudulent,Proof of delivery and shipping details
+10.3,Other Fraud - Card Present Environment,Fraudulent,Proof of delivery and shipping details
+10.4,Other Fraud - Card Absent Environment,Fraudulent,Proof of delivery and shipping details
+10.5,Visa Fraud Monitoring Program,Fraudulent,Proof of delivery and shipping details
+28,Request for copy bearing signature,General,Receipt or order confirmation and messages with the customer
+30,Cardholder request due to dispute,General,Receipt or order confirmation and messages with the customer
+34,Legal process request,General,Receipt or order confirmation and messages with the customer
+11.1,Card Recovery Bulletin,General,Receipt or order confirmation and messages with the customer
+11.2,Declined Authorization,General,Receipt or order confirmation and messages with the customer
+11.3,No Authorization,General,Receipt or order confirmation and messages with the customer
+12.1,Late Presentment,General,Receipt or order confirmation and messages with the customer
+12.2,Incorrect Transaction Code,General,Receipt or order confirmation and messages with the customer
+12.3,Incorrect Currency,General,Receipt or order confirmation and messages with the customer
+12.4,Incorrect Account Number,General,Receipt or order confirmation and messages with the customer
+12.5,Incorrect Amount,General,Receipt or order confirmation and messages with the customer
+12.7,Invalid Data,General,Receipt or order confirmation and messages with the customer
+13.8,Original Credit Transaction Not Accepted,General,Receipt or order confirmation and messages with the customer
+13.1,Merchandise/Services Not Received,Product not received,Proof of delivery and shipping details
+13.9,Non-Receipt of Cash or Load Transaction Value,Product not received,Proof of delivery and shipping details
+13.3,Not as Described or Defective Merchandise/Services,Product unacceptable,How the product was described and messages with the customer
+13.4,Counterfeit Merchandise,Product unacceptable,How the product was described and messages with the customer
+13.5,Misrepresentation,Product unacceptable,How the product was described and messages with the customer
+13.2,Cancelled Recurring,Subscription canceled,"Cancellation policy, and where it was shown and why this charge stands after the claimed cancellation"
+C028,Refinancing of an Existing Debit,Non-compliant,Authorization records and receipt or order confirmation
+C030,Delayed or Amended Charges,Non-compliant,Authorization records and receipt or order confirmation
+C031,Sold Paper,Non-compliant,Authorization records and receipt or order confirmation
+C034,Merchant Processed Credit without a Previous Debit,Non-compliant,Authorization records and receipt or order confirmation
+C035,Merchant Must Process a Reversal If Sale Processed In Error,Non-compliant,Authorization records and receipt or order confirmation
+C036,Electronic Commerce Transaction,Non-compliant,Authorization records and receipt or order confirmation
+C038,T&E Advance Deposit Service,Non-compliant,Authorization records and receipt or order confirmation
+C045,Dispute Reduction Service Returned,Non-compliant,Authorization records and receipt or order confirmation
+C048,Split Transaction,Non-compliant,Authorization records and receipt or order confirmation
+C050,"Other, See Attached Documentation",Non-compliant,Authorization records and receipt or order confirmation
+C071,Prohibitions,Non-compliant,Authorization records and receipt or order confirmation
+C081,Limits of Fee Collection,Non-compliant,Authorization records and receipt or order confirmation
+C0135,Improperly Assessed Surcharge,Non-compliant,Authorization records and receipt or order confirmation

@@ -70,13 +70,19 @@ It uses no outside data, so there is nothing to go out of date.
 - [WHATWG HTML Standard: HTMLCanvasElement toBlob()](https://html.spec.whatwg.org/multipage/canvas.html#dom-canvas-toblob)
 - [NIST: Prefixes for binary multiples](https://physics.nist.gov/cuu/Units/binary.html)
 
-[All sources, editions and read dates](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
+Uses no outside data. The photo is shrunk in your browser and never leaves your device, so there is no source to read and nothing to go out of date.
+
+[The sources of every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/) are listed on one page, and [each change to the data or rules](https://krishnachagti-sudo.github.io/toll-preview/updates/) is logged with its date.
 
 ## How is it tested?
 
 The tests check that the result fits the target size, never drops below the minimum quality, gives the same answer for the same input, stops its search at a limit, and that the page has no upload code.
 
-[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) list what each test suite asserts.
+What its test suite asserts:
+
+- There is no official example to compare with. The tests check that the result fits the target size, never drops below the minimum quality, gives the same answer for the same input, stops its search at a limit, and that the page has no upload code.
+
+[The checks for every tool](https://krishnachagti-sudo.github.io/toll-preview/sources/#checks) are linked from one page.
 
 [Open the Image to size tool](https://krishnachagti-sudo.github.io/toll-preview/image-to-size/).
 

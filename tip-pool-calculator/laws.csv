@@ -1,0 +1,57 @@
+jurisdiction,combined_minimum,max_tip_credit,min_cash_wage,tipped_threshold,state_pool_rules
+Alaska,$14.00,none,$14.00,,not covered
+California,$16.90,none,$16.90,,not covered
+Guam,$9.25,none,$9.25,,not covered
+Minnesota,$11.41,none,$11.41,,read 2026-11-08
+Montana,$10.85,none,$10.85,,read 2026-11-08
+Nevada,$12.00,none,$12.00,,not covered
+Oregon,$15.55,none,$15.55,,not covered
+Washington,$17.13,none,$17.13,,read 2026-11-08
+Arizona,$15.15,$3.00,$12.15,Not specified,read 2026-11-08
+Arkansas,$11.00,$8.37,$2.63,Not specified,not covered
+Colorado,$15.16,$3.02,$12.14,More than $30,not covered
+Connecticut,$16.94,"$10.56 (hotel, restaurant); $8.71 (bartenders who customarily receive tips)","$6.38 (hotel, restaurant); $8.23 (bartenders who customarily receive tips)",Not specified,not covered
+Delaware,$15.00,$12.77,$2.23,More than $30,read 2026-11-08
+District of Columbia,$18.40,$8.10,$10.30,Not specified,read 2026-11-08
+Florida,$15.00,$3.02,$11.98,More than $30,read 2026-11-08
+Hawaii,$16.00,$1.25,$14.75,,not covered
+Idaho,$7.25,$3.90,$3.35,More than $30,not covered
+Illinois,$15.00,40% of the applicable minimum wage ($6.00),$9.00,Not specified,not covered
+Iowa,$7.25,40% of the applicable minimum wage ($2.90),$4.35,More than $30,not covered
+Maine,$15.10,50% of the applicable minimum wage ($7.55),$7.55,More than $191,read 2026-11-08
+Maryland,$15.00,$11.37,$3.63,More than $30,read 2026-11-08
+Massachusetts,$15.00,$8.25,$6.75,More than $20,read 2026-11-08
+Michigan,$13.73,$8.24,$5.49,Not specified,not covered
+Missouri,$15.00,50% of the applicable minimum wage ($7.50),$7.50,Not specified,not covered
+New Hampshire,$7.25,$3.98,$3.27,More than $30,not covered
+New Jersey,$15.92,$9.87,$6.05,More than $30,not covered
+New Mexico,$12.00,$9.00,$3.00,More than $30,not covered
+New York,"$17.00 (NYC, Long Island, & Westchester); $16.00 (remainder of NY state)",Varies by region and type of employer,Varies by region and type of employer,Not specified,read 2026-11-08
+North Dakota,$7.25,33% of the applicable minimum wage ($2.39),$4.86,More than $30,not covered
+Ohio,$11.00,$5.50,$5.50,More than $30,not covered
+Oklahoma,$7.25,$5.12,$2.13,Not specified,not covered
+Pennsylvania,$7.25,$4.42,$2.83,$135 per month,not covered
+Rhode Island,$16.00,$12.11,$3.89,More than $30,not covered
+South Dakota,$11.85,50% of the applicable minimum wage ($5.92),$5.93,More than $35,read 2026-11-08
+Vermont,$14.42,50% of the applicable minimum wage ($7.21),$7.21,More than $120,not covered
+Virgin Islands,$10.50,$6.30,40% of the applicable minimum wage ($4.20),Not specified,not covered
+Wisconsin,$7.25,$4.92,$2.33,Not specified,not covered
+West Virginia,$8.75,70% of the applicable minimum wage ($6.13),$2.62,Not specified,not covered
+Alabama,$7.25,$5.12,$2.13,More than $30,not covered
+American Samoa,Special minimum wage rates,none,$2.13,More than $30,not covered
+Georgia,$7.25,$5.12,$2.13,More than $30,not covered
+Indiana,$7.25,$5.12,$2.13,More than $30,not covered
+Kansas,$7.25,$5.12,$2.13,Not specified,read 2026-11-08
+Kentucky,$7.25,$5.12,$2.13,More than $30,not covered
+Louisiana,$7.25,$5.12,$2.13,More than $30,not covered
+Mississippi,$7.25,$5.12,$2.13,More than $30,not covered
+Nebraska,$15.00,$12.87,$2.13,Not specified,not covered
+North Carolina,$7.25,$5.12,$2.13,More than $20,not covered
+Commonwealth of the Northern Mariana Islands,$7.25,$5.12,$2.13,More than $30,not covered
+Puerto Rico,$10.50,$8.37,$2.13,More than $30,not covered
+South Carolina,$7.25,$5.12,$2.13,More than $30,not covered
+Tennessee,$7.25,$5.12,$2.13,More than $30,not covered
+Texas,$7.25,$5.12,$2.13,More than $20,not covered
+Utah,$7.25,$5.12,$2.13,More than $30,not covered
+Virginia,$12.77,$10.64,$2.13,More than $30,read 2026-11-08
+Wyoming,$7.25,$5.12,$2.13,More than $30,not covered

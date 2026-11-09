@@ -71,17 +71,18 @@
 <h1>How ZIP to county works: Census and ONS method</h1>
 <p class="cp-answer">A US ZIP code is looked up as its ZCTA in the Census 2020 ZCTA to county file: 33,791 ZCTAs, 10,180 of them in more than one county, each county's share given by land area. A UK postcode is looked up in the ONS Postcode Directory (August 2026), which places 2,652,624 Great Britain postcodes, live and terminated, in their local authority.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the zip code and uk postcode to county lookup compute?</h2>
 <p>Given ZIP codes or UK postcodes, one or a list, the tool says for each ZIP every county it has land in, with the county FIPS code, the share of the land, the metro or micro area and the Census region, and for each postcode its local authority, county, region and nation. Given a county FIPS code, it lists every ZCTA with land in that county.</p>
-<p>Operations (the op field):</p>
+<details class="xpand"><summary>Read the rest: What does the zip code and uk postcode to county lookup compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
 <ul><li><code>lookup</code>: Looks up a list of ZIP codes and postcodes (at most 10,000 in one call). Each result says whether it was found, with its counties or areas and notes; codes not found are named with the reason. country is auto (digits are a ZIP, letters a postcode), us or gb.</li><li><code>county</code>: Lists every ZCTA with land in a county, given its 5-digit FIPS code, with the county's share of each ZCTA's land, the other counties a shared ZCTA touches, and the county's metro or micro area.</li></ul>
 <p>Inputs:</p>
 <ul><li><code>codes</code>: ZIP codes or UK postcodes as typed or pasted, each at most 40 characters. ZIP+4, ZIPs that lost a leading zero and postcodes in any case or spacing are read.</li><li><code>country</code>: auto, us or gb (default auto).</li><li><code>fips</code>: For county: a 5-digit county FIPS code, such as 48201, that is in the Census 2020 file.</li></ul>
 <p>Outputs:</p>
-<ul><li>For a ZIP: the county with the most land, every county with its FIPS code, land in square meters, share percent and metro area, the states crossed, the Census region and division, and the land area</li><li>For a postcode: the local authority, the county (two-tier areas), the county or unitary authority ONS reports, the region (England), the nation, and whether the postcode is live or terminated</li><li>summary: codes, found, not found, unreadable, US and GB found, and ZIPs crossing a county line</li><li>sources: the files used, with their vintage and read date, and the ONS attribution for postcodes</li></ul>
+<ul><li>For a ZIP: the county with the most land, every county with its FIPS code, land in square meters, share percent and metro area, the states crossed, the Census region and division, and the land area</li><li>For a postcode: the local authority, the county (two-tier areas), the county or unitary authority ONS reports, the region (England), the nation, and whether the postcode is live or terminated</li><li>summary: codes, found, not found, unreadable, US and GB found, and ZIPs crossing a county line</li><li>sources: the files used, with their vintage and read date, and the ONS attribution for postcodes</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -169,16 +170,27 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>The US files are the Census 2020 ZCTA to county relationship file, Census 2020 county and state codes, the Census regions and OMB's July 2023 delineation, read on 2026-11-07. The postcode file is the ONS Postcode Directory, August 2026, read on 2026-11-07. Each file is recorded with its address and SHA-256 hash.</p>
 <ul class="cp-sources"><li><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">Census 2020 ZCTA5 to County relationship file</a></li><li><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 metropolitan and micropolitan delineation (Census list 1)</a></li><li><a href="https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt">Census Bureau regions and divisions</a></li><li><a href="https://geoportal.statistics.gov.uk/">ONS Postcode Directory (August 2026)</a></li><li><a href="https://www.ons.gov.uk/methodology/geography/geographicalproducts/postcodeproducts">ONS: Postcode products</a></li><li><a href="https://www.ons.gov.uk/methodology/geography/licences">ONS: Licences</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>US answers come from Census 2020 files and OMB's July 2023 delineation, read 2026-11-07. UK answers come from the ONS Postcode Directory, August 2026, read 2026-11-07; Northern Ireland is not covered.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>ZIP code and UK postcode to county lookup: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www2.census.gov/geo/docs/maps-data/data/rel2020/zcta520/tab20_zcta520_county20_natl.txt">Census 2020 ZCTA5 to County relationship file</a></th><td rowspan="4">2020</td><td rowspan="6">2026-11-07</td></tr>
+<tr><th scope="row"><a href="https://www2.census.gov/geo/docs/reference/codes2020/national_county2020.txt">Census 2020 national county codes</a></th></tr>
+<tr><th scope="row"><a href="https://www2.census.gov/geo/docs/reference/codes2020/national_state2020.txt">Census 2020 national state codes</a></th></tr>
+<tr><th scope="row"><a href="https://www2.census.gov/geo/docs/maps-data/maps/reg_div.txt">Census regions and divisions</a></th></tr>
+<tr><th scope="row"><a href="https://www2.census.gov/programs-surveys/metro-micro/geographies/reference-files/2023/delineation-files/list1_2023.xlsx">OMB July 2023 CBSA delineation (Census list 1)</a></th><td>July 2023</td></tr>
+<tr><th scope="row"><a href="https://geoportal.statistics.gov.uk/">ONS Postcode Directory (August 2026), ONSPD_AUG_2026.zip</a></th><td>August 2026</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>The counts are pinned against the files: 33,791 ZCTAs and 10,180 in more than one county, 2,652,624 postcodes decoded back to the counts the build wrote. Answers are checked for one-county and six-county ZIPs, a state line, Connecticut, Puerto Rico, two-tier and single-tier councils, Scotland, Wales, London, terminated and unplaced postcodes.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
-<p><a href="/toll-preview/zip-to-county/">Open the ZIP code and UK postcode to county lookup tool</a>.</p>
+<details class="xpand"><summary>Read the rest: How is it tested?</summary><div class="xp-in"><p>What its test suite asserts:</p>
+<ul><li>The file counts are pinned: 33,791 ZCTAs, 10,180 in more than one county, 3,234 counties, and 2,652,624 Great Britain postcodes decoded back to the counts the build wrote.</li><li>ZIP 77002 is all in Harris County, ZIP 39573 is split across six Mississippi counties with shares adding to 100, and the Bronx, Connecticut, Puerto Rico and a ZIP with no ZCTA give the noted answers.</li><li>Postcodes are checked in two-tier and single-tier councils, Scotland, Wales and London, terminated and unplaced; Northern Ireland, the Crown dependencies and unknown postcodes are named, not charged.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/zip-to-county/">Open the ZIP code and UK postcode to county lookup tool</a>.</p></div></details>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the zip code and uk postcode to county lookup answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the zip code and uk postcode to county lookup refuse to answer?</h3><p>It answers for ZCTAs, not USPS delivery routes, so a new ZIP or a PO-box-only ZIP is not found. Use the street address for those. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the zip code and uk postcode to county lookup answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the zip code and uk postcode to county lookup refuse to answer?</h3></summary><div class="xp-in"><p>It answers for ZCTAs, not USPS delivery routes, so a new ZIP or a PO-box-only ZIP is not found. Use the street address for those. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/zip-to-county/">Open the ZIP code and UK postcode to county lookup tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/zip-to-county/county-fips-codes/">County FIPS codes</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/zip-to-county.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -271,6 +283,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

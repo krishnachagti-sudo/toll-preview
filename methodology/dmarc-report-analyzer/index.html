@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How the DMARC report analyzer names senders and failures</title>
+<meta name="description" content="How the DMARC report analyzer works: files unpacked in memory, both report formats read, each IP named from published ranges and each failure explained.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/content.css">
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/methodology/dmarc-report-analyzer/">
+<link rel="alternate" type="text/markdown" href="/toll-preview/methodology/dmarc-report-analyzer.md">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="How the DMARC report analyzer names senders and failures">
+<meta property="og:description" content="How the DMARC report analyzer works: files unpacked in memory, both report formats read, each IP named from published ranges and each failure explained.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/methodology/dmarc-report-analyzer/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/methodology/dmarc-report-analyzer/","url":"https://krishnachagti-sudo.github.io/toll-preview/methodology/dmarc-report-analyzer/","name":"How the DMARC report analyzer names senders and failures","description":"How the DMARC report analyzer works: files unpacked in memory, both report formats read, each IP named from published ranges and each failure explained.","dateModified":"2026-11-04","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Methodology","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/"},{"@type":"ListItem","position":3,"name":"How the DMARC report analyzer names senders and failures","item":"https://krishnachagti-sudo.github.io/toll-preview/methodology/dmarc-report-analyzer/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is there any AI in the dmarc report analyzer answers?","acceptedAnswer":{"@type":"Answer","text":"No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time."}},{"@type":"Question","name":"What will the dmarc report analyzer refuse to answer?","acceptedAnswer":{"@type":"Answer","text":"It reads aggregate (rua) reports only, not failure (ruf) reports. A request outside what the data covers is refused with the reason and costs nothing."}}]}]}</script>
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":null}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap cp">
+<nav class="cp-crumbs" aria-label="Breadcrumb"><ol><li><a href="/toll-preview/">Endwise</a></li><li><a href="/toll-preview/methodology/">Methodology</a></li><li aria-current="page">How the DMARC report analyzer names senders and failures</li></ol></nav>
+<header class="cp-head">
+<p class="eyebrow">Guide</p>
+<h1>How the DMARC report analyzer names senders and failures</h1>
+<p class="cp-answer">Each report is unpacked (.xml, .gz, .zip or .eml), read under RFC 9990 or RFC 7489, and every record's IP is named from the ranges 10 sending providers publish in their SPF records, measured 2026-11-07. Records are grouped by service, and each failing source gets a reason from the receiver's own verdicts.</p>
+
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+</header>
+<div class="cp-body prose">
+<section>
+<h2 id="what">What does the dmarc report analyzer compute?</h2>
+<p>Given up to 50 report files, the tool reads each DMARC aggregate report and answers which services sent mail as your domain, how many messages each sent, which failed DMARC and why, with the fix. Each service is named with the evidence for the name and how sure that is. Several reports are combined by source. It can also name the service behind a list of IP addresses. Reports are read in memory and not kept.</p>
+<details class="xpand"><summary>Read the rest: What does the dmarc report analyzer compute?</summary><div class="xp-in"><p>Operations (the op field):</p>
+<ul><li><code>analyze</code>: Returns, for each report, the reporter, the format, the period, your published policy, the totals, and each source with its name, confidence, IPs, messages passed and failed, the reasons with their fixes and the records; with several reports, the combined table by source; and per file, how many reports it held.</li><li><code>identify</code>: Names the service behind up to 100 IP addresses from the same dated data, with the evidence and the confidence. Free.</li></ul>
+<p>Inputs:</p>
+<ul><li><code>files (analyze)</code>: Up to 50 files, each { name, base64 } (an .xml, .xml.gz, .zip or .eml file, at most 10 MB as sent) or { name, xml } (the report's XML as text, at most 32 MB).</li><li><code>ips (identify)</code>: Up to 100 IPv4 or IPv6 addresses.</li></ul>
+<p>Outputs:</p>
+<ul><li>answer: the report's period, domain, messages and sources, how many failed, and the largest failing source with its reason</li><li>reports: per report, the reporter (and whether it is one we know), schema, period, policy, totals, sources, errors and warnings</li><li>sources: per source, its label, named services, confidence, IPs, messages, passed, failed, pass rate, reasons, main reason, fix and evidence</li><li>combined: with several reports, the sources added up across reporters</li><li>files: per file, how many reports it held and why any part was skipped; billable: the files that held a report</li><li>rows (identify): per IP, the name, confidence, evidence and the cloud network it sits in, if any</li></ul></div></details>
+</section>
+<section>
+<h2 id="method">How is it calculated, step by step?</h2>
+<ol><li>Each file is unpacked in memory: gzip, zip (at most 20 entries) and an .eml message (MIME parts at most 4 levels deep, at most 50 parts) are opened down to the XML. A report decompresses to at most 32 MB, all reports in one call to 96 MB, and a file that expands more than 250 times its size is refused as a bomb.</li><li>The XML is read by a small reader that refuses DOCTYPE and unknown entities, with at most 1,500,000 elements, 24 levels and 200,000 records. A root other than &lt;feedback&gt; is not a report. The namespace says the format: urn:ietf:params:xml:ns:dmarc-2.0 is RFC 9990, none (or the RFC 7489 namespace) is RFC 7489.</li><li>The metadata, the published policy and each record (source IP, count, disposition, the aligned DKIM and SPF verdicts, the identifiers and the raw DKIM and SPF results) are read. What real reporters do is tolerated with a warning: spaces around values, missing optional elements, the next midnight as the end time.</li><li>Each record's IP is named, strongest evidence first: an IP inside a range a provider publishes in its SPF record names that provider; otherwise a passing DKIM signature or SPF check for a domain the provider's own documentation names for sending names it. When more than one provider publishes the range, all are named and the confidence is shared. An IP inside a cloud network's published ranges is only a rented server there.</li><li>Records are grouped into sources: one per named service (all its IPs together), or one per IP when nothing names it. Sources are sorted by failed messages, then by messages.</li><li>Each record gets a reason from the receiver's verdicts: passed on aligned DKIM, on aligned SPF only (which a forward breaks), or both; failed because a passing signature or SPF check was for another domain (not aligned), because your own DKIM signature did not verify, because SPF returned an error, or because the IP is not authorized at all. Each reason carries its fix, and any override reason the receiver gave is quoted.</li><li>The answer names the period, the domain, the messages, the share that failed and the largest failing source with its reason. Several reports are combined by source name, or by IP when unnamed.</li></ol>
+<p><strong>RFC 9990 and RFC 7489.</strong></p>
+<p>Both aggregate report formats are read: RFC 9990 (May 2026), with its namespace, and the older RFC 7489 Appendix C schema most reporters still send. Override reasons are read with their RFC meanings, including RFC 9990's policy_test_mode: forwarded, sampled_out, trusted_forwarder, mailing_list, local_policy, other, policy_test_mode.</p>
+<p><strong>Naming a sender.</strong></p>
+<p>IP ranges come from the published SPF records of 10 sending providers, measured 2026-11-07; signing and bounce domains for 6 providers come from each provider's own documentation, read 2026-11-08; cloud ranges come from Amazon Web Services (EC2) and Google Cloud. The confidence words are: high, named from one provider's published range; medium, named from a signing or bounce domain the provider documents; shared, the range is published by more than one provider; hosting, a rented server in a cloud network; not a named service; none, nothing in the dated provider data names this IP.</p>
+<p><strong>Reporters.</strong></p>
+<p>The report shapes of Microsoft, Google, Yahoo, Mail.ru, GMX were read from each provider's own page where it has one and from real reports in the IETF's public dmarc-report list archive, read 2026-11-08. Only the format is described; no report content is copied.</p>
+</section>
+<section>
+<h2 id="edge">Which edge cases does it handle?</h2>
+<ul><li>A file that holds no readable report is named with the reason and not charged.</li><li>Reports from Microsoft and Mail.ru end their period at the next midnight; the period is shown as the one UTC day it covers.</li><li>A source whose signing or bounce domain names one service but whose IP is inside another provider's published range is named by the IP; the evidence list shows both.</li><li>An unnamed IP is not called spoofing: it may be a forwarder or a mailing list, and the fix says so.</li><li>Mail that passes on SPF alone is flagged, because forwarding breaks SPF.</li><li>Encrypted zip entries, compression bombs and files that are not reports are refused with a reason.</li></ul>
+</section>
+<section>
+<h2 id="example">What does a worked example look like?</h2>
+<p class="cp-note">Every figure below is the output of the tool's engine, not typed in.</p>
+<p><strong>A Google report for example.com: which service fails DMARC and why</strong></p>
+<pre><code class="language-json">op: &quot;analyze&quot;
+files: 1 items</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>A Google report for example.com: which service fails DMARC and why</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>This report from google.com covers 2026-11-06 (UTC) for example.com: 670 messages from 7 sources; 90 messages (13.4%) failed DMARC from 4 sources. The largest is Amazon SES (54.240.8.17), 57 failing messages: DKIM passed for d=amazonses.com and SPF passed for us-east-1.amazonses.com, but neither is example.com, so neither aligns.</td></tr>
+<tr><th scope="row">policy</th><td>p=none (monitor only)</td></tr>
+<tr><th scope="row">messages</th><td>670</td></tr>
+<tr><th scope="row">failed</th><td>90 (4 sources)</td></tr>
+<tr><th scope="row">largest failing source</th><td>Amazon SES</td></tr>
+<tr><th scope="row">confidence</th><td>high</td></tr>
+<tr><th scope="row">fix</th><td>Set up the sender's custom DKIM so it signs with d=example.com (or a subdomain), or a custom MAIL FROM (return-path) under example.com.</td></tr>
+</tbody></table></div>
+<p><strong>Name the services behind three IPs from a report</strong></p>
+<pre><code class="language-json">&#123;
+  &quot;op&quot;: &quot;identify&quot;,
+  &quot;ips&quot;: [
+    &quot;54.240.8.17&quot;,
+    &quot;149.72.134.20&quot;,
+    &quot;35.174.145.124&quot;
+  ]
+&#125;</code></pre>
+<div class="table-scroll"><table class="rules cp-table"><caption>Name the services behind three IPs from a report</caption><thead><tr><th scope="col">Result</th><th scope="col">Value</th></tr></thead><tbody>
+<tr><th scope="row">answer</th><td>2 of 3 IPs are named from published provider ranges; 1 more is a rented server in a cloud network.</td></tr>
+<tr><th scope="row">54.240.8.17</th><td>Amazon SES: named from one provider's published range</td></tr>
+<tr><th scope="row">149.72.134.20</th><td>HubSpot: named from one provider's published range</td></tr>
+<tr><th scope="row">35.174.145.124</th><td>not named: a rented server in a cloud network; not a named service</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2 id="limits">What does it not do?</h2>
+<ul><li>It reads aggregate (rua) reports only, not failure (ruf) reports.</li><li>Names are inferred from published provider data; shared infrastructure can carry several companies' mail, so check before you change DNS.</li><li>It does not look up your DNS records; it works only from what the report says.</li><li>Reports are read in memory for the answer and are not kept.</li></ul>
+</section>
+<section>
+<h2 id="data">Where does the data come from, and how fresh is it?</h2>
+<p>The RFCs and provider pages were read on 2026-11-08. Provider IP ranges are the SPF lookup counter's measurements of 2026-11-07; the AWS and Google Cloud lists were read on 2026-11-08. Each change to the data is logged with its date.</p>
+<ul class="cp-sources"><li><a href="https://www.rfc-editor.org/rfc/rfc9990.html">RFC 9990: DMARC Aggregate Reporting (May 2026), read November 8, 2026</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc9989.html">RFC 9989: DMARC (May 2026), read November 8, 2026</a></li><li><a href="https://www.rfc-editor.org/rfc/rfc7489.txt">RFC 7489: DMARC (2015, now obsolete), Appendix C schema, read November 8, 2026</a></li><li><a href="https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dmarc-configure">Microsoft Learn: Set up DMARC (updated July 17, 2026), read November 8, 2026</a></li><li><a href="https://knowledge.workspace.google.com/admin/security/about-dmarc-reports">Google Workspace Admin Help: About DMARC reports (last updated October 26, 2026), read November 8, 2026</a></li><li><a href="https://help.mail.ru/developers/notes/rua/">Mail.ru Help: DMARC reports (in Russian), read November 8, 2026</a></li><li><a href="https://mailarchive.ietf.org/arch/browse/dmarc-report/">IETF dmarc-report list archive (real reports for ietf.org), read November 8, 2026</a></li><li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html">AWS IP address ranges (ip-ranges.json, EC2), read November 8, 2026</a></li><li><a href="https://cloud.google.com/compute/docs/faq#find_ip_range">Google Cloud IP ranges (cloud.json), read November 8, 2026</a></li></ul>
+<p>The RFCs and provider pages were read on 2026-11-08. Provider IP ranges are the SPF lookup counter's measurements of 2026-11-07; the AWS and Google Cloud lists were read on 2026-11-08. Each change to the data is logged with its date.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>DMARC report analyzer: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc9990.html">RFC 9990: DMARC Aggregate Reporting (May 2026)</a></th><td rowspan="9">see the document</td><td rowspan="9">2026-11-08</td></tr>
+<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc9989.html">RFC 9989: DMARC (May 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://www.rfc-editor.org/rfc/rfc7489.txt">RFC 7489: DMARC (2015, now obsolete), Appendix C schema</a></th></tr>
+<tr><th scope="row"><a href="https://learn.microsoft.com/en-us/defender-office-365/email-authentication-dmarc-configure">Microsoft Learn: Set up DMARC (updated July 17, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://knowledge.workspace.google.com/admin/security/about-dmarc-reports">Google Workspace Admin Help: About DMARC reports (last updated October 26, 2026)</a></th></tr>
+<tr><th scope="row"><a href="https://help.mail.ru/developers/notes/rua/">Mail.ru Help: DMARC reports (in Russian)</a></th></tr>
+<tr><th scope="row"><a href="https://mailarchive.ietf.org/arch/browse/dmarc-report/">IETF dmarc-report list archive (real reports for ietf.org)</a></th></tr>
+<tr><th scope="row"><a href="https://docs.aws.amazon.com/vpc/latest/userguide/aws-ip-ranges.html">AWS IP address ranges (ip-ranges.json, EC2)</a></th></tr>
+<tr><th scope="row"><a href="https://cloud.google.com/compute/docs/faq#find_ip_range">Google Cloud IP ranges (cloud.json)</a></th></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+</section>
+<section>
+<h2 id="tests">How is it tested?</h2>
+<p>The tests check the safe XML reader, IPv4 and IPv6 matching, naming from provider ranges, documented domains and cloud ranges, that both report formats and every reporter's shape read the same, each failure pattern's reason and fix, the worked example, combining reports and the CSV, unpacking .gz, .zip and .eml, refusing bombs and encrypted or foreign files without a charge, and the dated data.</p>
+<p>What its test suite asserts:</p>
+<ul><li>RFC 9990 and RFC 7489 reports, and the shapes of every known reporter, read to the same totals.</li><li>Each failure pattern gets its own reason and fix; unnamed and cloud sources are not called spoofing.</li><li>Compressed, zipped and emailed reports are unpacked in memory; bombs, encrypted and foreign files are refused and not charged.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/dmarc-report-analyzer/">Open the DMARC report analyzer tool</a>.</p>
+</section>
+
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the dmarc report analyzer answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the dmarc report analyzer refuse to answer?</h3></summary><div class="xp-in"><p>It reads aggregate (rua) reports only, not failure (ruf) reports. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
+<section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/dmarc-report-analyzer/">Open the DMARC report analyzer tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li></ul></section>
+</div>
+<p class="cp-formats small muted"><a href="/toll-preview/methodology/dmarc-report-analyzer.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

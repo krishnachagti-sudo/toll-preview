@@ -71,6 +71,7 @@
 <h1>日付を指定してユーロ円・ドル円のECB参照レートを調べる</h1>
 <p class="cp-answer">ECBの参照レートでは、2026年10月24日の1ユーロは175.5100円、1米ドルは156.803359円でした。これは2026年10月23日のレートで、ECBは土曜日には新しいレートを公表しません。</p>
 
+
 </header>
 <div class="cp-body prose">
 <aside class="cp-tool" aria-labelledby="cp-tool-title"><h2 id="cp-tool-title">日付を指定してレートを調べる</h2><p class="muted">ECBの参照レートと、実際に使った公表日がわかります。</p><form method="get" action="/toll-preview/ja/fx-on-date/" class="cp-tool-form"><input type="hidden" name="base" value="EUR"><input type="hidden" name="quote" value="JPY"><div class="field"><label for="tf-date">日付</label><input type="date" id="tf-date" name="date" value="2026-10-24"><p class="hint">土日・祝日は、その前の最後のレートを使います。</p></div><input type="hidden" name="run" value="1"><button class="btn" type="submit">ツールでレートを調べる</button></form><p class="small"><a href="/toll-preview/ja/fx-on-date/?base=EUR&amp;quote=JPY&amp;date=2026-10-24">この内容をツール全体で開く</a></p></aside>
@@ -100,7 +101,7 @@
 <ul class="cp-sources"><li><a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">欧州中央銀行(ECB):Euro foreign exchange reference rates(英語)</a></li><li><a href="https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist.zip">欧州中央銀行(ECB):全履歴(zipファイル内のCSV)</a></li><li><a href="https://www.ecb.europa.eu/paym/target/t2/html/index.en.html">欧州中央銀行(ECB):T2、休業日(英語)</a></li></ul>
 </section>
 <section><h2 id="steps">手順</h2><ol class="cp-steps"><li><strong>通貨ペアを選ぶ.</strong> 「換算元」にユーロ(EUR)または米ドル(USD)、「換算先」に日本円(JPY)を選びます。</li><li><strong>日付を入れる.</strong> 知りたい日を入れます。1999年1月4日以降なら、どの日付でも使えます。</li><li><strong>出典を確かめる.</strong> 出典は「ECB参照レート」のままにします。</li><li><strong>レートを調べる.</strong> レート、その逆数、実際に使ったレートの日付が表示されます。指定日が土日・祝日なら、その前の日が表示されます。</li></ol></section>
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">よくある質問</h2><h3>過去の日付のユーロ円レートはどう調べますか?</h3><p>このページのツールに日付と EUR、JPY を入れると、ECBの参照レートと、実際に使ったレートの日付がわかります。2026年10月24日の結果は1ユーロ=175.5100円です。</p><h3>日本円はECBの通貨リストに入っていますか?</h3><p>はい。ECBは、ユーロに対する日本円(JPY)の参照レートも公表しています。米ドルと円のレートは、ツールが同じ日の2つのユーロレートから計算します。</p><h3>ECBのレートは、銀行が使うレートと同じですか?</h3><p>いいえ。ECBはこのレートを参考情報としてのみ公表し、取引に使うことを強く控えるよう呼びかけています。銀行やカード会社は、それぞれ自社のレートと手数料を使います。税務や経理で特定のレートが指定されている場合は、そのレートを使ってください。</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">よくある質問</h2><details class="xpand"><summary><h3>過去の日付のユーロ円レートはどう調べますか?</h3></summary><div class="xp-in"><p>このページのツールに日付と EUR、JPY を入れると、ECBの参照レートと、実際に使ったレートの日付がわかります。2026年10月24日の結果は1ユーロ=175.5100円です。</p></div></details><details class="xpand"><summary><h3>日本円はECBの通貨リストに入っていますか?</h3></summary><div class="xp-in"><p>はい。ECBは、ユーロに対する日本円(JPY)の参照レートも公表しています。米ドルと円のレートは、ツールが同じ日の2つのユーロレートから計算します。</p></div></details><details class="xpand"><summary><h3>ECBのレートは、銀行が使うレートと同じですか?</h3></summary><div class="xp-in"><p>いいえ。ECBはこのレートを参考情報としてのみ公表し、取引に使うことを強く控えるよう呼びかけています。銀行やカード会社は、それぞれ自社のレートと手数料を使います。税務や経理で特定のレートが指定されている場合は、そのレートを使ってください。</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">関連ページ</h2><ul><li><a href="/toll-preview/ja/doyobi-nichiyobi-shukujitsu-kawase-rate/">土日・祝日の為替レートはどうなる?ECBの最後の公表値</a></li><li><a href="/toll-preview/ja/fx-on-date/">ツール:日付指定の為替レート</a></li><li><a href="/toll-preview/de/ezb-referenzkurs-an-einem-datum/">Deutsch: EZB-Referenzkurs an einem bestimmten Datum nachschlagen</a></li><li><a href="/toll-preview/fr/taux-de-reference-bce-a-une-date/">Français : taux de référence BCE à une date donnée</a></li><li><a href="/toll-preview/pt/cotacao-do-euro-e-do-dolar-em-uma-data/">Português: cotação do euro e do dólar em relação ao real em uma data</a></li><li><a href="/toll-preview/hi/dollar-euro-ke-mukable-rupaye-ka-rate/">हिन्दी: किसी तारीख़ पर डॉलर और यूरो के मुकाबले रुपये का रेट</a></li><li><a href="/toll-preview/fx-on-date/">Exchange rate on a date (English)</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/ja/yen-kawase-rate-hizuke-shitei.md">このページのMarkdown版</a> <span aria-hidden="true">·</span> データ日付 <time datetime="2026-11-05">2026-11-05</time></p>
@@ -193,6 +194,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

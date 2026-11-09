@@ -1,0 +1,109 @@
+provider,reply_code,enhanced_code,published_text,verdict,meaning,fix
+Gmail,421,4.7.0,"Connection expired, try reconnecting",soft,The SMTP connection expired.,Reconnect and retry.
+Gmail,421,4.7.0,IP not in whitelist for RCPT domain,block,"The recipient's Workspace domain accepts mail only from IPs on its allowlist, and yours is not on it.",Ask the recipient's admin to allow your IP; do not suppress the address.
+Gmail,421,4.7.0,"Try again later, closing connection",soft,Gmail closed the connection and asked you to try again later.,Retry with backoff.
+Gmail,421,4.7.0,"does not have a PTR record, or the corresponding forward DNS entry",policy,"Your sending IP has no PTR record, or the PTR name does not resolve back to the IP, so Gmail rate limits it.",Publish matching reverse and forward DNS for the sending IP.
+Gmail,454,4.7.0,Too many sign-in attempts,policy,Too many SMTP sign-in attempts to Google's relay.,"Wait, then check the credentials your server uses."
+Gmail,454,4.7.0,Cannot sign in due to a temporary system problem,soft,Sign-in to Google's relay failed for a temporary reason.,Retry later.
+Gmail,421,4.7.0,TLS required for RCPT domain,policy,The recipient domain requires TLS and the connection was not encrypted.,Use STARTTLS when sending to this domain.
+Gmail,421,4.7.0,very low reputation of the sending IP address,block,Gmail rate limits your sending IP because of its very low reputation.,"Fix your sending reputation (list hygiene, complaints, authentication); do not suppress the address."
+Gmail,421,4.7.0,very low reputation of the sending domain,block,Gmail blocked the message because your sending domain has a very low reputation.,Fix your domain reputation; do not suppress the address.
+Gmail,421,4.7.0,nature of the content or the links within,block,Gmail blocked the message for its content or links.,Change the content or links; do not suppress the address.
+Gmail,451,4.7.23,"doesn't have a PTR record, or the PTR record's forward DNS entry",policy,"Your sending IP lacks a matching PTR record, so Gmail rate limits it.",Publish matching reverse and forward DNS for the sending IP.
+Gmail,451,4.7.24,SPF record of the sending domain has one or more suspicious entries,policy,Gmail found suspicious entries in your SPF record and rate limits you.,Review and clean your SPF record.
+Gmail,451,4.7.26,temporary DNS failures prevent authentication,soft,"The sender domain's DMARC policy rejects unauthenticated mail, but a temporary DNS failure stopped Gmail from checking.",Retry; check the sending domain's DNS is answering.
+Gmail,421,4.7.26,rate limited because it is unauthenticated,policy,"The message passed neither SPF nor DKIM, so Gmail rate limits it.",Authenticate with SPF or DKIM (Gmail requires one).
+Gmail,421,4.7.27,SPF authentication didn't pass for this message,policy,"SPF did not pass, so Gmail rate limits your bulk mail.",Fix SPF for your sending domains.
+Gmail,421,4.7.28,detected an unusual rate of,block,"Gmail sees an unusual rate of (unsolicited) mail from your IP, netblock, DKIM or SPF domain, or URL domain, and rate limits it.","Slow down, check complaints and list sources; do not suppress the address."
+Gmail,421,4.7.28,quota for sending messages that have the same Message-ID,policy,Too many messages with the same Message-ID header.,Give every message its own Message-ID.
+Gmail,421,4.7.29,you're not using a TLS connection,policy,Gmail requires bulk senders to use TLS and the connection was not encrypted.,Send over TLS.
+Gmail,421,4.7.30,DKIM authentication didn't pass for this message,policy,"DKIM did not pass, so Gmail rate limits your bulk mail.",Fix DKIM signing for your sending domains.
+Gmail,421,4.7.40,"doesn't have a DMARC record, or the DMARC record doesn't specify a DMARC policy",policy,"Your sending domain has no DMARC record or no DMARC policy, so Gmail rate limits bulk mail.",Publish a DMARC record with a policy.
+Gmail,421,4.7.32,isn't aligned with either the authenticated SPF or DKIM,policy,"The From domain is not aligned with the domain that passed SPF or DKIM, so Gmail rate limits it.",Align the From domain with your SPF or DKIM domain.
+Gmail,421,5.7.32,isn't aligned with either the authenticated SPF or DKIM,policy,Gmail blocked the message: the From domain is not aligned with the domain that passed SPF or DKIM.,Align the From domain with your SPF or DKIM domain.
+Gmail,552,5.7.0,content presents a potential security issue,block,Gmail blocked the message because its content or attachment looks like a security risk.,Remove the risky attachment or content; do not suppress the address.
+Gmail,503,5.7.0,No identity changes permitted,policy,The session tried to change identity after signing in.,Fix the sending software.
+Gmail,550,5.7.0,Invalid credentials for relay for one of the domains,policy,Google's SMTP relay does not recognise your IP or domain for this Workspace account.,Register the sending IP in Google Workspace's SMTP relay settings.
+Gmail,550,5.7.0,temporarily suspended due to abuse,block,The sending account was suspended for abuse.,Resolve the abuse report with Google; do not suppress recipients.
+Gmail,550,5.7.0,Email sending denied,policy,Google denied sending from this account.,Check the account's relay and sending settings.
+Gmail,554,5.7.0,Too many unauthenticated commands,policy,Too many commands before authenticating.,Authenticate first.
+Gmail,530,5.7.0,Authentication required,policy,Google requires authentication or STARTTLS first.,Sign in over STARTTLS.
+Gmail,550,5.7.1,has a policy that prohibits the email that you sent,policy,The recipient (or the sender's own) domain has a rule that prohibits this message.,Ask the recipient's admin; do not suppress the address.
+Gmail,550,5.7.1,Invalid credentials for relay,policy,The IP registered in Google's SMTP relay does not match the sending account's domain.,Use SMTP AUTH or present your domain in HELO.
+Gmail,550,5.7.1,This message is likely unsolicited email,block,Gmail blocked the message as likely spam.,Improve content and list practices; do not suppress the address.
+Gmail,550,5.7.1,does not meet IPv6 sending guidelines,policy,Mail sent over IPv6 needs a PTR record and authentication.,"Add the PTR record and authenticate, or send over IPv4."
+Gmail,550,5.7.1,very low reputation of the sending IP address,block,Gmail blocked the message because of the sending IP's or domain's very low reputation.,Fix your sending reputation; do not suppress the address.
+Gmail,550,5.7.1,missing a valid address in the From: header,policy,The message headers break RFC 5322 or Gmail's header rules.,"Fix the headers (From, Message-ID, duplicates), then resend."
+Gmail,550,5.7.1,This email has been rate limited,block,Gmail rate limited this mail.,Slow down and retry later; do not suppress the address.
+Gmail,550,5.7.1,not authorized to send email directly to our servers,policy,Your IP may not send straight to Gmail; it must go through your provider's relay.,Send through your provider's SMTP relay.
+Gmail,550,5.7.1,Daily SMTP relay sending limit exceeded for this customer,policy,Your Workspace account reached its daily relay limit.,Wait or raise the limit.
+Gmail,523,5.7.10,no commands allowed to pipeline after STARTTLS,policy,Commands were pipelined after STARTTLS.,Fix the sending software.
+Gmail,501,5.7.11,Syntax error (no parameters allowed),policy,STARTTLS was sent with parameters.,Fix the sending software.
+Gmail,534,5.7.14,Please log in through your web browser,policy,Google wants the account to sign in through a browser first.,"Sign in on the web, then retry."
+Gmail,550,5.7.24,SPF record of the sending domain has one or more suspicious entries,policy,Gmail found suspicious entries in your SPF record.,Review and clean your SPF record.
+Gmail,550,5.7.25,sending IP address doesn't have a PTR record,policy,"Your sending IP has no matching PTR record, which Gmail requires.",Publish matching reverse and forward DNS.
+Gmail,550,5.7.26,sender is unauthenticated,policy,"The message passed neither SPF nor DKIM, and Gmail requires one of them.",Set up SPF or DKIM for the sending domain; do not suppress the recipient.
+Gmail,550,5.7.26,has an SPF record with a hard fail policy,policy,Your MAIL FROM domain publishes SPF with -all and the sending IP is not in it.,Add the sending IP or service to your SPF record.
+Gmail,550,5.7.26,is not accepted due to domain's DMARC policy. Contact,policy,The From domain's DMARC policy rejects unauthenticated mail and this message failed DMARC.,Make SPF or DKIM pass and align with the From domain.
+Gmail,550,5.7.27,didn't pass SPF authentication,policy,SPF did not pass; Gmail requires SPF from bulk senders.,Fix SPF for your sending domains.
+Gmail,550,5.7.28,unusual rate of unsolicited email originating from your IP address,block,Gmail blocked your IP for an unusual rate of unsolicited mail.,Fix list and complaint problems; do not suppress the address.
+Gmail,550,5.7.29,wasn't sent over a TLS connection,policy,Gmail requires bulk senders to use TLS.,Send over TLS.
+Gmail,550,5.7.30,didn't pass DKIM authentication,policy,DKIM did not pass; Gmail requires DKIM from bulk senders.,Fix DKIM signing.
+Gmail,550,5.7.40,sending domain doesn't have a DMARC record,policy,Your sending domain has no DMARC record or no DMARC policy.,Publish a DMARC record with a policy.
+Gmail,504,5.7.40,Unrecognized authentication type,policy,The SMTP authentication method is not supported.,Use a supported method such as OAuth 2.0.
+Gmail,535,5.7.80,Username and Password not accepted,policy,The SMTP username or password was not accepted.,Fix the credentials.
+Gmail,534,5.7.90,Application-specific password required,policy,Google requires an app password or a browser sign-in.,Create an app password or sign in on the web.
+Microsoft,,4.7.5,Remote certificate failed MTA-STS validation,policy,The destination server's certificate failed the domain's MTA-STS check.,The recipient domain must fix its certificate; do not suppress.
+Microsoft,,4.7.26,must pass either SPF or DKIM validation,policy,Mail sent over IPv6 must pass SPF or DKIM.,Authenticate the mail.
+Microsoft,,4.7.321,starttls-not-supported,policy,The destination server does not complete STARTTLS.,The recipient server must support TLS.
+Microsoft,,4.7.322,certificate-expired,policy,The destination server's certificate has expired.,The recipient server must renew its certificate.
+Microsoft,,4.7.323,tlsa-invalid,policy,The domain failed DANE validation.,The recipient domain must fix its TLSA records.
+Microsoft,,4.7.324,dnssec-invalid,policy,The destination domain's DNSSEC records could not be verified.,The recipient domain must fix DNSSEC.
+Microsoft,,4.7.325,certificate-host-mismatch,policy,The destination certificate does not match the host name (DANE).,The recipient server must fix its certificate.
+Microsoft,,4.7.500-699,"Access denied, please try again later",block,Microsoft saw suspicious activity and temporarily restricted sending.,Retry later; check for compromise.
+Microsoft,,4.7.850-899,"Access denied, please try again later",block,Microsoft temporarily restricted the sending IP after suspicious activity.,Retry later; check the IP's traffic.
+Microsoft,,5.7.1,Delivery not authorized,policy,You are not allowed to send to this recipient (for example a restricted group).,Ask the recipient's admin; do not suppress.
+Microsoft,,5.7.1,Unable to relay,policy,The receiving system does not accept mail for that domain from you (it is not the final destination).,Check the recipient domain's MX and your connector; do not suppress.
+Microsoft,,5.7.1,Client was not authenticated,policy,The receiving server needs authentication before it accepts mail.,Authenticate your sending system.
+Microsoft,,5.7.5,Remote certificate failed MTA-STS validation,policy,The destination server's certificate failed the domain's MTA-STS check.,The recipient domain must fix its certificate; do not suppress.
+Microsoft,,5.7.12,Sender was not authenticated by organization,policy,The recipient accepts mail only from inside its organization.,Only the recipient's admin can change this; do not suppress.
+Microsoft,,5.7.23,Sender Policy Framework violation,policy,The message failed the destination's SPF check.,Fix your SPF record.
+Microsoft,,5.7.25,must have a reverse DNS record,policy,The sending IPv6 address has no reverse DNS record.,Publish reverse DNS for the IPv6 address.
+Microsoft,,5.7.57,Client was not authenticated to send anonymous mail during MAIL FROM,policy,A device or app relaying through smtp.office365.com is not set up correctly.,Fix the device's SMTP settings.
+Microsoft,,5.7.64,TenantAttribution; Relay Access Denied,policy,The inbound connector from your on-premises system no longer matches.,Fix the connector configuration.
+Microsoft,,5.7.124,Sender not in allowed-senders list,policy,You are not on the group's allowed-senders list.,Ask the group owner; do not suppress.
+Microsoft,,5.7.133,Sender not authenticated for group,policy,The group rejects mail from outside its organization.,Ask the recipient's admin; do not suppress.
+Microsoft,,5.7.134,Sender was not authenticated for mailbox,policy,The mailbox rejects mail from outside its organization.,Ask the recipient's admin; do not suppress.
+Microsoft,,5.7.135,Sender was not authenticated for public folder,policy,The public folder rejects mail from outside its organization.,Ask the recipient's admin; do not suppress.
+Microsoft,,5.7.136,Sender was not authenticated,policy,The mail user rejects mail from outside its organization.,Ask the recipient's admin; do not suppress.
+Microsoft,,5.7.232,trial tenant has exceeded its daily limit,policy,The trial tenant passed its daily external recipient limit.,Wait for the 24-hour window.
+Microsoft,,5.7.233,tenant exceeded its daily limit for sending email to external recipients,policy,The tenant passed its daily external recipient limit.,Wait for the 24-hour window.
+Microsoft,,5.7.236,onmicrosoft.com domains,policy,Sending from an onmicrosoft.com domain is limited to 100 external recipients a day.,Send from your own domain.
+Microsoft,,5.7.321,starttls-not-supported,policy,The destination server does not complete STARTTLS.,The recipient server must support TLS.
+Microsoft,,5.7.322,certificate-expired,policy,The destination server's certificate has expired.,The recipient server must renew its certificate.
+Microsoft,,5.7.323,tlsa-invalid,policy,The domain failed DANE validation.,The recipient domain must fix its TLSA records.
+Microsoft,,5.7.324,dnssec-invalid,policy,The destination domain's DNSSEC records could not be verified.,The recipient domain must fix DNSSEC.
+Microsoft,,5.7.325,certificate-host-mismatch,policy,The destination certificate does not match the host name (DANE).,The recipient server must fix its certificate.
+Microsoft,,5.7.367,Remote server returned not permitted to relay,policy,SPF or DKIM failed on forwarded or relayed mail.,Fix authentication on the forwarding path.
+Microsoft,,5.7.501,spam abuse detected,block,The sending account was banned for spam.,Resolve the account issue with support; do not suppress recipients.
+Microsoft,,5.7.502,"Access denied, banned sender",block,The sending account was banned for spam.,Resolve the account issue with support.
+Microsoft,,5.7.503,"Access denied, banned sender",block,The sending account was banned for spam.,Resolve the account issue with support.
+Microsoft,,5.7.504,Recipient address rejected: Access denied,hard,The recipient address is not valid.,Suppress the address.
+Microsoft,,5.7.505,"Access denied, banned recipient",hard,The recipient is not valid.,Suppress the address.
+Microsoft,,5.7.506,"Access Denied, Bad HELO",policy,Your server introduced itself (HELO) as the receiving server.,Send your own fully qualified name in HELO.
+Microsoft,,5.7.507,"Access denied, rejected by recipient",block,The recipient's organization blocked your sending IP.,Contact the recipient; do not suppress automatically.
+Microsoft,,5.7.508,has exceeded permitted limits within,block,Your IPv6 range sent too much mail too fast.,Slow down.
+Microsoft,,5.7.509,does not pass DMARC verification and has a DMARC policy of reject,policy,The From domain failed DMARC and its policy is reject.,Make SPF or DKIM pass and align with the From domain.
+Microsoft,,5.7.510,does not accept email over IPv6,policy,The recipient does not accept mail over IPv6.,Send over IPv4.
+Microsoft,,5.7.511,"Access denied, banned sender",block,Your sending IP is banned.,Request delisting through Microsoft's delist portal.
+Microsoft,,5.7.512,must be RFC 5322 section 3.6.2 compliant,policy,The message has no valid From address.,Send a valid From header.
+Microsoft,,5.7.513,using Customer Block list,block,The recipient domain added your IP to its own block list.,Ask the recipient to remove it.
+Microsoft,550,5.7.515,does not meet the required authentication level,policy,"Outlook.com rejected mail from a domain sending over 5,000 messages a day that does not meet its SPF, DKIM and DMARC requirements.",Pass SPF and DKIM and publish DMARC (at least p=none) aligned with the From domain.
+Microsoft,,5.7.520,does not allow external forwarding,policy,The sender's organization blocks automatic external forwarding.,Change the outbound spam filter policy or the forwarding rule.
+Microsoft,,5.7.606-649,banned sending IP,block,The sending IP is banned.,Fix the IP's reputation and request delisting.
+Microsoft,,5.7.703,Tenant Allow Block List,policy,Your own organization blocked the recipient in its Tenant Allow/Block List.,Change your Tenant Allow/Block List.
+Microsoft,,5.7.705,tenant has exceeded threshold,block,"Most traffic from the tenant looked suspicious, so its sending is banned.","Resolve compromises or open relays, then contact support."
+Microsoft,,5.7.708,traffic not accepted from this IP,block,Microsoft does not accept traffic from this IP (reputation).,Fix the IP's reputation or send from another IP; do not suppress the address.
+Microsoft,,5.7.750,Client blocked from sending from unregistered domains,block,Too much mail from domains not added to the tenant.,Add and verify every sending domain.
+Microsoft,,5.7.800,"Access denied, banned sender",block,The sender domain was banned for spam.,Contact Microsoft support.
+Microsoft,550,5.7.240,application is not allowed for use with an HVE account,policy,A High Volume Email restriction refused the message.,Fix the HVE setup or the recipient list.

@@ -1,0 +1,56 @@
+/* SMTP bounce classifier: one verdict per bounce, four colours carry the page's one idea. The
+   layout is tool-full (web/tool-full.css). */
+.sbc {
+  --accent: var(--h-file);
+  --endwise-accent: var(--h-file);
+  --v-hard: #ff7a6b;
+  --v-soft: #f2c46d;
+  --v-block: #c49bff;
+  --v-policy: #6fb8ff;
+  --v-ok: #6fd39a;
+}
+.sbc textarea { width: 100%; font: 13px/1.45 var(--font-mono); }
+.sbc select { width: 100%; }
+.sbc-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.sbc-verdict { font: 600 0.85rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; padding: 4px 10px; border: 1px solid var(--line-2); border-radius: 999px; white-space: nowrap; }
+.sbc-verdict.small { font-size: 0.7rem; padding: 2px 7px; }
+.sbc-verdict.v-hard { color: var(--v-hard); border-color: var(--v-hard); }
+.sbc-verdict.v-soft { color: var(--v-soft); border-color: var(--v-soft); }
+.sbc-verdict.v-block { color: var(--v-block); border-color: var(--v-block); }
+.sbc-verdict.v-policy { color: var(--v-policy); border-color: var(--v-policy); }
+.sbc-verdict.v-delivered { color: var(--v-ok); border-color: var(--v-ok); }
+.sbc-tag { font: 12px/1.4 var(--font-mono); color: var(--muted); }
+.sbc-codes, .sbc-table { border-collapse: collapse; font-size: 14px; width: 100%; }
+.sbc-codes th, .sbc-codes td, .sbc-table th, .sbc-table td { text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid var(--line-2); vertical-align: top; overflow-wrap: anywhere; }
+.sbc-codes th { color: var(--muted); font-weight: 500; white-space: nowrap; }
+.sbc-scroll { overflow-x: auto; }
+.sbc-note { font-size: 13px; color: var(--muted); }
+.sbc-warn { border-left: 3px solid var(--v-soft); padding: 4px 0 4px 18px; margin: 12px 0; font-size: 14px; }
+.sbc-variants { border-top: 1px solid var(--line-2); margin-top: 16px; padding-top: 10px; }
+.sbc-variants h3, .sbc-suppress h3 { font-size: 1rem; margin: 0 0 6px; }
+.sbc-totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; margin: 12px 0; }
+.sbc-total { border: 1px solid var(--line-2); border-radius: 8px; padding: 8px 10px; display: grid; }
+.sbc-total.v-hard { border-color: var(--v-hard); }
+.sbc-total.v-soft { border-color: var(--v-soft); }
+.sbc-total.v-block { border-color: var(--v-block); }
+.sbc-total.v-policy { border-color: var(--v-policy); }
+.sbc-big { font: 600 1.8rem/1 var(--font-mono); font-variant-numeric: tabular-nums; }
+.sbc-suppress p { overflow-wrap: anywhere; font-family: var(--font-mono); font-size: 13px; }
+.sbc-lookup-form { display: grid; gap: 0 16px; align-items: end; }
+@media (min-width: 760px) { .sbc-lookup-form { grid-template-columns: minmax(0, 18rem) auto; } .sbc-lookup-form .btn { justify-self: start; margin-bottom: 18px; } }
+.sbc-lookup-out { overflow-x: auto; }
+
+.sbc-out .tf-sub { overflow-wrap: anywhere; }
+.sbc-items { margin-top: 18px; }
+.sbc-items code { font-size: 12.5px; }
+.tf-big b.sbc-big-v { font-size: 44px; }
+.tf-big b.v-hard { color: var(--v-hard); } .tf-big b.v-soft { color: var(--v-soft); }
+.tf-big b.v-block { color: var(--v-block); } .tf-big b.v-policy { color: var(--v-policy); } .tf-big b.v-delivered { color: var(--v-ok); }
+.sbc-out details.xpand { margin-top: 14px; }
+.sbc-lookup-box, .sbc-steps, .sbc-price { padding: 22px; }
+.sbc-steps ol { margin: 0; padding-left: 1.3em; color: var(--muted); }
+.sbc-steps li { margin-bottom: 8px; }
+.sbc-steps b { color: var(--text); font-weight: 500; }
+.sbc-price ul { margin: 0; padding-left: 1.2em; color: var(--muted); }
+.tf-open .sbc-about { order: 3; margin-top: 12px; }
+@media (max-width: 640px) { .sbc-lookup-box, .sbc-steps, .sbc-price { padding: 16px; } .tf-big b.sbc-big-v { font-size: 34px; } }

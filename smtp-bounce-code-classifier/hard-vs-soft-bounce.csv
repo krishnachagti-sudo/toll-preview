@@ -1,0 +1,5 @@
+verdict,when,suppress,send_again,provider_texts
+hard,"The address is bad (does not exist, domain gone, null MX)",Suppress now,No,16
+soft,"Temporary or mailbox-level (full, busy, timeout, deferral)",Only after repeated failures,"Yes, with backoff",18
+block,"The receiver refuses the sender (reputation, content, volume, block lists)",No,After fixing the sender,28
+policy,"A rule the sending setup breaks (SPF, DKIM, DMARC, TLS, size, format, relay)",No,After fixing the setup,108

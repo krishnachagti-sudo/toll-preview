@@ -5,30 +5,25 @@
   --endwise-accent: var(--h-date);
 }
 
-.fm-intro { padding-block: 40px 8px; }
-.fm-intro h1 { margin-bottom: 0.25em; }
-.fm-price { color: var(--ink-soft); max-width: 46rem; margin: 0 0 6px; }
 
-.fm-desk { display: grid; gap: 32px; margin-top: 28px; align-items: start; }
 .fm-desk > * { min-width: 0; }
-@media (min-width: 1000px) { .fm-desk { grid-template-columns: 30rem 1fr; gap: 48px; } }
-
-.fm-form { border-top: 3px double var(--rule-strong); padding-top: 18px; }
+.fm-form h2, .fm-record h2, .fm-small h2 { font-size: 18px; margin: 0 0 14px; }
+#more > .tf-calc { margin-top: 0; }
+#record, #hours { margin-top: 24px; }
 .fm-step { font: 500 0.78rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin: 18px 0 6px; }
 .fm-step:first-child { margin-top: 0; }
-.fm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 0 14px; }
+.fm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: 0 12px; }
 .fm-wide { grid-column: 1 / -1; }
 .fm-narrow { max-width: 24rem; }
 .fm textarea { width: 100%; font-family: var(--font-mono); font-size: 13px; }
 .fm input[type="date"] { color-scheme: dark; }
 .fm-check { display: flex; gap: 8px; align-items: baseline; color: var(--ink-soft); margin: 4px 0 8px; font-size: 0.95rem; }
-.fm-more summary, .fm-why summary { cursor: pointer; color: var(--ink-soft); margin: 6px 0; }
+.fm-why summary { cursor: pointer; color: var(--ink-soft); margin: 6px 0; }
+.fm-form textarea[rows="1"] { min-height: 44px; resize: vertical; }
 
 .fm-out { min-height: 12rem; }
-.fm-label { display: inline-block; font: 500 0.75rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); border: 1px solid var(--accent); padding: 1px 8px; border-radius: 999px; margin: 0 0 10px; }
-.fm-answer { font: 500 clamp(2.2rem, 8vw, 3.4rem)/1.05 var(--font-display); letter-spacing: -0.02em; margin: 0 0 8px; font-variant-numeric: tabular-nums lining-nums; }
+.fm-label { margin: 0; font: 600 15px/1.4 var(--font-text); color: var(--text-2); }
 .fm-answer.yes { color: var(--accent); }
-.fm-answer small { display: block; font: 400 1rem/1.4 var(--font-text); letter-spacing: 0; color: var(--ink-soft); }
 .fm-sub, .fm-aside { color: var(--ink-soft); margin: 0 0 14px; max-width: 46rem; }
 .fm-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 14px; }
 .fm-facts dt { font: 500 0.72rem/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); }

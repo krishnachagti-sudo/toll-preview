@@ -9,6 +9,7 @@
 <link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/toll-preview/assets/fonts.css">
 <link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
 <link rel="stylesheet" href="/toll-preview/business-days/files/page.css">
 <script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"business-days"}</script>
 <script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
@@ -66,7 +67,7 @@
   </div>
 </header>
 
-<main id="main" class="bd">
+<main id="main" class="bd tf hue-date">
   <section class="wrap bd-intro">
     <p class="eyebrow">हर बार चलाने पर, संदर्भ डेटा</p>
     <h1>कार्य दिवस (वर्किंग डेज़) कैलकुलेटर</h1>
@@ -75,8 +76,8 @@
     <p class="hint"><a href="/toll-preview/business-days/" hreflang="en" lang="en">Use this calculator in English</a></p>
   </section>
 
-  <section class="wrap bd-desk" aria-label="कैलकुलेटर">
-    <form class="bd-form" id="bd-form" novalidate>
+  <section class="wrap bd-desk tf-calc" aria-label="कैलकुलेटर">
+    <form class="bd-form tf-panel tf-form" id="bd-form" novalidate>
       <fieldset class="field">
         <legend>आप क्या करना चाहते हैं?</legend>
         <div class="choice-row">
@@ -123,12 +124,12 @@
       </div>
 
       <p class="form-error" id="bd-error" role="alert"></p>
-      <button class="btn" type="submit" id="bd-run">कार्य दिवस गिनें</button>
+      <button class="btn tf-go" type="submit" id="bd-run">कार्य दिवस गिनें</button>
       <p class="hint bd-run-note" id="bd-run-note"></p>
       <p class="visually-hidden" id="bd-status" role="status"></p>
     </form>
 
-    <div class="bd-out" id="bd-out">
+    <div class="bd-out tf-panel tf-result" id="bd-out">
       <p class="muted">हल किया हुआ उदाहरण लोड हो रहा है।</p>
     </div>
   </section>
@@ -249,6 +250,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>

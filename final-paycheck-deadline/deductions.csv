@@ -1,0 +1,31 @@
+state,name,rule_kind,law,unreturned_equipment,advance_or_negative_pto,shortage_or_damage,overpayment
+AK,Alaska,not read,,no deduction rule read,no deduction rule read,no deduction rule read,no deduction rule read
+AZ,Arizona,authorization,A.R.S. 23-352,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+CO,Colorado,notice-audit,C.R.S. 8-4-109,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+CT,Connecticut,authorization,C.G.S. 31-71e,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+DE,Delaware,authorization,19 Del. C. 1107,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+DC,District of Columbia,not read,,no deduction rule read,no deduction rule read,no deduction rule read,no deduction rule read
+ID,Idaho,authorization,Idaho Code 45-609,the general deduction rule applies,allowed,the general deduction rule applies,the general deduction rule applies
+IL,Illinois,authorization-at-time,820 ILCS 115/9; 56 Ill. Adm. Code 300,not allowed,only if the advance agreement provided for it,only with written consent at the time,allowed if the employee agrees
+IA,Iowa,authorization,Iowa Code 91A.5,only if assigned and acknowledged in writing,the general deduction rule applies,not allowed,the general deduction rule applies
+KS,Kansas,authorization,K.S.A. 44-319,allowed after written notice,allowed after written notice,the general deduction rule applies,allowed after written notice
+ME,Maine,limited,"26 M.R.S. 626, 629",not a debt the employee owes,allowed with a signed writing,the general deduction rule applies,the general deduction rule applies
+MD,Maryland,authorization,"Md. Code, Lab. & Empl. 3-503",the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+MN,Minnesota,after-loss,Minn. Stat. 181.79,only with written consent after the loss,allowed if authorized in writing before the loan,the general deduction rule applies,the general deduction rule applies
+MT,Montana,limited,"Mont. Code Ann. 39-3-204, 39-3-205(3)",the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+NJ,New Jersey,list,N.J.S.A. 34:11-4.4,not on the allowed list,only on the original loan schedule,the general deduction rule applies,allowed (on the list)
+NY,New York,not read,,no deduction rule read,no deduction rule read,no deduction rule read,no deduction rule read
+NC,North Carolina,nc,G.S. 95-25.8,allowed with a specific signed authorization,the general deduction rule applies,allowed with written authorization,the general deduction rule applies
+ND,North Dakota,list,N.D.C.C. 34-14-04.1,allowed with a specific signed authorization,allowed,only with written consent at the time,the general deduction rule applies
+OK,Oklahoma,not read,,no deduction rule read,no deduction rule read,no deduction rule read,no deduction rule read
+OR,Oregon,authorization,ORS 652.610,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+PA,Pennsylvania,not read,,no deduction rule read,no deduction rule read,no deduction rule read,no deduction rule read
+SC,South Carolina,notice,S.C. Code 41-10-40(C),the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+SD,South Dakota,property,"SDCL 60-11-10, 60-11-11",the check may be held until the property is returned,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+TN,Tennessee,authorization,Tenn. Code Ann. 50-2-110,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+TX,Texas,authorization,Tex. Lab. Code 61.018,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+VT,Vermont,floor,21 V.S.A. 342,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+VA,Virginia,authorization,Va. Code 40.1-29(C),the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+WA,Washington,agreed,RCW 49.48.010(3),the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+WV,West Virginia,wv,"W. Va. Code 21-5-1(g), 21-5-4(f)",allowed under a signed itemized agreement and written notice,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies
+WY,Wyoming,offset,W.S. 27-4-104(a),the general deduction rule applies,the general deduction rule applies,the general deduction rule applies,the general deduction rule applies

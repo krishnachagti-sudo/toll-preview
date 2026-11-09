@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overtime audit from a timesheet CSV: daily, weekly, double time and 7th day: Endwise</title>
+<meta name="description" content="Upload a timesheet export for many employees and weeks: regular, overtime and double-time hours owed under federal, California, Alaska, Colorado and Kentucky rules, the weeks payroll underpaid, and W-2 code TT.">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="/toll-preview/assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/toll-preview/assets/fonts.css">
+<link rel="stylesheet" href="/toll-preview/assets/base.css">
+<link rel="stylesheet" href="/toll-preview/assets/tool-full.css">
+<link rel="stylesheet" href="/toll-preview/overtime-auditor/files/page.css">
+<script>window.ENDWISE={"base":"/toll-preview","brand":"Endwise","tool":"overtime-auditor"}</script>
+<script>(function(r){r.classList.add('js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('motion')}catch(e){}})(document.documentElement)</script>
+<link rel="stylesheet" href="/toll-preview/assets/motion.css">
+<script src="/toll-preview/assets/nav.js" defer></script>
+<script src="/toll-preview/assets/motion.js" defer></script>
+<link rel="canonical" href="https://krishnachagti-sudo.github.io/toll-preview/overtime-auditor/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Endwise">
+<meta property="og:title" content="Overtime auditor for timesheet CSVs">
+<meta property="og:description" content="Audit a timesheet export (many employees, many weeks, punches or hours) for the regular, overtime and double-time hours owed under the federal weekly rule and the California (daily, double time, seventh day, alternative workweek), Alaska, Colorado and Kentucky rules, flag the weeks payroll underpaid, and total the FLSA-only premium for W-2 box 12, code TT.">
+<meta property="og:url" content="https://krishnachagti-sudo.github.io/toll-preview/overtime-auditor/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/","publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"WebPage","@id":"https://krishnachagti-sudo.github.io/toll-preview/overtime-auditor/","url":"https://krishnachagti-sudo.github.io/toll-preview/overtime-auditor/","name":"Overtime auditor for timesheet CSVs","description":"Audit a timesheet export (many employees, many weeks, punches or hours) for the regular, overtime and double-time hours owed under the federal weekly rule and the California (daily, double time, seventh day, alternative workweek), Alaska, Colorado and Kentucky rules, flag the weeks payroll underpaid, and total the FLSA-only premium for W-2 box 12, code TT.","dateModified":"2026-11-09","inLanguage":"en","isPartOf":{"@type":"WebSite","@id":"https://krishnachagti-sudo.github.io/toll-preview/#website","name":"Endwise","url":"https://krishnachagti-sudo.github.io/toll-preview/"},"publisher":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Endwise","item":"https://krishnachagti-sudo.github.io/toll-preview/"},{"@type":"ListItem","position":2,"name":"Overtime auditor for timesheet CSVs","item":"https://krishnachagti-sudo.github.io/toll-preview/overtime-auditor/"}]},{"@type":"WebApplication","name":"Overtime auditor for timesheet CSVs","url":"https://krishnachagti-sudo.github.io/toll-preview/overtime-auditor/","description":"Audit a timesheet export (many employees, many weeks, punches or hours) for the regular, overtime and double-time hours owed under the federal weekly rule and the California (daily, double time, seventh day, alternative workweek), Alaska, Colorado and Kentucky rules, flag the weeks payroll underpaid, and total the FLSA-only premium for W-2 box 12, code TT.","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":false,"provider":{"@type":"Organization","@id":"https://conyso.com/#organization","name":"Conyso","url":"https://conyso.com/"},"offers":[{"@type":"Offer","name":"One week checked on this page","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"The state rule table","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Totals for a timesheet file (no per-week detail)","price":"0","priceCurrency":"USD"},{"name":"One week checked over the API or MCP","@type":"Offer","price":"0.002","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.002","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"call"}}},{"name":"Timesheet audit (every employee-week with the rule behind each hour, shortfall, code TT per employee, results CSV)","@type":"Offer","price":"0.1","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"0.1","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitText":"employee-week"}}}]}]}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap nav-row">
+    <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="26" height="26"><span class="brand">Endwise</span></a>
+    <nav class="head-nav" aria-label="Main">
+      <a href="/toll-preview/tools/" class="nav-tools" aria-haspopup="true" aria-expanded="false" aria-controls="nav-tools-panel">Tools<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></a>
+      <a href="/toll-preview/pricing/">Pricing</a>
+      <a href="/toll-preview/developers/">Developers</a>
+    </nav>
+    <a class="nav-search" href="/toll-preview/tools/" role="button" aria-label="Search tools and answers" aria-haspopup="dialog"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M12.2 12.2L16 16"/></svg><span class="ph">Search tools and answers</span><kbd>/</kbd></a>
+    <div class="nav-cta">
+      <span data-endwise-chip><a class="endwise-chip-link" href="/toll-preview/account">Sign in</a></span>
+      <a class="btn nav-start" href="/toll-preview/account">Get started</a>
+    </div>
+    <details class="menu">
+      <summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h12M3 12h12"/></svg></summary>
+      <nav class="menu-panel" aria-label="Menu">
+        <div class="menu-tools" data-nav-tools></div>
+        <a href="/toll-preview/tools/">All tools</a>
+        <a href="/toll-preview/pricing/">Pricing</a>
+        <a href="/toll-preview/developers/">Developers</a>
+        <a href="/toll-preview/docs">Docs</a>
+        <a class="btn btn-lg nav-start" href="/toll-preview/account">Get started</a>
+      </nav>
+    </details>
+  </div>
+  <div class="nav-tools-panel" id="nav-tools-panel" hidden>
+    <div class="ntp-groups" data-nav-tools></div>
+    <div class="ntp-side">
+      <p class="ntp-cat">Looking for something?</p>
+      <a class="ntp-find" href="/toll-preview/tools/" data-nav-open-search>Search tools and answers<kbd>/</kbd></a>
+      <a class="ntp-link" href="/toll-preview/tools/">All tools, side by side</a>
+      <a class="ntp-link" href="/toll-preview/pricing/">How pricing works</a>
+      <a class="ntp-link" href="/toll-preview/docs">Use them from code</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="oa tf hue-money">
+  <section class="wrap tf-open">
+    <p class="eyebrow">Payroll check, by workweek</p>
+    <h1>Overtime auditor</h1>
+    <p class="lede">The regular, overtime and double-time hours each person was owed every workweek, <b>with the rule behind every overtime hour</b>, the weeks paid short and the FLSA premium for W-2 box 12, code TT.</p>
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
+    <p data-prices class="tf-price" id="oa-price"><span class="price">One week free on this page</span><span>Full audit $0.10 an employee-week</span><span>5 free runs a day, no card needed</span></p>
+  </section>
+
+  <section class="wrap tf-calc oa-desk" data-jump="Tool" aria-labelledby="oa-week-title">
+    <form class="tf-panel tf-form oa-form" id="oa-form" novalidate>
+      <h2 class="visually-hidden" id="oa-week-title">Check one week</h2>
+      <div class="tf-two">
+        <div class="field">
+          <label for="oa-state">Work state</label>
+          <select id="oa-state"></select>
+        </div>
+        <div class="field">
+          <label for="oa-rate">Hourly rate ($)</label>
+          <input type="text" id="oa-rate" value="22" inputmode="decimal">
+        </div>
+      </div>
+      <fieldset class="field">
+        <legend>Hours each day</legend>
+        <div class="oa-days" id="oa-days" aria-describedby="oa-days-hint"></div>
+        <p class="hint tf-long" id="oa-days-hint">8.5, 8:30 or 7 am - 5:30 pm. Blank for a day off.</p>
+      </fieldset>
+      <p class="field-error" id="oa-err" role="alert"></p>
+      <button class="btn tf-go" type="submit">Work out the week</button>
+      <p class="hint tf-run-note oa-run-note">Free on this page.</p>
+      <details class="xpand oa-options">
+        <summary>Week start, bonus pay, alternative workweek</summary>
+        <div class="xp-in">
+          <div class="tf-two">
+            <div class="field">
+              <label for="oa-start">Workweek starts</label>
+              <input type="date" id="oa-start" value="2026-11-01">
+            </div>
+            <div class="field">
+              <label for="oa-extra">Bonus or shift pay ($)</label>
+              <input type="text" id="oa-extra" value="" inputmode="decimal">
+            </div>
+          </div>
+          <p class="hint">California alternative workweek: only for a schedule adopted by a two-thirds secret-ballot vote under Labor Code 511(a). The auditor does not check that the election was valid.</p>
+          <div class="tf-two">
+            <div class="field">
+              <label for="oa-aws">Scheduled day (8.5 to 10 h)</label>
+              <input type="text" id="oa-aws" value="" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="oa-awsdays">Scheduled workdays a week</label>
+              <input type="text" id="oa-awsdays" value="" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </details>
+    </form>
+
+    <div class="tf-panel tf-result oa-out" id="oa-out" aria-live="polite">
+      <div class="tf-rh"><span class="tf-tag">Example</span><span class="tf-src">California Labor Code 510(a), 29 CFR 778</span></div>
+      <p class="tf-exin">Example: California, $22 an hour, week from Sunday, November 1, 2026: 10, 10, 13, 8, 8, 9 and 6 hours</p>
+      <p class="tf-big"><b>$1,683.00</b><span>owed for 64 hours</span></p>
+      <p class="tf-sub" id="oa-answer">For Sun 10.00, Mon 10.00, Tue 13.00, Wed 8.00, Thu 8.00, Fri 9.00, Sat 6.00 at $22.00/hour in California the hours are 40.00 regular, 23.00 overtime (1.5x) and 1.00 double time (2x): $1,683.00.</p>
+      <ol class="tf-items oa-items">
+        <li><span class="k" aria-hidden="true">1x</span><span>Regular hours</span><b>40.00 h</b><em>At the regular rate of $22.00 (29 CFR 778.109)</em></li>
+        <li class="hi"><span class="k" aria-hidden="true">1.5</span><span>Overtime hours (1.5x)</span><b>23.00 h</b><em>California Labor Code 510(a): over 8 hours in a workday at 1.5x; Over 40 hours in the workweek at 1.5x (29 CFR 778.101; the state's weekly rule where it has one); California Labor Code 510(a): first 8 hours on the seventh day of work in the workweek at 1.5x</em></li>
+        <li><span class="k" aria-hidden="true">2x</span><span>Double-time hours (2x)</span><b>1.00 h</b><em>California Labor Code 510(a): over 12 hours in a workday at 2x</em></li>
+        <li class="tot"><span class="k" aria-hidden="true">TT</span><span>Qualified overtime, W-2 code TT</span><b>$264.00</b><em>24.00 FLSA overtime hours x half the regular rate (IRS FS-2026-13)</em></li>
+      </ol>
+      <details class="xpand oa-fold">
+        <summary>Day by day, with the rule for each hour</summary>
+        <div class="xp-in">
+      <div class="oa-table-wrap">
+        <table class="oa-table" id="oa-days-table">
+          <caption>Worked example: a California week worked all seven days, workweek starting Sunday, November 1, 2026</caption>
+          <thead><tr><th>Day</th><th class="num">Hours</th><th class="num">Regular</th><th class="num">Overtime</th><th class="num">Double</th><th>Rule</th></tr></thead>
+          <tbody>
+            <tr><td>Sun, Nov 1</td><td class="num">10.00</td><td class="num">8.00</td><td class="num">2.00</td><td class="num">0.00</td><td>Labor Code 510(a): over 8 in a workday</td></tr>
+            <tr><td>Mon, Nov 2</td><td class="num">10.00</td><td class="num">8.00</td><td class="num">2.00</td><td class="num">0.00</td><td>Labor Code 510(a): over 8 in a workday</td></tr>
+            <tr><td>Tue, Nov 3</td><td class="num">13.00</td><td class="num">8.00</td><td class="num">4.00</td><td class="num">1.00</td><td>Over 8 at 1.5x; over 12 at 2x</td></tr>
+            <tr><td>Wed, Nov 4</td><td class="num">8.00</td><td class="num">8.00</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+            <tr><td>Thu, Nov 5</td><td class="num">8.00</td><td class="num">8.00</td><td class="num">0.00</td><td class="num">0.00</td><td></td></tr>
+            <tr><td>Fri, Nov 6</td><td class="num">9.00</td><td class="num">0.00</td><td class="num">9.00</td><td class="num">0.00</td><td>1 hour over 8 in the day; 8 hours over 40 in the week</td></tr>
+            <tr><td>Sat, Nov 7</td><td class="num">6.00</td><td class="num">0.00</td><td class="num">6.00</td><td class="num">0.00</td><td>Seventh day of work in the workweek: first 8 hours at 1.5x</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tf-cost">64 hours: $22 for every hour ($1,408.00) plus half the rate on 23 overtime hours and the full rate again on 1 double-time hour ($275.00). Of that premium, 24 FLSA overtime hours x $11 = $264.00 is qualified overtime for W-2 code TT; the rest is California-only premium.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec oa-file" data-jump="File" aria-labelledby="oa-file-title">
+    <p class="eyebrow">Many employees and weeks</p>
+    <h2 id="oa-file-title">Audit a timesheet file</h2>
+    <p class="tf-p oa-file-lede">Columns it reads (any order, common export names too): <code>employee</code>, <code>date</code>, <code>state</code>, then <code>hours</code> or <code>in</code> and <code>out</code>, and if you have them <code>break minutes</code>, <code>rate</code>, <code>extra pay</code>, <code>paid regular hours</code>, <code>paid overtime hours</code>, <code>paid double time hours</code> or <code>paid amount</code>, <code>aws day hours</code>, <code>aws days</code> and <code>exempt</code>. The file is sent once, used for this answer in memory and not kept.</p>
+    <p class="tf-p small"><a href="#" id="oa-template">Download a sample CSV</a> (three made-up employees in California, Colorado and Kentucky).</p>
+    <div class="tf-panel tf-form oa-file-panel">
+    <div class="oa-file-grid">
+      <div class="field">
+        <label for="oa-file-in">CSV file</label>
+        <input type="file" id="oa-file-in" accept=".csv,text/csv,.txt">
+      </div>
+      <div class="field">
+        <label for="oa-ws">Workweek starts on</label>
+        <select id="oa-ws">
+          <option value="sunday" selected>Sunday</option><option value="monday">Monday</option><option value="tuesday">Tuesday</option><option value="wednesday">Wednesday</option><option value="thursday">Thursday</option><option value="friday">Friday</option><option value="saturday">Saturday</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="oa-default-state">State when the file has none</label>
+        <select id="oa-default-state"></select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="oa-csv">Or paste the CSV</label>
+      <textarea id="oa-csv" rows="8" spellcheck="false"></textarea>
+    </div>
+    <p class="field-error" id="oa-file-err" role="alert"></p>
+    <div class="oa-actions">
+      <button class="btn" type="button" id="oa-preview">Show the totals (free)</button>
+      <button class="btn btn-ghost" type="button" id="oa-audit">Run the full audit</button>
+    </div>
+    <p class="small muted" id="oa-audit-price">The full audit is priced by employee-week; signed in, the exact amount shows here before you run it.</p>
+    <div id="oa-file-out" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="wrap tf-sec oa-rules" data-jump="Rules" aria-labelledby="oa-rules-title">
+    <div class="tf-top">
+      <div>
+        <p class="eyebrow">The rules</p>
+        <h2 id="oa-rules-title">The rules it applies, <span class="dim">hour by hour.</span></h2>
+        <p class="tf-p">Every other state, Nevada included, gets the federal weekly rule only and is named in the results: Nevada's statute (NRS 608.018) and its Labor Commissioner's site refused our reads, so its daily rule is not guessed. <span id="oa-rules-link"></span></p>
+      </div>
+      <aside class="tf-panel tf-note-card warn" aria-labelledby="oa-limits-title">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 19.5h18.4zM12 10v4.5m0 2.5h0"/></svg></span>
+        <div>
+          <h3 id="oa-limits-title">What it does not cover</h3>
+          <p>Exemptions, wage orders, union agreements, meal and rest premiums, and Nevada's daily rule.</p>
+          <details class="xpand"><summary>Read the full notes</summary><div class="xp-in">
+            <ul class="oa-notes">
+      <li>An audit aid worked out from the rows given and the rules quoted with the date they were read. Not legal, tax or payroll advice.</li>
+      <li>It assumes every row is a non-exempt employee covered by the FLSA and by the state rule shown. It does not decide exemptions, wage orders, union agreements, or whether an alternative workweek was validly adopted. A shift belongs to the date in its row (its workday).</li>
+      <li>The regular rate is the FLSA one. Pay not in the file, and California's own regular-rate and meal or rest premium rules, are not counted.</li>
+      <li>Code TT is the FLSA premium only: hours over 40 in the workweek x one-half x the FLSA regular rate (IRS FS-2026-13, Q12 and Q16). California daily and double-time premium on hours not over 40 is not qualified overtime.</li>
+      <li>Sources, read November 8, 2026: <a href="https://www.ecfr.gov/current/title-29/subtitle-B/chapter-V/subchapter-B/part-778">29 CFR Part 778 (eCFR)</a>; <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&amp;sectionNum=510">California Labor Code 510</a>, 511 and 500 (from the Legislature's own data download); <a href="https://labor.alaska.gov/lss/forms/pam100.pdf">Alaska DOLWD Pamphlet 100</a> (October 2025); <a href="https://www.sos.state.co.us/CCR/DisplayRule.do?action=ruleinfo&amp;ruleId=2509">Colorado COMPS Order #40</a> (effective February 1, 2026); <a href="https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=32049">KRS 337.050</a> and <a href="https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=54508">337.285</a>; <a href="https://www.irs.gov/pub/taxpros/fs-2026-13.pdf">IRS FS-2026-13</a> (August 2026).</li>
+    </ul>
+          </div></details>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tf-cards">
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6.5h14v13H5zM5 10h14M9 4v4M15 4v4"/></svg></span>
+        <div>
+          <h3>Federal, everywhere</h3>
+          <p>Over 40 hours in a fixed workweek at 1.5 times the regular rate.</p>
+          <details class="xpand"><summary>Read the full rule</summary><div class="xp-in"><p>Over 40 hours in a fixed workweek of 168 hours at 1.5 times the regular rate (29 CFR 778.101 and 778.105). Each workweek stands alone (778.104). The regular rate is all straight-time pay in the week, including extra pay such as a nondiscretionary bonus or shift pay, divided by all hours worked (778.109, 778.115).</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17zM12 7.5V12l3 2"/></svg></span>
+        <div>
+          <h3>California</h3>
+          <p>Over 8 in a day, over 40 in the week, and the seventh day; over 12 a day at 2x.</p>
+          <details class="xpand"><summary>Read the full rule</summary><div class="xp-in"><p>Labor Code 510(a): over 8 hours in a workday, over 40 in the workweek, and the first 8 hours on the seventh day of work in the workweek at 1.5x; over 12 hours in a day and over 8 on that seventh day at 2x. The seventh-day rule needs all seven days of one workweek worked, not seven days in a row. Under an alternative workweek (511): over the scheduled hours up to 12 at 1.5x, over 12 at 2x, and a day beyond the scheduled workdays at 1.5x for 8 hours and 2x after.</p></div></details>
+        </div>
+      </article>
+      <article class="tf-panel tf-note-card">
+        <span class="ni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg></span>
+        <div>
+          <h3>Alaska, Colorado, Kentucky</h3>
+          <p>Each with its own daily or seventh-day rule, read from the state's own text.</p>
+          <details class="xpand"><summary>Read the full rule</summary><div class="xp-in"><p>Alaska AS 23.10.060(b): over 8 a day and over 40 a week, the weekly count leaving out the daily overtime hours; not for employers of fewer than four. Colorado COMPS Order #40 Rule 4: over 40 a workweek, 12 a workday or 12 consecutive hours, whichever pays more. Kentucky KRS 337.050: all time on the seventh day of work in the workweek at 1.5x, unless the week is 40 hours or fewer; KRS 337.285: over 40 a week.</p></div></details>
+        </div>
+      </article>
+    </div>
+
+    <div class="tf-panel oa-prices tf-mt">
+      <h3>Prices</h3>
+      <ul class="endwise-prices"><li><strong>One week checked on this page</strong>: free.</li><li><strong>The state rule table</strong>: free.</li><li><strong>Totals for a timesheet file (no per-week detail)</strong>: free.</li><li><strong>One week checked over the API or MCP</strong>: $0.002 per call.</li><li><strong>Timesheet audit (every employee-week with the rule behind each hour, shortfall, code TT per employee, results CSV)</strong>: $0.10 per employee-week for the first 500 each calendar month, then $0.05 per employee-week up to 5,000, then $0.02 per employee-week, at least 5 x the price per employee-week for each file; you pay only for what is delivered and the rest is refunded at once.</li></ul>
+    </div>
+  </section>
+
+<section class="wrap cp-index" data-jump="California" aria-labelledby="cp-index-title"><h2 id="cp-index-title">California</h2>
+<h3>California overtime</h3><ul class="cp-rows"><li><a href="/toll-preview/overtime-auditor/california-overtime-calculator/" title="California Overtime Calculator 2026: Daily, Weekly, Double Time and 7th Day">California overtime calculator</a></li><li><a href="/toll-preview/overtime-auditor/california-double-time/" title="California Double Time Calculator: When 2x Pay Applies">Double time</a></li><li><a href="/toll-preview/overtime-auditor/california-7th-day-overtime/" title="California 7th Day Overtime Rule: Checker and Examples">The seventh-day rule</a></li><li><a href="/toll-preview/overtime-auditor/california-alternative-workweek/" title="California Alternative Workweek (4/10): Overtime Calculator and Rules">Alternative workweek (4/10)</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="States" aria-labelledby="cp-index-title-2"><h2 id="cp-index-title-2">States</h2>
+<h3>State rules</h3><ul class="cp-rows"><li><a href="/toll-preview/overtime-auditor/daily-overtime-states/" title="Which States Have Daily Overtime? California, Alaska, Colorado (and Nevada, Unread)">Which states have daily overtime</a></li><li><a href="/toll-preview/overtime-auditor/colorado-overtime-calculator/" title="Colorado Overtime Calculator: 12-Hour and 12-Consecutive-Hour Rules">Colorado overtime calculator</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Pay" aria-labelledby="cp-index-title-3"><h2 id="cp-index-title-3">Pay</h2>
+<h3>Pay and tax</h3><ul class="cp-rows"><li><a href="/toll-preview/overtime-auditor/california-regular-rate/" title="California Regular Rate of Pay Calculator (Bonuses, Shift Pay, Two Rates)">The regular rate</a></li><li><a href="/toll-preview/overtime-auditor/qualified-overtime-calculator/" title="Qualified Overtime Calculator: No Tax on Overtime, FLSA vs California Daily (W-2 Code TT)">Qualified overtime (code TT)</a></li><li><a href="/toll-preview/overtime-auditor/overtime-calculator-excel/" title="California Overtime in Excel: Formulas That Work (and a CSV Auditor When They Don't)">Overtime formulas in Excel</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Guides" aria-labelledby="cp-index-title-4"><h2 id="cp-index-title-4">Guides</h2>
+<ul class="cp-rows"><li><a href="/toll-preview/overtime-auditor/guides/california-rules/" title="California overtime in one page: daily, weekly and seventh day">California overtime in one page</a></li><li><a href="/toll-preview/overtime-auditor/guides/audit-last-quarter/" title="How to audit last quarter's overtime from a timesheet export">Audit last quarter's overtime</a></li><li><a href="/toll-preview/overtime-auditor/guides/multi-state/" title="Overtime for staff working in more than one state">Staff in more than one state</a></li></ul>
+</section>
+<section class="wrap cp-index" data-jump="Dates" aria-labelledby="cp-index-title-5"><h2 id="cp-index-title-5">Dates</h2>
+<div class="acards"><a class="acard" href="/toll-preview/overtime-auditor/holiday-season-overtime-2026/"><span class="aq">Holiday-season overtime 2026</span><span class="av num">November 26, 2026</span><span class="al">Thanksgiving</span></a><a class="acard" href="/toll-preview/overtime-auditor/year-end-overtime-audit-2026/"><span class="aq">Year-end overtime audit 2026</span><span class="av num">2026</span><span class="al">First W-2 year for code TT</span></a></div>
+</section>
+
+  <section class="wrap tf-code oa-code" data-jump="Code" aria-label="Use this from code">
+    <div id="oa-code"></div>
+  </section>
+  <noscript><div class="wrap"><p>The forms need JavaScript. You can also call the auditor from code: see <a href="/toll-preview/docs">the docs</a>.</p></div></noscript>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="/toll-preview/"><img class="logo-mark" src="/toll-preview/assets/mark.svg" alt="" width="22" height="22"><span class="brand">Endwise</span></a>
+        <p class="about">Small, exact tools for specific jobs, paid per use from one balance. A Conyso product.</p>
+      </div>
+      <nav aria-label="Product">
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="/toll-preview/1099-threshold/">1099 threshold tracker</a></li>
+          <li><a href="/toll-preview/business-days/">Business days</a></li>
+          <li><a href="/toll-preview/delivery-date-calculator/">Delivery dates</a></li>
+          <li><a href="/toll-preview/fx-on-date/">Exchange rate on a date</a></li>
+          <li><a href="/toll-preview/image-to-size/">Image to size</a></li>
+          <li><a href="/toll-preview/mileage-reimbursement/">Mileage reimbursement</a></li>
+          <li><a href="/toll-preview/tax-set-aside/">Tax set-aside</a></li>
+          <li><a href="/toll-preview/trucker-per-diem/">Trucker per diem</a></li>
+          <li><a href="/toll-preview/tools/">All tools</a></li>
+          <li><a href="/toll-preview/pricing/">Pricing</a></li>
+          <li><a href="/toll-preview/how-it-works/">How it works</a></li>
+          <li><a href="/toll-preview/calendars/">Holiday calendars</a></li>
+          <li><a href="/toll-preview/widgets/">Widgets</a></li>
+          <li><a href="/toll-preview/data/">Data downloads</a></li>
+          <li><a href="/toll-preview/deadlines/">Tax deadlines</a></li>
+          <li><a href="/toll-preview/small-business-numbers-2026/">2026 numbers</a></li>
+          <li><a href="/toll-preview/templates/">Templates</a></li>
+          <li><a href="/toll-preview/prompts/">Prompt library</a></li>
+          <li><a href="/toll-preview/compare/">Compare</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Who it's for">
+        <p class="foot-h">Who it's for</p>
+        <ul>
+          <li><a href="/toll-preview/for/freelancers/">Freelancers</a></li>
+          <li><a href="/toll-preview/for/truckers/">Truckers</a></li>
+          <li><a href="/toll-preview/for/bookkeepers/">Bookkeepers</a></li>
+          <li><a href="/toll-preview/for/online-sellers/">Online sellers</a></li>
+          <li><a href="/toll-preview/for/landlords/">Landlords</a></li>
+          <li><a href="/toll-preview/developers/mcp/">AI agent builders</a></li>
+          <li><a href="/toll-preview/for/">Everyone else</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Developers">
+        <p class="foot-h">Developers</p>
+        <ul>
+          <li><a href="/toll-preview/developers/">REST API</a></li>
+          <li><a href="/toll-preview/developers/mcp/">MCP for agents</a></li>
+          <li><a href="/toll-preview/docs">Docs</a></li>
+          <li><a href="/toll-preview/api/v1/openapi.json">OpenAPI</a></li>
+          <li><a href="/toll-preview/api/v1/tools">Tool list API</a></li>
+          <li><a href="/toll-preview/developers/changelog/">API changelog</a></li>
+          <li><a href="/toll-preview/status/">Status</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <p class="foot-h">Company</p>
+        <ul>
+          <li><a href="/toll-preview/about/">About</a></li>
+          <li><a href="/toll-preview/why-exact/">Why exact</a></li>
+          <li><a href="/toll-preview/guides/">Guides</a></li>
+          <li><a href="/toll-preview/sources/">Sources</a></li>
+          <li><a href="/toll-preview/updates/">Data updates</a></li>
+          <li><a href="/toll-preview/press/">Press kit</a></li>
+          <li><a href="/toll-preview/methodology/">Methodology</a></li>
+          <li><a href="/toll-preview/accuracy-promise/">Accuracy promise</a></li>
+          <li><a href="/toll-preview/cite/">Cite Endwise</a></li>
+          <li><a href="/toll-preview/es/guias/" hreflang="es" lang="es">En español</a></li>
+          <li><a href="/toll-preview/de/" hreflang="de" lang="de">Deutsch</a></li>
+          <li><a href="/toll-preview/fr/" hreflang="fr" lang="fr">Français</a></li>
+          <li><a href="/toll-preview/pt/" hreflang="pt-BR" lang="pt-BR">Português</a></li>
+          <li><a href="/toll-preview/hi/" hreflang="hi" lang="hi">हिन्दी</a></li>
+          <li><a href="/toll-preview/ja/" hreflang="ja" lang="ja">日本語</a></li>
+          <li><a href="https://conyso.com/">Conyso</a></li>
+          <li><a href="/toll-preview/account">Account</a></li>
+          <li><a href="/toll-preview/contact/">Contact</a></li>
+          <li><a href="/toll-preview/#request">Request a tool</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="/toll-preview/terms/">Terms</a></li>
+          <li><a href="/toll-preview/privacy">Privacy</a></li>
+          <li><a href="/toll-preview/refunds/">Refunds</a></li>
+          <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
+          <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <p>Endwise is a Conyso product. &copy; 2026 Conyso.</p>
+      <p>No ad or analytics trackers.</p>
+      
+    </div>
+  </div>
+</footer>
+
+<script src="/toll-preview/assets/endwise.js"></script>
+<script type="module" src="/toll-preview/overtime-auditor/files/page.js"></script>
+<div role="note" style="position:fixed;inset:auto 0 0 0;z-index:50;padding:8px 16px;background:#2a1d10;color:#f3dcc0;font:13px/1.4 system-ui,sans-serif;text-align:center;border-top:1px solid #6b4a24">Preview copy. Pages and worked examples are real; running paid tools, signing in, the API and AI agents need the live server.</div>
+</body>
+</html>

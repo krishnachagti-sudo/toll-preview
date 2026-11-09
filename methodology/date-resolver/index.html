@@ -71,15 +71,16 @@
 <h1>How date phrases are resolved: rules and sources</h1>
 <p class="cp-answer">A phrase is read by a small fixed grammar and worked out on whole day numbers from an explicit reference date, so the machine's time zone cannot change it. The start day is not counted, months keep the day of the month or the month's last day, weeks run Monday to Sunday, and business days skip weekends and the chosen holidays. Dates run from 1900 to 2199.</p>
 
+<ul class="trust" aria-label="About this site"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.5v5.5c0 4 3 7 7 8.5 4-1.5 7-4.5 7-8.5V6.5z"/></svg><span>Made by <a href="/toll-preview/about/">Conyso</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Exact, no AI</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.7-1 5.4-1 8 .8 2.6-1.8 5.3-1.8 8-.8v13c-2.7-1-5.4-1-8 .8-2.6-1.8-5.3-1.8-8-.8zM12 6.3v13"/></svg><span><a href="/toll-preview/sources/">Official sources, dated</a></span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4.5 4.5v12.5H7zM14 3.5V8h4.5"/></svg><span><a href="/toll-preview/privacy">Files you upload are not kept</a></span></li><li class="tl2"><a href="/toll-preview/security/">Security</a><a href="/toll-preview/terms/">Terms</a></li></ul>
 </header>
 <div class="cp-body prose">
 <section>
 <h2 id="what">What does the natural-language date resolver compute?</h2>
 <p>The tool turns a phrase such as &quot;90 days from today&quot;, &quot;10 business days after next Friday&quot; or &quot;end of next month&quot; into one calendar date with its weekday, ISO week and day of the year. It says every step it took and every holiday it skipped. When a phrase can honestly mean two dates, such as &quot;next Friday&quot; said on a Monday, the answer says so and gives both.</p>
-<p>Inputs:</p>
+<details class="xpand"><summary>Read the rest: What does the natural-language date resolver compute?</summary><div class="xp-in"><p>Inputs:</p>
 <ul><li><code>text or texts</code>: One phrase, or a list of up to 50 phrases, each at most 200 characters. One of the two, not both.</li><li><code>ref</code>: The date the phrase is said on, like 2026-11-07, or &quot;today&quot; with a timeZone. It is required, so the answer never depends on the server's clock.</li><li><code>timeZone</code>: An IANA name like America/New_York, needed with ref &quot;today&quot;: today is the date in that zone at the moment of the call.</li><li><code>region</code>: US (federal holidays, the default), GB-ENG (England and Wales bank holidays), IN-CENTRAL-DELHI (India, central government offices in Delhi) or none (weekends only).</li><li><code>daysOff</code>: Optional list of your own dates (at most 400), skipped as business days and named as your days off.</li><li><code>weekdayRule, dateOrder, roll</code>: weekdayRule &quot;nearest&quot; (default) or &quot;next-week&quot; for &quot;next Friday&quot;; dateOrder &quot;MDY&quot; (default) or &quot;DMY&quot; for 3/4/2027; roll none (default), following, preceding or modified-following.</li></ul>
 <p>Outputs:</p>
-<ul><li>date, weekday, dateText, isoWeek and dayOfYear</li><li>calendarDaysFromRef and businessDay: whether the date itself is a business day in the chosen calendar</li><li>ambiguous, and readings: the other reading with its date when the phrase can mean two days</li><li>holidaysSkipped and daysOffSkipped, each with its date and name; rolledFrom when a roll moved the date</li><li>steps in words, and assumptions: the reference date and where it came from, the holiday calendar, the weekday rule, the date order, the roll and the counting rules</li></ul>
+<ul><li>date, weekday, dateText, isoWeek and dayOfYear</li><li>calendarDaysFromRef and businessDay: whether the date itself is a business day in the chosen calendar</li><li>ambiguous, and readings: the other reading with its date when the phrase can mean two days</li><li>holidaysSkipped and daysOffSkipped, each with its date and name; rolledFrom when a roll moved the date</li><li>steps in words, and assumptions: the reference date and where it came from, the holiday calendar, the weekday rule, the date order, the roll and the counting rules</li></ul></div></details>
 </section>
 <section>
 <h2 id="method">How is it calculated, step by step?</h2>
@@ -149,16 +150,24 @@
 <h2 id="data">Where does the data come from, and how fresh is it?</h2>
 <p>The grammar and counting rules are fixed in the code. The holiday rules are the Business days tool's, last changed on 2026-10-30, and the OPM federal holiday page was read on 2026-11-07.</p>
 <ul class="cp-sources"><li><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></li><li><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></li><li><a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601: Date and time format</a></li></ul>
-<p><a href="/toll-preview/sources/">All sources, editions and read dates</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
+<p>The grammar and counting rules are fixed in the code. Business days use the Business days tool's holiday calendars (rules last changed 2026-10-30); the OPM federal holiday page was read on 2026-11-07.</p>
+<div class="table-scroll"><table class="rules cp-table"><caption>Natural-language date resolver: sources</caption><thead><tr><th scope="col">Source</th><th scope="col">Edition or date</th><th scope="col">Read on</th></tr></thead><tbody>
+<tr><th scope="row"><a href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">OPM: Federal holidays</a></th><td>federal holidays and observed days</td><td>2026-11-07</td></tr>
+<tr><th scope="row"><a href="https://www.law.cornell.edu/uscode/text/5/6103">5 U.S.C. 6103: Holidays</a></th><td>rules as of 2026-10-30</td><td>2026-10-30</td></tr>
+<tr><th scope="row"><a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601: Date and time format</a></th><td>weeks Monday to Sunday</td><td>not recorded</td></tr>
+</tbody></table></div>
+<p><a href="/toll-preview/sources/">The sources of every tool</a> are listed on one page, and <a href="/toll-preview/updates/">each change to the data or rules</a> is logged with its date.</p>
 </section>
 <section>
 <h2 id="tests">How is it tested?</h2>
 <p>Calendar days, months, quarters and years, month-end clamping, weekdays on both readings, periods, business days, written dates, rolling and ISO weeks are each checked phrase by phrase from a fixed reference date. Business days must equal the Business days tool's own add, and refused phrases are checked to be refused.</p>
-<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> list what each test suite asserts.</p>
-<p><a href="/toll-preview/date-resolver/">Open the Natural-language date resolver tool</a>.</p>
+<details class="xpand"><summary>Read the rest: How is it tested?</summary><div class="xp-in"><p>What its test suite asserts:</p>
+<ul><li>Calendar days, weeks, months, quarters and years are checked phrase by phrase from a fixed reference date: 90 days from Monday, November 2, 2026 is Sunday, January 31, 2027.</li><li>Month ends are clamped and leap years kept: 1 month after January 31, 2027 is February 28, and 1 year after February 29, 2028 is February 28, 2029.</li><li>&quot;Next Friday&quot;, &quot;last Tuesday&quot; and dates with no year are checked on both readings, and the second reading is given only when it differs.</li><li>Business days must equal the Business days tool's own add for US federal holidays; England and Wales, India, weekends only and your own days off are checked too.</li><li>Rolling (following, preceding, modified following), ISO weeks and the refusal of times, unknown words and out-of-range dates are checked.</li></ul>
+<p><a href="/toll-preview/sources/#checks">The checks for every tool</a> are linked from one page.</p>
+<p><a href="/toll-preview/date-resolver/">Open the Natural-language date resolver tool</a>.</p></div></details>
 </section>
 
-<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><h3>Is there any AI in the natural-language date resolver answers?</h3><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p><h3>What will the natural-language date resolver refuse to answer?</h3><p>Times of day are refused: the answer is a calendar date, never a time. A request outside what the data covers is refused with the reason and costs nothing.</p></section>
+<section class="cp-faq" aria-labelledby="faq"><h2 id="faq">Questions</h2><details class="xpand"><summary><h3>Is there any AI in the natural-language date resolver answers?</h3></summary><div class="xp-in"><p>No. The answer is worked out by fixed rules from the data on this page, so the same input gives the same answer every time.</p></div></details><details class="xpand"><summary><h3>What will the natural-language date resolver refuse to answer?</h3></summary><div class="xp-in"><p>Times of day are refused: the answer is a calendar date, never a time. A request outside what the data covers is refused with the reason and costs nothing.</p></div></details></section>
 <section class="cp-related" aria-labelledby="related"><h2 id="related">Related</h2><ul><li><a href="/toll-preview/date-resolver/">Open the Natural-language date resolver tool</a></li><li><a href="/toll-preview/sources/">Sources and checks</a></li><li><a href="/toll-preview/updates/">Data updates</a></li><li><a href="/toll-preview/date-resolver/api/">Date resolver guides and API</a></li><li><a href="/toll-preview/methodology/business-days/">How business days are counted</a></li></ul></section>
 </div>
 <p class="cp-formats small muted"><a href="/toll-preview/methodology/date-resolver.md">This page as Markdown</a> <span aria-hidden="true">·</span> Data as of <time datetime="2026-11-04">2026-11-04</time></p>
@@ -251,6 +260,7 @@
           <li><a href="/toll-preview/refunds/">Refunds</a></li>
           <li><a href="/toll-preview/acceptable-use/">Acceptable use</a></li>
           <li><a href="/toll-preview/security/">Security</a></li>
+          <li><a href="/toll-preview/photo-credits/">Photo credits</a></li>
         </ul>
       </nav>
     </div>
