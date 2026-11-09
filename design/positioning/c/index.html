@@ -72,7 +72,7 @@
 .tag2.out{background:rgba(255,255,255,.05);color:var(--muted)}
 .ans{margin:0 0 12px;padding:12px 14px;border-left:2px solid var(--ok);background:rgba(95,211,160,.06);border-radius:0 10px 10px 0;font-size:14px;color:var(--text)}
 .dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.dd div{padding:14px;border:1px solid var(--line-2);border-radius:12px;background:rgba(255,255,255,.02)}
+.dd>div{padding:14px;border:1px solid var(--line-2);border-radius:12px;background:rgba(255,255,255,.02)}
 .dd .d{font:600 22px/1.1 var(--font-display);letter-spacing:-.02em;color:var(--text)}
 .dd .l{margin-top:6px;font-size:12.5px;color:var(--muted)}
 .files{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
@@ -543,7 +543,7 @@ window.addEventListener('DOMContentLoaded', function () {
   gsap.utils.toArray('.scene').forEach(function (sc) {
     var n = sc.getAttribute('data-step');
     ScrollTrigger.create({ trigger: sc, start: 'top 55%', end: 'bottom 55%', onToggle: function (s) { if (s.isActive) num.textContent = ('0' + n).slice(-2) + ' / 07'; } });
-    var tl = gsap.timeline({ scrollTrigger: { trigger: sc, start: 'top 75%', toggleActions: 'play none none reverse' } });
+    var tl = gsap.timeline({ scrollTrigger: { trigger: sc, start: 'top 75%', toggleActions: 'play none none none' } });
     tl.from(sc.querySelector('.txt'), { x: -40, opacity: 0, duration: 0.8, ease: 'power3.out' })
       .from(sc.querySelector('.pnl'), { y: 60, scale: 0.96, rotateX: 8, opacity: 0, duration: 1, ease: 'power3.out', transformPerspective: 900 }, '<0.1');
     var rows = sc.querySelectorAll('.c-rows > *, .c-rows tbody tr');
